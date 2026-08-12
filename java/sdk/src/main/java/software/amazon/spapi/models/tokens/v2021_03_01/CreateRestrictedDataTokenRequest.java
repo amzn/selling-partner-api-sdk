@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.tokens.v2021_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the createRestrictedDataToken operation. */
-@Schema(description = "The request schema for the createRestrictedDataToken operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the createRestrictedDataToken operation.")
 public class CreateRestrictedDataTokenRequest {
     @SerializedName("targetApplication")
     private String targetApplication = null;
@@ -37,7 +37,8 @@ public class CreateRestrictedDataTokenRequest {
      *
      * @return targetApplication
      */
-    @Schema(description = "The application ID for the target application to which access is being delegated.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The application ID for the target application to which access is being delegated.")
     public String getTargetApplication() {
         return targetApplication;
     }
@@ -64,7 +65,9 @@ public class CreateRestrictedDataTokenRequest {
      *
      * @return restrictedResources
      */
-    @Schema(required = true, description = "A list of restricted resources. Maximum: 50")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of restricted resources. Maximum: 50")
     public List<RestrictedResource> getRestrictedResources() {
         return restrictedResources;
     }

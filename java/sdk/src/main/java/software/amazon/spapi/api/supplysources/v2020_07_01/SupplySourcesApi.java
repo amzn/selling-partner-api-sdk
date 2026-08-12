@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceResponse;
@@ -86,8 +85,7 @@ public class SupplySourcesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call archiveSupplySourceCall(
-            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call archiveSupplySourceCall(String supplySourceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -130,8 +128,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call archiveSupplySourceValidateBeforeCall(
-            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String supplySourceId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'supplySourceId' is set
         if (supplySourceId == null) {
@@ -236,10 +233,10 @@ public class SupplySourcesApi {
             String supplySourceId, final ApiCallback<ErrorList> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = archiveSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
@@ -267,8 +264,7 @@ public class SupplySourcesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createSupplySourceCall(
-            CreateSupplySourceRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateSupplySourceRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = payload;
 
@@ -307,8 +303,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call createSupplySourceValidateBeforeCall(
-            CreateSupplySourceRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateSupplySourceRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'payload' is set
@@ -417,10 +412,10 @@ public class SupplySourcesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createSupplySourceValidateBeforeCall(payload, progressRequestListener);
@@ -447,8 +442,7 @@ public class SupplySourcesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getSupplySourceCall(
-            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getSupplySourceCall(String supplySourceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -491,8 +485,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call getSupplySourceValidateBeforeCall(
-            String supplySourceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String supplySourceId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'supplySourceId' is set
         if (supplySourceId == null) {
@@ -596,10 +589,10 @@ public class SupplySourcesApi {
             String supplySourceId, final ApiCallback<SupplySource> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getSupplySourceValidateBeforeCall(supplySourceId, progressRequestListener);
@@ -627,9 +620,7 @@ public class SupplySourcesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getSupplySourcesCall(
-            String nextPageToken,
-            BigDecimal pageSize,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String nextPageToken, BigDecimal pageSize, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -672,9 +663,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call getSupplySourcesValidateBeforeCall(
-            String nextPageToken,
-            BigDecimal pageSize,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String nextPageToken, BigDecimal pageSize, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getSupplySourcesCall(nextPageToken, pageSize, progressRequestListener);
@@ -785,10 +774,10 @@ public class SupplySourcesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getSupplySourcesValidateBeforeCall(nextPageToken, pageSize, progressRequestListener);
@@ -816,9 +805,7 @@ public class SupplySourcesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateSupplySourceCall(
-            String supplySourceId,
-            UpdateSupplySourceRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, UpdateSupplySourceRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = payload;
 
@@ -860,9 +847,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call updateSupplySourceValidateBeforeCall(
-            String supplySourceId,
-            UpdateSupplySourceRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, UpdateSupplySourceRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'supplySourceId' is set
@@ -981,10 +966,10 @@ public class SupplySourcesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateSupplySourceValidateBeforeCall(supplySourceId, payload, progressRequestListener);
@@ -1013,9 +998,7 @@ public class SupplySourcesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateSupplySourceStatusCall(
-            String supplySourceId,
-            UpdateSupplySourceStatusRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, UpdateSupplySourceStatusRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = payload;
 
@@ -1057,9 +1040,7 @@ public class SupplySourcesApi {
     }
 
     private okhttp3.Call updateSupplySourceStatusValidateBeforeCall(
-            String supplySourceId,
-            UpdateSupplySourceStatusRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String supplySourceId, UpdateSupplySourceStatusRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'supplySourceId' is set
@@ -1179,10 +1160,10 @@ public class SupplySourcesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =

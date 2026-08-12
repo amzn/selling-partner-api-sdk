@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Gift details for the item. */
-@Schema(description = "Gift details for the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Gift details for the item.")
 public class GiftDetails {
     @SerializedName("giftMessage")
     private String giftMessage = null;
@@ -35,7 +34,7 @@ public class GiftDetails {
      *
      * @return giftMessage
      */
-    @Schema(description = "Gift message to be printed in shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Gift message to be printed in shipment.")
     public String getGiftMessage() {
         return giftMessage;
     }
@@ -54,7 +53,7 @@ public class GiftDetails {
      *
      * @return giftWrapId
      */
-    @Schema(description = "Gift wrap identifier for the gift wrapping, if any.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Gift wrap identifier for the gift wrapping, if any.")
     public String getGiftWrapId() {
         return giftWrapId;
     }

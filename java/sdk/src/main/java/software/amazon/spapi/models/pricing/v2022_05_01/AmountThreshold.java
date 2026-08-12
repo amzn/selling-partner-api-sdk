@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Amount-based purchase conditions for basket building promotions. Customers must spend a minimum dollar amount. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Amount-based purchase conditions for basket building promotions. Customers must spend a minimum dollar amount.")
 public class AmountThreshold {
@@ -38,7 +37,7 @@ public class AmountThreshold {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates how the amount requirement is evaluated. For spend-based conditions, the supported value is AT_LEAST, meaning the customer must spend at least the specified dollar amount to qualify.")
@@ -60,7 +59,7 @@ public class AmountThreshold {
      *
      * @return currency
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getCurrency() {
         return currency;
     }

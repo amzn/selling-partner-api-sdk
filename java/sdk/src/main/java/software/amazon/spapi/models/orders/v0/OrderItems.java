@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.orders.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** For partial shipment status updates, the list of order items and quantities to be updated. */
-@Schema(description = "For partial shipment status updates, the list of order items and quantities to be updated.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "For partial shipment status updates, the list of order items and quantities to be updated.")
 public class OrderItems extends ArrayList<OrderItemsInner> {
 
     @Override

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A constraint that may affect a fulfillment order. */
-@Schema(description = "A constraint that may affect a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A constraint that may affect a fulfillment order.")
 public class Constraint {
     @SerializedName("message")
     private String message = null;
@@ -43,7 +42,9 @@ public class Constraint {
      *
      * @return message
      */
-    @Schema(required = true, description = "A human-readable description of the constraint.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A human-readable description of the constraint.")
     public String getMessage() {
         return message;
     }
@@ -62,7 +63,7 @@ public class Constraint {
      *
      * @return type
      */
-    @Schema(required = true, description = "The type of constraint.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of constraint.")
     public String getType() {
         return type;
     }
@@ -81,7 +82,7 @@ public class Constraint {
      *
      * @return code
      */
-    @Schema(required = true, description = "The constraint code.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The constraint code.")
     public String getCode() {
         return code;
     }
@@ -108,7 +109,7 @@ public class Constraint {
      *
      * @return details
      */
-    @Schema(description = "Array of constraint details")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Array of constraint details")
     public List<ConstraintDetail> getDetails() {
         return details;
     }

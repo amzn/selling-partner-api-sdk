@@ -13,11 +13,13 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The balance amount in the Amazon Seller Wallet bank account. */
-@Schema(description = "The balance amount in the Amazon Seller Wallet bank account.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The balance amount in the Amazon Seller Wallet bank account.")
 public class Balance {
     @SerializedName("accountId")
     private String accountId = null;
@@ -44,7 +46,9 @@ public class Balance {
      *
      * @return accountId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to identify the account.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier provided by Amazon to identify the account.")
     public String getAccountId() {
         return accountId;
     }
@@ -63,7 +67,7 @@ public class Balance {
      *
      * @return balanceType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BalanceType getBalanceType() {
         return balanceType;
     }
@@ -82,7 +86,9 @@ public class Balance {
      *
      * @return balanceAmount
      */
-    @Schema(required = true, description = "A decimal number, such as an amount or FX rate.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A decimal number, such as an amount or FX rate.")
     public BigDecimal getBalanceAmount() {
         return balanceAmount;
     }
@@ -101,7 +107,9 @@ public class Balance {
      *
      * @return balanceCurrency
      */
-    @Schema(required = true, description = "The Amazon Seller Wallet bank account currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Seller Wallet bank account currency code in ISO 4217 format.")
     public String getBalanceCurrency() {
         return balanceCurrency;
     }
@@ -120,7 +128,9 @@ public class Balance {
      *
      * @return lastUpdateDate
      */
-    @Schema(required = true, description = "The date of the most recent account balance update.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date of the most recent account balance update.")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }

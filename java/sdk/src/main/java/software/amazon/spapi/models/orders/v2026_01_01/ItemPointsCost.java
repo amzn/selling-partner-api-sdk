@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Information about Amazon Points granted with the purchase of an item, including both quantity and monetary equivalent
  * value.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about Amazon Points granted with the purchase of an item, including both quantity and monetary equivalent value.")
 public class ItemPointsCost {
@@ -37,7 +36,7 @@ public class ItemPointsCost {
      *
      * @return pointsGranted
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PointsGranted getPointsGranted() {
         return pointsGranted;
     }

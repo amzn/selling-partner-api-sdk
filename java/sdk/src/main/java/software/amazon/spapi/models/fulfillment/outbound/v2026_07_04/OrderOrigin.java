@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The origin of the fulfillment. */
-@Schema(description = "The origin of the fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The origin of the fulfillment.")
 public class OrderOrigin {
     @SerializedName("countryCode")
     private String countryCode = null;
@@ -32,7 +31,9 @@ public class OrderOrigin {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }

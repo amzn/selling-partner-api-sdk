@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of offers. */
-@Schema(description = "A list of offers.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of offers.")
 public class OffersList extends ArrayList<OfferType> {
 
     @Override

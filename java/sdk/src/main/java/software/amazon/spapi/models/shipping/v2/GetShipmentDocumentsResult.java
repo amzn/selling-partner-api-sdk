@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the getShipmentDocuments operation. */
-@Schema(description = "The payload for the getShipmentDocuments operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the getShipmentDocuments operation.")
 public class GetShipmentDocumentsResult {
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -38,7 +37,9 @@ public class GetShipmentDocumentsResult {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "The unique shipment identifier provided by a shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique shipment identifier provided by a shipping service.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -57,7 +58,7 @@ public class GetShipmentDocumentsResult {
      *
      * @return packageDocumentDetail
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDocumentDetail getPackageDocumentDetail() {
         return packageDocumentDetail;
     }
@@ -76,7 +77,7 @@ public class GetShipmentDocumentsResult {
      *
      * @return benefits
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Benefits getBenefits() {
         return benefits;
     }

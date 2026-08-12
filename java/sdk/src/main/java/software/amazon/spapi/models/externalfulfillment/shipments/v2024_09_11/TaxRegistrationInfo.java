@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Tax registration details of the entity. Applicable to direct fulfillment shipments. */
-@Schema(description = "Tax registration details of the entity. Applicable to direct fulfillment shipments.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Tax registration details of the entity. Applicable to direct fulfillment shipments.")
 public class TaxRegistrationInfo {
     /** Tax registration type for the entity */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -92,7 +92,7 @@ public class TaxRegistrationInfo {
      *
      * @return type
      */
-    @Schema(description = "Tax registration type for the entity")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax registration type for the entity")
     public TypeEnum getType() {
         return type;
     }
@@ -111,7 +111,8 @@ public class TaxRegistrationInfo {
      *
      * @return number
      */
-    @Schema(description = "The tax registration number for the party. For example, their VAT ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The tax registration number for the party. For example, their VAT ID.")
     public String getNumber() {
         return number;
     }
@@ -130,7 +131,7 @@ public class TaxRegistrationInfo {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -149,7 +150,8 @@ public class TaxRegistrationInfo {
      *
      * @return messages
      */
-    @Schema(description = "Tax registration message that can be used for additional tax related details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Tax registration message that can be used for additional tax related details.")
     public String getMessages() {
         return messages;
     }

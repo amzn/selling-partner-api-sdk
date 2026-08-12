@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about a fulfillment order preview, including delivery and fee information based on shipping method. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about a fulfillment order preview, including delivery and fee information based on shipping method.")
 public class FulfillmentPreview {
@@ -66,7 +65,7 @@ public class FulfillmentPreview {
      *
      * @return shippingSpeedCategory
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingSpeedCategory getShippingSpeedCategory() {
         return shippingSpeedCategory;
     }
@@ -85,7 +84,7 @@ public class FulfillmentPreview {
      *
      * @return scheduledDeliveryInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ScheduledDeliveryInfo getScheduledDeliveryInfo() {
         return scheduledDeliveryInfo;
     }
@@ -104,7 +103,9 @@ public class FulfillmentPreview {
      *
      * @return isFulfillable
      */
-    @Schema(required = true, description = "When true, this fulfillment order preview is fulfillable.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, this fulfillment order preview is fulfillable.")
     public Boolean getIsFulfillable() {
         return isFulfillable;
     }
@@ -123,7 +124,9 @@ public class FulfillmentPreview {
      *
      * @return isCODCapable
      */
-    @Schema(required = true, description = "When true, this fulfillment order preview is for COD (Cash On Delivery).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, this fulfillment order preview is for COD (Cash On Delivery).")
     public Boolean getIsCODCapable() {
         return isCODCapable;
     }
@@ -142,7 +145,7 @@ public class FulfillmentPreview {
      *
      * @return estimatedShippingWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getEstimatedShippingWeight() {
         return estimatedShippingWeight;
     }
@@ -161,7 +164,7 @@ public class FulfillmentPreview {
      *
      * @return estimatedFees
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeList getEstimatedFees() {
         return estimatedFees;
     }
@@ -180,7 +183,7 @@ public class FulfillmentPreview {
      *
      * @return fulfillmentPreviewShipments
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentPreviewShipmentList getFulfillmentPreviewShipments() {
         return fulfillmentPreviewShipments;
     }
@@ -199,7 +202,7 @@ public class FulfillmentPreview {
      *
      * @return unfulfillablePreviewItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnfulfillablePreviewItemList getUnfulfillablePreviewItems() {
         return unfulfillablePreviewItems;
     }
@@ -218,7 +221,7 @@ public class FulfillmentPreview {
      *
      * @return orderUnfulfillableReasons
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StringList getOrderUnfulfillableReasons() {
         return orderUnfulfillableReasons;
     }
@@ -237,7 +240,9 @@ public class FulfillmentPreview {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The marketplace the fulfillment order is placed against.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The marketplace the fulfillment order is placed against.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -264,7 +269,8 @@ public class FulfillmentPreview {
      *
      * @return featureConstraints
      */
-    @Schema(description = "A list of features and their fulfillment policies to apply to the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of features and their fulfillment policies to apply to the order.")
     public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }

@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.reports.v2021_06_30;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Additional information passed to reports. This varies by report type. */
-@Schema(description = "Additional information passed to reports. This varies by report type.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional information passed to reports. This varies by report type.")
 public class ReportOptions extends HashMap<String, String> {
 
     @Override

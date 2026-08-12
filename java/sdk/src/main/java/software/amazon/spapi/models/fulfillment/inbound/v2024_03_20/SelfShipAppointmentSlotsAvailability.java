@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The self ship appointment time slots availability and an expiration date for which the slots can be scheduled. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The self ship appointment time slots availability and an expiration date for which the slots can be scheduled.")
 public class SelfShipAppointmentSlotsAvailability {
@@ -40,7 +40,7 @@ public class SelfShipAppointmentSlotsAvailability {
      *
      * @return expiresAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The time at which the self ship appointment slot expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.")
     public OffsetDateTime getExpiresAt() {
@@ -69,7 +69,7 @@ public class SelfShipAppointmentSlotsAvailability {
      *
      * @return slots
      */
-    @Schema(description = "A list of appointment slots.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of appointment slots.")
     public List<AppointmentSlot> getSlots() {
         return slots;
     }

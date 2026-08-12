@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * How an invoice line item&#39;s quantity and price were matched against expected values, including any variances and
  * their underlying reasons.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "How an invoice line item's quantity and price were matched against expected values, including any variances and their underlying reasons.")
 public class MatchingContext {
@@ -57,7 +56,7 @@ public class MatchingContext {
      *
      * @return matchedQuantity
      */
-    @Schema(required = true, description = "The quantity that was matched.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The quantity that was matched.")
     public Integer getMatchedQuantity() {
         return matchedQuantity;
     }
@@ -76,7 +75,7 @@ public class MatchingContext {
      *
      * @return matchedAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getMatchedAmount() {
         return matchedAmount;
     }
@@ -95,7 +94,7 @@ public class MatchingContext {
      *
      * @return quantityVariance
      */
-    @Schema(description = "The difference between expected and actual quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The difference between expected and actual quantity.")
     public Integer getQuantityVariance() {
         return quantityVariance;
     }
@@ -114,7 +113,7 @@ public class MatchingContext {
      *
      * @return priceVariance
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getPriceVariance() {
         return priceVariance;
     }
@@ -133,7 +132,7 @@ public class MatchingContext {
      *
      * @return paidQuantity
      */
-    @Schema(description = "The quantity that has been paid for.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity that has been paid for.")
     public Integer getPaidQuantity() {
         return paidQuantity;
     }
@@ -152,7 +151,7 @@ public class MatchingContext {
      *
      * @return paidAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getPaidAmount() {
         return paidAmount;
     }
@@ -179,7 +178,7 @@ public class MatchingContext {
      *
      * @return varianceReasons
      */
-    @Schema(description = "Reasons for the variance.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Reasons for the variance.")
     public List<VarianceReason> getVarianceReasons() {
         return varianceReasons;
     }

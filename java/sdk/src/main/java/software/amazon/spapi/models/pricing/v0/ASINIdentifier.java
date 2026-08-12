@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema to identify an item by MarketPlaceId and ASIN. */
-@Schema(description = "Schema to identify an item by MarketPlaceId and ASIN.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema to identify an item by MarketPlaceId and ASIN.")
 public class ASINIdentifier {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -35,7 +34,7 @@ public class ASINIdentifier {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -54,7 +53,9 @@ public class ASINIdentifier {
      *
      * @return ASIN
      */
-    @Schema(required = true, description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }

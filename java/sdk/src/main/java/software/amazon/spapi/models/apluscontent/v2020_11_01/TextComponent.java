@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Rich text content. */
-@Schema(description = "Rich text content.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Rich text content.")
 public class TextComponent {
     @SerializedName("value")
     private String value = null;
@@ -35,7 +34,7 @@ public class TextComponent {
      *
      * @return value
      */
-    @Schema(required = true, description = "The actual plain text.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The actual plain text.")
     public String getValue() {
         return value;
     }
@@ -54,7 +53,7 @@ public class TextComponent {
      *
      * @return decoratorSet
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DecoratorSet getDecoratorSet() {
         return decoratorSet;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The parameters for an individual request. */
-@Schema(description = "The parameters for an individual request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The parameters for an individual request.")
 public class FeaturedOfferExpectedPriceRequestParams {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -39,7 +38,7 @@ public class FeaturedOfferExpectedPriceRequestParams {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -61,7 +60,7 @@ public class FeaturedOfferExpectedPriceRequestParams {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSku() {
         return sku;
     }
@@ -80,7 +79,7 @@ public class FeaturedOfferExpectedPriceRequestParams {
      *
      * @return segment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Segment getSegment() {
         return segment;
     }

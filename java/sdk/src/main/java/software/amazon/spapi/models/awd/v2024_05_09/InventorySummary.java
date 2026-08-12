@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Summary of inventory per SKU. */
-@Schema(description = "Summary of inventory per SKU.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summary of inventory per SKU.")
 public class InventorySummary {
     @SerializedName("expirationDetails")
     private List<ExpirationDetails> expirationDetails = null;
@@ -55,7 +54,7 @@ public class InventorySummary {
      *
      * @return expirationDetails
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.")
     public List<ExpirationDetails> getExpirationDetails() {
@@ -76,7 +75,7 @@ public class InventorySummary {
      *
      * @return inventoryDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryDetails getInventoryDetails() {
         return inventoryDetails;
     }
@@ -95,7 +94,7 @@ public class InventorySummary {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The seller or merchant SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller or merchant SKU.")
     public String getSku() {
         return sku;
     }
@@ -114,7 +113,7 @@ public class InventorySummary {
      *
      * @return totalInboundQuantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Total quantity that is in-transit from the seller and has not yet been received at an AWD Distribution Center")
     public Long getTotalInboundQuantity() {
@@ -135,7 +134,8 @@ public class InventorySummary {
      *
      * @return totalOnhandQuantity
      */
-    @Schema(description = "Total quantity that is present in AWD distribution centers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Total quantity that is present in AWD distribution centers.")
     public Long getTotalOnhandQuantity() {
         return totalOnhandQuantity;
     }

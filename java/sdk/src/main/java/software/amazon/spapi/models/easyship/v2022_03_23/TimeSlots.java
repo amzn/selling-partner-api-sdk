@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of time slots. */
-@Schema(description = "A list of time slots.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of time slots.")
 public class TimeSlots extends ArrayList<TimeSlot> {
 
     @Override

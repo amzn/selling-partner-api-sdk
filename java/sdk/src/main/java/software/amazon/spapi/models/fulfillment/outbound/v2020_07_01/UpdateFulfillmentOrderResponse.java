@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;updateFulfillmentOrder&#x60; operation. */
-@Schema(description = "The response schema for the `updateFulfillmentOrder` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `updateFulfillmentOrder` operation.")
 public class UpdateFulfillmentOrderResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class UpdateFulfillmentOrderResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

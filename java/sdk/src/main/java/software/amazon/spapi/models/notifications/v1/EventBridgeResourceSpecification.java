@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The information required to create an Amazon EventBridge destination. */
-@Schema(description = "The information required to create an Amazon EventBridge destination.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The information required to create an Amazon EventBridge destination.")
 public class EventBridgeResourceSpecification {
     @SerializedName("region")
     private String region = null;
@@ -35,7 +35,9 @@ public class EventBridgeResourceSpecification {
      *
      * @return region
      */
-    @Schema(required = true, description = "The AWS region in which you will be receiving the notifications.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The AWS region in which you will be receiving the notifications.")
     public String getRegion() {
         return region;
     }
@@ -54,7 +56,7 @@ public class EventBridgeResourceSpecification {
      *
      * @return accountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the AWS account that is responsible for charges related to receiving notifications.")

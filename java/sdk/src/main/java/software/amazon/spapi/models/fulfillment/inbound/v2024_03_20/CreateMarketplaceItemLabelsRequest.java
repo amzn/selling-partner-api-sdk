@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;createMarketplaceItemLabels&#x60; request. */
-@Schema(description = "The `createMarketplaceItemLabels` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `createMarketplaceItemLabels` request.")
 public class CreateMarketplaceItemLabelsRequest {
     @SerializedName("height")
     private BigDecimal height = null;
@@ -52,7 +52,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return height
      */
-    @Schema(description = "The height of the item label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The height of the item label.")
     public BigDecimal getHeight() {
         return height;
     }
@@ -71,7 +71,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return labelType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelPrintType getLabelType() {
         return labelType;
     }
@@ -91,7 +91,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return localeCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character.")
     public String getLocaleCode() {
@@ -113,7 +113,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -143,7 +143,9 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return mskuQuantities
      */
-    @Schema(required = true, description = "Represents the quantity of an MSKU to print item labels for.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Represents the quantity of an MSKU to print item labels for.")
     public List<MskuQuantity> getMskuQuantities() {
         return mskuQuantities;
     }
@@ -162,7 +164,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return pageType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemLabelPageType getPageType() {
         return pageType;
     }
@@ -181,7 +183,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return width
      */
-    @Schema(description = "The width of the item label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The width of the item label.")
     public BigDecimal getWidth() {
         return width;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The curbside pickup configuration of a supply source. */
-@Schema(description = "The curbside pickup configuration of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The curbside pickup configuration of a supply source.")
 public class CurbsidePickupConfiguration {
     @SerializedName("isSupported")
     private Boolean isSupported = null;
@@ -38,7 +37,8 @@ public class CurbsidePickupConfiguration {
      *
      * @return isSupported
      */
-    @Schema(description = "When true, curbside pickup is supported by the supply source.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, curbside pickup is supported by the supply source.")
     public Boolean getIsSupported() {
         return isSupported;
     }
@@ -57,7 +57,7 @@ public class CurbsidePickupConfiguration {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }
@@ -77,7 +77,7 @@ public class CurbsidePickupConfiguration {
      *
      * @return parkingWithAddressConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingWithAddressConfiguration getParkingWithAddressConfiguration() {
         return parkingWithAddressConfiguration;
     }

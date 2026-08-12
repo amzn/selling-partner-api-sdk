@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The time when the business opens or closes. */
-@Schema(description = "The time when the business opens or closes.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time when the business opens or closes.")
 public class OpenTimeInterval {
     @SerializedName("Hour")
     private Integer hour = null;
@@ -35,7 +34,7 @@ public class OpenTimeInterval {
      *
      * @return hour
      */
-    @Schema(description = "The hour when the business opens or closes.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The hour when the business opens or closes.")
     public Integer getHour() {
         return hour;
     }
@@ -54,7 +53,7 @@ public class OpenTimeInterval {
      *
      * @return minute
      */
-    @Schema(description = "The minute when the business opens or closes.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The minute when the business opens or closes.")
     public Integer getMinute() {
         return minute;
     }

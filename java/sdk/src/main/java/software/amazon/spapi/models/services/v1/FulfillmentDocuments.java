@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.services.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of documents captured during service appointment fulfillment. */
-@Schema(description = "List of documents captured during service appointment fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of documents captured during service appointment fulfillment.")
 public class FulfillmentDocuments extends ArrayList<FulfillmentDocument> {
 
     @Override

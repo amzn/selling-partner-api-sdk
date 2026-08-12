@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A promotion applicable to the offer. */
-@Schema(description = "A promotion applicable to the offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A promotion applicable to the offer.")
 public class Promotion {
     @SerializedName("promotionType")
     private String promotionType = null;
@@ -44,7 +43,7 @@ public class Promotion {
      *
      * @return promotionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates the type of promotion based on the customer-facing experience. Possible values include:  - COUPON: The offer has a live coupon that customers can clip and apply at checkout. - DEAL: The offer has a live deal (for example, Lightning Deal or Best Deal). Deals are time-limited, require meeting quality criteria, and automatically apply a discount when the customer purchases the item. - BASKET_BUILDING: The offer has a basket-building (multi-quantity) promotion where customers purchase multiple quantities of the same or different qualifying items to receive a discount on eligible items. Promotions created in Seller Central -> Advertising -> Manage Promotions fall into this category")
@@ -66,7 +65,7 @@ public class Promotion {
      *
      * @return promotionSavings
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PromotionSavings getPromotionSavings() {
         return promotionSavings;
     }
@@ -85,7 +84,7 @@ public class Promotion {
      *
      * @return purchaseRequirements
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PurchaseRequirements getPurchaseRequirements() {
         return purchaseRequirements;
     }

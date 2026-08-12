@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item that Amazon accepted for return. */
-@Schema(description = "An item that Amazon accepted for return.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item that Amazon accepted for return.")
 public class CreateReturnItem {
     @SerializedName("sellerReturnItemId")
     private String sellerReturnItemId = null;
@@ -44,7 +43,9 @@ public class CreateReturnItem {
      *
      * @return sellerReturnItemId
      */
-    @Schema(required = true, description = "An identifier the seller assigns to the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier the seller assigns to the return item.")
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }
@@ -63,7 +64,7 @@ public class CreateReturnItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The identifier assigned to the item by the seller when the fulfillment order was created.")
     public String getSellerFulfillmentOrderItemId() {
@@ -84,7 +85,9 @@ public class CreateReturnItem {
      *
      * @return amazonShipmentId
      */
-    @Schema(required = true, description = "The identifier for the shipment that is associated with the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the shipment that is associated with the return item.")
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -103,7 +106,9 @@ public class CreateReturnItem {
      *
      * @return returnReasonCode
      */
-    @Schema(required = true, description = "The return reason code assigned to the return item by the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The return reason code assigned to the return item by the seller.")
     public String getReturnReasonCode() {
         return returnReasonCode;
     }
@@ -122,7 +127,7 @@ public class CreateReturnItem {
      *
      * @return returnComment
      */
-    @Schema(description = "An optional comment about the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An optional comment about the return item.")
     public String getReturnComment() {
         return returnComment;
     }

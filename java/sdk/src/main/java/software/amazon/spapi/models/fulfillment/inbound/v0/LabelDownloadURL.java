@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Download URL for a label */
-@Schema(description = "Download URL for a label")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Download URL for a label")
 public class LabelDownloadURL {
     @SerializedName("DownloadURL")
     private String downloadURL = null;
@@ -32,7 +31,8 @@ public class LabelDownloadURL {
      *
      * @return downloadURL
      */
-    @Schema(description = "URL to download the label for the package. Note: The URL will only be valid for 15 seconds")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "URL to download the label for the package. Note: The URL will only be valid for 15 seconds")
     public String getDownloadURL() {
         return downloadURL;
     }

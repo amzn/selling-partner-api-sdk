@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An available offer for delivery of a group of items. */
-@Schema(description = "An available offer for delivery of a group of items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An available offer for delivery of a group of items.")
 public class PreviewDeliveryOffer {
     @SerializedName("estimatedPrice")
     private EstimatedPrice estimatedPrice = null;
@@ -35,7 +34,7 @@ public class PreviewDeliveryOffer {
      *
      * @return estimatedPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EstimatedPrice getEstimatedPrice() {
         return estimatedPrice;
     }
@@ -55,7 +54,7 @@ public class PreviewDeliveryOffer {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PreviewOfferFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }

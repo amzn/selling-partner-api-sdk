@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The document data and checksum. */
-@Schema(description = "The document data and checksum.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The document data and checksum.")
 public class FileContents {
     @SerializedName("Contents")
     private String contents = null;
@@ -38,7 +37,9 @@ public class FileContents {
      *
      * @return contents
      */
-    @Schema(required = true, description = "Data for printing labels encoded into a Base64, GZip-compressed string.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Data for printing labels encoded into a Base64, GZip-compressed string.")
     public String getContents() {
         return contents;
     }
@@ -57,7 +58,7 @@ public class FileContents {
      *
      * @return fileType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FileType getFileType() {
         return fileType;
     }
@@ -76,7 +77,7 @@ public class FileContents {
      *
      * @return checksum
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "An MD5 hash to validate the PDF document data, in the form of a Base64 string.")
     public String getChecksum() {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A tracking event. */
-@Schema(description = "A tracking event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A tracking event.")
 public class Event {
     @SerializedName("eventCode")
     private EventCode eventCode = null;
@@ -41,7 +41,7 @@ public class Event {
      *
      * @return eventCode
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public EventCode getEventCode() {
         return eventCode;
     }
@@ -60,7 +60,7 @@ public class Event {
      *
      * @return location
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Location getLocation() {
         return location;
     }
@@ -79,7 +79,9 @@ public class Event {
      *
      * @return eventTime
      */
-    @Schema(required = true, description = "The ISO 8601 formatted timestamp of the event.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ISO 8601 formatted timestamp of the event.")
     public OffsetDateTime getEventTime() {
         return eventTime;
     }
@@ -98,7 +100,7 @@ public class Event {
      *
      * @return shipmentType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentType getShipmentType() {
         return shipmentType;
     }

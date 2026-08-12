@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range. */
-@Schema(description = "`AvailabilityRecord` to represent the capacity of a resource over a time range.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "`AvailabilityRecord` to represent the capacity of a resource over a time range.")
 public class AvailabilityRecord {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -41,7 +42,7 @@ public class AvailabilityRecord {
      *
      * @return startTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Denotes the time from when the resource is available in a day in ISO-8601 format.")
     public OffsetDateTime getStartTime() {
@@ -62,7 +63,7 @@ public class AvailabilityRecord {
      *
      * @return endTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Denotes the time till when the resource is available in a day in ISO-8601 format.")
     public OffsetDateTime getEndTime() {
@@ -83,7 +84,7 @@ public class AvailabilityRecord {
      *
      * @return recurrence
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Recurrence getRecurrence() {
         return recurrence;
     }
@@ -102,7 +103,8 @@ public class AvailabilityRecord {
      *
      * @return capacity
      */
-    @Schema(description = "Signifies the capacity of a resource which is available.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Signifies the capacity of a resource which is available.")
     public Integer getCapacity() {
         return capacity;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Map of type of access point to list of access points */
-@Schema(description = "Map of type of access point to list of access points")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Map of type of access point to list of access points")
 public class AccessPointsMap extends HashMap<String, AccessPointList> {
 
     @Override

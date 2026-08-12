@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price). */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).")
 public class TaxDetails {
@@ -105,7 +104,7 @@ public class TaxDetails {
      *
      * @return taxRate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.")
     public String getTaxRate() {
@@ -126,7 +125,7 @@ public class TaxDetails {
      *
      * @return taxAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getTaxAmount() {
         return taxAmount;
     }
@@ -145,7 +144,7 @@ public class TaxDetails {
      *
      * @return taxableAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getTaxableAmount() {
         return taxableAmount;
     }
@@ -164,7 +163,7 @@ public class TaxDetails {
      *
      * @return type
      */
-    @Schema(description = "Tax type.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax type.")
     public TypeEnum getType() {
         return type;
     }

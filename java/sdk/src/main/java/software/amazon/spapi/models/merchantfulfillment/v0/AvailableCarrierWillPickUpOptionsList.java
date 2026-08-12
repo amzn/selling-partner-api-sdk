@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of available carrier pickup options. */
-@Schema(description = "List of available carrier pickup options.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of available carrier pickup options.")
 public class AvailableCarrierWillPickUpOptionsList extends ArrayList<AvailableCarrierWillPickUpOption> {
 
     @Override

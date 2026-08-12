@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Purchase requirements that customers must meet to qualify for basket building promotions. Contains the purchase
  * condition (how much to buy). Represents the &#39;Buy X&#39; portion of Buy X Get Y promotions.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Purchase requirements that customers must meet to qualify for basket building promotions. Contains the purchase condition (how much to buy). Represents the 'Buy X' portion of Buy X Get Y promotions.")
 public class PurchaseRequirements {
@@ -37,7 +36,7 @@ public class PurchaseRequirements {
      *
      * @return condition
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PurchaseCondition getCondition() {
         return condition;
     }

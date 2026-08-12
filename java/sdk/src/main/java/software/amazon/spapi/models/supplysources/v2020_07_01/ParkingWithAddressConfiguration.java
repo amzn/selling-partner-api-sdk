@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The parking configuration with the address. */
-@Schema(description = "The parking configuration with the address.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The parking configuration with the address.")
 public class ParkingWithAddressConfiguration {
     @SerializedName("parkingCostType")
     private ParkingCostType parkingCostType = null;
@@ -41,7 +40,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return parkingCostType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingCostType getParkingCostType() {
         return parkingCostType;
     }
@@ -61,7 +60,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return parkingSpotIdentificationType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingSpotIdentificationType getParkingSpotIdentificationType() {
         return parkingSpotIdentificationType;
     }
@@ -80,7 +79,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return numberOfParkingSpots
      */
-    @Schema(description = "An unsigned integer that can be only positive or zero.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An unsigned integer that can be only positive or zero.")
     public Integer getNumberOfParkingSpots() {
         return numberOfParkingSpots;
     }
@@ -99,7 +98,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }

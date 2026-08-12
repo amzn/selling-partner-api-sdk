@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Summary information about a shipment. */
-@Schema(description = "Summary information about a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summary information about a shipment.")
 public class ShipmentSummary {
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -35,7 +34,7 @@ public class ShipmentSummary {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
     public String getShipmentId() {
@@ -61,7 +60,7 @@ public class ShipmentSummary {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The status of a shipment. The state of the shipment will typically start as `UNCONFIRMED`, then transition to `WORKING` after a placement option has been confirmed, and then to `READY_TO_SHIP` once labels are generated.  Possible values: `ABANDONED`, `CANCELLED`, `CHECKED_IN`, `CLOSED`, `DELETED`, `DELIVERED`, `IN_TRANSIT`, `MIXED`, `READY_TO_SHIP`, `RECEIVING`, `SHIPPED`, `UNCONFIRMED`, `WORKING`")

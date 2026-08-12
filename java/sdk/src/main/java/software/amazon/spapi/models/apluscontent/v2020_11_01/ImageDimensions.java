@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images).
  * &#x60;ImageDimensions&#x60; units must be in pixels.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). `ImageDimensions` units must be in pixels.")
 public class ImageDimensions {
@@ -40,7 +39,7 @@ public class ImageDimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IntegerWithUnits getWidth() {
         return width;
     }
@@ -59,7 +58,7 @@ public class ImageDimensions {
      *
      * @return height
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IntegerWithUnits getHeight() {
         return height;
     }

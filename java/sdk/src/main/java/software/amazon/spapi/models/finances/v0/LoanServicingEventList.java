@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of loan servicing events. */
-@Schema(description = "A list of loan servicing events.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of loan servicing events.")
 public class LoanServicingEventList extends ArrayList<LoanServicingEvent> {
 
     @Override

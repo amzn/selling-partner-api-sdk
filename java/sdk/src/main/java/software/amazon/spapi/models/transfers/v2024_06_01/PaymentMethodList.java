@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The list of payment methods with payment method details. */
-@Schema(description = "The list of payment methods with payment method details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The list of payment methods with payment method details.")
 public class PaymentMethodList extends ArrayList<PaymentMethodDetails> {
 
     @Override

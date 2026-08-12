@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the GetCarrierAccounts operation. */
-@Schema(description = "The request schema for the GetCarrierAccounts operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the GetCarrierAccounts operation.")
 public class GetCarrierAccountsRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -32,7 +31,7 @@ public class GetCarrierAccountsRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }

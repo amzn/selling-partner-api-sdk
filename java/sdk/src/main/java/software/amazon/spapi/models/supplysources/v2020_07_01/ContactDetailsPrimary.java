@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** ContactDetailsPrimary */
@@ -34,7 +33,8 @@ public class ContactDetailsPrimary {
      *
      * @return email
      */
-    @Schema(description = "The email address to which email messages are delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The email address to which email messages are delivered.")
     public String getEmail() {
         return email;
     }
@@ -53,7 +53,8 @@ public class ContactDetailsPrimary {
      *
      * @return phone
      */
-    @Schema(description = "The phone number of the person, business or institution.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The phone number of the person, business or institution.")
     public String getPhone() {
         return phone;
     }

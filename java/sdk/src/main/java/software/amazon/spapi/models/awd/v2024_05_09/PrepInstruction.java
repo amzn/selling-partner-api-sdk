@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information pertaining to the preparation of inbound products. */
-@Schema(description = "Information pertaining to the preparation of inbound products.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information pertaining to the preparation of inbound products.")
 public class PrepInstruction {
     @SerializedName("prepOwner")
     private PrepOwner prepOwner = null;
@@ -35,7 +35,7 @@ public class PrepInstruction {
      *
      * @return prepOwner
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepOwner getPrepOwner() {
         return prepOwner;
     }
@@ -55,7 +55,7 @@ public class PrepInstruction {
      *
      * @return prepType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of preparation to be done. For more information about preparing items, refer to [Prep guidance](https://sellercentral.amazon.com/help/hub/reference/external/GF4G7547KSLDX2KC) on Seller Central.")
     public String getPrepType() {

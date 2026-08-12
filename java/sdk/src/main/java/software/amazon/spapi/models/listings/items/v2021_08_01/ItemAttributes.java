@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** JSON object containing structured listings item attribute data keyed by attribute name. */
-@Schema(description = "JSON object containing structured listings item attribute data keyed by attribute name.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "JSON object containing structured listings item attribute data keyed by attribute name.")
 public class ItemAttributes extends HashMap<String, Object> {
 
     @Override

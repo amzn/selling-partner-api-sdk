@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Another order that has a direct business relationship with the current order, such as replacements or exchanges. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Another order that has a direct business relationship with the current order, such as replacements or exchanges.")
 public class AssociatedOrder {
@@ -37,7 +36,8 @@ public class AssociatedOrder {
      *
      * @return orderId
      */
-    @Schema(description = "The unique identifier of the related order that is associated with the current order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The unique identifier of the related order that is associated with the current order.")
     public String getOrderId() {
         return orderId;
     }
@@ -57,7 +57,7 @@ public class AssociatedOrder {
      *
      * @return associationType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The relationship between the current order and the associated order.  **Possible values**: `REPLACEMENT_ORIGINAL_ID`, `EXCHANGE_ORIGINAL_ID`")
     public String getAssociationType() {

@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if
  * the specified document specifications are not among those returned in the response to the getRates operation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.")
 public class RequestedDocumentSpecification {
@@ -57,7 +56,7 @@ public class RequestedDocumentSpecification {
      *
      * @return format
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentFormat getFormat() {
         return format;
     }
@@ -76,7 +75,7 @@ public class RequestedDocumentSpecification {
      *
      * @return size
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentSize getSize() {
         return size;
     }
@@ -96,7 +95,7 @@ public class RequestedDocumentSpecification {
      *
      * @return dpi
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.")
     public Integer getDpi() {
@@ -117,7 +116,7 @@ public class RequestedDocumentSpecification {
      *
      * @return pageLayout
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates the position of the label on the paper. Should be the same value as returned in getRates response.")
     public String getPageLayout() {
@@ -138,7 +137,7 @@ public class RequestedDocumentSpecification {
      *
      * @return needFileJoining
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.")
@@ -168,7 +167,9 @@ public class RequestedDocumentSpecification {
      *
      * @return requestedDocumentTypes
      */
-    @Schema(required = true, description = "A list of the document types requested.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of the document types requested.")
     public List<DocumentType> getRequestedDocumentTypes() {
         return requestedDocumentTypes;
     }
@@ -188,7 +189,7 @@ public class RequestedDocumentSpecification {
      *
      * @return requestedLabelCustomization
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequestedLabelCustomization getRequestedLabelCustomization() {
         return requestedLabelCustomization;
     }

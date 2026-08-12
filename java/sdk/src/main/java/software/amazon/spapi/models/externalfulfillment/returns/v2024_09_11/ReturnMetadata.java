@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Metadata about the return item. */
-@Schema(description = "Metadata about the return item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata about the return item.")
 public class ReturnMetadata {
     @SerializedName("returnReason")
     private String returnReason = null;
@@ -41,7 +40,7 @@ public class ReturnMetadata {
      *
      * @return returnReason
      */
-    @Schema(required = true, description = "The reason for the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The reason for the return.")
     public String getReturnReason() {
         return returnReason;
     }
@@ -60,7 +59,7 @@ public class ReturnMetadata {
      *
      * @return rmaId
      */
-    @Schema(description = "The RMA ID of the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The RMA ID of the return.")
     public String getRmaId() {
         return rmaId;
     }
@@ -79,7 +78,8 @@ public class ReturnMetadata {
      *
      * @return fulfillmentOrderId
      */
-    @Schema(description = "The SmartConnect ID of the fulfillment order for which the return was placed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The SmartConnect ID of the fulfillment order for which the return was placed.")
     public String getFulfillmentOrderId() {
         return fulfillmentOrderId;
     }
@@ -98,7 +98,7 @@ public class ReturnMetadata {
      *
      * @return invoiceInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvoiceInformation getInvoiceInformation() {
         return invoiceInformation;
     }

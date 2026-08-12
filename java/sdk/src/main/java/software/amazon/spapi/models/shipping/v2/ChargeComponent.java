@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The type and amount of a charge applied on a package. */
-@Schema(description = "The type and amount of a charge applied on a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The type and amount of a charge applied on a package.")
 public class ChargeComponent {
     @SerializedName("amount")
     private Currency amount = null;
@@ -86,7 +85,7 @@ public class ChargeComponent {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }
@@ -105,7 +104,7 @@ public class ChargeComponent {
      *
      * @return chargeType
      */
-    @Schema(description = "The type of charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
     public ChargeTypeEnum getChargeType() {
         return chargeType;
     }

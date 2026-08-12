@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Business days and hours when the destination is open for deliveries. */
-@Schema(description = "Business days and hours when the destination is open for deliveries.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Business days and hours when the destination is open for deliveries.")
 public class BusinessHours {
     /** Day of the week. */
     @JsonAdapter(DayOfWeekEnum.Adapter.class)
@@ -98,7 +98,7 @@ public class BusinessHours {
      *
      * @return dayOfWeek
      */
-    @Schema(description = "Day of the week.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Day of the week.")
     public DayOfWeekEnum getDayOfWeek() {
         return dayOfWeek;
     }
@@ -125,7 +125,7 @@ public class BusinessHours {
      *
      * @return openIntervals
      */
-    @Schema(description = "Time window during the day when the business is open.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Time window during the day when the business is open.")
     public List<OpenInterval> getOpenIntervals() {
         return openIntervals;
     }

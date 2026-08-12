@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** List of request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; */
-@Schema(description = "List of request parameters that can be accepted by `ItemOffersRequest`")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of request parameters that can be accepted by `ItemOffersRequest`")
 public class ItemOffersRequestParams {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -41,7 +41,7 @@ public class ItemOffersRequestParams {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
     public String getMarketplaceId() {
@@ -62,7 +62,7 @@ public class ItemOffersRequestParams {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -81,7 +81,7 @@ public class ItemOffersRequestParams {
      *
      * @return customerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerType getCustomerType() {
         return customerType;
     }
@@ -101,7 +101,7 @@ public class ItemOffersRequestParams {
      *
      * @return asin
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Amazon Standard Identification Number (ASIN) of the item. This is the same Asin passed as a request parameter.")
     public String getAsin() {

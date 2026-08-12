@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The review metrics for a certain month. */
-@Schema(description = "The review metrics for a certain month.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The review metrics for a certain month.")
 public class ItemReviewTrendPoint {
     @SerializedName("dateRange")
     private DateRange dateRange = null;
@@ -41,7 +40,7 @@ public class ItemReviewTrendPoint {
      *
      * @return dateRange
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -60,7 +59,7 @@ public class ItemReviewTrendPoint {
      *
      * @return asinMetrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReviewTrendMetrics getAsinMetrics() {
         return asinMetrics;
     }
@@ -79,7 +78,7 @@ public class ItemReviewTrendPoint {
      *
      * @return parentAsinMetrics
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReviewTrendMetrics getParentAsinMetrics() {
         return parentAsinMetrics;
     }
@@ -98,7 +97,7 @@ public class ItemReviewTrendPoint {
      *
      * @return browseNodeMetrics
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BrowseNodeTrendMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }

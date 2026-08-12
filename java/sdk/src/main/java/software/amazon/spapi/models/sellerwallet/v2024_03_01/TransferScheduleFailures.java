@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The time of and reason for the transfer schedule failure. */
-@Schema(description = "The time of and reason for the transfer schedule failure.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time of and reason for the transfer schedule failure.")
 public class TransferScheduleFailures {
     @SerializedName("transferScheduleFailureDate")
     private OffsetDateTime transferScheduleFailureDate = null;
@@ -35,7 +35,7 @@ public class TransferScheduleFailures {
      *
      * @return transferScheduleFailureDate
      */
-    @Schema(required = true, description = "The transfer schedule failure date.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The transfer schedule failure date.")
     public OffsetDateTime getTransferScheduleFailureDate() {
         return transferScheduleFailureDate;
     }
@@ -54,7 +54,9 @@ public class TransferScheduleFailures {
      *
      * @return transferScheduleFailureReason
      */
-    @Schema(required = true, description = "The reason listed for the failure of the transfer schedule.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The reason listed for the failure of the transfer schedule.")
     public String getTransferScheduleFailureReason() {
         return transferScheduleFailureReason;
     }

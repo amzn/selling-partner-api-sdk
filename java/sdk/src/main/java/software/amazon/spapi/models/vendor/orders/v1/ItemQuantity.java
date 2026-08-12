@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Details of quantity ordered. */
-@Schema(description = "Details of quantity ordered.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of quantity ordered.")
 public class ItemQuantity {
     @SerializedName("amount")
     private Integer amount = null;
@@ -89,7 +88,7 @@ public class ItemQuantity {
      *
      * @return amount
      */
-    @Schema(description = "Acknowledged quantity. This value should not be zero.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Acknowledged quantity. This value should not be zero.")
     public Integer getAmount() {
         return amount;
     }
@@ -108,7 +107,7 @@ public class ItemQuantity {
      *
      * @return unitOfMeasure
      */
-    @Schema(description = "Unit of measure for the acknowledged quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Unit of measure for the acknowledged quantity.")
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -127,7 +126,8 @@ public class ItemQuantity {
      *
      * @return unitSize
      */
-    @Schema(description = "The case size, in the event that we ordered using cases.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The case size, in the event that we ordered using cases.")
     public Integer getUnitSize() {
         return unitSize;
     }

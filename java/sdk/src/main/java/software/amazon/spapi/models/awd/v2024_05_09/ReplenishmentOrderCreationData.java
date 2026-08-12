@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * This structure represents the payload for creating an AFN Replenishment Order. By default, all replenishment orders
  * created support Partial order preferences.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "This structure represents the payload for creating an AFN Replenishment Order. By default, all replenishment orders created support Partial order preferences.")
 public class ReplenishmentOrderCreationData {
@@ -42,7 +41,7 @@ public class ReplenishmentOrderCreationData {
      *
      * @return preferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReplenishmentPreferences getPreferences() {
         return preferences;
     }
@@ -69,7 +68,8 @@ public class ReplenishmentOrderCreationData {
      *
      * @return products
      */
-    @Schema(description = "Requested amount of single product units to be replenished.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Requested amount of single product units to be replenished.")
     public List<DistributionProduct> getProducts() {
         return products;
     }

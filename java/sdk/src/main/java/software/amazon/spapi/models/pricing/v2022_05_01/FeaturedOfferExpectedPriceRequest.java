@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An individual FOEP request for a particular SKU. */
-@Schema(description = "An individual FOEP request for a particular SKU.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An individual FOEP request for a particular SKU.")
 public class FeaturedOfferExpectedPriceRequest {
     @SerializedName("uri")
     private String uri = null;
@@ -51,7 +50,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.")
@@ -73,7 +72,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -92,7 +91,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return body
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpBody getBody() {
         return body;
     }
@@ -111,7 +110,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpHeaders getHeaders() {
         return headers;
     }
@@ -131,7 +130,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -153,7 +152,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSku() {
         return sku;
     }
@@ -172,7 +171,7 @@ public class FeaturedOfferExpectedPriceRequest {
      *
      * @return segment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Segment getSegment() {
         return segment;
     }

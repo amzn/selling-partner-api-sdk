@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A list of orders along with additional information to make subsequent API calls. */
-@Schema(description = "A list of orders along with additional information to make subsequent API calls.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of orders along with additional information to make subsequent API calls.")
 public class OrdersList {
     @SerializedName("Orders")
     private OrderList orders = null;
@@ -41,7 +41,7 @@ public class OrdersList {
      *
      * @return orders
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderList getOrders() {
         return orders;
     }
@@ -60,7 +60,7 @@ public class OrdersList {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
@@ -83,7 +83,7 @@ public class OrdersList {
      *
      * @return lastUpdatedBefore
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. Use [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format for all dates.")
     public String getLastUpdatedBefore() {
@@ -105,7 +105,7 @@ public class OrdersList {
      *
      * @return createdBefore
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public String getCreatedBefore() {

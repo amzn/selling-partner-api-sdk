@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsRequest;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsResponse;
@@ -126,7 +125,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmCustomizationDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -173,7 +172,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmCustomizationDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -372,10 +371,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmCustomizationDetailsValidateBeforeCall(
@@ -411,7 +410,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmDeliveryDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -458,7 +457,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmDeliveryDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -657,10 +656,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createConfirmDeliveryDetailsValidateBeforeCall(
@@ -696,7 +695,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmOrderDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -743,7 +742,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmOrderDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -938,10 +937,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createConfirmOrderDetailsValidateBeforeCall(
@@ -977,7 +976,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmServiceDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1024,7 +1023,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateConfirmServiceDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -1223,10 +1222,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createConfirmServiceDetailsValidateBeforeCall(
@@ -1262,7 +1261,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateDigitalAccessKeyRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1309,7 +1308,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateDigitalAccessKeyRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -1507,10 +1506,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1546,7 +1545,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateLegalDisclosureRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1593,7 +1592,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateLegalDisclosureRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -1791,10 +1790,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1830,7 +1829,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateUnexpectedProblemRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1877,7 +1876,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateUnexpectedProblemRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -2075,10 +2074,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2114,7 +2113,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateWarrantyRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2161,7 +2160,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             CreateWarrantyRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -2351,10 +2350,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2385,9 +2384,7 @@ public class MessagingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getAttributesCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2432,9 +2429,7 @@ public class MessagingApi {
     }
 
     private okhttp3.Call getAttributesValidateBeforeCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -2575,10 +2570,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getAttributesValidateBeforeCall(amazonOrderId, marketplaceIds, progressRequestListener);
@@ -2608,9 +2603,7 @@ public class MessagingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getMessagingActionsForOrderCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2654,9 +2647,7 @@ public class MessagingApi {
     }
 
     private okhttp3.Call getMessagingActionsForOrderValidateBeforeCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -2839,10 +2830,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2878,7 +2869,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             InvoiceRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2925,7 +2916,7 @@ public class MessagingApi {
             String amazonOrderId,
             List<String> marketplaceIds,
             InvoiceRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -3075,10 +3066,10 @@ public class MessagingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = sendInvoiceValidateBeforeCall(amazonOrderId, marketplaceIds, body, progressRequestListener);

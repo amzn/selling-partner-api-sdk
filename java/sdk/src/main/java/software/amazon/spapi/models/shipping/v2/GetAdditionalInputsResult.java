@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** The JSON schema to use to provide additional inputs when required to purchase a shipping offering. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The JSON schema to use to provide additional inputs when required to purchase a shipping offering.")
 public class GetAdditionalInputsResult extends HashMap<String, Object> {

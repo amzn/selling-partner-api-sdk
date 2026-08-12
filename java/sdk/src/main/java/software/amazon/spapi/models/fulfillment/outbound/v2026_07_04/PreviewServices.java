@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Services for a fulfillment preview request. Does not include delivery settings. */
-@Schema(description = "Services for a fulfillment preview request. Does not include delivery settings.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Services for a fulfillment preview request. Does not include delivery settings.")
 public class PreviewServices {
     @SerializedName("packaging")
     private PreviewPackagingService packaging = null;
@@ -35,7 +35,7 @@ public class PreviewServices {
      *
      * @return packaging
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PreviewPackagingService getPackaging() {
         return packaging;
     }
@@ -54,7 +54,7 @@ public class PreviewServices {
      *
      * @return additional
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalServices getAdditional() {
         return additional;
     }

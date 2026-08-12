@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about where the customer placed this order. */
-@Schema(description = "Information about where the customer placed this order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about where the customer placed this order.")
 public class SalesChannel {
     @SerializedName("channelName")
     private String channelName = null;
@@ -39,7 +38,7 @@ public class SalesChannel {
      *
      * @return channelName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The name of the sales platform or channel where the customer placed this order.  **Possible values**: `AMAZON`, `NON_AMAZON`")
@@ -61,7 +60,7 @@ public class SalesChannel {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unique identifier for the specific marketplace within the sales channel where this order was placed.")
     public String getMarketplaceId() {
@@ -82,7 +81,8 @@ public class SalesChannel {
      *
      * @return marketplaceName
      */
-    @Schema(description = "The human-readable name of the marketplace where this order was placed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The human-readable name of the marketplace where this order was placed.")
     public String getMarketplaceName() {
         return marketplaceName;
     }

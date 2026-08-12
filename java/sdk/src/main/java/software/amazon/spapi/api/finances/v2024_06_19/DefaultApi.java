@@ -33,7 +33,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.finances.v2024_06_19.ListBalancesResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.ListTransactionsResponse;
@@ -90,7 +89,7 @@ public class DefaultApi {
             String accountType,
             LocalDate asOfDate,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -141,7 +140,7 @@ public class DefaultApi {
             String accountType,
             LocalDate asOfDate,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listBalancesCall(marketplaceIds, balanceType, accountType, asOfDate, nextToken, progressRequestListener);
@@ -392,10 +391,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listBalancesValidateBeforeCall(
@@ -446,7 +445,7 @@ public class DefaultApi {
             LocalDate periodStart,
             LocalDate periodEnd,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -503,7 +502,7 @@ public class DefaultApi {
             LocalDate periodStart,
             LocalDate periodEnd,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listSummaryCall(
@@ -830,10 +829,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listSummaryValidateBeforeCall(
@@ -901,7 +900,7 @@ public class DefaultApi {
             String relatedIdentifierName,
             String relatedIdentifierValue,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -959,7 +958,7 @@ public class DefaultApi {
             String relatedIdentifierName,
             String relatedIdentifierValue,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listTransactionsCall(
@@ -1352,10 +1351,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listTransactionsValidateBeforeCall(

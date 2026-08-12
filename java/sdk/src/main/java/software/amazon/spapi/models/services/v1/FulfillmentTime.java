@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Input for fulfillment time details */
-@Schema(description = "Input for fulfillment time details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input for fulfillment time details")
 public class FulfillmentTime {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -35,7 +35,8 @@ public class FulfillmentTime {
      *
      * @return startTime
      */
-    @Schema(description = "The date, time in UTC of the fulfillment start time in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date, time in UTC of the fulfillment start time in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -54,7 +55,8 @@ public class FulfillmentTime {
      *
      * @return endTime
      */
-    @Schema(description = "The date, time in UTC of the fulfillment end time in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date, time in UTC of the fulfillment end time in ISO 8601 format.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }

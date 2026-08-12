@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The trend of review topic metrics for all items in the requested browse node. */
-@Schema(description = "The trend of review topic metrics for all items in the requested browse node.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The trend of review topic metrics for all items in the requested browse node.")
 public class BrowseNodeReviewTrend {
     @SerializedName("topic")
     private String topic = null;
@@ -37,7 +37,7 @@ public class BrowseNodeReviewTrend {
      *
      * @return topic
      */
-    @Schema(required = true, description = "The name of the topic.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the topic.")
     public String getTopic() {
         return topic;
     }
@@ -64,7 +64,9 @@ public class BrowseNodeReviewTrend {
      *
      * @return trendMetrics
      */
-    @Schema(required = true, description = "The browse node's review trend metrics for the past six months.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The browse node's review trend metrics for the past six months.")
     public List<BrowseNodeReviewTrendPoint> getTrendMetrics() {
         return trendMetrics;
     }

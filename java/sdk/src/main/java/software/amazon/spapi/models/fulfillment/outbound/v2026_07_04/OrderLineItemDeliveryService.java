@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Delivery settings for the line item. */
-@Schema(description = "Delivery settings for the line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Delivery settings for the line item.")
 public class OrderLineItemDeliveryService {
     @SerializedName("paymentOnDelivery")
     private OrderLineItemPaymentOnDelivery paymentOnDelivery = null;
@@ -32,7 +31,7 @@ public class OrderLineItemDeliveryService {
      *
      * @return paymentOnDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderLineItemPaymentOnDelivery getPaymentOnDelivery() {
         return paymentOnDelivery;
     }

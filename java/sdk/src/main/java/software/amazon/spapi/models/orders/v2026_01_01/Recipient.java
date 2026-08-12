@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the recipient to whom the order should be delivered. */
-@Schema(description = "Information about the recipient to whom the order should be delivered.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the recipient to whom the order should be delivered.")
 public class Recipient {
     @SerializedName("deliveryAddress")
     private CustomerAddress deliveryAddress = null;
@@ -35,7 +35,7 @@ public class Recipient {
      *
      * @return deliveryAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerAddress getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -54,7 +54,7 @@ public class Recipient {
      *
      * @return deliveryPreference
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryPreference getDeliveryPreference() {
         return deliveryPreference;
     }

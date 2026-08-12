@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.appintegrations.v2024_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** The dynamic parameters required by the notification templated specified by &#x60;templateId&#x60;. */
-@Schema(description = "The dynamic parameters required by the notification templated specified by `templateId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The dynamic parameters required by the notification templated specified by `templateId`.")
 public class NotificationParameters extends HashMap<String, Object> {
 
     @Override

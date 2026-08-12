@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the destination you create when you call the &#x60;createDestination&#x60; operation. */
-@Schema(description = "Information about the destination you create when you call the `createDestination` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the destination you create when you call the `createDestination` operation.")
 public class Destination {
     @SerializedName("name")
     private String name = null;
@@ -38,7 +38,9 @@ public class Destination {
      *
      * @return name
      */
-    @Schema(required = true, description = "The developer-defined name for this destination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The developer-defined name for this destination.")
     public String getName() {
         return name;
     }
@@ -57,7 +59,9 @@ public class Destination {
      *
      * @return destinationId
      */
-    @Schema(required = true, description = "The destination identifier generated when you created the destination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The destination identifier generated when you created the destination.")
     public String getDestinationId() {
         return destinationId;
     }
@@ -76,7 +80,7 @@ public class Destination {
      *
      * @return resource
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DestinationResource getResource() {
         return resource;
     }

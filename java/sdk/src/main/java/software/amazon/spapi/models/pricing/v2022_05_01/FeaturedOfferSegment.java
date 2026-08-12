@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Describes the segment in which the offer is featured. */
-@Schema(description = "Describes the segment in which the offer is featured.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Describes the segment in which the offer is featured.")
 public class FeaturedOfferSegment {
     /** The customer membership type that makes up this segment */
     @JsonAdapter(CustomerMembershipEnum.Adapter.class)
@@ -89,7 +88,9 @@ public class FeaturedOfferSegment {
      *
      * @return customerMembership
      */
-    @Schema(required = true, description = "The customer membership type that makes up this segment")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The customer membership type that makes up this segment")
     public CustomerMembershipEnum getCustomerMembership() {
         return customerMembership;
     }
@@ -108,7 +109,7 @@ public class FeaturedOfferSegment {
      *
      * @return segmentDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SegmentDetails getSegmentDetails() {
         return segmentDetails;
     }

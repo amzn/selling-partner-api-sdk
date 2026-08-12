@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The HTTP status line associated with the response for an individual request within a batch. For more information,
  * refer to [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The HTTP status line associated with the response for an individual request within a batch. For more information, refer to [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).")
 public class HttpStatusLine {
@@ -40,7 +39,7 @@ public class HttpStatusLine {
      *
      * @return statusCode
      */
-    @Schema(description = "The HTTP response status code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response status code.")
     public Integer getStatusCode() {
         return statusCode;
     }
@@ -59,7 +58,7 @@ public class HttpStatusLine {
      *
      * @return reasonPhrase
      */
-    @Schema(description = "The HTTP response reason phrase.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response reason phrase.")
     public String getReasonPhrase() {
         return reasonPhrase;
     }

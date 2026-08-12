@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Payment details. */
-@Schema(description = "Payment details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Payment details.")
 public class Payment {
     @SerializedName("paymentId")
     private String paymentId = null;
@@ -38,7 +38,7 @@ public class Payment {
      *
      * @return paymentId
      */
-    @Schema(description = "The payment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment identifier.")
     public String getPaymentId() {
         return paymentId;
     }
@@ -57,7 +57,7 @@ public class Payment {
      *
      * @return paymentMethod
      */
-    @Schema(description = "The payment method.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment method.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -76,7 +76,7 @@ public class Payment {
      *
      * @return paymentTime
      */
-    @Schema(description = "The time of the payment in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The time of the payment in ISO 8601 format.")
     public OffsetDateTime getPaymentTime() {
         return paymentTime;
     }

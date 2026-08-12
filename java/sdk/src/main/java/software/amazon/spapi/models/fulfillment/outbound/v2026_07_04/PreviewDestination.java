@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The destination of the fulfillment. */
-@Schema(description = "The destination of the fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The destination of the fulfillment.")
 public class PreviewDestination {
     @SerializedName("deliveryAddress")
     private Address deliveryAddress = null;
@@ -32,7 +31,7 @@ public class PreviewDestination {
      *
      * @return deliveryAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getDeliveryAddress() {
         return deliveryAddress;
     }

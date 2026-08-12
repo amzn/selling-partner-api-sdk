@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the fee. */
-@Schema(description = "Details of the fee.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the fee.")
 public class Fee {
     @SerializedName("feeId")
     private String feeId = null;
@@ -41,7 +40,9 @@ public class Fee {
      *
      * @return feeId
      */
-    @Schema(required = true, description = "The unique identifier assigned to the fee.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier assigned to the fee.")
     public String getFeeId() {
         return feeId;
     }
@@ -60,7 +61,7 @@ public class Fee {
      *
      * @return feeType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FeeType getFeeType() {
         return feeType;
     }
@@ -79,7 +80,9 @@ public class Fee {
      *
      * @return feeRateValue
      */
-    @Schema(required = true, description = "The value of the fee in percentage format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The value of the fee in percentage format.")
     public String getFeeRateValue() {
         return feeRateValue;
     }
@@ -98,7 +101,7 @@ public class Fee {
      *
      * @return feeAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getFeeAmount() {
         return feeAmount;
     }

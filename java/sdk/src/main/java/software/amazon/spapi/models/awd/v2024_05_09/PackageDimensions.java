@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Dimensions of the package. */
-@Schema(description = "Dimensions of the package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Dimensions of the package.")
 public class PackageDimensions {
     @SerializedName("height")
     private Double height = null;
@@ -41,7 +40,7 @@ public class PackageDimensions {
      *
      * @return height
      */
-    @Schema(required = true, description = "Height of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Height of the package.")
     public Double getHeight() {
         return height;
     }
@@ -60,7 +59,7 @@ public class PackageDimensions {
      *
      * @return length
      */
-    @Schema(required = true, description = "Length of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Length of the package.")
     public Double getLength() {
         return length;
     }
@@ -79,7 +78,7 @@ public class PackageDimensions {
      *
      * @return unitOfMeasurement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DimensionUnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
@@ -98,7 +97,7 @@ public class PackageDimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "Width of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Width of the package.")
     public Double getWidth() {
         return width;
     }

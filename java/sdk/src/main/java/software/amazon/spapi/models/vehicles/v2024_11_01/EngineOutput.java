@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Engine power output of vehicle. */
-@Schema(description = "Engine power output of vehicle.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Engine power output of vehicle.")
 public class EngineOutput {
     @SerializedName("value")
     private BigDecimal value = null;
@@ -35,7 +35,7 @@ public class EngineOutput {
      *
      * @return value
      */
-    @Schema(required = true, description = "Engine power value in specified unit.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Engine power value in specified unit.")
     public BigDecimal getValue() {
         return value;
     }
@@ -54,7 +54,7 @@ public class EngineOutput {
      *
      * @return unit
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public EngineOutputUnit getUnit() {
         return unit;
     }

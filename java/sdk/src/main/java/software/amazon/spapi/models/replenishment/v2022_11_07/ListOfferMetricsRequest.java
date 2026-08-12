@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body for the &#x60;listOfferMetrics&#x60; operation. */
-@Schema(description = "The request body for the `listOfferMetrics` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the `listOfferMetrics` operation.")
 public class ListOfferMetricsRequest {
     @SerializedName("pagination")
     private ListOfferMetricsRequestPagination pagination = null;
@@ -38,7 +37,7 @@ public class ListOfferMetricsRequest {
      *
      * @return pagination
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ListOfferMetricsRequestPagination getPagination() {
         return pagination;
     }
@@ -57,7 +56,7 @@ public class ListOfferMetricsRequest {
      *
      * @return sort
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ListOfferMetricsRequestSort getSort() {
         return sort;
     }
@@ -76,7 +75,7 @@ public class ListOfferMetricsRequest {
      *
      * @return filters
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ListOfferMetricsRequestFilters getFilters() {
         return filters;
     }

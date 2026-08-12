@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An additional set of seller inputs required to purchase shipping. */
-@Schema(description = "An additional set of seller inputs required to purchase shipping.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An additional set of seller inputs required to purchase shipping.")
 public class AdditionalSellerInputs {
     @SerializedName("AdditionalInputFieldName")
     private String additionalInputFieldName = null;
@@ -35,7 +35,9 @@ public class AdditionalSellerInputs {
      *
      * @return additionalInputFieldName
      */
-    @Schema(required = true, description = "The name of the additional input field.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the additional input field.")
     public String getAdditionalInputFieldName() {
         return additionalInputFieldName;
     }
@@ -54,7 +56,7 @@ public class AdditionalSellerInputs {
      *
      * @return additionalSellerInput
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AdditionalSellerInput getAdditionalSellerInput() {
         return additionalSellerInput;
     }

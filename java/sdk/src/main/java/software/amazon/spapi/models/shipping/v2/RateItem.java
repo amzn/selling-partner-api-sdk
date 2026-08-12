@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: ")
 public class RateItem {
@@ -43,7 +42,7 @@ public class RateItem {
      *
      * @return rateItemID
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RateItemID getRateItemID() {
         return rateItemID;
     }
@@ -62,7 +61,7 @@ public class RateItem {
      *
      * @return rateItemType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RateItemType getRateItemType() {
         return rateItemType;
     }
@@ -81,7 +80,7 @@ public class RateItem {
      *
      * @return rateItemCharge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRateItemCharge() {
         return rateItemCharge;
     }
@@ -100,7 +99,7 @@ public class RateItem {
      *
      * @return rateItemNameLocalization
      */
-    @Schema(description = "Used for the localization.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Used for the localization.")
     public String getRateItemNameLocalization() {
         return rateItemNameLocalization;
     }

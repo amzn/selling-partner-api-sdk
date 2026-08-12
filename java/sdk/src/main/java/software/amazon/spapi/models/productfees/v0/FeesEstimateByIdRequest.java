@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A product, marketplace, and proposed price used to request estimated fees. */
-@Schema(description = "A product, marketplace, and proposed price used to request estimated fees.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A product, marketplace, and proposed price used to request estimated fees.")
 public class FeesEstimateByIdRequest {
     @SerializedName("FeesEstimateRequest")
     private FeesEstimateRequest feesEstimateRequest = null;
@@ -38,7 +38,7 @@ public class FeesEstimateByIdRequest {
      *
      * @return feesEstimateRequest
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeesEstimateRequest getFeesEstimateRequest() {
         return feesEstimateRequest;
     }
@@ -57,7 +57,7 @@ public class FeesEstimateByIdRequest {
      *
      * @return idType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IdType getIdType() {
         return idType;
     }
@@ -76,7 +76,7 @@ public class FeesEstimateByIdRequest {
      *
      * @return idValue
      */
-    @Schema(required = true, description = "The item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item identifier.")
     public String getIdValue() {
         return idValue;
     }

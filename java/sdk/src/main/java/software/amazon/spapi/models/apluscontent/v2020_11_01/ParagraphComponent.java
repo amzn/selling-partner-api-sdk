@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of rich text content that is typically presented in a text box. */
-@Schema(description = "A list of rich text content that is typically presented in a text box.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of rich text content that is typically presented in a text box.")
 public class ParagraphComponent {
     @SerializedName("textList")
     private List<TextComponent> textList = null;
@@ -42,7 +42,7 @@ public class ParagraphComponent {
      *
      * @return textList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public List<TextComponent> getTextList() {
         return textList;
     }

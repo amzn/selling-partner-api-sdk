@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Response schema for the &#x60;addAppointmentForServiceJobByServiceJobId&#x60; and
  * &#x60;rescheduleAppointmentForServiceJobByServiceJobId&#x60; operations.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Response schema for the `addAppointmentForServiceJobByServiceJobId` and `rescheduleAppointmentForServiceJobByServiceJobId` operations.")
 public class SetAppointmentResponse {
@@ -43,7 +42,7 @@ public class SetAppointmentResponse {
      *
      * @return appointmentId
      */
-    @Schema(description = "The appointment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The appointment identifier.")
     public String getAppointmentId() {
         return appointmentId;
     }
@@ -62,7 +61,7 @@ public class SetAppointmentResponse {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public WarningList getWarnings() {
         return warnings;
     }
@@ -81,7 +80,7 @@ public class SetAppointmentResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tax information about the buyer. */
-@Schema(description = "Tax information about the buyer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax information about the buyer.")
 public class BuyerTaxInfo {
     @SerializedName("CompanyLegalName")
     private String companyLegalName = null;
@@ -40,7 +39,7 @@ public class BuyerTaxInfo {
      *
      * @return companyLegalName
      */
-    @Schema(description = "The legal name of the company.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The legal name of the company.")
     public String getCompanyLegalName() {
         return companyLegalName;
     }
@@ -59,7 +58,7 @@ public class BuyerTaxInfo {
      *
      * @return taxingRegion
      */
-    @Schema(description = "The country or region imposing the tax.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The country or region imposing the tax.")
     public String getTaxingRegion() {
         return taxingRegion;
     }
@@ -86,7 +85,7 @@ public class BuyerTaxInfo {
      *
      * @return taxClassifications
      */
-    @Schema(description = "A list of tax classifications that apply to the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of tax classifications that apply to the order.")
     public List<TaxClassification> getTaxClassifications() {
         return taxClassifications;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.appintegrations.v2024_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;createNotification&#x60; operation. */
-@Schema(description = "The response for the `createNotification` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `createNotification` operation.")
 public class CreateNotificationResponse {
     @SerializedName("notificationId")
     private String notificationId = null;
@@ -32,7 +31,7 @@ public class CreateNotificationResponse {
      *
      * @return notificationId
      */
-    @Schema(description = "The unique identifier assigned to each notification.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier assigned to each notification.")
     public String getNotificationId() {
         return notificationId;
     }

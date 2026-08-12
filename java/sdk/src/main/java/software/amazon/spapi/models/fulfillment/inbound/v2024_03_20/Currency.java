@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The type and amount of currency. */
-@Schema(description = "The type and amount of currency.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The type and amount of currency.")
 public class Currency {
     @SerializedName("amount")
     private BigDecimal amount = null;
@@ -35,7 +35,7 @@ public class Currency {
      *
      * @return amount
      */
-    @Schema(required = true, description = "Decimal value of the currency.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Decimal value of the currency.")
     public BigDecimal getAmount() {
         return amount;
     }
@@ -54,7 +54,7 @@ public class Currency {
      *
      * @return code
      */
-    @Schema(required = true, description = "ISO 4217 standard of a currency code.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "ISO 4217 standard of a currency code.")
     public String getCode() {
         return code;
     }

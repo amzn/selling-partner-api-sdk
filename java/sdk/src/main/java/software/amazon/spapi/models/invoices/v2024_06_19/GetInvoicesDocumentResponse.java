@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Success. */
-@Schema(description = "Success.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Success.")
 public class GetInvoicesDocumentResponse {
     @SerializedName("invoicesDocument")
     private InvoicesDocument invoicesDocument = null;
@@ -32,7 +31,7 @@ public class GetInvoicesDocumentResponse {
      *
      * @return invoicesDocument
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvoicesDocument getInvoicesDocument() {
         return invoicesDocument;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An object which contains the preferences applied to the offer. */
-@Schema(description = "An object which contains the preferences applied to the offer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An object which contains the preferences applied to the offer.")
 public class OfferProgramConfigurationPreferences {
     @SerializedName("autoEnrollment")
     private AutoEnrollmentPreference autoEnrollment = null;
@@ -32,7 +32,7 @@ public class OfferProgramConfigurationPreferences {
      *
      * @return autoEnrollment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AutoEnrollmentPreference getAutoEnrollment() {
         return autoEnrollment;
     }

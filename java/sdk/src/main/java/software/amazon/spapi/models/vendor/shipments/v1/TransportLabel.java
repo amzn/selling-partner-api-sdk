@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of one or more ShipmentLabels. */
-@Schema(description = "A list of one or more ShipmentLabels.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of one or more ShipmentLabels.")
 public class TransportLabel {
     @SerializedName("labelCreateDateTime")
     private OffsetDateTime labelCreateDateTime = null;
@@ -40,7 +40,7 @@ public class TransportLabel {
      *
      * @return labelCreateDateTime
      */
-    @Schema(description = "Date on which label is created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which label is created.")
     public OffsetDateTime getLabelCreateDateTime() {
         return labelCreateDateTime;
     }
@@ -59,7 +59,7 @@ public class TransportLabel {
      *
      * @return shipmentInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentInformation getShipmentInformation() {
         return shipmentInformation;
     }
@@ -86,7 +86,7 @@ public class TransportLabel {
      *
      * @return labelData
      */
-    @Schema(description = "Indicates the label data,format and type associated .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates the label data,format and type associated .")
     public List<LabelData> getLabelData() {
         return labelData;
     }

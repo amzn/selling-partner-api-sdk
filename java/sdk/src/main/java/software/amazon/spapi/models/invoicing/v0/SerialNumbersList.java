@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The list of serial numbers. */
-@Schema(description = "The list of serial numbers.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The list of serial numbers.")
 public class SerialNumbersList extends ArrayList<String> {
 
     @Override

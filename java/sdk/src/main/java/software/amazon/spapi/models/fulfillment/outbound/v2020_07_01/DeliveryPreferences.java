@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -22,7 +21,7 @@ import java.util.Objects;
  * eligible orders, the default delivery preference will be to deliver the package unattended at the front door, unless
  * you specify otherwise.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The delivery preferences applied to the destination address. These preferences are applied when possible and are best effort. This feature is currently supported only in the JP marketplace and not applicable for other marketplaces. For eligible orders, the default delivery preference will be to deliver the package unattended at the front door, unless you specify otherwise.")
 public class DeliveryPreferences {
@@ -43,7 +42,7 @@ public class DeliveryPreferences {
      *
      * @return deliveryInstructions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.")
     public String getDeliveryInstructions() {
@@ -64,7 +63,7 @@ public class DeliveryPreferences {
      *
      * @return dropOffLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DropOffLocation getDropOffLocation() {
         return dropOffLocation;
     }

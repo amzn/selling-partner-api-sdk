@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.tokens.v2021_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createRestrictedDataToken operation. */
-@Schema(description = "The response schema for the createRestrictedDataToken operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the createRestrictedDataToken operation.")
 public class CreateRestrictedDataTokenResponse {
     @SerializedName("restrictedDataToken")
     private String restrictedDataToken = null;
@@ -36,7 +36,7 @@ public class CreateRestrictedDataTokenResponse {
      *
      * @return restrictedDataToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A Restricted Data Token (RDT). This is a short-lived access token that authorizes calls to restricted operations. Pass this value with the x-amz-access-token header when making subsequent calls to these restricted resources.")
     public String getRestrictedDataToken() {
@@ -57,7 +57,7 @@ public class CreateRestrictedDataTokenResponse {
      *
      * @return expiresIn
      */
-    @Schema(description = "The lifetime of the Restricted Data Token, in seconds.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The lifetime of the Restricted Data Token, in seconds.")
     public Integer getExpiresIn() {
         return expiresIn;
     }

@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Additional options to control the feed. These vary by feed type. */
-@Schema(description = "Additional options to control the feed. These vary by feed type.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional options to control the feed. These vary by feed type.")
 public class FeedOptions extends HashMap<String, String> {
 
     @Override

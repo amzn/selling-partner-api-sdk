@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents a distribution package with its respective quantity. */
-@Schema(description = "Represents a distribution package with its respective quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents a distribution package with its respective quantity.")
 public class DistributionPackageQuantity {
     @SerializedName("count")
     private Integer count = null;
@@ -35,7 +35,9 @@ public class DistributionPackageQuantity {
      *
      * @return count
      */
-    @Schema(required = true, description = "Number of cases or pallets with the same package configuration.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Number of cases or pallets with the same package configuration.")
     public Integer getCount() {
         return count;
     }
@@ -54,7 +56,7 @@ public class DistributionPackageQuantity {
      *
      * @return distributionPackage
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DistributionPackage getDistributionPackage() {
         return distributionPackage;
     }

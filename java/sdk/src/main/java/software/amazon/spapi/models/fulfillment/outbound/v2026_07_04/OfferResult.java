@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Per-item offer results including available offers and any constraints. */
-@Schema(description = "Per-item offer results including available offers and any constraints.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Per-item offer results including available offers and any constraints.")
 public class OfferResult {
     @SerializedName("item")
     private OfferItem item = null;
@@ -40,7 +40,7 @@ public class OfferResult {
      *
      * @return item
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferItem getItem() {
         return item;
     }
@@ -67,7 +67,7 @@ public class OfferResult {
      *
      * @return offers
      */
-    @Schema(description = "Available delivery offers for this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Available delivery offers for this item.")
     public List<OfferOption> getOffers() {
         return offers;
     }
@@ -94,7 +94,7 @@ public class OfferResult {
      *
      * @return constraints
      */
-    @Schema(description = "Constraints that prevented offers for this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Constraints that prevented offers for this item.")
     public List<Constraint> getConstraints() {
         return constraints;
     }

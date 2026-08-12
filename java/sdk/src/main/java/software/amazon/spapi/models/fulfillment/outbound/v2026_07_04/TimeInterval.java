@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The time range within which an event (for example, a delivery) will occur. */
-@Schema(description = "The time range within which an event (for example, a delivery) will occur.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The time range within which an event (for example, a delivery) will occur.")
 public class TimeInterval {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -35,7 +36,7 @@ public class TimeInterval {
      *
      * @return startTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
@@ -57,7 +58,7 @@ public class TimeInterval {
      *
      * @return endTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")

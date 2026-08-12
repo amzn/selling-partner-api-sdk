@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.CancelInboundPlanResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.CancelSelfShipAppointmentRequest;
@@ -293,8 +292,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelInboundPlanCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelInboundPlanCall(String inboundPlanId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -337,8 +335,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call cancelInboundPlanValidateBeforeCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String inboundPlanId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
         if (inboundPlanId == null) {
@@ -485,10 +482,10 @@ public class FbaInboundApi {
             String inboundPlanId, final ApiCallback<CancelInboundPlanResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelInboundPlanValidateBeforeCall(inboundPlanId, progressRequestListener);
@@ -520,7 +517,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             CancelSelfShipAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -570,7 +567,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             CancelSelfShipAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -757,10 +754,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -794,7 +791,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String deliveryWindowOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -849,7 +846,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String deliveryWindowOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -1054,10 +1051,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmDeliveryWindowOptionsValidateBeforeCall(
@@ -1087,9 +1084,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call confirmPackingOptionCall(
-            String inboundPlanId,
-            String packingOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String packingOptionId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1139,9 +1134,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call confirmPackingOptionValidateBeforeCall(
-            String inboundPlanId,
-            String packingOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String packingOptionId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -1300,10 +1293,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1334,9 +1327,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call confirmPlacementOptionCall(
-            String inboundPlanId,
-            String placementOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String placementOptionId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1386,9 +1377,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call confirmPlacementOptionValidateBeforeCall(
-            String inboundPlanId,
-            String placementOptionId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String placementOptionId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -1557,10 +1546,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1594,7 +1583,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String contentUpdatePreviewId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1649,7 +1638,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String contentUpdatePreviewId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -1833,10 +1822,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmShipmentContentUpdatePreviewValidateBeforeCall(
@@ -1868,9 +1857,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call confirmTransportationOptionsCall(
-            String inboundPlanId,
-            ConfirmTransportationOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, ConfirmTransportationOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1912,9 +1899,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call confirmTransportationOptionsValidateBeforeCall(
-            String inboundPlanId,
-            ConfirmTransportationOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, ConfirmTransportationOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -2085,10 +2070,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2116,8 +2101,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createInboundPlanCall(
-            CreateInboundPlanRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createInboundPlanCall(CreateInboundPlanRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2156,7 +2140,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call createInboundPlanValidateBeforeCall(
-            CreateInboundPlanRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateInboundPlanRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -2300,10 +2284,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createInboundPlanValidateBeforeCall(body, progressRequestListener);
@@ -2330,8 +2314,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createMarketplaceItemLabelsCall(
-            CreateMarketplaceItemLabelsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateMarketplaceItemLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2370,8 +2353,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call createMarketplaceItemLabelsValidateBeforeCall(
-            CreateMarketplaceItemLabelsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateMarketplaceItemLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -2518,10 +2500,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createMarketplaceItemLabelsValidateBeforeCall(body, progressRequestListener);
@@ -2550,9 +2532,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call generateDeliveryWindowOptionsCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2600,9 +2580,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call generateDeliveryWindowOptionsValidateBeforeCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -2763,10 +2741,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2794,8 +2772,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call generatePackingOptionsCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call generatePackingOptionsCall(String inboundPlanId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2838,8 +2815,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call generatePackingOptionsValidateBeforeCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String inboundPlanId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
         if (inboundPlanId == null) {
@@ -2985,10 +2961,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generatePackingOptionsValidateBeforeCall(inboundPlanId, progressRequestListener);
@@ -3017,9 +2993,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call generatePlacementOptionsCall(
-            String inboundPlanId,
-            GeneratePlacementOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, GeneratePlacementOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -3061,9 +3035,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call generatePlacementOptionsValidateBeforeCall(
-            String inboundPlanId,
-            GeneratePlacementOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, GeneratePlacementOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -3224,10 +3196,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generatePlacementOptionsValidateBeforeCall(inboundPlanId, body, progressRequestListener);
@@ -3260,7 +3232,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             GenerateSelfShipAppointmentSlotsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -3310,7 +3282,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             GenerateSelfShipAppointmentSlotsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -3504,10 +3476,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generateSelfShipAppointmentSlotsValidateBeforeCall(
@@ -3542,7 +3514,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             GenerateShipmentContentUpdatePreviewsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -3592,7 +3564,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             GenerateShipmentContentUpdatePreviewsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -3788,10 +3760,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generateShipmentContentUpdatePreviewsValidateBeforeCall(
@@ -3823,9 +3795,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call generateTransportationOptionsCall(
-            String inboundPlanId,
-            GenerateTransportationOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, GenerateTransportationOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -3867,9 +3837,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call generateTransportationOptionsValidateBeforeCall(
-            String inboundPlanId,
-            GenerateTransportationOptionsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, GenerateTransportationOptionsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -4034,10 +4002,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -4067,9 +4035,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getDeliveryChallanDocumentCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -4117,9 +4083,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call getDeliveryChallanDocumentValidateBeforeCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -4280,10 +4244,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -4311,8 +4275,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInboundOperationStatusCall(
-            String operationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getInboundOperationStatusCall(String operationId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -4355,8 +4318,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call getInboundOperationStatusValidateBeforeCall(
-            String operationId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String operationId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'operationId' is set
         if (operationId == null) {
@@ -4498,10 +4460,10 @@ public class FbaInboundApi {
             String operationId, final ApiCallback<InboundOperationStatus> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInboundOperationStatusValidateBeforeCall(operationId, progressRequestListener);
@@ -4528,8 +4490,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInboundPlanCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getInboundPlanCall(String inboundPlanId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -4572,8 +4533,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call getInboundPlanValidateBeforeCall(
-            String inboundPlanId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String inboundPlanId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
         if (inboundPlanId == null) {
@@ -4711,10 +4671,10 @@ public class FbaInboundApi {
             String inboundPlanId, final ApiCallback<InboundPlan> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInboundPlanValidateBeforeCall(inboundPlanId, progressRequestListener);
@@ -4751,7 +4711,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -4806,7 +4766,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -5025,10 +4985,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getSelfShipAppointmentSlotsValidateBeforeCall(
@@ -5058,9 +5018,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getShipmentCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -5105,9 +5063,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call getShipmentValidateBeforeCall(
-            String inboundPlanId,
-            String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -5264,10 +5220,10 @@ public class FbaInboundApi {
             String inboundPlanId, String shipmentId, final ApiCallback<Shipment> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShipmentValidateBeforeCall(inboundPlanId, shipmentId, progressRequestListener);
@@ -5299,7 +5255,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String contentUpdatePreviewId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -5354,7 +5310,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             String contentUpdatePreviewId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -5541,10 +5497,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShipmentContentUpdatePreviewValidateBeforeCall(
@@ -5583,7 +5539,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -5638,7 +5594,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -5855,10 +5811,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listDeliveryWindowOptionsValidateBeforeCall(
@@ -5891,10 +5847,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listInboundPlanBoxesCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -5940,10 +5893,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listInboundPlanBoxesValidateBeforeCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -6122,10 +6072,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInboundPlanBoxesValidateBeforeCall(
@@ -6158,10 +6108,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listInboundPlanItemsCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -6207,10 +6154,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listInboundPlanItemsValidateBeforeCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -6389,10 +6333,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInboundPlanItemsValidateBeforeCall(
@@ -6426,10 +6370,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listInboundPlanPalletsCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -6475,10 +6416,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listInboundPlanPalletsValidateBeforeCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -6669,10 +6607,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInboundPlanPalletsValidateBeforeCall(
@@ -6713,7 +6651,7 @@ public class FbaInboundApi {
             String status,
             String sortBy,
             String sortOrder,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -6764,7 +6702,7 @@ public class FbaInboundApi {
             String status,
             String sortBy,
             String sortOrder,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listInboundPlansCall(pageSize, paginationToken, status, sortBy, sortOrder, progressRequestListener);
@@ -6971,10 +6909,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInboundPlansValidateBeforeCall(
@@ -7004,9 +6942,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listItemComplianceDetailsCall(
-            List<String> mskus,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> mskus, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -7049,9 +6985,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listItemComplianceDetailsValidateBeforeCall(
-            List<String> mskus,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> mskus, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'mskus' is set
@@ -7242,10 +7176,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listItemComplianceDetailsValidateBeforeCall(mskus, marketplaceId, progressRequestListener);
@@ -7283,7 +7217,7 @@ public class FbaInboundApi {
             String packingGroupId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -7335,7 +7269,7 @@ public class FbaInboundApi {
             String packingGroupId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -7552,10 +7486,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listPackingGroupBoxesValidateBeforeCall(
@@ -7594,7 +7528,7 @@ public class FbaInboundApi {
             String packingGroupId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -7646,7 +7580,7 @@ public class FbaInboundApi {
             String packingGroupId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -7863,10 +7797,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listPackingGroupItemsValidateBeforeCall(
@@ -7900,10 +7834,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listPackingOptionsCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -7949,10 +7880,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listPackingOptionsValidateBeforeCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -8138,10 +8066,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -8174,10 +8102,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listPlacementOptionsCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -8223,10 +8148,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listPlacementOptionsValidateBeforeCall(
-            String inboundPlanId,
-            Integer pageSize,
-            String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, Integer pageSize, String paginationToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -8413,10 +8335,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listPlacementOptionsValidateBeforeCall(
@@ -8447,9 +8369,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listPrepDetailsCall(
-            String marketplaceId,
-            List<String> mskus,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, List<String> mskus, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -8492,9 +8412,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call listPrepDetailsValidateBeforeCall(
-            String marketplaceId,
-            List<String> mskus,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, List<String> mskus, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -8682,10 +8600,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listPrepDetailsValidateBeforeCall(marketplaceId, mskus, progressRequestListener);
@@ -8721,7 +8639,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -8773,7 +8691,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -8975,10 +8893,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listShipmentBoxesValidateBeforeCall(
@@ -9015,7 +8933,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -9070,7 +8988,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -9290,10 +9208,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listShipmentContentUpdatePreviewsValidateBeforeCall(
@@ -9332,7 +9250,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -9384,7 +9302,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -9586,10 +9504,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listShipmentItemsValidateBeforeCall(
@@ -9627,7 +9545,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -9679,7 +9597,7 @@ public class FbaInboundApi {
             String shipmentId,
             Integer pageSize,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -9894,10 +9812,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listShipmentPalletsValidateBeforeCall(
@@ -9939,7 +9857,7 @@ public class FbaInboundApi {
             String paginationToken,
             String placementOptionId,
             String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -9993,7 +9911,7 @@ public class FbaInboundApi {
             String paginationToken,
             String placementOptionId,
             String shipmentId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -10228,10 +10146,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listTransportationOptionsValidateBeforeCall(
@@ -10267,7 +10185,7 @@ public class FbaInboundApi {
             String shipmentId,
             String slotId,
             ScheduleSelfShipAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -10320,7 +10238,7 @@ public class FbaInboundApi {
             String shipmentId,
             String slotId,
             ScheduleSelfShipAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -10530,10 +10448,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = scheduleSelfShipAppointmentValidateBeforeCall(
@@ -10563,9 +10481,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call setPackingInformationCall(
-            String inboundPlanId,
-            SetPackingInformationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, SetPackingInformationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -10607,9 +10523,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call setPackingInformationValidateBeforeCall(
-            String inboundPlanId,
-            SetPackingInformationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, SetPackingInformationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -10778,10 +10692,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = setPackingInformationValidateBeforeCall(inboundPlanId, body, progressRequestListener);
@@ -10808,8 +10722,7 @@ public class FbaInboundApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call setPrepDetailsCall(
-            SetPrepDetailsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call setPrepDetailsCall(SetPrepDetailsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -10848,8 +10761,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call setPrepDetailsValidateBeforeCall(
-            SetPrepDetailsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            SetPrepDetailsRequest body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -10989,10 +10901,10 @@ public class FbaInboundApi {
             SetPrepDetailsRequest body, final ApiCallback<SetPrepDetailsResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = setPrepDetailsValidateBeforeCall(body, progressRequestListener);
@@ -11020,9 +10932,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateInboundPlanNameCall(
-            String inboundPlanId,
-            UpdateInboundPlanNameRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, UpdateInboundPlanNameRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -11064,9 +10974,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call updateInboundPlanNameValidateBeforeCall(
-            String inboundPlanId,
-            UpdateInboundPlanNameRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String inboundPlanId, UpdateInboundPlanNameRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -11217,10 +11125,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateInboundPlanNameValidateBeforeCall(inboundPlanId, body, progressRequestListener);
@@ -11249,9 +11157,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateItemComplianceDetailsCall(
-            String marketplaceId,
-            UpdateItemComplianceDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, UpdateItemComplianceDetailsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -11292,9 +11198,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call updateItemComplianceDetailsValidateBeforeCall(
-            String marketplaceId,
-            UpdateItemComplianceDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, UpdateItemComplianceDetailsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -11467,10 +11371,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateItemComplianceDetailsValidateBeforeCall(marketplaceId, body, progressRequestListener);
@@ -11503,7 +11407,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentNameRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -11550,7 +11454,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentNameRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -11713,10 +11617,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -11748,7 +11652,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentSourceAddressRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -11795,7 +11699,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentSourceAddressRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -11996,10 +11900,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -12033,7 +11937,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentTrackingDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -12080,7 +11984,7 @@ public class FbaInboundApi {
             String inboundPlanId,
             String shipmentId,
             UpdateShipmentTrackingDetailsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'inboundPlanId' is set
@@ -12263,10 +12167,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateShipmentTrackingDetailsValidateBeforeCall(

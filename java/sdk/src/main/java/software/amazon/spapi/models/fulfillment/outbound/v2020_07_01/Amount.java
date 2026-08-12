@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A quantity based on the specified unit of measurement. */
-@Schema(description = "A quantity based on the specified unit of measurement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A quantity based on the specified unit of measurement.")
 public class Amount {
     /** The unit of measure for the amount. */
     @JsonAdapter(UnitOfMeasureEnum.Adapter.class)
@@ -84,7 +83,7 @@ public class Amount {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "The unit of measure for the amount.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measure for the amount.")
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -104,7 +103,7 @@ public class Amount {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.")

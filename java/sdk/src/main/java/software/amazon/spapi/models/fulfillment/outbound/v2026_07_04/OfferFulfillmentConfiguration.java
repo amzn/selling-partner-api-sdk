@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment configuration for offers request. */
-@Schema(description = "Fulfillment configuration for offers request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Fulfillment configuration for offers request.")
 public class OfferFulfillmentConfiguration {
     @SerializedName("serviceLevel")
     private PreviewServiceLevel serviceLevel = null;
@@ -32,7 +31,7 @@ public class OfferFulfillmentConfiguration {
      *
      * @return serviceLevel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PreviewServiceLevel getServiceLevel() {
         return serviceLevel;
     }

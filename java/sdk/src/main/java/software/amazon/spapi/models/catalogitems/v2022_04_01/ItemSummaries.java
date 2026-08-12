@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Summaries of Amazon catalog items. */
-@Schema(description = "Summaries of Amazon catalog items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summaries of Amazon catalog items.")
 public class ItemSummaries extends ArrayList<ItemSummaryByMarketplace> {
 
     @Override

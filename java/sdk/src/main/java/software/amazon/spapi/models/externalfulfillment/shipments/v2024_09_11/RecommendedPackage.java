@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Recommendations for a package */
-@Schema(description = "Recommendations for a package")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Recommendations for a package")
 public class RecommendedPackage {
     @SerializedName("dimensions")
     private PackageDimensions dimensions = null;
@@ -38,7 +37,7 @@ public class RecommendedPackage {
      *
      * @return dimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDimensions getDimensions() {
         return dimensions;
     }
@@ -57,7 +56,7 @@ public class RecommendedPackage {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -76,7 +75,7 @@ public class RecommendedPackage {
      *
      * @return lineItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RecommendedPackageLineItems getLineItems() {
         return lineItems;
     }

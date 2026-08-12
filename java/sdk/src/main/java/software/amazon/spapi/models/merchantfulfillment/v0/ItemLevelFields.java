@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A list of item level fields. */
-@Schema(description = "A list of item level fields.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of item level fields.")
 public class ItemLevelFields {
     @SerializedName("Asin")
     private String asin = null;
@@ -35,7 +34,9 @@ public class ItemLevelFields {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -54,7 +55,7 @@ public class ItemLevelFields {
      *
      * @return additionalInputs
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AdditionalInputsList getAdditionalInputs() {
         return additionalInputs;
     }

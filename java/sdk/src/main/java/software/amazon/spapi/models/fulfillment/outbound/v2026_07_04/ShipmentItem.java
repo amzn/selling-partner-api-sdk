@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item information for a shipment in a fulfillment order. */
-@Schema(description = "Item information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a shipment in a fulfillment order.")
 public class ShipmentItem {
     @SerializedName("productIdentifier")
     private ProductIdentifier productIdentifier = null;
@@ -47,7 +46,7 @@ public class ShipmentItem {
      *
      * @return productIdentifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProductIdentifier getProductIdentifier() {
         return productIdentifier;
     }
@@ -67,7 +66,7 @@ public class ShipmentItem {
      *
      * @return lineItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The fulfillment order item identifier that the seller created and submitted with a call to the `createOrder` operation.")
@@ -89,7 +88,7 @@ public class ShipmentItem {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getAmount() {
         return amount;
     }
@@ -108,7 +107,8 @@ public class ShipmentItem {
      *
      * @return packageId
      */
-    @Schema(description = "An identifier for the package that contains the item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An identifier for the package that contains the item quantity.")
     public String getPackageId() {
         return packageId;
     }
@@ -127,7 +127,7 @@ public class ShipmentItem {
      *
      * @return unitIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnitIdentifiers getUnitIdentifiers() {
         return unitIdentifiers;
     }
@@ -146,7 +146,7 @@ public class ShipmentItem {
      *
      * @return shipmentItemId
      */
-    @Schema(description = "A unique identifier for the shipment item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for the shipment item.")
     public String getShipmentItemId() {
         return shipmentItemId;
     }

@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +29,7 @@ import java.util.Objects;
  * Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner
  * API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A product type definition represents the attributes and data requirements for a product type in the Amazon catalog. Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.")
 public class ProductTypeDefinition {
@@ -173,7 +172,7 @@ public class ProductTypeDefinition {
      *
      * @return metaSchema
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SchemaLink getMetaSchema() {
         return metaSchema;
     }
@@ -192,7 +191,7 @@ public class ProductTypeDefinition {
      *
      * @return schema
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SchemaLink getSchema() {
         return schema;
     }
@@ -211,7 +210,9 @@ public class ProductTypeDefinition {
      *
      * @return requirements
      */
-    @Schema(required = true, description = "Name of the requirements set represented in this product type definition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Name of the requirements set represented in this product type definition.")
     public RequirementsEnum getRequirements() {
         return requirements;
     }
@@ -232,7 +233,7 @@ public class ProductTypeDefinition {
      *
      * @return requirementsEnforced
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all of the required attributes being present (such as for partial updates).")
@@ -263,7 +264,7 @@ public class ProductTypeDefinition {
      *
      * @return propertyGroups
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.")
@@ -285,7 +286,9 @@ public class ProductTypeDefinition {
      *
      * @return locale
      */
-    @Schema(required = true, description = "Locale of the display elements contained in the product type definition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Locale of the display elements contained in the product type definition.")
     public String getLocale() {
         return locale;
     }
@@ -312,7 +315,7 @@ public class ProductTypeDefinition {
      *
      * @return marketplaceIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Amazon marketplace identifiers for which the product type definition is applicable.")
     public List<String> getMarketplaceIds() {
@@ -333,7 +336,7 @@ public class ProductTypeDefinition {
      *
      * @return productType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The name of the Amazon product type that this product type definition applies to.")
     public String getProductType() {
@@ -354,7 +357,9 @@ public class ProductTypeDefinition {
      *
      * @return displayName
      */
-    @Schema(required = true, description = "Human-readable and localized description of the Amazon product type.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Human-readable and localized description of the Amazon product type.")
     public String getDisplayName() {
         return displayName;
     }
@@ -373,7 +378,7 @@ public class ProductTypeDefinition {
      *
      * @return productTypeVersion
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProductTypeVersion getProductTypeVersion() {
         return productTypeVersion;
     }

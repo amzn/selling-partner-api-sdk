@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the GetShipmentLabels operation. */
-@Schema(description = "The response schema for the GetShipmentLabels operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the GetShipmentLabels operation.")
 public class GetShipmentLabels {
     @SerializedName("payload")
     private TransportationLabels payload = null;
@@ -35,7 +34,7 @@ public class GetShipmentLabels {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransportationLabels getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetShipmentLabels {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

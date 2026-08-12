@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the OneClickShipment API. */
-@Schema(description = "The payload for the OneClickShipment API.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the OneClickShipment API.")
 public class OneClickShipmentResult {
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -47,7 +46,9 @@ public class OneClickShipmentResult {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "The unique shipment identifier provided by a shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique shipment identifier provided by a shipping service.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -66,7 +67,7 @@ public class OneClickShipmentResult {
      *
      * @return packageDocumentDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDocumentDetailList getPackageDocumentDetails() {
         return packageDocumentDetails;
     }
@@ -85,7 +86,7 @@ public class OneClickShipmentResult {
      *
      * @return promise
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Promise getPromise() {
         return promise;
     }
@@ -104,7 +105,7 @@ public class OneClickShipmentResult {
      *
      * @return carrier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Carrier getCarrier() {
         return carrier;
     }
@@ -123,7 +124,7 @@ public class OneClickShipmentResult {
      *
      * @return service
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Service getService() {
         return service;
     }
@@ -142,7 +143,7 @@ public class OneClickShipmentResult {
      *
      * @return totalCharge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTotalCharge() {
         return totalCharge;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Details about the estimated delivery window. */
-@Schema(description = "Details about the estimated delivery window.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details about the estimated delivery window.")
 public class ShipmentSchedule {
     @SerializedName("estimatedDeliveryDateTime")
     private OffsetDateTime estimatedDeliveryDateTime = null;
@@ -40,7 +40,7 @@ public class ShipmentSchedule {
      *
      * @return estimatedDeliveryDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date on which the shipment is expected to reach the customer delivery location. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
     public OffsetDateTime getEstimatedDeliveryDateTime() {
@@ -63,7 +63,7 @@ public class ShipmentSchedule {
      *
      * @return apptWindowStartDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time at the start of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
     public OffsetDateTime getApptWindowStartDateTime() {
@@ -86,7 +86,7 @@ public class ShipmentSchedule {
      *
      * @return apptWindowEndDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time at the end of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
     public OffsetDateTime getApptWindowEndDateTime() {

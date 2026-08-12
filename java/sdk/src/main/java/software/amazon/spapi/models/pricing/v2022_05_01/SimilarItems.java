@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The summary of similar items for the specified ASIN &#x60;marketplaceId&#x60; combination. */
-@Schema(description = "The summary of similar items for the specified ASIN `marketplaceId` combination.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The summary of similar items for the specified ASIN `marketplaceId` combination.")
 public class SimilarItems {
     @SerializedName("items")
     private List<Item> items = null;
@@ -42,7 +42,8 @@ public class SimilarItems {
      *
      * @return items
      */
-    @Schema(description = "A list of similar items for the specified ASIN `marketplaceId` combination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of similar items for the specified ASIN `marketplaceId` combination.")
     public List<Item> getItems() {
         return items;
     }

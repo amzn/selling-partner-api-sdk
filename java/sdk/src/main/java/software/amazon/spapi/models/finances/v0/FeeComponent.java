@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A fee associated with the event. */
-@Schema(description = "A fee associated with the event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A fee associated with the event.")
 public class FeeComponent {
     @SerializedName("FeeType")
     private String feeType = null;
@@ -38,7 +37,7 @@ public class FeeComponent {
      *
      * @return feeType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of fee. For more information about Selling on Amazon fees, see [Selling on Amazon Fee Schedule](https://sellercentral.amazon.com/gp/help/200336920) on Seller Central. For more information about Fulfillment by Amazon fees, see [FBA features, services and fees](https://sellercentral.amazon.com/gp/help/201074400) on Seller Central.")
     public String getFeeType() {
@@ -59,7 +58,7 @@ public class FeeComponent {
      *
      * @return feeAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getFeeAmount() {
         return feeAmount;
     }

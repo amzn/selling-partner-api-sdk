@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about any gift wrapping that is needed for this line item. */
-@Schema(description = "Information about any gift wrapping that is needed for this line item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about any gift wrapping that is needed for this line item.")
 public class GiftAttributes {
     @SerializedName("giftWrapRequirement")
     private RequirementLevel giftWrapRequirement = null;
@@ -41,7 +41,7 @@ public class GiftAttributes {
      *
      * @return giftWrapRequirement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequirementLevel getGiftWrapRequirement() {
         return giftWrapRequirement;
     }
@@ -60,7 +60,7 @@ public class GiftAttributes {
      *
      * @return giftWrapLabel
      */
-    @Schema(description = "The label to be printed on the wrapped gift.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The label to be printed on the wrapped gift.")
     public String getGiftWrapLabel() {
         return giftWrapLabel;
     }
@@ -79,7 +79,7 @@ public class GiftAttributes {
      *
      * @return giftMessagePresence
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PresenceStatus getGiftMessagePresence() {
         return giftMessagePresence;
     }
@@ -98,7 +98,7 @@ public class GiftAttributes {
      *
      * @return giftMessage
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Document getGiftMessage() {
         return giftMessage;
     }

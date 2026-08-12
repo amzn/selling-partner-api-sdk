@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of item review topic. */
-@Schema(description = "Details of item review topic.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item review topic.")
 public class ItemReviewTopic {
     @SerializedName("topic")
     private String topic = null;
@@ -52,7 +51,7 @@ public class ItemReviewTopic {
      *
      * @return topic
      */
-    @Schema(required = true, description = "The name of the item review topic.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the item review topic.")
     public String getTopic() {
         return topic;
     }
@@ -71,7 +70,7 @@ public class ItemReviewTopic {
      *
      * @return asinMetrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemReviewTopicMetrics getAsinMetrics() {
         return asinMetrics;
     }
@@ -90,7 +89,7 @@ public class ItemReviewTopic {
      *
      * @return parentAsinMetrics
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemReviewTopicMetrics getParentAsinMetrics() {
         return parentAsinMetrics;
     }
@@ -109,7 +108,7 @@ public class ItemReviewTopic {
      *
      * @return browseNodeMetrics
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemReviewBrowseNodeMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }
@@ -128,7 +127,7 @@ public class ItemReviewTopic {
      *
      * @return childAsinMetrics
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChildAsinMetrics getChildAsinMetrics() {
         return childAsinMetrics;
     }
@@ -156,7 +155,7 @@ public class ItemReviewTopic {
      *
      * @return reviewSnippets
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.")
     public List<String> getReviewSnippets() {
@@ -186,7 +185,7 @@ public class ItemReviewTopic {
      *
      * @return subtopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic's placement in the list. This value is `null` if there are no subtopics.")
     public List<ItemReviewSubtopic> getSubtopics() {

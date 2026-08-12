@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;updateItemComplianceDetails&#x60; request. */
-@Schema(description = "The `updateItemComplianceDetails` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `updateItemComplianceDetails` request.")
 public class UpdateItemComplianceDetailsRequest {
     @SerializedName("msku")
     private String msku = null;
@@ -35,7 +34,9 @@ public class UpdateItemComplianceDetailsRequest {
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
     public String getMsku() {
         return msku;
     }
@@ -54,7 +55,7 @@ public class UpdateItemComplianceDetailsRequest {
      *
      * @return taxDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TaxDetails getTaxDetails() {
         return taxDetails;
     }

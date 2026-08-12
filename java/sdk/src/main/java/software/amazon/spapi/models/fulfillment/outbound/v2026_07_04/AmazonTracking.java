@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Amazon tracking information for a package. */
-@Schema(description = "Amazon tracking information for a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon tracking information for a package.")
 public class AmazonTracking {
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
@@ -35,7 +34,8 @@ public class AmazonTracking {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The amazon tracking number that can be used to obtain tracking and delivery information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The amazon tracking number that can be used to obtain tracking and delivery information.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -54,7 +54,8 @@ public class AmazonTracking {
      *
      * @return trackingUrl
      */
-    @Schema(description = "Represents the tracking URL where amazon tracking information is shown.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Represents the tracking URL where amazon tracking information is shown.")
     public String getTrackingUrl() {
         return trackingUrl;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;deleteDestination&#x60; operation. */
-@Schema(description = "The response schema for the `deleteDestination` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `deleteDestination` operation.")
 public class DeleteDestinationResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +31,7 @@ public class DeleteDestinationResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

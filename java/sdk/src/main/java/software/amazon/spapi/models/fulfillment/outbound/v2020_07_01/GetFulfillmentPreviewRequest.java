@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;getFulfillmentPreview&#x60; operation. */
-@Schema(description = "The request body schema for the `getFulfillmentPreview` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `getFulfillmentPreview` operation.")
 public class GetFulfillmentPreviewRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -52,7 +52,8 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace the fulfillment order is placed against.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The marketplace the fulfillment order is placed against.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -71,7 +72,7 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return address
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getAddress() {
         return address;
     }
@@ -90,7 +91,7 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return items
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public GetFulfillmentPreviewItemList getItems() {
         return items;
     }
@@ -109,7 +110,7 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return shippingSpeedCategories
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShippingSpeedCategoryList getShippingSpeedCategories() {
         return shippingSpeedCategories;
     }
@@ -129,7 +130,7 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return includeCODFulfillmentPreview
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD.")
     public Boolean getIncludeCODFulfillmentPreview() {
@@ -152,7 +153,7 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return includeDeliveryWindows
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.")
     public Boolean getIncludeDeliveryWindows() {
@@ -181,7 +182,8 @@ public class GetFulfillmentPreviewRequest {
      *
      * @return featureConstraints
      */
-    @Schema(description = "A list of features and their fulfillment policies to apply to the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of features and their fulfillment policies to apply to the order.")
     public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Use these parameters to paginate through the response. */
-@Schema(description = "Use these parameters to paginate through the response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Use these parameters to paginate through the response.")
 public class PaginationResponse {
     @SerializedName("totalResults")
     private Long totalResults = null;
@@ -32,7 +31,8 @@ public class PaginationResponse {
      *
      * @return totalResults
      */
-    @Schema(description = "Total number of results matching the given filter criteria.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Total number of results matching the given filter criteria.")
     public Long getTotalResults() {
         return totalResults;
     }

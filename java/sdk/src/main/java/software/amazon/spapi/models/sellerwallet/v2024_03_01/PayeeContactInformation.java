@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The contact information of the payee. This field is required when the request &#x60;bankAccountOwnershipType&#x60; is
  * &#x60;THIRD_PARTY&#x60;. The contact information is used for payee verification and registration purposes.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The contact information of the payee. This field is required when the request `bankAccountOwnershipType` is `THIRD_PARTY`. The contact information is used for payee verification and registration purposes.")
 public class PayeeContactInformation {
@@ -73,7 +72,9 @@ public class PayeeContactInformation {
      *
      * @return payeeFirstName
      */
-    @Schema(required = true, description = "First name of the payee. There is a 50 character limit.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "First name of the payee. There is a 50 character limit.")
     public String getPayeeFirstName() {
         return payeeFirstName;
     }
@@ -92,7 +93,8 @@ public class PayeeContactInformation {
      *
      * @return payeeMiddleName
      */
-    @Schema(description = "Middle name of the payee. There is a 50 character limit.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Middle name of the payee. There is a 50 character limit.")
     public String getPayeeMiddleName() {
         return payeeMiddleName;
     }
@@ -111,7 +113,9 @@ public class PayeeContactInformation {
      *
      * @return payeeLastName
      */
-    @Schema(required = true, description = "Last name of the payee. There is a 50 character limit.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Last name of the payee. There is a 50 character limit.")
     public String getPayeeLastName() {
         return payeeLastName;
     }
@@ -130,7 +134,7 @@ public class PayeeContactInformation {
      *
      * @return addressLine1
      */
-    @Schema(required = true, description = "Address Line 1 of the public address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Address Line 1 of the public address.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -149,7 +153,7 @@ public class PayeeContactInformation {
      *
      * @return addressLine2
      */
-    @Schema(description = "Address Line 2 of the public address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Address Line 2 of the public address.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -168,7 +172,7 @@ public class PayeeContactInformation {
      *
      * @return city
      */
-    @Schema(required = true, description = "City name of the public address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "City name of the public address.")
     public String getCity() {
         return city;
     }
@@ -187,7 +191,7 @@ public class PayeeContactInformation {
      *
      * @return state
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "State name of the public address. This is the state or region for China-based addresses.")
     public String getState() {
@@ -208,7 +212,7 @@ public class PayeeContactInformation {
      *
      * @return postalCode
      */
-    @Schema(required = true, description = "Postal code of the public address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Postal code of the public address.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -227,7 +231,7 @@ public class PayeeContactInformation {
      *
      * @return country
      */
-    @Schema(description = "Country name of the public address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Country name of the public address.")
     public String getCountry() {
         return country;
     }
@@ -246,7 +250,9 @@ public class PayeeContactInformation {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The two digit country code, in ISO 3166 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The two digit country code, in ISO 3166 format.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -265,7 +271,7 @@ public class PayeeContactInformation {
      *
      * @return emailAddress
      */
-    @Schema(required = true, description = "Email address of the payee.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Email address of the payee.")
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -284,7 +290,7 @@ public class PayeeContactInformation {
      *
      * @return phoneNumber
      */
-    @Schema(required = true, description = "Valid phone number of the payee.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Valid phone number of the payee.")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -303,7 +309,7 @@ public class PayeeContactInformation {
      *
      * @return payeeEntityType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PayeeEntityType getPayeeEntityType() {
         return payeeEntityType;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of ineligible shipping service offerings. */
-@Schema(description = "A list of ineligible shipping service offerings.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of ineligible shipping service offerings.")
 public class IneligibleRateList extends ArrayList<IneligibleRate> {
 
     @Override

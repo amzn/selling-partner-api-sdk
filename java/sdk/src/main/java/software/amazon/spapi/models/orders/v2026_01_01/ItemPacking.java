@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information related to the packaging process for an order item. */
-@Schema(description = "Information related to the packaging process for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information related to the packaging process for an order item.")
 public class ItemPacking {
     @SerializedName("giftOption")
     private GiftOption giftOption = null;
@@ -35,7 +35,7 @@ public class ItemPacking {
      *
      * @return giftOption
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GiftOption getGiftOption() {
         return giftOption;
     }
@@ -54,7 +54,7 @@ public class ItemPacking {
      *
      * @return serialNumberRequirement
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SerialNumberRequirement getSerialNumberRequirement() {
         return serialNumberRequirement;
     }

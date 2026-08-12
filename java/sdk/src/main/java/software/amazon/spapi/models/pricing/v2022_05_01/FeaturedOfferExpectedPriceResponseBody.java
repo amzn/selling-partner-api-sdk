@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The FOEP response data for a requested SKU. */
-@Schema(description = "The FOEP response data for a requested SKU.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The FOEP response data for a requested SKU.")
 public class FeaturedOfferExpectedPriceResponseBody {
     @SerializedName("offerIdentifier")
     private OfferIdentifier offerIdentifier = null;
@@ -38,7 +37,7 @@ public class FeaturedOfferExpectedPriceResponseBody {
      *
      * @return offerIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferIdentifier getOfferIdentifier() {
         return offerIdentifier;
     }
@@ -58,7 +57,7 @@ public class FeaturedOfferExpectedPriceResponseBody {
      *
      * @return featuredOfferExpectedPriceResults
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeaturedOfferExpectedPriceResultList getFeaturedOfferExpectedPriceResults() {
         return featuredOfferExpectedPriceResults;
     }
@@ -78,7 +77,7 @@ public class FeaturedOfferExpectedPriceResponseBody {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information required to upload a feed document&#39;s contents. */
-@Schema(description = "Information required to upload a feed document's contents.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to upload a feed document's contents.")
 public class CreateFeedDocumentResponse {
     @SerializedName("feedDocumentId")
     private String feedDocumentId = null;
@@ -35,7 +34,7 @@ public class CreateFeedDocumentResponse {
      *
      * @return feedDocumentId
      */
-    @Schema(required = true, description = "The identifier of the feed document.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The identifier of the feed document.")
     public String getFeedDocumentId() {
         return feedDocumentId;
     }
@@ -54,7 +53,7 @@ public class CreateFeedDocumentResponse {
      *
      * @return url
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The presigned URL for uploading the feed contents. This URL expires after 5 minutes.")
     public String getUrl() {

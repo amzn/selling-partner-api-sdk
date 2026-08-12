@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The destination resource types. */
-@Schema(description = "The destination resource types.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The destination resource types.")
 public class DestinationResource {
     @SerializedName("sqs")
     private SqsResource sqs = null;
@@ -35,7 +34,7 @@ public class DestinationResource {
      *
      * @return sqs
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SqsResource getSqs() {
         return sqs;
     }
@@ -54,7 +53,7 @@ public class DestinationResource {
      *
      * @return eventBridge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EventBridgeResource getEventBridge() {
         return eventBridge;
     }

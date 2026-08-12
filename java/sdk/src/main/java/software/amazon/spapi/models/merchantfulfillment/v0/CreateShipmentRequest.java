@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Request schema. */
-@Schema(description = "Request schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema.")
 public class CreateShipmentRequest {
     @SerializedName("ShipmentRequestDetails")
     private ShipmentRequestDetails shipmentRequestDetails = null;
@@ -47,7 +46,7 @@ public class CreateShipmentRequest {
      *
      * @return shipmentRequestDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentRequestDetails getShipmentRequestDetails() {
         return shipmentRequestDetails;
     }
@@ -66,7 +65,9 @@ public class CreateShipmentRequest {
      *
      * @return shippingServiceId
      */
-    @Schema(required = true, description = "An Amazon-defined shipping service identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined shipping service identifier.")
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -85,7 +86,7 @@ public class CreateShipmentRequest {
      *
      * @return shippingServiceOfferId
      */
-    @Schema(description = "Identifies a shipping service order made by a carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifies a shipping service order made by a carrier.")
     public String getShippingServiceOfferId() {
         return shippingServiceOfferId;
     }
@@ -104,7 +105,7 @@ public class CreateShipmentRequest {
      *
      * @return hazmatType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HazmatType getHazmatType() {
         return hazmatType;
     }
@@ -123,7 +124,7 @@ public class CreateShipmentRequest {
      *
      * @return labelFormatOption
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelFormatOptionRequest getLabelFormatOption() {
         return labelFormatOption;
     }
@@ -143,7 +144,7 @@ public class CreateShipmentRequest {
      *
      * @return shipmentLevelSellerInputsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalSellerInputsList getShipmentLevelSellerInputsList() {
         return shipmentLevelSellerInputsList;
     }

@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * A way to configure this packing option. Some box content information sources might not be allowed. Non-standard
  * minimum and maximum box weights might be enforced.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A way to configure this packing option. Some box content information sources might not be allowed. Non-standard minimum and maximum box weights might be enforced.")
 public class PackingConfiguration {
@@ -53,7 +52,7 @@ public class PackingConfiguration {
      *
      * @return boxPackingMethods
      */
-    @Schema(description = "The box content information sources that are allowed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The box content information sources that are allowed.")
     public List<BoxContentInformationSource> getBoxPackingMethods() {
         return boxPackingMethods;
     }
@@ -72,7 +71,7 @@ public class PackingConfiguration {
      *
      * @return boxRequirements
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BoxRequirements getBoxRequirements() {
         return boxRequirements;
     }
@@ -99,7 +98,8 @@ public class PackingConfiguration {
      *
      * @return shippingRequirements
      */
-    @Schema(description = "A list of supported shipping requirements for this packing configuration.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of supported shipping requirements for this packing configuration.")
     public List<ShippingRequirements> getShippingRequirements() {
         return shippingRequirements;
     }

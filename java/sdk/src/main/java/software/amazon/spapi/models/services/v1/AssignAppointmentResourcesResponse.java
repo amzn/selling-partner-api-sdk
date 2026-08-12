@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema for the &#x60;assignAppointmentResources&#x60; operation. */
-@Schema(description = "Response schema for the `assignAppointmentResources` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Response schema for the `assignAppointmentResources` operation.")
 public class AssignAppointmentResourcesResponse {
     @SerializedName("payload")
     private AssignAppointmentResourcesResponsePayload payload = null;
@@ -35,7 +35,7 @@ public class AssignAppointmentResourcesResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AssignAppointmentResourcesResponsePayload getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class AssignAppointmentResourcesResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

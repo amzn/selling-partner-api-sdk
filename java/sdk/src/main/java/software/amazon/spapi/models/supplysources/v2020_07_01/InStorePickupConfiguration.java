@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The in-store pickup configuration of a supply source. */
-@Schema(description = "The in-store pickup configuration of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The in-store pickup configuration of a supply source.")
 public class InStorePickupConfiguration {
     @SerializedName("isSupported")
     private Boolean isSupported = null;
@@ -36,7 +35,7 @@ public class InStorePickupConfiguration {
      *
      * @return isSupported
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, in-store pickup is supported by the supply source (default: `isSupported` value in `PickupChannel`).")
     public Boolean getIsSupported() {
@@ -57,7 +56,7 @@ public class InStorePickupConfiguration {
      *
      * @return parkingConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingConfiguration getParkingConfiguration() {
         return parkingConfiguration;
     }

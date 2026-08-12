@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The breakdown of eligibility inventory by feature. */
-@Schema(description = "The breakdown of eligibility inventory by feature.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The breakdown of eligibility inventory by feature.")
 public class GetFeatureInventoryResponse {
     @SerializedName("payload")
     private GetFeatureInventoryResult payload = null;
@@ -35,7 +34,7 @@ public class GetFeatureInventoryResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetFeatureInventoryResult getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetFeatureInventoryResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

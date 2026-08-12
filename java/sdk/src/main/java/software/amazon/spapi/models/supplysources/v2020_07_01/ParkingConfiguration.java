@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The parking configuration. */
-@Schema(description = "The parking configuration.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The parking configuration.")
 public class ParkingConfiguration {
     @SerializedName("parkingCostType")
     private ParkingCostType parkingCostType = null;
@@ -38,7 +37,7 @@ public class ParkingConfiguration {
      *
      * @return parkingCostType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingCostType getParkingCostType() {
         return parkingCostType;
     }
@@ -58,7 +57,7 @@ public class ParkingConfiguration {
      *
      * @return parkingSpotIdentificationType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParkingSpotIdentificationType getParkingSpotIdentificationType() {
         return parkingSpotIdentificationType;
     }
@@ -77,7 +76,7 @@ public class ParkingConfiguration {
      *
      * @return numberOfParkingSpots
      */
-    @Schema(description = "An unsigned integer that can be only positive or zero.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An unsigned integer that can be only positive or zero.")
     public Integer getNumberOfParkingSpots() {
         return numberOfParkingSpots;
     }

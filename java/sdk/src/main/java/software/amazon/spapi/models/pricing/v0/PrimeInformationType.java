@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Amazon Prime information. */
-@Schema(description = "Amazon Prime information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Prime information.")
 public class PrimeInformationType {
     @SerializedName("IsPrime")
     private Boolean isPrime = null;
@@ -35,7 +34,9 @@ public class PrimeInformationType {
      *
      * @return isPrime
      */
-    @Schema(required = true, description = "Indicates whether the offer is an Amazon Prime offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Indicates whether the offer is an Amazon Prime offer.")
     public Boolean getIsPrime() {
         return isPrime;
     }
@@ -54,7 +55,7 @@ public class PrimeInformationType {
      *
      * @return isNationalPrime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates whether the offer is an Amazon Prime offer throughout the entire marketplace where it is listed.")

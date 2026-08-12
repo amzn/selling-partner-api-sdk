@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The weight of the scheduled package */
-@Schema(description = "The weight of the scheduled package")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight of the scheduled package")
 public class Weight {
     @SerializedName("value")
     private Float value = null;
@@ -35,7 +34,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(description = "The weight of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The weight of the package.")
     public Float getValue() {
         return value;
     }
@@ -54,7 +53,7 @@ public class Weight {
      *
      * @return unit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnitOfWeight getUnit() {
         return unit;
     }

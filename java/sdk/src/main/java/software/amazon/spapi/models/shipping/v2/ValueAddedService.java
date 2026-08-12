@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A value-added service available for purchase with a shipment service offering. */
-@Schema(description = "A value-added service available for purchase with a shipment service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A value-added service available for purchase with a shipment service offering.")
 public class ValueAddedService {
     @SerializedName("id")
     private String id = null;
@@ -38,7 +38,9 @@ public class ValueAddedService {
      *
      * @return id
      */
-    @Schema(required = true, description = "The identifier for the value-added service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the value-added service.")
     public String getId() {
         return id;
     }
@@ -57,7 +59,7 @@ public class ValueAddedService {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the value-added service.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the value-added service.")
     public String getName() {
         return name;
     }
@@ -76,7 +78,7 @@ public class ValueAddedService {
      *
      * @return cost
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getCost() {
         return cost;
     }

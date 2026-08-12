@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response for the &#x60;getBrowseNodeReturnTopics&#x60; operation. */
-@Schema(description = "The response for the `getBrowseNodeReturnTopics` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getBrowseNodeReturnTopics` operation.")
 public class BrowseNodeReturnTopicsResponse {
     @SerializedName("browseNodeId")
     private String browseNodeId = null;
@@ -49,7 +48,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return browseNodeId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The requested browse node id. A browse node id is the unique identifier of a given browse node.")
@@ -71,7 +70,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return displayName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The display name of the browse node, as visible on the Amazon retail website.")
     public String getDisplayName() {
@@ -92,7 +91,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The requested marketplace id.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace id.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -111,7 +110,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return countryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
@@ -132,7 +131,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return dateRange
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -159,7 +158,7 @@ public class BrowseNodeReturnTopicsResponse {
      *
      * @return topics
      */
-    @Schema(required = true, description = "The list of browse node return topics.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The list of browse node return topics.")
     public List<BrowseNodeReturnTopics> getTopics() {
         return topics;
     }

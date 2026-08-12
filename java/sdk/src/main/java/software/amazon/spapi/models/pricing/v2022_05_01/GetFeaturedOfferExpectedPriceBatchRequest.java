@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body for the &#x60;getFeaturedOfferExpectedPriceBatch&#x60; operation. */
-@Schema(description = "The request body for the `getFeaturedOfferExpectedPriceBatch` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body for the `getFeaturedOfferExpectedPriceBatch` operation.")
 public class GetFeaturedOfferExpectedPriceBatchRequest {
     @SerializedName("requests")
     private FeaturedOfferExpectedPriceRequestList requests = null;
@@ -32,7 +32,7 @@ public class GetFeaturedOfferExpectedPriceBatchRequest {
      *
      * @return requests
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeaturedOfferExpectedPriceRequestList getRequests() {
         return requests;
     }

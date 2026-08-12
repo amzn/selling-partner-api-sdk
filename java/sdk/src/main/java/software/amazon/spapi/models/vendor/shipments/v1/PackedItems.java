@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the item being shipped. */
-@Schema(description = "Details of the item being shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the item being shipped.")
 public class PackedItems {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -45,7 +44,7 @@ public class PackedItems {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.")
     public String getItemSequenceNumber() {
@@ -66,7 +65,7 @@ public class PackedItems {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Buyer Standard Identification Number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Buyer Standard Identification Number (ASIN) of an item.")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -85,7 +84,7 @@ public class PackedItems {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The vendor selected product identification of the item. Should be the same as was sent in the purchase order.")
     public String getVendorProductIdentifier() {
@@ -106,7 +105,7 @@ public class PackedItems {
      *
      * @return packedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getPackedQuantity() {
         return packedQuantity;
     }
@@ -125,7 +124,7 @@ public class PackedItems {
      *
      * @return itemDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageItemDetails getItemDetails() {
         return itemDetails;
     }

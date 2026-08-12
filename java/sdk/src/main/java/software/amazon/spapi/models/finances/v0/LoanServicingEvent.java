@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A loan advance, loan payment, or loan refund. */
-@Schema(description = "A loan advance, loan payment, or loan refund.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A loan advance, loan payment, or loan refund.")
 public class LoanServicingEvent {
     @SerializedName("LoanAmount")
     private Currency loanAmount = null;
@@ -35,7 +34,7 @@ public class LoanServicingEvent {
      *
      * @return loanAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getLoanAmount() {
         return loanAmount;
     }
@@ -54,7 +53,8 @@ public class LoanServicingEvent {
      *
      * @return sourceBusinessEventType
      */
-    @Schema(description = "The type of event.  Possible values:  * `LoanAdvance`  * `LoanPayment`  * `LoanRefund`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of event.  Possible values:  * `LoanAdvance`  * `LoanPayment`  * `LoanRefund`")
     public String getSourceBusinessEventType() {
         return sourceBusinessEventType;
     }

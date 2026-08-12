@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;createServiceDocumentUploadDestination&#x60; operation. */
-@Schema(description = "The response schema for the `createServiceDocumentUploadDestination` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `createServiceDocumentUploadDestination` operation.")
 public class CreateServiceDocumentUploadDestination {
     @SerializedName("payload")
     private ServiceDocumentUploadDestination payload = null;
@@ -35,7 +35,7 @@ public class CreateServiceDocumentUploadDestination {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceDocumentUploadDestination getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class CreateServiceDocumentUploadDestination {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

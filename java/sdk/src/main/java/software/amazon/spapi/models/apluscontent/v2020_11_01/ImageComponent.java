@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A reference to an image, hosted in the A+ Content media library. */
-@Schema(description = "A reference to an image, hosted in the A+ Content media library.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A reference to an image, hosted in the A+ Content media library.")
 public class ImageComponent {
     @SerializedName("uploadDestinationId")
     private String uploadDestinationId = null;
@@ -39,7 +39,7 @@ public class ImageComponent {
      *
      * @return uploadDestinationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "This identifier is provided by the [Uploads API](https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references).")
@@ -61,7 +61,7 @@ public class ImageComponent {
      *
      * @return imageCropSpecification
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ImageCropSpecification getImageCropSpecification() {
         return imageCropSpecification;
     }
@@ -80,7 +80,7 @@ public class ImageComponent {
      *
      * @return altText
      */
-    @Schema(required = true, description = "The alternative text for the image.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The alternative text for the image.")
     public String getAltText() {
         return altText;
     }

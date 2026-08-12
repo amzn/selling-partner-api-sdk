@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * An event filter you can use to customize your subscription to send notifications for a specific
  * &#x60;orderChangeType&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An event filter you can use to customize your subscription to send notifications for a specific `orderChangeType`.")
 public class OrderChangeTypeFilter {
@@ -37,7 +36,7 @@ public class OrderChangeTypeFilter {
      *
      * @return orderChangeTypes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderChangeTypes getOrderChangeTypes() {
         return orderChangeTypes;
     }

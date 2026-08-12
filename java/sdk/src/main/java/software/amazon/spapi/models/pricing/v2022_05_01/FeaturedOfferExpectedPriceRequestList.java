@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A batched list of FOEP requests. */
-@Schema(description = "A batched list of FOEP requests.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A batched list of FOEP requests.")
 public class FeaturedOfferExpectedPriceRequestList extends ArrayList<FeaturedOfferExpectedPriceRequest> {
 
     @Override

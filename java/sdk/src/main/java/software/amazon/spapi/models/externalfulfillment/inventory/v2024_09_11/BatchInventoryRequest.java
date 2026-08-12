@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A list of inventory requests. */
-@Schema(description = "A list of inventory requests.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of inventory requests.")
 public class BatchInventoryRequest {
     @SerializedName("requests")
     private BatchInventoryRequestList requests = null;
@@ -32,7 +31,7 @@ public class BatchInventoryRequest {
      *
      * @return requests
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BatchInventoryRequestList getRequests() {
         return requests;
     }

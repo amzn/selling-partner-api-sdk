@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOrderPreviewRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOrderPreviewResponse;
@@ -62,9 +61,7 @@ public class FulfillmentPreviewsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getOrderPreview_0Call(
-            GetOrderPreviewRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -106,9 +103,7 @@ public class FulfillmentPreviewsApi {
     }
 
     private okhttp3.Call getOrderPreview_0ValidateBeforeCall(
-            GetOrderPreviewRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -266,10 +261,10 @@ public class FulfillmentPreviewsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =

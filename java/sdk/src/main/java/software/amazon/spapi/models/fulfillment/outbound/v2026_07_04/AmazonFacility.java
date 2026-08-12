@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Amazon facility from which the shipment is sent. */
-@Schema(description = "The Amazon facility from which the shipment is sent.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon facility from which the shipment is sent.")
 public class AmazonFacility {
     @SerializedName("facilityId")
     private String facilityId = null;
@@ -35,7 +34,9 @@ public class AmazonFacility {
      *
      * @return facilityId
      */
-    @Schema(required = true, description = "An identifier for the Amazon facility from which the shipment is sent.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier for the Amazon facility from which the shipment is sent.")
     public String getFacilityId() {
         return facilityId;
     }
@@ -54,7 +55,7 @@ public class AmazonFacility {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }

@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of events related to the seller&#39;s Pay with Amazon account. */
-@Schema(description = "A list of events related to the seller's Pay with Amazon account.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of events related to the seller's Pay with Amazon account.")
 public class PayWithAmazonEventList extends ArrayList<PayWithAmazonEvent> {
 
     @Override

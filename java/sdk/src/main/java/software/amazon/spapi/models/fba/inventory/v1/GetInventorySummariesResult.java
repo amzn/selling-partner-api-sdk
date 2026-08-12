@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload schema for the getInventorySummaries operation. */
-@Schema(description = "The payload schema for the getInventorySummaries operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload schema for the getInventorySummaries operation.")
 public class GetInventorySummariesResult {
     @SerializedName("granularity")
     private Granularity granularity = null;
@@ -35,7 +34,7 @@ public class GetInventorySummariesResult {
      *
      * @return granularity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Granularity getGranularity() {
         return granularity;
     }
@@ -54,7 +53,7 @@ public class GetInventorySummariesResult {
      *
      * @return inventorySummaries
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InventorySummaries getInventorySummaries() {
         return inventorySummaries;
     }

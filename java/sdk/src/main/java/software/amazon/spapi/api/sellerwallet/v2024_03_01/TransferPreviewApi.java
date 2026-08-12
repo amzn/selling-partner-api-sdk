@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransferRatePreview;
 
@@ -75,7 +74,7 @@ public class TransferPreviewApi {
             String destinationCurrencyCode,
             BigDecimal baseAmount,
             String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -133,7 +132,7 @@ public class TransferPreviewApi {
             String destinationCurrencyCode,
             BigDecimal baseAmount,
             String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sourceCountryCode' is set
@@ -407,10 +406,10 @@ public class TransferPreviewApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getTransferPreviewValidateBeforeCall(

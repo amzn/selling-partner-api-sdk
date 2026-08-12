@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item-level information for a removal shipment item adjustment. */
-@Schema(description = "Item-level information for a removal shipment item adjustment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Item-level information for a removal shipment item adjustment.")
 public class RemovalShipmentItemAdjustment {
     @SerializedName("RemovalShipmentItemId")
     private String removalShipmentItemId = null;
@@ -50,7 +50,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return removalShipmentItemId
      */
-    @Schema(description = "An identifier for an item in a removal shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An identifier for an item in a removal shipment.")
     public String getRemovalShipmentItemId() {
         return removalShipmentItemId;
     }
@@ -71,7 +71,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxCollectionModel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.")
     public String getTaxCollectionModel() {
@@ -92,7 +92,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return fulfillmentNetworkSKU
      */
-    @Schema(description = "The Amazon fulfillment network SKU for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon fulfillment network SKU for the item.")
     public String getFulfillmentNetworkSKU() {
         return fulfillmentNetworkSKU;
     }
@@ -111,7 +111,8 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return adjustedQuantity
      */
-    @Schema(description = "Adjusted quantity of `RemovalShipmentItemAdjustment` items.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Adjusted quantity of `RemovalShipmentItemAdjustment` items.")
     public Integer getAdjustedQuantity() {
         return adjustedQuantity;
     }
@@ -130,7 +131,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return revenueAdjustment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRevenueAdjustment() {
         return revenueAdjustment;
     }
@@ -149,7 +150,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxAmountAdjustment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxAmountAdjustment() {
         return taxAmountAdjustment;
     }
@@ -168,7 +169,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxWithheldAdjustment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxWithheldAdjustment() {
         return taxWithheldAdjustment;
     }

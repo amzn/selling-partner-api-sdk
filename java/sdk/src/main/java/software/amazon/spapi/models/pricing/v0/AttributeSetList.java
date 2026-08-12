@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of product attributes if they are applicable to the product that is returned. */
-@Schema(description = "A list of product attributes if they are applicable to the product that is returned.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of product attributes if they are applicable to the product that is returned.")
 public class AttributeSetList extends ArrayList<Object> {
 
     @Override

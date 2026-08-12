@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A physical address with varying degrees of precision. A more precise address can provide more accurate results than
  * country code and postal code alone.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A physical address with varying degrees of precision. A more precise address can provide more accurate results than country code and postal code alone.")
 public class VariablePrecisionAddress {
@@ -58,7 +57,7 @@ public class VariablePrecisionAddress {
      *
      * @return addressLine1
      */
-    @Schema(description = "The first line of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The first line of the address.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -77,7 +76,7 @@ public class VariablePrecisionAddress {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information, if required.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -96,7 +95,7 @@ public class VariablePrecisionAddress {
      *
      * @return addressLine3
      */
-    @Schema(description = "Additional address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information, if required.")
     public String getAddressLine3() {
         return addressLine3;
     }
@@ -115,7 +114,7 @@ public class VariablePrecisionAddress {
      *
      * @return city
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The city where the person, business, or institution is located. This property should not be used in Japan.")
     public String getCity() {
@@ -136,7 +135,8 @@ public class VariablePrecisionAddress {
      *
      * @return districtOrCounty
      */
-    @Schema(description = "The district or county where the person, business, or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The district or county where the person, business, or institution is located.")
     public String getDistrictOrCounty() {
         return districtOrCounty;
     }
@@ -155,7 +155,8 @@ public class VariablePrecisionAddress {
      *
      * @return stateOrRegion
      */
-    @Schema(description = "The state or region where the person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The state or region where the person, business or institution is located.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }
@@ -174,7 +175,7 @@ public class VariablePrecisionAddress {
      *
      * @return postalCode
      */
-    @Schema(required = true, description = "The postal code of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The postal code of the address.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -193,7 +194,9 @@ public class VariablePrecisionAddress {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }

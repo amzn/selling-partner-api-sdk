@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** High-level details of the shipment. */
-@Schema(description = "High-level details of the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "High-level details of the shipment.")
 public class ShipmentInfo {
     /** The type of shipment. */
     @JsonAdapter(ShipmentTypeEnum.Adapter.class)
@@ -203,7 +202,7 @@ public class ShipmentInfo {
      *
      * @return shipmentType
      */
-    @Schema(required = true, description = "The type of shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of shipment.")
     public ShipmentTypeEnum getShipmentType() {
         return shipmentType;
     }
@@ -222,7 +221,7 @@ public class ShipmentInfo {
      *
      * @return originalShipmentInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReplacedShipmentInfo getOriginalShipmentInfo() {
         return originalShipmentInfo;
     }
@@ -241,7 +240,7 @@ public class ShipmentInfo {
      *
      * @return numberOfUnits
      */
-    @Schema(required = true, description = "Total number of units in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Total number of units in the shipment.")
     public Integer getNumberOfUnits() {
         return numberOfUnits;
     }
@@ -260,7 +259,7 @@ public class ShipmentInfo {
      *
      * @return priority
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Priority getPriority() {
         return priority;
     }
@@ -279,7 +278,7 @@ public class ShipmentInfo {
      *
      * @return buyerOrderId
      */
-    @Schema(required = true, description = "The buyer's order ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The buyer's order ID.")
     public String getBuyerOrderId() {
         return buyerOrderId;
     }
@@ -307,7 +306,7 @@ public class ShipmentInfo {
      *
      * @return orderStatesEligibleForRejection
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible.")
     public List<String> getOrderStatesEligibleForRejection() {
@@ -328,7 +327,7 @@ public class ShipmentInfo {
      *
      * @return orderPlacedTimestamp
      */
-    @Schema(description = "The timestamp of when the order was placed, in UTC")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The timestamp of when the order was placed, in UTC")
     public String getOrderPlacedTimestamp() {
         return orderPlacedTimestamp;
     }
@@ -347,7 +346,7 @@ public class ShipmentInfo {
      *
      * @return processingSource
      */
-    @Schema(description = "The source of the order operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The source of the order operation.")
     public ProcessingSourceEnum getProcessingSource() {
         return processingSource;
     }
@@ -366,7 +365,7 @@ public class ShipmentInfo {
      *
      * @return paymentMethod
      */
-    @Schema(description = "The payment method for the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment method for the shipment.")
     public PaymentMethodEnum getPaymentMethod() {
         return paymentMethod;
     }

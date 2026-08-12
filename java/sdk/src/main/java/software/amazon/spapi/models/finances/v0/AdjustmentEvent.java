@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An adjustment to the seller&#39;s account. */
-@Schema(description = "An adjustment to the seller's account.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An adjustment to the seller's account.")
 public class AdjustmentEvent {
     @SerializedName("AdjustmentType")
     private String adjustmentType = null;
@@ -55,7 +55,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of adjustment.  Possible values:  * `FBAInventoryReimbursement`: An FBA inventory reimbursement to a seller's account. This occurs if a seller's inventory is damaged. * `ReserveEvent`: A reserve event that is generated at the time a settlement period closes. This occurs when some money from a seller's account is held back. * `PostageBilling`: The amount paid by a seller for shipping labels. * `PostageRefund`: The reimbursement of shipping labels purchased for orders that were canceled or refunded. * `LostOrDamagedReimbursement`: An Amazon Easy Ship reimbursement to a seller's account for a package that we lost or damaged. * `CanceledButPickedUpReimbursement`: An Amazon Easy Ship reimbursement to a seller's account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace. * `ReimbursementClawback`: An Amazon Easy Ship reimbursement clawback from a seller's account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace. * `SellerRewards`: An award credited to a seller's account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.")
     public String getAdjustmentType() {
@@ -76,7 +76,7 @@ public class AdjustmentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -97,7 +97,7 @@ public class AdjustmentEvent {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }
@@ -116,7 +116,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAdjustmentAmount() {
         return adjustmentAmount;
     }
@@ -135,7 +135,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdjustmentItemList getAdjustmentItemList() {
         return adjustmentItemList;
     }

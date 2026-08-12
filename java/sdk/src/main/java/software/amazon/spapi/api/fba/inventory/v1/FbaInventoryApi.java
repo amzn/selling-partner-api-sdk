@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fba.inventory.v1.AddInventoryRequest;
 import software.amazon.spapi.models.fba.inventory.v1.AddInventoryResponse;
@@ -81,7 +80,7 @@ public class FbaInventoryApi {
     private okhttp3.Call addInventoryCall(
             String xAmznIdempotencyToken,
             AddInventoryRequest addInventoryRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = addInventoryRequestBody;
 
@@ -124,7 +123,7 @@ public class FbaInventoryApi {
     private okhttp3.Call addInventoryValidateBeforeCall(
             String xAmznIdempotencyToken,
             AddInventoryRequest addInventoryRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'xAmznIdempotencyToken' is set
@@ -271,10 +270,10 @@ public class FbaInventoryApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -302,8 +301,7 @@ public class FbaInventoryApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createInventoryItemCall(
-            CreateInventoryItemRequest createInventoryItemRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateInventoryItemRequest createInventoryItemRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = createInventoryItemRequestBody;
 
@@ -342,8 +340,7 @@ public class FbaInventoryApi {
     }
 
     private okhttp3.Call createInventoryItemValidateBeforeCall(
-            CreateInventoryItemRequest createInventoryItemRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateInventoryItemRequest createInventoryItemRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'createInventoryItemRequestBody' is set
@@ -470,10 +467,10 @@ public class FbaInventoryApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -503,9 +500,7 @@ public class FbaInventoryApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call deleteInventoryItemCall(
-            String sellerSku,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String sellerSku, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -549,9 +544,7 @@ public class FbaInventoryApi {
     }
 
     private okhttp3.Call deleteInventoryItemValidateBeforeCall(
-            String sellerSku,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String sellerSku, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerSku' is set
@@ -687,10 +680,10 @@ public class FbaInventoryApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = deleteInventoryItemValidateBeforeCall(sellerSku, marketplaceId, progressRequestListener);
@@ -739,7 +732,7 @@ public class FbaInventoryApi {
             List<String> sellerSkus,
             String sellerSku,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -800,7 +793,7 @@ public class FbaInventoryApi {
             List<String> sellerSkus,
             String sellerSku,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'granularityType' is set
@@ -1196,10 +1189,10 @@ public class FbaInventoryApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInventorySummariesValidateBeforeCall(

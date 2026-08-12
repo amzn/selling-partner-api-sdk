@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item information for a fulfillment order preview. */
-@Schema(description = "Item information for a fulfillment order preview.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a fulfillment order preview.")
 public class GetFulfillmentPreviewItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -41,7 +40,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -60,7 +59,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -79,7 +78,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return perUnitDeclaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitDeclaredValue() {
         return perUnitDeclaredValue;
     }
@@ -98,7 +97,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order item identifier that the seller creates to track items in the fulfillment preview.")

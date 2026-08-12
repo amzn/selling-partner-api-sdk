@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema for the &#x60;cancelReservation&#x60; operation. */
-@Schema(description = "Response schema for the `cancelReservation` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the `cancelReservation` operation.")
 public class CancelReservationResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +31,7 @@ public class CancelReservationResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

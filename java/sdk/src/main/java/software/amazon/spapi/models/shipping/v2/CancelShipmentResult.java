@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** The payload for the cancelShipment operation. */
-@Schema(description = "The payload for the cancelShipment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the cancelShipment operation.")
 public class CancelShipmentResult extends HashMap<String, Object> {
 
     @Override

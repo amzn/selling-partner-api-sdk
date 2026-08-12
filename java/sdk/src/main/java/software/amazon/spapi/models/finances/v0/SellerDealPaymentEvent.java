@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event linked to the payment of a fee related to the specified deal. */
-@Schema(description = "An event linked to the payment of a fee related to the specified deal.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An event linked to the payment of a fee related to the specified deal.")
 public class SellerDealPaymentEvent {
     @SerializedName("postedDate")
     private OffsetDateTime postedDate = null;
@@ -53,7 +54,7 @@ public class SellerDealPaymentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -74,7 +75,7 @@ public class SellerDealPaymentEvent {
      *
      * @return dealId
      */
-    @Schema(description = "The unique identifier of the deal.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier of the deal.")
     public String getDealId() {
         return dealId;
     }
@@ -93,7 +94,7 @@ public class SellerDealPaymentEvent {
      *
      * @return dealDescription
      */
-    @Schema(description = "The internal description of the deal.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The internal description of the deal.")
     public String getDealDescription() {
         return dealDescription;
     }
@@ -112,7 +113,7 @@ public class SellerDealPaymentEvent {
      *
      * @return eventType
      */
-    @Schema(description = "The type of event: `SellerDealComplete`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of event: `SellerDealComplete`.")
     public String getEventType() {
         return eventType;
     }
@@ -131,7 +132,7 @@ public class SellerDealPaymentEvent {
      *
      * @return feeType
      */
-    @Schema(description = "The type of fee: `RunLightningDealFee`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of fee: `RunLightningDealFee`.")
     public String getFeeType() {
         return feeType;
     }
@@ -150,7 +151,7 @@ public class SellerDealPaymentEvent {
      *
      * @return feeAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getFeeAmount() {
         return feeAmount;
     }
@@ -169,7 +170,7 @@ public class SellerDealPaymentEvent {
      *
      * @return taxAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxAmount() {
         return taxAmount;
     }
@@ -188,7 +189,7 @@ public class SellerDealPaymentEvent {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }

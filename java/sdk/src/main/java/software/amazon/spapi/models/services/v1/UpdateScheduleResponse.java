@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Response schema for the &#x60;updateSchedule&#x60; operation. */
-@Schema(description = "Response schema for the `updateSchedule` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the `updateSchedule` operation.")
 public class UpdateScheduleResponse {
     @SerializedName("payload")
     private List<UpdateScheduleRecord> payload = null;
@@ -45,7 +44,8 @@ public class UpdateScheduleResponse {
      *
      * @return payload
      */
-    @Schema(description = "Contains the `UpdateScheduleRecords` for which the error/warning has occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Contains the `UpdateScheduleRecords` for which the error/warning has occurred.")
     public List<UpdateScheduleRecord> getPayload() {
         return payload;
     }
@@ -64,7 +64,7 @@ public class UpdateScheduleResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

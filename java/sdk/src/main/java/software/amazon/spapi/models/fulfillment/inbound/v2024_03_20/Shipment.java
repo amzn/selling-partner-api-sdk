@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains information pertaining to a shipment in an inbound plan. */
-@Schema(description = "Contains information pertaining to a shipment in an inbound plan.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains information pertaining to a shipment in an inbound plan.")
 public class Shipment {
     @SerializedName("amazonReferenceId")
     private String amazonReferenceId = null;
@@ -77,7 +77,7 @@ public class Shipment {
      *
      * @return amazonReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A unique identifier created by Amazon that identifies this Amazon-partnered, Less Than Truckload/Full Truckload (LTL/FTL) shipment.")
     public String getAmazonReferenceId() {
@@ -98,7 +98,7 @@ public class Shipment {
      *
      * @return contactInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactInformation getContactInformation() {
         return contactInformation;
     }
@@ -117,7 +117,7 @@ public class Shipment {
      *
      * @return dates
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dates getDates() {
         return dates;
     }
@@ -136,7 +136,7 @@ public class Shipment {
      *
      * @return destination
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentDestination getDestination() {
         return destination;
     }
@@ -155,7 +155,7 @@ public class Shipment {
      *
      * @return freightInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FreightInformation getFreightInformation() {
         return freightInformation;
     }
@@ -174,7 +174,7 @@ public class Shipment {
      *
      * @return name
      */
-    @Schema(description = "The name of the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the shipment.")
     public String getName() {
         return name;
     }
@@ -193,7 +193,7 @@ public class Shipment {
      *
      * @return placementOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.")
@@ -215,7 +215,7 @@ public class Shipment {
      *
      * @return selectedDeliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SelectedDeliveryWindow getSelectedDeliveryWindow() {
         return selectedDeliveryWindow;
     }
@@ -234,7 +234,7 @@ public class Shipment {
      *
      * @return selectedTransportationOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Identifier of a transportation option. A transportation option represent one option for how to send a shipment.")
     public String getSelectedTransportationOptionId() {
@@ -263,7 +263,7 @@ public class Shipment {
      *
      * @return selfShipAppointmentDetails
      */
-    @Schema(description = "List of self ship appointment details.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of self ship appointment details.")
     public List<SelfShipAppointmentDetails> getSelfShipAppointmentDetails() {
         return selfShipAppointmentDetails;
     }
@@ -282,7 +282,8 @@ public class Shipment {
      *
      * @return shipmentConfirmationId
      */
-    @Schema(description = "The confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`).")
     public String getShipmentConfirmationId() {
         return shipmentConfirmationId;
     }
@@ -301,7 +302,7 @@ public class Shipment {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
     public String getShipmentId() {
@@ -322,7 +323,7 @@ public class Shipment {
      *
      * @return source
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentSource getSource() {
         return source;
     }
@@ -346,7 +347,7 @@ public class Shipment {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The status of a shipment. The state of the shipment will typically start as `UNCONFIRMED`, then transition to `WORKING` after a placement option has been confirmed, and then to `READY_TO_SHIP` once labels are generated.  Possible values: `ABANDONED`, `CANCELLED`, `CHECKED_IN`, `CLOSED`, `DELETED`, `DELIVERED`, `IN_TRANSIT`, `MIXED`, `READY_TO_SHIP`, `RECEIVING`, `SHIPPED`, `UNCONFIRMED`, `WORKING`")
     public String getStatus() {
@@ -367,7 +368,7 @@ public class Shipment {
      *
      * @return trackingDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingDetails getTrackingDetails() {
         return trackingDetails;
     }

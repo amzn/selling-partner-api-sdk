@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents a purchase order. */
-@Schema(description = "Represents a purchase order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents a purchase order.")
 public class Order {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -35,7 +34,7 @@ public class Order {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The purchase order number for this order. Formatting Notes: alpha-numeric code.")
     public String getPurchaseOrderNumber() {
@@ -56,7 +55,7 @@ public class Order {
      *
      * @return orderDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderDetails getOrderDetails() {
         return orderDetails;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response to the &#x60;getInvoice&#x60; operation. */
-@Schema(description = "The response to the `getInvoice` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `getInvoice` operation.")
 public class GetInvoiceResponse {
     @SerializedName("invoiceHeader")
     private InvoiceHeader invoiceHeader = null;
@@ -40,7 +39,7 @@ public class GetInvoiceResponse {
      *
      * @return invoiceHeader
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvoiceHeader getInvoiceHeader() {
         return invoiceHeader;
     }
@@ -67,7 +66,7 @@ public class GetInvoiceResponse {
      *
      * @return invoiceItems
      */
-    @Schema(description = "A list of invoice line items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of invoice line items.")
     public List<InvoiceItem> getInvoiceItems() {
         return invoiceItems;
     }
@@ -86,7 +85,8 @@ public class GetInvoiceResponse {
      *
      * @return nextTokenForLineItems
      */
-    @Schema(description = "A token you can use to retrieve the next page of line items.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token you can use to retrieve the next page of line items.")
     public String getNextTokenForLineItems() {
         return nextTokenForLineItems;
     }

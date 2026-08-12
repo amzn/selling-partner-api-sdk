@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The estimated price information for the fulfillment order. */
-@Schema(description = "The estimated price information for the fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The estimated price information for the fulfillment order.")
 public class EstimatedPrice {
     @SerializedName("rollupPrices")
     private List<RollupPrice> rollupPrices = null;
@@ -45,7 +44,9 @@ public class EstimatedPrice {
      *
      * @return rollupPrices
      */
-    @Schema(required = true, description = "A breakdown of the price associated with the delivery preview.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A breakdown of the price associated with the delivery preview.")
     public List<RollupPrice> getRollupPrices() {
         return rollupPrices;
     }
@@ -64,7 +65,7 @@ public class EstimatedPrice {
      *
      * @return totalPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getTotalPrice() {
         return totalPrice;
     }

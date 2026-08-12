@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Monetary and tax details of the allowance. */
-@Schema(description = "Monetary and tax details of the allowance.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Monetary and tax details of the allowance.")
 public class AllowanceDetails {
     /** Type of the allowance applied. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -102,7 +101,7 @@ public class AllowanceDetails {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of the allowance applied.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of the allowance applied.")
     public TypeEnum getType() {
         return type;
     }
@@ -121,7 +120,7 @@ public class AllowanceDetails {
      *
      * @return description
      */
-    @Schema(description = "Description of the allowance.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Description of the allowance.")
     public String getDescription() {
         return description;
     }
@@ -140,7 +139,7 @@ public class AllowanceDetails {
      *
      * @return allowanceAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getAllowanceAmount() {
         return allowanceAmount;
     }
@@ -167,7 +166,7 @@ public class AllowanceDetails {
      *
      * @return taxDetails
      */
-    @Schema(description = "Tax amount details applied on this allowance.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax amount details applied on this allowance.")
     public List<TaxDetails> getTaxDetails() {
         return taxDetails;
     }

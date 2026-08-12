@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** All the information that is related to a financial event. */
-@Schema(description = "All the information that is related to a financial event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "All the information that is related to a financial event.")
 public class FinancialEvents {
     @SerializedName("ShipmentEventList")
     private ShipmentEventList shipmentEventList = null;
@@ -131,7 +130,7 @@ public class FinancialEvents {
      *
      * @return shipmentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentEventList getShipmentEventList() {
         return shipmentEventList;
     }
@@ -150,7 +149,7 @@ public class FinancialEvents {
      *
      * @return shipmentSettleEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentSettleEventList getShipmentSettleEventList() {
         return shipmentSettleEventList;
     }
@@ -169,7 +168,7 @@ public class FinancialEvents {
      *
      * @return refundEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentEventList getRefundEventList() {
         return refundEventList;
     }
@@ -188,7 +187,7 @@ public class FinancialEvents {
      *
      * @return guaranteeClaimEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentEventList getGuaranteeClaimEventList() {
         return guaranteeClaimEventList;
     }
@@ -208,7 +207,7 @@ public class FinancialEvents {
      *
      * @return ebTRefundReimbursementOnlyEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EBTRefundReimbursementOnlyEventList getEbTRefundReimbursementOnlyEventList() {
         return ebTRefundReimbursementOnlyEventList;
     }
@@ -228,7 +227,7 @@ public class FinancialEvents {
      *
      * @return chargebackEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentEventList getChargebackEventList() {
         return chargebackEventList;
     }
@@ -247,7 +246,7 @@ public class FinancialEvents {
      *
      * @return payWithAmazonEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PayWithAmazonEventList getPayWithAmazonEventList() {
         return payWithAmazonEventList;
     }
@@ -267,7 +266,7 @@ public class FinancialEvents {
      *
      * @return serviceProviderCreditEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SolutionProviderCreditEventList getServiceProviderCreditEventList() {
         return serviceProviderCreditEventList;
     }
@@ -286,7 +285,7 @@ public class FinancialEvents {
      *
      * @return retrochargeEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RetrochargeEventList getRetrochargeEventList() {
         return retrochargeEventList;
     }
@@ -305,7 +304,7 @@ public class FinancialEvents {
      *
      * @return rentalTransactionEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RentalTransactionEventList getRentalTransactionEventList() {
         return rentalTransactionEventList;
     }
@@ -324,7 +323,7 @@ public class FinancialEvents {
      *
      * @return productAdsPaymentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProductAdsPaymentEventList getProductAdsPaymentEventList() {
         return productAdsPaymentEventList;
     }
@@ -343,7 +342,7 @@ public class FinancialEvents {
      *
      * @return serviceFeeEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceFeeEventList getServiceFeeEventList() {
         return serviceFeeEventList;
     }
@@ -362,7 +361,7 @@ public class FinancialEvents {
      *
      * @return sellerDealPaymentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SellerDealPaymentEventList getSellerDealPaymentEventList() {
         return sellerDealPaymentEventList;
     }
@@ -381,7 +380,7 @@ public class FinancialEvents {
      *
      * @return debtRecoveryEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DebtRecoveryEventList getDebtRecoveryEventList() {
         return debtRecoveryEventList;
     }
@@ -400,7 +399,7 @@ public class FinancialEvents {
      *
      * @return loanServicingEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LoanServicingEventList getLoanServicingEventList() {
         return loanServicingEventList;
     }
@@ -419,7 +418,7 @@ public class FinancialEvents {
      *
      * @return adjustmentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdjustmentEventList getAdjustmentEventList() {
         return adjustmentEventList;
     }
@@ -438,7 +437,7 @@ public class FinancialEvents {
      *
      * @return saFETReimbursementEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SAFETReimbursementEventList getSaFETReimbursementEventList() {
         return saFETReimbursementEventList;
     }
@@ -458,7 +457,7 @@ public class FinancialEvents {
      *
      * @return sellerReviewEnrollmentPaymentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SellerReviewEnrollmentPaymentEventList getSellerReviewEnrollmentPaymentEventList() {
         return sellerReviewEnrollmentPaymentEventList;
     }
@@ -478,7 +477,7 @@ public class FinancialEvents {
      *
      * @return fbALiquidationEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FBALiquidationEventList getFbALiquidationEventList() {
         return fbALiquidationEventList;
     }
@@ -497,7 +496,7 @@ public class FinancialEvents {
      *
      * @return couponPaymentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CouponPaymentEventList getCouponPaymentEventList() {
         return couponPaymentEventList;
     }
@@ -516,7 +515,7 @@ public class FinancialEvents {
      *
      * @return imagingServicesFeeEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImagingServicesFeeEventList getImagingServicesFeeEventList() {
         return imagingServicesFeeEventList;
     }
@@ -536,7 +535,7 @@ public class FinancialEvents {
      *
      * @return networkComminglingTransactionEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public NetworkComminglingTransactionEventList getNetworkComminglingTransactionEventList() {
         return networkComminglingTransactionEventList;
     }
@@ -556,7 +555,7 @@ public class FinancialEvents {
      *
      * @return affordabilityExpenseEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AffordabilityExpenseEventList getAffordabilityExpenseEventList() {
         return affordabilityExpenseEventList;
     }
@@ -576,7 +575,7 @@ public class FinancialEvents {
      *
      * @return affordabilityExpenseReversalEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AffordabilityExpenseEventList getAffordabilityExpenseReversalEventList() {
         return affordabilityExpenseReversalEventList;
     }
@@ -596,7 +595,7 @@ public class FinancialEvents {
      *
      * @return removalShipmentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RemovalShipmentEventList getRemovalShipmentEventList() {
         return removalShipmentEventList;
     }
@@ -616,7 +615,7 @@ public class FinancialEvents {
      *
      * @return removalShipmentAdjustmentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RemovalShipmentAdjustmentEventList getRemovalShipmentAdjustmentEventList() {
         return removalShipmentAdjustmentEventList;
     }
@@ -636,7 +635,7 @@ public class FinancialEvents {
      *
      * @return trialShipmentEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrialShipmentEventList getTrialShipmentEventList() {
         return trialShipmentEventList;
     }
@@ -655,7 +654,7 @@ public class FinancialEvents {
      *
      * @return tdSReimbursementEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TDSReimbursementEventList getTdSReimbursementEventList() {
         return tdSReimbursementEventList;
     }
@@ -674,7 +673,7 @@ public class FinancialEvents {
      *
      * @return adhocDisbursementEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdhocDisbursementEventList getAdhocDisbursementEventList() {
         return adhocDisbursementEventList;
     }
@@ -693,7 +692,7 @@ public class FinancialEvents {
      *
      * @return taxWithholdingEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxWithholdingEventList getTaxWithholdingEventList() {
         return taxWithholdingEventList;
     }
@@ -712,7 +711,7 @@ public class FinancialEvents {
      *
      * @return chargeRefundEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeRefundEventList getChargeRefundEventList() {
         return chargeRefundEventList;
     }
@@ -732,7 +731,7 @@ public class FinancialEvents {
      *
      * @return failedAdhocDisbursementEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FailedAdhocDisbursementEventList getFailedAdhocDisbursementEventList() {
         return failedAdhocDisbursementEventList;
     }
@@ -752,7 +751,7 @@ public class FinancialEvents {
      *
      * @return valueAddedServiceChargeEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ValueAddedServiceChargeEventList getValueAddedServiceChargeEventList() {
         return valueAddedServiceChargeEventList;
     }
@@ -772,7 +771,7 @@ public class FinancialEvents {
      *
      * @return capacityReservationBillingEventList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CapacityReservationBillingEventList getCapacityReservationBillingEventList() {
         return capacityReservationBillingEventList;
     }

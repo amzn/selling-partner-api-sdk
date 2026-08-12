@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An issue with a listings item. */
-@Schema(description = "An issue with a listings item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An issue with a listings item.")
 public class Issue {
     @SerializedName("code")
     private String code = null;
@@ -105,7 +104,9 @@ public class Issue {
      *
      * @return code
      */
-    @Schema(required = true, description = "An issue code that identifies the type of issue.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An issue code that identifies the type of issue.")
     public String getCode() {
         return code;
     }
@@ -124,7 +125,7 @@ public class Issue {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message that describes the issue.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A message that describes the issue.")
     public String getMessage() {
         return message;
     }
@@ -143,7 +144,7 @@ public class Issue {
      *
      * @return severity
      */
-    @Schema(required = true, description = "The severity of the issue.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The severity of the issue.")
     public SeverityEnum getSeverity() {
         return severity;
     }
@@ -170,7 +171,8 @@ public class Issue {
      *
      * @return attributeNames
      */
-    @Schema(description = "Names of the attributes that are associated with the issue, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Names of the attributes that are associated with the issue, if applicable.")
     public List<String> getAttributeNames() {
         return attributeNames;
     }
@@ -204,7 +206,7 @@ public class Issue {
      *
      * @return categories
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.")
@@ -226,7 +228,7 @@ public class Issue {
      *
      * @return enforcements
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public IssueEnforcements getEnforcements() {
         return enforcements;
     }
@@ -253,7 +255,7 @@ public class Issue {
      *
      * @return marketplaceIds
      */
-    @Schema(description = "List of Amazon store identifiers.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of Amazon store identifiers.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }

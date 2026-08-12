@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A delivery document for a package. */
-@Schema(description = "A delivery document for a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A delivery document for a package.")
 public class DeliveryDocument {
     @SerializedName("documentType")
     private String documentType = null;
@@ -35,7 +34,9 @@ public class DeliveryDocument {
      *
      * @return documentType
      */
-    @Schema(required = true, description = "The delivery document type. The only possible value is `DELIVERY_IMAGE`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The delivery document type. The only possible value is `DELIVERY_IMAGE`.")
     public String getDocumentType() {
         return documentType;
     }
@@ -55,7 +56,7 @@ public class DeliveryDocument {
      *
      * @return url
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.")
     public String getUrl() {

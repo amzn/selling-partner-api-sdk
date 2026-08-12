@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Transportation details for this shipment. */
-@Schema(description = "Transportation details for this shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for this shipment.")
 public class TransportationDetails {
     /** The type of shipment. */
     @JsonAdapter(ShipModeEnum.Adapter.class)
@@ -152,7 +152,7 @@ public class TransportationDetails {
      *
      * @return shipMode
      */
-    @Schema(description = "The type of shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of shipment.")
     public ShipModeEnum getShipMode() {
         return shipMode;
     }
@@ -171,7 +171,7 @@ public class TransportationDetails {
      *
      * @return transportationMode
      */
-    @Schema(description = "The mode of transportation for this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The mode of transportation for this shipment.")
     public TransportationModeEnum getTransportationMode() {
         return transportationMode;
     }
@@ -190,7 +190,7 @@ public class TransportationDetails {
      *
      * @return shippedDate
      */
-    @Schema(description = "Date when shipment is performed by the Vendor to Buyer")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date when shipment is performed by the Vendor to Buyer")
     public OffsetDateTime getShippedDate() {
         return shippedDate;
     }
@@ -209,7 +209,8 @@ public class TransportationDetails {
      *
      * @return estimatedDeliveryDate
      */
-    @Schema(description = "Estimated Date on which shipment will be delivered from Vendor to Buyer")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Estimated Date on which shipment will be delivered from Vendor to Buyer")
     public OffsetDateTime getEstimatedDeliveryDate() {
         return estimatedDeliveryDate;
     }
@@ -228,7 +229,8 @@ public class TransportationDetails {
      *
      * @return shipmentDeliveryDate
      */
-    @Schema(description = "Date on which shipment will be delivered from Vendor to Buyer")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Date on which shipment will be delivered from Vendor to Buyer")
     public OffsetDateTime getShipmentDeliveryDate() {
         return shipmentDeliveryDate;
     }
@@ -247,7 +249,7 @@ public class TransportationDetails {
      *
      * @return carrierDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierDetails getCarrierDetails() {
         return carrierDetails;
     }
@@ -270,7 +272,7 @@ public class TransportationDetails {
      *
      * @return billOfLadingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.")
     public String getBillOfLadingNumber() {

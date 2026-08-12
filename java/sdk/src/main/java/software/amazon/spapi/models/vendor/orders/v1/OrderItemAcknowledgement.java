@@ -17,15 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged
  * quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).")
 public class OrderItemAcknowledgement {
@@ -151,7 +151,9 @@ public class OrderItemAcknowledgement {
      *
      * @return acknowledgementCode
      */
-    @Schema(required = true, description = "This indicates the acknowledgement code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "This indicates the acknowledgement code.")
     public AcknowledgementCodeEnum getAcknowledgementCode() {
         return acknowledgementCode;
     }
@@ -170,7 +172,7 @@ public class OrderItemAcknowledgement {
      *
      * @return acknowledgedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getAcknowledgedQuantity() {
         return acknowledgedQuantity;
     }
@@ -189,7 +191,8 @@ public class OrderItemAcknowledgement {
      *
      * @return scheduledShipDate
      */
-    @Schema(description = "Estimated ship date per line item. Must be in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Estimated ship date per line item. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getScheduledShipDate() {
         return scheduledShipDate;
     }
@@ -208,7 +211,8 @@ public class OrderItemAcknowledgement {
      *
      * @return scheduledDeliveryDate
      */
-    @Schema(description = "Estimated delivery date per line item. Must be in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Estimated delivery date per line item. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getScheduledDeliveryDate() {
         return scheduledDeliveryDate;
     }
@@ -227,7 +231,7 @@ public class OrderItemAcknowledgement {
      *
      * @return rejectionReason
      */
-    @Schema(description = "Indicates the reason for rejection.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates the reason for rejection.")
     public RejectionReasonEnum getRejectionReason() {
         return rejectionReason;
     }

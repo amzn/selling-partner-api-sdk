@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** OrderItemsInner */
@@ -34,7 +33,7 @@ public class OrderItemsInner {
      *
      * @return orderItemId
      */
-    @Schema(description = "The order item's unique identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order item's unique identifier.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -53,7 +52,7 @@ public class OrderItemsInner {
      *
      * @return quantity
      */
-    @Schema(description = "The quantity for which to update the shipment status.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity for which to update the shipment status.")
     public Integer getQuantity() {
         return quantity;
     }

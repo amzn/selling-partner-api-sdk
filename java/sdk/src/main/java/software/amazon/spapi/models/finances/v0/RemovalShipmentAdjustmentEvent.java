@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +24,7 @@ import java.util.Objects;
  * a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than
  * ordered).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the buyer (for example, when the charge was incorrectly calculated as less than it should be). A negative value indicates a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than ordered).")
 public class RemovalShipmentAdjustmentEvent {
@@ -56,7 +56,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -77,7 +77,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return adjustmentEventId
      */
-    @Schema(description = "The unique identifier for the adjustment event.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier for the adjustment event.")
     public String getAdjustmentEventId() {
         return adjustmentEventId;
     }
@@ -96,7 +96,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return merchantOrderId
      */
-    @Schema(description = "The merchant removal orderId.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The merchant removal orderId.")
     public String getMerchantOrderId() {
         return merchantOrderId;
     }
@@ -115,7 +115,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return orderId
      */
-    @Schema(description = "The orderId for shipping inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The orderId for shipping inventory.")
     public String getOrderId() {
         return orderId;
     }
@@ -134,7 +134,8 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return transactionType
      */
-    @Schema(description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`.")
     public String getTransactionType() {
         return transactionType;
     }
@@ -163,7 +164,8 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return removalShipmentItemAdjustmentList
      */
-    @Schema(description = "A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.")
     public List<RemovalShipmentItemAdjustment> getRemovalShipmentItemAdjustmentList() {
         return removalShipmentItemAdjustmentList;
     }

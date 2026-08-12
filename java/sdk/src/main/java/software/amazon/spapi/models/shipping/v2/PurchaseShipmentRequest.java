@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /** The request schema for the purchaseShipment operation. */
-@Schema(description = "The request schema for the purchaseShipment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the purchaseShipment operation.")
 public class PurchaseShipmentRequest {
     @SerializedName("requestToken")
     private String requestToken = null;
@@ -46,7 +45,9 @@ public class PurchaseShipmentRequest {
      *
      * @return requestToken
      */
-    @Schema(required = true, description = "A unique token generated to identify a getRates operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A unique token generated to identify a getRates operation.")
     public String getRequestToken() {
         return requestToken;
     }
@@ -65,7 +66,7 @@ public class PurchaseShipmentRequest {
      *
      * @return rateId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "An identifier for the rate (shipment offering) provided by a shipping service provider.")
     public String getRateId() {
@@ -87,7 +88,7 @@ public class PurchaseShipmentRequest {
      *
      * @return requestedDocumentSpecification
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequestedDocumentSpecification getRequestedDocumentSpecification() {
         return requestedDocumentSpecification;
     }
@@ -107,7 +108,7 @@ public class PurchaseShipmentRequest {
      *
      * @return requestedValueAddedServices
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequestedValueAddedServiceList getRequestedValueAddedServices() {
         return requestedValueAddedServices;
     }
@@ -137,7 +138,7 @@ public class PurchaseShipmentRequest {
      *
      * @return additionalInputs
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.")
     public Map<String, Object> getAdditionalInputs() {

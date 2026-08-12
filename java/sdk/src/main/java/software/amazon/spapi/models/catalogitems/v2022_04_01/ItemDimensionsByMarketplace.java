@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Dimensions that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Dimensions that are associated with the item in the Amazon catalog for the indicated `marketplaceId`.")
 public class ItemDimensionsByMarketplace {
@@ -41,7 +40,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -63,7 +62,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return item
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getItem() {
         return item;
     }
@@ -82,7 +81,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return _package
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getPackage() {
         return _package;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Small Parcel Delivery (SPD) tracking items input information. */
-@Schema(description = "Small Parcel Delivery (SPD) tracking items input information.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Small Parcel Delivery (SPD) tracking items input information.")
 public class SpdTrackingItemInput {
     @SerializedName("boxId")
     private String boxId = null;
@@ -36,7 +36,7 @@ public class SpdTrackingItemInput {
      *
      * @return boxId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.")
@@ -59,7 +59,7 @@ public class SpdTrackingItemInput {
      *
      * @return trackingId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The tracking Id associated with each box in a non-Amazon partnered Small Parcel Delivery (SPD) shipment. The seller must provide this information.")

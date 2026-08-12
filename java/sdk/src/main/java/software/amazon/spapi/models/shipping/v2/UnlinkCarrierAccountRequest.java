@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for remove the Carrier Account associated with the provided merchant. */
-@Schema(description = "The request schema for remove the Carrier Account associated with the provided merchant.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for remove the Carrier Account associated with the provided merchant.")
 public class UnlinkCarrierAccountRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -35,7 +35,7 @@ public class UnlinkCarrierAccountRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
@@ -54,7 +54,7 @@ public class UnlinkCarrierAccountRequest {
      *
      * @return accountId
      */
-    @Schema(description = "Identifier for the seller's carrier account.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for the seller's carrier account.")
     public String getAccountId() {
         return accountId;
     }

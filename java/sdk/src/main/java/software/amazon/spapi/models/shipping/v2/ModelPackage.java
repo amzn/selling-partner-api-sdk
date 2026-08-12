@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A package to be shipped through a shipping service offering. */
-@Schema(description = "A package to be shipped through a shipping service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A package to be shipped through a shipping service offering.")
 public class ModelPackage {
     @SerializedName("dimensions")
     private Dimensions dimensions = null;
@@ -53,7 +53,7 @@ public class ModelPackage {
      *
      * @return dimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -72,7 +72,7 @@ public class ModelPackage {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -91,7 +91,7 @@ public class ModelPackage {
      *
      * @return insuredValue
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getInsuredValue() {
         return insuredValue;
     }
@@ -110,7 +110,8 @@ public class ModelPackage {
      *
      * @return isHazmat
      */
-    @Schema(description = "When true, the package contains hazardous materials. Defaults to false.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the package contains hazardous materials. Defaults to false.")
     public Boolean getIsHazmat() {
         return isHazmat;
     }
@@ -129,7 +130,7 @@ public class ModelPackage {
      *
      * @return sellerDisplayName
      */
-    @Schema(description = "The seller name displayed on the label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller name displayed on the label.")
     public String getSellerDisplayName() {
         return sellerDisplayName;
     }
@@ -148,7 +149,7 @@ public class ModelPackage {
      *
      * @return charges
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeList getCharges() {
         return charges;
     }
@@ -168,7 +169,7 @@ public class ModelPackage {
      *
      * @return packageClientReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.")
@@ -190,7 +191,7 @@ public class ModelPackage {
      *
      * @return items
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemList getItems() {
         return items;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Information for tracking package deliveries. */
-@Schema(description = "Information for tracking package deliveries.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information for tracking package deliveries.")
 public class TrackingEvent {
     @SerializedName("eventDate")
     private OffsetDateTime eventDate = null;
@@ -41,7 +41,7 @@ public class TrackingEvent {
      *
      * @return eventDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getEventDate() {
         return eventDate;
     }
@@ -60,7 +60,7 @@ public class TrackingEvent {
      *
      * @return eventAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TrackingAddress getEventAddress() {
         return eventAddress;
     }
@@ -79,7 +79,7 @@ public class TrackingEvent {
      *
      * @return eventCode
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public EventCode getEventCode() {
         return eventCode;
     }
@@ -98,7 +98,9 @@ public class TrackingEvent {
      *
      * @return eventDescription
      */
-    @Schema(required = true, description = "A description for the corresponding event code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A description for the corresponding event code.")
     public String getEventDescription() {
         return eventDescription;
     }

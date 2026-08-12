@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of additional information about the item. */
-@Schema(description = "A list of additional information about the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of additional information about the item.")
 public class Contexts extends ArrayList<Context> {
 
     @Override

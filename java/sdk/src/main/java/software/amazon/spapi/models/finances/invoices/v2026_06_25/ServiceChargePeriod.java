@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The time period for a service charge. */
-@Schema(description = "The time period for a service charge.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time period for a service charge.")
 public class ServiceChargePeriod {
     @SerializedName("startDate")
     private OffsetDateTime startDate = null;
@@ -35,7 +35,9 @@ public class ServiceChargePeriod {
      *
      * @return startDate
      */
-    @Schema(required = true, description = "When the service charge period starts. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When the service charge period starts. In ISO 8601 format.")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -54,7 +56,9 @@ public class ServiceChargePeriod {
      *
      * @return endDate
      */
-    @Schema(required = true, description = "When the service charge period ends. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When the service charge period ends. In ISO 8601 format.")
     public OffsetDateTime getEndDate() {
         return endDate;
     }

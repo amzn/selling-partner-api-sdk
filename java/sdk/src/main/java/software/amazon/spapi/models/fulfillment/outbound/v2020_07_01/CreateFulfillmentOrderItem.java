@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item information for creating a fulfillment order. */
-@Schema(description = "Item information for creating a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for creating a fulfillment order.")
 public class CreateFulfillmentOrderItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -56,7 +55,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -78,7 +77,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.")
@@ -100,7 +99,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -119,7 +118,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return giftMessage
      */
-    @Schema(description = "A message to the gift recipient, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A message to the gift recipient, if applicable.")
     public String getGiftMessage() {
         return giftMessage;
     }
@@ -138,7 +137,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return displayableComment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.")
     public String getDisplayableComment() {
@@ -159,7 +158,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return fulfillmentNetworkSku
      */
-    @Schema(description = "Amazon's fulfillment network SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU of the item.")
     public String getFulfillmentNetworkSku() {
         return fulfillmentNetworkSku;
     }
@@ -178,7 +177,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return perUnitDeclaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitDeclaredValue() {
         return perUnitDeclaredValue;
     }
@@ -197,7 +196,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return perUnitPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitPrice() {
         return perUnitPrice;
     }
@@ -216,7 +215,7 @@ public class CreateFulfillmentOrderItem {
      *
      * @return perUnitTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitTax() {
         return perUnitTax;
     }

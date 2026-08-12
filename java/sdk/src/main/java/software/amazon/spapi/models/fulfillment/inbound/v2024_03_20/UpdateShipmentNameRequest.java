@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;updateShipmentName&#x60; request. */
-@Schema(description = "The `updateShipmentName` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `updateShipmentName` request.")
 public class UpdateShipmentNameRequest {
     @SerializedName("name")
     private String name = null;
@@ -32,7 +31,9 @@ public class UpdateShipmentNameRequest {
      *
      * @return name
      */
-    @Schema(required = true, description = "A human-readable name to update the shipment name to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A human-readable name to update the shipment name to.")
     public String getName() {
         return name;
     }

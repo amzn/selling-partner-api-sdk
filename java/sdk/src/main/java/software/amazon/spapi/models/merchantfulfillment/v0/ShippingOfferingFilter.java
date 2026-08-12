@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Filter for use when requesting eligible shipping services. */
-@Schema(description = "Filter for use when requesting eligible shipping services.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Filter for use when requesting eligible shipping services.")
 public class ShippingOfferingFilter {
     @SerializedName("IncludePackingSlipWithLabel")
     private Boolean includePackingSlipWithLabel = null;
@@ -41,7 +40,7 @@ public class ShippingOfferingFilter {
      *
      * @return includePackingSlipWithLabel
      */
-    @Schema(description = "When true, include a packing slip with the label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include a packing slip with the label.")
     public Boolean getIncludePackingSlipWithLabel() {
         return includePackingSlipWithLabel;
     }
@@ -60,7 +59,7 @@ public class ShippingOfferingFilter {
      *
      * @return includeComplexShippingOptions
      */
-    @Schema(description = "When true, include complex shipping options.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include complex shipping options.")
     public Boolean getIncludeComplexShippingOptions() {
         return includeComplexShippingOptions;
     }
@@ -79,7 +78,7 @@ public class ShippingOfferingFilter {
      *
      * @return carrierWillPickUp
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierWillPickUpOption getCarrierWillPickUp() {
         return carrierWillPickUp;
     }
@@ -98,7 +97,7 @@ public class ShippingOfferingFilter {
      *
      * @return deliveryExperience
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryExperienceOption getDeliveryExperience() {
         return deliveryExperience;
     }

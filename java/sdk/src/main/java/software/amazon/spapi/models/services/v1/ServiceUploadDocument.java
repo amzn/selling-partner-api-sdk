@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Input for to be uploaded document. */
-@Schema(description = "Input for to be uploaded document.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input for to be uploaded document.")
 public class ServiceUploadDocument {
     /** The content type of the to-be-uploaded file */
     @JsonAdapter(ContentTypeEnum.Adapter.class)
@@ -97,7 +97,9 @@ public class ServiceUploadDocument {
      *
      * @return contentType
      */
-    @Schema(required = true, description = "The content type of the to-be-uploaded file")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The content type of the to-be-uploaded file")
     public ContentTypeEnum getContentType() {
         return contentType;
     }
@@ -116,7 +118,9 @@ public class ServiceUploadDocument {
      *
      * @return contentLength
      */
-    @Schema(required = true, description = "The content length of the to-be-uploaded file")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The content length of the to-be-uploaded file")
     public BigDecimal getContentLength() {
         return contentLength;
     }
@@ -136,7 +140,7 @@ public class ServiceUploadDocument {
      *
      * @return contentMD5
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.")
     public String getContentMD5() {

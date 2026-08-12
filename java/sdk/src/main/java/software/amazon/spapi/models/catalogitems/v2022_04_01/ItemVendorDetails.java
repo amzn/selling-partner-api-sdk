@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.")
 public class ItemVendorDetails extends ArrayList<ItemVendorDetailsByMarketplace> {

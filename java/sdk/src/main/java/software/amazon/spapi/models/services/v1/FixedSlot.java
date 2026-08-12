@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * In this slot format each slot only has the requested capacity types. This slot size is as specified by slot duration.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "In this slot format each slot only has the requested capacity types. This slot size is as specified by slot duration.")
 public class FixedSlot {
@@ -48,7 +48,8 @@ public class FixedSlot {
      *
      * @return startDateTime
      */
-    @Schema(description = "Start date time of slot in ISO 8601 format with precision of seconds.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Start date time of slot in ISO 8601 format with precision of seconds.")
     public OffsetDateTime getStartDateTime() {
         return startDateTime;
     }
@@ -68,7 +69,7 @@ public class FixedSlot {
      *
      * @return scheduledCapacity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Scheduled capacity corresponding to the slot. This capacity represents the originally allocated capacity as per resource schedule.")
     public Integer getScheduledCapacity() {
@@ -90,7 +91,7 @@ public class FixedSlot {
      *
      * @return availableCapacity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations.")
     public Integer getAvailableCapacity() {
@@ -112,7 +113,7 @@ public class FixedSlot {
      *
      * @return encumberedCapacity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders.")
     public Integer getEncumberedCapacity() {
@@ -134,7 +135,7 @@ public class FixedSlot {
      *
      * @return reservedCapacity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch.")
     public Integer getReservedCapacity() {

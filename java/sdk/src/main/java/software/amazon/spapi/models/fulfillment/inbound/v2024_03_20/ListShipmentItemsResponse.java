@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;listShipmentItems&#x60; response. */
-@Schema(description = "The `listShipmentItems` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `listShipmentItems` response.")
 public class ListShipmentItemsResponse {
     @SerializedName("items")
     private List<Item> items = null;
@@ -45,7 +44,7 @@ public class ListShipmentItemsResponse {
      *
      * @return items
      */
-    @Schema(required = true, description = "The items in a shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The items in a shipment.")
     public List<Item> getItems() {
         return items;
     }
@@ -64,7 +63,7 @@ public class ListShipmentItemsResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }

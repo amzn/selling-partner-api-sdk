@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Link to retrieve the schema. */
-@Schema(description = "Link to retrieve the schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Link to retrieve the schema.")
 public class SchemaLinkLink {
     @SerializedName("resource")
     private String resource = null;
@@ -84,7 +83,7 @@ public class SchemaLinkLink {
      *
      * @return resource
      */
-    @Schema(required = true, description = "URI resource for the link.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "URI resource for the link.")
     public String getResource() {
         return resource;
     }
@@ -103,7 +102,7 @@ public class SchemaLinkLink {
      *
      * @return verb
      */
-    @Schema(required = true, description = "HTTP method for the link operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "HTTP method for the link operation.")
     public VerbEnum getVerb() {
         return verb;
     }

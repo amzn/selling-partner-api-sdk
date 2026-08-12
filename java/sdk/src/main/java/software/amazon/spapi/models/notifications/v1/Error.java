@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An error response returned when the request is unsuccessful. */
-@Schema(description = "An error response returned when the request is unsuccessful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An error response returned when the request is unsuccessful.")
 public class Error {
     @SerializedName("code")
     private String code = null;
@@ -38,7 +38,9 @@ public class Error {
      *
      * @return code
      */
-    @Schema(required = true, description = "An error code that identifies the type of error that occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An error code that identifies the type of error that occurred.")
     public String getCode() {
         return code;
     }
@@ -57,7 +59,9 @@ public class Error {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message that describes the error condition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A message that describes the error condition.")
     public String getMessage() {
         return message;
     }
@@ -76,7 +80,8 @@ public class Error {
      *
      * @return details
      */
-    @Schema(description = "Additional details that can help the caller understand or fix the issue.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Additional details that can help the caller understand or fix the issue.")
     public String getDetails() {
         return details;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Additional information related to the product. */
-@Schema(description = "Additional information related to the product.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information related to the product.")
 public class ProductContext {
     @SerializedName("asin")
     private String asin = null;
@@ -41,7 +40,8 @@ public class ProductContext {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -60,7 +60,7 @@ public class ProductContext {
      *
      * @return sku
      */
-    @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Stock Keeping Unit (SKU) of the item.")
     public String getSku() {
         return sku;
     }
@@ -79,7 +79,7 @@ public class ProductContext {
      *
      * @return quantityShipped
      */
-    @Schema(description = "The quantity of the item shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the item shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -98,7 +98,7 @@ public class ProductContext {
      *
      * @return fulfillmentNetwork
      */
-    @Schema(description = "The fulfillment network of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The fulfillment network of the item.")
     public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }

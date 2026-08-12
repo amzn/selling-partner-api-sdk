@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Model of a restricted resource. */
-@Schema(description = "Model of a restricted resource.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Model of a restricted resource.")
 public class RestrictedResource {
     /** The HTTP method in the restricted resource. */
     @JsonAdapter(MethodEnum.Adapter.class)
@@ -95,7 +94,9 @@ public class RestrictedResource {
      *
      * @return method
      */
-    @Schema(required = true, description = "The HTTP method in the restricted resource.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The HTTP method in the restricted resource.")
     public MethodEnum getMethod() {
         return method;
     }
@@ -124,7 +125,7 @@ public class RestrictedResource {
      *
      * @return path
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The path in the restricted resource. Here are some path examples: - ```/orders/v0/orders```. For getting an RDT for the getOrders operation of the Orders API. For bulk orders. - ```/orders/v0/orders/123-1234567-1234567```. For getting an RDT for the getOrder operation of the Orders API. For a specific order. - ```/orders/v0/orders/123-1234567-1234567/orderItems```. For getting an RDT for the getOrderItems operation of the Orders API. For the order items in a specific order. - ```/mfn/v0/shipments/FBA1234ABC5D```. For getting an RDT for the getShipment operation of the Shipping API. For a specific shipment. - ```/mfn/v0/shipments/{shipmentId}```. For getting an RDT for the getShipment operation of the Shipping API. For any of a selling partner's shipments that you specify when you call the getShipment operation.")
@@ -160,7 +161,7 @@ public class RestrictedResource {
      *
      * @return dataElements
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates the type of Personally Identifiable Information requested. This parameter is required only when getting an RDT for use with the getOrder, getOrders, or getOrderItems operation of the Orders API. For more information, see the [Tokens API Use Case Guide](doc:tokens-api-use-case-guide). Possible values include: - **buyerInfo**. On the order level this includes general identifying information about the buyer and tax-related information. On the order item level this includes gift wrap information and custom order information, if available. - **shippingAddress**. This includes information for fulfilling orders. - **buyerTaxInformation**. This includes information for issuing tax invoices.")
     public List<String> getDataElements() {

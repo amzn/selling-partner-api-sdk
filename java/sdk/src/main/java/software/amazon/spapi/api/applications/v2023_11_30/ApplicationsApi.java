@@ -29,7 +29,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 
 public class ApplicationsApi {
@@ -55,8 +54,7 @@ public class ApplicationsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call rotateApplicationClientSecretCall(
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call rotateApplicationClientSecretCall(final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -95,8 +93,7 @@ public class ApplicationsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call rotateApplicationClientSecretValidateBeforeCall(
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call rotateApplicationClientSecretValidateBeforeCall(final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return rotateApplicationClientSecretCall(progressRequestListener);
@@ -242,10 +239,10 @@ public class ApplicationsApi {
     public okhttp3.Call rotateApplicationClientSecretAsync(final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = rotateApplicationClientSecretValidateBeforeCall(progressRequestListener);

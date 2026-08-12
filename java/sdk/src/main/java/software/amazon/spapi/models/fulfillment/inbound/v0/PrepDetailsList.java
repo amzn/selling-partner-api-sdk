@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of preparation instructions and who is responsible for that preparation. */
-@Schema(description = "A list of preparation instructions and who is responsible for that preparation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of preparation instructions and who is responsible for that preparation.")
 public class PrepDetailsList extends ArrayList<PrepDetails> {
 
     @Override

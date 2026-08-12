@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Shipment label page types. */
-@Schema(description = "Shipment label page types.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment label page types.")
 public class ShipmentLabelPageTypes {
     @SerializedName("labelStatus")
     private LabelStatus labelStatus = null;
@@ -37,7 +36,7 @@ public class ShipmentLabelPageTypes {
      *
      * @return labelStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelStatus getLabelStatus() {
         return labelStatus;
     }
@@ -64,7 +63,7 @@ public class ShipmentLabelPageTypes {
      *
      * @return pageTypes
      */
-    @Schema(description = "List of available page types.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of available page types.")
     public List<PageType> getPageTypes() {
         return pageTypes;
     }

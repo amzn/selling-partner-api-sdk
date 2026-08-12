@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The paginated list of supply sources. */
-@Schema(description = "The paginated list of supply sources.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The paginated list of supply sources.")
 public class GetSupplySourcesResponse {
     @SerializedName("supplySources")
     private SupplySourceList supplySources = null;
@@ -35,7 +34,7 @@ public class GetSupplySourcesResponse {
      *
      * @return supplySources
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceList getSupplySources() {
         return supplySources;
     }
@@ -54,7 +53,8 @@ public class GetSupplySourcesResponse {
      *
      * @return nextPageToken
      */
-    @Schema(description = "If present, use this pagination token to retrieve the next page of supply sources.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "If present, use this pagination token to retrieve the next page of supply sources.")
     public String getNextPageToken() {
         return nextPageToken;
     }

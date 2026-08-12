@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item. */
-@Schema(description = "An item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item.")
 public class Product {
     @SerializedName("Identifiers")
     private IdentifierType identifiers = null;
@@ -47,7 +46,7 @@ public class Product {
      *
      * @return identifiers
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IdentifierType getIdentifiers() {
         return identifiers;
     }
@@ -66,7 +65,7 @@ public class Product {
      *
      * @return attributeSets
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AttributeSetList getAttributeSets() {
         return attributeSets;
     }
@@ -85,7 +84,7 @@ public class Product {
      *
      * @return relationships
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RelationshipList getRelationships() {
         return relationships;
     }
@@ -104,7 +103,7 @@ public class Product {
      *
      * @return competitivePricing
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CompetitivePricingType getCompetitivePricing() {
         return competitivePricing;
     }
@@ -123,7 +122,7 @@ public class Product {
      *
      * @return salesRankings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SalesRankList getSalesRankings() {
         return salesRankings;
     }
@@ -142,7 +141,7 @@ public class Product {
      *
      * @return offers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OffersList getOffers() {
         return offers;
     }

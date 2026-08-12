@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details about the movement of money in the financial transaction. */
-@Schema(description = "Details about the movement of money in the financial transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details about the movement of money in the financial transaction.")
 public class Breakdown {
     @SerializedName("breakdownType")
     private String breakdownType = null;
@@ -40,7 +40,7 @@ public class Breakdown {
      *
      * @return breakdownType
      */
-    @Schema(description = "The type of charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
     public String getBreakdownType() {
         return breakdownType;
     }
@@ -59,7 +59,7 @@ public class Breakdown {
      *
      * @return breakdownAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getBreakdownAmount() {
         return breakdownAmount;
     }
@@ -86,7 +86,8 @@ public class Breakdown {
      *
      * @return breakdowns
      */
-    @Schema(description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
     public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }

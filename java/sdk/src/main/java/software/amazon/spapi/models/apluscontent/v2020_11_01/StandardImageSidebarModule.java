@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Two images, two paragraphs, and two bulleted lists. One image is smaller and displayed in the sidebar. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Two images, two paragraphs, and two bulleted lists. One image is smaller and displayed in the sidebar.")
 public class StandardImageSidebarModule {
@@ -49,7 +48,7 @@ public class StandardImageSidebarModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -68,7 +67,7 @@ public class StandardImageSidebarModule {
      *
      * @return imageCaptionBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageCaptionBlock getImageCaptionBlock() {
         return imageCaptionBlock;
     }
@@ -87,7 +86,7 @@ public class StandardImageSidebarModule {
      *
      * @return descriptionTextBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getDescriptionTextBlock() {
         return descriptionTextBlock;
     }
@@ -106,7 +105,7 @@ public class StandardImageSidebarModule {
      *
      * @return descriptionListBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextListBlock getDescriptionListBlock() {
         return descriptionListBlock;
     }
@@ -125,7 +124,7 @@ public class StandardImageSidebarModule {
      *
      * @return sidebarImageTextBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getSidebarImageTextBlock() {
         return sidebarImageTextBlock;
     }
@@ -144,7 +143,7 @@ public class StandardImageSidebarModule {
      *
      * @return sidebarListBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextListBlock getSidebarListBlock() {
         return sidebarListBlock;
     }

@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.net.URI;
 import java.util.Objects;
 
 /** A link to resources related to a listing restriction. */
-@Schema(description = "A link to resources related to a listing restriction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A link to resources related to a listing restriction.")
 public class Link {
     @SerializedName("resource")
     private URI resource = null;
@@ -90,7 +90,7 @@ public class Link {
      *
      * @return resource
      */
-    @Schema(required = true, description = "The URI of the related resource.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The URI of the related resource.")
     public URI getResource() {
         return resource;
     }
@@ -109,7 +109,9 @@ public class Link {
      *
      * @return verb
      */
-    @Schema(required = true, description = "The HTTP verb used to interact with the related resource.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The HTTP verb used to interact with the related resource.")
     public VerbEnum getVerb() {
         return verb;
     }
@@ -128,7 +130,7 @@ public class Link {
      *
      * @return title
      */
-    @Schema(description = "The title of the related resource.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The title of the related resource.")
     public String getTitle() {
         return title;
     }
@@ -147,7 +149,7 @@ public class Link {
      *
      * @return type
      */
-    @Schema(description = "The media type of the related resource.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The media type of the related resource.")
     public String getType() {
         return type;
     }

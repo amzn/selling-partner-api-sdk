@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Contains information about a pallet that is used in the inbound plan. The pallet is a container that holds multiple
  * items or boxes.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains information about a pallet that is used in the inbound plan. The pallet is a container that holds multiple items or boxes.")
 public class Pallet {
@@ -49,7 +48,7 @@ public class Pallet {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -68,7 +67,9 @@ public class Pallet {
      *
      * @return packageId
      */
-    @Schema(required = true, description = "Primary key to uniquely identify a Package (Box or Pallet).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Primary key to uniquely identify a Package (Box or Pallet).")
     public String getPackageId() {
         return packageId;
     }
@@ -87,7 +88,7 @@ public class Pallet {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of containers where all other properties like weight or dimensions are identical.")
     public Integer getQuantity() {
@@ -108,7 +109,7 @@ public class Pallet {
      *
      * @return stackability
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Stackability getStackability() {
         return stackability;
     }
@@ -127,7 +128,7 @@ public class Pallet {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }

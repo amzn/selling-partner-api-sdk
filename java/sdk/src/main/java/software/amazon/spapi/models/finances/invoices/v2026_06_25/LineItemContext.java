@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contextual information about an invoice line item. */
-@Schema(description = "Contextual information about an invoice line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contextual information about an invoice line item.")
 public class LineItemContext {
     /** The type of line item. */
     @JsonAdapter(LineItemTypeEnum.Adapter.class)
@@ -152,7 +151,7 @@ public class LineItemContext {
      *
      * @return lineItemType
      */
-    @Schema(required = true, description = "The type of line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of line item.")
     public LineItemTypeEnum getLineItemType() {
         return lineItemType;
     }
@@ -179,7 +178,7 @@ public class LineItemContext {
      *
      * @return itemIdentifiers
      */
-    @Schema(description = "A list of identifiers for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of identifiers for the item.")
     public List<ItemIdentifier> getItemIdentifiers() {
         return itemIdentifiers;
     }
@@ -198,7 +197,7 @@ public class LineItemContext {
      *
      * @return itemDescription
      */
-    @Schema(description = "A description of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the item.")
     public String getItemDescription() {
         return itemDescription;
     }
@@ -217,7 +216,7 @@ public class LineItemContext {
      *
      * @return serviceChargeType
      */
-    @Schema(description = "The type of service charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of service charge.")
     public ServiceChargeTypeEnum getServiceChargeType() {
         return serviceChargeType;
     }
@@ -236,7 +235,7 @@ public class LineItemContext {
      *
      * @return serviceChargePeriod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceChargePeriod getServiceChargePeriod() {
         return serviceChargePeriod;
     }
@@ -255,7 +254,7 @@ public class LineItemContext {
      *
      * @return matchingContext
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MatchingContext getMatchingContext() {
         return matchingContext;
     }

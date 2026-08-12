@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item from a SAFE-T claim reimbursement. */
-@Schema(description = "An item from a SAFE-T claim reimbursement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item from a SAFE-T claim reimbursement.")
 public class SAFETReimbursementItem {
     @SerializedName("itemChargeList")
     private ChargeComponentList itemChargeList = null;
@@ -38,7 +37,7 @@ public class SAFETReimbursementItem {
      *
      * @return itemChargeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getItemChargeList() {
         return itemChargeList;
     }
@@ -57,7 +56,8 @@ public class SAFETReimbursementItem {
      *
      * @return productDescription
      */
-    @Schema(description = "The description of the item as shown on the product detail page on the retail website.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The description of the item as shown on the product detail page on the retail website.")
     public String getProductDescription() {
         return productDescription;
     }
@@ -76,7 +76,7 @@ public class SAFETReimbursementItem {
      *
      * @return quantity
      */
-    @Schema(description = "The number of units of the item being reimbursed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units of the item being reimbursed.")
     public String getQuantity() {
         return quantity;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** This object allows users to specify an order to be scheduled. Only the amazonOrderId is required. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "This object allows users to specify an order to be scheduled. Only the amazonOrderId is required. ")
 public class OrderScheduleDetails {
@@ -37,7 +36,7 @@ public class OrderScheduleDetails {
      *
      * @return amazonOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
@@ -59,7 +58,7 @@ public class OrderScheduleDetails {
      *
      * @return packageDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageDetails getPackageDetails() {
         return packageDetails;
     }

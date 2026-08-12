@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Includes configuration and timezone of a supply source. */
-@Schema(description = "Includes configuration and timezone of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Includes configuration and timezone of a supply source.")
 public class SupplySourceConfiguration {
     @SerializedName("operationalConfiguration")
     private OperationalConfiguration operationalConfiguration = null;
@@ -35,7 +34,7 @@ public class SupplySourceConfiguration {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }
@@ -55,7 +54,7 @@ public class SupplySourceConfiguration {
      *
      * @return timezone
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Please see RFC 6557, should be a canonical time zone ID as listed here: https://www.joda.org/joda-time/timezones.html.")
     public String getTimezone() {

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Additional inventory details. This object is only displayed if the details parameter in the request is set to
  * &#x60;SHOW&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Additional inventory details. This object is only displayed if the details parameter in the request is set to `SHOW`.")
 public class InventoryDetails {
@@ -43,7 +42,8 @@ public class InventoryDetails {
      *
      * @return availableDistributableQuantity
      */
-    @Schema(description = "Quantity that is available for downstream channel replenishment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Quantity that is available for downstream channel replenishment.")
     public Long getAvailableDistributableQuantity() {
         return availableDistributableQuantity;
     }
@@ -62,7 +62,8 @@ public class InventoryDetails {
      *
      * @return replenishmentQuantity
      */
-    @Schema(description = "Quantity that is in transit from AWD and has not yet been received at FBA.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Quantity that is in transit from AWD and has not yet been received at FBA.")
     public Long getReplenishmentQuantity() {
         return replenishmentQuantity;
     }
@@ -81,7 +82,7 @@ public class InventoryDetails {
      *
      * @return reservedDistributableQuantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Quantity that is reserved for a downstream channel replenishment order that is being prepared for shipment.")
     public Long getReservedDistributableQuantity() {

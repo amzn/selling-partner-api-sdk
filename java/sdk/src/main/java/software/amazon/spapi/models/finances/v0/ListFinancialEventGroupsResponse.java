@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;listFinancialEventGroups&#x60; operation. */
-@Schema(description = "The response schema for the `listFinancialEventGroups` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `listFinancialEventGroups` operation.")
 public class ListFinancialEventGroupsResponse {
     @SerializedName("payload")
     private ListFinancialEventGroupsPayload payload = null;
@@ -35,7 +35,7 @@ public class ListFinancialEventGroupsResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ListFinancialEventGroupsPayload getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class ListFinancialEventGroupsResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

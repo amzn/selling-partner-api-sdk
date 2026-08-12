@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The set of fixed values in an additional seller input. */
-@Schema(description = "The set of fixed values in an additional seller input.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The set of fixed values in an additional seller input.")
 public class RestrictedSetValues extends ArrayList<String> {
 
     @Override

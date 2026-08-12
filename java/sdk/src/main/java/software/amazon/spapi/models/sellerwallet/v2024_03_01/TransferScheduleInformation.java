@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Mandatory information for initiating a schedule transfer. */
-@Schema(description = "Mandatory information for initiating a schedule transfer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Mandatory information for initiating a schedule transfer.")
 public class TransferScheduleInformation {
     @SerializedName("scheduleStartDate")
     private OffsetDateTime scheduleStartDate = null;
@@ -41,7 +41,7 @@ public class TransferScheduleInformation {
      *
      * @return scheduleStartDate
      */
-    @Schema(description = "The start date of the scheduled transfer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The start date of the scheduled transfer.")
     public OffsetDateTime getScheduleStartDate() {
         return scheduleStartDate;
     }
@@ -60,7 +60,7 @@ public class TransferScheduleInformation {
      *
      * @return scheduleEndDate
      */
-    @Schema(description = "The end date of the scheduled transfer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The end date of the scheduled transfer.")
     public OffsetDateTime getScheduleEndDate() {
         return scheduleEndDate;
     }
@@ -79,7 +79,7 @@ public class TransferScheduleInformation {
      *
      * @return scheduleExpression
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ScheduleExpression getScheduleExpression() {
         return scheduleExpression;
     }
@@ -98,7 +98,7 @@ public class TransferScheduleInformation {
      *
      * @return scheduleType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ScheduleTransferType getScheduleType() {
         return scheduleType;
     }

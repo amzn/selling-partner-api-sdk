@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Repeated occurrence of an event in a time range. */
-@Schema(description = "Repeated occurrence of an event in a time range.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Repeated occurrence of an event in a time range.")
 public class Recurrence {
     @SerializedName("endTime")
     private OffsetDateTime endTime = null;
@@ -40,7 +40,7 @@ public class Recurrence {
      *
      * @return endTime
      */
-    @Schema(required = true, description = "End time of the recurrence.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "End time of the recurrence.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -68,7 +68,7 @@ public class Recurrence {
      *
      * @return daysOfWeek
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain `MONDAY` in the list.")
     public List<DayOfWeek> getDaysOfWeek() {
@@ -97,7 +97,7 @@ public class Recurrence {
      *
      * @return daysOfMonth
      */
-    @Schema(description = "Days of the month when recurrence is valid.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Days of the month when recurrence is valid.")
     public List<Integer> getDaysOfMonth() {
         return daysOfMonth;
     }

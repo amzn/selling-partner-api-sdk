@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The job details of a service. */
-@Schema(description = "The job details of a service.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The job details of a service.")
 public class ServiceJob {
     @SerializedName("createTime")
     private OffsetDateTime createTime = null;
@@ -143,7 +143,8 @@ public class ServiceJob {
      *
      * @return createTime
      */
-    @Schema(description = "The date and time of the creation of the job in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time of the creation of the job in ISO 8601 format.")
     public OffsetDateTime getCreateTime() {
         return createTime;
     }
@@ -162,7 +163,7 @@ public class ServiceJob {
      *
      * @return serviceJobId
      */
-    @Schema(description = "Amazon identifier for the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon identifier for the service job.")
     public String getServiceJobId() {
         return serviceJobId;
     }
@@ -181,7 +182,7 @@ public class ServiceJob {
      *
      * @return serviceJobStatus
      */
-    @Schema(description = "The status of the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the service job.")
     public ServiceJobStatusEnum getServiceJobStatus() {
         return serviceJobStatus;
     }
@@ -200,7 +201,7 @@ public class ServiceJob {
      *
      * @return scopeOfWork
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ScopeOfWork getScopeOfWork() {
         return scopeOfWork;
     }
@@ -219,7 +220,7 @@ public class ServiceJob {
      *
      * @return seller
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Seller getSeller() {
         return seller;
     }
@@ -238,7 +239,7 @@ public class ServiceJob {
      *
      * @return serviceJobProvider
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceJobProvider getServiceJobProvider() {
         return serviceJobProvider;
     }
@@ -266,7 +267,7 @@ public class ServiceJob {
      *
      * @return preferredAppointmentTimes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.")
     public List<AppointmentTime> getPreferredAppointmentTimes() {
@@ -295,7 +296,7 @@ public class ServiceJob {
      *
      * @return appointments
      */
-    @Schema(description = "A list of appointments.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of appointments.")
     public List<Appointment> getAppointments() {
         return appointments;
     }
@@ -314,7 +315,8 @@ public class ServiceJob {
      *
      * @return serviceOrderId
      */
-    @Schema(description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
     public String getServiceOrderId() {
         return serviceOrderId;
     }
@@ -341,7 +343,8 @@ public class ServiceJob {
      *
      * @return productOrderIds
      */
-    @Schema(description = "A list of associated product order IDs for the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of associated product order IDs for the service job.")
     public List<String> getProductOrderIds() {
         return productOrderIds;
     }
@@ -368,7 +371,8 @@ public class ServiceJob {
      *
      * @return trackingIds
      */
-    @Schema(description = "A list of associated product tracking IDs for the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of associated product tracking IDs for the service job.")
     public List<String> getTrackingIds() {
         return trackingIds;
     }
@@ -387,7 +391,7 @@ public class ServiceJob {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -406,7 +410,7 @@ public class ServiceJob {
      *
      * @return storeId
      */
-    @Schema(description = "The Amazon-defined identifier for the region scope.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the region scope.")
     public String getStoreId() {
         return storeId;
     }
@@ -425,7 +429,7 @@ public class ServiceJob {
      *
      * @return buyer
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Buyer getBuyer() {
         return buyer;
     }
@@ -452,7 +456,7 @@ public class ServiceJob {
      *
      * @return associatedItems
      */
-    @Schema(description = "A list of items associated with the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of items associated with the service job.")
     public List<AssociatedItem> getAssociatedItems() {
         return associatedItems;
     }
@@ -471,7 +475,7 @@ public class ServiceJob {
      *
      * @return serviceLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceLocation getServiceLocation() {
         return serviceLocation;
     }
@@ -498,7 +502,8 @@ public class ServiceJob {
      *
      * @return payments
      */
-    @Schema(description = "A list that contains payment information for the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list that contains payment information for the service job.")
     public List<Payment> getPayments() {
         return payments;
     }

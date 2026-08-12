@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.solicitations.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getSolicitationActionsForOrder operation. */
-@Schema(description = "The response schema for the getSolicitationActionsForOrder operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the getSolicitationActionsForOrder operation.")
 public class GetSolicitationActionsForOrderResponse {
     @SerializedName("_links")
     private GetSolicitationActionsForOrderResponseLinks links = null;
@@ -38,7 +38,7 @@ public class GetSolicitationActionsForOrderResponse {
      *
      * @return links
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetSolicitationActionsForOrderResponseLinks getLinks() {
         return links;
     }
@@ -57,7 +57,7 @@ public class GetSolicitationActionsForOrderResponse {
      *
      * @return embedded
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetSolicitationActionsForOrderResponseEmbedded getEmbedded() {
         return embedded;
     }
@@ -76,7 +76,7 @@ public class GetSolicitationActionsForOrderResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

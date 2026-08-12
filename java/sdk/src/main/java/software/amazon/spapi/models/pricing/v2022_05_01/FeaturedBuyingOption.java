@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * Describes a featured buying option, which includes a list of segmented featured offers for a particular item
  * condition.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Describes a featured buying option, which includes a list of segmented featured offers for a particular item condition.")
 public class FeaturedBuyingOption {
@@ -97,7 +96,7 @@ public class FeaturedBuyingOption {
      *
      * @return buyingOptionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The buying option type for the featured offer. `buyingOptionType` represents the buying options that a customer receives on the detail page, such as `B2B`, `Fresh`, and `Subscribe n Save`. `buyingOptionType` currently supports `NEW` as a value.")
@@ -129,7 +128,7 @@ public class FeaturedBuyingOption {
      *
      * @return segmentedFeaturedOffers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.")

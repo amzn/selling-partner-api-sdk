@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getReports&#x60; operation. */
-@Schema(description = "The response for the `getReports` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getReports` operation.")
 public class GetReportsResponse {
     @SerializedName("reports")
     private ReportList reports = null;
@@ -35,7 +34,7 @@ public class GetReportsResponse {
      *
      * @return reports
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReportList getReports() {
         return reports;
     }
@@ -55,7 +54,7 @@ public class GetReportsResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Returned when the number of results exceeds `pageSize`. To get the next page of results, call `getReports` with this token as the only parameter.")
     public String getNextToken() {

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Request schema for the &#x60;updateReservation&#x60; operation. */
-@Schema(description = "Request schema for the `updateReservation` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema for the `updateReservation` operation.")
 public class UpdateReservationRequest {
     @SerializedName("resourceId")
     private String resourceId = null;
@@ -35,7 +34,7 @@ public class UpdateReservationRequest {
      *
      * @return resourceId
      */
-    @Schema(required = true, description = "Resource (store) identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Resource (store) identifier.")
     public String getResourceId() {
         return resourceId;
     }
@@ -54,7 +53,7 @@ public class UpdateReservationRequest {
      *
      * @return reservation
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Reservation getReservation() {
         return reservation;
     }

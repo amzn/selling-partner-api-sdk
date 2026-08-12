@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A package status summary. */
-@Schema(description = "A package status summary.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A package status summary.")
 public class TrackingSummary {
     @SerializedName("status")
     private Status status = null;
@@ -35,7 +34,7 @@ public class TrackingSummary {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Status getStatus() {
         return status;
     }
@@ -54,7 +53,7 @@ public class TrackingSummary {
      *
      * @return trackingDetailCodes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingDetailCodes getTrackingDetailCodes() {
         return trackingDetailCodes;
     }

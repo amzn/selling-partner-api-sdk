@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * A property group represents a logical grouping of schema properties that can be used for display or informational
  * purposes.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A property group represents a logical grouping of schema properties that can be used for display or informational purposes.")
 public class PropertyGroup {
@@ -45,7 +44,7 @@ public class PropertyGroup {
      *
      * @return title
      */
-    @Schema(description = "The display label of the property group.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The display label of the property group.")
     public String getTitle() {
         return title;
     }
@@ -64,7 +63,7 @@ public class PropertyGroup {
      *
      * @return description
      */
-    @Schema(description = "The description of the property group.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The description of the property group.")
     public String getDescription() {
         return description;
     }
@@ -91,7 +90,8 @@ public class PropertyGroup {
      *
      * @return propertyNames
      */
-    @Schema(description = "The names of the schema properties for the property group.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The names of the schema properties for the property group.")
     public List<String> getPropertyNames() {
         return propertyNames;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about a payment transaction. */
-@Schema(description = "Information about a payment transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a payment transaction.")
 public class PaymentInformation {
     @SerializedName("PaymentMethod")
     private PaymentMethodEnum paymentMethod = null;
@@ -44,7 +43,7 @@ public class PaymentInformation {
      *
      * @return paymentMethod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodEnum getPaymentMethod() {
         return paymentMethod;
     }
@@ -63,7 +62,7 @@ public class PaymentInformation {
      *
      * @return acquirerId
      */
-    @Schema(description = "The government ID of the acquirer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The government ID of the acquirer.")
     public String getAcquirerId() {
         return acquirerId;
     }
@@ -82,7 +81,8 @@ public class PaymentInformation {
      *
      * @return cardBrand
      */
-    @Schema(description = "The credit card brand if the payment method is `CreditCard`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The credit card brand if the payment method is `CreditCard`.")
     public String getCardBrand() {
         return cardBrand;
     }
@@ -101,7 +101,7 @@ public class PaymentInformation {
      *
      * @return paymentValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPaymentValue() {
         return paymentValue;
     }
@@ -120,7 +120,7 @@ public class PaymentInformation {
      *
      * @return authorizationCode
      */
-    @Schema(description = "The authorization code of this payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The authorization code of this payment.")
     public String getAuthorizationCode() {
         return authorizationCode;
     }

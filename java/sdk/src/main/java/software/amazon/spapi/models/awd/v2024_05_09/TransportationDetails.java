@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Transportation details for the shipment. */
-@Schema(description = "Transportation details for the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for the shipment.")
 public class TransportationDetails {
     @SerializedName("trackingDetails")
     private List<TrackingDetails> trackingDetails = null;
@@ -43,7 +42,7 @@ public class TransportationDetails {
      *
      * @return trackingDetails
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.")

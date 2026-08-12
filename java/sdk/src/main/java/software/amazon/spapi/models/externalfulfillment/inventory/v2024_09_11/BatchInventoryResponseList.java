@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of inventory request responses. */
-@Schema(description = "A list of inventory request responses.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of inventory request responses.")
 public class BatchInventoryResponseList extends ArrayList<InventoryResponse> {
 
     @Override

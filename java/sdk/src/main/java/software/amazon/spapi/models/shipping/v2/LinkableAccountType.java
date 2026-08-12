@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Info About Linkable Account Type */
-@Schema(description = "Info About Linkable Account Type")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Info About Linkable Account Type")
 public class LinkableAccountType {
     @SerializedName("accountType")
     private AccountType accountType = null;
@@ -35,7 +34,7 @@ public class LinkableAccountType {
      *
      * @return accountType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccountType getAccountType() {
         return accountType;
     }
@@ -54,7 +53,7 @@ public class LinkableAccountType {
      *
      * @return carrierAccountInputs
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierAccountInputsList getCarrierAccountInputs() {
         return carrierAccountInputs;
     }

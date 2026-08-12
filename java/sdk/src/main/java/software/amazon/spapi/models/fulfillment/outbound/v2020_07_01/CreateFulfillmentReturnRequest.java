@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include
  * &#x60;returnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The `createFulfillmentReturn` operation creates a fulfillment return for items that were fulfilled using the `createFulfillmentOrder` operation. For calls to `createFulfillmentReturn`, you must include `returnReasonCode` values returned by a previous call to the `listReturnReasonCodes` operation.")
 public class CreateFulfillmentReturnRequest {
@@ -38,7 +37,7 @@ public class CreateFulfillmentReturnRequest {
      *
      * @return items
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CreateReturnItemList getItems() {
         return items;
     }

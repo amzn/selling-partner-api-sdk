@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of item quantity. */
-@Schema(description = "Details of item quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity.")
 public class ItemQuantity {
     @SerializedName("amount")
     private Integer amount = null;
@@ -35,7 +34,9 @@ public class ItemQuantity {
      *
      * @return amount
      */
-    @Schema(required = true, description = "Quantity of units available for a specific item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Quantity of units available for a specific item.")
     public Integer getAmount() {
         return amount;
     }
@@ -54,7 +55,9 @@ public class ItemQuantity {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "Unit of measure for the available quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Unit of measure for the available quantity.")
     public String getUnitOfMeasure() {
         return unitOfMeasure;
     }

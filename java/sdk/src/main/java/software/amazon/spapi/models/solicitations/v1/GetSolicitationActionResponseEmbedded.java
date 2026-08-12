@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.solicitations.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** GetSolicitationActionResponseEmbedded */
@@ -31,7 +30,7 @@ public class GetSolicitationActionResponseEmbedded {
      *
      * @return schema
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetSchemaResponse getSchema() {
         return schema;
     }

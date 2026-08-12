@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.transactionstatus.v1.GetTransactionResponse;
 
@@ -60,8 +59,7 @@ public class VendorTransactionApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getTransactionCall(
-            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getTransactionCall(String transactionId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -104,8 +102,7 @@ public class VendorTransactionApi {
     }
 
     private okhttp3.Call getTransactionValidateBeforeCall(
-            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String transactionId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'transactionId' is set
         if (transactionId == null) {
@@ -247,10 +244,10 @@ public class VendorTransactionApi {
             String transactionId, final ApiCallback<GetTransactionResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressRequestListener);

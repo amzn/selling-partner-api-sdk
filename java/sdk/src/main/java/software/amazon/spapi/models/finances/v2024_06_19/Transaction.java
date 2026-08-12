@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** All the information related to a transaction. */
-@Schema(description = "All the information related to a transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "All the information related to a transaction.")
 public class Transaction {
     @SerializedName("sellingPartnerMetadata")
     private SellingPartnerMetadata sellingPartnerMetadata = null;
@@ -67,7 +67,7 @@ public class Transaction {
      *
      * @return sellingPartnerMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SellingPartnerMetadata getSellingPartnerMetadata() {
         return sellingPartnerMetadata;
     }
@@ -86,7 +86,7 @@ public class Transaction {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
@@ -105,7 +105,8 @@ public class Transaction {
      *
      * @return transactionType
      */
-    @Schema(description = "The type of transaction.  **Possible value:** `Shipment`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of transaction.  **Possible value:** `Shipment`")
     public String getTransactionType() {
         return transactionType;
     }
@@ -124,7 +125,7 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @Schema(description = "The unique identifier of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier of the transaction.")
     public String getTransactionId() {
         return transactionId;
     }
@@ -146,7 +147,7 @@ public class Transaction {
      *
      * @return transactionStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.")
     public String getTransactionStatus() {
@@ -167,7 +168,8 @@ public class Transaction {
      *
      * @return description
      */
-    @Schema(description = "Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`")
     public String getDescription() {
         return description;
     }
@@ -186,7 +188,7 @@ public class Transaction {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -207,7 +209,7 @@ public class Transaction {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }
@@ -226,7 +228,7 @@ public class Transaction {
      *
      * @return marketplaceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceDetails getMarketplaceDetails() {
         return marketplaceDetails;
     }
@@ -245,7 +247,7 @@ public class Transaction {
      *
      * @return items
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Items getItems() {
         return items;
     }
@@ -264,7 +266,7 @@ public class Transaction {
      *
      * @return contexts
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Contexts getContexts() {
         return contexts;
     }
@@ -291,7 +293,8 @@ public class Transaction {
      *
      * @return breakdowns
      */
-    @Schema(description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
     public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }

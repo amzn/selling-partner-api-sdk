@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item information for a shipment in a fulfillment order. */
-@Schema(description = "Item information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a shipment in a fulfillment order.")
 public class FulfillmentShipmentItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -47,7 +46,7 @@ public class FulfillmentShipmentItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -67,7 +66,7 @@ public class FulfillmentShipmentItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The fulfillment order item identifier that the seller created and submitted with a call to the `createFulfillmentOrder` operation.")
@@ -89,7 +88,7 @@ public class FulfillmentShipmentItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -108,7 +107,8 @@ public class FulfillmentShipmentItem {
      *
      * @return packageNumber
      */
-    @Schema(description = "An identifier for the package that contains the item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An identifier for the package that contains the item quantity.")
     public Integer getPackageNumber() {
         return packageNumber;
     }
@@ -127,7 +127,7 @@ public class FulfillmentShipmentItem {
      *
      * @return serialNumber
      */
-    @Schema(description = "The serial number of the shipped item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The serial number of the shipped item.")
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -146,7 +146,7 @@ public class FulfillmentShipmentItem {
      *
      * @return manufacturerLotCodes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StringList getManufacturerLotCodes() {
         return manufacturerLotCodes;
     }

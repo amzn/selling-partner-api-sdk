@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A line item from the original shipment that corresponds to this shipment. */
-@Schema(description = "A line item from the original shipment that corresponds to this shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A line item from the original shipment that corresponds to this shipment.")
 public class OriginalLineItem {
     @SerializedName("replacingSku")
     private String replacingSku = null;
@@ -38,7 +38,7 @@ public class OriginalLineItem {
      *
      * @return replacingSku
      */
-    @Schema(required = true, description = "The SKU ID for this shipment")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The SKU ID for this shipment")
     public String getReplacingSku() {
         return replacingSku;
     }
@@ -57,7 +57,7 @@ public class OriginalLineItem {
      *
      * @return originalSku
      */
-    @Schema(required = true, description = "The SKU ID for the original shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The SKU ID for the original shipment.")
     public String getOriginalSku() {
         return originalSku;
     }
@@ -76,7 +76,7 @@ public class OriginalLineItem {
      *
      * @return charges
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Charges getCharges() {
         return charges;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the destination bank account in the transaction request. */
-@Schema(description = "Details of the destination bank account in the transaction request.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details of the destination bank account in the transaction request.")
 public class TransactionInstrumentDetails {
     @SerializedName("bankAccount")
     private BankAccount bankAccount = null;
@@ -38,7 +38,7 @@ public class TransactionInstrumentDetails {
      *
      * @return bankAccount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BankAccount getBankAccount() {
         return bankAccount;
     }
@@ -59,7 +59,7 @@ public class TransactionInstrumentDetails {
      *
      * @return bankAccountNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.")
@@ -83,7 +83,7 @@ public class TransactionInstrumentDetails {
      *
      * @return accountHolderName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The bank account holder's name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.")

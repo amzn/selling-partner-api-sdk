@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of the Pallet/Tare being shipped. */
-@Schema(description = "Details of the Pallet/Tare being shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the Pallet/Tare being shipped.")
 public class Pallet {
     @SerializedName("palletIdentifiers")
     private List<ContainerIdentification> palletIdentifiers = null;
@@ -60,7 +59,7 @@ public class Pallet {
      *
      * @return palletIdentifiers
      */
-    @Schema(required = true, description = "A list of pallet identifiers.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of pallet identifiers.")
     public List<ContainerIdentification> getPalletIdentifiers() {
         return palletIdentifiers;
     }
@@ -79,7 +78,8 @@ public class Pallet {
      *
      * @return tier
      */
-    @Schema(description = "Number of layers per pallet. Only applicable to container type Pallet.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Number of layers per pallet. Only applicable to container type Pallet.")
     public Integer getTier() {
         return tier;
     }
@@ -98,7 +98,8 @@ public class Pallet {
      *
      * @return block
      */
-    @Schema(description = "Number of cartons per layer on the pallet. Only applicable to container type Pallet.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Number of cartons per layer on the pallet. Only applicable to container type Pallet.")
     public Integer getBlock() {
         return block;
     }
@@ -117,7 +118,7 @@ public class Pallet {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -136,7 +137,7 @@ public class Pallet {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -155,7 +156,7 @@ public class Pallet {
      *
      * @return cartonReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CartonReferenceDetails getCartonReferenceDetails() {
         return cartonReferenceDetails;
     }
@@ -182,7 +183,7 @@ public class Pallet {
      *
      * @return items
      */
-    @Schema(description = "A list of container item details.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of container item details.")
     public List<ContainerItem> getItems() {
         return items;
     }

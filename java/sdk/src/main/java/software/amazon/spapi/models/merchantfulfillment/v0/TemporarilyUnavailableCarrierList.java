@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of temporarily unavailable carriers. */
-@Schema(description = "A list of temporarily unavailable carriers.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of temporarily unavailable carriers.")
 public class TemporarilyUnavailableCarrierList extends ArrayList<TemporarilyUnavailableCarrier> {
 
     @Override

@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;createFulfillmentOrder&#x60; operation. */
-@Schema(description = "The request body schema for the `createFulfillmentOrder` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `createFulfillmentOrder` operation.")
 public class CreateFulfillmentOrderRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -82,7 +83,8 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace the fulfillment order is placed against.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The marketplace the fulfillment order is placed against.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -103,7 +105,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return sellerFulfillmentOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order identifier that the seller creates to track their fulfillment order. The `sellerFulfillmentOrderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.")
@@ -131,7 +133,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return displayableOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `displayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the SellerFulfillmentOrderId for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.")
@@ -153,7 +155,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return displayableOrderDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getDisplayableOrderDate() {
         return displayableOrderDate;
     }
@@ -172,7 +174,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return displayableOrderComment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.")
@@ -194,7 +196,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return shippingSpeedCategory
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingSpeedCategory getShippingSpeedCategory() {
         return shippingSpeedCategory;
     }
@@ -213,7 +215,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return deliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryWindow getDeliveryWindow() {
         return deliveryWindow;
     }
@@ -232,7 +234,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return destinationAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -251,7 +253,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return deliveryPreferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryPreferences getDeliveryPreferences() {
         return deliveryPreferences;
     }
@@ -270,7 +272,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return fulfillmentAction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentAction getFulfillmentAction() {
         return fulfillmentAction;
     }
@@ -289,7 +291,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return fulfillmentPolicy
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentPolicy getFulfillmentPolicy() {
         return fulfillmentPolicy;
     }
@@ -308,7 +310,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return codSettings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CODSettings getCodSettings() {
         return codSettings;
     }
@@ -328,7 +330,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return shipFromCountryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.")
     public String getShipFromCountryCode() {
@@ -349,7 +351,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return notificationEmails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public NotificationEmailList getNotificationEmails() {
         return notificationEmails;
     }
@@ -376,7 +378,8 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return featureConstraints
      */
-    @Schema(description = "A list of features and their fulfillment policies to apply to the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of features and their fulfillment policies to apply to the order.")
     public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }
@@ -395,7 +398,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return items
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CreateFulfillmentOrderItemList getItems() {
         return items;
     }
@@ -414,7 +417,7 @@ public class CreateFulfillmentOrderRequest {
      *
      * @return paymentInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentInformationList getPaymentInformation() {
         return paymentInformation;
     }

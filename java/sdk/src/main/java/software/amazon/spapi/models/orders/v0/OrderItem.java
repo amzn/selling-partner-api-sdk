@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A single order item. */
-@Schema(description = "A single order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A single order item.")
 public class OrderItem {
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -206,7 +205,9 @@ public class OrderItem {
      *
      * @return ASIN
      */
-    @Schema(required = true, description = "The item's Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The item's Amazon Standard Identification Number (ASIN).")
     public String getASIN() {
         return ASIN;
     }
@@ -225,7 +226,7 @@ public class OrderItem {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The item's seller stock keeping unit (SKU).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's seller stock keeping unit (SKU).")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -244,7 +245,9 @@ public class OrderItem {
      *
      * @return orderItemId
      */
-    @Schema(required = true, description = "An Amazon-defined order item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order item identifier.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -272,7 +275,7 @@ public class OrderItem {
      *
      * @return associatedItems
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.")
     public List<AssociatedItem> getAssociatedItems() {
@@ -293,7 +296,7 @@ public class OrderItem {
      *
      * @return title
      */
-    @Schema(description = "The item's name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's name.")
     public String getTitle() {
         return title;
     }
@@ -312,7 +315,7 @@ public class OrderItem {
      *
      * @return quantityOrdered
      */
-    @Schema(required = true, description = "The number of items in the order. ")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of items in the order. ")
     public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -331,7 +334,7 @@ public class OrderItem {
      *
      * @return quantityShipped
      */
-    @Schema(description = "The number of items shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -350,7 +353,7 @@ public class OrderItem {
      *
      * @return productInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProductInfoDetail getProductInfo() {
         return productInfo;
     }
@@ -369,7 +372,7 @@ public class OrderItem {
      *
      * @return pointsGranted
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PointsGrantedDetail getPointsGranted() {
         return pointsGranted;
     }
@@ -388,7 +391,7 @@ public class OrderItem {
      *
      * @return itemPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getItemPrice() {
         return itemPrice;
     }
@@ -407,7 +410,7 @@ public class OrderItem {
      *
      * @return shippingPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingPrice() {
         return shippingPrice;
     }
@@ -426,7 +429,7 @@ public class OrderItem {
      *
      * @return itemTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getItemTax() {
         return itemTax;
     }
@@ -445,7 +448,7 @@ public class OrderItem {
      *
      * @return shippingTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingTax() {
         return shippingTax;
     }
@@ -464,7 +467,7 @@ public class OrderItem {
      *
      * @return shippingDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingDiscount() {
         return shippingDiscount;
     }
@@ -483,7 +486,7 @@ public class OrderItem {
      *
      * @return shippingDiscountTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingDiscountTax() {
         return shippingDiscountTax;
     }
@@ -502,7 +505,7 @@ public class OrderItem {
      *
      * @return promotionDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPromotionDiscount() {
         return promotionDiscount;
     }
@@ -521,7 +524,7 @@ public class OrderItem {
      *
      * @return promotionDiscountTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPromotionDiscountTax() {
         return promotionDiscountTax;
     }
@@ -540,7 +543,7 @@ public class OrderItem {
      *
      * @return promotionIds
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PromotionIdList getPromotionIds() {
         return promotionIds;
     }
@@ -559,7 +562,7 @@ public class OrderItem {
      *
      * @return coDFee
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getCoDFee() {
         return coDFee;
     }
@@ -578,7 +581,7 @@ public class OrderItem {
      *
      * @return coDFeeDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getCoDFeeDiscount() {
         return coDFeeDiscount;
     }
@@ -597,7 +600,8 @@ public class OrderItem {
      *
      * @return isGift
      */
-    @Schema(description = "Indicates whether the item is a gift.  **Possible values**: `true` and `false`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Indicates whether the item is a gift.  **Possible values**: `true` and `false`.")
     public String getIsGift() {
         return isGift;
     }
@@ -616,7 +620,7 @@ public class OrderItem {
      *
      * @return conditionNote
      */
-    @Schema(description = "The condition of the item, as described by the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The condition of the item, as described by the seller.")
     public String getConditionNote() {
         return conditionNote;
     }
@@ -636,7 +640,7 @@ public class OrderItem {
      *
      * @return conditionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The condition of the item.  **Possible values**: `New`, `Used`, `Collectible`, `Refurbished`, `Preorder`, and `Club`.")
     public String getConditionId() {
@@ -660,7 +664,7 @@ public class OrderItem {
      *
      * @return conditionSubtypeId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The subcondition of the item.  **Possible values**: `New`, `Mint`, `Very Good`, `Good`, `Acceptable`, `Poor`, `Club`, `OEM`, `Warranty`, `Refurbished Warranty`, `Refurbished`, `Open Box`, `Any`, and `Other`.")
     public String getConditionSubtypeId() {
@@ -682,7 +686,7 @@ public class OrderItem {
      *
      * @return scheduledDeliveryStartDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The start date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
     public String getScheduledDeliveryStartDate() {
@@ -704,7 +708,7 @@ public class OrderItem {
      *
      * @return scheduledDeliveryEndDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The end date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
     public String getScheduledDeliveryEndDate() {
@@ -727,7 +731,7 @@ public class OrderItem {
      *
      * @return priceDesignation
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   **Possible values**: `BusinessPrice`")
     public String getPriceDesignation() {
@@ -748,7 +752,7 @@ public class OrderItem {
      *
      * @return taxCollection
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxCollection getTaxCollection() {
         return taxCollection;
     }
@@ -767,7 +771,7 @@ public class OrderItem {
      *
      * @return serialNumberRequired
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the product type for this item has a serial number.   Only returned for Amazon Easy Ship orders.")
     public Boolean getSerialNumberRequired() {
@@ -793,7 +797,7 @@ public class OrderItem {
      *
      * @return isTransparency
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the ASIN is enrolled in Transparency. The Transparency serial number that you must submit is determined by:  **1D or 2D Barcode:** This has a **T** logo. Submit either the 29-character alpha-numeric identifier beginning with **AZ** or **ZA**, or the 38-character Serialized Global Trade Item Number (SGTIN). **2D Barcode SN:** Submit the 7- to 20-character serial number barcode, which likely has the prefix **SN**. The serial number is applied to the same side of the packaging as the GTIN (UPC/EAN/ISBN) barcode. **QR code SN:** Submit the URL that the QR code generates.")
     public Boolean getIsTransparency() {
@@ -815,7 +819,7 @@ public class OrderItem {
      *
      * @return iossNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The IOSS number of the marketplace. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.")
     public String getIossNumber() {
@@ -836,7 +840,8 @@ public class OrderItem {
      *
      * @return storeChainStoreId
      */
-    @Schema(description = "The store chain store identifier. Linked to a specific store in a store chain.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The store chain store identifier. Linked to a specific store in a store chain.")
     public String getStoreChainStoreId() {
         return storeChainStoreId;
     }
@@ -856,7 +861,7 @@ public class OrderItem {
      *
      * @return deemedResellerCategory
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.")
     public DeemedResellerCategoryEnum getDeemedResellerCategory() {
@@ -877,7 +882,7 @@ public class OrderItem {
      *
      * @return buyerInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemBuyerInfo getBuyerInfo() {
         return buyerInfo;
     }
@@ -896,7 +901,7 @@ public class OrderItem {
      *
      * @return buyerRequestedCancel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerRequestedCancel getBuyerRequestedCancel() {
         return buyerRequestedCancel;
     }
@@ -923,7 +928,7 @@ public class OrderItem {
      *
      * @return serialNumbers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.")
     public List<String> getSerialNumbers() {
@@ -944,7 +949,7 @@ public class OrderItem {
      *
      * @return substitutionPreferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SubstitutionPreferences getSubstitutionPreferences() {
         return substitutionPreferences;
     }
@@ -963,7 +968,7 @@ public class OrderItem {
      *
      * @return measurement
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Measurement getMeasurement() {
         return measurement;
     }
@@ -982,7 +987,7 @@ public class OrderItem {
      *
      * @return shippingConstraints
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShippingConstraints getShippingConstraints() {
         return shippingConstraints;
     }
@@ -1001,7 +1006,7 @@ public class OrderItem {
      *
      * @return amazonPrograms
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmazonPrograms getAmazonPrograms() {
         return amazonPrograms;
     }

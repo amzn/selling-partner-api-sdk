@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of the subtopic for an item review topic. */
-@Schema(description = "Details of the subtopic for an item review topic.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the subtopic for an item review topic.")
 public class ItemReviewSubtopic {
     @SerializedName("subtopic")
     private String subtopic = null;
@@ -40,7 +39,7 @@ public class ItemReviewSubtopic {
      *
      * @return subtopic
      */
-    @Schema(required = true, description = "The name of the subtopic.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the subtopic.")
     public String getSubtopic() {
         return subtopic;
     }
@@ -59,7 +58,7 @@ public class ItemReviewSubtopic {
      *
      * @return metrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemReviewSubtopicMetrics getMetrics() {
         return metrics;
     }
@@ -87,7 +86,7 @@ public class ItemReviewSubtopic {
      *
      * @return reviewSnippets
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of up to three snippets from reviews that contain the subtopic. This value is `null` if there aren't enough review snippets for the subtopic.")
     public List<String> getReviewSnippets() {

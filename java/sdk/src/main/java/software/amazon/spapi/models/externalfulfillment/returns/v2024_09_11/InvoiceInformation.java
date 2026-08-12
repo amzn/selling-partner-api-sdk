@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Invoice-related information for the return created for Amazon SmartConnect. */
-@Schema(description = "Invoice-related information for the return created for Amazon SmartConnect.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Invoice-related information for the return created for Amazon SmartConnect.")
 public class InvoiceInformation {
     @SerializedName("id")
     private String id = null;
@@ -32,7 +32,9 @@ public class InvoiceInformation {
      *
      * @return id
      */
-    @Schema(required = true, description = "The unique ID of the invoice that corresponds to the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique ID of the invoice that corresponds to the return.")
     public String getId() {
         return id;
     }

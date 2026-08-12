@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQueryResponse;
 import software.amazon.spapi.models.datakiosk.v2023_11_15.CreateQuerySpecification;
@@ -76,8 +75,7 @@ public class QueriesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelQueryCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelQueryCall(String queryId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -118,8 +116,7 @@ public class QueriesApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call cancelQueryValidateBeforeCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelQueryValidateBeforeCall(String queryId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'queryId' is set
@@ -275,10 +272,10 @@ public class QueriesApi {
     public okhttp3.Call cancelQueryAsync(String queryId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelQueryValidateBeforeCall(queryId, progressRequestListener);
@@ -303,8 +300,7 @@ public class QueriesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createQueryCall(
-            CreateQuerySpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createQueryCall(CreateQuerySpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -343,7 +339,7 @@ public class QueriesApi {
     }
 
     private okhttp3.Call createQueryValidateBeforeCall(
-            CreateQuerySpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateQuerySpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -503,10 +499,10 @@ public class QueriesApi {
             CreateQuerySpecification body, final ApiCallback<CreateQueryResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createQueryValidateBeforeCall(body, progressRequestListener);
@@ -532,8 +528,7 @@ public class QueriesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getDocumentCall(
-            String documentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getDocumentCall(String documentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -575,8 +570,7 @@ public class QueriesApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getDocumentValidateBeforeCall(
-            String documentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getDocumentValidateBeforeCall(String documentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'documentId' is set
@@ -722,10 +716,10 @@ public class QueriesApi {
             String documentId, final ApiCallback<GetDocumentResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getDocumentValidateBeforeCall(documentId, progressRequestListener);
@@ -768,7 +762,7 @@ public class QueriesApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -821,7 +815,7 @@ public class QueriesApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String paginationToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getQueriesCall(
@@ -1064,10 +1058,10 @@ public class QueriesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getQueriesValidateBeforeCall(
@@ -1094,8 +1088,7 @@ public class QueriesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getQueryCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getQueryCall(String queryId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1136,8 +1129,7 @@ public class QueriesApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getQueryValidateBeforeCall(
-            String queryId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getQueryValidateBeforeCall(String queryId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'queryId' is set
@@ -1280,10 +1272,10 @@ public class QueriesApi {
     public okhttp3.Call getQueryAsync(String queryId, final ApiCallback<Query> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getQueryValidateBeforeCall(queryId, progressRequestListener);

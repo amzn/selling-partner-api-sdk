@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The delivery status of the package. */
-@Schema(description = "The delivery status of the package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The delivery status of the package.")
 public class PackageDeliveryStatus {
     @SerializedName("status")
     private PackageStatus status = null;
@@ -38,7 +37,7 @@ public class PackageDeliveryStatus {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageStatus getStatus() {
         return status;
     }
@@ -57,7 +56,7 @@ public class PackageDeliveryStatus {
      *
      * @return subStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageSubStatus getSubStatus() {
         return subStatus;
     }
@@ -76,7 +75,7 @@ public class PackageDeliveryStatus {
      *
      * @return reason
      */
-    @Schema(description = "The reason for the sub-status.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the sub-status.")
     public String getReason() {
         return reason;
     }

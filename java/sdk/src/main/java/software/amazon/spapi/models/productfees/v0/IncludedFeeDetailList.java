@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of other fees that contribute to a given fee. */
-@Schema(description = "A list of other fees that contribute to a given fee.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of other fees that contribute to a given fee.")
 public class IncludedFeeDetailList extends ArrayList<IncludedFeeDetail> {
 
     @Override

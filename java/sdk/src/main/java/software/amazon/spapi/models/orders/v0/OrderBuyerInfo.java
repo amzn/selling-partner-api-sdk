@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Buyer information for an order. */
-@Schema(description = "Buyer information for an order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Buyer information for an order.")
 public class OrderBuyerInfo {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -47,7 +46,9 @@ public class OrderBuyerInfo {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -66,7 +67,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerEmail
      */
-    @Schema(description = "The anonymized email address of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The anonymized email address of the buyer.")
     public String getBuyerEmail() {
         return buyerEmail;
     }
@@ -85,7 +86,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerName
      */
-    @Schema(description = "The buyer name or the recipient name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The buyer name or the recipient name.")
     public String getBuyerName() {
         return buyerName;
     }
@@ -104,7 +105,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerCounty
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.")
     public String getBuyerCounty() {
@@ -125,7 +126,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerTaxInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerTaxInfo getBuyerTaxInfo() {
         return buyerTaxInfo;
     }
@@ -145,7 +146,7 @@ public class OrderBuyerInfo {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.")
     public String getPurchaseOrderNumber() {

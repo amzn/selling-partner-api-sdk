@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * An [S3-Presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) you can use to
  * retrieve file contents.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An [S3-Presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) you can use to retrieve file contents.")
 public class DocumentV2 {
@@ -40,7 +39,7 @@ public class DocumentV2 {
      *
      * @return url
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A presigned URL to fetch the ship label file using an HTTP GET request. To determine file type, use the `contentType` header of the file response. The file retrieved will be in one of the following supported formats:  - **ZPL**: `x.application/zpl` - **PDF**: `application/pdf` - **PNG**: `image/png` - **Plain Text**: `text/plain`")

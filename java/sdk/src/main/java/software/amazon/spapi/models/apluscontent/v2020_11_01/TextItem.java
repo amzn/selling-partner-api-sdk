@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Rich positional text that is usually presented as a collection of bullet points. */
-@Schema(description = "Rich positional text that is usually presented as a collection of bullet points.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Rich positional text that is usually presented as a collection of bullet points.")
 public class TextItem {
     @SerializedName("position")
     private Integer position = null;
@@ -36,7 +36,7 @@ public class TextItem {
      *
      * @return position
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.")
@@ -58,7 +58,7 @@ public class TextItem {
      *
      * @return text
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TextComponent getText() {
         return text;
     }

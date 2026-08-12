@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Response containing the reference identifier for the newly created/updated replenishment order consisting of the
  * order ID.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Response containing the reference identifier for the newly created/updated replenishment order consisting of the order ID.")
 public class ReplenishmentOrderReference {
@@ -37,7 +36,7 @@ public class ReplenishmentOrderReference {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Order ID of the Replenishment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Order ID of the Replenishment order.")
     public String getOrderId() {
         return orderId;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Additional information about a carrier. */
-@Schema(description = "Additional information about a carrier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about a carrier.")
 public class CarrierDetailsContext {
     @SerializedName("name")
     private String name = null;
@@ -53,7 +52,8 @@ public class CarrierDetailsContext {
      *
      * @return name
      */
-    @Schema(description = "The name of the carrier, as registered with state and federal tax authorities.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the carrier, as registered with state and federal tax authorities.")
     public String getName() {
         return name;
     }
@@ -72,7 +72,8 @@ public class CarrierDetailsContext {
      *
      * @return address
      */
-    @Schema(description = "The address of the carrier, as registered with state and federal tax authorities.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The address of the carrier, as registered with state and federal tax authorities.")
     public String getAddress() {
         return address;
     }
@@ -91,7 +92,7 @@ public class CarrierDetailsContext {
      *
      * @return contextType
      */
-    @Schema(description = "The type of additional information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of additional information.")
     public String getContextType() {
         return contextType;
     }
@@ -110,7 +111,7 @@ public class CarrierDetailsContext {
      *
      * @return federalTaxId
      */
-    @Schema(description = "The tax identification number of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax identification number of the carrier.")
     public String getFederalTaxId() {
         return federalTaxId;
     }
@@ -129,7 +130,8 @@ public class CarrierDetailsContext {
      *
      * @return regionCode
      */
-    @Schema(description = "The code of the federal subdivision in which the carrier is registered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The code of the federal subdivision in which the carrier is registered.")
     public String getRegionCode() {
         return regionCode;
     }
@@ -148,7 +150,7 @@ public class CarrierDetailsContext {
      *
      * @return regionTaxId
      */
-    @Schema(description = "The regional tax registration number of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The regional tax registration number of the carrier.")
     public String getRegionTaxId() {
         return regionTaxId;
     }
@@ -167,7 +169,8 @@ public class CarrierDetailsContext {
      *
      * @return vehicleLicensePlate
      */
-    @Schema(description = "The identifier for the carrier vehicle, as printed on its registration plate.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the carrier vehicle, as printed on its registration plate.")
     public String getVehicleLicensePlate() {
         return vehicleLicensePlate;
     }
@@ -186,7 +189,8 @@ public class CarrierDetailsContext {
      *
      * @return vehicleRegistrationRegionCode
      */
-    @Schema(description = "The code of the federal subdivision in which the carrier vehicle is registered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The code of the federal subdivision in which the carrier vehicle is registered.")
     public String getVehicleRegistrationRegionCode() {
         return vehicleRegistrationRegionCode;
     }

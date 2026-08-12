@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** List of request parameters that can be accepted by &#x60;ListingOffersRequest&#x60; operation */
-@Schema(description = "List of request parameters that can be accepted by `ListingOffersRequest` operation")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of request parameters that can be accepted by `ListingOffersRequest` operation")
 public class ListingOffersRequest {
     @SerializedName("uri")
     private String uri = null;
@@ -51,7 +51,7 @@ public class ListingOffersRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`")
@@ -73,7 +73,7 @@ public class ListingOffersRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -92,7 +92,7 @@ public class ListingOffersRequest {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpRequestHeaders getHeaders() {
         return headers;
     }
@@ -111,7 +111,7 @@ public class ListingOffersRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
     public String getMarketplaceId() {
@@ -132,7 +132,7 @@ public class ListingOffersRequest {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -151,7 +151,7 @@ public class ListingOffersRequest {
      *
      * @return customerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerType getCustomerType() {
         return customerType;
     }

@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.orders.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -21,7 +20,7 @@ import java.util.Objects;
  * its original value from the rejected order, and the corrected value that would result in approval (for example, a
  * substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).")
 public class ApprovedAlternativeDetails extends ArrayList<ApprovedAttribute> {

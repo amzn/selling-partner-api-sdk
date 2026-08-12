@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A listings item. */
-@Schema(description = "A listings item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A listings item.")
 public class Item {
     @SerializedName("sku")
     private String sku = null;
@@ -58,7 +57,9 @@ public class Item {
      *
      * @return sku
      */
-    @Schema(required = true, description = "A selling partner-provided identifier for an Amazon listing.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A selling partner-provided identifier for an Amazon listing.")
     public String getSku() {
         return sku;
     }
@@ -77,7 +78,7 @@ public class Item {
      *
      * @return summaries
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemSummaries getSummaries() {
         return summaries;
     }
@@ -96,7 +97,7 @@ public class Item {
      *
      * @return attributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemAttributes getAttributes() {
         return attributes;
     }
@@ -115,7 +116,7 @@ public class Item {
      *
      * @return issues
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemIssues getIssues() {
         return issues;
     }
@@ -134,7 +135,7 @@ public class Item {
      *
      * @return offers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemOffers getOffers() {
         return offers;
     }
@@ -161,7 +162,7 @@ public class Item {
      *
      * @return fulfillmentAvailability
      */
-    @Schema(description = "The listings item's fulfillment availability.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's fulfillment availability.")
     public List<FulfillmentAvailability> getFulfillmentAvailability() {
         return fulfillmentAvailability;
     }
@@ -188,7 +189,7 @@ public class Item {
      *
      * @return procurement
      */
-    @Schema(description = "The listings item's vendor procurement information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's vendor procurement information.")
     public List<ItemProcurement> getProcurement() {
         return procurement;
     }
@@ -207,7 +208,7 @@ public class Item {
      *
      * @return relationships
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemRelationships getRelationships() {
         return relationships;
     }
@@ -226,7 +227,7 @@ public class Item {
      *
      * @return productTypes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemProductTypes getProductTypes() {
         return productTypes;
     }

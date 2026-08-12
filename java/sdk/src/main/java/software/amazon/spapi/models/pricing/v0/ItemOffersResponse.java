@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for an individual &#x60;ItemOffersResponse&#x60; */
-@Schema(description = "Schema for an individual `ItemOffersResponse`")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual `ItemOffersResponse`")
 public class ItemOffersResponse {
     @SerializedName("headers")
     private HttpResponseHeaders headers = null;
@@ -41,7 +40,7 @@ public class ItemOffersResponse {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpResponseHeaders getHeaders() {
         return headers;
     }
@@ -60,7 +59,7 @@ public class ItemOffersResponse {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetOffersHttpStatusLine getStatus() {
         return status;
     }
@@ -79,7 +78,7 @@ public class ItemOffersResponse {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public GetOffersResponse getBody() {
         return body;
     }
@@ -98,7 +97,7 @@ public class ItemOffersResponse {
      *
      * @return request
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemOffersRequestParams getRequest() {
         return request;
     }

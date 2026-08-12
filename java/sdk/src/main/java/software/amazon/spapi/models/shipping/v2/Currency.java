@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The monetary value in the currency indicated, in ISO 4217 standard format. */
-@Schema(description = "The monetary value in the currency indicated, in ISO 4217 standard format.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The monetary value in the currency indicated, in ISO 4217 standard format.")
 public class Currency {
     @SerializedName("value")
     private BigDecimal value = null;
@@ -35,7 +36,7 @@ public class Currency {
      *
      * @return value
      */
-    @Schema(required = true, description = "The monetary value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The monetary value.")
     public BigDecimal getValue() {
         return value;
     }
@@ -54,7 +55,9 @@ public class Currency {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The ISO 4217 format 3-character currency code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ISO 4217 format 3-character currency code.")
     public String getUnit() {
         return unit;
     }

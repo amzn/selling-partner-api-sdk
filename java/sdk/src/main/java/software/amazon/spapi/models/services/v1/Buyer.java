@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the buyer. */
-@Schema(description = "Information about the buyer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the buyer.")
 public class Buyer {
     @SerializedName("buyerId")
     private String buyerId = null;
@@ -41,7 +40,7 @@ public class Buyer {
      *
      * @return buyerId
      */
-    @Schema(description = "The identifier of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the buyer.")
     public String getBuyerId() {
         return buyerId;
     }
@@ -60,7 +59,7 @@ public class Buyer {
      *
      * @return name
      */
-    @Schema(description = "The name of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the buyer.")
     public String getName() {
         return name;
     }
@@ -79,7 +78,7 @@ public class Buyer {
      *
      * @return phone
      */
-    @Schema(description = "The phone number of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The phone number of the buyer.")
     public String getPhone() {
         return phone;
     }
@@ -98,7 +97,7 @@ public class Buyer {
      *
      * @return isPrimeMember
      */
-    @Schema(description = "When true, the service is for an Amazon Prime buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the service is for an Amazon Prime buyer.")
     public Boolean getIsPrimeMember() {
         return isPrimeMember;
     }

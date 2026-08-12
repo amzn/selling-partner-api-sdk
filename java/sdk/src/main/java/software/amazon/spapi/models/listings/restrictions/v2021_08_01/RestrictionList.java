@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.listings.restrictions.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of restrictions for the specified Amazon catalog item. */
-@Schema(description = "A list of restrictions for the specified Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of restrictions for the specified Amazon catalog item.")
 public class RestrictionList {
     @SerializedName("restrictions")
     private List<Restriction> restrictions = null;
@@ -42,7 +42,7 @@ public class RestrictionList {
      *
      * @return restrictions
      */
-    @Schema(required = true, description = "A list of restrictions.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of restrictions.")
     public List<Restriction> getRestrictions() {
         return restrictions;
     }

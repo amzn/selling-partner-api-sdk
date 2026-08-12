@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Alternative product that can be substituted for an original order item when it becomes unavailable during
  * fulfillment.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Alternative product that can be substituted for an original order item when it becomes unavailable during fulfillment.")
 public class ItemSubstitutionOption {
@@ -49,7 +48,8 @@ public class ItemSubstitutionOption {
      *
      * @return asin
      */
-    @Schema(description = "Amazon Standard Identification Number of the substitute product.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Amazon Standard Identification Number of the substitute product.")
     public String getAsin() {
         return asin;
     }
@@ -68,7 +68,8 @@ public class ItemSubstitutionOption {
      *
      * @return quantityOrdered
      */
-    @Schema(description = "Number of units of the substitute item to be selected if substitution occurs.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Number of units of the substitute item to be selected if substitution occurs.")
     public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -87,7 +88,7 @@ public class ItemSubstitutionOption {
      *
      * @return sellerSku
      */
-    @Schema(description = "The item's seller stock keeping unit (SKU).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's seller stock keeping unit (SKU).")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -106,7 +107,8 @@ public class ItemSubstitutionOption {
      *
      * @return title
      */
-    @Schema(description = "Product name or title of the substitute item as displayed to customers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Product name or title of the substitute item as displayed to customers.")
     public String getTitle() {
         return title;
     }
@@ -125,7 +127,7 @@ public class ItemSubstitutionOption {
      *
      * @return measurement
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Measurement getMeasurement() {
         return measurement;
     }

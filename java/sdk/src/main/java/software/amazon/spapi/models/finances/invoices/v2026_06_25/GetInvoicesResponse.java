@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response to the &#x60;getInvoiceHeaders&#x60; operation. */
-@Schema(description = "The response to the `getInvoiceHeaders` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `getInvoiceHeaders` operation.")
 public class GetInvoicesResponse {
     @SerializedName("invoices")
     private List<InvoiceHeader> invoices = null;
@@ -48,7 +47,7 @@ public class GetInvoicesResponse {
      *
      * @return invoices
      */
-    @Schema(description = "A list of invoices with header-level details.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of invoices with header-level details.")
     public List<InvoiceHeader> getInvoices() {
         return invoices;
     }
@@ -67,7 +66,7 @@ public class GetInvoicesResponse {
      *
      * @return numOfRecords
      */
-    @Schema(description = "The number of records returned.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of records returned.")
     public Integer getNumOfRecords() {
         return numOfRecords;
     }
@@ -89,7 +88,7 @@ public class GetInvoicesResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The response includes `nextToken` when the number of invoices exceeds the default page size value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is `null`. Note that this operation can return empty pages.")
     public String getNextToken() {

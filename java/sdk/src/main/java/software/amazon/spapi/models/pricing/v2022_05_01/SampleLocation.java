@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about a location. It uses a postal code to identify the location. */
-@Schema(description = "Information about a location. It uses a postal code to identify the location.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about a location. It uses a postal code to identify the location.")
 public class SampleLocation {
     @SerializedName("postalCode")
     private PostalCode postalCode = null;
@@ -32,7 +32,7 @@ public class SampleLocation {
      *
      * @return postalCode
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PostalCode getPostalCode() {
         return postalCode;
     }

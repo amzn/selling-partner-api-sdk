@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Reservation object reduces the capacity of a resource. */
-@Schema(description = "Reservation object reduces the capacity of a resource.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Reservation object reduces the capacity of a resource.")
 public class Reservation {
     @SerializedName("reservationId")
     private String reservationId = null;
@@ -96,7 +95,7 @@ public class Reservation {
      *
      * @return reservationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Unique identifier for a reservation. If present, it is treated as an update reservation request and will update the corresponding reservation. Otherwise, it is treated as a new create reservation request.")
     public String getReservationId() {
@@ -117,7 +116,7 @@ public class Reservation {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of reservation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of reservation.")
     public TypeEnum getType() {
         return type;
     }
@@ -136,7 +135,7 @@ public class Reservation {
      *
      * @return availability
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AvailabilityRecord getAvailability() {
         return availability;
     }

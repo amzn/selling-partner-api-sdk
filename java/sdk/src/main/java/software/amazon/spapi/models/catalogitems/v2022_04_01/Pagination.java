@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -22,7 +21,7 @@ import java.util.Objects;
  * the &#x60;nextToken&#x60; value or the &#x60;previousToken&#x60; value as the &#x60;pageToken&#x60; parameter in the
  * next request. There is no &#x60;nextToken&#x60; in the pagination object on the last page.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Pagination occurs when a request produces a response that exceeds the `pageSize`. This means that the response is divided into individual pages. To retrieve the next page or the previous page of results, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. There is no `nextToken` in the pagination object on the last page.")
 public class Pagination {
@@ -42,7 +41,7 @@ public class Pagination {
      *
      * @return nextToken
      */
-    @Schema(description = "A token that you can use to retrieve the next page.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A token that you can use to retrieve the next page.")
     public String getNextToken() {
         return nextToken;
     }
@@ -61,7 +60,7 @@ public class Pagination {
      *
      * @return previousToken
      */
-    @Schema(description = "A token that you can use to retrieve the previous page.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A token that you can use to retrieve the previous page.")
     public String getPreviousToken() {
         return previousToken;
     }

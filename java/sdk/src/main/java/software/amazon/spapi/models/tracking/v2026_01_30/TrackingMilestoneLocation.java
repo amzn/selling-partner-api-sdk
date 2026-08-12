@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The location where a tracking milestone occurred. */
-@Schema(description = "The location where a tracking milestone occurred.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The location where a tracking milestone occurred.")
 public class TrackingMilestoneLocation {
     @SerializedName("address")
     private TrackingMilestoneAddress address = null;
@@ -32,7 +31,7 @@ public class TrackingMilestoneLocation {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingMilestoneAddress getAddress() {
         return address;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Request for estimated fees for a list of products. */
-@Schema(description = "Request for estimated fees for a list of products.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request for estimated fees for a list of products.")
 public class GetMyFeesEstimatesRequest extends ArrayList<FeesEstimateByIdRequest> {
 
     @Override

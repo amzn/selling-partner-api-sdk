@@ -17,14 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;. */
-@Schema(description = "Information about an Amazon catalog item for the indicated `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about an Amazon catalog item for the indicated `marketplaceId`.")
 public class ItemSummaryByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -148,7 +149,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -170,7 +171,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return adultProduct
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.")
     public Boolean getAdultProduct() {
@@ -191,7 +192,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return autographed
      */
-    @Schema(description = "When `true`, the Amazon catalog item is autographed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When `true`, the Amazon catalog item is autographed.")
     public Boolean getAutographed() {
         return autographed;
     }
@@ -210,7 +211,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return brand
      */
-    @Schema(description = "Name of the brand that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Name of the brand that is associated with the Amazon catalog item.")
     public String getBrand() {
         return brand;
     }
@@ -229,7 +231,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return browseClassification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemBrowseClassification getBrowseClassification() {
         return browseClassification;
     }
@@ -248,7 +250,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return color
      */
-    @Schema(description = "The color that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The color that is associated with the Amazon catalog item.")
     public String getColor() {
         return color;
     }
@@ -275,7 +278,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return contributors
      */
-    @Schema(description = "Individual contributors to the creation of the item, such as the authors or actors.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Individual contributors to the creation of the item, such as the authors or actors.")
     public List<ItemContributor> getContributors() {
         return contributors;
     }
@@ -294,7 +298,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemClassification
      */
-    @Schema(description = "Classification type that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Classification type that is associated with the Amazon catalog item.")
     public ItemClassificationEnum getItemClassification() {
         return itemClassification;
     }
@@ -313,7 +318,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemName
      */
-    @Schema(description = "The name that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name that is associated with the Amazon catalog item.")
     public String getItemName() {
         return itemName;
     }
@@ -332,7 +338,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return manufacturer
      */
-    @Schema(description = "The name of the manufacturer that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the manufacturer that is associated with the Amazon catalog item.")
     public String getManufacturer() {
         return manufacturer;
     }
@@ -351,7 +358,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return memorabilia
      */
-    @Schema(description = "When true, the item is classified as memorabilia.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the item is classified as memorabilia.")
     public Boolean getMemorabilia() {
         return memorabilia;
     }
@@ -370,7 +377,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return modelNumber
      */
-    @Schema(description = "The model number that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The model number that is associated with the Amazon catalog item.")
     public String getModelNumber() {
         return modelNumber;
     }
@@ -389,7 +397,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return packageQuantity
      */
-    @Schema(description = "The quantity of the Amazon catalog item within one package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The quantity of the Amazon catalog item within one package.")
     public Integer getPackageQuantity() {
         return packageQuantity;
     }
@@ -408,7 +417,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return partNumber
      */
-    @Schema(description = "The part number that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The part number that is associated with the Amazon catalog item.")
     public String getPartNumber() {
         return partNumber;
     }
@@ -427,7 +437,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return releaseDate
      */
-    @Schema(description = "The earliest date on which the Amazon catalog item can be shipped to customers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The earliest date on which the Amazon catalog item can be shipped to customers.")
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
@@ -446,7 +457,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return size
      */
-    @Schema(description = "The name of the size of the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the size of the Amazon catalog item.")
     public String getSize() {
         return size;
     }
@@ -465,7 +476,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return style
      */
-    @Schema(description = "The name of the style that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the style that is associated with the Amazon catalog item.")
     public String getStyle() {
         return style;
     }
@@ -484,7 +496,8 @@ public class ItemSummaryByMarketplace {
      *
      * @return tradeInEligible
      */
-    @Schema(description = "When true, the Amazon catalog item is eligible for trade-in.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the Amazon catalog item is eligible for trade-in.")
     public Boolean getTradeInEligible() {
         return tradeInEligible;
     }
@@ -503,7 +516,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return websiteDisplayGroup
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier of the website display group that is associated with the Amazon catalog item.")
     public String getWebsiteDisplayGroup() {
@@ -524,7 +537,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return websiteDisplayGroupName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The display name of the website display group that is associated with the Amazon catalog item.")
     public String getWebsiteDisplayGroupName() {

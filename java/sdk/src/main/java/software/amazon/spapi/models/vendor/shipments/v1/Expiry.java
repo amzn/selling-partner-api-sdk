@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Expiry refers to the collection of dates required for certain items. These could be either expiryDate or mfgDate and
  * expiryAfterDuration. These are mandatory for perishable items.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Expiry refers to the collection of dates required  for certain items. These could be either expiryDate or mfgDate and expiryAfterDuration. These are mandatory for perishable items.")
 public class Expiry {
@@ -44,7 +44,7 @@ public class Expiry {
      *
      * @return manufacturerDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Production, packaging or assembly date determined by the manufacturer. Its meaning is determined based on the trade item context.")
     public OffsetDateTime getManufacturerDate() {
@@ -66,7 +66,7 @@ public class Expiry {
      *
      * @return expiryDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date that determines the limit of consumption or use of a product. Its meaning is determined based on the trade item context.")
     public OffsetDateTime getExpiryDate() {
@@ -87,7 +87,7 @@ public class Expiry {
      *
      * @return expiryAfterDuration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Duration getExpiryAfterDuration() {
         return expiryAfterDuration;
     }

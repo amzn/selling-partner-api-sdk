@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of the carton/package being shipped. */
-@Schema(description = "Details of the carton/package being shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the carton/package being shipped.")
 public class Carton {
     @SerializedName("cartonIdentifiers")
     private List<ContainerIdentification> cartonIdentifiers = null;
@@ -57,7 +56,7 @@ public class Carton {
      *
      * @return cartonIdentifiers
      */
-    @Schema(description = "A list of carton identifiers.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of carton identifiers.")
     public List<ContainerIdentification> getCartonIdentifiers() {
         return cartonIdentifiers;
     }
@@ -77,7 +76,7 @@ public class Carton {
      *
      * @return cartonSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.")
@@ -99,7 +98,7 @@ public class Carton {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -118,7 +117,7 @@ public class Carton {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -137,7 +136,8 @@ public class Carton {
      *
      * @return trackingNumber
      */
-    @Schema(description = "This is required to be provided for every carton in the small parcel shipments.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "This is required to be provided for every carton in the small parcel shipments.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -164,7 +164,7 @@ public class Carton {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of container item details.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of container item details.")
     public List<ContainerItem> getItems() {
         return items;
     }

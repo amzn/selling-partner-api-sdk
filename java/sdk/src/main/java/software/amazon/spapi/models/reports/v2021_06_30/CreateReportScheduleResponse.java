@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema. */
-@Schema(description = "Response schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema.")
 public class CreateReportScheduleResponse {
     @SerializedName("reportScheduleId")
     private String reportScheduleId = null;
@@ -32,7 +31,7 @@ public class CreateReportScheduleResponse {
      *
      * @return reportScheduleId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the report schedule. This identifier is unique only in combination with a seller ID.")

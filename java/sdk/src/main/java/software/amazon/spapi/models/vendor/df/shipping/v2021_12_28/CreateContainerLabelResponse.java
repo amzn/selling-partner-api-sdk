@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;createContainerLabel&#x60; operation. */
-@Schema(description = "The response schema for the `createContainerLabel` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `createContainerLabel` operation.")
 public class CreateContainerLabelResponse {
     @SerializedName("containerLabel")
     private ContainerLabel containerLabel = null;
@@ -32,7 +32,7 @@ public class CreateContainerLabelResponse {
      *
      * @return containerLabel
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContainerLabel getContainerLabel() {
         return containerLabel;
     }

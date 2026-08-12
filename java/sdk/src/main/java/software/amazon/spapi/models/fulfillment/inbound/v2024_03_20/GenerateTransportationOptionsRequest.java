@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;generateTransportationOptions&#x60; request. */
-@Schema(description = "The `generateTransportationOptions` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `generateTransportationOptions` request.")
 public class GenerateTransportationOptionsRequest {
     @SerializedName("placementOptionId")
     private String placementOptionId = null;
@@ -37,7 +36,9 @@ public class GenerateTransportationOptionsRequest {
      *
      * @return placementOptionId
      */
-    @Schema(required = true, description = "The placement option to generate transportation options for.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The placement option to generate transportation options for.")
     public String getPlacementOptionId() {
         return placementOptionId;
     }
@@ -66,7 +67,9 @@ public class GenerateTransportationOptionsRequest {
      *
      * @return shipmentTransportationConfigurations
      */
-    @Schema(required = true, description = "List of shipment transportation configurations.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "List of shipment transportation configurations.")
     public List<ShipmentTransportationConfiguration> getShipmentTransportationConfigurations() {
         return shipmentTransportationConfigurations;
     }

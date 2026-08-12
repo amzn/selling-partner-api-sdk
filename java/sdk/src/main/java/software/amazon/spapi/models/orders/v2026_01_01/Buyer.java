@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the customer who purchased the order. */
-@Schema(description = "Information about the customer who purchased the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the customer who purchased the order.")
 public class Buyer {
     @SerializedName("buyerName")
     private String buyerName = null;
@@ -41,7 +40,7 @@ public class Buyer {
      *
      * @return buyerName
      */
-    @Schema(description = "The full name of the customer who placed the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The full name of the customer who placed the order.")
     public String getBuyerName() {
         return buyerName;
     }
@@ -60,7 +59,7 @@ public class Buyer {
      *
      * @return buyerEmail
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The anonymized email address of the buyer. **Note:** Only available for merchant-fulfilled (FBM) orders.")
     public String getBuyerEmail() {
@@ -81,7 +80,8 @@ public class Buyer {
      *
      * @return buyerCompanyName
      */
-    @Schema(description = "The name of the company or organization for a business order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the company or organization for a business order.")
     public String getBuyerCompanyName() {
         return buyerCompanyName;
     }
@@ -101,7 +101,7 @@ public class Buyer {
      *
      * @return buyerPurchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.")
     public String getBuyerPurchaseOrderNumber() {

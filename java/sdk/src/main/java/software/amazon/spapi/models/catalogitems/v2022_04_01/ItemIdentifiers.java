@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers. */
-@Schema(description = "Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.")
 public class ItemIdentifiers extends ArrayList<ItemIdentifiersByMarketplace> {
 
     @Override

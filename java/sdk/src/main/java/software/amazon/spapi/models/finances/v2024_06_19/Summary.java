@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Contains all information related to the financial summary. */
-@Schema(description = "Contains all information related to the financial summary.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains all information related to the financial summary.")
 public class Summary {
     @SerializedName("partnerMetadata")
     private PartnerMetadata partnerMetadata = null;
@@ -47,7 +47,7 @@ public class Summary {
      *
      * @return partnerMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
@@ -66,7 +66,7 @@ public class Summary {
      *
      * @return netProceeds
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getNetProceeds() {
         return netProceeds;
     }
@@ -85,7 +85,7 @@ public class Summary {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
@@ -104,7 +104,7 @@ public class Summary {
      *
      * @return breakdowns
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Breakdowns getBreakdowns() {
         return breakdowns;
     }
@@ -123,7 +123,7 @@ public class Summary {
      *
      * @return periodStart
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPeriodStart() {
@@ -144,7 +144,7 @@ public class Summary {
      *
      * @return periodEnd
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPeriodEnd() {

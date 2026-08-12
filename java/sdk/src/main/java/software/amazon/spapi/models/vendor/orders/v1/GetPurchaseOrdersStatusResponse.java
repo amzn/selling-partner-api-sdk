@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getPurchaseOrdersStatus operation. */
-@Schema(description = "The response schema for the getPurchaseOrdersStatus operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the getPurchaseOrdersStatus operation.")
 public class GetPurchaseOrdersStatusResponse {
     @SerializedName("payload")
     private OrderListStatus payload = null;
@@ -35,7 +35,7 @@ public class GetPurchaseOrdersStatusResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderListStatus getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetPurchaseOrdersStatusResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

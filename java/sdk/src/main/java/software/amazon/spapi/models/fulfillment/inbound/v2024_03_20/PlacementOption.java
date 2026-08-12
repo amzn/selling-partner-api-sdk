@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains information pertaining to the placement of the contents of an inbound plan and the related costs. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains information pertaining to the placement of the contents of an inbound plan and the related costs.")
 public class PlacementOption {
@@ -59,7 +59,7 @@ public class PlacementOption {
      *
      * @return discounts
      */
-    @Schema(required = true, description = "Discount for the offered option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Discount for the offered option.")
     public List<Incentive> getDiscounts() {
         return discounts;
     }
@@ -80,7 +80,7 @@ public class PlacementOption {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
     public OffsetDateTime getExpiration() {
@@ -109,7 +109,7 @@ public class PlacementOption {
      *
      * @return fees
      */
-    @Schema(required = true, description = "The fee for the offered option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The fee for the offered option.")
     public List<Incentive> getFees() {
         return fees;
     }
@@ -128,7 +128,7 @@ public class PlacementOption {
      *
      * @return placementOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.")
@@ -158,7 +158,7 @@ public class PlacementOption {
      *
      * @return shipmentIds
      */
-    @Schema(required = true, description = "Shipment ids.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Shipment ids.")
     public List<String> getShipmentIds() {
         return shipmentIds;
     }
@@ -178,7 +178,7 @@ public class PlacementOption {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.")
     public String getStatus() {

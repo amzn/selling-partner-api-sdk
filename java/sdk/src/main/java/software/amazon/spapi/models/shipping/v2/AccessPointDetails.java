@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** AccessPointDetails object */
-@Schema(description = "AccessPointDetails object")
+@io.swagger.v3.oas.annotations.media.Schema(description = "AccessPointDetails object")
 public class AccessPointDetails {
     @SerializedName("accessPointId")
     private String accessPointId = null;
@@ -32,7 +31,7 @@ public class AccessPointDetails {
      *
      * @return accessPointId
      */
-    @Schema(description = "Unique identifier for the access point")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Unique identifier for the access point")
     public String getAccessPointId() {
         return accessPointId;
     }

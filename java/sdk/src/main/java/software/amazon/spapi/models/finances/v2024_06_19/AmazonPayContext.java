@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Additional information related to Amazon Pay. */
-@Schema(description = "Additional information related to Amazon Pay.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information related to Amazon Pay.")
 public class AmazonPayContext {
     @SerializedName("storeName")
     private String storeName = null;
@@ -38,7 +37,8 @@ public class AmazonPayContext {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store that is related to the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the store that is related to the transaction.")
     public String getStoreName() {
         return storeName;
     }
@@ -57,7 +57,7 @@ public class AmazonPayContext {
      *
      * @return orderType
      */
-    @Schema(description = "The order type of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order type of the transaction.")
     public String getOrderType() {
         return orderType;
     }
@@ -76,7 +76,7 @@ public class AmazonPayContext {
      *
      * @return channel
      */
-    @Schema(description = "The channel of the transaction. For example: `MFN`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The channel of the transaction. For example: `MFN`.")
     public String getChannel() {
         return channel;
     }

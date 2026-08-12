@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;updateOrderStatus&#x60; operation. */
-@Schema(description = "The request body schema for the `updateOrderStatus` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `updateOrderStatus` operation.")
 public class UpdateOrderStatusRequest {
     @SerializedName("status")
     private String status = null;
@@ -33,7 +33,7 @@ public class UpdateOrderStatusRequest {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The current status of the fulfillment order. Possible values: `PROCESSING`, `COMPLETE`, `COMPLETE_PARTIAL`, `CANCELLED`, `UNFULFILLABLE`, `INVALID`.")

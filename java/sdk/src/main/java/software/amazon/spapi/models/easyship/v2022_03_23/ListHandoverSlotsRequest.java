@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the &#x60;listHandoverSlots&#x60; operation. */
-@Schema(description = "The request schema for the `listHandoverSlots` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the `listHandoverSlots` operation.")
 public class ListHandoverSlotsRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -41,7 +40,7 @@ public class ListHandoverSlotsRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -60,7 +59,7 @@ public class ListHandoverSlotsRequest {
      *
      * @return amazonOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
@@ -82,7 +81,7 @@ public class ListHandoverSlotsRequest {
      *
      * @return packageDimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimensions getPackageDimensions() {
         return packageDimensions;
     }
@@ -101,7 +100,7 @@ public class ListHandoverSlotsRequest {
      *
      * @return packageWeight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getPackageWeight() {
         return packageWeight;
     }

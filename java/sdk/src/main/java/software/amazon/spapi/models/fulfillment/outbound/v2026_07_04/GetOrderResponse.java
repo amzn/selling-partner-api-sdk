@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for &#x60;getOrder&#x60;. */
-@Schema(description = "The response schema for `getOrder`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for `getOrder`.")
 public class GetOrderResponse {
     @SerializedName("order")
     private FulfillmentOrder order = null;
@@ -32,7 +31,7 @@ public class GetOrderResponse {
      *
      * @return order
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentOrder getOrder() {
         return order;
     }

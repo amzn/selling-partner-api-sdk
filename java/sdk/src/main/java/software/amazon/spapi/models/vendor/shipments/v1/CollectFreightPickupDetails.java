@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Transport Request pickup date from Vendor Warehouse by Buyer */
-@Schema(description = "Transport Request pickup date from Vendor Warehouse by Buyer")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Transport Request pickup date from Vendor Warehouse by Buyer")
 public class CollectFreightPickupDetails {
     @SerializedName("requestedPickUp")
     private OffsetDateTime requestedPickUp = null;
@@ -38,7 +39,7 @@ public class CollectFreightPickupDetails {
      *
      * @return requestedPickUp
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date on which the items can be picked up from vendor warehouse by Buyer used for WePay/Collect vendors.")
     public OffsetDateTime getRequestedPickUp() {
@@ -59,7 +60,7 @@ public class CollectFreightPickupDetails {
      *
      * @return scheduledPickUp
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date on which the items are scheduled to be picked from vendor warehouse by Buyer used for WePay/Collect vendors.")
     public OffsetDateTime getScheduledPickUp() {
@@ -81,7 +82,7 @@ public class CollectFreightPickupDetails {
      *
      * @return carrierAssignmentDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date on which the carrier is being scheduled to pickup items from vendor warehouse by Byer used for WePay/Collect vendors.")
     public OffsetDateTime getCarrierAssignmentDate() {

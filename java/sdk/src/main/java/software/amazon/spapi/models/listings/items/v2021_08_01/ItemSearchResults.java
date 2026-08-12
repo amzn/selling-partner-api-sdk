@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Selling partner listings items and search related metadata. */
-@Schema(description = "Selling partner listings items and search related metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Selling partner listings items and search related metadata.")
 public class ItemSearchResults {
     @SerializedName("numberOfResults")
     private Integer numberOfResults = null;
@@ -42,7 +41,7 @@ public class ItemSearchResults {
      *
      * @return numberOfResults
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.")
@@ -64,7 +63,7 @@ public class ItemSearchResults {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -91,7 +90,7 @@ public class ItemSearchResults {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of listings items.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of listings items.")
     public List<Item> getItems() {
         return items;
     }

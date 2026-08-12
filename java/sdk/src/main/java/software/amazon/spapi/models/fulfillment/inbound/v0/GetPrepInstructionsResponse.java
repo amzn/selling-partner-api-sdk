@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getPrepInstructions operation. */
-@Schema(description = "The response schema for the getPrepInstructions operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the getPrepInstructions operation.")
 public class GetPrepInstructionsResponse {
     @SerializedName("payload")
     private GetPrepInstructionsResult payload = null;
@@ -35,7 +34,7 @@ public class GetPrepInstructionsResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetPrepInstructionsResult getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetPrepInstructionsResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

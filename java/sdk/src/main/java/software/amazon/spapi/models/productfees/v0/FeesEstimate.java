@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The total estimated fees for an item and a list of details. */
-@Schema(description = "The total estimated fees for an item and a list of details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The total estimated fees for an item and a list of details.")
 public class FeesEstimate {
     @SerializedName("TimeOfFeesEstimation")
     private OffsetDateTime timeOfFeesEstimation = null;
@@ -38,7 +38,7 @@ public class FeesEstimate {
      *
      * @return timeOfFeesEstimation
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The time at which the fees were estimated. This defaults to the time the request is made.")
     public OffsetDateTime getTimeOfFeesEstimation() {
@@ -59,7 +59,7 @@ public class FeesEstimate {
      *
      * @return totalFeesEstimate
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getTotalFeesEstimate() {
         return totalFeesEstimate;
     }
@@ -78,7 +78,7 @@ public class FeesEstimate {
      *
      * @return feeDetailList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeDetailList getFeeDetailList() {
         return feeDetailList;
     }

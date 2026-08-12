@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The requirements for a box in the packing option. */
-@Schema(description = "The requirements for a box in the packing option.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The requirements for a box in the packing option.")
 public class BoxRequirements {
     @SerializedName("weight")
     private WeightRange weight = null;
@@ -32,7 +31,7 @@ public class BoxRequirements {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public WeightRange getWeight() {
         return weight;
     }

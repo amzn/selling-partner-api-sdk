@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Input for set appointment fulfillment data operation. */
-@Schema(description = "Input for set appointment fulfillment data operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input for set appointment fulfillment data operation.")
 public class SetAppointmentFulfillmentDataRequest {
     @SerializedName("estimatedArrivalTime")
     private DateTimeRange estimatedArrivalTime = null;
@@ -41,7 +40,7 @@ public class SetAppointmentFulfillmentDataRequest {
      *
      * @return estimatedArrivalTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateTimeRange getEstimatedArrivalTime() {
         return estimatedArrivalTime;
     }
@@ -60,7 +59,7 @@ public class SetAppointmentFulfillmentDataRequest {
      *
      * @return fulfillmentTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentTime getFulfillmentTime() {
         return fulfillmentTime;
     }
@@ -79,7 +78,7 @@ public class SetAppointmentFulfillmentDataRequest {
      *
      * @return appointmentResources
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AppointmentResources getAppointmentResources() {
         return appointmentResources;
     }
@@ -98,7 +97,7 @@ public class SetAppointmentFulfillmentDataRequest {
      *
      * @return fulfillmentDocuments
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentDocuments getFulfillmentDocuments() {
         return fulfillmentDocuments;
     }

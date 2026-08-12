@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;listHandoverSlots&#x60; operation. */
-@Schema(description = "The response schema for the `listHandoverSlots` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `listHandoverSlots` operation.")
 public class ListHandoverSlotsResponse {
     @SerializedName("amazonOrderId")
     private String amazonOrderId = null;
@@ -35,7 +34,7 @@ public class ListHandoverSlotsResponse {
      *
      * @return amazonOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
@@ -57,7 +56,7 @@ public class ListHandoverSlotsResponse {
      *
      * @return timeSlots
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeSlots getTimeSlots() {
         return timeSlots;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Specify the type of attributes to be added on a label. */
-@Schema(description = "Specify the type of attributes to be added on a label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specify the type of attributes to be added on a label.")
 public class RequestAttributes extends ArrayList<LabelAttribute> {
 
     @Override

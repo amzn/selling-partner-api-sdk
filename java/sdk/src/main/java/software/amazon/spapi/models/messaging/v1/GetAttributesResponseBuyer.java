@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The list of attributes related to the buyer. */
-@Schema(description = "The list of attributes related to the buyer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The list of attributes related to the buyer.")
 public class GetAttributesResponseBuyer {
     @SerializedName("locale")
     private String locale = null;
@@ -33,7 +32,7 @@ public class GetAttributesResponseBuyer {
      *
      * @return locale
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The buyer's language of preference, indicated with a locale-specific language tag. Examples: \"en-US\", \"zh-CN\", and \"en-GB\".")
     public String getLocale() {

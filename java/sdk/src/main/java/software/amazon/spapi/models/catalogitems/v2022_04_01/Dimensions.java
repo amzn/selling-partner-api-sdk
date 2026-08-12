@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Dimensions of an Amazon catalog item or item in its packaging. */
-@Schema(description = "Dimensions of an Amazon catalog item or item in its packaging.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Dimensions of an Amazon catalog item or item in its packaging.")
 public class Dimensions {
     @SerializedName("height")
     private Dimension height = null;
@@ -41,7 +41,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimension getHeight() {
         return height;
     }
@@ -60,7 +60,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimension getLength() {
         return length;
     }
@@ -79,7 +79,7 @@ public class Dimensions {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimension getWeight() {
         return weight;
     }
@@ -98,7 +98,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimension getWidth() {
         return width;
     }

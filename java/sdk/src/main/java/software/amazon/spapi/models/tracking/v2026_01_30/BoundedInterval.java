@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A time interval defined by a start time and end time. */
-@Schema(description = "A time interval defined by a start time and end time.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A time interval defined by a start time and end time.")
 public class BoundedInterval {
     @SerializedName("startTime")
     private String startTime = null;
@@ -35,7 +34,9 @@ public class BoundedInterval {
      *
      * @return startTime
      */
-    @Schema(required = true, description = "A timestamp in UTC RFC 3339 date-time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A timestamp in UTC RFC 3339 date-time format.")
     public String getStartTime() {
         return startTime;
     }
@@ -54,7 +55,9 @@ public class BoundedInterval {
      *
      * @return endTime
      */
-    @Schema(required = true, description = "A timestamp in UTC RFC 3339 date-time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A timestamp in UTC RFC 3339 date-time format.")
     public String getEndTime() {
         return endTime;
     }

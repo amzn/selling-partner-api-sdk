@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the &#x60;createDigitalAccessKey&#x60; operation. */
-@Schema(description = "The request schema for the `createDigitalAccessKey` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the `createDigitalAccessKey` operation.")
 public class CreateDigitalAccessKeyRequest {
     @SerializedName("text")
     private String text = null;
@@ -39,7 +39,7 @@ public class CreateDigitalAccessKeyRequest {
      *
      * @return text
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The text that is sent to the buyer. Only links that are related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's preferred language, which you can retrieve from the `GetAttributes` operation.")
     public String getText() {
@@ -68,7 +68,8 @@ public class CreateDigitalAccessKeyRequest {
      *
      * @return attachments
      */
-    @Schema(description = "Attachments that you want to include in the message to the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Attachments that you want to include in the message to the buyer.")
     public List<Attachment> getAttachments() {
         return attachments;
     }

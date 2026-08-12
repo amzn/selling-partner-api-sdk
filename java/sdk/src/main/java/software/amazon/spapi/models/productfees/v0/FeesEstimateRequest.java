@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A product, marketplace, and proposed price used to request estimated fees. */
-@Schema(description = "A product, marketplace, and proposed price used to request estimated fees.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A product, marketplace, and proposed price used to request estimated fees.")
 public class FeesEstimateRequest {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -44,7 +44,7 @@ public class FeesEstimateRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -63,7 +63,7 @@ public class FeesEstimateRequest {
      *
      * @return isAmazonFulfilled
      */
-    @Schema(description = "When true, the offer is fulfilled by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the offer is fulfilled by Amazon.")
     public Boolean getIsAmazonFulfilled() {
         return isAmazonFulfilled;
     }
@@ -82,7 +82,7 @@ public class FeesEstimateRequest {
      *
      * @return priceToEstimateFees
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PriceToEstimateFees getPriceToEstimateFees() {
         return priceToEstimateFees;
     }
@@ -101,7 +101,9 @@ public class FeesEstimateRequest {
      *
      * @return identifier
      */
-    @Schema(required = true, description = "A unique identifier provided by the caller to track this request.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A unique identifier provided by the caller to track this request.")
     public String getIdentifier() {
         return identifier;
     }
@@ -120,7 +122,7 @@ public class FeesEstimateRequest {
      *
      * @return optionalFulfillmentProgram
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OptionalFulfillmentProgram getOptionalFulfillmentProgram() {
         return optionalFulfillmentProgram;
     }

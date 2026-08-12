@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A standard background image with a floating text box. */
-@Schema(description = "A standard background image with a floating text box.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A standard background image with a floating text box.")
 public class StandardImageTextOverlayModule {
     @SerializedName("overlayColorType")
     private ColorType overlayColorType = null;
@@ -35,7 +34,7 @@ public class StandardImageTextOverlayModule {
      *
      * @return overlayColorType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ColorType getOverlayColorType() {
         return overlayColorType;
     }
@@ -54,7 +53,7 @@ public class StandardImageTextOverlayModule {
      *
      * @return block
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock() {
         return block;
     }

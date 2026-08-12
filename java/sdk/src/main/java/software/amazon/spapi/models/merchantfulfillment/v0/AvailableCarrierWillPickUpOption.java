@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Indicates whether the carrier will pick up the package, and what fee is charged, if any. */
-@Schema(description = "Indicates whether the carrier will pick up the package, and what fee is charged, if any.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Indicates whether the carrier will pick up the package, and what fee is charged, if any.")
 public class AvailableCarrierWillPickUpOption {
     @SerializedName("CarrierWillPickUpOption")
     private CarrierWillPickUpOption carrierWillPickUpOption = null;
@@ -35,7 +35,7 @@ public class AvailableCarrierWillPickUpOption {
      *
      * @return carrierWillPickUpOption
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CarrierWillPickUpOption getCarrierWillPickUpOption() {
         return carrierWillPickUpOption;
     }
@@ -54,7 +54,7 @@ public class AvailableCarrierWillPickUpOption {
      *
      * @return charge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyAmount getCharge() {
         return charge;
     }

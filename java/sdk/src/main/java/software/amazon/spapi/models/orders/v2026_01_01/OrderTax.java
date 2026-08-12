@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tax information about the order. */
-@Schema(description = "Tax information about the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax information about the order.")
 public class OrderTax {
     @SerializedName("taxRegistrations")
     private List<OrderTaxRegistration> taxRegistrations = null;
@@ -45,7 +44,7 @@ public class OrderTax {
      *
      * @return taxRegistrations
      */
-    @Schema(description = "A list of tax registrations associated with the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of tax registrations associated with the order.")
     public List<OrderTaxRegistration> getTaxRegistrations() {
         return taxRegistrations;
     }
@@ -64,7 +63,7 @@ public class OrderTax {
      *
      * @return taxInvoicing
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderTaxInvoicing getTaxInvoicing() {
         return taxInvoicing;
     }

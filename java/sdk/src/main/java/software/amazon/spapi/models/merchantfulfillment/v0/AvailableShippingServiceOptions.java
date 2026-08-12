@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The available shipping service options. */
-@Schema(description = "The available shipping service options.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The available shipping service options.")
 public class AvailableShippingServiceOptions {
     @SerializedName("AvailableCarrierWillPickUpOptions")
     private AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions = null;
@@ -36,7 +35,7 @@ public class AvailableShippingServiceOptions {
      *
      * @return availableCarrierWillPickUpOptions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AvailableCarrierWillPickUpOptionsList getAvailableCarrierWillPickUpOptions() {
         return availableCarrierWillPickUpOptions;
     }
@@ -57,7 +56,7 @@ public class AvailableShippingServiceOptions {
      *
      * @return availableDeliveryExperienceOptions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AvailableDeliveryExperienceOptionsList getAvailableDeliveryExperienceOptions() {
         return availableDeliveryExperienceOptions;
     }

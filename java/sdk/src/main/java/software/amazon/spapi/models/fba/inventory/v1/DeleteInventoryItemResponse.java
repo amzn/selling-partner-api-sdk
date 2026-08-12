@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the DeleteInventoryItem operation. */
-@Schema(description = "The response schema for the DeleteInventoryItem operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the DeleteInventoryItem operation.")
 public class DeleteInventoryItemResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +31,7 @@ public class DeleteInventoryItemResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The service level for a shipment in a fulfillment order. */
-@Schema(description = "The service level for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The service level for a shipment in a fulfillment order.")
 public class ShipmentServiceLevel {
     @SerializedName("serviceTier")
     private String serviceTier = null;
@@ -34,7 +33,7 @@ public class ShipmentServiceLevel {
      *
      * @return serviceTier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The service tier used for this shipment. Possible values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan).")
     public String getServiceTier() {

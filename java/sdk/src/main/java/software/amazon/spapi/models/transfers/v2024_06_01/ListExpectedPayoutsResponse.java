@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response schema for the &#x60;listExpectedPayouts&#x60; operation. */
-@Schema(description = "The response schema for the `listExpectedPayouts` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `listExpectedPayouts` operation.")
 public class ListExpectedPayoutsResponse {
     @SerializedName("expectedPayouts")
     private List<ExpectedPayout> expectedPayouts = null;
@@ -45,7 +45,8 @@ public class ListExpectedPayoutsResponse {
      *
      * @return expectedPayouts
      */
-    @Schema(description = "A list of expected payouts for all of the selling partner's accounts matching the filters.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of expected payouts for all of the selling partner's accounts matching the filters.")
     public List<ExpectedPayout> getExpectedPayouts() {
         return expectedPayouts;
     }
@@ -67,7 +68,7 @@ public class ListExpectedPayoutsResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {

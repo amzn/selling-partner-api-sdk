@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds
  * types.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.")
 public class ItemProceedsDetailedBreakdown {
@@ -41,7 +40,7 @@ public class ItemProceedsDetailedBreakdown {
      *
      * @return subtype
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Specific classification of the further granular breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `DISCOUNT`")
     public String getSubtype() {
@@ -62,7 +61,7 @@ public class ItemProceedsDetailedBreakdown {
      *
      * @return value
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getValue() {
         return value;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Info About CarrierAccountInput */
-@Schema(description = "Info About CarrierAccountInput")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Info About CarrierAccountInput")
 public class CarrierAccountInput {
     @SerializedName("descriptionLocalizationKey")
     private String descriptionLocalizationKey = null;
@@ -53,7 +52,7 @@ public class CarrierAccountInput {
      *
      * @return descriptionLocalizationKey
      */
-    @Schema(description = "descriptionLocalizationKey value .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "descriptionLocalizationKey value .")
     public String getDescriptionLocalizationKey() {
         return descriptionLocalizationKey;
     }
@@ -72,7 +71,7 @@ public class CarrierAccountInput {
      *
      * @return name
      */
-    @Schema(description = "name value .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "name value .")
     public String getName() {
         return name;
     }
@@ -91,7 +90,7 @@ public class CarrierAccountInput {
      *
      * @return groupName
      */
-    @Schema(description = "groupName value .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "groupName value .")
     public String getGroupName() {
         return groupName;
     }
@@ -110,7 +109,7 @@ public class CarrierAccountInput {
      *
      * @return inputType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InputType getInputType() {
         return inputType;
     }
@@ -129,7 +128,7 @@ public class CarrierAccountInput {
      *
      * @return isMandatory
      */
-    @Schema(description = "mandatory or not  value .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "mandatory or not  value .")
     public Boolean getIsMandatory() {
         return isMandatory;
     }
@@ -148,7 +147,7 @@ public class CarrierAccountInput {
      *
      * @return isConfidential
      */
-    @Schema(description = "is value is Confidential .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "is value is Confidential .")
     public Boolean getIsConfidential() {
         return isConfidential;
     }
@@ -167,7 +166,7 @@ public class CarrierAccountInput {
      *
      * @return isHidden
      */
-    @Schema(description = "is value is hidden .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "is value is hidden .")
     public Boolean getIsHidden() {
         return isHidden;
     }
@@ -186,7 +185,7 @@ public class CarrierAccountInput {
      *
      * @return validationMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ValidationMetadataList getValidationMetadata() {
         return validationMetadata;
     }

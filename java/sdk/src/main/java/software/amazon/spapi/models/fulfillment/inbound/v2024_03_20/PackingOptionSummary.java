@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Summary information about a packing option. */
-@Schema(description = "Summary information about a packing option.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summary information about a packing option.")
 public class PackingOptionSummary {
     @SerializedName("packingOptionId")
     private String packingOptionId = null;
@@ -35,7 +34,7 @@ public class PackingOptionSummary {
      *
      * @return packingOptionId
      */
-    @Schema(required = true, description = "Identifier of a packing option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of a packing option.")
     public String getPackingOptionId() {
         return packingOptionId;
     }
@@ -54,7 +53,7 @@ public class PackingOptionSummary {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The status of a packing option. Possible values: 'OFFERED', 'ACCEPTED', 'EXPIRED'.")
     public String getStatus() {

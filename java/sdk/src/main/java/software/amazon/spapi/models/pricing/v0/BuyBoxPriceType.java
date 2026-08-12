@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for an individual buybox price. */
-@Schema(description = "Schema for an individual buybox price.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual buybox price.")
 public class BuyBoxPriceType {
     @SerializedName("condition")
     private String condition = null;
@@ -56,7 +55,7 @@ public class BuyBoxPriceType {
      *
      * @return condition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.")
@@ -78,7 +77,7 @@ public class BuyBoxPriceType {
      *
      * @return offerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferCustomerType getOfferType() {
         return offerType;
     }
@@ -97,7 +96,7 @@ public class BuyBoxPriceType {
      *
      * @return quantityTier
      */
-    @Schema(description = "Indicates at what quantity this price becomes active.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates at what quantity this price becomes active.")
     public Integer getQuantityTier() {
         return quantityTier;
     }
@@ -116,7 +115,7 @@ public class BuyBoxPriceType {
      *
      * @return quantityDiscountType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public QuantityDiscountType getQuantityDiscountType() {
         return quantityDiscountType;
     }
@@ -135,7 +134,7 @@ public class BuyBoxPriceType {
      *
      * @return landedPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getLandedPrice() {
         return landedPrice;
     }
@@ -154,7 +153,7 @@ public class BuyBoxPriceType {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -173,7 +172,7 @@ public class BuyBoxPriceType {
      *
      * @return shipping
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getShipping() {
         return shipping;
     }
@@ -192,7 +191,7 @@ public class BuyBoxPriceType {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }
@@ -211,7 +210,7 @@ public class BuyBoxPriceType {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }

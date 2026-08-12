@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The A+ Content standard comparison product block. */
-@Schema(description = "The A+ Content standard comparison product block.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content standard comparison product block.")
 public class StandardComparisonProductBlock {
     @SerializedName("position")
     private Integer position = null;
@@ -50,7 +49,7 @@ public class StandardComparisonProductBlock {
      *
      * @return position
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module.")
@@ -72,7 +71,7 @@ public class StandardComparisonProductBlock {
      *
      * @return image
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImageComponent getImage() {
         return image;
     }
@@ -91,7 +90,7 @@ public class StandardComparisonProductBlock {
      *
      * @return title
      */
-    @Schema(description = "The comparison product title.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The comparison product title.")
     public String getTitle() {
         return title;
     }
@@ -110,7 +109,7 @@ public class StandardComparisonProductBlock {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
     public String getAsin() {
         return asin;
     }
@@ -129,7 +128,8 @@ public class StandardComparisonProductBlock {
      *
      * @return highlight
      */
-    @Schema(description = "When true, indicates that this content block is visually highlighted.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, indicates that this content block is visually highlighted.")
     public Boolean getHighlight() {
         return highlight;
     }
@@ -156,7 +156,7 @@ public class StandardComparisonProductBlock {
      *
      * @return metrics
      */
-    @Schema(description = "Comparison metrics for the product.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Comparison metrics for the product.")
     public List<PlainTextItem> getMetrics() {
         return metrics;
     }

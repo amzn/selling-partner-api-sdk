@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Active Account Details */
-@Schema(description = "Active Account Details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Active Account Details")
 public class CollectionFormsHistoryRecord {
     @SerializedName("carrierName")
     private String carrierName = null;
@@ -44,7 +43,7 @@ public class CollectionFormsHistoryRecord {
      *
      * @return carrierName
      */
-    @Schema(description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier name for the offering.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -63,7 +62,7 @@ public class CollectionFormsHistoryRecord {
      *
      * @return creationDate
      */
-    @Schema(description = "Creation Time for this account.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Creation Time for this account.")
     public String getCreationDate() {
         return creationDate;
     }
@@ -82,7 +81,7 @@ public class CollectionFormsHistoryRecord {
      *
      * @return generationStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GenerationStatus getGenerationStatus() {
         return generationStatus;
     }
@@ -101,7 +100,7 @@ public class CollectionFormsHistoryRecord {
      *
      * @return collectionFormId
      */
-    @Schema(description = "Collection Form Id for Reprint .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Collection Form Id for Reprint .")
     public String getCollectionFormId() {
         return collectionFormId;
     }
@@ -120,7 +119,7 @@ public class CollectionFormsHistoryRecord {
      *
      * @return shipFromAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed information about a report schedule. */
-@Schema(description = "Detailed information about a report schedule.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about a report schedule.")
 public class ReportSchedule {
     @SerializedName("reportScheduleId")
     private String reportScheduleId = null;
@@ -49,7 +49,7 @@ public class ReportSchedule {
      *
      * @return reportScheduleId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the report schedule. This identifier is unique only in combination with a seller ID.")
@@ -72,7 +72,7 @@ public class ReportSchedule {
      *
      * @return reportType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
@@ -103,7 +103,7 @@ public class ReportSchedule {
      *
      * @return marketplaceIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.")
     public List<String> getMarketplaceIds() {
@@ -124,7 +124,7 @@ public class ReportSchedule {
      *
      * @return reportOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReportOptions getReportOptions() {
         return reportOptions;
     }
@@ -144,7 +144,7 @@ public class ReportSchedule {
      *
      * @return period
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> period value that indicates how often a report should be created.")
@@ -168,7 +168,7 @@ public class ReportSchedule {
      *
      * @return nextReportCreationTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
     public OffsetDateTime getNextReportCreationTime() {

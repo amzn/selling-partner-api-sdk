@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about an item associated with the service job. */
-@Schema(description = "Information about an item associated with the service job.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about an item associated with the service job.")
 public class AssociatedItem {
     @SerializedName("asin")
     private String asin = null;
@@ -110,7 +109,8 @@ public class AssociatedItem {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -129,7 +129,7 @@ public class AssociatedItem {
      *
      * @return title
      */
-    @Schema(description = "The title of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The title of the item.")
     public String getTitle() {
         return title;
     }
@@ -148,7 +148,7 @@ public class AssociatedItem {
      *
      * @return quantity
      */
-    @Schema(description = "The total number of items included in the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The total number of items included in the order.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -167,7 +167,8 @@ public class AssociatedItem {
      *
      * @return orderId
      */
-    @Schema(description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
     public String getOrderId() {
         return orderId;
     }
@@ -186,7 +187,7 @@ public class AssociatedItem {
      *
      * @return itemStatus
      */
-    @Schema(description = "The status of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the item.")
     public ItemStatusEnum getItemStatus() {
         return itemStatus;
     }
@@ -205,7 +206,7 @@ public class AssociatedItem {
      *
      * @return brandName
      */
-    @Schema(description = "The brand name of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The brand name of the item.")
     public String getBrandName() {
         return brandName;
     }
@@ -224,7 +225,7 @@ public class AssociatedItem {
      *
      * @return itemDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemDelivery getItemDelivery() {
         return itemDelivery;
     }
@@ -251,7 +252,8 @@ public class AssociatedItem {
      *
      * @return linkedAssets
      */
-    @Schema(description = "A list of customer-owned assets on which the service must be performed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of customer-owned assets on which the service must be performed.")
     public List<LinkedAsset> getLinkedAssets() {
         return linkedAssets;
     }

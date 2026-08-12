@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of item quantity. */
-@Schema(description = "Details of item quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity.")
 public class ItemQuantity {
     @SerializedName("amount")
     private Integer amount = null;
@@ -36,7 +35,7 @@ public class ItemQuantity {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Quantity of units shipped for a specific item at a shipment level. If the item is present only in certain packages or pallets within the shipment, please provide this at the appropriate package or pallet level.")
@@ -58,7 +57,9 @@ public class ItemQuantity {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "Unit of measure for the shipped quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Unit of measure for the shipped quantity.")
     public String getUnitOfMeasure() {
         return unitOfMeasure;
     }

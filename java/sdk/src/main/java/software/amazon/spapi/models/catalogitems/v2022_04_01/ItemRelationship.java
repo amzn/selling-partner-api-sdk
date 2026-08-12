@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Relationship details for an Amazon catalog item. */
-@Schema(description = "Relationship details for an Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Relationship details for an Amazon catalog item.")
 public class ItemRelationship {
     @SerializedName("childAsins")
     private List<String> childAsins = null;
@@ -102,7 +101,8 @@ public class ItemRelationship {
      *
      * @return childAsins
      */
-    @Schema(description = "ASINs of the related items that are children of this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "ASINs of the related items that are children of this item.")
     public List<String> getChildAsins() {
         return childAsins;
     }
@@ -129,7 +129,8 @@ public class ItemRelationship {
      *
      * @return parentAsins
      */
-    @Schema(description = "ASINs of the related items that are parents of this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "ASINs of the related items that are parents of this item.")
     public List<String> getParentAsins() {
         return parentAsins;
     }
@@ -148,7 +149,7 @@ public class ItemRelationship {
      *
      * @return variationTheme
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemVariationTheme getVariationTheme() {
         return variationTheme;
     }
@@ -167,7 +168,7 @@ public class ItemRelationship {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of relationship.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of relationship.")
     public TypeEnum getType() {
         return type;
     }

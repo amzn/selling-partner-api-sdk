@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * A list of the items in this transportation and their associated inner container details. If any of the item detail
  * fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.")
 public class Containers {
@@ -117,7 +116,7 @@ public class Containers {
      *
      * @return containerType
      */
-    @Schema(required = true, description = "The type of container.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of container.")
     public ContainerTypeEnum getContainerType() {
         return containerType;
     }
@@ -136,7 +135,7 @@ public class Containers {
      *
      * @return containerSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.")
     public String getContainerSequenceNumber() {
@@ -165,7 +164,7 @@ public class Containers {
      *
      * @return containerIdentifiers
      */
-    @Schema(required = true, description = "A list of carton identifiers.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of carton identifiers.")
     public List<ContainerIdentification> getContainerIdentifiers() {
         return containerIdentifiers;
     }
@@ -184,7 +183,7 @@ public class Containers {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The tracking number used for identifying the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number used for identifying the shipment.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -203,7 +202,7 @@ public class Containers {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -222,7 +221,7 @@ public class Containers {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -241,7 +240,7 @@ public class Containers {
      *
      * @return tier
      */
-    @Schema(description = "Number of layers per pallet.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Number of layers per pallet.")
     public Integer getTier() {
         return tier;
     }
@@ -260,7 +259,7 @@ public class Containers {
      *
      * @return block
      */
-    @Schema(description = "Number of cartons per layer on the pallet.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Number of cartons per layer on the pallet.")
     public Integer getBlock() {
         return block;
     }
@@ -279,7 +278,7 @@ public class Containers {
      *
      * @return innerContainersDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InnerContainersDetails getInnerContainersDetails() {
         return innerContainersDetails;
     }
@@ -306,7 +305,7 @@ public class Containers {
      *
      * @return packedItems
      */
-    @Schema(description = "A list of packed items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of packed items.")
     public List<PackedItems> getPackedItems() {
         return packedItems;
     }

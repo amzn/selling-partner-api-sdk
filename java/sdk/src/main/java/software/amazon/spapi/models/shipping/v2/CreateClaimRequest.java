@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the CreateClaim operation */
-@Schema(description = "The request schema for the CreateClaim operation")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the CreateClaim operation")
 public class CreateClaimRequest {
     @SerializedName("trackingId")
     private String trackingId = null;
@@ -47,7 +46,9 @@ public class CreateClaimRequest {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The carrier generated identifier for a package in a purchased shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier generated identifier for a package in a purchased shipment.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -66,7 +67,7 @@ public class CreateClaimRequest {
      *
      * @return declaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getDeclaredValue() {
         return declaredValue;
     }
@@ -85,7 +86,7 @@ public class CreateClaimRequest {
      *
      * @return claimReason
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ClaimReason getClaimReason() {
         return claimReason;
     }
@@ -104,7 +105,8 @@ public class CreateClaimRequest {
      *
      * @return isReplacementPackageSent
      */
-    @Schema(description = "Applicable for only On Amazon shipments to identify if replacement was sent")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Applicable for only On Amazon shipments to identify if replacement was sent")
     public Boolean getIsReplacementPackageSent() {
         return isReplacementPackageSent;
     }
@@ -123,7 +125,7 @@ public class CreateClaimRequest {
      *
      * @return proofs
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClaimProofURLs getProofs() {
         return proofs;
     }
@@ -142,7 +144,7 @@ public class CreateClaimRequest {
      *
      * @return settlementType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SettlementType getSettlementType() {
         return settlementType;
     }

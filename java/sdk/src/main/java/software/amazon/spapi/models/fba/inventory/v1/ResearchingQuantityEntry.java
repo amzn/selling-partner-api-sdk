@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers.")
 public class ResearchingQuantityEntry {
@@ -90,7 +89,7 @@ public class ResearchingQuantityEntry {
      *
      * @return name
      */
-    @Schema(required = true, description = "The duration of the research.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The duration of the research.")
     public NameEnum getName() {
         return name;
     }
@@ -109,7 +108,7 @@ public class ResearchingQuantityEntry {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The number of units.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of units.")
     public Integer getQuantity() {
         return quantity;
     }

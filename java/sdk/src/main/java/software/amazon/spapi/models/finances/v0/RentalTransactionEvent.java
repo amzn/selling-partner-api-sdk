@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to a rental transaction. */
-@Schema(description = "An event related to a rental transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to a rental transaction.")
 public class RentalTransactionEvent {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -59,7 +59,7 @@ public class RentalTransactionEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -87,7 +87,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalEventType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of rental event.  Possible values:  * `RentalCustomerPayment-Buyout`: A transaction type that represents when the customer wants to buy out a rented item.  * `RentalCustomerPayment-Extension`: A transaction type that represents when the customer wants to extend the rental period.  * `RentalCustomerRefund-Buyout`: A transaction type that represents when the customer requests a refund for the buyout of the rented item.  * `RentalCustomerRefund-Extension`: A transaction type that represents when the customer requests a refund over the extension on the rented item.  * `RentalHandlingFee`: A transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * `RentalChargeFailureReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * `RentalLostItemReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a lost item.")
     public String getRentalEventType() {
@@ -109,7 +109,7 @@ public class RentalTransactionEvent {
      *
      * @return extensionLength
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of days that the buyer extended an already rented item. This value is only returned for `RentalCustomerPayment-Extension` and `RentalCustomerRefund-Extension` events.")
     public Integer getExtensionLength() {
@@ -130,7 +130,7 @@ public class RentalTransactionEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -151,7 +151,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalChargeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getRentalChargeList() {
         return rentalChargeList;
     }
@@ -170,7 +170,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalFeeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getRentalFeeList() {
         return rentalFeeList;
     }
@@ -189,7 +189,7 @@ public class RentalTransactionEvent {
      *
      * @return marketplaceName
      */
-    @Schema(description = "The name of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the marketplace.")
     public String getMarketplaceName() {
         return marketplaceName;
     }
@@ -208,7 +208,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalInitialValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRentalInitialValue() {
         return rentalInitialValue;
     }
@@ -227,7 +227,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalReimbursement
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRentalReimbursement() {
         return rentalReimbursement;
     }
@@ -246,7 +246,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalTaxWithheldList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxWithheldComponentList getRentalTaxWithheldList() {
         return rentalTaxWithheldList;
     }

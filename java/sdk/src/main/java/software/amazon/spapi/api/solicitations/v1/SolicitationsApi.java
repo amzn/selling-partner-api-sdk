@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.solicitations.v1.CreateProductReviewAndSellerFeedbackSolicitationResponse;
 import software.amazon.spapi.models.solicitations.v1.GetSolicitationActionsForOrderResponse;
@@ -68,9 +67,7 @@ public class SolicitationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createProductReviewAndSellerFeedbackSolicitationCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -115,9 +112,7 @@ public class SolicitationsApi {
     }
 
     private okhttp3.Call createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -308,10 +303,10 @@ public class SolicitationsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createProductReviewAndSellerFeedbackSolicitationValidateBeforeCall(
@@ -346,9 +341,7 @@ public class SolicitationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getSolicitationActionsForOrderCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -392,9 +385,7 @@ public class SolicitationsApi {
     }
 
     private okhttp3.Call getSolicitationActionsForOrderValidateBeforeCall(
-            String amazonOrderId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -589,10 +580,10 @@ public class SolicitationsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getSolicitationActionsForOrderValidateBeforeCall(

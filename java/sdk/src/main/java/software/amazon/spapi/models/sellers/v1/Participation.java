@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information that is specific to a seller in a marketplace. */
-@Schema(description = "Information that is specific to a seller in a marketplace.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information that is specific to a seller in a marketplace.")
 public class Participation {
     @SerializedName("isParticipating")
     private Boolean isParticipating = null;
@@ -35,7 +34,9 @@ public class Participation {
      *
      * @return isParticipating
      */
-    @Schema(required = true, description = "If `true`, the seller participates in the marketplace. Otherwise `false`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "If `true`, the seller participates in the marketplace. Otherwise `false`.")
     public Boolean getIsParticipating() {
         return isParticipating;
     }
@@ -55,7 +56,7 @@ public class Participation {
      *
      * @return hasSuspendedListings
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Specifies if the seller has suspended listings. `true` if the seller Listing Status is set to Inactive, otherwise `false`.")

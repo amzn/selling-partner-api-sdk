@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank
  * account.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank account.")
 public class TransferScheduleRequest {
@@ -58,7 +57,7 @@ public class TransferScheduleRequest {
      *
      * @return sourceAccountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.")
@@ -80,7 +79,7 @@ public class TransferScheduleRequest {
      *
      * @return sourceCurrencyCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The three-letter currency code of the source payment method country, in ISO 4217 format.")
     public String getSourceCurrencyCode() {
@@ -101,7 +100,7 @@ public class TransferScheduleRequest {
      *
      * @return destinationAccountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The unique identifier of the destination bank account where the money is deposited.")
     public String getDestinationAccountId() {
@@ -123,7 +122,7 @@ public class TransferScheduleRequest {
      *
      * @return destinationTransactionInstrument
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionInstrumentDetails getDestinationTransactionInstrument() {
         return destinationTransactionInstrument;
     }
@@ -142,7 +141,7 @@ public class TransferScheduleRequest {
      *
      * @return transactionType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -162,7 +161,7 @@ public class TransferScheduleRequest {
      *
      * @return transferScheduleInformation
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransferScheduleInformation getTransferScheduleInformation() {
         return transferScheduleInformation;
     }
@@ -181,7 +180,7 @@ public class TransferScheduleRequest {
      *
      * @return paymentPreference
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PaymentPreference getPaymentPreference() {
         return paymentPreference;
     }
@@ -200,7 +199,7 @@ public class TransferScheduleRequest {
      *
      * @return transferScheduleStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransferScheduleStatus getTransferScheduleStatus() {
         return transferScheduleStatus;
     }

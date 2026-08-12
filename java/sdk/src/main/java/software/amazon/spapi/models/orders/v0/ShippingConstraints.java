@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Delivery constraints applicable to this order. */
-@Schema(description = "Delivery constraints applicable to this order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Delivery constraints applicable to this order.")
 public class ShippingConstraints {
     @SerializedName("PalletDelivery")
     private ConstraintType palletDelivery = null;
@@ -41,7 +40,7 @@ public class ShippingConstraints {
      *
      * @return palletDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getPalletDelivery() {
         return palletDelivery;
     }
@@ -60,7 +59,7 @@ public class ShippingConstraints {
      *
      * @return signatureConfirmation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getSignatureConfirmation() {
         return signatureConfirmation;
     }
@@ -79,7 +78,7 @@ public class ShippingConstraints {
      *
      * @return recipientIdentityVerification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getRecipientIdentityVerification() {
         return recipientIdentityVerification;
     }
@@ -98,7 +97,7 @@ public class ShippingConstraints {
      *
      * @return recipientAgeVerification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getRecipientAgeVerification() {
         return recipientAgeVerification;
     }

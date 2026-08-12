@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60; */
-@Schema(description = "Common schema that present in `ItemOffersResponse` and `ListingOffersResponse`")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Common schema that present in `ItemOffersResponse` and `ListingOffersResponse`")
 public class BatchOffersResponse {
     @SerializedName("headers")
     private HttpResponseHeaders headers = null;
@@ -38,7 +38,7 @@ public class BatchOffersResponse {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpResponseHeaders getHeaders() {
         return headers;
     }
@@ -57,7 +57,7 @@ public class BatchOffersResponse {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetOffersHttpStatusLine getStatus() {
         return status;
     }
@@ -76,7 +76,7 @@ public class BatchOffersResponse {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public GetOffersResponse getBody() {
         return body;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of label formats. */
-@Schema(description = "List of label formats.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of label formats.")
 public class LabelFormatList extends ArrayList<LabelFormat> {
 
     @Override

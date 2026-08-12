@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The throughput configuration. */
-@Schema(description = "The throughput configuration.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The throughput configuration.")
 public class ThroughputConfig {
     @SerializedName("throughputCap")
     private ThroughputCap throughputCap = null;
@@ -35,7 +34,7 @@ public class ThroughputConfig {
      *
      * @return throughputCap
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ThroughputCap getThroughputCap() {
         return throughputCap;
     }
@@ -54,7 +53,7 @@ public class ThroughputConfig {
      *
      * @return throughputUnit
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ThroughputUnit getThroughputUnit() {
         return throughputUnit;
     }

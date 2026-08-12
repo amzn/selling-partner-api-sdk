@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An available offer for delivery of a product. */
-@Schema(description = "An available offer for delivery of a product.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An available offer for delivery of a product.")
 public class OfferOption {
     @SerializedName("expiryTime")
     private OffsetDateTime expiryTime = null;
@@ -35,7 +35,7 @@ public class OfferOption {
      *
      * @return expiryTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getExpiryTime() {
@@ -56,7 +56,7 @@ public class OfferOption {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferOptionFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }

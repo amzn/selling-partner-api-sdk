@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An object which represents all promotions applied to an offer. */
-@Schema(description = "An object which represents all promotions applied to an offer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An object which represents all promotions applied to an offer.")
 public class OfferProgramConfigurationPromotions {
     @SerializedName("sellingPartnerFundedBaseDiscount")
     private OfferProgramConfigurationPromotionsDiscountFunding sellingPartnerFundedBaseDiscount = null;
@@ -42,7 +42,7 @@ public class OfferProgramConfigurationPromotions {
      *
      * @return sellingPartnerFundedBaseDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPromotionsDiscountFunding getSellingPartnerFundedBaseDiscount() {
         return sellingPartnerFundedBaseDiscount;
     }
@@ -63,7 +63,7 @@ public class OfferProgramConfigurationPromotions {
      *
      * @return sellingPartnerFundedTieredDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPromotionsDiscountFunding getSellingPartnerFundedTieredDiscount() {
         return sellingPartnerFundedTieredDiscount;
     }
@@ -84,7 +84,7 @@ public class OfferProgramConfigurationPromotions {
      *
      * @return amazonFundedBaseDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPromotionsDiscountFunding getAmazonFundedBaseDiscount() {
         return amazonFundedBaseDiscount;
     }
@@ -105,7 +105,7 @@ public class OfferProgramConfigurationPromotions {
      *
      * @return amazonFundedTieredDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPromotionsDiscountFunding getAmazonFundedTieredDiscount() {
         return amazonFundedTieredDiscount;
     }

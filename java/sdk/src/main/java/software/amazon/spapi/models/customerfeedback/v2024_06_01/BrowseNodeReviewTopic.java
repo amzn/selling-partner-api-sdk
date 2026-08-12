@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The browse node review topic. */
-@Schema(description = "The browse node review topic.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The browse node review topic.")
 public class BrowseNodeReviewTopic {
     @SerializedName("topic")
     private String topic = null;
@@ -43,7 +42,7 @@ public class BrowseNodeReviewTopic {
      *
      * @return topic
      */
-    @Schema(required = true, description = "The name browse node review topic.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name browse node review topic.")
     public String getTopic() {
         return topic;
     }
@@ -62,7 +61,7 @@ public class BrowseNodeReviewTopic {
      *
      * @return browseNodeMetrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeReviewTopicMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }
@@ -90,7 +89,7 @@ public class BrowseNodeReviewTopic {
      *
      * @return reviewSnippets
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.")
     public List<String> getReviewSnippets() {
@@ -120,7 +119,7 @@ public class BrowseNodeReviewTopic {
      *
      * @return subtopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the five subtopics that occur most frequently. This value is `null` if there are no subtopics.")
     public List<BrowseNodeSubtopic> getSubtopics() {

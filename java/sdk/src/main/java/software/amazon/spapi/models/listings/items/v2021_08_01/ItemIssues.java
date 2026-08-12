@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Issues associated with the listings item. */
-@Schema(description = "Issues associated with the listings item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Issues associated with the listings item.")
 public class ItemIssues extends ArrayList<Issue> {
 
     @Override

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Additional requirements needed for cross-border shipping of an order item. */
-@Schema(description = "Additional requirements needed for cross-border shipping of an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional requirements needed for cross-border shipping of an order item.")
 public class ItemInternationalShipping {
     @SerializedName("iossNumber")
     private String iossNumber = null;
@@ -34,7 +34,7 @@ public class ItemInternationalShipping {
      *
      * @return iossNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Import One-Stop Shop registration number required for EU VAT compliance when shipping from outside the European Union. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.")
     public String getIossNumber() {

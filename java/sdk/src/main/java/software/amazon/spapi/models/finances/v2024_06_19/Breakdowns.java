@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of breakdowns that detail how the total amount is calculated for the transaction. */
-@Schema(description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
 public class Breakdowns extends ArrayList<Breakdown> {
 
     @Override

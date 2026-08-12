@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The monetary value. */
-@Schema(description = "The monetary value.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The monetary value.")
 public class Amount {
     @SerializedName("CurrencyCode")
     private CurrencyCode currencyCode = null;
@@ -35,7 +34,7 @@ public class Amount {
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyCode getCurrencyCode() {
         return currencyCode;
     }
@@ -54,7 +53,7 @@ public class Amount {
      *
      * @return value
      */
-    @Schema(required = true, description = "Number format that supports decimal.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Number format that supports decimal.")
     public Double getValue() {
         return value;
     }

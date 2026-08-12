@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for &#x60;getOffers&#x60;. */
-@Schema(description = "The request body schema for `getOffers`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body schema for `getOffers`.")
 public class GetOffersRequest {
     @SerializedName("fulfillmentConfiguration")
     private OfferFulfillmentConfiguration fulfillmentConfiguration = null;
@@ -43,7 +42,7 @@ public class GetOffersRequest {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
@@ -62,7 +61,7 @@ public class GetOffersRequest {
      *
      * @return origin
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderOrigin getOrigin() {
         return origin;
     }
@@ -81,7 +80,7 @@ public class GetOffersRequest {
      *
      * @return destination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferDestination getDestination() {
         return destination;
     }
@@ -108,7 +107,9 @@ public class GetOffersRequest {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of items for which to get offers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items for which to get offers.")
     public List<OfferItem> getItems() {
         return items;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A fee event related to Amazon Imaging services. */
-@Schema(description = "A fee event related to Amazon Imaging services.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A fee event related to Amazon Imaging services.")
 public class ImagingServicesFeeEvent {
     @SerializedName("ImagingRequestBillingItemID")
     private String imagingRequestBillingItemID = null;
@@ -41,7 +41,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return imagingRequestBillingItemID
      */
-    @Schema(description = "The identifier for the imaging services request.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the imaging services request.")
     public String getImagingRequestBillingItemID() {
         return imagingRequestBillingItemID;
     }
@@ -60,7 +60,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return ASIN
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested.")
     public String getASIN() {
@@ -81,7 +81,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -102,7 +102,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return feeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getFeeList() {
         return feeList;
     }

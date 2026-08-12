@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Describes the lowest priced offers for the specified item condition and offer type. */
-@Schema(description = "Describes the lowest priced offers for the specified item condition and offer type.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Describes the lowest priced offers for the specified item condition and offer type.")
 public class LowestPricedOffer {
     @SerializedName("lowestPricedOffersInput")
     private LowestPricedOffersInput lowestPricedOffersInput = null;
@@ -37,7 +37,7 @@ public class LowestPricedOffer {
      *
      * @return lowestPricedOffersInput
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LowestPricedOffersInput getLowestPricedOffersInput() {
         return lowestPricedOffersInput;
     }
@@ -64,7 +64,7 @@ public class LowestPricedOffer {
      *
      * @return offers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.")

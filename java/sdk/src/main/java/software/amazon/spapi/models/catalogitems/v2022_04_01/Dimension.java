@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The value of an individual dimension for an Amazon catalog item or item package. */
-@Schema(description = "The value of an individual dimension for an Amazon catalog item or item package.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The value of an individual dimension for an Amazon catalog item or item package.")
 public class Dimension {
     @SerializedName("unit")
     private String unit = null;
@@ -35,7 +36,7 @@ public class Dimension {
      *
      * @return unit
      */
-    @Schema(description = "Unit of measurement for the dimension value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Unit of measurement for the dimension value.")
     public String getUnit() {
         return unit;
     }
@@ -54,7 +55,7 @@ public class Dimension {
      *
      * @return value
      */
-    @Schema(description = "Numeric value of the dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Numeric value of the dimension.")
     public BigDecimal getValue() {
         return value;
     }

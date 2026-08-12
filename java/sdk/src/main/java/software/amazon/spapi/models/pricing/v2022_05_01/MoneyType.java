@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Currency type and monetary value schema to demonstrate pricing information. */
-@Schema(description = "Currency type and monetary value schema to demonstrate pricing information.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Currency type and monetary value schema to demonstrate pricing information.")
 public class MoneyType {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -35,7 +36,7 @@ public class MoneyType {
      *
      * @return currencyCode
      */
-    @Schema(description = "The currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -54,7 +55,7 @@ public class MoneyType {
      *
      * @return amount
      */
-    @Schema(description = "The monetary value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The monetary value.")
     public BigDecimal getAmount() {
         return amount;
     }

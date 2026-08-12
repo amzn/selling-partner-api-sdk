@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** All necessary compliance attributes specific to the line item. */
-@Schema(description = "All necessary compliance attributes specific to the line item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "All necessary compliance attributes specific to the line item.")
 public class ComplianceAttributes {
     @SerializedName("hazmatLabelsRequirement")
     private RequirementLevel hazmatLabelsRequirement = null;
@@ -41,7 +41,7 @@ public class ComplianceAttributes {
      *
      * @return hazmatLabelsRequirement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequirementLevel getHazmatLabelsRequirement() {
         return hazmatLabelsRequirement;
     }
@@ -60,7 +60,7 @@ public class ComplianceAttributes {
      *
      * @return serialNumberRequirement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequirementLevel getSerialNumberRequirement() {
         return serialNumberRequirement;
     }
@@ -79,7 +79,7 @@ public class ComplianceAttributes {
      *
      * @return countryOfOriginRequirement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequirementLevel getCountryOfOriginRequirement() {
         return countryOfOriginRequirement;
     }
@@ -98,7 +98,7 @@ public class ComplianceAttributes {
      *
      * @return itemValueRequirement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequirementLevel getItemValueRequirement() {
         return itemValueRequirement;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Package weight and dimension. */
-@Schema(description = "Package weight and dimension.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Package weight and dimension.")
 public class MeasurementData {
     @SerializedName("dimensions")
     private PackageDimensions dimensions = null;
@@ -38,7 +37,7 @@ public class MeasurementData {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageDimensions getDimensions() {
         return dimensions;
     }
@@ -57,7 +56,7 @@ public class MeasurementData {
      *
      * @return volume
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageVolume getVolume() {
         return volume;
     }
@@ -76,7 +75,7 @@ public class MeasurementData {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageWeight getWeight() {
         return weight;
     }

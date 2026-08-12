@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Whether serial numbers must be provided for this line item. */
-@Schema(description = "Whether serial numbers must be provided for this line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Whether serial numbers must be provided for this line item.")
 public class SerialNumberRequirement {
     @SerializedName("requirementType")
     private String requirementType = null;
@@ -32,7 +31,8 @@ public class SerialNumberRequirement {
      *
      * @return requirementType
      */
-    @Schema(description = "The requirement type for this request.   **Possible values**: `REQUIRED`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The requirement type for this request.   **Possible values**: `REQUIRED`")
     public String getRequirementType() {
         return requirementType;
     }

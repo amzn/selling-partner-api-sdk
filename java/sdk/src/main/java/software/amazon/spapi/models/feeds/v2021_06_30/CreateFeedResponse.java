@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema. */
-@Schema(description = "Response schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema.")
 public class CreateFeedResponse {
     @SerializedName("feedId")
     private String feedId = null;
@@ -32,7 +31,7 @@ public class CreateFeedResponse {
      *
      * @return feedId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the feed. This identifier is unique only in combination with a seller ID.")

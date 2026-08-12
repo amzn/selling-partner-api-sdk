@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Optional fields that you can use to refine your search results. */
-@Schema(description = "Optional fields that you can use to refine your search results.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Optional fields that you can use to refine your search results.")
 public class Refinements {
     @SerializedName("brands")
     private List<BrandRefinement> brands = null;
@@ -45,7 +45,9 @@ public class Refinements {
      *
      * @return brands
      */
-    @Schema(required = true, description = "A list of brands you can use to refine your search.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of brands you can use to refine your search.")
     public List<BrandRefinement> getBrands() {
         return brands;
     }
@@ -72,7 +74,9 @@ public class Refinements {
      *
      * @return classifications
      */
-    @Schema(required = true, description = "A list of classifications you can use to refine your search.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of classifications you can use to refine your search.")
     public List<ClassificationRefinement> getClassifications() {
         return classifications;
     }

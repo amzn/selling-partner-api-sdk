@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Client Reference Details */
-@Schema(description = "Client Reference Details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Client Reference Details")
 public class ClientReferenceDetail {
     /** Client Reference type. */
     @JsonAdapter(ClientReferenceTypeEnum.Adapter.class)
@@ -87,7 +86,7 @@ public class ClientReferenceDetail {
      *
      * @return clientReferenceType
      */
-    @Schema(required = true, description = "Client Reference type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Client Reference type.")
     public ClientReferenceTypeEnum getClientReferenceType() {
         return clientReferenceType;
     }
@@ -106,7 +105,7 @@ public class ClientReferenceDetail {
      *
      * @return clientReferenceId
      */
-    @Schema(required = true, description = "The Client Reference Id.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The Client Reference Id.")
     public String getClientReferenceId() {
         return clientReferenceId;
     }

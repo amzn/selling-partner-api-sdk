@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Summary for an AWD inbound shipment containing the shipment ID, which can be used to retrieve the actual shipment.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Summary for an AWD inbound shipment containing the shipment ID, which can be used to retrieve the actual shipment.")
 public class InboundShipmentSummary {
@@ -51,7 +51,7 @@ public class InboundShipmentSummary {
      *
      * @return createdAt
      */
-    @Schema(description = "Timestamp when the shipment was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment was created.")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -71,7 +71,7 @@ public class InboundShipmentSummary {
      *
      * @return externalReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Optional client-provided reference ID that can be used to correlate this shipment with client resources. For example, to map this shipment to an internal bookkeeping order record.")
     public String getExternalReferenceId() {
@@ -92,7 +92,9 @@ public class InboundShipmentSummary {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "The AWD inbound order ID that this inbound shipment belongs to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The AWD inbound order ID that this inbound shipment belongs to.")
     public String getOrderId() {
         return orderId;
     }
@@ -111,7 +113,7 @@ public class InboundShipmentSummary {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "A unique shipment ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A unique shipment ID.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -130,7 +132,7 @@ public class InboundShipmentSummary {
      *
      * @return shipmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InboundShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -149,7 +151,7 @@ public class InboundShipmentSummary {
      *
      * @return updatedAt
      */
-    @Schema(description = "Timestamp when the shipment was updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment was updated.")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

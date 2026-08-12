@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Geographic coordinates. */
-@Schema(description = "Geographic coordinates.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Geographic coordinates.")
 public class Geocodes {
     @SerializedName("latitude")
     private String latitude = null;
@@ -38,7 +37,7 @@ public class Geocodes {
      *
      * @return latitude
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
@@ -60,7 +59,7 @@ public class Geocodes {
      *
      * @return longitude
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
@@ -82,7 +81,7 @@ public class Geocodes {
      *
      * @return elevation
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
     public String getElevation() {

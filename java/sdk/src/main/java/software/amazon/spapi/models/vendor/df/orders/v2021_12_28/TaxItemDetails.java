@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Total tax details for the line item. */
-@Schema(description = "Total tax details for the line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Total tax details for the line item.")
 public class TaxItemDetails {
     @SerializedName("taxLineItem")
     private TaxLineItem taxLineItem = null;
@@ -32,7 +31,7 @@ public class TaxItemDetails {
      *
      * @return taxLineItem
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxLineItem getTaxLineItem() {
         return taxLineItem;
     }

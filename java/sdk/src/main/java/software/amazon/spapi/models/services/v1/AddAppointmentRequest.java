@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Input for add appointment operation. */
-@Schema(description = "Input for add appointment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input for add appointment operation.")
 public class AddAppointmentRequest {
     @SerializedName("appointmentTime")
     private AppointmentTimeInput appointmentTime = null;
@@ -32,7 +31,7 @@ public class AddAppointmentRequest {
      *
      * @return appointmentTime
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AppointmentTimeInput getAppointmentTime() {
         return appointmentTime;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the seller of the service job. */
-@Schema(description = "Information about the seller of the service job.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the seller of the service job.")
 public class Seller {
     @SerializedName("sellerId")
     private String sellerId = null;
@@ -32,7 +31,7 @@ public class Seller {
      *
      * @return sellerId
      */
-    @Schema(description = "The identifier of the seller of the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the seller of the service job.")
     public String getSellerId() {
         return sellerId;
     }

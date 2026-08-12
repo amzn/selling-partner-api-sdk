@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Details of item quantity ordered. */
-@Schema(description = "Details of item quantity ordered.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity ordered.")
 public class OrderedQuantityDetails {
     @SerializedName("updatedDate")
     private OffsetDateTime updatedDate = null;
@@ -38,7 +38,7 @@ public class OrderedQuantityDetails {
      *
      * @return updatedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getUpdatedDate() {
@@ -59,7 +59,7 @@ public class OrderedQuantityDetails {
      *
      * @return orderedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -78,7 +78,7 @@ public class OrderedQuantityDetails {
      *
      * @return cancelledQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getCancelledQuantity() {
         return cancelledQuantity;
     }

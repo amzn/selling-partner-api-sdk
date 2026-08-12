@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;listInboundPlans&#x60; response. */
-@Schema(description = "The `listInboundPlans` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `listInboundPlans` response.")
 public class ListInboundPlansResponse {
     @SerializedName("inboundPlans")
     private List<InboundPlanSummary> inboundPlans = null;
@@ -45,7 +44,7 @@ public class ListInboundPlansResponse {
      *
      * @return inboundPlans
      */
-    @Schema(description = "A list of inbound plans with minimal information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of inbound plans with minimal information.")
     public List<InboundPlanSummary> getInboundPlans() {
         return inboundPlans;
     }
@@ -64,7 +63,7 @@ public class ListInboundPlansResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }

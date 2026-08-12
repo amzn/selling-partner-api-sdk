@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Physical dimensional measurements of a container. */
-@Schema(description = "Physical dimensional measurements of a container.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Physical dimensional measurements of a container.")
 public class Dimensions {
     @SerializedName("length")
     private String length = null;
@@ -98,7 +97,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
@@ -122,7 +121,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
@@ -146,7 +145,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
@@ -168,7 +167,7 @@ public class Dimensions {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "The unit of measure for dimensions.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measure for dimensions.")
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The 10 most positive and most negative review topics for all items in a browse node. */
-@Schema(description = "The 10 most positive and most negative review topics for all items in a browse node.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The 10 most positive and most negative review topics for all items in a browse node.")
 public class ItemReviewTrends {
     @SerializedName("positiveTopics")
     private List<ItemReviewTrend> positiveTopics = null;
@@ -47,7 +47,7 @@ public class ItemReviewTrends {
      *
      * @return positiveTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10")
     public List<ItemReviewTrend> getPositiveTopics() {
@@ -78,7 +78,7 @@ public class ItemReviewTrends {
      *
      * @return negativeTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough negative reviews for the specified ASIN.  **Max length:** 10")
     public List<ItemReviewTrend> getNegativeTopics() {

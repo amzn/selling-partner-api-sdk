@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the directPurchaseShipment operation. */
-@Schema(description = "The payload for the directPurchaseShipment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the directPurchaseShipment operation.")
 public class DirectPurchaseResult {
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -35,7 +34,9 @@ public class DirectPurchaseResult {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "The unique shipment identifier provided by a shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique shipment identifier provided by a shipping service.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -54,7 +55,7 @@ public class DirectPurchaseResult {
      *
      * @return packageDocumentDetailList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageDocumentDetailList getPackageDocumentDetailList() {
         return packageDocumentDetailList;
     }

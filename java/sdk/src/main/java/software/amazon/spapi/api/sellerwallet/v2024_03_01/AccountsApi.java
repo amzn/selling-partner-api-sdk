@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.BalanceListing;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.BankAccount;
@@ -72,9 +71,7 @@ public class AccountsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getAccountCall(
-            String accountId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -119,9 +116,7 @@ public class AccountsApi {
     }
 
     private okhttp3.Call getAccountValidateBeforeCall(
-            String accountId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'accountId' is set
@@ -254,10 +249,10 @@ public class AccountsApi {
             String accountId, String marketplaceId, final ApiCallback<BankAccount> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getAccountValidateBeforeCall(accountId, marketplaceId, progressRequestListener);
@@ -287,9 +282,7 @@ public class AccountsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listAccountBalancesCall(
-            String accountId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -334,9 +327,7 @@ public class AccountsApi {
     }
 
     private okhttp3.Call listAccountBalancesValidateBeforeCall(
-            String accountId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'accountId' is set
@@ -477,10 +468,10 @@ public class AccountsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, marketplaceId, progressRequestListener);
@@ -508,8 +499,7 @@ public class AccountsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call listAccountsCall(
-            String marketplaceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call listAccountsCall(String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -551,8 +541,7 @@ public class AccountsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call listAccountsValidateBeforeCall(
-            String marketplaceId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call listAccountsValidateBeforeCall(String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -668,10 +657,10 @@ public class AccountsApi {
             String marketplaceId, final ApiCallback<BankAccountListing> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listAccountsValidateBeforeCall(marketplaceId, progressRequestListener);

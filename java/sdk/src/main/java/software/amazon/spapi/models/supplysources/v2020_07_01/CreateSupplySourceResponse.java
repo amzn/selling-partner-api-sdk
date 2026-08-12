@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The result of creating a new supply source. */
-@Schema(description = "The result of creating a new supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The result of creating a new supply source.")
 public class CreateSupplySourceResponse {
     @SerializedName("supplySourceId")
     private String supplySourceId = null;
@@ -35,7 +34,9 @@ public class CreateSupplySourceResponse {
      *
      * @return supplySourceId
      */
-    @Schema(required = true, description = "An Amazon generated unique supply source ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon generated unique supply source ID.")
     public String getSupplySourceId() {
         return supplySourceId;
     }
@@ -54,7 +55,9 @@ public class CreateSupplySourceResponse {
      *
      * @return supplySourceCode
      */
-    @Schema(required = true, description = "The seller-provided unique supply source code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The seller-provided unique supply source code.")
     public String getSupplySourceCode() {
         return supplySourceCode;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The billing period for an invoice. */
-@Schema(description = "The billing period for an invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The billing period for an invoice.")
 public class BillingPeriod {
     @SerializedName("startDate")
     private OffsetDateTime startDate = null;
@@ -35,7 +35,9 @@ public class BillingPeriod {
      *
      * @return startDate
      */
-    @Schema(required = true, description = "The start of the billing period of an invoice. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The start of the billing period of an invoice. In ISO 8601 format.")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -54,7 +56,9 @@ public class BillingPeriod {
      *
      * @return endDate
      */
-    @Schema(required = true, description = "The end of the billing period of an invoice. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The end of the billing period of an invoice. In ISO 8601 format.")
     public OffsetDateTime getEndDate() {
         return endDate;
     }

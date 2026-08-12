@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Inbound plan containing details of the inbound workflow. */
-@Schema(description = "Inbound plan containing details of the inbound workflow.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Inbound plan containing details of the inbound workflow.")
 public class InboundPlan {
     @SerializedName("createdAt")
     private OffsetDateTime createdAt = null;
@@ -63,7 +63,7 @@ public class InboundPlan {
      *
      * @return createdAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
@@ -85,7 +85,7 @@ public class InboundPlan {
      *
      * @return inboundPlanId
      */
-    @Schema(required = true, description = "Identifier of an inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of an inbound plan.")
     public String getInboundPlanId() {
         return inboundPlanId;
     }
@@ -106,7 +106,7 @@ public class InboundPlan {
      *
      * @return lastUpdatedAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
@@ -136,7 +136,7 @@ public class InboundPlan {
      *
      * @return marketplaceIds
      */
-    @Schema(required = true, description = "A list of marketplace IDs.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of marketplace IDs.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -155,7 +155,9 @@ public class InboundPlan {
      *
      * @return name
      */
-    @Schema(required = true, description = "Human-readable name of the inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Human-readable name of the inbound plan.")
     public String getName() {
         return name;
     }
@@ -185,7 +187,7 @@ public class InboundPlan {
      *
      * @return packingOptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Packing options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, only packing options for that placement option will be returned. If there are confirmed shipments, only packing options for those shipments will be returned. Query the packing option for more details.")
     public List<PackingOptionSummary> getPackingOptions() {
@@ -216,7 +218,7 @@ public class InboundPlan {
      *
      * @return placementOptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.")
     public List<PlacementOptionSummary> getPlacementOptions() {
@@ -247,7 +249,7 @@ public class InboundPlan {
      *
      * @return shipments
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the `confirmPlacementOptions` operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.")
     public List<ShipmentSummary> getShipments() {
@@ -268,7 +270,7 @@ public class InboundPlan {
      *
      * @return sourceAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getSourceAddress() {
         return sourceAddress;
     }
@@ -288,7 +290,7 @@ public class InboundPlan {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.")

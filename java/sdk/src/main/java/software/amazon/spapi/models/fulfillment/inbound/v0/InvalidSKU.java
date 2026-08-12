@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains detail about an invalid SKU */
-@Schema(description = "Contains detail about an invalid SKU")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains detail about an invalid SKU")
 public class InvalidSKU {
     @SerializedName("SellerSKU")
     private String sellerSKU = null;
@@ -35,7 +34,7 @@ public class InvalidSKU {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -54,7 +53,7 @@ public class InvalidSKU {
      *
      * @return errorReason
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorReason getErrorReason() {
         return errorReason;
     }

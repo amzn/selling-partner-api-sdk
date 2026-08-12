@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.InvoiceResponse;
 import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.ModelPackage;
@@ -95,8 +94,7 @@ public class ShipmentProcessingApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createPackagesCall(
-            String shipmentId, Packages body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createPackagesCall(String shipmentId, Packages body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -138,7 +136,7 @@ public class ShipmentProcessingApi {
     }
 
     private okhttp3.Call createPackagesValidateBeforeCall(
-            String shipmentId, Packages body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, Packages body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -249,10 +247,10 @@ public class ShipmentProcessingApi {
             String shipmentId, Packages body, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createPackagesValidateBeforeCall(shipmentId, body, progressRequestListener);
@@ -278,8 +276,7 @@ public class ShipmentProcessingApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call generateInvoiceCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call generateInvoiceCall(String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -321,8 +318,7 @@ public class ShipmentProcessingApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call generateInvoiceValidateBeforeCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call generateInvoiceValidateBeforeCall(String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -427,10 +423,10 @@ public class ShipmentProcessingApi {
             String shipmentId, final ApiCallback<InvoiceResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generateInvoiceValidateBeforeCall(shipmentId, progressRequestListener);
@@ -465,7 +461,7 @@ public class ShipmentProcessingApi {
             String operation,
             String shippingOptionId,
             ShipLabelsInput body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -514,7 +510,7 @@ public class ShipmentProcessingApi {
             String operation,
             String shippingOptionId,
             ShipLabelsInput body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -668,10 +664,10 @@ public class ShipmentProcessingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = generateShipLabelsValidateBeforeCall(
@@ -705,7 +701,7 @@ public class ShipmentProcessingApi {
             String shipmentId,
             String operation,
             ShipmentAcknowledgementRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -751,7 +747,7 @@ public class ShipmentProcessingApi {
             String shipmentId,
             String operation,
             ShipmentAcknowledgementRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -877,10 +873,10 @@ public class ShipmentProcessingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = processShipmentValidateBeforeCall(shipmentId, operation, body, progressRequestListener);
@@ -906,8 +902,7 @@ public class ShipmentProcessingApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call retrieveInvoiceCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call retrieveInvoiceCall(String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -949,8 +944,7 @@ public class ShipmentProcessingApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call retrieveInvoiceValidateBeforeCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call retrieveInvoiceValidateBeforeCall(String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -1055,10 +1049,10 @@ public class ShipmentProcessingApi {
             String shipmentId, final ApiCallback<InvoiceResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = retrieveInvoiceValidateBeforeCall(shipmentId, progressRequestListener);
@@ -1087,9 +1081,7 @@ public class ShipmentProcessingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call retrieveShippingOptionsCall(
-            String shipmentId,
-            String packageId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String packageId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1133,9 +1125,7 @@ public class ShipmentProcessingApi {
     }
 
     private okhttp3.Call retrieveShippingOptionsValidateBeforeCall(
-            String shipmentId,
-            String packageId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String packageId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -1267,10 +1257,10 @@ public class ShipmentProcessingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = retrieveShippingOptionsValidateBeforeCall(shipmentId, packageId, progressRequestListener);
@@ -1300,10 +1290,7 @@ public class ShipmentProcessingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updatePackageCall(
-            String shipmentId,
-            String packageId,
-            ModelPackage body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String packageId, ModelPackage body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1347,10 +1334,7 @@ public class ShipmentProcessingApi {
     }
 
     private okhttp3.Call updatePackageValidateBeforeCall(
-            String shipmentId,
-            String packageId,
-            ModelPackage body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String packageId, ModelPackage body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -1479,10 +1463,10 @@ public class ShipmentProcessingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updatePackageValidateBeforeCall(shipmentId, packageId, body, progressRequestListener);
@@ -1516,7 +1500,7 @@ public class ShipmentProcessingApi {
             String packageId,
             String status,
             PackageDeliveryStatus body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1565,7 +1549,7 @@ public class ShipmentProcessingApi {
             String packageId,
             String status,
             PackageDeliveryStatus body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -1704,10 +1688,10 @@ public class ShipmentProcessingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =

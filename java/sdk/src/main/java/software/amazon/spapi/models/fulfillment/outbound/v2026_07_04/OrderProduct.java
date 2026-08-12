@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Product information for the line item. */
-@Schema(description = "Product information for the line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Product information for the line item.")
 public class OrderProduct {
     @SerializedName("productIdentifier")
     private ProductIdentifier productIdentifier = null;
@@ -35,7 +34,7 @@ public class OrderProduct {
      *
      * @return productIdentifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProductIdentifier getProductIdentifier() {
         return productIdentifier;
     }
@@ -54,7 +53,7 @@ public class OrderProduct {
      *
      * @return perUnitDeclaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitDeclaredValue() {
         return perUnitDeclaredValue;
     }

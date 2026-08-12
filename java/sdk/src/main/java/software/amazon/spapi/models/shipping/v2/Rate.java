@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The details of a shipping service offering. */
-@Schema(description = "The details of a shipping service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a shipping service offering.")
 public class Rate {
     @SerializedName("rateId")
     private String rateId = null;
@@ -71,7 +70,7 @@ public class Rate {
      *
      * @return rateId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "An identifier for the rate (shipment offering) provided by a shipping service provider.")
     public String getRateId() {
@@ -92,7 +91,9 @@ public class Rate {
      *
      * @return carrierId
      */
-    @Schema(required = true, description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -111,7 +112,7 @@ public class Rate {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The carrier name for the offering.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -130,7 +131,9 @@ public class Rate {
      *
      * @return serviceId
      */
-    @Schema(required = true, description = "An identifier for the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier for the shipping service.")
     public String getServiceId() {
         return serviceId;
     }
@@ -149,7 +152,7 @@ public class Rate {
      *
      * @return serviceName
      */
-    @Schema(required = true, description = "The name of the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the shipping service.")
     public String getServiceName() {
         return serviceName;
     }
@@ -168,7 +171,7 @@ public class Rate {
      *
      * @return billedWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getBilledWeight() {
         return billedWeight;
     }
@@ -187,7 +190,7 @@ public class Rate {
      *
      * @return totalCharge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTotalCharge() {
         return totalCharge;
     }
@@ -206,7 +209,7 @@ public class Rate {
      *
      * @return promise
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Promise getPromise() {
         return promise;
     }
@@ -225,7 +228,7 @@ public class Rate {
      *
      * @return supportedDocumentSpecifications
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SupportedDocumentSpecificationList getSupportedDocumentSpecifications() {
         return supportedDocumentSpecifications;
     }
@@ -244,7 +247,7 @@ public class Rate {
      *
      * @return availableValueAddedServiceGroups
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AvailableValueAddedServiceGroupList getAvailableValueAddedServiceGroups() {
         return availableValueAddedServiceGroups;
     }
@@ -266,7 +269,7 @@ public class Rate {
      *
      * @return requiresAdditionalInputs
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.")
@@ -288,7 +291,7 @@ public class Rate {
      *
      * @return rateItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RateItemList getRateItemList() {
         return rateItemList;
     }
@@ -307,7 +310,7 @@ public class Rate {
      *
      * @return paymentType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentType getPaymentType() {
         return paymentType;
     }
@@ -326,7 +329,7 @@ public class Rate {
      *
      * @return benefits
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Benefits getBenefits() {
         return benefits;
     }

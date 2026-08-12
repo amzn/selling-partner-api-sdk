@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to coupon payments. */
-@Schema(description = "An event related to coupon payments.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to coupon payments.")
 public class CouponPaymentEvent {
     @SerializedName("PostedDate")
     private OffsetDateTime postedDate = null;
@@ -53,7 +53,7 @@ public class CouponPaymentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -74,7 +74,7 @@ public class CouponPaymentEvent {
      *
      * @return couponId
      */
-    @Schema(description = "A coupon identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A coupon identifier.")
     public String getCouponId() {
         return couponId;
     }
@@ -93,7 +93,8 @@ public class CouponPaymentEvent {
      *
      * @return sellerCouponDescription
      */
-    @Schema(description = "The description provided by the seller when they created the coupon.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The description provided by the seller when they created the coupon.")
     public String getSellerCouponDescription() {
         return sellerCouponDescription;
     }
@@ -112,7 +113,7 @@ public class CouponPaymentEvent {
      *
      * @return clipOrRedemptionCount
      */
-    @Schema(description = "The number of coupon clips or redemptions.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of coupon clips or redemptions.")
     public Long getClipOrRedemptionCount() {
         return clipOrRedemptionCount;
     }
@@ -131,7 +132,7 @@ public class CouponPaymentEvent {
      *
      * @return paymentEventId
      */
-    @Schema(description = "A payment event identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A payment event identifier.")
     public String getPaymentEventId() {
         return paymentEventId;
     }
@@ -150,7 +151,7 @@ public class CouponPaymentEvent {
      *
      * @return feeComponent
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponent getFeeComponent() {
         return feeComponent;
     }
@@ -169,7 +170,7 @@ public class CouponPaymentEvent {
      *
      * @return chargeComponent
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponent getChargeComponent() {
         return chargeComponent;
     }
@@ -188,7 +189,7 @@ public class CouponPaymentEvent {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }

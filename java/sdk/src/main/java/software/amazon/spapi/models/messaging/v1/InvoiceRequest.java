@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the &#x60;sendInvoice&#x60; operation. */
-@Schema(description = "The request schema for the `sendInvoice` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the `sendInvoice` operation.")
 public class InvoiceRequest {
     @SerializedName("attachments")
     private List<Attachment> attachments = null;
@@ -42,7 +41,7 @@ public class InvoiceRequest {
      *
      * @return attachments
      */
-    @Schema(description = "Attachments to include in the message to the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Attachments to include in the message to the buyer.")
     public List<Attachment> getAttachments() {
         return attachments;
     }

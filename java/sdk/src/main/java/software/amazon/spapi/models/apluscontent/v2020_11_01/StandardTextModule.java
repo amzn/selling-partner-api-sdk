@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A standard headline and body text. */
-@Schema(description = "A standard headline and body text.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A standard headline and body text.")
 public class StandardTextModule {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -35,7 +34,7 @@ public class StandardTextModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -54,7 +53,7 @@ public class StandardTextModule {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ParagraphComponent getBody() {
         return body;
     }

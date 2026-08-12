@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.listings.items.v2021_08_01.Item;
 import software.amazon.spapi.models.listings.items.v2021_08_01.ItemSearchResults;
@@ -90,7 +89,7 @@ public class ListingsApi {
             String sku,
             List<String> marketplaceIds,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -141,7 +140,7 @@ public class ListingsApi {
             String sku,
             List<String> marketplaceIds,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerId' is set
@@ -339,10 +338,10 @@ public class ListingsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = deleteListingsItemValidateBeforeCall(
@@ -382,7 +381,7 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String issueLocale,
             List<String> includedData,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -436,7 +435,7 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String issueLocale,
             List<String> includedData,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerId' is set
@@ -661,10 +660,10 @@ public class ListingsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getListingsItemValidateBeforeCall(
@@ -708,7 +707,7 @@ public class ListingsApi {
             List<String> includedData,
             String mode,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -764,7 +763,7 @@ public class ListingsApi {
             List<String> includedData,
             String mode,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerId' is set
@@ -1035,10 +1034,10 @@ public class ListingsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = patchListingsItemValidateBeforeCall(
@@ -1082,7 +1081,7 @@ public class ListingsApi {
             List<String> includedData,
             String mode,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1138,7 +1137,7 @@ public class ListingsApi {
             List<String> includedData,
             String mode,
             String issueLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerId' is set
@@ -1406,10 +1405,10 @@ public class ListingsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = putListingsItemValidateBeforeCall(
@@ -1497,7 +1496,7 @@ public class ListingsApi {
             String sortOrder,
             Integer pageSize,
             String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1589,7 +1588,7 @@ public class ListingsApi {
             String sortOrder,
             Integer pageSize,
             String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerId' is set
@@ -2221,10 +2220,10 @@ public class ListingsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = searchListingsItemsValidateBeforeCall(

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A list of fulfillment order previews, including estimated shipping weights, estimated shipping fees, and estimated
  * ship dates and arrival dates.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of fulfillment order previews, including estimated shipping weights, estimated shipping fees, and estimated ship dates and arrival dates.")
 public class GetFulfillmentPreviewResult {
@@ -37,7 +36,7 @@ public class GetFulfillmentPreviewResult {
      *
      * @return fulfillmentPreviews
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentPreviewList getFulfillmentPreviews() {
         return fulfillmentPreviews;
     }

@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Substitution preference for an order item when it becomes unavailable during fulfillment. */
-@Schema(description = "Substitution preference for an order item when it becomes unavailable during fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Substitution preference for an order item when it becomes unavailable during fulfillment.")
 public class ItemSubstitutionPreference {
     /** Source and nature of the substitution preferences for this item. */
     @JsonAdapter(SubstitutionTypeEnum.Adapter.class)
@@ -90,7 +90,9 @@ public class ItemSubstitutionPreference {
      *
      * @return substitutionType
      */
-    @Schema(required = true, description = "Source and nature of the substitution preferences for this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Source and nature of the substitution preferences for this item.")
     public SubstitutionTypeEnum getSubstitutionType() {
         return substitutionType;
     }
@@ -117,7 +119,7 @@ public class ItemSubstitutionPreference {
      *
      * @return substitutionOptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "List of alternative products that can be substituted for the original item if it becomes unavailable.")
     public List<ItemSubstitutionOption> getSubstitutionOptions() {

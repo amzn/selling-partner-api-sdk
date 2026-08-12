@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the GetCollectionFormHistoryResponse operation. */
-@Schema(description = "The Response  for the GetCollectionFormHistoryResponse operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The Response  for the GetCollectionFormHistoryResponse operation.")
 public class GetCollectionFormHistoryResponse {
     @SerializedName("collectionFormsHistoryRecordList")
     private CollectionFormsHistoryRecordList collectionFormsHistoryRecordList = null;
@@ -36,7 +36,7 @@ public class GetCollectionFormHistoryResponse {
      *
      * @return collectionFormsHistoryRecordList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CollectionFormsHistoryRecordList getCollectionFormsHistoryRecordList() {
         return collectionFormsHistoryRecordList;
     }
@@ -55,7 +55,7 @@ public class GetCollectionFormHistoryResponse {
      *
      * @return lastRefreshedDate
      */
-    @Schema(description = "Last Refereshed Date of collection")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Last Refereshed Date of collection")
     public String getLastRefreshedDate() {
         return lastRefreshedDate;
     }

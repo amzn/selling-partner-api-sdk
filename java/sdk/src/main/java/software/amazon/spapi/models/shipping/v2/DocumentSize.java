@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The size dimensions of the label. */
-@Schema(description = "The size dimensions of the label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The size dimensions of the label.")
 public class DocumentSize {
     @SerializedName("width")
     private BigDecimal width = null;
@@ -89,7 +89,9 @@ public class DocumentSize {
      *
      * @return width
      */
-    @Schema(required = true, description = "The width of the document measured in the units specified.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The width of the document measured in the units specified.")
     public BigDecimal getWidth() {
         return width;
     }
@@ -108,7 +110,9 @@ public class DocumentSize {
      *
      * @return length
      */
-    @Schema(required = true, description = "The length of the document measured in the units specified.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The length of the document measured in the units specified.")
     public BigDecimal getLength() {
         return length;
     }
@@ -127,7 +131,7 @@ public class DocumentSize {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of measurement.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
     public UnitEnum getUnit() {
         return unit;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The location where the person, business or institution is located. */
-@Schema(description = "The location where the person, business or institution is located.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The location where the person, business or institution is located.")
 public class Location {
     @SerializedName("stateOrRegion")
     private String stateOrRegion = null;
@@ -41,7 +41,8 @@ public class Location {
      *
      * @return stateOrRegion
      */
-    @Schema(description = "The state, county or region where the person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The state, county or region where the person, business or institution is located.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }
@@ -60,7 +61,8 @@ public class Location {
      *
      * @return city
      */
-    @Schema(description = "The city or town where the person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The city or town where the person, business or institution is located.")
     public String getCity() {
         return city;
     }
@@ -79,7 +81,8 @@ public class Location {
      *
      * @return countryCode
      */
-    @Schema(description = "The two digit country code. Follows ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The two digit country code. Follows ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -99,7 +102,7 @@ public class Location {
      *
      * @return postalCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.")
     public String getPostalCode() {

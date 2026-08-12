@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Tracking information for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments. */
-@Schema(description = "Tracking information for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Tracking information for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments.")
 public class TrackingDetails {
     @SerializedName("ltlTrackingDetail")
     private LtlTrackingDetail ltlTrackingDetail = null;
@@ -35,7 +35,7 @@ public class TrackingDetails {
      *
      * @return ltlTrackingDetail
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LtlTrackingDetail getLtlTrackingDetail() {
         return ltlTrackingDetail;
     }
@@ -54,7 +54,7 @@ public class TrackingDetails {
      *
      * @return spdTrackingDetail
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SpdTrackingDetail getSpdTrackingDetail() {
         return spdTrackingDetail;
     }

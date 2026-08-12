@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the LinkCarrierAccount operation. */
-@Schema(description = "The Response  for the LinkCarrierAccount operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Response  for the LinkCarrierAccount operation.")
 public class LinkCarrierAccountResponse {
     @SerializedName("registrationStatus")
     private AccountStatus registrationStatus = null;
@@ -35,7 +34,7 @@ public class LinkCarrierAccountResponse {
      *
      * @return registrationStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccountStatus getRegistrationStatus() {
         return registrationStatus;
     }
@@ -54,7 +53,7 @@ public class LinkCarrierAccountResponse {
      *
      * @return accountId
      */
-    @Schema(description = "Identifier for the seller's carrier account.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for the seller's carrier account.")
     public String getAccountId() {
         return accountId;
     }

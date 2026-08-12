@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getAccount&#x60; operation. */
-@Schema(description = "The response schema for the `getAccount` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `getAccount` operation.")
 public class Account {
     @SerializedName("marketplaceParticipationList")
     private MarketplaceParticipationList marketplaceParticipationList = null;
@@ -153,7 +152,7 @@ public class Account {
      *
      * @return marketplaceParticipationList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MarketplaceParticipationList getMarketplaceParticipationList() {
         return marketplaceParticipationList;
     }
@@ -172,7 +171,9 @@ public class Account {
      *
      * @return businessType
      */
-    @Schema(required = true, description = "The type of business registered for the seller account.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of business registered for the seller account.")
     public BusinessTypeEnum getBusinessType() {
         return businessType;
     }
@@ -191,7 +192,7 @@ public class Account {
      *
      * @return sellingPlan
      */
-    @Schema(required = true, description = "The selling plan details.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The selling plan details.")
     public SellingPlanEnum getSellingPlan() {
         return sellingPlan;
     }
@@ -210,7 +211,7 @@ public class Account {
      *
      * @return business
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Business getBusiness() {
         return business;
     }
@@ -229,7 +230,7 @@ public class Account {
      *
      * @return primaryContact
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrimaryContact getPrimaryContact() {
         return primaryContact;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information pertaining to the preparation of inbound goods. */
-@Schema(description = "Information pertaining to the preparation of inbound goods.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information pertaining to the preparation of inbound goods.")
 public class PrepInstruction {
     @SerializedName("fee")
     private Currency fee = null;
@@ -38,7 +37,7 @@ public class PrepInstruction {
      *
      * @return fee
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getFee() {
         return fee;
     }
@@ -59,7 +58,7 @@ public class PrepInstruction {
      *
      * @return prepOwner
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
     public String getPrepOwner() {
@@ -87,7 +86,7 @@ public class PrepInstruction {
      *
      * @return prepType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Type of preparation that should be done.  Possible values: `ITEM_LABELING`, `ITEM_BUBBLEWRAP`, `ITEM_POLYBAGGING`, `ITEM_TAPING`, `ITEM_BLACK_SHRINKWRAP`, `ITEM_HANG_GARMENT`, `ITEM_BOXING`, `ITEM_SETCREAT`, `ITEM_RMOVHANG`, `ITEM_SUFFOSTK`, `ITEM_CAP_SEALING`, `ITEM_DEBUNDLE`, `ITEM_SETSTK`, `ITEM_SIOC`, `ITEM_NO_PREP`, `ADULT`, `BABY`, `TEXTILE`, `HANGER`, `FRAGILE`, `LIQUID`, `SHARP`, `SMALL`, `PERFORATED`, `GRANULAR`, `SET`, `FC_PROVIDED`, `UNKNOWN`, `NONE`.")
     public String getPrepType() {

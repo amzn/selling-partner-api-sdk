@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item that is invalid for return. */
-@Schema(description = "An item that is invalid for return.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item that is invalid for return.")
 public class InvalidReturnItem {
     @SerializedName("sellerReturnItemId")
     private String sellerReturnItemId = null;
@@ -38,7 +37,9 @@ public class InvalidReturnItem {
      *
      * @return sellerReturnItemId
      */
-    @Schema(required = true, description = "An identifier the seller assigns to the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier the seller assigns to the return item.")
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }
@@ -57,7 +58,7 @@ public class InvalidReturnItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The identifier assigned to the item by the seller when the fulfillment order was created.")
     public String getSellerFulfillmentOrderItemId() {
@@ -78,7 +79,7 @@ public class InvalidReturnItem {
      *
      * @return invalidItemReason
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InvalidItemReason getInvalidItemReason() {
         return invalidItemReason;
     }

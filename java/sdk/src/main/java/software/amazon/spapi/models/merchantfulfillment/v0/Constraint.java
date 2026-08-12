@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A validation constraint. */
-@Schema(description = "A validation constraint.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A validation constraint.")
 public class Constraint {
     @SerializedName("ValidationRegEx")
     private String validationRegEx = null;
@@ -35,7 +34,7 @@ public class Constraint {
      *
      * @return validationRegEx
      */
-    @Schema(description = "A regular expression.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A regular expression.")
     public String getValidationRegEx() {
         return validationRegEx;
     }
@@ -54,7 +53,7 @@ public class Constraint {
      *
      * @return validationString
      */
-    @Schema(required = true, description = "A validation string.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A validation string.")
     public String getValidationString() {
         return validationString;
     }

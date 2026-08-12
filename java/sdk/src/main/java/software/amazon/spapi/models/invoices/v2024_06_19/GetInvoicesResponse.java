@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Success. */
-@Schema(description = "Success.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Success.")
 public class GetInvoicesResponse {
     @SerializedName("invoices")
     private List<Invoice> invoices = null;
@@ -45,7 +44,7 @@ public class GetInvoicesResponse {
      *
      * @return invoices
      */
-    @Schema(description = "A list of invoices.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of invoices.")
     public List<Invoice> getInvoices() {
         return invoices;
     }
@@ -66,7 +65,7 @@ public class GetInvoicesResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "This token is returned when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the `getInvoices` operation and include this token with the previous call parameters.")
     public String getNextToken() {

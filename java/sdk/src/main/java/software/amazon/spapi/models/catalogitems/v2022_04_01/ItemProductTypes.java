@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Product types that are associated with the Amazon catalog item. */
-@Schema(description = "Product types that are associated with the Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Product types that are associated with the Amazon catalog item.")
 public class ItemProductTypes extends ArrayList<ItemProductTypeByMarketplace> {
 
     @Override

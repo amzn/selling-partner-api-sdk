@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The carrier for the inbound shipment. */
-@Schema(description = "The carrier for the inbound shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The carrier for the inbound shipment.")
 public class Carrier {
     @SerializedName("alphaCode")
     private String alphaCode = null;
@@ -35,7 +34,7 @@ public class Carrier {
      *
      * @return alphaCode
      */
-    @Schema(description = "The carrier code. For example, USPS or DHLEX.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier code. For example, USPS or DHLEX.")
     public String getAlphaCode() {
         return alphaCode;
     }
@@ -54,7 +53,7 @@ public class Carrier {
      *
      * @return name
      */
-    @Schema(description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the carrier.")
     public String getName() {
         return name;
     }

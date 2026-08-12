@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A list of carton identifiers. */
-@Schema(description = "A list of carton identifiers.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of carton identifiers.")
 public class ContainerIdentification {
     /** The container identification type. */
     @JsonAdapter(ContainerIdentificationTypeEnum.Adapter.class)
@@ -94,7 +93,7 @@ public class ContainerIdentification {
      *
      * @return containerIdentificationType
      */
-    @Schema(required = true, description = "The container identification type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The container identification type.")
     public ContainerIdentificationTypeEnum getContainerIdentificationType() {
         return containerIdentificationType;
     }
@@ -113,7 +112,7 @@ public class ContainerIdentification {
      *
      * @return containerIdentificationNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Container identification number that adheres to the definition of the container identification type.")

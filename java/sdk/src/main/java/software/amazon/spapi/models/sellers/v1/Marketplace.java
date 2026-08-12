@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about an Amazon marketplace where a seller can list items and customers can view and purchase items. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.")
 public class Marketplace {
@@ -49,7 +48,7 @@ public class Marketplace {
      *
      * @return id
      */
-    @Schema(required = true, description = "The encrypted marketplace value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The encrypted marketplace value.")
     public String getId() {
         return id;
     }
@@ -68,7 +67,7 @@ public class Marketplace {
      *
      * @return name
      */
-    @Schema(required = true, description = "The marketplace name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The marketplace name.")
     public String getName() {
         return name;
     }
@@ -87,7 +86,9 @@ public class Marketplace {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The ISO 3166-1 alpha-2 format country code of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ISO 3166-1 alpha-2 format country code of the marketplace.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -106,7 +107,9 @@ public class Marketplace {
      *
      * @return defaultCurrencyCode
      */
-    @Schema(required = true, description = "The ISO 4217 format currency code of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ISO 4217 format currency code of the marketplace.")
     public String getDefaultCurrencyCode() {
         return defaultCurrencyCode;
     }
@@ -125,7 +128,9 @@ public class Marketplace {
      *
      * @return defaultLanguageCode
      */
-    @Schema(required = true, description = "The ISO 639-1 format language code of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ISO 639-1 format language code of the marketplace.")
     public String getDefaultLanguageCode() {
         return defaultLanguageCode;
     }
@@ -144,7 +149,7 @@ public class Marketplace {
      *
      * @return domainName
      */
-    @Schema(required = true, description = "The domain name of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The domain name of the marketplace.")
     public String getDomainName() {
         return domainName;
     }

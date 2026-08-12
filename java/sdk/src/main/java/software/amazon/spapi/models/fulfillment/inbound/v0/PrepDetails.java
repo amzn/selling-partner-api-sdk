@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Preparation instructions and who is responsible for the preparation. */
-@Schema(description = "Preparation instructions and who is responsible for the preparation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Preparation instructions and who is responsible for the preparation.")
 public class PrepDetails {
     @SerializedName("PrepInstruction")
     private PrepInstruction prepInstruction = null;
@@ -35,7 +35,7 @@ public class PrepDetails {
      *
      * @return prepInstruction
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PrepInstruction getPrepInstruction() {
         return prepInstruction;
     }
@@ -54,7 +54,7 @@ public class PrepDetails {
      *
      * @return prepOwner
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PrepOwner getPrepOwner() {
         return prepOwner;
     }

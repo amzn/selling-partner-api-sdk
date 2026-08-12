@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /** Individual JSON Patch operation for an HTTP PATCH request. */
-@Schema(description = "Individual JSON Patch operation for an HTTP PATCH request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Individual JSON Patch operation for an HTTP PATCH request.")
 public class PatchOperation {
     /**
      * Type of JSON Patch operation. Supported JSON Patch operations include &#x60;add&#x60;, &#x60;replace&#x60;,
@@ -100,7 +99,7 @@ public class PatchOperation {
      *
      * @return op
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.")
@@ -123,7 +122,7 @@ public class PatchOperation {
      *
      * @return path
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "JSON Pointer path of the element to patch. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.")
@@ -153,7 +152,7 @@ public class PatchOperation {
      *
      * @return value
      */
-    @Schema(description = "JSON value to `add`, `replace`, `merge` or `delete`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "JSON value to `add`, `replace`, `merge` or `delete`.")
     public List<Map<String, Object>> getValue() {
         return value;
     }

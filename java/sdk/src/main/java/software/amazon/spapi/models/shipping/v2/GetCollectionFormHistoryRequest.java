@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema to get query collections form history API . */
-@Schema(description = "The request schema to get query collections form history API .")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema to get query collections form history API .")
 public class GetCollectionFormHistoryRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -44,7 +44,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
@@ -63,7 +63,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return maxResults
      */
-    @Schema(description = "max Number of Results for query .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "max Number of Results for query .")
     public Integer getMaxResults() {
         return maxResults;
     }
@@ -82,7 +82,8 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return carrierId
      */
-    @Schema(description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -101,7 +102,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return shipFromAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -120,7 +121,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return dateRange
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateRange getDateRange() {
         return dateRange;
     }

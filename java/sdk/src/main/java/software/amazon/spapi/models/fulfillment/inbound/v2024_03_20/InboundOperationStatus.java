@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** GetInboundOperationStatus response. */
-@Schema(description = "GetInboundOperationStatus response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "GetInboundOperationStatus response.")
 public class InboundOperationStatus {
     @SerializedName("operation")
     private String operation = null;
@@ -43,7 +42,9 @@ public class InboundOperationStatus {
      *
      * @return operation
      */
-    @Schema(required = true, description = "The name of the operation in the asynchronous API call.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the operation in the asynchronous API call.")
     public String getOperation() {
         return operation;
     }
@@ -62,7 +63,9 @@ public class InboundOperationStatus {
      *
      * @return operationId
      */
-    @Schema(required = true, description = "The operation ID returned by the asynchronous API call.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The operation ID returned by the asynchronous API call.")
     public String getOperationId() {
         return operationId;
     }
@@ -89,7 +92,9 @@ public class InboundOperationStatus {
      *
      * @return operationProblems
      */
-    @Schema(required = true, description = "The problems in the processing of the asynchronous operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The problems in the processing of the asynchronous operation.")
     public List<OperationProblem> getOperationProblems() {
         return operationProblems;
     }
@@ -108,7 +113,7 @@ public class InboundOperationStatus {
      *
      * @return operationStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OperationStatus getOperationStatus() {
         return operationStatus;
     }

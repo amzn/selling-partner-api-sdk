@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -25,7 +24,7 @@ import java.util.Objects;
  * A &#x60;notificationType&#x60; filter. This object contains all of the available filters and properties that you can
  * use to define a &#x60;notificationType&#x60; specific filter.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A `notificationType` filter. This object contains all of the available filters and properties that you can use to define a `notificationType` specific filter.")
 public class EventFilter {
@@ -107,7 +106,7 @@ public class EventFilter {
      *
      * @return aggregationSettings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AggregationSettings getAggregationSettings() {
         return aggregationSettings;
     }
@@ -126,7 +125,7 @@ public class EventFilter {
      *
      * @return marketplaceIds
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceIds getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -145,7 +144,7 @@ public class EventFilter {
      *
      * @return orderChangeTypes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderChangeTypes getOrderChangeTypes() {
         return orderChangeTypes;
     }
@@ -164,7 +163,7 @@ public class EventFilter {
      *
      * @return trackingIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingIdentifier getTrackingIdentifier() {
         return trackingIdentifier;
     }
@@ -186,7 +185,7 @@ public class EventFilter {
      *
      * @return eventFilterType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).")

@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and
  * will be ignored.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and will be ignored.")
 public class GetRatesRequest {
@@ -73,7 +73,7 @@ public class GetRatesRequest {
      *
      * @return shipTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipTo() {
         return shipTo;
     }
@@ -92,7 +92,7 @@ public class GetRatesRequest {
      *
      * @return shipFrom
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipFrom() {
         return shipFrom;
     }
@@ -111,7 +111,7 @@ public class GetRatesRequest {
      *
      * @return returnTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getReturnTo() {
         return returnTo;
     }
@@ -130,7 +130,8 @@ public class GetRatesRequest {
      *
      * @return shipDate
      */
-    @Schema(description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
     public OffsetDateTime getShipDate() {
         return shipDate;
     }
@@ -149,7 +150,7 @@ public class GetRatesRequest {
      *
      * @return shipperInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipperInstruction getShipperInstruction() {
         return shipperInstruction;
     }
@@ -168,7 +169,7 @@ public class GetRatesRequest {
      *
      * @return packages
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageList getPackages() {
         return packages;
     }
@@ -187,7 +188,7 @@ public class GetRatesRequest {
      *
      * @return valueAddedServices
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ValueAddedServiceDetails getValueAddedServices() {
         return valueAddedServices;
     }
@@ -206,7 +207,7 @@ public class GetRatesRequest {
      *
      * @return taxDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxDetailList getTaxDetails() {
         return taxDetails;
     }
@@ -225,7 +226,7 @@ public class GetRatesRequest {
      *
      * @return channelDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -244,7 +245,7 @@ public class GetRatesRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
@@ -263,7 +264,7 @@ public class GetRatesRequest {
      *
      * @return shipmentType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentType getShipmentType() {
         return shipmentType;
     }
@@ -282,7 +283,7 @@ public class GetRatesRequest {
      *
      * @return destinationAccessPointDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccessPointDetails getDestinationAccessPointDetails() {
         return destinationAccessPointDetails;
     }
@@ -301,7 +302,7 @@ public class GetRatesRequest {
      *
      * @return carrierAccounts
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierAccounts getCarrierAccounts() {
         return carrierAccounts;
     }

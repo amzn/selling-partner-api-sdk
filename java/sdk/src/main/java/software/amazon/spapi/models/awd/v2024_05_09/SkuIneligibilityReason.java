@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents the ineligibility reason for one SKU. */
-@Schema(description = "Represents the ineligibility reason for one SKU.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents the ineligibility reason for one SKU.")
 public class SkuIneligibilityReason {
     @SerializedName("code")
     private String code = null;
@@ -35,7 +34,7 @@ public class SkuIneligibilityReason {
      *
      * @return code
      */
-    @Schema(required = true, description = "Code for the SKU ineligibility.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Code for the SKU ineligibility.")
     public String getCode() {
         return code;
     }
@@ -54,7 +53,9 @@ public class SkuIneligibilityReason {
      *
      * @return description
      */
-    @Schema(required = true, description = "Detailed description of the SKU ineligibility.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Detailed description of the SKU ineligibility.")
     public String getDescription() {
         return description;
     }

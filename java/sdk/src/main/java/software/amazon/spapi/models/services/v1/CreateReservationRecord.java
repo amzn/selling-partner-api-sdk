@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * &#x60;CreateReservationRecord&#x60; entity contains the &#x60;Reservation&#x60; if there is an error/warning while
  * performing the requested operation on it, otherwise it will contain the new &#x60;reservationId&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "`CreateReservationRecord` entity contains the `Reservation` if there is an error/warning while performing the requested operation on it, otherwise it will contain the new `reservationId`.")
 public class CreateReservationRecord {
@@ -43,7 +42,7 @@ public class CreateReservationRecord {
      *
      * @return reservation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Reservation getReservation() {
         return reservation;
     }
@@ -62,7 +61,7 @@ public class CreateReservationRecord {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public WarningList getWarnings() {
         return warnings;
     }
@@ -81,7 +80,7 @@ public class CreateReservationRecord {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Summary of an AWD inbound shipment containing the shipment ID which can be used to fetch the actual shipment */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Summary of an AWD inbound shipment containing the shipment ID which can be used to fetch the actual shipment")
 public class OutboundShipmentSummary {
@@ -46,7 +46,7 @@ public class OutboundShipmentSummary {
      *
      * @return createdAt
      */
-    @Schema(description = "Timestamp denoting when the shipment was created")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp denoting when the shipment was created")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -65,7 +65,9 @@ public class OutboundShipmentSummary {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Order ID of AWD inbound order this inbound shipment belongs to")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Order ID of AWD inbound order this inbound shipment belongs to")
     public String getOrderId() {
         return orderId;
     }
@@ -84,7 +86,7 @@ public class OutboundShipmentSummary {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "Unique shipment ID")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Unique shipment ID")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -103,7 +105,7 @@ public class OutboundShipmentSummary {
      *
      * @return shipmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OutboundShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -122,7 +124,7 @@ public class OutboundShipmentSummary {
      *
      * @return updatedAt
      */
-    @Schema(description = "Timestamp denoting when the shipment was updated")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp denoting when the shipment was updated")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

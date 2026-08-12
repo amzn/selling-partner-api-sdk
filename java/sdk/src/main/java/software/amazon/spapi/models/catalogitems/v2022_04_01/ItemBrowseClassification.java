@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Classification (browse node) for an Amazon catalog item. */
-@Schema(description = "Classification (browse node) for an Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Classification (browse node) for an Amazon catalog item.")
 public class ItemBrowseClassification {
     @SerializedName("displayName")
     private String displayName = null;
@@ -38,7 +37,7 @@ public class ItemBrowseClassification {
      *
      * @return displayName
      */
-    @Schema(required = true, description = "Display name for the classification.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Display name for the classification.")
     public String getDisplayName() {
         return displayName;
     }
@@ -57,7 +56,7 @@ public class ItemBrowseClassification {
      *
      * @return classificationId
      */
-    @Schema(required = true, description = "Identifier of the classification.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of the classification.")
     public String getClassificationId() {
         return classificationId;
     }
@@ -76,7 +75,7 @@ public class ItemBrowseClassification {
      *
      * @return parent
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemBrowseClassification getParent() {
         return parent;
     }

@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Details of tax amount applied. */
-@Schema(description = "Details of tax amount applied.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of tax amount applied.")
 public class TaxDetails {
     /** Type of the tax applied. */
     @JsonAdapter(TaxTypeEnum.Adapter.class)
@@ -116,7 +115,7 @@ public class TaxDetails {
      *
      * @return taxType
      */
-    @Schema(required = true, description = "Type of the tax applied.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of the tax applied.")
     public TaxTypeEnum getTaxType() {
         return taxType;
     }
@@ -137,7 +136,7 @@ public class TaxDetails {
      *
      * @return taxRate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
     public String getTaxRate() {
@@ -158,7 +157,7 @@ public class TaxDetails {
      *
      * @return taxAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getTaxAmount() {
         return taxAmount;
     }
@@ -177,7 +176,7 @@ public class TaxDetails {
      *
      * @return taxableAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getTaxableAmount() {
         return taxableAmount;
     }

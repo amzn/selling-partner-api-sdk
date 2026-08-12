@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.GetContentDocumentResponse;
 import software.amazon.spapi.models.apluscontent.v2020_11_01.ListContentDocumentAsinRelationsResponse;
@@ -112,7 +111,7 @@ public class AplusContentApi {
     private okhttp3.Call createContentDocumentCall(
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = postContentDocumentRequest;
 
@@ -155,7 +154,7 @@ public class AplusContentApi {
     private okhttp3.Call createContentDocumentValidateBeforeCall(
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -328,10 +327,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createContentDocumentValidateBeforeCall(
@@ -369,7 +368,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             Set<String> includedDataSet,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -421,7 +420,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             Set<String> includedDataSet,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -621,10 +620,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getContentDocumentValidateBeforeCall(
@@ -668,7 +667,7 @@ public class AplusContentApi {
             Set<String> includedDataSet,
             Set<String> asinSet,
             String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -725,7 +724,7 @@ public class AplusContentApi {
             Set<String> includedDataSet,
             Set<String> asinSet,
             String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -981,10 +980,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listContentDocumentAsinRelationsValidateBeforeCall(
@@ -1019,9 +1018,7 @@ public class AplusContentApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call postContentDocumentApprovalSubmissionCall(
-            String contentReferenceKey,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String contentReferenceKey, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1068,9 +1065,7 @@ public class AplusContentApi {
     }
 
     private okhttp3.Call postContentDocumentApprovalSubmissionValidateBeforeCall(
-            String contentReferenceKey,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String contentReferenceKey, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -1257,10 +1252,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = postContentDocumentApprovalSubmissionValidateBeforeCall(
@@ -1301,7 +1296,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             PostContentDocumentAsinRelationsRequest postContentDocumentAsinRelationsRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = postContentDocumentAsinRelationsRequest;
 
@@ -1350,7 +1345,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             PostContentDocumentAsinRelationsRequest postContentDocumentAsinRelationsRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -1582,10 +1577,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = postContentDocumentAsinRelationsValidateBeforeCall(
@@ -1620,9 +1615,7 @@ public class AplusContentApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call postContentDocumentSuspendSubmissionCall(
-            String contentReferenceKey,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String contentReferenceKey, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1669,9 +1662,7 @@ public class AplusContentApi {
     }
 
     private okhttp3.Call postContentDocumentSuspendSubmissionValidateBeforeCall(
-            String contentReferenceKey,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String contentReferenceKey, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -1864,10 +1855,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = postContentDocumentSuspendSubmissionValidateBeforeCall(
@@ -1902,9 +1893,7 @@ public class AplusContentApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call searchContentDocumentsCall(
-            String marketplaceId,
-            String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, String pageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1947,9 +1936,7 @@ public class AplusContentApi {
     }
 
     private okhttp3.Call searchContentDocumentsValidateBeforeCall(
-            String marketplaceId,
-            String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, String pageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -2128,10 +2115,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = searchContentDocumentsValidateBeforeCall(marketplaceId, pageToken, progressRequestListener);
@@ -2165,10 +2152,7 @@ public class AplusContentApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call searchContentPublishRecordsCall(
-            String marketplaceId,
-            String asin,
-            String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, String asin, String pageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2212,10 +2196,7 @@ public class AplusContentApi {
     }
 
     private okhttp3.Call searchContentPublishRecordsValidateBeforeCall(
-            String marketplaceId,
-            String asin,
-            String pageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, String asin, String pageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -2406,10 +2387,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2447,7 +2428,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = postContentDocumentRequest;
 
@@ -2496,7 +2477,7 @@ public class AplusContentApi {
             String contentReferenceKey,
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'contentReferenceKey' is set
@@ -2704,10 +2685,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateContentDocumentValidateBeforeCall(
@@ -2743,7 +2724,7 @@ public class AplusContentApi {
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
             Set<String> asinSet,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = postContentDocumentRequest;
 
@@ -2789,7 +2770,7 @@ public class AplusContentApi {
             String marketplaceId,
             PostContentDocumentRequest postContentDocumentRequest,
             Set<String> asinSet,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -2984,10 +2965,10 @@ public class AplusContentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = validateContentDocumentAsinRelationsValidateBeforeCall(

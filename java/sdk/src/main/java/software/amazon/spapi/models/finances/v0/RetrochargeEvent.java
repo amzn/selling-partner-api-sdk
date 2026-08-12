@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A retrocharge or retrocharge reversal. */
-@Schema(description = "A retrocharge or retrocharge reversal.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A retrocharge or retrocharge reversal.")
 public class RetrochargeEvent {
     @SerializedName("RetrochargeEventType")
     private String retrochargeEventType = null;
@@ -50,7 +50,8 @@ public class RetrochargeEvent {
      *
      * @return retrochargeEventType
      */
-    @Schema(description = "The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`")
     public String getRetrochargeEventType() {
         return retrochargeEventType;
     }
@@ -69,7 +70,7 @@ public class RetrochargeEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -88,7 +89,7 @@ public class RetrochargeEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -109,7 +110,7 @@ public class RetrochargeEvent {
      *
      * @return baseTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getBaseTax() {
         return baseTax;
     }
@@ -128,7 +129,7 @@ public class RetrochargeEvent {
      *
      * @return shippingTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getShippingTax() {
         return shippingTax;
     }
@@ -147,7 +148,8 @@ public class RetrochargeEvent {
      *
      * @return marketplaceName
      */
-    @Schema(description = "The name of the marketplace where the retrocharge event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the marketplace where the retrocharge event occurred.")
     public String getMarketplaceName() {
         return marketplaceName;
     }
@@ -166,7 +168,7 @@ public class RetrochargeEvent {
      *
      * @return retrochargeTaxWithheldList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxWithheldComponentList getRetrochargeTaxWithheldList() {
         return retrochargeTaxWithheldList;
     }

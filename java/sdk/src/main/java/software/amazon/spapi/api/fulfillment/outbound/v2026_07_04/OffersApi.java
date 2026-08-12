@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOffersRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOffersResponse;
@@ -61,9 +60,7 @@ public class OffersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getOffers_0Call(
-            GetOffersRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -105,9 +102,7 @@ public class OffersApi {
     }
 
     private okhttp3.Call getOffers_0ValidateBeforeCall(
-            GetOffersRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -261,10 +256,10 @@ public class OffersApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getOffers_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);

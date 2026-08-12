@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The start and end time that specifies the time interval of an event. */
-@Schema(description = "The start and end time that specifies the time interval of an event.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The start and end time that specifies the time interval of an event.")
 public class TimeWindow {
     @SerializedName("start")
     private OffsetDateTime start = null;
@@ -35,7 +36,7 @@ public class TimeWindow {
      *
      * @return start
      */
-    @Schema(description = "The start time of the time window.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The start time of the time window.")
     public OffsetDateTime getStart() {
         return start;
     }
@@ -54,7 +55,7 @@ public class TimeWindow {
      *
      * @return end
      */
-    @Schema(description = "The end time of the time window.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The end time of the time window.")
     public OffsetDateTime getEnd() {
         return end;
     }

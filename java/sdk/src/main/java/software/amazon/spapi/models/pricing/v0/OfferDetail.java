@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;. */
-@Schema(description = "Schema for an individual offer. Object in `OfferDetailList`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Schema for an individual offer. Object in `OfferDetailList`.")
 public class OfferDetail {
     @SerializedName("MyOffer")
     private Boolean myOffer = null;
@@ -79,7 +79,7 @@ public class OfferDetail {
      *
      * @return myOffer
      */
-    @Schema(description = "When true, this is the seller's offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, this is the seller's offer.")
     public Boolean getMyOffer() {
         return myOffer;
     }
@@ -98,7 +98,7 @@ public class OfferDetail {
      *
      * @return offerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferCustomerType getOfferType() {
         return offerType;
     }
@@ -118,7 +118,7 @@ public class OfferDetail {
      *
      * @return subCondition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.")
@@ -140,7 +140,7 @@ public class OfferDetail {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }
@@ -159,7 +159,7 @@ public class OfferDetail {
      *
      * @return conditionNotes
      */
-    @Schema(description = "Information about the condition of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Information about the condition of the item.")
     public String getConditionNotes() {
         return conditionNotes;
     }
@@ -178,7 +178,7 @@ public class OfferDetail {
      *
      * @return sellerFeedbackRating
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SellerFeedbackType getSellerFeedbackRating() {
         return sellerFeedbackRating;
     }
@@ -197,7 +197,7 @@ public class OfferDetail {
      *
      * @return shippingTime
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DetailedShippingTimeType getShippingTime() {
         return shippingTime;
     }
@@ -216,7 +216,7 @@ public class OfferDetail {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -243,7 +243,8 @@ public class OfferDetail {
      *
      * @return quantityDiscountPrices
      */
-    @Schema(description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
     public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
         return quantityDiscountPrices;
     }
@@ -262,7 +263,7 @@ public class OfferDetail {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }
@@ -281,7 +282,7 @@ public class OfferDetail {
      *
      * @return shipping
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getShipping() {
         return shipping;
     }
@@ -300,7 +301,7 @@ public class OfferDetail {
      *
      * @return shipsFrom
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipsFromType getShipsFrom() {
         return shipsFrom;
     }
@@ -319,7 +320,9 @@ public class OfferDetail {
      *
      * @return isFulfilledByAmazon
      */
-    @Schema(required = true, description = "When true, the offer is fulfilled by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, the offer is fulfilled by Amazon.")
     public Boolean getIsFulfilledByAmazon() {
         return isFulfilledByAmazon;
     }
@@ -338,7 +341,7 @@ public class OfferDetail {
      *
      * @return primeInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrimeInformationType getPrimeInformation() {
         return primeInformation;
     }
@@ -358,7 +361,7 @@ public class OfferDetail {
      *
      * @return isBuyBoxWinner
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.")
     public Boolean getIsBuyBoxWinner() {
@@ -379,7 +382,8 @@ public class OfferDetail {
      *
      * @return isFeaturedMerchant
      */
-    @Schema(description = "When true, the seller of the item is eligible to win the Buy Box.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the seller of the item is eligible to win the Buy Box.")
     public Boolean getIsFeaturedMerchant() {
         return isFeaturedMerchant;
     }

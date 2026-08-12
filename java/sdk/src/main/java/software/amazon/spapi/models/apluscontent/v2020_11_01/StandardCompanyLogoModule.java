@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The standard company logo image. */
-@Schema(description = "The standard company logo image.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The standard company logo image.")
 public class StandardCompanyLogoModule {
     @SerializedName("companyLogo")
     private ImageComponent companyLogo = null;
@@ -32,7 +31,7 @@ public class StandardCompanyLogoModule {
      *
      * @return companyLogo
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ImageComponent getCompanyLogo() {
         return companyLogo;
     }

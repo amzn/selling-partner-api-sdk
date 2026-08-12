@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The request for the &#x60;deleteNotifications&#x60; operation. */
-@Schema(description = "The request for the `deleteNotifications` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `deleteNotifications` operation.")
 public class DeleteNotificationsRequest {
     @SerializedName("templateId")
     private String templateId = null;
@@ -86,7 +85,7 @@ public class DeleteNotificationsRequest {
      *
      * @return templateId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The unique identifier of the notification template you used to onboard your application.")
     public String getTemplateId() {
@@ -107,7 +106,9 @@ public class DeleteNotificationsRequest {
      *
      * @return deletionReason
      */
-    @Schema(required = true, description = "The unique identifier that maps each notification status to a reason code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier that maps each notification status to a reason code.")
     public DeletionReasonEnum getDeletionReason() {
         return deletionReason;
     }

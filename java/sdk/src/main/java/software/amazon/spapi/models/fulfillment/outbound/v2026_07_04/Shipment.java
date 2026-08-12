@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Delivery and item information for a shipment in a fulfillment order. */
-@Schema(description = "Delivery and item information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Delivery and item information for a shipment in a fulfillment order.")
 public class Shipment {
     @SerializedName("amazonShipmentId")
     private String amazonShipmentId = null;
@@ -58,7 +59,9 @@ public class Shipment {
      *
      * @return amazonShipmentId
      */
-    @Schema(required = true, description = "A shipment identifier assigned by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A shipment identifier assigned by Amazon.")
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -77,7 +80,7 @@ public class Shipment {
      *
      * @return amazonFacility
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AmazonFacility getAmazonFacility() {
         return amazonFacility;
     }
@@ -97,7 +100,7 @@ public class Shipment {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The current status of the shipment. Possible values: `PROCESSING`, `SHIPPED`, `CANCELLED`.")
     public String getStatus() {
@@ -118,7 +121,7 @@ public class Shipment {
      *
      * @return shipTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getShipTime() {
@@ -139,7 +142,7 @@ public class Shipment {
      *
      * @return deliveryTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getDeliveryTime() {
@@ -169,7 +172,7 @@ public class Shipment {
      *
      * @return shippingNotes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.")
     public List<String> getShippingNotes() {
@@ -198,7 +201,9 @@ public class Shipment {
      *
      * @return items
      */
-    @Schema(required = true, description = "An array of fulfillment shipment item information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An array of fulfillment shipment item information.")
     public List<ShipmentItem> getItems() {
         return items;
     }
@@ -225,7 +230,7 @@ public class Shipment {
      *
      * @return packages
      */
-    @Schema(description = "An array of fulfillment shipment package information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of fulfillment shipment package information.")
     public List<ModelPackage> getPackages() {
         return packages;
     }
@@ -244,7 +249,7 @@ public class Shipment {
      *
      * @return serviceLevel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentServiceLevel getServiceLevel() {
         return serviceLevel;
     }

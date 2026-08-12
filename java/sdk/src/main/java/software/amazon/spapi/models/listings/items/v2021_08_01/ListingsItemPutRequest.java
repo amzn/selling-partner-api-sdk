@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;putListingsItem&#x60; operation. */
-@Schema(description = "The request body schema for the `putListingsItem` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `putListingsItem` operation.")
 public class ListingsItemPutRequest {
     @SerializedName("productType")
     private String productType = null;
@@ -93,7 +93,9 @@ public class ListingsItemPutRequest {
      *
      * @return productType
      */
-    @Schema(required = true, description = "The listings item's Amazon product type.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The listings item's Amazon product type.")
     public String getProductType() {
         return productType;
     }
@@ -112,7 +114,7 @@ public class ListingsItemPutRequest {
      *
      * @return requirements
      */
-    @Schema(description = "The name of the requirements set for the provided data.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the requirements set for the provided data.")
     public RequirementsEnum getRequirements() {
         return requirements;
     }
@@ -139,7 +141,7 @@ public class ListingsItemPutRequest {
      *
      * @return attributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "JSON object containing structured listings item attribute data keyed by attribute name.")
     public Map<String, Object> getAttributes() {

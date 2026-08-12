@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A debt payment or debt adjustment. */
-@Schema(description = "A debt payment or debt adjustment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A debt payment or debt adjustment.")
 public class DebtRecoveryEvent {
     @SerializedName("DebtRecoveryType")
     private String debtRecoveryType = null;
@@ -45,7 +44,7 @@ public class DebtRecoveryEvent {
      *
      * @return debtRecoveryType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The debt recovery type.  Possible values:  * `DebtPayment` * `DebtPaymentFailure` * `DebtAdjustment`")
     public String getDebtRecoveryType() {
@@ -66,7 +65,7 @@ public class DebtRecoveryEvent {
      *
      * @return recoveryAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRecoveryAmount() {
         return recoveryAmount;
     }
@@ -85,7 +84,7 @@ public class DebtRecoveryEvent {
      *
      * @return overPaymentCredit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getOverPaymentCredit() {
         return overPaymentCredit;
     }
@@ -104,7 +103,7 @@ public class DebtRecoveryEvent {
      *
      * @return debtRecoveryItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DebtRecoveryItemList getDebtRecoveryItemList() {
         return debtRecoveryItemList;
     }
@@ -123,7 +122,7 @@ public class DebtRecoveryEvent {
      *
      * @return chargeInstrumentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeInstrumentList getChargeInstrumentList() {
         return chargeInstrumentList;
     }

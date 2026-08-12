@@ -17,12 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Provide these fields only if this shipment is a direct import. */
-@Schema(description = "Provide these fields only if this shipment is a direct import.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Provide these fields only if this shipment is a direct import.")
 public class ImportDetails {
     /**
      * This is used for import purchase orders only. If the recipient requests, this field will contain the shipment
@@ -164,7 +165,7 @@ public class ImportDetails {
      *
      * @return methodOfPayment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "This is used for import purchase orders only. If the recipient requests, this field will contain the shipment method of payment.")
     public MethodOfPaymentEnum getMethodOfPayment() {
@@ -185,7 +186,7 @@ public class ImportDetails {
      *
      * @return sealNumber
      */
-    @Schema(description = "The container's seal number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The container's seal number.")
     public String getSealNumber() {
         return sealNumber;
     }
@@ -204,7 +205,7 @@ public class ImportDetails {
      *
      * @return route
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Route getRoute() {
         return route;
     }
@@ -224,7 +225,7 @@ public class ImportDetails {
      *
      * @return importContainers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if shipment has multiple containers.")
     public String getImportContainers() {
@@ -245,7 +246,7 @@ public class ImportDetails {
      *
      * @return billableWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getBillableWeight() {
         return billableWeight;
     }
@@ -265,7 +266,7 @@ public class ImportDetails {
      *
      * @return estimatedShipByDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future.")
     public OffsetDateTime getEstimatedShipByDate() {
@@ -286,7 +287,8 @@ public class ImportDetails {
      *
      * @return handlingInstructions
      */
-    @Schema(description = "Identification of the instructions on how specified item/carton/pallet should be handled.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Identification of the instructions on how specified item/carton/pallet should be handled.")
     public HandlingInstructionsEnum getHandlingInstructions() {
         return handlingInstructions;
     }

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Information about the seller&#39;s business. Certain fields may be omitted depending on the seller&#39;s
  * &#x60;businessType&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about the seller's business. Certain fields may be omitted depending on the seller's `businessType`.")
 public class Business {
@@ -49,7 +48,7 @@ public class Business {
      *
      * @return name
      */
-    @Schema(required = true, description = "The registered business name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The registered business name.")
     public String getName() {
         return name;
     }
@@ -68,7 +67,7 @@ public class Business {
      *
      * @return registeredBusinessAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getRegisteredBusinessAddress() {
         return registeredBusinessAddress;
     }
@@ -88,7 +87,7 @@ public class Business {
      *
      * @return companyRegistrationNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller's company registration number, if applicable. This field will be absent for individual sellers and sole proprietorships.")
     public String getCompanyRegistrationNumber() {
@@ -110,7 +109,7 @@ public class Business {
      *
      * @return companyTaxIdentificationNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller's company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships.")
     public String getCompanyTaxIdentificationNumber() {
@@ -131,7 +130,8 @@ public class Business {
      *
      * @return nonLatinName
      */
-    @Schema(description = "The non-Latin script version of the registered business name, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The non-Latin script version of the registered business name, if applicable.")
     public String getNonLatinName() {
         return nonLatinName;
     }

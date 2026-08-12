@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CustomerInvoice;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CustomerInvoiceList;
@@ -65,8 +64,7 @@ public class CustomerInvoicesApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getCustomerInvoiceCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getCustomerInvoiceCall(String purchaseOrderNumber, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -111,8 +109,7 @@ public class CustomerInvoicesApi {
     }
 
     private okhttp3.Call getCustomerInvoiceValidateBeforeCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String purchaseOrderNumber, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'purchaseOrderNumber' is set
         if (purchaseOrderNumber == null) {
@@ -253,10 +250,10 @@ public class CustomerInvoicesApi {
             String purchaseOrderNumber, final ApiCallback<CustomerInvoice> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getCustomerInvoiceValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
@@ -299,7 +296,7 @@ public class CustomerInvoicesApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -354,7 +351,7 @@ public class CustomerInvoicesApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'createdAfter' is set
@@ -611,10 +608,10 @@ public class CustomerInvoicesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getCustomerInvoicesValidateBeforeCall(

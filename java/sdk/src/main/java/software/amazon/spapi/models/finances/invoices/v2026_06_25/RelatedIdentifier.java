@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Related business identifier of the transaction. */
-@Schema(description = "Related business identifier of the transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Related business identifier of the transaction.")
 public class RelatedIdentifier {
     /** The name of the related identifier. */
     @JsonAdapter(RelatedIdentifierNameEnum.Adapter.class)
@@ -105,7 +104,7 @@ public class RelatedIdentifier {
      *
      * @return relatedIdentifierName
      */
-    @Schema(required = true, description = "The name of the related identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the related identifier.")
     public RelatedIdentifierNameEnum getRelatedIdentifierName() {
         return relatedIdentifierName;
     }
@@ -132,7 +131,9 @@ public class RelatedIdentifier {
      *
      * @return relatedIdentifierValue
      */
-    @Schema(required = true, description = "The corresponding related identifier values.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The corresponding related identifier values.")
     public List<String> getRelatedIdentifierValue() {
         return relatedIdentifierValue;
     }

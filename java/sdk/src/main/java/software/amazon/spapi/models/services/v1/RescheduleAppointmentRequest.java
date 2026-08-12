@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Input for rescheduled appointment operation. */
-@Schema(description = "Input for rescheduled appointment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input for rescheduled appointment operation.")
 public class RescheduleAppointmentRequest {
     @SerializedName("appointmentTime")
     private AppointmentTimeInput appointmentTime = null;
@@ -35,7 +34,7 @@ public class RescheduleAppointmentRequest {
      *
      * @return appointmentTime
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AppointmentTimeInput getAppointmentTime() {
         return appointmentTime;
     }
@@ -54,7 +53,9 @@ public class RescheduleAppointmentRequest {
      *
      * @return rescheduleReasonCode
      */
-    @Schema(required = true, description = "The appointment reschedule reason code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The appointment reschedule reason code.")
     public String getRescheduleReasonCode() {
         return rescheduleReasonCode;
     }

@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11.ModelReturn;
 import software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11.ReturnsResponse;
@@ -64,8 +63,7 @@ public class ReturnRetrievalApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getReturnCall(
-            String returnId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReturnCall(String returnId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -107,8 +105,7 @@ public class ReturnRetrievalApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getReturnValidateBeforeCall(
-            String returnId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReturnValidateBeforeCall(String returnId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'returnId' is set
@@ -210,10 +207,10 @@ public class ReturnRetrievalApi {
             String returnId, final ApiCallback<ModelReturn> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReturnValidateBeforeCall(returnId, progressRequestListener);
@@ -276,7 +273,7 @@ public class ReturnRetrievalApi {
             String lastUpdatedBefore,
             Long maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -346,7 +343,7 @@ public class ReturnRetrievalApi {
             String lastUpdatedBefore,
             Long maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listReturnsCall(
@@ -745,10 +742,10 @@ public class ReturnRetrievalApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listReturnsValidateBeforeCall(

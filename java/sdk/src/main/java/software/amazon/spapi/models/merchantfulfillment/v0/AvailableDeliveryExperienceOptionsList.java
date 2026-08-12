@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of available delivery experience options. */
-@Schema(description = "List of available delivery experience options.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of available delivery experience options.")
 public class AvailableDeliveryExperienceOptionsList extends ArrayList<AvailableDeliveryExperienceOption> {
 
     @Override

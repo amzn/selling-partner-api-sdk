@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.finances.invoices.v2026_06_25.GetInvoiceResponse;
 import software.amazon.spapi.models.finances.invoices.v2026_06_25.GetInvoicesResponse;
@@ -76,7 +75,7 @@ public class DefaultApi {
             String marketplaceId,
             String invoiceIdentifier,
             String nextTokenForLineItems,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -127,7 +126,7 @@ public class DefaultApi {
             String marketplaceId,
             String invoiceIdentifier,
             String nextTokenForLineItems,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -298,10 +297,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInvoiceValidateBeforeCall(
@@ -351,7 +350,7 @@ public class DefaultApi {
             OffsetDateTime fromIssueDate,
             OffsetDateTime toIssueDate,
             OffsetDateTime invoicesModifiedAfter,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -404,7 +403,7 @@ public class DefaultApi {
             OffsetDateTime fromIssueDate,
             OffsetDateTime toIssueDate,
             OffsetDateTime invoicesModifiedAfter,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -652,10 +651,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInvoiceHeadersValidateBeforeCall(

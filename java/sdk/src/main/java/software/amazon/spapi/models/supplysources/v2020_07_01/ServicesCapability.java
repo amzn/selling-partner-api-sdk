@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The services capability of a supply source. */
-@Schema(description = "The services capability of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The services capability of a supply source.")
 public class ServicesCapability {
     @SerializedName("isSupported")
     private Boolean isSupported = null;
@@ -35,7 +34,8 @@ public class ServicesCapability {
      *
      * @return isSupported
      */
-    @Schema(description = "When true, `SupplySource` supports the Service capability.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, `SupplySource` supports the Service capability.")
     public Boolean getIsSupported() {
         return isSupported;
     }
@@ -54,7 +54,7 @@ public class ServicesCapability {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }

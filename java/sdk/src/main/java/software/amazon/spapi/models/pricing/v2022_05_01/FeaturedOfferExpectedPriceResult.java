@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The FOEP result data for the requested offer. */
-@Schema(description = "The FOEP result data for the requested offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The FOEP result data for the requested offer.")
 public class FeaturedOfferExpectedPriceResult {
     @SerializedName("featuredOfferExpectedPrice")
     private FeaturedOfferExpectedPrice featuredOfferExpectedPrice = null;
@@ -42,7 +41,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return featuredOfferExpectedPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeaturedOfferExpectedPrice getFeaturedOfferExpectedPrice() {
         return featuredOfferExpectedPrice;
     }
@@ -63,7 +62,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return resultStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The status of the FOEP computation. Possible values include `VALID_FOEP`, `NO_COMPETING_OFFER`, `OFFER_NOT_ELIGIBLE`, `OFFER_NOT_FOUND`, and `ASIN_NOT_ELIGIBLE`. Additional values might be added in the future.")
@@ -85,7 +84,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return competingFeaturedOffer
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeaturedOffer getCompetingFeaturedOffer() {
         return competingFeaturedOffer;
     }
@@ -104,7 +103,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return currentFeaturedOffer
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeaturedOffer getCurrentFeaturedOffer() {
         return currentFeaturedOffer;
     }

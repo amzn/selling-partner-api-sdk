@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of all attributes required by the carrier in order to successfully link the merchant's account")
 public class CarrierAccountAttributes extends ArrayList<CarrierAccountAttribute> {

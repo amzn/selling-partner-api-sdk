@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body for the createShippingLabels operation. */
-@Schema(description = "The request body for the createShippingLabels operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the createShippingLabels operation.")
 public class CreateShippingLabelsRequest {
     @SerializedName("sellingParty")
     private PartyIdentification sellingParty = null;
@@ -40,7 +39,7 @@ public class CreateShippingLabelsRequest {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -59,7 +58,7 @@ public class CreateShippingLabelsRequest {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -86,7 +85,7 @@ public class CreateShippingLabelsRequest {
      *
      * @return containers
      */
-    @Schema(description = "A list of the packages in this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of the packages in this shipment.")
     public List<Container> getContainers() {
         return containers;
     }

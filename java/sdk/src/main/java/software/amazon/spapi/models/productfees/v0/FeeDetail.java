@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The type of fee, fee amount, and other details. */
-@Schema(description = "The type of fee, fee amount, and other details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The type of fee, fee amount, and other details.")
 public class FeeDetail {
     @SerializedName("FeeType")
     private String feeType = null;
@@ -47,7 +46,7 @@ public class FeeDetail {
      *
      * @return feeType
      */
-    @Schema(required = true, description = "The type of fee charged to a seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of fee charged to a seller.")
     public String getFeeType() {
         return feeType;
     }
@@ -66,7 +65,7 @@ public class FeeDetail {
      *
      * @return feeAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getFeeAmount() {
         return feeAmount;
     }
@@ -85,7 +84,7 @@ public class FeeDetail {
      *
      * @return feePromotion
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getFeePromotion() {
         return feePromotion;
     }
@@ -104,7 +103,7 @@ public class FeeDetail {
      *
      * @return taxAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getTaxAmount() {
         return taxAmount;
     }
@@ -123,7 +122,7 @@ public class FeeDetail {
      *
      * @return finalFee
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getFinalFee() {
         return finalFee;
     }
@@ -142,7 +141,7 @@ public class FeeDetail {
      *
      * @return includedFeeDetailList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public IncludedFeeDetailList getIncludedFeeDetailList() {
         return includedFeeDetailList;
     }

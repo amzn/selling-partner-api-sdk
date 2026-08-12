@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A content document with additional information for content management. */
-@Schema(description = "A content document with additional information for content management.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A content document with additional information for content management.")
 public class ContentRecord {
     @SerializedName("contentReferenceKey")
     private String contentReferenceKey = null;
@@ -39,7 +39,7 @@ public class ContentRecord {
      *
      * @return contentReferenceKey
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.")
@@ -61,7 +61,7 @@ public class ContentRecord {
      *
      * @return contentMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContentMetadata getContentMetadata() {
         return contentMetadata;
     }
@@ -80,7 +80,7 @@ public class ContentRecord {
      *
      * @return contentDocument
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContentDocument getContentDocument() {
         return contentDocument;
     }

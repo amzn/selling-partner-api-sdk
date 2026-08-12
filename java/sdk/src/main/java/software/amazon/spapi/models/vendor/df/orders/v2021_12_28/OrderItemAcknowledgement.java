@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of an individual item within the order being acknowledged. */
-@Schema(description = "Details of an individual item within the order being acknowledged.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details of an individual item within the order being acknowledged.")
 public class OrderItemAcknowledgement {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -41,7 +41,9 @@ public class OrderItemAcknowledgement {
      *
      * @return itemSequenceNumber
      */
-    @Schema(required = true, description = "Line item sequence number for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Line item sequence number for the item.")
     public String getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -60,7 +62,8 @@ public class OrderItemAcknowledgement {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Buyer's standard identification number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Buyer's standard identification number (ASIN) of an item.")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -79,7 +82,7 @@ public class OrderItemAcknowledgement {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The vendor selected product identification of the item. Should be the same as was provided in the purchase order.")
     public String getVendorProductIdentifier() {
@@ -100,7 +103,7 @@ public class OrderItemAcknowledgement {
      *
      * @return acknowledgedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getAcknowledgedQuantity() {
         return acknowledgedQuantity;
     }

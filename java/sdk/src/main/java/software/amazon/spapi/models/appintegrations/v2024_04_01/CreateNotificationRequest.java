@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.appintegrations.v2024_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request for the &#x60;createNotification&#x60; operation. */
-@Schema(description = "The request for the `createNotification` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `createNotification` operation.")
 public class CreateNotificationRequest {
     @SerializedName("templateId")
     private String templateId = null;
@@ -38,7 +37,7 @@ public class CreateNotificationRequest {
      *
      * @return templateId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The unique identifier of the notification template you used to onboard your application.")
     public String getTemplateId() {
@@ -59,7 +58,7 @@ public class CreateNotificationRequest {
      *
      * @return notificationParameters
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public NotificationParameters getNotificationParameters() {
         return notificationParameters;
     }
@@ -78,7 +77,8 @@ public class CreateNotificationRequest {
      *
      * @return marketplaceId
      */
-    @Schema(description = "An encrypted marketplace identifier for the posted notification.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An encrypted marketplace identifier for the posted notification.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

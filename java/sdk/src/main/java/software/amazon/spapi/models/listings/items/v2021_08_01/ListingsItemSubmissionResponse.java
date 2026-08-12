@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Response containing the results of a submission to the Selling Partner API for Listings Items. */
-@Schema(description = "Response containing the results of a submission to the Selling Partner API for Listings Items.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Response containing the results of a submission to the Selling Partner API for Listings Items.")
 public class ListingsItemSubmissionResponse {
     @SerializedName("sku")
     private String sku = null;
@@ -99,7 +99,9 @@ public class ListingsItemSubmissionResponse {
      *
      * @return sku
      */
-    @Schema(required = true, description = "A selling partner-provided identifier for an Amazon listing.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A selling partner-provided identifier for an Amazon listing.")
     public String getSku() {
         return sku;
     }
@@ -118,7 +120,9 @@ public class ListingsItemSubmissionResponse {
      *
      * @return status
      */
-    @Schema(required = true, description = "The status of the listings item submission.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The status of the listings item submission.")
     public StatusEnum getStatus() {
         return status;
     }
@@ -137,7 +141,9 @@ public class ListingsItemSubmissionResponse {
      *
      * @return submissionId
      */
-    @Schema(required = true, description = "The unique identifier of the listings item submission.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier of the listings item submission.")
     public String getSubmissionId() {
         return submissionId;
     }
@@ -164,7 +170,8 @@ public class ListingsItemSubmissionResponse {
      *
      * @return issues
      */
-    @Schema(description = "Listings item issues related to the listings item submission.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Listings item issues related to the listings item submission.")
     public List<Issue> getIssues() {
         return issues;
     }
@@ -183,7 +190,7 @@ public class ListingsItemSubmissionResponse {
      *
      * @return identifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemIdentifiers getIdentifiers() {
         return identifiers;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of reasons why a benefit is excluded for a shipping offer (for example, &#x60;LATE_DELIVERY_RISK&#x60;). */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "List of reasons why a benefit is excluded for a shipping offer (for example, `LATE_DELIVERY_RISK`).")
 public class ExcludedBenefitReasonCodes extends ArrayList<String> {

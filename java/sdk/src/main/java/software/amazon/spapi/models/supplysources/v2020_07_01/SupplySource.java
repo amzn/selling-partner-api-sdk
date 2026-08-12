@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The supply source details, including configurations and capabilities. */
-@Schema(description = "The supply source details, including configurations and capabilities.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The supply source details, including configurations and capabilities.")
 public class SupplySource {
     @SerializedName("supplySourceId")
     private String supplySourceId = null;
@@ -56,7 +56,7 @@ public class SupplySource {
      *
      * @return supplySourceId
      */
-    @Schema(description = "An Amazon generated unique supply source ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon generated unique supply source ID.")
     public String getSupplySourceId() {
         return supplySourceId;
     }
@@ -75,7 +75,7 @@ public class SupplySource {
      *
      * @return supplySourceCode
      */
-    @Schema(description = "The seller-provided unique supply source code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller-provided unique supply source code.")
     public String getSupplySourceCode() {
         return supplySourceCode;
     }
@@ -94,7 +94,7 @@ public class SupplySource {
      *
      * @return alias
      */
-    @Schema(description = "The custom alias for this supply source")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The custom alias for this supply source")
     public String getAlias() {
         return alias;
     }
@@ -113,7 +113,7 @@ public class SupplySource {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceStatusReadOnly getStatus() {
         return status;
     }
@@ -132,7 +132,7 @@ public class SupplySource {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -151,7 +151,7 @@ public class SupplySource {
      *
      * @return _configuration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceConfiguration getConfiguration() {
         return _configuration;
     }
@@ -170,7 +170,7 @@ public class SupplySource {
      *
      * @return capabilities
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceCapabilities getCapabilities() {
         return capabilities;
     }
@@ -189,7 +189,7 @@ public class SupplySource {
      *
      * @return createdAt
      */
-    @Schema(description = "A date and time in the rfc3339 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A date and time in the rfc3339 format.")
     public String getCreatedAt() {
         return createdAt;
     }
@@ -208,7 +208,7 @@ public class SupplySource {
      *
      * @return updatedAt
      */
-    @Schema(description = "A date and time in the rfc3339 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A date and time in the rfc3339 format.")
     public String getUpdatedAt() {
         return updatedAt;
     }

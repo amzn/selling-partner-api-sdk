@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Substitution options for an order item. */
-@Schema(description = "Substitution options for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Substitution options for an order item.")
 public class SubstitutionOption {
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -44,7 +43,8 @@ public class SubstitutionOption {
      *
      * @return ASIN
      */
-    @Schema(description = "The item's Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The item's Amazon Standard Identification Number (ASIN).")
     public String getASIN() {
         return ASIN;
     }
@@ -63,7 +63,8 @@ public class SubstitutionOption {
      *
      * @return quantityOrdered
      */
-    @Schema(description = "The number of items to be picked for this substitution option. ")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of items to be picked for this substitution option. ")
     public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -82,7 +83,7 @@ public class SubstitutionOption {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The item's seller stock keeping unit (SKU).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's seller stock keeping unit (SKU).")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -101,7 +102,7 @@ public class SubstitutionOption {
      *
      * @return title
      */
-    @Schema(description = "The item's title.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's title.")
     public String getTitle() {
         return title;
     }
@@ -120,7 +121,7 @@ public class SubstitutionOption {
      *
      * @return measurement
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Measurement getMeasurement() {
         return measurement;
     }

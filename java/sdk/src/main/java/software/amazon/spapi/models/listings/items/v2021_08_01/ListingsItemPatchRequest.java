@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;patchListingsItem&#x60; operation. */
-@Schema(description = "The request body schema for the `patchListingsItem` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `patchListingsItem` operation.")
 public class ListingsItemPatchRequest {
     @SerializedName("productType")
     private String productType = null;
@@ -37,7 +37,9 @@ public class ListingsItemPatchRequest {
      *
      * @return productType
      */
-    @Schema(required = true, description = "The Amazon product type of the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon product type of the listings item.")
     public String getProductType() {
         return productType;
     }
@@ -64,7 +66,9 @@ public class ListingsItemPatchRequest {
      *
      * @return patches
      */
-    @Schema(required = true, description = "One or more JSON Patch operations to perform on the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "One or more JSON Patch operations to perform on the listings item.")
     public List<PatchOperation> getPatches() {
         return patches;
     }

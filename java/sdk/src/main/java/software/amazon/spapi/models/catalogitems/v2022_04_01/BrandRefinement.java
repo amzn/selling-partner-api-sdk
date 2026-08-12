@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A brand that you can use to refine your search. */
-@Schema(description = "A brand that you can use to refine your search.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A brand that you can use to refine your search.")
 public class BrandRefinement {
     @SerializedName("numberOfResults")
     private Integer numberOfResults = null;
@@ -36,7 +35,7 @@ public class BrandRefinement {
      *
      * @return numberOfResults
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The estimated number of results that would be returned if you refine your search by the specified `brandName`.")
@@ -58,7 +57,9 @@ public class BrandRefinement {
      *
      * @return brandName
      */
-    @Schema(required = true, description = "The brand name that you can use to refine your search.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The brand name that you can use to refine your search.")
     public String getBrandName() {
         return brandName;
     }

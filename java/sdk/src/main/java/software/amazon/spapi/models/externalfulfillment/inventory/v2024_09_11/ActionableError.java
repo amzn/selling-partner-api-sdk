@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Error details you can take action on. */
-@Schema(description = "Error details you can take action on.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Error details you can take action on.")
 public class ActionableError {
     @SerializedName("errorType")
     private String errorType = null;
@@ -35,7 +34,8 @@ public class ActionableError {
      *
      * @return errorType
      */
-    @Schema(description = "The top level error type that may contain multiple error subtypes.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The top level error type that may contain multiple error subtypes.")
     public String getErrorType() {
         return errorType;
     }
@@ -54,7 +54,7 @@ public class ActionableError {
      *
      * @return errorSubType
      */
-    @Schema(description = "The secondary level error type.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The secondary level error type.")
     public String getErrorSubType() {
         return errorSubType;
     }

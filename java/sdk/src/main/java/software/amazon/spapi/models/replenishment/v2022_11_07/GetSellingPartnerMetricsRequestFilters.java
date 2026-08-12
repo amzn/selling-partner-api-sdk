@@ -13,14 +13,15 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
 public class GetSellingPartnerMetricsRequestFilters {
@@ -59,7 +60,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return asins
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of Amazon Standard Identification Numbers (ASINs) to filter by. ASIN filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
     public Set<String> getAsins() {
@@ -90,7 +91,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return skus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] A list of SKUs to filter by. SKU filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
     public Set<String> getSkus() {
@@ -124,7 +125,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return fulfillmentChannelTypes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] The fulfillment channel types to filter by. Fulfillment channel type filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
     public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
@@ -158,7 +159,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return brandNames
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for US marketplace] A list of brand names to filter by. Brand name filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS, REVENUE_PENETRATION, SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE, SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS, REVENUE_BY_DELIVERIES, SUBSCRIBER_RETENTION, REVENUE_PENETRATION_BY_SELLER_FUNDING, SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT and SIGNUP_CONVERSION_BY_SELLER_FUNDING.")
     public Set<String> getBrandNames() {
@@ -190,7 +191,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return productGroups
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Vendors] A list of product group names to filter by. Product group filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
     public Set<String> getProductGroups() {

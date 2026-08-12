@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains information pertaining to a transportation option and the related carrier. */
-@Schema(description = "Contains information pertaining to a transportation option and the related carrier.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains information pertaining to a transportation option and the related carrier.")
 public class TransportationOption {
     @SerializedName("carrier")
     private Carrier carrier = null;
@@ -55,7 +55,7 @@ public class TransportationOption {
      *
      * @return carrier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Carrier getCarrier() {
         return carrier;
     }
@@ -74,7 +74,7 @@ public class TransportationOption {
      *
      * @return carrierAppointment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierAppointment getCarrierAppointment() {
         return carrierAppointment;
     }
@@ -101,7 +101,7 @@ public class TransportationOption {
      *
      * @return preconditions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Identifies a list of preconditions for confirming the transportation option.")
     public List<String> getPreconditions() {
@@ -122,7 +122,7 @@ public class TransportationOption {
      *
      * @return quote
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Quote getQuote() {
         return quote;
     }
@@ -141,7 +141,7 @@ public class TransportationOption {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
     public String getShipmentId() {
@@ -164,7 +164,7 @@ public class TransportationOption {
      *
      * @return shippingMode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.")
@@ -187,7 +187,7 @@ public class TransportationOption {
      *
      * @return shippingSolution
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.")
@@ -209,7 +209,7 @@ public class TransportationOption {
      *
      * @return transportationOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Identifier of a transportation option. A transportation option represent one option for how to send a shipment.")

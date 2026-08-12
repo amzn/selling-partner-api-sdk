@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The definition of the attribute option. */
-@Schema(description = "The definition of the attribute option.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The definition of the attribute option.")
 public class AttributeOption {
     @SerializedName("description")
     private String description = null;
@@ -35,7 +34,7 @@ public class AttributeOption {
      *
      * @return description
      */
-    @Schema(description = "The description of the attribute value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The description of the attribute value.")
     public String getDescription() {
         return description;
     }
@@ -54,7 +53,7 @@ public class AttributeOption {
      *
      * @return value
      */
-    @Schema(description = "The possible values for the attribute option.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The possible values for the attribute option.")
     public String getValue() {
         return value;
     }

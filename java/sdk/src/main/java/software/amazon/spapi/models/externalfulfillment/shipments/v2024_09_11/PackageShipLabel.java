@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A shipping label with a label document for a single package. If label generation fails, you can use the
  * &#x60;status&#x60; and &#x60;errorDetails&#x60; attributes to determine the cause of failure.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A shipping label with a label document for a single package. If label generation fails, you can use the `status` and `errorDetails` attributes to determine the cause of failure.")
 public class PackageShipLabel {
@@ -49,7 +48,7 @@ public class PackageShipLabel {
      *
      * @return packageId
      */
-    @Schema(description = "The package ID of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The package ID of the package.")
     public String getPackageId() {
         return packageId;
     }
@@ -68,7 +67,7 @@ public class PackageShipLabel {
      *
      * @return shipLabelMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipLabelMetadata getShipLabelMetadata() {
         return shipLabelMetadata;
     }
@@ -87,7 +86,7 @@ public class PackageShipLabel {
      *
      * @return fileData
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DocumentV2 getFileData() {
         return fileData;
     }
@@ -106,7 +105,7 @@ public class PackageShipLabel {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Status getStatus() {
         return status;
     }
@@ -125,7 +124,7 @@ public class PackageShipLabel {
      *
      * @return errorDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Error getErrorDetails() {
         return errorDetails;
     }

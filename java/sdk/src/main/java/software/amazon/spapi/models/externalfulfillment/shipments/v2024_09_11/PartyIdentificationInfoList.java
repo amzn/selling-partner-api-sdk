@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment
  * sellers.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.")
 public class PartyIdentificationInfoList extends ArrayList<PartyIdentificationInfo> {

@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Information about the return item. */
-@Schema(description = "Information about the return item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the return item.")
 public class ModelReturn {
     @SerializedName("id")
     private String id = null;
@@ -298,7 +297,7 @@ public class ModelReturn {
      *
      * @return id
      */
-    @Schema(required = true, description = "The return item's ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The return item's ID.")
     public String getId() {
         return id;
     }
@@ -317,7 +316,8 @@ public class ModelReturn {
      *
      * @return returnLocationId
      */
-    @Schema(description = "The SmartConnect identifier for where the return item was dropped for delivery.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The SmartConnect identifier for where the return item was dropped for delivery.")
     public String getReturnLocationId() {
         return returnLocationId;
     }
@@ -336,7 +336,7 @@ public class ModelReturn {
      *
      * @return merchantSku
      */
-    @Schema(description = "The seller's identifier for the SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller's identifier for the SKU.")
     public String getMerchantSku() {
         return merchantSku;
     }
@@ -355,7 +355,7 @@ public class ModelReturn {
      *
      * @return returnType
      */
-    @Schema(required = true, description = "The type of return.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of return.")
     public ReturnTypeEnum getReturnType() {
         return returnType;
     }
@@ -374,7 +374,7 @@ public class ModelReturn {
      *
      * @return returnSubType
      */
-    @Schema(description = "The sub-type of return.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sub-type of return.")
     public ReturnSubTypeEnum getReturnSubType() {
         return returnSubType;
     }
@@ -393,7 +393,7 @@ public class ModelReturn {
      *
      * @return numberOfUnits
      */
-    @Schema(description = "The total number of units in the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The total number of units in the return.")
     public Integer getNumberOfUnits() {
         return numberOfUnits;
     }
@@ -412,7 +412,7 @@ public class ModelReturn {
      *
      * @return status
      */
-    @Schema(required = true, description = "The current status of the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current status of the return.")
     public StatusEnum getStatus() {
         return status;
     }
@@ -431,7 +431,9 @@ public class ModelReturn {
      *
      * @return fulfillmentLocationId
      */
-    @Schema(required = true, description = "The ID of the location that fulfilled the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ID of the location that fulfilled the order.")
     public String getFulfillmentLocationId() {
         return fulfillmentLocationId;
     }
@@ -450,7 +452,7 @@ public class ModelReturn {
      *
      * @return creationDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public String getCreationDateTime() {
@@ -471,7 +473,7 @@ public class ModelReturn {
      *
      * @return lastUpdatedDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -493,7 +495,7 @@ public class ModelReturn {
      *
      * @return returnMetadata
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReturnMetadata getReturnMetadata() {
         return returnMetadata;
     }
@@ -512,7 +514,7 @@ public class ModelReturn {
      *
      * @return returnShippingInfo
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReturnShippingInfo getReturnShippingInfo() {
         return returnShippingInfo;
     }
@@ -531,7 +533,7 @@ public class ModelReturn {
      *
      * @return marketplaceChannelDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MarketplaceChannelDetails getMarketplaceChannelDetails() {
         return marketplaceChannelDetails;
     }
@@ -550,7 +552,7 @@ public class ModelReturn {
      *
      * @return otpDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OtpDetails getOtpDetails() {
         return otpDetails;
     }
@@ -570,7 +572,7 @@ public class ModelReturn {
      *
      * @return packageDeliveryMode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The package delivery mode. This indicates whether the return was delivered to the seller with or without a one-time password (OTP).")
     public PackageDeliveryModeEnum getPackageDeliveryMode() {
@@ -591,7 +593,7 @@ public class ModelReturn {
      *
      * @return replanningDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReplanningDetails getReplanningDetails() {
         return replanningDetails;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An available offer for delivery of a product. */
-@Schema(description = "An available offer for delivery of a product.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An available offer for delivery of a product.")
 public class DeliveryOffer {
     @SerializedName("expiresAt")
     private OffsetDateTime expiresAt = null;
@@ -38,7 +38,7 @@ public class DeliveryOffer {
      *
      * @return expiresAt
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getExpiresAt() {
         return expiresAt;
     }
@@ -57,7 +57,7 @@ public class DeliveryOffer {
      *
      * @return dateRange
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -76,7 +76,7 @@ public class DeliveryOffer {
      *
      * @return policy
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryPolicy getPolicy() {
         return policy;
     }

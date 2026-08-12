@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A network commingling transaction event. */
-@Schema(description = "A network commingling transaction event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A network commingling transaction event.")
 public class NetworkComminglingTransactionEvent {
     @SerializedName("TransactionType")
     private String transactionType = null;
@@ -55,7 +55,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.")
     public String getTransactionType() {
@@ -76,7 +76,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -97,7 +97,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return netCoTransactionID
      */
-    @Schema(description = "The identifier for the network item swap.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the network item swap.")
     public String getNetCoTransactionID() {
         return netCoTransactionID;
     }
@@ -116,7 +116,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return swapReason
      */
-    @Schema(description = "The reason for the network item swap.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the network item swap.")
     public String getSwapReason() {
         return swapReason;
     }
@@ -135,7 +135,8 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the swapped item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the swapped item.")
     public String getASIN() {
         return ASIN;
     }
@@ -154,7 +155,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace in which the event took place.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace in which the event took place.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -173,7 +174,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return taxExclusiveAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxExclusiveAmount() {
         return taxExclusiveAmount;
     }
@@ -192,7 +193,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return taxAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxAmount() {
         return taxAmount;
     }

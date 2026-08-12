@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createWarranty operation. */
-@Schema(description = "The response schema for the createWarranty operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the createWarranty operation.")
 public class CreateWarrantyResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +31,7 @@ public class CreateWarrantyResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

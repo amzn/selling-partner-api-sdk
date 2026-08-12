@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Combinations of attributes and unique identifier that represents a vehicle in vehicle list. */
-@Schema(description = "Combinations of attributes and unique identifier that represents a vehicle in vehicle list.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Combinations of attributes and unique identifier that represents a vehicle in vehicle list.")
 public class Vehicle {
     @SerializedName("make")
     private String make = null;
@@ -67,7 +67,7 @@ public class Vehicle {
      *
      * @return make
      */
-    @Schema(required = true, description = "Vehicle Brand.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Vehicle Brand.")
     public String getMake() {
         return make;
     }
@@ -86,7 +86,7 @@ public class Vehicle {
      *
      * @return model
      */
-    @Schema(required = true, description = "Specific model of a vehicle.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Specific model of a vehicle.")
     public String getModel() {
         return model;
     }
@@ -105,7 +105,7 @@ public class Vehicle {
      *
      * @return variantName
      */
-    @Schema(description = "Name of the vehicle variant.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Name of the vehicle variant.")
     public String getVariantName() {
         return variantName;
     }
@@ -124,7 +124,7 @@ public class Vehicle {
      *
      * @return bodyStyle
      */
-    @Schema(description = "Body style of vehicle (example: Hatchback, Cabriolet).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Body style of vehicle (example: Hatchback, Cabriolet).")
     public String getBodyStyle() {
         return bodyStyle;
     }
@@ -143,7 +143,7 @@ public class Vehicle {
      *
      * @return driveType
      */
-    @Schema(description = "Drive type of vehicle(example: Rear wheel drive).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Drive type of vehicle(example: Rear wheel drive).")
     public String getDriveType() {
         return driveType;
     }
@@ -162,7 +162,7 @@ public class Vehicle {
      *
      * @return energy
      */
-    @Schema(description = "Energy Source for the vehicle(example: Petrol)")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Energy Source for the vehicle(example: Petrol)")
     public String getEnergy() {
         return energy;
     }
@@ -189,7 +189,7 @@ public class Vehicle {
      *
      * @return engineOutput
      */
-    @Schema(description = "Engine output of vehicle.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Engine output of vehicle.")
     public List<EngineOutput> getEngineOutput() {
         return engineOutput;
     }
@@ -208,7 +208,7 @@ public class Vehicle {
      *
      * @return manufacturingStartDate
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MonthAndYear getManufacturingStartDate() {
         return manufacturingStartDate;
     }
@@ -227,7 +227,7 @@ public class Vehicle {
      *
      * @return manufacturingStopDate
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MonthAndYear getManufacturingStopDate() {
         return manufacturingStopDate;
     }
@@ -246,7 +246,8 @@ public class Vehicle {
      *
      * @return lastProcessedDate
      */
-    @Schema(description = "The date on which the vehicle was last updated, in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date on which the vehicle was last updated, in ISO-8601 date/time format.")
     public String getLastProcessedDate() {
         return lastProcessedDate;
     }
@@ -265,7 +266,7 @@ public class Vehicle {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public VehicleStatusInCatalog getStatus() {
         return status;
     }
@@ -292,7 +293,9 @@ public class Vehicle {
      *
      * @return identifiers
      */
-    @Schema(required = true, description = "Identifiers that can be used to identify the vehicle uniquely")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Identifiers that can be used to identify the vehicle uniquely")
     public List<VehicleIdentifiers> getIdentifiers() {
         return identifiers;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Request additional services */
-@Schema(description = "Request additional services")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request additional services")
 public class AdditionalServices extends HashMap<String, String> {
 
     @Override

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response associated with the &#x60;getListingOffersBatch&#x60; API call. */
-@Schema(description = "The response associated with the `getListingOffersBatch` API call.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response associated with the `getListingOffersBatch` API call.")
 public class GetListingOffersBatchResponse {
     @SerializedName("responses")
     private ListingOffersResponseList responses = null;
@@ -32,7 +32,7 @@ public class GetListingOffersBatchResponse {
      *
      * @return responses
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ListingOffersResponseList getResponses() {
         return responses;
     }

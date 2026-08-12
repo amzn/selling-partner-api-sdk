@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Quantity details for a SKU as part of a shipment */
-@Schema(description = "Quantity details for a SKU as part of a shipment")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Quantity details for a SKU as part of a shipment")
 public class SkuQuantity {
     @SerializedName("expectedQuantity")
     private InventoryQuantity expectedQuantity = null;
@@ -38,7 +37,7 @@ public class SkuQuantity {
      *
      * @return expectedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InventoryQuantity getExpectedQuantity() {
         return expectedQuantity;
     }
@@ -57,7 +56,7 @@ public class SkuQuantity {
      *
      * @return receivedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryQuantity getReceivedQuantity() {
         return receivedQuantity;
     }
@@ -76,7 +75,7 @@ public class SkuQuantity {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The merchant stock keeping unit")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The merchant stock keeping unit")
     public String getSku() {
         return sku;
     }

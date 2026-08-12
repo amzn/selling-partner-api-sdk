@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The item review subtopic metrics. */
-@Schema(description = "The item review subtopic metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The item review subtopic metrics.")
 public class ItemReviewSubtopicMetrics {
     @SerializedName("numberOfMentions")
     private Integer numberOfMentions = null;
@@ -35,7 +34,9 @@ public class ItemReviewSubtopicMetrics {
      *
      * @return numberOfMentions
      */
-    @Schema(required = true, description = "The number of times that reviews mention the subtopic.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of times that reviews mention the subtopic.")
     public Integer getNumberOfMentions() {
         return numberOfMentions;
     }
@@ -54,7 +55,9 @@ public class ItemReviewSubtopicMetrics {
      *
      * @return occurrencePercentage
      */
-    @Schema(required = true, description = "The percentage of reviews that mention the subtopic.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The percentage of reviews that mention the subtopic.")
     public Float getOccurrencePercentage() {
         return occurrencePercentage;
     }

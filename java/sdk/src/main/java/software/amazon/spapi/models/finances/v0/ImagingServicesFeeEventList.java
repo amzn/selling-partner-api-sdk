@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of fee events related to Amazon Imaging services. */
-@Schema(description = "A list of fee events related to Amazon Imaging services.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of fee events related to Amazon Imaging services.")
 public class ImagingServicesFeeEventList extends ArrayList<ImagingServicesFeeEvent> {
 
     @Override

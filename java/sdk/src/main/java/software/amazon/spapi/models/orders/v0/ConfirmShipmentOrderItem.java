@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A single order item. */
-@Schema(description = "A single order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A single order item.")
 public class ConfirmShipmentOrderItem {
     @SerializedName("orderItemId")
     private String orderItemId = null;
@@ -38,7 +37,7 @@ public class ConfirmShipmentOrderItem {
      *
      * @return orderItemId
      */
-    @Schema(required = true, description = "The order item's unique identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The order item's unique identifier.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -57,7 +56,7 @@ public class ConfirmShipmentOrderItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item's quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item's quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -76,7 +75,7 @@ public class ConfirmShipmentOrderItem {
      *
      * @return transparencyCodes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransparencyCodeList getTransparencyCodes() {
         return transparencyCodes;
     }

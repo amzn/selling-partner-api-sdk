@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Defines exceptions to standard operating hours for certain date ranges. */
-@Schema(description = "Defines exceptions to standard operating hours for certain date ranges.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Defines exceptions to standard operating hours for certain date ranges.")
 public class ExceptionOperatingHours {
     @SerializedName("dateRange")
     private DateRange dateRange = null;
@@ -35,7 +35,7 @@ public class ExceptionOperatingHours {
      *
      * @return dateRange
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -54,7 +54,7 @@ public class ExceptionOperatingHours {
      *
      * @return operatingHours
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getOperatingHours() {
         return operatingHours;
     }

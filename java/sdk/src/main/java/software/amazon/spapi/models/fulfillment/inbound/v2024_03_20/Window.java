@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Contains a start and end DateTime representing a time range. */
-@Schema(description = "Contains a start and end DateTime representing a time range.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains a start and end DateTime representing a time range.")
 public class Window {
     @SerializedName("editableUntil")
     private OffsetDateTime editableUntil = null;
@@ -38,7 +39,8 @@ public class Window {
      *
      * @return editableUntil
      */
-    @Schema(description = "The timestamp at which this Window can no longer be edited.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The timestamp at which this Window can no longer be edited.")
     public OffsetDateTime getEditableUntil() {
         return editableUntil;
     }
@@ -57,7 +59,7 @@ public class Window {
      *
      * @return end
      */
-    @Schema(required = true, description = "The end timestamp of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The end timestamp of the window.")
     public OffsetDateTime getEnd() {
         return end;
     }
@@ -76,7 +78,7 @@ public class Window {
      *
      * @return start
      */
-    @Schema(required = true, description = "The start timestamp of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The start timestamp of the window.")
     public OffsetDateTime getStart() {
         return start;
     }

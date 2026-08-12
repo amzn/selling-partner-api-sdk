@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The line items from the original shipment that corresponds to this shipment. */
-@Schema(description = "The line items from the original shipment that corresponds to this shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The line items from the original shipment that corresponds to this shipment.")
 public class OriginalLineItems extends ArrayList<OriginalLineItem> {
 
     @Override

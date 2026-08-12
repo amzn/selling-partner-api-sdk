@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Provides details about the replanned returns. */
-@Schema(description = "Provides details about the replanned returns.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Provides details about the replanned returns.")
 public class ReplanningDetails {
     @SerializedName("previousTrackingInfo")
     private List<TrackingInfo> previousTrackingInfo = null;
@@ -42,7 +41,8 @@ public class ReplanningDetails {
      *
      * @return previousTrackingInfo
      */
-    @Schema(description = "A list of all the previous tracking information for the return.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all the previous tracking information for the return.")
     public List<TrackingInfo> getPreviousTrackingInfo() {
         return previousTrackingInfo;
     }

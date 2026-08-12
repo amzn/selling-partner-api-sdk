@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of live promotions applicable to this offer. */
-@Schema(description = "A list of live promotions applicable to this offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of live promotions applicable to this offer.")
 public class Promotions extends ArrayList<Promotion> {
 
     @Override

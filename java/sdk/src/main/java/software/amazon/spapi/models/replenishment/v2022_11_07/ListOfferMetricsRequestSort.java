@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Use these parameters to sort the response. */
-@Schema(description = "Use these parameters to sort the response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Use these parameters to sort the response.")
 public class ListOfferMetricsRequestSort {
     @SerializedName("order")
     private SortOrder order = null;
@@ -35,7 +34,7 @@ public class ListOfferMetricsRequestSort {
      *
      * @return order
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SortOrder getOrder() {
         return order;
     }
@@ -54,7 +53,7 @@ public class ListOfferMetricsRequestSort {
      *
      * @return key
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ListOfferMetricsSortKey getKey() {
         return key;
     }

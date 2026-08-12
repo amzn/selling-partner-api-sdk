@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about a line item in a shipment. */
-@Schema(description = "Information about a line item in a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a line item in a shipment.")
 public class ShipmentLineItem {
     @SerializedName("shipmentLineItemId")
     private String shipmentLineItemId = null;
@@ -80,7 +79,7 @@ public class ShipmentLineItem {
      *
      * @return shipmentLineItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An identifier for a shipment's line item. This identifier is guaranteed to be unique within the scope of its containing shipment.")
@@ -102,7 +101,7 @@ public class ShipmentLineItem {
      *
      * @return merchantSku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The seller SKU of a product (catalog item). A unique number assigned by the seller when listing an item.")
@@ -124,7 +123,9 @@ public class ShipmentLineItem {
      *
      * @return numberOfUnits
      */
-    @Schema(required = true, description = "The number of items of the SKU in this line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of items of the SKU in this line item.")
     public Integer getNumberOfUnits() {
         return numberOfUnits;
     }
@@ -151,7 +152,7 @@ public class ShipmentLineItem {
      *
      * @return serialNumbers
      */
-    @Schema(description = "The serial numbers for each item in this line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The serial numbers for each item in this line item.")
     public List<String> getSerialNumbers() {
         return serialNumbers;
     }
@@ -170,7 +171,7 @@ public class ShipmentLineItem {
      *
      * @return pieceType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PieceType getPieceType() {
         return pieceType;
     }
@@ -197,7 +198,8 @@ public class ShipmentLineItem {
      *
      * @return hazmatLabels
      */
-    @Schema(description = "A list of HAZMAT label identifiers that must be applied to the packages for this line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of HAZMAT label identifiers that must be applied to the packages for this line item.")
     public List<String> getHazmatLabels() {
         return hazmatLabels;
     }
@@ -216,7 +218,7 @@ public class ShipmentLineItem {
      *
      * @return giftAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GiftAttributes getGiftAttributes() {
         return giftAttributes;
     }
@@ -235,7 +237,7 @@ public class ShipmentLineItem {
      *
      * @return charges
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Charges getCharges() {
         return charges;
     }
@@ -254,7 +256,7 @@ public class ShipmentLineItem {
      *
      * @return cancellations
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Cancellations getCancellations() {
         return cancellations;
     }
@@ -273,7 +275,7 @@ public class ShipmentLineItem {
      *
      * @return hsnCode
      */
-    @Schema(description = "The HSN code of SKU in this line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HSN code of SKU in this line item.")
     public String getHsnCode() {
         return hsnCode;
     }
@@ -292,7 +294,8 @@ public class ShipmentLineItem {
      *
      * @return recommendedCountryOfOrigin
      */
-    @Schema(description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
     public String getRecommendedCountryOfOrigin() {
         return recommendedCountryOfOrigin;
     }
@@ -311,7 +314,8 @@ public class ShipmentLineItem {
      *
      * @return countryOfOrigin
      */
-    @Schema(description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
     public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
@@ -330,7 +334,7 @@ public class ShipmentLineItem {
      *
      * @return recommendedCurrencyCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The three digit currency code of the currency recommended by the marketplace, in ISO 4217 format.")
     public String getRecommendedCurrencyCode() {
@@ -351,7 +355,7 @@ public class ShipmentLineItem {
      *
      * @return itemValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getItemValue() {
         return itemValue;
     }
@@ -370,7 +374,7 @@ public class ShipmentLineItem {
      *
      * @return complianceAttributes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ComplianceAttributes getComplianceAttributes() {
         return complianceAttributes;
     }
@@ -398,7 +402,7 @@ public class ShipmentLineItem {
      *
      * @return customAttributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.")
     public List<CustomAttribute> getCustomAttributes() {

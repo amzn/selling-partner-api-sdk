@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * Information about a physical shipping package, including tracking details. **Note:** Only available for
  * merchant-fulfilled (FBM) orders.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about a physical shipping package, including tracking details. **Note:** Only available for merchant-fulfilled (FBM) orders.")
 public class OrderPackage {
@@ -63,7 +63,9 @@ public class OrderPackage {
      *
      * @return packageReferenceId
      */
-    @Schema(required = true, description = "A unique identifier for this package within the context of the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A unique identifier for this package within the context of the order.")
     public String getPackageReferenceId() {
         return packageReferenceId;
     }
@@ -83,7 +85,7 @@ public class OrderPackage {
      *
      * @return createdTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The exact time when this shipping package was created and prepared for shipment. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getCreatedTime() {
@@ -104,7 +106,7 @@ public class OrderPackage {
      *
      * @return packageStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageStatus getPackageStatus() {
         return packageStatus;
     }
@@ -123,7 +125,8 @@ public class OrderPackage {
      *
      * @return carrier
      */
-    @Schema(description = "The carrier responsible for transporting this package to the customer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier responsible for transporting this package to the customer.")
     public String getCarrier() {
         return carrier;
     }
@@ -143,7 +146,7 @@ public class OrderPackage {
      *
      * @return shipTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The exact time when this package was handed over to the carrier and began its journey to the customer. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getShipTime() {
@@ -164,7 +167,8 @@ public class OrderPackage {
      *
      * @return shippingService
      */
-    @Schema(description = "The specific shipping method or service used for delivering this package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The specific shipping method or service used for delivering this package.")
     public String getShippingService() {
         return shippingService;
     }
@@ -183,7 +187,7 @@ public class OrderPackage {
      *
      * @return trackingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The carrier-provided tracking number that customers can use to monitor the package's delivery progress.")
     public String getTrackingNumber() {
@@ -204,7 +208,7 @@ public class OrderPackage {
      *
      * @return shipFromAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MerchantAddress getShipFromAddress() {
         return shipFromAddress;
     }
@@ -231,7 +235,8 @@ public class OrderPackage {
      *
      * @return packageItems
      */
-    @Schema(description = "A list of all order items included in this specific package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all order items included in this specific package.")
     public List<PackageItem> getPackageItems() {
         return packageItems;
     }

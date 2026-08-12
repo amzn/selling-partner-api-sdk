@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The operating hour schema */
-@Schema(description = "The operating hour schema")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The operating hour schema")
 public class OperatingHour {
     @SerializedName("startTime")
     private String startTime = null;
@@ -35,7 +34,8 @@ public class OperatingHour {
      *
      * @return startTime
      */
-    @Schema(description = "The opening time, ISO 8601 formatted timestamp without date, HH:mm.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The opening time, ISO 8601 formatted timestamp without date, HH:mm.")
     public String getStartTime() {
         return startTime;
     }
@@ -54,7 +54,8 @@ public class OperatingHour {
      *
      * @return endTime
      */
-    @Schema(description = "The closing time, ISO 8601 formatted timestamp without date, HH:mm.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The closing time, ISO 8601 formatted timestamp without date, HH:mm.")
     public String getEndTime() {
         return endTime;
     }

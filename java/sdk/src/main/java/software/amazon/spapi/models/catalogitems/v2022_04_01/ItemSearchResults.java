@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Items in the Amazon catalog and search-related metadata. */
-@Schema(description = "Items in the Amazon catalog and search-related metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Items in the Amazon catalog and search-related metadata.")
 public class ItemSearchResults {
     @SerializedName("numberOfResults")
     private Integer numberOfResults = null;
@@ -47,7 +46,7 @@ public class ItemSearchResults {
      *
      * @return numberOfResults
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.")
@@ -69,7 +68,7 @@ public class ItemSearchResults {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -88,7 +87,7 @@ public class ItemSearchResults {
      *
      * @return refinements
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Refinements getRefinements() {
         return refinements;
     }
@@ -115,7 +114,9 @@ public class ItemSearchResults {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of items from the Amazon catalog.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items from the Amazon catalog.")
     public List<Item> getItems() {
         return items;
     }

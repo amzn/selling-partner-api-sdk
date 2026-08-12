@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The delivery information of the package, this information is only available post package delivery to its intended
  * destination.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The delivery information of the package, this information is only available post package delivery to its intended destination.")
 public class DeliveryInformation {
@@ -40,7 +39,7 @@ public class DeliveryInformation {
      *
      * @return deliveryDocumentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryDocumentList getDeliveryDocumentList() {
         return deliveryDocumentList;
     }
@@ -59,7 +58,7 @@ public class DeliveryInformation {
      *
      * @return dropOffLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DropOffLocation getDropOffLocation() {
         return dropOffLocation;
     }

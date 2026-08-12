@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD
  * transportation, this is a single tracking entry for the entire shipment.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.")
 public class TrackingDetails {
@@ -40,7 +39,7 @@ public class TrackingDetails {
      *
      * @return carrierCode
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierCode getCarrierCode() {
         return carrierCode;
     }
@@ -59,7 +58,7 @@ public class TrackingDetails {
      *
      * @return bookingId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The identifier that is received from transportation to uniquely identify a booking.")
     public String getBookingId() {

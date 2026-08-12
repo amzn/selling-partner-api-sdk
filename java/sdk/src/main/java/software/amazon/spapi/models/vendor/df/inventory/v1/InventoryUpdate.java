@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Inventory details required to update some or all items for the requested warehouse. */
-@Schema(description = "Inventory details required to update some or all items for the requested warehouse.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Inventory details required to update some or all items for the requested warehouse.")
 public class InventoryUpdate {
     @SerializedName("sellingParty")
     private PartyIdentification sellingParty = null;
@@ -40,7 +40,7 @@ public class InventoryUpdate {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -62,7 +62,7 @@ public class InventoryUpdate {
      *
      * @return isFullUpdate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, this request contains a full feed. Otherwise, this request contains a partial feed. When sending a full feed, you must send information about all items in the warehouse. Any items not in the full feed are updated as not available. When sending a partial feed, only include the items that need an update to inventory. The status of other items will remain unchanged.")
@@ -92,7 +92,7 @@ public class InventoryUpdate {
      *
      * @return items
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A list of inventory items with updated details, including quantity available.")
     public List<ItemDetails> getItems() {

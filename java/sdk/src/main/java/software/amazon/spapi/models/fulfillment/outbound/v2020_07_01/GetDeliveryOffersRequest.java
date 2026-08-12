@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;getDeliveryOffers&#x60; operation. */
-@Schema(description = "The request body schema for the `getDeliveryOffers` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `getDeliveryOffers` operation.")
 public class GetDeliveryOffersRequest {
     @SerializedName("product")
     private GetDeliveryOffersProduct product = null;
@@ -35,7 +35,7 @@ public class GetDeliveryOffersRequest {
      *
      * @return product
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public GetDeliveryOffersProduct getProduct() {
         return product;
     }
@@ -54,7 +54,7 @@ public class GetDeliveryOffersRequest {
      *
      * @return terms
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public GetDeliveryOffersTerms getTerms() {
         return terms;
     }

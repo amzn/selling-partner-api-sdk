@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Represents the request payload for creating a shipping label, containing the purchase order number, selling party,
  * ship from party, and a list of containers or packages in the shipment.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents the request payload for creating a shipping label, containing the purchase order number, selling party, ship from party, and a list of containers or packages in the shipment.")
 public class ShippingLabelRequest {
@@ -48,7 +47,7 @@ public class ShippingLabelRequest {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The purchase order number of the order for which to create a shipping label.")
     public String getPurchaseOrderNumber() {
@@ -69,7 +68,7 @@ public class ShippingLabelRequest {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -88,7 +87,7 @@ public class ShippingLabelRequest {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -115,7 +114,7 @@ public class ShippingLabelRequest {
      *
      * @return containers
      */
-    @Schema(description = "A list of the packages in this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of the packages in this shipment.")
     public List<Container> getContainers() {
         return containers;
     }

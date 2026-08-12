@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The listings item&#39;s image. */
-@Schema(description = "The listings item's image.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's image.")
 public class ItemImage {
     @SerializedName("link")
     private String link = null;
@@ -38,7 +37,7 @@ public class ItemImage {
      *
      * @return link
      */
-    @Schema(required = true, description = "The image's link or URL.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The image's link or URL.")
     public String getLink() {
         return link;
     }
@@ -57,7 +56,7 @@ public class ItemImage {
      *
      * @return height
      */
-    @Schema(required = true, description = "The image's height, in pixels.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The image's height, in pixels.")
     public Integer getHeight() {
         return height;
     }
@@ -76,7 +75,7 @@ public class ItemImage {
      *
      * @return width
      */
-    @Schema(required = true, description = "The image's width, in pixels.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The image's width, in pixels.")
     public Integer getWidth() {
         return width;
     }

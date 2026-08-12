@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Request schema. */
-@Schema(description = "Request schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema.")
 public class GetAdditionalSellerInputsRequest {
     @SerializedName("ShippingServiceId")
     private String shippingServiceId = null;
@@ -38,7 +37,9 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return shippingServiceId
      */
-    @Schema(required = true, description = "An Amazon-defined shipping service identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined shipping service identifier.")
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -57,7 +58,7 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return shipFromAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -76,7 +77,9 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getOrderId() {
         return orderId;
     }

@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.tokens.v2021_03_01.CreateRestrictedDataTokenRequest;
 import software.amazon.spapi.models.tokens.v2021_03_01.CreateRestrictedDataTokenResponse;
@@ -61,8 +60,7 @@ public class TokensApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createRestrictedDataTokenCall(
-            CreateRestrictedDataTokenRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateRestrictedDataTokenRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -101,8 +99,7 @@ public class TokensApi {
     }
 
     private okhttp3.Call createRestrictedDataTokenValidateBeforeCall(
-            CreateRestrictedDataTokenRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateRestrictedDataTokenRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -267,10 +264,10 @@ public class TokensApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createRestrictedDataTokenValidateBeforeCall(body, progressRequestListener);

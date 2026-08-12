@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Specifies the tracking identifier used to filter your subscription notifications. Provide exactly one identifier
  * field. Providing multiple identifier fields in a single request is not supported.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Specifies the tracking identifier used to filter your subscription notifications. Provide exactly one identifier field. Providing multiple identifier fields in a single request is not supported.")
 public class TrackingIdentifier {
@@ -52,7 +51,7 @@ public class TrackingIdentifier {
      *
      * @return id
      */
-    @Schema(description = "Amazon unique tracking identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon unique tracking identifier.")
     public String getId() {
         return id;
     }
@@ -71,7 +70,7 @@ public class TrackingIdentifier {
      *
      * @return acsin
      */
-    @Schema(description = "Air Cargo Shipment Identification Number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Air Cargo Shipment Identification Number.")
     public String getAcsin() {
         return acsin;
     }
@@ -90,7 +89,7 @@ public class TrackingIdentifier {
      *
      * @return aftn
      */
-    @Schema(description = "Amazon Fulfillment Tracking Number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Fulfillment Tracking Number.")
     public String getAftn() {
         return aftn;
     }
@@ -109,7 +108,8 @@ public class TrackingIdentifier {
      *
      * @return containerNumber
      */
-    @Schema(description = "Container number provided by the Logistics Service Provider.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Container number provided by the Logistics Service Provider.")
     public String getContainerNumber() {
         return containerNumber;
     }
@@ -128,7 +128,7 @@ public class TrackingIdentifier {
      *
      * @return houseBillOfLadingNumber
      */
-    @Schema(description = "House Bill of Lading number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "House Bill of Lading number.")
     public String getHouseBillOfLadingNumber() {
         return houseBillOfLadingNumber;
     }
@@ -147,7 +147,7 @@ public class TrackingIdentifier {
      *
      * @return carrierTracking
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingIdentifierCarrierTracking getCarrierTracking() {
         return carrierTracking;
     }

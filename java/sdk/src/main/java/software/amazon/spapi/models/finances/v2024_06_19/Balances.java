@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of balances. */
-@Schema(description = "A list of balances.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of balances.")
 public class Balances extends ArrayList<Balance> {
 
     @Override

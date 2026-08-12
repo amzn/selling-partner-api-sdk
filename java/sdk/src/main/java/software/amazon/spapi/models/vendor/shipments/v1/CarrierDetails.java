@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Indicates the carrier details and their contact informations */
-@Schema(description = "Indicates the carrier details and their contact informations")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Indicates the carrier details and their contact informations")
 public class CarrierDetails {
     @SerializedName("name")
     private String name = null;
@@ -44,7 +44,8 @@ public class CarrierDetails {
      *
      * @return name
      */
-    @Schema(description = "The field is used to represent the carrier used for performing the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The field is used to represent the carrier used for performing the shipment.")
     public String getName() {
         return name;
     }
@@ -65,7 +66,7 @@ public class CarrierDetails {
      *
      * @return code
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association).")
     public String getCode() {
@@ -86,7 +87,8 @@ public class CarrierDetails {
      *
      * @return phone
      */
-    @Schema(description = "The field is used to represent the Carrier contact number.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The field is used to represent the Carrier contact number.")
     public String getPhone() {
         return phone;
     }
@@ -105,7 +107,7 @@ public class CarrierDetails {
      *
      * @return email
      */
-    @Schema(description = "The field is used to represent the carrier Email id.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The field is used to represent the carrier Email id.")
     public String getEmail() {
         return email;
     }
@@ -125,7 +127,7 @@ public class CarrierDetails {
      *
      * @return shipmentReferenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The field is also known as PRO number is a unique number assigned by the carrier. It is used to identify and track the shipment that goes out for delivery. This field is mandatory for US, CA, MX shipment confirmations.")
     public String getShipmentReferenceNumber() {

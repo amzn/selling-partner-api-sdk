@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the SubmitShipmentConfirmations operation. */
-@Schema(description = "The request schema for the SubmitShipmentConfirmations operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the SubmitShipmentConfirmations operation.")
 public class SubmitShipmentConfirmationsRequest {
     @SerializedName("shipmentConfirmations")
     private List<ShipmentConfirmation> shipmentConfirmations = null;
@@ -43,7 +43,7 @@ public class SubmitShipmentConfirmationsRequest {
      *
      * @return shipmentConfirmations
      */
-    @Schema(description = "A list of one or more shipment confirmations.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of one or more shipment confirmations.")
     public List<ShipmentConfirmation> getShipmentConfirmations() {
         return shipmentConfirmations;
     }

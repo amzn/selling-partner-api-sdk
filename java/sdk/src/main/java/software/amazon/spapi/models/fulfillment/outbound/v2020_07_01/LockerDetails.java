@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The locker details, which you can use to access the locker delivery box. */
-@Schema(description = "The locker details, which you can use to access the locker delivery box.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The locker details, which you can use to access the locker delivery box.")
 public class LockerDetails {
     @SerializedName("lockerNumber")
     private String lockerNumber = null;
@@ -35,7 +35,7 @@ public class LockerDetails {
      *
      * @return lockerNumber
      */
-    @Schema(description = "Indicates the locker number")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates the locker number")
     public String getLockerNumber() {
         return lockerNumber;
     }
@@ -54,7 +54,7 @@ public class LockerDetails {
      *
      * @return lockerAccessCode
      */
-    @Schema(description = "Indicates the locker access code")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates the locker access code")
     public String getLockerAccessCode() {
         return lockerAccessCode;
     }

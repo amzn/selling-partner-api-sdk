@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Information about the line of business associated with a transaction. */
-@Schema(description = "Information about the line of business associated with a transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the line of business associated with a transaction.")
 public class BusinessContext {
     /** The store name associated with the transaction. */
     @JsonAdapter(StoreNameEnum.Adapter.class)
@@ -81,7 +81,7 @@ public class BusinessContext {
      *
      * @return storeName
      */
-    @Schema(description = "The store name associated with the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name associated with the transaction.")
     public StoreNameEnum getStoreName() {
         return storeName;
     }

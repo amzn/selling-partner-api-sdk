@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Shipment measurement details. */
-@Schema(description = "Shipment measurement details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment measurement details.")
 public class TransportShipmentMeasurements {
     @SerializedName("totalCartonCount")
     private Integer totalCartonCount = null;
@@ -44,7 +43,7 @@ public class TransportShipmentMeasurements {
      *
      * @return totalCartonCount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.")
     public Integer getTotalCartonCount() {
@@ -65,7 +64,8 @@ public class TransportShipmentMeasurements {
      *
      * @return totalPalletStackable
      */
-    @Schema(description = "Total number of Stackable Pallets present in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Total number of Stackable Pallets present in the shipment.")
     public Integer getTotalPalletStackable() {
         return totalPalletStackable;
     }
@@ -84,7 +84,8 @@ public class TransportShipmentMeasurements {
      *
      * @return totalPalletNonStackable
      */
-    @Schema(description = "Total number of Non Stackable Pallets present in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Total number of Non Stackable Pallets present in the shipment.")
     public Integer getTotalPalletNonStackable() {
         return totalPalletNonStackable;
     }
@@ -103,7 +104,7 @@ public class TransportShipmentMeasurements {
      *
      * @return shipmentWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getShipmentWeight() {
         return shipmentWeight;
     }
@@ -122,7 +123,7 @@ public class TransportShipmentMeasurements {
      *
      * @return shipmentVolume
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Volume getShipmentVolume() {
         return shipmentVolume;
     }

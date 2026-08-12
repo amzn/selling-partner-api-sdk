@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** General information about a fulfillment order, including its status. */
-@Schema(description = "General information about a fulfillment order, including its status.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "General information about a fulfillment order, including its status.")
 public class FulfillmentOrder {
     @SerializedName("orderId")
     private String orderId = null;
@@ -64,7 +65,7 @@ public class FulfillmentOrder {
      *
      * @return orderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The fulfillment order identifier submitted with the `createOrder` operation.")
     public String getOrderId() {
@@ -85,7 +86,7 @@ public class FulfillmentOrder {
      *
      * @return channel
      */
-    @Schema(description = "The sales channel for the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the fulfillment order.")
     public String getChannel() {
         return channel;
     }
@@ -104,7 +105,7 @@ public class FulfillmentOrder {
      *
      * @return receiveTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
@@ -127,7 +128,7 @@ public class FulfillmentOrder {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The current status of the fulfillment order. Possible values: `PROCESSING`, `COMPLETE`, `COMPLETE_PARTIAL`, `CANCELLED`, `UNFULFILLABLE`, `INVALID`.")
     public String getStatus() {
@@ -148,7 +149,7 @@ public class FulfillmentOrder {
      *
      * @return statusUpdateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getStatusUpdateTime() {
@@ -169,7 +170,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderResponseFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
@@ -188,7 +189,7 @@ public class FulfillmentOrder {
      *
      * @return origin
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderOrigin getOrigin() {
         return origin;
     }
@@ -207,7 +208,7 @@ public class FulfillmentOrder {
      *
      * @return destination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderDestination getDestination() {
         return destination;
     }
@@ -234,7 +235,9 @@ public class FulfillmentOrder {
      *
      * @return lineItems
      */
-    @Schema(required = true, description = "A list of items in the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items in the fulfillment order.")
     public List<OrderLineItem> getLineItems() {
         return lineItems;
     }
@@ -261,7 +264,7 @@ public class FulfillmentOrder {
      *
      * @return shipments
      */
-    @Schema(description = "An array of fulfillment shipment information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of fulfillment shipment information.")
     public List<Shipment> getShipments() {
         return shipments;
     }
@@ -280,7 +283,7 @@ public class FulfillmentOrder {
      *
      * @return paymentInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentInformation getPaymentInformation() {
         return paymentInformation;
     }

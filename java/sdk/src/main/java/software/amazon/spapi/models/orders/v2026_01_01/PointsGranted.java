@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about Amazon Points awarded with an item purchase. */
-@Schema(description = "Information about Amazon Points awarded with an item purchase.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about Amazon Points awarded with an item purchase.")
 public class PointsGranted {
     @SerializedName("pointsNumber")
     private Integer pointsNumber = null;
@@ -35,7 +35,8 @@ public class PointsGranted {
      *
      * @return pointsNumber
      */
-    @Schema(description = "Total number of Amazon Points granted to the customer's account for this item purchase.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Total number of Amazon Points granted to the customer's account for this item purchase.")
     public Integer getPointsNumber() {
         return pointsNumber;
     }
@@ -54,7 +55,7 @@ public class PointsGranted {
      *
      * @return pointsMonetaryValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPointsMonetaryValue() {
         return pointsMonetaryValue;
     }

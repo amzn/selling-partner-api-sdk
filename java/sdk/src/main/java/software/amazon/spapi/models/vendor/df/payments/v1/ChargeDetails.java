@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Monetary and tax details of the charge. */
-@Schema(description = "Monetary and tax details of the charge.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Monetary and tax details of the charge.")
 public class ChargeDetails {
     /** Type of charge applied. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -101,7 +100,7 @@ public class ChargeDetails {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of charge applied.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of charge applied.")
     public TypeEnum getType() {
         return type;
     }
@@ -120,7 +119,7 @@ public class ChargeDetails {
      *
      * @return chargeAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getChargeAmount() {
         return chargeAmount;
     }
@@ -147,7 +146,7 @@ public class ChargeDetails {
      *
      * @return taxDetails
      */
-    @Schema(description = "Individual tax details per line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual tax details per line item.")
     public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }

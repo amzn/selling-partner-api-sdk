@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specifies the content type for the createFeedDocument operation. */
-@Schema(description = "Specifies the content type for the createFeedDocument operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Specifies the content type for the createFeedDocument operation.")
 public class CreateFeedDocumentSpecification {
     @SerializedName("contentType")
     private String contentType = null;
@@ -32,7 +32,7 @@ public class CreateFeedDocumentSpecification {
      *
      * @return contentType
      */
-    @Schema(required = true, description = "The content type of the feed.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The content type of the feed.")
     public String getContentType() {
         return contentType;
     }

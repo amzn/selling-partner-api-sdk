@@ -13,11 +13,13 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /** The discount funding on the offer. */
-@Schema(description = "The discount funding on the offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The discount funding on the offer.")
 public class DiscountFunding {
     @SerializedName("percentage")
     private Set<BigDecimal> percentage = null;
@@ -40,7 +42,8 @@ public class DiscountFunding {
      *
      * @return percentage
      */
-    @Schema(description = "Filters the results to only include offers with the percentage specified.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Filters the results to only include offers with the percentage specified.")
     public Set<BigDecimal> getPercentage() {
         return percentage;
     }

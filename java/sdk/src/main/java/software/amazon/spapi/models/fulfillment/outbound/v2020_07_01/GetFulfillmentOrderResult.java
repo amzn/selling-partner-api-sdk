@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request for the &#x60;getFulfillmentOrder&#x60; operation. */
-@Schema(description = "The request for the `getFulfillmentOrder` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `getFulfillmentOrder` operation.")
 public class GetFulfillmentOrderResult {
     @SerializedName("fulfillmentOrder")
     private FulfillmentOrder fulfillmentOrder = null;
@@ -47,7 +46,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentOrder
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentOrder getFulfillmentOrder() {
         return fulfillmentOrder;
     }
@@ -66,7 +65,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentOrderItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentOrderItemList getFulfillmentOrderItems() {
         return fulfillmentOrderItems;
     }
@@ -85,7 +84,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentShipments
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentShipmentList getFulfillmentShipments() {
         return fulfillmentShipments;
     }
@@ -104,7 +103,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return returnItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReturnItemList getReturnItems() {
         return returnItems;
     }
@@ -123,7 +122,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return returnAuthorizations
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReturnAuthorizationList getReturnAuthorizations() {
         return returnAuthorizations;
     }
@@ -142,7 +141,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return paymentInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentInformationList getPaymentInformation() {
         return paymentInformation;
     }

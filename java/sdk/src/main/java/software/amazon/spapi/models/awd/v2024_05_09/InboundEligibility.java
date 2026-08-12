@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents the eligibility status of the inbound packages. */
-@Schema(description = "Represents the eligibility status of the inbound packages.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents the eligibility status of the inbound packages.")
 public class InboundEligibility {
     @SerializedName("ineligibilityReasons")
     private List<OrderIneligibilityReason> ineligibilityReasons = null;
@@ -51,7 +51,7 @@ public class InboundEligibility {
      *
      * @return ineligibilityReasons
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "If there are order level eligibility issues, then this list will contain those error codes and descriptions.")
     public List<OrderIneligibilityReason> getIneligibilityReasons() {
@@ -80,7 +80,9 @@ public class InboundEligibility {
      *
      * @return packagesToInbound
      */
-    @Schema(required = true, description = "Details on SKU eligibility for each inbound package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Details on SKU eligibility for each inbound package.")
     public List<SkuEligibility> getPackagesToInbound() {
         return packagesToInbound;
     }
@@ -99,7 +101,9 @@ public class InboundEligibility {
      *
      * @return previewedAt
      */
-    @Schema(required = true, description = "Timestamp when the eligibility check is performed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Timestamp when the eligibility check is performed.")
     public OffsetDateTime getPreviewedAt() {
         return previewedAt;
     }
@@ -118,7 +122,7 @@ public class InboundEligibility {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InboundEligibilityStatus getStatus() {
         return status;
     }

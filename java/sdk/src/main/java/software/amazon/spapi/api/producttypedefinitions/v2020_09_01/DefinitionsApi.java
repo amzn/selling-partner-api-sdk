@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeDefinition;
 import software.amazon.spapi.models.producttypedefinitions.v2020_09_01.ProductTypeList;
@@ -92,7 +91,7 @@ public class DefinitionsApi {
             String requirementsEnforced,
             String locale,
             String parentageLevel,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -154,7 +153,7 @@ public class DefinitionsApi {
             String requirementsEnforced,
             String locale,
             String parentageLevel,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'productType' is set
@@ -518,10 +517,10 @@ public class DefinitionsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getDefinitionsProductTypeValidateBeforeCall(
@@ -570,7 +569,7 @@ public class DefinitionsApi {
             String itemName,
             String locale,
             String searchLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -622,7 +621,7 @@ public class DefinitionsApi {
             String itemName,
             String locale,
             String searchLocale,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceIds' is set
@@ -833,10 +832,10 @@ public class DefinitionsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = searchDefinitionsProductTypesValidateBeforeCall(

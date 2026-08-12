@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** SearchContentPublishRecordsResponse */
@@ -37,7 +36,7 @@ public class SearchContentPublishRecordsResponse {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MessageSet getWarnings() {
         return warnings;
     }
@@ -56,7 +55,8 @@ public class SearchContentPublishRecordsResponse {
      *
      * @return nextPageToken
      */
-    @Schema(description = "A token that you use to fetch a specific page when there are multiple pages of results.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token that you use to fetch a specific page when there are multiple pages of results.")
     public String getNextPageToken() {
         return nextPageToken;
     }
@@ -75,7 +75,7 @@ public class SearchContentPublishRecordsResponse {
      *
      * @return publishRecordList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PublishRecordList getPublishRecordList() {
         return publishRecordList;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Dimensions for printing a shipping label. */
-@Schema(description = "Dimensions for printing a shipping label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Dimensions for printing a shipping label.")
 public class LabelDimensions {
     @SerializedName("Length")
     private BigDecimal length = null;
@@ -38,7 +38,7 @@ public class LabelDimensions {
      *
      * @return length
      */
-    @Schema(required = true, description = "A label dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A label dimension.")
     public BigDecimal getLength() {
         return length;
     }
@@ -57,7 +57,7 @@ public class LabelDimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "A label dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A label dimension.")
     public BigDecimal getWidth() {
         return width;
     }
@@ -76,7 +76,7 @@ public class LabelDimensions {
      *
      * @return unit
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UnitOfLength getUnit() {
         return unit;
     }

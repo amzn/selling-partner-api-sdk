@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the GetAccessPoints API. */
-@Schema(description = "The payload for the GetAccessPoints API.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the GetAccessPoints API.")
 public class GetAccessPointsResult {
     @SerializedName("accessPointsMap")
     private AccessPointsMap accessPointsMap = null;
@@ -32,7 +31,7 @@ public class GetAccessPointsResult {
      *
      * @return accessPointsMap
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AccessPointsMap getAccessPointsMap() {
         return accessPointsMap;
     }

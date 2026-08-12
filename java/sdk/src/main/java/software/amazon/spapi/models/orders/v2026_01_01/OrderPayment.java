@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Payment information about the order. */
-@Schema(description = "Payment information about the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Payment information about the order.")
 public class OrderPayment {
     @SerializedName("paymentExecutions")
     private List<PaymentExecution> paymentExecutions = null;
@@ -42,7 +41,7 @@ public class OrderPayment {
      *
      * @return paymentExecutions
      */
-    @Schema(description = "A list of payment executions for the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of payment executions for the order.")
     public List<PaymentExecution> getPaymentExecutions() {
         return paymentExecutions;
     }

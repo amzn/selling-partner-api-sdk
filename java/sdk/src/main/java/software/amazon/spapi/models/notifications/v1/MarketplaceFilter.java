@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * An event filter you can use to customize your subscription to send notifications for specific
  * &#x60;marketplaceId&#x60;s.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An event filter you can use to customize your subscription to send notifications for specific `marketplaceId`s.")
 public class MarketplaceFilter {
@@ -37,7 +36,7 @@ public class MarketplaceFilter {
      *
      * @return marketplaceIds
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceIds getMarketplaceIds() {
         return marketplaceIds;
     }

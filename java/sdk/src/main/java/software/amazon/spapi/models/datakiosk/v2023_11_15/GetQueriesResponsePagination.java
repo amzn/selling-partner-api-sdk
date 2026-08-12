@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -24,7 +23,7 @@ import java.util.Objects;
  * exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. When there are no
  * more pages to fetch, the &#x60;nextToken&#x60; field will be absent.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "When a request has results that are not included in this response, pagination occurs. This means the results are divided into pages. To retrieve the next page, you must pass the `nextToken` as the `paginationToken` query parameter in the subsequent `getQueries` request. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. When there are no more pages to fetch, the `nextToken` field will be absent.")
 public class GetQueriesResponsePagination {
@@ -41,7 +40,8 @@ public class GetQueriesResponsePagination {
      *
      * @return nextToken
      */
-    @Schema(description = "A token that can be used to fetch the next page of results.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token that can be used to fetch the next page of results.")
     public String getNextToken() {
         return nextToken;
     }

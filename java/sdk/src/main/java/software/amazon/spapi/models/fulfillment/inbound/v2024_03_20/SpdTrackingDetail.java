@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains information related to Small Parcel Delivery (SPD) shipment tracking. */
-@Schema(description = "Contains information related to Small Parcel Delivery (SPD) shipment tracking.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains information related to Small Parcel Delivery (SPD) shipment tracking.")
 public class SpdTrackingDetail {
     @SerializedName("spdTrackingItems")
     private List<SpdTrackingItem> spdTrackingItems = null;
@@ -42,7 +42,7 @@ public class SpdTrackingDetail {
      *
      * @return spdTrackingItems
      */
-    @Schema(description = "List of Small Parcel Delivery (SPD) tracking items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of Small Parcel Delivery (SPD) tracking items.")
     public List<SpdTrackingItem> getSpdTrackingItems() {
         return spdTrackingItems;
     }

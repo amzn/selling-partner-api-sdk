@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the shipment label. */
-@Schema(description = "Details of the shipment label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the shipment label.")
 public class LabelData {
     @SerializedName("packageIdentifier")
     private String packageIdentifier = null;
@@ -45,7 +44,7 @@ public class LabelData {
      *
      * @return packageIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Identifier for the package. The first package will be 001, the second 002, and so on. This number is used as a reference to refer to this package from the pallet level.")
     public String getPackageIdentifier() {
@@ -66,7 +65,7 @@ public class LabelData {
      *
      * @return trackingNumber
      */
-    @Schema(description = "Package tracking identifier from the shipping carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Package tracking identifier from the shipping carrier.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -88,7 +87,7 @@ public class LabelData {
      *
      * @return shipMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Ship method to be used for shipping the order. Amazon defines Ship Method Codes indicating shipping carrier and shipment service level. Ship Method Codes are case and format sensitive. The same ship method code should returned on the shipment confirmation. Note that the Ship Method Codes are vendor specific and will be provided to each vendor during the implementation.")
     public String getShipMethod() {
@@ -109,7 +108,7 @@ public class LabelData {
      *
      * @return shipMethodName
      */
-    @Schema(description = "Shipping method name for internal reference.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Shipping method name for internal reference.")
     public String getShipMethodName() {
         return shipMethodName;
     }
@@ -128,7 +127,9 @@ public class LabelData {
      *
      * @return content
      */
-    @Schema(required = true, description = "This field will contain the Base64 string of the shipment label content.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "This field will contain the Base64 string of the shipment label content.")
     public String getContent() {
         return content;
     }

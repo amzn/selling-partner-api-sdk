@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about a sub-payment method used to pay for a COD order. */
-@Schema(description = "Information about a sub-payment method used to pay for a COD order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about a sub-payment method used to pay for a COD order.")
 public class PaymentExecutionDetailItem {
     @SerializedName("Payment")
     private Money payment = null;
@@ -44,7 +44,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return payment
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getPayment() {
         return payment;
     }
@@ -65,7 +65,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return paymentMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.")
@@ -89,7 +89,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return acquirerId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
     public String getAcquirerId() {
@@ -112,7 +112,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return cardBrand
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.")
     public String getCardBrand() {
@@ -134,7 +134,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return authorizationCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
     public String getAuthorizationCode() {

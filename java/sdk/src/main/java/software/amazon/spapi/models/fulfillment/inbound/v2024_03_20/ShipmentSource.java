@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specifies the &#39;ship from&#39; address for the shipment. */
-@Schema(description = "Specifies the 'ship from' address for the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specifies the 'ship from' address for the shipment.")
 public class ShipmentSource {
     @SerializedName("address")
     private Address address = null;
@@ -35,7 +34,7 @@ public class ShipmentSource {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -54,7 +53,9 @@ public class ShipmentSource {
      *
      * @return sourceType
      */
-    @Schema(required = true, description = "The type of source for this shipment. Possible values: `SELLER_FACILITY`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of source for this shipment. Possible values: `SELLER_FACILITY`.")
     public String getSourceType() {
         return sourceType;
     }

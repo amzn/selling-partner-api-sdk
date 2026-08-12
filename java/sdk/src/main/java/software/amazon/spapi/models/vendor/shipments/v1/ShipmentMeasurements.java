@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Shipment measurement details. */
-@Schema(description = "Shipment measurement details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment measurement details.")
 public class ShipmentMeasurements {
     @SerializedName("grossShipmentWeight")
     private Weight grossShipmentWeight = null;
@@ -41,7 +40,7 @@ public class ShipmentMeasurements {
      *
      * @return grossShipmentWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getGrossShipmentWeight() {
         return grossShipmentWeight;
     }
@@ -60,7 +59,7 @@ public class ShipmentMeasurements {
      *
      * @return shipmentVolume
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Volume getShipmentVolume() {
         return shipmentVolume;
     }
@@ -79,7 +78,7 @@ public class ShipmentMeasurements {
      *
      * @return cartonCount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.")
     public Integer getCartonCount() {
@@ -100,7 +99,7 @@ public class ShipmentMeasurements {
      *
      * @return palletCount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Number of pallets present in the shipment. Provide the palletCount only for palletized shipments.")
     public Integer getPalletCount() {

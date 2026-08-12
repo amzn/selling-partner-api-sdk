@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the individual &#x60;competitiveSummary&#x60; request in the batch operation. */
-@Schema(description = "The response for the individual `competitiveSummary` request in the batch operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response for the individual `competitiveSummary` request in the batch operation.")
 public class CompetitiveSummaryResponse {
     @SerializedName("status")
     private HttpStatusLine status = null;
@@ -35,7 +35,7 @@ public class CompetitiveSummaryResponse {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpStatusLine getStatus() {
         return status;
     }
@@ -54,7 +54,7 @@ public class CompetitiveSummaryResponse {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CompetitiveSummaryResponseBody getBody() {
         return body;
     }

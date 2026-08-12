@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the GetShipmentDetails operation. */
-@Schema(description = "The request schema for the GetShipmentDetails operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the GetShipmentDetails operation.")
 public class ShipmentDetails {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class ShipmentDetails {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +63,8 @@ public class ShipmentDetails {
      *
      * @return shipments
      */
-    @Schema(description = "A list of one or more shipments with underlying details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of one or more shipments with underlying details.")
     public List<Shipment> getShipments() {
         return shipments;
     }

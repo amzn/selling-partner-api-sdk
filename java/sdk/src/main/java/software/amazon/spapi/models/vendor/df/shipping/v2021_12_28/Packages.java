@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of package objects in a container. */
-@Schema(description = "An array of package objects in a container.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An array of package objects in a container.")
 public class Packages extends ArrayList<ModelPackage> {
 
     @Override

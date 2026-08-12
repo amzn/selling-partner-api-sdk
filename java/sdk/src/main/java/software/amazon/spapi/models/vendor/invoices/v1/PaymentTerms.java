@@ -17,12 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Terms of the payment for the invoice. The basis of the payment terms is the invoice date. */
-@Schema(description = "Terms of the payment for the invoice. The basis of the payment terms is the invoice date.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Terms of the payment for the invoice. The basis of the payment terms is the invoice date.")
 public class PaymentTerms {
     /** The payment term type for the invoice. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -100,7 +101,7 @@ public class PaymentTerms {
      *
      * @return type
      */
-    @Schema(description = "The payment term type for the invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment term type for the invoice.")
     public TypeEnum getType() {
         return type;
     }
@@ -121,7 +122,7 @@ public class PaymentTerms {
      *
      * @return discountPercent
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
     public String getDiscountPercent() {
@@ -142,7 +143,7 @@ public class PaymentTerms {
      *
      * @return discountDueDays
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of calendar days from the Base date (Invoice date) until the discount is no longer valid.")
     public BigDecimal getDiscountDueDays() {
@@ -163,7 +164,7 @@ public class PaymentTerms {
      *
      * @return netDueDays
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of calendar days from the base date (invoice date) until the total amount on the invoice is due.")
     public BigDecimal getNetDueDays() {

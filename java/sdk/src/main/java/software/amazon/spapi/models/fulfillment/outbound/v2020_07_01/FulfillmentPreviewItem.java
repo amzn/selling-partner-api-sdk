@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Item information for a shipment in a fulfillment order preview. */
-@Schema(description = "Item information for a shipment in a fulfillment order preview.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Item information for a shipment in a fulfillment order preview.")
 public class FulfillmentPreviewItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -96,7 +96,7 @@ public class FulfillmentPreviewItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -115,7 +115,7 @@ public class FulfillmentPreviewItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -135,7 +135,7 @@ public class FulfillmentPreviewItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order item identifier that the seller created with a call to the `createFulfillmentOrder` operation.")
@@ -157,7 +157,7 @@ public class FulfillmentPreviewItem {
      *
      * @return estimatedShippingWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getEstimatedShippingWeight() {
         return estimatedShippingWeight;
     }
@@ -177,7 +177,8 @@ public class FulfillmentPreviewItem {
      *
      * @return shippingWeightCalculationMethod
      */
-    @Schema(description = "The method used to calculate the estimated shipping weight.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The method used to calculate the estimated shipping weight.")
     public ShippingWeightCalculationMethodEnum getShippingWeightCalculationMethod() {
         return shippingWeightCalculationMethod;
     }

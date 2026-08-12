@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Dates for the scheduled delivery shipments. */
-@Schema(description = "Dates for the scheduled delivery shipments.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Dates for the scheduled delivery shipments.")
 public class ScheduledDeliveryShipment {
     @SerializedName("scheduledDeliveryServiceType")
     private String scheduledDeliveryServiceType = null;
@@ -38,7 +38,7 @@ public class ScheduledDeliveryShipment {
      *
      * @return scheduledDeliveryServiceType
      */
-    @Schema(description = "Scheduled delivery service type.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Scheduled delivery service type.")
     public String getScheduledDeliveryServiceType() {
         return scheduledDeliveryServiceType;
     }
@@ -57,7 +57,8 @@ public class ScheduledDeliveryShipment {
      *
      * @return earliestNominatedDeliveryDate
      */
-    @Schema(description = "Earliest nominated delivery date for the scheduled delivery.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Earliest nominated delivery date for the scheduled delivery.")
     public OffsetDateTime getEarliestNominatedDeliveryDate() {
         return earliestNominatedDeliveryDate;
     }
@@ -76,7 +77,8 @@ public class ScheduledDeliveryShipment {
      *
      * @return latestNominatedDeliveryDate
      */
-    @Schema(description = "Latest nominated delivery date for the scheduled delivery.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Latest nominated delivery date for the scheduled delivery.")
     public OffsetDateTime getLatestNominatedDeliveryDate() {
         return latestNominatedDeliveryDate;
     }

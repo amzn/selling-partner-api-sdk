@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Preferences that can be passed in context of a replenishment order */
-@Schema(description = "Preferences that can be passed in context of a replenishment order")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Preferences that can be passed in context of a replenishment order")
 public class ReplenishmentPreferences {
     @SerializedName("confirmation")
     private ConfirmationMode confirmation = null;
@@ -32,7 +32,7 @@ public class ReplenishmentPreferences {
      *
      * @return confirmation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConfirmationMode getConfirmation() {
         return confirmation;
     }

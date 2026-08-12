@@ -17,15 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Conveying the status of the listed enforcement actions and, if applicable, provides information about the
  * exemption&#39;s expiry date.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption's expiry date.")
 public class IssueExemption {
@@ -101,7 +101,7 @@ public class IssueExemption {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates the current exemption status for the listed enforcement actions. It can take values such as `EXEMPT`, signifying permanent exemption, `EXEMPT_UNTIL_EXPIRY_DATE` indicating temporary exemption until a specified date, or `NOT_EXEMPT` signifying no exemptions, and enforcement actions were already applied.")
@@ -124,7 +124,7 @@ public class IssueExemption {
      *
      * @return expiryDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions.")
     public OffsetDateTime getExpiryDate() {

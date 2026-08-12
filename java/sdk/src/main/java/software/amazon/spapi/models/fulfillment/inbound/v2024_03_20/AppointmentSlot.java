@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The fulfillment center appointment slot for the transportation option. */
-@Schema(description = "The fulfillment center appointment slot for the transportation option.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The fulfillment center appointment slot for the transportation option.")
 public class AppointmentSlot {
     @SerializedName("slotId")
     private String slotId = null;
@@ -35,7 +35,9 @@ public class AppointmentSlot {
      *
      * @return slotId
      */
-    @Schema(required = true, description = "An identifier to a self-ship appointment slot.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier to a self-ship appointment slot.")
     public String getSlotId() {
         return slotId;
     }
@@ -54,7 +56,7 @@ public class AppointmentSlot {
      *
      * @return slotTime
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AppointmentSlotTime getSlotTime() {
         return slotTime;
     }

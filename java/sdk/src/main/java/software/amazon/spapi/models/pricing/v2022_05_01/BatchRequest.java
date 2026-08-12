@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The common properties for individual requests within a batch. */
-@Schema(description = "The common properties for individual requests within a batch.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The common properties for individual requests within a batch.")
 public class BatchRequest {
     @SerializedName("uri")
     private String uri = null;
@@ -42,7 +42,7 @@ public class BatchRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.")
@@ -64,7 +64,7 @@ public class BatchRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -83,7 +83,7 @@ public class BatchRequest {
      *
      * @return body
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpBody getBody() {
         return body;
     }
@@ -102,7 +102,7 @@ public class BatchRequest {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpHeaders getHeaders() {
         return headers;
     }

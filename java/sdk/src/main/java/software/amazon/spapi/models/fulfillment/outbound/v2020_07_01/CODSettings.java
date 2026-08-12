@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The COD (Cash On Delivery) charges that you associate with a COD fulfillment order. */
-@Schema(description = "The COD (Cash On Delivery) charges that you associate with a COD fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The COD (Cash On Delivery) charges that you associate with a COD fulfillment order.")
 public class CODSettings {
     @SerializedName("isCodRequired")
     private Boolean isCodRequired = null;
@@ -44,7 +44,7 @@ public class CODSettings {
      *
      * @return isCodRequired
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "When true, this fulfillment order requires a COD (Cash On Delivery) payment.")
     public Boolean getIsCodRequired() {
@@ -65,7 +65,7 @@ public class CODSettings {
      *
      * @return codCharge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getCodCharge() {
         return codCharge;
     }
@@ -84,7 +84,7 @@ public class CODSettings {
      *
      * @return codChargeTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getCodChargeTax() {
         return codChargeTax;
     }
@@ -103,7 +103,7 @@ public class CODSettings {
      *
      * @return shippingCharge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingCharge() {
         return shippingCharge;
     }
@@ -122,7 +122,7 @@ public class CODSettings {
      *
      * @return shippingChargeTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingChargeTax() {
         return shippingChargeTax;
     }

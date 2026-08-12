@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The manual processing fee per unit and total fee for a shipment. */
-@Schema(description = "The manual processing fee per unit and total fee for a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The manual processing fee per unit and total fee for a shipment.")
 public class BoxContentsFeeDetails {
     @SerializedName("TotalUnits")
     private Integer totalUnits = null;
@@ -38,7 +38,7 @@ public class BoxContentsFeeDetails {
      *
      * @return totalUnits
      */
-    @Schema(description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
     public Integer getTotalUnits() {
         return totalUnits;
     }
@@ -57,7 +57,7 @@ public class BoxContentsFeeDetails {
      *
      * @return feePerUnit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getFeePerUnit() {
         return feePerUnit;
     }
@@ -76,7 +76,7 @@ public class BoxContentsFeeDetails {
      *
      * @return totalFee
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getTotalFee() {
         return totalFee;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Denotes time of the day, used for defining opening or closing time of access points */
-@Schema(description = "Denotes time of the day, used for defining opening or closing time of access points")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Denotes time of the day, used for defining opening or closing time of access points")
 public class TimeOfDay {
     @SerializedName("hourOfDay")
     private Integer hourOfDay = null;
@@ -38,7 +38,8 @@ public class TimeOfDay {
      *
      * @return hourOfDay
      */
-    @Schema(description = "Denotes hour of the day, used for defining opening or closing time of access points")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Denotes hour of the day, used for defining opening or closing time of access points")
     public Integer getHourOfDay() {
         return hourOfDay;
     }
@@ -57,7 +58,8 @@ public class TimeOfDay {
      *
      * @return minuteOfHour
      */
-    @Schema(description = "Denotes minute of the hour, used for defining opening or closing time of access points")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Denotes minute of the hour, used for defining opening or closing time of access points")
     public Integer getMinuteOfHour() {
         return minuteOfHour;
     }
@@ -76,7 +78,8 @@ public class TimeOfDay {
      *
      * @return secondOfMinute
      */
-    @Schema(description = "Denotes second of the minute, used for defining opening or closing time of access points")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Denotes second of the minute, used for defining opening or closing time of access points")
     public Integer getSecondOfMinute() {
         return secondOfMinute;
     }

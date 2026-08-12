@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A date range. */
-@Schema(description = "A date range.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A date range.")
 public class DateRange {
     @SerializedName("startDate")
     private OffsetDateTime startDate = null;
@@ -35,7 +35,9 @@ public class DateRange {
      *
      * @return startDate
      */
-    @Schema(required = true, description = "The start date of the date range in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The start date of the date range in ISO-8601 date/time format.")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -54,7 +56,9 @@ public class DateRange {
      *
      * @return endDate
      */
-    @Schema(required = true, description = "The end date of the date range in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The end date of the date range in ISO-8601 date/time format.")
     public OffsetDateTime getEndDate() {
         return endDate;
     }

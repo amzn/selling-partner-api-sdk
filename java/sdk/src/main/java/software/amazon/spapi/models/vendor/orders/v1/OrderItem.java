@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Represents an individual item in an order, including item details, quantities, pricing, and backorder information.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents an individual item in an order, including item details, quantities, pricing, and backorder information.")
 public class OrderItem {
@@ -54,7 +53,7 @@ public class OrderItem {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
@@ -76,7 +75,8 @@ public class OrderItem {
      *
      * @return amazonProductIdentifier
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Amazon Standard Identification Number (ASIN) of an item.")
     public String getAmazonProductIdentifier() {
         return amazonProductIdentifier;
     }
@@ -95,7 +95,7 @@ public class OrderItem {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(description = "The vendor selected product identification of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
     public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
@@ -114,7 +114,7 @@ public class OrderItem {
      *
      * @return orderedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -133,7 +133,9 @@ public class OrderItem {
      *
      * @return isBackOrderAllowed
      */
-    @Schema(required = true, description = "When true, we will accept backorder confirmations for this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, we will accept backorder confirmations for this item.")
     public Boolean getIsBackOrderAllowed() {
         return isBackOrderAllowed;
     }
@@ -152,7 +154,7 @@ public class OrderItem {
      *
      * @return netCost
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getNetCost() {
         return netCost;
     }
@@ -171,7 +173,7 @@ public class OrderItem {
      *
      * @return listPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getListPrice() {
         return listPrice;
     }

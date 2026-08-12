@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.sales.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A set of order metrics, each scoped to a particular time interval. */
-@Schema(description = "A set of order metrics, each scoped to a particular time interval.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A set of order metrics, each scoped to a particular time interval.")
 public class OrderMetricsList extends ArrayList<OrderMetricsInterval> {
 
     @Override

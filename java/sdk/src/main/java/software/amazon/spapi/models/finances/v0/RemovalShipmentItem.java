@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item-level information for a removal shipment. */
-@Schema(description = "Item-level information for a removal shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item-level information for a removal shipment.")
 public class RemovalShipmentItem {
     @SerializedName("RemovalShipmentItemId")
     private String removalShipmentItemId = null;
@@ -53,7 +52,7 @@ public class RemovalShipmentItem {
      *
      * @return removalShipmentItemId
      */
-    @Schema(description = "An identifier for an item in a removal shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An identifier for an item in a removal shipment.")
     public String getRemovalShipmentItemId() {
         return removalShipmentItemId;
     }
@@ -74,7 +73,7 @@ public class RemovalShipmentItem {
      *
      * @return taxCollectionModel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.")
     public String getTaxCollectionModel() {
@@ -95,7 +94,7 @@ public class RemovalShipmentItem {
      *
      * @return fulfillmentNetworkSKU
      */
-    @Schema(description = "The Amazon fulfillment network SKU for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon fulfillment network SKU for the item.")
     public String getFulfillmentNetworkSKU() {
         return fulfillmentNetworkSKU;
     }
@@ -114,7 +113,7 @@ public class RemovalShipmentItem {
      *
      * @return quantity
      */
-    @Schema(description = "The quantity of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the item.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -133,7 +132,7 @@ public class RemovalShipmentItem {
      *
      * @return revenue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRevenue() {
         return revenue;
     }
@@ -152,7 +151,7 @@ public class RemovalShipmentItem {
      *
      * @return feeAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getFeeAmount() {
         return feeAmount;
     }
@@ -171,7 +170,7 @@ public class RemovalShipmentItem {
      *
      * @return taxAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxAmount() {
         return taxAmount;
     }
@@ -190,7 +189,7 @@ public class RemovalShipmentItem {
      *
      * @return taxWithheld
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxWithheld() {
         return taxWithheld;
     }

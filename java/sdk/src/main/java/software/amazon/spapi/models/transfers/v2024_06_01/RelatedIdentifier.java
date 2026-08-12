@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Related business identifier of the payout. */
-@Schema(description = "Related business identifier of the payout.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Related business identifier of the payout.")
 public class RelatedIdentifier {
     @SerializedName("relatedIdentifierName")
     private RelatedIdentifierName relatedIdentifierName = null;
@@ -35,7 +34,7 @@ public class RelatedIdentifier {
      *
      * @return relatedIdentifierName
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RelatedIdentifierName getRelatedIdentifierName() {
         return relatedIdentifierName;
     }
@@ -54,7 +53,9 @@ public class RelatedIdentifier {
      *
      * @return relatedIdentifierValue
      */
-    @Schema(required = true, description = "Corresponding value of `RelatedIdentifierName`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Corresponding value of `RelatedIdentifierName`.")
     public String getRelatedIdentifierValue() {
         return relatedIdentifierValue;
     }

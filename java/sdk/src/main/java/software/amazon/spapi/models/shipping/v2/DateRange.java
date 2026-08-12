@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Date Range for query the results. */
-@Schema(description = "Date Range for query the results.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Date Range for query the results.")
 public class DateRange {
     @SerializedName("startDate")
     private String startDate = null;
@@ -35,7 +34,7 @@ public class DateRange {
      *
      * @return startDate
      */
-    @Schema(description = "Start Date for query .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Start Date for query .")
     public String getStartDate() {
         return startDate;
     }
@@ -54,7 +53,7 @@ public class DateRange {
      *
      * @return endDate
      */
-    @Schema(description = "end date for query.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "end date for query.")
     public String getEndDate() {
         return endDate;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Amazon fulfillment center address and warehouse ID. */
-@Schema(description = "The Amazon fulfillment center address and warehouse ID.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon fulfillment center address and warehouse ID.")
 public class ShipmentDestination {
     @SerializedName("address")
     private Address address = null;
@@ -38,7 +37,7 @@ public class ShipmentDestination {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -58,7 +57,7 @@ public class ShipmentDestination {
      *
      * @return destinationType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The type of destination for this shipment. Possible values: `AMAZON_OPTIMIZED`, `AMAZON_WAREHOUSE`.")
@@ -81,7 +80,7 @@ public class ShipmentDestination {
      *
      * @return warehouseId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.")
     public String getWarehouseId() {

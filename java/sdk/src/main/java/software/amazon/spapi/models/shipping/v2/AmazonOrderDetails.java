@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Amazon order information. This is required if the shipment source channel is Amazon. */
-@Schema(description = "Amazon order information. This is required if the shipment source channel is Amazon.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Amazon order information. This is required if the shipment source channel is Amazon.")
 public class AmazonOrderDetails {
     @SerializedName("orderId")
     private String orderId = null;
@@ -32,7 +32,7 @@ public class AmazonOrderDetails {
      *
      * @return orderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The Amazon order ID associated with the Amazon order fulfilled by this shipment.")
     public String getOrderId() {

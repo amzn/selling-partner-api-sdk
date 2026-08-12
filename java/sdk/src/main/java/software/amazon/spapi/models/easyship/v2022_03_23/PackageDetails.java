@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.
  */
-@Schema(description = "Package details. Includes `packageItems`, `packageTimeSlot`, and `packageIdentifier`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Package details. Includes `packageItems`, `packageTimeSlot`, and `packageIdentifier`.")
 public class PackageDetails {
     @SerializedName("packageItems")
     private Items packageItems = null;
@@ -40,7 +40,7 @@ public class PackageDetails {
      *
      * @return packageItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Items getPackageItems() {
         return packageItems;
     }
@@ -59,7 +59,7 @@ public class PackageDetails {
      *
      * @return packageTimeSlot
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeSlot getPackageTimeSlot() {
         return packageTimeSlot;
     }
@@ -78,7 +78,7 @@ public class PackageDetails {
      *
      * @return packageIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.")
     public String getPackageIdentifier() {

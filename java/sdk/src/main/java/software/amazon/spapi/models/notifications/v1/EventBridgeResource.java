@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Amazon EventBridge destination. */
-@Schema(description = "The Amazon EventBridge destination.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon EventBridge destination.")
 public class EventBridgeResource {
     @SerializedName("name")
     private String name = null;
@@ -38,7 +37,9 @@ public class EventBridgeResource {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the partner event source associated with the destination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the partner event source associated with the destination.")
     public String getName() {
         return name;
     }
@@ -58,7 +59,7 @@ public class EventBridgeResource {
      *
      * @return region
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).")
@@ -80,7 +81,7 @@ public class EventBridgeResource {
      *
      * @return accountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the AWS account that is responsible for charges related to receiving notifications.")

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response to the &#x60;generateShipLabels&#x60; operation. */
-@Schema(description = "The response to the `generateShipLabels` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `generateShipLabels` operation.")
 public class ShipLabelsResponse {
     @SerializedName("packageShipLabelList")
     private PackageShipLabelList packageShipLabelList = null;
@@ -32,7 +31,7 @@ public class ShipLabelsResponse {
      *
      * @return packageShipLabelList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageShipLabelList getPackageShipLabelList() {
         return packageShipLabelList;
     }

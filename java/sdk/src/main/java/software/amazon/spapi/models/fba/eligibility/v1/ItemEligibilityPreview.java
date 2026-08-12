@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * The response object which contains the ASIN, marketplaceId if required, eligibility program, the eligibility status
  * (boolean), and a list of ineligibility reason codes.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The response object which contains the ASIN, marketplaceId if required, eligibility program, the eligibility status (boolean), and a list of ineligibility reason codes.")
 public class ItemEligibilityPreview {
@@ -227,7 +226,9 @@ public class ItemEligibilityPreview {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The ASIN for which eligibility was determined.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ASIN for which eligibility was determined.")
     public String getAsin() {
         return asin;
     }
@@ -246,7 +247,7 @@ public class ItemEligibilityPreview {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace for which eligibility was determined.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace for which eligibility was determined.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -265,7 +266,9 @@ public class ItemEligibilityPreview {
      *
      * @return program
      */
-    @Schema(required = true, description = "The program for which eligibility was determined.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The program for which eligibility was determined.")
     public ProgramEnum getProgram() {
         return program;
     }
@@ -284,7 +287,9 @@ public class ItemEligibilityPreview {
      *
      * @return isEligibleForProgram
      */
-    @Schema(required = true, description = "Indicates if the item is eligible for the program.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Indicates if the item is eligible for the program.")
     public Boolean getIsEligibleForProgram() {
         return isEligibleForProgram;
     }
@@ -312,7 +317,7 @@ public class ItemEligibilityPreview {
      *
      * @return ineligibilityReasonList
      */
-    @Schema(description = "Potential Ineligibility Reason Codes.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Potential Ineligibility Reason Codes.")
     public List<IneligibilityReasonListEnum> getIneligibilityReasonList() {
         return ineligibilityReasonList;
     }

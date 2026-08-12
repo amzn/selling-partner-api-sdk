@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains tokens to fetch from a certain page. */
-@Schema(description = "Contains tokens to fetch from a certain page.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains tokens to fetch from a certain page.")
 public class Pagination {
     @SerializedName("nextToken")
     private String nextToken = null;
@@ -32,7 +31,8 @@ public class Pagination {
      *
      * @return nextToken
      */
-    @Schema(description = "When present, pass this string token in the next request to return the next response page.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When present, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
         return nextToken;
     }

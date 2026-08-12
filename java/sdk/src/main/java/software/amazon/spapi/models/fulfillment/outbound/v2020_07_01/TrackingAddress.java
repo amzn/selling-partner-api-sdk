@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Address information for tracking the package. */
-@Schema(description = "Address information for tracking the package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Address information for tracking the package.")
 public class TrackingAddress {
     @SerializedName("city")
     private String city = null;
@@ -38,7 +37,7 @@ public class TrackingAddress {
      *
      * @return city
      */
-    @Schema(required = true, description = "The city.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The city.")
     public String getCity() {
         return city;
     }
@@ -57,7 +56,7 @@ public class TrackingAddress {
      *
      * @return state
      */
-    @Schema(required = true, description = "The state.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The state.")
     public String getState() {
         return state;
     }
@@ -76,7 +75,7 @@ public class TrackingAddress {
      *
      * @return country
      */
-    @Schema(required = true, description = "The country.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The country.")
     public String getCountry() {
         return country;
     }

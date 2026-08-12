@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A payment instrument. */
-@Schema(description = "A payment instrument.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A payment instrument.")
 public class ChargeInstrument {
     @SerializedName("Description")
     private String description = null;
@@ -38,7 +37,7 @@ public class ChargeInstrument {
      *
      * @return description
      */
-    @Schema(description = "A short description of the charge instrument.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the charge instrument.")
     public String getDescription() {
         return description;
     }
@@ -57,7 +56,8 @@ public class ChargeInstrument {
      *
      * @return tail
      */
-    @Schema(description = "The account tail (trailing digits) of the charge instrument.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The account tail (trailing digits) of the charge instrument.")
     public String getTail() {
         return tail;
     }
@@ -76,7 +76,7 @@ public class ChargeInstrument {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }

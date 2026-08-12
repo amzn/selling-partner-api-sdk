@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specific details to identify a place. */
-@Schema(description = "Specific details to identify a place.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specific details to identify a place.")
 public class AddressInput {
     @SerializedName("addressLine1")
     private String addressLine1 = null;
@@ -62,7 +61,7 @@ public class AddressInput {
      *
      * @return addressLine1
      */
-    @Schema(required = true, description = "Street address information.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Street address information.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -81,7 +80,7 @@ public class AddressInput {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional street address information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional street address information.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -100,7 +99,7 @@ public class AddressInput {
      *
      * @return city
      */
-    @Schema(required = true, description = "The city.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The city.")
     public String getCity() {
         return city;
     }
@@ -119,7 +118,7 @@ public class AddressInput {
      *
      * @return companyName
      */
-    @Schema(description = "The name of the business.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the business.")
     public String getCompanyName() {
         return companyName;
     }
@@ -138,7 +137,9 @@ public class AddressInput {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The country code in two-character ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The country code in two-character ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -157,7 +158,7 @@ public class AddressInput {
      *
      * @return districtOrCounty
      */
-    @Schema(description = "The district or county.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The district or county.")
     public String getDistrictOrCounty() {
         return districtOrCounty;
     }
@@ -176,7 +177,7 @@ public class AddressInput {
      *
      * @return email
      */
-    @Schema(description = "The email address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The email address.")
     public String getEmail() {
         return email;
     }
@@ -195,7 +196,9 @@ public class AddressInput {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the individual who is the primary contact.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the individual who is the primary contact.")
     public String getName() {
         return name;
     }
@@ -214,7 +217,7 @@ public class AddressInput {
      *
      * @return phoneNumber
      */
-    @Schema(required = true, description = "The phone number.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The phone number.")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -233,7 +236,7 @@ public class AddressInput {
      *
      * @return postalCode
      */
-    @Schema(required = true, description = "The postal code.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The postal code.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -252,7 +255,7 @@ public class AddressInput {
      *
      * @return stateOrProvinceCode
      */
-    @Schema(description = "The state or province code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The state or province code.")
     public String getStateOrProvinceCode() {
         return stateOrProvinceCode;
     }

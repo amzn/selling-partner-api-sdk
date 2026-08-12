@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** ValidationMetadata Details */
-@Schema(description = "ValidationMetadata Details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "ValidationMetadata Details")
 public class ValidationMetadata {
     @SerializedName("errorMessage")
     private String errorMessage = null;
@@ -38,7 +37,7 @@ public class ValidationMetadata {
      *
      * @return errorMessage
      */
-    @Schema(description = "errorMessage for the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "errorMessage for the error.")
     public String getErrorMessage() {
         return errorMessage;
     }
@@ -57,7 +56,7 @@ public class ValidationMetadata {
      *
      * @return validationStrategy
      */
-    @Schema(description = "validationStrategy for the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "validationStrategy for the error.")
     public String getValidationStrategy() {
         return validationStrategy;
     }
@@ -76,7 +75,7 @@ public class ValidationMetadata {
      *
      * @return value
      */
-    @Schema(description = "Value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Value.")
     public String getValue() {
         return value;
     }

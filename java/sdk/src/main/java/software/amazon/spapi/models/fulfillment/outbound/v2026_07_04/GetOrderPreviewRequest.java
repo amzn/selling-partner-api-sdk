@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for &#x60;getOrderPreview&#x60;. */
-@Schema(description = "The request body schema for `getOrderPreview`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body schema for `getOrderPreview`.")
 public class GetOrderPreviewRequest {
     @SerializedName("channel")
     private String channel = null;
@@ -52,7 +51,7 @@ public class GetOrderPreviewRequest {
      *
      * @return channel
      */
-    @Schema(description = "The sales channel for the fulfillment request.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the fulfillment request.")
     public String getChannel() {
         return channel;
     }
@@ -71,7 +70,7 @@ public class GetOrderPreviewRequest {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PreviewFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
@@ -90,7 +89,7 @@ public class GetOrderPreviewRequest {
      *
      * @return origin
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderOrigin getOrigin() {
         return origin;
     }
@@ -109,7 +108,7 @@ public class GetOrderPreviewRequest {
      *
      * @return destination
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PreviewDestination getDestination() {
         return destination;
     }
@@ -136,7 +135,9 @@ public class GetOrderPreviewRequest {
      *
      * @return lineItems
      */
-    @Schema(required = true, description = "A list of items to include in the fulfillment preview, including quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items to include in the fulfillment preview, including quantity.")
     public List<PreviewLineItem> getLineItems() {
         return lineItems;
     }
@@ -156,7 +157,7 @@ public class GetOrderPreviewRequest {
      *
      * @return excludeEstimatedFees
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When `true`, excludes estimated fees from the preview response for latency optimization. Default: `false`.")
     public Boolean getExcludeEstimatedFees() {
@@ -178,7 +179,7 @@ public class GetOrderPreviewRequest {
      *
      * @return includePaymentOnDelivery
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When `true`, includes payment on delivery information in the preview response. Default: `false`.")
     public Boolean getIncludePaymentOnDelivery() {

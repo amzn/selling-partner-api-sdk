@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to
  * recipients on behalf of the seller.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.")
 public class NotificationEmailList extends ArrayList<String> {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The item price at or below which the target offer may be featured. */
-@Schema(description = "The item price at or below which the target offer may be featured.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The item price at or below which the target offer may be featured.")
 public class FeaturedOfferExpectedPrice {
     @SerializedName("listingPrice")
     private MoneyType listingPrice = null;
@@ -35,7 +35,7 @@ public class FeaturedOfferExpectedPrice {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -54,7 +54,7 @@ public class FeaturedOfferExpectedPrice {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }

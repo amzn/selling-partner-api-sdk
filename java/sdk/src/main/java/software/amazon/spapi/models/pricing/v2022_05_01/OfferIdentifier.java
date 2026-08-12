@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Identifies an offer from a particular seller for a specified ASIN. */
-@Schema(description = "Identifies an offer from a particular seller for a specified ASIN.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Identifies an offer from a particular seller for a specified ASIN.")
 public class OfferIdentifier {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -45,7 +45,7 @@ public class OfferIdentifier {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -67,7 +67,7 @@ public class OfferIdentifier {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }
@@ -87,7 +87,7 @@ public class OfferIdentifier {
      *
      * @return sku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller.")
     public String getSku() {
@@ -108,7 +108,7 @@ public class OfferIdentifier {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The ASIN of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
     public String getAsin() {
         return asin;
     }
@@ -127,7 +127,7 @@ public class OfferIdentifier {
      *
      * @return fulfillmentType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentType getFulfillmentType() {
         return fulfillmentType;
     }

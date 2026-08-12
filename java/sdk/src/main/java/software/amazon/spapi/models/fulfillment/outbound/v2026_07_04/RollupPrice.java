@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A component of the total price. */
-@Schema(description = "A component of the total price.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A component of the total price.")
 public class RollupPrice {
     @SerializedName("type")
     private String type = null;
@@ -35,7 +34,7 @@ public class RollupPrice {
      *
      * @return type
      */
-    @Schema(required = true, description = "The type of price.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of price.")
     public String getType() {
         return type;
     }
@@ -54,7 +53,7 @@ public class RollupPrice {
      *
      * @return value
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getValue() {
         return value;
     }

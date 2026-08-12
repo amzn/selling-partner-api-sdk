@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.services.v1.AddAppointmentRequest;
 import software.amazon.spapi.models.services.v1.AssignAppointmentResourcesRequest;
@@ -148,9 +147,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call addAppointmentForServiceJobByServiceJobIdCall(
-            String serviceJobId,
-            AddAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId, AddAppointmentRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -192,9 +189,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId,
-            AddAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId, AddAppointmentRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -355,10 +350,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = addAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
@@ -395,7 +390,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             AssignAppointmentResourcesRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -442,7 +437,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             AssignAppointmentResourcesRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -631,10 +626,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = assignAppointmentResourcesValidateBeforeCall(
@@ -664,9 +659,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call cancelReservationCall(
-            String reservationId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reservationId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -710,9 +703,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call cancelReservationValidateBeforeCall(
-            String reservationId,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reservationId, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'reservationId' is set
@@ -868,10 +859,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelReservationValidateBeforeCall(reservationId, marketplaceIds, progressRequestListener);
@@ -900,9 +891,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call cancelServiceJobByServiceJobIdCall(
-            String serviceJobId,
-            String cancellationReasonCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId, String cancellationReasonCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -947,9 +936,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call cancelServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId,
-            String cancellationReasonCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String serviceJobId, String cancellationReasonCode, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -1115,10 +1102,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelServiceJobByServiceJobIdValidateBeforeCall(
@@ -1147,8 +1134,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call completeServiceJobByServiceJobIdCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String serviceJobId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1190,8 +1176,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call completeServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String serviceJobId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
         if (serviceJobId == null) {
@@ -1333,10 +1318,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = completeServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
@@ -1366,9 +1351,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createReservationCall(
-            List<String> marketplaceIds,
-            CreateReservationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> marketplaceIds, CreateReservationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1409,9 +1392,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call createReservationValidateBeforeCall(
-            List<String> marketplaceIds,
-            CreateReservationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            List<String> marketplaceIds, CreateReservationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceIds' is set
@@ -1567,10 +1548,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createReservationValidateBeforeCall(marketplaceIds, body, progressRequestListener);
@@ -1597,8 +1578,7 @@ public class ServiceApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createServiceDocumentUploadDestinationCall(
-            ServiceUploadDocument body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            ServiceUploadDocument body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = body;
 
         // create path and map variables
@@ -1636,8 +1616,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call createServiceDocumentUploadDestinationValidateBeforeCall(
-            ServiceUploadDocument body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            ServiceUploadDocument body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1780,10 +1759,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createServiceDocumentUploadDestinationValidateBeforeCall(body, progressRequestListener);
@@ -1826,7 +1805,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1877,7 +1856,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -2100,10 +2079,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getAppointmentSlotsValidateBeforeCall(
@@ -2142,7 +2121,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2193,7 +2172,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             String startTime,
             String endTime,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -2406,10 +2385,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getAppointmmentSlotsByJobIdValidateBeforeCall(
@@ -2445,7 +2424,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             FixedSlotCapacityQuery body,
             String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2495,7 +2474,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             FixedSlotCapacityQuery body,
             String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'resourceId' is set
@@ -2685,10 +2664,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getFixedSlotCapacityValidateBeforeCall(
@@ -2723,7 +2702,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             RangeSlotCapacityQuery body,
             String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2773,7 +2752,7 @@ public class ServiceApi {
             List<String> marketplaceIds,
             RangeSlotCapacityQuery body,
             String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'resourceId' is set
@@ -2963,10 +2942,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getRangeSlotCapacityValidateBeforeCall(
@@ -2993,8 +2972,7 @@ public class ServiceApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getServiceJobByServiceJobIdCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getServiceJobByServiceJobIdCall(String serviceJobId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -3036,8 +3014,7 @@ public class ServiceApi {
     }
 
     private okhttp3.Call getServiceJobByServiceJobIdValidateBeforeCall(
-            String serviceJobId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String serviceJobId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
         if (serviceJobId == null) {
@@ -3180,10 +3157,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getServiceJobByServiceJobIdValidateBeforeCall(serviceJobId, progressRequestListener);
@@ -3261,7 +3238,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -3350,7 +3327,7 @@ public class ServiceApi {
             List<String> asins,
             List<String> requiredSkills,
             List<String> storeIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceIds' is set
@@ -3905,10 +3882,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getServiceJobsValidateBeforeCall(
@@ -3959,7 +3936,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             RescheduleAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4006,7 +3983,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             RescheduleAppointmentRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -4187,10 +4164,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = rescheduleAppointmentForServiceJobByServiceJobIdValidateBeforeCall(
@@ -4227,7 +4204,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             SetAppointmentFulfillmentDataRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4274,7 +4251,7 @@ public class ServiceApi {
             String serviceJobId,
             String appointmentId,
             SetAppointmentFulfillmentDataRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'serviceJobId' is set
@@ -4466,10 +4443,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = setAppointmentFulfillmentDataValidateBeforeCall(
@@ -4503,7 +4480,7 @@ public class ServiceApi {
             String reservationId,
             List<String> marketplaceIds,
             UpdateReservationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4549,7 +4526,7 @@ public class ServiceApi {
             String reservationId,
             List<String> marketplaceIds,
             UpdateReservationRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'reservationId' is set
@@ -4728,10 +4705,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -4764,7 +4741,7 @@ public class ServiceApi {
             String resourceId,
             List<String> marketplaceIds,
             UpdateScheduleRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4811,7 +4788,7 @@ public class ServiceApi {
             String resourceId,
             List<String> marketplaceIds,
             UpdateScheduleRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'resourceId' is set
@@ -4982,10 +4959,10 @@ public class ServiceApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateScheduleValidateBeforeCall(resourceId, marketplaceIds, body, progressRequestListener);

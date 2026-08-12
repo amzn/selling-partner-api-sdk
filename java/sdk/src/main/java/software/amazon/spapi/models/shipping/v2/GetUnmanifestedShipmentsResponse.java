@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the GetUnmanifestedShipmentsResponse operation. */
-@Schema(description = "The Response  for the GetUnmanifestedShipmentsResponse operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The Response  for the GetUnmanifestedShipmentsResponse operation.")
 public class GetUnmanifestedShipmentsResponse {
     @SerializedName("unmanifestedCarrierInformationList")
     private UnmanifestedCarrierInformationList unmanifestedCarrierInformationList = null;
@@ -33,7 +33,7 @@ public class GetUnmanifestedShipmentsResponse {
      *
      * @return unmanifestedCarrierInformationList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnmanifestedCarrierInformationList getUnmanifestedCarrierInformationList() {
         return unmanifestedCarrierInformationList;
     }

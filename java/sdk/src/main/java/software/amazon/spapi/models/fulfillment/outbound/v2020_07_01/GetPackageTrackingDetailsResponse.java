@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getPackageTrackingDetails&#x60; operation. */
-@Schema(description = "The response schema for the `getPackageTrackingDetails` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `getPackageTrackingDetails` operation.")
 public class GetPackageTrackingDetailsResponse {
     @SerializedName("payload")
     private PackageTrackingDetails payload = null;
@@ -35,7 +35,7 @@ public class GetPackageTrackingDetailsResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageTrackingDetails getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetPackageTrackingDetailsResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

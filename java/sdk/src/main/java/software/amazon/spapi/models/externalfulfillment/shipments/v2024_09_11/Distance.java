@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A distance measurement. */
-@Schema(description = "A distance measurement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A distance measurement.")
 public class Distance {
     @SerializedName("value")
     private String value = null;
@@ -86,7 +85,7 @@ public class Distance {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
@@ -108,7 +107,9 @@ public class Distance {
      *
      * @return distanceUnit
      */
-    @Schema(required = true, description = "The unit of measurement of the distance.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unit of measurement of the distance.")
     public DistanceUnitEnum getDistanceUnit() {
         return distanceUnit;
     }

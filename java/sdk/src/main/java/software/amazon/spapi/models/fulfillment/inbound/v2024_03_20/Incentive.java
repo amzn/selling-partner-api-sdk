@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains details about cost related modifications to the placement cost. */
-@Schema(description = "Contains details about cost related modifications to the placement cost.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains details about cost related modifications to the placement cost.")
 public class Incentive {
     @SerializedName("description")
     private String description = null;
@@ -41,7 +41,7 @@ public class Incentive {
      *
      * @return description
      */
-    @Schema(required = true, description = "Description of the incentive.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Description of the incentive.")
     public String getDescription() {
         return description;
     }
@@ -60,7 +60,7 @@ public class Incentive {
      *
      * @return target
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Target of the incentive. Possible values: 'Placement Services', 'Fulfillment Fee Discount'.")
     public String getTarget() {
@@ -81,7 +81,9 @@ public class Incentive {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of incentive. Possible values: `FEE`, `DISCOUNT`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Type of incentive. Possible values: `FEE`, `DISCOUNT`.")
     public String getType() {
         return type;
     }
@@ -100,7 +102,7 @@ public class Incentive {
      *
      * @return value
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getValue() {
         return value;
     }

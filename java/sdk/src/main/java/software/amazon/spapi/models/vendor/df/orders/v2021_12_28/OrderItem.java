@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item within an order */
-@Schema(description = "An item within an order")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item within an order")
 public class OrderItem {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -62,7 +61,7 @@ public class OrderItem {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
@@ -84,7 +83,8 @@ public class OrderItem {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Buyer's standard identification number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Buyer's standard identification number (ASIN) of an item.")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -103,7 +103,7 @@ public class OrderItem {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(description = "The vendor selected product identification of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
     public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
@@ -122,7 +122,7 @@ public class OrderItem {
      *
      * @return title
      */
-    @Schema(description = "Title for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Title for the item.")
     public String getTitle() {
         return title;
     }
@@ -141,7 +141,7 @@ public class OrderItem {
      *
      * @return orderedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -160,7 +160,7 @@ public class OrderItem {
      *
      * @return scheduledDeliveryShipment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ScheduledDeliveryShipment getScheduledDeliveryShipment() {
         return scheduledDeliveryShipment;
     }
@@ -179,7 +179,7 @@ public class OrderItem {
      *
      * @return giftDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GiftDetails getGiftDetails() {
         return giftDetails;
     }
@@ -198,7 +198,7 @@ public class OrderItem {
      *
      * @return netPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getNetPrice() {
         return netPrice;
     }
@@ -217,7 +217,7 @@ public class OrderItem {
      *
      * @return taxDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxItemDetails getTaxDetails() {
         return taxDetails;
     }
@@ -236,7 +236,7 @@ public class OrderItem {
      *
      * @return totalPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getTotalPrice() {
         return totalPrice;
     }
@@ -255,7 +255,7 @@ public class OrderItem {
      *
      * @return buyerCustomizedInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerCustomizedInfoDetail getBuyerCustomizedInfo() {
         return buyerCustomizedInfo;
     }

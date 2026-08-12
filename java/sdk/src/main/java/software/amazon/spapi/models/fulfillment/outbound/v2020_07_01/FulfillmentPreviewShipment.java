@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Delivery and item information for a shipment in a fulfillment order preview. */
-@Schema(description = "Delivery and item information for a shipment in a fulfillment order preview.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Delivery and item information for a shipment in a fulfillment order preview.")
 public class FulfillmentPreviewShipment {
     @SerializedName("earliestShipDate")
     private OffsetDateTime earliestShipDate = null;
@@ -49,7 +50,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return earliestShipDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEarliestShipDate() {
         return earliestShipDate;
     }
@@ -68,7 +69,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return latestShipDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getLatestShipDate() {
         return latestShipDate;
     }
@@ -87,7 +88,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return earliestArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEarliestArrivalDate() {
         return earliestArrivalDate;
     }
@@ -106,7 +107,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return latestArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getLatestArrivalDate() {
         return latestArrivalDate;
     }
@@ -133,7 +134,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return shippingNotes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.")
     public List<String> getShippingNotes() {
@@ -154,7 +155,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return fulfillmentPreviewItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentPreviewItemList getFulfillmentPreviewItems() {
         return fulfillmentPreviewItems;
     }

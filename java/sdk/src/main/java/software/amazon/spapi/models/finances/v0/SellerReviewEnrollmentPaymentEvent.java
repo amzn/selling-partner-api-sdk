@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A fee payment event for the Early Reviewer Program. */
-@Schema(description = "A fee payment event for the Early Reviewer Program.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A fee payment event for the Early Reviewer Program.")
 public class SellerReviewEnrollmentPaymentEvent {
     @SerializedName("PostedDate")
     private OffsetDateTime postedDate = null;
@@ -47,7 +47,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -68,7 +68,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return enrollmentId
      */
-    @Schema(description = "An enrollment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An enrollment identifier.")
     public String getEnrollmentId() {
         return enrollmentId;
     }
@@ -87,7 +87,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return parentASIN
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.")
     public String getParentASIN() {
@@ -108,7 +108,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return feeComponent
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponent getFeeComponent() {
         return feeComponent;
     }
@@ -127,7 +127,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return chargeComponent
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponent getChargeComponent() {
         return chargeComponent;
     }
@@ -146,7 +146,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }

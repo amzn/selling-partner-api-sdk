@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of fulfillment preview item information. */
-@Schema(description = "An array of fulfillment preview item information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An array of fulfillment preview item information.")
 public class GetFulfillmentPreviewItemList extends ArrayList<GetFulfillmentPreviewItem> {
 
     @Override

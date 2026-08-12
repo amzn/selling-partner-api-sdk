@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the submitAcknowledgment operation. */
-@Schema(description = "The request schema for the submitAcknowledgment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the submitAcknowledgment operation.")
 public class SubmitAcknowledgementRequest {
     @SerializedName("acknowledgements")
     private List<OrderAcknowledgement> acknowledgements = null;
@@ -42,7 +41,7 @@ public class SubmitAcknowledgementRequest {
      *
      * @return acknowledgements
      */
-    @Schema(description = "An array of order acknowledgements to be submitted.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of order acknowledgements to be submitted.")
     public List<OrderAcknowledgement> getAcknowledgements() {
         return acknowledgements;
     }

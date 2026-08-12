@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Identifier for an item in the invoice line item. */
-@Schema(description = "Identifier for an item in the invoice line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for an item in the invoice line item.")
 public class ItemIdentifier {
     /** The type of item identifier. */
     @JsonAdapter(ItemIdentifierNameEnum.Adapter.class)
@@ -95,7 +94,7 @@ public class ItemIdentifier {
      *
      * @return itemIdentifierName
      */
-    @Schema(required = true, description = "The type of item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of item identifier.")
     public ItemIdentifierNameEnum getItemIdentifierName() {
         return itemIdentifierName;
     }
@@ -114,7 +113,7 @@ public class ItemIdentifier {
      *
      * @return itemIdentifierValue
      */
-    @Schema(required = true, description = "The value of the item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The value of the item identifier.")
     public String getItemIdentifierValue() {
         return itemIdentifierValue;
     }

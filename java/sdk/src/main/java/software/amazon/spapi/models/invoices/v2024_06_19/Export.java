@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed information about the export. */
-@Schema(description = "Detailed information about the export.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the export.")
 public class Export {
     @SerializedName("errorMessage")
     private String errorMessage = null;
@@ -49,7 +49,8 @@ public class Export {
      *
      * @return errorMessage
      */
-    @Schema(description = "When the export generation fails, this attribute contains a description of the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When the export generation fails, this attribute contains a description of the error.")
     public String getErrorMessage() {
         return errorMessage;
     }
@@ -68,7 +69,7 @@ public class Export {
      *
      * @return exportId
      */
-    @Schema(description = "The export identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The export identifier.")
     public String getExportId() {
         return exportId;
     }
@@ -88,7 +89,7 @@ public class Export {
      *
      * @return generateExportFinishedAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the export generation finished. Vales are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getGenerateExportFinishedAt() {
@@ -110,7 +111,7 @@ public class Export {
      *
      * @return generateExportStartedAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getGenerateExportStartedAt() {
@@ -141,7 +142,7 @@ public class Export {
      *
      * @return invoicesDocumentIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier for the export documents. To get the information required to retrieve the export document's contents, pass each ID in the `getInvoicesDocument` operation.  This list is empty until the status is `DONE`.")
     public List<String> getInvoicesDocumentIds() {
@@ -162,7 +163,7 @@ public class Export {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ExportStatus getStatus() {
         return status;
     }

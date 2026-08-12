@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Import details for an import order. */
-@Schema(description = "Import details for an import order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Import details for an import order.")
 public class ImportDetails {
     /** If the recipient requests, contains the shipment method of payment. This is for import PO&#39;s only. */
     @JsonAdapter(MethodOfPaymentEnum.Adapter.class)
@@ -171,7 +170,7 @@ public class ImportDetails {
      *
      * @return methodOfPayment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "If the recipient requests, contains the shipment method of payment. This is for import PO's only.")
     public MethodOfPaymentEnum getMethodOfPayment() {
@@ -193,7 +192,7 @@ public class ImportDetails {
      *
      * @return internationalCommercialTerms
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices. This is for import purchase orders only. ")
     public InternationalCommercialTermsEnum getInternationalCommercialTerms() {
@@ -215,7 +214,7 @@ public class ImportDetails {
      *
      * @return portOfDelivery
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The port where goods on an import purchase order must be delivered by the vendor. This should only be specified when the internationalCommercialTerms is FOB.")
     public String getPortOfDelivery() {
@@ -241,7 +240,7 @@ public class ImportDetails {
      *
      * @return importContainers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if the shipment has multiple containers. HC signifies a high-capacity container. Free-text field, limited to 64 characters. The format will be a comma-delimited list containing values of the type: $NUMBER_OF_CONTAINERS_OF_THIS_TYPE-$CONTAINER_TYPE. The list of values for the container type is: 40'(40-foot container), 40'HC (40-foot high-capacity container), 45', 45'HC, 30', 30'HC, 20', 20'HC.")
     public String getImportContainers() {
@@ -262,7 +261,8 @@ public class ImportDetails {
      *
      * @return shippingInstructions
      */
-    @Schema(description = "Special instructions regarding the shipment. This field is for import purchase orders.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Special instructions regarding the shipment. This field is for import purchase orders.")
     public String getShippingInstructions() {
         return shippingInstructions;
     }

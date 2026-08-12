@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the createWarranty operation. */
-@Schema(description = "The request schema for the createWarranty operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the createWarranty operation.")
 public class CreateWarrantyRequest {
     @SerializedName("attachments")
     private List<Attachment> attachments = null;
@@ -49,7 +49,7 @@ public class CreateWarrantyRequest {
      *
      * @return attachments
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.")
     public List<Attachment> getAttachments() {
@@ -70,7 +70,8 @@ public class CreateWarrantyRequest {
      *
      * @return coverageStartDate
      */
-    @Schema(description = "The start date of the warranty coverage to include in the message to the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The start date of the warranty coverage to include in the message to the buyer.")
     public OffsetDateTime getCoverageStartDate() {
         return coverageStartDate;
     }
@@ -89,7 +90,8 @@ public class CreateWarrantyRequest {
      *
      * @return coverageEndDate
      */
-    @Schema(description = "The end date of the warranty coverage to include in the message to the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The end date of the warranty coverage to include in the message to the buyer.")
     public OffsetDateTime getCoverageEndDate() {
         return coverageEndDate;
     }

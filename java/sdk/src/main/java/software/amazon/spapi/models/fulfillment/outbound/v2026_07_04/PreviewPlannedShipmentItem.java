@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item information for a fulfillment preview. */
-@Schema(description = "Item information for a fulfillment preview.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a fulfillment preview.")
 public class PreviewPlannedShipmentItem {
     @SerializedName("productIdentifier")
     private ProductIdentifier productIdentifier = null;
@@ -35,7 +34,7 @@ public class PreviewPlannedShipmentItem {
      *
      * @return productIdentifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProductIdentifier getProductIdentifier() {
         return productIdentifier;
     }
@@ -54,7 +53,7 @@ public class PreviewPlannedShipmentItem {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getAmount() {
         return amount;
     }

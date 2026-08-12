@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Return authorization information for items accepted for return. */
-@Schema(description = "Return authorization information for items accepted for return.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Return authorization information for items accepted for return.")
 public class ReturnAuthorization {
     @SerializedName("returnAuthorizationId")
     private String returnAuthorizationId = null;
@@ -45,7 +45,7 @@ public class ReturnAuthorization {
      *
      * @return returnAuthorizationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An identifier for the return authorization. This identifier associates return items with the return authorization used to return them.")
@@ -67,7 +67,7 @@ public class ReturnAuthorization {
      *
      * @return fulfillmentCenterId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "An identifier for the Amazon fulfillment center to which the return items should be sent.")
     public String getFulfillmentCenterId() {
@@ -88,7 +88,7 @@ public class ReturnAuthorization {
      *
      * @return returnToAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getReturnToAddress() {
         return returnToAddress;
     }
@@ -107,7 +107,7 @@ public class ReturnAuthorization {
      *
      * @return amazonRmaId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The return merchandise authorization (RMA) that Amazon needs to process the return.")
     public String getAmazonRmaId() {
@@ -129,7 +129,7 @@ public class ReturnAuthorization {
      *
      * @return rmaPageURL
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A URL for a web page that contains the return authorization barcode and the mailing label. This does not include pre-paid shipping.")

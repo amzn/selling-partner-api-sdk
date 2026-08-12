@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of information about fee events for the Early Reviewer Program. */
-@Schema(description = "A list of information about fee events for the Early Reviewer Program.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of information about fee events for the Early Reviewer Program.")
 public class SellerReviewEnrollmentPaymentEventList extends ArrayList<SellerReviewEnrollmentPaymentEvent> {
 
     @Override

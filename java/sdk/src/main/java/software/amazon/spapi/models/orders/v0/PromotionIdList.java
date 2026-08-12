@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.orders.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of promotion identifiers provided by the seller when the promotions were created. */
-@Schema(description = "A list of promotion identifiers provided by the seller when the promotions were created.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of promotion identifiers provided by the seller when the promotions were created.")
 public class PromotionIdList extends ArrayList<String> {
 
     @Override

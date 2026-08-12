@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createUnexpectedProblem operation. */
-@Schema(description = "The response schema for the createUnexpectedProblem operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the createUnexpectedProblem operation.")
 public class CreateUnexpectedProblemResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class CreateUnexpectedProblemResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

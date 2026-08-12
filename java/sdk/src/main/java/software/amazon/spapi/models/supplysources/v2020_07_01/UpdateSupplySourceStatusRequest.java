@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A request to update the status of a supply source. */
-@Schema(description = "A request to update the status of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A request to update the status of a supply source.")
 public class UpdateSupplySourceStatusRequest {
     @SerializedName("status")
     private SupplySourceStatus status = null;
@@ -32,7 +31,7 @@ public class UpdateSupplySourceStatusRequest {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceStatus getStatus() {
         return status;
     }

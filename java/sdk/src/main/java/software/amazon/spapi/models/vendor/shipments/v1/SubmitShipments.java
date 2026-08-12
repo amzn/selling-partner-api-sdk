@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the SubmitShipments operation. */
-@Schema(description = "The request schema for the SubmitShipments operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the SubmitShipments operation.")
 public class SubmitShipments {
     @SerializedName("shipments")
     private List<Shipment> shipments = null;
@@ -42,7 +41,8 @@ public class SubmitShipments {
      *
      * @return shipments
      */
-    @Schema(description = "A list of one or more shipments with underlying details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of one or more shipments with underlying details.")
     public List<Shipment> getShipments() {
         return shipments;
     }

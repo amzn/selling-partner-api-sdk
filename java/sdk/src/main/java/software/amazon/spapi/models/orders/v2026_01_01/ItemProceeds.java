@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The money that the seller receives from the sale of this specific item. */
-@Schema(description = "The money that the seller receives from the sale of this specific item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The money that the seller receives from the sale of this specific item.")
 public class ItemProceeds {
     @SerializedName("proceedsTotal")
     private Money proceedsTotal = null;
@@ -37,7 +37,7 @@ public class ItemProceeds {
      *
      * @return proceedsTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getProceedsTotal() {
         return proceedsTotal;
     }
@@ -64,7 +64,7 @@ public class ItemProceeds {
      *
      * @return breakdowns
      */
-    @Schema(description = "The breakdown of proceeds.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The breakdown of proceeds.")
     public List<ItemProceedsBreakdown> getBreakdowns() {
         return breakdowns;
     }

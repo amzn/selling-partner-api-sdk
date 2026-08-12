@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The images for an item in the Amazon catalog. */
-@Schema(description = "The images for an item in the Amazon catalog.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The images for an item in the Amazon catalog.")
 public class ItemImages extends ArrayList<ItemImagesByMarketplace> {
 
     @Override

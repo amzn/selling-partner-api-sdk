@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of &#x60;CapacityReservationBillingEvent&#x60; events. */
-@Schema(description = "A list of `CapacityReservationBillingEvent` events.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of `CapacityReservationBillingEvent` events.")
 public class CapacityReservationBillingEventList extends ArrayList<CapacityReservationBillingEvent> {
 
     @Override

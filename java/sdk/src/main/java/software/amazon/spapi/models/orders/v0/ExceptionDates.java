@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Dates when the business is closed or open with a different time window. */
-@Schema(description = "Dates when the business is closed or open with a different time window.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Dates when the business is closed or open with a different time window.")
 public class ExceptionDates {
     @SerializedName("ExceptionDate")
     private String exceptionDate = null;
@@ -41,7 +41,7 @@ public class ExceptionDates {
      *
      * @return exceptionDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date when the business is closed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date format.")
     public String getExceptionDate() {
@@ -62,7 +62,8 @@ public class ExceptionDates {
      *
      * @return isOpen
      */
-    @Schema(description = "Boolean indicating if the business is closed or open on that date.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Boolean indicating if the business is closed or open on that date.")
     public Boolean getIsOpen() {
         return isOpen;
     }
@@ -89,7 +90,7 @@ public class ExceptionDates {
      *
      * @return openIntervals
      */
-    @Schema(description = "Time window during the day when the business is open.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Time window during the day when the business is open.")
     public List<OpenInterval> getOpenIntervals() {
         return openIntervals;
     }

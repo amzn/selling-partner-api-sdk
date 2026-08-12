@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Package information to update for a specific package in a fulfillment order. */
-@Schema(description = "Package information to update for a specific package in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Package information to update for a specific package in a fulfillment order.")
 public class UpdatePackageRequest {
     @SerializedName("status")
     private String status = null;
@@ -40,7 +41,7 @@ public class UpdatePackageRequest {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The current status of a package. Possible values: `PROCESSING`, `IN_TRANSIT`, `DELAYED`, `OUT_FOR_DELIVERY`, `DELIVERED`, `UNDELIVERABLE`, `EXPIRED`.")
@@ -62,7 +63,7 @@ public class UpdatePackageRequest {
      *
      * @return deliveryTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getDeliveryTime() {
@@ -83,7 +84,7 @@ public class UpdatePackageRequest {
      *
      * @return tracking
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Tracking getTracking() {
         return tracking;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Tax collection information for an order item. */
-@Schema(description = "Tax collection information for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax collection information for an order item.")
 public class ItemTaxCollection {
     @SerializedName("model")
     private String model = null;
@@ -36,7 +35,7 @@ public class ItemTaxCollection {
      *
      * @return model
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The tax collection model applied to the item.  **Possible values**: - `MARKETPLACE_FACILITATOR` (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller)")
     public String getModel() {
@@ -57,7 +56,8 @@ public class ItemTaxCollection {
      *
      * @return responsibleParty
      */
-    @Schema(description = "The party responsible for withholding the taxes and remitting them to the taxing authority.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The party responsible for withholding the taxes and remitting them to the taxing authority.")
     public String getResponsibleParty() {
         return responsibleParty;
     }

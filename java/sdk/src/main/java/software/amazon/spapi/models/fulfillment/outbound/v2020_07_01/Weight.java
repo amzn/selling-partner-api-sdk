@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The weight. */
-@Schema(description = "The weight.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight.")
 public class Weight {
     /** The unit of weight. */
     @JsonAdapter(UnitEnum.Adapter.class)
@@ -90,7 +89,7 @@ public class Weight {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of weight.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of weight.")
     public UnitEnum getUnit() {
         return unit;
     }
@@ -109,7 +108,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(required = true, description = "The weight value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The weight value.")
     public String getValue() {
         return value;
     }

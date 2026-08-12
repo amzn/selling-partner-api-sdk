@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The input required for building &#x60;LowestPricedOffers&#x60; data in the response. */
-@Schema(description = "The input required for building `LowestPricedOffers` data in the response.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The input required for building `LowestPricedOffers` data in the response.")
 public class LowestPricedOffersInput {
     @SerializedName("itemCondition")
     private Condition itemCondition = null;
@@ -87,7 +87,7 @@ public class LowestPricedOffersInput {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Condition getItemCondition() {
         return itemCondition;
     }
@@ -107,7 +107,7 @@ public class LowestPricedOffersInput {
      *
      * @return offerType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.")

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of orders. */
-@Schema(description = "A list of orders.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of orders.")
 public class SearchOrdersResponse {
     @SerializedName("orders")
     private List<Order> orders = null;
@@ -51,7 +51,9 @@ public class SearchOrdersResponse {
      *
      * @return orders
      */
-    @Schema(required = true, description = "An array containing all orders that match the search criteria.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An array containing all orders that match the search criteria.")
     public List<Order> getOrders() {
         return orders;
     }
@@ -70,7 +72,7 @@ public class SearchOrdersResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -90,7 +92,7 @@ public class SearchOrdersResponse {
      *
      * @return lastUpdatedBefore
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getLastUpdatedBefore() {
@@ -112,7 +114,7 @@ public class SearchOrdersResponse {
      *
      * @return createdBefore
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getCreatedBefore() {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the &#x60;sendTestNotification&#x60; operation. */
-@Schema(description = "The request schema for the `sendTestNotification` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the `sendTestNotification` operation.")
 public class SendTestNotificationRequest {
     @SerializedName("destinationId")
     private String destinationId = null;
@@ -35,7 +35,8 @@ public class SendTestNotificationRequest {
      *
      * @return destinationId
      */
-    @Schema(description = "The identifier for the destination where notifications will be delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the destination where notifications will be delivered.")
     public String getDestinationId() {
         return destinationId;
     }
@@ -54,7 +55,7 @@ public class SendTestNotificationRequest {
      *
      * @return testNotification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TestNotification getTestNotification() {
         return testNotification;
     }

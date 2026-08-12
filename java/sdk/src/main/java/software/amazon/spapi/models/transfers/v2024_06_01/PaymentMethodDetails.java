@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The details of a payment method. */
-@Schema(description = "The details of a payment method.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a payment method.")
 public class PaymentMethodDetails {
     @SerializedName("accountHolderName")
     private String accountHolderName = null;
@@ -50,7 +49,8 @@ public class PaymentMethodDetails {
      *
      * @return accountHolderName
      */
-    @Schema(description = "The name of the account holder who is registered for the payment method.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the account holder who is registered for the payment method.")
     public String getAccountHolderName() {
         return accountHolderName;
     }
@@ -69,7 +69,7 @@ public class PaymentMethodDetails {
      *
      * @return paymentMethodId
      */
-    @Schema(description = "The payment method identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment method identifier.")
     public String getPaymentMethodId() {
         return paymentMethodId;
     }
@@ -88,7 +88,7 @@ public class PaymentMethodDetails {
      *
      * @return tail
      */
-    @Schema(description = "The last three or four digits of the payment method.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The last three or four digits of the payment method.")
     public String getTail() {
         return tail;
     }
@@ -107,7 +107,7 @@ public class PaymentMethodDetails {
      *
      * @return expiryDate
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ExpiryDate getExpiryDate() {
         return expiryDate;
     }
@@ -128,7 +128,7 @@ public class PaymentMethodDetails {
      *
      * @return countryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The two-letter country code in ISO 3166-1 alpha-2 format. For payment methods in the `card` category, the code is for the country where the card was issued. For payment methods in the `bank account` category, the code is for the country where the account is located.")
     public String getCountryCode() {
@@ -149,7 +149,7 @@ public class PaymentMethodDetails {
      *
      * @return paymentMethodType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodType getPaymentMethodType() {
         return paymentMethodType;
     }
@@ -168,7 +168,7 @@ public class PaymentMethodDetails {
      *
      * @return assignmentType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AssignmentType getAssignmentType() {
         return assignmentType;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Buyer segment or program this offer is applicable to. */
-@Schema(description = "Buyer segment or program this offer is applicable to.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Buyer segment or program this offer is applicable to.")
 public class Audience {
     @SerializedName("value")
     private String value = null;
@@ -36,7 +35,7 @@ public class Audience {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.")
     public String getValue() {
@@ -57,7 +56,7 @@ public class Audience {
      *
      * @return displayName
      */
-    @Schema(description = "Localized display name for the audience.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Localized display name for the audience.")
     public String getDisplayName() {
         return displayName;
     }

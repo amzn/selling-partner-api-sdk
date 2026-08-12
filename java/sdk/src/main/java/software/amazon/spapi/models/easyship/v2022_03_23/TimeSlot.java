@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A time window to hand over an Easy Ship package to Amazon Logistics. */
-@Schema(description = "A time window to hand over an Easy Ship package to Amazon Logistics.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A time window to hand over an Easy Ship package to Amazon Logistics.")
 public class TimeSlot {
     @SerializedName("slotId")
     private String slotId = null;
@@ -41,7 +42,7 @@ public class TimeSlot {
      *
      * @return slotId
      */
-    @Schema(required = true, description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
     public String getSlotId() {
         return slotId;
     }
@@ -60,7 +61,7 @@ public class TimeSlot {
      *
      * @return startTime
      */
-    @Schema(description = "A datetime value in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -79,7 +80,7 @@ public class TimeSlot {
      *
      * @return endTime
      */
-    @Schema(description = "A datetime value in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -98,7 +99,7 @@ public class TimeSlot {
      *
      * @return handoverMethod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HandoverMethod getHandoverMethod() {
         return handoverMethod;
     }

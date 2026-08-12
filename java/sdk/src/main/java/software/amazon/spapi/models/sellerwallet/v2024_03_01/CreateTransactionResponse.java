@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The transaction response and historical details related to it. */
-@Schema(description = "The transaction response and historical details related to it.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The transaction response and historical details related to it.")
 public class CreateTransactionResponse {
     @SerializedName("transaction")
     private Transaction transaction = null;
@@ -35,7 +35,7 @@ public class CreateTransactionResponse {
      *
      * @return transaction
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Transaction getTransaction() {
         return transaction;
     }
@@ -54,7 +54,7 @@ public class CreateTransactionResponse {
      *
      * @return callBackURL
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The callback URL for the transaction which the user have to click to approve/consent the transaction")

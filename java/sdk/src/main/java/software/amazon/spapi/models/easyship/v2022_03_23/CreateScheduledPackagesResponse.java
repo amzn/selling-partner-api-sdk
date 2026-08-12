@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +22,7 @@ import java.util.Objects;
  * scheduled packtages, an optional list of orders we couldn&#39;t schedule with the reason, and a pre-signed URL for a
  * ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the scheduled packtages, an optional list of orders we couldn't schedule with the reason, and a pre-signed URL for a ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.")
 public class CreateScheduledPackagesResponse {
@@ -54,7 +53,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return scheduledPackages
      */
-    @Schema(description = "A list of packages. Refer to the `Package` object.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of packages. Refer to the `Package` object.")
     public List<ModelPackage> getScheduledPackages() {
         return scheduledPackages;
     }
@@ -82,7 +81,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return rejectedOrders
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.")
     public List<RejectedOrder> getRejectedOrders() {
@@ -104,7 +103,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return printableDocumentsUrl
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.")
     public String getPrintableDocumentsUrl() {

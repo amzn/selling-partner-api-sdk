@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Payment on delivery settings. Currently only available in India. */
-@Schema(description = "Payment on delivery settings. Currently only available in India.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Payment on delivery settings. Currently only available in India.")
 public class OrderLineItemPaymentOnDelivery {
     @SerializedName("perUnitServicePrice")
     private Money perUnitServicePrice = null;
@@ -32,7 +32,7 @@ public class OrderLineItemPaymentOnDelivery {
      *
      * @return perUnitServicePrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitServicePrice() {
         return perUnitServicePrice;
     }

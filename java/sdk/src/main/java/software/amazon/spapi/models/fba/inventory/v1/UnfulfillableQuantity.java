@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The quantity of unfulfillable inventory. */
-@Schema(description = "The quantity of unfulfillable inventory.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of unfulfillable inventory.")
 public class UnfulfillableQuantity {
     @SerializedName("totalUnfulfillableQuantity")
     private Integer totalUnfulfillableQuantity = null;
@@ -50,7 +49,8 @@ public class UnfulfillableQuantity {
      *
      * @return totalUnfulfillableQuantity
      */
-    @Schema(description = "The total number of units in Amazon's fulfillment network in unsellable condition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The total number of units in Amazon's fulfillment network in unsellable condition.")
     public Integer getTotalUnfulfillableQuantity() {
         return totalUnfulfillableQuantity;
     }
@@ -69,7 +69,7 @@ public class UnfulfillableQuantity {
      *
      * @return customerDamagedQuantity
      */
-    @Schema(description = "The number of units in customer damaged disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in customer damaged disposition.")
     public Integer getCustomerDamagedQuantity() {
         return customerDamagedQuantity;
     }
@@ -88,7 +88,7 @@ public class UnfulfillableQuantity {
      *
      * @return warehouseDamagedQuantity
      */
-    @Schema(description = "The number of units in warehouse damaged disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in warehouse damaged disposition.")
     public Integer getWarehouseDamagedQuantity() {
         return warehouseDamagedQuantity;
     }
@@ -107,7 +107,7 @@ public class UnfulfillableQuantity {
      *
      * @return distributorDamagedQuantity
      */
-    @Schema(description = "The number of units in distributor damaged disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in distributor damaged disposition.")
     public Integer getDistributorDamagedQuantity() {
         return distributorDamagedQuantity;
     }
@@ -126,7 +126,7 @@ public class UnfulfillableQuantity {
      *
      * @return carrierDamagedQuantity
      */
-    @Schema(description = "The number of units in carrier damaged disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in carrier damaged disposition.")
     public Integer getCarrierDamagedQuantity() {
         return carrierDamagedQuantity;
     }
@@ -145,7 +145,7 @@ public class UnfulfillableQuantity {
      *
      * @return defectiveQuantity
      */
-    @Schema(description = "The number of units in defective disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in defective disposition.")
     public Integer getDefectiveQuantity() {
         return defectiveQuantity;
     }
@@ -164,7 +164,7 @@ public class UnfulfillableQuantity {
      *
      * @return expiredQuantity
      */
-    @Schema(description = "The number of units in expired disposition.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in expired disposition.")
     public Integer getExpiredQuantity() {
         return expiredQuantity;
     }

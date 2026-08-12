@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The order&#39;s regulated information along with its verification status. */
-@Schema(description = "The order's regulated information along with its verification status.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The order's regulated information along with its verification status.")
 public class OrderRegulatedInfo {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -41,7 +41,9 @@ public class OrderRegulatedInfo {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -60,7 +62,7 @@ public class OrderRegulatedInfo {
      *
      * @return regulatedInformation
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RegulatedInformation getRegulatedInformation() {
         return regulatedInformation;
     }
@@ -79,7 +81,7 @@ public class OrderRegulatedInfo {
      *
      * @return requiresDosageLabel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "When true, the order requires attaching a dosage information label when shipped.")
     public Boolean getRequiresDosageLabel() {
@@ -101,7 +103,7 @@ public class OrderRegulatedInfo {
      *
      * @return regulatedOrderVerificationStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RegulatedOrderVerificationStatus getRegulatedOrderVerificationStatus() {
         return regulatedOrderVerificationStatus;
     }

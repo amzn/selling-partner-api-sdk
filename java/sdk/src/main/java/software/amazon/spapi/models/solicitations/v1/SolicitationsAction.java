@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.solicitations.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A simple object containing the name of the template. */
-@Schema(description = "A simple object containing the name of the template.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A simple object containing the name of the template.")
 public class SolicitationsAction {
     @SerializedName("name")
     private String name = null;
@@ -32,7 +31,7 @@ public class SolicitationsAction {
      *
      * @return name
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public String getName() {
         return name;
     }

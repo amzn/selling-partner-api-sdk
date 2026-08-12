@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The length. */
-@Schema(description = "The length.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The length.")
 public class Length {
     @SerializedName("value")
     private BigDecimal value = null;
@@ -35,7 +35,7 @@ public class Length {
      *
      * @return value
      */
-    @Schema(description = "The value in units.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value in units.")
     public BigDecimal getValue() {
         return value;
     }
@@ -54,7 +54,7 @@ public class Length {
      *
      * @return unit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnitOfLength getUnit() {
         return unit;
     }

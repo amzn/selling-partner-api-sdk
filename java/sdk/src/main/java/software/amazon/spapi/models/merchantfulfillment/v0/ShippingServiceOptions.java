@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Extra services provided by a carrier. */
-@Schema(description = "Extra services provided by a carrier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Extra services provided by a carrier.")
 public class ShippingServiceOptions {
     @SerializedName("DeliveryExperience")
     private DeliveryExperienceType deliveryExperience = null;
@@ -44,7 +43,7 @@ public class ShippingServiceOptions {
      *
      * @return deliveryExperience
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DeliveryExperienceType getDeliveryExperience() {
         return deliveryExperience;
     }
@@ -63,7 +62,7 @@ public class ShippingServiceOptions {
      *
      * @return declaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CurrencyAmount getDeclaredValue() {
         return declaredValue;
     }
@@ -83,7 +82,7 @@ public class ShippingServiceOptions {
      *
      * @return carrierWillPickUp
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).")
@@ -105,7 +104,7 @@ public class ShippingServiceOptions {
      *
      * @return carrierWillPickUpOption
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierWillPickUpOption getCarrierWillPickUpOption() {
         return carrierWillPickUpOption;
     }
@@ -124,7 +123,7 @@ public class ShippingServiceOptions {
      *
      * @return labelFormat
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelFormat getLabelFormat() {
         return labelFormat;
     }

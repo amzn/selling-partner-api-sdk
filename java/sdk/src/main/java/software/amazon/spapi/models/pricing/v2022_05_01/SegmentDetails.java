@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The details about the segment. The FeaturedOfferExpectedPrice API uses only the sampleLocation portion as input.")
 public class SegmentDetails {
@@ -39,7 +39,7 @@ public class SegmentDetails {
      *
      * @return glanceViewWeightPercentage
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The glance view weighted percentage for this segment, which is the glance views for this segment as a percentage of total glance views across all segments for the ASIN. A higher percentage indicates that more Amazon customers receive this offer as the Featured Offer.")
     public BigDecimal getGlanceViewWeightPercentage() {
@@ -60,7 +60,7 @@ public class SegmentDetails {
      *
      * @return sampleLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SampleLocation getSampleLocation() {
         return sampleLocation;
     }

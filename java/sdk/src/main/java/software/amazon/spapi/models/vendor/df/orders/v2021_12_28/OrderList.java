@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of purchase orders. */
-@Schema(description = "A list of purchase orders.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of purchase orders.")
 public class OrderList {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class OrderList {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +63,7 @@ public class OrderList {
      *
      * @return orders
      */
-    @Schema(description = "Represents a purchase order within the OrderList.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Represents a purchase order within the OrderList.")
     public List<Order> getOrders() {
         return orders;
     }

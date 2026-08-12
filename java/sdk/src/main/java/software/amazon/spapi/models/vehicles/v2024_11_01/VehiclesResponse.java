@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Get paginated list of vehicle from Amazon&#39;s catalog */
-@Schema(description = "Get paginated list of vehicle from Amazon's catalog")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Get paginated list of vehicle from Amazon's catalog")
 public class VehiclesResponse {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class VehiclesResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +63,9 @@ public class VehiclesResponse {
      *
      * @return vehicles
      */
-    @Schema(required = true, description = "List of vehicles from Amazon's catalog.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "List of vehicles from Amazon's catalog.")
     public List<Vehicle> getVehicles() {
         return vehicles;
     }

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer
  * earns by selling items.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.")
 public class BankAccount {
@@ -71,7 +70,7 @@ public class BankAccount {
      *
      * @return accountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.")
     public String getAccountId() {
@@ -92,7 +91,7 @@ public class BankAccount {
      *
      * @return accountHolderName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.")
     public String getAccountHolderName() {
@@ -113,7 +112,7 @@ public class BankAccount {
      *
      * @return bankAccountNumberFormat
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BankAccountNumberFormat getBankAccountNumberFormat() {
         return bankAccountNumberFormat;
     }
@@ -132,7 +131,8 @@ public class BankAccount {
      *
      * @return bankName
      */
-    @Schema(description = "The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.")
     public String getBankName() {
         return bankName;
     }
@@ -151,7 +151,7 @@ public class BankAccount {
      *
      * @return bankAccountOwnershipType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BankAccountOwnershipType getBankAccountOwnershipType() {
         return bankAccountOwnershipType;
     }
@@ -171,7 +171,7 @@ public class BankAccount {
      *
      * @return routingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.")
     public String getRoutingNumber() {
@@ -192,7 +192,7 @@ public class BankAccount {
      *
      * @return bankNumberFormat
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BankNumberFormat getBankNumberFormat() {
         return bankNumberFormat;
     }
@@ -211,7 +211,9 @@ public class BankAccount {
      *
      * @return accountCountryCode
      */
-    @Schema(required = true, description = "The two-digit country code in ISO 3166 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The two-digit country code in ISO 3166 format.")
     public String getAccountCountryCode() {
         return accountCountryCode;
     }
@@ -230,7 +232,9 @@ public class BankAccount {
      *
      * @return accountCurrency
      */
-    @Schema(required = true, description = "Bank account currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Bank account currency code in ISO 4217 format.")
     public String getAccountCurrency() {
         return accountCurrency;
     }
@@ -250,7 +254,7 @@ public class BankAccount {
      *
      * @return bankAccountNumberTail
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.")
@@ -272,7 +276,7 @@ public class BankAccount {
      *
      * @return bankAccountHolderStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BankAccountHolderStatus getBankAccountHolderStatus() {
         return bankAccountHolderStatus;
     }

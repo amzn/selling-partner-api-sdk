@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Invoice number and date. */
-@Schema(description = "Invoice number and date.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Invoice number and date.")
 public class InvoiceData {
     @SerializedName("invoiceNumber")
     private String invoiceNumber = null;
@@ -35,7 +35,7 @@ public class InvoiceData {
      *
      * @return invoiceNumber
      */
-    @Schema(required = true, description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -54,7 +54,7 @@ public class InvoiceData {
      *
      * @return invoiceDate
      */
-    @Schema(description = "A datetime value in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
     public OffsetDateTime getInvoiceDate() {
         return invoiceDate;
     }

@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * List of relevant Access points requested by shipper. These access points are sorted by proximity to postal code, and
  * are limited to 40. We have internally defined a radius value to render relevant results.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "List of relevant Access points requested by shipper. These access points are sorted by proximity to postal code, and are limited to 40. We have internally defined a radius value to render relevant results.")
 public class AccessPointList extends ArrayList<AccessPoint> {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Data for creating a shipping label and dimensions for printing the label. */
-@Schema(description = "Data for creating a shipping label and dimensions for printing the label.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Data for creating a shipping label and dimensions for printing the label.")
 public class Label {
     @SerializedName("CustomTextForLabel")
     private String customTextForLabel = null;
@@ -45,7 +45,7 @@ public class Label {
      *
      * @return customTextForLabel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.")
     public String getCustomTextForLabel() {
@@ -66,7 +66,7 @@ public class Label {
      *
      * @return dimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelDimensions getDimensions() {
         return dimensions;
     }
@@ -85,7 +85,7 @@ public class Label {
      *
      * @return fileContents
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FileContents getFileContents() {
         return fileContents;
     }
@@ -104,7 +104,7 @@ public class Label {
      *
      * @return labelFormat
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelFormat getLabelFormat() {
         return labelFormat;
     }
@@ -123,7 +123,7 @@ public class Label {
      *
      * @return standardIdForLabel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardIdForLabel getStandardIdForLabel() {
         return standardIdForLabel;
     }

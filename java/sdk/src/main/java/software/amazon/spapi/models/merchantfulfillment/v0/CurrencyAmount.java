@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Currency type and amount. */
-@Schema(description = "Currency type and amount.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Currency type and amount.")
 public class CurrencyAmount {
     @SerializedName("CurrencyCode")
     private String currencyCode = null;
@@ -35,7 +34,9 @@ public class CurrencyAmount {
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "Three-digit currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Three-digit currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -54,7 +55,7 @@ public class CurrencyAmount {
      *
      * @return amount
      */
-    @Schema(required = true, description = "The currency amount.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The currency amount.")
     public Double getAmount() {
         return amount;
     }

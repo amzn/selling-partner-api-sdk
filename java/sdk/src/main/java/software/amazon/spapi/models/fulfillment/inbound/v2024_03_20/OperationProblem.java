@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A problem with additional properties persisted to an operation. */
-@Schema(description = "A problem with additional properties persisted to an operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A problem with additional properties persisted to an operation.")
 public class OperationProblem {
     @SerializedName("code")
     private String code = null;
@@ -41,7 +41,9 @@ public class OperationProblem {
      *
      * @return code
      */
-    @Schema(required = true, description = "An error code that identifies the type of error that occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An error code that identifies the type of error that occurred.")
     public String getCode() {
         return code;
     }
@@ -60,7 +62,8 @@ public class OperationProblem {
      *
      * @return details
      */
-    @Schema(description = "Additional details that can help the caller understand or fix the issue.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Additional details that can help the caller understand or fix the issue.")
     public String getDetails() {
         return details;
     }
@@ -79,7 +82,9 @@ public class OperationProblem {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message that describes the error condition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A message that describes the error condition.")
     public String getMessage() {
         return message;
     }
@@ -98,7 +103,9 @@ public class OperationProblem {
      *
      * @return severity
      */
-    @Schema(required = true, description = "The severity of the problem. Possible values: `WARNING`, `ERROR`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The severity of the problem. Possible values: `WARNING`, `ERROR`.")
     public String getSeverity() {
         return severity;
     }

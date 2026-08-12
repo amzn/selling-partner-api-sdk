@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;competitiveSummaryBatch&#x60; operation. */
-@Schema(description = "The response schema for the `competitiveSummaryBatch` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `competitiveSummaryBatch` operation.")
 public class CompetitiveSummaryBatchResponse {
     @SerializedName("responses")
     private CompetitiveSummaryResponseList responses = null;
@@ -32,7 +32,7 @@ public class CompetitiveSummaryBatchResponse {
      *
      * @return responses
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CompetitiveSummaryResponseList getResponses() {
         return responses;
     }

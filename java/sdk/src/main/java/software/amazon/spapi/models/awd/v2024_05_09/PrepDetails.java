@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep
  * instructions are generated based on the specified category.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep instructions are generated based on the specified category.")
 public class PrepDetails {
@@ -48,7 +47,7 @@ public class PrepDetails {
      *
      * @return labelOwner
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelOwner getLabelOwner() {
         return labelOwner;
     }
@@ -67,7 +66,7 @@ public class PrepDetails {
      *
      * @return prepCategory
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepCategory getPrepCategory() {
         return prepCategory;
     }
@@ -96,7 +95,7 @@ public class PrepDetails {
      *
      * @return prepInstructions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.")
     public List<PrepInstruction> getPrepInstructions() {
@@ -117,7 +116,7 @@ public class PrepDetails {
      *
      * @return prepOwner
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepOwner getPrepOwner() {
         return prepOwner;
     }

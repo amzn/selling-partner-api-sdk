@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Detailed information about a specific promotional offer applied to an order item. */
-@Schema(description = "Detailed information about a specific promotional offer applied to an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Detailed information about a specific promotional offer applied to an order item.")
 public class ItemPromotionBreakdown {
     @SerializedName("promotionId")
     private String promotionId = null;
@@ -32,7 +32,8 @@ public class ItemPromotionBreakdown {
      *
      * @return promotionId
      */
-    @Schema(description = "Unique identifier for the promotion applied to this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Unique identifier for the promotion applied to this item.")
     public String getPromotionId() {
         return promotionId;
     }

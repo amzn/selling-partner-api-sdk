@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The shipping address for the order. */
-@Schema(description = "The shipping address for the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The shipping address for the order.")
 public class OrderAddress {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -41,7 +40,9 @@ public class OrderAddress {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -60,7 +61,7 @@ public class OrderAddress {
      *
      * @return buyerCompanyName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.")
     public String getBuyerCompanyName() {
@@ -81,7 +82,7 @@ public class OrderAddress {
      *
      * @return shippingAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShippingAddress() {
         return shippingAddress;
     }
@@ -100,7 +101,7 @@ public class OrderAddress {
      *
      * @return deliveryPreferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryPreferences getDeliveryPreferences() {
         return deliveryPreferences;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the &#x60;listTransactions&#x60; operation. */
-@Schema(description = "The payload for the `listTransactions` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `listTransactions` operation.")
 public class TransactionsPayload {
     @SerializedName("nextToken")
     private String nextToken = null;
@@ -38,7 +37,7 @@ public class TransactionsPayload {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {
@@ -59,7 +58,7 @@ public class TransactionsPayload {
      *
      * @return transactions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Transactions getTransactions() {
         return transactions;
     }

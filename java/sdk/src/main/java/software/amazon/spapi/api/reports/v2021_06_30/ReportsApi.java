@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportResponse;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportScheduleResponse;
@@ -99,8 +98,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelReportCall(
-            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelReportCall(String reportId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -141,8 +139,7 @@ public class ReportsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call cancelReportValidateBeforeCall(
-            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelReportValidateBeforeCall(String reportId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'reportId' is set
@@ -288,10 +285,10 @@ public class ReportsApi {
     public okhttp3.Call cancelReportAsync(String reportId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelReportValidateBeforeCall(reportId, progressRequestListener);
@@ -317,8 +314,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelReportScheduleCall(
-            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelReportScheduleCall(String reportScheduleId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -362,8 +358,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call cancelReportScheduleValidateBeforeCall(
-            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String reportScheduleId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'reportScheduleId' is set
         if (reportScheduleId == null) {
@@ -500,10 +495,10 @@ public class ReportsApi {
             String reportScheduleId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
@@ -528,8 +523,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createReportCall(
-            CreateReportSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createReportCall(CreateReportSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -568,7 +562,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call createReportValidateBeforeCall(
-            CreateReportSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateReportSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -705,10 +699,10 @@ public class ReportsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createReportValidateBeforeCall(body, progressRequestListener);
@@ -735,8 +729,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createReportScheduleCall(
-            CreateReportScheduleSpecification body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateReportScheduleSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -775,8 +768,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call createReportScheduleValidateBeforeCall(
-            CreateReportScheduleSpecification body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateReportScheduleSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -922,10 +914,10 @@ public class ReportsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createReportScheduleValidateBeforeCall(body, progressRequestListener);
@@ -952,8 +944,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getReportCall(
-            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReportCall(String reportId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -994,8 +985,7 @@ public class ReportsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getReportValidateBeforeCall(
-            String reportId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReportValidateBeforeCall(String reportId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'reportId' is set
@@ -1138,10 +1128,10 @@ public class ReportsApi {
     public okhttp3.Call getReportAsync(String reportId, final ApiCallback<Report> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReportValidateBeforeCall(reportId, progressRequestListener);
@@ -1171,9 +1161,7 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getReportDocumentCall(
-            String reportDocumentId,
-            Boolean enableContentEncodingUrlHeader,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1220,9 +1208,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call getReportDocumentValidateBeforeCall(
-            String reportDocumentId,
-            Boolean enableContentEncodingUrlHeader,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'reportDocumentId' is set
@@ -1390,10 +1376,10 @@ public class ReportsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReportDocumentValidateBeforeCall(
@@ -1421,8 +1407,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getReportScheduleCall(
-            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReportScheduleCall(String reportScheduleId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1466,8 +1451,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call getReportScheduleValidateBeforeCall(
-            String reportScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String reportScheduleId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'reportScheduleId' is set
         if (reportScheduleId == null) {
@@ -1613,10 +1597,10 @@ public class ReportsApi {
             String reportScheduleId, final ApiCallback<ReportSchedule> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReportScheduleValidateBeforeCall(reportScheduleId, progressRequestListener);
@@ -1643,8 +1627,7 @@ public class ReportsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getReportSchedulesCall(
-            List<String> reportTypes, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReportSchedulesCall(List<String> reportTypes, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1686,8 +1669,7 @@ public class ReportsApi {
     }
 
     private okhttp3.Call getReportSchedulesValidateBeforeCall(
-            List<String> reportTypes, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            List<String> reportTypes, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'reportTypes' is set
         if (reportTypes == null) {
@@ -1834,10 +1816,10 @@ public class ReportsApi {
             List<String> reportTypes, final ApiCallback<ReportScheduleList> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReportSchedulesValidateBeforeCall(reportTypes, progressRequestListener);
@@ -1888,7 +1870,7 @@ public class ReportsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1946,7 +1928,7 @@ public class ReportsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getReportsCall(
@@ -2258,10 +2240,10 @@ public class ReportsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReportsValidateBeforeCall(

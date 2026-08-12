@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The A+ Content document. This is the enhanced content that is published to product detail pages. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The A+ Content document. This is the enhanced content that is published to product detail pages.")
 public class ContentDocument {
@@ -46,7 +45,7 @@ public class ContentDocument {
      *
      * @return name
      */
-    @Schema(required = true, description = "The A+ Content document name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document name.")
     public String getName() {
         return name;
     }
@@ -65,7 +64,7 @@ public class ContentDocument {
      *
      * @return contentType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentType getContentType() {
         return contentType;
     }
@@ -85,7 +84,7 @@ public class ContentDocument {
      *
      * @return contentSubType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.")
     public String getContentSubType() {
@@ -108,7 +107,7 @@ public class ContentDocument {
      *
      * @return locale
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$")
@@ -130,7 +129,7 @@ public class ContentDocument {
      *
      * @return contentModuleList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentModuleList getContentModuleList() {
         return contentModuleList;
     }

@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Proof of Appointment (POA) details. */
-@Schema(description = "Proof of Appointment (POA) details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Proof of Appointment (POA) details.")
 public class Poa {
     @SerializedName("appointmentTime")
     private AppointmentTime appointmentTime = null;
@@ -101,7 +101,7 @@ public class Poa {
      *
      * @return appointmentTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AppointmentTime getAppointmentTime() {
         return appointmentTime;
     }
@@ -128,7 +128,7 @@ public class Poa {
      *
      * @return technicians
      */
-    @Schema(description = "A list of technicians.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of technicians.")
     public List<Technician> getTechnicians() {
         return technicians;
     }
@@ -147,7 +147,7 @@ public class Poa {
      *
      * @return uploadingTechnician
      */
-    @Schema(description = "The identifier of the technician who uploaded the POA.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the technician who uploaded the POA.")
     public String getUploadingTechnician() {
         return uploadingTechnician;
     }
@@ -166,7 +166,8 @@ public class Poa {
      *
      * @return uploadTime
      */
-    @Schema(description = "The date and time when the POA was uploaded in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time when the POA was uploaded in ISO 8601 format.")
     public OffsetDateTime getUploadTime() {
         return uploadTime;
     }
@@ -185,7 +186,7 @@ public class Poa {
      *
      * @return poaType
      */
-    @Schema(description = "The type of POA uploaded.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of POA uploaded.")
     public PoaTypeEnum getPoaType() {
         return poaType;
     }

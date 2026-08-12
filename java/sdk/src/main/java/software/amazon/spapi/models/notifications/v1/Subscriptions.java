@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of subscriptions. */
-@Schema(description = "A list of subscriptions.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of subscriptions.")
 public class Subscriptions extends ArrayList<Subscription> {
 
     @Override

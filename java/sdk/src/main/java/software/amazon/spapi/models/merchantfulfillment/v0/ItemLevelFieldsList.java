@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of item level fields. */
-@Schema(description = "A list of item level fields.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of item level fields.")
 public class ItemLevelFieldsList extends ArrayList<ItemLevelFields> {
 
     @Override

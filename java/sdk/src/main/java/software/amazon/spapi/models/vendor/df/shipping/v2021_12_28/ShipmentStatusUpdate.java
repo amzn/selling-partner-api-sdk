@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents an update to the status of a shipment. */
-@Schema(description = "Represents an update to the status of a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an update to the status of a shipment.")
 public class ShipmentStatusUpdate {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -41,7 +40,7 @@ public class ShipmentStatusUpdate {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Purchase order number of the shipment for which to update the shipment status.")
     public String getPurchaseOrderNumber() {
@@ -62,7 +61,7 @@ public class ShipmentStatusUpdate {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -81,7 +80,7 @@ public class ShipmentStatusUpdate {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -100,7 +99,7 @@ public class ShipmentStatusUpdate {
      *
      * @return statusUpdateDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public StatusUpdateDetails getStatusUpdateDetails() {
         return statusUpdateDetails;
     }

@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Detailed information about the query. */
-@Schema(description = "Detailed information about the query.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the query.")
 public class Query {
     @SerializedName("queryId")
     private String queryId = null;
@@ -113,7 +113,7 @@ public class Query {
      *
      * @return queryId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The query identifier. This identifier is unique only in combination with a selling partner account ID.")
@@ -135,7 +135,7 @@ public class Query {
      *
      * @return query
      */
-    @Schema(required = true, description = "The submitted query.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The submitted query.")
     public String getQuery() {
         return query;
     }
@@ -154,7 +154,7 @@ public class Query {
      *
      * @return createdTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The date and time when the query was created, in ISO 8601 date time format.")
     public OffsetDateTime getCreatedTime() {
@@ -175,7 +175,7 @@ public class Query {
      *
      * @return processingStatus
      */
-    @Schema(required = true, description = "The processing status of the query.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the query.")
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -194,7 +194,8 @@ public class Query {
      *
      * @return processingStartTime
      */
-    @Schema(description = "The date and time when the query processing started, in ISO 8601 date time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time when the query processing started, in ISO 8601 date time format.")
     public OffsetDateTime getProcessingStartTime() {
         return processingStartTime;
     }
@@ -213,7 +214,8 @@ public class Query {
      *
      * @return processingEndTime
      */
-    @Schema(description = "The date and time when the query processing completed, in ISO 8601 date time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time when the query processing completed, in ISO 8601 date time format.")
     public OffsetDateTime getProcessingEndTime() {
         return processingEndTime;
     }
@@ -235,7 +237,7 @@ public class Query {
      *
      * @return dataDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the data document's contents.")
     public String getDataDocumentId() {
@@ -258,7 +260,7 @@ public class Query {
      *
      * @return errorDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the error document's contents.")
     public String getErrorDocumentId() {
@@ -279,7 +281,7 @@ public class Query {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public QueryPagination getPagination() {
         return pagination;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Images for an item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;. */
-@Schema(description = "Images for an item in the Amazon catalog, grouped by `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Images for an item in the Amazon catalog, grouped by `marketplaceId`.")
 public class ItemImagesByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -38,7 +38,7 @@ public class ItemImagesByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -68,7 +68,9 @@ public class ItemImagesByMarketplace {
      *
      * @return images
      */
-    @Schema(required = true, description = "Images for an item in the Amazon catalog, grouped by `marketplaceId`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Images for an item in the Amazon catalog, grouped by `marketplaceId`.")
     public List<ItemImage> getImages() {
         return images;
     }

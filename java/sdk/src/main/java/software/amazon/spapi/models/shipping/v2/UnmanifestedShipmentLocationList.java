@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of UnmanifestedShipmentLocation */
-@Schema(description = "A list of UnmanifestedShipmentLocation")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of UnmanifestedShipmentLocation")
 public class UnmanifestedShipmentLocationList extends ArrayList<UnmanifestedShipmentLocation> {
 
     @Override

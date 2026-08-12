@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +20,7 @@ import java.util.Objects;
 /**
  * Represents the confirmation details of a shipment, including the purchase order number and other shipment details.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents the confirmation details of a shipment, including the purchase order number and other shipment details.")
 public class ShipmentConfirmation {
@@ -53,7 +52,9 @@ public class ShipmentConfirmation {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(required = true, description = "Purchase order number corresponding to the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Purchase order number corresponding to the shipment.")
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -72,7 +73,7 @@ public class ShipmentConfirmation {
      *
      * @return shipmentDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentDetails getShipmentDetails() {
         return shipmentDetails;
     }
@@ -91,7 +92,7 @@ public class ShipmentConfirmation {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -110,7 +111,7 @@ public class ShipmentConfirmation {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -138,7 +139,7 @@ public class ShipmentConfirmation {
      *
      * @return items
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.")
@@ -169,7 +170,7 @@ public class ShipmentConfirmation {
      *
      * @return containers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.")
     public List<Container> getContainers() {

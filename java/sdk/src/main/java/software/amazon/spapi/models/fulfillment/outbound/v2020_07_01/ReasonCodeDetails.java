@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A return reason code, a description, and an optional description translation. */
-@Schema(description = "A return reason code, a description, and an optional description translation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A return reason code, a description, and an optional description translation.")
 public class ReasonCodeDetails {
     @SerializedName("returnReasonCode")
     private String returnReasonCode = null;
@@ -38,7 +38,9 @@ public class ReasonCodeDetails {
      *
      * @return returnReasonCode
      */
-    @Schema(required = true, description = "A code that indicates a valid return reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A code that indicates a valid return reason.")
     public String getReturnReasonCode() {
         return returnReasonCode;
     }
@@ -57,7 +59,9 @@ public class ReasonCodeDetails {
      *
      * @return description
      */
-    @Schema(required = true, description = "A human readable description of the return reason code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A human readable description of the return reason code.")
     public String getDescription() {
         return description;
     }
@@ -77,7 +81,7 @@ public class ReasonCodeDetails {
      *
      * @return translatedDescription
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A translation of the description. The translation is in the language specified in the `language` request parameter.")
     public String getTranslatedDescription() {

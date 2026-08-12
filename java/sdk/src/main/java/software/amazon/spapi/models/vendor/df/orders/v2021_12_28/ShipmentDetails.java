@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Shipment details required for the shipment. */
-@Schema(description = "Shipment details required for the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment details required for the shipment.")
 public class ShipmentDetails {
     @SerializedName("isPriorityShipment")
     private Boolean isPriorityShipment = null;
@@ -50,7 +49,9 @@ public class ShipmentDetails {
      *
      * @return isPriorityShipment
      */
-    @Schema(required = true, description = "When true, this is a priority shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, this is a priority shipment.")
     public Boolean getIsPriorityShipment() {
         return isPriorityShipment;
     }
@@ -69,7 +70,8 @@ public class ShipmentDetails {
      *
      * @return isScheduledDeliveryShipment
      */
-    @Schema(description = "When true, this order is part of a scheduled delivery program.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, this order is part of a scheduled delivery program.")
     public Boolean getIsScheduledDeliveryShipment() {
         return isScheduledDeliveryShipment;
     }
@@ -88,7 +90,9 @@ public class ShipmentDetails {
      *
      * @return isPslipRequired
      */
-    @Schema(required = true, description = "When true, a packing slip is required to be sent to the customer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, a packing slip is required to be sent to the customer.")
     public Boolean getIsPslipRequired() {
         return isPslipRequired;
     }
@@ -107,7 +111,8 @@ public class ShipmentDetails {
      *
      * @return isGift
      */
-    @Schema(description = "When true, the order contain a gift. Include the gift message and gift wrap information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the order contain a gift. Include the gift message and gift wrap information.")
     public Boolean getIsGift() {
         return isGift;
     }
@@ -128,7 +133,7 @@ public class ShipmentDetails {
      *
      * @return shipMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the 'Help' section on Vendor Central for 'ship methods'.")
@@ -150,7 +155,7 @@ public class ShipmentDetails {
      *
      * @return shipmentDates
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentDates getShipmentDates() {
         return shipmentDates;
     }
@@ -169,7 +174,7 @@ public class ShipmentDetails {
      *
      * @return messageToCustomer
      */
-    @Schema(required = true, description = "Message to customer for order status.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Message to customer for order status.")
     public String getMessageToCustomer() {
         return messageToCustomer;
     }

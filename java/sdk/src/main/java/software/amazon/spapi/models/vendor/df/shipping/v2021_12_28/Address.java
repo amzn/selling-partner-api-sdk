@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Address of the party. */
-@Schema(description = "Address of the party.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Address of the party.")
 public class Address {
     @SerializedName("name")
     private String name = null;
@@ -62,7 +61,9 @@ public class Address {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the person, business or institution at that address.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the person, business or institution at that address.")
     public String getName() {
         return name;
     }
@@ -81,7 +82,7 @@ public class Address {
      *
      * @return addressLine1
      */
-    @Schema(required = true, description = "First line of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "First line of the address.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -100,7 +101,7 @@ public class Address {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional street address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional street address information, if required.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -119,7 +120,7 @@ public class Address {
      *
      * @return addressLine3
      */
-    @Schema(description = "Additional street address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional street address information, if required.")
     public String getAddressLine3() {
         return addressLine3;
     }
@@ -138,7 +139,8 @@ public class Address {
      *
      * @return city
      */
-    @Schema(description = "The city where the person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The city where the person, business or institution is located.")
     public String getCity() {
         return city;
     }
@@ -157,7 +159,8 @@ public class Address {
      *
      * @return county
      */
-    @Schema(description = "The county where person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The county where person, business or institution is located.")
     public String getCounty() {
         return county;
     }
@@ -176,7 +179,8 @@ public class Address {
      *
      * @return district
      */
-    @Schema(description = "The district where person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The district where person, business or institution is located.")
     public String getDistrict() {
         return district;
     }
@@ -195,7 +199,8 @@ public class Address {
      *
      * @return stateOrRegion
      */
-    @Schema(description = "The state or region where person, business or institution is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The state or region where person, business or institution is located.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }
@@ -215,7 +220,7 @@ public class Address {
      *
      * @return postalCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.")
     public String getPostalCode() {
@@ -236,7 +241,7 @@ public class Address {
      *
      * @return countryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format.")
@@ -258,7 +263,8 @@ public class Address {
      *
      * @return phone
      */
-    @Schema(description = "The phone number of the person, business or institution located at that address.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The phone number of the person, business or institution located at that address.")
     public String getPhone() {
         return phone;
     }

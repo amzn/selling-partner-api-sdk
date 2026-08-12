@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the marketplace where the transaction occurred. */
-@Schema(description = "Information about the marketplace where the transaction occurred.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the marketplace where the transaction occurred.")
 public class MarketplaceDetails {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -37,7 +37,7 @@ public class MarketplaceDetails {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
     public String getMarketplaceId() {
@@ -59,7 +59,7 @@ public class MarketplaceDetails {
      *
      * @return marketplaceName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The name of the marketplace where the transaction occurred. For example: `Amazon.com`,`Amazon.in`")
     public String getMarketplaceName() {

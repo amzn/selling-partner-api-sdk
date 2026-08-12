@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item of a shipment, refund, guarantee claim, or chargeback. */
-@Schema(description = "An item of a shipment, refund, guarantee claim, or chargeback.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An item of a shipment, refund, guarantee claim, or chargeback.")
 public class ShipmentItem {
     @SerializedName("SellerSKU")
     private String sellerSKU = null;
@@ -69,7 +69,7 @@ public class ShipmentItem {
      *
      * @return sellerSKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
     public String getSellerSKU() {
@@ -90,7 +90,7 @@ public class ShipmentItem {
      *
      * @return orderItemId
      */
-    @Schema(description = "An Amazon-defined order item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined order item identifier.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -109,7 +109,7 @@ public class ShipmentItem {
      *
      * @return orderAdjustmentItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.")
     public String getOrderAdjustmentItemId() {
@@ -130,7 +130,7 @@ public class ShipmentItem {
      *
      * @return quantityShipped
      */
-    @Schema(description = "The number of items shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -149,7 +149,7 @@ public class ShipmentItem {
      *
      * @return itemChargeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getItemChargeList() {
         return itemChargeList;
     }
@@ -168,7 +168,7 @@ public class ShipmentItem {
      *
      * @return itemChargeAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getItemChargeAdjustmentList() {
         return itemChargeAdjustmentList;
     }
@@ -187,7 +187,7 @@ public class ShipmentItem {
      *
      * @return itemFeeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getItemFeeList() {
         return itemFeeList;
     }
@@ -206,7 +206,7 @@ public class ShipmentItem {
      *
      * @return itemFeeAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getItemFeeAdjustmentList() {
         return itemFeeAdjustmentList;
     }
@@ -225,7 +225,7 @@ public class ShipmentItem {
      *
      * @return itemTaxWithheldList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxWithheldComponentList getItemTaxWithheldList() {
         return itemTaxWithheldList;
     }
@@ -244,7 +244,7 @@ public class ShipmentItem {
      *
      * @return promotionList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PromotionList getPromotionList() {
         return promotionList;
     }
@@ -263,7 +263,7 @@ public class ShipmentItem {
      *
      * @return promotionAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PromotionList getPromotionAdjustmentList() {
         return promotionAdjustmentList;
     }
@@ -282,7 +282,7 @@ public class ShipmentItem {
      *
      * @return costOfPointsGranted
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getCostOfPointsGranted() {
         return costOfPointsGranted;
     }
@@ -301,7 +301,7 @@ public class ShipmentItem {
      *
      * @return costOfPointsReturned
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getCostOfPointsReturned() {
         return costOfPointsReturned;
     }

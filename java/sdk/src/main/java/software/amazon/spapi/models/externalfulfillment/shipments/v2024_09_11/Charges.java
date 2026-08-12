@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The charges associated with the shipment. */
-@Schema(description = "The charges associated with the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The charges associated with the shipment.")
 public class Charges extends ArrayList<Charge> {
 
     @Override

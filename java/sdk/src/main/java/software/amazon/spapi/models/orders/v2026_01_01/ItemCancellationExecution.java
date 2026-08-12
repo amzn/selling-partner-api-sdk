@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Details of how the cancellation was executed for a specific order item, including who performed the cancellation and
  * the reason.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.")
 public class ItemCancellationExecution {
@@ -41,7 +40,7 @@ public class ItemCancellationExecution {
      *
      * @return cancelledBy
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`")
     public String getCancelledBy() {
@@ -62,7 +61,8 @@ public class ItemCancellationExecution {
      *
      * @return cancelReason
      */
-    @Schema(description = "Explanation provided for why the cancellation was executed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Explanation provided for why the cancellation was executed.")
     public String getCancelReason() {
         return cancelReason;
     }

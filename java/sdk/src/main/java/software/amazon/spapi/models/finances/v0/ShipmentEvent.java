@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A shipment, refund, guarantee claim, or chargeback. */
-@Schema(description = "A shipment, refund, guarantee claim, or chargeback.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A shipment, refund, guarantee claim, or chargeback.")
 public class ShipmentEvent {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -71,7 +71,7 @@ public class ShipmentEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -90,7 +90,7 @@ public class ShipmentEvent {
      *
      * @return sellerOrderId
      */
-    @Schema(description = "A seller-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined identifier for an order.")
     public String getSellerOrderId() {
         return sellerOrderId;
     }
@@ -109,7 +109,7 @@ public class ShipmentEvent {
      *
      * @return marketplaceName
      */
-    @Schema(description = "The name of the marketplace where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the marketplace where the event occurred.")
     public String getMarketplaceName() {
         return marketplaceName;
     }
@@ -128,7 +128,7 @@ public class ShipmentEvent {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }
@@ -147,7 +147,7 @@ public class ShipmentEvent {
      *
      * @return orderChargeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getOrderChargeList() {
         return orderChargeList;
     }
@@ -166,7 +166,7 @@ public class ShipmentEvent {
      *
      * @return orderChargeAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponentList getOrderChargeAdjustmentList() {
         return orderChargeAdjustmentList;
     }
@@ -185,7 +185,7 @@ public class ShipmentEvent {
      *
      * @return shipmentFeeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getShipmentFeeList() {
         return shipmentFeeList;
     }
@@ -204,7 +204,7 @@ public class ShipmentEvent {
      *
      * @return shipmentFeeAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getShipmentFeeAdjustmentList() {
         return shipmentFeeAdjustmentList;
     }
@@ -223,7 +223,7 @@ public class ShipmentEvent {
      *
      * @return orderFeeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getOrderFeeList() {
         return orderFeeList;
     }
@@ -242,7 +242,7 @@ public class ShipmentEvent {
      *
      * @return orderFeeAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getOrderFeeAdjustmentList() {
         return orderFeeAdjustmentList;
     }
@@ -261,7 +261,7 @@ public class ShipmentEvent {
      *
      * @return directPaymentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DirectPaymentList getDirectPaymentList() {
         return directPaymentList;
     }
@@ -280,7 +280,7 @@ public class ShipmentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -301,7 +301,7 @@ public class ShipmentEvent {
      *
      * @return shipmentItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentItemList getShipmentItemList() {
         return shipmentItemList;
     }
@@ -320,7 +320,7 @@ public class ShipmentEvent {
      *
      * @return shipmentItemAdjustmentList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentItemList getShipmentItemAdjustmentList() {
         return shipmentItemAdjustmentList;
     }

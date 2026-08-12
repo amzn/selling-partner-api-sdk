@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response containing the transaction ID. */
-@Schema(description = "Response containing the transaction ID.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response containing the transaction ID.")
 public class TransactionReference {
     @SerializedName("transactionId")
     private String transactionId = null;
@@ -33,7 +32,7 @@ public class TransactionReference {
      *
      * @return transactionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "GUID to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.")
     public String getTransactionId() {

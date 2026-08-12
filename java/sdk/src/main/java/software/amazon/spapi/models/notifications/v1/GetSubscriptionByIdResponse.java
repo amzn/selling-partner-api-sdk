@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getSubscriptionById&#x60; operation. */
-@Schema(description = "The response schema for the `getSubscriptionById` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `getSubscriptionById` operation.")
 public class GetSubscriptionByIdResponse {
     @SerializedName("payload")
     private Subscription payload = null;
@@ -35,7 +35,7 @@ public class GetSubscriptionByIdResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Subscription getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetSubscriptionByIdResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** This exception is thrown when client inputs are invalid. */
-@Schema(description = "This exception is thrown when client inputs are invalid.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "This exception is thrown when client inputs are invalid.")
 public class ErrorList {
     @SerializedName("errors")
     private List<Error> errors = null;
@@ -42,7 +41,9 @@ public class ErrorList {
      *
      * @return errors
      */
-    @Schema(required = true, description = "A list of errors describing the failures.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of errors describing the failures.")
     public List<Error> getErrors() {
         return errors;
     }

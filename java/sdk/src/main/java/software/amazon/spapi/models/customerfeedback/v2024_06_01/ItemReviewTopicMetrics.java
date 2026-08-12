@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The item review topic metrics. */
-@Schema(description = "The item review topic metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The item review topic metrics.")
 public class ItemReviewTopicMetrics {
     @SerializedName("numberOfMentions")
     private Integer numberOfMentions = null;
@@ -39,7 +38,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return numberOfMentions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of times that reviews mention the topic. This value is `null` if reviews do not mention the topic frequently enough.")
     public Integer getNumberOfMentions() {
@@ -61,7 +60,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return occurrencePercentage
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of customer reviews that mention the topic. This value is `null` if reviews do not mention the topic frequently enough.")
     public Float getOccurrencePercentage() {
@@ -83,7 +82,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return starRatingImpact
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The effect of the topic on the star rating of the ASIN. This value can be positive or negative. This value is `null` if the topic does't affect the star rating of the ASIN.")
     public Float getStarRatingImpact() {

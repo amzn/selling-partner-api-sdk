@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The pagination elements required to retrieve the remaining data. */
-@Schema(description = "The pagination elements required to retrieve the remaining data.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The pagination elements required to retrieve the remaining data.")
 public class Pagination {
     @SerializedName("nextToken")
     private String nextToken = null;
@@ -35,7 +35,7 @@ public class Pagination {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Pagination occurs when a request produces a response that exceeds the `pageSize`. This means that the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. There is no `nextToken` in the pagination object on the last page.")
     public String getNextToken() {

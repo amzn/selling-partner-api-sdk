@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents an AWD distribution package. */
-@Schema(description = "Represents an AWD distribution package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD distribution package.")
 public class DistributionPackage {
     @SerializedName("contents")
     private DistributionPackageContents contents = null;
@@ -38,7 +37,7 @@ public class DistributionPackage {
      *
      * @return contents
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DistributionPackageContents getContents() {
         return contents;
     }
@@ -57,7 +56,7 @@ public class DistributionPackage {
      *
      * @return measurements
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MeasurementData getMeasurements() {
         return measurements;
     }
@@ -76,7 +75,7 @@ public class DistributionPackage {
      *
      * @return type
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DistributionPackageType getType() {
         return type;
     }

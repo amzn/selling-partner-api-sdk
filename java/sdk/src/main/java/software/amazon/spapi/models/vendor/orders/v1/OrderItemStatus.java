@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents the current status of an order item, including acknowledgement and receiving details. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents the current status of an order item, including acknowledgement and receiving details.")
 public class OrderItemStatus {
@@ -55,7 +54,7 @@ public class OrderItemStatus {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
@@ -77,7 +76,8 @@ public class OrderItemStatus {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Buyer's Standard Identification Number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Buyer's Standard Identification Number (ASIN) of an item.")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -96,7 +96,7 @@ public class OrderItemStatus {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(description = "The vendor selected product identification of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
     public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
@@ -115,7 +115,7 @@ public class OrderItemStatus {
      *
      * @return netCost
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getNetCost() {
         return netCost;
     }
@@ -134,7 +134,7 @@ public class OrderItemStatus {
      *
      * @return listPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getListPrice() {
         return listPrice;
     }
@@ -153,7 +153,7 @@ public class OrderItemStatus {
      *
      * @return orderedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderItemStatusOrderedQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -172,7 +172,7 @@ public class OrderItemStatus {
      *
      * @return acknowledgementStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderItemStatusAcknowledgementStatus getAcknowledgementStatus() {
         return acknowledgementStatus;
     }
@@ -191,7 +191,7 @@ public class OrderItemStatus {
      *
      * @return receivingStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderItemStatusReceivingStatus getReceivingStatus() {
         return receivingStatus;
     }

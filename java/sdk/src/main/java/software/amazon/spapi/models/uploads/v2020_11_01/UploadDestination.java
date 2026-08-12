@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.uploads.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about an upload destination. */
-@Schema(description = "Information about an upload destination.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about an upload destination.")
 public class UploadDestination {
     @SerializedName("uploadDestinationId")
     private String uploadDestinationId = null;
@@ -38,7 +37,7 @@ public class UploadDestination {
      *
      * @return uploadDestinationId
      */
-    @Schema(description = "The unique identifier for the upload destination.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier for the upload destination.")
     public String getUploadDestinationId() {
         return uploadDestinationId;
     }
@@ -57,7 +56,7 @@ public class UploadDestination {
      *
      * @return url
      */
-    @Schema(description = "The URL for the upload destination.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The URL for the upload destination.")
     public String getUrl() {
         return url;
     }
@@ -76,7 +75,7 @@ public class UploadDestination {
      *
      * @return headers
      */
-    @Schema(description = "The headers to include in the upload request.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The headers to include in the upload request.")
     public Object getHeaders() {
         return headers;
     }

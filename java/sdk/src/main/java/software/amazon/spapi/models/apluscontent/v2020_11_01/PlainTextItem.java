@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Plain positional text that is used in collections of brief labels and descriptors. */
-@Schema(description = "Plain positional text that is used in collections of brief labels and descriptors.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Plain positional text that is used in collections of brief labels and descriptors.")
 public class PlainTextItem {
     @SerializedName("position")
     private Integer position = null;
@@ -36,7 +36,7 @@ public class PlainTextItem {
      *
      * @return position
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.")
@@ -58,7 +58,7 @@ public class PlainTextItem {
      *
      * @return value
      */
-    @Schema(required = true, description = "The actual plain text.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The actual plain text.")
     public String getValue() {
         return value;
     }

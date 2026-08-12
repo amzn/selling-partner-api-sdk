@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Packaging requirements for a fulfillment preview. */
-@Schema(description = "Packaging requirements for a fulfillment preview.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Packaging requirements for a fulfillment preview.")
 public class PreviewPackagingService {
     @SerializedName("packagingOption")
     private String packagingOption = null;
@@ -35,7 +34,8 @@ public class PreviewPackagingService {
      *
      * @return packagingOption
      */
-    @Schema(description = "The packaging option to use for fulfillment. Possible values: `UNBRANDED`, `ANY`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The packaging option to use for fulfillment. Possible values: `UNBRANDED`, `ANY`.")
     public String getPackagingOption() {
         return packagingOption;
     }
@@ -54,7 +54,7 @@ public class PreviewPackagingService {
      *
      * @return overbox
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Whether to require an overbox for the shipment. Possible values: `REQUIRED`, `NOT_REQUIRED`.")
     public String getOverbox() {

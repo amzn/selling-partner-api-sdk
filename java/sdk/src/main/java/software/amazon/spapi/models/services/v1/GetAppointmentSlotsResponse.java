@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response of fetching appointment slots based on service context. */
-@Schema(description = "The response of fetching appointment slots based on service context.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response of fetching appointment slots based on service context.")
 public class GetAppointmentSlotsResponse {
     @SerializedName("payload")
     private AppointmentSlotReport payload = null;
@@ -35,7 +35,7 @@ public class GetAppointmentSlotsResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AppointmentSlotReport getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetAppointmentSlotsResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

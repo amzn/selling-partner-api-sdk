@@ -12,11 +12,11 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 /** A list of replenishment program types. */
-@Schema(description = "A list of replenishment program types.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of replenishment program types.")
 public class ProgramTypes extends LinkedHashSet<ProgramType> {
 
     @Override

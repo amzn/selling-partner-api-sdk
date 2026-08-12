@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A document related to a package. */
-@Schema(description = "A document related to a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A document related to a package.")
 public class PackageDocument {
     @SerializedName("type")
     private DocumentType type = null;
@@ -38,7 +37,7 @@ public class PackageDocument {
      *
      * @return type
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentType getType() {
         return type;
     }
@@ -57,7 +56,7 @@ public class PackageDocument {
      *
      * @return format
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentFormat getFormat() {
         return format;
     }
@@ -76,7 +75,9 @@ public class PackageDocument {
      *
      * @return contents
      */
-    @Schema(required = true, description = "A Base64 encoded string of the file contents.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A Base64 encoded string of the file contents.")
     public String getContents() {
         return contents;
     }

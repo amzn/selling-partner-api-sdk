@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Service level configuration for fulfillment. Available service tiers: &#x60;STANDARD&#x60;, &#x60;EXPEDITED&#x60;,
  * &#x60;PRIORITY&#x60; (only available in Canada, India, and Mexico), &#x60;SCHEDULED&#x60; (only available in Japan).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Service level configuration for fulfillment. Available service tiers: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan).")
 public class ServiceLevel {
@@ -53,7 +52,7 @@ public class ServiceLevel {
      *
      * @return serviceTiers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The service tiers that are acceptable for this order, listed in order of preference. The first value is the preferred tier and is used for fulfillment if possible. Available values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan). Currently, only the first value in the array is used.")
     public List<String> getServiceTiers() {
@@ -74,7 +73,7 @@ public class ServiceLevel {
      *
      * @return deliveryInterval
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeInterval getDeliveryInterval() {
         return deliveryInterval;
     }

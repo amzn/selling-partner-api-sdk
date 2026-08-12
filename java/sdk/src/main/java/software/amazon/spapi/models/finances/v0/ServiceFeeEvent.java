@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A service fee on the seller&#39;s account. */
-@Schema(description = "A service fee on the seller's account.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A service fee on the seller's account.")
 public class ServiceFeeEvent {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -53,7 +52,7 @@ public class ServiceFeeEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -72,7 +71,7 @@ public class ServiceFeeEvent {
      *
      * @return feeReason
      */
-    @Schema(description = "A short description of the service fee reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the service fee reason.")
     public String getFeeReason() {
         return feeReason;
     }
@@ -91,7 +90,7 @@ public class ServiceFeeEvent {
      *
      * @return feeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getFeeList() {
         return feeList;
     }
@@ -111,7 +110,7 @@ public class ServiceFeeEvent {
      *
      * @return sellerSKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
     public String getSellerSKU() {
@@ -132,7 +131,7 @@ public class ServiceFeeEvent {
      *
      * @return fnSKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.")
     public String getFnSKU() {
@@ -153,7 +152,7 @@ public class ServiceFeeEvent {
      *
      * @return feeDescription
      */
-    @Schema(description = "A short description of the service fee event.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the service fee event.")
     public String getFeeDescription() {
         return feeDescription;
     }
@@ -172,7 +171,8 @@ public class ServiceFeeEvent {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -191,7 +191,7 @@ public class ServiceFeeEvent {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }

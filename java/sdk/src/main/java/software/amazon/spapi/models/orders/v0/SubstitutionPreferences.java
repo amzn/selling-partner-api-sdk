@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Substitution preferences for an order item. */
-@Schema(description = "Substitution preferences for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Substitution preferences for an order item.")
 public class SubstitutionPreferences {
     /** The type of substitution that these preferences represent. */
     @JsonAdapter(SubstitutionTypeEnum.Adapter.class)
@@ -88,7 +87,9 @@ public class SubstitutionPreferences {
      *
      * @return substitutionType
      */
-    @Schema(required = true, description = "The type of substitution that these preferences represent.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of substitution that these preferences represent.")
     public SubstitutionTypeEnum getSubstitutionType() {
         return substitutionType;
     }
@@ -107,7 +108,7 @@ public class SubstitutionPreferences {
      *
      * @return substitutionOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SubstitutionOptionList getSubstitutionOptions() {
         return substitutionOptions;
     }

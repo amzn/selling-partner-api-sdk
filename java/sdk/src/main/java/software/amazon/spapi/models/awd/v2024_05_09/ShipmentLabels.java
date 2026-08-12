@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Shipment labels. */
-@Schema(description = "Shipment labels.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment labels.")
 public class ShipmentLabels {
     @SerializedName("labelDownloadURL")
     private String labelDownloadURL = null;
@@ -35,7 +34,8 @@ public class ShipmentLabels {
      *
      * @return labelDownloadURL
      */
-    @Schema(description = "The URL to download shipment labels. The URL is active for 600 seconds from generation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The URL to download shipment labels. The URL is active for 600 seconds from generation.")
     public String getLabelDownloadURL() {
         return labelDownloadURL;
     }
@@ -54,7 +54,7 @@ public class ShipmentLabels {
      *
      * @return labelStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelStatus getLabelStatus() {
         return labelStatus;
     }

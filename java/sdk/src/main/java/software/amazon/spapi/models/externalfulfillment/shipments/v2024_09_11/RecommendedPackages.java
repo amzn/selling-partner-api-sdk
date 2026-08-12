@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Recommendations for the packages in an order. */
-@Schema(description = "Recommendations for the packages in an order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Recommendations for the packages in an order.")
 public class RecommendedPackages extends ArrayList<RecommendedPackage> {
 
     @Override

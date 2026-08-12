@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A quantity based on the specified unit of measurement. */
-@Schema(description = "A quantity based on the specified unit of measurement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A quantity based on the specified unit of measurement.")
 public class Amount {
     @SerializedName("unit")
     private String unit = null;
@@ -35,7 +34,8 @@ public class Amount {
      *
      * @return unit
      */
-    @Schema(description = "The unit of measure for the amount. Possible values: `EACHES`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The unit of measure for the amount. Possible values: `EACHES`.")
     public String getUnit() {
         return unit;
     }
@@ -55,7 +55,7 @@ public class Amount {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows [RFC 7159](https://datatracker.ietf.org/doc/html/rfc7159) for number representation.")

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item to be created in the inventory. */
-@Schema(description = "An item to be created in the inventory.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item to be created in the inventory.")
 public class CreateInventoryItemRequest {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -38,7 +37,7 @@ public class CreateInventoryItemRequest {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -57,7 +56,7 @@ public class CreateInventoryItemRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The marketplaceId.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The marketplaceId.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -76,7 +75,7 @@ public class CreateInventoryItemRequest {
      *
      * @return productName
      */
-    @Schema(required = true, description = "The name of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the item.")
     public String getProductName() {
         return productName;
     }

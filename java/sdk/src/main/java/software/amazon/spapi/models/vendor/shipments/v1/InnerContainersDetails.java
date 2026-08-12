@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of the innerContainersDetails. */
-@Schema(description = "Details of the innerContainersDetails.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the innerContainersDetails.")
 public class InnerContainersDetails {
     @SerializedName("containerCount")
     private Integer containerCount = null;
@@ -37,7 +36,7 @@ public class InnerContainersDetails {
      *
      * @return containerCount
      */
-    @Schema(description = "Total containers as part of the shipment")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total containers as part of the shipment")
     public Integer getContainerCount() {
         return containerCount;
     }
@@ -65,7 +64,8 @@ public class InnerContainersDetails {
      *
      * @return containerSequenceNumbers
      */
-    @Schema(description = "Container sequence numbers that are involved in this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Container sequence numbers that are involved in this shipment.")
     public List<ContainerSequenceNumbers> getContainerSequenceNumbers() {
         return containerSequenceNumbers;
     }

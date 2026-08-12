@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The browse node review topic metrics. */
-@Schema(description = "The browse node review topic metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The browse node review topic metrics.")
 public class BrowseNodeReviewTopicMetrics {
     @SerializedName("occurrencePercentage")
     private BrowseNodeAllOccurrence occurrencePercentage = null;
@@ -35,7 +34,7 @@ public class BrowseNodeReviewTopicMetrics {
      *
      * @return occurrencePercentage
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BrowseNodeAllOccurrence getOccurrencePercentage() {
         return occurrencePercentage;
     }
@@ -54,7 +53,7 @@ public class BrowseNodeReviewTopicMetrics {
      *
      * @return starRatingImpact
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BrowseNodeAllStarRatingImpact getStarRatingImpact() {
         return starRatingImpact;
     }

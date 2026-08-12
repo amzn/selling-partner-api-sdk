@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body schema for &#x60;createOrder&#x60;. */
-@Schema(description = "The request body schema for `createOrder`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body schema for `createOrder`.")
 public class CreateOrderRequest {
     @SerializedName("orderId")
     private String orderId = null;
@@ -54,7 +53,7 @@ public class CreateOrderRequest {
      *
      * @return orderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order identifier that the seller creates to track their fulfillment order. The `orderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.")
@@ -76,7 +75,7 @@ public class CreateOrderRequest {
      *
      * @return channel
      */
-    @Schema(description = "The sales channel of the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel of the fulfillment order.")
     public String getChannel() {
         return channel;
     }
@@ -95,7 +94,7 @@ public class CreateOrderRequest {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
@@ -114,7 +113,7 @@ public class CreateOrderRequest {
      *
      * @return origin
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderOrigin getOrigin() {
         return origin;
     }
@@ -133,7 +132,7 @@ public class CreateOrderRequest {
      *
      * @return destination
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderDestination getDestination() {
         return destination;
     }
@@ -160,7 +159,9 @@ public class CreateOrderRequest {
      *
      * @return lineItems
      */
-    @Schema(required = true, description = "A list of items to include in the fulfillment order, including quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items to include in the fulfillment order, including quantity.")
     public List<CreateOrderLineItem> getLineItems() {
         return lineItems;
     }
@@ -179,7 +180,7 @@ public class CreateOrderRequest {
      *
      * @return paymentInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentInformation getPaymentInformation() {
         return paymentInformation;
     }

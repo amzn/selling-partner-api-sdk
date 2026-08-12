@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The identifier of a product. */
-@Schema(description = "The identifier of a product.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of a product.")
 public class ProductIdentifier {
     @SerializedName("amazonSku")
     private String amazonSku = null;
@@ -32,7 +31,7 @@ public class ProductIdentifier {
      *
      * @return amazonSku
      */
-    @Schema(required = true, description = "The Amazon SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The Amazon SKU of the item.")
     public String getAmazonSku() {
         return amazonSku;
     }

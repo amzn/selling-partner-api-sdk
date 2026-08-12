@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /** Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about the seller's inbound shipments. Returned by the listInboundShipments operation.")
 public class InboundShipmentInfo {
@@ -61,7 +61,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentId
      */
-    @Schema(description = "The shipment identifier submitted in the request.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The shipment identifier submitted in the request.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -80,7 +80,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentName
      */
-    @Schema(description = "The name for the inbound shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name for the inbound shipment.")
     public String getShipmentName() {
         return shipmentName;
     }
@@ -99,7 +99,7 @@ public class InboundShipmentInfo {
      *
      * @return shipFromAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -118,7 +118,8 @@ public class InboundShipmentInfo {
      *
      * @return destinationFulfillmentCenterId
      */
-    @Schema(description = "An Amazon fulfillment center identifier created by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An Amazon fulfillment center identifier created by Amazon.")
     public String getDestinationFulfillmentCenterId() {
         return destinationFulfillmentCenterId;
     }
@@ -137,7 +138,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -156,7 +157,7 @@ public class InboundShipmentInfo {
      *
      * @return labelPrepType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelPrepType getLabelPrepType() {
         return labelPrepType;
     }
@@ -176,7 +177,7 @@ public class InboundShipmentInfo {
      *
      * @return areCasesRequired
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired = true for an inbound shipment, all items in the inbound shipment must be case packed.")
@@ -198,7 +199,7 @@ public class InboundShipmentInfo {
      *
      * @return confirmedNeedByDate
      */
-    @Schema(description = "Type containing date in string format")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Type containing date in string format")
     public LocalDate getConfirmedNeedByDate() {
         return confirmedNeedByDate;
     }
@@ -217,7 +218,7 @@ public class InboundShipmentInfo {
      *
      * @return boxContentsSource
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BoxContentsSource getBoxContentsSource() {
         return boxContentsSource;
     }
@@ -236,7 +237,7 @@ public class InboundShipmentInfo {
      *
      * @return estimatedBoxContentsFee
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BoxContentsFeeDetails getEstimatedBoxContentsFee() {
         return estimatedBoxContentsFee;
     }

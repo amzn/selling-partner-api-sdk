@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The browse node review trend occurrence metrics. */
-@Schema(description = "The browse node review trend occurrence metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The browse node review trend occurrence metrics.")
 public class BrowseNodeOccurrence {
     @SerializedName("allProducts")
     private Float allProducts = null;
@@ -32,7 +31,7 @@ public class BrowseNodeOccurrence {
      *
      * @return allProducts
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The percentage of reviews of products in the browse node that mention a topic.")
     public Float getAllProducts() {

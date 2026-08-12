@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The composition of the charge. */
-@Schema(description = "The composition of the charge.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The composition of the charge.")
 public class ChargeBreakup {
     @SerializedName("baseAmount")
     private Amount baseAmount = null;
@@ -38,7 +37,7 @@ public class ChargeBreakup {
      *
      * @return baseAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getBaseAmount() {
         return baseAmount;
     }
@@ -57,7 +56,7 @@ public class ChargeBreakup {
      *
      * @return discountAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getDiscountAmount() {
         return discountAmount;
     }
@@ -76,7 +75,7 @@ public class ChargeBreakup {
      *
      * @return netAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getNetAmount() {
         return netAmount;
     }

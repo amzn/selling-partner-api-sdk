@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about an upload destination. */
-@Schema(description = "Information about an upload destination.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about an upload destination.")
 public class ServiceDocumentUploadDestination {
     @SerializedName("uploadDestinationId")
     private String uploadDestinationId = null;
@@ -41,7 +40,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return uploadDestinationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The unique identifier to be used by APIs that reference the upload destination.")
     public String getUploadDestinationId() {
@@ -62,7 +61,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return url
      */
-    @Schema(required = true, description = "The URL to which to upload the file.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The URL to which to upload the file.")
     public String getUrl() {
         return url;
     }
@@ -81,7 +80,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return encryptionDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public EncryptionDetails getEncryptionDetails() {
         return encryptionDetails;
     }
@@ -100,7 +99,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return headers
      */
-    @Schema(description = "The headers to include in the upload request.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The headers to include in the upload request.")
     public Object getHeaders() {
         return headers;
     }

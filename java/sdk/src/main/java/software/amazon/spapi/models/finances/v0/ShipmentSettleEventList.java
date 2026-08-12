@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of &#x60;ShipmentEvent&#x60; items. */
-@Schema(description = "A list of `ShipmentEvent` items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of `ShipmentEvent` items.")
 public class ShipmentSettleEventList extends ArrayList<ShipmentEvent> {
 
     @Override

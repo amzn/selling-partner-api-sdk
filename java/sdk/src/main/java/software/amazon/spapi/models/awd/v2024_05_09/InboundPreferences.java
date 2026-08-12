@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Preferences that can be passed in context of an inbound order */
-@Schema(description = "Preferences that can be passed in context of an inbound order")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Preferences that can be passed in context of an inbound order")
 public class InboundPreferences {
     @SerializedName("destinationRegion")
     private String destinationRegion = null;
@@ -35,7 +35,7 @@ public class InboundPreferences {
      *
      * @return destinationRegion
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Pass a preferred region so that the inbound order can be shipped to an AWD warehouse located in that region. This doesn't guarantee the order to be assigned in the specified destination region as it depends on warehouse capacity availability. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]")
     public String getDestinationRegion() {

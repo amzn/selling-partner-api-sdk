@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** This object contains all the details of the scheduled Easy Ship package. */
-@Schema(description = "This object contains all the details of the scheduled Easy Ship package.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "This object contains all the details of the scheduled Easy Ship package.")
 public class ModelPackage {
     @SerializedName("scheduledPackageId")
     private ScheduledPackageId scheduledPackageId = null;
@@ -56,7 +56,7 @@ public class ModelPackage {
      *
      * @return scheduledPackageId
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ScheduledPackageId getScheduledPackageId() {
         return scheduledPackageId;
     }
@@ -75,7 +75,7 @@ public class ModelPackage {
      *
      * @return packageDimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimensions getPackageDimensions() {
         return packageDimensions;
     }
@@ -94,7 +94,7 @@ public class ModelPackage {
      *
      * @return packageWeight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getPackageWeight() {
         return packageWeight;
     }
@@ -113,7 +113,7 @@ public class ModelPackage {
      *
      * @return packageItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Items getPackageItems() {
         return packageItems;
     }
@@ -132,7 +132,7 @@ public class ModelPackage {
      *
      * @return packageTimeSlot
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeSlot getPackageTimeSlot() {
         return packageTimeSlot;
     }
@@ -151,7 +151,7 @@ public class ModelPackage {
      *
      * @return packageIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.")
     public String getPackageIdentifier() {
@@ -172,7 +172,7 @@ public class ModelPackage {
      *
      * @return invoice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvoiceData getInvoice() {
         return invoice;
     }
@@ -191,7 +191,7 @@ public class ModelPackage {
      *
      * @return packageStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageStatus getPackageStatus() {
         return packageStatus;
     }
@@ -210,7 +210,7 @@ public class ModelPackage {
      *
      * @return trackingDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingDetails getTrackingDetails() {
         return trackingDetails;
     }

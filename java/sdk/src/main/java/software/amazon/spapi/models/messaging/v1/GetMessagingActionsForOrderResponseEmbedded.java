@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;. */
-@Schema(description = "The messaging actions response that is associated with the specified `amazonOrderId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The messaging actions response that is associated with the specified `amazonOrderId`.")
 public class GetMessagingActionsForOrderResponseEmbedded {
     @SerializedName("actions")
     private List<GetMessagingActionResponse> actions = null;
@@ -42,7 +42,7 @@ public class GetMessagingActionsForOrderResponseEmbedded {
      *
      * @return actions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public List<GetMessagingActionResponse> getActions() {
         return actions;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Four standard images with text, presented across a single row. */
-@Schema(description = "Four standard images with text, presented across a single row.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Four standard images with text, presented across a single row.")
 public class StandardFourImageTextModule {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -44,7 +44,7 @@ public class StandardFourImageTextModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -63,7 +63,7 @@ public class StandardFourImageTextModule {
      *
      * @return block1
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock1() {
         return block1;
     }
@@ -82,7 +82,7 @@ public class StandardFourImageTextModule {
      *
      * @return block2
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock2() {
         return block2;
     }
@@ -101,7 +101,7 @@ public class StandardFourImageTextModule {
      *
      * @return block3
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock3() {
         return block3;
     }
@@ -120,7 +120,7 @@ public class StandardFourImageTextModule {
      *
      * @return block4
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock4() {
         return block4;
     }

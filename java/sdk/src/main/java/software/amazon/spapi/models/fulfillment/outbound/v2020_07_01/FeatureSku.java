@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * Information about an SKU, including the count available, identifiers, and a list of overlapping SKUs that share the
  * same inventory pool.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about an SKU, including the count available, identifiers, and a list of overlapping SKUs that share the same inventory pool.")
 public class FeatureSku {
@@ -52,7 +52,7 @@ public class FeatureSku {
      *
      * @return sellerSku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.")
     public String getSellerSku() {
@@ -73,7 +73,7 @@ public class FeatureSku {
      *
      * @return fnSku
      */
-    @Schema(description = "The unique SKU used by Amazon's fulfillment network.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique SKU used by Amazon's fulfillment network.")
     public String getFnSku() {
         return fnSku;
     }
@@ -92,7 +92,8 @@ public class FeatureSku {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -111,7 +112,7 @@ public class FeatureSku {
      *
      * @return skuCount
      */
-    @Schema(description = "The number of SKUs available for this service.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of SKUs available for this service.")
     public BigDecimal getSkuCount() {
         return skuCount;
     }
@@ -138,7 +139,8 @@ public class FeatureSku {
      *
      * @return overlappingSkus
      */
-    @Schema(description = "Other seller SKUs that are shared across the same inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Other seller SKUs that are shared across the same inventory.")
     public List<String> getOverlappingSkus() {
         return overlappingSkus;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The list of tax classifications. */
-@Schema(description = "The list of tax classifications.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The list of tax classifications.")
 public class TaxClassificationList extends ArrayList<TaxClassification> {
 
     @Override

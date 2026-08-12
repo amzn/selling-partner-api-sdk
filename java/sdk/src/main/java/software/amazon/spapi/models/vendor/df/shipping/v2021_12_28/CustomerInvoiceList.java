@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a list of customer invoices, potentially paginated. */
-@Schema(description = "Represents a list of customer invoices, potentially paginated.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents a list of customer invoices, potentially paginated.")
 public class CustomerInvoiceList {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +37,7 @@ public class CustomerInvoiceList {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +64,8 @@ public class CustomerInvoiceList {
      *
      * @return customerInvoices
      */
-    @Schema(description = "Represents a customer invoice within the `CustomerInvoiceList`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Represents a customer invoice within the `CustomerInvoiceList`.")
     public List<CustomerInvoice> getCustomerInvoices() {
         return customerInvoices;
     }

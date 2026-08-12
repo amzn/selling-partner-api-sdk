@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** General information about a fulfillment order, including its status. */
-@Schema(description = "General information about a fulfillment order, including its status.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "General information about a fulfillment order, including its status.")
 public class FulfillmentOrder {
     @SerializedName("sellerFulfillmentOrderId")
     private String sellerFulfillmentOrderId = null;
@@ -79,7 +80,7 @@ public class FulfillmentOrder {
      *
      * @return sellerFulfillmentOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The fulfillment order identifier submitted with the `createFulfillmentOrder` operation.")
     public String getSellerFulfillmentOrderId() {
@@ -100,7 +101,7 @@ public class FulfillmentOrder {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The identifier for the marketplace the fulfillment order is placed against.")
     public String getMarketplaceId() {
@@ -122,7 +123,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order identifier submitted with the `createFulfillmentOrder` operation. Displays as the order identifier in recipient-facing materials such as the packing slip.")
@@ -144,7 +145,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getDisplayableOrderDate() {
         return displayableOrderDate;
     }
@@ -164,7 +165,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderComment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A text block submitted with the `createFulfillmentOrder` operation. Displays in recipient-facing materials such as the packing slip.")
@@ -186,7 +187,7 @@ public class FulfillmentOrder {
      *
      * @return shippingSpeedCategory
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingSpeedCategory getShippingSpeedCategory() {
         return shippingSpeedCategory;
     }
@@ -205,7 +206,7 @@ public class FulfillmentOrder {
      *
      * @return deliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryWindow getDeliveryWindow() {
         return deliveryWindow;
     }
@@ -224,7 +225,7 @@ public class FulfillmentOrder {
      *
      * @return destinationAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -243,7 +244,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentAction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentAction getFulfillmentAction() {
         return fulfillmentAction;
     }
@@ -262,7 +263,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentPolicy
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentPolicy getFulfillmentPolicy() {
         return fulfillmentPolicy;
     }
@@ -281,7 +282,7 @@ public class FulfillmentOrder {
      *
      * @return codSettings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CODSettings getCodSettings() {
         return codSettings;
     }
@@ -300,7 +301,7 @@ public class FulfillmentOrder {
      *
      * @return receivedDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getReceivedDate() {
         return receivedDate;
     }
@@ -319,7 +320,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentOrderStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentOrderStatus getFulfillmentOrderStatus() {
         return fulfillmentOrderStatus;
     }
@@ -338,7 +339,7 @@ public class FulfillmentOrder {
      *
      * @return statusUpdatedDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getStatusUpdatedDate() {
         return statusUpdatedDate;
     }
@@ -357,7 +358,7 @@ public class FulfillmentOrder {
      *
      * @return notificationEmails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public NotificationEmailList getNotificationEmails() {
         return notificationEmails;
     }
@@ -384,7 +385,8 @@ public class FulfillmentOrder {
      *
      * @return featureConstraints
      */
-    @Schema(description = "A list of features and their fulfillment policies to apply to the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of features and their fulfillment policies to apply to the order.")
     public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }

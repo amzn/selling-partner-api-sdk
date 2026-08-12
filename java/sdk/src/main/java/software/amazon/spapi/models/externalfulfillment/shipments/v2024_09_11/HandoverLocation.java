@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The drop-off location details for package handover. */
-@Schema(description = "The drop-off location details for package handover.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The drop-off location details for package handover.")
 public class HandoverLocation {
     @SerializedName("address")
     private Address address = null;
@@ -38,7 +37,7 @@ public class HandoverLocation {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -57,7 +56,7 @@ public class HandoverLocation {
      *
      * @return distance
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Distance getDistance() {
         return distance;
     }
@@ -76,7 +75,7 @@ public class HandoverLocation {
      *
      * @return mapUrl
      */
-    @Schema(description = "URL to the map that shows the drop-off location.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "URL to the map that shows the drop-off location.")
     public String getMapUrl() {
         return mapUrl;
     }

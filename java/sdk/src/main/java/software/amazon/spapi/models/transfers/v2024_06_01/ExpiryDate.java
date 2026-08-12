@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The expiration date of the card used for payment. If the payment method is not &#x60;card&#x60;, the expiration date
  * is &#x60;null&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The expiration date of the card used for payment. If the payment method is not `card`, the expiration date is `null`.")
 public class ExpiryDate {
@@ -40,7 +39,8 @@ public class ExpiryDate {
      *
      * @return month
      */
-    @Schema(description = "The month the card expires expressed as a number from `1` to `12`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The month the card expires expressed as a number from `1` to `12`.")
     public String getMonth() {
         return month;
     }
@@ -59,7 +59,7 @@ public class ExpiryDate {
      *
      * @return year
      */
-    @Schema(description = "Year")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Year")
     public String getYear() {
         return year;
     }

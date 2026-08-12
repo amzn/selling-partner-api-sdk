@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackageRequest;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackagesRequest;
@@ -84,8 +83,7 @@ public class EasyShipApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createScheduledPackageCall(
-            CreateScheduledPackageRequest createScheduledPackageRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateScheduledPackageRequest createScheduledPackageRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = createScheduledPackageRequest;
 
@@ -124,8 +122,7 @@ public class EasyShipApi {
     }
 
     private okhttp3.Call createScheduledPackageValidateBeforeCall(
-            CreateScheduledPackageRequest createScheduledPackageRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateScheduledPackageRequest createScheduledPackageRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'createScheduledPackageRequest' is set
@@ -330,10 +327,10 @@ public class EasyShipApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -363,8 +360,7 @@ public class EasyShipApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createScheduledPackageBulkCall(
-            CreateScheduledPackagesRequest createScheduledPackagesRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateScheduledPackagesRequest createScheduledPackagesRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = createScheduledPackagesRequest;
 
@@ -403,8 +399,7 @@ public class EasyShipApi {
     }
 
     private okhttp3.Call createScheduledPackageBulkValidateBeforeCall(
-            CreateScheduledPackagesRequest createScheduledPackagesRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateScheduledPackagesRequest createScheduledPackagesRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'createScheduledPackagesRequest' is set
@@ -633,10 +628,10 @@ public class EasyShipApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -667,9 +662,7 @@ public class EasyShipApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getScheduledPackageCall(
-            String amazonOrderId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -713,9 +706,7 @@ public class EasyShipApi {
     }
 
     private okhttp3.Call getScheduledPackageValidateBeforeCall(
-            String amazonOrderId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String amazonOrderId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'amazonOrderId' is set
@@ -880,10 +871,10 @@ public class EasyShipApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -911,8 +902,7 @@ public class EasyShipApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listHandoverSlotsCall(
-            ListHandoverSlotsRequest listHandoverSlotsRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ListHandoverSlotsRequest listHandoverSlotsRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = listHandoverSlotsRequest;
 
@@ -951,8 +941,7 @@ public class EasyShipApi {
     }
 
     private okhttp3.Call listHandoverSlotsValidateBeforeCall(
-            ListHandoverSlotsRequest listHandoverSlotsRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ListHandoverSlotsRequest listHandoverSlotsRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listHandoverSlotsCall(listHandoverSlotsRequest, progressRequestListener);
@@ -1124,10 +1113,10 @@ public class EasyShipApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listHandoverSlotsValidateBeforeCall(listHandoverSlotsRequest, progressRequestListener);
@@ -1155,8 +1144,7 @@ public class EasyShipApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateScheduledPackagesCall(
-            UpdateScheduledPackagesRequest updateScheduledPackagesRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            UpdateScheduledPackagesRequest updateScheduledPackagesRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = updateScheduledPackagesRequest;
 
@@ -1195,8 +1183,7 @@ public class EasyShipApi {
     }
 
     private okhttp3.Call updateScheduledPackagesValidateBeforeCall(
-            UpdateScheduledPackagesRequest updateScheduledPackagesRequest,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            UpdateScheduledPackagesRequest updateScheduledPackagesRequest, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return updateScheduledPackagesCall(updateScheduledPackagesRequest, progressRequestListener);
@@ -1363,10 +1350,10 @@ public class EasyShipApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =

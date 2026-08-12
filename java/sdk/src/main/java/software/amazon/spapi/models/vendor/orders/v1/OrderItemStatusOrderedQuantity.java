@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Ordered quantity information. */
-@Schema(description = "Ordered quantity information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Ordered quantity information.")
 public class OrderItemStatusOrderedQuantity {
     @SerializedName("orderedQuantity")
     private ItemQuantity orderedQuantity = null;
@@ -37,7 +36,7 @@ public class OrderItemStatusOrderedQuantity {
      *
      * @return orderedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -65,7 +64,7 @@ public class OrderItemStatusOrderedQuantity {
      *
      * @return orderedQuantityDetails
      */
-    @Schema(description = "Details of item quantity ordered.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity ordered.")
     public List<OrderedQuantityDetails> getOrderedQuantityDetails() {
         return orderedQuantityDetails;
     }

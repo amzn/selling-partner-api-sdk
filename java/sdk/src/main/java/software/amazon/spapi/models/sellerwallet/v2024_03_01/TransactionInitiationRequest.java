@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.")
 public class TransactionInitiationRequest {
@@ -60,7 +60,7 @@ public class TransactionInitiationRequest {
      *
      * @return sourceAccountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.")
@@ -82,7 +82,8 @@ public class TransactionInitiationRequest {
      *
      * @return destinationAccountId
      */
-    @Schema(description = "The unique identifier of the destination bank account where the money is deposited.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The unique identifier of the destination bank account where the money is deposited.")
     public String getDestinationAccountId() {
         return destinationAccountId;
     }
@@ -102,7 +103,7 @@ public class TransactionInitiationRequest {
      *
      * @return destinationTransactionInstrument
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionInstrumentDetails getDestinationTransactionInstrument() {
         return destinationTransactionInstrument;
     }
@@ -121,7 +122,7 @@ public class TransactionInitiationRequest {
      *
      * @return transactionDescription
      */
-    @Schema(description = "A description of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the transaction.")
     public String getTransactionDescription() {
         return transactionDescription;
     }
@@ -142,7 +143,7 @@ public class TransactionInitiationRequest {
      *
      * @return customerPaymentReference
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.")
     public String getCustomerPaymentReference() {
@@ -163,7 +164,7 @@ public class TransactionInitiationRequest {
      *
      * @return payeeContactInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PayeeContactInformation getPayeeContactInformation() {
         return payeeContactInformation;
     }
@@ -182,7 +183,7 @@ public class TransactionInitiationRequest {
      *
      * @return sourceAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getSourceAmount() {
         return sourceAmount;
     }
@@ -201,7 +202,7 @@ public class TransactionInitiationRequest {
      *
      * @return transferRateDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransferRatePreview getTransferRateDetails() {
         return transferRateDetails;
     }
@@ -221,7 +222,7 @@ public class TransactionInitiationRequest {
      *
      * @return requestTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).")

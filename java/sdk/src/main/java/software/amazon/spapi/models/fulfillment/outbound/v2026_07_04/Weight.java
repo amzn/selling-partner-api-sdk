@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The weight. */
-@Schema(description = "The weight.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight.")
 public class Weight {
     @SerializedName("unit")
     private String unit = null;
@@ -35,7 +34,9 @@ public class Weight {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of weight. Possible values: `KG`, `KILOGRAMS`, `LB`, `POUNDS`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unit of weight. Possible values: `KG`, `KILOGRAMS`, `LB`, `POUNDS`.")
     public String getUnit() {
         return unit;
     }
@@ -55,7 +56,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows [RFC 7159](https://datatracker.ietf.org/doc/html/rfc7159) for number representation.")

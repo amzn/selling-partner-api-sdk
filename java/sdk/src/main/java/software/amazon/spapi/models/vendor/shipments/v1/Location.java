@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Location identifier. */
-@Schema(description = "Location identifier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Location identifier.")
 public class Location {
     @SerializedName("type")
     private String type = null;
@@ -38,7 +37,7 @@ public class Location {
      *
      * @return type
      */
-    @Schema(description = "Type of location identification.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Type of location identification.")
     public String getType() {
         return type;
     }
@@ -57,7 +56,7 @@ public class Location {
      *
      * @return locationCode
      */
-    @Schema(description = "Location code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Location code.")
     public String getLocationCode() {
         return locationCode;
     }
@@ -76,7 +75,8 @@ public class Location {
      *
      * @return countryCode
      */
-    @Schema(description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }

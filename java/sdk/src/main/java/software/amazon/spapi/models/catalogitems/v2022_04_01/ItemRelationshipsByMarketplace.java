@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Relationship details for the Amazon catalog item for the specified Amazon &#x60;marketplaceId&#x60;. */
-@Schema(description = "Relationship details for the Amazon catalog item for the specified Amazon `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Relationship details for the Amazon catalog item for the specified Amazon `marketplaceId`.")
 public class ItemRelationshipsByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -38,7 +38,7 @@ public class ItemRelationshipsByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -68,7 +68,7 @@ public class ItemRelationshipsByMarketplace {
      *
      * @return relationships
      */
-    @Schema(required = true, description = "Relationships for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Relationships for the item.")
     public List<ItemRelationship> getRelationships() {
         return relationships;
     }

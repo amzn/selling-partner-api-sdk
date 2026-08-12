@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An invoice creation error occurred. */
-@Schema(description = "An invoice creation error occurred.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An invoice creation error occurred.")
 public class InvoiceError {
     @SerializedName("description")
     private String description = null;
@@ -35,7 +34,7 @@ public class InvoiceError {
      *
      * @return description
      */
-    @Schema(description = "A description of the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the error.")
     public String getDescription() {
         return description;
     }
@@ -54,7 +53,7 @@ public class InvoiceError {
      *
      * @return errorCode
      */
-    @Schema(description = "The code of the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The code of the error.")
     public String getErrorCode() {
         return errorCode;
     }

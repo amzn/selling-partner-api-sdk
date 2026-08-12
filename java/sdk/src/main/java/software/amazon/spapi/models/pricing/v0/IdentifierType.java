@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specifies the identifiers used to uniquely identify an item. */
-@Schema(description = "Specifies the identifiers used to uniquely identify an item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Specifies the identifiers used to uniquely identify an item.")
 public class IdentifierType {
     @SerializedName("MarketplaceASIN")
     private ASINIdentifier marketplaceASIN = null;
@@ -35,7 +35,7 @@ public class IdentifierType {
      *
      * @return marketplaceASIN
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ASINIdentifier getMarketplaceASIN() {
         return marketplaceASIN;
     }
@@ -54,7 +54,7 @@ public class IdentifierType {
      *
      * @return skUIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SellerSKUIdentifier getSkUIdentifier() {
         return skUIdentifier;
     }

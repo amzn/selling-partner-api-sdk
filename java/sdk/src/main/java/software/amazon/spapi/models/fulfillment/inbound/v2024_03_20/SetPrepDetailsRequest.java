@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;setPrepDetails&#x60; request. */
-@Schema(description = "The `setPrepDetails` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `setPrepDetails` request.")
 public class SetPrepDetailsRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -38,7 +37,7 @@ public class SetPrepDetailsRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -68,7 +67,9 @@ public class SetPrepDetailsRequest {
      *
      * @return mskuPrepDetails
      */
-    @Schema(required = true, description = "A list of MSKUs and related prep details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of MSKUs and related prep details.")
     public List<MskuPrepDetailInput> getMskuPrepDetails() {
         return mskuPrepDetails;
     }

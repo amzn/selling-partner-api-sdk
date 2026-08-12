@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Describes a messaging action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL)
  * link to the JSON schema document that describes the expected input.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Describes a messaging action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL) link to the JSON schema document that describes the expected input.")
 public class GetMessagingActionResponse {
@@ -46,7 +45,7 @@ public class GetMessagingActionResponse {
      *
      * @return links
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetMessagingActionResponseLinks getLinks() {
         return links;
     }
@@ -65,7 +64,7 @@ public class GetMessagingActionResponse {
      *
      * @return embedded
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetMessagingActionResponseEmbedded getEmbedded() {
         return embedded;
     }
@@ -84,7 +83,7 @@ public class GetMessagingActionResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MessagingAction getPayload() {
         return payload;
     }
@@ -103,7 +102,7 @@ public class GetMessagingActionResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

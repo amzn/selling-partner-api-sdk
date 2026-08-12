@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response to an inventory request. */
-@Schema(description = "The response to an inventory request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to an inventory request.")
 public class InventoryResponseBody {
     @SerializedName("clientSequenceNumber")
     private Integer clientSequenceNumber = null;
@@ -52,7 +51,7 @@ public class InventoryResponseBody {
      *
      * @return clientSequenceNumber
      */
-    @Schema(description = "Latest sequence number for an inventory update.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Latest sequence number for an inventory update.")
     public Integer getClientSequenceNumber() {
         return clientSequenceNumber;
     }
@@ -71,7 +70,7 @@ public class InventoryResponseBody {
      *
      * @return locationId
      */
-    @Schema(description = "The location where inventory is updated or retrieved.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The location where inventory is updated or retrieved.")
     public String getLocationId() {
         return locationId;
     }
@@ -90,7 +89,7 @@ public class InventoryResponseBody {
      *
      * @return skuId
      */
-    @Schema(description = "The SKU ID for which inventory is updated or retrieved")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The SKU ID for which inventory is updated or retrieved")
     public String getSkuId() {
         return skuId;
     }
@@ -109,7 +108,8 @@ public class InventoryResponseBody {
      *
      * @return sellableQuantity
      */
-    @Schema(description = "The number of items of the specified SKU that are available for purchase.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of items of the specified SKU that are available for purchase.")
     public Integer getSellableQuantity() {
         return sellableQuantity;
     }
@@ -129,7 +129,7 @@ public class InventoryResponseBody {
      *
      * @return reservedQuantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled.")
     public Integer getReservedQuantity() {
@@ -150,7 +150,7 @@ public class InventoryResponseBody {
      *
      * @return marketplaceAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }
@@ -177,7 +177,7 @@ public class InventoryResponseBody {
      *
      * @return actionableErrors
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Inventory operation errors that require seller action before retrying the inventory request.")
     public List<ActionableError> getActionableErrors() {

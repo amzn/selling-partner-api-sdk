@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The seller owning the goods before handing them over to the carrier */
-@Schema(description = "The seller owning the goods before handing them over to the carrier")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The seller owning the goods before handing them over to the carrier")
 public class GoodsOwner {
     @SerializedName("merchantId")
     private String merchantId = null;
@@ -32,7 +32,7 @@ public class GoodsOwner {
      *
      * @return merchantId
      */
-    @Schema(required = true, description = "merchant Id of provided merchant ")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "merchant Id of provided merchant ")
     public String getMerchantId() {
         return merchantId;
     }

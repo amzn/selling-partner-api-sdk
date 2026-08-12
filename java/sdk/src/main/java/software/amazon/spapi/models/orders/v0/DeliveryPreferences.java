@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains all of the delivery instructions provided by the customer for the shipping address. */
-@Schema(description = "Contains all of the delivery instructions provided by the customer for the shipping address.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains all of the delivery instructions provided by the customer for the shipping address.")
 public class DeliveryPreferences {
     @SerializedName("DropOffLocation")
     private String dropOffLocation = null;
@@ -43,7 +43,7 @@ public class DeliveryPreferences {
      *
      * @return dropOffLocation
      */
-    @Schema(description = "Drop-off location selected by the customer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Drop-off location selected by the customer.")
     public String getDropOffLocation() {
         return dropOffLocation;
     }
@@ -62,7 +62,7 @@ public class DeliveryPreferences {
      *
      * @return preferredDeliveryTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PreferredDeliveryTime getPreferredDeliveryTime() {
         return preferredDeliveryTime;
     }
@@ -89,7 +89,8 @@ public class DeliveryPreferences {
      *
      * @return otherAttributes
      */
-    @Schema(description = "Enumerated list of miscellaneous delivery attributes associated with the shipping address.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Enumerated list of miscellaneous delivery attributes associated with the shipping address.")
     public List<OtherDeliveryAttributes> getOtherAttributes() {
         return otherAttributes;
     }
@@ -108,7 +109,8 @@ public class DeliveryPreferences {
      *
      * @return addressInstructions
      */
-    @Schema(description = "Building instructions, nearby landmark or navigation instructions.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Building instructions, nearby landmark or navigation instructions.")
     public String getAddressInstructions() {
         return addressInstructions;
     }

@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Quantity of inventory with an associated measurement unit context. */
-@Schema(description = "Quantity of inventory with an associated measurement unit context.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Quantity of inventory with an associated measurement unit context.")
 public class InventoryQuantity {
     @SerializedName("quantity")
     private BigDecimal quantity = null;
@@ -35,7 +36,7 @@ public class InventoryQuantity {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "Quantity of the respective inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Quantity of the respective inventory.")
     public BigDecimal getQuantity() {
         return quantity;
     }
@@ -54,7 +55,7 @@ public class InventoryQuantity {
      *
      * @return unitOfMeasurement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InventoryUnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }

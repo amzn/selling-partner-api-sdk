@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The marketplace and channel name. */
-@Schema(description = "The marketplace and channel name.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace and channel name.")
 public class MarketplaceChannel {
     @SerializedName("marketplaceName")
     private String marketplaceName = null;
@@ -35,7 +34,7 @@ public class MarketplaceChannel {
      *
      * @return marketplaceName
      */
-    @Schema(description = "The name of the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the marketplace.")
     public String getMarketplaceName() {
         return marketplaceName;
     }
@@ -54,7 +53,7 @@ public class MarketplaceChannel {
      *
      * @return channelName
      */
-    @Schema(description = "The name of the channel within the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the channel within the marketplace.")
     public String getChannelName() {
         return channelName;
     }

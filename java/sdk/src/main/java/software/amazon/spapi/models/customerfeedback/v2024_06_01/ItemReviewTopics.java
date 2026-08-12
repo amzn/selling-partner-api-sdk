@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The top 10 positive and negative item review topics. */
-@Schema(description = "The top 10 positive and negative item review topics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The top 10 positive and negative item review topics.")
 public class ItemReviewTopics {
     @SerializedName("positiveTopics")
     private List<ItemReviewTopic> positiveTopics = null;
@@ -49,7 +48,7 @@ public class ItemReviewTopics {
      *
      * @return positiveTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews that mention the topic determines the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of the item determines placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10")
     public List<ItemReviewTopic> getPositiveTopics() {
@@ -82,7 +81,7 @@ public class ItemReviewTopics {
      *
      * @return negativeTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most negative review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews that mention the topic determines the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of the item determines placement in the list. This value is `null` if there are not enough negative reviews for the specified ASIN.  **Max length:** 10")
     public List<ItemReviewTopic> getNegativeTopics() {

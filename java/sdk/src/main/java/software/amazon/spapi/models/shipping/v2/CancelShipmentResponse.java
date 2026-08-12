@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema for the cancelShipment operation. */
-@Schema(description = "Response schema for the cancelShipment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the cancelShipment operation.")
 public class CancelShipmentResponse {
     @SerializedName("payload")
     private CancelShipmentResult payload = null;
@@ -32,7 +31,7 @@ public class CancelShipmentResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CancelShipmentResult getPayload() {
         return payload;
     }

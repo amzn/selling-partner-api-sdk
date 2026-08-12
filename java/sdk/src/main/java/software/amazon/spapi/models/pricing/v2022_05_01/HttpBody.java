@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Additional HTTP body information that is associated with an individual request within a batch. */
-@Schema(description = "Additional HTTP body information that is associated with an individual request within a batch.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional HTTP body information that is associated with an individual request within a batch.")
 public class HttpBody extends HashMap<String, Object> {
 
     @Override

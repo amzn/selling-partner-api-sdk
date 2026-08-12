@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An Amazon order item identifier and a quantity. */
-@Schema(description = "An Amazon order item identifier and a quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon order item identifier and a quantity.")
 public class Item {
     @SerializedName("OrderItemId")
     private String orderItemId = null;
@@ -56,7 +55,9 @@ public class Item {
      *
      * @return orderItemId
      */
-    @Schema(required = true, description = "An Amazon-defined identifier for an individual item in an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined identifier for an individual item in an order.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -75,7 +76,7 @@ public class Item {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The number of items.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of items.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -94,7 +95,7 @@ public class Item {
      *
      * @return itemWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getItemWeight() {
         return itemWeight;
     }
@@ -113,7 +114,7 @@ public class Item {
      *
      * @return itemDescription
      */
-    @Schema(description = "The description of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The description of the item.")
     public String getItemDescription() {
         return itemDescription;
     }
@@ -132,7 +133,7 @@ public class Item {
      *
      * @return transparencyCodeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransparencyCodeList getTransparencyCodeList() {
         return transparencyCodeList;
     }
@@ -151,7 +152,7 @@ public class Item {
      *
      * @return itemLevelSellerInputsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalSellerInputsList getItemLevelSellerInputsList() {
         return itemLevelSellerInputsList;
     }
@@ -170,7 +171,7 @@ public class Item {
      *
      * @return liquidVolume
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LiquidVolume getLiquidVolume() {
         return liquidVolume;
     }
@@ -189,7 +190,8 @@ public class Item {
      *
      * @return isHazmat
      */
-    @Schema(description = "When true, the item qualifies as hazardous materials (hazmat). Defaults to false.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the item qualifies as hazardous materials (hazmat). Defaults to false.")
     public Boolean getIsHazmat() {
         return isHazmat;
     }
@@ -208,7 +210,7 @@ public class Item {
      *
      * @return dangerousGoodsDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DangerousGoodsDetails getDangerousGoodsDetails() {
         return dangerousGoodsDetails;
     }

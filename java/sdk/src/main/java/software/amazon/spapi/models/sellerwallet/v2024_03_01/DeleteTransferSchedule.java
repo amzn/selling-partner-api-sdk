@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response returned when the schedule transfer&#39;s delete request is successful. */
-@Schema(description = "The response returned when the schedule transfer's delete request is successful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response returned when the schedule transfer's delete request is successful.")
 public class DeleteTransferSchedule {
     @SerializedName("code")
     private String code = null;
@@ -38,7 +38,7 @@ public class DeleteTransferSchedule {
      *
      * @return code
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A success code that specifies that the delete operation was successful. For example, HTTP 200.")
@@ -60,7 +60,7 @@ public class DeleteTransferSchedule {
      *
      * @return message
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A message that describes the success condition of the delete schedule transaction.")
     public String getMessage() {
@@ -81,7 +81,8 @@ public class DeleteTransferSchedule {
      *
      * @return details
      */
-    @Schema(description = "Additional details that can help the caller understand the operation execution.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Additional details that can help the caller understand the operation execution.")
     public String getDetails() {
         return details;
     }

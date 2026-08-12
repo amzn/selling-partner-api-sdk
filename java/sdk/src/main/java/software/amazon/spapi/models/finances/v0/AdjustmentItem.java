@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item in an adjustment to the seller&#39;s account. */
-@Schema(description = "An item in an adjustment to the seller's account.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item in an adjustment to the seller's account.")
 public class AdjustmentItem {
     @SerializedName("Quantity")
     private String quantity = null;
@@ -54,7 +53,7 @@ public class AdjustmentItem {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Represents the number of units in the seller's inventory when the `AdjustmentType` is `FBAInventoryReimbursement`.")
     public String getQuantity() {
@@ -75,7 +74,7 @@ public class AdjustmentItem {
      *
      * @return perUnitAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getPerUnitAmount() {
         return perUnitAmount;
     }
@@ -94,7 +93,7 @@ public class AdjustmentItem {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }
@@ -114,7 +113,7 @@ public class AdjustmentItem {
      *
      * @return sellerSKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
     public String getSellerSKU() {
@@ -135,7 +134,8 @@ public class AdjustmentItem {
      *
      * @return fnSKU
      */
-    @Schema(description = "A unique identifier assigned to products stored in and fulfilled from a fulfillment center.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A unique identifier assigned to products stored in and fulfilled from a fulfillment center.")
     public String getFnSKU() {
         return fnSKU;
     }
@@ -154,7 +154,7 @@ public class AdjustmentItem {
      *
      * @return productDescription
      */
-    @Schema(description = "A short description of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the item.")
     public String getProductDescription() {
         return productDescription;
     }
@@ -173,7 +173,8 @@ public class AdjustmentItem {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -192,7 +193,8 @@ public class AdjustmentItem {
      *
      * @return transactionNumber
      */
-    @Schema(description = "The transaction number that is related to the adjustment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The transaction number that is related to the adjustment.")
     public String getTransactionNumber() {
         return transactionNumber;
     }

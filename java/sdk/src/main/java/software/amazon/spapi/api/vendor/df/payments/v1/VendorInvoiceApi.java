@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceRequest;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceResponse;
@@ -60,8 +59,7 @@ public class VendorInvoiceApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call submitInvoiceCall(
-            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call submitInvoiceCall(SubmitInvoiceRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -101,8 +99,7 @@ public class VendorInvoiceApi {
     }
 
     private okhttp3.Call submitInvoiceValidateBeforeCall(
-            SubmitInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            SubmitInvoiceRequest body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -241,10 +238,10 @@ public class VendorInvoiceApi {
             SubmitInvoiceRequest body, final ApiCallback<SubmitInvoiceResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = submitInvoiceValidateBeforeCall(body, progressRequestListener);

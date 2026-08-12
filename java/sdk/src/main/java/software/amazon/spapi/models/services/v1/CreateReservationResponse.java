@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema for the &#x60;createReservation&#x60; operation. */
-@Schema(description = "Response schema for the `createReservation` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the `createReservation` operation.")
 public class CreateReservationResponse {
     @SerializedName("payload")
     private CreateReservationRecord payload = null;
@@ -35,7 +34,7 @@ public class CreateReservationResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CreateReservationRecord getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class CreateReservationResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

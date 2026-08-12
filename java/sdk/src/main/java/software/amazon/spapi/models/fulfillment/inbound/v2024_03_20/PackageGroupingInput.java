@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Packing information for the inbound plan. */
-@Schema(description = "Packing information for the inbound plan.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Packing information for the inbound plan.")
 public class PackageGroupingInput {
     @SerializedName("boxes")
     private List<BoxInput> boxes = null;
@@ -48,7 +47,7 @@ public class PackageGroupingInput {
      *
      * @return boxes
      */
-    @Schema(required = true, description = "Box level information being provided.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Box level information being provided.")
     public List<BoxInput> getBoxes() {
         return boxes;
     }
@@ -69,7 +68,7 @@ public class PackageGroupingInput {
      *
      * @return packingGroupId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The ID of the `packingGroup` that packages are grouped according to. The `PackingGroupId` can only be provided before placement confirmation, and it must belong to the confirmed `PackingOption`. One of `ShipmentId` or `PackingGroupId` must be provided with every request.")
     public String getPackingGroupId() {
@@ -92,7 +91,7 @@ public class PackageGroupingInput {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The ID of the shipment that packages are grouped according to. The `ShipmentId` can only be provided after placement confirmation, and the shipment must belong to the confirmed placement option. One of `ShipmentId` or `PackingGroupId` must be provided with every request.")
     public String getShipmentId() {

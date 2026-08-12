@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Selected delivery window attributes. */
-@Schema(description = "Selected delivery window attributes.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Selected delivery window attributes.")
 public class SelectedDeliveryWindow {
     @SerializedName("availabilityType")
     private String availabilityType = null;
@@ -45,7 +45,7 @@ public class SelectedDeliveryWindow {
      *
      * @return availabilityType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`")
@@ -68,7 +68,7 @@ public class SelectedDeliveryWindow {
      *
      * @return deliveryWindowOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.")
@@ -90,7 +90,8 @@ public class SelectedDeliveryWindow {
      *
      * @return editableUntil
      */
-    @Schema(description = "The timestamp at which this Window can no longer be edited.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The timestamp at which this Window can no longer be edited.")
     public OffsetDateTime getEditableUntil() {
         return editableUntil;
     }
@@ -109,7 +110,7 @@ public class SelectedDeliveryWindow {
      *
      * @return endDate
      */
-    @Schema(required = true, description = "The end timestamp of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The end timestamp of the window.")
     public OffsetDateTime getEndDate() {
         return endDate;
     }
@@ -128,7 +129,7 @@ public class SelectedDeliveryWindow {
      *
      * @return startDate
      */
-    @Schema(required = true, description = "The start timestamp of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The start timestamp of the window.")
     public OffsetDateTime getStartDate() {
         return startDate;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Resource to download the requested document. */
-@Schema(description = "Resource to download the requested document.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Resource to download the requested document.")
 public class DocumentDownload {
     @SerializedName("downloadType")
     private String downloadType = null;
@@ -38,7 +38,9 @@ public class DocumentDownload {
      *
      * @return downloadType
      */
-    @Schema(required = true, description = "The type of download. Possible values: `URL`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of download. Possible values: `URL`.")
     public String getDownloadType() {
         return downloadType;
     }
@@ -58,7 +60,7 @@ public class DocumentDownload {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The URI's expiration time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
     public OffsetDateTime getExpiration() {
@@ -79,7 +81,9 @@ public class DocumentDownload {
      *
      * @return uri
      */
-    @Schema(required = true, description = "Uniform resource identifier to identify where the document is located.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Uniform resource identifier to identify where the document is located.")
     public String getUri() {
         return uri;
     }

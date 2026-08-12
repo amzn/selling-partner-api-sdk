@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -24,7 +23,7 @@ import java.util.Objects;
  * also use &#x60;filterExpression&#x60; to filter events based on notification payload. The specific features available
  * can vary by the &#x60;notificationType&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Additional information passed to the subscription to control the processing of notifications. For example, you can use an `eventFilter` to customize your subscription to send notifications for only the `marketplaceId`s that you specify, or select the aggregation time period at which to send notifications (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can also use `filterExpression` to filter events based on notification payload. The specific features available can vary by the `notificationType`.")
 public class ProcessingDirective {
@@ -44,7 +43,7 @@ public class ProcessingDirective {
      *
      * @return eventFilter
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EventFilter getEventFilter() {
         return eventFilter;
     }
@@ -70,7 +69,7 @@ public class ProcessingDirective {
      *
      * @return filterExpression
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.")
     public String getFilterExpression() {

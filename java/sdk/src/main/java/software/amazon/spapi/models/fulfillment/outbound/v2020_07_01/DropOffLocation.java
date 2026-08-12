@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /** The drop-off location at the destination address. */
-@Schema(description = "The drop-off location at the destination address.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The drop-off location at the destination address.")
 public class DropOffLocation {
     /** The drop-off location type at the destination address. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -100,7 +99,9 @@ public class DropOffLocation {
      *
      * @return type
      */
-    @Schema(required = true, description = "The drop-off location type at the destination address.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The drop-off location type at the destination address.")
     public TypeEnum getType() {
         return type;
     }
@@ -132,7 +133,7 @@ public class DropOffLocation {
      *
      * @return attributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.")
     public Map<String, String> getAttributes() {

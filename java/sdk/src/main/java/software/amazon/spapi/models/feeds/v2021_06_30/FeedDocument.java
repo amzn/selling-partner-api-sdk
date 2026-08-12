@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Information required for the feed document. */
-@Schema(description = "Information required for the feed document.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required for the feed document.")
 public class FeedDocument {
     @SerializedName("feedDocumentId")
     private String feedDocumentId = null;
@@ -94,7 +93,7 @@ public class FeedDocument {
      *
      * @return feedDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the feed document. This identifier is unique only in combination with a seller ID.")
@@ -117,7 +116,7 @@ public class FeedDocument {
      *
      * @return url
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A presigned URL for the feed document. If `compressionAlgorithm` is not returned, you can download the feed directly from this URL. This URL expires after 5 minutes.")
@@ -143,7 +142,7 @@ public class FeedDocument {
      *
      * @return compressionAlgorithm
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "If the feed document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the feed when you download. Otherwise, you can download the feed directly. Refer to [Step 7. Download the feed processing report](doc:feeds-api-v2021-06-30-use-case-guide#step-7-download-the-feed-processing-report) in the use case guide, where sample code is provided.")
     public CompressionAlgorithmEnum getCompressionAlgorithm() {

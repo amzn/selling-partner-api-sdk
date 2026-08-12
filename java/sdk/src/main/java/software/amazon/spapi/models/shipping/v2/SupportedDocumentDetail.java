@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The supported document types for a service offering. */
-@Schema(description = "The supported document types for a service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The supported document types for a service offering.")
 public class SupportedDocumentDetail {
     @SerializedName("name")
     private DocumentType name = null;
@@ -35,7 +34,7 @@ public class SupportedDocumentDetail {
      *
      * @return name
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentType getName() {
         return name;
     }
@@ -54,7 +53,9 @@ public class SupportedDocumentDetail {
      *
      * @return isMandatory
      */
-    @Schema(required = true, description = "When true, the supported document type is required.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, the supported document type is required.")
     public Boolean getIsMandatory() {
         return isMandatory;
     }

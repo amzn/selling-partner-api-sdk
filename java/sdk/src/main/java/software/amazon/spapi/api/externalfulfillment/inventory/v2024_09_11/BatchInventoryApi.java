@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11.BatchInventoryRequest;
 import software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11.BatchInventoryResponse;
@@ -60,8 +59,7 @@ public class BatchInventoryApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call batchInventoryCall(
-            BatchInventoryRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call batchInventoryCall(BatchInventoryRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -101,8 +99,7 @@ public class BatchInventoryApi {
     }
 
     private okhttp3.Call batchInventoryValidateBeforeCall(
-            BatchInventoryRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            BatchInventoryRequest body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -218,10 +215,10 @@ public class BatchInventoryApi {
             BatchInventoryRequest body, final ApiCallback<BatchInventoryResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = batchInventoryValidateBeforeCall(body, progressRequestListener);

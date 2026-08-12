@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of item information for creating a fulfillment order. */
-@Schema(description = "An array of item information for creating a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An array of item information for creating a fulfillment order.")
 public class CreateFulfillmentOrderItemList extends ArrayList<CreateFulfillmentOrderItem> {
 
     @Override

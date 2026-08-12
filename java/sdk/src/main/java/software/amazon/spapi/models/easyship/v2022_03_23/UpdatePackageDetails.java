@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Request to update the time slot of a package. */
-@Schema(description = "Request to update the time slot of a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request to update the time slot of a package.")
 public class UpdatePackageDetails {
     @SerializedName("scheduledPackageId")
     private ScheduledPackageId scheduledPackageId = null;
@@ -35,7 +34,7 @@ public class UpdatePackageDetails {
      *
      * @return scheduledPackageId
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ScheduledPackageId getScheduledPackageId() {
         return scheduledPackageId;
     }
@@ -54,7 +53,7 @@ public class UpdatePackageDetails {
      *
      * @return packageTimeSlot
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeSlot getPackageTimeSlot() {
         return packageTimeSlot;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Metadata for a ship label document. */
-@Schema(description = "Metadata for a ship label document.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata for a ship label document.")
 public class ShipLabelMetadata {
     @SerializedName("shippingOptionId")
     private String shippingOptionId = null;
@@ -47,7 +46,7 @@ public class ShipLabelMetadata {
      *
      * @return shippingOptionId
      */
-    @Schema(description = "The selected slot for the ship label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The selected slot for the ship label.")
     public String getShippingOptionId() {
         return shippingOptionId;
     }
@@ -66,7 +65,7 @@ public class ShipLabelMetadata {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -85,7 +84,7 @@ public class ShipLabelMetadata {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The tracking number of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The tracking number of the package.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -104,7 +103,7 @@ public class ShipLabelMetadata {
      *
      * @return pickupWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getPickupWindow() {
         return pickupWindow;
     }
@@ -123,7 +122,7 @@ public class ShipLabelMetadata {
      *
      * @return timeSlot
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getTimeSlot() {
         return timeSlot;
     }
@@ -142,7 +141,7 @@ public class ShipLabelMetadata {
      *
      * @return handoverLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HandoverLocation getHandoverLocation() {
         return handoverLocation;
     }

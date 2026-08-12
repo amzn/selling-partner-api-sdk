@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * original image size. If the image is cropped and you don&#39;t include offset values, the coordinates of the top left
  * corner of the cropped image are set to (0,0) by default.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The instructions for optionally cropping an image. If you don't want to crop the image, set the dimensions to the original image size. If the image is cropped and you don't include offset values, the coordinates of the top left corner of the cropped image are set to (0,0) by default.")
 public class ImageCropSpecification {
@@ -41,7 +40,7 @@ public class ImageCropSpecification {
      *
      * @return size
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ImageDimensions getSize() {
         return size;
     }
@@ -60,7 +59,7 @@ public class ImageCropSpecification {
      *
      * @return offset
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImageOffsets getOffset() {
         return offset;
     }

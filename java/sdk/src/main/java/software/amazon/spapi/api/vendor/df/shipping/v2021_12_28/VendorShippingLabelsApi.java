@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateShippingLabelsRequest;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.ShippingLabel;
@@ -79,9 +78,7 @@ public class VendorShippingLabelsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createShippingLabelsCall(
-            String purchaseOrderNumber,
-            CreateShippingLabelsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, CreateShippingLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -125,9 +122,7 @@ public class VendorShippingLabelsApi {
     }
 
     private okhttp3.Call createShippingLabelsValidateBeforeCall(
-            String purchaseOrderNumber,
-            CreateShippingLabelsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String purchaseOrderNumber, CreateShippingLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'purchaseOrderNumber' is set
@@ -294,10 +289,10 @@ public class VendorShippingLabelsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createShippingLabelsValidateBeforeCall(purchaseOrderNumber, body, progressRequestListener);
@@ -325,8 +320,7 @@ public class VendorShippingLabelsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getShippingLabelCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getShippingLabelCall(String purchaseOrderNumber, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -371,8 +365,7 @@ public class VendorShippingLabelsApi {
     }
 
     private okhttp3.Call getShippingLabelValidateBeforeCall(
-            String purchaseOrderNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String purchaseOrderNumber, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'purchaseOrderNumber' is set
         if (purchaseOrderNumber == null) {
@@ -519,10 +512,10 @@ public class VendorShippingLabelsApi {
             String purchaseOrderNumber, final ApiCallback<ShippingLabel> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShippingLabelValidateBeforeCall(purchaseOrderNumber, progressRequestListener);
@@ -568,7 +561,7 @@ public class VendorShippingLabelsApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -623,7 +616,7 @@ public class VendorShippingLabelsApi {
             Integer limit,
             String sortOrder,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'createdAfter' is set
@@ -902,10 +895,10 @@ public class VendorShippingLabelsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShippingLabelsValidateBeforeCall(
@@ -934,7 +927,7 @@ public class VendorShippingLabelsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call submitShippingLabelRequestCall(
-            SubmitShippingLabelsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShippingLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -974,7 +967,7 @@ public class VendorShippingLabelsApi {
     }
 
     private okhttp3.Call submitShippingLabelRequestValidateBeforeCall(
-            SubmitShippingLabelsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShippingLabelsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1120,10 +1113,10 @@ public class VendorShippingLabelsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = submitShippingLabelRequestValidateBeforeCall(body, progressRequestListener);

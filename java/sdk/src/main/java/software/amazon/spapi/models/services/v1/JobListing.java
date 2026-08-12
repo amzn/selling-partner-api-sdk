@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The payload for the &#x60;getServiceJobs&#x60; operation. */
-@Schema(description = "The payload for the `getServiceJobs` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getServiceJobs` operation.")
 public class JobListing {
     @SerializedName("totalResultSize")
     private Integer totalResultSize = null;
@@ -43,7 +42,7 @@ public class JobListing {
      *
      * @return totalResultSize
      */
-    @Schema(description = "Total result size of the query result.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total result size of the query result.")
     public Integer getTotalResultSize() {
         return totalResultSize;
     }
@@ -63,7 +62,7 @@ public class JobListing {
      *
      * @return nextPageToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A generated string used to pass information to your next request. If `nextPageToken` is returned, pass the value of `nextPageToken` to the `pageToken` to get next results.")
     public String getNextPageToken() {
@@ -85,7 +84,7 @@ public class JobListing {
      *
      * @return previousPageToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A generated string used to pass information to your next request. If `previousPageToken` is returned, pass the value of `previousPageToken` to the `pageToken` to get previous page results.")
     public String getPreviousPageToken() {
@@ -114,7 +113,7 @@ public class JobListing {
      *
      * @return jobs
      */
-    @Schema(description = "List of job details for the given input.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of job details for the given input.")
     public List<ServiceJob> getJobs() {
         return jobs;
     }

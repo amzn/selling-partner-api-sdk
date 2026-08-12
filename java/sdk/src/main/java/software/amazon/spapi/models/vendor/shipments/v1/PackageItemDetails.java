@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is
  * appropriate.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.")
 public class PackageItemDetails {
@@ -45,7 +44,7 @@ public class PackageItemDetails {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.")
     public String getPurchaseOrderNumber() {
@@ -68,7 +67,7 @@ public class PackageItemDetails {
      *
      * @return lotNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.")
     public String getLotNumber() {
@@ -89,7 +88,7 @@ public class PackageItemDetails {
      *
      * @return expiry
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Expiry getExpiry() {
         return expiry;
     }

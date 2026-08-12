@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getItemReviewTrends&#x60; operation. */
-@Schema(description = "The response for the `getItemReviewTrends` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getItemReviewTrends` operation.")
 public class ItemReviewTrendsResponse {
     @SerializedName("asin")
     private String asin = null;
@@ -48,7 +47,7 @@ public class ItemReviewTrendsResponse {
      *
      * @return asin
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The requested ASIN. The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace.")
@@ -70,7 +69,9 @@ public class ItemReviewTrendsResponse {
      *
      * @return itemName
      */
-    @Schema(required = true, description = "The product title of the requested ASIN.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The product title of the requested ASIN.")
     public String getItemName() {
         return itemName;
     }
@@ -89,7 +90,7 @@ public class ItemReviewTrendsResponse {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The requested marketplace id.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace id.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -108,7 +109,7 @@ public class ItemReviewTrendsResponse {
      *
      * @return countryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The two digit country code of the requested marketplace id, in ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
@@ -129,7 +130,7 @@ public class ItemReviewTrendsResponse {
      *
      * @return dateRange
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -148,7 +149,7 @@ public class ItemReviewTrendsResponse {
      *
      * @return reviewTrends
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemReviewTrends getReviewTrends() {
         return reviewTrends;
     }

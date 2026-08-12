@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Objects that were included in the update request. */
-@Schema(description = "Objects that were included in the update request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Objects that were included in the update request.")
 public class RequestedUpdates {
     @SerializedName("boxes")
     private List<BoxUpdateInput> boxes = null;
@@ -45,7 +44,8 @@ public class RequestedUpdates {
      *
      * @return boxes
      */
-    @Schema(description = "A list of boxes that will be present in the shipment after the update.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of boxes that will be present in the shipment after the update.")
     public List<BoxUpdateInput> getBoxes() {
         return boxes;
     }
@@ -72,7 +72,8 @@ public class RequestedUpdates {
      *
      * @return items
      */
-    @Schema(description = "A list of all items that will be present in the shipment after the update.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all items that will be present in the shipment after the update.")
     public List<ItemInput> getItems() {
         return items;
     }

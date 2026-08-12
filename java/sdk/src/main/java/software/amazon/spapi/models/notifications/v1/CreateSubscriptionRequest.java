@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the &#x60;createSubscription&#x60; operation. */
-@Schema(description = "The request schema for the `createSubscription` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the `createSubscription` operation.")
 public class CreateSubscriptionRequest {
     @SerializedName("payloadVersion")
     private String payloadVersion = null;
@@ -38,7 +37,9 @@ public class CreateSubscriptionRequest {
      *
      * @return payloadVersion
      */
-    @Schema(required = true, description = "The version of the payload object to be used in the notification.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The version of the payload object to be used in the notification.")
     public String getPayloadVersion() {
         return payloadVersion;
     }
@@ -57,7 +58,9 @@ public class CreateSubscriptionRequest {
      *
      * @return destinationId
      */
-    @Schema(required = true, description = "The identifier for the destination where notifications will be delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the destination where notifications will be delivered.")
     public String getDestinationId() {
         return destinationId;
     }
@@ -76,7 +79,7 @@ public class CreateSubscriptionRequest {
      *
      * @return processingDirective
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProcessingDirective getProcessingDirective() {
         return processingDirective;
     }

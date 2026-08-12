@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains pricing information that includes special pricing when buying in bulk. */
-@Schema(description = "Contains pricing information that includes special pricing when buying in bulk.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains pricing information that includes special pricing when buying in bulk.")
 public class QuantityDiscountPriceType {
     @SerializedName("quantityTier")
     private Integer quantityTier = null;
@@ -38,7 +38,9 @@ public class QuantityDiscountPriceType {
      *
      * @return quantityTier
      */
-    @Schema(required = true, description = "Indicates at what quantity this price becomes active.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Indicates at what quantity this price becomes active.")
     public Integer getQuantityTier() {
         return quantityTier;
     }
@@ -57,7 +59,7 @@ public class QuantityDiscountPriceType {
      *
      * @return quantityDiscountType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public QuantityDiscountType getQuantityDiscountType() {
         return quantityDiscountType;
     }
@@ -76,7 +78,7 @@ public class QuantityDiscountPriceType {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }

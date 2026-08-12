@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents one ineligibility reason for the order (there can be multiple reasons). */
-@Schema(description = "Represents one ineligibility reason for the order (there can be multiple reasons).")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents one ineligibility reason for the order (there can be multiple reasons).")
 public class OrderIneligibilityReason {
     @SerializedName("code")
     private String code = null;
@@ -35,7 +35,7 @@ public class OrderIneligibilityReason {
      *
      * @return code
      */
-    @Schema(required = true, description = "Code for the order ineligibility.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Code for the order ineligibility.")
     public String getCode() {
         return code;
     }
@@ -54,7 +54,9 @@ public class OrderIneligibilityReason {
      *
      * @return description
      */
-    @Schema(required = true, description = "Description detailing the ineligibility reason of the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Description detailing the ineligibility reason of the order.")
     public String getDescription() {
         return description;
     }

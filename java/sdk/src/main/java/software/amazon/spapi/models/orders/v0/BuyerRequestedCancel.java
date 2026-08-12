@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about whether or not a buyer requested cancellation. */
-@Schema(description = "Information about whether or not a buyer requested cancellation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about whether or not a buyer requested cancellation.")
 public class BuyerRequestedCancel {
     @SerializedName("IsBuyerRequestedCancel")
     private String isBuyerRequestedCancel = null;
@@ -35,7 +35,7 @@ public class BuyerRequestedCancel {
      *
      * @return isBuyerRequestedCancel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicate whether the buyer has requested cancellation.  **Possible Values**: `true`, `false`.")
     public String getIsBuyerRequestedCancel() {
@@ -56,7 +56,7 @@ public class BuyerRequestedCancel {
      *
      * @return buyerCancelReason
      */
-    @Schema(description = "The reason that the buyer requested cancellation.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason that the buyer requested cancellation.")
     public String getBuyerCancelReason() {
         return buyerCancelReason;
     }

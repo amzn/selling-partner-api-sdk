@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of the document specifications supported for a shipment service offering. */
-@Schema(description = "A list of the document specifications supported for a shipment service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of the document specifications supported for a shipment service offering.")
 public class SupportedDocumentSpecificationList extends ArrayList<SupportedDocumentSpecification> {
 
     @Override

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;cancelSelfShipAppointment&#x60; request. */
-@Schema(description = "The `cancelSelfShipAppointment` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `cancelSelfShipAppointment` request.")
 public class CancelSelfShipAppointmentRequest {
     @SerializedName("reasonComment")
     private ReasonComment reasonComment = null;
@@ -32,7 +31,7 @@ public class CancelSelfShipAppointmentRequest {
      *
      * @return reasonComment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReasonComment getReasonComment() {
         return reasonComment;
     }

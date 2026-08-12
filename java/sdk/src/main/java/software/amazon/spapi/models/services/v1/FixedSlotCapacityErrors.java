@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The error response schema for the &#x60;getFixedSlotCapacity&#x60; operation. */
-@Schema(description = "The error response schema for the `getFixedSlotCapacity` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The error response schema for the `getFixedSlotCapacity` operation.")
 public class FixedSlotCapacityErrors {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class FixedSlotCapacityErrors {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

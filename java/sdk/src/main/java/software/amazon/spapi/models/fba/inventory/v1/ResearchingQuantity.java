@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The number of misplaced or warehouse damaged units that are actively being confirmed at our fulfillment centers. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The number of misplaced or warehouse damaged units that are actively being confirmed at our fulfillment centers.")
 public class ResearchingQuantity {
@@ -39,7 +38,8 @@ public class ResearchingQuantity {
      *
      * @return totalResearchingQuantity
      */
-    @Schema(description = "The total number of units currently being researched in Amazon's fulfillment network.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The total number of units currently being researched in Amazon's fulfillment network.")
     public Integer getTotalResearchingQuantity() {
         return totalResearchingQuantity;
     }
@@ -68,7 +68,8 @@ public class ResearchingQuantity {
      *
      * @return researchingQuantityBreakdown
      */
-    @Schema(description = "A list of quantity details for items currently being researched.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of quantity details for items currently being researched.")
     public List<ResearchingQuantityEntry> getResearchingQuantityBreakdown() {
         return researchingQuantityBreakdown;
     }

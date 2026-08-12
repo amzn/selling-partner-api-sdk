@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A document, described by its file type and data. */
-@Schema(description = "A document, described by its file type and data.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A document, described by its file type and data.")
 public class Document {
     /** The type of the file. */
     @JsonAdapter(FormatEnum.Adapter.class)
@@ -90,7 +89,7 @@ public class Document {
      *
      * @return format
      */
-    @Schema(description = "The type of the file.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of the file.")
     public FormatEnum getFormat() {
         return format;
     }
@@ -109,7 +108,7 @@ public class Document {
      *
      * @return content
      */
-    @Schema(description = "Base 64 encoded file contents.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Base 64 encoded file contents.")
     public String getContent() {
         return content;
     }

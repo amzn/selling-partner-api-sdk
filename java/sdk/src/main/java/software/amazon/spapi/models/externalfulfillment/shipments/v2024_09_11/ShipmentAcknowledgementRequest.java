@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about the shipment and its line items, used to confirm or reject line items. */
-@Schema(description = "Information about the shipment and its line items, used to confirm or reject line items.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the shipment and its line items, used to confirm or reject line items.")
 public class ShipmentAcknowledgementRequest {
     @SerializedName("referenceId")
     private String referenceId = null;
@@ -37,7 +37,7 @@ public class ShipmentAcknowledgementRequest {
      *
      * @return referenceId
      */
-    @Schema(description = "A unique identifier for every shipment rejection.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for every shipment rejection.")
     public String getReferenceId() {
         return referenceId;
     }
@@ -64,7 +64,7 @@ public class ShipmentAcknowledgementRequest {
      *
      * @return lineItems
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Details about the line items from the shipment that are being confirmed or rejected by the seller.")

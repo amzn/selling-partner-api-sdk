@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The details of a shipment. Includes the shipment status. */
-@Schema(description = "The details of a shipment. Includes the shipment status.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a shipment. Includes the shipment status.")
 public class Shipment {
     @SerializedName("ShipmentId")
     private String shipmentId = null;
@@ -74,7 +74,7 @@ public class Shipment {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "An Amazon-defined shipment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "An Amazon-defined shipment identifier.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -93,7 +93,9 @@ public class Shipment {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -112,7 +114,7 @@ public class Shipment {
      *
      * @return sellerOrderId
      */
-    @Schema(description = "A seller-defined order identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined order identifier.")
     public String getSellerOrderId() {
         return sellerOrderId;
     }
@@ -131,7 +133,7 @@ public class Shipment {
      *
      * @return itemList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemList getItemList() {
         return itemList;
     }
@@ -150,7 +152,7 @@ public class Shipment {
      *
      * @return shipFromAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -169,7 +171,7 @@ public class Shipment {
      *
      * @return shipToAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipToAddress() {
         return shipToAddress;
     }
@@ -188,7 +190,7 @@ public class Shipment {
      *
      * @return packageDimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDimensions getPackageDimensions() {
         return packageDimensions;
     }
@@ -207,7 +209,7 @@ public class Shipment {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -226,7 +228,7 @@ public class Shipment {
      *
      * @return insurance
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyAmount getInsurance() {
         return insurance;
     }
@@ -245,7 +247,7 @@ public class Shipment {
      *
      * @return shippingService
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingService getShippingService() {
         return shippingService;
     }
@@ -264,7 +266,7 @@ public class Shipment {
      *
      * @return label
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Label getLabel() {
         return label;
     }
@@ -283,7 +285,7 @@ public class Shipment {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentStatus getStatus() {
         return status;
     }
@@ -302,7 +304,8 @@ public class Shipment {
      *
      * @return trackingId
      */
-    @Schema(description = "The shipment tracking identifier provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The shipment tracking identifier provided by the carrier.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -321,7 +324,7 @@ public class Shipment {
      *
      * @return createdDate
      */
-    @Schema(required = true, description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date-time formatted timestamp.")
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -340,7 +343,7 @@ public class Shipment {
      *
      * @return lastUpdatedDate
      */
-    @Schema(description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }

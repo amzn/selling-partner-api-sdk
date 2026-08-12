@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of queries. */
-@Schema(description = "A list of queries.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of queries.")
 public class QueryList extends ArrayList<Query> {
 
     @Override

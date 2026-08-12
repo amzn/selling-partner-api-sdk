@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** One-time password (OTP) details of the return item. */
-@Schema(description = "One-time password (OTP) details of the return item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "One-time password (OTP) details of the return item.")
 public class OtpDetails {
     @SerializedName("otp")
     private String otp = null;
@@ -35,7 +34,9 @@ public class OtpDetails {
      *
      * @return otp
      */
-    @Schema(required = true, description = "One-time password to validate the return delivered to the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "One-time password to validate the return delivered to the seller.")
     public String getOtp() {
         return otp;
     }
@@ -54,7 +55,9 @@ public class OtpDetails {
      *
      * @return validTill
      */
-    @Schema(required = true, description = "The UNIX timestamp of when the verification code expires.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The UNIX timestamp of when the verification code expires.")
     public Integer getValidTill() {
         return validTill;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** UnmanifestedShipmentLocation info */
-@Schema(description = "UnmanifestedShipmentLocation info ")
+@io.swagger.v3.oas.annotations.media.Schema(description = "UnmanifestedShipmentLocation info ")
 public class UnmanifestedShipmentLocation {
     @SerializedName("address")
     private Address address = null;
@@ -35,7 +34,7 @@ public class UnmanifestedShipmentLocation {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -54,7 +53,7 @@ public class UnmanifestedShipmentLocation {
      *
      * @return lastManifestDate
      */
-    @Schema(description = "Its Last Manifest Date.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Its Last Manifest Date.")
     public String getLastManifestDate() {
         return lastManifestDate;
     }

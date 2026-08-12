@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of tax line items. */
-@Schema(description = "A list of tax line items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of tax line items.")
 public class TaxLineItem extends ArrayList<TaxDetails> {
 
     @Override

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Payload for creating an outbound order. */
-@Schema(description = "Payload for creating an outbound order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Payload for creating an outbound order.")
 public class OutboundOrderCreationData {
     @SerializedName("orderPreferences")
     private List<OrderAttribute> orderPreferences = null;
@@ -48,7 +47,7 @@ public class OutboundOrderCreationData {
      *
      * @return orderPreferences
      */
-    @Schema(description = "Order preferences for the outbound order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Order preferences for the outbound order.")
     public List<OrderAttribute> getOrderPreferences() {
         return orderPreferences;
     }
@@ -75,7 +74,7 @@ public class OutboundOrderCreationData {
      *
      * @return packagesToOutbound
      */
-    @Schema(description = "List of packages to be outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of packages to be outbound.")
     public List<DistributionPackageQuantity> getPackagesToOutbound() {
         return packagesToOutbound;
     }
@@ -102,7 +101,7 @@ public class OutboundOrderCreationData {
      *
      * @return productsToOutbound
      */
-    @Schema(description = "List of product units to be outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of product units to be outbound.")
     public List<ProductQuantity> getProductsToOutbound() {
         return productsToOutbound;
     }

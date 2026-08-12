@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Detailed information about the physical condition and quality state of the item being sold. */
-@Schema(description = "Detailed information about the physical condition and quality state of the item being sold.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Detailed information about the physical condition and quality state of the item being sold.")
 public class ItemCondition {
     @SerializedName("conditionType")
     private String conditionType = null;
@@ -39,7 +39,7 @@ public class ItemCondition {
      *
      * @return conditionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The primary condition category that broadly describes the item's state.  **Possible values**: `NEW`, `USED`, `COLLECTIBLE`, `REFURBISHED`, `PREORDER`, `CLUB`.")
     public String getConditionType() {
@@ -64,7 +64,7 @@ public class ItemCondition {
      *
      * @return conditionSubtype
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A more specific condition classification that provides additional detail about the item's quality within the main condition type.  **Possible values**: `NEW`, `MINT`, `VERY_GOOD`, `GOOD`, `ACCEPTABLE`, `POOR`, `CLUB`, `OEM`, `WARRANTY`, `REFURBISHED_WARRANTY`, `REFURBISHED`, `OPEN_BOX`, `ANY`, `OTHER`.")
     public String getConditionSubtype() {
@@ -85,7 +85,7 @@ public class ItemCondition {
      *
      * @return conditionNote
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Additional details provided by the seller to describe the specific condition of this particular item.")
     public String getConditionNote() {

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Individual order item contained within a shipping package. */
-@Schema(description = "Individual order item contained within a shipping package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Individual order item contained within a shipping package.")
 public class PackageItem {
     @SerializedName("orderItemId")
     private String orderItemId = null;
@@ -40,7 +39,9 @@ public class PackageItem {
      *
      * @return orderItemId
      */
-    @Schema(required = true, description = "Unique identifier of the order item included in this package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Unique identifier of the order item included in this package.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -59,7 +60,9 @@ public class PackageItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "Number of units of this item included in the package shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Number of units of this item included in the package shipment.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -86,7 +89,8 @@ public class PackageItem {
      *
      * @return transparencyCodes
      */
-    @Schema(description = "The transparency codes associated with this item for product authentication.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The transparency codes associated with this item for product authentication.")
     public List<String> getTransparencyCodes() {
         return transparencyCodes;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the GetUnmanifestedShipmentsRequest operation. */
-@Schema(description = "The request schema for the GetUnmanifestedShipmentsRequest operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the GetUnmanifestedShipmentsRequest operation.")
 public class GetUnmanifestedShipmentsRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -32,7 +32,7 @@ public class GetUnmanifestedShipmentsRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
