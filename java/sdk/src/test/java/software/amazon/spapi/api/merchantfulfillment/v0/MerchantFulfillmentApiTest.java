@@ -32,6 +32,7 @@ import software.amazon.spapi.models.merchantfulfillment.v0.GetAdditionalSellerIn
 import software.amazon.spapi.models.merchantfulfillment.v0.GetEligibleShipmentServicesRequest;
 import software.amazon.spapi.models.merchantfulfillment.v0.GetEligibleShipmentServicesResponse;
 import software.amazon.spapi.models.merchantfulfillment.v0.GetShipmentResponse;
+import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class MerchantFulfillmentApiTest {
 
@@ -49,8 +50,10 @@ public class MerchantFulfillmentApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom =
-            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
+    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
+            .collectionSizeRange(1, 2)
+            .randomizationDepth(10)
+            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
     public void cancelShipmentTest() throws Exception {
@@ -112,10 +115,12 @@ public class MerchantFulfillmentApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String basename, String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String operationId, String code) throws Exception {
         String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
+        String cleanOperationId = operationId.replaceAll("_\\d+$", "");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + cleanOperationId + "/code/"
+                        + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
