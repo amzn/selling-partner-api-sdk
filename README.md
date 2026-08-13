@@ -38,13 +38,14 @@ You can get started with the SDK in minutes following the instructions for your 
 
 ### Feature Overview
 
-| Programming language | Basic API Support | RDT Support  | Rate Limiter |
-|----------------------|:-----------------:|:------------:|:------------:|
-| Java                 |         ✅        |      ✅      |      ✅      |
-| PHP                  |         ✅        |      ✅      |      ✅      |
-| JavaScript           |         ✅        |      ❌      |      ✅      |
-| Python               |         ✅        |      ❌      |      ❌      |
-| C#                   |         ✅        |      ❌      |      ❌      |
+| Programming language | Full SP-API Support | RDT Support* | Rate Limiter |
+|----------------------|:-------------------:|:------------:|:------------:|
+| Java                 |          ✅          |      ✅       |      ✅       |
+| PHP                  |          ✅          |      ✅       |      ✅       |
+| JavaScript           |          ✅          |      ❌       |      ✅       |
+| Python               |          ✅          |      ❌       |      ✅       |
+| C#                   |          ✅          |      ❌       |      ✅       |
+\* *RDT is deprecated and only used for legacy APIs*
 
 ### Giving Feedback
 

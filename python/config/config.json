@@ -8,6 +8,10 @@
     "rate_limiter.mustache": {
       "templateFile": "rate_limiter.mustache",
       "destinationFilename": "spapi/rate_limiter.py"
+    },
+    "rate_limit_test.mustache": {
+      "templateFile": "rate_limit_test.mustache",
+      "destinationFilename": "test/test_rate_limit_protection.py"
     }
   }
 }

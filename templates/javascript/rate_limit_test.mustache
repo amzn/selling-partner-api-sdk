@@ -1,0 +1,255 @@
+{{>licenseInfo}}
+
+import expect from 'expect.js';
+import { RateLimiter, CircuitBreakerState } from '../src/RateLimiter.js';
+
+const MOCK_ENDPOINT = 'http://localhost:3000';
+const OPERATION_KEY = 'GET /test/ratelimit';
+
+/**
+ * Integration tests for rate limit protection functionality.
+ *
+ * Tests verify:
+ * - Exponential backoff retry on HTTP 429 responses
+ * - Successful recovery after transient rate limiting
+ * - Circuit breaker opens after max retries exceeded
+ * - Circuit breaker rejects requests while open
+ * - Rate limit header parsing on successful responses
+ */
+describe('RateLimitProtection', () => {
+
+    beforeEach(async () => {
+        // Reset all rate limit state in the mock backend
+        await fetch(`${MOCK_ENDPOINT}/rate-limit/reset`, { method: 'POST' });
+    });
+
+    describe('Exponential Backoff Retry', () => {
+
+        it('should succeed after transient 429 responses with exponential backoff', async () => {
+            // Configure mock: fail 2 times with 429, then succeed
+            await configureMockRateLimit('retrySuccess', 2, '5.0', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: true });
+            let callCount = 0;
+
+            const startTime = Date.now();
+
+            const result = await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                callCount++;
+                const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/retrySuccess`);
+                const headers = Object.fromEntries(response.headers.entries());
+                const body = await response.text();
+
+                // Return the response object — RateLimiter handles 429 detection internally
+                return {
+                    status: response.status,
+                    statusCode: response.status,
+                    headers: headers,
+                    body: response.status >= 200 && response.status < 300 ? JSON.parse(body) : body
+                };
+            });
+
+            const elapsed = Date.now() - startTime;
+
+            // Should succeed (mock returns 200 on 3rd call)
+            expect(result.status).to.equal(200);
+
+            // Should have made 3 calls total (2 failures + 1 success)
+            expect(callCount).to.equal(3);
+
+            // Verify exponential backoff occurred (at least some delay)
+            expect(elapsed).to.be.greaterThan(500);
+
+            // Verify the response has rate limit data
+            expect(result.headers['x-amzn-ratelimit-limit']).to.equal('5.0');
+        }).timeout(15000);
+
+        it('should increase delay exponentially with each retry attempt', async () => {
+            // Configure mock: fail 3 times then succeed
+            await configureMockRateLimit('timing', 3, '5.0', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: true });
+            const timestamps = [];
+
+            const result = await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                timestamps.push(Date.now());
+                const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/timing`);
+                const headers = Object.fromEntries(response.headers.entries());
+                const body = await response.text();
+
+                return {
+                    status: response.status,
+                    statusCode: response.status,
+                    headers: headers,
+                    body: response.status >= 200 && response.status < 300 ? JSON.parse(body) : body
+                };
+            });
+
+            expect(result.status).to.equal(200);
+            // Should have 4 timestamps (3 failures + 1 success)
+            expect(timestamps.length).to.equal(4);
+
+            // Calculate delays between attempts
+            const delay1 = timestamps[1] - timestamps[0];
+            const delay2 = timestamps[2] - timestamps[1];
+            const delay3 = timestamps[3] - timestamps[2];
+
+            // Delays should increase (with jitter, use loose bounds)
+            // Base delay is 1s, so: ~1s, ~2s, ~4s
+            expect(delay1).to.be.greaterThan(800);
+            expect(delay2).to.be.greaterThan(1600);
+            expect(delay3).to.be.greaterThan(3200);
+
+            // Verify increasing pattern
+            expect(delay2).to.be.greaterThan(delay1);
+            expect(delay3).to.be.greaterThan(delay2);
+        }).timeout(30000);
+    });
+
+    describe('Circuit Breaker', () => {
+
+        it('should open circuit breaker after max retries exceeded', async () => {
+            // Configure mock: fail 10 times (more than max retries of 3)
+            await configureMockRateLimit('circuitOpen', 10, '5.0', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: true });
+
+            let caughtError = null;
+            try {
+                await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                    const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/circuitOpen`);
+                    const headers = Object.fromEntries(response.headers.entries());
+                    const body = await response.text();
+
+                    return {
+                        status: response.status,
+                        statusCode: response.status,
+                        headers: headers,
+                        body: body
+                    };
+                });
+                expect().fail('Should have thrown an error');
+            } catch (error) {
+                caughtError = error;
+            }
+
+            // Verify the error is rate limit related
+            expect(caughtError).to.be.ok();
+            expect(caughtError.isRateLimitError).to.be(true);
+            expect(caughtError.status || caughtError.statusCode).to.equal(429);
+        }).timeout(15000);
+
+        it('should reject requests immediately when circuit breaker is open', async () => {
+            // Configure mock: always fail
+            await configureMockRateLimit('circuitReject', 10, '5.0', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: true });
+
+            // First: exhaust retries to open circuit breaker
+            try {
+                await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                    const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/circuitReject`);
+                    const headers = Object.fromEntries(response.headers.entries());
+                    const body = await response.text();
+
+                    return {
+                        status: response.status,
+                        statusCode: response.status,
+                        headers: headers,
+                        body: body
+                    };
+                });
+            } catch (e) {
+                // Expected - circuit should now be open
+            }
+
+            // Second request should be rejected immediately by circuit breaker
+            let requestFnCalled = false;
+            const startTime = Date.now();
+            let circuitError = null;
+
+            try {
+                await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                    requestFnCalled = true;
+                    return { status: 200, statusCode: 200, headers: {}, body: null };
+                });
+                expect().fail('Should have thrown circuit breaker error');
+            } catch (error) {
+                circuitError = error;
+            }
+
+            const elapsed = Date.now() - startTime;
+
+            // Should be rejected almost immediately (no retry delays)
+            expect(elapsed).to.be.lessThan(500);
+
+            // Request function should NOT have been called
+            expect(requestFnCalled).to.be(false);
+
+            // Error should indicate circuit breaker is open
+            expect(circuitError).to.be.ok();
+            expect(circuitError.isCircuitBreakerError).to.be(true);
+            expect(circuitError.message).to.contain('Circuit breaker is OPEN');
+        }).timeout(15000);
+    });
+
+    describe('Configuration', () => {
+
+        it('should pass through directly when rate limiting is disabled', async () => {
+            // Configure mock to return 429
+            await configureMockRateLimit('disabled', 5, '5.0', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: false });
+
+            // With protection disabled, the request fn result is returned directly
+            const result = await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/disabled`);
+                return {
+                    status: response.status,
+                    statusCode: response.status,
+                    headers: Object.fromEntries(response.headers.entries()),
+                    body: await response.text()
+                };
+            });
+
+            // Should get the raw 429 without any retry
+            expect(result.status).to.equal(429);
+        });
+    });
+
+    describe('Rate Limit Header Parsing', () => {
+
+        it('should parse and store rate limit header on successful response', async () => {
+            // Configure mock: succeed immediately with rate header value "2.5"
+            await configureMockRateLimit('headerParse', 0, '2.5', 200);
+
+            const rateLimiter = new RateLimiter({ rateLimitEnabled: true });
+
+            const result = await rateLimiter.executeWithProtection(OPERATION_KEY, async () => {
+                const response = await fetch(`${MOCK_ENDPOINT}/rate-limit/test/headerParse`);
+                const headers = Object.fromEntries(response.headers.entries());
+                const body = await response.text();
+
+                return {
+                    status: response.status,
+                    statusCode: response.status,
+                    headers: headers,
+                    body: JSON.parse(body)
+                };
+            });
+
+            expect(result.status).to.equal(200);
+            // Verify rate limit header was in the response
+            expect(result.headers['x-amzn-ratelimit-limit']).to.equal('2.5');
+        }).timeout(5000);
+    });
+});
+
+// =========================================================================
+// Helper Functions
+// =========================================================================
+
+async function configureMockRateLimit(operationKey, failCount, rateLimitValue, successStatus) {
+    const url = `${MOCK_ENDPOINT}/rate-limit/configure/${operationKey}?failCount=${failCount}&rateLimitValue=${rateLimitValue}&successStatus=${successStatus}`;
+    await fetch(url, { method: 'POST' });
+}

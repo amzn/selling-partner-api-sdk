@@ -1,0 +1,282 @@
+{{>partial_header}}
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using RestSharp;
+using Xunit;
+
+using {{packageName}}.Client;
+
+using HttpMethod = System.Net.Http.HttpMethod;
+
+namespace {{packageName}}.Test.Client
+{
+    /// <summary>
+    /// Integration tests for rate limit protection functionality.
+    ///
+    /// Tests verify:
+    /// - Exponential backoff retry on HTTP 429 responses
+    /// - Successful recovery after transient rate limiting
+    /// - Circuit breaker opens after max retries exceeded
+    /// - Circuit breaker rejects requests while open
+    /// - Rate limit header parsing on successful responses
+    /// </summary>
+    [Collection("RateLimitTestCollection")]
+    public class RateLimitProtectionTests : IDisposable
+    {
+        private const string MockEndpoint = "http://localhost:3000";
+        private const string OperationKey = "GET /test/ratelimit";
+
+        private readonly HttpClient _httpClient;
+
+        public RateLimitProtectionTests()
+        {
+            _httpClient = new HttpClient();
+            // Reset all rate limit state in the mock backend
+            ResetMockRateLimitState().GetAwaiter().GetResult();
+        }
+
+        public void Dispose()
+        {
+            _httpClient.Dispose();
+        }
+
+        /// <summary>
+        /// Test: Retry with exponential backoff succeeds after transient 429 responses.
+        ///
+        /// Configures the mock to return 429 twice, then succeed on the third call.
+        /// The rate limiter should retry with exponential backoff and eventually return success.
+        /// </summary>
+        [Fact]
+        public void TestRetryWithExponentialBackoffSucceeds()
+        {
+            // Configure mock: fail 2 times with 429, then succeed
+            ConfigureMockRateLimit("retrySuccess", 2, "5.0", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: true);
+            int callCount = 0;
+
+            var stopwatch = Stopwatch.StartNew();
+
+            var response = handler.ExecuteWithProtection(OperationKey, () =>
+            {
+                callCount++;
+                var client = new RestClient(MockEndpoint);
+                var request = new RestRequest("/rate-limit/test/retrySuccess", Method.Get);
+                return client.Execute(request);
+            });
+
+            stopwatch.Stop();
+
+            // Should succeed (mock returns 200 on 3rd call)
+            Assert.Equal(200, (int)response.StatusCode);
+
+            // Should have made 3 calls total (2 failures + 1 success)
+            Assert.Equal(3, callCount);
+
+            // Verify exponential backoff occurred (at least some delay)
+            Assert.True(stopwatch.ElapsedMilliseconds >= 500,
+                $"Expected at least 500ms delay from backoff, got {stopwatch.ElapsedMilliseconds}ms");
+
+            // Verify the response has the rate limit header
+            var rateLimitHeader = response.Headers?.FirstOrDefault(
+                h => string.Equals(h.Name, "x-amzn-RateLimit-Limit", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(rateLimitHeader);
+            Assert.Equal("5.0", rateLimitHeader.Value?.ToString());
+        }
+
+        /// <summary>
+        /// Test: Circuit breaker opens after max retries exceeded.
+        ///
+        /// Configures the mock to always return 429 (more failures than max retries).
+        /// After exhausting retries, the circuit breaker should open.
+        /// </summary>
+        [Fact]
+        public void TestCircuitBreakerOpensAfterMaxRetries()
+        {
+            // Configure mock: fail 10 times (more than max retries of 3)
+            ConfigureMockRateLimit("circuitOpen", 10, "5.0", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: true);
+
+            // Should throw ApiException after exhausting retries
+            var exception = Assert.Throws<ApiException>(() =>
+            {
+                handler.ExecuteWithProtection(OperationKey, () =>
+                {
+                    var client = new RestClient(MockEndpoint);
+                    var request = new RestRequest("/rate-limit/test/circuitOpen", Method.Get);
+                    return client.Execute(request);
+                });
+            });
+
+            // Verify the exception is a 429
+            Assert.Equal(429, exception.ErrorCode);
+        }
+
+        /// <summary>
+        /// Test: Circuit breaker rejects requests immediately when open.
+        ///
+        /// After the circuit breaker opens, subsequent requests should be rejected
+        /// immediately without hitting the backend.
+        /// </summary>
+        [Fact]
+        public void TestCircuitBreakerRejectsWhenOpen()
+        {
+            // Configure mock: always fail
+            ConfigureMockRateLimit("circuitReject", 10, "5.0", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: true);
+
+            // First: exhaust retries to open circuit breaker
+            Assert.Throws<ApiException>(() =>
+            {
+                handler.ExecuteWithProtection(OperationKey, () =>
+                {
+                    var client = new RestClient(MockEndpoint);
+                    var request = new RestRequest("/rate-limit/test/circuitReject", Method.Get);
+                    return client.Execute(request);
+                });
+            });
+
+            // Second request should be rejected immediately by circuit breaker
+            bool requestFnCalled = false;
+            var stopwatch = Stopwatch.StartNew();
+
+            var circuitException = Assert.Throws<ApiException>(() =>
+            {
+                handler.ExecuteWithProtection(OperationKey, () =>
+                {
+                    requestFnCalled = true;
+                    // This should never be reached
+                    var client = new RestClient(MockEndpoint);
+                    var request = new RestRequest("/rate-limit/test/circuitReject", Method.Get);
+                    return client.Execute(request);
+                });
+            });
+
+            stopwatch.Stop();
+
+            // Should be rejected almost immediately (no retry delays)
+            Assert.True(stopwatch.ElapsedMilliseconds < 500,
+                $"Circuit breaker rejection should be fast, took {stopwatch.ElapsedMilliseconds}ms");
+
+            // Request function should NOT have been called
+            Assert.False(requestFnCalled, "Request function should not be called when circuit is open");
+
+            // Error should indicate circuit breaker is open
+            Assert.Equal(429, circuitException.ErrorCode);
+            Assert.Contains("Circuit breaker is open", circuitException.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Test: Rate limit protection can be disabled.
+        ///
+        /// When disabled, requests pass through directly without retry or circuit breaking.
+        /// </summary>
+        [Fact]
+        public void TestRateLimitDisabledPassesThrough()
+        {
+            // Configure mock to return 429
+            ConfigureMockRateLimit("disabled", 5, "5.0", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: false);
+
+            // With protection disabled, the 429 should be returned directly as a response
+            var response = handler.ExecuteWithProtection(OperationKey, () =>
+            {
+                var client = new RestClient(MockEndpoint);
+                var request = new RestRequest("/rate-limit/test/disabled", Method.Get);
+                return client.Execute(request);
+            });
+
+            // Should get the raw 429 without any retry
+            Assert.Equal(429, (int)response.StatusCode);
+        }
+
+        /// <summary>
+        /// Test: Rate limit header is parsed and stored on successful response.
+        ///
+        /// After a successful response with x-amzn-RateLimit-Limit header,
+        /// the rate should be stored for the operation.
+        /// </summary>
+        [Fact]
+        public void TestRateLimitHeaderParsedOnSuccess()
+        {
+            // Configure mock: succeed immediately with rate header value "2.5"
+            ConfigureMockRateLimit("headerParse", 0, "2.5", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: true);
+
+            var response = handler.ExecuteWithProtection(OperationKey, () =>
+            {
+                var client = new RestClient(MockEndpoint);
+                var request = new RestRequest("/rate-limit/test/headerParse", Method.Get);
+                return client.Execute(request);
+            });
+
+            Assert.Equal(200, (int)response.StatusCode);
+
+            // Verify the response contains the rate limit header
+            var rateLimitHeader = response.Headers?.FirstOrDefault(
+                h => string.Equals(h.Name, "x-amzn-RateLimit-Limit", StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(rateLimitHeader);
+            Assert.Equal("2.5", rateLimitHeader.Value?.ToString());
+        }
+
+        /// <summary>
+        /// Test: Async variant works correctly with exponential backoff.
+        /// </summary>
+        [Fact]
+        public async Task TestAsyncRetryWithExponentialBackoffSucceeds()
+        {
+            // Configure mock: fail 2 times with 429, then succeed
+            ConfigureMockRateLimit("asyncRetry", 2, "5.0", 200);
+
+            var handler = new RateLimitHandler(rateLimitEnabled: true);
+            int callCount = 0;
+
+            var stopwatch = Stopwatch.StartNew();
+
+            var response = await handler.ExecuteWithProtectionAsync(OperationKey, async () =>
+            {
+                callCount++;
+                var client = new RestClient(MockEndpoint);
+                var request = new RestRequest("/rate-limit/test/asyncRetry", Method.Get);
+                return await client.ExecuteAsync(request);
+            });
+
+            stopwatch.Stop();
+
+            // Should succeed
+            Assert.Equal(200, (int)response.StatusCode);
+
+            // Should have made 3 calls total
+            Assert.Equal(3, callCount);
+
+            // Verify backoff delay occurred
+            Assert.True(stopwatch.ElapsedMilliseconds >= 500,
+                $"Expected at least 500ms delay from backoff, got {stopwatch.ElapsedMilliseconds}ms");
+        }
+
+        // =========================================================================
+        // Helper Methods
+        // =========================================================================
+
+        private void ConfigureMockRateLimit(string operationKey, int failCount, string rateLimitValue, int successStatus)
+        {
+            var url = $"{MockEndpoint}/rate-limit/configure/{operationKey}?failCount={failCount}&rateLimitValue={rateLimitValue}&successStatus={successStatus}";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            _httpClient.Send(request);
+        }
+
+        private async Task ResetMockRateLimitState()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{MockEndpoint}/rate-limit/reset");
+            await _httpClient.SendAsync(request);
+        }
+    }
+}

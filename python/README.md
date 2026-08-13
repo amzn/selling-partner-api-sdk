@@ -84,6 +84,61 @@ if __name__ == "__main__":
 
 Note: Code can be found under python/sample-app folder
 
+### Rate Limit Protection
+
+The SDK includes built-in rate limit protection that automatically handles HTTP 429 (Too Many Requests) responses from the Selling Partner API. This feature is enabled by default and requires no additional configuration.
+
+#### How it works
+
+When rate limit protection is enabled, the SDK applies three complementary mechanisms:
+
+1. **Exponential backoff retry** — When a 429 response is received, the SDK automatically retries the request with exponentially increasing delays (1s, 2s, 4s) plus random jitter (0-25%). Up to 3 retries are attempted before propagating the error.
+
+2. **Dynamic rate tracking** — On every successful response, the SDK reads the `x-amzn-RateLimit-Limit` header and enforces minimum spacing between consecutive requests to the same operation (1/rate seconds apart).
+
+3. **Per-operation circuit breaker** — If retries are exhausted for an operation, the circuit breaker opens and immediately rejects subsequent requests to that operation for a cooldown period (starting at 4s, doubling up to 120s). After cooldown, one probe request is allowed through. If it succeeds, the circuit closes and normal traffic resumes.
+
+#### Disabling rate limit protection
+
+Rate limit protection is enabled by default. To disable it, set `rate_limit_enabled` to `False` in the configuration:
+
+```python
+from spapi import SPAPIConfig, SPAPIClient
+
+config = SPAPIConfig(
+    client_id="amzn1.application-***",
+    client_secret="***",
+    refresh_token="Atzr|***",
+    region="NA",
+    rate_limit_enabled=False  # Disable rate limit protection
+)
+
+client = SPAPIClient(config)
+```
+
+Or set it directly on the Configuration object:
+
+```python
+from spapi.configuration import Configuration
+
+configuration = Configuration()
+configuration.rate_limit_enabled = False
+```
+
+#### Configuration
+
+The rate limiter uses fixed parameters that are consistent across all SP-API SDK languages:
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Max retries | 3 | Maximum retry attempts on 429 |
+| Base delay | 1 second | Initial backoff delay |
+| Backoff multiplier | 2x | Delay doubles each retry |
+| Jitter | 0-25% | Random jitter added to delay |
+| Max cooldown | 120 seconds | Maximum circuit breaker cooldown |
+
+These parameters are not user-configurable. The only toggle available is enabling or disabling the feature entirely via `rate_limit_enabled`.
+
 ### Giving Feedback
 
 We need your help in making this SDK great. Please participate in the community and contribute to this effort by submitting issues, participating in discussion forums and submitting pull requests through the following channels:
