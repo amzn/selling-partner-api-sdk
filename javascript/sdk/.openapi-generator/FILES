@@ -1,6 +1,7 @@
 .babelrc
 .gitignore
 mocha.opts
+src/RateLimiter.js
 src/tracking_v2026_01_30/ApiClient.js
 src/tracking_v2026_01_30/api/TrackingApi.js
 src/tracking_v2026_01_30/index.js
