@@ -9,6 +9,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ using RestSharp;
 using Xunit;
 
 using software.amzn.spapi.Client;
+
+using HttpMethod = System.Net.Http.HttpMethod;
 
 namespace software.amzn.spapi.Test.Client
 {
