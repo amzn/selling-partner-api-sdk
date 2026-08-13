@@ -21,3 +21,4 @@ lib/ObjectSerializer.php
 lib/RateLimitHandler.php
 phpunit.xml.dist
 test/Api/TrackingApiTest.php
+test/RateLimitProtectionTest.php
