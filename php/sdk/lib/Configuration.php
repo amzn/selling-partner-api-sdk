@@ -79,6 +79,11 @@ class Configuration
     protected bool $debug = false;
 
     /**
+     * Whether rate limit protection is enabled (default: true).
+     */
+    protected bool $rateLimitEnabled = true;
+
+    /**
      * Debug file location (log to STDOUT by default).
      */
     protected string $debugFile = 'php://output';
@@ -143,6 +148,11 @@ class Configuration
                     $lwaTokenCache = new LWAAccessTokenCache();
                 }
                 $this->lwaAuthSigner = new LWAAuthorizationSigner($lwaCredentials, $lwaTokenCache);
+            }
+
+            // Set rate limit enabled from config (default: true)
+            if (isset($config['rate_limit_enabled'])) {
+                $this->rateLimitEnabled = (bool) $config['rate_limit_enabled'];
             }
         } else {
             throw new \InvalidArgumentException(
@@ -266,6 +276,15 @@ class Configuration
     public function getDebug(): bool
     {
         return $this->debug;
+    }
+
+    /**
+     * Gets whether rate limit protection is enabled.
+     * This value is set at construction time and cannot be changed afterward.
+     */
+    public function getRateLimitEnabled(): bool
+    {
+        return $this->rateLimitEnabled;
     }
 
     /**

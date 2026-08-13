@@ -40,6 +40,7 @@ use SpApi\ApiException;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\ObjectSerializer;
+use SpApi\RateLimitHandler;
 
 /**
  * VendorShippingLabelsApi Class Doc Comment
@@ -72,6 +73,11 @@ class VendorShippingLabelsApi
     protected int $hostIndex;
 
     /**
+     * @var RateLimitHandler
+     */
+    protected RateLimitHandler $rateLimitHandler;
+
+    /**
      * @param Configuration   $config
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
@@ -87,6 +93,7 @@ class VendorShippingLabelsApi
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        $this->rateLimitHandler = new RateLimitHandler($config->getRateLimitEnabled());
     }
 
     /**
@@ -166,63 +173,70 @@ class VendorShippingLabelsApi
         } else {
             $request = $this->config->sign($request);
         }
-        try {
-            $options = $this->createHttpClientOption();
+
+        $operationKey = 'POST /vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}';
+
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $options = $this->createHttpClientOption();
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
-        } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
-            throw $e;
-        }
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            } catch (ApiException $e) {
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                throw $e;
+            }
+        };
+
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -466,63 +480,70 @@ class VendorShippingLabelsApi
         } else {
             $request = $this->config->sign($request);
         }
-        try {
-            $options = $this->createHttpClientOption();
+
+        $operationKey = 'GET /vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}';
+
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $options = $this->createHttpClientOption();
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
-        } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
-            throw $e;
-        }
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabel', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            } catch (ApiException $e) {
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                throw $e;
+            }
+        };
+
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -775,63 +796,70 @@ class VendorShippingLabelsApi
         } else {
             $request = $this->config->sign($request);
         }
-        try {
-            $options = $this->createHttpClientOption();
+
+        $operationKey = 'GET /vendor/directFulfillment/shipping/2021-12-28/shippingLabels';
+
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList' !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $options = $this->createHttpClientOption();
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
-        } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
-            throw $e;
-        }
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\ShippingLabelList', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            } catch (ApiException $e) {
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                throw $e;
+            }
+        };
+
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -1160,63 +1188,70 @@ class VendorShippingLabelsApi
         } else {
             $request = $this->config->sign($request);
         }
-        try {
-            $options = $this->createHttpClientOption();
+
+        $operationKey = 'POST /vendor/directFulfillment/shipping/2021-12-28/shippingLabels';
+
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-                if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference' === '\SplFileObject') {
-                    $content = $response->getBody(); //stream goes to serializer
-                } else {
-                    $content = (string) $response->getBody();
-                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference' !== 'string') {
-                        $content = json_decode($content);
-                    }
+                $options = $this->createHttpClientOption();
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
 
-                return [
-                    ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference', []),
-                    $response->getStatusCode(),
-                    $response->getHeaders()
-                ];
-        } catch (ApiException $e) {
-                $data = ObjectSerializer::deserialize(
-                    $e->getResponseBody(),
-                    '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
-                    $e->getResponseHeaders()
-                );
-                $e->setResponseObject($data);
-            throw $e;
-        }
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                    if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\TransactionReference', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            } catch (ApiException $e) {
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                throw $e;
+            }
+        };
+
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
