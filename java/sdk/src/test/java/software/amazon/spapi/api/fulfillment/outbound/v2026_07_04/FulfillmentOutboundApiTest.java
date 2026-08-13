@@ -35,6 +35,7 @@ import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.ListOrdersR
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdateOrderRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdateOrderStatusRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdatePackageRequest;
+import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FulfillmentOutboundApiTest {
 
@@ -52,8 +53,10 @@ public class FulfillmentOutboundApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom =
-            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
+    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
+            .collectionSizeRange(1, 2)
+            .randomizationDepth(10)
+            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
     public void cancelOrderTest() throws Exception {
@@ -163,10 +166,12 @@ public class FulfillmentOutboundApiTest {
         api.updatePackageWithHttpInfo(orderId, packageId, body, null);
     }
 
-    private void instructBackendMock(String basename, String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String operationId, String code) throws Exception {
         String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
+        String cleanOperationId = operationId.replaceAll("_\\d+$", "");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + cleanOperationId + "/code/"
+                        + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

@@ -30,6 +30,7 @@ import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackages
 import software.amazon.spapi.models.easyship.v2022_03_23.ListHandoverSlotsResponse;
 import software.amazon.spapi.models.easyship.v2022_03_23.ModelPackage;
 import software.amazon.spapi.models.easyship.v2022_03_23.Packages;
+import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class EasyShipApiTest {
 
@@ -47,8 +48,10 @@ public class EasyShipApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom =
-            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
+    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
+            .collectionSizeRange(1, 2)
+            .randomizationDepth(10)
+            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
     public void createScheduledPackageTest() throws Exception {
@@ -111,10 +114,12 @@ public class EasyShipApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String basename, String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String operationId, String code) throws Exception {
         String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
+        String cleanOperationId = operationId.replaceAll("_\\d+$", "");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + cleanOperationId + "/code/"
+                        + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

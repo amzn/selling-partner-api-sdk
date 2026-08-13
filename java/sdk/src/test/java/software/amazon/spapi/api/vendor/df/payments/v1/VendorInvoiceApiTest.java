@@ -24,6 +24,7 @@ import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceRequest;
 import software.amazon.spapi.models.vendor.df.payments.v1.SubmitInvoiceResponse;
 
@@ -43,8 +44,10 @@ public class VendorInvoiceApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom =
-            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
+    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
+            .collectionSizeRange(1, 2)
+            .randomizationDepth(10)
+            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
     public void submitInvoiceTest() throws Exception {
@@ -58,10 +61,12 @@ public class VendorInvoiceApiTest {
         assertValidResponsePayload(202, response.getData());
     }
 
-    private void instructBackendMock(String basename, String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String operationId, String code) throws Exception {
         String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
+        String cleanOperationId = operationId.replaceAll("_\\d+$", "");
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + cleanOperationId + "/code/"
+                        + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
