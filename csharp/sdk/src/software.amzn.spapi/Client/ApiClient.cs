@@ -17,6 +17,7 @@ using System.Web;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 using software.amzn.spapi.Auth;
@@ -34,6 +35,7 @@ namespace software.amzn.spapi.Client
     {
         private LWAAuthorizationSigner lwaAuthorizationSigner;
         private RateLimitConfiguration rateLimitConfig;
+        private readonly RateLimitHandler _rateLimitHandler;
         
         private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
         {
@@ -77,6 +79,10 @@ namespace software.amzn.spapi.Client
 
             lwaAuthorizationSigner = new LWAAuthorizationSigner(Configuration.AuthorizationCredentials);
             rateLimitConfig = null;
+
+            // Initialize rate limit protection handler
+            _rateLimitHandler = new RateLimitHandler(Configuration.RateLimitEnabled);
+
             if(rateLimitConfig != null)
             { 
                /// rateLimiter = TimeLimiter.GetFromMaxCountByInterval(rateLimitConfig.getRateLimitPermit(), TimeSpan.FromSeconds(1));
@@ -171,39 +177,26 @@ namespace software.amzn.spapi.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            // set timeout
-            // 
-            // RestClient.Timeout = Configuration.Timeout;
-            // set user agent
-            // RestClient.UserAgent = Configuration.UserAgent;
-
             InterceptRequest(request);
-            if(rateLimitConfig != null)
+
+            // Derive operation key from HTTP method and resource path (e.g., "GET /orders/v0/orders")
+            string operationKey = method.ToString().ToUpperInvariant() + " " + path;
+
+            // Route through rate limit handler when enabled
+            if (_rateLimitHandler.RateLimitEnabled)
             {
-                /// var cancellationSource = new CancellationTokenSource(rateLimitConfig.getTimeOut());
-                /// try
-                /// {
-                    /// var response = rateLimiter.Enqueue<RestResponse>(() =>  RestClient.Execute(request), cancellationSource.Token);
-                    /// InterceptResponse(request, response.Result);
-                    /// return response.Result;
-                    return null;
-                /// }
-                /// catch (AggregateException e)
-                /// {
-                ///    throw new ApiException(429, "Throttled at client");
-                /// }
-            var response = RestClient.Execute(request);
-            InterceptResponse(request, response);
-
-            return (Object) response;
-
+                var response = _rateLimitHandler.ExecuteWithProtection(operationKey, () =>
+                {
+                    return RestClient.Execute(request);
+                });
+                InterceptResponse(request, response);
+                return (Object)response;
             }
             else
             {
-            var response = RestClient.Execute(request);
-            InterceptResponse(request, response);
-
-            return (Object) response;
+                var response = RestClient.Execute(request);
+                InterceptResponse(request, response);
+                return (Object)response;
             }
         }
         /// <summary>
@@ -229,21 +222,25 @@ namespace software.amzn.spapi.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
             InterceptRequest(request);
-            if (rateLimitConfig != null)
+
+            // Derive operation key from HTTP method and resource path (e.g., "GET /orders/v0/orders")
+            string operationKey = method.ToString().ToUpperInvariant() + " " + path;
+
+            // Route through rate limit handler when enabled
+            if (_rateLimitHandler.RateLimitEnabled)
             {
-              /// var cancellationSource = new CancellationTokenSource(rateLimitConfig.getTimeOut());
-              /// var response =  await rateLimiter.Enqueue<RestResponse>(() => RestClient.ExecuteAsync(request), cancellationSource.Token);                
-              /// InterceptResponse(request, response);
-              /// return response;
-              var response = await RestClient.ExecuteAsync(request);
-              InterceptResponse(request, response);
-              return (Object)response;
+                var response = await _rateLimitHandler.ExecuteWithProtectionAsync(operationKey, async () =>
+                {
+                    return await RestClient.ExecuteAsync(request);
+                });
+                InterceptResponse(request, response);
+                return (Object)response;
             }
             else
             {
-              var response = await RestClient.ExecuteAsync(request);
-              InterceptResponse(request, response);
-              return (Object)response;	
+                var response = await RestClient.ExecuteAsync(request);
+                InterceptResponse(request, response);
+                return (Object)response;
             }
         }
 

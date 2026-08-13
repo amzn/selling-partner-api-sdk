@@ -97,5 +97,11 @@ namespace software.amzn.spapi.Client
         /// </summary>
         /// <value>RateLimitConfiguration</value>
         RateLimitConfiguration RateLimitConfig { get; }
+
+        /// <summary>
+        /// Gets whether rate limit protection is enabled.
+        /// </summary>
+        /// <value>True if rate limit protection is enabled, false otherwise.</value>
+        bool RateLimitEnabled { get; }
     }
 }
