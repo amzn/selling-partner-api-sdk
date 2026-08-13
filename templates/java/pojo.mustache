@@ -1,0 +1,198 @@
+{{#description}}
+/**
+ * {{.}}
+ */
+@io.swagger.v3.oas.annotations.media.Schema(description = "{{{description}}}")
+{{/description}}
+{{^description}}
+/**
+ * {{classname}}
+ */
+{{/description}}
+{{#isArray}}
+public class {{classname}} extends {{#parent}}{{{.}}}{{/parent}}{{^parent}}ArrayList<{{#items}}{{{datatypeWithEnum}}}{{/items}}>{{/parent}} {
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class {{classname}} {\n");
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}
+{{/isArray}}
+{{^isArray}}
+{{#isMap}}
+public class {{classname}} extends {{#parent}}{{{.}}}{{/parent}}{{^parent}}HashMap<String, {{{additionalPropertiesType}}}>{{/parent}} {
+
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class {{classname}} {\n");
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}
+{{/isMap}}
+{{^isMap}}
+public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{
+{{#vars}}
+{{#isEnum}}
+{{^isContainer}}
+{{>modelInnerEnum}}
+
+{{/isContainer}}
+{{#isContainer}}
+{{#mostInnerItems}}
+{{>modelInnerEnum}}
+
+{{/mostInnerItems}}
+{{/isContainer}}
+{{/isEnum}}
+    @SerializedName("{{baseName}}")
+    private {{{datatypeWithEnum}}} {{name}} = null;
+
+{{/vars}}
+{{#vars}}
+    public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
+        this.{{name}} = {{name}};
+        return this;
+    }
+{{#isArray}}
+
+    public {{classname}} add{{nameInPascalCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
+        if (this.{{name}} == null) {
+            this.{{name}} = {{{defaultValue}}}{{^defaultValue}}new java.util.ArrayList<>(){{/defaultValue}};
+        }
+        this.{{name}}.add({{name}}Item);
+        return this;
+    }
+{{/isArray}}
+{{#isMap}}
+
+    public {{classname}} put{{nameInPascalCase}}Item(String key, {{{items.datatypeWithEnum}}} {{name}}Item) {
+        if (this.{{name}} == null) {
+            this.{{name}} = {{{defaultValue}}}{{^defaultValue}}new java.util.HashMap<>(){{/defaultValue}};
+        }
+        this.{{name}}.put(key, {{name}}Item);
+        return this;
+    }
+{{/isMap}}
+
+    /**
+     * {{description}}{{^description}}Get {{name}}{{/description}}
+     * @return {{name}}
+     */
+    @io.swagger.v3.oas.annotations.media.Schema({{#required}}required = true, {{/required}}description = "{{{description}}}")
+    public {{{datatypeWithEnum}}} {{getter}}() {
+        return {{name}};
+    }
+
+    public void {{setter}}({{{datatypeWithEnum}}} {{name}}) {
+        this.{{name}} = {{name}};
+    }
+
+{{/vars}}
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }{{#hasVars}}
+        {{classname}} {{classVarName}} = ({{classname}}) o;
+        return {{#vars}}Objects.equals(this.{{name}}, {{classVarName}}.{{name}}){{^-last}}
+                && {{/-last}}{{/vars}}{{#parent}}
+                && super.equals(o){{/parent}};{{/hasVars}}{{^hasVars}}
+        return {{#parent}}super.equals(o){{/parent}}{{^parent}}true{{/parent}};{{/hasVars}}
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash({{#vars}}{{name}}{{^-last}}, {{/-last}}{{/vars}}{{#parent}}{{#hasVars}}, {{/hasVars}}super.hashCode(){{/parent}});
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class {{classname}} {\n");
+        {{#parent}}
+        sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+        {{/parent}}
+{{#vars}}
+        sb.append("    {{name}}: ").append(toIndentedString({{name}})).append("\n");
+{{/vars}}
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}
+{{/isMap}}
+{{/isArray}}

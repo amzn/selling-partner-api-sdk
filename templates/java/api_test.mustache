@@ -8,6 +8,7 @@ import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 {{#imports}}import {{import}};
 {{/imports}}
+import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
@@ -38,6 +39,7 @@ public class {{classname}}Test {
     private final EasyRandom easyRandom = new EasyRandom(
         new EasyRandomParameters().collectionSizeRange(1, 2)
                 .randomizationDepth(10)
+                .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new)
     );
 
 {{#operations}}{{#operation}}
@@ -45,10 +47,10 @@ public class {{classname}}Test {
     public void {{operationId}}Test() throws Exception {
         instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}");
         {{#allParams}}{{#required}}
-        {{{dataType}}} {{paramName}} = {{#isListContainer}}easyRandom.objects({{baseType}}.class, 2).collect(Collectors.toList()){{/isListContainer}}{{^isListContainer}}easyRandom.nextObject({{{dataType}}}.class){{/isListContainer}};
+        {{{dataType}}} {{paramName}} = {{#isArray}}easyRandom.objects({{items.dataType}}.class, 2).collect(Collectors.to{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}()){{/isArray}}{{^isArray}}easyRandom.nextObject({{{dataType}}}.class){{/isArray}};
         {{/required}}{{/allParams}}
 
-        {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+        {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
 
         {{#returnType}}
         assertEquals({{responses.0.code}}, response.getStatusCode());
@@ -58,10 +60,11 @@ public class {{classname}}Test {
 
 {{/operation}}{{/operations}}
 
-    private void instructBackendMock(String basename, String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String operationId, String code) throws Exception {
        String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
+       String cleanOperationId = operationId.replaceAll("_\\d+$", "");
        HttpRequest request = HttpRequest.newBuilder()
-              .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
+              .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + cleanOperationId + "/code/" + code))
               .POST(HttpRequest.BodyPublishers.noBody())
               .build();
 
@@ -72,3 +75,4 @@ public class {{classname}}Test {
         if(statusCode != 204) assertNotNull(body);
     }
 }
+
