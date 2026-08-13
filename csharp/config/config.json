@@ -12,6 +12,10 @@
         "RateLimitHandler.mustache": {
             "templateFile": "RateLimitHandler.mustache",
             "destinationFilename": "src/software.amzn.spapi/Client/RateLimitHandler.cs"
+        },
+        "rate_limit_test.mustache": {
+            "templateFile": "rate_limit_test.mustache",
+            "destinationFilename": "src/software.amzn.spapi.Test/Client/RateLimitProtectionTests.cs"
         }
     }
 }

@@ -11,6 +11,10 @@
         "RateLimiter.mustache": {
             "templateFile": "RateLimiter.mustache",
             "destinationFilename": "src/RateLimiter.js"
+        },
+        "rate_limit_test.mustache": {
+            "templateFile": "rate_limit_test.mustache",
+            "destinationFilename": "test/RateLimitProtection.spec.js"
         }
     }
 }

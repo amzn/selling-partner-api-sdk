@@ -17,6 +17,10 @@
     "RateLimitHandler.mustache": {
       "templateFile": "RateLimitHandler.mustache",
       "destinationFilename": "lib/RateLimitHandler.php"
+    },
+    "rate_limit_test.mustache": {
+      "templateFile": "rate_limit_test.mustache",
+      "destinationFilename": "test/RateLimitProtectionTest.php"
     }
   }
 }
