@@ -1,0 +1,471 @@
+{{>licenseInfo}}
+
+/**
+ * Rate Limit Protection for SP-API SDK.
+ *
+ * Provides automatic rate limit handling including:
+ * - Exponential backoff retry on HTTP 429 responses
+ * - Dynamic rate tracking via x-amzn-RateLimit-Limit header
+ * - Per-operation circuit breaker
+ *
+ * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}RateLimiter
+ * @version {{projectVersion}}
+ */
+
+/**
+ * Circuit breaker states.
+ * @enum {string}
+ * @readonly
+ */
+const CircuitBreakerState = Object.freeze({
+    CLOSED: 'CLOSED',
+    OPEN: 'OPEN',
+    HALF_OPEN: 'HALF_OPEN'
+});
+
+/**
+ * Manages rate limit protection for SP-API operations.
+ *
+ * Wraps request execution with exponential backoff retry, dynamic rate spacing
+ * based on the x-amzn-RateLimit-Limit response header, and a per-operation
+ * circuit breaker that blocks requests to throttled operations during cooldown.
+ *
+ * @alias module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}RateLimiter
+ * @class
+ */
+export class RateLimiter {
+    /**
+     * Whether rate limit protection is enabled.
+     * @type {boolean}
+     */
+    #enabled;
+
+    /**
+     * Maximum number of retry attempts.
+     * @type {number}
+     */
+    #maxRetries;
+
+    /**
+     * Base delay in seconds for exponential backoff.
+     * @type {number}
+     */
+    #baseDelay;
+
+    /**
+     * Maximum circuit breaker cooldown in seconds.
+     * @type {number}
+     */
+    #maxCooldown;
+
+    /**
+     * Per-operation rate state.
+     * Key: operation key (e.g., "GET /orders/v0/orders")
+     * Value: OperationRateState object
+     * @type {Map<string, Object>}
+     */
+    #operationStates;
+
+    /**
+     * Constructs a new RateLimiter.
+     * @param {Object} [options] Configuration options.
+     * @param {boolean} [options.rateLimitEnabled=true] Whether rate limit protection is enabled.
+     */
+    constructor(options = {}) {
+        this.#enabled = options.rateLimitEnabled !== undefined ? options.rateLimitEnabled : true;
+        this.#maxRetries = 3;
+        this.#baseDelay = 1.0;
+        this.#maxCooldown = 120.0;
+        this.#operationStates = new Map();
+    }
+
+    /**
+     * Returns whether rate limit protection is enabled.
+     * @returns {boolean}
+     */
+    get enabled() {
+        return this.#enabled;
+    }
+
+    /**
+     * Gets or creates the operation rate state for the given operation key.
+     * @param {string} operationKey The operation identifier (e.g., "GET /orders/v0/orders").
+     * @returns {Object} The operation rate state.
+     */
+    #getOperationState(operationKey) {
+        if (!this.#operationStates.has(operationKey)) {
+            this.#operationStates.set(operationKey, {
+                operationKey: operationKey,
+                currentRate: null,
+                lastRequestTime: null,
+                circuitBreaker: {
+                    state: CircuitBreakerState.CLOSED,
+                    cooldownMs: 0,
+                    openedAt: null,
+                    probeInProgress: false
+                }
+            });
+        }
+        return this.#operationStates.get(operationKey);
+    }
+
+    /**
+     * Executes a request with rate limit protection.
+     *
+     * When enabled, applies circuit breaker checks, rate spacing, exponential
+     * backoff retry on 429, and rate header parsing on success.
+     *
+     * @param {string} operationKey The operation identifier (e.g., "GET /orders/v0/orders").
+     * @param {Function} requestFn An async function that executes the HTTP request and returns a response object.
+     * @returns {Promise<Object>} The HTTP response.
+     * @throws {Object} Error with rate limit details if max retries exceeded or circuit is open.
+     */
+    async executeWithProtection(operationKey, requestFn) {
+        if (!this.#enabled) {
+            return requestFn();
+        }
+
+        const opState = this.#getOperationState(operationKey);
+
+        // Check circuit breaker
+        this.#checkCircuitBreaker(opState);
+
+        // Apply rate spacing
+        await this.#applyRateSpacing(opState);
+
+        let lastError = null;
+
+        for (let attempt = 0; attempt <= this.#maxRetries; attempt++) {
+            try {
+                const response = await requestFn();
+
+                const statusCode = this.#getStatusCode(response);
+
+                if (statusCode >= 200 && statusCode < 300) {
+                    // Success - parse rate header and close circuit breaker
+                    this.#parseRateLimitHeader(opState, response);
+                    this.#closeCircuitBreaker(opState);
+                    return response;
+                }
+
+                if (statusCode === 429) {
+                    lastError = this.#create429Error(response, operationKey, attempt + 1);
+
+                    if (attempt < this.#maxRetries) {
+                        const delay = this.#calculateDelay(attempt);
+                        const jitter = Math.random() * 0.25 * delay;
+                        const totalDelay = delay + jitter;
+
+                        // Diagnostic: retry attempt info
+                        lastError.retryAttempt = attempt + 1;
+                        lastError.retryDelay = totalDelay;
+
+                        await this.#sleep(totalDelay * 1000);
+                    } else {
+                        // Max retries exhausted - open circuit breaker
+                        const lastDelay = this.#calculateDelay(attempt - 1);
+                        this.#openCircuitBreaker(opState, lastDelay * 1000);
+
+                        const error = this.#create429Error(response, operationKey, attempt + 1);
+                        error.totalAttempts = attempt + 1;
+                        error.operationKey = operationKey;
+                        throw error;
+                    }
+                } else {
+                    // Non-429 error - pass through without retry
+                    return response;
+                }
+            } catch (error) {
+                // If this is our structured error (from 429 max retries or circuit open), re-throw
+                if (error.isRateLimitError || error.isCircuitBreakerError) {
+                    throw error;
+                }
+
+                // Network error during probe in half-open state
+                if (opState.circuitBreaker.state === CircuitBreakerState.HALF_OPEN) {
+                    this.#reopenCircuitBreakerSameCooldown(opState);
+                    throw error;
+                }
+
+                // Other errors pass through
+                throw error;
+            }
+        }
+
+        // Should not reach here, but just in case
+        throw lastError;
+    }
+
+    /**
+     * Checks the circuit breaker state for the operation.
+     * @param {Object} opState The operation state.
+     * @throws {Object} Error if circuit is open and cooldown has not elapsed.
+     */
+    #checkCircuitBreaker(opState) {
+        const cb = opState.circuitBreaker;
+
+        if (cb.state === CircuitBreakerState.CLOSED) {
+            return;
+        }
+
+        if (cb.state === CircuitBreakerState.OPEN) {
+            const elapsed = Date.now() - cb.openedAt;
+            if (elapsed >= cb.cooldownMs) {
+                // Transition to half-open
+                const previousState = cb.state;
+                cb.state = CircuitBreakerState.HALF_OPEN;
+                cb.probeInProgress = false;
+
+                // Diagnostic: state transition
+                this.#logStateTransition(opState.operationKey, previousState, cb.state);
+            } else {
+                // Still in cooldown - reject immediately
+                const remainingMs = cb.cooldownMs - elapsed;
+                const error = new Error(
+                    `Circuit breaker is OPEN for operation "${opState.operationKey}". ` +
+                    `Remaining cooldown: ${Math.ceil(remainingMs)}ms`
+                );
+                error.isCircuitBreakerError = true;
+                error.operationKey = opState.operationKey;
+                error.circuitState = CircuitBreakerState.OPEN;
+                error.remainingCooldownMs = Math.ceil(remainingMs);
+                throw error;
+            }
+        }
+
+        if (cb.state === CircuitBreakerState.HALF_OPEN) {
+            if (cb.probeInProgress) {
+                // Only one probe allowed - reject other requests
+                const error = new Error(
+                    `Circuit breaker is HALF_OPEN for operation "${opState.operationKey}". ` +
+                    `Probe request in progress, rejecting additional requests.`
+                );
+                error.isCircuitBreakerError = true;
+                error.operationKey = opState.operationKey;
+                error.circuitState = CircuitBreakerState.HALF_OPEN;
+                error.remainingCooldownMs = 0;
+                throw error;
+            }
+            // Allow the probe request through
+            cb.probeInProgress = true;
+        }
+    }
+
+    /**
+     * Applies rate spacing based on stored rate for the operation.
+     * Ensures at least 1/rate seconds between requests.
+     * @param {Object} opState The operation state.
+     * @returns {Promise<void>}
+     */
+    async #applyRateSpacing(opState) {
+        if (opState.currentRate === null || opState.lastRequestTime === null) {
+            opState.lastRequestTime = Date.now();
+            return;
+        }
+
+        const minInterval = (1.0 / opState.currentRate) * 1000; // Convert to ms
+        const elapsed = Date.now() - opState.lastRequestTime;
+        const waitTime = minInterval - elapsed;
+
+        if (waitTime > 0) {
+            await this.#sleep(waitTime);
+        }
+
+        opState.lastRequestTime = Date.now();
+    }
+
+    /**
+     * Parses the x-amzn-RateLimit-Limit header from a successful response.
+     * Discards non-numeric, zero, or negative values.
+     * @param {Object} opState The operation state.
+     * @param {Object} response The HTTP response.
+     */
+    #parseRateLimitHeader(opState, response) {
+        const headers = this.#getHeaders(response);
+        if (!headers) {
+            return;
+        }
+
+        // Header name is case-insensitive
+        const headerValue = headers['x-amzn-ratelimit-limit']
+            || headers['x-amzn-RateLimit-Limit']
+            || headers['X-Amzn-RateLimit-Limit'];
+
+        if (headerValue === undefined || headerValue === null) {
+            return;
+        }
+
+        const rate = parseFloat(headerValue);
+
+        if (isNaN(rate) || rate <= 0) {
+            // Discard invalid values - retain previously stored rate
+            return;
+        }
+
+        opState.currentRate = rate;
+    }
+
+    /**
+     * Transitions the circuit breaker to closed state.
+     * @param {Object} opState The operation state.
+     */
+    #closeCircuitBreaker(opState) {
+        const cb = opState.circuitBreaker;
+        if (cb.state !== CircuitBreakerState.CLOSED) {
+            const previousState = cb.state;
+            cb.state = CircuitBreakerState.CLOSED;
+            cb.cooldownMs = 0;
+            cb.openedAt = null;
+            cb.probeInProgress = false;
+
+            // Diagnostic: state transition
+            this.#logStateTransition(opState.operationKey, previousState, cb.state);
+        }
+    }
+
+    /**
+     * Opens the circuit breaker with the specified cooldown.
+     * @param {Object} opState The operation state.
+     * @param {number} cooldownMs The cooldown period in milliseconds.
+     */
+    #openCircuitBreaker(opState, cooldownMs) {
+        const cb = opState.circuitBreaker;
+        const previousState = cb.state;
+
+        // If transitioning from HALF_OPEN, double the cooldown
+        if (previousState === CircuitBreakerState.HALF_OPEN) {
+            cooldownMs = Math.min(cb.cooldownMs * 2, this.#maxCooldown * 1000);
+        }
+
+        cb.state = CircuitBreakerState.OPEN;
+        cb.cooldownMs = Math.min(cooldownMs, this.#maxCooldown * 1000);
+        cb.openedAt = Date.now();
+        cb.probeInProgress = false;
+
+        // Diagnostic: state transition
+        this.#logStateTransition(opState.operationKey, previousState, cb.state);
+    }
+
+    /**
+     * Re-opens the circuit breaker with the same cooldown (for network errors during probe).
+     * @param {Object} opState The operation state.
+     */
+    #reopenCircuitBreakerSameCooldown(opState) {
+        const cb = opState.circuitBreaker;
+        const previousState = cb.state;
+        cb.state = CircuitBreakerState.OPEN;
+        cb.openedAt = Date.now();
+        cb.probeInProgress = false;
+
+        // Diagnostic: state transition
+        this.#logStateTransition(opState.operationKey, previousState, cb.state);
+    }
+
+    /**
+     * Calculates the exponential backoff delay for the given attempt.
+     * @param {number} attempt The zero-based attempt number.
+     * @returns {number} The delay in seconds.
+     */
+    #calculateDelay(attempt) {
+        return this.#baseDelay * Math.pow(2, attempt);
+    }
+
+    /**
+     * Creates a structured 429 error object.
+     * @param {Object} response The HTTP response.
+     * @param {string} operationKey The operation identifier.
+     * @param {number} attemptNumber The 1-based attempt number.
+     * @returns {Error} The structured error.
+     */
+    #create429Error(response, operationKey, attemptNumber) {
+        const statusCode = this.#getStatusCode(response);
+        const headers = this.#getHeaders(response);
+        const body = this.#getBody(response);
+
+        const error = new Error(
+            `Rate limit exceeded for operation "${operationKey}" ` +
+            `after ${attemptNumber} attempt(s). HTTP 429 Too Many Requests.`
+        );
+        error.isRateLimitError = true;
+        error.status = statusCode;
+        error.statusCode = statusCode;
+        error.headers = headers;
+        error.body = body;
+        error.operationKey = operationKey;
+        error.totalAttempts = attemptNumber;
+        return error;
+    }
+
+    /**
+     * Extracts the status code from a response object.
+     * Handles both superagent response and error response formats.
+     * @param {Object} response The response object.
+     * @returns {number} The HTTP status code.
+     */
+    #getStatusCode(response) {
+        if (response && response.status !== undefined) {
+            return response.status;
+        }
+        if (response && response.statusCode !== undefined) {
+            return response.statusCode;
+        }
+        return 0;
+    }
+
+    /**
+     * Extracts headers from a response object.
+     * @param {Object} response The response object.
+     * @returns {Object|null} The response headers.
+     */
+    #getHeaders(response) {
+        if (response && response.headers) {
+            return response.headers;
+        }
+        if (response && response.header) {
+            return response.header;
+        }
+        return null;
+    }
+
+    /**
+     * Extracts body from a response object.
+     * @param {Object} response The response object.
+     * @returns {*} The response body.
+     */
+    #getBody(response) {
+        if (response && response.body !== undefined) {
+            return response.body;
+        }
+        if (response && response.text !== undefined) {
+            return response.text;
+        }
+        return null;
+    }
+
+    /**
+     * Logs a circuit breaker state transition (diagnostic).
+     * @param {string} operationKey The operation identifier.
+     * @param {string} previousState The previous circuit breaker state.
+     * @param {string} newState The new circuit breaker state.
+     */
+    #logStateTransition(operationKey, previousState, newState) {
+        // Diagnostic output for circuit breaker state transitions
+        // In production, this could be connected to a logging framework
+        if (typeof console !== 'undefined' && console.debug) {
+            console.debug(
+                `[RateLimiter] Circuit breaker transition for "${operationKey}": ${previousState} -> ${newState}`
+            );
+        }
+    }
+
+    /**
+     * Sleeps for the specified duration.
+     * @param {number} ms Duration in milliseconds.
+     * @returns {Promise<void>}
+     */
+    #sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+
+export { CircuitBreakerState };

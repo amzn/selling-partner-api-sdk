@@ -44,6 +44,7 @@ use SpApi\HeaderSelector;
 use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
 use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList;
 use SpApi\ObjectSerializer;
+use SpApi\RateLimitHandler;
 
 /**
  * DefinitionsApi Class Doc Comment.
@@ -67,6 +68,8 @@ class DefinitionsApi
      */
     protected int $hostIndex;
 
+    protected RateLimitHandler $rateLimitHandler;
+
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
@@ -80,6 +83,7 @@ class DefinitionsApi
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        $this->rateLimitHandler = new RateLimitHandler($config->getRateLimitEnabled());
     }
 
     /**
@@ -191,65 +195,71 @@ class DefinitionsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /definitions/2020-09-01/productTypes/{productType}';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -620,65 +630,71 @@ class DefinitionsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /definitions/2020-09-01/productTypes';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\productTypeDefinitions\v2020_09_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**

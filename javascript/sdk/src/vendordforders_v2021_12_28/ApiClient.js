@@ -15,6 +15,7 @@ import superagent from 'superagent'
 import querystring from 'querystring'
 import { readFileSync } from 'node:fs'
 import { URL } from 'node:url'
+import { RateLimiter } from '../RateLimiter.js'
 
 /**
 * @module vendordforders_v2021_12_28/ApiClient
@@ -195,8 +196,10 @@ export class ApiClient {
   /**
     * Constructs a new ApiClient.
     * @param {String} baseUrl Base URL of endpoint ex. "https://sellingpartnerapi-na.amazon.com"
+    * @param {Object} [options] Optional configuration options.
+    * @param {boolean} [options.rateLimitEnabled=true] Whether to enable automatic rate limit protection.
     */
-  constructor (baseUrl) {
+  constructor (baseUrl, options = {}) {
     /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
@@ -257,6 +260,18 @@ export class ApiClient {
          * Allow user to override superagent agent
          */
     this.requestAgent = null
+
+    /*
+         * Rate limit protection configuration.
+         * Enabled by default. Set to false to disable automatic rate limiting.
+         */
+    this.rateLimitEnabled = options.rateLimitEnabled !== undefined ? options.rateLimitEnabled : true
+
+    /**
+         * RateLimiter instance for automatic rate limit protection.
+         * @type {RateLimiter}
+         */
+    this.rateLimiter = new RateLimiter({ rateLimitEnabled: this.rateLimitEnabled })
   }
 
   /**
@@ -647,23 +662,51 @@ export class ApiClient {
       }
     }
 
-    return new Promise((resolve, reject) => {
-      request.end((error, response) => {
-        if (error) {
-          reject(error)
-        } else {
-          try {
-            const data = this.deserialize(response, returnType)
-            if (this.enableCookies && typeof window === 'undefined') {
-              this.agent.saveCookies(response)
+    // Derive operation key for rate limiter: "METHOD /path"
+    const operationKey = httpMethod.toUpperCase() + ' ' + path
+
+    // Wrap request execution through rate limiter
+    const self = this
+    const executeRequest = () => {
+      return new Promise((resolve, reject) => {
+        request.end((error, response) => {
+          if (error) {
+            // superagent treats 4xx/5xx as errors but includes the response
+            // Resolve with a wrapper so rate limiter can inspect status codes
+            if (error.response) {
+              resolve(error.response)
+            } else {
+              reject(error)
             }
-            resolve({ data, response })
-          } catch (err) {
-            reject(err)
+          } else {
+            resolve(response)
           }
-        }
+        })
       })
-    })
+    }
+
+    const processResponse = (response) => {
+      if (response.status >= 400) {
+        // Reconstruct error similar to superagent's behavior
+        const error = new Error('Response error: ' + response.status)
+        error.status = response.status
+        error.statusCode = response.status
+        error.response = response
+        throw error
+      }
+      const data = self.deserialize(response, returnType)
+      if (self.enableCookies && typeof window === 'undefined') {
+        self.agent.saveCookies(response)
+      }
+      return { data, response }
+    }
+
+    if (this.rateLimiter && this.rateLimiter.enabled) {
+      return this.rateLimiter.executeWithProtection(operationKey, executeRequest)
+        .then(processResponse)
+    } else {
+      return executeRequest().then(processResponse)
+    }
   }
 
   /**

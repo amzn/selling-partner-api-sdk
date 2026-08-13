@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  *
  */
+import { RateLimiter } from '../RateLimiter.js';
 /**
 * Manages low level client-server communications, parameter marshalling, etc. There should not be any need for an
 * application to use this class directly - the *Api and model classes provide the public API for the service. The
@@ -57,11 +58,21 @@ export declare class ApiClient {
     enableCookies: boolean;
     agent: any;
     requestAgent: any;
+    rateLimitEnabled: boolean;
+    /**
+         * RateLimiter instance for automatic rate limit protection.
+         * @type {RateLimiter}
+         */
+    rateLimiter: RateLimiter;
     /**
       * Constructs a new ApiClient.
       * @param {String} baseUrl Base URL of endpoint ex. "https://sellingpartnerapi-na.amazon.com"
+      * @param {Object} [options] Optional configuration options.
+      * @param {boolean} [options.rateLimitEnabled=true] Whether to enable automatic rate limit protection.
       */
-    constructor(baseUrl: string);
+    constructor(baseUrl: string, options?: {
+        rateLimitEnabled?: boolean;
+    });
     /**
       * Returns this ApiClient so that you can chain the methods.
       * @param {String} clientId LWA client ID.

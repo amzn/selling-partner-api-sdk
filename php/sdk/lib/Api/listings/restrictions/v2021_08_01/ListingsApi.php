@@ -43,6 +43,7 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList;
 use SpApi\ObjectSerializer;
+use SpApi\RateLimitHandler;
 
 /**
  * ListingsApi Class Doc Comment.
@@ -66,6 +67,8 @@ class ListingsApi
      */
     protected int $hostIndex;
 
+    protected RateLimitHandler $rateLimitHandler;
+
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
@@ -79,6 +82,7 @@ class ListingsApi
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        $this->rateLimitHandler = new RateLimitHandler($config->getRateLimitEnabled());
     }
 
     /**
@@ -178,65 +182,71 @@ class ListingsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /listings/2021-08-01/restrictions';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\listings\restrictions\v2021_08_01\Error[]',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**

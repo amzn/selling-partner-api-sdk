@@ -48,6 +48,7 @@ use SpApi\Model\pricing\v0\GetListingOffersBatchResponse;
 use SpApi\Model\pricing\v0\GetOffersResponse;
 use SpApi\Model\pricing\v0\GetPricingResponse;
 use SpApi\ObjectSerializer;
+use SpApi\RateLimitHandler;
 
 /**
  * ProductPricingApi Class Doc Comment.
@@ -71,6 +72,8 @@ class ProductPricingApi
      */
     protected int $hostIndex;
 
+    protected RateLimitHandler $rateLimitHandler;
+
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
@@ -84,6 +87,7 @@ class ProductPricingApi
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        $this->rateLimitHandler = new RateLimitHandler($config->getRateLimitEnabled());
     }
 
     /**
@@ -177,65 +181,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /products/pricing/v0/competitivePrice';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetPricingResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetPricingResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -551,65 +561,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /products/pricing/v0/items/{Asin}/offers';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetOffersResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetOffersResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -886,65 +902,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'POST /batches/products/pricing/v0/itemOffers';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetItemOffersBatchResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\Errors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetItemOffersBatchResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\Errors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -1166,65 +1188,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /products/pricing/v0/listings/{SellerSKU}/offers';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetOffersResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetOffersResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetOffersResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetOffersResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetOffersResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -1501,65 +1529,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'POST /batches/products/pricing/v0/listingOffers';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetListingOffersBatchResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\Errors',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetListingOffersBatchResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\Errors',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -1793,65 +1827,71 @@ class ProductPricingApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /products/pricing/v0/price';
 
+        $requestFn = function () use ($request) {
             try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
+                $options = $this->createHttpClientOption();
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
-                    $content = json_decode($content);
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
+
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+                if ('\SpApi\Model\pricing\v0\GetPricingResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\pricing\v0\GetPricingResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\pricing\v0\GetPricingResponse',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\pricing\v0\GetPricingResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\pricing\v0\GetPricingResponse',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**

@@ -13,6 +13,10 @@
     "ModelInterface.mustache": {
       "templateFile": "ModelInterface.mustache",
       "destinationFilename": "lib/Model/ModelInterface.php"
+    },
+    "RateLimitHandler.mustache": {
+      "templateFile": "RateLimitHandler.mustache",
+      "destinationFilename": "lib/RateLimitHandler.php"
     }
   }
 }

@@ -6,5 +6,11 @@
         "modelTests": false,
         "modelDocs": false,
         "apiDocs": false
+    },
+    "files": {
+        "RateLimiter.mustache": {
+            "templateFile": "RateLimiter.mustache",
+            "destinationFilename": "src/RateLimiter.js"
+        }
     }
 }

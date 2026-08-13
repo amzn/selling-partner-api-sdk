@@ -329,6 +329,15 @@ namespace {{packageName}}.Client
         public virtual RateLimitConfiguration RateLimitConfig { get; set; }
 
         /// <summary>
+        /// Gets or sets whether rate limit protection is enabled.
+        /// When enabled (default), the SDK applies exponential backoff, rate tracking, and circuit breaker logic.
+        /// When disabled, HTTP 429 responses are passed directly to the caller without interception.
+        /// This value is set at construction time and cannot be changed afterward.
+        /// </summary>
+        /// <value>True if rate limit protection is enabled (default), false otherwise.</value>
+        public virtual bool RateLimitEnabled { get; set; } = true;
+
+        /// <summary>
         /// Gets the API key with prefix.
         /// </summary>
         /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>

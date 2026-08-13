@@ -10,5 +10,11 @@
     "modelTests": false,
     "modelDocs": false,
     "apiDocs": false
+  },
+  "files": {
+    "RateLimitInterceptor.mustache": {
+      "templateFile": "RateLimitInterceptor.mustache",
+      "destinationFilename": "src/main/java/software/amazon/spapi/RateLimitInterceptor.java"
+    }
   }
 }

@@ -17,6 +17,7 @@ import six
 from six.moves.urllib.parse import quote
 
 from spapi.configuration import Configuration
+from spapi.rate_limiter import RateLimiter
 from spapi import rest
 
 
@@ -76,6 +77,10 @@ class ApiClient(object):
         self.user_agent = 'amazon-selling-partner-api-sdk/{}/python'.format(sdk_version)
         self.client_side_validation = configuration.client_side_validation
 
+        # Rate limit protection
+        rate_limit_enabled = getattr(configuration, 'rate_limit_enabled', True)
+        self.rate_limiter = RateLimiter(enabled=rate_limit_enabled)
+
     def __del__(self):
         if self._pool is not None:
             self._pool.close()
@@ -122,6 +127,11 @@ class ApiClient(object):
             header_params = dict(self.parameters_to_tuples(header_params,
                                                            collection_formats))
 
+        # Derive the operation key for rate limit protection using the
+        # template path (before parameter substitution) so that requests
+        # to the same endpoint share rate limit state.
+        operation_key = "{} {}".format(method, resource_path)
+
         # path parameters
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
@@ -157,12 +167,17 @@ class ApiClient(object):
         # request url
         url = self.configuration.host + resource_path
 
-        # perform request and return response
-        response_data = self.request(
-            method, url, query_params=query_params, headers=header_params,
-            post_params=post_params, body=body,
-            _preload_content=_preload_content,
-            _request_timeout=_request_timeout)
+        # Define the actual request execution as a callable
+        def _do_request():
+            return self.request(
+                method, url, query_params=query_params, headers=header_params,
+                post_params=post_params, body=body,
+                _preload_content=_preload_content,
+                _request_timeout=_request_timeout)
+
+        # Execute through rate limiter when enabled, or directly when disabled
+        response_data = self.rate_limiter.execute_with_protection(
+            operation_key, _do_request)
 
         self.last_response = response_data
 

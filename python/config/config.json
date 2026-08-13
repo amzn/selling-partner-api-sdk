@@ -3,5 +3,11 @@
     "modelTests": false,
     "modelDocs": false,
     "apiDocs": false
+  },
+  "files": {
+    "rate_limiter.mustache": {
+      "templateFile": "rate_limiter.mustache",
+      "destinationFilename": "spapi/rate_limiter.py"
+    }
   }
 }
