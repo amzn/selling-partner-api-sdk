@@ -40,7 +40,23 @@ public class ApiClient {
     private LWAAuthorizationSigner lwaAuthorizationSigner;
     private final Configuration config = Configuration.get();
 
+    private final boolean rateLimitEnabled;
+    private final RateLimitInterceptor rateLimitInterceptor;
+
     public ApiClient() {
+        this(true);
+    }
+
+    public ApiClient(OkHttpClient httpClient) {
+        this(httpClient, true);
+    }
+
+    public ApiClient(boolean rateLimitEnabled) {
+        this.rateLimitEnabled = rateLimitEnabled;
+        this.rateLimitInterceptor = new RateLimitInterceptor(
+            new RateLimitInterceptor.RateLimitConfig(rateLimitEnabled)
+        );
+
         httpClient = config.getOkHttpClient();
 
         json = new JSON();
@@ -50,7 +66,11 @@ public class ApiClient {
         setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
     }
 
-    public ApiClient(OkHttpClient httpClient) {
+    public ApiClient(OkHttpClient httpClient, boolean rateLimitEnabled) {
+        this.rateLimitEnabled = rateLimitEnabled;
+        this.rateLimitInterceptor = new RateLimitInterceptor(
+            new RateLimitInterceptor.RateLimitConfig(rateLimitEnabled)
+        );
         this.httpClient = httpClient;
 
         json = new JSON();
@@ -586,12 +606,34 @@ public class ApiClient {
      */
     public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
         try {
-            Response response = call.execute();
+            Response response;
+            if (rateLimitEnabled) {
+                String operationKey = deriveOperationKey(call);
+                response = rateLimitInterceptor.executeWithProtection(operationKey, () -> call.clone().execute());
+            } else {
+                response = call.execute();
+            }
             T data = handleResponse(response, returnType);
             return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
+        } catch (ApiException e) {
+            throw e;
         } catch (IOException e) {
             throw new ApiException(e);
         }
+    }
+
+    /**
+     * Derive the operation key from the OkHttp Call object.
+     * Format: "METHOD /path" (e.g., "GET /orders/v0/orders")
+     *
+     * @param call The OkHttp Call
+     * @return The operation key string
+     */
+    private String deriveOperationKey(Call call) {
+        Request request = call.request();
+        String method = request.method().toUpperCase();
+        String path = request.url().encodedPath();
+        return method + " " + path;
     }
 
     /**
@@ -881,6 +923,85 @@ public class ApiClient {
             return keyStore;
         } catch (IOException e) {
             throw new AssertionError(e);
+        }
+    }
+
+    /**
+     * Check if rate limit protection is enabled.
+     *
+     * @return true if rate limit protection is enabled
+     */
+    public boolean isRateLimitEnabled() {
+        return rateLimitEnabled;
+    }
+
+    /**
+     * Get the RateLimitInterceptor instance.
+     *
+     * @return The rate limit interceptor
+     */
+    public RateLimitInterceptor getRateLimitInterceptor() {
+        return rateLimitInterceptor;
+    }
+
+    // =========================================================================
+    // Builder Pattern
+    // =========================================================================
+
+    /**
+     * Builder for constructing ApiClient instances with custom configuration.
+     *
+     * Example usage:
+     * <pre>
+     *   ApiClient client = new ApiClient.Builder()
+     *       .rateLimitEnabled(false)
+     *       .httpClient(customOkHttpClient)
+     *       .build();
+     * </pre>
+     */
+    public static class Builder {
+        private boolean rateLimitEnabled = true;
+        private OkHttpClient httpClient = null;
+
+        public Builder() {
+        }
+
+        /**
+         * Set whether rate limit protection is enabled (default: true).
+         *
+         * When enabled, the SDK automatically retries HTTP 429 responses with
+         * exponential backoff, tracks rate limits from response headers, and
+         * applies per-operation circuit breaking.
+         *
+         * @param enabled true to enable rate limit protection, false to disable
+         * @return this Builder instance
+         */
+        public Builder rateLimitEnabled(boolean enabled) {
+            this.rateLimitEnabled = enabled;
+            return this;
+        }
+
+        /**
+         * Set a custom OkHttpClient instance.
+         *
+         * @param httpClient The OkHttpClient to use for requests
+         * @return this Builder instance
+         */
+        public Builder httpClient(OkHttpClient httpClient) {
+            this.httpClient = httpClient;
+            return this;
+        }
+
+        /**
+         * Build the ApiClient instance.
+         *
+         * @return A configured ApiClient instance
+         */
+        public ApiClient build() {
+            if (httpClient != null) {
+                return new ApiClient(httpClient, rateLimitEnabled);
+            }
+            return new ApiClient(rateLimitEnabled);
         }
     }
 }

@@ -98,6 +98,9 @@ class Configuration(object):
         self.tls_server_name = None
         self.socket_options = None
 
+        # Rate limit protection (enabled by default)
+        self.rate_limit_enabled = True
+
     @classmethod
     def set_default(cls, default):
         cls._default = default

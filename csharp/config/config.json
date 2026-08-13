@@ -7,5 +7,11 @@
         "modelTests": false,
         "modelDocs": false,
         "apiDocs": false
+    },
+    "files": {
+        "RateLimitHandler.mustache": {
+            "templateFile": "RateLimitHandler.mustache",
+            "destinationFilename": "src/software.amzn.spapi/Client/RateLimitHandler.cs"
+        }
     }
 }
