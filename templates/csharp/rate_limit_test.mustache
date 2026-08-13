@@ -1,6 +1,7 @@
 {{>partial_header}}
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ using RestSharp;
 using Xunit;
 
 using {{packageName}}.Client;
+
+using HttpMethod = System.Net.Http.HttpMethod;
 
 namespace {{packageName}}.Test.Client
 {

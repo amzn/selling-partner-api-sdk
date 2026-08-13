@@ -21,7 +21,7 @@ app.post('/auth/o2/token', (req, res) => {
  *
  * POST /rate-limit/configure/:operationKey
  * Query params:
- *   failCount - Number of 429 responses before returning success (default: 2)
+ *   failCount - Number of 429 responses before returning success (default: 0)
  *   rateLimitValue - Value of x-amzn-RateLimit-Limit header on success (default: "5.0")
  *   successStatus - HTTP status on success (default: 200)
  *
@@ -29,7 +29,7 @@ app.post('/auth/o2/token', (req, res) => {
  */
 app.post('/rate-limit/configure/:operationKey', (req, res) => {
     const operationKey = req.params.operationKey
-    const failCount = parseInt(req.query.failCount) || 2
+    const failCount = parseInt(req.query.failCount) || 0
     const rateLimitValue = req.query.rateLimitValue || "5.0"
     const successStatus = parseInt(req.query.successStatus) || 200
 
@@ -39,6 +39,9 @@ app.post('/rate-limit/configure/:operationKey', (req, res) => {
         successStatus,
         callCount: 0
     }
+
+    console.log(failCount)
+    console.log(req.query.failCount)
 
     res.status(204).send()
 })
