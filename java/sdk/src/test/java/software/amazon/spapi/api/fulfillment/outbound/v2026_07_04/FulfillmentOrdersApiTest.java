@@ -55,79 +55,79 @@ public class FulfillmentOrdersApiTest {
             .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
-    public void cancelOrder_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "cancelOrder_0", "202");
+    public void cancelOrderTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "cancelOrder", "202");
 
         String orderId = easyRandom.nextObject(String.class);
 
-        ApiResponse<Object> response = api.cancelOrder_0WithHttpInfo(orderId, null);
+        ApiResponse<Object> response = api.cancelOrderWithHttpInfo(orderId, null);
 
         assertEquals(202, response.getStatusCode());
         assertValidResponsePayload(202, response.getData());
     }
 
     @Test
-    public void createOrder_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "createOrder_0", "200");
+    public void createOrderTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "createOrder", "200");
 
         CreateOrderRequest body = easyRandom.nextObject(CreateOrderRequest.class);
 
-        ApiResponse<CreateOrderResponse> response = api.createOrder_0WithHttpInfo(body, null);
+        ApiResponse<CreateOrderResponse> response = api.createOrderWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
     }
 
     @Test
-    public void getOrder_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "getOrder_0", "200");
+    public void getOrderTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "getOrder", "200");
 
         String orderId = easyRandom.nextObject(String.class);
 
-        ApiResponse<GetOrderResponse> response = api.getOrder_0WithHttpInfo(orderId, null, null);
+        ApiResponse<GetOrderResponse> response = api.getOrderWithHttpInfo(orderId, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
     }
 
     @Test
-    public void listOrders_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "listOrders_0", "200");
+    public void listOrdersTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "listOrders", "200");
 
-        ApiResponse<ListOrdersResponse> response = api.listOrders_0WithHttpInfo(null, null, null, null);
+        ApiResponse<ListOrdersResponse> response = api.listOrdersWithHttpInfo(null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
     }
 
     @Test
-    public void updateOrderStatus_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "updateOrderStatus_0", "204");
-
-        String orderId = easyRandom.nextObject(String.class);
-
-        UpdateOrderStatusRequest body = easyRandom.nextObject(UpdateOrderStatusRequest.class);
-
-        api.updateOrderStatus_0WithHttpInfo(orderId, body, null);
-    }
-
-    @Test
-    public void updateOrder_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "updateOrder_0", "202");
+    public void updateOrderTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "updateOrder", "202");
 
         String orderId = easyRandom.nextObject(String.class);
 
         UpdateOrderRequest body = easyRandom.nextObject(UpdateOrderRequest.class);
 
-        ApiResponse<Object> response = api.updateOrder_0WithHttpInfo(orderId, body, null);
+        ApiResponse<Object> response = api.updateOrderWithHttpInfo(orderId, body, null);
 
         assertEquals(202, response.getStatusCode());
         assertValidResponsePayload(202, response.getData());
     }
 
     @Test
-    public void updatePackage_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "updatePackage_0", "204");
+    public void updateOrderStatusTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "updateOrderStatus", "204");
+
+        String orderId = easyRandom.nextObject(String.class);
+
+        UpdateOrderStatusRequest body = easyRandom.nextObject(UpdateOrderStatusRequest.class);
+
+        api.updateOrderStatusWithHttpInfo(orderId, body, null);
+    }
+
+    @Test
+    public void updatePackageTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "updatePackage", "204");
 
         String orderId = easyRandom.nextObject(String.class);
 
@@ -135,7 +135,7 @@ public class FulfillmentOrdersApiTest {
 
         UpdatePackageRequest body = easyRandom.nextObject(UpdatePackageRequest.class);
 
-        api.updatePackage_0WithHttpInfo(orderId, packageId, body, null);
+        api.updatePackageWithHttpInfo(orderId, packageId, body, null);
     }
 
     private void instructBackendMock(String basename, String operationId, String code) throws Exception {

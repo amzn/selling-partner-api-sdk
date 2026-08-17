@@ -46,11 +46,11 @@ public class OffersApi {
 
     private final Configuration config = Configuration.get();
 
-    public final Bucket getOffers_0Bucket =
-            Bucket.builder().addLimit(config.getLimit("OffersApi-getOffers_0")).build();
+    public final Bucket getOffersBucket =
+            Bucket.builder().addLimit(config.getLimit("OffersApi-getOffers")).build();
 
     /**
-     * Build call for getOffers_0
+     * Build call for getOffers
      *
      * @param body The request body schema for the &#x60;getOffers&#x60; operation. (required)
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
@@ -59,7 +59,7 @@ public class OffersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getOffers_0Call(
+    private okhttp3.Call getOffersCall(
             GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -101,16 +101,16 @@ public class OffersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getOffers_0ValidateBeforeCall(
+    private okhttp3.Call getOffersValidateBeforeCall(
             GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getOffers_0(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling getOffers(Async)");
         }
 
-        return getOffers_0Call(body, xAmznFulfillmentServiceId, progressRequestListener);
+        return getOffersCall(body, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -129,11 +129,11 @@ public class OffersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOffersResponse getOffers_0(
+    public GetOffersResponse getOffers(
             GetOffersRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOffersResponse> resp =
-                getOffers_0WithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
+                getOffersWithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -152,9 +152,9 @@ public class OffersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOffersResponse getOffers_0(GetOffersRequest body, String xAmznFulfillmentServiceId)
+    public GetOffersResponse getOffers(GetOffersRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        ApiResponse<GetOffersResponse> resp = getOffers_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+        ApiResponse<GetOffersResponse> resp = getOffersWithHttpInfo(body, xAmznFulfillmentServiceId, null);
         return resp.getData();
     }
 
@@ -174,21 +174,21 @@ public class OffersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOffersResponse> getOffers_0WithHttpInfo(
+    public ApiResponse<GetOffersResponse> getOffersWithHttpInfo(
             GetOffersRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOffers_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = getOffersValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "OffersApi-getOffers_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "OffersApi-getOffers");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOffers_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOffersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOffers_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOffers operation exceeds rate limit");
     }
 
     /**
@@ -206,9 +206,9 @@ public class OffersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOffersResponse> getOffers_0WithHttpInfo(
-            GetOffersRequest body, String xAmznFulfillmentServiceId) throws ApiException, LWAException {
-        return getOffers_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+    public ApiResponse<GetOffersResponse> getOffersWithHttpInfo(GetOffersRequest body, String xAmznFulfillmentServiceId)
+            throws ApiException, LWAException {
+        return getOffersWithHttpInfo(body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -227,10 +227,10 @@ public class OffersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOffers_0Async(
+    public okhttp3.Call getOffersAsync(
             GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback<GetOffersResponse> callback)
             throws ApiException, LWAException {
-        return getOffers_0Async(body, xAmznFulfillmentServiceId, callback, null);
+        return getOffersAsync(body, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Retrieve delivery options that include an estimated delivery date and offer expiration, based on
@@ -249,7 +249,7 @@ public class OffersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOffers_0Async(
+    public okhttp3.Call getOffersAsync(
             GetOffersRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<GetOffersResponse> callback,
@@ -262,19 +262,19 @@ public class OffersApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getOffers_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
+        okhttp3.Call call = getOffersValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "OffersApi-getOffers_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "OffersApi-getOffers");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOffers_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOffersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("getOffers_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOffers operation exceeds rate limit");
     }
 
     public static class Builder {

@@ -23,10 +23,10 @@ import java.io.IOException;
 @JsonAdapter(PaymentType.Adapter.class)
 public enum PaymentType {
     @SerializedName("PAY_THROUGH_AMAZON")
-    THROUGH_AMAZON("PAY_THROUGH_AMAZON"),
+    PAY_THROUGH_AMAZON("PAY_THROUGH_AMAZON"),
 
     @SerializedName("PAY_DIRECT_TO_CARRIER")
-    DIRECT_TO_CARRIER("PAY_DIRECT_TO_CARRIER");
+    PAY_DIRECT_TO_CARRIER("PAY_DIRECT_TO_CARRIER");
 
     private String value;
 

@@ -26,13 +26,13 @@ import java.io.IOException;
 @JsonAdapter(OptionalFulfillmentProgram.Adapter.class)
 public enum OptionalFulfillmentProgram {
     @SerializedName("FBA_CORE")
-    CORE("FBA_CORE"),
+    FBA_CORE("FBA_CORE"),
 
     @SerializedName("FBA_SNL")
-    SNL("FBA_SNL"),
+    FBA_SNL("FBA_SNL"),
 
     @SerializedName("FBA_EFN")
-    EFN("FBA_EFN");
+    FBA_EFN("FBA_EFN");
 
     private String value;
 
