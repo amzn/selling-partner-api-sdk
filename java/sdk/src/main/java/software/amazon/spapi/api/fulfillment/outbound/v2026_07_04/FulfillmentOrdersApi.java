@@ -52,36 +52,36 @@ public class FulfillmentOrdersApi {
 
     private final Configuration config = Configuration.get();
 
-    public final Bucket cancelOrder_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-cancelOrder_0"))
+    public final Bucket cancelOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-cancelOrder"))
             .build();
 
-    public final Bucket createOrder_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-createOrder_0"))
+    public final Bucket createOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-createOrder"))
             .build();
 
-    public final Bucket getOrder_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-getOrder_0"))
+    public final Bucket getOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-getOrder"))
             .build();
 
-    public final Bucket listOrders_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-listOrders_0"))
+    public final Bucket listOrdersBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-listOrders"))
             .build();
 
-    public final Bucket updateOrderStatus_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-updateOrderStatus_0"))
+    public final Bucket updateOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-updateOrder"))
             .build();
 
-    public final Bucket updateOrder_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-updateOrder_0"))
+    public final Bucket updateOrderStatusBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-updateOrderStatus"))
             .build();
 
-    public final Bucket updatePackage_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentOrdersApi-updatePackage_0"))
+    public final Bucket updatePackageBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentOrdersApi-updatePackage"))
             .build();
 
     /**
-     * Build call for cancelOrder_0
+     * Build call for cancelOrder
      *
      * @param orderId The ID of the order that you want to cancel. (required)
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
@@ -90,7 +90,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelOrder_0Call(
+    private okhttp3.Call cancelOrderCall(
             String orderId, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -136,16 +136,16 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call cancelOrder_0ValidateBeforeCall(
+    private okhttp3.Call cancelOrderValidateBeforeCall(
             String orderId, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
-            throw new ApiException("Missing the required parameter 'orderId' when calling cancelOrder_0(Async)");
+            throw new ApiException("Missing the required parameter 'orderId' when calling cancelOrder(Async)");
         }
 
-        return cancelOrder_0Call(orderId, xAmznFulfillmentServiceId, progressRequestListener);
+        return cancelOrderCall(orderId, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -164,9 +164,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Object cancelOrder_0(String orderId, String xAmznFulfillmentServiceId, String restrictedDataToken)
+    public Object cancelOrder(String orderId, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<Object> resp = cancelOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, restrictedDataToken);
+        ApiResponse<Object> resp = cancelOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -185,8 +185,8 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Object cancelOrder_0(String orderId, String xAmznFulfillmentServiceId) throws ApiException, LWAException {
-        ApiResponse<Object> resp = cancelOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, null);
+    public Object cancelOrder(String orderId, String xAmznFulfillmentServiceId) throws ApiException, LWAException {
+        ApiResponse<Object> resp = cancelOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, null);
         return resp.getData();
     }
 
@@ -206,22 +206,21 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Object> cancelOrder_0WithHttpInfo(
+    public ApiResponse<Object> cancelOrderWithHttpInfo(
             String orderId, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = cancelOrder_0ValidateBeforeCall(orderId, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = cancelOrderValidateBeforeCall(orderId, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-cancelOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-cancelOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || cancelOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Object>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("cancelOrder operation exceeds rate limit");
     }
 
     /**
@@ -239,9 +238,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Object> cancelOrder_0WithHttpInfo(String orderId, String xAmznFulfillmentServiceId)
+    public ApiResponse<Object> cancelOrderWithHttpInfo(String orderId, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        return cancelOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, null);
+        return cancelOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -260,10 +259,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call cancelOrder_0Async(
+    public okhttp3.Call cancelOrderAsync(
             String orderId, String xAmznFulfillmentServiceId, final ApiCallback<Object> callback)
             throws ApiException, LWAException {
-        return cancelOrder_0Async(orderId, xAmznFulfillmentServiceId, callback, null);
+        return cancelOrderAsync(orderId, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Request that Amazon stop attempting to fulfill a fulfillment order. **Usage Plan:** | Rate
@@ -282,7 +281,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call cancelOrder_0Async(
+    public okhttp3.Call cancelOrderAsync(
             String orderId,
             String xAmznFulfillmentServiceId,
             final ApiCallback<Object> callback,
@@ -295,24 +294,22 @@ public class FulfillmentOrdersApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call =
-                cancelOrder_0ValidateBeforeCall(orderId, xAmznFulfillmentServiceId, progressRequestListener);
+        okhttp3.Call call = cancelOrderValidateBeforeCall(orderId, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-cancelOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-cancelOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || cancelOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Object>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("cancelOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("cancelOrder operation exceeds rate limit");
     }
     /**
-     * Build call for createOrder_0
+     * Build call for createOrder
      *
      * @param body The request body schema for the &#x60;createOrder&#x60; operation. (required)
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
@@ -321,7 +318,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createOrder_0Call(
+    private okhttp3.Call createOrderCall(
             CreateOrderRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -363,16 +360,16 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call createOrder_0ValidateBeforeCall(
+    private okhttp3.Call createOrderValidateBeforeCall(
             CreateOrderRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling createOrder_0(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling createOrder(Async)");
         }
 
-        return createOrder_0Call(body, xAmznFulfillmentServiceId, progressRequestListener);
+        return createOrderCall(body, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -391,11 +388,11 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public CreateOrderResponse createOrder_0(
+    public CreateOrderResponse createOrder(
             CreateOrderRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<CreateOrderResponse> resp =
-                createOrder_0WithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
+                createOrderWithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -414,9 +411,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public CreateOrderResponse createOrder_0(CreateOrderRequest body, String xAmznFulfillmentServiceId)
+    public CreateOrderResponse createOrder(CreateOrderRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        ApiResponse<CreateOrderResponse> resp = createOrder_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+        ApiResponse<CreateOrderResponse> resp = createOrderWithHttpInfo(body, xAmznFulfillmentServiceId, null);
         return resp.getData();
     }
 
@@ -436,22 +433,21 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<CreateOrderResponse> createOrder_0WithHttpInfo(
+    public ApiResponse<CreateOrderResponse> createOrderWithHttpInfo(
             CreateOrderRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = createOrder_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = createOrderValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-createOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-createOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || createOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateOrderResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("createOrder operation exceeds rate limit");
     }
 
     /**
@@ -469,9 +465,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<CreateOrderResponse> createOrder_0WithHttpInfo(
+    public ApiResponse<CreateOrderResponse> createOrderWithHttpInfo(
             CreateOrderRequest body, String xAmznFulfillmentServiceId) throws ApiException, LWAException {
-        return createOrder_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+        return createOrderWithHttpInfo(body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -490,10 +486,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call createOrder_0Async(
+    public okhttp3.Call createOrderAsync(
             CreateOrderRequest body, String xAmznFulfillmentServiceId, final ApiCallback<CreateOrderResponse> callback)
             throws ApiException, LWAException {
-        return createOrder_0Async(body, xAmznFulfillmentServiceId, callback, null);
+        return createOrderAsync(body, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Request that Amazon ship items from the seller&#39;s inventory in Amazon&#39;s fulfillment
@@ -512,7 +508,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call createOrder_0Async(
+    public okhttp3.Call createOrderAsync(
             CreateOrderRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<CreateOrderResponse> callback,
@@ -525,23 +521,22 @@ public class FulfillmentOrdersApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = createOrder_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
+        okhttp3.Call call = createOrderValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-createOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-createOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || createOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<CreateOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("createOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("createOrder operation exceeds rate limit");
     }
     /**
-     * Build call for getOrder_0
+     * Build call for getOrder
      *
      * @param orderId The ID of the order you want to retrieve. (required)
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
@@ -551,7 +546,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getOrder_0Call(
+    private okhttp3.Call getOrderCall(
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
@@ -601,7 +596,7 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getOrder_0ValidateBeforeCall(
+    private okhttp3.Call getOrderValidateBeforeCall(
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
@@ -610,10 +605,10 @@ public class FulfillmentOrdersApi {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
-            throw new ApiException("Missing the required parameter 'orderId' when calling getOrder_0(Async)");
+            throw new ApiException("Missing the required parameter 'orderId' when calling getOrder(Async)");
         }
 
-        return getOrder_0Call(orderId, xAmznFulfillmentServiceId, shipments, progressRequestListener);
+        return getOrderCall(orderId, xAmznFulfillmentServiceId, shipments, progressRequestListener);
     }
 
     /**
@@ -632,11 +627,11 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOrderResponse getOrder_0(
+    public GetOrderResponse getOrder(
             String orderId, String xAmznFulfillmentServiceId, String shipments, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderResponse> resp =
-                getOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, restrictedDataToken);
+                getOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, restrictedDataToken);
         return resp.getData();
     }
 
@@ -655,10 +650,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOrderResponse getOrder_0(String orderId, String xAmznFulfillmentServiceId, String shipments)
+    public GetOrderResponse getOrder(String orderId, String xAmznFulfillmentServiceId, String shipments)
             throws ApiException, LWAException {
-        ApiResponse<GetOrderResponse> resp =
-                getOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, null);
+        ApiResponse<GetOrderResponse> resp = getOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, null);
         return resp.getData();
     }
 
@@ -678,21 +672,21 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOrderResponse> getOrder_0WithHttpInfo(
+    public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(
             String orderId, String xAmznFulfillmentServiceId, String shipments, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrder_0ValidateBeforeCall(orderId, xAmznFulfillmentServiceId, shipments, null);
+        okhttp3.Call call = getOrderValidateBeforeCall(orderId, xAmznFulfillmentServiceId, shipments, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-getOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-getOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
 
     /**
@@ -710,9 +704,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOrderResponse> getOrder_0WithHttpInfo(
+    public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(
             String orderId, String xAmznFulfillmentServiceId, String shipments) throws ApiException, LWAException {
-        return getOrder_0WithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, null);
+        return getOrderWithHttpInfo(orderId, xAmznFulfillmentServiceId, shipments, null);
     }
 
     /**
@@ -731,13 +725,13 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOrder_0Async(
+    public okhttp3.Call getOrderAsync(
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
             final ApiCallback<GetOrderResponse> callback)
             throws ApiException, LWAException {
-        return getOrder_0Async(orderId, xAmznFulfillmentServiceId, shipments, callback, null);
+        return getOrderAsync(orderId, xAmznFulfillmentServiceId, shipments, callback, null);
     }
     /**
      * (asynchronously) Retrieve a fulfillment order. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
@@ -756,7 +750,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOrder_0Async(
+    public okhttp3.Call getOrderAsync(
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
@@ -771,22 +765,22 @@ public class FulfillmentOrdersApi {
         }
 
         okhttp3.Call call =
-                getOrder_0ValidateBeforeCall(orderId, xAmznFulfillmentServiceId, shipments, progressRequestListener);
+                getOrderValidateBeforeCall(orderId, xAmznFulfillmentServiceId, shipments, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-getOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-getOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("getOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
     }
     /**
-     * Build call for listOrders_0
+     * Build call for listOrders
      *
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
      * @param updatedAfter The response includes orders updated after this time. Must be in [ISO
@@ -801,7 +795,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call listOrders_0Call(
+    private okhttp3.Call listOrdersCall(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
@@ -851,7 +845,7 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call listOrders_0ValidateBeforeCall(
+    private okhttp3.Call listOrdersValidateBeforeCall(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
@@ -859,7 +853,7 @@ public class FulfillmentOrdersApi {
             final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
-        return listOrders_0Call(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, progressRequestListener);
+        return listOrdersCall(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, progressRequestListener);
     }
 
     /**
@@ -884,14 +878,14 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ListOrdersResponse listOrders_0(
+    public ListOrdersResponse listOrders(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
             String shipments,
             String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<ListOrdersResponse> resp = listOrders_0WithHttpInfo(
+        ApiResponse<ListOrdersResponse> resp = listOrdersWithHttpInfo(
                 xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, restrictedDataToken);
         return resp.getData();
     }
@@ -917,11 +911,11 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ListOrdersResponse listOrders_0(
+    public ListOrdersResponse listOrders(
             String xAmznFulfillmentServiceId, OffsetDateTime updatedAfter, String pageToken, String shipments)
             throws ApiException, LWAException {
         ApiResponse<ListOrdersResponse> resp =
-                listOrders_0WithHttpInfo(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
+                listOrdersWithHttpInfo(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
         return resp.getData();
     }
 
@@ -947,7 +941,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<ListOrdersResponse> listOrders_0WithHttpInfo(
+    public ApiResponse<ListOrdersResponse> listOrdersWithHttpInfo(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
@@ -955,18 +949,18 @@ public class FulfillmentOrdersApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call =
-                listOrders_0ValidateBeforeCall(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
+                listOrdersValidateBeforeCall(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-listOrders_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-listOrders");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOrders_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || listOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListOrdersResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listOrders_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("listOrders operation exceeds rate limit");
     }
 
     /**
@@ -990,10 +984,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<ListOrdersResponse> listOrders_0WithHttpInfo(
+    public ApiResponse<ListOrdersResponse> listOrdersWithHttpInfo(
             String xAmznFulfillmentServiceId, OffsetDateTime updatedAfter, String pageToken, String shipments)
             throws ApiException, LWAException {
-        return listOrders_0WithHttpInfo(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
+        return listOrdersWithHttpInfo(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, null);
     }
 
     /**
@@ -1018,14 +1012,14 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call listOrders_0Async(
+    public okhttp3.Call listOrdersAsync(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
             String shipments,
             final ApiCallback<ListOrdersResponse> callback)
             throws ApiException, LWAException {
-        return listOrders_0Async(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, callback, null);
+        return listOrdersAsync(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, callback, null);
     }
     /**
      * (asynchronously) Retrieve a list of fulfillment orders that match the criteria you specify. **Usage Plan:** |
@@ -1050,7 +1044,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call listOrders_0Async(
+    public okhttp3.Call listOrdersAsync(
             String xAmznFulfillmentServiceId,
             OffsetDateTime updatedAfter,
             String pageToken,
@@ -1065,260 +1059,23 @@ public class FulfillmentOrdersApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = listOrders_0ValidateBeforeCall(
+        okhttp3.Call call = listOrdersValidateBeforeCall(
                 xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-listOrders_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-listOrders");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOrders_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || listOrdersBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<ListOrdersResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("listOrders_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("listOrders operation exceeds rate limit");
     }
     /**
-     * Build call for updateOrderStatus_0
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    private okhttp3.Call updateOrderStatus_0Call(
-            String orderId,
-            UpdateOrderStatusRequest body,
-            String xAmznFulfillmentServiceId,
-            final ApiCallback progressRequestListener)
-            throws ApiException, LWAException {
-        Object localVarPostBody = body;
-
-        // create path and map variables
-        String localVarPath;
-        if ("/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
-                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
-            localVarPath = "/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
-                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
-        } else {
-            localVarPath = "/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
-                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
-        }
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        if (xAmznFulfillmentServiceId != null)
-            localVarHeaderParams.put(
-                    "x-amzn-fulfillment-service-id", apiClient.parameterToString(xAmznFulfillmentServiceId));
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {"application/json"};
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {"application/json"};
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        return apiClient.buildCall(
-                localVarPath,
-                "PUT",
-                localVarQueryParams,
-                localVarCollectionQueryParams,
-                localVarPostBody,
-                localVarHeaderParams,
-                localVarFormParams,
-                progressRequestListener);
-    }
-
-    private okhttp3.Call updateOrderStatus_0ValidateBeforeCall(
-            String orderId,
-            UpdateOrderStatusRequest body,
-            String xAmznFulfillmentServiceId,
-            final ApiCallback progressRequestListener)
-            throws ApiException, LWAException {
-
-        // verify the required parameter 'orderId' is set
-        if (orderId == null) {
-            throw new ApiException("Missing the required parameter 'orderId' when calling updateOrderStatus_0(Async)");
-        }
-
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateOrderStatus_0(Async)");
-        }
-
-        return updateOrderStatus_0Call(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
-    }
-
-    /**
-     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
-     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @param restrictedDataToken Restricted Data Token (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public void updateOrderStatus_0(
-            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        updateOrderStatus_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, restrictedDataToken);
-    }
-
-    /**
-     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
-     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public void updateOrderStatus_0(String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId)
-            throws ApiException, LWAException {
-        updateOrderStatus_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
-    }
-
-    /**
-     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
-     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @param restrictedDataToken Restricted Data Token (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public ApiResponse<Void> updateOrderStatus_0WithHttpInfo(
-            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        okhttp3.Call call = updateOrderStatus_0ValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, null);
-
-        if (restrictedDataToken != null) {
-            okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentOrdersApi-updateOrderStatus_0");
-            call = apiClient.getHttpClient().newCall(request);
-        }
-
-        if (disableRateLimiting || updateOrderStatus_0Bucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateOrderStatus_0 operation exceeds rate limit");
-    }
-
-    /**
-     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
-     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public ApiResponse<Void> updateOrderStatus_0WithHttpInfo(
-            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId)
-            throws ApiException, LWAException {
-        return updateOrderStatus_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
-    }
-
-    /**
-     * (asynchronously) Request that Amazon update the status of an order in the sandbox testing environment. This is a
-     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateOrderStatus_0Async(
-            String orderId,
-            UpdateOrderStatusRequest body,
-            String xAmznFulfillmentServiceId,
-            final ApiCallback<Void> callback)
-            throws ApiException, LWAException {
-        return updateOrderStatus_0Async(orderId, body, xAmznFulfillmentServiceId, callback, null);
-    }
-    /**
-     * (asynchronously) Request that Amazon update the status of an order in the sandbox testing environment. This is a
-     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
-     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
-     * information.
-     *
-     * @param orderId The ID of the order that you want to update. (required)
-     * @param body The new status of the fulfillment order. (required)
-     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @param restrictedDataToken Restricted Data Token (optional)
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @throws LWAException If calls to fetch LWA access token fails
-     */
-    public okhttp3.Call updateOrderStatus_0Async(
-            String orderId,
-            UpdateOrderStatusRequest body,
-            String xAmznFulfillmentServiceId,
-            final ApiCallback<Void> callback,
-            String restrictedDataToken)
-            throws ApiException, LWAException {
-
-        ApiCallback progressRequestListener = null;
-
-        if (callback != null) {
-            progressRequestListener = callback;
-        }
-
-        okhttp3.Call call = updateOrderStatus_0ValidateBeforeCall(
-                orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
-
-        if (restrictedDataToken != null) {
-            okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentOrdersApi-updateOrderStatus_0");
-            call = apiClient.getHttpClient().newCall(request);
-        }
-
-        if (disableRateLimiting || updateOrderStatus_0Bucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateOrderStatus_0 operation exceeds rate limit");
-    }
-    /**
-     * Build call for updateOrder_0
+     * Build call for updateOrder
      *
      * @param orderId The ID of the order that you want to update and/or request shipment of. (required)
      * @param body The request body schema for the &#x60;updateOrder&#x60; operation. (required)
@@ -1328,7 +1085,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call updateOrder_0Call(
+    private okhttp3.Call updateOrderCall(
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
@@ -1376,7 +1133,7 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call updateOrder_0ValidateBeforeCall(
+    private okhttp3.Call updateOrderValidateBeforeCall(
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
@@ -1385,15 +1142,15 @@ public class FulfillmentOrdersApi {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
-            throw new ApiException("Missing the required parameter 'orderId' when calling updateOrder_0(Async)");
+            throw new ApiException("Missing the required parameter 'orderId' when calling updateOrder(Async)");
         }
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updateOrder_0(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling updateOrder(Async)");
         }
 
-        return updateOrder_0Call(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
+        return updateOrderCall(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -1413,11 +1170,11 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Object updateOrder_0(
+    public Object updateOrder(
             String orderId, UpdateOrderRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<Object> resp =
-                updateOrder_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, restrictedDataToken);
+                updateOrderWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -1437,9 +1194,9 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Object updateOrder_0(String orderId, UpdateOrderRequest body, String xAmznFulfillmentServiceId)
+    public Object updateOrder(String orderId, UpdateOrderRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        ApiResponse<Object> resp = updateOrder_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
+        ApiResponse<Object> resp = updateOrderWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
         return resp.getData();
     }
 
@@ -1460,22 +1217,21 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Object> updateOrder_0WithHttpInfo(
+    public ApiResponse<Object> updateOrderWithHttpInfo(
             String orderId, UpdateOrderRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = updateOrder_0ValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = updateOrderValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updateOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updateOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || updateOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Object>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("updateOrder operation exceeds rate limit");
     }
 
     /**
@@ -1494,10 +1250,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Object> updateOrder_0WithHttpInfo(
+    public ApiResponse<Object> updateOrderWithHttpInfo(
             String orderId, UpdateOrderRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        return updateOrder_0WithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
+        return updateOrderWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -1517,13 +1273,13 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call updateOrder_0Async(
+    public okhttp3.Call updateOrderAsync(
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<Object> callback)
             throws ApiException, LWAException {
-        return updateOrder_0Async(orderId, body, xAmznFulfillmentServiceId, callback, null);
+        return updateOrderAsync(orderId, body, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Update and/or request shipment for a fulfillment order with an order hold on it. **Usage Plan:**
@@ -1543,7 +1299,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call updateOrder_0Async(
+    public okhttp3.Call updateOrderAsync(
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
@@ -1558,23 +1314,259 @@ public class FulfillmentOrdersApi {
         }
 
         okhttp3.Call call =
-                updateOrder_0ValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
+                updateOrderValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request =
-                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updateOrder_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updateOrder");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateOrder_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || updateOrderBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<Object>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("updateOrder_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("updateOrder operation exceeds rate limit");
     }
     /**
-     * Build call for updatePackage_0
+     * Build call for updateOrderStatus
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call updateOrderStatusCall(
+            String orderId,
+            UpdateOrderStatusRequest body,
+            String xAmznFulfillmentServiceId,
+            final ApiCallback progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/fulfillment/outbound/2026-07-04/orders/{orderId}/status"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        if (xAmznFulfillmentServiceId != null)
+            localVarHeaderParams.put(
+                    "x-amzn-fulfillment-service-id", apiClient.parameterToString(xAmznFulfillmentServiceId));
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "PUT",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call updateOrderStatusValidateBeforeCall(
+            String orderId,
+            UpdateOrderStatusRequest body,
+            String xAmznFulfillmentServiceId,
+            final ApiCallback progressRequestListener)
+            throws ApiException, LWAException {
+
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling updateOrderStatus(Async)");
+        }
+
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateOrderStatus(Async)");
+        }
+
+        return updateOrderStatusCall(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
+    }
+
+    /**
+     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateOrderStatus(
+            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        updateOrderStatusWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, restrictedDataToken);
+    }
+
+    /**
+     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void updateOrderStatus(String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId)
+            throws ApiException, LWAException {
+        updateOrderStatusWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
+    }
+
+    /**
+     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateOrderStatusWithHttpInfo(
+            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateOrderStatusValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FulfillmentOrdersApi-updateOrderStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateOrderStatusBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("updateOrderStatus operation exceeds rate limit");
+    }
+
+    /**
+     * Request that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> updateOrderStatusWithHttpInfo(
+            String orderId, UpdateOrderStatusRequest body, String xAmznFulfillmentServiceId)
+            throws ApiException, LWAException {
+        return updateOrderStatusWithHttpInfo(orderId, body, xAmznFulfillmentServiceId, null);
+    }
+
+    /**
+     * (asynchronously) Request that Amazon update the status of an order in the sandbox testing environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateOrderStatusAsync(
+            String orderId,
+            UpdateOrderStatusRequest body,
+            String xAmznFulfillmentServiceId,
+            final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return updateOrderStatusAsync(orderId, body, xAmznFulfillmentServiceId, callback, null);
+    }
+    /**
+     * (asynchronously) Request that Amazon update the status of an order in the sandbox testing environment. This is a
+     * sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param orderId The ID of the order that you want to update. (required)
+     * @param body The new status of the fulfillment order. (required)
+     * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateOrderStatusAsync(
+            String orderId,
+            UpdateOrderStatusRequest body,
+            String xAmznFulfillmentServiceId,
+            final ApiCallback<Void> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ApiCallback progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback;
+        }
+
+        okhttp3.Call call =
+                updateOrderStatusValidateBeforeCall(orderId, body, xAmznFulfillmentServiceId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "FulfillmentOrdersApi-updateOrderStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateOrderStatusBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateOrderStatus operation exceeds rate limit");
+    }
+    /**
+     * Build call for updatePackage
      *
      * @param orderId The ID of the order that contains the package that you want to update. (required)
      * @param packageId The ID of the package that you want to update. (required)
@@ -1585,7 +1577,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call updatePackage_0Call(
+    private okhttp3.Call updatePackageCall(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
@@ -1636,7 +1628,7 @@ public class FulfillmentOrdersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call updatePackage_0ValidateBeforeCall(
+    private okhttp3.Call updatePackageValidateBeforeCall(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
@@ -1646,20 +1638,20 @@ public class FulfillmentOrdersApi {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
-            throw new ApiException("Missing the required parameter 'orderId' when calling updatePackage_0(Async)");
+            throw new ApiException("Missing the required parameter 'orderId' when calling updatePackage(Async)");
         }
 
         // verify the required parameter 'packageId' is set
         if (packageId == null) {
-            throw new ApiException("Missing the required parameter 'packageId' when calling updatePackage_0(Async)");
+            throw new ApiException("Missing the required parameter 'packageId' when calling updatePackage(Async)");
         }
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling updatePackage_0(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling updatePackage(Async)");
         }
 
-        return updatePackage_0Call(orderId, packageId, body, xAmznFulfillmentServiceId, progressRequestListener);
+        return updatePackageCall(orderId, packageId, body, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -1677,14 +1669,14 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public void updatePackage_0(
+    public void updatePackage(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
             String xAmznFulfillmentServiceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
-        updatePackage_0WithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, restrictedDataToken);
+        updatePackageWithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, restrictedDataToken);
     }
 
     /**
@@ -1701,10 +1693,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public void updatePackage_0(
+    public void updatePackage(
             String orderId, String packageId, UpdatePackageRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        updatePackage_0WithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, null);
+        updatePackageWithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -1723,26 +1715,25 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Void> updatePackage_0WithHttpInfo(
+    public ApiResponse<Void> updatePackageWithHttpInfo(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
             String xAmznFulfillmentServiceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                updatePackage_0ValidateBeforeCall(orderId, packageId, body, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = updatePackageValidateBeforeCall(orderId, packageId, body, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentOrdersApi-updatePackage_0");
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updatePackage");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updatePackage_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || updatePackageBucket.tryConsume(1)) {
             return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updatePackage_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("updatePackage operation exceeds rate limit");
     }
 
     /**
@@ -1760,10 +1751,10 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Void> updatePackage_0WithHttpInfo(
+    public ApiResponse<Void> updatePackageWithHttpInfo(
             String orderId, String packageId, UpdatePackageRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        return updatePackage_0WithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, null);
+        return updatePackageWithHttpInfo(orderId, packageId, body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -1782,14 +1773,14 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call updatePackage_0Async(
+    public okhttp3.Call updatePackageAsync(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<Void> callback)
             throws ApiException, LWAException {
-        return updatePackage_0Async(orderId, packageId, body, xAmznFulfillmentServiceId, callback, null);
+        return updatePackageAsync(orderId, packageId, body, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Update package information for a specific package in a fulfillment order. This is a sandbox-only
@@ -1808,7 +1799,7 @@ public class FulfillmentOrdersApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call updatePackage_0Async(
+    public okhttp3.Call updatePackageAsync(
             String orderId,
             String packageId,
             UpdatePackageRequest body,
@@ -1823,20 +1814,20 @@ public class FulfillmentOrdersApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = updatePackage_0ValidateBeforeCall(
+        okhttp3.Call call = updatePackageValidateBeforeCall(
                 orderId, packageId, body, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentOrdersApi-updatePackage_0");
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FulfillmentOrdersApi-updatePackage");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updatePackage_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || updatePackageBucket.tryConsume(1)) {
             apiClient.executeAsync(call, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("updatePackage_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("updatePackage operation exceeds rate limit");
     }
 
     public static class Builder {

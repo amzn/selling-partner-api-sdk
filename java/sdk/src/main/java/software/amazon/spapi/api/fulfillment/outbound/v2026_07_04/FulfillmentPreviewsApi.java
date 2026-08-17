@@ -46,12 +46,12 @@ public class FulfillmentPreviewsApi {
 
     private final Configuration config = Configuration.get();
 
-    public final Bucket getOrderPreview_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentPreviewsApi-getOrderPreview_0"))
+    public final Bucket getOrderPreviewBucket = Bucket.builder()
+            .addLimit(config.getLimit("FulfillmentPreviewsApi-getOrderPreview"))
             .build();
 
     /**
-     * Build call for getOrderPreview_0
+     * Build call for getOrderPreview
      *
      * @param body The request body schema for the &#x60;getOrderPreview&#x60; operation. (required)
      * @param xAmznFulfillmentServiceId The identifier of the fulfillment service used for this operation. (optional)
@@ -60,7 +60,7 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getOrderPreview_0Call(
+    private okhttp3.Call getOrderPreviewCall(
             GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -102,16 +102,16 @@ public class FulfillmentPreviewsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getOrderPreview_0ValidateBeforeCall(
+    private okhttp3.Call getOrderPreviewValidateBeforeCall(
             GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling getOrderPreview_0(Async)");
+            throw new ApiException("Missing the required parameter 'body' when calling getOrderPreview(Async)");
         }
 
-        return getOrderPreview_0Call(body, xAmznFulfillmentServiceId, progressRequestListener);
+        return getOrderPreviewCall(body, xAmznFulfillmentServiceId, progressRequestListener);
     }
 
     /**
@@ -130,11 +130,11 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOrderPreviewResponse getOrderPreview_0(
+    public GetOrderPreviewResponse getOrderPreview(
             GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderPreviewResponse> resp =
-                getOrderPreview_0WithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
+                getOrderPreviewWithHttpInfo(body, xAmznFulfillmentServiceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -153,10 +153,9 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetOrderPreviewResponse getOrderPreview_0(GetOrderPreviewRequest body, String xAmznFulfillmentServiceId)
+    public GetOrderPreviewResponse getOrderPreview(GetOrderPreviewRequest body, String xAmznFulfillmentServiceId)
             throws ApiException, LWAException {
-        ApiResponse<GetOrderPreviewResponse> resp =
-                getOrderPreview_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+        ApiResponse<GetOrderPreviewResponse> resp = getOrderPreviewWithHttpInfo(body, xAmznFulfillmentServiceId, null);
         return resp.getData();
     }
 
@@ -176,22 +175,22 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOrderPreviewResponse> getOrderPreview_0WithHttpInfo(
+    public ApiResponse<GetOrderPreviewResponse> getOrderPreviewWithHttpInfo(
             GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getOrderPreview_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
+        okhttp3.Call call = getOrderPreviewValidateBeforeCall(body, xAmznFulfillmentServiceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
             request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentPreviewsApi-getOrderPreview_0");
+                    request, restrictedDataToken, "FulfillmentPreviewsApi-getOrderPreview");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderPreview_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOrderPreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderPreview_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOrderPreview operation exceeds rate limit");
     }
 
     /**
@@ -209,9 +208,9 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetOrderPreviewResponse> getOrderPreview_0WithHttpInfo(
+    public ApiResponse<GetOrderPreviewResponse> getOrderPreviewWithHttpInfo(
             GetOrderPreviewRequest body, String xAmznFulfillmentServiceId) throws ApiException, LWAException {
-        return getOrderPreview_0WithHttpInfo(body, xAmznFulfillmentServiceId, null);
+        return getOrderPreviewWithHttpInfo(body, xAmznFulfillmentServiceId, null);
     }
 
     /**
@@ -230,12 +229,12 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOrderPreview_0Async(
+    public okhttp3.Call getOrderPreviewAsync(
             GetOrderPreviewRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<GetOrderPreviewResponse> callback)
             throws ApiException, LWAException {
-        return getOrderPreview_0Async(body, xAmznFulfillmentServiceId, callback, null);
+        return getOrderPreviewAsync(body, xAmznFulfillmentServiceId, callback, null);
     }
     /**
      * (asynchronously) Retrieve a list of fulfillment order previews based on shipping criteria that you specify.
@@ -254,7 +253,7 @@ public class FulfillmentPreviewsApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getOrderPreview_0Async(
+    public okhttp3.Call getOrderPreviewAsync(
             GetOrderPreviewRequest body,
             String xAmznFulfillmentServiceId,
             final ApiCallback<GetOrderPreviewResponse> callback,
@@ -267,21 +266,20 @@ public class FulfillmentPreviewsApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call =
-                getOrderPreview_0ValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
+        okhttp3.Call call = getOrderPreviewValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
             request = RestrictedDataTokenSigner.sign(
-                    request, restrictedDataToken, "FulfillmentPreviewsApi-getOrderPreview_0");
+                    request, restrictedDataToken, "FulfillmentPreviewsApi-getOrderPreview");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderPreview_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getOrderPreviewBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderPreview_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getOrderPreview operation exceeds rate limit");
     }
 
     public static class Builder {

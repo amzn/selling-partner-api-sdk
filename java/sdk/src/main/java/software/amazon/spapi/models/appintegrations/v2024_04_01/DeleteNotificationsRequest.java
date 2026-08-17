@@ -30,9 +30,9 @@ public class DeleteNotificationsRequest {
     @JsonAdapter(DeletionReasonEnum.Adapter.class)
     public enum DeletionReasonEnum {
         @SerializedName("INCORRECT_CONTENT")
-        CONTENT("INCORRECT_CONTENT"),
+        INCORRECT_CONTENT("INCORRECT_CONTENT"),
         @SerializedName("INCORRECT_RECIPIENT")
-        RECIPIENT("INCORRECT_RECIPIENT");
+        INCORRECT_RECIPIENT("INCORRECT_RECIPIENT");
 
         private String value;
 

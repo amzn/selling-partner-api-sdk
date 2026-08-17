@@ -49,14 +49,14 @@ public class AutomotiveApiTest {
             .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
-    public void getVehicles_0Test() throws Exception {
-        instructBackendMock("vehicles", "getVehicles_0", "200");
+    public void getVehiclesTest() throws Exception {
+        instructBackendMock("vehicles", "getVehicles", "200");
 
         String marketplaceId = easyRandom.nextObject(String.class);
 
         String vehicleType = easyRandom.nextObject(String.class);
 
-        ApiResponse<VehiclesResponse> response = api.getVehicles_0WithHttpInfo(marketplaceId, vehicleType, null, null);
+        ApiResponse<VehiclesResponse> response = api.getVehiclesWithHttpInfo(marketplaceId, vehicleType, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

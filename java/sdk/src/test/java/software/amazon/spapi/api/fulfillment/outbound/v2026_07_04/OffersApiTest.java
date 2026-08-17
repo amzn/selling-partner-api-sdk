@@ -50,12 +50,12 @@ public class OffersApiTest {
             .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
-    public void getOffers_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "getOffers_0", "200");
+    public void getOffersTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "getOffers", "200");
 
         GetOffersRequest body = easyRandom.nextObject(GetOffersRequest.class);
 
-        ApiResponse<GetOffersResponse> response = api.getOffers_0WithHttpInfo(body, null);
+        ApiResponse<GetOffersResponse> response = api.getOffersWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

@@ -50,12 +50,12 @@ public class FulfillmentPreviewsApiTest {
             .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
 
     @Test
-    public void getOrderPreview_0Test() throws Exception {
-        instructBackendMock("fulfillmentOutbound", "getOrderPreview_0", "200");
+    public void getOrderPreviewTest() throws Exception {
+        instructBackendMock("fulfillmentOutbound", "getOrderPreview", "200");
 
         GetOrderPreviewRequest body = easyRandom.nextObject(GetOrderPreviewRequest.class);
 
-        ApiResponse<GetOrderPreviewResponse> response = api.getOrderPreview_0WithHttpInfo(body, null);
+        ApiResponse<GetOrderPreviewResponse> response = api.getOrderPreviewWithHttpInfo(body, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
