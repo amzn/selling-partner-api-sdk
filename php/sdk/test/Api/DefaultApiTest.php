@@ -34,7 +34,7 @@ namespace SpApi\Test\Api;
 use GuzzleHttp\Client;
 use ReflectionClass;
 use PHPUnit\Framework\TestCase;
-use SpApi\Api\finances\v0\DefaultApi;
+use SpApi\Api\financesInvoices\v2026_06_25\DefaultApi;
 use SpApi\Configuration;
 
 /**
@@ -73,64 +73,36 @@ class DefaultApiTest extends TestCase
     }
 
 
-    public function testlistFinancialEventGroups()
+    public function testgetInvoice()
     {
-        $operationId = 'listFinancialEventGroups';
+        $operationId = 'getInvoice';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('default', $mockOperationId, '200');
         
+        $marketplace_id = $this->generateMockData('string');
+        
+        $invoice_identifier = $this->generateMockData('string');
+        
 
-        $response = $this->api->listFinancialEventGroupsWithHttpInfo(null, null, null, null);
+        $response = $this->api->getInvoiceWithHttpInfo($marketplace_id, $invoice_identifier, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
     }
 
 
-    public function testlistFinancialEvents()
+    public function testgetInvoiceHeaders()
     {
-        $operationId = 'listFinancialEvents';
+        $operationId = 'getInvoiceHeaders';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('default', $mockOperationId, '200');
         
-
-        $response = $this->api->listFinancialEventsWithHttpInfo(null, null, null, null);
-
-        $this->assertEquals(200, $response[1]);
-        $this->assertValidResponsePayload(200, $response[0]);
-    }
-
-
-    public function testlistFinancialEventsByGroupId()
-    {
-        $operationId = 'listFinancialEventsByGroupId';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('default', $mockOperationId, '200');
-        
-        $event_group_id = $this->generateMockData('string');
+        $marketplace_id = $this->generateMockData('string');
         
 
-        $response = $this->api->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, null, null, null, null);
-
-        $this->assertEquals(200, $response[1]);
-        $this->assertValidResponsePayload(200, $response[0]);
-    }
-
-
-    public function testlistFinancialEventsByOrderId()
-    {
-        $operationId = 'listFinancialEventsByOrderId';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('default', $mockOperationId, '200');
-        
-        $order_id = $this->generateMockData('string');
-        
-
-        $response = $this->api->listFinancialEventsByOrderIdWithHttpInfo($order_id, null, null);
+        $response = $this->api->getInvoiceHeadersWithHttpInfo($marketplace_id, null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

@@ -2,8 +2,8 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
   <coverage processUncoveredFiles="true">
     <include>
-      <directory suffix=".php">./lib/Api/tracking/v2026_01_30</directory>
-      <directory suffix=".php">./lib/Model/tracking/v2026_01_30</directory>
+      <directory suffix=".php">./lib/Api/vendor/transactionStatus/v1</directory>
+      <directory suffix=".php">./lib/Model/vendor/transactionStatus/v1</directory>
     </include>
   </coverage>
   <testsuites>
