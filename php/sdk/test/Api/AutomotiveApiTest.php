@@ -73,9 +73,9 @@ class AutomotiveApiTest extends TestCase
     }
 
 
-    public function testgetVehicles_0()
+    public function testgetVehicles()
     {
-        $operationId = 'getVehicles_0';
+        $operationId = 'getVehicles';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('vehicles', $mockOperationId, '200');
@@ -85,7 +85,7 @@ class AutomotiveApiTest extends TestCase
         $vehicle_type = $this->generateMockData('string');
         
 
-        $response = $this->api->getVehicles_0WithHttpInfo($marketplace_id, $vehicle_type, null, null);
+        $response = $this->api->getVehiclesWithHttpInfo($marketplace_id, $vehicle_type, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);

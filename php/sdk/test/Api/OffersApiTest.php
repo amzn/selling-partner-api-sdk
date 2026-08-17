@@ -34,7 +34,7 @@ namespace SpApi\Test\Api;
 use GuzzleHttp\Client;
 use ReflectionClass;
 use PHPUnit\Framework\TestCase;
-use SpApi\Api\replenishment\v2022_11_07\OffersApi;
+use SpApi\Api\fulfillment\outbound\v2026_07_04\OffersApi;
 use SpApi\Configuration;
 
 /**
@@ -73,30 +73,17 @@ class OffersApiTest extends TestCase
     }
 
 
-    public function testlistOfferMetrics()
+    public function testgetOffers()
     {
-        $operationId = 'listOfferMetrics';
+        $operationId = 'getOffers';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('offers', $mockOperationId, '200');
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
+        
+        $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\GetOffersRequest');
         
 
-        $response = $this->api->listOfferMetricsWithHttpInfo(null);
-
-        $this->assertEquals(200, $response[1]);
-        $this->assertValidResponsePayload(200, $response[0]);
-    }
-
-
-    public function testlistOffers()
-    {
-        $operationId = 'listOffers';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('offers', $mockOperationId, '200');
-        
-
-        $response = $this->api->listOffersWithHttpInfo(null);
+        $response = $this->api->getOffersWithHttpInfo($body, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
