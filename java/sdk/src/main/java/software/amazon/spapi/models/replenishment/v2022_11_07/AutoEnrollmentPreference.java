@@ -26,10 +26,10 @@ import java.io.IOException;
 @JsonAdapter(AutoEnrollmentPreference.Adapter.class)
 public enum AutoEnrollmentPreference {
     @SerializedName("OPTED_IN")
-    IN("OPTED_IN"),
+    OPTED_IN("OPTED_IN"),
 
     @SerializedName("OPTED_OUT")
-    OUT("OPTED_OUT");
+    OPTED_OUT("OPTED_OUT");
 
     private String value;
 

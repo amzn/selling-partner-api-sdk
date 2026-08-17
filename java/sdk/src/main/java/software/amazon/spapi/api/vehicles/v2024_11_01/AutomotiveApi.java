@@ -45,12 +45,12 @@ public class AutomotiveApi {
 
     private final Configuration config = Configuration.get();
 
-    public final Bucket getVehicles_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("AutomotiveApi-getVehicles_0"))
+    public final Bucket getVehiclesBucket = Bucket.builder()
+            .addLimit(config.getLimit("AutomotiveApi-getVehicles"))
             .build();
 
     /**
-     * Build call for getVehicles_0
+     * Build call for getVehicles
      *
      * @param marketplaceId An identifier for the marketplace in which the resource operates. (required)
      * @param vehicleType An identifier for vehicle type. (required)
@@ -62,7 +62,7 @@ public class AutomotiveApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getVehicles_0Call(
+    private okhttp3.Call getVehiclesCall(
             String marketplaceId,
             String vehicleType,
             String pageToken,
@@ -111,7 +111,7 @@ public class AutomotiveApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getVehicles_0ValidateBeforeCall(
+    private okhttp3.Call getVehiclesValidateBeforeCall(
             String marketplaceId,
             String vehicleType,
             String pageToken,
@@ -121,15 +121,15 @@ public class AutomotiveApi {
 
         // verify the required parameter 'marketplaceId' is set
         if (marketplaceId == null) {
-            throw new ApiException("Missing the required parameter 'marketplaceId' when calling getVehicles_0(Async)");
+            throw new ApiException("Missing the required parameter 'marketplaceId' when calling getVehicles(Async)");
         }
 
         // verify the required parameter 'vehicleType' is set
         if (vehicleType == null) {
-            throw new ApiException("Missing the required parameter 'vehicleType' when calling getVehicles_0(Async)");
+            throw new ApiException("Missing the required parameter 'vehicleType' when calling getVehicles(Async)");
         }
 
-        return getVehicles_0Call(marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
+        return getVehiclesCall(marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
     }
 
     /**
@@ -145,11 +145,11 @@ public class AutomotiveApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public VehiclesResponse getVehicles_0(
+    public VehiclesResponse getVehicles(
             String marketplaceId, String vehicleType, String pageToken, String updatedAfter, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<VehiclesResponse> resp =
-                getVehicles_0WithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, restrictedDataToken);
+                getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, restrictedDataToken);
         return resp.getData();
     }
 
@@ -165,11 +165,10 @@ public class AutomotiveApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public VehiclesResponse getVehicles_0(
-            String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
+    public VehiclesResponse getVehicles(String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
             throws ApiException, LWAException {
         ApiResponse<VehiclesResponse> resp =
-                getVehicles_0WithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
+                getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
         return resp.getData();
     }
 
@@ -186,21 +185,21 @@ public class AutomotiveApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<VehiclesResponse> getVehicles_0WithHttpInfo(
+    public ApiResponse<VehiclesResponse> getVehiclesWithHttpInfo(
             String marketplaceId, String vehicleType, String pageToken, String updatedAfter, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getVehicles_0ValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null);
+        okhttp3.Call call = getVehiclesValidateBeforeCall(marketplaceId, vehicleType, pageToken, updatedAfter, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AutomotiveApi-getVehicles_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AutomotiveApi-getVehicles");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getVehicles_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getVehiclesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getVehicles_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
     }
 
     /**
@@ -215,10 +214,10 @@ public class AutomotiveApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<VehiclesResponse> getVehicles_0WithHttpInfo(
+    public ApiResponse<VehiclesResponse> getVehiclesWithHttpInfo(
             String marketplaceId, String vehicleType, String pageToken, String updatedAfter)
             throws ApiException, LWAException {
-        return getVehicles_0WithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
+        return getVehiclesWithHttpInfo(marketplaceId, vehicleType, pageToken, updatedAfter, null);
     }
 
     /**
@@ -234,14 +233,14 @@ public class AutomotiveApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getVehicles_0Async(
+    public okhttp3.Call getVehiclesAsync(
             String marketplaceId,
             String vehicleType,
             String pageToken,
             String updatedAfter,
             final ApiCallback<VehiclesResponse> callback)
             throws ApiException, LWAException {
-        return getVehicles_0Async(marketplaceId, vehicleType, pageToken, updatedAfter, callback, null);
+        return getVehiclesAsync(marketplaceId, vehicleType, pageToken, updatedAfter, callback, null);
     }
     /**
      * (asynchronously) Get the latest collection of vehicles
@@ -257,7 +256,7 @@ public class AutomotiveApi {
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getVehicles_0Async(
+    public okhttp3.Call getVehiclesAsync(
             String marketplaceId,
             String vehicleType,
             String pageToken,
@@ -272,20 +271,20 @@ public class AutomotiveApi {
             progressRequestListener = callback;
         }
 
-        okhttp3.Call call = getVehicles_0ValidateBeforeCall(
+        okhttp3.Call call = getVehiclesValidateBeforeCall(
                 marketplaceId, vehicleType, pageToken, updatedAfter, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
-            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AutomotiveApi-getVehicles_0");
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AutomotiveApi-getVehicles");
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getVehicles_0Bucket.tryConsume(1)) {
+        if (disableRateLimiting || getVehiclesBucket.tryConsume(1)) {
             Type localVarReturnType = new TypeToken<VehiclesResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
-        } else throw new ApiException.RateLimitExceeded("getVehicles_0 operation exceeds rate limit");
+        } else throw new ApiException.RateLimitExceeded("getVehicles operation exceeds rate limit");
     }
 
     public static class Builder {
