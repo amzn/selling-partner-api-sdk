@@ -73,9 +73,9 @@ class FulfillmentOrdersApiTest extends TestCase
     }
 
 
-    public function testcancelOrder_0()
+    public function testcancelOrder()
     {
-        $operationId = 'cancelOrder_0';
+        $operationId = 'cancelOrder';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
@@ -83,16 +83,16 @@ class FulfillmentOrdersApiTest extends TestCase
         $order_id = $this->generateMockData('string');
         
 
-        $response = $this->api->cancelOrder_0WithHttpInfo($order_id, null);
+        $response = $this->api->cancelOrderWithHttpInfo($order_id, null);
 
         $this->assertEquals(202, $response[1]);
         $this->assertValidResponsePayload(202, $response[0]);
     }
 
 
-    public function testcreateOrder_0()
+    public function testcreateOrder()
     {
-        $operationId = 'createOrder_0';
+        $operationId = 'createOrder';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
@@ -100,16 +100,16 @@ class FulfillmentOrdersApiTest extends TestCase
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\CreateOrderRequest');
         
 
-        $response = $this->api->createOrder_0WithHttpInfo($body, null);
+        $response = $this->api->createOrderWithHttpInfo($body, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
     }
 
 
-    public function testgetOrder_0()
+    public function testgetOrder()
     {
-        $operationId = 'getOrder_0';
+        $operationId = 'getOrder';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
@@ -117,49 +117,31 @@ class FulfillmentOrdersApiTest extends TestCase
         $order_id = $this->generateMockData('string');
         
 
-        $response = $this->api->getOrder_0WithHttpInfo($order_id, null, null);
+        $response = $this->api->getOrderWithHttpInfo($order_id, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
     }
 
 
-    public function testlistOrders_0()
+    public function testlistOrders()
     {
-        $operationId = 'listOrders_0';
+        $operationId = 'listOrders';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
 
-        $response = $this->api->listOrders_0WithHttpInfo(null, null, null, null);
+        $response = $this->api->listOrdersWithHttpInfo(null, null, null, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
     }
 
 
-    public function testupdateOrderStatus_0()
+    public function testupdateOrder()
     {
-        $operationId = 'updateOrderStatus_0';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
-        
-        $order_id = $this->generateMockData('string');
-        
-        $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\UpdateOrderStatusRequest');
-        
-
-        $response = $this->api->updateOrderStatus_0WithHttpInfo($order_id, $body, null);
-
-        $this->assertEquals(204, $response[1]);
-    }
-
-
-    public function testupdateOrder_0()
-    {
-        $operationId = 'updateOrder_0';
+        $operationId = 'updateOrder';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
@@ -169,16 +151,34 @@ class FulfillmentOrdersApiTest extends TestCase
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\UpdateOrderRequest');
         
 
-        $response = $this->api->updateOrder_0WithHttpInfo($order_id, $body, null);
+        $response = $this->api->updateOrderWithHttpInfo($order_id, $body, null);
 
         $this->assertEquals(202, $response[1]);
         $this->assertValidResponsePayload(202, $response[0]);
     }
 
 
-    public function testupdatePackage_0()
+    public function testupdateOrderStatus()
     {
-        $operationId = 'updatePackage_0';
+        $operationId = 'updateOrderStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
+        
+        $order_id = $this->generateMockData('string');
+        
+        $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\UpdateOrderStatusRequest');
+        
+
+        $response = $this->api->updateOrderStatusWithHttpInfo($order_id, $body, null);
+
+        $this->assertEquals(204, $response[1]);
+    }
+
+
+    public function testupdatePackage()
+    {
+        $operationId = 'updatePackage';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
@@ -190,7 +190,7 @@ class FulfillmentOrdersApiTest extends TestCase
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\UpdatePackageRequest');
         
 
-        $response = $this->api->updatePackage_0WithHttpInfo($order_id, $package_id, $body, null);
+        $response = $this->api->updatePackageWithHttpInfo($order_id, $package_id, $body, null);
 
         $this->assertEquals(204, $response[1]);
     }

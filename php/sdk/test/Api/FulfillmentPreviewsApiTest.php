@@ -73,9 +73,9 @@ class FulfillmentPreviewsApiTest extends TestCase
     }
 
 
-    public function testgetOrderPreview_0()
+    public function testgetOrderPreview()
     {
-        $operationId = 'getOrderPreview_0';
+        $operationId = 'getOrderPreview';
         // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
@@ -83,7 +83,7 @@ class FulfillmentPreviewsApiTest extends TestCase
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\GetOrderPreviewRequest');
         
 
-        $response = $this->api->getOrderPreview_0WithHttpInfo($body, null);
+        $response = $this->api->getOrderPreviewWithHttpInfo($body, null);
 
         $this->assertEquals(200, $response[1]);
         $this->assertValidResponsePayload(200, $response[0]);
