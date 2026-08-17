@@ -24,10 +24,13 @@ class SPAPIClient:
             self.api_base_url = endpoint
         else:
             self.api_base_url = self.region_to_endpoint.get(config.region)
+        grant_type = self.config.grant_type or ("client_credentials" if self.config.scope else "refresh_token")
         self.access_token_cache = AccessTokenCache(
             client_id=self.config.client_id,
             client_secret=self.config.client_secret,
             refresh_token=self.config.refresh_token,
+            grant_type=grant_type,
+            scope=self.config.scope,
             oauth_endpoint=self.oauth_endpoint
         )
         self.api_client = None
