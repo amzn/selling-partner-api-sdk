@@ -1,0 +1,316 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Selling Partner API Developer Support
+    url: https://sellercentral.amazon.com/gp/mws/contactus.html
+  description: The Selling Partner API for Retail Procurement Transaction Status provides
+    programmatic access to status information on specific asynchronous POST transactions
+    for vendors.
+  license:
+    name: Apache License 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  title: Selling Partner API for Retail Procurement Transaction Status
+  version: v1
+servers:
+- url: https://sellingpartnerapi-na.amazon.com/
+paths:
+  /vendor/transactions/v1/transactions/{transactionId}:
+    get:
+      description: |-
+        Returns the status of the transaction that you specify.
+
+        **Usage Plan:**
+
+        | Rate (requests per second) | Burst |
+        | ---- | ---- |
+        | 10 | 20 |
+
+        The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+      operationId: getTransaction
+      parameters:
+      - description: The GUID provided by Amazon in the 'transactionId' field in response
+          to the post request of a specific transaction.
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                payload:
+                  transactionStatus:
+                    transactionId: 20190108091302-6ca0ac50-d06e-45f5-a1e2-eb448eadac50
+                    status: Processing
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: Success.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+          x-amazon-spds-sandbox-behaviors:
+          - request:
+              parameters:
+                transactionId:
+                  value: 20190904190535-eef8cad8-418e-4ed3-ac72-789e2ee6214a
+            response:
+              payload:
+                transactionStatus:
+                  transactionId: 20190904190535-eef8cad8-418e-4ed3-ac72-789e2ee6214a
+                  status: Processing
+          - request:
+              parameters:
+                transactionId:
+                  value: 20190918190535-eef8cad8-418e-456f-ac72-789e2ee6813c
+            response:
+              payload:
+                transactionStatus:
+                  transactionId: 20190918190535-eef8cad8-418e-456f-ac72-789e2ee6813c
+                  status: Failure
+                  errors:
+                  - code: INVALID_ORDER_ID
+                    message: Invalid order ID.
+          - request:
+              parameters: {}
+            response:
+              payload:
+                transactionStatus:
+                  transactionId: 20190904190535-eef8cad8-418e-4ed3-ac72-789e2ee6214a
+                  status: Processing
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: Request has missing or invalid parameters and cannot be parsed.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+          x-amazon-spds-sandbox-behaviors:
+          - request:
+              parameters:
+                transactionId:
+                  value: Tran0904190535-eef8cad8-418e-4ed3-ac72-789e2ee6214a
+            response:
+              errors:
+              - code: InvalidInput
+                message: Invalid transmission ID.
+                details: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: The request's Authorization header is not formatted correctly
+            or does not contain a valid token.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: "Indicates that access to the resource is forbidden. Possible\
+            \ reasons include Access Denied, Unauthorized, Expired Token, or Invalid\
+            \ Signature."
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: The resource specified does not exist.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+            x-amzn-RateLimit-Limit:
+              description: Your rate limit (requests per second) for this operation.
+              schema:
+                type: string
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: The request payload is in an unsupported format.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: The frequency of requests was greater than allowed.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: An unexpected condition occurred that prevented the server
+            from fulfilling the request.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionResponse'
+          description: Temporary overloading or maintenance of the server.
+          headers:
+            x-amzn-RequestId:
+              description: Unique request reference identifier.
+              schema:
+                type: string
+      tags:
+      - vendorTransaction
+components:
+  schemas:
+    GetTransactionResponse:
+      description: The response schema for the getTransaction operation.
+      example:
+        payload:
+          transactionStatus:
+            transactionId: transactionId
+            errors:
+            - code: code
+              details: details
+              message: message
+            - code: code
+              details: details
+              message: message
+            status: Failure
+        errors:
+        - code: code
+          details: details
+          message: message
+        - code: code
+          details: details
+          message: message
+      properties:
+        payload:
+          $ref: '#/components/schemas/TransactionStatus'
+        errors:
+          description: A list of error responses returned when a request is unsuccessful.
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+      type: object
+    TransactionStatus:
+      description: Represents the status of a transaction.
+      example:
+        transactionStatus:
+          transactionId: transactionId
+          errors:
+          - code: code
+            details: details
+            message: message
+          - code: code
+            details: details
+            message: message
+          status: Failure
+      properties:
+        transactionStatus:
+          $ref: '#/components/schemas/Transaction'
+      type: object
+    Transaction:
+      description: The transaction status.
+      example:
+        transactionId: transactionId
+        errors:
+        - code: code
+          details: details
+          message: message
+        - code: code
+          details: details
+          message: message
+        status: Failure
+      properties:
+        transactionId:
+          description: The unique identifier returned in the 'transactionId' field
+            in response to the post request of a specific transaction.
+          type: string
+        status:
+          description: Current processing status of the transaction.
+          enum:
+          - Failure
+          - Processing
+          - Success
+          type: string
+          x-docgen-enum-table-extension:
+          - value: Failure
+            description: Transaction has failed.
+          - value: Processing
+            description: Transaction is in process.
+          - value: Success
+            description: Transaction has completed successfully.
+        errors:
+          description: A list of error responses returned when a request is unsuccessful.
+          items:
+            $ref: '#/components/schemas/Error'
+          type: array
+      required:
+      - status
+      - transactionId
+      type: object
+    ErrorList:
+      description: A list of error responses returned when a request is unsuccessful.
+      items:
+        $ref: '#/components/schemas/Error'
+      type: array
+    Error:
+      description: Error response returned when the request is unsuccessful.
+      example:
+        code: code
+        details: details
+        message: message
+      properties:
+        code:
+          description: An error code that identifies the type of error that occurred.
+          type: string
+        message:
+          description: A message that describes the error condition.
+          type: string
+        details:
+          description: Additional details that can help the caller understand or fix
+            the issue.
+          type: string
+      required:
+      - code
+      - message
+      type: object
+x-original-swagger-version: "2.0"
+
