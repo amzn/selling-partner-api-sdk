@@ -1,65 +1,59 @@
 import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const models = [
-    "../../selling-partner-api-models/models/amazon-warehousing-and-distribution-model/awd_2024-05-09.json",
-    "../../selling-partner-api-models/models/aplus-content-api-model/aplusContent_2020-11-01.json",
-    "../../selling-partner-api-models/models/application-integrations-api-model/appIntegrations-2024-04-01.json",
-    "../../selling-partner-api-models/models/application-management-api-model/application_2023-11-30.json",
-    "../../selling-partner-api-models/models/catalog-items-api-model/catalogItems_2022-04-01.json",
-    "../../selling-partner-api-models/models/data-kiosk-api-model/dataKiosk_2023-11-15.json",
-    "../../selling-partner-api-models/models/easy-ship-model/easyShip_2022-03-23.json",
-    "../../selling-partner-api-models/models/fba-inbound-eligibility-api-model/fbaInbound.json",
-    "../../selling-partner-api-models/models/fba-inventory-api-model/fbaInventory.json",
-    "../../selling-partner-api-models/models/feeds-api-model/feeds_2021-06-30.json",
-    "../../selling-partner-api-models/models/finances-api-model/financesV0.json",
-    "../../selling-partner-api-models/models/finances-api-model/transfers_2024-06-01.json",
-    "../../selling-partner-api-models/models/finances-api-model/finances_2024-06-19.json",
-    "../../selling-partner-api-models/models/finances-api-model/financesInvoices_2026-06-25.json",
-    "../../selling-partner-api-models/models/fulfillment-inbound-api-model/fulfillmentInboundV0.json",
-    "../../selling-partner-api-models/models/fulfillment-inbound-api-model/fulfillmentInbound_2024-03-20.json",
-    "../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2020-07-01.json",
-    "../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2026-07-04.json",
-    "../../selling-partner-api-models/models/invoices-api-model/InvoicesApiModel_2024-06-19.json",
-    "../../selling-partner-api-models/models/listings-items-api-model/listingsItems_2021-08-01.json",
-    "../../selling-partner-api-models/models/listings-restrictions-api-model/listingsRestrictions_2021-08-01.json",
-    "../../selling-partner-api-models/models/merchant-fulfillment-api-model/merchantFulfillmentV0.json",
-    "../../selling-partner-api-models/models/messaging-api-model/messaging.json",
-    "../../selling-partner-api-models/models/notifications-api-model/notifications.json",
-    "../../selling-partner-api-models/models/orders-api-model/ordersV0.json",
-    "../../selling-partner-api-models/models/product-fees-api-model/productFeesV0.json",
-    "../../selling-partner-api-models/models/product-pricing-api-model/productPricingV0.json",
-    "../../selling-partner-api-models/models/product-pricing-api-model/productPricing_2022-05-01.json",
-    "../../selling-partner-api-models/models/product-type-definitions-api-model/definitionsProductTypes_2020-09-01.json",
-    "../../selling-partner-api-models/models/replenishment-api-model/replenishment-2022-11-07.json",
-    "../../selling-partner-api-models/models/reports-api-model/reports_2021-06-30.json",
-    "../../selling-partner-api-models/models/sales-api-model/sales.json",
-    "../../selling-partner-api-models/models/sellers-api-model/sellers.json",
-    "../../selling-partner-api-models/models/services-api-model/services.json",
-    "../../selling-partner-api-models/models/shipment-invoicing-api-model/shipmentInvoicingV0.json",
-    "../../selling-partner-api-models/models/shipping-api-model/shippingV2.json",
-    "../../selling-partner-api-models/models/solicitations-api-model/solicitations.json",
-    "../../selling-partner-api-models/models/supply-sources-api-model/supplySources_2020-07-01.json",
-    "../../selling-partner-api-models/models/tokens-api-model/tokens_2021-03-01.json",
-    "../../selling-partner-api-models/models/uploads-api-model/uploads_2020-11-01.json",
-    "../../selling-partner-api-models/models/vendor-direct-fulfillment-inventory-api-model/vendorDirectFulfillmentInventoryV1.json",
-    "../../selling-partner-api-models/models/vendor-direct-fulfillment-orders-api-model/vendorDirectFulfillmentOrders_2021-12-28.json",
-    "../../selling-partner-api-models/models/vendor-direct-fulfillment-payments-api-model/vendorDirectFulfillmentPaymentsV1.json",
-    "../../selling-partner-api-models/models/vendor-direct-fulfillment-shipping-api-model/vendorDirectFulfillmentShipping_2021-12-28.json",
-    "../../selling-partner-api-models/models/vendor-direct-fulfillment-transactions-api-model/vendorDirectFulfillmentTransactions_2021-12-28.json",
-    "../../selling-partner-api-models/models/vendor-invoices-api-model/vendorInvoices.json",
-    "../../selling-partner-api-models/models/vendor-orders-api-model/vendorOrders.json",
-    "../../selling-partner-api-models/models/vendor-shipments-api-model/vendorShipments.json",
-    "../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json",
-    "../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json",
-    "../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json",
-    "../../selling-partner-api-models/models/customer-feedback-api-model/customerFeedback_2024-06-01.json",
-    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentShipments_2024-09-11.json",
-    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentInventory_2024-09-11.json",
-    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json",
-    "../../selling-partner-api-models/models/orders-api-model/orders_2026-01-01.json",
-    "../../selling-partner-api-models/models/orders-api-model/orders_2026-01-01.json",
-    "../../selling-partner-api-models/models/tracking-api-model/tracking_2026-01-30.json",
-]
+// Reuse the same auto-discovery mechanism as scripts/generate-sdk.sh:
+// every *.json file under <models-repo>/models is picked up automatically,
+// except for entries listed in scripts/api-blacklist.txt. This keeps the
+// mock resource generator in sync with the SDK generator without having to
+// maintain a second hardcoded list of APIs.
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url))
+const MODELS_ROOT = process.env.MODELS_ROOT
+    ? path.resolve(process.env.MODELS_ROOT)
+    : path.join(SCRIPT_DIR, '../../selling-partner-api-models')
+const BLACKLIST_FILE = path.join(SCRIPT_DIR, '../scripts/api-blacklist.txt')
+
+// Convert a shell-style glob (as used in api-blacklist.txt) to a RegExp.
+// A single '*' matches any run of characters except '/', matching the glob
+// semantics used by generate-sdk.sh.
+function globToRegExp(glob) {
+    const escaped = glob.replace(/[.+^${}()|[\]\\]/g, '\\$&')
+    return new RegExp(`^${escaped.replace(/\*/g, '[^/]*')}$`)
+}
+
+function loadBlacklist(file) {
+    if (!fs.existsSync(file)) return []
+    return fs.readFileSync(file, 'utf8')
+        .split('\n')
+        .map((line) => line.trim())
+        .filter((line) => line && !line.startsWith('#'))
+        .map(globToRegExp)
+}
+
+function isBlacklisted(relativePath, patterns) {
+    return patterns.some((pattern) => pattern.test(relativePath))
+}
+
+function findJsonFiles(dir) {
+    const results = []
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const fullPath = path.join(dir, entry.name)
+        if (entry.isDirectory()) {
+            results.push(...findJsonFiles(fullPath))
+        } else if (entry.isFile() && entry.name.endsWith('.json')) {
+            results.push(fullPath)
+        }
+    }
+    return results
+}
+
+const blacklistPatterns = loadBlacklist(BLACKLIST_FILE)
+
+const models = findJsonFiles(path.join(MODELS_ROOT, 'models'))
+    .map((file) => path.relative(MODELS_ROOT, file).split(path.sep).join('/'))
+    .filter((relativePath) => !isBlacklisted(relativePath, blacklistPatterns))
+    .sort()
+    .map((relativePath) => path.join(MODELS_ROOT, relativePath))
 
 for (const path of models) {
     console.log(path)
