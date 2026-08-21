@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="message">A message that describes the issue. (required).</param>
         /// <param name="severity">The severity of the issue. (required).</param>
         /// <param name="attributeNames">Names of the attributes that are associated with the issue, if applicable..</param>
-        /// <param name="categories">List of issue categories.   Possible values:   * &#39;INVALID_ATTRIBUTE&#39; - Indicating an invalid attribute in the listing.   * &#39;MISSING_ATTRIBUTE&#39; - Highlighting a missing attribute in the listing.   * &#39;INVALID_IMAGE&#39; - Signifying an invalid image in the listing.   * &#39;MISSING_IMAGE&#39; - Noting the absence of an image in the listing.   * &#39;INVALID_PRICE&#39; - Pertaining to issues with the listing&#39;s price-related attributes.   * &#39;MISSING_PRICE&#39; - Pointing out the absence of a price attribute in the listing.   * &#39;DUPLICATE&#39; - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * &#39;QUALIFICATION_REQUIRED&#39; - Indicating that the listing requires qualification-related approval. (required).</param>
+        /// <param name="categories">List of issue categories. (required).</param>
         /// <param name="enforcements">enforcements.</param>
         /// <param name="marketplaceIds">List of Amazon store identifiers..</param>
         public Issue(string code = default(string), string message = default(string), SeverityEnum severity = default(SeverityEnum), List<string>? attributeNames = default(List<string>?), List<string> categories = default(List<string>), IssueEnforcements? enforcements = default(IssueEnforcements?), List<string>? marketplaceIds = default(List<string>?))
@@ -127,9 +127,9 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         public List<string>? AttributeNames { get; set; }
 
         /// <summary>
-        /// List of issue categories.   Possible values:   * &#39;INVALID_ATTRIBUTE&#39; - Indicating an invalid attribute in the listing.   * &#39;MISSING_ATTRIBUTE&#39; - Highlighting a missing attribute in the listing.   * &#39;INVALID_IMAGE&#39; - Signifying an invalid image in the listing.   * &#39;MISSING_IMAGE&#39; - Noting the absence of an image in the listing.   * &#39;INVALID_PRICE&#39; - Pertaining to issues with the listing&#39;s price-related attributes.   * &#39;MISSING_PRICE&#39; - Pointing out the absence of a price attribute in the listing.   * &#39;DUPLICATE&#39; - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * &#39;QUALIFICATION_REQUIRED&#39; - Indicating that the listing requires qualification-related approval.
+        /// List of issue categories.
         /// </summary>
-        /// <value>List of issue categories.   Possible values:   * &#39;INVALID_ATTRIBUTE&#39; - Indicating an invalid attribute in the listing.   * &#39;MISSING_ATTRIBUTE&#39; - Highlighting a missing attribute in the listing.   * &#39;INVALID_IMAGE&#39; - Signifying an invalid image in the listing.   * &#39;MISSING_IMAGE&#39; - Noting the absence of an image in the listing.   * &#39;INVALID_PRICE&#39; - Pertaining to issues with the listing&#39;s price-related attributes.   * &#39;MISSING_PRICE&#39; - Pointing out the absence of a price attribute in the listing.   * &#39;DUPLICATE&#39; - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * &#39;QUALIFICATION_REQUIRED&#39; - Indicating that the listing requires qualification-related approval.</value>
+        /// <value>List of issue categories.</value>
         /*
         <example>[INVALID_ATTRIBUTE]</example>
         */
