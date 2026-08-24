@@ -368,10 +368,11 @@ class FulfillmentOrder implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($channel) && (mb_strlen($channel) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $channel when calling FulfillmentOrder., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($channel) && (mb_strlen($channel) > 40)) {
+                throw new \InvalidArgumentException('invalid length for $channel when calling FulfillmentOrder., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['channel'] = $channel;
 
         return $this;

@@ -343,14 +343,14 @@ class PromotionDiscount implements ModelInterface, \ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($percent_off) && ($percent_off > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $percent_off when calling PromotionDiscount., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($percent_off) && ($percent_off > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $percent_off when calling PromotionDiscount., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($percent_off) && ($percent_off < 1)) {
+                throw new \InvalidArgumentException('invalid value for $percent_off when calling PromotionDiscount., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($percent_off) && ($percent_off < 1)) {
-            throw new \InvalidArgumentException('invalid value for $percent_off when calling PromotionDiscount., must be bigger than or equal to 1.');
-        }
-
         $this->container['percent_off'] = $percent_off;
 
         return $this;

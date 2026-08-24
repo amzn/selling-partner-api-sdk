@@ -426,9 +426,10 @@ class BrowseNodeReturnTrendsResponse implements ModelInterface, \ArrayAccess, \J
         if (is_null($return_trends)) {
             throw new \InvalidArgumentException('non-nullable return_trends cannot be null');
         }
-
-        if (count($return_trends) > 10) {
-            throw new \InvalidArgumentException('invalid value for $return_trends when calling BrowseNodeReturnTrendsResponse., number of items must be less than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($return_trends) > 10) {
+                throw new \InvalidArgumentException('invalid value for $return_trends when calling BrowseNodeReturnTrendsResponse., number of items must be less than or equal to 10.');
+            }
         }
         $this->container['return_trends'] = $return_trends;
 

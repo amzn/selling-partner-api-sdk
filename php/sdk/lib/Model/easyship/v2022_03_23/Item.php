@@ -276,10 +276,11 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($order_item_id) && (mb_strlen($order_item_id) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $order_item_id when calling Item., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($order_item_id) && (mb_strlen($order_item_id) > 255)) {
+                throw new \InvalidArgumentException('invalid length for $order_item_id when calling Item., must be smaller than or equal to 255.');
+            }
         }
-
         $this->container['order_item_id'] = $order_item_id;
 
         return $this;
@@ -310,9 +311,10 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($order_item_serial_numbers) && (count($order_item_serial_numbers) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $order_item_serial_numbers when calling Item., number of items must be less than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($order_item_serial_numbers) && (count($order_item_serial_numbers) > 100)) {
+                throw new \InvalidArgumentException('invalid value for $order_item_serial_numbers when calling Item., number of items must be less than or equal to 100.');
+            }
         }
         $this->container['order_item_serial_numbers'] = $order_item_serial_numbers;
 

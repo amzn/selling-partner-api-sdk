@@ -324,11 +324,11 @@ class PublishRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling PublishRecord., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling PublishRecord., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -352,11 +352,11 @@ class PublishRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($locale)) {
             throw new \InvalidArgumentException('non-nullable locale cannot be null');
         }
-
-        if (mb_strlen($locale) < 5) {
-            throw new \InvalidArgumentException('invalid length for $locale when calling PublishRecord., must be bigger than or equal to 5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($locale) < 5) {
+                throw new \InvalidArgumentException('invalid length for $locale when calling PublishRecord., must be bigger than or equal to 5.');
+            }
         }
-
         $this->container['locale'] = $locale;
 
         return $this;
@@ -380,11 +380,11 @@ class PublishRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($asin)) {
             throw new \InvalidArgumentException('non-nullable asin cannot be null');
         }
-
-        if (mb_strlen($asin) < 10) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling PublishRecord., must be bigger than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($asin) < 10) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling PublishRecord., must be bigger than or equal to 10.');
+            }
         }
-
         $this->container['asin'] = $asin;
 
         return $this;
@@ -438,11 +438,11 @@ class PublishRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($content_sub_type) && (mb_strlen($content_sub_type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $content_sub_type when calling PublishRecord., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($content_sub_type) && (mb_strlen($content_sub_type) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $content_sub_type when calling PublishRecord., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['content_sub_type'] = $content_sub_type;
 
         return $this;
@@ -466,11 +466,11 @@ class PublishRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($content_reference_key)) {
             throw new \InvalidArgumentException('non-nullable content_reference_key cannot be null');
         }
-
-        if (mb_strlen($content_reference_key) < 1) {
-            throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PublishRecord., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($content_reference_key) < 1) {
+                throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PublishRecord., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['content_reference_key'] = $content_reference_key;
 
         return $this;

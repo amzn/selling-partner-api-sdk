@@ -218,12 +218,15 @@ class OffersApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOfferMetricsResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
@@ -278,10 +281,12 @@ class OffersApi
             $this->listOfferMetricsRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -290,6 +295,8 @@ class OffersApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -479,12 +486,15 @@ class OffersApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\replenishment\v2022_11_07\ListOffersResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\replenishment\v2022_11_07\ErrorList',
@@ -539,10 +549,12 @@ class OffersApi
             $this->listOffersRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -551,6 +563,8 @@ class OffersApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

@@ -197,6 +197,7 @@ class ApplicationsApi
 
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\applications\v2023_11_30\ErrorList',
@@ -242,6 +243,8 @@ class ApplicationsApi
         if ($this->rateLimiterEnabled) {
             $this->rotateApplicationClientSecretRateLimiter->consume()->ensureAccepted();
         }
+
+        $skipModelValidation = $this->config->getSkipModelValidation();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())

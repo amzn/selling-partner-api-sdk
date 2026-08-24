@@ -449,15 +449,17 @@ class ProductTypeDefinition implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($requirements)) {
             throw new \InvalidArgumentException('non-nullable requirements cannot be null');
         }
-        $allowedValues = $this->getRequirementsAllowableValues();
-        if (!in_array($requirements, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'requirements', must be one of '%s'",
-                    $requirements,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRequirementsAllowableValues();
+            if (!in_array($requirements, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'requirements', must be one of '%s'",
+                        $requirements,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['requirements'] = $requirements;
 
@@ -482,15 +484,17 @@ class ProductTypeDefinition implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($requirements_enforced)) {
             throw new \InvalidArgumentException('non-nullable requirements_enforced cannot be null');
         }
-        $allowedValues = $this->getRequirementsEnforcedAllowableValues();
-        if (!in_array($requirements_enforced, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'requirements_enforced', must be one of '%s'",
-                    $requirements_enforced,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRequirementsEnforcedAllowableValues();
+            if (!in_array($requirements_enforced, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'requirements_enforced', must be one of '%s'",
+                        $requirements_enforced,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['requirements_enforced'] = $requirements_enforced;
 

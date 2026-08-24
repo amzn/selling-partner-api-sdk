@@ -261,10 +261,11 @@ class ProductIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($merchant_sku)) {
             throw new \InvalidArgumentException('non-nullable merchant_sku cannot be null');
         }
-        if (mb_strlen($merchant_sku) > 50) {
-            throw new \InvalidArgumentException('invalid length for $merchant_sku when calling ProductIdentifier., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($merchant_sku) > 50) {
+                throw new \InvalidArgumentException('invalid length for $merchant_sku when calling ProductIdentifier., must be smaller than or equal to 50.');
+            }
         }
-
         $this->container['merchant_sku'] = $merchant_sku;
 
         return $this;

@@ -327,15 +327,17 @@ class Link implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($verb)) {
             throw new \InvalidArgumentException('non-nullable verb cannot be null');
         }
-        $allowedValues = $this->getVerbAllowableValues();
-        if (!in_array($verb, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'verb', must be one of '%s'",
-                    $verb,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getVerbAllowableValues();
+            if (!in_array($verb, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'verb', must be one of '%s'",
+                        $verb,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['verb'] = $verb;
 

@@ -359,11 +359,13 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($purchase_order_number)) {
             throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
         }
+        if (!ObjectSerializer::getSkipModelValidation()) {
 
-        if ((!preg_match("/^[a-zA-Z0-9]+$/", ObjectSerializer::toString($purchase_order_number)))) {
-            throw new \InvalidArgumentException("invalid value for \$purchase_order_number when calling PackingSlip., must conform to the pattern /^[a-zA-Z0-9]+$/.");
+            if ((!preg_match("/^[a-zA-Z0-9]+$/", ObjectSerializer::toString($purchase_order_number)))) {
+                throw new \InvalidArgumentException("invalid value for \$purchase_order_number when calling PackingSlip., must conform to the pattern /^[a-zA-Z0-9]+$/.");
+            }
+
         }
-
         $this->container['purchase_order_number'] = $purchase_order_number;
 
         return $this;
@@ -425,15 +427,17 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getContentTypeAllowableValues();
-        if (!is_null($content_type) && !in_array($content_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'content_type', must be one of '%s'",
-                    $content_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getContentTypeAllowableValues();
+            if (!is_null($content_type) && !in_array($content_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'content_type', must be one of '%s'",
+                        $content_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['content_type'] = $content_type;
 

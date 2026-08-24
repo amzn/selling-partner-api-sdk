@@ -303,10 +303,11 @@ class NdrRequestData implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($additional_address_notes) && (mb_strlen($additional_address_notes) > 256)) {
-            throw new \InvalidArgumentException('invalid length for $additional_address_notes when calling NdrRequestData., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($additional_address_notes) && (mb_strlen($additional_address_notes) > 256)) {
+                throw new \InvalidArgumentException('invalid length for $additional_address_notes when calling NdrRequestData., must be smaller than or equal to 256.');
+            }
         }
-
         $this->container['additional_address_notes'] = $additional_address_notes;
 
         return $this;

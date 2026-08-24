@@ -280,15 +280,17 @@ class RecordActionFeedbackRequest implements ModelInterface, \ArrayAccess, \Json
         if (is_null($feedback_action_code)) {
             throw new \InvalidArgumentException('non-nullable feedback_action_code cannot be null');
         }
-        $allowedValues = $this->getFeedbackActionCodeAllowableValues();
-        if (!in_array($feedback_action_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'feedback_action_code', must be one of '%s'",
-                    $feedback_action_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFeedbackActionCodeAllowableValues();
+            if (!in_array($feedback_action_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'feedback_action_code', must be one of '%s'",
+                        $feedback_action_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['feedback_action_code'] = $feedback_action_code;
 

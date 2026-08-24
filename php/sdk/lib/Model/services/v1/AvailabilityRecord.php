@@ -368,11 +368,11 @@ class AvailabilityRecord implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($capacity) && ($capacity < 1)) {
-            throw new \InvalidArgumentException('invalid value for $capacity when calling AvailabilityRecord., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($capacity) && ($capacity < 1)) {
+                throw new \InvalidArgumentException('invalid value for $capacity when calling AvailabilityRecord., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['capacity'] = $capacity;
 
         return $this;

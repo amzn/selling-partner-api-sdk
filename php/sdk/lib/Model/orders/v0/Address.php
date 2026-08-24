@@ -804,15 +804,17 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAddressTypeAllowableValues();
-        if (!is_null($address_type) && !in_array($address_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'address_type', must be one of '%s'",
-                    $address_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getAddressTypeAllowableValues();
+            if (!is_null($address_type) && !in_array($address_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'address_type', must be one of '%s'",
+                        $address_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['address_type'] = $address_type;
 

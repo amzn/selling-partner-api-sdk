@@ -463,15 +463,17 @@ class ItemEligibilityPreview implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($program)) {
             throw new \InvalidArgumentException('non-nullable program cannot be null');
         }
-        $allowedValues = $this->getProgramAllowableValues();
-        if (!in_array($program, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'program', must be one of '%s'",
-                    $program,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getProgramAllowableValues();
+            if (!in_array($program, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'program', must be one of '%s'",
+                        $program,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['program'] = $program;
 
@@ -526,14 +528,16 @@ class ItemEligibilityPreview implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getIneligibilityReasonListAllowableValues();
-        if (!is_null($ineligibility_reason_list) && array_diff($ineligibility_reason_list, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'ineligibility_reason_list', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getIneligibilityReasonListAllowableValues();
+            if (!is_null($ineligibility_reason_list) && array_diff($ineligibility_reason_list, $allowedValues)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value for 'ineligibility_reason_list', must be one of '%s'",
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['ineligibility_reason_list'] = $ineligibility_reason_list;
 

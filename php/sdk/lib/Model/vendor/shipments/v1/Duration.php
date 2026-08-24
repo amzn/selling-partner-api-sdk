@@ -350,15 +350,17 @@ class Duration implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($duration_unit)) {
             throw new \InvalidArgumentException('non-nullable duration_unit cannot be null');
         }
-        $allowedValues = $this->getDurationUnitAllowableValues();
-        if (!in_array($duration_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'duration_unit', must be one of '%s'",
-                    $duration_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDurationUnitAllowableValues();
+            if (!in_array($duration_unit, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'duration_unit', must be one of '%s'",
+                        $duration_unit,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['duration_unit'] = $duration_unit;
 

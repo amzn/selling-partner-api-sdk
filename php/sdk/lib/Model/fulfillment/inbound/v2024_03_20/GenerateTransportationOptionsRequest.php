@@ -283,16 +283,17 @@ class GenerateTransportationOptionsRequest implements ModelInterface, \ArrayAcce
         if (is_null($placement_option_id)) {
             throw new \InvalidArgumentException('non-nullable placement_option_id cannot be null');
         }
-        if (mb_strlen($placement_option_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $placement_option_id when calling GenerateTransportationOptionsRequest., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($placement_option_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $placement_option_id when calling GenerateTransportationOptionsRequest., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($placement_option_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $placement_option_id when calling GenerateTransportationOptionsRequest., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($placement_option_id))) {
+                throw new \InvalidArgumentException('invalid value for $placement_option_id when calling GenerateTransportationOptionsRequest., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($placement_option_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $placement_option_id when calling GenerateTransportationOptionsRequest., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($placement_option_id))) {
-            throw new \InvalidArgumentException('invalid value for $placement_option_id when calling GenerateTransportationOptionsRequest., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['placement_option_id'] = $placement_option_id;
 
         return $this;
@@ -316,9 +317,10 @@ class GenerateTransportationOptionsRequest implements ModelInterface, \ArrayAcce
         if (is_null($shipment_transportation_configurations)) {
             throw new \InvalidArgumentException('non-nullable shipment_transportation_configurations cannot be null');
         }
-
-        if (count($shipment_transportation_configurations) < 1) {
-            throw new \InvalidArgumentException('invalid length for $shipment_transportation_configurations when calling GenerateTransportationOptionsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($shipment_transportation_configurations) < 1) {
+                throw new \InvalidArgumentException('invalid length for $shipment_transportation_configurations when calling GenerateTransportationOptionsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['shipment_transportation_configurations'] = $shipment_transportation_configurations;
 

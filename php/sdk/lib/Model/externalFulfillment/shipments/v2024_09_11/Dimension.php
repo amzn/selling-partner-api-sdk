@@ -318,15 +318,17 @@ class Dimension implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($dimension_unit)) {
             throw new \InvalidArgumentException('non-nullable dimension_unit cannot be null');
         }
-        $allowedValues = $this->getDimensionUnitAllowableValues();
-        if (!in_array($dimension_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dimension_unit', must be one of '%s'",
-                    $dimension_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDimensionUnitAllowableValues();
+            if (!in_array($dimension_unit, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'dimension_unit', must be one of '%s'",
+                        $dimension_unit,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['dimension_unit'] = $dimension_unit;
 

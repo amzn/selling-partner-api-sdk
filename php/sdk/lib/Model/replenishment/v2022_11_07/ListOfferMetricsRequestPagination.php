@@ -283,14 +283,14 @@ class ListOfferMetricsRequestPagination implements ModelInterface, \ArrayAccess,
         if (is_null($limit)) {
             throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-
-        if ($limit > 500) {
-            throw new \InvalidArgumentException('invalid value for $limit when calling ListOfferMetricsRequestPagination., must be smaller than or equal to 500.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($limit > 500) {
+                throw new \InvalidArgumentException('invalid value for $limit when calling ListOfferMetricsRequestPagination., must be smaller than or equal to 500.');
+            }
+            if ($limit < 1) {
+                throw new \InvalidArgumentException('invalid value for $limit when calling ListOfferMetricsRequestPagination., must be bigger than or equal to 1.');
+            }
         }
-        if ($limit < 1) {
-            throw new \InvalidArgumentException('invalid value for $limit when calling ListOfferMetricsRequestPagination., must be bigger than or equal to 1.');
-        }
-
         $this->container['limit'] = $limit;
 
         return $this;
@@ -314,14 +314,14 @@ class ListOfferMetricsRequestPagination implements ModelInterface, \ArrayAccess,
         if (is_null($offset)) {
             throw new \InvalidArgumentException('non-nullable offset cannot be null');
         }
-
-        if ($offset > 9000) {
-            throw new \InvalidArgumentException('invalid value for $offset when calling ListOfferMetricsRequestPagination., must be smaller than or equal to 9000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($offset > 9000) {
+                throw new \InvalidArgumentException('invalid value for $offset when calling ListOfferMetricsRequestPagination., must be smaller than or equal to 9000.');
+            }
+            if ($offset < 0) {
+                throw new \InvalidArgumentException('invalid value for $offset when calling ListOfferMetricsRequestPagination., must be bigger than or equal to 0.');
+            }
         }
-        if ($offset < 0) {
-            throw new \InvalidArgumentException('invalid value for $offset when calling ListOfferMetricsRequestPagination., must be bigger than or equal to 0.');
-        }
-
         $this->container['offset'] = $offset;
 
         return $this;

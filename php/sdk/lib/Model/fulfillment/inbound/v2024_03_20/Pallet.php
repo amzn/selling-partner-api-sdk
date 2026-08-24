@@ -335,16 +335,17 @@ class Pallet implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($package_id)) {
             throw new \InvalidArgumentException('non-nullable package_id cannot be null');
         }
-        if (mb_strlen($package_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling Pallet., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($package_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling Pallet., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($package_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling Pallet., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($package_id))) {
+                throw new \InvalidArgumentException('invalid value for $package_id when calling Pallet., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($package_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling Pallet., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($package_id))) {
-            throw new \InvalidArgumentException('invalid value for $package_id when calling Pallet., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['package_id'] = $package_id;
 
         return $this;
@@ -375,14 +376,14 @@ class Pallet implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($quantity) && ($quantity > 10000)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($quantity) && ($quantity > 10000)) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be smaller than or equal to 10000.');
+            }
+            if (!is_null($quantity) && ($quantity < 1)) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($quantity) && ($quantity < 1)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Pallet., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

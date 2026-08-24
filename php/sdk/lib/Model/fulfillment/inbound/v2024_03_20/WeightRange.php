@@ -294,14 +294,14 @@ class WeightRange implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($maximum)) {
             throw new \InvalidArgumentException('non-nullable maximum cannot be null');
         }
-
-        if ($maximum > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $maximum when calling WeightRange., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($maximum > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $maximum when calling WeightRange., must be smaller than or equal to 1E+5.');
+            }
+            if ($maximum < 0) {
+                throw new \InvalidArgumentException('invalid value for $maximum when calling WeightRange., must be bigger than or equal to 0.');
+            }
         }
-        if ($maximum < 0) {
-            throw new \InvalidArgumentException('invalid value for $maximum when calling WeightRange., must be bigger than or equal to 0.');
-        }
-
         $this->container['maximum'] = $maximum;
 
         return $this;
@@ -325,14 +325,14 @@ class WeightRange implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($minimum)) {
             throw new \InvalidArgumentException('non-nullable minimum cannot be null');
         }
-
-        if ($minimum > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $minimum when calling WeightRange., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($minimum > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $minimum when calling WeightRange., must be smaller than or equal to 1E+5.');
+            }
+            if ($minimum < 0) {
+                throw new \InvalidArgumentException('invalid value for $minimum when calling WeightRange., must be bigger than or equal to 0.');
+            }
         }
-        if ($minimum < 0) {
-            throw new \InvalidArgumentException('invalid value for $minimum when calling WeightRange., must be bigger than or equal to 0.');
-        }
-
         $this->container['minimum'] = $minimum;
 
         return $this;

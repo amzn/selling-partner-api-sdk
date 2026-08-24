@@ -265,11 +265,11 @@ class PaginationResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($total_results) && ($total_results < 0)) {
-            throw new \InvalidArgumentException('invalid value for $total_results when calling PaginationResponse., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($total_results) && ($total_results < 0)) {
+                throw new \InvalidArgumentException('invalid value for $total_results when calling PaginationResponse., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['total_results'] = $total_results;
 
         return $this;

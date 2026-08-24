@@ -282,10 +282,11 @@ class Destination implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 256) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Destination., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 256) {
+                throw new \InvalidArgumentException('invalid length for $name when calling Destination., must be smaller than or equal to 256.');
+            }
         }
-
         $this->container['name'] = $name;
 
         return $this;

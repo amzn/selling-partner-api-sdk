@@ -299,9 +299,10 @@ class ExcludedBenefit implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($reason_codes) && (count($reason_codes) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $reason_codes when calling ExcludedBenefit., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($reason_codes) && (count($reason_codes) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $reason_codes when calling ExcludedBenefit., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['reason_codes'] = $reason_codes;
 

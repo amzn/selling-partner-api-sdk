@@ -434,13 +434,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($address_line1)) {
             throw new \InvalidArgumentException('non-nullable address_line1 cannot be null');
         }
-        if (mb_strlen($address_line1) > 180) {
-            throw new \InvalidArgumentException('invalid length for $address_line1 when calling AddressInput., must be smaller than or equal to 180.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($address_line1) > 180) {
+                throw new \InvalidArgumentException('invalid length for $address_line1 when calling AddressInput., must be smaller than or equal to 180.');
+            }
+            if (mb_strlen($address_line1) < 1) {
+                throw new \InvalidArgumentException('invalid length for $address_line1 when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($address_line1) < 1) {
-            throw new \InvalidArgumentException('invalid length for $address_line1 when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['address_line1'] = $address_line1;
 
         return $this;
@@ -471,13 +472,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $address_line2 when calling AddressInput., must be smaller than or equal to 60.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
+                throw new \InvalidArgumentException('invalid length for $address_line2 when calling AddressInput., must be smaller than or equal to 60.');
+            }
+            if (!is_null($address_line2) && (mb_strlen($address_line2) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $address_line2 when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($address_line2) && (mb_strlen($address_line2) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $address_line2 when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['address_line2'] = $address_line2;
 
         return $this;
@@ -501,13 +503,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($city)) {
             throw new \InvalidArgumentException('non-nullable city cannot be null');
         }
-        if (mb_strlen($city) > 30) {
-            throw new \InvalidArgumentException('invalid length for $city when calling AddressInput., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($city) > 30) {
+                throw new \InvalidArgumentException('invalid length for $city when calling AddressInput., must be smaller than or equal to 30.');
+            }
+            if (mb_strlen($city) < 1) {
+                throw new \InvalidArgumentException('invalid length for $city when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($city) < 1) {
-            throw new \InvalidArgumentException('invalid length for $city when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['city'] = $city;
 
         return $this;
@@ -538,13 +541,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($company_name) && (mb_strlen($company_name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $company_name when calling AddressInput., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($company_name) && (mb_strlen($company_name) > 50)) {
+                throw new \InvalidArgumentException('invalid length for $company_name when calling AddressInput., must be smaller than or equal to 50.');
+            }
+            if (!is_null($company_name) && (mb_strlen($company_name) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $company_name when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($company_name) && (mb_strlen($company_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $company_name when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['company_name'] = $company_name;
 
         return $this;
@@ -568,16 +572,17 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
-        if (mb_strlen($country_code) > 2) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling AddressInput., must be smaller than or equal to 2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($country_code) > 2) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling AddressInput., must be smaller than or equal to 2.');
+            }
+            if (mb_strlen($country_code) < 2) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling AddressInput., must be bigger than or equal to 2.');
+            }
+            if (!preg_match('/^[A-Z]{2}$/', ObjectSerializer::toString($country_code))) {
+                throw new \InvalidArgumentException('invalid value for $country_code when calling AddressInput., must conform to the pattern /^[A-Z]{2}$/.');
+            }
         }
-        if (mb_strlen($country_code) < 2) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling AddressInput., must be bigger than or equal to 2.');
-        }
-        if (!preg_match('/^[A-Z]{2}$/', ObjectSerializer::toString($country_code))) {
-            throw new \InvalidArgumentException('invalid value for $country_code when calling AddressInput., must conform to the pattern /^[A-Z]{2}$/.');
-        }
-
         $this->container['country_code'] = $country_code;
 
         return $this;
@@ -608,13 +613,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($district_or_county) && (mb_strlen($district_or_county) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($district_or_county) && (mb_strlen($district_or_county) > 50)) {
+                throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be smaller than or equal to 50.');
+            }
+            if (!is_null($district_or_county) && (mb_strlen($district_or_county) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($district_or_county) && (mb_strlen($district_or_county) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['district_or_county'] = $district_or_county;
 
         return $this;
@@ -645,13 +651,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($email) && (mb_strlen($email) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling AddressInput., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($email) && (mb_strlen($email) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $email when calling AddressInput., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($email) && (mb_strlen($email) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $email when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($email) && (mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['email'] = $email;
 
         return $this;
@@ -675,13 +682,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 50) {
-            throw new \InvalidArgumentException('invalid length for $name when calling AddressInput., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 50) {
+                throw new \InvalidArgumentException('invalid length for $name when calling AddressInput., must be smaller than or equal to 50.');
+            }
+            if (mb_strlen($name) < 1) {
+                throw new \InvalidArgumentException('invalid length for $name when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($name) < 1) {
-            throw new \InvalidArgumentException('invalid length for $name when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -705,13 +713,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($phone_number)) {
             throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-        if (mb_strlen($phone_number) > 20) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling AddressInput., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($phone_number) > 20) {
+                throw new \InvalidArgumentException('invalid length for $phone_number when calling AddressInput., must be smaller than or equal to 20.');
+            }
+            if (mb_strlen($phone_number) < 1) {
+                throw new \InvalidArgumentException('invalid length for $phone_number when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($phone_number) < 1) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['phone_number'] = $phone_number;
 
         return $this;
@@ -735,13 +744,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($postal_code)) {
             throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
         }
-        if (mb_strlen($postal_code) > 32) {
-            throw new \InvalidArgumentException('invalid length for $postal_code when calling AddressInput., must be smaller than or equal to 32.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($postal_code) > 32) {
+                throw new \InvalidArgumentException('invalid length for $postal_code when calling AddressInput., must be smaller than or equal to 32.');
+            }
+            if (mb_strlen($postal_code) < 1) {
+                throw new \InvalidArgumentException('invalid length for $postal_code when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($postal_code) < 1) {
-            throw new \InvalidArgumentException('invalid length for $postal_code when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['postal_code'] = $postal_code;
 
         return $this;
@@ -772,13 +782,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling AddressInput., must be smaller than or equal to 64.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) > 64)) {
+                throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling AddressInput., must be smaller than or equal to 64.');
+            }
+            if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling AddressInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling AddressInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['state_or_province_code'] = $state_or_province_code;
 
         return $this;

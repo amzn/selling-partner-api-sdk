@@ -291,15 +291,17 @@ class ShippingOption implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($shipping_option_type)) {
             throw new \InvalidArgumentException('non-nullable shipping_option_type cannot be null');
         }
-        $allowedValues = $this->getShippingOptionTypeAllowableValues();
-        if (!in_array($shipping_option_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipping_option_type', must be one of '%s'",
-                    $shipping_option_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShippingOptionTypeAllowableValues();
+            if (!in_array($shipping_option_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipping_option_type', must be one of '%s'",
+                        $shipping_option_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipping_option_type'] = $shipping_option_type;
 

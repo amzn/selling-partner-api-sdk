@@ -291,15 +291,17 @@ class VarianceReason implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($variance_type)) {
             throw new \InvalidArgumentException('non-nullable variance_type cannot be null');
         }
-        $allowedValues = $this->getVarianceTypeAllowableValues();
-        if (!in_array($variance_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'variance_type', must be one of '%s'",
-                    $variance_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getVarianceTypeAllowableValues();
+            if (!in_array($variance_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'variance_type', must be one of '%s'",
+                        $variance_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['variance_type'] = $variance_type;
 

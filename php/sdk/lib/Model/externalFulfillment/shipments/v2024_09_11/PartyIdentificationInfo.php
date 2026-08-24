@@ -334,15 +334,17 @@ class PartyIdentificationInfo implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($party_type)) {
             throw new \InvalidArgumentException('non-nullable party_type cannot be null');
         }
-        $allowedValues = $this->getPartyTypeAllowableValues();
-        if (!in_array($party_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'party_type', must be one of '%s'",
-                    $party_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPartyTypeAllowableValues();
+            if (!in_array($party_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'party_type', must be one of '%s'",
+                        $party_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['party_type'] = $party_type;
 

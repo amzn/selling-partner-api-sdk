@@ -389,12 +389,13 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($skus) && (count($skus) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $skus when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($skus) && (count($skus) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $skus when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($skus) && (count($skus) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $skus when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($skus) && (count($skus) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $skus when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['skus'] = $skus;
 
@@ -426,12 +427,13 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($asins) && (count($asins) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $asins when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($asins) && (count($asins) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $asins when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($asins) && (count($asins) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $asins when calling ListOffersRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($asins) && (count($asins) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $asins when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['asins'] = $asins;
 
@@ -463,9 +465,10 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($eligibilities) && (count($eligibilities) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $eligibilities when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($eligibilities) && (count($eligibilities) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $eligibilities when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['eligibilities'] = $eligibilities;
 
@@ -550,9 +553,10 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($program_types)) {
             throw new \InvalidArgumentException('non-nullable program_types cannot be null');
         }
-
-        if (count($program_types) < 1) {
-            throw new \InvalidArgumentException('invalid length for $program_types when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($program_types) < 1) {
+                throw new \InvalidArgumentException('invalid length for $program_types when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['program_types'] = $program_types;
 
@@ -584,18 +588,21 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getDeliveriesConditionsAllowableValues();
-        if (!is_null($deliveries_conditions) && array_diff($deliveries_conditions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'deliveries_conditions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDeliveriesConditionsAllowableValues();
+            if (!is_null($deliveries_conditions) && array_diff($deliveries_conditions, $allowedValues)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value for 'deliveries_conditions', must be one of '%s'",
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
-
-        if (!is_null($deliveries_conditions) && (count($deliveries_conditions) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $deliveries_conditions when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($deliveries_conditions) && (count($deliveries_conditions) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $deliveries_conditions when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['deliveries_conditions'] = $deliveries_conditions;
 

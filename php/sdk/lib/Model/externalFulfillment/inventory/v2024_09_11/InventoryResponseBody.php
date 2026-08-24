@@ -405,11 +405,11 @@ class InventoryResponseBody implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($sellable_quantity) && ($sellable_quantity < 0)) {
-            throw new \InvalidArgumentException('invalid value for $sellable_quantity when calling InventoryResponseBody., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($sellable_quantity) && ($sellable_quantity < 0)) {
+                throw new \InvalidArgumentException('invalid value for $sellable_quantity when calling InventoryResponseBody., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['sellable_quantity'] = $sellable_quantity;
 
         return $this;
@@ -440,11 +440,11 @@ class InventoryResponseBody implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($reserved_quantity) && ($reserved_quantity < 0)) {
-            throw new \InvalidArgumentException('invalid value for $reserved_quantity when calling InventoryResponseBody., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($reserved_quantity) && ($reserved_quantity < 0)) {
+                throw new \InvalidArgumentException('invalid value for $reserved_quantity when calling InventoryResponseBody., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['reserved_quantity'] = $reserved_quantity;
 
         return $this;
@@ -505,9 +505,10 @@ class InventoryResponseBody implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($actionable_errors) && (count($actionable_errors) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $actionable_errors when calling InventoryResponseBody., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($actionable_errors) && (count($actionable_errors) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $actionable_errors when calling InventoryResponseBody., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['actionable_errors'] = $actionable_errors;
 

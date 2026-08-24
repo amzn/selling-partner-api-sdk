@@ -257,7 +257,8 @@ class PostContentDocumentSuspendSubmissionResponse implements ModelInterface, \A
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;

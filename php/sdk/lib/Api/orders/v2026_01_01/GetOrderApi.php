@@ -218,12 +218,15 @@ class GetOrderApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v2026_01_01\GetOrderResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\orders\v2026_01_01\ErrorList',
@@ -284,10 +287,12 @@ class GetOrderApi
             $this->getOrderRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -296,6 +301,8 @@ class GetOrderApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

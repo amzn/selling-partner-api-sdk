@@ -283,12 +283,13 @@ class CustomPlacementInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($items)) {
             throw new \InvalidArgumentException('non-nullable items cannot be null');
         }
-
-        if (count($items) > 2000) {
-            throw new \InvalidArgumentException('invalid value for $items when calling CustomPlacementInput., number of items must be less than or equal to 2000.');
-        }
-        if (count($items) < 1) {
-            throw new \InvalidArgumentException('invalid length for $items when calling CustomPlacementInput., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($items) > 2000) {
+                throw new \InvalidArgumentException('invalid value for $items when calling CustomPlacementInput., number of items must be less than or equal to 2000.');
+            }
+            if (count($items) < 1) {
+                throw new \InvalidArgumentException('invalid length for $items when calling CustomPlacementInput., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['items'] = $items;
 
@@ -313,13 +314,14 @@ class CustomPlacementInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($warehouse_id)) {
             throw new \InvalidArgumentException('non-nullable warehouse_id cannot be null');
         }
-        if (mb_strlen($warehouse_id) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling CustomPlacementInput., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($warehouse_id) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling CustomPlacementInput., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($warehouse_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling CustomPlacementInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($warehouse_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling CustomPlacementInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['warehouse_id'] = $warehouse_id;
 
         return $this;

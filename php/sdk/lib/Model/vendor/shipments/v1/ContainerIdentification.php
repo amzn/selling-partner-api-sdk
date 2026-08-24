@@ -356,15 +356,17 @@ class ContainerIdentification implements ModelInterface, ArrayAccess, \JsonSeria
         if (is_null($container_identification_type)) {
             throw new \InvalidArgumentException('non-nullable container_identification_type cannot be null');
         }
-        $allowedValues = $this->getContainerIdentificationTypeAllowableValues();
-        if (!in_array($container_identification_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'container_identification_type', must be one of '%s'",
-                    $container_identification_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getContainerIdentificationTypeAllowableValues();
+            if (!in_array($container_identification_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'container_identification_type', must be one of '%s'",
+                        $container_identification_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['container_identification_type'] = $container_identification_type;
 

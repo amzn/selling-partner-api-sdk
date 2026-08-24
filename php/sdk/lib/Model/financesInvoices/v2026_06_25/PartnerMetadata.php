@@ -345,15 +345,17 @@ class PartnerMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($partner_type)) {
             throw new \InvalidArgumentException('non-nullable partner_type cannot be null');
         }
-        $allowedValues = $this->getPartnerTypeAllowableValues();
-        if (!in_array($partner_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'partner_type', must be one of '%s'",
-                    $partner_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPartnerTypeAllowableValues();
+            if (!in_array($partner_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'partner_type', must be one of '%s'",
+                        $partner_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['partner_type'] = $partner_type;
 

@@ -232,12 +232,15 @@ class FbaInventoryApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\AddInventoryResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\fba\inventory\v1\AddInventoryResponse',
@@ -298,10 +301,12 @@ class FbaInventoryApi
             $this->addInventoryRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -310,6 +315,8 @@ class FbaInventoryApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -520,12 +527,15 @@ class FbaInventoryApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse',
@@ -580,10 +590,12 @@ class FbaInventoryApi
             $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -592,6 +604,8 @@ class FbaInventoryApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -794,12 +808,15 @@ class FbaInventoryApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse',
@@ -860,10 +877,12 @@ class FbaInventoryApi
             $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -872,6 +891,8 @@ class FbaInventoryApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1133,12 +1154,15 @@ class FbaInventoryApi
                 }
             }
 
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
             return [
                 ObjectSerializer::deserialize($content, '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
             $data = ObjectSerializer::deserialize(
                 $e->getResponseBody(),
                 '\SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse',
@@ -1235,10 +1259,12 @@ class FbaInventoryApi
             $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1247,6 +1273,8 @@ class FbaInventoryApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

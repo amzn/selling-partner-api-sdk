@@ -323,11 +323,11 @@ class TrackingDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($tracking_url) && (!preg_match('/^https?:\\/\\/.+/', ObjectSerializer::toString($tracking_url)))) {
-            throw new \InvalidArgumentException('invalid value for $tracking_url when calling TrackingDetail., must conform to the pattern /^https?:\\/\\/.+/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tracking_url) && (!preg_match('/^https?:\\/\\/.+/', ObjectSerializer::toString($tracking_url)))) {
+                throw new \InvalidArgumentException('invalid value for $tracking_url when calling TrackingDetail., must conform to the pattern /^https?:\\/\\/.+/.');
+            }
         }
-
         $this->container['tracking_url'] = $tracking_url;
 
         return $this;

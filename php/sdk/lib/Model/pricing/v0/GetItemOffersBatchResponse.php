@@ -269,12 +269,13 @@ class GetItemOffersBatchResponse implements ModelInterface, \ArrayAccess, \JsonS
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($responses) && (count($responses) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $responses when calling GetItemOffersBatchResponse., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($responses) && (count($responses) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $responses when calling GetItemOffersBatchResponse., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($responses) && (count($responses) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $responses when calling GetItemOffersBatchResponse., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($responses) && (count($responses) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $responses when calling GetItemOffersBatchResponse., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['responses'] = $responses;
 

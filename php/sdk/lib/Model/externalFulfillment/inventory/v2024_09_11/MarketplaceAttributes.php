@@ -295,15 +295,17 @@ class MarketplaceAttributes implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getChannelNameAllowableValues();
-        if (!is_null($channel_name) && !in_array($channel_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'channel_name', must be one of '%s'",
-                    $channel_name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getChannelNameAllowableValues();
+            if (!is_null($channel_name) && !in_array($channel_name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'channel_name', must be one of '%s'",
+                        $channel_name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['channel_name'] = $channel_name;
 

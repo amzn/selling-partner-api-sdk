@@ -363,15 +363,17 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($function_code)) {
             throw new \InvalidArgumentException('non-nullable function_code cannot be null');
         }
-        $allowedValues = $this->getFunctionCodeAllowableValues();
-        if (!in_array($function_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'function_code', must be one of '%s'",
-                    $function_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFunctionCodeAllowableValues();
+            if (!in_array($function_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'function_code', must be one of '%s'",
+                        $function_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['function_code'] = $function_code;
 

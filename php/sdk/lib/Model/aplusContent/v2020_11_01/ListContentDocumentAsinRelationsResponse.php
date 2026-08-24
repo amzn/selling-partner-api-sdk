@@ -281,7 +281,8 @@ class ListContentDocumentAsinRelationsResponse implements ModelInterface, \Array
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;
@@ -312,11 +313,11 @@ class ListContentDocumentAsinRelationsResponse implements ModelInterface, \Array
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $next_page_token when calling ListContentDocumentAsinRelationsResponse., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $next_page_token when calling ListContentDocumentAsinRelationsResponse., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['next_page_token'] = $next_page_token;
 
         return $this;
@@ -340,7 +341,8 @@ class ListContentDocumentAsinRelationsResponse implements ModelInterface, \Array
         if (is_null($asin_metadata_set)) {
             throw new \InvalidArgumentException('non-nullable asin_metadata_set cannot be null');
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['asin_metadata_set'] = $asin_metadata_set;
 
         return $this;

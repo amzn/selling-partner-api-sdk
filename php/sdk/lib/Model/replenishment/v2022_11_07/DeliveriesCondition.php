@@ -303,15 +303,17 @@ class DeliveriesCondition implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getConditionAllowableValues();
-        if (!is_null($condition) && !in_array($condition, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'condition', must be one of '%s'",
-                    $condition,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getConditionAllowableValues();
+            if (!is_null($condition) && !in_array($condition, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'condition', must be one of '%s'",
+                        $condition,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['condition'] = $condition;
 
@@ -343,11 +345,11 @@ class DeliveriesCondition implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next30_days_deliveries) && ($next30_days_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next30_days_deliveries when calling DeliveriesCondition., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next30_days_deliveries) && ($next30_days_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next30_days_deliveries when calling DeliveriesCondition., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next30_days_deliveries'] = $next30_days_deliveries;
 
         return $this;

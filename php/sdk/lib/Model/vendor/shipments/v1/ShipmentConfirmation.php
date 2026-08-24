@@ -557,15 +557,17 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
         if (is_null($shipment_confirmation_type)) {
             throw new \InvalidArgumentException('non-nullable shipment_confirmation_type cannot be null');
         }
-        $allowedValues = $this->getShipmentConfirmationTypeAllowableValues();
-        if (!in_array($shipment_confirmation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_confirmation_type', must be one of '%s'",
-                    $shipment_confirmation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentConfirmationTypeAllowableValues();
+            if (!in_array($shipment_confirmation_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_confirmation_type', must be one of '%s'",
+                        $shipment_confirmation_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_confirmation_type'] = $shipment_confirmation_type;
 
@@ -601,15 +603,17 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipmentTypeAllowableValues();
-        if (!is_null($shipment_type) && !in_array($shipment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_type', must be one of '%s'",
-                    $shipment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentTypeAllowableValues();
+            if (!is_null($shipment_type) && !in_array($shipment_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_type', must be one of '%s'",
+                        $shipment_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_type'] = $shipment_type;
 
@@ -645,15 +649,17 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipmentStructureAllowableValues();
-        if (!is_null($shipment_structure) && !in_array($shipment_structure, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_structure', must be one of '%s'",
-                    $shipment_structure,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentStructureAllowableValues();
+            if (!is_null($shipment_structure) && !in_array($shipment_structure, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_structure', must be one of '%s'",
+                        $shipment_structure,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_structure'] = $shipment_structure;
 

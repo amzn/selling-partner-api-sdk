@@ -273,7 +273,8 @@ class PostContentDocumentResponse implements ModelInterface, \ArrayAccess, \Json
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;
@@ -297,11 +298,11 @@ class PostContentDocumentResponse implements ModelInterface, \ArrayAccess, \Json
         if (is_null($content_reference_key)) {
             throw new \InvalidArgumentException('non-nullable content_reference_key cannot be null');
         }
-
-        if (mb_strlen($content_reference_key) < 1) {
-            throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PostContentDocumentResponse., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($content_reference_key) < 1) {
+                throw new \InvalidArgumentException('invalid length for $content_reference_key when calling PostContentDocumentResponse., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['content_reference_key'] = $content_reference_key;
 
         return $this;

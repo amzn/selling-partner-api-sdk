@@ -353,15 +353,17 @@ class TimeWindow implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getHandoverMethodAllowableValues();
-        if (!is_null($handover_method) && !in_array($handover_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'handover_method', must be one of '%s'",
-                    $handover_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getHandoverMethodAllowableValues();
+            if (!is_null($handover_method) && !in_array($handover_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'handover_method', must be one of '%s'",
+                        $handover_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['handover_method'] = $handover_method;
 

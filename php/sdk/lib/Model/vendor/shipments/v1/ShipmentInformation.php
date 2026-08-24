@@ -631,15 +631,17 @@ class ShipmentInformation implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipModeAllowableValues();
-        if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ship_mode', must be one of '%s'",
-                    $ship_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipModeAllowableValues();
+            if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'ship_mode', must be one of '%s'",
+                        $ship_mode,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['ship_mode'] = $ship_mode;
 

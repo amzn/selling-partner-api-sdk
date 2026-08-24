@@ -298,11 +298,11 @@ class TrackingDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($booking_id)) {
             throw new \InvalidArgumentException('non-nullable booking_id cannot be null');
         }
-
-        if (mb_strlen($booking_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $booking_id when calling TrackingDetails., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($booking_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $booking_id when calling TrackingDetails., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['booking_id'] = $booking_id;
 
         return $this;

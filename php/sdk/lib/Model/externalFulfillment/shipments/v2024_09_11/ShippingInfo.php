@@ -405,15 +405,17 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShippingTypeAllowableValues();
-        if (!is_null($shipping_type) && !in_array($shipping_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipping_type', must be one of '%s'",
-                    $shipping_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShippingTypeAllowableValues();
+            if (!is_null($shipping_type) && !in_array($shipping_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipping_type', must be one of '%s'",
+                        $shipping_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipping_type'] = $shipping_type;
 
@@ -445,9 +447,10 @@ class ShippingInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($recommended_packages) && (count($recommended_packages) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $recommended_packages when calling ShippingInfo., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($recommended_packages) && (count($recommended_packages) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $recommended_packages when calling ShippingInfo., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['recommended_packages'] = $recommended_packages;
 

@@ -336,14 +336,14 @@ class Decorator implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($offset) && ($offset > 10000)) {
-            throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($offset) && ($offset > 10000)) {
+                throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be smaller than or equal to 10000.');
+            }
+            if (!is_null($offset) && ($offset < 0)) {
+                throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($offset) && ($offset < 0)) {
-            throw new \InvalidArgumentException('invalid value for $offset when calling Decorator., must be bigger than or equal to 0.');
-        }
-
         $this->container['offset'] = $offset;
 
         return $this;
@@ -374,14 +374,14 @@ class Decorator implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($length) && ($length > 10000)) {
-            throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($length) && ($length > 10000)) {
+                throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be smaller than or equal to 10000.');
+            }
+            if (!is_null($length) && ($length < 0)) {
+                throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($length) && ($length < 0)) {
-            throw new \InvalidArgumentException('invalid value for $length when calling Decorator., must be bigger than or equal to 0.');
-        }
-
         $this->container['length'] = $length;
 
         return $this;
@@ -412,14 +412,14 @@ class Decorator implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($depth) && ($depth > 100)) {
-            throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($depth) && ($depth > 100)) {
+                throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be smaller than or equal to 100.');
+            }
+            if (!is_null($depth) && ($depth < 0)) {
+                throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($depth) && ($depth < 0)) {
-            throw new \InvalidArgumentException('invalid value for $depth when calling Decorator., must be bigger than or equal to 0.');
-        }
-
         $this->container['depth'] = $depth;
 
         return $this;

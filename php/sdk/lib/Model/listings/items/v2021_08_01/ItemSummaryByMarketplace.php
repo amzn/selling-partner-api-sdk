@@ -478,15 +478,17 @@ class ItemSummaryByMarketplace implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getConditionTypeAllowableValues();
-        if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'condition_type', must be one of '%s'",
-                    $condition_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getConditionTypeAllowableValues();
+            if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'condition_type', must be one of '%s'",
+                        $condition_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['condition_type'] = $condition_type;
 
@@ -511,14 +513,16 @@ class ItemSummaryByMarketplace implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (array_diff($status, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStatusAllowableValues();
+            if (array_diff($status, $allowedValues)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value for 'status', must be one of '%s'",
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['status'] = $status;
 

@@ -294,9 +294,10 @@ class ListingsItemPatchRequest implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($patches)) {
             throw new \InvalidArgumentException('non-nullable patches cannot be null');
         }
-
-        if (count($patches) < 1) {
-            throw new \InvalidArgumentException('invalid length for $patches when calling ListingsItemPatchRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($patches) < 1) {
+                throw new \InvalidArgumentException('invalid length for $patches when calling ListingsItemPatchRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['patches'] = $patches;
 

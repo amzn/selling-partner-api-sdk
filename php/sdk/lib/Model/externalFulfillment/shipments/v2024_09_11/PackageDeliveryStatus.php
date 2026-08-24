@@ -340,10 +340,11 @@ class PackageDeliveryStatus implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($reason) && (mb_strlen($reason) > 128)) {
-            throw new \InvalidArgumentException('invalid length for $reason when calling PackageDeliveryStatus., must be smaller than or equal to 128.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($reason) && (mb_strlen($reason) > 128)) {
+                throw new \InvalidArgumentException('invalid length for $reason when calling PackageDeliveryStatus., must be smaller than or equal to 128.');
+            }
         }
-
         $this->container['reason'] = $reason;
 
         return $this;

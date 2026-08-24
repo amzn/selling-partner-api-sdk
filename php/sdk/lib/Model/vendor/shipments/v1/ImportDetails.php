@@ -426,15 +426,17 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getMethodOfPaymentAllowableValues();
-        if (!is_null($method_of_payment) && !in_array($method_of_payment, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'method_of_payment', must be one of '%s'",
-                    $method_of_payment,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getMethodOfPaymentAllowableValues();
+            if (!is_null($method_of_payment) && !in_array($method_of_payment, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'method_of_payment', must be one of '%s'",
+                        $method_of_payment,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['method_of_payment'] = $method_of_payment;
 
@@ -538,10 +540,12 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($import_containers) && (mb_strlen($import_containers) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $import_containers when calling ImportDetails., must be smaller than or equal to 64.');
-        }
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($import_containers) && (mb_strlen($import_containers) > 64)) {
+                throw new \InvalidArgumentException('invalid length for $import_containers when calling ImportDetails., must be smaller than or equal to 64.');
+            }
 
+        }
         $this->container['import_containers'] = $import_containers;
 
         return $this;
@@ -644,15 +648,17 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getHandlingInstructionsAllowableValues();
-        if (!is_null($handling_instructions) && !in_array($handling_instructions, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'handling_instructions', must be one of '%s'",
-                    $handling_instructions,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getHandlingInstructionsAllowableValues();
+            if (!is_null($handling_instructions) && !in_array($handling_instructions, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'handling_instructions', must be one of '%s'",
+                        $handling_instructions,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['handling_instructions'] = $handling_instructions;
 

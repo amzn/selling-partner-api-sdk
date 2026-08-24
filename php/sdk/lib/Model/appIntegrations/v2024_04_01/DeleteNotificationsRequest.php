@@ -315,15 +315,17 @@ class DeleteNotificationsRequest implements ModelInterface, \ArrayAccess, \JsonS
         if (is_null($deletion_reason)) {
             throw new \InvalidArgumentException('non-nullable deletion_reason cannot be null');
         }
-        $allowedValues = $this->getDeletionReasonAllowableValues();
-        if (!in_array($deletion_reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'deletion_reason', must be one of '%s'",
-                    $deletion_reason,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDeletionReasonAllowableValues();
+            if (!in_array($deletion_reason, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'deletion_reason', must be one of '%s'",
+                        $deletion_reason,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['deletion_reason'] = $deletion_reason;
 

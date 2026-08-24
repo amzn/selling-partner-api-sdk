@@ -348,15 +348,17 @@ class Restriction implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getConditionTypeAllowableValues();
-        if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'condition_type', must be one of '%s'",
-                    $condition_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getConditionTypeAllowableValues();
+            if (!is_null($condition_type) && !in_array($condition_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'condition_type', must be one of '%s'",
+                        $condition_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['condition_type'] = $condition_type;
 

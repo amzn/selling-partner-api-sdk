@@ -466,13 +466,14 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($service_job_id) && (mb_strlen($service_job_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($service_job_id) && (mb_strlen($service_job_id) > 100)) {
+                throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be smaller than or equal to 100.');
+            }
+            if (!is_null($service_job_id) && (mb_strlen($service_job_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($service_job_id) && (mb_strlen($service_job_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $service_job_id when calling ServiceJob., must be bigger than or equal to 1.');
-        }
-
         $this->container['service_job_id'] = $service_job_id;
 
         return $this;
@@ -503,15 +504,17 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getServiceJobStatusAllowableValues();
-        if (!is_null($service_job_status) && !in_array($service_job_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'service_job_status', must be one of '%s'",
-                    $service_job_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getServiceJobStatusAllowableValues();
+            if (!is_null($service_job_status) && !in_array($service_job_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'service_job_status', must be one of '%s'",
+                        $service_job_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['service_job_status'] = $service_job_status;
 
@@ -693,13 +696,14 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($service_order_id) && (mb_strlen($service_order_id) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($service_order_id) && (mb_strlen($service_order_id) > 20)) {
+                throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be smaller than or equal to 20.');
+            }
+            if (!is_null($service_order_id) && (mb_strlen($service_order_id) < 5)) {
+                throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be bigger than or equal to 5.');
+            }
         }
-        if (!is_null($service_order_id) && (mb_strlen($service_order_id) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $service_order_id when calling ServiceJob., must be bigger than or equal to 5.');
-        }
-
         $this->container['service_order_id'] = $service_order_id;
 
         return $this;
@@ -790,11 +794,11 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($marketplace_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($marketplace_id)))) {
-            throw new \InvalidArgumentException('invalid value for $marketplace_id when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($marketplace_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($marketplace_id)))) {
+                throw new \InvalidArgumentException('invalid value for $marketplace_id when calling ServiceJob., must conform to the pattern /^[A-Z0-9]*$/.');
+            }
         }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -825,13 +829,14 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($store_id) && (mb_strlen($store_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($store_id) && (mb_strlen($store_id) > 100)) {
+                throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be smaller than or equal to 100.');
+            }
+            if (!is_null($store_id) && (mb_strlen($store_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($store_id) && (mb_strlen($store_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $store_id when calling ServiceJob., must be bigger than or equal to 1.');
-        }
-
         $this->container['store_id'] = $store_id;
 
         return $this;

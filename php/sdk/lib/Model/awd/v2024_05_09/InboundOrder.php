@@ -481,9 +481,10 @@ class InboundOrder implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($packages_to_inbound)) {
             throw new \InvalidArgumentException('non-nullable packages_to_inbound cannot be null');
         }
-
-        if (count($packages_to_inbound) < 1) {
-            throw new \InvalidArgumentException('invalid length for $packages_to_inbound when calling InboundOrder., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($packages_to_inbound) < 1) {
+                throw new \InvalidArgumentException('invalid length for $packages_to_inbound when calling InboundOrder., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['packages_to_inbound'] = $packages_to_inbound;
 

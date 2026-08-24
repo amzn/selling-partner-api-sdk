@@ -33,6 +33,7 @@ namespace SpApi;
 use Composer\InstalledVersions;
 use Dallgoot\Yaml\Yaml;
 use GuzzleHttp\Psr7\Request;
+use InvalidArgumentException;
 use SpApi\AuthAndAuth\LWAAccessTokenCache;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
@@ -88,6 +89,17 @@ class Configuration
      * Debug file location (log to STDOUT by default).
      */
     protected string $tempFolderPath;
+
+    /**
+     * Whether to skip the additional value validations performed inside model
+     * setters (allowable enum values, string length, numeric range, pattern,
+     * item counts). The backend responses are not always consistent with the
+     * constraints declared in the OpenAPI model, so this flag allows callers to
+     * deserialize such responses without triggering InvalidArgumentException.
+     *
+     * Defaults to false to preserve the previous (validating) behavior.
+     */
+    protected bool $skipModelValidation = false;
 
     private static ?Configuration $defaultConfiguration = null;
 
@@ -291,6 +303,33 @@ class Configuration
     public function getDebugFile(): string
     {
         return $this->debugFile;
+    }
+
+    /**
+     * Sets whether the additional model setter validations should be skipped
+     * when deserializing API responses.
+     *
+     * When enabled, model setters will still store the returned values but will
+     * not throw \InvalidArgumentException for values that violate the OpenAPI
+     * constraints (allowable enum values, length, range, pattern, item counts).
+     *
+     * @param bool $skipModelValidation Whether to skip model validations
+     *
+     * @return $this
+     */
+    public function setSkipModelValidation(bool $skipModelValidation): Configuration
+    {
+        $this->skipModelValidation = $skipModelValidation;
+
+        return $this;
+    }
+
+    /**
+     * Gets whether the additional model setter validations should be skipped.
+     */
+    public function getSkipModelValidation(): bool
+    {
+        return $this->skipModelValidation;
     }
 
     /**

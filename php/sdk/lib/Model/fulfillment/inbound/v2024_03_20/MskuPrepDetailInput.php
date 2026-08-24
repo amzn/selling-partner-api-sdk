@@ -286,13 +286,14 @@ class MskuPrepDetailInput implements ModelInterface, \ArrayAccess, \JsonSerializ
         if (is_null($msku)) {
             throw new \InvalidArgumentException('non-nullable msku cannot be null');
         }
-        if (mb_strlen($msku) > 255) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling MskuPrepDetailInput., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($msku) > 255) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling MskuPrepDetailInput., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($msku) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling MskuPrepDetailInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($msku) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling MskuPrepDetailInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['msku'] = $msku;
 
         return $this;

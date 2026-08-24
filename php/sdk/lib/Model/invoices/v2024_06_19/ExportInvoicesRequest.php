@@ -534,9 +534,10 @@ class ExportInvoicesRequest implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($statuses) && (count($statuses) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $statuses when calling ExportInvoicesRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($statuses) && (count($statuses) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $statuses when calling ExportInvoicesRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['statuses'] = $statuses;
 

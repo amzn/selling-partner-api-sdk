@@ -301,15 +301,17 @@ class ItemIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($item_identifier_name)) {
             throw new \InvalidArgumentException('non-nullable item_identifier_name cannot be null');
         }
-        $allowedValues = $this->getItemIdentifierNameAllowableValues();
-        if (!in_array($item_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_identifier_name', must be one of '%s'",
-                    $item_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getItemIdentifierNameAllowableValues();
+            if (!in_array($item_identifier_name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'item_identifier_name', must be one of '%s'",
+                        $item_identifier_name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['item_identifier_name'] = $item_identifier_name;
 

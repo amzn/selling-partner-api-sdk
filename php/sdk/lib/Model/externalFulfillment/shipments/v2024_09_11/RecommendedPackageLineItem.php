@@ -262,11 +262,11 @@ class RecommendedPackageLineItem implements ModelInterface, \ArrayAccess, \JsonS
         if (is_null($line_item_id)) {
             throw new \InvalidArgumentException('non-nullable line_item_id cannot be null');
         }
-
-        if (mb_strlen($line_item_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $line_item_id when calling RecommendedPackageLineItem., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($line_item_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $line_item_id when calling RecommendedPackageLineItem., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['line_item_id'] = $line_item_id;
 
         return $this;

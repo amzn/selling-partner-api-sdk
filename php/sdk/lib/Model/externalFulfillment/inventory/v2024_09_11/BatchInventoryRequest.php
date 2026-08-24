@@ -269,12 +269,13 @@ class BatchInventoryRequest implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($requests) && (count($requests) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $requests when calling BatchInventoryRequest., number of items must be less than or equal to 10.');
-        }
-        if (!is_null($requests) && (count($requests) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $requests when calling BatchInventoryRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($requests) && (count($requests) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $requests when calling BatchInventoryRequest., number of items must be less than or equal to 10.');
+            }
+            if (!is_null($requests) && (count($requests) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $requests when calling BatchInventoryRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['requests'] = $requests;
 

@@ -329,15 +329,17 @@ class ItemImage implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($variant)) {
             throw new \InvalidArgumentException('non-nullable variant cannot be null');
         }
-        $allowedValues = $this->getVariantAllowableValues();
-        if (!in_array($variant, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'variant', must be one of '%s'",
-                    $variant,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getVariantAllowableValues();
+            if (!in_array($variant, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'variant', must be one of '%s'",
+                        $variant,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['variant'] = $variant;
 

@@ -265,12 +265,13 @@ class CompetitiveSummaryBatchResponse implements ModelInterface, \ArrayAccess, \
         if (is_null($responses)) {
             throw new \InvalidArgumentException('non-nullable responses cannot be null');
         }
-
-        if (count($responses) > 20) {
-            throw new \InvalidArgumentException('invalid value for $responses when calling CompetitiveSummaryBatchResponse., number of items must be less than or equal to 20.');
-        }
-        if (count($responses) < 1) {
-            throw new \InvalidArgumentException('invalid length for $responses when calling CompetitiveSummaryBatchResponse., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($responses) > 20) {
+                throw new \InvalidArgumentException('invalid value for $responses when calling CompetitiveSummaryBatchResponse., number of items must be less than or equal to 20.');
+            }
+            if (count($responses) < 1) {
+                throw new \InvalidArgumentException('invalid length for $responses when calling CompetitiveSummaryBatchResponse., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['responses'] = $responses;
 

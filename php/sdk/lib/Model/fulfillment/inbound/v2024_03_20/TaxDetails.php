@@ -313,13 +313,14 @@ class TaxDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($hsn_code) && (mb_strlen($hsn_code) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($hsn_code) && (mb_strlen($hsn_code) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($hsn_code) && (mb_strlen($hsn_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($hsn_code) && (mb_strlen($hsn_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $hsn_code when calling TaxDetails., must be bigger than or equal to 1.');
-        }
-
         $this->container['hsn_code'] = $hsn_code;
 
         return $this;

@@ -306,13 +306,14 @@ class ComplianceDetail implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($asin) && (mb_strlen($asin) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be smaller than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($asin) && (mb_strlen($asin) > 10)) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be smaller than or equal to 10.');
+            }
+            if (!is_null($asin) && (mb_strlen($asin) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($asin) && (mb_strlen($asin) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling ComplianceDetail., must be bigger than or equal to 1.');
-        }
-
         $this->container['asin'] = $asin;
 
         return $this;
@@ -343,13 +344,14 @@ class ComplianceDetail implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($fnsku) && (mb_strlen($fnsku) > 10)) {
-            throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be smaller than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($fnsku) && (mb_strlen($fnsku) > 10)) {
+                throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be smaller than or equal to 10.');
+            }
+            if (!is_null($fnsku) && (mb_strlen($fnsku) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($fnsku) && (mb_strlen($fnsku) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $fnsku when calling ComplianceDetail., must be bigger than or equal to 1.');
-        }
-
         $this->container['fnsku'] = $fnsku;
 
         return $this;
@@ -380,13 +382,14 @@ class ComplianceDetail implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($msku) && (mb_strlen($msku) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($msku) && (mb_strlen($msku) > 255)) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be smaller than or equal to 255.');
+            }
+            if (!is_null($msku) && (mb_strlen($msku) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($msku) && (mb_strlen($msku) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling ComplianceDetail., must be bigger than or equal to 1.');
-        }
-
         $this->container['msku'] = $msku;
 
         return $this;

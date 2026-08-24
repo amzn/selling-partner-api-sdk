@@ -291,15 +291,17 @@ class SubstitutionPreferences implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($substitution_type)) {
             throw new \InvalidArgumentException('non-nullable substitution_type cannot be null');
         }
-        $allowedValues = $this->getSubstitutionTypeAllowableValues();
-        if (!in_array($substitution_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'substitution_type', must be one of '%s'",
-                    $substitution_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSubstitutionTypeAllowableValues();
+            if (!in_array($substitution_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'substitution_type', must be one of '%s'",
+                        $substitution_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['substitution_type'] = $substitution_type;
 

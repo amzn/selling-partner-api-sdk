@@ -303,12 +303,13 @@ class PackageGroupingInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($boxes)) {
             throw new \InvalidArgumentException('non-nullable boxes cannot be null');
         }
-
-        if (count($boxes) > 5000) {
-            throw new \InvalidArgumentException('invalid value for $boxes when calling PackageGroupingInput., number of items must be less than or equal to 5000.');
-        }
-        if (count($boxes) < 1) {
-            throw new \InvalidArgumentException('invalid length for $boxes when calling PackageGroupingInput., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($boxes) > 5000) {
+                throw new \InvalidArgumentException('invalid value for $boxes when calling PackageGroupingInput., number of items must be less than or equal to 5000.');
+            }
+            if (count($boxes) < 1) {
+                throw new \InvalidArgumentException('invalid length for $boxes when calling PackageGroupingInput., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['boxes'] = $boxes;
 
@@ -340,16 +341,17 @@ class PackageGroupingInput implements ModelInterface, \ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) > 38)) {
-            throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) > 38)) {
+                throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
+            }
+            if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) < 38)) {
+                throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
+            }
+            if (!is_null($packing_group_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($packing_group_id)))) {
+                throw new \InvalidArgumentException('invalid value for $packing_group_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (!is_null($packing_group_id) && (mb_strlen($packing_group_id) < 38)) {
-            throw new \InvalidArgumentException('invalid length for $packing_group_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
-        }
-        if (!is_null($packing_group_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($packing_group_id)))) {
-            throw new \InvalidArgumentException('invalid value for $packing_group_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['packing_group_id'] = $packing_group_id;
 
         return $this;
@@ -380,16 +382,17 @@ class PackageGroupingInput implements ModelInterface, \ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($shipment_id) && (mb_strlen($shipment_id) > 38)) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipment_id) && (mb_strlen($shipment_id) > 38)) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be smaller than or equal to 38.');
+            }
+            if (!is_null($shipment_id) && (mb_strlen($shipment_id) < 38)) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
+            }
+            if (!is_null($shipment_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id)))) {
+                throw new \InvalidArgumentException('invalid value for $shipment_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (!is_null($shipment_id) && (mb_strlen($shipment_id) < 38)) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling PackageGroupingInput., must be bigger than or equal to 38.');
-        }
-        if (!is_null($shipment_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id)))) {
-            throw new \InvalidArgumentException('invalid value for $shipment_id when calling PackageGroupingInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['shipment_id'] = $shipment_id;
 
         return $this;

@@ -564,15 +564,17 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPurchaseOrderTypeAllowableValues();
-        if (!is_null($purchase_order_type) && !in_array($purchase_order_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'purchase_order_type', must be one of '%s'",
-                    $purchase_order_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPurchaseOrderTypeAllowableValues();
+            if (!is_null($purchase_order_type) && !in_array($purchase_order_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'purchase_order_type', must be one of '%s'",
+                        $purchase_order_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['purchase_order_type'] = $purchase_order_type;
 
@@ -676,15 +678,17 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_method', must be one of '%s'",
-                    $payment_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPaymentMethodAllowableValues();
+            if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'payment_method', must be one of '%s'",
+                        $payment_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['payment_method'] = $payment_method;
 

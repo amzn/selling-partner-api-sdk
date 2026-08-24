@@ -269,16 +269,17 @@ class GenerateDeliveryWindowOptionsResponse implements ModelInterface, \ArrayAcc
         if (is_null($operation_id)) {
             throw new \InvalidArgumentException('non-nullable operation_id cannot be null');
         }
-        if (mb_strlen($operation_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($operation_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($operation_id) < 36) {
+                throw new \InvalidArgumentException('invalid length for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must be bigger than or equal to 36.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($operation_id))) {
+                throw new \InvalidArgumentException('invalid value for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($operation_id) < 36) {
-            throw new \InvalidArgumentException('invalid length for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must be bigger than or equal to 36.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($operation_id))) {
-            throw new \InvalidArgumentException('invalid value for $operation_id when calling GenerateDeliveryWindowOptionsResponse., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['operation_id'] = $operation_id;
 
         return $this;

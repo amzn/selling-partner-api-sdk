@@ -283,13 +283,14 @@ class SetAppointmentResponse implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be smaller than or equal to 100.');
+            }
+            if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be bigger than or equal to 5.');
+            }
         }
-        if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_id when calling SetAppointmentResponse., must be bigger than or equal to 5.');
-        }
-
         $this->container['appointment_id'] = $appointment_id;
 
         return $this;

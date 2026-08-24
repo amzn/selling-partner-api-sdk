@@ -319,15 +319,17 @@ class ServiceUploadDocument implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($content_type)) {
             throw new \InvalidArgumentException('non-nullable content_type cannot be null');
         }
-        $allowedValues = $this->getContentTypeAllowableValues();
-        if (!in_array($content_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'content_type', must be one of '%s'",
-                    $content_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getContentTypeAllowableValues();
+            if (!in_array($content_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'content_type', must be one of '%s'",
+                        $content_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['content_type'] = $content_type;
 
@@ -352,14 +354,14 @@ class ServiceUploadDocument implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($content_length)) {
             throw new \InvalidArgumentException('non-nullable content_length cannot be null');
         }
-
-        if ($content_length > 5.24288E+6) {
-            throw new \InvalidArgumentException('invalid value for $content_length when calling ServiceUploadDocument., must be smaller than or equal to 5.24288E+6.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($content_length > 5.24288E+6) {
+                throw new \InvalidArgumentException('invalid value for $content_length when calling ServiceUploadDocument., must be smaller than or equal to 5.24288E+6.');
+            }
+            if ($content_length < 1) {
+                throw new \InvalidArgumentException('invalid value for $content_length when calling ServiceUploadDocument., must be bigger than or equal to 1.');
+            }
         }
-        if ($content_length < 1) {
-            throw new \InvalidArgumentException('invalid value for $content_length when calling ServiceUploadDocument., must be bigger than or equal to 1.');
-        }
-
         $this->container['content_length'] = $content_length;
 
         return $this;
@@ -390,11 +392,11 @@ class ServiceUploadDocument implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($content_md5) && (!preg_match('/^[A-Za-z0-9\\\\+\\/]{22}={2}$/', ObjectSerializer::toString($content_md5)))) {
-            throw new \InvalidArgumentException('invalid value for $content_md5 when calling ServiceUploadDocument., must conform to the pattern /^[A-Za-z0-9\\\\+\\/]{22}={2}$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($content_md5) && (!preg_match('/^[A-Za-z0-9\\\\+\\/]{22}={2}$/', ObjectSerializer::toString($content_md5)))) {
+                throw new \InvalidArgumentException('invalid value for $content_md5 when calling ServiceUploadDocument., must conform to the pattern /^[A-Za-z0-9\\\\+\\/]{22}={2}$/.');
+            }
         }
-
         $this->container['content_md5'] = $content_md5;
 
         return $this;

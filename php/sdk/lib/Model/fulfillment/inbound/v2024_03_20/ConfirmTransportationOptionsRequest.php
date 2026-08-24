@@ -261,9 +261,10 @@ class ConfirmTransportationOptionsRequest implements ModelInterface, \ArrayAcces
         if (is_null($transportation_selections)) {
             throw new \InvalidArgumentException('non-nullable transportation_selections cannot be null');
         }
-
-        if (count($transportation_selections) < 1) {
-            throw new \InvalidArgumentException('invalid length for $transportation_selections when calling ConfirmTransportationOptionsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($transportation_selections) < 1) {
+                throw new \InvalidArgumentException('invalid length for $transportation_selections when calling ConfirmTransportationOptionsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['transportation_selections'] = $transportation_selections;
 

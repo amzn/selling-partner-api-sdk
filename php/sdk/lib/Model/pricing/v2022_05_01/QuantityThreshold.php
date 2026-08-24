@@ -294,11 +294,11 @@ class QuantityThreshold implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling QuantityThreshold., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling QuantityThreshold., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['quantity'] = $quantity;
 
         return $this;
