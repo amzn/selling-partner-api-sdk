@@ -377,10 +377,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 30) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Address., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 30) {
+                throw new \InvalidArgumentException('invalid length for $name when calling Address., must be smaller than or equal to 30.');
+            }
         }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -404,10 +405,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($address_line1)) {
             throw new \InvalidArgumentException('non-nullable address_line1 cannot be null');
         }
-        if (mb_strlen($address_line1) > 180) {
-            throw new \InvalidArgumentException('invalid length for $address_line1 when calling Address., must be smaller than or equal to 180.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($address_line1) > 180) {
+                throw new \InvalidArgumentException('invalid length for $address_line1 when calling Address., must be smaller than or equal to 180.');
+            }
         }
-
         $this->container['address_line1'] = $address_line1;
 
         return $this;
@@ -438,10 +440,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($address_line2) && (mb_strlen($address_line2) > 60)) {
+                throw new \InvalidArgumentException('invalid length for $address_line2 when calling Address., must be smaller than or equal to 60.');
+            }
         }
-
         $this->container['address_line2'] = $address_line2;
 
         return $this;
@@ -472,10 +475,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($address_line3) && (mb_strlen($address_line3) > 60)) {
-            throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be smaller than or equal to 60.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($address_line3) && (mb_strlen($address_line3) > 60)) {
+                throw new \InvalidArgumentException('invalid length for $address_line3 when calling Address., must be smaller than or equal to 60.');
+            }
         }
-
         $this->container['address_line3'] = $address_line3;
 
         return $this;
@@ -552,10 +556,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($city)) {
             throw new \InvalidArgumentException('non-nullable city cannot be null');
         }
-        if (mb_strlen($city) > 30) {
-            throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($city) > 30) {
+                throw new \InvalidArgumentException('invalid length for $city when calling Address., must be smaller than or equal to 30.');
+            }
         }
-
         $this->container['city'] = $city;
 
         return $this;
@@ -586,10 +591,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) > 30)) {
-            throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling Address., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($state_or_province_code) && (mb_strlen($state_or_province_code) > 30)) {
+                throw new \InvalidArgumentException('invalid length for $state_or_province_code when calling Address., must be smaller than or equal to 30.');
+            }
         }
-
         $this->container['state_or_province_code'] = $state_or_province_code;
 
         return $this;
@@ -613,10 +619,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($postal_code)) {
             throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
         }
-        if (mb_strlen($postal_code) > 30) {
-            throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($postal_code) > 30) {
+                throw new \InvalidArgumentException('invalid length for $postal_code when calling Address., must be smaller than or equal to 30.');
+            }
         }
-
         $this->container['postal_code'] = $postal_code;
 
         return $this;
@@ -663,10 +670,11 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($phone)) {
             throw new \InvalidArgumentException('non-nullable phone cannot be null');
         }
-        if (mb_strlen($phone) > 30) {
-            throw new \InvalidArgumentException('invalid length for $phone when calling Address., must be smaller than or equal to 30.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($phone) > 30) {
+                throw new \InvalidArgumentException('invalid length for $phone when calling Address., must be smaller than or equal to 30.');
+            }
         }
-
         $this->container['phone'] = $phone;
 
         return $this;

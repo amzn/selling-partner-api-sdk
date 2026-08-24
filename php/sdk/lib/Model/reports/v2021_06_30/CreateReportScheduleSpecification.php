@@ -379,12 +379,13 @@ class CreateReportScheduleSpecification implements ModelInterface, \ArrayAccess,
         if (is_null($marketplace_ids)) {
             throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
         }
-
-        if (count($marketplace_ids) > 25) {
-            throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateReportScheduleSpecification., number of items must be less than or equal to 25.');
-        }
-        if (count($marketplace_ids) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_ids when calling CreateReportScheduleSpecification., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($marketplace_ids) > 25) {
+                throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateReportScheduleSpecification., number of items must be less than or equal to 25.');
+            }
+            if (count($marketplace_ids) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_ids when calling CreateReportScheduleSpecification., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 
@@ -441,15 +442,17 @@ class CreateReportScheduleSpecification implements ModelInterface, \ArrayAccess,
         if (is_null($period)) {
             throw new \InvalidArgumentException('non-nullable period cannot be null');
         }
-        $allowedValues = $this->getPeriodAllowableValues();
-        if (!in_array($period, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'period', must be one of '%s'",
-                    $period,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPeriodAllowableValues();
+            if (!in_array($period, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'period', must be one of '%s'",
+                        $period,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['period'] = $period;
 

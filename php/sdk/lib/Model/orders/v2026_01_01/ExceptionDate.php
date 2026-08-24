@@ -330,15 +330,17 @@ class ExceptionDate implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getExceptionDateTypeAllowableValues();
-        if (!is_null($exception_date_type) && !in_array($exception_date_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'exception_date_type', must be one of '%s'",
-                    $exception_date_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getExceptionDateTypeAllowableValues();
+            if (!is_null($exception_date_type) && !in_array($exception_date_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'exception_date_type', must be one of '%s'",
+                        $exception_date_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['exception_date_type'] = $exception_date_type;
 

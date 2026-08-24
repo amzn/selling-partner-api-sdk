@@ -318,13 +318,14 @@ class ContentDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 100) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContentDocument., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 100) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContentDocument., must be smaller than or equal to 100.');
+            }
+            if (mb_strlen($name) < 1) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContentDocument., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($name) < 1) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContentDocument., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -378,11 +379,11 @@ class ContentDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($content_sub_type) && (mb_strlen($content_sub_type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $content_sub_type when calling ContentDocument., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($content_sub_type) && (mb_strlen($content_sub_type) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $content_sub_type when calling ContentDocument., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['content_sub_type'] = $content_sub_type;
 
         return $this;
@@ -406,11 +407,11 @@ class ContentDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($locale)) {
             throw new \InvalidArgumentException('non-nullable locale cannot be null');
         }
-
-        if (mb_strlen($locale) < 5) {
-            throw new \InvalidArgumentException('invalid length for $locale when calling ContentDocument., must be bigger than or equal to 5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($locale) < 5) {
+                throw new \InvalidArgumentException('invalid length for $locale when calling ContentDocument., must be bigger than or equal to 5.');
+            }
         }
-
         $this->container['locale'] = $locale;
 
         return $this;
@@ -434,12 +435,13 @@ class ContentDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($content_module_list)) {
             throw new \InvalidArgumentException('non-nullable content_module_list cannot be null');
         }
-
-        if (count($content_module_list) > 100) {
-            throw new \InvalidArgumentException('invalid value for $content_module_list when calling ContentDocument., number of items must be less than or equal to 100.');
-        }
-        if (count($content_module_list) < 1) {
-            throw new \InvalidArgumentException('invalid length for $content_module_list when calling ContentDocument., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($content_module_list) > 100) {
+                throw new \InvalidArgumentException('invalid value for $content_module_list when calling ContentDocument., number of items must be less than or equal to 100.');
+            }
+            if (count($content_module_list) < 1) {
+                throw new \InvalidArgumentException('invalid length for $content_module_list when calling ContentDocument., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['content_module_list'] = $content_module_list;
 

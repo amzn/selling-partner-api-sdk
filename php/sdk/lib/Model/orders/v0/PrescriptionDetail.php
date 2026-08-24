@@ -376,11 +376,11 @@ class PrescriptionDetail implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($written_quantity)) {
             throw new \InvalidArgumentException('non-nullable written_quantity cannot be null');
         }
-
-        if ($written_quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $written_quantity when calling PrescriptionDetail., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($written_quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $written_quantity when calling PrescriptionDetail., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['written_quantity'] = $written_quantity;
 
         return $this;
@@ -404,11 +404,11 @@ class PrescriptionDetail implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($total_refills_authorized)) {
             throw new \InvalidArgumentException('non-nullable total_refills_authorized cannot be null');
         }
-
-        if ($total_refills_authorized < 0) {
-            throw new \InvalidArgumentException('invalid value for $total_refills_authorized when calling PrescriptionDetail., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($total_refills_authorized < 0) {
+                throw new \InvalidArgumentException('invalid value for $total_refills_authorized when calling PrescriptionDetail., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['total_refills_authorized'] = $total_refills_authorized;
 
         return $this;
@@ -432,11 +432,11 @@ class PrescriptionDetail implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($refills_remaining)) {
             throw new \InvalidArgumentException('non-nullable refills_remaining cannot be null');
         }
-
-        if ($refills_remaining < 0) {
-            throw new \InvalidArgumentException('invalid value for $refills_remaining when calling PrescriptionDetail., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($refills_remaining < 0) {
+                throw new \InvalidArgumentException('invalid value for $refills_remaining when calling PrescriptionDetail., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['refills_remaining'] = $refills_remaining;
 
         return $this;

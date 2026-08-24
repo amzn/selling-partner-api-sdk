@@ -567,15 +567,17 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($transaction_type)) {
             throw new \InvalidArgumentException('non-nullable transaction_type cannot be null');
         }
-        $allowedValues = $this->getTransactionTypeAllowableValues();
-        if (!in_array($transaction_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'transaction_type', must be one of '%s'",
-                    $transaction_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getTransactionTypeAllowableValues();
+            if (!in_array($transaction_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'transaction_type', must be one of '%s'",
+                        $transaction_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['transaction_type'] = $transaction_type;
 
@@ -672,15 +674,17 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getCurrentShipmentStatusAllowableValues();
-        if (!is_null($current_shipment_status) && !in_array($current_shipment_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'current_shipment_status', must be one of '%s'",
-                    $current_shipment_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCurrentShipmentStatusAllowableValues();
+            if (!is_null($current_shipment_status) && !in_array($current_shipment_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'current_shipment_status', must be one of '%s'",
+                        $current_shipment_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['current_shipment_status'] = $current_shipment_status;
 
@@ -886,15 +890,17 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipmentFreightTermAllowableValues();
-        if (!is_null($shipment_freight_term) && !in_array($shipment_freight_term, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_freight_term', must be one of '%s'",
-                    $shipment_freight_term,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentFreightTermAllowableValues();
+            if (!is_null($shipment_freight_term) && !in_array($shipment_freight_term, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_freight_term', must be one of '%s'",
+                        $shipment_freight_term,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_freight_term'] = $shipment_freight_term;
 

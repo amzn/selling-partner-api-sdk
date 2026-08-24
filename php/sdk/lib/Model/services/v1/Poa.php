@@ -356,9 +356,10 @@ class Poa implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($technicians) && (count($technicians) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $technicians when calling Poa., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($technicians) && (count($technicians) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $technicians when calling Poa., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['technicians'] = $technicians;
 
@@ -390,11 +391,11 @@ class Poa implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($uploading_technician) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($uploading_technician)))) {
-            throw new \InvalidArgumentException('invalid value for $uploading_technician when calling Poa., must conform to the pattern /^[A-Z0-9]*$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($uploading_technician) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($uploading_technician)))) {
+                throw new \InvalidArgumentException('invalid value for $uploading_technician when calling Poa., must conform to the pattern /^[A-Z0-9]*$/.');
+            }
         }
-
         $this->container['uploading_technician'] = $uploading_technician;
 
         return $this;
@@ -455,15 +456,17 @@ class Poa implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPoaTypeAllowableValues();
-        if (!is_null($poa_type) && !in_array($poa_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'poa_type', must be one of '%s'",
-                    $poa_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPoaTypeAllowableValues();
+            if (!is_null($poa_type) && !in_array($poa_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'poa_type', must be one of '%s'",
+                        $poa_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['poa_type'] = $poa_type;
 

@@ -313,15 +313,17 @@ class TaxCollection implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getModelAllowableValues();
-        if (!is_null($model) && !in_array($model, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'model', must be one of '%s'",
-                    $model,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getModelAllowableValues();
+            if (!is_null($model) && !in_array($model, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'model', must be one of '%s'",
+                        $model,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['model'] = $model;
 
@@ -353,15 +355,17 @@ class TaxCollection implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!is_null($responsible_party) && !in_array($responsible_party, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'responsible_party', must be one of '%s'",
-                    $responsible_party,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getResponsiblePartyAllowableValues();
+            if (!is_null($responsible_party) && !in_array($responsible_party, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'responsible_party', must be one of '%s'",
+                        $responsible_party,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['responsible_party'] = $responsible_party;
 

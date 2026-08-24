@@ -346,11 +346,11 @@ class ParkingWithAddressConfiguration implements ModelInterface, \ArrayAccess, \
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($number_of_parking_spots) && ($number_of_parking_spots < 0)) {
-            throw new \InvalidArgumentException('invalid value for $number_of_parking_spots when calling ParkingWithAddressConfiguration., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($number_of_parking_spots) && ($number_of_parking_spots < 0)) {
+                throw new \InvalidArgumentException('invalid value for $number_of_parking_spots when calling ParkingWithAddressConfiguration., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['number_of_parking_spots'] = $number_of_parking_spots;
 
         return $this;

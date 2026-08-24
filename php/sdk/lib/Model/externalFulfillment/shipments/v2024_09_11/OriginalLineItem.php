@@ -328,9 +328,10 @@ class OriginalLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($charges)) {
             throw new \InvalidArgumentException('non-nullable charges cannot be null');
         }
-
-        if (count($charges) < 1) {
-            throw new \InvalidArgumentException('invalid length for $charges when calling OriginalLineItem., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($charges) < 1) {
+                throw new \InvalidArgumentException('invalid length for $charges when calling OriginalLineItem., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['charges'] = $charges;
 

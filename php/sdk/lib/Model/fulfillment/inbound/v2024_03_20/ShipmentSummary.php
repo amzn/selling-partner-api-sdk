@@ -287,16 +287,17 @@ class ShipmentSummary implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($shipment_id)) {
             throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
         }
-        if (mb_strlen($shipment_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentSummary., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($shipment_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentSummary., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($shipment_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentSummary., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id))) {
+                throw new \InvalidArgumentException('invalid value for $shipment_id when calling ShipmentSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($shipment_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling ShipmentSummary., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id))) {
-            throw new \InvalidArgumentException('invalid value for $shipment_id when calling ShipmentSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['shipment_id'] = $shipment_id;
 
         return $this;
@@ -320,13 +321,14 @@ class ShipmentSummary implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        if (mb_strlen($status) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $status when calling ShipmentSummary., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($status) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $status when calling ShipmentSummary., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($status) < 1) {
+                throw new \InvalidArgumentException('invalid length for $status when calling ShipmentSummary., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($status) < 1) {
-            throw new \InvalidArgumentException('invalid length for $status when calling ShipmentSummary., must be bigger than or equal to 1.');
-        }
-
         $this->container['status'] = $status;
 
         return $this;

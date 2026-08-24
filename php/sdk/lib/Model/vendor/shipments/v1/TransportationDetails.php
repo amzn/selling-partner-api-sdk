@@ -414,15 +414,17 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipModeAllowableValues();
-        if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ship_mode', must be one of '%s'",
-                    $ship_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipModeAllowableValues();
+            if (!is_null($ship_mode) && !in_array($ship_mode, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'ship_mode', must be one of '%s'",
+                        $ship_mode,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['ship_mode'] = $ship_mode;
 
@@ -458,15 +460,17 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getTransportationModeAllowableValues();
-        if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
-                    $transportation_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getTransportationModeAllowableValues();
+            if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
+                        $transportation_mode,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['transportation_mode'] = $transportation_mode;
 

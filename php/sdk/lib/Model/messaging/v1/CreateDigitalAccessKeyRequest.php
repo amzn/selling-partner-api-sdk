@@ -276,13 +276,14 @@ class CreateDigitalAccessKeyRequest implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($text) && (mb_strlen($text) > 400)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be smaller than or equal to 400.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($text) && (mb_strlen($text) > 400)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be smaller than or equal to 400.');
+            }
+            if (!is_null($text) && (mb_strlen($text) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($text) && (mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateDigitalAccessKeyRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['text'] = $text;
 
         return $this;

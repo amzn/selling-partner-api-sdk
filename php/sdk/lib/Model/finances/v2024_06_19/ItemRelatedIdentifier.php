@@ -297,15 +297,17 @@ class ItemRelatedIdentifier implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getItemRelatedIdentifierNameAllowableValues();
-        if (!is_null($item_related_identifier_name) && !in_array($item_related_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_related_identifier_name', must be one of '%s'",
-                    $item_related_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getItemRelatedIdentifierNameAllowableValues();
+            if (!is_null($item_related_identifier_name) && !in_array($item_related_identifier_name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'item_related_identifier_name', must be one of '%s'",
+                        $item_related_identifier_name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['item_related_identifier_name'] = $item_related_identifier_name;
 

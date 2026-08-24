@@ -284,15 +284,17 @@ class BusinessContext implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getStoreNameAllowableValues();
-        if (!is_null($store_name) && !in_array($store_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'store_name', must be one of '%s'",
-                    $store_name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStoreNameAllowableValues();
+            if (!is_null($store_name) && !in_array($store_name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'store_name', must be one of '%s'",
+                        $store_name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['store_name'] = $store_name;
 

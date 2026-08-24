@@ -310,13 +310,14 @@ class ContentMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 100) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContentMetadata., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 100) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContentMetadata., must be smaller than or equal to 100.');
+            }
+            if (mb_strlen($name) < 1) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContentMetadata., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($name) < 1) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContentMetadata., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -340,11 +341,11 @@ class ContentMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling ContentMetadata., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling ContentMetadata., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -391,7 +392,8 @@ class ContentMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($badge_set)) {
             throw new \InvalidArgumentException('non-nullable badge_set cannot be null');
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['badge_set'] = $badge_set;
 
         return $this;

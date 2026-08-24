@@ -309,13 +309,14 @@ class CreateScheduledPackageRequest implements ModelInterface, \ArrayAccess, \Js
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-        if (mb_strlen($marketplace_id) > 255) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackageRequest., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) > 255) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackageRequest., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackageRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackageRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;

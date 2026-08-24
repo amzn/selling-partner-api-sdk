@@ -298,11 +298,11 @@ class ForecastDeliveries implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next15_days_deliveries) && ($next15_days_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next15_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next15_days_deliveries) && ($next15_days_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next15_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next15_days_deliveries'] = $next15_days_deliveries;
 
         return $this;
@@ -333,11 +333,11 @@ class ForecastDeliveries implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next30_days_deliveries) && ($next30_days_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next30_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next30_days_deliveries) && ($next30_days_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next30_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next30_days_deliveries'] = $next30_days_deliveries;
 
         return $this;
@@ -368,11 +368,11 @@ class ForecastDeliveries implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next60_days_deliveries) && ($next60_days_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next60_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next60_days_deliveries) && ($next60_days_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next60_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next60_days_deliveries'] = $next60_days_deliveries;
 
         return $this;
@@ -403,11 +403,11 @@ class ForecastDeliveries implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next90_days_deliveries) && ($next90_days_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next90_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next90_days_deliveries) && ($next90_days_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next90_days_deliveries when calling ForecastDeliveries., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next90_days_deliveries'] = $next90_days_deliveries;
 
         return $this;

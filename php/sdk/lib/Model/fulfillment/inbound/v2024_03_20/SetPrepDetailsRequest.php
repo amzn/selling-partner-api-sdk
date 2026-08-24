@@ -283,13 +283,14 @@ class SetPrepDetailsRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-        if (mb_strlen($marketplace_id) > 20) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling SetPrepDetailsRequest., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) > 20) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling SetPrepDetailsRequest., must be smaller than or equal to 20.');
+            }
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling SetPrepDetailsRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling SetPrepDetailsRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -313,12 +314,13 @@ class SetPrepDetailsRequest implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($msku_prep_details)) {
             throw new \InvalidArgumentException('non-nullable msku_prep_details cannot be null');
         }
-
-        if (count($msku_prep_details) > 100) {
-            throw new \InvalidArgumentException('invalid value for $msku_prep_details when calling SetPrepDetailsRequest., number of items must be less than or equal to 100.');
-        }
-        if (count($msku_prep_details) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku_prep_details when calling SetPrepDetailsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($msku_prep_details) > 100) {
+                throw new \InvalidArgumentException('invalid value for $msku_prep_details when calling SetPrepDetailsRequest., number of items must be less than or equal to 100.');
+            }
+            if (count($msku_prep_details) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku_prep_details when calling SetPrepDetailsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['msku_prep_details'] = $msku_prep_details;
 

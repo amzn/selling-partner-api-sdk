@@ -280,16 +280,17 @@ class AppointmentSlot implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($slot_id)) {
             throw new \InvalidArgumentException('non-nullable slot_id cannot be null');
         }
-        if (mb_strlen($slot_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $slot_id when calling AppointmentSlot., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($slot_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $slot_id when calling AppointmentSlot., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($slot_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $slot_id when calling AppointmentSlot., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($slot_id))) {
+                throw new \InvalidArgumentException('invalid value for $slot_id when calling AppointmentSlot., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($slot_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $slot_id when calling AppointmentSlot., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($slot_id))) {
-            throw new \InvalidArgumentException('invalid value for $slot_id when calling AppointmentSlot., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['slot_id'] = $slot_id;
 
         return $this;

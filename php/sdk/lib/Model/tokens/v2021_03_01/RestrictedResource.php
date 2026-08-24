@@ -304,15 +304,17 @@ class RestrictedResource implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($method)) {
             throw new \InvalidArgumentException('non-nullable method cannot be null');
         }
-        $allowedValues = $this->getMethodAllowableValues();
-        if (!in_array($method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'method', must be one of '%s'",
-                    $method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getMethodAllowableValues();
+            if (!in_array($method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'method', must be one of '%s'",
+                        $method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['method'] = $method;
 

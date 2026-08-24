@@ -343,13 +343,14 @@ class SelfShipAppointmentDetails implements ModelInterface, \ArrayAccess, \JsonS
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($appointment_status) && (mb_strlen($appointment_status) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($appointment_status) && (mb_strlen($appointment_status) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($appointment_status) && (mb_strlen($appointment_status) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($appointment_status) && (mb_strlen($appointment_status) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_status when calling SelfShipAppointmentDetails., must be bigger than or equal to 1.');
-        }
-
         $this->container['appointment_status'] = $appointment_status;
 
         return $this;

@@ -283,14 +283,14 @@ class PlainTextItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($position)) {
             throw new \InvalidArgumentException('non-nullable position cannot be null');
         }
-
-        if ($position > 100) {
-            throw new \InvalidArgumentException('invalid value for $position when calling PlainTextItem., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($position > 100) {
+                throw new \InvalidArgumentException('invalid value for $position when calling PlainTextItem., must be smaller than or equal to 100.');
+            }
+            if ($position < 1) {
+                throw new \InvalidArgumentException('invalid value for $position when calling PlainTextItem., must be bigger than or equal to 1.');
+            }
         }
-        if ($position < 1) {
-            throw new \InvalidArgumentException('invalid value for $position when calling PlainTextItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['position'] = $position;
 
         return $this;
@@ -314,13 +314,14 @@ class PlainTextItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        if (mb_strlen($value) > 250) {
-            throw new \InvalidArgumentException('invalid length for $value when calling PlainTextItem., must be smaller than or equal to 250.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($value) > 250) {
+                throw new \InvalidArgumentException('invalid length for $value when calling PlainTextItem., must be smaller than or equal to 250.');
+            }
+            if (mb_strlen($value) < 1) {
+                throw new \InvalidArgumentException('invalid length for $value when calling PlainTextItem., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($value) < 1) {
-            throw new \InvalidArgumentException('invalid length for $value when calling PlainTextItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['value'] = $value;
 
         return $this;

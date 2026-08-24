@@ -312,13 +312,14 @@ class Incentive implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($description)) {
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        if (mb_strlen($description) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($description) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($description) < 1) {
+                throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($description) < 1) {
-            throw new \InvalidArgumentException('invalid length for $description when calling Incentive., must be bigger than or equal to 1.');
-        }
-
         $this->container['description'] = $description;
 
         return $this;
@@ -342,13 +343,14 @@ class Incentive implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($target)) {
             throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
-        if (mb_strlen($target) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($target) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($target) < 1) {
+                throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($target) < 1) {
-            throw new \InvalidArgumentException('invalid length for $target when calling Incentive., must be bigger than or equal to 1.');
-        }
-
         $this->container['target'] = $target;
 
         return $this;
@@ -372,13 +374,14 @@ class Incentive implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        if (mb_strlen($type) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($type) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($type) < 1) {
+                throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($type) < 1) {
-            throw new \InvalidArgumentException('invalid length for $type when calling Incentive., must be bigger than or equal to 1.');
-        }
-
         $this->container['type'] = $type;
 
         return $this;

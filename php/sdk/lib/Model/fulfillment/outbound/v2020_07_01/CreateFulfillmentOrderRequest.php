@@ -430,10 +430,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, \ArrayAccess, \Js
         if (is_null($seller_fulfillment_order_id)) {
             throw new \InvalidArgumentException('non-nullable seller_fulfillment_order_id cannot be null');
         }
-        if (mb_strlen($seller_fulfillment_order_id) > 40) {
-            throw new \InvalidArgumentException('invalid length for $seller_fulfillment_order_id when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($seller_fulfillment_order_id) > 40) {
+                throw new \InvalidArgumentException('invalid length for $seller_fulfillment_order_id when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['seller_fulfillment_order_id'] = $seller_fulfillment_order_id;
 
         return $this;
@@ -457,10 +458,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, \ArrayAccess, \Js
         if (is_null($displayable_order_id)) {
             throw new \InvalidArgumentException('non-nullable displayable_order_id cannot be null');
         }
-        if (mb_strlen($displayable_order_id) > 40) {
-            throw new \InvalidArgumentException('invalid length for $displayable_order_id when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($displayable_order_id) > 40) {
+                throw new \InvalidArgumentException('invalid length for $displayable_order_id when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['displayable_order_id'] = $displayable_order_id;
 
         return $this;
@@ -507,10 +509,11 @@ class CreateFulfillmentOrderRequest implements ModelInterface, \ArrayAccess, \Js
         if (is_null($displayable_order_comment)) {
             throw new \InvalidArgumentException('non-nullable displayable_order_comment cannot be null');
         }
-        if (mb_strlen($displayable_order_comment) > 750) {
-            throw new \InvalidArgumentException('invalid length for $displayable_order_comment when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 750.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($displayable_order_comment) > 750) {
+                throw new \InvalidArgumentException('invalid length for $displayable_order_comment when calling CreateFulfillmentOrderRequest., must be smaller than or equal to 750.');
+            }
         }
-
         $this->container['displayable_order_comment'] = $displayable_order_comment;
 
         return $this;

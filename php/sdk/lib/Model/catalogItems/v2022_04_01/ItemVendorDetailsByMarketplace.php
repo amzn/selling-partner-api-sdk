@@ -557,15 +557,17 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getReplenishmentCategoryAllowableValues();
-        if (!is_null($replenishment_category) && !in_array($replenishment_category, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'replenishment_category', must be one of '%s'",
-                    $replenishment_category,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReplenishmentCategoryAllowableValues();
+            if (!is_null($replenishment_category) && !in_array($replenishment_category, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'replenishment_category', must be one of '%s'",
+                        $replenishment_category,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['replenishment_category'] = $replenishment_category;
 

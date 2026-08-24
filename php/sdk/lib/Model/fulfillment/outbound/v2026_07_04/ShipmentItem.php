@@ -378,10 +378,11 @@ class ShipmentItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($package_id) && (mb_strlen($package_id) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling ShipmentItem., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($package_id) && (mb_strlen($package_id) > 40)) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling ShipmentItem., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['package_id'] = $package_id;
 
         return $this;

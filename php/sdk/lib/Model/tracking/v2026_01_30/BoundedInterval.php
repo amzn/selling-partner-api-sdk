@@ -275,11 +275,11 @@ class BoundedInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($start_time)) {
             throw new \InvalidArgumentException('non-nullable start_time cannot be null');
         }
-
-        if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($start_time))) {
-            throw new \InvalidArgumentException('invalid value for $start_time when calling BoundedInterval., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($start_time))) {
+                throw new \InvalidArgumentException('invalid value for $start_time when calling BoundedInterval., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+            }
         }
-
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -303,11 +303,11 @@ class BoundedInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($end_time)) {
             throw new \InvalidArgumentException('non-nullable end_time cannot be null');
         }
-
-        if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($end_time))) {
-            throw new \InvalidArgumentException('invalid value for $end_time when calling BoundedInterval., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($end_time))) {
+                throw new \InvalidArgumentException('invalid value for $end_time when calling BoundedInterval., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+            }
         }
-
         $this->container['end_time'] = $end_time;
 
         return $this;

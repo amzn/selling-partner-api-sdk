@@ -316,15 +316,17 @@ class Distance implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($distance_unit)) {
             throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDistanceUnitAllowableValues();
+            if (!in_array($distance_unit, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'distance_unit', must be one of '%s'",
+                        $distance_unit,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['distance_unit'] = $distance_unit;
 

@@ -306,13 +306,14 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($filter_expression) && (mb_strlen($filter_expression) > 256)) {
-            throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($filter_expression) && (mb_strlen($filter_expression) > 256)) {
+                throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be smaller than or equal to 256.');
+            }
+            if (!is_null($filter_expression) && (mb_strlen($filter_expression) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($filter_expression) && (mb_strlen($filter_expression) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be bigger than or equal to 1.');
-        }
-
         $this->container['filter_expression'] = $filter_expression;
 
         return $this;

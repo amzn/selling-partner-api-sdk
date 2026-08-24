@@ -272,11 +272,11 @@ class Duration implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($value) && ($value < 0)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling Duration., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($value) && ($value < 0)) {
+                throw new \InvalidArgumentException('invalid value for $value when calling Duration., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['value'] = $value;
 
         return $this;

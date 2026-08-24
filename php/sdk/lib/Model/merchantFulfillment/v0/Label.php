@@ -300,10 +300,11 @@ class Label implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($custom_text_for_label) && (mb_strlen($custom_text_for_label) > 14)) {
-            throw new \InvalidArgumentException('invalid length for $custom_text_for_label when calling Label., must be smaller than or equal to 14.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($custom_text_for_label) && (mb_strlen($custom_text_for_label) > 14)) {
+                throw new \InvalidArgumentException('invalid length for $custom_text_for_label when calling Label., must be smaller than or equal to 14.');
+            }
         }
-
         $this->container['custom_text_for_label'] = $custom_text_for_label;
 
         return $this;

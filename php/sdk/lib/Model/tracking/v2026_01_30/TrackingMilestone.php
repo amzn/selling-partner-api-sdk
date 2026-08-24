@@ -331,11 +331,11 @@ class TrackingMilestone implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($occurred_at)) {
             throw new \InvalidArgumentException('non-nullable occurred_at cannot be null');
         }
-
-        if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($occurred_at))) {
-            throw new \InvalidArgumentException('invalid value for $occurred_at when calling TrackingMilestone., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($occurred_at))) {
+                throw new \InvalidArgumentException('invalid value for $occurred_at when calling TrackingMilestone., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+            }
         }
-
         $this->container['occurred_at'] = $occurred_at;
 
         return $this;

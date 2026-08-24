@@ -306,13 +306,14 @@ class FreightInformation implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($freight_class) && (mb_strlen($freight_class) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($freight_class) && (mb_strlen($freight_class) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($freight_class) && (mb_strlen($freight_class) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($freight_class) && (mb_strlen($freight_class) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $freight_class when calling FreightInformation., must be bigger than or equal to 1.');
-        }
-
         $this->container['freight_class'] = $freight_class;
 
         return $this;

@@ -472,9 +472,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         if (is_null($program_types)) {
             throw new \InvalidArgumentException('non-nullable program_types cannot be null');
         }
-
-        if (count($program_types) < 1) {
-            throw new \InvalidArgumentException('invalid length for $program_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($program_types) < 1) {
+                throw new \InvalidArgumentException('invalid length for $program_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['program_types'] = $program_types;
 
@@ -506,12 +507,13 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($asins) && (count($asins) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $asins when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($asins) && (count($asins) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $asins when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($asins) && (count($asins) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $asins when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($asins) && (count($asins) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $asins when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['asins'] = $asins;
 
@@ -543,12 +545,13 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($skus) && (count($skus) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $skus when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($skus) && (count($skus) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $skus when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($skus) && (count($skus) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $skus when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($skus) && (count($skus) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $skus when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['skus'] = $skus;
 
@@ -580,12 +583,13 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) > 2)) {
-            throw new \InvalidArgumentException('invalid value for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 2.');
-        }
-        if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) > 2)) {
+                throw new \InvalidArgumentException('invalid value for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 2.');
+            }
+            if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['fulfillment_channel_types'] = $fulfillment_channel_types;
 
@@ -617,12 +621,13 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($brand_names) && (count($brand_names) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($brand_names) && (count($brand_names) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($brand_names) && (count($brand_names) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($brand_names) && (count($brand_names) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['brand_names'] = $brand_names;
 
@@ -654,12 +659,13 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($product_groups) && (count($product_groups) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
-        }
-        if (!is_null($product_groups) && (count($product_groups) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($product_groups) && (count($product_groups) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+            }
+            if (!is_null($product_groups) && (count($product_groups) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['product_groups'] = $product_groups;
 

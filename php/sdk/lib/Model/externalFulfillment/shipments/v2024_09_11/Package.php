@@ -448,9 +448,10 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($hazmat_labels) && (count($hazmat_labels) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $hazmat_labels when calling Package., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($hazmat_labels) && (count($hazmat_labels) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $hazmat_labels when calling Package., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['hazmat_labels'] = $hazmat_labels;
 
@@ -505,15 +506,17 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStatusAllowableValues();
+            if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'status', must be one of '%s'",
+                        $status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['status'] = $status;
 
@@ -545,15 +548,17 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPackageHandlingRequirementsAllowableValues();
-        if (!is_null($package_handling_requirements) && !in_array($package_handling_requirements, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'package_handling_requirements', must be one of '%s'",
-                    $package_handling_requirements,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPackageHandlingRequirementsAllowableValues();
+            if (!is_null($package_handling_requirements) && !in_array($package_handling_requirements, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'package_handling_requirements', must be one of '%s'",
+                        $package_handling_requirements,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['package_handling_requirements'] = $package_handling_requirements;
 

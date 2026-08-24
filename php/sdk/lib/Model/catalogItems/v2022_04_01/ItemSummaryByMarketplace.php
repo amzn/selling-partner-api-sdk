@@ -629,15 +629,17 @@ class ItemSummaryByMarketplace implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getItemClassificationAllowableValues();
-        if (!is_null($item_classification) && !in_array($item_classification, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_classification', must be one of '%s'",
-                    $item_classification,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getItemClassificationAllowableValues();
+            if (!is_null($item_classification) && !in_array($item_classification, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'item_classification', must be one of '%s'",
+                        $item_classification,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['item_classification'] = $item_classification;
 

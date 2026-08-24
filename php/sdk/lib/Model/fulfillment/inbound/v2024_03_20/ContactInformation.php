@@ -305,13 +305,14 @@ class ContactInformation implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($email) && (mb_strlen($email) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($email) && (mb_strlen($email) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($email) && (mb_strlen($email) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($email) && (mb_strlen($email) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $email when calling ContactInformation., must be bigger than or equal to 1.');
-        }
-
         $this->container['email'] = $email;
 
         return $this;
@@ -335,13 +336,14 @@ class ContactInformation implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 50) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContactInformation., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 50) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContactInformation., must be smaller than or equal to 50.');
+            }
+            if (mb_strlen($name) < 1) {
+                throw new \InvalidArgumentException('invalid length for $name when calling ContactInformation., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($name) < 1) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ContactInformation., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
@@ -365,13 +367,14 @@ class ContactInformation implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($phone_number)) {
             throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-        if (mb_strlen($phone_number) > 20) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling ContactInformation., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($phone_number) > 20) {
+                throw new \InvalidArgumentException('invalid length for $phone_number when calling ContactInformation., must be smaller than or equal to 20.');
+            }
+            if (mb_strlen($phone_number) < 1) {
+                throw new \InvalidArgumentException('invalid length for $phone_number when calling ContactInformation., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($phone_number) < 1) {
-            throw new \InvalidArgumentException('invalid length for $phone_number when calling ContactInformation., must be bigger than or equal to 1.');
-        }
-
         $this->container['phone_number'] = $phone_number;
 
         return $this;

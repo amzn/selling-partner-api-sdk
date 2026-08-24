@@ -339,11 +339,11 @@ class DestinationDetails implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($shipment_id) && (mb_strlen($shipment_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling DestinationDetails., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipment_id) && (mb_strlen($shipment_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling DestinationDetails., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['shipment_id'] = $shipment_id;
 
         return $this;

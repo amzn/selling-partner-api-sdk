@@ -269,9 +269,10 @@ class ShipLabelsInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($package_ids)) {
             throw new \InvalidArgumentException('non-nullable package_ids cannot be null');
         }
-
-        if (count($package_ids) > 50) {
-            throw new \InvalidArgumentException('invalid value for $package_ids when calling ShipLabelsInput., number of items must be less than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($package_ids) > 50) {
+                throw new \InvalidArgumentException('invalid value for $package_ids when calling ShipLabelsInput., number of items must be less than or equal to 50.');
+            }
         }
         $this->container['package_ids'] = $package_ids;
 

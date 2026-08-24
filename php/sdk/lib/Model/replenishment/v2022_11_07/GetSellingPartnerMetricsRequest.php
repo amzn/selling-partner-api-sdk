@@ -376,9 +376,10 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($metrics) && (count($metrics) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $metrics when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($metrics) && (count($metrics) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $metrics when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['metrics'] = $metrics;
 
@@ -479,9 +480,10 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         if (is_null($program_types)) {
             throw new \InvalidArgumentException('non-nullable program_types cannot be null');
         }
-
-        if (count($program_types) < 1) {
-            throw new \InvalidArgumentException('invalid length for $program_types when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($program_types) < 1) {
+                throw new \InvalidArgumentException('invalid length for $program_types when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['program_types'] = $program_types;
 

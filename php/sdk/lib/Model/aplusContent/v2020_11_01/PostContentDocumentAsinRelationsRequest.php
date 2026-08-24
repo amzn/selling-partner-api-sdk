@@ -256,7 +256,8 @@ class PostContentDocumentAsinRelationsRequest implements ModelInterface, \ArrayA
         if (is_null($asin_set)) {
             throw new \InvalidArgumentException('non-nullable asin_set cannot be null');
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['asin_set'] = $asin_set;
 
         return $this;

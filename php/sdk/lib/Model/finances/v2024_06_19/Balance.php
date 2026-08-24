@@ -357,15 +357,17 @@ class Balance implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getBalanceTypeAllowableValues();
-        if (!is_null($balance_type) && !in_array($balance_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'balance_type', must be one of '%s'",
-                    $balance_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getBalanceTypeAllowableValues();
+            if (!is_null($balance_type) && !in_array($balance_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'balance_type', must be one of '%s'",
+                        $balance_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['balance_type'] = $balance_type;
 

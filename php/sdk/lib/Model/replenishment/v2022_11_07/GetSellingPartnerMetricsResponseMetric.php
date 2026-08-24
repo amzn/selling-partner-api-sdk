@@ -676,14 +676,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos < 0)) {
+                throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos < 0)) {
-            throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['not_delivered_due_to_oos'] = $not_delivered_due_to_oos;
 
         return $this;
@@ -714,11 +714,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($total_subscriptions_revenue) && ($total_subscriptions_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $total_subscriptions_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($total_subscriptions_revenue) && ($total_subscriptions_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $total_subscriptions_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['total_subscriptions_revenue'] = $total_subscriptions_revenue;
 
         return $this;
@@ -749,11 +749,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($shipped_subscription_units) && ($shipped_subscription_units < 0)) {
-            throw new \InvalidArgumentException('invalid value for $shipped_subscription_units when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipped_subscription_units) && ($shipped_subscription_units < 0)) {
+                throw new \InvalidArgumentException('invalid value for $shipped_subscription_units when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['shipped_subscription_units'] = $shipped_subscription_units;
 
         return $this;
@@ -784,11 +784,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($active_subscriptions) && ($active_subscriptions < 0)) {
-            throw new \InvalidArgumentException('invalid value for $active_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($active_subscriptions) && ($active_subscriptions < 0)) {
+                throw new \InvalidArgumentException('invalid value for $active_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['active_subscriptions'] = $active_subscriptions;
 
         return $this;
@@ -819,11 +819,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subscriber_average_revenue) && ($subscriber_average_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subscriber_average_revenue) && ($subscriber_average_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['subscriber_average_revenue'] = $subscriber_average_revenue;
 
         return $this;
@@ -854,11 +854,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($non_subscriber_average_revenue) && ($non_subscriber_average_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $non_subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($non_subscriber_average_revenue) && ($non_subscriber_average_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $non_subscriber_average_revenue when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['non_subscriber_average_revenue'] = $non_subscriber_average_revenue;
 
         return $this;
@@ -889,11 +889,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($lost_revenue_due_to_oos) && ($lost_revenue_due_to_oos < 0)) {
-            throw new \InvalidArgumentException('invalid value for $lost_revenue_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($lost_revenue_due_to_oos) && ($lost_revenue_due_to_oos < 0)) {
+                throw new \InvalidArgumentException('invalid value for $lost_revenue_due_to_oos when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['lost_revenue_due_to_oos'] = $lost_revenue_due_to_oos;
 
         return $this;
@@ -924,11 +924,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subscriber_average_reorders) && ($subscriber_average_reorders < 0)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subscriber_average_reorders) && ($subscriber_average_reorders < 0)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['subscriber_average_reorders'] = $subscriber_average_reorders;
 
         return $this;
@@ -959,11 +959,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($non_subscriber_average_reorders) && ($non_subscriber_average_reorders < 0)) {
-            throw new \InvalidArgumentException('invalid value for $non_subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($non_subscriber_average_reorders) && ($non_subscriber_average_reorders < 0)) {
+                throw new \InvalidArgumentException('invalid value for $non_subscriber_average_reorders when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['non_subscriber_average_reorders'] = $non_subscriber_average_reorders;
 
         return $this;
@@ -994,14 +994,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration < 0)) {
+                throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration < 0)) {
-            throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['coupons_revenue_penetration'] = $coupons_revenue_penetration;
 
         return $this;
@@ -1032,11 +1032,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_from_subscriptions_with_multiple_deliveries) && ($revenue_from_subscriptions_with_multiple_deliveries < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_from_subscriptions_with_multiple_deliveries when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_from_subscriptions_with_multiple_deliveries) && ($revenue_from_subscriptions_with_multiple_deliveries < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_from_subscriptions_with_multiple_deliveries when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['revenue_from_subscriptions_with_multiple_deliveries'] = $revenue_from_subscriptions_with_multiple_deliveries;
 
         return $this;
@@ -1067,11 +1067,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_from_active_subscriptions_with_single_delivery) && ($revenue_from_active_subscriptions_with_single_delivery < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_from_active_subscriptions_with_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_from_active_subscriptions_with_single_delivery) && ($revenue_from_active_subscriptions_with_single_delivery < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_from_active_subscriptions_with_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['revenue_from_active_subscriptions_with_single_delivery'] = $revenue_from_active_subscriptions_with_single_delivery;
 
         return $this;
@@ -1102,11 +1102,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_from_cancelled_subscriptions_after_single_delivery) && ($revenue_from_cancelled_subscriptions_after_single_delivery < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_from_cancelled_subscriptions_after_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_from_cancelled_subscriptions_after_single_delivery) && ($revenue_from_cancelled_subscriptions_after_single_delivery < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_from_cancelled_subscriptions_after_single_delivery when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['revenue_from_cancelled_subscriptions_after_single_delivery'] = $revenue_from_cancelled_subscriptions_after_single_delivery;
 
         return $this;
@@ -1137,14 +1137,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days < 0)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($subscriber_retention_for30_days) && ($subscriber_retention_for30_days < 0)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for30_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['subscriber_retention_for30_days'] = $subscriber_retention_for30_days;
 
         return $this;
@@ -1175,14 +1175,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days < 0)) {
+                throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($subscriber_retention_for90_days) && ($subscriber_retention_for90_days < 0)) {
-            throw new \InvalidArgumentException('invalid value for $subscriber_retention_for90_days when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['subscriber_retention_for90_days'] = $subscriber_retention_for90_days;
 
         return $this;
@@ -1213,14 +1213,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration_for0_percent_seller_funding) && ($revenue_penetration_for0_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration_for0_percent_seller_funding'] = $revenue_penetration_for0_percent_seller_funding;
 
         return $this;
@@ -1251,14 +1251,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration_for5_percent_seller_funding) && ($revenue_penetration_for5_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration_for5_percent_seller_funding'] = $revenue_penetration_for5_percent_seller_funding;
 
         return $this;
@@ -1289,14 +1289,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration_for10_percent_seller_funding) && ($revenue_penetration_for10_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration_for10_percent_seller_funding'] = $revenue_penetration_for10_percent_seller_funding;
 
         return $this;
@@ -1327,14 +1327,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration_for5_plus_percent_seller_funding) && ($revenue_penetration_for5_plus_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration_for5_plus_percent_seller_funding'] = $revenue_penetration_for5_plus_percent_seller_funding;
 
         return $this;
@@ -1365,14 +1365,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions < 0)) {
+                throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions < 0)) {
-            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['share_of_coupon_subscriptions'] = $share_of_coupon_subscriptions;
 
         return $this;
@@ -1403,11 +1403,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($non_subscriber_life_time_value_from_otp) && ($non_subscriber_life_time_value_from_otp < 0)) {
-            throw new \InvalidArgumentException('invalid value for $non_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($non_subscriber_life_time_value_from_otp) && ($non_subscriber_life_time_value_from_otp < 0)) {
+                throw new \InvalidArgumentException('invalid value for $non_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['non_subscriber_life_time_value_from_otp'] = $non_subscriber_life_time_value_from_otp;
 
         return $this;
@@ -1438,11 +1438,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($lost_subscriber_life_time_value_from_otp) && ($lost_subscriber_life_time_value_from_otp < 0)) {
-            throw new \InvalidArgumentException('invalid value for $lost_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($lost_subscriber_life_time_value_from_otp) && ($lost_subscriber_life_time_value_from_otp < 0)) {
+                throw new \InvalidArgumentException('invalid value for $lost_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['lost_subscriber_life_time_value_from_otp'] = $lost_subscriber_life_time_value_from_otp;
 
         return $this;
@@ -1473,11 +1473,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($lost_subscriber_life_time_value_from_sns) && ($lost_subscriber_life_time_value_from_sns < 0)) {
-            throw new \InvalidArgumentException('invalid value for $lost_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($lost_subscriber_life_time_value_from_sns) && ($lost_subscriber_life_time_value_from_sns < 0)) {
+                throw new \InvalidArgumentException('invalid value for $lost_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['lost_subscriber_life_time_value_from_sns'] = $lost_subscriber_life_time_value_from_sns;
 
         return $this;
@@ -1508,11 +1508,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($growing_subscriber_life_time_value_from_otp) && ($growing_subscriber_life_time_value_from_otp < 0)) {
-            throw new \InvalidArgumentException('invalid value for $growing_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($growing_subscriber_life_time_value_from_otp) && ($growing_subscriber_life_time_value_from_otp < 0)) {
+                throw new \InvalidArgumentException('invalid value for $growing_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['growing_subscriber_life_time_value_from_otp'] = $growing_subscriber_life_time_value_from_otp;
 
         return $this;
@@ -1543,11 +1543,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($growing_subscriber_life_time_value_from_sns) && ($growing_subscriber_life_time_value_from_sns < 0)) {
-            throw new \InvalidArgumentException('invalid value for $growing_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($growing_subscriber_life_time_value_from_sns) && ($growing_subscriber_life_time_value_from_sns < 0)) {
+                throw new \InvalidArgumentException('invalid value for $growing_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['growing_subscriber_life_time_value_from_sns'] = $growing_subscriber_life_time_value_from_sns;
 
         return $this;
@@ -1578,11 +1578,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($established_subscriber_life_time_value_from_otp) && ($established_subscriber_life_time_value_from_otp < 0)) {
-            throw new \InvalidArgumentException('invalid value for $established_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($established_subscriber_life_time_value_from_otp) && ($established_subscriber_life_time_value_from_otp < 0)) {
+                throw new \InvalidArgumentException('invalid value for $established_subscriber_life_time_value_from_otp when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['established_subscriber_life_time_value_from_otp'] = $established_subscriber_life_time_value_from_otp;
 
         return $this;
@@ -1613,11 +1613,11 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($established_subscriber_life_time_value_from_sns) && ($established_subscriber_life_time_value_from_sns < 0)) {
-            throw new \InvalidArgumentException('invalid value for $established_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($established_subscriber_life_time_value_from_sns) && ($established_subscriber_life_time_value_from_sns < 0)) {
+                throw new \InvalidArgumentException('invalid value for $established_subscriber_life_time_value_from_sns when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['established_subscriber_life_time_value_from_sns'] = $established_subscriber_life_time_value_from_sns;
 
         return $this;
@@ -1648,14 +1648,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($signup_conversion_for0_percent_seller_funding) && ($signup_conversion_for0_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($signup_conversion_for0_percent_seller_funding) && ($signup_conversion_for0_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($signup_conversion_for0_percent_seller_funding) && ($signup_conversion_for0_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($signup_conversion_for0_percent_seller_funding) && ($signup_conversion_for0_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for0_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['signup_conversion_for0_percent_seller_funding'] = $signup_conversion_for0_percent_seller_funding;
 
         return $this;
@@ -1686,14 +1686,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($signup_conversion_for5_percent_seller_funding) && ($signup_conversion_for5_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($signup_conversion_for5_percent_seller_funding) && ($signup_conversion_for5_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($signup_conversion_for5_percent_seller_funding) && ($signup_conversion_for5_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($signup_conversion_for5_percent_seller_funding) && ($signup_conversion_for5_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['signup_conversion_for5_percent_seller_funding'] = $signup_conversion_for5_percent_seller_funding;
 
         return $this;
@@ -1724,14 +1724,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($signup_conversion_for10_percent_seller_funding) && ($signup_conversion_for10_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($signup_conversion_for10_percent_seller_funding) && ($signup_conversion_for10_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($signup_conversion_for10_percent_seller_funding) && ($signup_conversion_for10_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($signup_conversion_for10_percent_seller_funding) && ($signup_conversion_for10_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for10_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['signup_conversion_for10_percent_seller_funding'] = $signup_conversion_for10_percent_seller_funding;
 
         return $this;
@@ -1762,14 +1762,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($signup_conversion_for5_plus_percent_seller_funding) && ($signup_conversion_for5_plus_percent_seller_funding > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($signup_conversion_for5_plus_percent_seller_funding) && ($signup_conversion_for5_plus_percent_seller_funding > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($signup_conversion_for5_plus_percent_seller_funding) && ($signup_conversion_for5_plus_percent_seller_funding < 0)) {
+                throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($signup_conversion_for5_plus_percent_seller_funding) && ($signup_conversion_for5_plus_percent_seller_funding < 0)) {
-            throw new \InvalidArgumentException('invalid value for $signup_conversion_for5_plus_percent_seller_funding when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['signup_conversion_for5_plus_percent_seller_funding'] = $signup_conversion_for5_plus_percent_seller_funding;
 
         return $this;
@@ -1800,14 +1800,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration) && ($revenue_penetration > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration) && ($revenue_penetration > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration) && ($revenue_penetration < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration) && ($revenue_penetration < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration'] = $revenue_penetration;
 
         return $this;

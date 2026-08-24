@@ -946,15 +946,17 @@ class TrackingMilestoneStatus implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'code', must be one of '%s'",
-                    $code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCodeAllowableValues();
+            if (!in_array($code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'code', must be one of '%s'",
+                        $code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['code'] = $code;
 
@@ -986,15 +988,17 @@ class TrackingMilestoneStatus implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getSubCodeAllowableValues();
-        if (!is_null($sub_code) && !in_array($sub_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sub_code', must be one of '%s'",
-                    $sub_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSubCodeAllowableValues();
+            if (!is_null($sub_code) && !in_array($sub_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'sub_code', must be one of '%s'",
+                        $sub_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['sub_code'] = $sub_code;
 

@@ -500,9 +500,10 @@ class GetOffersResult implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($offers)) {
             throw new \InvalidArgumentException('non-nullable offers cannot be null');
         }
-
-        if (count($offers) > 20) {
-            throw new \InvalidArgumentException('invalid value for $offers when calling GetOffersResult., number of items must be less than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($offers) > 20) {
+                throw new \InvalidArgumentException('invalid value for $offers when calling GetOffersResult., number of items must be less than or equal to 20.');
+            }
         }
         $this->container['offers'] = $offers;
 

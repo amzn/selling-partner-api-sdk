@@ -376,10 +376,11 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($displayable_order_id) && (mb_strlen($displayable_order_id) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $displayable_order_id when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($displayable_order_id) && (mb_strlen($displayable_order_id) > 40)) {
+                throw new \InvalidArgumentException('invalid length for $displayable_order_id when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['displayable_order_id'] = $displayable_order_id;
 
         return $this;
@@ -440,10 +441,11 @@ class UpdateFulfillmentOrderRequest implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($displayable_order_comment) && (mb_strlen($displayable_order_comment) > 750)) {
-            throw new \InvalidArgumentException('invalid length for $displayable_order_comment when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 750.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($displayable_order_comment) && (mb_strlen($displayable_order_comment) > 750)) {
+                throw new \InvalidArgumentException('invalid length for $displayable_order_comment when calling UpdateFulfillmentOrderRequest., must be smaller than or equal to 750.');
+            }
         }
-
         $this->container['displayable_order_comment'] = $displayable_order_comment;
 
         return $this;

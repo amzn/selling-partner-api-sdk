@@ -257,7 +257,8 @@ class PostContentDocumentAsinRelationsResponse implements ModelInterface, \Array
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;

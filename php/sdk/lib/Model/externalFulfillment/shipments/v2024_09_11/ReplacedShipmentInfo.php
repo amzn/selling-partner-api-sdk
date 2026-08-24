@@ -365,9 +365,10 @@ class ReplacedShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($original_line_items) && (count($original_line_items) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $original_line_items when calling ReplacedShipmentInfo., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($original_line_items) && (count($original_line_items) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $original_line_items when calling ReplacedShipmentInfo., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['original_line_items'] = $original_line_items;
 

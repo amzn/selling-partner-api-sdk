@@ -266,10 +266,11 @@ class ShipperInstruction implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($delivery_notes) && (mb_strlen($delivery_notes) > 256)) {
-            throw new \InvalidArgumentException('invalid length for $delivery_notes when calling ShipperInstruction., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($delivery_notes) && (mb_strlen($delivery_notes) > 256)) {
+                throw new \InvalidArgumentException('invalid length for $delivery_notes when calling ShipperInstruction., must be smaller than or equal to 256.');
+            }
         }
-
         $this->container['delivery_notes'] = $delivery_notes;
 
         return $this;

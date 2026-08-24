@@ -426,15 +426,17 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($container_type)) {
             throw new \InvalidArgumentException('non-nullable container_type cannot be null');
         }
-        $allowedValues = $this->getContainerTypeAllowableValues();
-        if (!in_array($container_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'container_type', must be one of '%s'",
-                    $container_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getContainerTypeAllowableValues();
+            if (!in_array($container_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'container_type', must be one of '%s'",
+                        $container_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['container_type'] = $container_type;
 

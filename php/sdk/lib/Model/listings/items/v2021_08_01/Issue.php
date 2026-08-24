@@ -382,15 +382,17 @@ class Issue implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($severity)) {
             throw new \InvalidArgumentException('non-nullable severity cannot be null');
         }
-        $allowedValues = $this->getSeverityAllowableValues();
-        if (!in_array($severity, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'severity', must be one of '%s'",
-                    $severity,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSeverityAllowableValues();
+            if (!in_array($severity, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'severity', must be one of '%s'",
+                        $severity,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['severity'] = $severity;
 

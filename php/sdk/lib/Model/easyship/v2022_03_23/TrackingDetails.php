@@ -269,13 +269,14 @@ class TrackingDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 255)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be smaller than or equal to 255.');
+            }
+            if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling TrackingDetails., must be bigger than or equal to 1.');
-        }
-
         $this->container['tracking_id'] = $tracking_id;
 
         return $this;

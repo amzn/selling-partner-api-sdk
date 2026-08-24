@@ -302,13 +302,14 @@ class ShipmentSource implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($source_type)) {
             throw new \InvalidArgumentException('non-nullable source_type cannot be null');
         }
-        if (mb_strlen($source_type) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $source_type when calling ShipmentSource., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($source_type) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $source_type when calling ShipmentSource., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($source_type) < 1) {
+                throw new \InvalidArgumentException('invalid length for $source_type when calling ShipmentSource., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($source_type) < 1) {
-            throw new \InvalidArgumentException('invalid length for $source_type when calling ShipmentSource., must be bigger than or equal to 1.');
-        }
-
         $this->container['source_type'] = $source_type;
 
         return $this;

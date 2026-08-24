@@ -359,15 +359,17 @@ class RegulatedInformationField implements ModelInterface, \ArrayAccess, \JsonSe
         if (is_null($field_type)) {
             throw new \InvalidArgumentException('non-nullable field_type cannot be null');
         }
-        $allowedValues = $this->getFieldTypeAllowableValues();
-        if (!in_array($field_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'field_type', must be one of '%s'",
-                    $field_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFieldTypeAllowableValues();
+            if (!in_array($field_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'field_type', must be one of '%s'",
+                        $field_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['field_type'] = $field_type;
 

@@ -433,15 +433,17 @@ class SegmentedFeaturedOffer implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getSubConditionAllowableValues();
-        if (!is_null($sub_condition) && !in_array($sub_condition, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sub_condition', must be one of '%s'",
-                    $sub_condition,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSubConditionAllowableValues();
+            if (!is_null($sub_condition) && !in_array($sub_condition, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'sub_condition', must be one of '%s'",
+                        $sub_condition,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['sub_condition'] = $sub_condition;
 

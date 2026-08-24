@@ -343,13 +343,14 @@ class TaxRate implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($tax_type) && (mb_strlen($tax_type) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tax_type) && (mb_strlen($tax_type) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($tax_type) && (mb_strlen($tax_type) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($tax_type) && (mb_strlen($tax_type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tax_type when calling TaxRate., must be bigger than or equal to 1.');
-        }
-
         $this->container['tax_type'] = $tax_type;
 
         return $this;

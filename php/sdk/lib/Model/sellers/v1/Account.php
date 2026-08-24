@@ -375,15 +375,17 @@ class Account implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($business_type)) {
             throw new \InvalidArgumentException('non-nullable business_type cannot be null');
         }
-        $allowedValues = $this->getBusinessTypeAllowableValues();
-        if (!in_array($business_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'business_type', must be one of '%s'",
-                    $business_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getBusinessTypeAllowableValues();
+            if (!in_array($business_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'business_type', must be one of '%s'",
+                        $business_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['business_type'] = $business_type;
 
@@ -408,15 +410,17 @@ class Account implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($selling_plan)) {
             throw new \InvalidArgumentException('non-nullable selling_plan cannot be null');
         }
-        $allowedValues = $this->getSellingPlanAllowableValues();
-        if (!in_array($selling_plan, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'selling_plan', must be one of '%s'",
-                    $selling_plan,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSellingPlanAllowableValues();
+            if (!in_array($selling_plan, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'selling_plan', must be one of '%s'",
+                        $selling_plan,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['selling_plan'] = $selling_plan;
 

@@ -317,13 +317,14 @@ class ShipmentDestination implements ModelInterface, \ArrayAccess, \JsonSerializ
         if (is_null($destination_type)) {
             throw new \InvalidArgumentException('non-nullable destination_type cannot be null');
         }
-        if (mb_strlen($destination_type) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $destination_type when calling ShipmentDestination., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($destination_type) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $destination_type when calling ShipmentDestination., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($destination_type) < 1) {
+                throw new \InvalidArgumentException('invalid length for $destination_type when calling ShipmentDestination., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($destination_type) < 1) {
-            throw new \InvalidArgumentException('invalid length for $destination_type when calling ShipmentDestination., must be bigger than or equal to 1.');
-        }
-
         $this->container['destination_type'] = $destination_type;
 
         return $this;
@@ -354,13 +355,14 @@ class ShipmentDestination implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling ShipmentDestination., must be bigger than or equal to 1.');
-        }
-
         $this->container['warehouse_id'] = $warehouse_id;
 
         return $this;

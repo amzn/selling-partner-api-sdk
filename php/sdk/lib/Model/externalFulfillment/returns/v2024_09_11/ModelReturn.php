@@ -596,15 +596,17 @@ class ModelReturn implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($return_type)) {
             throw new \InvalidArgumentException('non-nullable return_type cannot be null');
         }
-        $allowedValues = $this->getReturnTypeAllowableValues();
-        if (!in_array($return_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'return_type', must be one of '%s'",
-                    $return_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReturnTypeAllowableValues();
+            if (!in_array($return_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'return_type', must be one of '%s'",
+                        $return_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['return_type'] = $return_type;
 
@@ -636,15 +638,17 @@ class ModelReturn implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getReturnSubTypeAllowableValues();
-        if (!is_null($return_sub_type) && !in_array($return_sub_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'return_sub_type', must be one of '%s'",
-                    $return_sub_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReturnSubTypeAllowableValues();
+            if (!is_null($return_sub_type) && !in_array($return_sub_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'return_sub_type', must be one of '%s'",
+                        $return_sub_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['return_sub_type'] = $return_sub_type;
 
@@ -676,11 +680,11 @@ class ModelReturn implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($number_of_units) && ($number_of_units < 1)) {
-            throw new \InvalidArgumentException('invalid value for $number_of_units when calling ModelReturn., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($number_of_units) && ($number_of_units < 1)) {
+                throw new \InvalidArgumentException('invalid value for $number_of_units when calling ModelReturn., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['number_of_units'] = $number_of_units;
 
         return $this;
@@ -704,15 +708,17 @@ class ModelReturn implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStatusAllowableValues();
+            if (!in_array($status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'status', must be one of '%s'",
+                        $status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['status'] = $status;
 
@@ -919,15 +925,17 @@ class ModelReturn implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPackageDeliveryModeAllowableValues();
-        if (!is_null($package_delivery_mode) && !in_array($package_delivery_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'package_delivery_mode', must be one of '%s'",
-                    $package_delivery_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPackageDeliveryModeAllowableValues();
+            if (!is_null($package_delivery_mode) && !in_array($package_delivery_mode, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'package_delivery_mode', must be one of '%s'",
+                        $package_delivery_mode,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['package_delivery_mode'] = $package_delivery_mode;
 

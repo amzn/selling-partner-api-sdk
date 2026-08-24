@@ -363,11 +363,11 @@ class DangerousGoodsDetails implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($united_nations_regulatory_id) && (!preg_match('/^(UN|ID|NA)[0-9]{4}$/', ObjectSerializer::toString($united_nations_regulatory_id)))) {
-            throw new \InvalidArgumentException('invalid value for $united_nations_regulatory_id when calling DangerousGoodsDetails., must conform to the pattern /^(UN|ID|NA)[0-9]{4}$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($united_nations_regulatory_id) && (!preg_match('/^(UN|ID|NA)[0-9]{4}$/', ObjectSerializer::toString($united_nations_regulatory_id)))) {
+                throw new \InvalidArgumentException('invalid value for $united_nations_regulatory_id when calling DangerousGoodsDetails., must conform to the pattern /^(UN|ID|NA)[0-9]{4}$/.');
+            }
         }
-
         $this->container['united_nations_regulatory_id'] = $united_nations_regulatory_id;
 
         return $this;
@@ -398,11 +398,11 @@ class DangerousGoodsDetails implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($transportation_regulatory_class) && (!preg_match('/^[1-9](\\.[1-9])?$/', ObjectSerializer::toString($transportation_regulatory_class)))) {
-            throw new \InvalidArgumentException('invalid value for $transportation_regulatory_class when calling DangerousGoodsDetails., must conform to the pattern /^[1-9](\\.[1-9])?$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($transportation_regulatory_class) && (!preg_match('/^[1-9](\\.[1-9])?$/', ObjectSerializer::toString($transportation_regulatory_class)))) {
+                throw new \InvalidArgumentException('invalid value for $transportation_regulatory_class when calling DangerousGoodsDetails., must conform to the pattern /^[1-9](\\.[1-9])?$/.');
+            }
         }
-
         $this->container['transportation_regulatory_class'] = $transportation_regulatory_class;
 
         return $this;
@@ -433,15 +433,17 @@ class DangerousGoodsDetails implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPackingGroupAllowableValues();
-        if (!is_null($packing_group) && !in_array($packing_group, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'packing_group', must be one of '%s'",
-                    $packing_group,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPackingGroupAllowableValues();
+            if (!is_null($packing_group) && !in_array($packing_group, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'packing_group', must be one of '%s'",
+                        $packing_group,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['packing_group'] = $packing_group;
 
@@ -473,15 +475,17 @@ class DangerousGoodsDetails implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPackingInstructionAllowableValues();
-        if (!is_null($packing_instruction) && !in_array($packing_instruction, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'packing_instruction', must be one of '%s'",
-                    $packing_instruction,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPackingInstructionAllowableValues();
+            if (!is_null($packing_instruction) && !in_array($packing_instruction, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'packing_instruction', must be one of '%s'",
+                        $packing_instruction,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['packing_instruction'] = $packing_instruction;
 

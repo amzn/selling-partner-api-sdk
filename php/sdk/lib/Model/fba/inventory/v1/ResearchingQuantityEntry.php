@@ -295,15 +295,17 @@ class ResearchingQuantityEntry implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getNameAllowableValues();
+            if (!in_array($name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'name', must be one of '%s'",
+                        $name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['name'] = $name;
 

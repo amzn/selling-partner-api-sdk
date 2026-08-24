@@ -298,11 +298,11 @@ class FulfillmentAvailability implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($quantity) && ($quantity < 0)) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling FulfillmentAvailability., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($quantity) && ($quantity < 0)) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling FulfillmentAvailability., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

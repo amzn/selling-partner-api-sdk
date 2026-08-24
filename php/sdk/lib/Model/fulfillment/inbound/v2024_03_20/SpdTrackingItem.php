@@ -299,13 +299,14 @@ class SpdTrackingItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($box_id) && (mb_strlen($box_id) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($box_id) && (mb_strlen($box_id) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($box_id) && (mb_strlen($box_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($box_id) && (mb_strlen($box_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['box_id'] = $box_id;
 
         return $this;
@@ -336,13 +337,14 @@ class SpdTrackingItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tracking_id) && (mb_strlen($tracking_id) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($tracking_id) && (mb_strlen($tracking_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['tracking_id'] = $tracking_id;
 
         return $this;
@@ -373,13 +375,14 @@ class SpdTrackingItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($tracking_number_validation_status) && (mb_strlen($tracking_number_validation_status) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tracking_number_validation_status when calling SpdTrackingItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['tracking_number_validation_status'] = $tracking_number_validation_status;
 
         return $this;

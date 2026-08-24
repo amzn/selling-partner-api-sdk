@@ -307,15 +307,17 @@ class AppointmentSlotReport implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getSchedulingTypeAllowableValues();
-        if (!is_null($scheduling_type) && !in_array($scheduling_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'scheduling_type', must be one of '%s'",
-                    $scheduling_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSchedulingTypeAllowableValues();
+            if (!is_null($scheduling_type) && !in_array($scheduling_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'scheduling_type', must be one of '%s'",
+                        $scheduling_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['scheduling_type'] = $scheduling_type;
 

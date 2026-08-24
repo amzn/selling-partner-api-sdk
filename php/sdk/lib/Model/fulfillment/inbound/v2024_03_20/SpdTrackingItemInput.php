@@ -283,13 +283,14 @@ class SpdTrackingItemInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($box_id)) {
             throw new \InvalidArgumentException('non-nullable box_id cannot be null');
         }
-        if (mb_strlen($box_id) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItemInput., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($box_id) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItemInput., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($box_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItemInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($box_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $box_id when calling SpdTrackingItemInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['box_id'] = $box_id;
 
         return $this;
@@ -313,13 +314,14 @@ class SpdTrackingItemInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($tracking_id)) {
             throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
         }
-        if (mb_strlen($tracking_id) > 64) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be smaller than or equal to 64.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($tracking_id) > 64) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be smaller than or equal to 64.');
+            }
+            if (mb_strlen($tracking_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($tracking_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['tracking_id'] = $tracking_id;
 
         return $this;

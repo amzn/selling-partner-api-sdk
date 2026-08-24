@@ -323,15 +323,17 @@ class FeatureSettings implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getFeatureFulfillmentPolicyAllowableValues();
-        if (!is_null($feature_fulfillment_policy) && !in_array($feature_fulfillment_policy, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'feature_fulfillment_policy', must be one of '%s'",
-                    $feature_fulfillment_policy,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFeatureFulfillmentPolicyAllowableValues();
+            if (!is_null($feature_fulfillment_policy) && !in_array($feature_fulfillment_policy, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'feature_fulfillment_policy', must be one of '%s'",
+                        $feature_fulfillment_policy,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['feature_fulfillment_policy'] = $feature_fulfillment_policy;
 

@@ -289,10 +289,11 @@ class Package implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($package_id)) {
             throw new \InvalidArgumentException('non-nullable package_id cannot be null');
         }
-        if (mb_strlen($package_id) > 40) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling Package., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($package_id) > 40) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling Package., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['package_id'] = $package_id;
 
         return $this;

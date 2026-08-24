@@ -342,9 +342,10 @@ class BrowseNodeReviewTopic implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($review_snippets) && (count($review_snippets) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $review_snippets when calling BrowseNodeReviewTopic., number of items must be less than or equal to 3.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($review_snippets) && (count($review_snippets) > 3)) {
+                throw new \InvalidArgumentException('invalid value for $review_snippets when calling BrowseNodeReviewTopic., number of items must be less than or equal to 3.');
+            }
         }
         $this->container['review_snippets'] = $review_snippets;
 
@@ -376,9 +377,10 @@ class BrowseNodeReviewTopic implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subtopics) && (count($subtopics) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $subtopics when calling BrowseNodeReviewTopic., number of items must be less than or equal to 5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subtopics) && (count($subtopics) > 5)) {
+                throw new \InvalidArgumentException('invalid value for $subtopics when calling BrowseNodeReviewTopic., number of items must be less than or equal to 5.');
+            }
         }
         $this->container['subtopics'] = $subtopics;
 

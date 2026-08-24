@@ -298,13 +298,14 @@ class Currency implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        if (mb_strlen($code) > 3) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Currency., must be smaller than or equal to 3.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($code) > 3) {
+                throw new \InvalidArgumentException('invalid length for $code when calling Currency., must be smaller than or equal to 3.');
+            }
+            if (mb_strlen($code) < 3) {
+                throw new \InvalidArgumentException('invalid length for $code when calling Currency., must be bigger than or equal to 3.');
+            }
         }
-        if (mb_strlen($code) < 3) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Currency., must be bigger than or equal to 3.');
-        }
-
         $this->container['code'] = $code;
 
         return $this;

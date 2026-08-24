@@ -385,18 +385,21 @@ class MarketplaceAttributes implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getCustomAttributesAllowableValues();
-        if (!is_null($custom_attributes) && array_diff($custom_attributes, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'custom_attributes', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCustomAttributesAllowableValues();
+            if (!is_null($custom_attributes) && array_diff($custom_attributes, $allowedValues)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value for 'custom_attributes', must be one of '%s'",
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
-
-        if (!is_null($custom_attributes) && (count($custom_attributes) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $custom_attributes when calling MarketplaceAttributes., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($custom_attributes) && (count($custom_attributes) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $custom_attributes when calling MarketplaceAttributes., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['custom_attributes'] = $custom_attributes;
 

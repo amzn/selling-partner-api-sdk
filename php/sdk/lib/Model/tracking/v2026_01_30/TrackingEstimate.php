@@ -327,11 +327,11 @@ class TrackingEstimate implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($last_updated_time)) {
             throw new \InvalidArgumentException('non-nullable last_updated_time cannot be null');
         }
-
-        if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($last_updated_time))) {
-            throw new \InvalidArgumentException('invalid value for $last_updated_time when calling TrackingEstimate., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!preg_match('/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/', ObjectSerializer::toString($last_updated_time))) {
+                throw new \InvalidArgumentException('invalid value for $last_updated_time when calling TrackingEstimate., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?Z$/.');
+            }
         }
-
         $this->container['last_updated_time'] = $last_updated_time;
 
         return $this;

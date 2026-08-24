@@ -330,16 +330,17 @@ class SelectedDeliveryWindow implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($delivery_window_option_id)) {
             throw new \InvalidArgumentException('non-nullable delivery_window_option_id cannot be null');
         }
-        if (mb_strlen($delivery_window_option_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $delivery_window_option_id when calling SelectedDeliveryWindow., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($delivery_window_option_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $delivery_window_option_id when calling SelectedDeliveryWindow., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($delivery_window_option_id) < 36) {
+                throw new \InvalidArgumentException('invalid length for $delivery_window_option_id when calling SelectedDeliveryWindow., must be bigger than or equal to 36.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($delivery_window_option_id))) {
+                throw new \InvalidArgumentException('invalid value for $delivery_window_option_id when calling SelectedDeliveryWindow., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($delivery_window_option_id) < 36) {
-            throw new \InvalidArgumentException('invalid length for $delivery_window_option_id when calling SelectedDeliveryWindow., must be bigger than or equal to 36.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($delivery_window_option_id))) {
-            throw new \InvalidArgumentException('invalid value for $delivery_window_option_id when calling SelectedDeliveryWindow., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['delivery_window_option_id'] = $delivery_window_option_id;
 
         return $this;

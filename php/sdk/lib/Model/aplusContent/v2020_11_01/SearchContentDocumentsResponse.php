@@ -281,7 +281,8 @@ class SearchContentDocumentsResponse implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;
@@ -312,11 +313,11 @@ class SearchContentDocumentsResponse implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $next_page_token when calling SearchContentDocumentsResponse., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $next_page_token when calling SearchContentDocumentsResponse., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['next_page_token'] = $next_page_token;
 
         return $this;
@@ -340,7 +341,8 @@ class SearchContentDocumentsResponse implements ModelInterface, \ArrayAccess, \J
         if (is_null($content_metadata_records)) {
             throw new \InvalidArgumentException('non-nullable content_metadata_records cannot be null');
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['content_metadata_records'] = $content_metadata_records;
 
         return $this;

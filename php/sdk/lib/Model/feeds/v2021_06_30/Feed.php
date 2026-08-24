@@ -445,15 +445,17 @@ class Feed implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($processing_status)) {
             throw new \InvalidArgumentException('non-nullable processing_status cannot be null');
         }
-        $allowedValues = $this->getProcessingStatusAllowableValues();
-        if (!in_array($processing_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'processing_status', must be one of '%s'",
-                    $processing_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getProcessingStatusAllowableValues();
+            if (!in_array($processing_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'processing_status', must be one of '%s'",
+                        $processing_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['processing_status'] = $processing_status;
 

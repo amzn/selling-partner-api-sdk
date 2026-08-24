@@ -437,13 +437,14 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($order_id) && (mb_strlen($order_id) > 20)) {
-            throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($order_id) && (mb_strlen($order_id) > 20)) {
+                throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be smaller than or equal to 20.');
+            }
+            if (!is_null($order_id) && (mb_strlen($order_id) < 5)) {
+                throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be bigger than or equal to 5.');
+            }
         }
-        if (!is_null($order_id) && (mb_strlen($order_id) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $order_id when calling AssociatedItem., must be bigger than or equal to 5.');
-        }
-
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -474,15 +475,17 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getItemStatusAllowableValues();
-        if (!is_null($item_status) && !in_array($item_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'item_status', must be one of '%s'",
-                    $item_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getItemStatusAllowableValues();
+            if (!is_null($item_status) && !in_array($item_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'item_status', must be one of '%s'",
+                        $item_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['item_status'] = $item_status;
 
