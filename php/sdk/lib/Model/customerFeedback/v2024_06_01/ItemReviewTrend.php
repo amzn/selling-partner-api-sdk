@@ -294,9 +294,10 @@ class ItemReviewTrend implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($trend_metrics)) {
             throw new \InvalidArgumentException('non-nullable trend_metrics cannot be null');
         }
-
-        if (count($trend_metrics) > 6) {
-            throw new \InvalidArgumentException('invalid value for $trend_metrics when calling ItemReviewTrend., number of items must be less than or equal to 6.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($trend_metrics) > 6) {
+                throw new \InvalidArgumentException('invalid value for $trend_metrics when calling ItemReviewTrend., number of items must be less than or equal to 6.');
+            }
         }
         $this->container['trend_metrics'] = $trend_metrics;
 

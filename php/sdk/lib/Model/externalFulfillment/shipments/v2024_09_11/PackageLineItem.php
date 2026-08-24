@@ -357,9 +357,10 @@ class PackageLineItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($serial_numbers) && (count($serial_numbers) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $serial_numbers when calling PackageLineItem., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($serial_numbers) && (count($serial_numbers) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $serial_numbers when calling PackageLineItem., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['serial_numbers'] = $serial_numbers;
 
@@ -391,11 +392,11 @@ class PackageLineItem implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($pieces) && ($pieces < 1)) {
-            throw new \InvalidArgumentException('invalid value for $pieces when calling PackageLineItem., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($pieces) && ($pieces < 1)) {
+                throw new \InvalidArgumentException('invalid value for $pieces when calling PackageLineItem., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['pieces'] = $pieces;
 
         return $this;

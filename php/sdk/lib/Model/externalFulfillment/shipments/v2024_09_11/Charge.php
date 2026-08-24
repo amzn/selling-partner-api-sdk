@@ -361,9 +361,10 @@ class Charge implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($tax_breakup) && (count($tax_breakup) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $tax_breakup when calling Charge., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($tax_breakup) && (count($tax_breakup) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $tax_breakup when calling Charge., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['tax_breakup'] = $tax_breakup;
 
@@ -388,15 +389,17 @@ class Charge implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($charge_type)) {
             throw new \InvalidArgumentException('non-nullable charge_type cannot be null');
         }
-        $allowedValues = $this->getChargeTypeAllowableValues();
-        if (!in_array($charge_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'charge_type', must be one of '%s'",
-                    $charge_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getChargeTypeAllowableValues();
+            if (!in_array($charge_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'charge_type', must be one of '%s'",
+                        $charge_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['charge_type'] = $charge_type;
 

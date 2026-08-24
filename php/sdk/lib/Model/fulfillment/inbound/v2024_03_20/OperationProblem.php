@@ -316,13 +316,14 @@ class OperationProblem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($code)) {
             throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        if (mb_strlen($code) > 256) {
-            throw new \InvalidArgumentException('invalid length for $code when calling OperationProblem., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($code) > 256) {
+                throw new \InvalidArgumentException('invalid length for $code when calling OperationProblem., must be smaller than or equal to 256.');
+            }
+            if (mb_strlen($code) < 1) {
+                throw new \InvalidArgumentException('invalid length for $code when calling OperationProblem., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($code) < 1) {
-            throw new \InvalidArgumentException('invalid length for $code when calling OperationProblem., must be bigger than or equal to 1.');
-        }
-
         $this->container['code'] = $code;
 
         return $this;
@@ -353,13 +354,14 @@ class OperationProblem implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($details) && (mb_strlen($details) > 8192)) {
-            throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be smaller than or equal to 8192.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($details) && (mb_strlen($details) > 8192)) {
+                throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be smaller than or equal to 8192.');
+            }
+            if (!is_null($details) && (mb_strlen($details) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($details) && (mb_strlen($details) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $details when calling OperationProblem., must be bigger than or equal to 0.');
-        }
-
         $this->container['details'] = $details;
 
         return $this;
@@ -383,13 +385,14 @@ class OperationProblem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($message)) {
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        if (mb_strlen($message) > 2048) {
-            throw new \InvalidArgumentException('invalid length for $message when calling OperationProblem., must be smaller than or equal to 2048.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($message) > 2048) {
+                throw new \InvalidArgumentException('invalid length for $message when calling OperationProblem., must be smaller than or equal to 2048.');
+            }
+            if (mb_strlen($message) < 1) {
+                throw new \InvalidArgumentException('invalid length for $message when calling OperationProblem., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($message) < 1) {
-            throw new \InvalidArgumentException('invalid length for $message when calling OperationProblem., must be bigger than or equal to 1.');
-        }
-
         $this->container['message'] = $message;
 
         return $this;
@@ -413,13 +416,14 @@ class OperationProblem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($severity)) {
             throw new \InvalidArgumentException('non-nullable severity cannot be null');
         }
-        if (mb_strlen($severity) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $severity when calling OperationProblem., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($severity) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $severity when calling OperationProblem., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($severity) < 1) {
+                throw new \InvalidArgumentException('invalid length for $severity when calling OperationProblem., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($severity) < 1) {
-            throw new \InvalidArgumentException('invalid length for $severity when calling OperationProblem., must be bigger than or equal to 1.');
-        }
-
         $this->container['severity'] = $severity;
 
         return $this;

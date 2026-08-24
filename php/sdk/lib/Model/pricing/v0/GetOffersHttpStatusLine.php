@@ -276,14 +276,14 @@ class GetOffersHttpStatusLine implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($status_code) && ($status_code > 599)) {
-            throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be smaller than or equal to 599.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($status_code) && ($status_code > 599)) {
+                throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be smaller than or equal to 599.');
+            }
+            if (!is_null($status_code) && ($status_code < 100)) {
+                throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be bigger than or equal to 100.');
+            }
         }
-        if (!is_null($status_code) && ($status_code < 100)) {
-            throw new \InvalidArgumentException('invalid value for $status_code when calling GetOffersHttpStatusLine., must be bigger than or equal to 100.');
-        }
-
         $this->container['status_code'] = $status_code;
 
         return $this;

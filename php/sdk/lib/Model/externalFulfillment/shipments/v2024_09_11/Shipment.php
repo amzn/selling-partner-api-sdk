@@ -677,9 +677,10 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($charges)) {
             throw new \InvalidArgumentException('non-nullable charges cannot be null');
         }
-
-        if (count($charges) < 1) {
-            throw new \InvalidArgumentException('invalid length for $charges when calling Shipment., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($charges) < 1) {
+                throw new \InvalidArgumentException('invalid length for $charges when calling Shipment., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['charges'] = $charges;
 
@@ -704,15 +705,17 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStatusAllowableValues();
+            if (!in_array($status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'status', must be one of '%s'",
+                        $status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['status'] = $status;
 
@@ -744,15 +747,17 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getSubStatusAllowableValues();
-        if (!is_null($sub_status) && !in_array($sub_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sub_status', must be one of '%s'",
-                    $sub_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getSubStatusAllowableValues();
+            if (!is_null($sub_status) && !in_array($sub_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'sub_status', must be one of '%s'",
+                        $sub_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['sub_status'] = $sub_status;
 
@@ -807,9 +812,10 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($line_items)) {
             throw new \InvalidArgumentException('non-nullable line_items cannot be null');
         }
-
-        if (count($line_items) < 1) {
-            throw new \InvalidArgumentException('invalid length for $line_items when calling Shipment., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($line_items) < 1) {
+                throw new \InvalidArgumentException('invalid length for $line_items when calling Shipment., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['line_items'] = $line_items;
 
@@ -864,9 +870,10 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($packages) && (count($packages) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $packages when calling Shipment., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($packages) && (count($packages) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $packages when calling Shipment., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['packages'] = $packages;
 

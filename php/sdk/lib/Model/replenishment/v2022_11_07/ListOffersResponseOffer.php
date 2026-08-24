@@ -581,11 +581,11 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($price) && ($price < 0)) {
-            throw new \InvalidArgumentException('invalid value for $price when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($price) && ($price < 0)) {
+                throw new \InvalidArgumentException('invalid value for $price when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['price'] = $price;
 
         return $this;
@@ -646,11 +646,11 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($inventory) && ($inventory < 0)) {
-            throw new \InvalidArgumentException('invalid value for $inventory when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($inventory) && ($inventory < 0)) {
+                throw new \InvalidArgumentException('invalid value for $inventory when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['inventory'] = $inventory;
 
         return $this;
@@ -741,11 +741,11 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($subscriptions) && ($subscriptions < 0)) {
-            throw new \InvalidArgumentException('invalid value for $subscriptions when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($subscriptions) && ($subscriptions < 0)) {
+                throw new \InvalidArgumentException('invalid value for $subscriptions when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['subscriptions'] = $subscriptions;
 
         return $this;

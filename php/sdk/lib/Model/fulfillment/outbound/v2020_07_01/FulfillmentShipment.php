@@ -391,15 +391,17 @@ class FulfillmentShipment implements ModelInterface, \ArrayAccess, \JsonSerializ
         if (is_null($fulfillment_shipment_status)) {
             throw new \InvalidArgumentException('non-nullable fulfillment_shipment_status cannot be null');
         }
-        $allowedValues = $this->getFulfillmentShipmentStatusAllowableValues();
-        if (!in_array($fulfillment_shipment_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'fulfillment_shipment_status', must be one of '%s'",
-                    $fulfillment_shipment_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFulfillmentShipmentStatusAllowableValues();
+            if (!in_array($fulfillment_shipment_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'fulfillment_shipment_status', must be one of '%s'",
+                        $fulfillment_shipment_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['fulfillment_shipment_status'] = $fulfillment_shipment_status;
 

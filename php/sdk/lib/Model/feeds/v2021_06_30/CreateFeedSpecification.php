@@ -316,12 +316,13 @@ class CreateFeedSpecification implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($marketplace_ids)) {
             throw new \InvalidArgumentException('non-nullable marketplace_ids cannot be null');
         }
-
-        if (count($marketplace_ids) > 25) {
-            throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateFeedSpecification., number of items must be less than or equal to 25.');
-        }
-        if (count($marketplace_ids) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_ids when calling CreateFeedSpecification., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($marketplace_ids) > 25) {
+                throw new \InvalidArgumentException('invalid value for $marketplace_ids when calling CreateFeedSpecification., number of items must be less than or equal to 25.');
+            }
+            if (count($marketplace_ids) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_ids when calling CreateFeedSpecification., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['marketplace_ids'] = $marketplace_ids;
 

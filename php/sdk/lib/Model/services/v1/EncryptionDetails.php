@@ -301,15 +301,17 @@ class EncryptionDetails implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($standard)) {
             throw new \InvalidArgumentException('non-nullable standard cannot be null');
         }
-        $allowedValues = $this->getStandardAllowableValues();
-        if (!in_array($standard, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'standard', must be one of '%s'",
-                    $standard,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStandardAllowableValues();
+            if (!in_array($standard, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'standard', must be one of '%s'",
+                        $standard,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['standard'] = $standard;
 

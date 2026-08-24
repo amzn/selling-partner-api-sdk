@@ -386,15 +386,17 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($purchase_order_state)) {
             throw new \InvalidArgumentException('non-nullable purchase_order_state cannot be null');
         }
-        $allowedValues = $this->getPurchaseOrderStateAllowableValues();
-        if (!in_array($purchase_order_state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'purchase_order_state', must be one of '%s'",
-                    $purchase_order_state,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPurchaseOrderStateAllowableValues();
+            if (!in_array($purchase_order_state, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'purchase_order_state', must be one of '%s'",
+                        $purchase_order_state,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['purchase_order_state'] = $purchase_order_state;
 

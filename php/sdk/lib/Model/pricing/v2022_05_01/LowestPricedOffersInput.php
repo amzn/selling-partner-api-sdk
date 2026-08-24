@@ -313,15 +313,17 @@ class LowestPricedOffersInput implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($offer_type)) {
             throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
         }
-        $allowedValues = $this->getOfferTypeAllowableValues();
-        if (!in_array($offer_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'offer_type', must be one of '%s'",
-                    $offer_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getOfferTypeAllowableValues();
+            if (!in_array($offer_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'offer_type', must be one of '%s'",
+                        $offer_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['offer_type'] = $offer_type;
 

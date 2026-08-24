@@ -369,15 +369,17 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getConfirmationStatusAllowableValues();
-        if (!is_null($confirmation_status) && !in_array($confirmation_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'confirmation_status', must be one of '%s'",
-                    $confirmation_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getConfirmationStatusAllowableValues();
+            if (!is_null($confirmation_status) && !in_array($confirmation_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'confirmation_status', must be one of '%s'",
+                        $confirmation_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['confirmation_status'] = $confirmation_status;
 

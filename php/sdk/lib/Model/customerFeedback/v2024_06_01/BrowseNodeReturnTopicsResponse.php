@@ -426,9 +426,10 @@ class BrowseNodeReturnTopicsResponse implements ModelInterface, \ArrayAccess, \J
         if (is_null($topics)) {
             throw new \InvalidArgumentException('non-nullable topics cannot be null');
         }
-
-        if (count($topics) > 10) {
-            throw new \InvalidArgumentException('invalid value for $topics when calling BrowseNodeReturnTopicsResponse., number of items must be less than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($topics) > 10) {
+                throw new \InvalidArgumentException('invalid value for $topics when calling BrowseNodeReturnTopicsResponse., number of items must be less than or equal to 10.');
+            }
         }
         $this->container['topics'] = $topics;
 

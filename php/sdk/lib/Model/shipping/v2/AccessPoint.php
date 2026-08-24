@@ -560,15 +560,17 @@ class AccessPoint implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAssistanceTypeAllowableValues();
-        if (!is_null($assistance_type) && !in_array($assistance_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'assistance_type', must be one of '%s'",
-                    $assistance_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getAssistanceTypeAllowableValues();
+            if (!is_null($assistance_type) && !in_array($assistance_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'assistance_type', must be one of '%s'",
+                        $assistance_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['assistance_type'] = $assistance_type;
 

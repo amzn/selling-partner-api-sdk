@@ -321,13 +321,14 @@ class PrepInstruction implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($prep_owner) && (mb_strlen($prep_owner) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($prep_owner) && (mb_strlen($prep_owner) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($prep_owner) && (mb_strlen($prep_owner) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($prep_owner) && (mb_strlen($prep_owner) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $prep_owner when calling PrepInstruction., must be bigger than or equal to 1.');
-        }
-
         $this->container['prep_owner'] = $prep_owner;
 
         return $this;
@@ -358,13 +359,14 @@ class PrepInstruction implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($prep_type) && (mb_strlen($prep_type) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($prep_type) && (mb_strlen($prep_type) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($prep_type) && (mb_strlen($prep_type) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($prep_type) && (mb_strlen($prep_type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $prep_type when calling PrepInstruction., must be bigger than or equal to 1.');
-        }
-
         $this->container['prep_type'] = $prep_type;
 
         return $this;

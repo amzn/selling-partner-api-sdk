@@ -265,9 +265,10 @@ class GetFeaturedOfferExpectedPriceBatchRequest implements ModelInterface, \Arra
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($requests) && (count($requests) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $requests when calling GetFeaturedOfferExpectedPriceBatchRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($requests) && (count($requests) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $requests when calling GetFeaturedOfferExpectedPriceBatchRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['requests'] = $requests;
 

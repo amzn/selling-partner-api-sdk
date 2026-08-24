@@ -304,15 +304,17 @@ class PatchOperation implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($op)) {
             throw new \InvalidArgumentException('non-nullable op cannot be null');
         }
-        $allowedValues = $this->getOpAllowableValues();
-        if (!in_array($op, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'op', must be one of '%s'",
-                    $op,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getOpAllowableValues();
+            if (!in_array($op, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'op', must be one of '%s'",
+                        $op,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['op'] = $op;
 

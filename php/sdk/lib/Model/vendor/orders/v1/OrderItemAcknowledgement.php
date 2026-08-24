@@ -399,15 +399,17 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($acknowledgement_code)) {
             throw new \InvalidArgumentException('non-nullable acknowledgement_code cannot be null');
         }
-        $allowedValues = $this->getAcknowledgementCodeAllowableValues();
-        if (!in_array($acknowledgement_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'acknowledgement_code', must be one of '%s'",
-                    $acknowledgement_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getAcknowledgementCodeAllowableValues();
+            if (!in_array($acknowledgement_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'acknowledgement_code', must be one of '%s'",
+                        $acknowledgement_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['acknowledgement_code'] = $acknowledgement_code;
 
@@ -538,15 +540,17 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getRejectionReasonAllowableValues();
-        if (!is_null($rejection_reason) && !in_array($rejection_reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'rejection_reason', must be one of '%s'",
-                    $rejection_reason,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRejectionReasonAllowableValues();
+            if (!is_null($rejection_reason) && !in_array($rejection_reason, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'rejection_reason', must be one of '%s'",
+                        $rejection_reason,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['rejection_reason'] = $rejection_reason;
 

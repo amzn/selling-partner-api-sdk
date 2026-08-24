@@ -266,9 +266,10 @@ class ReplanningDetails implements ModelInterface, \ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($previous_tracking_info) && (count($previous_tracking_info) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $previous_tracking_info when calling ReplanningDetails., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($previous_tracking_info) && (count($previous_tracking_info) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $previous_tracking_info when calling ReplanningDetails., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['previous_tracking_info'] = $previous_tracking_info;
 

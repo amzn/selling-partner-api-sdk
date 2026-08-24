@@ -287,13 +287,14 @@ class LtlTrackingDetailInput implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetailInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['bill_of_lading_number'] = $bill_of_lading_number;
 
         return $this;
@@ -317,12 +318,13 @@ class LtlTrackingDetailInput implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($freight_bill_number)) {
             throw new \InvalidArgumentException('non-nullable freight_bill_number cannot be null');
         }
-
-        if (count($freight_bill_number) > 1) {
-            throw new \InvalidArgumentException('invalid value for $freight_bill_number when calling LtlTrackingDetailInput., number of items must be less than or equal to 1.');
-        }
-        if (count($freight_bill_number) < 1) {
-            throw new \InvalidArgumentException('invalid length for $freight_bill_number when calling LtlTrackingDetailInput., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($freight_bill_number) > 1) {
+                throw new \InvalidArgumentException('invalid value for $freight_bill_number when calling LtlTrackingDetailInput., number of items must be less than or equal to 1.');
+            }
+            if (count($freight_bill_number) < 1) {
+                throw new \InvalidArgumentException('invalid length for $freight_bill_number when calling LtlTrackingDetailInput., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['freight_bill_number'] = $freight_bill_number;
 

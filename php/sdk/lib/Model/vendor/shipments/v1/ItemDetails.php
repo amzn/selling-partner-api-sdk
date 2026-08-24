@@ -538,15 +538,17 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getLotNumberSourceTypeAllowableValues();
-        if (!is_null($lot_number_source_type) && !in_array($lot_number_source_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'lot_number_source_type', must be one of '%s'",
-                    $lot_number_source_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getLotNumberSourceTypeAllowableValues();
+            if (!is_null($lot_number_source_type) && !in_array($lot_number_source_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'lot_number_source_type', must be one of '%s'",
+                        $lot_number_source_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['lot_number_source_type'] = $lot_number_source_type;
 
@@ -582,11 +584,13 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!ObjectSerializer::getSkipModelValidation()) {
 
-        if (!is_null($country_of_origin) && (!preg_match("/^[A-Z]{2}$/", ObjectSerializer::toString($country_of_origin)))) {
-            throw new \InvalidArgumentException("invalid value for \$country_of_origin when calling ItemDetails., must conform to the pattern /^[A-Z]{2}$/.");
+            if (!is_null($country_of_origin) && (!preg_match("/^[A-Z]{2}$/", ObjectSerializer::toString($country_of_origin)))) {
+                throw new \InvalidArgumentException("invalid value for \$country_of_origin when calling ItemDetails., must conform to the pattern /^[A-Z]{2}$/.");
+            }
+
         }
-
         $this->container['country_of_origin'] = $country_of_origin;
 
         return $this;
@@ -723,15 +727,17 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getHandlingCodeAllowableValues();
-        if (!is_null($handling_code) && !in_array($handling_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'handling_code', must be one of '%s'",
-                    $handling_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getHandlingCodeAllowableValues();
+            if (!is_null($handling_code) && !in_array($handling_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'handling_code', must be one of '%s'",
+                        $handling_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['handling_code'] = $handling_code;
 

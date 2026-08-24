@@ -294,15 +294,17 @@ class FeaturedBuyingOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($buying_option_type)) {
             throw new \InvalidArgumentException('non-nullable buying_option_type cannot be null');
         }
-        $allowedValues = $this->getBuyingOptionTypeAllowableValues();
-        if (!in_array($buying_option_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'buying_option_type', must be one of '%s'",
-                    $buying_option_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getBuyingOptionTypeAllowableValues();
+            if (!in_array($buying_option_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'buying_option_type', must be one of '%s'",
+                        $buying_option_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['buying_option_type'] = $buying_option_type;
 
@@ -327,9 +329,10 @@ class FeaturedBuyingOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($segmented_featured_offers)) {
             throw new \InvalidArgumentException('non-nullable segmented_featured_offers cannot be null');
         }
-
-        if (count($segmented_featured_offers) < 1) {
-            throw new \InvalidArgumentException('invalid length for $segmented_featured_offers when calling FeaturedBuyingOption., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($segmented_featured_offers) < 1) {
+                throw new \InvalidArgumentException('invalid length for $segmented_featured_offers when calling FeaturedBuyingOption., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['segmented_featured_offers'] = $segmented_featured_offers;
 

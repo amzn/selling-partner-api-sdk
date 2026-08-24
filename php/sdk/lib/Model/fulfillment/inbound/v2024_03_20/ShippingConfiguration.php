@@ -284,13 +284,14 @@ class ShippingConfiguration implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($shipping_mode) && (mb_strlen($shipping_mode) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $shipping_mode when calling ShippingConfiguration., must be bigger than or equal to 1.');
-        }
-
         $this->container['shipping_mode'] = $shipping_mode;
 
         return $this;
@@ -321,13 +322,14 @@ class ShippingConfiguration implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($shipping_solution) && (mb_strlen($shipping_solution) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $shipping_solution when calling ShippingConfiguration., must be bigger than or equal to 1.');
-        }
-
         $this->container['shipping_solution'] = $shipping_solution;
 
         return $this;

@@ -257,7 +257,8 @@ class PostContentDocumentApprovalSubmissionResponse implements ModelInterface, \
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;

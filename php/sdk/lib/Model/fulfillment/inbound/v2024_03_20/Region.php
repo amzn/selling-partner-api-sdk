@@ -299,13 +299,14 @@ class Region implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($country_code) && (mb_strlen($country_code) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($country_code) && (mb_strlen($country_code) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($country_code) && (mb_strlen($country_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($country_code) && (mb_strlen($country_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling Region., must be bigger than or equal to 1.');
-        }
-
         $this->container['country_code'] = $country_code;
 
         return $this;
@@ -336,13 +337,14 @@ class Region implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($state) && (mb_strlen($state) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $state when calling Region., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($state) && (mb_strlen($state) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $state when calling Region., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($state) && (mb_strlen($state) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $state when calling Region., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($state) && (mb_strlen($state) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $state when calling Region., must be bigger than or equal to 1.');
-        }
-
         $this->container['state'] = $state;
 
         return $this;
@@ -373,13 +375,14 @@ class Region implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($warehouse_id) && (mb_strlen($warehouse_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $warehouse_id when calling Region., must be bigger than or equal to 1.');
-        }
-
         $this->container['warehouse_id'] = $warehouse_id;
 
         return $this;

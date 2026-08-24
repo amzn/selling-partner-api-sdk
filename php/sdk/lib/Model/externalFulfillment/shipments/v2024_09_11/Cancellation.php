@@ -316,11 +316,11 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($cancelled_quantity)) {
             throw new \InvalidArgumentException('non-nullable cancelled_quantity cannot be null');
         }
-
-        if ($cancelled_quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $cancelled_quantity when calling Cancellation., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($cancelled_quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $cancelled_quantity when calling Cancellation., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['cancelled_quantity'] = $cancelled_quantity;
 
         return $this;
@@ -367,15 +367,17 @@ class Cancellation implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($cancellation_type)) {
             throw new \InvalidArgumentException('non-nullable cancellation_type cannot be null');
         }
-        $allowedValues = $this->getCancellationTypeAllowableValues();
-        if (!in_array($cancellation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'cancellation_type', must be one of '%s'",
-                    $cancellation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCancellationTypeAllowableValues();
+            if (!in_array($cancellation_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'cancellation_type', must be one of '%s'",
+                        $cancellation_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['cancellation_type'] = $cancellation_type;
 

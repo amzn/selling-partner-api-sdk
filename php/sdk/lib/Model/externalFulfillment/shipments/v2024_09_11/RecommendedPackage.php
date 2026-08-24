@@ -328,9 +328,10 @@ class RecommendedPackage implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($line_items)) {
             throw new \InvalidArgumentException('non-nullable line_items cannot be null');
         }
-
-        if (count($line_items) > 50) {
-            throw new \InvalidArgumentException('invalid value for $line_items when calling RecommendedPackage., number of items must be less than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($line_items) > 50) {
+                throw new \InvalidArgumentException('invalid value for $line_items when calling RecommendedPackage., number of items must be less than or equal to 50.');
+            }
         }
         $this->container['line_items'] = $line_items;
 

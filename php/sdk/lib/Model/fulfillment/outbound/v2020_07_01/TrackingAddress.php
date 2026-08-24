@@ -289,10 +289,11 @@ class TrackingAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($city)) {
             throw new \InvalidArgumentException('non-nullable city cannot be null');
         }
-        if (mb_strlen($city) > 150) {
-            throw new \InvalidArgumentException('invalid length for $city when calling TrackingAddress., must be smaller than or equal to 150.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($city) > 150) {
+                throw new \InvalidArgumentException('invalid length for $city when calling TrackingAddress., must be smaller than or equal to 150.');
+            }
         }
-
         $this->container['city'] = $city;
 
         return $this;
@@ -316,10 +317,11 @@ class TrackingAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($state)) {
             throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        if (mb_strlen($state) > 150) {
-            throw new \InvalidArgumentException('invalid length for $state when calling TrackingAddress., must be smaller than or equal to 150.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($state) > 150) {
+                throw new \InvalidArgumentException('invalid length for $state when calling TrackingAddress., must be smaller than or equal to 150.');
+            }
         }
-
         $this->container['state'] = $state;
 
         return $this;
@@ -343,10 +345,11 @@ class TrackingAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($country)) {
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        if (mb_strlen($country) > 6) {
-            throw new \InvalidArgumentException('invalid length for $country when calling TrackingAddress., must be smaller than or equal to 6.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($country) > 6) {
+                throw new \InvalidArgumentException('invalid length for $country when calling TrackingAddress., must be smaller than or equal to 6.');
+            }
         }
-
         $this->container['country'] = $country;
 
         return $this;

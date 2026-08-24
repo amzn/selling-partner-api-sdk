@@ -324,10 +324,12 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        if (!ObjectSerializer::getSkipModelValidation()) {
 
 
-        if (!is_null($shipment_status_updates) && (count($shipment_status_updates) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $shipment_status_updates when calling SubmitShipmentStatusUpdatesRequest., number of items must be greater than or equal to 1.');
+            if (!is_null($shipment_status_updates) && (count($shipment_status_updates) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $shipment_status_updates when calling SubmitShipmentStatusUpdatesRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['shipment_status_updates'] = $shipment_status_updates;
 

@@ -272,13 +272,14 @@ class TextComponent implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        if (mb_strlen($value) > 10000) {
-            throw new \InvalidArgumentException('invalid length for $value when calling TextComponent., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($value) > 10000) {
+                throw new \InvalidArgumentException('invalid length for $value when calling TextComponent., must be smaller than or equal to 10000.');
+            }
+            if (mb_strlen($value) < 1) {
+                throw new \InvalidArgumentException('invalid length for $value when calling TextComponent., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($value) < 1) {
-            throw new \InvalidArgumentException('invalid length for $value when calling TextComponent., must be bigger than or equal to 1.');
-        }
-
         $this->container['value'] = $value;
 
         return $this;
@@ -309,7 +310,8 @@ class TextComponent implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['decorator_set'] = $decorator_set;
 
         return $this;

@@ -422,15 +422,17 @@ class FulfillmentPreviewItem implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShippingWeightCalculationMethodAllowableValues();
-        if (!is_null($shipping_weight_calculation_method) && !in_array($shipping_weight_calculation_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipping_weight_calculation_method', must be one of '%s'",
-                    $shipping_weight_calculation_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShippingWeightCalculationMethodAllowableValues();
+            if (!is_null($shipping_weight_calculation_method) && !in_array($shipping_weight_calculation_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipping_weight_calculation_method', must be one of '%s'",
+                        $shipping_weight_calculation_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipping_weight_calculation_method'] = $shipping_weight_calculation_method;
 

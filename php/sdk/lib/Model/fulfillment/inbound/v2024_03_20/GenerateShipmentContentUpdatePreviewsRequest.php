@@ -283,12 +283,13 @@ class GenerateShipmentContentUpdatePreviewsRequest implements ModelInterface, \A
         if (is_null($boxes)) {
             throw new \InvalidArgumentException('non-nullable boxes cannot be null');
         }
-
-        if (count($boxes) > 5000) {
-            throw new \InvalidArgumentException('invalid value for $boxes when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be less than or equal to 5000.');
-        }
-        if (count($boxes) < 1) {
-            throw new \InvalidArgumentException('invalid length for $boxes when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($boxes) > 5000) {
+                throw new \InvalidArgumentException('invalid value for $boxes when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be less than or equal to 5000.');
+            }
+            if (count($boxes) < 1) {
+                throw new \InvalidArgumentException('invalid length for $boxes when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['boxes'] = $boxes;
 
@@ -313,12 +314,13 @@ class GenerateShipmentContentUpdatePreviewsRequest implements ModelInterface, \A
         if (is_null($items)) {
             throw new \InvalidArgumentException('non-nullable items cannot be null');
         }
-
-        if (count($items) > 2000) {
-            throw new \InvalidArgumentException('invalid value for $items when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be less than or equal to 2000.');
-        }
-        if (count($items) < 1) {
-            throw new \InvalidArgumentException('invalid length for $items when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($items) > 2000) {
+                throw new \InvalidArgumentException('invalid value for $items when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be less than or equal to 2000.');
+            }
+            if (count($items) < 1) {
+                throw new \InvalidArgumentException('invalid length for $items when calling GenerateShipmentContentUpdatePreviewsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['items'] = $items;
 

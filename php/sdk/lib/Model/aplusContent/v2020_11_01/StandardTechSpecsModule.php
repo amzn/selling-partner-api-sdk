@@ -317,12 +317,13 @@ class StandardTechSpecsModule implements ModelInterface, \ArrayAccess, \JsonSeri
         if (is_null($specification_list)) {
             throw new \InvalidArgumentException('non-nullable specification_list cannot be null');
         }
-
-        if (count($specification_list) > 16) {
-            throw new \InvalidArgumentException('invalid value for $specification_list when calling StandardTechSpecsModule., number of items must be less than or equal to 16.');
-        }
-        if (count($specification_list) < 4) {
-            throw new \InvalidArgumentException('invalid length for $specification_list when calling StandardTechSpecsModule., number of items must be greater than or equal to 4.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($specification_list) > 16) {
+                throw new \InvalidArgumentException('invalid value for $specification_list when calling StandardTechSpecsModule., number of items must be less than or equal to 16.');
+            }
+            if (count($specification_list) < 4) {
+                throw new \InvalidArgumentException('invalid length for $specification_list when calling StandardTechSpecsModule., number of items must be greater than or equal to 4.');
+            }
         }
         $this->container['specification_list'] = $specification_list;
 
@@ -354,14 +355,14 @@ class StandardTechSpecsModule implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($table_count) && ($table_count > 2)) {
-            throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be smaller than or equal to 2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($table_count) && ($table_count > 2)) {
+                throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be smaller than or equal to 2.');
+            }
+            if (!is_null($table_count) && ($table_count < 1)) {
+                throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($table_count) && ($table_count < 1)) {
-            throw new \InvalidArgumentException('invalid value for $table_count when calling StandardTechSpecsModule., must be bigger than or equal to 1.');
-        }
-
         $this->container['table_count'] = $table_count;
 
         return $this;

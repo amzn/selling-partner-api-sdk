@@ -370,9 +370,10 @@ class CompetitiveSummaryRequest implements ModelInterface, \ArrayAccess, \JsonSe
         if (is_null($included_data)) {
             throw new \InvalidArgumentException('non-nullable included_data cannot be null');
         }
-
-        if (count($included_data) < 1) {
-            throw new \InvalidArgumentException('invalid length for $included_data when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($included_data) < 1) {
+                throw new \InvalidArgumentException('invalid length for $included_data when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['included_data'] = $included_data;
 
@@ -404,12 +405,13 @@ class CompetitiveSummaryRequest implements ModelInterface, \ArrayAccess, \JsonSe
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be less than or equal to 5.');
-        }
-        if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) > 5)) {
+                throw new \InvalidArgumentException('invalid value for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be less than or equal to 5.');
+            }
+            if (!is_null($lowest_priced_offers_inputs) && (count($lowest_priced_offers_inputs) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $lowest_priced_offers_inputs when calling CompetitiveSummaryRequest., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['lowest_priced_offers_inputs'] = $lowest_priced_offers_inputs;
 
@@ -457,13 +459,14 @@ class CompetitiveSummaryRequest implements ModelInterface, \ArrayAccess, \JsonSe
         if (is_null($uri)) {
             throw new \InvalidArgumentException('non-nullable uri cannot be null');
         }
-        if (mb_strlen($uri) > 512) {
-            throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be smaller than or equal to 512.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($uri) > 512) {
+                throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be smaller than or equal to 512.');
+            }
+            if (mb_strlen($uri) < 6) {
+                throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be bigger than or equal to 6.');
+            }
         }
-        if (mb_strlen($uri) < 6) {
-            throw new \InvalidArgumentException('invalid length for $uri when calling CompetitiveSummaryRequest., must be bigger than or equal to 6.');
-        }
-
         $this->container['uri'] = $uri;
 
         return $this;

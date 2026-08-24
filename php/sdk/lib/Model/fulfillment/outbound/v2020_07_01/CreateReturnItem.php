@@ -302,10 +302,11 @@ class CreateReturnItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($seller_return_item_id)) {
             throw new \InvalidArgumentException('non-nullable seller_return_item_id cannot be null');
         }
-        if (mb_strlen($seller_return_item_id) > 80) {
-            throw new \InvalidArgumentException('invalid length for $seller_return_item_id when calling CreateReturnItem., must be smaller than or equal to 80.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($seller_return_item_id) > 80) {
+                throw new \InvalidArgumentException('invalid length for $seller_return_item_id when calling CreateReturnItem., must be smaller than or equal to 80.');
+            }
         }
-
         $this->container['seller_return_item_id'] = $seller_return_item_id;
 
         return $this;
@@ -405,10 +406,11 @@ class CreateReturnItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($return_comment) && (mb_strlen($return_comment) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $return_comment when calling CreateReturnItem., must be smaller than or equal to 1000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($return_comment) && (mb_strlen($return_comment) > 1000)) {
+                throw new \InvalidArgumentException('invalid length for $return_comment when calling CreateReturnItem., must be smaller than or equal to 1000.');
+            }
         }
-
         $this->container['return_comment'] = $return_comment;
 
         return $this;

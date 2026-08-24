@@ -281,7 +281,8 @@ class SearchContentPublishRecordsResponse implements ModelInterface, \ArrayAcces
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;
@@ -312,11 +313,11 @@ class SearchContentPublishRecordsResponse implements ModelInterface, \ArrayAcces
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $next_page_token when calling SearchContentPublishRecordsResponse., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $next_page_token when calling SearchContentPublishRecordsResponse., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['next_page_token'] = $next_page_token;
 
         return $this;
@@ -340,7 +341,8 @@ class SearchContentPublishRecordsResponse implements ModelInterface, \ArrayAcces
         if (is_null($publish_record_list)) {
             throw new \InvalidArgumentException('non-nullable publish_record_list cannot be null');
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['publish_record_list'] = $publish_record_list;
 
         return $this;

@@ -276,13 +276,14 @@ class LtlTrackingDetail implements ModelInterface, \ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($bill_of_lading_number) && (mb_strlen($bill_of_lading_number) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $bill_of_lading_number when calling LtlTrackingDetail., must be bigger than or equal to 1.');
-        }
-
         $this->container['bill_of_lading_number'] = $bill_of_lading_number;
 
         return $this;

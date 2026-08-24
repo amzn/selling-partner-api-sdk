@@ -360,16 +360,17 @@ class InboundPlanSummary implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($inbound_plan_id)) {
             throw new \InvalidArgumentException('non-nullable inbound_plan_id cannot be null');
         }
-        if (mb_strlen($inbound_plan_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $inbound_plan_id when calling InboundPlanSummary., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($inbound_plan_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $inbound_plan_id when calling InboundPlanSummary., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($inbound_plan_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $inbound_plan_id when calling InboundPlanSummary., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($inbound_plan_id))) {
+                throw new \InvalidArgumentException('invalid value for $inbound_plan_id when calling InboundPlanSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($inbound_plan_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $inbound_plan_id when calling InboundPlanSummary., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($inbound_plan_id))) {
-            throw new \InvalidArgumentException('invalid value for $inbound_plan_id when calling InboundPlanSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['inbound_plan_id'] = $inbound_plan_id;
 
         return $this;
@@ -485,13 +486,14 @@ class InboundPlanSummary implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        if (mb_strlen($status) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $status when calling InboundPlanSummary., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($status) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $status when calling InboundPlanSummary., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($status) < 1) {
+                throw new \InvalidArgumentException('invalid length for $status when calling InboundPlanSummary., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($status) < 1) {
-            throw new \InvalidArgumentException('invalid length for $status when calling InboundPlanSummary., must be bigger than or equal to 1.');
-        }
-
         $this->container['status'] = $status;
 
         return $this;

@@ -272,9 +272,10 @@ class GetPricingResponse implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($payload) && (count($payload) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $payload when calling GetPricingResponse., number of items must be less than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($payload) && (count($payload) > 20)) {
+                throw new \InvalidArgumentException('invalid value for $payload when calling GetPricingResponse., number of items must be less than or equal to 20.');
+            }
         }
         $this->container['payload'] = $payload;
 

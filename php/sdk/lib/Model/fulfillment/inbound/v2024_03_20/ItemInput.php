@@ -336,11 +336,11 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($expiration) && (!preg_match('/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', ObjectSerializer::toString($expiration)))) {
-            throw new \InvalidArgumentException('invalid value for $expiration when calling ItemInput., must conform to the pattern /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($expiration) && (!preg_match('/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', ObjectSerializer::toString($expiration)))) {
+                throw new \InvalidArgumentException('invalid value for $expiration when calling ItemInput., must conform to the pattern /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.');
+            }
         }
-
         $this->container['expiration'] = $expiration;
 
         return $this;
@@ -394,13 +394,14 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) > 256)) {
-            throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) > 256)) {
+                throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be smaller than or equal to 256.');
+            }
+            if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling ItemInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['manufacturing_lot_code'] = $manufacturing_lot_code;
 
         return $this;
@@ -424,13 +425,14 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($msku)) {
             throw new \InvalidArgumentException('non-nullable msku cannot be null');
         }
-        if (mb_strlen($msku) > 255) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($msku) > 255) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($msku) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($msku) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['msku'] = $msku;
 
         return $this;
@@ -477,14 +479,14 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity > 500000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be smaller than or equal to 500000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity > 500000) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be smaller than or equal to 500000.');
+            }
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be bigger than or equal to 1.');
+            }
         }
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

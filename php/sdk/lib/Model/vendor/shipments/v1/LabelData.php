@@ -404,15 +404,17 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getLabelFormatAllowableValues();
-        if (!is_null($label_format) && !in_array($label_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'label_format', must be one of '%s'",
-                    $label_format,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getLabelFormatAllowableValues();
+            if (!is_null($label_format) && !in_array($label_format, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'label_format', must be one of '%s'",
+                        $label_format,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['label_format'] = $label_format;
 

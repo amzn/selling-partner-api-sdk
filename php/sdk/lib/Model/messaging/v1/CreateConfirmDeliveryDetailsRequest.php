@@ -269,13 +269,14 @@ class CreateConfirmDeliveryDetailsRequest implements ModelInterface, \ArrayAcces
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($text) && (mb_strlen($text) > 2000)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be smaller than or equal to 2000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($text) && (mb_strlen($text) > 2000)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be smaller than or equal to 2000.');
+            }
+            if (!is_null($text) && (mb_strlen($text) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($text) && (mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmDeliveryDetailsRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['text'] = $text;
 
         return $this;

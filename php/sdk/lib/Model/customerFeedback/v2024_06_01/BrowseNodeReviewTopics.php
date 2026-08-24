@@ -276,9 +276,10 @@ class BrowseNodeReviewTopics implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($positive_topics) && (count($positive_topics) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $positive_topics when calling BrowseNodeReviewTopics., number of items must be less than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($positive_topics) && (count($positive_topics) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $positive_topics when calling BrowseNodeReviewTopics., number of items must be less than or equal to 10.');
+            }
         }
         $this->container['positive_topics'] = $positive_topics;
 
@@ -310,9 +311,10 @@ class BrowseNodeReviewTopics implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($negative_topics) && (count($negative_topics) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $negative_topics when calling BrowseNodeReviewTopics., number of items must be less than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($negative_topics) && (count($negative_topics) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $negative_topics when calling BrowseNodeReviewTopics., number of items must be less than or equal to 10.');
+            }
         }
         $this->container['negative_topics'] = $negative_topics;
 

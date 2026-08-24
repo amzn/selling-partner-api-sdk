@@ -389,15 +389,17 @@ class Error implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getErrorLevelAllowableValues();
-        if (!is_null($error_level) && !in_array($error_level, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'error_level', must be one of '%s'",
-                    $error_level,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getErrorLevelAllowableValues();
+            if (!is_null($error_level) && !in_array($error_level, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'error_level', must be one of '%s'",
+                        $error_level,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['error_level'] = $error_level;
 

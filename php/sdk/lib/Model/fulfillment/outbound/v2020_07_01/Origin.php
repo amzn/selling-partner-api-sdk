@@ -265,13 +265,14 @@ class Origin implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
-        if (mb_strlen($country_code) > 2) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling Origin., must be smaller than or equal to 2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($country_code) > 2) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling Origin., must be smaller than or equal to 2.');
+            }
+            if (mb_strlen($country_code) < 2) {
+                throw new \InvalidArgumentException('invalid length for $country_code when calling Origin., must be bigger than or equal to 2.');
+            }
         }
-        if (mb_strlen($country_code) < 2) {
-            throw new \InvalidArgumentException('invalid length for $country_code when calling Origin., must be bigger than or equal to 2.');
-        }
-
         $this->container['country_code'] = $country_code;
 
         return $this;

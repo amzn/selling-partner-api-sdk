@@ -298,12 +298,13 @@ class ListHandoverSlotsResponse implements ModelInterface, \ArrayAccess, \JsonSe
         if (is_null($time_slots)) {
             throw new \InvalidArgumentException('non-nullable time_slots cannot be null');
         }
-
-        if (count($time_slots) > 500) {
-            throw new \InvalidArgumentException('invalid value for $time_slots when calling ListHandoverSlotsResponse., number of items must be less than or equal to 500.');
-        }
-        if (count($time_slots) < 1) {
-            throw new \InvalidArgumentException('invalid length for $time_slots when calling ListHandoverSlotsResponse., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($time_slots) > 500) {
+                throw new \InvalidArgumentException('invalid value for $time_slots when calling ListHandoverSlotsResponse., number of items must be less than or equal to 500.');
+            }
+            if (count($time_slots) < 1) {
+                throw new \InvalidArgumentException('invalid length for $time_slots when calling ListHandoverSlotsResponse., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['time_slots'] = $time_slots;
 

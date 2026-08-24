@@ -269,14 +269,14 @@ class OfferProgramConfigurationPromotionsDiscountFunding implements ModelInterfa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($percentage) && ($percentage > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($percentage) && ($percentage > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($percentage) && ($percentage < 0)) {
+                throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($percentage) && ($percentage < 0)) {
-            throw new \InvalidArgumentException('invalid value for $percentage when calling OfferProgramConfigurationPromotionsDiscountFunding., must be bigger than or equal to 0.');
-        }
-
         $this->container['percentage'] = $percentage;
 
         return $this;

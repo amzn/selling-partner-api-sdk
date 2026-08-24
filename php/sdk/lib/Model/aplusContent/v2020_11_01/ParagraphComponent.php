@@ -265,12 +265,13 @@ class ParagraphComponent implements ModelInterface, \ArrayAccess, \JsonSerializa
         if (is_null($text_list)) {
             throw new \InvalidArgumentException('non-nullable text_list cannot be null');
         }
-
-        if (count($text_list) > 100) {
-            throw new \InvalidArgumentException('invalid value for $text_list when calling ParagraphComponent., number of items must be less than or equal to 100.');
-        }
-        if (count($text_list) < 1) {
-            throw new \InvalidArgumentException('invalid length for $text_list when calling ParagraphComponent., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($text_list) > 100) {
+                throw new \InvalidArgumentException('invalid value for $text_list when calling ParagraphComponent., number of items must be less than or equal to 100.');
+            }
+            if (count($text_list) < 1) {
+                throw new \InvalidArgumentException('invalid length for $text_list when calling ParagraphComponent., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['text_list'] = $text_list;
 

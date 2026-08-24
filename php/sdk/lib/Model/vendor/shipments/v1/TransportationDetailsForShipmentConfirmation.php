@@ -435,15 +435,17 @@ class TransportationDetailsForShipmentConfirmation implements ModelInterface, Ar
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getTransportationModeAllowableValues();
-        if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
-                    $transportation_mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getTransportationModeAllowableValues();
+            if (!is_null($transportation_mode) && !in_array($transportation_mode, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'transportation_mode', must be one of '%s'",
+                        $transportation_mode,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['transportation_mode'] = $transportation_mode;
 

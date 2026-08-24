@@ -265,9 +265,10 @@ class Preference implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($auto_enrollment) && (count($auto_enrollment) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $auto_enrollment when calling Preference., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($auto_enrollment) && (count($auto_enrollment) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $auto_enrollment when calling Preference., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['auto_enrollment'] = $auto_enrollment;
 

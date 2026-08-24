@@ -298,12 +298,13 @@ class LowestPricedOffer implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($offers)) {
             throw new \InvalidArgumentException('non-nullable offers cannot be null');
         }
-
-        if (count($offers) > 20) {
-            throw new \InvalidArgumentException('invalid value for $offers when calling LowestPricedOffer., number of items must be less than or equal to 20.');
-        }
-        if (count($offers) < 1) {
-            throw new \InvalidArgumentException('invalid length for $offers when calling LowestPricedOffer., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($offers) > 20) {
+                throw new \InvalidArgumentException('invalid value for $offers when calling LowestPricedOffer., number of items must be less than or equal to 20.');
+            }
+            if (count($offers) < 1) {
+                throw new \InvalidArgumentException('invalid length for $offers when calling LowestPricedOffer., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['offers'] = $offers;
 

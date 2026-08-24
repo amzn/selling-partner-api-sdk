@@ -262,9 +262,10 @@ class Packages implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($packages)) {
             throw new \InvalidArgumentException('non-nullable packages cannot be null');
         }
-
-        if (count($packages) < 1) {
-            throw new \InvalidArgumentException('invalid length for $packages when calling Packages., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($packages) < 1) {
+                throw new \InvalidArgumentException('invalid length for $packages when calling Packages., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['packages'] = $packages;
 

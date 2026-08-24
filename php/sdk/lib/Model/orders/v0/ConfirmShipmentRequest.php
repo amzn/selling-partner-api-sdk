@@ -328,15 +328,17 @@ class ConfirmShipmentRequest implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getCodCollectionMethodAllowableValues();
-        if (!is_null($cod_collection_method) && !in_array($cod_collection_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'cod_collection_method', must be one of '%s'",
-                    $cod_collection_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCodCollectionMethodAllowableValues();
+            if (!is_null($cod_collection_method) && !in_array($cod_collection_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'cod_collection_method', must be one of '%s'",
+                        $cod_collection_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['cod_collection_method'] = $cod_collection_method;
 

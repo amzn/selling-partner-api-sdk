@@ -384,11 +384,13 @@ class ShippingLabel implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($purchase_order_number)) {
             throw new \InvalidArgumentException('non-nullable purchase_order_number cannot be null');
         }
+        if (!ObjectSerializer::getSkipModelValidation()) {
 
-        if ((!preg_match("/^[a-zA-Z0-9]+$/", ObjectSerializer::toString($purchase_order_number)))) {
-            throw new \InvalidArgumentException("invalid value for \$purchase_order_number when calling ShippingLabel., must conform to the pattern /^[a-zA-Z0-9]+$/.");
+            if ((!preg_match("/^[a-zA-Z0-9]+$/", ObjectSerializer::toString($purchase_order_number)))) {
+                throw new \InvalidArgumentException("invalid value for \$purchase_order_number when calling ShippingLabel., must conform to the pattern /^[a-zA-Z0-9]+$/.");
+            }
+
         }
-
         $this->container['purchase_order_number'] = $purchase_order_number;
 
         return $this;
@@ -470,15 +472,17 @@ class ShippingLabel implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($label_format)) {
             throw new \InvalidArgumentException('non-nullable label_format cannot be null');
         }
-        $allowedValues = $this->getLabelFormatAllowableValues();
-        if (!in_array($label_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'label_format', must be one of '%s'",
-                    $label_format,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getLabelFormatAllowableValues();
+            if (!in_array($label_format, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'label_format', must be one of '%s'",
+                        $label_format,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['label_format'] = $label_format;
 

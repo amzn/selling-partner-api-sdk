@@ -272,11 +272,11 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($value) && ($value < 11)) {
-            throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be bigger than or equal to 11.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($value) && ($value < 11)) {
+                throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be bigger than or equal to 11.');
+            }
         }
-
         $this->container['value'] = $value;
 
         return $this;

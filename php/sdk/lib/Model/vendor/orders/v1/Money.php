@@ -366,10 +366,12 @@ class Money implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($currency_code) && (mb_strlen($currency_code) > 3)) {
-            throw new \InvalidArgumentException('invalid length for $currency_code when calling Money., must be smaller than or equal to 3.');
-        }
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($currency_code) && (mb_strlen($currency_code) > 3)) {
+                throw new \InvalidArgumentException('invalid length for $currency_code when calling Money., must be smaller than or equal to 3.');
+            }
 
+        }
         $this->container['currency_code'] = $currency_code;
 
         return $this;
@@ -438,15 +440,17 @@ class Money implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getUnitOfMeasureAllowableValues();
-        if (!is_null($unit_of_measure) && !in_array($unit_of_measure, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
-                    $unit_of_measure,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getUnitOfMeasureAllowableValues();
+            if (!is_null($unit_of_measure) && !in_array($unit_of_measure, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                        $unit_of_measure,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['unit_of_measure'] = $unit_of_measure;
 

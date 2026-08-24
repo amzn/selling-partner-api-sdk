@@ -446,10 +446,11 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($seller_order_id) && (mb_strlen($seller_order_id) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $seller_order_id when calling Shipment., must be smaller than or equal to 64.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($seller_order_id) && (mb_strlen($seller_order_id) > 64)) {
+                throw new \InvalidArgumentException('invalid length for $seller_order_id when calling Shipment., must be smaller than or equal to 64.');
+            }
         }
-
         $this->container['seller_order_id'] = $seller_order_id;
 
         return $this;

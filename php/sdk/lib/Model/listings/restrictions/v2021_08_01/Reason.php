@@ -328,15 +328,17 @@ class Reason implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getReasonCodeAllowableValues();
-        if (!is_null($reason_code) && !in_array($reason_code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'reason_code', must be one of '%s'",
-                    $reason_code,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReasonCodeAllowableValues();
+            if (!is_null($reason_code) && !in_array($reason_code, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'reason_code', must be one of '%s'",
+                        $reason_code,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['reason_code'] = $reason_code;
 

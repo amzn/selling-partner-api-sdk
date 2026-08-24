@@ -272,7 +272,8 @@ class AplusPaginatedResponse implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['warnings'] = $warnings;
 
         return $this;
@@ -303,11 +304,11 @@ class AplusPaginatedResponse implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $next_page_token when calling AplusPaginatedResponse., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next_page_token) && (mb_strlen($next_page_token) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $next_page_token when calling AplusPaginatedResponse., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['next_page_token'] = $next_page_token;
 
         return $this;

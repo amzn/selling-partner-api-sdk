@@ -287,16 +287,17 @@ class PackingOptionSummary implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($packing_option_id)) {
             throw new \InvalidArgumentException('non-nullable packing_option_id cannot be null');
         }
-        if (mb_strlen($packing_option_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $packing_option_id when calling PackingOptionSummary., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($packing_option_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $packing_option_id when calling PackingOptionSummary., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($packing_option_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $packing_option_id when calling PackingOptionSummary., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($packing_option_id))) {
+                throw new \InvalidArgumentException('invalid value for $packing_option_id when calling PackingOptionSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($packing_option_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $packing_option_id when calling PackingOptionSummary., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($packing_option_id))) {
-            throw new \InvalidArgumentException('invalid value for $packing_option_id when calling PackingOptionSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['packing_option_id'] = $packing_option_id;
 
         return $this;
@@ -320,13 +321,14 @@ class PackingOptionSummary implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        if (mb_strlen($status) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $status when calling PackingOptionSummary., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($status) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $status when calling PackingOptionSummary., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($status) < 1) {
+                throw new \InvalidArgumentException('invalid length for $status when calling PackingOptionSummary., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($status) < 1) {
-            throw new \InvalidArgumentException('invalid length for $status when calling PackingOptionSummary., must be bigger than or equal to 1.');
-        }
-
         $this->container['status'] = $status;
 
         return $this;

@@ -292,10 +292,11 @@ class UnfulfillablePreviewItem implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($seller_sku)) {
             throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
         }
-        if (mb_strlen($seller_sku) > 50) {
-            throw new \InvalidArgumentException('invalid length for $seller_sku when calling UnfulfillablePreviewItem., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($seller_sku) > 50) {
+                throw new \InvalidArgumentException('invalid length for $seller_sku when calling UnfulfillablePreviewItem., must be smaller than or equal to 50.');
+            }
         }
-
         $this->container['seller_sku'] = $seller_sku;
 
         return $this;
@@ -342,10 +343,11 @@ class UnfulfillablePreviewItem implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($seller_fulfillment_order_item_id)) {
             throw new \InvalidArgumentException('non-nullable seller_fulfillment_order_item_id cannot be null');
         }
-        if (mb_strlen($seller_fulfillment_order_item_id) > 50) {
-            throw new \InvalidArgumentException('invalid length for $seller_fulfillment_order_item_id when calling UnfulfillablePreviewItem., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($seller_fulfillment_order_item_id) > 50) {
+                throw new \InvalidArgumentException('invalid length for $seller_fulfillment_order_item_id when calling UnfulfillablePreviewItem., must be smaller than or equal to 50.');
+            }
         }
-
         $this->container['seller_fulfillment_order_item_id'] = $seller_fulfillment_order_item_id;
 
         return $this;
