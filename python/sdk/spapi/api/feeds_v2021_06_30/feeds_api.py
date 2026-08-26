@@ -27,7 +27,7 @@ class FeedsApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.feeds_v2021_06_30"
+    api_models_module = "spapi.spapi.models.feeds_v2021_06_30"
 
     def __init__(self, api_client=None):
         if api_client is None:

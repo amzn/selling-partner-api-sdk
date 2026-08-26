@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.reports_v2021_06_30.reports_api import ReportsApi
+from spapi.spapi.api.reports_v2021_06_30.reports_api import ReportsApi
 
-import spapi.models.reports_v2021_06_30 as models
+import spapi.spapi.models.reports_v2021_06_30 as models
 
 class TestReportsApi(unittest.TestCase):
     """ReportsApi unit test stubs"""

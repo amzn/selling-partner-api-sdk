@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.finances_invoices_v2026_06_25.default_api import DefaultApi
+from spapi.spapi.api.finances_invoices_v2026_06_25.default_api import DefaultApi
 
-import spapi.models.finances_invoices_v2026_06_25 as models
+import spapi.spapi.models.finances_invoices_v2026_06_25 as models
 
 class TestDefaultApi(unittest.TestCase):
     """DefaultApi unit test stubs"""

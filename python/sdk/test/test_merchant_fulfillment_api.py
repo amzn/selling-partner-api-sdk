@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.merchant_fulfillment_v0.merchant_fulfillment_api import MerchantFulfillmentApi
+from spapi.spapi.api.merchant_fulfillment_v0.merchant_fulfillment_api import MerchantFulfillmentApi
 
-import spapi.models.merchant_fulfillment_v0 as models
+import spapi.spapi.models.merchant_fulfillment_v0 as models
 
 class TestMerchantFulfillmentApi(unittest.TestCase):
     """MerchantFulfillmentApi unit test stubs"""

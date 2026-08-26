@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.apluscontent_v2020_11_01.aplus_content_api import AplusContentApi
+from spapi.spapi.api.apluscontent_v2020_11_01.aplus_content_api import AplusContentApi
 
-import spapi.models.apluscontent_v2020_11_01 as models
+import spapi.spapi.models.apluscontent_v2020_11_01 as models
 
 class TestAplusContentApi(unittest.TestCase):
     """AplusContentApi unit test stubs"""

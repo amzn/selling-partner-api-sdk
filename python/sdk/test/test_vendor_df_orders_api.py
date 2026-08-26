@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.vendor_direct_fulfillment_orders_v2021_12_28.vendor_df_orders_api import VendorDfOrdersApi
+from spapi.spapi.api.vendor_direct_fulfillment_orders_v2021_12_28.vendor_df_orders_api import VendorDfOrdersApi
 
-import spapi.models.vendor_direct_fulfillment_orders_v2021_12_28 as models
+import spapi.spapi.models.vendor_direct_fulfillment_orders_v2021_12_28 as models
 
 class TestVendorDfOrdersApi(unittest.TestCase):
     """VendorDfOrdersApi unit test stubs"""

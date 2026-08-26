@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
+from spapi.spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
 
-import spapi.models.fba_eligibility_v1 as models
+import spapi.spapi.models.fba_eligibility_v1 as models
 
 class TestFbaInboundEligibilityApi(unittest.TestCase):
     """FbaInboundEligibilityApi unit test stubs"""

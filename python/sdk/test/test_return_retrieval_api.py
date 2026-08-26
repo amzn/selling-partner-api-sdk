@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.external_fulfillment_returns_v2024_09_11.return_retrieval_api import ReturnRetrievalApi
+from spapi.spapi.api.external_fulfillment_returns_v2024_09_11.return_retrieval_api import ReturnRetrievalApi
 
-import spapi.models.external_fulfillment_returns_v2024_09_11 as models
+import spapi.spapi.models.external_fulfillment_returns_v2024_09_11 as models
 
 class TestReturnRetrievalApi(unittest.TestCase):
     """ReturnRetrievalApi unit test stubs"""

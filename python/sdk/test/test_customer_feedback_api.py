@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.customer_feedback_2024_06_01.customer_feedback_api import CustomerFeedbackApi
+from spapi.spapi.api.customer_feedback_2024_06_01.customer_feedback_api import CustomerFeedbackApi
 
-import spapi.models.customer_feedback_2024_06_01 as models
+import spapi.spapi.models.customer_feedback_2024_06_01 as models
 
 class TestCustomerFeedbackApi(unittest.TestCase):
     """CustomerFeedbackApi unit test stubs"""

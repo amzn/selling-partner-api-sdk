@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.orders_v2026_01_01.get_order_api import GetOrderApi
+from spapi.spapi.api.orders_v2026_01_01.get_order_api import GetOrderApi
 
-import spapi.models.orders_v2026_01_01 as models
+import spapi.spapi.models.orders_v2026_01_01 as models
 
 class TestGetOrderApi(unittest.TestCase):
     """GetOrderApi unit test stubs"""

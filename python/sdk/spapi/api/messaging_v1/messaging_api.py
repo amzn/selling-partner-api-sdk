@@ -27,7 +27,7 @@ class MessagingApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.messaging_v1"
+    api_models_module = "spapi.spapi.models.messaging_v1"
 
     def __init__(self, api_client=None):
         if api_client is None:

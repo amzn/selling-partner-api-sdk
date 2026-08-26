@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.tokens_v2021_03_01.tokens_api import TokensApi
+from spapi.spapi.api.tokens_v2021_03_01.tokens_api import TokensApi
 
-import spapi.models.tokens_v2021_03_01 as models
+import spapi.spapi.models.tokens_v2021_03_01 as models
 
 class TestTokensApi(unittest.TestCase):
     """TokensApi unit test stubs"""

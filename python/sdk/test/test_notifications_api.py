@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.notifications_v1.notifications_api import NotificationsApi
+from spapi.spapi.api.notifications_v1.notifications_api import NotificationsApi
 
-import spapi.models.notifications_v1 as models
+import spapi.spapi.models.notifications_v1 as models
 
 class TestNotificationsApi(unittest.TestCase):
     """NotificationsApi unit test stubs"""

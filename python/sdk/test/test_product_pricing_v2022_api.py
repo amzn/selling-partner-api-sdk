@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.product_pricing_v2022_05_01.product_pricing_v2022_api import ProductPricingV2022Api
+from spapi.spapi.api.product_pricing_v2022_05_01.product_pricing_v2022_api import ProductPricingV2022Api
 
-import spapi.models.product_pricing_v2022_05_01 as models
+import spapi.spapi.models.product_pricing_v2022_05_01 as models
 
 class TestProductPricingV2022Api(unittest.TestCase):
     """ProductPricingV2022Api unit test stubs"""

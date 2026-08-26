@@ -27,7 +27,7 @@ class ReplenishmentApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.replenishment_v2022_11_07"
+    api_models_module = "spapi.spapi.models.replenishment_v2022_11_07"
 
     def __init__(self, api_client=None):
         if api_client is None:

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.seller_wallet_2024_03_01.transfer_preview_api import TransferPreviewApi
+from spapi.spapi.api.seller_wallet_2024_03_01.transfer_preview_api import TransferPreviewApi
 
-import spapi.models.seller_wallet_2024_03_01 as models
+import spapi.spapi.models.seller_wallet_2024_03_01 as models
 
 class TestTransferPreviewApi(unittest.TestCase):
     """TransferPreviewApi unit test stubs"""

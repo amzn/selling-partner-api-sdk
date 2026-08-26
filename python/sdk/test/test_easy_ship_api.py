@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.easyship_v2022_03_23.easy_ship_api import EasyShipApi
+from spapi.spapi.api.easyship_v2022_03_23.easy_ship_api import EasyShipApi
 
-import spapi.models.easyship_v2022_03_23 as models
+import spapi.spapi.models.easyship_v2022_03_23 as models
 
 class TestEasyShipApi(unittest.TestCase):
     """EasyShipApi unit test stubs"""

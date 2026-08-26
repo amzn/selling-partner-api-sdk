@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.finances_v2024_06_19.finances_v2024_api import FinancesV2024Api
+from spapi.spapi.api.finances_v2024_06_19.finances_v2024_api import FinancesV2024Api
 
-import spapi.models.finances_v2024_06_19 as models
+import spapi.spapi.models.finances_v2024_06_19 as models
 
 class TestFinancesV2024Api(unittest.TestCase):
     """FinancesV2024Api unit test stubs"""

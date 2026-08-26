@@ -27,7 +27,7 @@ class EasyShipApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.easyship_v2022_03_23"
+    api_models_module = "spapi.spapi.models.easyship_v2022_03_23"
 
     def __init__(self, api_client=None):
         if api_client is None:

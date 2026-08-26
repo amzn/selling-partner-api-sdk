@@ -27,7 +27,7 @@ class UploadsApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.uploads_v2020_11_01"
+    api_models_module = "spapi.spapi.models.uploads_v2020_11_01"
 
     def __init__(self, api_client=None):
         if api_client is None:

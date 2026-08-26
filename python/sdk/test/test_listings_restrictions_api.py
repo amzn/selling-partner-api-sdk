@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.listings_restrictions_v2021_08_01.listings_restrictions_api import ListingsRestrictionsApi
+from spapi.spapi.api.listings_restrictions_v2021_08_01.listings_restrictions_api import ListingsRestrictionsApi
 
-import spapi.models.listings_restrictions_v2021_08_01 as models
+import spapi.spapi.models.listings_restrictions_v2021_08_01 as models
 
 class TestListingsRestrictionsApi(unittest.TestCase):
     """ListingsRestrictionsApi unit test stubs"""

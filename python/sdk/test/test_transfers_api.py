@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.transfers_v2024_06_01.transfers_api import TransfersApi
+from spapi.spapi.api.transfers_v2024_06_01.transfers_api import TransfersApi
 
-import spapi.models.transfers_v2024_06_01 as models
+import spapi.spapi.models.transfers_v2024_06_01 as models
 
 class TestTransfersApi(unittest.TestCase):
     """TransfersApi unit test stubs"""

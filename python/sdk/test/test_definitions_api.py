@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.product_type_definitions_v2020_09_01.definitions_api import DefinitionsApi
+from spapi.spapi.api.product_type_definitions_v2020_09_01.definitions_api import DefinitionsApi
 
-import spapi.models.product_type_definitions_v2020_09_01 as models
+import spapi.spapi.models.product_type_definitions_v2020_09_01 as models
 
 class TestDefinitionsApi(unittest.TestCase):
     """DefinitionsApi unit test stubs"""

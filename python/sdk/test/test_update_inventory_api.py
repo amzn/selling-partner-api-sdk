@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.vendor_direct_fulfillment_inventory_v1.update_inventory_api import UpdateInventoryApi
+from spapi.spapi.api.vendor_direct_fulfillment_inventory_v1.update_inventory_api import UpdateInventoryApi
 
-import spapi.models.vendor_direct_fulfillment_inventory_v1 as models
+import spapi.spapi.models.vendor_direct_fulfillment_inventory_v1 as models
 
 class TestUpdateInventoryApi(unittest.TestCase):
     """UpdateInventoryApi unit test stubs"""

@@ -27,7 +27,7 @@ class CustomerFeedbackApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.customer_feedback_2024_06_01"
+    api_models_module = "spapi.spapi.models.customer_feedback_2024_06_01"
 
     def __init__(self, api_client=None):
         if api_client is None:

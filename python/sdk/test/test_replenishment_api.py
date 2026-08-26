@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.replenishment_v2022_11_07.replenishment_api import ReplenishmentApi
+from spapi.spapi.api.replenishment_v2022_11_07.replenishment_api import ReplenishmentApi
 
-import spapi.models.replenishment_v2022_11_07 as models
+import spapi.spapi.models.replenishment_v2022_11_07 as models
 
 class TestReplenishmentApi(unittest.TestCase):
     """ReplenishmentApi unit test stubs"""

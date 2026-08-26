@@ -27,7 +27,7 @@ class TransfersApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.transfers_v2024_06_01"
+    api_models_module = "spapi.spapi.models.transfers_v2024_06_01"
 
     def __init__(self, api_client=None):
         if api_client is None:
