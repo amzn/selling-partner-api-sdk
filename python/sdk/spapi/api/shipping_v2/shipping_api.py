@@ -28,7 +28,7 @@ class ShippingApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.shipping_v2"
+    api_models_module = "spapi.spapi.models.shipping_v2"
 
     def __init__(self, api_client=None):
         if api_client is None:

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.external_fulfillment_shipments_v2024_09_11.shipment_processing_api import ShipmentProcessingApi
+from spapi.spapi.api.external_fulfillment_shipments_v2024_09_11.shipment_processing_api import ShipmentProcessingApi
 
-import spapi.models.external_fulfillment_shipments_v2024_09_11 as models
+import spapi.spapi.models.external_fulfillment_shipments_v2024_09_11 as models
 
 class TestShipmentProcessingApi(unittest.TestCase):
     """ShipmentProcessingApi unit test stubs"""

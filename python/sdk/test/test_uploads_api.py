@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.uploads_v2020_11_01.uploads_api import UploadsApi
+from spapi.spapi.api.uploads_v2020_11_01.uploads_api import UploadsApi
 
-import spapi.models.uploads_v2020_11_01 as models
+import spapi.spapi.models.uploads_v2020_11_01 as models
 
 class TestUploadsApi(unittest.TestCase):
     """UploadsApi unit test stubs"""

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
+from spapi.spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
 
-import spapi.models.fulfillment_inbound_v0 as models
+import spapi.spapi.models.fulfillment_inbound_v0 as models
 
 class TestFbaInboundV0Api(unittest.TestCase):
     """FbaInboundV0Api unit test stubs"""

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.catalogitems_v2022_04_01.catalog_api import CatalogApi
+from spapi.spapi.api.catalogitems_v2022_04_01.catalog_api import CatalogApi
 
-import spapi.models.catalogitems_v2022_04_01 as models
+import spapi.spapi.models.catalogitems_v2022_04_01 as models
 
 class TestCatalogApi(unittest.TestCase):
     """CatalogApi unit test stubs"""

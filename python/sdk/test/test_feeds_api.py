@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.feeds_v2021_06_30.feeds_api import FeedsApi
+from spapi.spapi.api.feeds_v2021_06_30.feeds_api import FeedsApi
 
-import spapi.models.feeds_v2021_06_30 as models
+import spapi.spapi.models.feeds_v2021_06_30 as models
 
 class TestFeedsApi(unittest.TestCase):
     """FeedsApi unit test stubs"""

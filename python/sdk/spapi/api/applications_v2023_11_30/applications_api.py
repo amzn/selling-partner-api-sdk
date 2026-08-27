@@ -27,7 +27,7 @@ class ApplicationsApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.applications_v2023_11_30"
+    api_models_module = "spapi.spapi.models.applications_v2023_11_30"
 
     def __init__(self, api_client=None):
         if api_client is None:

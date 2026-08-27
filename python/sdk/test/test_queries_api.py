@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
+from spapi.spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
 
-import spapi.models.datakiosk_v2023_11_15 as models
+import spapi.spapi.models.datakiosk_v2023_11_15 as models
 
 class TestQueriesApi(unittest.TestCase):
     """QueriesApi unit test stubs"""

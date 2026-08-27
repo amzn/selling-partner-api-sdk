@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.supply_sources_v2020_07_01.supply_sources_api import SupplySourcesApi
+from spapi.spapi.api.supply_sources_v2020_07_01.supply_sources_api import SupplySourcesApi
 
-import spapi.models.supply_sources_v2020_07_01 as models
+import spapi.spapi.models.supply_sources_v2020_07_01 as models
 
 class TestSupplySourcesApi(unittest.TestCase):
     """SupplySourcesApi unit test stubs"""

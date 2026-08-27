@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.fulfillment_outbound_v2026_07_04.offers_api import OffersApi
+from spapi.spapi.api.fulfillment_outbound_v2026_07_04.offers_api import OffersApi
 
-import spapi.models.fulfillment_outbound_v2026_07_04 as models
+import spapi.spapi.models.fulfillment_outbound_v2026_07_04 as models
 
 class TestOffersApi(unittest.TestCase):
     """OffersApi unit test stubs"""

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.appintegrations_v2024_04_01.app_integrations_api import AppIntegrationsApi
+from spapi.spapi.api.appintegrations_v2024_04_01.app_integrations_api import AppIntegrationsApi
 
-import spapi.models.appintegrations_v2024_04_01 as models
+import spapi.spapi.models.appintegrations_v2024_04_01 as models
 
 class TestAppIntegrationsApi(unittest.TestCase):
     """AppIntegrationsApi unit test stubs"""

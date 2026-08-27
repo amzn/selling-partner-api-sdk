@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.customer_invoices_api import CustomerInvoicesApi
+from spapi.spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.customer_invoices_api import CustomerInvoicesApi
 
-import spapi.models.vendor_direct_fulfillment_shipping_v2021_12_28 as models
+import spapi.spapi.models.vendor_direct_fulfillment_shipping_v2021_12_28 as models
 
 class TestCustomerInvoicesApi(unittest.TestCase):
     """CustomerInvoicesApi unit test stubs"""

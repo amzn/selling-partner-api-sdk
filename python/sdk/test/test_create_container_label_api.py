@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.create_container_label_api import CreateContainerLabelApi
+from spapi.spapi.api.vendor_direct_fulfillment_shipping_v2021_12_28.create_container_label_api import CreateContainerLabelApi
 
-import spapi.models.vendor_direct_fulfillment_shipping_v2021_12_28 as models
+import spapi.spapi.models.vendor_direct_fulfillment_shipping_v2021_12_28 as models
 
 class TestCreateContainerLabelApi(unittest.TestCase):
     """CreateContainerLabelApi unit test stubs"""

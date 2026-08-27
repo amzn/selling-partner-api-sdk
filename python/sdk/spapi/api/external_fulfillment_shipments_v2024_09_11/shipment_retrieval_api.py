@@ -28,7 +28,7 @@ class ShipmentRetrievalApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.external_fulfillment_shipments_v2024_09_11"
+    api_models_module = "spapi.spapi.models.external_fulfillment_shipments_v2024_09_11"
 
     def __init__(self, api_client=None):
         if api_client is None:

@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.messaging_v1.messaging_api import MessagingApi
+from spapi.spapi.api.messaging_v1.messaging_api import MessagingApi
 
-import spapi.models.messaging_v1 as models
+import spapi.spapi.models.messaging_v1 as models
 
 class TestMessagingApi(unittest.TestCase):
     """MessagingApi unit test stubs"""

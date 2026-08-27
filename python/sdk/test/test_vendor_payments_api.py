@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.vendor_invoices_v1.vendor_payments_api import VendorPaymentsApi
+from spapi.spapi.api.vendor_invoices_v1.vendor_payments_api import VendorPaymentsApi
 
-import spapi.models.vendor_invoices_v1 as models
+import spapi.spapi.models.vendor_invoices_v1 as models
 
 class TestVendorPaymentsApi(unittest.TestCase):
     """VendorPaymentsApi unit test stubs"""

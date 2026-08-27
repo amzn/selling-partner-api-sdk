@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.awd_v2024_05_09.awd_api import AwdApi
+from spapi.spapi.api.awd_v2024_05_09.awd_api import AwdApi
 
-import spapi.models.awd_v2024_05_09 as models
+import spapi.spapi.models.awd_v2024_05_09 as models
 
 class TestAwdApi(unittest.TestCase):
     """AwdApi unit test stubs"""

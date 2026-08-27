@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.seller_wallet_2024_03_01.transactions_api import TransactionsApi
+from spapi.spapi.api.seller_wallet_2024_03_01.transactions_api import TransactionsApi
 
-import spapi.models.seller_wallet_2024_03_01 as models
+import spapi.spapi.models.seller_wallet_2024_03_01 as models
 
 class TestTransactionsApi(unittest.TestCase):
     """TransactionsApi unit test stubs"""

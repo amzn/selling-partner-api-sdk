@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.solicitations_v1.solicitations_api import SolicitationsApi
+from spapi.spapi.api.solicitations_v1.solicitations_api import SolicitationsApi
 
-import spapi.models.solicitations_v1 as models
+import spapi.spapi.models.solicitations_v1 as models
 
 class TestSolicitationsApi(unittest.TestCase):
     """SolicitationsApi unit test stubs"""

@@ -27,7 +27,7 @@ class FulfillmentOutboundApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.fulfillment_outbound_v2026_07_04"
+    api_models_module = "spapi.spapi.models.fulfillment_outbound_v2026_07_04"
 
     def __init__(self, api_client=None):
         if api_client is None:

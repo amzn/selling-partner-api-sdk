@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.external_fulfillment_inventory_v2024_09_11.batch_inventory_api import BatchInventoryApi
+from spapi.spapi.api.external_fulfillment_inventory_v2024_09_11.batch_inventory_api import BatchInventoryApi
 
-import spapi.models.external_fulfillment_inventory_v2024_09_11 as models
+import spapi.spapi.models.external_fulfillment_inventory_v2024_09_11 as models
 
 class TestBatchInventoryApi(unittest.TestCase):
     """BatchInventoryApi unit test stubs"""

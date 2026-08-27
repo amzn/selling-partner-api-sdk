@@ -27,7 +27,7 @@ class AwdApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.awd_v2024_05_09"
+    api_models_module = "spapi.spapi.models.awd_v2024_05_09"
 
     def __init__(self, api_client=None):
         if api_client is None:

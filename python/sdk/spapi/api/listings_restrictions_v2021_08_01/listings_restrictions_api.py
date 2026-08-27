@@ -27,7 +27,7 @@ class ListingsRestrictionsApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.listings_restrictions_v2021_08_01"
+    api_models_module = "spapi.spapi.models.listings_restrictions_v2021_08_01"
 
     def __init__(self, api_client=None):
         if api_client is None:

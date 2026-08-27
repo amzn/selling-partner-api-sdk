@@ -8,9 +8,9 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from spapi.api.tracking_v2026_01_30.tracking_api import TrackingApi
+from spapi.spapi.api.tracking_v2026_01_30.tracking_api import TrackingApi
 
-import spapi.models.tracking_v2026_01_30 as models
+import spapi.spapi.models.tracking_v2026_01_30 as models
 
 class TestTrackingApi(unittest.TestCase):
     """TrackingApi unit test stubs"""

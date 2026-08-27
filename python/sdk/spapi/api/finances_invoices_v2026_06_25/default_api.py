@@ -27,7 +27,7 @@ class DefaultApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.finances_invoices_v2026_06_25"
+    api_models_module = "spapi.spapi.models.finances_invoices_v2026_06_25"
 
     def __init__(self, api_client=None):
         if api_client is None:

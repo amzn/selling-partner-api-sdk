@@ -27,7 +27,7 @@ class DefinitionsApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.product_type_definitions_v2020_09_01"
+    api_models_module = "spapi.spapi.models.product_type_definitions_v2020_09_01"
 
     def __init__(self, api_client=None):
         if api_client is None:

@@ -27,7 +27,7 @@ class VendorDfTransactionApi(object):
     Do not edit the class manually.
     """
 
-    api_models_module = "spapi.models.vendor_direct_fulfillment_transactions_v2021_12_28"
+    api_models_module = "spapi.spapi.models.vendor_direct_fulfillment_transactions_v2021_12_28"
 
     def __init__(self, api_client=None):
         if api_client is None:
