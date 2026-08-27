@@ -32,6 +32,7 @@ export * as PricingSpApi from './src/pricing_v2022_05_01/index.js';
 export * as Pricing_v0SpApi from './src/pricing_v0/index.js';
 export * as ProductfeesSpApi from './src/productfees_v0/index.js';
 export * as ProducttypedefinitionsSpApi from './src/producttypedefinitions_v2020_09_01/index.js';
+export * as PromotionsSpApi from './src/promotions_v2025_12_01/index.js';
 export * as ReplenishmentSpApi from './src/replenishment_v2022_11_07/index.js';
 export * as ReportsSpApi from './src/reports_v2021_06_30/index.js';
 export * as SalesSpApi from './src/sales_v1/index.js';
