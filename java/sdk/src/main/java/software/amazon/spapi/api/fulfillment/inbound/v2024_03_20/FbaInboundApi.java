@@ -7004,17 +7004,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -7032,17 +7032,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -7059,17 +7059,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -7097,17 +7097,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -7122,17 +7122,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that
+     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that
      * contain certain characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -7148,17 +7148,17 @@ public class FbaInboundApi {
         return listItemComplianceDetailsAsync(mskus, marketplaceId, callback, null);
     }
     /**
-     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that
+     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace. **Note:** MSKUs that
      * contain certain characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| 2 | 6 |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -8430,17 +8430,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8458,17 +8458,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8484,17 +8484,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8521,17 +8521,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that contain certain
      * characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8546,17 +8546,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs
-     * that contain certain characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that
+     * contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8572,17 +8572,17 @@ public class FbaInboundApi {
         return listPrepDetailsAsync(marketplaceId, mskus, callback, null);
     }
     /**
-     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs
-     * that contain certain characters must be encoded. For more information, refer to [URL
-     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
-     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
-     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
-     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
-     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
-     * that were applied to the requested operation, when available. The table above indicates the default rate and
-     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace. **Note:** MSKUs that
+     * contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). The following characters must be double
+     * percent encoded: - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60; **Examples:** An MSKU value of
+     * &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded
+     * as &#x60;test%252Cmsku&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
