@@ -343,6 +343,9 @@ export const defaultRateLimitMap = {
   "FulfillmentOrdersApi-listOrder": [2, 30],
   "FulfillmentOutboundApi-createOrder": [2, 30],
   "FulfillmentOrdersApi-createOrder": [2, 30],
-  "TrackingApi-getShipmentTracking": [2, 30]
+  "TrackingApi-getShipmentTracking": [2, 30],
+  "PromotionsApi-searchPromotions": [1, 4, 10],
+  "PromotionsApi-getSelection": [1, 2, 10],
+  "PromotionsApi-getPromotion": [1, 2, 10]
 }
 
