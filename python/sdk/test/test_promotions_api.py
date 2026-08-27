@@ -8,12 +8,12 @@ import rstr
 
 from spapi.auth.credentials import SPAPIConfig
 from spapi.client import SPAPIClient
-from {{apiPackage}}.{{classVarName}} import {{classname}}
+from spapi.api.promotions_v2025_12_01.promotions_api import PromotionsApi
 
-import {{modelPackage}} as models
+import spapi.models.promotions_v2025_12_01 as models
 
-class {{#operations}}Test{{classname}}(unittest.TestCase):
-    """{{classname}} unit test stubs"""
+class TestPromotionsApi(unittest.TestCase):
+    """PromotionsApi unit test stubs"""
 
     def setUp(self):
         # Tests Mock Server
@@ -27,25 +27,40 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
             scope = None
         )
         client = SPAPIClient(config, self.mock_server_endpoint_oauth, self.mock_server_endpoint)
-        self.api = {{classname}}(client.api_client)
+        self.api = PromotionsApi(client.api_client)
 
     def tearDown(self):
         pass
 
-   {{#operation}}
-    def test_{{operationId}}(self):
-        {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(1)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}", {{#pattern}}"{{{vendorExtensions.x-regex}}}".replace("*$", "{"+ "{{#minLength}}{{{minLength}}}{{/minLength}}{{^minLength}}0{{/minLength}}{{#maxLength}},{{{maxLength}}}{{/maxLength}}" + "}$"){{/pattern}}{{^pattern}}None{{/pattern}}){{/isArray}}
-        {{/required}}{{/allParams}}
-        self.instruct_backend_mock("{{tags.0.name}}".casefold().replace(' ', ''), self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
-        response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}})
-        {{#returnType}}
-        self.assertEqual({{responses.0.code}}, response[1])
-        self.assert_valid_response_payload({{responses.0.code}}, response[0])
-        {{/returnType}}
+    def test_get_promotion(self):
+        promotion_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("promotions".casefold().replace(' ', ''), self.to_camel_case("get_promotion"), "200")
+        response = self.api.get_promotion_with_http_info(promotion_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
         pass
 
-   {{/operation}}
-{{/operations}}
+    def test_get_selection(self):
+        promotion_id = self._get_random_value("str", None)
+        selection_id = self._get_random_value("str", None)
+        revision_id = self._get_random_value("int", None)
+        
+        self.instruct_backend_mock("promotions".casefold().replace(' ', ''), self.to_camel_case("get_selection"), "200")
+        response = self.api.get_selection_with_http_info(promotion_id, selection_id, revision_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_search_promotions(self):
+        marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
+        
+        self.instruct_backend_mock("promotions".casefold().replace(' ', ''), self.to_camel_case("search_promotions"), "200")
+        response = self.api.search_promotions_with_http_info(marketplace_ids, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
         if api == "financesv0" or api == "financesv2024" or api == "transfers":

@@ -49,6 +49,7 @@ from spapi.api.product_fees_v0.fees_api import FeesApi
 from spapi.api.product_pricing_v0.product_pricing_api import ProductPricingApi
 from spapi.api.product_pricing_v2022_05_01.product_pricing_v2022_api import ProductPricingV2022Api
 from spapi.api.product_type_definitions_v2020_09_01.definitions_api import DefinitionsApi
+from spapi.api.promotions_v2025_12_01.promotions_api import PromotionsApi
 from spapi.api.replenishment_v2022_11_07.replenishment_api import ReplenishmentApi
 from spapi.api.reports_v2021_06_30.reports_api import ReportsApi
 from spapi.api.sales_v1.sales_api import SalesApi
