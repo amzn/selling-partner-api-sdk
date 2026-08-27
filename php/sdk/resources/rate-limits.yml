@@ -1145,3 +1145,16 @@ FulfillmentOrdersApi-createOrder:
 TrackingApi-getShipmentTracking:
   - 2
   - 30
+# Promotions API
+PromotionsApi-searchPromotions:
+  - 1
+  - 4
+  - 10
+PromotionsApi-getSelection:
+  - 1
+  - 2
+  - 10
+PromotionsApi-getPromotion:
+  - 1
+  - 2
+  - 10
