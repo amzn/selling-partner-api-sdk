@@ -20,7 +20,6 @@ import { SearchPromotionsResponse } from '../model/SearchPromotionsResponse.js';
 * @version 2025-12-01
 */
 export declare class PromotionsApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new PromotionsApi.
@@ -30,15 +29,6 @@ export declare class PromotionsApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Retrieve details of a specified promotion.
        * @param {String} promotionId The ID of the promotion.

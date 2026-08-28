@@ -16,8 +16,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { GetPromotionResponse } from '../model/GetPromotionResponse.js'
 import { GetSelectionResponse } from '../model/GetSelectionResponse.js'
 import { SearchPromotionsResponse } from '../model/SearchPromotionsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Promotions service.
@@ -25,9 +23,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2025-12-01
 */
 export class PromotionsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new PromotionsApi.
     * @alias module:promotions_v2025_12_01/api/PromotionsApi
@@ -37,33 +32,6 @@ export class PromotionsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'PromotionsApi-getPromotion',
-      'PromotionsApi-getSelection',
-      'PromotionsApi-searchPromotions'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -102,7 +70,7 @@ export class PromotionsApi {
     return this.apiClient.callApi('PromotionsApi-getPromotion',
       '/promotions/2025-12-01/promotions/{promotionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('PromotionsApi-getPromotion')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -175,7 +143,7 @@ export class PromotionsApi {
     return this.apiClient.callApi('PromotionsApi-getSelection',
       '/promotions/2025-12-01/promotions/{promotionId}/selections/{selectionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('PromotionsApi-getSelection')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -260,7 +228,7 @@ export class PromotionsApi {
     return this.apiClient.callApi('PromotionsApi-searchPromotions',
       '/promotions/2025-12-01/promotions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('PromotionsApi-searchPromotions')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  *
  */
-import { RateLimitConfiguration } from '../../helper/RateLimitConfiguration.mjs';
-import { SuperagentRateLimiter } from '../../helper/SuperagentRateLimiter.mjs';
+import { RateLimiter } from '../RateLimiter.js';
 /**
 * Manages low level client-server communications, parameter marshalling, etc. There should not be any need for an
 * application to use this class directly - the *Api and model classes provide the public API for the service. The
@@ -59,39 +58,21 @@ export declare class ApiClient {
     enableCookies: boolean;
     agent: any;
     requestAgent: any;
+    rateLimitEnabled: boolean;
+    /**
+         * RateLimiter instance for automatic rate limit protection.
+         * @type {RateLimiter}
+         */
+    rateLimiter: RateLimiter;
     /**
       * Constructs a new ApiClient.
       * @param {String} baseUrl Base URL of endpoint ex. "https://sellingpartnerapi-na.amazon.com"
+      * @param {Object} [options] Optional configuration options.
+      * @param {boolean} [options.rateLimitEnabled=true] Whether to enable automatic rate limit protection.
       */
-    constructor(baseUrl: string);
-    /**
-      * Set customized rate limiter for one operation
-      * For operations that customized rate limiter are not set
-      * Will use default rate limiter
-      * @param {String} operationName
-      * @param {RateLimitConfiguration} config
-      */
-    setCustomizedRateLimiterForOperation(operationName: string, config: RateLimitConfiguration): void;
-    /**
-      * Disable customized rate limiter for one operation
-      * Fall back to default rate limiter
-      * @param {String} operationName
-      */
-    disableCustomizedRatelimiterForOperation(operationName: string): void;
-    /**
-      * Clear customized rate limiter for all operations
-      * All operations will fall back to default rate limiter
-      * @param {String} operationName
-      */
-    disableCustomizedRatelimiterForAll(): void;
-    /**
-      * Disable both default and customized rate limiter for all operations
-      */
-    disableRateLimiter(): void;
-    /**
-      * Enable default or customized rate limiter for all operations
-      */
-    enableRateLimiter(): void;
+    constructor(baseUrl: string, options?: {
+        rateLimitEnabled?: boolean;
+    });
     /**
       * Returns this ApiClient so that you can chain the methods.
       * @param {String} clientId LWA client ID.
@@ -239,10 +220,9 @@ export declare class ApiClient {
       * @param {Array<String>} accepts An array of acceptable response MIME types.
       * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
       * constructor for a complex type.
-      * @param {SuperagentRateLimiter} defaultRateLimiter The default rate limiter.
       * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
       */
-    callApi(operation: string, path: string, httpMethod: string, pathParams: Record<string, string>, queryParams: Record<string, Object>, headerParams: Record<string, Object>, formParams: Record<string, Object>, bodyParam: Object, contentTypes: Array<string>, accepts: Array<string>, returnType: (string | any[] | ObjectFunction), defaultRateLimiter: SuperagentRateLimiter): Promise<any>;
+    callApi(operation: string, path: string, httpMethod: string, pathParams: Record<string, string>, queryParams: Record<string, Object>, headerParams: Record<string, Object>, formParams: Record<string, Object>, bodyParam: Object, contentTypes: Array<string>, accepts: Array<string>, returnType: (string | any[] | ObjectFunction)): Promise<any>;
     /**
       * Parses an ISO-8601 string representation of a date value.
       * @param {String} str The date value as a string.

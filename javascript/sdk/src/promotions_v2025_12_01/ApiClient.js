@@ -15,8 +15,7 @@ import superagent from 'superagent'
 import querystring from 'querystring'
 import { readFileSync } from 'node:fs'
 import { URL } from 'node:url'
-import { RateLimitConfiguration } from '../../helper/RateLimitConfiguration.mjs'
-import { SuperagentRateLimiter } from '../../helper/SuperagentRateLimiter.mjs'
+import { RateLimiter } from '../RateLimiter.js'
 
 /**
 * @module promotions_v2025_12_01/ApiClient
@@ -193,14 +192,14 @@ export class ApiClient {
   #tokenForApiCall = null
   #lwaClient = null
   #rdtClient = null
-  #customizedRateLimiterMap = null
-  #useRateLimiter = true
 
   /**
     * Constructs a new ApiClient.
     * @param {String} baseUrl Base URL of endpoint ex. "https://sellingpartnerapi-na.amazon.com"
+    * @param {Object} [options] Optional configuration options.
+    * @param {boolean} [options.rateLimitEnabled=true] Whether to enable automatic rate limit protection.
     */
-  constructor (baseUrl) {
+  constructor (baseUrl, options = {}) {
     /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
@@ -263,52 +262,16 @@ export class ApiClient {
     this.requestAgent = null
 
     /*
-         * Initialize customized rate limiter map
+         * Rate limit protection configuration.
+         * Enabled by default. Set to false to disable automatic rate limiting.
          */
-    this.#customizedRateLimiterMap = new Map()
-  }
+    this.rateLimitEnabled = options.rateLimitEnabled !== undefined ? options.rateLimitEnabled : true
 
-  /**
-    * Set customized rate limiter for one operation
-    * For operations that customized rate limiter are not set
-    * Will use default rate limiter
-    * @param {String} operationName
-    * @param {RateLimitConfiguration} config
-    */
-  setCustomizedRateLimiterForOperation (operationName, config) {
-    this.#customizedRateLimiterMap.set(operationName, new SuperagentRateLimiter(config))
-  }
-
-  /**
-    * Disable customized rate limiter for one operation
-    * Fall back to default rate limiter
-    * @param {String} operationName
-    */
-  disableCustomizedRatelimiterForOperation (operationName) {
-    this.#customizedRateLimiterMap.delete(operationName)
-  }
-
-  /**
-    * Clear customized rate limiter for all operations
-    * All operations will fall back to default rate limiter
-    * @param {String} operationName
-    */
-  disableCustomizedRatelimiterForAll () {
-    this.#customizedRateLimiterMap.clear()
-  }
-
-  /**
-    * Disable both default and customized rate limiter for all operations
-    */
-  disableRateLimiter () {
-    this.#useRateLimiter = false
-  }
-
-  /**
-    * Enable default or customized rate limiter for all operations
-    */
-  enableRateLimiter () {
-    this.#useRateLimiter = true
+    /**
+         * RateLimiter instance for automatic rate limit protection.
+         * @type {RateLimiter}
+         */
+    this.rateLimiter = new RateLimiter({ rateLimitEnabled: this.rateLimitEnabled })
   }
 
   /**
@@ -609,25 +572,15 @@ export class ApiClient {
     * @param {Array<String>} accepts An array of acceptable response MIME types.
     * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
     * constructor for a complex type.
-    * @param {SuperagentRateLimiter} defaultRateLimiter The default rate limiter.
     * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
     */
   async callApi (operation, path, httpMethod, pathParams,
     queryParams, headerParams, formParams, bodyParam, contentTypes, accepts,
-    returnType, defaultRateLimiter) {
+    returnType) {
     const url = this.buildUrl(path, pathParams)
     const request = superagent(httpMethod, url)
     if (!this.#tokenForApiCall && !this.#lwaClient && !this.#rdtClient) {
       throw new Error('none of accessToken, RDT token and auto-retrieval is set.')
-    }
-
-    if (this.#useRateLimiter) {
-      // Set rate limiter
-      if (this.#customizedRateLimiterMap.get(operation)) {
-        request.use(this.#customizedRateLimiterMap.get(operation).getPlugin())
-      } else if (defaultRateLimiter) {
-        request.use(defaultRateLimiter.getPlugin())
-      }
     }
 
     // set query parameters
@@ -709,23 +662,51 @@ export class ApiClient {
       }
     }
 
-    return new Promise((resolve, reject) => {
-      request.end((error, response) => {
-        if (error) {
-          reject(error)
-        } else {
-          try {
-            const data = this.deserialize(response, returnType)
-            if (this.enableCookies && typeof window === 'undefined') {
-              this.agent.saveCookies(response)
+    // Derive operation key for rate limiter: "METHOD /path"
+    const operationKey = httpMethod.toUpperCase() + ' ' + path
+
+    // Wrap request execution through rate limiter
+    const self = this
+    const executeRequest = () => {
+      return new Promise((resolve, reject) => {
+        request.end((error, response) => {
+          if (error) {
+            // superagent treats 4xx/5xx as errors but includes the response
+            // Resolve with a wrapper so rate limiter can inspect status codes
+            if (error.response) {
+              resolve(error.response)
+            } else {
+              reject(error)
             }
-            resolve({ data, response })
-          } catch (err) {
-            reject(err)
+          } else {
+            resolve(response)
           }
-        }
+        })
       })
-    })
+    }
+
+    const processResponse = (response) => {
+      if (response.status >= 400) {
+        // Reconstruct error similar to superagent's behavior
+        const error = new Error('Response error: ' + response.status)
+        error.status = response.status
+        error.statusCode = response.status
+        error.response = response
+        throw error
+      }
+      const data = self.deserialize(response, returnType)
+      if (self.enableCookies && typeof window === 'undefined') {
+        self.agent.saveCookies(response)
+      }
+      return { data, response }
+    }
+
+    if (this.rateLimiter && this.rateLimiter.enabled) {
+      return this.rateLimiter.executeWithProtection(operationKey, executeRequest)
+        .then(processResponse)
+    } else {
+      return executeRequest().then(processResponse)
+    }
   }
 
   /**
