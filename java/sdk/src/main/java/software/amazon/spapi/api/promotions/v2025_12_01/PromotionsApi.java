@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.promotions.v2025_12_01.GetPromotionResponse;
@@ -39,26 +37,10 @@ import software.amazon.spapi.models.promotions.v2025_12_01.SearchPromotionsRespo
 
 public class PromotionsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public PromotionsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public PromotionsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getPromotionBucket = Bucket.builder()
-            .addLimit(config.getLimit("PromotionsApi-getPromotion"))
-            .build();
-
-    public final Bucket getSelectionBucket = Bucket.builder()
-            .addLimit(config.getLimit("PromotionsApi-getSelection"))
-            .build();
-
-    public final Bucket searchPromotionsBucket = Bucket.builder()
-            .addLimit(config.getLimit("PromotionsApi-searchPromotions"))
-            .build();
 
     /**
      * Build call for getPromotion
@@ -190,10 +172,8 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPromotionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPromotionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPromotion operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPromotionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -267,11 +247,9 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPromotionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPromotionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getPromotion operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPromotionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSelection
@@ -517,10 +495,8 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSelectionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSelectionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSelection operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSelectionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -655,11 +631,9 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSelectionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSelectionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSelection operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSelectionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for searchPromotions
@@ -1075,10 +1049,8 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchPromotionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchPromotionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchPromotions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchPromotionsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1335,11 +1307,9 @@ public class PromotionsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchPromotionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchPromotionsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("searchPromotions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchPromotionsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1347,7 +1317,6 @@ public class PromotionsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1366,11 +1335,6 @@ public class PromotionsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1393,11 +1357,9 @@ public class PromotionsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new PromotionsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new PromotionsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }
