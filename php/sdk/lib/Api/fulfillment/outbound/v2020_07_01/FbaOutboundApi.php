@@ -218,12 +218,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\CancelFulfillmentOrderResponse',
@@ -278,10 +281,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -290,6 +295,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -492,12 +499,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse',
@@ -552,10 +562,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -564,6 +576,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -766,12 +780,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse',
@@ -832,10 +849,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -844,6 +863,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1058,12 +1079,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse',
@@ -1118,10 +1142,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1130,6 +1156,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1344,12 +1372,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse',
@@ -1422,10 +1453,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1434,6 +1467,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1691,12 +1726,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse',
@@ -1763,10 +1801,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1775,6 +1815,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2011,12 +2053,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeaturesResponse',
@@ -2071,10 +2116,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2083,6 +2130,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2284,12 +2333,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentOrderResponse',
@@ -2344,10 +2396,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2356,6 +2410,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2558,12 +2614,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewResponse',
@@ -2618,10 +2677,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2630,6 +2691,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2826,12 +2889,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse',
@@ -2886,10 +2952,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2898,6 +2966,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -3105,12 +3175,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListAllFulfillmentOrdersResponse',
@@ -3171,10 +3244,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -3183,6 +3258,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -3408,12 +3485,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\ListReturnReasonCodesResponse',
@@ -3486,10 +3566,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -3498,6 +3580,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -3744,12 +3828,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\SubmitFulfillmentOrderStatusUpdateResponse',
@@ -3810,10 +3897,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -3822,6 +3911,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -4046,12 +4137,15 @@ class FbaOutboundApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse',
@@ -4112,10 +4206,12 @@ class FbaOutboundApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -4124,6 +4220,8 @@ class FbaOutboundApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

@@ -230,12 +230,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateConfirmCustomizationDetailsResponse',
@@ -302,10 +305,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -314,6 +319,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -564,12 +571,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateConfirmDeliveryDetailsResponse',
@@ -636,10 +646,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -648,6 +660,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -898,12 +912,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateConfirmOrderDetailsResponse',
@@ -970,10 +987,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -982,6 +1001,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1232,12 +1253,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateConfirmServiceDetailsResponse',
@@ -1304,10 +1328,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1316,6 +1342,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1566,12 +1594,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateDigitalAccessKeyResponse',
@@ -1638,10 +1669,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1650,6 +1683,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -1900,12 +1935,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateLegalDisclosureResponse',
@@ -1972,10 +2010,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -1984,6 +2024,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2234,12 +2276,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateUnexpectedProblemResponse',
@@ -2306,10 +2351,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2318,6 +2365,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2568,12 +2617,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\CreateWarrantyResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\CreateWarrantyResponse',
@@ -2640,10 +2692,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2652,6 +2706,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -2896,12 +2952,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetAttributesResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\GetAttributesResponse',
@@ -2962,10 +3021,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -2974,6 +3035,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -3202,12 +3265,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse',
@@ -3268,10 +3334,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -3280,6 +3348,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -3514,12 +3584,15 @@ class MessagingApi
                     }
                 }
 
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
                 return [
                     ObjectSerializer::deserialize($content, '\SpApi\Model\messaging\v1\InvoiceResponse', []),
                     $response->getStatusCode(),
                     $response->getHeaders(),
                 ];
             } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                 $data = ObjectSerializer::deserialize(
                     $e->getResponseBody(),
                     '\SpApi\Model\messaging\v1\InvoiceResponse',
@@ -3586,10 +3659,12 @@ class MessagingApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ('\SplFileObject' === $returnType) {
                         $content = $response->getBody(); // stream goes to serializer
                     } else {
@@ -3598,6 +3673,8 @@ class MessagingApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

@@ -69,7 +69,7 @@ class PromotionsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new PromotionsApi($config, null, false);
+        $this->api = new PromotionsApi($config);
     }
 
 

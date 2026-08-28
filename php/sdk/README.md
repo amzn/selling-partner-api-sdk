@@ -154,6 +154,48 @@ $response = $ordersApi->getOrders(
 ```
 Check the full implementation [example](https://github.com/amzn/selling-partner-api-sdk/tree/main/php/examples/getOrdersWithRestrictedDataToken.php). If you pass the Restricted Data Token to operations which does not require it, the SDK will return an exception error. `Operation does not require a Restricted Data Token (RDT). Remove the RDT parameter for non-restricted operations.`
 
+### Rate Limit Protection
+
+The SDK includes built-in rate limit protection that automatically handles HTTP 429 (Too Many Requests) responses from the Selling Partner API. This feature is enabled by default and requires no additional configuration.
+
+#### How it works
+
+When rate limit protection is enabled, the SDK applies three complementary mechanisms:
+
+1. **Exponential backoff retry** — When a 429 response is received, the SDK automatically retries the request with exponentially increasing delays (1s, 2s, 4s) plus random jitter (0-25%). Up to 3 retries are attempted before propagating the error.
+
+2. **Dynamic rate tracking** — On every successful response, the SDK reads the `x-amzn-RateLimit-Limit` header and enforces minimum spacing between consecutive requests to the same operation (1/rate seconds apart).
+
+3. **Per-operation circuit breaker** — If retries are exhausted for an operation, the circuit breaker opens and immediately rejects subsequent requests to that operation for a cooldown period (starting at 4s, doubling up to 120s). After cooldown, one probe request is allowed through. If it succeeds, the circuit closes and normal traffic resumes.
+
+#### Disabling rate limit protection
+
+Rate limit protection is enabled by default. To disable it, pass `rate_limit_enabled` as `false` in the configuration array:
+
+```php
+$config = new Configuration([
+    'clientId' => 'amzn1.application-***',
+    'clientSecret' => '***',
+    'refreshToken' => '***',
+    'endpoint' => 'https://api.amazon.com/auth/o2/token',
+    'rate_limit_enabled' => false,  // Disable rate limit protection
+]);
+```
+
+#### Configuration
+
+The rate limiter uses fixed parameters that are consistent across all SP-API SDK languages:
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Max retries | 3 | Maximum retry attempts on 429 |
+| Base delay | 1 second | Initial backoff delay |
+| Backoff multiplier | 2x | Delay doubles each retry |
+| Jitter | 0-25% | Random jitter added to delay |
+| Max cooldown | 120 seconds | Maximum circuit breaker cooldown |
+
+These parameters are not user-configurable. The only toggle available is enabling or disabling the feature entirely via `rate_limit_enabled`.
+
 ### Giving Feedback
 
 ### Feedback and Contributions
