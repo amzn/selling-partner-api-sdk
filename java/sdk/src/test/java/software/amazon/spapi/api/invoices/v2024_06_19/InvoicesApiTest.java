@@ -35,7 +35,6 @@ import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceRequest;
 import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceStatusResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GovtInvoiceDocumentResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class InvoicesApiTest {
 
@@ -53,10 +52,8 @@ public class InvoicesApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createGovernmentInvoiceTest() throws Exception {

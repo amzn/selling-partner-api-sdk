@@ -35,7 +35,6 @@ import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.ListOrdersR
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdateOrderRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdateOrderStatusRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.UpdatePackageRequest;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FulfillmentOutboundApiTest {
 
@@ -53,10 +52,8 @@ public class FulfillmentOutboundApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void cancelOrderTest() throws Exception {

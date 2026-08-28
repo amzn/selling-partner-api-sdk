@@ -26,7 +26,6 @@ import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11.ModelReturn;
 import software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11.ReturnsResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class ReturnRetrievalApiTest {
 
@@ -44,10 +43,8 @@ public class ReturnRetrievalApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getReturnTest() throws Exception {

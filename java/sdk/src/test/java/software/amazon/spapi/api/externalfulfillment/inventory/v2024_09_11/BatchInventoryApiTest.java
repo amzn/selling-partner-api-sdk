@@ -26,7 +26,6 @@ import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11.BatchInventoryRequest;
 import software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11.BatchInventoryResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class BatchInventoryApiTest {
 
@@ -44,10 +43,8 @@ public class BatchInventoryApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void batchInventoryTest() throws Exception {

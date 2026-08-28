@@ -24,7 +24,6 @@ import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceResponse;
 import software.amazon.spapi.models.supplysources.v2020_07_01.ErrorList;
@@ -47,10 +46,8 @@ public class SupplySourcesApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void archiveSupplySourceTest() throws Exception {
