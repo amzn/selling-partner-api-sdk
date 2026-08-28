@@ -65,7 +65,7 @@ public class Shipment {
     public static final String SERIALIZED_NAME_PARTY_INFO_LIST = "partyInfoList";
 
     @SerializedName(SERIALIZED_NAME_PARTY_INFO_LIST)
-    private PartyIdentificationInfoList partyInfoList = new ArrayList<>();
+    private List<PartyIdentificationInfo> partyInfoList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_REQUIREMENTS = "shipmentRequirements";
 
@@ -75,7 +75,7 @@ public class Shipment {
     public static final String SERIALIZED_NAME_CHARGES = "charges";
 
     @SerializedName(SERIALIZED_NAME_CHARGES)
-    private Charges charges = new ArrayList<>();
+    private List<Charge> charges = new ArrayList<>();
 
     /** The current status of the shipment. */
     @JsonAdapter(StatusEnum.Adapter.class)
@@ -359,21 +359,30 @@ public class Shipment {
         this.invoiceInfo = invoiceInfo;
     }
 
-    public Shipment partyInfoList(PartyIdentificationInfoList partyInfoList) {
+    public Shipment partyInfoList(List<PartyIdentificationInfo> partyInfoList) {
         this.partyInfoList = partyInfoList;
         return this;
     }
 
+    public Shipment addPartyInfoListItem(PartyIdentificationInfo partyInfoListItem) {
+        if (this.partyInfoList == null) {
+            this.partyInfoList = new ArrayList<>();
+        }
+        this.partyInfoList.add(partyInfoListItem);
+        return this;
+    }
+
     /**
-     * Get partyInfoList
+     * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for
+     * direct-fulfillment sellers.
      *
      * @return partyInfoList
      */
-    @javax.annotation.Nullable public PartyIdentificationInfoList getPartyInfoList() {
+    @javax.annotation.Nullable public List<PartyIdentificationInfo> getPartyInfoList() {
         return partyInfoList;
     }
 
-    public void setPartyInfoList(PartyIdentificationInfoList partyInfoList) {
+    public void setPartyInfoList(List<PartyIdentificationInfo> partyInfoList) {
         this.partyInfoList = partyInfoList;
     }
 
@@ -396,22 +405,30 @@ public class Shipment {
         this.shipmentRequirements = shipmentRequirements;
     }
 
-    public Shipment charges(Charges charges) {
+    public Shipment charges(List<Charge> charges) {
         this.charges = charges;
         return this;
     }
 
+    public Shipment addChargesItem(Charge chargesItem) {
+        if (this.charges == null) {
+            this.charges = new ArrayList<>();
+        }
+        this.charges.add(chargesItem);
+        return this;
+    }
+
     /**
-     * Get charges
+     * The charges associated with the shipment.
      *
      * @return charges
      */
     @javax.annotation.Nonnull
-    public Charges getCharges() {
+    public List<Charge> getCharges() {
         return charges;
     }
 
-    public void setCharges(Charges charges) {
+    public void setCharges(List<Charge> charges) {
         this.charges = charges;
     }
 
@@ -783,8 +800,39 @@ public class Shipment {
         if (jsonObj.get("invoiceInfo") != null && !jsonObj.get("invoiceInfo").isJsonNull()) {
             InvoiceInfo.validateJsonElement(jsonObj.get("invoiceInfo"));
         }
+        if (jsonObj.get("partyInfoList") != null
+                && !jsonObj.get("partyInfoList").isJsonNull()) {
+            JsonArray jsonArraypartyInfoList = jsonObj.getAsJsonArray("partyInfoList");
+            if (jsonArraypartyInfoList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("partyInfoList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `partyInfoList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("partyInfoList").toString()));
+                }
+
+                // validate the optional field `partyInfoList` (array)
+                for (int i = 0; i < jsonArraypartyInfoList.size(); i++) {
+                    PartyIdentificationInfo.validateJsonElement(jsonArraypartyInfoList.get(i));
+                }
+                ;
+            }
+        }
         // validate the required field `shipmentRequirements`
         ShipmentRequirements.validateJsonElement(jsonObj.get("shipmentRequirements"));
+        // ensure the json data is an array
+        if (!jsonObj.get("charges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `charges` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("charges").toString()));
+        }
+
+        JsonArray jsonArraycharges = jsonObj.getAsJsonArray("charges");
+        // validate the required field `charges` (array)
+        for (int i = 0; i < jsonArraycharges.size(); i++) {
+            Charge.validateJsonElement(jsonArraycharges.get(i));
+        }
+        ;
         if (!jsonObj.get("status").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `status` to be a primitive type in the JSON string but got `%s`",

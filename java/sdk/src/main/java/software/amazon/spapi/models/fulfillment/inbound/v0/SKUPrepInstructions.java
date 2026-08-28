@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -59,12 +62,12 @@ public class SKUPrepInstructions {
     public static final String SERIALIZED_NAME_PREP_INSTRUCTION_LIST = "PrepInstructionList";
 
     @SerializedName(SERIALIZED_NAME_PREP_INSTRUCTION_LIST)
-    private PrepInstructionList prepInstructionList = new ArrayList<>();
+    private List<PrepInstruction> prepInstructionList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_AMAZON_PREP_FEES_DETAILS_LIST = "AmazonPrepFeesDetailsList";
 
     @SerializedName(SERIALIZED_NAME_AMAZON_PREP_FEES_DETAILS_LIST)
-    private AmazonPrepFeesDetailsList amazonPrepFeesDetailsList = new ArrayList<>();
+    private List<AmazonPrepFeesDetails> amazonPrepFeesDetailsList = new ArrayList<>();
 
     public SKUPrepInstructions() {}
 
@@ -140,39 +143,55 @@ public class SKUPrepInstructions {
         this.prepGuidance = prepGuidance;
     }
 
-    public SKUPrepInstructions prepInstructionList(PrepInstructionList prepInstructionList) {
+    public SKUPrepInstructions prepInstructionList(List<PrepInstruction> prepInstructionList) {
         this.prepInstructionList = prepInstructionList;
         return this;
     }
 
+    public SKUPrepInstructions addPrepInstructionListItem(PrepInstruction prepInstructionListItem) {
+        if (this.prepInstructionList == null) {
+            this.prepInstructionList = new ArrayList<>();
+        }
+        this.prepInstructionList.add(prepInstructionListItem);
+        return this;
+    }
+
     /**
-     * Get prepInstructionList
+     * A list of preparation instructions to help with item sourcing decisions.
      *
      * @return prepInstructionList
      */
-    @javax.annotation.Nullable public PrepInstructionList getPrepInstructionList() {
+    @javax.annotation.Nullable public List<PrepInstruction> getPrepInstructionList() {
         return prepInstructionList;
     }
 
-    public void setPrepInstructionList(PrepInstructionList prepInstructionList) {
+    public void setPrepInstructionList(List<PrepInstruction> prepInstructionList) {
         this.prepInstructionList = prepInstructionList;
     }
 
-    public SKUPrepInstructions amazonPrepFeesDetailsList(AmazonPrepFeesDetailsList amazonPrepFeesDetailsList) {
+    public SKUPrepInstructions amazonPrepFeesDetailsList(List<AmazonPrepFeesDetails> amazonPrepFeesDetailsList) {
         this.amazonPrepFeesDetailsList = amazonPrepFeesDetailsList;
         return this;
     }
 
+    public SKUPrepInstructions addAmazonPrepFeesDetailsListItem(AmazonPrepFeesDetails amazonPrepFeesDetailsListItem) {
+        if (this.amazonPrepFeesDetailsList == null) {
+            this.amazonPrepFeesDetailsList = new ArrayList<>();
+        }
+        this.amazonPrepFeesDetailsList.add(amazonPrepFeesDetailsListItem);
+        return this;
+    }
+
     /**
-     * Get amazonPrepFeesDetailsList
+     * A list of preparation instructions and fees for Amazon to prep goods for shipment.
      *
      * @return amazonPrepFeesDetailsList
      */
-    @javax.annotation.Nullable public AmazonPrepFeesDetailsList getAmazonPrepFeesDetailsList() {
+    @javax.annotation.Nullable public List<AmazonPrepFeesDetails> getAmazonPrepFeesDetailsList() {
         return amazonPrepFeesDetailsList;
     }
 
-    public void setAmazonPrepFeesDetailsList(AmazonPrepFeesDetailsList amazonPrepFeesDetailsList) {
+    public void setAmazonPrepFeesDetailsList(List<AmazonPrepFeesDetails> amazonPrepFeesDetailsList) {
         this.amazonPrepFeesDetailsList = amazonPrepFeesDetailsList;
     }
 
@@ -290,6 +309,32 @@ public class SKUPrepInstructions {
         // validate the optional field `PrepGuidance`
         if (jsonObj.get("PrepGuidance") != null && !jsonObj.get("PrepGuidance").isJsonNull()) {
             PrepGuidance.validateJsonElement(jsonObj.get("PrepGuidance"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("PrepInstructionList") != null
+                && !jsonObj.get("PrepInstructionList").isJsonNull()
+                && !jsonObj.get("PrepInstructionList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PrepInstructionList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("PrepInstructionList").toString()));
+        }
+        if (jsonObj.get("AmazonPrepFeesDetailsList") != null
+                && !jsonObj.get("AmazonPrepFeesDetailsList").isJsonNull()) {
+            JsonArray jsonArrayamazonPrepFeesDetailsList = jsonObj.getAsJsonArray("AmazonPrepFeesDetailsList");
+            if (jsonArrayamazonPrepFeesDetailsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AmazonPrepFeesDetailsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AmazonPrepFeesDetailsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AmazonPrepFeesDetailsList").toString()));
+                }
+
+                // validate the optional field `AmazonPrepFeesDetailsList` (array)
+                for (int i = 0; i < jsonArrayamazonPrepFeesDetailsList.size(); i++) {
+                    AmazonPrepFeesDetails.validateJsonElement(jsonArrayamazonPrepFeesDetailsList.get(i));
+                }
+                ;
+            }
         }
     }
 

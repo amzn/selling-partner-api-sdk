@@ -37,25 +37,33 @@ public class CancelShipmentResponse {
     public static final String SERIALIZED_NAME_PAYLOAD = "payload";
 
     @SerializedName(SERIALIZED_NAME_PAYLOAD)
-    private CancelShipmentResult payload = new HashMap<>();
+    private Map<String, Object> payload = new HashMap<>();
 
     public CancelShipmentResponse() {}
 
-    public CancelShipmentResponse payload(CancelShipmentResult payload) {
+    public CancelShipmentResponse payload(Map<String, Object> payload) {
         this.payload = payload;
         return this;
     }
 
+    public CancelShipmentResponse putPayloadItem(String key, Object payloadItem) {
+        if (this.payload == null) {
+            this.payload = new HashMap<>();
+        }
+        this.payload.put(key, payloadItem);
+        return this;
+    }
+
     /**
-     * Get payload
+     * The payload for the cancelShipment operation.
      *
      * @return payload
      */
-    @javax.annotation.Nullable public CancelShipmentResult getPayload() {
+    @javax.annotation.Nullable public Map<String, Object> getPayload() {
         return payload;
     }
 
-    public void setPayload(CancelShipmentResult payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 

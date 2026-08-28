@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class SAFETReimbursementItem {
     public static final String SERIALIZED_NAME_ITEM_CHARGE_LIST = "itemChargeList";
 
     @SerializedName(SERIALIZED_NAME_ITEM_CHARGE_LIST)
-    private ChargeComponentList itemChargeList = new ArrayList<>();
+    private List<ChargeComponent> itemChargeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PRODUCT_DESCRIPTION = "productDescription";
 
@@ -50,21 +53,29 @@ public class SAFETReimbursementItem {
 
     public SAFETReimbursementItem() {}
 
-    public SAFETReimbursementItem itemChargeList(ChargeComponentList itemChargeList) {
+    public SAFETReimbursementItem itemChargeList(List<ChargeComponent> itemChargeList) {
         this.itemChargeList = itemChargeList;
         return this;
     }
 
+    public SAFETReimbursementItem addItemChargeListItem(ChargeComponent itemChargeListItem) {
+        if (this.itemChargeList == null) {
+            this.itemChargeList = new ArrayList<>();
+        }
+        this.itemChargeList.add(itemChargeListItem);
+        return this;
+    }
+
     /**
-     * Get itemChargeList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return itemChargeList
      */
-    @javax.annotation.Nullable public ChargeComponentList getItemChargeList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getItemChargeList() {
         return itemChargeList;
     }
 
-    public void setItemChargeList(ChargeComponentList itemChargeList) {
+    public void setItemChargeList(List<ChargeComponent> itemChargeList) {
         this.itemChargeList = itemChargeList;
     }
 
@@ -187,6 +198,24 @@ public class SAFETReimbursementItem {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("itemChargeList") != null
+                && !jsonObj.get("itemChargeList").isJsonNull()) {
+            JsonArray jsonArrayitemChargeList = jsonObj.getAsJsonArray("itemChargeList");
+            if (jsonArrayitemChargeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("itemChargeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `itemChargeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("itemChargeList").toString()));
+                }
+
+                // validate the optional field `itemChargeList` (array)
+                for (int i = 0; i < jsonArrayitemChargeList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayitemChargeList.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("productDescription") != null
                         && !jsonObj.get("productDescription").isJsonNull())
                 && !jsonObj.get("productDescription").isJsonPrimitive()) {

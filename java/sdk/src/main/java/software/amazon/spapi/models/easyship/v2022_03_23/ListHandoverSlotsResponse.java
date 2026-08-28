@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class ListHandoverSlotsResponse {
     public static final String SERIALIZED_NAME_TIME_SLOTS = "timeSlots";
 
     @SerializedName(SERIALIZED_NAME_TIME_SLOTS)
-    private TimeSlots timeSlots = new ArrayList<>();
+    private List<TimeSlot> timeSlots = new ArrayList<>();
 
     public ListHandoverSlotsResponse() {}
 
@@ -64,22 +67,30 @@ public class ListHandoverSlotsResponse {
         this.amazonOrderId = amazonOrderId;
     }
 
-    public ListHandoverSlotsResponse timeSlots(TimeSlots timeSlots) {
+    public ListHandoverSlotsResponse timeSlots(List<TimeSlot> timeSlots) {
         this.timeSlots = timeSlots;
         return this;
     }
 
+    public ListHandoverSlotsResponse addTimeSlotsItem(TimeSlot timeSlotsItem) {
+        if (this.timeSlots == null) {
+            this.timeSlots = new ArrayList<>();
+        }
+        this.timeSlots.add(timeSlotsItem);
+        return this;
+    }
+
     /**
-     * Get timeSlots
+     * A list of time slots.
      *
      * @return timeSlots
      */
     @javax.annotation.Nonnull
-    public TimeSlots getTimeSlots() {
+    public List<TimeSlot> getTimeSlots() {
         return timeSlots;
     }
 
-    public void setTimeSlots(TimeSlots timeSlots) {
+    public void setTimeSlots(List<TimeSlot> timeSlots) {
         this.timeSlots = timeSlots;
     }
 
@@ -175,6 +186,19 @@ public class ListHandoverSlotsResponse {
                     "Expected the field `amazonOrderId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("amazonOrderId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("timeSlots").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `timeSlots` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("timeSlots").toString()));
+        }
+
+        JsonArray jsonArraytimeSlots = jsonObj.getAsJsonArray("timeSlots");
+        // validate the required field `timeSlots` (array)
+        for (int i = 0; i < jsonArraytimeSlots.size(); i++) {
+            TimeSlot.validateJsonElement(jsonArraytimeSlots.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

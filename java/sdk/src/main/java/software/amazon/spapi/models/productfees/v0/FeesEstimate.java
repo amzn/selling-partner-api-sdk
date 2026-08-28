@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -47,7 +50,7 @@ public class FeesEstimate {
     public static final String SERIALIZED_NAME_FEE_DETAIL_LIST = "FeeDetailList";
 
     @SerializedName(SERIALIZED_NAME_FEE_DETAIL_LIST)
-    private FeeDetailList feeDetailList = new ArrayList<>();
+    private List<FeeDetail> feeDetailList = new ArrayList<>();
 
     public FeesEstimate() {}
 
@@ -88,21 +91,29 @@ public class FeesEstimate {
         this.totalFeesEstimate = totalFeesEstimate;
     }
 
-    public FeesEstimate feeDetailList(FeeDetailList feeDetailList) {
+    public FeesEstimate feeDetailList(List<FeeDetail> feeDetailList) {
         this.feeDetailList = feeDetailList;
         return this;
     }
 
+    public FeesEstimate addFeeDetailListItem(FeeDetail feeDetailListItem) {
+        if (this.feeDetailList == null) {
+            this.feeDetailList = new ArrayList<>();
+        }
+        this.feeDetailList.add(feeDetailListItem);
+        return this;
+    }
+
     /**
-     * Get feeDetailList
+     * A list of other fees that contribute to a given fee.
      *
      * @return feeDetailList
      */
-    @javax.annotation.Nullable public FeeDetailList getFeeDetailList() {
+    @javax.annotation.Nullable public List<FeeDetail> getFeeDetailList() {
         return feeDetailList;
     }
 
-    public void setFeeDetailList(FeeDetailList feeDetailList) {
+    public void setFeeDetailList(List<FeeDetail> feeDetailList) {
         this.feeDetailList = feeDetailList;
     }
 
@@ -202,6 +213,24 @@ public class FeesEstimate {
         if (jsonObj.get("TotalFeesEstimate") != null
                 && !jsonObj.get("TotalFeesEstimate").isJsonNull()) {
             MoneyType.validateJsonElement(jsonObj.get("TotalFeesEstimate"));
+        }
+        if (jsonObj.get("FeeDetailList") != null
+                && !jsonObj.get("FeeDetailList").isJsonNull()) {
+            JsonArray jsonArrayfeeDetailList = jsonObj.getAsJsonArray("FeeDetailList");
+            if (jsonArrayfeeDetailList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FeeDetailList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FeeDetailList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FeeDetailList").toString()));
+                }
+
+                // validate the optional field `FeeDetailList` (array)
+                for (int i = 0; i < jsonArrayfeeDetailList.size(); i++) {
+                    FeeDetail.validateJsonElement(jsonArrayfeeDetailList.get(i));
+                }
+                ;
+            }
         }
     }
 

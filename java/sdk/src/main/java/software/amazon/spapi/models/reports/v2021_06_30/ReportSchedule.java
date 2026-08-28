@@ -55,7 +55,7 @@ public class ReportSchedule {
     public static final String SERIALIZED_NAME_REPORT_OPTIONS = "reportOptions";
 
     @SerializedName(SERIALIZED_NAME_REPORT_OPTIONS)
-    private ReportOptions reportOptions = new HashMap<>();
+    private Map<String, String> reportOptions = new HashMap<>();
 
     public static final String SERIALIZED_NAME_PERIOD = "period";
 
@@ -135,21 +135,29 @@ public class ReportSchedule {
         this.marketplaceIds = marketplaceIds;
     }
 
-    public ReportSchedule reportOptions(ReportOptions reportOptions) {
+    public ReportSchedule reportOptions(Map<String, String> reportOptions) {
         this.reportOptions = reportOptions;
         return this;
     }
 
+    public ReportSchedule putReportOptionsItem(String key, String reportOptionsItem) {
+        if (this.reportOptions == null) {
+            this.reportOptions = new HashMap<>();
+        }
+        this.reportOptions.put(key, reportOptionsItem);
+        return this;
+    }
+
     /**
-     * Get reportOptions
+     * Additional information passed to reports. This varies by report type.
      *
      * @return reportOptions
      */
-    @javax.annotation.Nullable public ReportOptions getReportOptions() {
+    @javax.annotation.Nullable public Map<String, String> getReportOptions() {
         return reportOptions;
     }
 
-    public void setReportOptions(ReportOptions reportOptions) {
+    public void setReportOptions(Map<String, String> reportOptions) {
         this.reportOptions = reportOptions;
     }
 

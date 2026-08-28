@@ -17,12 +17,15 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -48,10 +51,60 @@ public class MarketplaceAttributes {
     @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
     private String merchantId;
 
+    /** Gets or Sets customAttributes */
+    @JsonAdapter(CustomAttributesEnum.Adapter.class)
+    public enum CustomAttributesEnum {
+        PRIME("PRIME"),
+
+        FASTTRACK("FASTTRACK");
+
+        private String value;
+
+        CustomAttributesEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CustomAttributesEnum fromValue(String value) {
+            for (CustomAttributesEnum b : CustomAttributesEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<CustomAttributesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final CustomAttributesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public CustomAttributesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return CustomAttributesEnum.fromValue(value);
+            }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CustomAttributesEnum.fromValue(value);
+        }
+    }
+
     public static final String SERIALIZED_NAME_CUSTOM_ATTRIBUTES = "customAttributes";
 
     @SerializedName(SERIALIZED_NAME_CUSTOM_ATTRIBUTES)
-    private CustomChannelAttribute customAttributes = new ArrayList<>();
+    private List<CustomAttributesEnum> customAttributes = new ArrayList<>();
 
     public MarketplaceAttributes() {}
 
@@ -112,21 +165,29 @@ public class MarketplaceAttributes {
         this.merchantId = merchantId;
     }
 
-    public MarketplaceAttributes customAttributes(CustomChannelAttribute customAttributes) {
+    public MarketplaceAttributes customAttributes(List<CustomAttributesEnum> customAttributes) {
         this.customAttributes = customAttributes;
         return this;
     }
 
+    public MarketplaceAttributes addCustomAttributesItem(CustomAttributesEnum customAttributesItem) {
+        if (this.customAttributes == null) {
+            this.customAttributes = new ArrayList<>();
+        }
+        this.customAttributes.add(customAttributesItem);
+        return this;
+    }
+
     /**
-     * Get customAttributes
+     * Marketplace channel-specific attribute value.
      *
      * @return customAttributes
      */
-    @javax.annotation.Nullable public CustomChannelAttribute getCustomAttributes() {
+    @javax.annotation.Nullable public List<CustomAttributesEnum> getCustomAttributes() {
         return customAttributes;
     }
 
-    public void setCustomAttributes(CustomChannelAttribute customAttributes) {
+    public void setCustomAttributes(List<CustomAttributesEnum> customAttributes) {
         this.customAttributes = customAttributes;
     }
 
@@ -240,6 +301,14 @@ public class MarketplaceAttributes {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `merchantId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("merchantId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("customAttributes") != null
+                && !jsonObj.get("customAttributes").isJsonNull()
+                && !jsonObj.get("customAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `customAttributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("customAttributes").toString()));
         }
     }
 

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -59,7 +60,7 @@ public class ModelPackage {
     public static final String SERIALIZED_NAME_PACKAGE_LINE_ITEMS = "packageLineItems";
 
     @SerializedName(SERIALIZED_NAME_PACKAGE_LINE_ITEMS)
-    private PackageLineItems packageLineItems = new ArrayList<>();
+    private List<PackageLineItem> packageLineItems = new ArrayList<>();
 
     /** The current status of the package. */
     @JsonAdapter(StatusEnum.Adapter.class)
@@ -267,22 +268,30 @@ public class ModelPackage {
         this.hazmatLabels = hazmatLabels;
     }
 
-    public ModelPackage packageLineItems(PackageLineItems packageLineItems) {
+    public ModelPackage packageLineItems(List<PackageLineItem> packageLineItems) {
         this.packageLineItems = packageLineItems;
         return this;
     }
 
+    public ModelPackage addPackageLineItemsItem(PackageLineItem packageLineItemsItem) {
+        if (this.packageLineItems == null) {
+            this.packageLineItems = new ArrayList<>();
+        }
+        this.packageLineItems.add(packageLineItemsItem);
+        return this;
+    }
+
     /**
-     * Get packageLineItems
+     * The list of line items in a package.
      *
      * @return packageLineItems
      */
     @javax.annotation.Nonnull
-    public PackageLineItems getPackageLineItems() {
+    public List<PackageLineItem> getPackageLineItems() {
         return packageLineItems;
     }
 
-    public void setPackageLineItems(PackageLineItems packageLineItems) {
+    public void setPackageLineItems(List<PackageLineItem> packageLineItems) {
         this.packageLineItems = packageLineItems;
     }
 
@@ -447,6 +456,19 @@ public class ModelPackage {
                     "Expected the field `hazmatLabels` to be an array in the JSON string but got `%s`",
                     jsonObj.get("hazmatLabels").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("packageLineItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageLineItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packageLineItems").toString()));
+        }
+
+        JsonArray jsonArraypackageLineItems = jsonObj.getAsJsonArray("packageLineItems");
+        // validate the required field `packageLineItems` (array)
+        for (int i = 0; i < jsonArraypackageLineItems.size(); i++) {
+            PackageLineItem.validateJsonElement(jsonArraypackageLineItems.get(i));
+        }
+        ;
         if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
                 && !jsonObj.get("status").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

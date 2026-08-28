@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -37,26 +38,34 @@ public class GetAccessPointsResult {
     public static final String SERIALIZED_NAME_ACCESS_POINTS_MAP = "accessPointsMap";
 
     @SerializedName(SERIALIZED_NAME_ACCESS_POINTS_MAP)
-    private AccessPointsMap accessPointsMap = new HashMap<>();
+    private Map<String, List<AccessPoint>> accessPointsMap = new HashMap<>();
 
     public GetAccessPointsResult() {}
 
-    public GetAccessPointsResult accessPointsMap(AccessPointsMap accessPointsMap) {
+    public GetAccessPointsResult accessPointsMap(Map<String, List<AccessPoint>> accessPointsMap) {
         this.accessPointsMap = accessPointsMap;
         return this;
     }
 
+    public GetAccessPointsResult putAccessPointsMapItem(String key, List<AccessPoint> accessPointsMapItem) {
+        if (this.accessPointsMap == null) {
+            this.accessPointsMap = new HashMap<>();
+        }
+        this.accessPointsMap.put(key, accessPointsMapItem);
+        return this;
+    }
+
     /**
-     * Get accessPointsMap
+     * Map of type of access point to list of access points
      *
      * @return accessPointsMap
      */
     @javax.annotation.Nonnull
-    public AccessPointsMap getAccessPointsMap() {
+    public Map<String, List<AccessPoint>> getAccessPointsMap() {
         return accessPointsMap;
     }
 
-    public void setAccessPointsMap(AccessPointsMap accessPointsMap) {
+    public void setAccessPointsMap(Map<String, List<AccessPoint>> accessPointsMap) {
         this.accessPointsMap = accessPointsMap;
     }
 

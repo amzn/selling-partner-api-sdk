@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,8 +23,10 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -52,7 +55,7 @@ public class PurchaseShipmentRequest {
     public static final String SERIALIZED_NAME_REQUESTED_VALUE_ADDED_SERVICES = "requestedValueAddedServices";
 
     @SerializedName(SERIALIZED_NAME_REQUESTED_VALUE_ADDED_SERVICES)
-    private RequestedValueAddedServiceList requestedValueAddedServices = new ArrayList<>();
+    private List<RequestedValueAddedService> requestedValueAddedServices = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ADDITIONAL_INPUTS = "additionalInputs";
 
@@ -120,21 +123,30 @@ public class PurchaseShipmentRequest {
     }
 
     public PurchaseShipmentRequest requestedValueAddedServices(
-            RequestedValueAddedServiceList requestedValueAddedServices) {
+            List<RequestedValueAddedService> requestedValueAddedServices) {
         this.requestedValueAddedServices = requestedValueAddedServices;
         return this;
     }
 
+    public PurchaseShipmentRequest addRequestedValueAddedServicesItem(
+            RequestedValueAddedService requestedValueAddedServicesItem) {
+        if (this.requestedValueAddedServices == null) {
+            this.requestedValueAddedServices = new ArrayList<>();
+        }
+        this.requestedValueAddedServices.add(requestedValueAddedServicesItem);
+        return this;
+    }
+
     /**
-     * Get requestedValueAddedServices
+     * The value-added services to be added to a shipping service purchase.
      *
      * @return requestedValueAddedServices
      */
-    @javax.annotation.Nullable public RequestedValueAddedServiceList getRequestedValueAddedServices() {
+    @javax.annotation.Nullable public List<RequestedValueAddedService> getRequestedValueAddedServices() {
         return requestedValueAddedServices;
     }
 
-    public void setRequestedValueAddedServices(RequestedValueAddedServiceList requestedValueAddedServices) {
+    public void setRequestedValueAddedServices(List<RequestedValueAddedService> requestedValueAddedServices) {
         this.requestedValueAddedServices = requestedValueAddedServices;
     }
 
@@ -284,6 +296,24 @@ public class PurchaseShipmentRequest {
         }
         // validate the required field `requestedDocumentSpecification`
         RequestedDocumentSpecification.validateJsonElement(jsonObj.get("requestedDocumentSpecification"));
+        if (jsonObj.get("requestedValueAddedServices") != null
+                && !jsonObj.get("requestedValueAddedServices").isJsonNull()) {
+            JsonArray jsonArrayrequestedValueAddedServices = jsonObj.getAsJsonArray("requestedValueAddedServices");
+            if (jsonArrayrequestedValueAddedServices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("requestedValueAddedServices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `requestedValueAddedServices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("requestedValueAddedServices").toString()));
+                }
+
+                // validate the optional field `requestedValueAddedServices` (array)
+                for (int i = 0; i < jsonArrayrequestedValueAddedServices.size(); i++) {
+                    RequestedValueAddedService.validateJsonElement(jsonArrayrequestedValueAddedServices.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

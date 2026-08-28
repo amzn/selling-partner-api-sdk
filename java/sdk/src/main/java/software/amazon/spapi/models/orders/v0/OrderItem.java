@@ -125,7 +125,7 @@ public class OrderItem {
     public static final String SERIALIZED_NAME_PROMOTION_IDS = "PromotionIds";
 
     @SerializedName(SERIALIZED_NAME_PROMOTION_IDS)
-    private PromotionIdList promotionIds = new ArrayList<>();
+    private List<String> promotionIds = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CO_D_FEE = "CODFee";
 
@@ -611,21 +611,29 @@ public class OrderItem {
         this.promotionDiscountTax = promotionDiscountTax;
     }
 
-    public OrderItem promotionIds(PromotionIdList promotionIds) {
+    public OrderItem promotionIds(List<String> promotionIds) {
         this.promotionIds = promotionIds;
         return this;
     }
 
+    public OrderItem addPromotionIdsItem(String promotionIdsItem) {
+        if (this.promotionIds == null) {
+            this.promotionIds = new ArrayList<>();
+        }
+        this.promotionIds.add(promotionIdsItem);
+        return this;
+    }
+
     /**
-     * Get promotionIds
+     * A list of promotion identifiers provided by the seller when the promotions were created.
      *
      * @return promotionIds
      */
-    @javax.annotation.Nullable public PromotionIdList getPromotionIds() {
+    @javax.annotation.Nullable public List<String> getPromotionIds() {
         return promotionIds;
     }
 
-    public void setPromotionIds(PromotionIdList promotionIds) {
+    public void setPromotionIds(List<String> promotionIds) {
         this.promotionIds = promotionIds;
     }
 
@@ -1414,6 +1422,14 @@ public class OrderItem {
         if (jsonObj.get("PromotionDiscountTax") != null
                 && !jsonObj.get("PromotionDiscountTax").isJsonNull()) {
             Money.validateJsonElement(jsonObj.get("PromotionDiscountTax"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("PromotionIds") != null
+                && !jsonObj.get("PromotionIds").isJsonNull()
+                && !jsonObj.get("PromotionIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PromotionIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("PromotionIds").toString()));
         }
         // validate the optional field `CODFee`
         if (jsonObj.get("CODFee") != null && !jsonObj.get("CODFee").isJsonNull()) {

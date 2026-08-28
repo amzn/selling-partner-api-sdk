@@ -30,10 +30,10 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
+import software.amazon.spapi.models.productfees.v0.FeesEstimateByIdRequest;
+import software.amazon.spapi.models.productfees.v0.FeesEstimateResult;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesResponse;
 
 public class FeesApi {
     private ApiClient apiClient;
@@ -623,7 +623,7 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getMyFeesEstimatesCall(
-            GetMyFeesEstimatesRequest body, final ApiCallback progressRequestListener)
+            List<FeesEstimateByIdRequest> body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -662,7 +662,7 @@ public class FeesApi {
     }
 
     private okhttp3.Call getMyFeesEstimatesValidateBeforeCall(
-            GetMyFeesEstimatesRequest body, final ApiCallback progressRequestListener)
+            List<FeesEstimateByIdRequest> body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -683,13 +683,13 @@ public class FeesApi {
      *
      * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param restrictedDataToken Restricted Data Token (optional)
-     * @return GetMyFeesEstimatesResponse
+     * @return List&lt;FeesEstimateResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetMyFeesEstimatesResponse getMyFeesEstimates(GetMyFeesEstimatesRequest body, String restrictedDataToken)
+    public List<FeesEstimateResult> getMyFeesEstimates(List<FeesEstimateByIdRequest> body, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<GetMyFeesEstimatesResponse> resp = getMyFeesEstimatesWithHttpInfo(body, restrictedDataToken);
+        ApiResponse<List<FeesEstimateResult>> resp = getMyFeesEstimatesWithHttpInfo(body, restrictedDataToken);
         return resp.getData();
     }
 
@@ -702,13 +702,13 @@ public class FeesApi {
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body schema for the getMyFeesEstimates operation (required)
-     * @return GetMyFeesEstimatesResponse
+     * @return List&lt;FeesEstimateResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetMyFeesEstimatesResponse getMyFeesEstimates(GetMyFeesEstimatesRequest body)
+    public List<FeesEstimateResult> getMyFeesEstimates(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
-        ApiResponse<GetMyFeesEstimatesResponse> resp = getMyFeesEstimatesWithHttpInfo(body, null);
+        ApiResponse<List<FeesEstimateResult>> resp = getMyFeesEstimatesWithHttpInfo(body, null);
         return resp.getData();
     }
 
@@ -722,12 +722,12 @@ public class FeesApi {
      *
      * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param restrictedDataToken Restricted Data Token (optional)
-     * @return ApiResponse&lt;GetMyFeesEstimatesResponse&gt;
+     * @return ApiResponse&lt;List&lt;FeesEstimateResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(
-            GetMyFeesEstimatesRequest body, String restrictedDataToken) throws ApiException, LWAException {
+    public ApiResponse<List<FeesEstimateResult>> getMyFeesEstimatesWithHttpInfo(
+            List<FeesEstimateByIdRequest> body, String restrictedDataToken) throws ApiException, LWAException {
         okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, null);
 
         if (restrictedDataToken != null) {
@@ -736,7 +736,7 @@ public class FeesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
+        Type localVarReturnType = new TypeToken<List<FeesEstimateResult>>() {}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -749,11 +749,11 @@ public class FeesApi {
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param body The request body schema for the getMyFeesEstimates operation (required)
-     * @return ApiResponse&lt;GetMyFeesEstimatesResponse&gt;
+     * @return ApiResponse&lt;List&lt;FeesEstimateResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetMyFeesEstimatesResponse> getMyFeesEstimatesWithHttpInfo(GetMyFeesEstimatesRequest body)
+    public ApiResponse<List<FeesEstimateResult>> getMyFeesEstimatesWithHttpInfo(List<FeesEstimateByIdRequest> body)
             throws ApiException, LWAException {
         return getMyFeesEstimatesWithHttpInfo(body, null);
     }
@@ -773,7 +773,7 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMyFeesEstimatesAsync(
-            GetMyFeesEstimatesRequest body, final ApiCallback<GetMyFeesEstimatesResponse> callback)
+            List<FeesEstimateByIdRequest> body, final ApiCallback<List<FeesEstimateResult>> callback)
             throws ApiException, LWAException {
         return getMyFeesEstimatesAsync(body, callback, null);
     }
@@ -793,8 +793,8 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getMyFeesEstimatesAsync(
-            GetMyFeesEstimatesRequest body,
-            final ApiCallback<GetMyFeesEstimatesResponse> callback,
+            List<FeesEstimateByIdRequest> body,
+            final ApiCallback<List<FeesEstimateResult>> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
 
@@ -812,7 +812,7 @@ public class FeesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        Type localVarReturnType = new TypeToken<GetMyFeesEstimatesResponse>() {}.getType();
+        Type localVarReturnType = new TypeToken<List<FeesEstimateResult>>() {}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

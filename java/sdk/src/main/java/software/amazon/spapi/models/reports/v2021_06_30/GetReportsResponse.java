@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class GetReportsResponse {
     public static final String SERIALIZED_NAME_REPORTS = "reports";
 
     @SerializedName(SERIALIZED_NAME_REPORTS)
-    private ReportList reports = new ArrayList<>();
+    private List<Report> reports = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
 
@@ -45,22 +48,30 @@ public class GetReportsResponse {
 
     public GetReportsResponse() {}
 
-    public GetReportsResponse reports(ReportList reports) {
+    public GetReportsResponse reports(List<Report> reports) {
         this.reports = reports;
         return this;
     }
 
+    public GetReportsResponse addReportsItem(Report reportsItem) {
+        if (this.reports == null) {
+            this.reports = new ArrayList<>();
+        }
+        this.reports.add(reportsItem);
+        return this;
+    }
+
     /**
-     * Get reports
+     * A list of reports.
      *
      * @return reports
      */
     @javax.annotation.Nonnull
-    public ReportList getReports() {
+    public List<Report> getReports() {
         return reports;
     }
 
-    public void setReports(ReportList reports) {
+    public void setReports(List<Report> reports) {
         this.reports = reports;
     }
 
@@ -168,6 +179,19 @@ public class GetReportsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("reports").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reports` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("reports").toString()));
+        }
+
+        JsonArray jsonArrayreports = jsonObj.getAsJsonArray("reports");
+        // validate the required field `reports` (array)
+        for (int i = 0; i < jsonArrayreports.size(); i++) {
+            Report.validateJsonElement(jsonArrayreports.get(i));
+        }
+        ;
         if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
                 && !jsonObj.get("nextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

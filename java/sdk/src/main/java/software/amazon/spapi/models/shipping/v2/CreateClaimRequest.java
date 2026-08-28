@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -56,7 +58,7 @@ public class CreateClaimRequest {
     public static final String SERIALIZED_NAME_PROOFS = "proofs";
 
     @SerializedName(SERIALIZED_NAME_PROOFS)
-    private ClaimProofURLs proofs = new ArrayList<>();
+    private List<String> proofs = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SETTLEMENT_TYPE = "settlementType";
 
@@ -139,21 +141,29 @@ public class CreateClaimRequest {
         this.isReplacementPackageSent = isReplacementPackageSent;
     }
 
-    public CreateClaimRequest proofs(ClaimProofURLs proofs) {
+    public CreateClaimRequest proofs(List<String> proofs) {
         this.proofs = proofs;
         return this;
     }
 
+    public CreateClaimRequest addProofsItem(String proofsItem) {
+        if (this.proofs == null) {
+            this.proofs = new ArrayList<>();
+        }
+        this.proofs.add(proofsItem);
+        return this;
+    }
+
     /**
-     * Get proofs
+     * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
      *
      * @return proofs
      */
-    @javax.annotation.Nullable public ClaimProofURLs getProofs() {
+    @javax.annotation.Nullable public List<String> getProofs() {
         return proofs;
     }
 
-    public void setProofs(ClaimProofURLs proofs) {
+    public void setProofs(List<String> proofs) {
         this.proofs = proofs;
     }
 
@@ -291,6 +301,14 @@ public class CreateClaimRequest {
         }
         // validate the required field `claimReason`
         ClaimReason.validateJsonElement(jsonObj.get("claimReason"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("proofs") != null
+                && !jsonObj.get("proofs").isJsonNull()
+                && !jsonObj.get("proofs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `proofs` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("proofs").toString()));
+        }
         // validate the required field `settlementType`
         SettlementType.validateJsonElement(jsonObj.get("settlementType"));
     }

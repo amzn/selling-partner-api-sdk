@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class ServiceFeeEvent {
     public static final String SERIALIZED_NAME_FEE_LIST = "FeeList";
 
     @SerializedName(SERIALIZED_NAME_FEE_LIST)
-    private FeeComponentList feeList = new ArrayList<>();
+    private List<FeeComponent> feeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
@@ -111,21 +114,29 @@ public class ServiceFeeEvent {
         this.feeReason = feeReason;
     }
 
-    public ServiceFeeEvent feeList(FeeComponentList feeList) {
+    public ServiceFeeEvent feeList(List<FeeComponent> feeList) {
         this.feeList = feeList;
         return this;
     }
 
+    public ServiceFeeEvent addFeeListItem(FeeComponent feeListItem) {
+        if (this.feeList == null) {
+            this.feeList = new ArrayList<>();
+        }
+        this.feeList.add(feeListItem);
+        return this;
+    }
+
     /**
-     * Get feeList
+     * A list of fee component information.
      *
      * @return feeList
      */
-    @javax.annotation.Nullable public FeeComponentList getFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getFeeList() {
         return feeList;
     }
 
-    public void setFeeList(FeeComponentList feeList) {
+    public void setFeeList(List<FeeComponent> feeList) {
         this.feeList = feeList;
     }
 
@@ -327,6 +338,23 @@ public class ServiceFeeEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `FeeReason` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("FeeReason").toString()));
+        }
+        if (jsonObj.get("FeeList") != null && !jsonObj.get("FeeList").isJsonNull()) {
+            JsonArray jsonArrayfeeList = jsonObj.getAsJsonArray("FeeList");
+            if (jsonArrayfeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FeeList").toString()));
+                }
+
+                // validate the optional field `FeeList` (array)
+                for (int i = 0; i < jsonArrayfeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayfeeList.get(i));
+                }
+                ;
+            }
         }
         if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
                 && !jsonObj.get("SellerSKU").isJsonPrimitive()) {

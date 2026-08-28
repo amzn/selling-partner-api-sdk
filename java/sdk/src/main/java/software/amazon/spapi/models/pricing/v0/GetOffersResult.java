@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -71,7 +74,7 @@ public class GetOffersResult {
     public static final String SERIALIZED_NAME_OFFERS = "Offers";
 
     @SerializedName(SERIALIZED_NAME_OFFERS)
-    private OfferDetailList offers = new ArrayList<>();
+    private List<OfferDetail> offers = new ArrayList<>();
 
     public GetOffersResult() {}
 
@@ -206,22 +209,31 @@ public class GetOffersResult {
         this.summary = summary;
     }
 
-    public GetOffersResult offers(OfferDetailList offers) {
+    public GetOffersResult offers(List<OfferDetail> offers) {
         this.offers = offers;
         return this;
     }
 
+    public GetOffersResult addOffersItem(OfferDetail offersItem) {
+        if (this.offers == null) {
+            this.offers = new ArrayList<>();
+        }
+        this.offers.add(offersItem);
+        return this;
+    }
+
     /**
-     * Get offers
+     * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is
+     * less.
      *
      * @return offers
      */
     @javax.annotation.Nonnull
-    public OfferDetailList getOffers() {
+    public List<OfferDetail> getOffers() {
         return offers;
     }
 
-    public void setOffers(OfferDetailList offers) {
+    public void setOffers(List<OfferDetail> offers) {
         this.offers = offers;
     }
 
@@ -361,6 +373,19 @@ public class GetOffersResult {
         ItemIdentifier.validateJsonElement(jsonObj.get("Identifier"));
         // validate the required field `Summary`
         Summary.validateJsonElement(jsonObj.get("Summary"));
+        // ensure the json data is an array
+        if (!jsonObj.get("Offers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Offers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Offers").toString()));
+        }
+
+        JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("Offers");
+        // validate the required field `Offers` (array)
+        for (int i = 0; i < jsonArrayoffers.size(); i++) {
+            OfferDetail.validateJsonElement(jsonArrayoffers.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

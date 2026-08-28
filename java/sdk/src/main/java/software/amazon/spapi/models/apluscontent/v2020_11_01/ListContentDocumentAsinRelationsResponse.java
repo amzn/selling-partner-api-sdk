@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +38,7 @@ public class ListContentDocumentAsinRelationsResponse {
     public static final String SERIALIZED_NAME_WARNINGS = "warnings";
 
     @SerializedName(SERIALIZED_NAME_WARNINGS)
-    private MessageSet warnings = new LinkedHashSet<>();
+    private Set<Error> warnings = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
 
@@ -46,25 +48,33 @@ public class ListContentDocumentAsinRelationsResponse {
     public static final String SERIALIZED_NAME_ASIN_METADATA_SET = "asinMetadataSet";
 
     @SerializedName(SERIALIZED_NAME_ASIN_METADATA_SET)
-    private AsinMetadataSet asinMetadataSet = new LinkedHashSet<>();
+    private Set<AsinMetadata> asinMetadataSet = new LinkedHashSet<>();
 
     public ListContentDocumentAsinRelationsResponse() {}
 
-    public ListContentDocumentAsinRelationsResponse warnings(MessageSet warnings) {
+    public ListContentDocumentAsinRelationsResponse warnings(Set<Error> warnings) {
         this.warnings = warnings;
         return this;
     }
 
+    public ListContentDocumentAsinRelationsResponse addWarningsItem(Error warningsItem) {
+        if (this.warnings == null) {
+            this.warnings = new LinkedHashSet<>();
+        }
+        this.warnings.add(warningsItem);
+        return this;
+    }
+
     /**
-     * Get warnings
+     * A set of messages to the user, such as warnings or comments.
      *
      * @return warnings
      */
-    @javax.annotation.Nullable public MessageSet getWarnings() {
+    @javax.annotation.Nullable public Set<Error> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(MessageSet warnings) {
+    public void setWarnings(Set<Error> warnings) {
         this.warnings = warnings;
     }
 
@@ -86,22 +96,30 @@ public class ListContentDocumentAsinRelationsResponse {
         this.nextPageToken = nextPageToken;
     }
 
-    public ListContentDocumentAsinRelationsResponse asinMetadataSet(AsinMetadataSet asinMetadataSet) {
+    public ListContentDocumentAsinRelationsResponse asinMetadataSet(Set<AsinMetadata> asinMetadataSet) {
         this.asinMetadataSet = asinMetadataSet;
         return this;
     }
 
+    public ListContentDocumentAsinRelationsResponse addAsinMetadataSetItem(AsinMetadata asinMetadataSetItem) {
+        if (this.asinMetadataSet == null) {
+            this.asinMetadataSet = new LinkedHashSet<>();
+        }
+        this.asinMetadataSet.add(asinMetadataSetItem);
+        return this;
+    }
+
     /**
-     * Get asinMetadataSet
+     * The set of ASIN metadata.
      *
      * @return asinMetadataSet
      */
     @javax.annotation.Nonnull
-    public AsinMetadataSet getAsinMetadataSet() {
+    public Set<AsinMetadata> getAsinMetadataSet() {
         return asinMetadataSet;
     }
 
-    public void setAsinMetadataSet(AsinMetadataSet asinMetadataSet) {
+    public void setAsinMetadataSet(Set<AsinMetadata> asinMetadataSet) {
         this.asinMetadataSet = asinMetadataSet;
     }
 
@@ -197,6 +215,23 @@ public class ListContentDocumentAsinRelationsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+            JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+            if (jsonArraywarnings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("warnings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `warnings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("warnings").toString()));
+                }
+
+                // validate the optional field `warnings` (array)
+                for (int i = 0; i < jsonArraywarnings.size(); i++) {
+                    Error.validateJsonElement(jsonArraywarnings.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextPageToken") != null
                         && !jsonObj.get("nextPageToken").isJsonNull())
                 && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
@@ -204,6 +239,19 @@ public class ListContentDocumentAsinRelationsResponse {
                     "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("nextPageToken").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("asinMetadataSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asinMetadataSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("asinMetadataSet").toString()));
+        }
+
+        JsonArray jsonArrayasinMetadataSet = jsonObj.getAsJsonArray("asinMetadataSet");
+        // validate the required field `asinMetadataSet` (array)
+        for (int i = 0; i < jsonArrayasinMetadataSet.size(); i++) {
+            AsinMetadata.validateJsonElement(jsonArrayasinMetadataSet.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

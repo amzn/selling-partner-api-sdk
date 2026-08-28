@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class GetShipmentsResult {
     public static final String SERIALIZED_NAME_SHIPMENT_DATA = "ShipmentData";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_DATA)
-    private InboundShipmentList shipmentData = new ArrayList<>();
+    private List<InboundShipmentInfo> shipmentData = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
 
@@ -45,21 +48,29 @@ public class GetShipmentsResult {
 
     public GetShipmentsResult() {}
 
-    public GetShipmentsResult shipmentData(InboundShipmentList shipmentData) {
+    public GetShipmentsResult shipmentData(List<InboundShipmentInfo> shipmentData) {
         this.shipmentData = shipmentData;
         return this;
     }
 
+    public GetShipmentsResult addShipmentDataItem(InboundShipmentInfo shipmentDataItem) {
+        if (this.shipmentData == null) {
+            this.shipmentData = new ArrayList<>();
+        }
+        this.shipmentData.add(shipmentDataItem);
+        return this;
+    }
+
     /**
-     * Get shipmentData
+     * A list of inbound shipment information.
      *
      * @return shipmentData
      */
-    @javax.annotation.Nullable public InboundShipmentList getShipmentData() {
+    @javax.annotation.Nullable public List<InboundShipmentInfo> getShipmentData() {
         return shipmentData;
     }
 
-    public void setShipmentData(InboundShipmentList shipmentData) {
+    public void setShipmentData(List<InboundShipmentInfo> shipmentData) {
         this.shipmentData = shipmentData;
     }
 
@@ -156,6 +167,23 @@ public class GetShipmentsResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("ShipmentData") != null && !jsonObj.get("ShipmentData").isJsonNull()) {
+            JsonArray jsonArrayshipmentData = jsonObj.getAsJsonArray("ShipmentData");
+            if (jsonArrayshipmentData != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentData").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentData` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentData").toString()));
+                }
+
+                // validate the optional field `ShipmentData` (array)
+                for (int i = 0; i < jsonArrayshipmentData.size(); i++) {
+                    InboundShipmentInfo.validateJsonElement(jsonArrayshipmentData.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
                 && !jsonObj.get("NextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

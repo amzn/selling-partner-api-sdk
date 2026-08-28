@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -71,7 +74,7 @@ public class CarrierAccountInput {
     public static final String SERIALIZED_NAME_VALIDATION_METADATA = "validationMetadata";
 
     @SerializedName(SERIALIZED_NAME_VALIDATION_METADATA)
-    private ValidationMetadataList validationMetadata = new ArrayList<>();
+    private List<ValidationMetadata> validationMetadata = new ArrayList<>();
 
     public CarrierAccountInput() {}
 
@@ -201,21 +204,29 @@ public class CarrierAccountInput {
         this.isHidden = isHidden;
     }
 
-    public CarrierAccountInput validationMetadata(ValidationMetadataList validationMetadata) {
+    public CarrierAccountInput validationMetadata(List<ValidationMetadata> validationMetadata) {
         this.validationMetadata = validationMetadata;
         return this;
     }
 
+    public CarrierAccountInput addValidationMetadataItem(ValidationMetadata validationMetadataItem) {
+        if (this.validationMetadata == null) {
+            this.validationMetadata = new ArrayList<>();
+        }
+        this.validationMetadata.add(validationMetadataItem);
+        return this;
+    }
+
     /**
-     * Get validationMetadata
+     * A list of ValidationMetadata
      *
      * @return validationMetadata
      */
-    @javax.annotation.Nullable public ValidationMetadataList getValidationMetadata() {
+    @javax.annotation.Nullable public List<ValidationMetadata> getValidationMetadata() {
         return validationMetadata;
     }
 
-    public void setValidationMetadata(ValidationMetadataList validationMetadata) {
+    public void setValidationMetadata(List<ValidationMetadata> validationMetadata) {
         this.validationMetadata = validationMetadata;
     }
 
@@ -348,6 +359,24 @@ public class CarrierAccountInput {
         // validate the optional field `inputType`
         if (jsonObj.get("inputType") != null && !jsonObj.get("inputType").isJsonNull()) {
             InputType.validateJsonElement(jsonObj.get("inputType"));
+        }
+        if (jsonObj.get("validationMetadata") != null
+                && !jsonObj.get("validationMetadata").isJsonNull()) {
+            JsonArray jsonArrayvalidationMetadata = jsonObj.getAsJsonArray("validationMetadata");
+            if (jsonArrayvalidationMetadata != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("validationMetadata").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `validationMetadata` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("validationMetadata").toString()));
+                }
+
+                // validate the optional field `validationMetadata` (array)
+                for (int i = 0; i < jsonArrayvalidationMetadata.size(); i++) {
+                    ValidationMetadata.validateJsonElement(jsonArrayvalidationMetadata.get(i));
+                }
+                ;
+            }
         }
     }
 

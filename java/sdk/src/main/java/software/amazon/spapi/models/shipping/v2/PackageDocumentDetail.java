@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class PackageDocumentDetail {
     public static final String SERIALIZED_NAME_PACKAGE_DOCUMENTS = "packageDocuments";
 
     @SerializedName(SERIALIZED_NAME_PACKAGE_DOCUMENTS)
-    private PackageDocumentList packageDocuments = new ArrayList<>();
+    private List<PackageDocument> packageDocuments = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
 
@@ -70,22 +73,30 @@ public class PackageDocumentDetail {
         this.packageClientReferenceId = packageClientReferenceId;
     }
 
-    public PackageDocumentDetail packageDocuments(PackageDocumentList packageDocuments) {
+    public PackageDocumentDetail packageDocuments(List<PackageDocument> packageDocuments) {
         this.packageDocuments = packageDocuments;
         return this;
     }
 
+    public PackageDocumentDetail addPackageDocumentsItem(PackageDocument packageDocumentsItem) {
+        if (this.packageDocuments == null) {
+            this.packageDocuments = new ArrayList<>();
+        }
+        this.packageDocuments.add(packageDocumentsItem);
+        return this;
+    }
+
     /**
-     * Get packageDocuments
+     * A list of documents related to a package.
      *
      * @return packageDocuments
      */
     @javax.annotation.Nonnull
-    public PackageDocumentList getPackageDocuments() {
+    public List<PackageDocument> getPackageDocuments() {
         return packageDocuments;
     }
 
-    public void setPackageDocuments(PackageDocumentList packageDocuments) {
+    public void setPackageDocuments(List<PackageDocument> packageDocuments) {
         this.packageDocuments = packageDocuments;
     }
 
@@ -206,6 +217,19 @@ public class PackageDocumentDetail {
                     "Expected the field `packageClientReferenceId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("packageClientReferenceId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("packageDocuments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageDocuments` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packageDocuments").toString()));
+        }
+
+        JsonArray jsonArraypackageDocuments = jsonObj.getAsJsonArray("packageDocuments");
+        // validate the required field `packageDocuments` (array)
+        for (int i = 0; i < jsonArraypackageDocuments.size(); i++) {
+            PackageDocument.validateJsonElement(jsonArraypackageDocuments.get(i));
+        }
+        ;
         if ((jsonObj.get("trackingId") != null && !jsonObj.get("trackingId").isJsonNull())
                 && !jsonObj.get("trackingId").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

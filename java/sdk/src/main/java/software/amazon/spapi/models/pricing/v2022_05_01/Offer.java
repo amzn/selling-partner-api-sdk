@@ -152,7 +152,7 @@ public class Offer {
     public static final String SERIALIZED_NAME_PROMOTIONS = "promotions";
 
     @SerializedName(SERIALIZED_NAME_PROMOTIONS)
-    private Promotions promotions = new ArrayList<>();
+    private List<Promotion> promotions = new ArrayList<>();
 
     public Offer() {}
 
@@ -312,21 +312,29 @@ public class Offer {
         this.primeDetails = primeDetails;
     }
 
-    public Offer promotions(Promotions promotions) {
+    public Offer promotions(List<Promotion> promotions) {
         this.promotions = promotions;
         return this;
     }
 
+    public Offer addPromotionsItem(Promotion promotionsItem) {
+        if (this.promotions == null) {
+            this.promotions = new ArrayList<>();
+        }
+        this.promotions.add(promotionsItem);
+        return this;
+    }
+
     /**
-     * Get promotions
+     * A list of live promotions applicable to this offer.
      *
      * @return promotions
      */
-    @javax.annotation.Nullable public Promotions getPromotions() {
+    @javax.annotation.Nullable public List<Promotion> getPromotions() {
         return promotions;
     }
 
-    public void setPromotions(Promotions promotions) {
+    public void setPromotions(List<Promotion> promotions) {
         this.promotions = promotions;
     }
 
@@ -498,6 +506,23 @@ public class Offer {
         // validate the optional field `primeDetails`
         if (jsonObj.get("primeDetails") != null && !jsonObj.get("primeDetails").isJsonNull()) {
             PrimeDetails.validateJsonElement(jsonObj.get("primeDetails"));
+        }
+        if (jsonObj.get("promotions") != null && !jsonObj.get("promotions").isJsonNull()) {
+            JsonArray jsonArraypromotions = jsonObj.getAsJsonArray("promotions");
+            if (jsonArraypromotions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("promotions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `promotions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("promotions").toString()));
+                }
+
+                // validate the optional field `promotions` (array)
+                for (int i = 0; i < jsonArraypromotions.size(); i++) {
+                    Promotion.validateJsonElement(jsonArraypromotions.get(i));
+                }
+                ;
+            }
         }
     }
 

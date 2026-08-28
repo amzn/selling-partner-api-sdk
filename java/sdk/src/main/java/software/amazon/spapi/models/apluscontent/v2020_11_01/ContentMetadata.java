@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -52,7 +53,7 @@ public class ContentMetadata {
     public static final String SERIALIZED_NAME_BADGE_SET = "badgeSet";
 
     @SerializedName(SERIALIZED_NAME_BADGE_SET)
-    private ContentBadgeSet badgeSet = new LinkedHashSet<>();
+    private Set<ContentBadge> badgeSet = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_UPDATE_TIME = "updateTime";
 
@@ -119,22 +120,30 @@ public class ContentMetadata {
         this.status = status;
     }
 
-    public ContentMetadata badgeSet(ContentBadgeSet badgeSet) {
+    public ContentMetadata badgeSet(Set<ContentBadge> badgeSet) {
         this.badgeSet = badgeSet;
         return this;
     }
 
+    public ContentMetadata addBadgeSetItem(ContentBadge badgeSetItem) {
+        if (this.badgeSet == null) {
+            this.badgeSet = new LinkedHashSet<>();
+        }
+        this.badgeSet.add(badgeSetItem);
+        return this;
+    }
+
     /**
-     * Get badgeSet
+     * The set of content badges.
      *
      * @return badgeSet
      */
     @javax.annotation.Nonnull
-    public ContentBadgeSet getBadgeSet() {
+    public Set<ContentBadge> getBadgeSet() {
         return badgeSet;
     }
 
-    public void setBadgeSet(ContentBadgeSet badgeSet) {
+    public void setBadgeSet(Set<ContentBadge> badgeSet) {
         this.badgeSet = badgeSet;
     }
 
@@ -267,6 +276,15 @@ public class ContentMetadata {
         }
         // validate the required field `status`
         ContentStatus.validateJsonElement(jsonObj.get("status"));
+        // ensure the required json array is present
+        if (jsonObj.get("badgeSet") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("badgeSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `badgeSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("badgeSet").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

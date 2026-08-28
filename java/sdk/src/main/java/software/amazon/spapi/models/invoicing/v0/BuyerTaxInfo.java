@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class BuyerTaxInfo {
     public static final String SERIALIZED_NAME_TAX_CLASSIFICATIONS = "TaxClassifications";
 
     @SerializedName(SERIALIZED_NAME_TAX_CLASSIFICATIONS)
-    private TaxClassificationList taxClassifications = new ArrayList<>();
+    private List<TaxClassification> taxClassifications = new ArrayList<>();
 
     public BuyerTaxInfo() {}
 
@@ -86,21 +89,29 @@ public class BuyerTaxInfo {
         this.taxingRegion = taxingRegion;
     }
 
-    public BuyerTaxInfo taxClassifications(TaxClassificationList taxClassifications) {
+    public BuyerTaxInfo taxClassifications(List<TaxClassification> taxClassifications) {
         this.taxClassifications = taxClassifications;
         return this;
     }
 
+    public BuyerTaxInfo addTaxClassificationsItem(TaxClassification taxClassificationsItem) {
+        if (this.taxClassifications == null) {
+            this.taxClassifications = new ArrayList<>();
+        }
+        this.taxClassifications.add(taxClassificationsItem);
+        return this;
+    }
+
     /**
-     * Get taxClassifications
+     * The list of tax classifications.
      *
      * @return taxClassifications
      */
-    @javax.annotation.Nullable public TaxClassificationList getTaxClassifications() {
+    @javax.annotation.Nullable public List<TaxClassification> getTaxClassifications() {
         return taxClassifications;
     }
 
-    public void setTaxClassifications(TaxClassificationList taxClassifications) {
+    public void setTaxClassifications(List<TaxClassification> taxClassifications) {
         this.taxClassifications = taxClassifications;
     }
 
@@ -198,6 +209,24 @@ public class BuyerTaxInfo {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `TaxingRegion` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("TaxingRegion").toString()));
+        }
+        if (jsonObj.get("TaxClassifications") != null
+                && !jsonObj.get("TaxClassifications").isJsonNull()) {
+            JsonArray jsonArraytaxClassifications = jsonObj.getAsJsonArray("TaxClassifications");
+            if (jsonArraytaxClassifications != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TaxClassifications").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TaxClassifications` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TaxClassifications").toString()));
+                }
+
+                // validate the optional field `TaxClassifications` (array)
+                for (int i = 0; i < jsonArraytaxClassifications.size(); i++) {
+                    TaxClassification.validateJsonElement(jsonArraytaxClassifications.get(i));
+                }
+                ;
+            }
         }
     }
 

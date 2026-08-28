@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class ItemLevelFields {
     public static final String SERIALIZED_NAME_ADDITIONAL_INPUTS = "AdditionalInputs";
 
     @SerializedName(SERIALIZED_NAME_ADDITIONAL_INPUTS)
-    private AdditionalInputsList additionalInputs = new ArrayList<>();
+    private List<AdditionalInputs> additionalInputs = new ArrayList<>();
 
     public ItemLevelFields() {}
 
@@ -64,22 +67,30 @@ public class ItemLevelFields {
         this.asin = asin;
     }
 
-    public ItemLevelFields additionalInputs(AdditionalInputsList additionalInputs) {
+    public ItemLevelFields additionalInputs(List<AdditionalInputs> additionalInputs) {
         this.additionalInputs = additionalInputs;
         return this;
     }
 
+    public ItemLevelFields addAdditionalInputsItem(AdditionalInputs additionalInputsItem) {
+        if (this.additionalInputs == null) {
+            this.additionalInputs = new ArrayList<>();
+        }
+        this.additionalInputs.add(additionalInputsItem);
+        return this;
+    }
+
     /**
-     * Get additionalInputs
+     * A list of additional inputs.
      *
      * @return additionalInputs
      */
     @javax.annotation.Nonnull
-    public AdditionalInputsList getAdditionalInputs() {
+    public List<AdditionalInputs> getAdditionalInputs() {
         return additionalInputs;
     }
 
-    public void setAdditionalInputs(AdditionalInputsList additionalInputs) {
+    public void setAdditionalInputs(List<AdditionalInputs> additionalInputs) {
         this.additionalInputs = additionalInputs;
     }
 
@@ -176,6 +187,19 @@ public class ItemLevelFields {
                     "Expected the field `Asin` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("Asin").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("AdditionalInputs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AdditionalInputs` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AdditionalInputs").toString()));
+        }
+
+        JsonArray jsonArrayadditionalInputs = jsonObj.getAsJsonArray("AdditionalInputs");
+        // validate the required field `AdditionalInputs` (array)
+        for (int i = 0; i < jsonArrayadditionalInputs.size(); i++) {
+            AdditionalInputs.validateJsonElement(jsonArrayadditionalInputs.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

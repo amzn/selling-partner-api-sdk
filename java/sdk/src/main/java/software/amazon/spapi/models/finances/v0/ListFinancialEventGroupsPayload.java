@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class ListFinancialEventGroupsPayload {
     public static final String SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_LIST = "FinancialEventGroupList";
 
     @SerializedName(SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_LIST)
-    private FinancialEventGroupList financialEventGroupList = new ArrayList<>();
+    private List<FinancialEventGroup> financialEventGroupList = new ArrayList<>();
 
     public ListFinancialEventGroupsPayload() {}
 
@@ -63,21 +66,30 @@ public class ListFinancialEventGroupsPayload {
         this.nextToken = nextToken;
     }
 
-    public ListFinancialEventGroupsPayload financialEventGroupList(FinancialEventGroupList financialEventGroupList) {
+    public ListFinancialEventGroupsPayload financialEventGroupList(List<FinancialEventGroup> financialEventGroupList) {
         this.financialEventGroupList = financialEventGroupList;
         return this;
     }
 
+    public ListFinancialEventGroupsPayload addFinancialEventGroupListItem(
+            FinancialEventGroup financialEventGroupListItem) {
+        if (this.financialEventGroupList == null) {
+            this.financialEventGroupList = new ArrayList<>();
+        }
+        this.financialEventGroupList.add(financialEventGroupListItem);
+        return this;
+    }
+
     /**
-     * Get financialEventGroupList
+     * A list of financial event group information.
      *
      * @return financialEventGroupList
      */
-    @javax.annotation.Nullable public FinancialEventGroupList getFinancialEventGroupList() {
+    @javax.annotation.Nullable public List<FinancialEventGroup> getFinancialEventGroupList() {
         return financialEventGroupList;
     }
 
-    public void setFinancialEventGroupList(FinancialEventGroupList financialEventGroupList) {
+    public void setFinancialEventGroupList(List<FinancialEventGroup> financialEventGroupList) {
         this.financialEventGroupList = financialEventGroupList;
     }
 
@@ -165,6 +177,24 @@ public class ListFinancialEventGroupsPayload {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("NextToken").toString()));
+        }
+        if (jsonObj.get("FinancialEventGroupList") != null
+                && !jsonObj.get("FinancialEventGroupList").isJsonNull()) {
+            JsonArray jsonArrayfinancialEventGroupList = jsonObj.getAsJsonArray("FinancialEventGroupList");
+            if (jsonArrayfinancialEventGroupList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FinancialEventGroupList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FinancialEventGroupList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FinancialEventGroupList").toString()));
+                }
+
+                // validate the optional field `FinancialEventGroupList` (array)
+                for (int i = 0; i < jsonArrayfinancialEventGroupList.size(); i++) {
+                    FinancialEventGroup.validateJsonElement(jsonArrayfinancialEventGroupList.get(i));
+                }
+                ;
+            }
         }
     }
 

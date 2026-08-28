@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -107,7 +110,7 @@ public class ShippingInfo {
     public static final String SERIALIZED_NAME_RECOMMENDED_PACKAGES = "recommendedPackages";
 
     @SerializedName(SERIALIZED_NAME_RECOMMENDED_PACKAGES)
-    private RecommendedPackages recommendedPackages = new ArrayList<>();
+    private List<RecommendedPackage> recommendedPackages = new ArrayList<>();
 
     public ShippingInfo() {}
 
@@ -184,21 +187,29 @@ public class ShippingInfo {
         this.shippingType = shippingType;
     }
 
-    public ShippingInfo recommendedPackages(RecommendedPackages recommendedPackages) {
+    public ShippingInfo recommendedPackages(List<RecommendedPackage> recommendedPackages) {
         this.recommendedPackages = recommendedPackages;
         return this;
     }
 
+    public ShippingInfo addRecommendedPackagesItem(RecommendedPackage recommendedPackagesItem) {
+        if (this.recommendedPackages == null) {
+            this.recommendedPackages = new ArrayList<>();
+        }
+        this.recommendedPackages.add(recommendedPackagesItem);
+        return this;
+    }
+
     /**
-     * Get recommendedPackages
+     * Recommendations for the packages in an order.
      *
      * @return recommendedPackages
      */
-    @javax.annotation.Nullable public RecommendedPackages getRecommendedPackages() {
+    @javax.annotation.Nullable public List<RecommendedPackage> getRecommendedPackages() {
         return recommendedPackages;
     }
 
-    public void setRecommendedPackages(RecommendedPackages recommendedPackages) {
+    public void setRecommendedPackages(List<RecommendedPackage> recommendedPackages) {
         this.recommendedPackages = recommendedPackages;
     }
 
@@ -329,6 +340,24 @@ public class ShippingInfo {
         // validate the optional field `shippingType`
         if (jsonObj.get("shippingType") != null && !jsonObj.get("shippingType").isJsonNull()) {
             ShippingTypeEnum.validateJsonElement(jsonObj.get("shippingType"));
+        }
+        if (jsonObj.get("recommendedPackages") != null
+                && !jsonObj.get("recommendedPackages").isJsonNull()) {
+            JsonArray jsonArrayrecommendedPackages = jsonObj.getAsJsonArray("recommendedPackages");
+            if (jsonArrayrecommendedPackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("recommendedPackages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `recommendedPackages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("recommendedPackages").toString()));
+                }
+
+                // validate the optional field `recommendedPackages` (array)
+                for (int i = 0; i < jsonArrayrecommendedPackages.size(); i++) {
+                    RecommendedPackage.validateJsonElement(jsonArrayrecommendedPackages.get(i));
+                }
+                ;
+            }
         }
     }
 

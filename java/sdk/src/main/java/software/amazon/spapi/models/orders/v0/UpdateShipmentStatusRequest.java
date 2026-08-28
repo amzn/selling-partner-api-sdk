@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class UpdateShipmentStatusRequest {
     public static final String SERIALIZED_NAME_ORDER_ITEMS = "orderItems";
 
     @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
-    private OrderItems orderItems = new ArrayList<>();
+    private List<OrderItemsInner> orderItems = new ArrayList<>();
 
     public UpdateShipmentStatusRequest() {}
 
@@ -88,21 +91,29 @@ public class UpdateShipmentStatusRequest {
         this.shipmentStatus = shipmentStatus;
     }
 
-    public UpdateShipmentStatusRequest orderItems(OrderItems orderItems) {
+    public UpdateShipmentStatusRequest orderItems(List<OrderItemsInner> orderItems) {
         this.orderItems = orderItems;
         return this;
     }
 
+    public UpdateShipmentStatusRequest addOrderItemsItem(OrderItemsInner orderItemsItem) {
+        if (this.orderItems == null) {
+            this.orderItems = new ArrayList<>();
+        }
+        this.orderItems.add(orderItemsItem);
+        return this;
+    }
+
     /**
-     * Get orderItems
+     * For partial shipment status updates, the list of order items and quantities to be updated.
      *
      * @return orderItems
      */
-    @javax.annotation.Nullable public OrderItems getOrderItems() {
+    @javax.annotation.Nullable public List<OrderItemsInner> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(OrderItems orderItems) {
+    public void setOrderItems(List<OrderItemsInner> orderItems) {
         this.orderItems = orderItems;
     }
 
@@ -205,6 +216,23 @@ public class UpdateShipmentStatusRequest {
         }
         // validate the required field `shipmentStatus`
         ShipmentStatus.validateJsonElement(jsonObj.get("shipmentStatus"));
+        if (jsonObj.get("orderItems") != null && !jsonObj.get("orderItems").isJsonNull()) {
+            JsonArray jsonArrayorderItems = jsonObj.getAsJsonArray("orderItems");
+            if (jsonArrayorderItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("orderItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `orderItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("orderItems").toString()));
+                }
+
+                // validate the optional field `orderItems` (array)
+                for (int i = 0; i < jsonArrayorderItems.size(); i++) {
+                    OrderItemsInner.validateJsonElement(jsonArrayorderItems.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

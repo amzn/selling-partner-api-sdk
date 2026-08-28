@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class GetFeaturedOfferExpectedPriceBatchRequest {
     public static final String SERIALIZED_NAME_REQUESTS = "requests";
 
     @SerializedName(SERIALIZED_NAME_REQUESTS)
-    private FeaturedOfferExpectedPriceRequestList requests = new ArrayList<>();
+    private List<FeaturedOfferExpectedPriceRequest> requests = new ArrayList<>();
 
     public GetFeaturedOfferExpectedPriceBatchRequest() {}
 
-    public GetFeaturedOfferExpectedPriceBatchRequest requests(FeaturedOfferExpectedPriceRequestList requests) {
+    public GetFeaturedOfferExpectedPriceBatchRequest requests(List<FeaturedOfferExpectedPriceRequest> requests) {
         this.requests = requests;
         return this;
     }
 
+    public GetFeaturedOfferExpectedPriceBatchRequest addRequestsItem(FeaturedOfferExpectedPriceRequest requestsItem) {
+        if (this.requests == null) {
+            this.requests = new ArrayList<>();
+        }
+        this.requests.add(requestsItem);
+        return this;
+    }
+
     /**
-     * Get requests
+     * A batched list of FOEP requests.
      *
      * @return requests
      */
-    @javax.annotation.Nullable public FeaturedOfferExpectedPriceRequestList getRequests() {
+    @javax.annotation.Nullable public List<FeaturedOfferExpectedPriceRequest> getRequests() {
         return requests;
     }
 
-    public void setRequests(FeaturedOfferExpectedPriceRequestList requests) {
+    public void setRequests(List<FeaturedOfferExpectedPriceRequest> requests) {
         this.requests = requests;
     }
 
@@ -132,6 +143,23 @@ public class GetFeaturedOfferExpectedPriceBatchRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("requests") != null && !jsonObj.get("requests").isJsonNull()) {
+            JsonArray jsonArrayrequests = jsonObj.getAsJsonArray("requests");
+            if (jsonArrayrequests != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("requests").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `requests` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("requests").toString()));
+                }
+
+                // validate the optional field `requests` (array)
+                for (int i = 0; i < jsonArrayrequests.size(); i++) {
+                    FeaturedOfferExpectedPriceRequest.validateJsonElement(jsonArrayrequests.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

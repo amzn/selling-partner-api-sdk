@@ -49,12 +49,12 @@ public class GetFulfillmentPreviewRequest {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private GetFulfillmentPreviewItemList items = new ArrayList<>();
+    private List<GetFulfillmentPreviewItem> items = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPPING_SPEED_CATEGORIES = "shippingSpeedCategories";
 
     @SerializedName(SERIALIZED_NAME_SHIPPING_SPEED_CATEGORIES)
-    private ShippingSpeedCategoryList shippingSpeedCategories = new ArrayList<>();
+    private List<ShippingSpeedCategory> shippingSpeedCategories = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INCLUDE_C_O_D_FULFILLMENT_PREVIEW = "includeCODFulfillmentPreview";
 
@@ -110,40 +110,57 @@ public class GetFulfillmentPreviewRequest {
         this.address = address;
     }
 
-    public GetFulfillmentPreviewRequest items(GetFulfillmentPreviewItemList items) {
+    public GetFulfillmentPreviewRequest items(List<GetFulfillmentPreviewItem> items) {
         this.items = items;
         return this;
     }
 
+    public GetFulfillmentPreviewRequest addItemsItem(GetFulfillmentPreviewItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * An array of fulfillment preview item information.
      *
      * @return items
      */
     @javax.annotation.Nonnull
-    public GetFulfillmentPreviewItemList getItems() {
+    public List<GetFulfillmentPreviewItem> getItems() {
         return items;
     }
 
-    public void setItems(GetFulfillmentPreviewItemList items) {
+    public void setItems(List<GetFulfillmentPreviewItem> items) {
         this.items = items;
     }
 
-    public GetFulfillmentPreviewRequest shippingSpeedCategories(ShippingSpeedCategoryList shippingSpeedCategories) {
+    public GetFulfillmentPreviewRequest shippingSpeedCategories(List<ShippingSpeedCategory> shippingSpeedCategories) {
         this.shippingSpeedCategories = shippingSpeedCategories;
         return this;
     }
 
+    public GetFulfillmentPreviewRequest addShippingSpeedCategoriesItem(
+            ShippingSpeedCategory shippingSpeedCategoriesItem) {
+        if (this.shippingSpeedCategories == null) {
+            this.shippingSpeedCategories = new ArrayList<>();
+        }
+        this.shippingSpeedCategories.add(shippingSpeedCategoriesItem);
+        return this;
+    }
+
     /**
-     * Get shippingSpeedCategories
+     * List of shipping speed categories.
      *
      * @return shippingSpeedCategories
      */
-    @javax.annotation.Nullable public ShippingSpeedCategoryList getShippingSpeedCategories() {
+    @javax.annotation.Nullable public List<ShippingSpeedCategory> getShippingSpeedCategories() {
         return shippingSpeedCategories;
     }
 
-    public void setShippingSpeedCategories(ShippingSpeedCategoryList shippingSpeedCategories) {
+    public void setShippingSpeedCategories(List<ShippingSpeedCategory> shippingSpeedCategories) {
         this.shippingSpeedCategories = shippingSpeedCategories;
     }
 
@@ -339,6 +356,27 @@ public class GetFulfillmentPreviewRequest {
         }
         // validate the required field `address`
         Address.validateJsonElement(jsonObj.get("address"));
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            GetFulfillmentPreviewItem.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("shippingSpeedCategories") != null
+                && !jsonObj.get("shippingSpeedCategories").isJsonNull()
+                && !jsonObj.get("shippingSpeedCategories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingSpeedCategories` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("shippingSpeedCategories").toString()));
+        }
         if (jsonObj.get("featureConstraints") != null
                 && !jsonObj.get("featureConstraints").isJsonNull()) {
             JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");

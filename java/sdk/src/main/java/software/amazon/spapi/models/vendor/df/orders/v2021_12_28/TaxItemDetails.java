@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class TaxItemDetails {
     public static final String SERIALIZED_NAME_TAX_LINE_ITEM = "taxLineItem";
 
     @SerializedName(SERIALIZED_NAME_TAX_LINE_ITEM)
-    private TaxLineItem taxLineItem = new ArrayList<>();
+    private List<TaxDetails> taxLineItem = new ArrayList<>();
 
     public TaxItemDetails() {}
 
-    public TaxItemDetails taxLineItem(TaxLineItem taxLineItem) {
+    public TaxItemDetails taxLineItem(List<TaxDetails> taxLineItem) {
         this.taxLineItem = taxLineItem;
         return this;
     }
 
+    public TaxItemDetails addTaxLineItemItem(TaxDetails taxLineItemItem) {
+        if (this.taxLineItem == null) {
+            this.taxLineItem = new ArrayList<>();
+        }
+        this.taxLineItem.add(taxLineItemItem);
+        return this;
+    }
+
     /**
-     * Get taxLineItem
+     * A list of tax line items.
      *
      * @return taxLineItem
      */
-    @javax.annotation.Nullable public TaxLineItem getTaxLineItem() {
+    @javax.annotation.Nullable public List<TaxDetails> getTaxLineItem() {
         return taxLineItem;
     }
 
-    public void setTaxLineItem(TaxLineItem taxLineItem) {
+    public void setTaxLineItem(List<TaxDetails> taxLineItem) {
         this.taxLineItem = taxLineItem;
     }
 
@@ -130,6 +141,23 @@ public class TaxItemDetails {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("taxLineItem") != null && !jsonObj.get("taxLineItem").isJsonNull()) {
+            JsonArray jsonArraytaxLineItem = jsonObj.getAsJsonArray("taxLineItem");
+            if (jsonArraytaxLineItem != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxLineItem").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxLineItem` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxLineItem").toString()));
+                }
+
+                // validate the optional field `taxLineItem` (array)
+                for (int i = 0; i < jsonArraytaxLineItem.size(); i++) {
+                    TaxDetails.validateJsonElement(jsonArraytaxLineItem.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

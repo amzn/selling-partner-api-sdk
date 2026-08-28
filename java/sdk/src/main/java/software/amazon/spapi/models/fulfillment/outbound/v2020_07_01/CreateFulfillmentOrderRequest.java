@@ -105,7 +105,7 @@ public class CreateFulfillmentOrderRequest {
     public static final String SERIALIZED_NAME_NOTIFICATION_EMAILS = "notificationEmails";
 
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_EMAILS)
-    private NotificationEmailList notificationEmails = new ArrayList<>();
+    private List<String> notificationEmails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FEATURE_CONSTRAINTS = "featureConstraints";
 
@@ -115,12 +115,12 @@ public class CreateFulfillmentOrderRequest {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private CreateFulfillmentOrderItemList items = new ArrayList<>();
+    private List<CreateFulfillmentOrderItem> items = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAYMENT_INFORMATION = "paymentInformation";
 
     @SerializedName(SERIALIZED_NAME_PAYMENT_INFORMATION)
-    private PaymentInformationList paymentInformation = new ArrayList<>();
+    private List<PaymentInformation> paymentInformation = new ArrayList<>();
 
     public CreateFulfillmentOrderRequest() {}
 
@@ -373,21 +373,30 @@ public class CreateFulfillmentOrderRequest {
         this.shipFromCountryCode = shipFromCountryCode;
     }
 
-    public CreateFulfillmentOrderRequest notificationEmails(NotificationEmailList notificationEmails) {
+    public CreateFulfillmentOrderRequest notificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
         return this;
     }
 
+    public CreateFulfillmentOrderRequest addNotificationEmailsItem(String notificationEmailsItem) {
+        if (this.notificationEmails == null) {
+            this.notificationEmails = new ArrayList<>();
+        }
+        this.notificationEmails.add(notificationEmailsItem);
+        return this;
+    }
+
     /**
-     * Get notificationEmails
+     * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to
+     * recipients on behalf of the seller.
      *
      * @return notificationEmails
      */
-    @javax.annotation.Nullable public NotificationEmailList getNotificationEmails() {
+    @javax.annotation.Nullable public List<String> getNotificationEmails() {
         return notificationEmails;
     }
 
-    public void setNotificationEmails(NotificationEmailList notificationEmails) {
+    public void setNotificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
     }
 
@@ -417,40 +426,56 @@ public class CreateFulfillmentOrderRequest {
         this.featureConstraints = featureConstraints;
     }
 
-    public CreateFulfillmentOrderRequest items(CreateFulfillmentOrderItemList items) {
+    public CreateFulfillmentOrderRequest items(List<CreateFulfillmentOrderItem> items) {
         this.items = items;
         return this;
     }
 
+    public CreateFulfillmentOrderRequest addItemsItem(CreateFulfillmentOrderItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * An array of item information for creating a fulfillment order.
      *
      * @return items
      */
     @javax.annotation.Nonnull
-    public CreateFulfillmentOrderItemList getItems() {
+    public List<CreateFulfillmentOrderItem> getItems() {
         return items;
     }
 
-    public void setItems(CreateFulfillmentOrderItemList items) {
+    public void setItems(List<CreateFulfillmentOrderItem> items) {
         this.items = items;
     }
 
-    public CreateFulfillmentOrderRequest paymentInformation(PaymentInformationList paymentInformation) {
+    public CreateFulfillmentOrderRequest paymentInformation(List<PaymentInformation> paymentInformation) {
         this.paymentInformation = paymentInformation;
         return this;
     }
 
+    public CreateFulfillmentOrderRequest addPaymentInformationItem(PaymentInformation paymentInformationItem) {
+        if (this.paymentInformation == null) {
+            this.paymentInformation = new ArrayList<>();
+        }
+        this.paymentInformation.add(paymentInformationItem);
+        return this;
+    }
+
     /**
-     * Get paymentInformation
+     * An array of various payment attributes related to this fulfillment order.
      *
      * @return paymentInformation
      */
-    @javax.annotation.Nullable public PaymentInformationList getPaymentInformation() {
+    @javax.annotation.Nullable public List<PaymentInformation> getPaymentInformation() {
         return paymentInformation;
     }
 
-    public void setPaymentInformation(PaymentInformationList paymentInformation) {
+    public void setPaymentInformation(List<PaymentInformation> paymentInformation) {
         this.paymentInformation = paymentInformation;
     }
 
@@ -693,6 +718,14 @@ public class CreateFulfillmentOrderRequest {
                     "Expected the field `shipFromCountryCode` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("shipFromCountryCode").toString()));
         }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("notificationEmails") != null
+                && !jsonObj.get("notificationEmails").isJsonNull()
+                && !jsonObj.get("notificationEmails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `notificationEmails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("notificationEmails").toString()));
+        }
         if (jsonObj.get("featureConstraints") != null
                 && !jsonObj.get("featureConstraints").isJsonNull()) {
             JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");
@@ -707,6 +740,37 @@ public class CreateFulfillmentOrderRequest {
                 // validate the optional field `featureConstraints` (array)
                 for (int i = 0; i < jsonArrayfeatureConstraints.size(); i++) {
                     FeatureSettings.validateJsonElement(jsonArrayfeatureConstraints.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            CreateFulfillmentOrderItem.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+        if (jsonObj.get("paymentInformation") != null
+                && !jsonObj.get("paymentInformation").isJsonNull()) {
+            JsonArray jsonArraypaymentInformation = jsonObj.getAsJsonArray("paymentInformation");
+            if (jsonArraypaymentInformation != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("paymentInformation").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `paymentInformation` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("paymentInformation").toString()));
+                }
+
+                // validate the optional field `paymentInformation` (array)
+                for (int i = 0; i < jsonArraypaymentInformation.size(); i++) {
+                    PaymentInformation.validateJsonElement(jsonArraypaymentInformation.get(i));
                 }
                 ;
             }

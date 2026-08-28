@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,34 @@ public class GetFeaturesResult {
     public static final String SERIALIZED_NAME_FEATURES = "features";
 
     @SerializedName(SERIALIZED_NAME_FEATURES)
-    private Features features = new ArrayList<>();
+    private List<Feature> features = new ArrayList<>();
 
     public GetFeaturesResult() {}
 
-    public GetFeaturesResult features(Features features) {
+    public GetFeaturesResult features(List<Feature> features) {
         this.features = features;
         return this;
     }
 
+    public GetFeaturesResult addFeaturesItem(Feature featuresItem) {
+        if (this.features == null) {
+            this.features = new ArrayList<>();
+        }
+        this.features.add(featuresItem);
+        return this;
+    }
+
     /**
-     * Get features
+     * An array of features.
      *
      * @return features
      */
     @javax.annotation.Nonnull
-    public Features getFeatures() {
+    public List<Feature> getFeatures() {
         return features;
     }
 
-    public void setFeatures(Features features) {
+    public void setFeatures(List<Feature> features) {
         this.features = features;
     }
 
@@ -141,6 +152,19 @@ public class GetFeaturesResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("features").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `features` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("features").toString()));
+        }
+
+        JsonArray jsonArrayfeatures = jsonObj.getAsJsonArray("features");
+        // validate the required field `features` (array)
+        for (int i = 0; i < jsonArrayfeatures.size(); i++) {
+            Feature.validateJsonElement(jsonArrayfeatures.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

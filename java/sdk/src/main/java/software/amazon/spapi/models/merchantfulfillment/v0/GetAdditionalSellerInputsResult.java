@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,48 +39,64 @@ public class GetAdditionalSellerInputsResult {
     public static final String SERIALIZED_NAME_SHIPMENT_LEVEL_FIELDS = "ShipmentLevelFields";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_LEVEL_FIELDS)
-    private AdditionalInputsList shipmentLevelFields = new ArrayList<>();
+    private List<AdditionalInputs> shipmentLevelFields = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ITEM_LEVEL_FIELDS_LIST = "ItemLevelFieldsList";
 
     @SerializedName(SERIALIZED_NAME_ITEM_LEVEL_FIELDS_LIST)
-    private ItemLevelFieldsList itemLevelFieldsList = new ArrayList<>();
+    private List<ItemLevelFields> itemLevelFieldsList = new ArrayList<>();
 
     public GetAdditionalSellerInputsResult() {}
 
-    public GetAdditionalSellerInputsResult shipmentLevelFields(AdditionalInputsList shipmentLevelFields) {
+    public GetAdditionalSellerInputsResult shipmentLevelFields(List<AdditionalInputs> shipmentLevelFields) {
         this.shipmentLevelFields = shipmentLevelFields;
         return this;
     }
 
+    public GetAdditionalSellerInputsResult addShipmentLevelFieldsItem(AdditionalInputs shipmentLevelFieldsItem) {
+        if (this.shipmentLevelFields == null) {
+            this.shipmentLevelFields = new ArrayList<>();
+        }
+        this.shipmentLevelFields.add(shipmentLevelFieldsItem);
+        return this;
+    }
+
     /**
-     * Get shipmentLevelFields
+     * A list of additional inputs.
      *
      * @return shipmentLevelFields
      */
-    @javax.annotation.Nullable public AdditionalInputsList getShipmentLevelFields() {
+    @javax.annotation.Nullable public List<AdditionalInputs> getShipmentLevelFields() {
         return shipmentLevelFields;
     }
 
-    public void setShipmentLevelFields(AdditionalInputsList shipmentLevelFields) {
+    public void setShipmentLevelFields(List<AdditionalInputs> shipmentLevelFields) {
         this.shipmentLevelFields = shipmentLevelFields;
     }
 
-    public GetAdditionalSellerInputsResult itemLevelFieldsList(ItemLevelFieldsList itemLevelFieldsList) {
+    public GetAdditionalSellerInputsResult itemLevelFieldsList(List<ItemLevelFields> itemLevelFieldsList) {
         this.itemLevelFieldsList = itemLevelFieldsList;
         return this;
     }
 
+    public GetAdditionalSellerInputsResult addItemLevelFieldsListItem(ItemLevelFields itemLevelFieldsListItem) {
+        if (this.itemLevelFieldsList == null) {
+            this.itemLevelFieldsList = new ArrayList<>();
+        }
+        this.itemLevelFieldsList.add(itemLevelFieldsListItem);
+        return this;
+    }
+
     /**
-     * Get itemLevelFieldsList
+     * A list of item level fields.
      *
      * @return itemLevelFieldsList
      */
-    @javax.annotation.Nullable public ItemLevelFieldsList getItemLevelFieldsList() {
+    @javax.annotation.Nullable public List<ItemLevelFields> getItemLevelFieldsList() {
         return itemLevelFieldsList;
     }
 
-    public void setItemLevelFieldsList(ItemLevelFieldsList itemLevelFieldsList) {
+    public void setItemLevelFieldsList(List<ItemLevelFields> itemLevelFieldsList) {
         this.itemLevelFieldsList = itemLevelFieldsList;
     }
 
@@ -161,6 +180,42 @@ public class GetAdditionalSellerInputsResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("ShipmentLevelFields") != null
+                && !jsonObj.get("ShipmentLevelFields").isJsonNull()) {
+            JsonArray jsonArrayshipmentLevelFields = jsonObj.getAsJsonArray("ShipmentLevelFields");
+            if (jsonArrayshipmentLevelFields != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentLevelFields").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentLevelFields` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentLevelFields").toString()));
+                }
+
+                // validate the optional field `ShipmentLevelFields` (array)
+                for (int i = 0; i < jsonArrayshipmentLevelFields.size(); i++) {
+                    AdditionalInputs.validateJsonElement(jsonArrayshipmentLevelFields.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ItemLevelFieldsList") != null
+                && !jsonObj.get("ItemLevelFieldsList").isJsonNull()) {
+            JsonArray jsonArrayitemLevelFieldsList = jsonObj.getAsJsonArray("ItemLevelFieldsList");
+            if (jsonArrayitemLevelFieldsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemLevelFieldsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemLevelFieldsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemLevelFieldsList").toString()));
+                }
+
+                // validate the optional field `ItemLevelFieldsList` (array)
+                for (int i = 0; i < jsonArrayitemLevelFieldsList.size(); i++) {
+                    ItemLevelFields.validateJsonElement(jsonArrayitemLevelFieldsList.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

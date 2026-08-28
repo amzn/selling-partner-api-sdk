@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class LinkableAccountType {
     public static final String SERIALIZED_NAME_CARRIER_ACCOUNT_INPUTS = "carrierAccountInputs";
 
     @SerializedName(SERIALIZED_NAME_CARRIER_ACCOUNT_INPUTS)
-    private CarrierAccountInputsList carrierAccountInputs = new ArrayList<>();
+    private List<CarrierAccountInput> carrierAccountInputs = new ArrayList<>();
 
     public LinkableAccountType() {}
 
@@ -63,21 +66,29 @@ public class LinkableAccountType {
         this.accountType = accountType;
     }
 
-    public LinkableAccountType carrierAccountInputs(CarrierAccountInputsList carrierAccountInputs) {
+    public LinkableAccountType carrierAccountInputs(List<CarrierAccountInput> carrierAccountInputs) {
         this.carrierAccountInputs = carrierAccountInputs;
         return this;
     }
 
+    public LinkableAccountType addCarrierAccountInputsItem(CarrierAccountInput carrierAccountInputsItem) {
+        if (this.carrierAccountInputs == null) {
+            this.carrierAccountInputs = new ArrayList<>();
+        }
+        this.carrierAccountInputs.add(carrierAccountInputsItem);
+        return this;
+    }
+
     /**
-     * Get carrierAccountInputs
+     * A list of CarrierAccountInput
      *
      * @return carrierAccountInputs
      */
-    @javax.annotation.Nullable public CarrierAccountInputsList getCarrierAccountInputs() {
+    @javax.annotation.Nullable public List<CarrierAccountInput> getCarrierAccountInputs() {
         return carrierAccountInputs;
     }
 
-    public void setCarrierAccountInputs(CarrierAccountInputsList carrierAccountInputs) {
+    public void setCarrierAccountInputs(List<CarrierAccountInput> carrierAccountInputs) {
         this.carrierAccountInputs = carrierAccountInputs;
     }
 
@@ -161,6 +172,24 @@ public class LinkableAccountType {
         // validate the optional field `accountType`
         if (jsonObj.get("accountType") != null && !jsonObj.get("accountType").isJsonNull()) {
             AccountType.validateJsonElement(jsonObj.get("accountType"));
+        }
+        if (jsonObj.get("carrierAccountInputs") != null
+                && !jsonObj.get("carrierAccountInputs").isJsonNull()) {
+            JsonArray jsonArraycarrierAccountInputs = jsonObj.getAsJsonArray("carrierAccountInputs");
+            if (jsonArraycarrierAccountInputs != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("carrierAccountInputs").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `carrierAccountInputs` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("carrierAccountInputs").toString()));
+                }
+
+                // validate the optional field `carrierAccountInputs` (array)
+                for (int i = 0; i < jsonArraycarrierAccountInputs.size(); i++) {
+                    CarrierAccountInput.validateJsonElement(jsonArraycarrierAccountInputs.get(i));
+                }
+                ;
+            }
         }
     }
 

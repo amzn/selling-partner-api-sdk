@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,34 @@ public class AssignAppointmentResourcesRequest {
     public static final String SERIALIZED_NAME_RESOURCES = "resources";
 
     @SerializedName(SERIALIZED_NAME_RESOURCES)
-    private AppointmentResources resources = new ArrayList<>();
+    private List<AppointmentResource> resources = new ArrayList<>();
 
     public AssignAppointmentResourcesRequest() {}
 
-    public AssignAppointmentResourcesRequest resources(AppointmentResources resources) {
+    public AssignAppointmentResourcesRequest resources(List<AppointmentResource> resources) {
         this.resources = resources;
         return this;
     }
 
+    public AssignAppointmentResourcesRequest addResourcesItem(AppointmentResource resourcesItem) {
+        if (this.resources == null) {
+            this.resources = new ArrayList<>();
+        }
+        this.resources.add(resourcesItem);
+        return this;
+    }
+
     /**
-     * Get resources
+     * List of resources that performs or performed job appointment fulfillment.
      *
      * @return resources
      */
     @javax.annotation.Nonnull
-    public AppointmentResources getResources() {
+    public List<AppointmentResource> getResources() {
         return resources;
     }
 
-    public void setResources(AppointmentResources resources) {
+    public void setResources(List<AppointmentResource> resources) {
         this.resources = resources;
     }
 
@@ -142,6 +153,19 @@ public class AssignAppointmentResourcesRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("resources").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resources` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("resources").toString()));
+        }
+
+        JsonArray jsonArrayresources = jsonObj.getAsJsonArray("resources");
+        // validate the required field `resources` (array)
+        for (int i = 0; i < jsonArrayresources.size(); i++) {
+            AppointmentResource.validateJsonElement(jsonArrayresources.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

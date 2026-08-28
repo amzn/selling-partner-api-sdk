@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +43,7 @@ public class ExcludedBenefit {
     public static final String SERIALIZED_NAME_REASON_CODES = "reasonCodes";
 
     @SerializedName(SERIALIZED_NAME_REASON_CODES)
-    private ExcludedBenefitReasonCodes reasonCodes = new ArrayList<>();
+    private List<String> reasonCodes = new ArrayList<>();
 
     public ExcludedBenefit() {}
 
@@ -64,21 +66,29 @@ public class ExcludedBenefit {
         this.benefit = benefit;
     }
 
-    public ExcludedBenefit reasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+    public ExcludedBenefit reasonCodes(List<String> reasonCodes) {
         this.reasonCodes = reasonCodes;
         return this;
     }
 
+    public ExcludedBenefit addReasonCodesItem(String reasonCodesItem) {
+        if (this.reasonCodes == null) {
+            this.reasonCodes = new ArrayList<>();
+        }
+        this.reasonCodes.add(reasonCodesItem);
+        return this;
+    }
+
     /**
-     * Get reasonCodes
+     * List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.
      *
      * @return reasonCodes
      */
-    @javax.annotation.Nullable public ExcludedBenefitReasonCodes getReasonCodes() {
+    @javax.annotation.Nullable public List<String> getReasonCodes() {
         return reasonCodes;
     }
 
-    public void setReasonCodes(ExcludedBenefitReasonCodes reasonCodes) {
+    public void setReasonCodes(List<String> reasonCodes) {
         this.reasonCodes = reasonCodes;
     }
 
@@ -171,6 +181,14 @@ public class ExcludedBenefit {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `benefit` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("benefit").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("reasonCodes") != null
+                && !jsonObj.get("reasonCodes").isJsonNull()
+                && !jsonObj.get("reasonCodes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reasonCodes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("reasonCodes").toString()));
         }
     }
 

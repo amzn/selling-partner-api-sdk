@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,12 +49,12 @@ public class SetAppointmentFulfillmentDataRequest {
     public static final String SERIALIZED_NAME_APPOINTMENT_RESOURCES = "appointmentResources";
 
     @SerializedName(SERIALIZED_NAME_APPOINTMENT_RESOURCES)
-    private AppointmentResources appointmentResources = new ArrayList<>();
+    private List<AppointmentResource> appointmentResources = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FULFILLMENT_DOCUMENTS = "fulfillmentDocuments";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_DOCUMENTS)
-    private FulfillmentDocuments fulfillmentDocuments = new ArrayList<>();
+    private List<FulfillmentDocument> fulfillmentDocuments = new ArrayList<>();
 
     public SetAppointmentFulfillmentDataRequest() {}
 
@@ -91,39 +94,57 @@ public class SetAppointmentFulfillmentDataRequest {
         this.fulfillmentTime = fulfillmentTime;
     }
 
-    public SetAppointmentFulfillmentDataRequest appointmentResources(AppointmentResources appointmentResources) {
+    public SetAppointmentFulfillmentDataRequest appointmentResources(List<AppointmentResource> appointmentResources) {
         this.appointmentResources = appointmentResources;
         return this;
     }
 
+    public SetAppointmentFulfillmentDataRequest addAppointmentResourcesItem(
+            AppointmentResource appointmentResourcesItem) {
+        if (this.appointmentResources == null) {
+            this.appointmentResources = new ArrayList<>();
+        }
+        this.appointmentResources.add(appointmentResourcesItem);
+        return this;
+    }
+
     /**
-     * Get appointmentResources
+     * List of resources that performs or performed job appointment fulfillment.
      *
      * @return appointmentResources
      */
-    @javax.annotation.Nullable public AppointmentResources getAppointmentResources() {
+    @javax.annotation.Nullable public List<AppointmentResource> getAppointmentResources() {
         return appointmentResources;
     }
 
-    public void setAppointmentResources(AppointmentResources appointmentResources) {
+    public void setAppointmentResources(List<AppointmentResource> appointmentResources) {
         this.appointmentResources = appointmentResources;
     }
 
-    public SetAppointmentFulfillmentDataRequest fulfillmentDocuments(FulfillmentDocuments fulfillmentDocuments) {
+    public SetAppointmentFulfillmentDataRequest fulfillmentDocuments(List<FulfillmentDocument> fulfillmentDocuments) {
         this.fulfillmentDocuments = fulfillmentDocuments;
         return this;
     }
 
+    public SetAppointmentFulfillmentDataRequest addFulfillmentDocumentsItem(
+            FulfillmentDocument fulfillmentDocumentsItem) {
+        if (this.fulfillmentDocuments == null) {
+            this.fulfillmentDocuments = new ArrayList<>();
+        }
+        this.fulfillmentDocuments.add(fulfillmentDocumentsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentDocuments
+     * List of documents captured during service appointment fulfillment.
      *
      * @return fulfillmentDocuments
      */
-    @javax.annotation.Nullable public FulfillmentDocuments getFulfillmentDocuments() {
+    @javax.annotation.Nullable public List<FulfillmentDocument> getFulfillmentDocuments() {
         return fulfillmentDocuments;
     }
 
-    public void setFulfillmentDocuments(FulfillmentDocuments fulfillmentDocuments) {
+    public void setFulfillmentDocuments(List<FulfillmentDocument> fulfillmentDocuments) {
         this.fulfillmentDocuments = fulfillmentDocuments;
     }
 
@@ -227,6 +248,42 @@ public class SetAppointmentFulfillmentDataRequest {
         if (jsonObj.get("fulfillmentTime") != null
                 && !jsonObj.get("fulfillmentTime").isJsonNull()) {
             FulfillmentTime.validateJsonElement(jsonObj.get("fulfillmentTime"));
+        }
+        if (jsonObj.get("appointmentResources") != null
+                && !jsonObj.get("appointmentResources").isJsonNull()) {
+            JsonArray jsonArrayappointmentResources = jsonObj.getAsJsonArray("appointmentResources");
+            if (jsonArrayappointmentResources != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("appointmentResources").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `appointmentResources` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("appointmentResources").toString()));
+                }
+
+                // validate the optional field `appointmentResources` (array)
+                for (int i = 0; i < jsonArrayappointmentResources.size(); i++) {
+                    AppointmentResource.validateJsonElement(jsonArrayappointmentResources.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("fulfillmentDocuments") != null
+                && !jsonObj.get("fulfillmentDocuments").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentDocuments = jsonObj.getAsJsonArray("fulfillmentDocuments");
+            if (jsonArrayfulfillmentDocuments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentDocuments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentDocuments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentDocuments").toString()));
+                }
+
+                // validate the optional field `fulfillmentDocuments` (array)
+                for (int i = 0; i < jsonArrayfulfillmentDocuments.size(); i++) {
+                    FulfillmentDocument.validateJsonElement(jsonArrayfulfillmentDocuments.get(i));
+                }
+                ;
+            }
         }
     }
 

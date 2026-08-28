@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,27 +44,27 @@ public class GetFulfillmentOrderResult {
     public static final String SERIALIZED_NAME_FULFILLMENT_ORDER_ITEMS = "fulfillmentOrderItems";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDER_ITEMS)
-    private FulfillmentOrderItemList fulfillmentOrderItems = new ArrayList<>();
+    private List<FulfillmentOrderItem> fulfillmentOrderItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FULFILLMENT_SHIPMENTS = "fulfillmentShipments";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_SHIPMENTS)
-    private FulfillmentShipmentList fulfillmentShipments = new ArrayList<>();
+    private List<FulfillmentShipment> fulfillmentShipments = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_RETURN_ITEMS = "returnItems";
 
     @SerializedName(SERIALIZED_NAME_RETURN_ITEMS)
-    private ReturnItemList returnItems = new ArrayList<>();
+    private List<ReturnItem> returnItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_RETURN_AUTHORIZATIONS = "returnAuthorizations";
 
     @SerializedName(SERIALIZED_NAME_RETURN_AUTHORIZATIONS)
-    private ReturnAuthorizationList returnAuthorizations = new ArrayList<>();
+    private List<ReturnAuthorization> returnAuthorizations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAYMENT_INFORMATION = "paymentInformation";
 
     @SerializedName(SERIALIZED_NAME_PAYMENT_INFORMATION)
-    private PaymentInformationList paymentInformation = new ArrayList<>();
+    private List<PaymentInformation> paymentInformation = new ArrayList<>();
 
     public GetFulfillmentOrderResult() {}
 
@@ -84,96 +87,136 @@ public class GetFulfillmentOrderResult {
         this.fulfillmentOrder = fulfillmentOrder;
     }
 
-    public GetFulfillmentOrderResult fulfillmentOrderItems(FulfillmentOrderItemList fulfillmentOrderItems) {
+    public GetFulfillmentOrderResult fulfillmentOrderItems(List<FulfillmentOrderItem> fulfillmentOrderItems) {
         this.fulfillmentOrderItems = fulfillmentOrderItems;
         return this;
     }
 
+    public GetFulfillmentOrderResult addFulfillmentOrderItemsItem(FulfillmentOrderItem fulfillmentOrderItemsItem) {
+        if (this.fulfillmentOrderItems == null) {
+            this.fulfillmentOrderItems = new ArrayList<>();
+        }
+        this.fulfillmentOrderItems.add(fulfillmentOrderItemsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentOrderItems
+     * An array of fulfillment order item information.
      *
      * @return fulfillmentOrderItems
      */
     @javax.annotation.Nonnull
-    public FulfillmentOrderItemList getFulfillmentOrderItems() {
+    public List<FulfillmentOrderItem> getFulfillmentOrderItems() {
         return fulfillmentOrderItems;
     }
 
-    public void setFulfillmentOrderItems(FulfillmentOrderItemList fulfillmentOrderItems) {
+    public void setFulfillmentOrderItems(List<FulfillmentOrderItem> fulfillmentOrderItems) {
         this.fulfillmentOrderItems = fulfillmentOrderItems;
     }
 
-    public GetFulfillmentOrderResult fulfillmentShipments(FulfillmentShipmentList fulfillmentShipments) {
+    public GetFulfillmentOrderResult fulfillmentShipments(List<FulfillmentShipment> fulfillmentShipments) {
         this.fulfillmentShipments = fulfillmentShipments;
         return this;
     }
 
+    public GetFulfillmentOrderResult addFulfillmentShipmentsItem(FulfillmentShipment fulfillmentShipmentsItem) {
+        if (this.fulfillmentShipments == null) {
+            this.fulfillmentShipments = new ArrayList<>();
+        }
+        this.fulfillmentShipments.add(fulfillmentShipmentsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentShipments
+     * An array of fulfillment shipment information.
      *
      * @return fulfillmentShipments
      */
-    @javax.annotation.Nullable public FulfillmentShipmentList getFulfillmentShipments() {
+    @javax.annotation.Nullable public List<FulfillmentShipment> getFulfillmentShipments() {
         return fulfillmentShipments;
     }
 
-    public void setFulfillmentShipments(FulfillmentShipmentList fulfillmentShipments) {
+    public void setFulfillmentShipments(List<FulfillmentShipment> fulfillmentShipments) {
         this.fulfillmentShipments = fulfillmentShipments;
     }
 
-    public GetFulfillmentOrderResult returnItems(ReturnItemList returnItems) {
+    public GetFulfillmentOrderResult returnItems(List<ReturnItem> returnItems) {
         this.returnItems = returnItems;
         return this;
     }
 
+    public GetFulfillmentOrderResult addReturnItemsItem(ReturnItem returnItemsItem) {
+        if (this.returnItems == null) {
+            this.returnItems = new ArrayList<>();
+        }
+        this.returnItems.add(returnItemsItem);
+        return this;
+    }
+
     /**
-     * Get returnItems
+     * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
      *
      * @return returnItems
      */
     @javax.annotation.Nonnull
-    public ReturnItemList getReturnItems() {
+    public List<ReturnItem> getReturnItems() {
         return returnItems;
     }
 
-    public void setReturnItems(ReturnItemList returnItems) {
+    public void setReturnItems(List<ReturnItem> returnItems) {
         this.returnItems = returnItems;
     }
 
-    public GetFulfillmentOrderResult returnAuthorizations(ReturnAuthorizationList returnAuthorizations) {
+    public GetFulfillmentOrderResult returnAuthorizations(List<ReturnAuthorization> returnAuthorizations) {
         this.returnAuthorizations = returnAuthorizations;
         return this;
     }
 
+    public GetFulfillmentOrderResult addReturnAuthorizationsItem(ReturnAuthorization returnAuthorizationsItem) {
+        if (this.returnAuthorizations == null) {
+            this.returnAuthorizations = new ArrayList<>();
+        }
+        this.returnAuthorizations.add(returnAuthorizationsItem);
+        return this;
+    }
+
     /**
-     * Get returnAuthorizations
+     * An array of return authorization information.
      *
      * @return returnAuthorizations
      */
     @javax.annotation.Nonnull
-    public ReturnAuthorizationList getReturnAuthorizations() {
+    public List<ReturnAuthorization> getReturnAuthorizations() {
         return returnAuthorizations;
     }
 
-    public void setReturnAuthorizations(ReturnAuthorizationList returnAuthorizations) {
+    public void setReturnAuthorizations(List<ReturnAuthorization> returnAuthorizations) {
         this.returnAuthorizations = returnAuthorizations;
     }
 
-    public GetFulfillmentOrderResult paymentInformation(PaymentInformationList paymentInformation) {
+    public GetFulfillmentOrderResult paymentInformation(List<PaymentInformation> paymentInformation) {
         this.paymentInformation = paymentInformation;
         return this;
     }
 
+    public GetFulfillmentOrderResult addPaymentInformationItem(PaymentInformation paymentInformationItem) {
+        if (this.paymentInformation == null) {
+            this.paymentInformation = new ArrayList<>();
+        }
+        this.paymentInformation.add(paymentInformationItem);
+        return this;
+    }
+
     /**
-     * Get paymentInformation
+     * An array of various payment attributes related to this fulfillment order.
      *
      * @return paymentInformation
      */
-    @javax.annotation.Nullable public PaymentInformationList getPaymentInformation() {
+    @javax.annotation.Nullable public List<PaymentInformation> getPaymentInformation() {
         return paymentInformation;
     }
 
-    public void setPaymentInformation(PaymentInformationList paymentInformation) {
+    public void setPaymentInformation(List<PaymentInformation> paymentInformation) {
         this.paymentInformation = paymentInformation;
     }
 
@@ -296,6 +339,81 @@ public class GetFulfillmentOrderResult {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `fulfillmentOrder`
         FulfillmentOrder.validateJsonElement(jsonObj.get("fulfillmentOrder"));
+        // ensure the json data is an array
+        if (!jsonObj.get("fulfillmentOrderItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentOrderItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentOrderItems").toString()));
+        }
+
+        JsonArray jsonArrayfulfillmentOrderItems = jsonObj.getAsJsonArray("fulfillmentOrderItems");
+        // validate the required field `fulfillmentOrderItems` (array)
+        for (int i = 0; i < jsonArrayfulfillmentOrderItems.size(); i++) {
+            FulfillmentOrderItem.validateJsonElement(jsonArrayfulfillmentOrderItems.get(i));
+        }
+        ;
+        if (jsonObj.get("fulfillmentShipments") != null
+                && !jsonObj.get("fulfillmentShipments").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentShipments = jsonObj.getAsJsonArray("fulfillmentShipments");
+            if (jsonArrayfulfillmentShipments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentShipments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentShipments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentShipments").toString()));
+                }
+
+                // validate the optional field `fulfillmentShipments` (array)
+                for (int i = 0; i < jsonArrayfulfillmentShipments.size(); i++) {
+                    FulfillmentShipment.validateJsonElement(jsonArrayfulfillmentShipments.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("returnItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("returnItems").toString()));
+        }
+
+        JsonArray jsonArrayreturnItems = jsonObj.getAsJsonArray("returnItems");
+        // validate the required field `returnItems` (array)
+        for (int i = 0; i < jsonArrayreturnItems.size(); i++) {
+            ReturnItem.validateJsonElement(jsonArrayreturnItems.get(i));
+        }
+        ;
+        // ensure the json data is an array
+        if (!jsonObj.get("returnAuthorizations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnAuthorizations` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("returnAuthorizations").toString()));
+        }
+
+        JsonArray jsonArrayreturnAuthorizations = jsonObj.getAsJsonArray("returnAuthorizations");
+        // validate the required field `returnAuthorizations` (array)
+        for (int i = 0; i < jsonArrayreturnAuthorizations.size(); i++) {
+            ReturnAuthorization.validateJsonElement(jsonArrayreturnAuthorizations.get(i));
+        }
+        ;
+        if (jsonObj.get("paymentInformation") != null
+                && !jsonObj.get("paymentInformation").isJsonNull()) {
+            JsonArray jsonArraypaymentInformation = jsonObj.getAsJsonArray("paymentInformation");
+            if (jsonArraypaymentInformation != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("paymentInformation").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `paymentInformation` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("paymentInformation").toString()));
+                }
+
+                // validate the optional field `paymentInformation` (array)
+                for (int i = 0; i < jsonArraypaymentInformation.size(); i++) {
+                    PaymentInformation.validateJsonElement(jsonArraypaymentInformation.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

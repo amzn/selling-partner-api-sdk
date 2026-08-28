@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,71 +39,95 @@ public class CreateFulfillmentReturnResult {
     public static final String SERIALIZED_NAME_RETURN_ITEMS = "returnItems";
 
     @SerializedName(SERIALIZED_NAME_RETURN_ITEMS)
-    private ReturnItemList returnItems = new ArrayList<>();
+    private List<ReturnItem> returnItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INVALID_RETURN_ITEMS = "invalidReturnItems";
 
     @SerializedName(SERIALIZED_NAME_INVALID_RETURN_ITEMS)
-    private InvalidReturnItemList invalidReturnItems = new ArrayList<>();
+    private List<InvalidReturnItem> invalidReturnItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_RETURN_AUTHORIZATIONS = "returnAuthorizations";
 
     @SerializedName(SERIALIZED_NAME_RETURN_AUTHORIZATIONS)
-    private ReturnAuthorizationList returnAuthorizations = new ArrayList<>();
+    private List<ReturnAuthorization> returnAuthorizations = new ArrayList<>();
 
     public CreateFulfillmentReturnResult() {}
 
-    public CreateFulfillmentReturnResult returnItems(ReturnItemList returnItems) {
+    public CreateFulfillmentReturnResult returnItems(List<ReturnItem> returnItems) {
         this.returnItems = returnItems;
         return this;
     }
 
+    public CreateFulfillmentReturnResult addReturnItemsItem(ReturnItem returnItemsItem) {
+        if (this.returnItems == null) {
+            this.returnItems = new ArrayList<>();
+        }
+        this.returnItems.add(returnItemsItem);
+        return this;
+    }
+
     /**
-     * Get returnItems
+     * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
      *
      * @return returnItems
      */
-    @javax.annotation.Nullable public ReturnItemList getReturnItems() {
+    @javax.annotation.Nullable public List<ReturnItem> getReturnItems() {
         return returnItems;
     }
 
-    public void setReturnItems(ReturnItemList returnItems) {
+    public void setReturnItems(List<ReturnItem> returnItems) {
         this.returnItems = returnItems;
     }
 
-    public CreateFulfillmentReturnResult invalidReturnItems(InvalidReturnItemList invalidReturnItems) {
+    public CreateFulfillmentReturnResult invalidReturnItems(List<InvalidReturnItem> invalidReturnItems) {
         this.invalidReturnItems = invalidReturnItems;
         return this;
     }
 
+    public CreateFulfillmentReturnResult addInvalidReturnItemsItem(InvalidReturnItem invalidReturnItemsItem) {
+        if (this.invalidReturnItems == null) {
+            this.invalidReturnItems = new ArrayList<>();
+        }
+        this.invalidReturnItems.add(invalidReturnItemsItem);
+        return this;
+    }
+
     /**
-     * Get invalidReturnItems
+     * An array of invalid return item information.
      *
      * @return invalidReturnItems
      */
-    @javax.annotation.Nullable public InvalidReturnItemList getInvalidReturnItems() {
+    @javax.annotation.Nullable public List<InvalidReturnItem> getInvalidReturnItems() {
         return invalidReturnItems;
     }
 
-    public void setInvalidReturnItems(InvalidReturnItemList invalidReturnItems) {
+    public void setInvalidReturnItems(List<InvalidReturnItem> invalidReturnItems) {
         this.invalidReturnItems = invalidReturnItems;
     }
 
-    public CreateFulfillmentReturnResult returnAuthorizations(ReturnAuthorizationList returnAuthorizations) {
+    public CreateFulfillmentReturnResult returnAuthorizations(List<ReturnAuthorization> returnAuthorizations) {
         this.returnAuthorizations = returnAuthorizations;
         return this;
     }
 
+    public CreateFulfillmentReturnResult addReturnAuthorizationsItem(ReturnAuthorization returnAuthorizationsItem) {
+        if (this.returnAuthorizations == null) {
+            this.returnAuthorizations = new ArrayList<>();
+        }
+        this.returnAuthorizations.add(returnAuthorizationsItem);
+        return this;
+    }
+
     /**
-     * Get returnAuthorizations
+     * An array of return authorization information.
      *
      * @return returnAuthorizations
      */
-    @javax.annotation.Nullable public ReturnAuthorizationList getReturnAuthorizations() {
+    @javax.annotation.Nullable public List<ReturnAuthorization> getReturnAuthorizations() {
         return returnAuthorizations;
     }
 
-    public void setReturnAuthorizations(ReturnAuthorizationList returnAuthorizations) {
+    public void setReturnAuthorizations(List<ReturnAuthorization> returnAuthorizations) {
         this.returnAuthorizations = returnAuthorizations;
     }
 
@@ -187,6 +214,59 @@ public class CreateFulfillmentReturnResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("returnItems") != null && !jsonObj.get("returnItems").isJsonNull()) {
+            JsonArray jsonArrayreturnItems = jsonObj.getAsJsonArray("returnItems");
+            if (jsonArrayreturnItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("returnItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `returnItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("returnItems").toString()));
+                }
+
+                // validate the optional field `returnItems` (array)
+                for (int i = 0; i < jsonArrayreturnItems.size(); i++) {
+                    ReturnItem.validateJsonElement(jsonArrayreturnItems.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("invalidReturnItems") != null
+                && !jsonObj.get("invalidReturnItems").isJsonNull()) {
+            JsonArray jsonArrayinvalidReturnItems = jsonObj.getAsJsonArray("invalidReturnItems");
+            if (jsonArrayinvalidReturnItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invalidReturnItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invalidReturnItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invalidReturnItems").toString()));
+                }
+
+                // validate the optional field `invalidReturnItems` (array)
+                for (int i = 0; i < jsonArrayinvalidReturnItems.size(); i++) {
+                    InvalidReturnItem.validateJsonElement(jsonArrayinvalidReturnItems.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("returnAuthorizations") != null
+                && !jsonObj.get("returnAuthorizations").isJsonNull()) {
+            JsonArray jsonArrayreturnAuthorizations = jsonObj.getAsJsonArray("returnAuthorizations");
+            if (jsonArrayreturnAuthorizations != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("returnAuthorizations").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `returnAuthorizations` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("returnAuthorizations").toString()));
+                }
+
+                // validate the optional field `returnAuthorizations` (array)
+                for (int i = 0; i < jsonArrayreturnAuthorizations.size(); i++) {
+                    ReturnAuthorization.validateJsonElement(jsonArrayreturnAuthorizations.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

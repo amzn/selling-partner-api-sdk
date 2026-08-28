@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class ScheduledDeliveryInfo {
     public static final String SERIALIZED_NAME_DELIVERY_WINDOWS = "deliveryWindows";
 
     @SerializedName(SERIALIZED_NAME_DELIVERY_WINDOWS)
-    private DeliveryWindowList deliveryWindows = new ArrayList<>();
+    private List<DeliveryWindow> deliveryWindows = new ArrayList<>();
 
     public ScheduledDeliveryInfo() {}
 
@@ -65,22 +68,30 @@ public class ScheduledDeliveryInfo {
         this.deliveryTimeZone = deliveryTimeZone;
     }
 
-    public ScheduledDeliveryInfo deliveryWindows(DeliveryWindowList deliveryWindows) {
+    public ScheduledDeliveryInfo deliveryWindows(List<DeliveryWindow> deliveryWindows) {
         this.deliveryWindows = deliveryWindows;
         return this;
     }
 
+    public ScheduledDeliveryInfo addDeliveryWindowsItem(DeliveryWindow deliveryWindowsItem) {
+        if (this.deliveryWindows == null) {
+            this.deliveryWindows = new ArrayList<>();
+        }
+        this.deliveryWindows.add(deliveryWindowsItem);
+        return this;
+    }
+
     /**
-     * Get deliveryWindows
+     * An array of delivery windows.
      *
      * @return deliveryWindows
      */
     @javax.annotation.Nonnull
-    public DeliveryWindowList getDeliveryWindows() {
+    public List<DeliveryWindow> getDeliveryWindows() {
         return deliveryWindows;
     }
 
-    public void setDeliveryWindows(DeliveryWindowList deliveryWindows) {
+    public void setDeliveryWindows(List<DeliveryWindow> deliveryWindows) {
         this.deliveryWindows = deliveryWindows;
     }
 
@@ -180,6 +191,19 @@ public class ScheduledDeliveryInfo {
                     "Expected the field `deliveryTimeZone` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("deliveryTimeZone").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("deliveryWindows").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `deliveryWindows` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("deliveryWindows").toString()));
+        }
+
+        JsonArray jsonArraydeliveryWindows = jsonObj.getAsJsonArray("deliveryWindows");
+        // validate the required field `deliveryWindows` (array)
+        for (int i = 0; i < jsonArraydeliveryWindows.size(); i++) {
+            DeliveryWindow.validateJsonElement(jsonArraydeliveryWindows.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

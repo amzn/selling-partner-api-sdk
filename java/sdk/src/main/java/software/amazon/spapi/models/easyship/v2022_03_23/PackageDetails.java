@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -38,7 +41,7 @@ public class PackageDetails {
     public static final String SERIALIZED_NAME_PACKAGE_ITEMS = "packageItems";
 
     @SerializedName(SERIALIZED_NAME_PACKAGE_ITEMS)
-    private Items packageItems = new ArrayList<>();
+    private List<Item> packageItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PACKAGE_TIME_SLOT = "packageTimeSlot";
 
@@ -52,21 +55,29 @@ public class PackageDetails {
 
     public PackageDetails() {}
 
-    public PackageDetails packageItems(Items packageItems) {
+    public PackageDetails packageItems(List<Item> packageItems) {
         this.packageItems = packageItems;
         return this;
     }
 
+    public PackageDetails addPackageItemsItem(Item packageItemsItem) {
+        if (this.packageItems == null) {
+            this.packageItems = new ArrayList<>();
+        }
+        this.packageItems.add(packageItemsItem);
+        return this;
+    }
+
     /**
-     * Get packageItems
+     * A list of items contained in the package.
      *
      * @return packageItems
      */
-    @javax.annotation.Nullable public Items getPackageItems() {
+    @javax.annotation.Nullable public List<Item> getPackageItems() {
         return packageItems;
     }
 
-    public void setPackageItems(Items packageItems) {
+    public void setPackageItems(List<Item> packageItems) {
         this.packageItems = packageItems;
     }
 
@@ -199,6 +210,23 @@ public class PackageDetails {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("packageItems") != null && !jsonObj.get("packageItems").isJsonNull()) {
+            JsonArray jsonArraypackageItems = jsonObj.getAsJsonArray("packageItems");
+            if (jsonArraypackageItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packageItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packageItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packageItems").toString()));
+                }
+
+                // validate the optional field `packageItems` (array)
+                for (int i = 0; i < jsonArraypackageItems.size(); i++) {
+                    Item.validateJsonElement(jsonArraypackageItems.get(i));
+                }
+                ;
+            }
+        }
         // validate the required field `packageTimeSlot`
         TimeSlot.validateJsonElement(jsonObj.get("packageTimeSlot"));
         if ((jsonObj.get("packageIdentifier") != null

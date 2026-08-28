@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class TransactionsPayload {
     public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
 
     @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
-    private Transactions transactions = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
 
     public TransactionsPayload() {}
 
@@ -66,21 +69,29 @@ public class TransactionsPayload {
         this.nextToken = nextToken;
     }
 
-    public TransactionsPayload transactions(Transactions transactions) {
+    public TransactionsPayload transactions(List<Transaction> transactions) {
         this.transactions = transactions;
         return this;
     }
 
+    public TransactionsPayload addTransactionsItem(Transaction transactionsItem) {
+        if (this.transactions == null) {
+            this.transactions = new ArrayList<>();
+        }
+        this.transactions.add(transactionsItem);
+        return this;
+    }
+
     /**
-     * Get transactions
+     * A list of transactions within the specified time period.
      *
      * @return transactions
      */
-    @javax.annotation.Nullable public Transactions getTransactions() {
+    @javax.annotation.Nullable public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Transactions transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
@@ -164,6 +175,23 @@ public class TransactionsPayload {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("nextToken").toString()));
+        }
+        if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
+            JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
+            if (jsonArraytransactions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transactions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transactions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transactions").toString()));
+                }
+
+                // validate the optional field `transactions` (array)
+                for (int i = 0; i < jsonArraytransactions.size(); i++) {
+                    Transaction.validateJsonElement(jsonArraytransactions.get(i));
+                }
+                ;
+            }
         }
     }
 

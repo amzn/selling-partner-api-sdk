@@ -37,7 +37,7 @@ public class FeaturedOfferExpectedPriceResponse {
     public static final String SERIALIZED_NAME_HEADERS = "headers";
 
     @SerializedName(SERIALIZED_NAME_HEADERS)
-    private HttpHeaders headers = new HashMap<>();
+    private Map<String, String> headers = new HashMap<>();
 
     public static final String SERIALIZED_NAME_STATUS = "status";
 
@@ -56,22 +56,30 @@ public class FeaturedOfferExpectedPriceResponse {
 
     public FeaturedOfferExpectedPriceResponse() {}
 
-    public FeaturedOfferExpectedPriceResponse headers(HttpHeaders headers) {
+    public FeaturedOfferExpectedPriceResponse headers(Map<String, String> headers) {
         this.headers = headers;
         return this;
     }
 
+    public FeaturedOfferExpectedPriceResponse putHeadersItem(String key, String headersItem) {
+        if (this.headers == null) {
+            this.headers = new HashMap<>();
+        }
+        this.headers.put(key, headersItem);
+        return this;
+    }
+
     /**
-     * Get headers
+     * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
      *
      * @return headers
      */
     @javax.annotation.Nonnull
-    public HttpHeaders getHeaders() {
+    public Map<String, String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(HttpHeaders headers) {
+    public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
     }
 

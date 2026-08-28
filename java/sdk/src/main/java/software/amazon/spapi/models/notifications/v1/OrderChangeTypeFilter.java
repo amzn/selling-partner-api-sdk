@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,25 +41,34 @@ public class OrderChangeTypeFilter {
     public static final String SERIALIZED_NAME_ORDER_CHANGE_TYPES = "orderChangeTypes";
 
     @SerializedName(SERIALIZED_NAME_ORDER_CHANGE_TYPES)
-    private OrderChangeTypes orderChangeTypes = new ArrayList<>();
+    private List<OrderChangeTypeEnum> orderChangeTypes = new ArrayList<>();
 
     public OrderChangeTypeFilter() {}
 
-    public OrderChangeTypeFilter orderChangeTypes(OrderChangeTypes orderChangeTypes) {
+    public OrderChangeTypeFilter orderChangeTypes(List<OrderChangeTypeEnum> orderChangeTypes) {
         this.orderChangeTypes = orderChangeTypes;
         return this;
     }
 
+    public OrderChangeTypeFilter addOrderChangeTypesItem(OrderChangeTypeEnum orderChangeTypesItem) {
+        if (this.orderChangeTypes == null) {
+            this.orderChangeTypes = new ArrayList<>();
+        }
+        this.orderChangeTypes.add(orderChangeTypesItem);
+        return this;
+    }
+
     /**
-     * Get orderChangeTypes
+     * A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive
+     * notifications of all change types, do not provide this list.
      *
      * @return orderChangeTypes
      */
-    @javax.annotation.Nullable public OrderChangeTypes getOrderChangeTypes() {
+    @javax.annotation.Nullable public List<OrderChangeTypeEnum> getOrderChangeTypes() {
         return orderChangeTypes;
     }
 
-    public void setOrderChangeTypes(OrderChangeTypes orderChangeTypes) {
+    public void setOrderChangeTypes(List<OrderChangeTypeEnum> orderChangeTypes) {
         this.orderChangeTypes = orderChangeTypes;
     }
 
@@ -136,6 +147,14 @@ public class OrderChangeTypeFilter {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("orderChangeTypes") != null
+                && !jsonObj.get("orderChangeTypes").isJsonNull()
+                && !jsonObj.get("orderChangeTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderChangeTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderChangeTypes").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

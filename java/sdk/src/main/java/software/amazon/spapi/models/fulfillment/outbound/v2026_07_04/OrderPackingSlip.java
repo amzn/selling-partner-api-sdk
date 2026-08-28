@@ -42,7 +42,7 @@ public class OrderPackingSlip {
     public static final String SERIALIZED_NAME_TEMPLATE_ATTRIBUTES = "templateAttributes";
 
     @SerializedName(SERIALIZED_NAME_TEMPLATE_ATTRIBUTES)
-    private OrderPackingSlipTemplateAttributes templateAttributes = new HashMap<>();
+    private Map<String, String> templateAttributes = new HashMap<>();
 
     public OrderPackingSlip() {}
 
@@ -64,21 +64,29 @@ public class OrderPackingSlip {
         this.templateName = templateName;
     }
 
-    public OrderPackingSlip templateAttributes(OrderPackingSlipTemplateAttributes templateAttributes) {
+    public OrderPackingSlip templateAttributes(Map<String, String> templateAttributes) {
         this.templateAttributes = templateAttributes;
         return this;
     }
 
+    public OrderPackingSlip putTemplateAttributesItem(String key, String templateAttributesItem) {
+        if (this.templateAttributes == null) {
+            this.templateAttributes = new HashMap<>();
+        }
+        this.templateAttributes.put(key, templateAttributesItem);
+        return this;
+    }
+
     /**
-     * Get templateAttributes
+     * Packing slip template attributes.
      *
      * @return templateAttributes
      */
-    @javax.annotation.Nullable public OrderPackingSlipTemplateAttributes getTemplateAttributes() {
+    @javax.annotation.Nullable public Map<String, String> getTemplateAttributes() {
         return templateAttributes;
     }
 
-    public void setTemplateAttributes(OrderPackingSlipTemplateAttributes templateAttributes) {
+    public void setTemplateAttributes(Map<String, String> templateAttributes) {
         this.templateAttributes = templateAttributes;
     }
 

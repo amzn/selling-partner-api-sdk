@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -72,7 +75,7 @@ public class ExpectedPayout {
     public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
-    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
 
     public ExpectedPayout() {}
 
@@ -204,21 +207,29 @@ public class ExpectedPayout {
         this.paymentMethod = paymentMethod;
     }
 
-    public ExpectedPayout relatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public ExpectedPayout relatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public ExpectedPayout addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the payout.
      *
      * @return relatedIdentifiers
      */
-    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
@@ -353,6 +364,24 @@ public class ExpectedPayout {
         if (jsonObj.get("paymentMethod") != null
                 && !jsonObj.get("paymentMethod").isJsonNull()) {
             PaymentMethodName.validateJsonElement(jsonObj.get("paymentMethod"));
+        }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
         }
     }
 

@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -61,7 +63,7 @@ public class FulfillmentShipmentItem {
     public static final String SERIALIZED_NAME_MANUFACTURER_LOT_CODES = "manufacturerLotCodes";
 
     @SerializedName(SERIALIZED_NAME_MANUFACTURER_LOT_CODES)
-    private StringList manufacturerLotCodes = new ArrayList<>();
+    private List<String> manufacturerLotCodes = new ArrayList<>();
 
     public FulfillmentShipmentItem() {}
 
@@ -159,21 +161,29 @@ public class FulfillmentShipmentItem {
         this.serialNumber = serialNumber;
     }
 
-    public FulfillmentShipmentItem manufacturerLotCodes(StringList manufacturerLotCodes) {
+    public FulfillmentShipmentItem manufacturerLotCodes(List<String> manufacturerLotCodes) {
         this.manufacturerLotCodes = manufacturerLotCodes;
         return this;
     }
 
+    public FulfillmentShipmentItem addManufacturerLotCodesItem(String manufacturerLotCodesItem) {
+        if (this.manufacturerLotCodes == null) {
+            this.manufacturerLotCodes = new ArrayList<>();
+        }
+        this.manufacturerLotCodes.add(manufacturerLotCodesItem);
+        return this;
+    }
+
     /**
-     * Get manufacturerLotCodes
+     * String list
      *
      * @return manufacturerLotCodes
      */
-    @javax.annotation.Nullable public StringList getManufacturerLotCodes() {
+    @javax.annotation.Nullable public List<String> getManufacturerLotCodes() {
         return manufacturerLotCodes;
     }
 
-    public void setManufacturerLotCodes(StringList manufacturerLotCodes) {
+    public void setManufacturerLotCodes(List<String> manufacturerLotCodes) {
         this.manufacturerLotCodes = manufacturerLotCodes;
     }
 
@@ -298,6 +308,14 @@ public class FulfillmentShipmentItem {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `serialNumber` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("serialNumber").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("manufacturerLotCodes") != null
+                && !jsonObj.get("manufacturerLotCodes").isJsonNull()
+                && !jsonObj.get("manufacturerLotCodes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturerLotCodes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("manufacturerLotCodes").toString()));
         }
     }
 

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -37,7 +40,7 @@ public class GetCollectionFormHistoryResponse {
             "collectionFormsHistoryRecordList";
 
     @SerializedName(SERIALIZED_NAME_COLLECTION_FORMS_HISTORY_RECORD_LIST)
-    private CollectionFormsHistoryRecordList collectionFormsHistoryRecordList = new ArrayList<>();
+    private List<CollectionFormsHistoryRecord> collectionFormsHistoryRecordList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_LAST_REFRESHED_DATE = "lastRefreshedDate";
 
@@ -47,21 +50,31 @@ public class GetCollectionFormHistoryResponse {
     public GetCollectionFormHistoryResponse() {}
 
     public GetCollectionFormHistoryResponse collectionFormsHistoryRecordList(
-            CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
+            List<CollectionFormsHistoryRecord> collectionFormsHistoryRecordList) {
         this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
         return this;
     }
 
+    public GetCollectionFormHistoryResponse addCollectionFormsHistoryRecordListItem(
+            CollectionFormsHistoryRecord collectionFormsHistoryRecordListItem) {
+        if (this.collectionFormsHistoryRecordList == null) {
+            this.collectionFormsHistoryRecordList = new ArrayList<>();
+        }
+        this.collectionFormsHistoryRecordList.add(collectionFormsHistoryRecordListItem);
+        return this;
+    }
+
     /**
-     * Get collectionFormsHistoryRecordList
+     * A list of CollectionFormsHistoryRecord
      *
      * @return collectionFormsHistoryRecordList
      */
-    @javax.annotation.Nullable public CollectionFormsHistoryRecordList getCollectionFormsHistoryRecordList() {
+    @javax.annotation.Nullable public List<CollectionFormsHistoryRecord> getCollectionFormsHistoryRecordList() {
         return collectionFormsHistoryRecordList;
     }
 
-    public void setCollectionFormsHistoryRecordList(CollectionFormsHistoryRecordList collectionFormsHistoryRecordList) {
+    public void setCollectionFormsHistoryRecordList(
+            List<CollectionFormsHistoryRecord> collectionFormsHistoryRecordList) {
         this.collectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
     }
 
@@ -165,6 +178,25 @@ public class GetCollectionFormHistoryResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("collectionFormsHistoryRecordList") != null
+                && !jsonObj.get("collectionFormsHistoryRecordList").isJsonNull()) {
+            JsonArray jsonArraycollectionFormsHistoryRecordList =
+                    jsonObj.getAsJsonArray("collectionFormsHistoryRecordList");
+            if (jsonArraycollectionFormsHistoryRecordList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("collectionFormsHistoryRecordList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `collectionFormsHistoryRecordList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("collectionFormsHistoryRecordList").toString()));
+                }
+
+                // validate the optional field `collectionFormsHistoryRecordList` (array)
+                for (int i = 0; i < jsonArraycollectionFormsHistoryRecordList.size(); i++) {
+                    CollectionFormsHistoryRecord.validateJsonElement(jsonArraycollectionFormsHistoryRecordList.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("lastRefreshedDate") != null
                         && !jsonObj.get("lastRefreshedDate").isJsonNull())
                 && !jsonObj.get("lastRefreshedDate").isJsonPrimitive()) {

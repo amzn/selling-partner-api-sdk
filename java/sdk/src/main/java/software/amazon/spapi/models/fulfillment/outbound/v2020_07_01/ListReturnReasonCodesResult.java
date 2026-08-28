@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class ListReturnReasonCodesResult {
     public static final String SERIALIZED_NAME_REASON_CODE_DETAILS = "reasonCodeDetails";
 
     @SerializedName(SERIALIZED_NAME_REASON_CODE_DETAILS)
-    private ReasonCodeDetailsList reasonCodeDetails = new ArrayList<>();
+    private List<ReasonCodeDetails> reasonCodeDetails = new ArrayList<>();
 
     public ListReturnReasonCodesResult() {}
 
-    public ListReturnReasonCodesResult reasonCodeDetails(ReasonCodeDetailsList reasonCodeDetails) {
+    public ListReturnReasonCodesResult reasonCodeDetails(List<ReasonCodeDetails> reasonCodeDetails) {
         this.reasonCodeDetails = reasonCodeDetails;
         return this;
     }
 
+    public ListReturnReasonCodesResult addReasonCodeDetailsItem(ReasonCodeDetails reasonCodeDetailsItem) {
+        if (this.reasonCodeDetails == null) {
+            this.reasonCodeDetails = new ArrayList<>();
+        }
+        this.reasonCodeDetails.add(reasonCodeDetailsItem);
+        return this;
+    }
+
     /**
-     * Get reasonCodeDetails
+     * An array of return reason code details.
      *
      * @return reasonCodeDetails
      */
-    @javax.annotation.Nullable public ReasonCodeDetailsList getReasonCodeDetails() {
+    @javax.annotation.Nullable public List<ReasonCodeDetails> getReasonCodeDetails() {
         return reasonCodeDetails;
     }
 
-    public void setReasonCodeDetails(ReasonCodeDetailsList reasonCodeDetails) {
+    public void setReasonCodeDetails(List<ReasonCodeDetails> reasonCodeDetails) {
         this.reasonCodeDetails = reasonCodeDetails;
     }
 
@@ -133,6 +144,24 @@ public class ListReturnReasonCodesResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("reasonCodeDetails") != null
+                && !jsonObj.get("reasonCodeDetails").isJsonNull()) {
+            JsonArray jsonArrayreasonCodeDetails = jsonObj.getAsJsonArray("reasonCodeDetails");
+            if (jsonArrayreasonCodeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("reasonCodeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `reasonCodeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("reasonCodeDetails").toString()));
+                }
+
+                // validate the optional field `reasonCodeDetails` (array)
+                for (int i = 0; i < jsonArrayreasonCodeDetails.size(); i++) {
+                    ReasonCodeDetails.validateJsonElement(jsonArrayreasonCodeDetails.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

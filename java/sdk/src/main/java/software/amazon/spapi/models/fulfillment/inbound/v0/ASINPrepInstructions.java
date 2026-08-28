@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -51,7 +53,7 @@ public class ASINPrepInstructions {
     public static final String SERIALIZED_NAME_PREP_INSTRUCTION_LIST = "PrepInstructionList";
 
     @SerializedName(SERIALIZED_NAME_PREP_INSTRUCTION_LIST)
-    private PrepInstructionList prepInstructionList = new ArrayList<>();
+    private List<PrepInstruction> prepInstructionList = new ArrayList<>();
 
     public ASINPrepInstructions() {}
 
@@ -109,21 +111,29 @@ public class ASINPrepInstructions {
         this.prepGuidance = prepGuidance;
     }
 
-    public ASINPrepInstructions prepInstructionList(PrepInstructionList prepInstructionList) {
+    public ASINPrepInstructions prepInstructionList(List<PrepInstruction> prepInstructionList) {
         this.prepInstructionList = prepInstructionList;
         return this;
     }
 
+    public ASINPrepInstructions addPrepInstructionListItem(PrepInstruction prepInstructionListItem) {
+        if (this.prepInstructionList == null) {
+            this.prepInstructionList = new ArrayList<>();
+        }
+        this.prepInstructionList.add(prepInstructionListItem);
+        return this;
+    }
+
     /**
-     * Get prepInstructionList
+     * A list of preparation instructions to help with item sourcing decisions.
      *
      * @return prepInstructionList
      */
-    @javax.annotation.Nullable public PrepInstructionList getPrepInstructionList() {
+    @javax.annotation.Nullable public List<PrepInstruction> getPrepInstructionList() {
         return prepInstructionList;
     }
 
-    public void setPrepInstructionList(PrepInstructionList prepInstructionList) {
+    public void setPrepInstructionList(List<PrepInstruction> prepInstructionList) {
         this.prepInstructionList = prepInstructionList;
     }
 
@@ -226,6 +236,14 @@ public class ASINPrepInstructions {
         // validate the optional field `PrepGuidance`
         if (jsonObj.get("PrepGuidance") != null && !jsonObj.get("PrepGuidance").isJsonNull()) {
             PrepGuidance.validateJsonElement(jsonObj.get("PrepGuidance"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("PrepInstructionList") != null
+                && !jsonObj.get("PrepInstructionList").isJsonNull()
+                && !jsonObj.get("PrepInstructionList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PrepInstructionList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("PrepInstructionList").toString()));
         }
     }
 

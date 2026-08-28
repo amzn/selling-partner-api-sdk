@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +48,7 @@ public class ConfirmShipmentOrderItem {
     public static final String SERIALIZED_NAME_TRANSPARENCY_CODES = "transparencyCodes";
 
     @SerializedName(SERIALIZED_NAME_TRANSPARENCY_CODES)
-    private TransparencyCodeList transparencyCodes = new ArrayList<>();
+    private List<String> transparencyCodes = new ArrayList<>();
 
     public ConfirmShipmentOrderItem() {}
 
@@ -88,21 +90,29 @@ public class ConfirmShipmentOrderItem {
         this.quantity = quantity;
     }
 
-    public ConfirmShipmentOrderItem transparencyCodes(TransparencyCodeList transparencyCodes) {
+    public ConfirmShipmentOrderItem transparencyCodes(List<String> transparencyCodes) {
         this.transparencyCodes = transparencyCodes;
         return this;
     }
 
+    public ConfirmShipmentOrderItem addTransparencyCodesItem(String transparencyCodesItem) {
+        if (this.transparencyCodes == null) {
+            this.transparencyCodes = new ArrayList<>();
+        }
+        this.transparencyCodes.add(transparencyCodesItem);
+        return this;
+    }
+
     /**
-     * Get transparencyCodes
+     * A list of order items.
      *
      * @return transparencyCodes
      */
-    @javax.annotation.Nullable public TransparencyCodeList getTransparencyCodes() {
+    @javax.annotation.Nullable public List<String> getTransparencyCodes() {
         return transparencyCodes;
     }
 
-    public void setTransparencyCodes(TransparencyCodeList transparencyCodes) {
+    public void setTransparencyCodes(List<String> transparencyCodes) {
         this.transparencyCodes = transparencyCodes;
     }
 
@@ -202,6 +212,14 @@ public class ConfirmShipmentOrderItem {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `orderItemId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("orderItemId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("transparencyCodes") != null
+                && !jsonObj.get("transparencyCodes").isJsonNull()
+                && !jsonObj.get("transparencyCodes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transparencyCodes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("transparencyCodes").toString()));
         }
     }
 

@@ -25,6 +25,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +40,7 @@ public class ValidateContentDocumentAsinRelationsResponse {
     public static final String SERIALIZED_NAME_WARNINGS = "warnings";
 
     @SerializedName(SERIALIZED_NAME_WARNINGS)
-    private MessageSet warnings = new LinkedHashSet<>();
+    private Set<Error> warnings = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_ERRORS = "errors";
 
@@ -48,21 +49,29 @@ public class ValidateContentDocumentAsinRelationsResponse {
 
     public ValidateContentDocumentAsinRelationsResponse() {}
 
-    public ValidateContentDocumentAsinRelationsResponse warnings(MessageSet warnings) {
+    public ValidateContentDocumentAsinRelationsResponse warnings(Set<Error> warnings) {
         this.warnings = warnings;
         return this;
     }
 
+    public ValidateContentDocumentAsinRelationsResponse addWarningsItem(Error warningsItem) {
+        if (this.warnings == null) {
+            this.warnings = new LinkedHashSet<>();
+        }
+        this.warnings.add(warningsItem);
+        return this;
+    }
+
     /**
-     * Get warnings
+     * A set of messages to the user, such as warnings or comments.
      *
      * @return warnings
      */
-    @javax.annotation.Nullable public MessageSet getWarnings() {
+    @javax.annotation.Nullable public Set<Error> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(MessageSet warnings) {
+    public void setWarnings(Set<Error> warnings) {
         this.warnings = warnings;
     }
 
@@ -180,6 +189,23 @@ public class ValidateContentDocumentAsinRelationsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+            JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+            if (jsonArraywarnings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("warnings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `warnings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("warnings").toString()));
+                }
+
+                // validate the optional field `warnings` (array)
+                for (int i = 0; i < jsonArraywarnings.size(); i++) {
+                    Error.validateJsonElement(jsonArraywarnings.get(i));
+                }
+                ;
+            }
+        }
         // ensure the json data is an array
         if (!jsonObj.get("errors").isJsonArray()) {
             throw new IllegalArgumentException(String.format(

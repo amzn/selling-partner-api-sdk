@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class CreateConfirmServiceDetailsResponse {
     public static final String SERIALIZED_NAME_ERRORS = "errors";
 
     @SerializedName(SERIALIZED_NAME_ERRORS)
-    private ErrorList errors = new ArrayList<>();
+    private List<Error> errors = new ArrayList<>();
 
     public CreateConfirmServiceDetailsResponse() {}
 
-    public CreateConfirmServiceDetailsResponse errors(ErrorList errors) {
+    public CreateConfirmServiceDetailsResponse errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public CreateConfirmServiceDetailsResponse addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @javax.annotation.Nullable public ErrorList getErrors() {
+    @javax.annotation.Nullable public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
@@ -132,6 +143,23 @@ public class CreateConfirmServiceDetailsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+            if (jsonArrayerrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("errors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("errors").toString()));
+                }
+
+                // validate the optional field `errors` (array)
+                for (int i = 0; i < jsonArrayerrors.size(); i++) {
+                    Error.validateJsonElement(jsonArrayerrors.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

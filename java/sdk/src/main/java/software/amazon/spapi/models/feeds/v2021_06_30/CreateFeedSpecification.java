@@ -54,7 +54,7 @@ public class CreateFeedSpecification {
     public static final String SERIALIZED_NAME_FEED_OPTIONS = "feedOptions";
 
     @SerializedName(SERIALIZED_NAME_FEED_OPTIONS)
-    private FeedOptions feedOptions = new HashMap<>();
+    private Map<String, String> feedOptions = new HashMap<>();
 
     public CreateFeedSpecification() {}
 
@@ -124,21 +124,29 @@ public class CreateFeedSpecification {
         this.inputFeedDocumentId = inputFeedDocumentId;
     }
 
-    public CreateFeedSpecification feedOptions(FeedOptions feedOptions) {
+    public CreateFeedSpecification feedOptions(Map<String, String> feedOptions) {
         this.feedOptions = feedOptions;
         return this;
     }
 
+    public CreateFeedSpecification putFeedOptionsItem(String key, String feedOptionsItem) {
+        if (this.feedOptions == null) {
+            this.feedOptions = new HashMap<>();
+        }
+        this.feedOptions.put(key, feedOptionsItem);
+        return this;
+    }
+
     /**
-     * Get feedOptions
+     * Additional options to control the feed. These vary by feed type.
      *
      * @return feedOptions
      */
-    @javax.annotation.Nullable public FeedOptions getFeedOptions() {
+    @javax.annotation.Nullable public Map<String, String> getFeedOptions() {
         return feedOptions;
     }
 
-    public void setFeedOptions(FeedOptions feedOptions) {
+    public void setFeedOptions(Map<String, String> feedOptions) {
         this.feedOptions = feedOptions;
     }
 

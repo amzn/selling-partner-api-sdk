@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -51,12 +54,12 @@ public class DebtRecoveryEvent {
     public static final String SERIALIZED_NAME_DEBT_RECOVERY_ITEM_LIST = "DebtRecoveryItemList";
 
     @SerializedName(SERIALIZED_NAME_DEBT_RECOVERY_ITEM_LIST)
-    private DebtRecoveryItemList debtRecoveryItemList = new ArrayList<>();
+    private List<DebtRecoveryItem> debtRecoveryItemList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHARGE_INSTRUMENT_LIST = "ChargeInstrumentList";
 
     @SerializedName(SERIALIZED_NAME_CHARGE_INSTRUMENT_LIST)
-    private ChargeInstrumentList chargeInstrumentList = new ArrayList<>();
+    private List<ChargeInstrument> chargeInstrumentList = new ArrayList<>();
 
     public DebtRecoveryEvent() {}
 
@@ -115,39 +118,55 @@ public class DebtRecoveryEvent {
         this.overPaymentCredit = overPaymentCredit;
     }
 
-    public DebtRecoveryEvent debtRecoveryItemList(DebtRecoveryItemList debtRecoveryItemList) {
+    public DebtRecoveryEvent debtRecoveryItemList(List<DebtRecoveryItem> debtRecoveryItemList) {
         this.debtRecoveryItemList = debtRecoveryItemList;
         return this;
     }
 
+    public DebtRecoveryEvent addDebtRecoveryItemListItem(DebtRecoveryItem debtRecoveryItemListItem) {
+        if (this.debtRecoveryItemList == null) {
+            this.debtRecoveryItemList = new ArrayList<>();
+        }
+        this.debtRecoveryItemList.add(debtRecoveryItemListItem);
+        return this;
+    }
+
     /**
-     * Get debtRecoveryItemList
+     * A list of debt recovery item information.
      *
      * @return debtRecoveryItemList
      */
-    @javax.annotation.Nullable public DebtRecoveryItemList getDebtRecoveryItemList() {
+    @javax.annotation.Nullable public List<DebtRecoveryItem> getDebtRecoveryItemList() {
         return debtRecoveryItemList;
     }
 
-    public void setDebtRecoveryItemList(DebtRecoveryItemList debtRecoveryItemList) {
+    public void setDebtRecoveryItemList(List<DebtRecoveryItem> debtRecoveryItemList) {
         this.debtRecoveryItemList = debtRecoveryItemList;
     }
 
-    public DebtRecoveryEvent chargeInstrumentList(ChargeInstrumentList chargeInstrumentList) {
+    public DebtRecoveryEvent chargeInstrumentList(List<ChargeInstrument> chargeInstrumentList) {
         this.chargeInstrumentList = chargeInstrumentList;
         return this;
     }
 
+    public DebtRecoveryEvent addChargeInstrumentListItem(ChargeInstrument chargeInstrumentListItem) {
+        if (this.chargeInstrumentList == null) {
+            this.chargeInstrumentList = new ArrayList<>();
+        }
+        this.chargeInstrumentList.add(chargeInstrumentListItem);
+        return this;
+    }
+
     /**
-     * Get chargeInstrumentList
+     * A list of payment instruments.
      *
      * @return chargeInstrumentList
      */
-    @javax.annotation.Nullable public ChargeInstrumentList getChargeInstrumentList() {
+    @javax.annotation.Nullable public List<ChargeInstrument> getChargeInstrumentList() {
         return chargeInstrumentList;
     }
 
-    public void setChargeInstrumentList(ChargeInstrumentList chargeInstrumentList) {
+    public void setChargeInstrumentList(List<ChargeInstrument> chargeInstrumentList) {
         this.chargeInstrumentList = chargeInstrumentList;
     }
 
@@ -262,6 +281,42 @@ public class DebtRecoveryEvent {
         if (jsonObj.get("OverPaymentCredit") != null
                 && !jsonObj.get("OverPaymentCredit").isJsonNull()) {
             Currency.validateJsonElement(jsonObj.get("OverPaymentCredit"));
+        }
+        if (jsonObj.get("DebtRecoveryItemList") != null
+                && !jsonObj.get("DebtRecoveryItemList").isJsonNull()) {
+            JsonArray jsonArraydebtRecoveryItemList = jsonObj.getAsJsonArray("DebtRecoveryItemList");
+            if (jsonArraydebtRecoveryItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("DebtRecoveryItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `DebtRecoveryItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("DebtRecoveryItemList").toString()));
+                }
+
+                // validate the optional field `DebtRecoveryItemList` (array)
+                for (int i = 0; i < jsonArraydebtRecoveryItemList.size(); i++) {
+                    DebtRecoveryItem.validateJsonElement(jsonArraydebtRecoveryItemList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ChargeInstrumentList") != null
+                && !jsonObj.get("ChargeInstrumentList").isJsonNull()) {
+            JsonArray jsonArraychargeInstrumentList = jsonObj.getAsJsonArray("ChargeInstrumentList");
+            if (jsonArraychargeInstrumentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargeInstrumentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargeInstrumentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargeInstrumentList").toString()));
+                }
+
+                // validate the optional field `ChargeInstrumentList` (array)
+                for (int i = 0; i < jsonArraychargeInstrumentList.size(); i++) {
+                    ChargeInstrument.validateJsonElement(jsonArraychargeInstrumentList.get(i));
+                }
+                ;
+            }
         }
     }
 

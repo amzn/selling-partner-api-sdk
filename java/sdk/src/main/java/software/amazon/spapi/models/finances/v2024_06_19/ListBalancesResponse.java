@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class ListBalancesResponse {
     public static final String SERIALIZED_NAME_BALANCES = "balances";
 
     @SerializedName(SERIALIZED_NAME_BALANCES)
-    private Balances balances = new ArrayList<>();
+    private List<Balance> balances = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
 
@@ -45,21 +48,29 @@ public class ListBalancesResponse {
 
     public ListBalancesResponse() {}
 
-    public ListBalancesResponse balances(Balances balances) {
+    public ListBalancesResponse balances(List<Balance> balances) {
         this.balances = balances;
         return this;
     }
 
+    public ListBalancesResponse addBalancesItem(Balance balancesItem) {
+        if (this.balances == null) {
+            this.balances = new ArrayList<>();
+        }
+        this.balances.add(balancesItem);
+        return this;
+    }
+
     /**
-     * Get balances
+     * A list of balances.
      *
      * @return balances
      */
-    @javax.annotation.Nullable public Balances getBalances() {
+    @javax.annotation.Nullable public List<Balance> getBalances() {
         return balances;
     }
 
-    public void setBalances(Balances balances) {
+    public void setBalances(List<Balance> balances) {
         this.balances = balances;
     }
 
@@ -156,6 +167,23 @@ public class ListBalancesResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("balances") != null && !jsonObj.get("balances").isJsonNull()) {
+            JsonArray jsonArraybalances = jsonObj.getAsJsonArray("balances");
+            if (jsonArraybalances != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("balances").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `balances` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("balances").toString()));
+                }
+
+                // validate the optional field `balances` (array)
+                for (int i = 0; i < jsonArraybalances.size(); i++) {
+                    Balance.validateJsonElement(jsonArraybalances.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
                 && !jsonObj.get("nextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

@@ -44,7 +44,7 @@ public class Item {
     public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
-    private ItemRelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+    private List<ItemRelatedIdentifier> relatedIdentifiers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "totalAmount";
 
@@ -59,7 +59,7 @@ public class Item {
     public static final String SERIALIZED_NAME_CONTEXTS = "contexts";
 
     @SerializedName(SERIALIZED_NAME_CONTEXTS)
-    private Contexts contexts = new ArrayList<>();
+    private List<Context> contexts = new ArrayList<>();
 
     public Item() {}
 
@@ -81,21 +81,29 @@ public class Item {
         this.description = description;
     }
 
-    public Item relatedIdentifiers(ItemRelatedIdentifiers relatedIdentifiers) {
+    public Item relatedIdentifiers(List<ItemRelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public Item addRelatedIdentifiersItem(ItemRelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the item in the transaction.
      *
      * @return relatedIdentifiers
      */
-    @javax.annotation.Nullable public ItemRelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<ItemRelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(ItemRelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<ItemRelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
@@ -143,21 +151,29 @@ public class Item {
         this.breakdowns = breakdowns;
     }
 
-    public Item contexts(Contexts contexts) {
+    public Item contexts(List<Context> contexts) {
         this.contexts = contexts;
         return this;
     }
 
+    public Item addContextsItem(Context contextsItem) {
+        if (this.contexts == null) {
+            this.contexts = new ArrayList<>();
+        }
+        this.contexts.add(contextsItem);
+        return this;
+    }
+
     /**
-     * Get contexts
+     * A list of additional information about the item.
      *
      * @return contexts
      */
-    @javax.annotation.Nullable public Contexts getContexts() {
+    @javax.annotation.Nullable public List<Context> getContexts() {
         return contexts;
     }
 
-    public void setContexts(Contexts contexts) {
+    public void setContexts(List<Context> contexts) {
         this.contexts = contexts;
     }
 
@@ -253,6 +269,24 @@ public class Item {
                     "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("description").toString()));
         }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    ItemRelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
+        }
         // validate the optional field `totalAmount`
         if (jsonObj.get("totalAmount") != null && !jsonObj.get("totalAmount").isJsonNull()) {
             Currency.validateJsonElement(jsonObj.get("totalAmount"));
@@ -270,6 +304,23 @@ public class Item {
                 // validate the optional field `breakdowns` (array)
                 for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
                     Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("contexts") != null && !jsonObj.get("contexts").isJsonNull()) {
+            JsonArray jsonArraycontexts = jsonObj.getAsJsonArray("contexts");
+            if (jsonArraycontexts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("contexts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `contexts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("contexts").toString()));
+                }
+
+                // validate the optional field `contexts` (array)
+                for (int i = 0; i < jsonArraycontexts.size(); i++) {
+                    Context.validateJsonElement(jsonArraycontexts.get(i));
                 }
                 ;
             }

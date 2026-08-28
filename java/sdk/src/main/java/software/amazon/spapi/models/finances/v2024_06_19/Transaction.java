@@ -45,7 +45,7 @@ public class Transaction {
     public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
-    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
 
@@ -85,12 +85,12 @@ public class Transaction {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private Items items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CONTEXTS = "contexts";
 
     @SerializedName(SERIALIZED_NAME_CONTEXTS)
-    private Contexts contexts = new ArrayList<>();
+    private List<Context> contexts = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
 
@@ -117,21 +117,29 @@ public class Transaction {
         this.sellingPartnerMetadata = sellingPartnerMetadata;
     }
 
-    public Transaction relatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public Transaction relatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public Transaction addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the transaction.
      *
      * @return relatedIdentifiers
      */
-    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
@@ -264,39 +272,55 @@ public class Transaction {
         this.marketplaceDetails = marketplaceDetails;
     }
 
-    public Transaction items(Items items) {
+    public Transaction items(List<Item> items) {
         this.items = items;
         return this;
     }
 
+    public Transaction addItemsItem(Item itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * A list of items in the transaction.
      *
      * @return items
      */
-    @javax.annotation.Nullable public Items getItems() {
+    @javax.annotation.Nullable public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(Items items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
-    public Transaction contexts(Contexts contexts) {
+    public Transaction contexts(List<Context> contexts) {
         this.contexts = contexts;
         return this;
     }
 
+    public Transaction addContextsItem(Context contextsItem) {
+        if (this.contexts == null) {
+            this.contexts = new ArrayList<>();
+        }
+        this.contexts.add(contextsItem);
+        return this;
+    }
+
     /**
-     * Get contexts
+     * A list of additional information about the item.
      *
      * @return contexts
      */
-    @javax.annotation.Nullable public Contexts getContexts() {
+    @javax.annotation.Nullable public List<Context> getContexts() {
         return contexts;
     }
 
-    public void setContexts(Contexts contexts) {
+    public void setContexts(List<Context> contexts) {
         this.contexts = contexts;
     }
 
@@ -458,6 +482,24 @@ public class Transaction {
                 && !jsonObj.get("sellingPartnerMetadata").isJsonNull()) {
             SellingPartnerMetadata.validateJsonElement(jsonObj.get("sellingPartnerMetadata"));
         }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("transactionType") != null
                         && !jsonObj.get("transactionType").isJsonNull())
                 && !jsonObj.get("transactionType").isJsonPrimitive()) {
@@ -493,6 +535,40 @@ public class Transaction {
         if (jsonObj.get("marketplaceDetails") != null
                 && !jsonObj.get("marketplaceDetails").isJsonNull()) {
             MarketplaceDetails.validateJsonElement(jsonObj.get("marketplaceDetails"));
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    Item.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("contexts") != null && !jsonObj.get("contexts").isJsonNull()) {
+            JsonArray jsonArraycontexts = jsonObj.getAsJsonArray("contexts");
+            if (jsonArraycontexts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("contexts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `contexts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("contexts").toString()));
+                }
+
+                // validate the optional field `contexts` (array)
+                for (int i = 0; i < jsonArraycontexts.size(); i++) {
+                    Context.validateJsonElement(jsonArraycontexts.get(i));
+                }
+                ;
+            }
         }
         if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
             JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");

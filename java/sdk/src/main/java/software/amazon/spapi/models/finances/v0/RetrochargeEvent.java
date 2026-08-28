@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -67,7 +70,7 @@ public class RetrochargeEvent {
     public static final String SERIALIZED_NAME_RETROCHARGE_TAX_WITHHELD_LIST = "RetrochargeTaxWithheldList";
 
     @SerializedName(SERIALIZED_NAME_RETROCHARGE_TAX_WITHHELD_LIST)
-    private TaxWithheldComponentList retrochargeTaxWithheldList = new ArrayList<>();
+    private List<TaxWithheldComponent> retrochargeTaxWithheldList = new ArrayList<>();
 
     public RetrochargeEvent() {}
 
@@ -179,21 +182,29 @@ public class RetrochargeEvent {
         this.marketplaceName = marketplaceName;
     }
 
-    public RetrochargeEvent retrochargeTaxWithheldList(TaxWithheldComponentList retrochargeTaxWithheldList) {
+    public RetrochargeEvent retrochargeTaxWithheldList(List<TaxWithheldComponent> retrochargeTaxWithheldList) {
         this.retrochargeTaxWithheldList = retrochargeTaxWithheldList;
         return this;
     }
 
+    public RetrochargeEvent addRetrochargeTaxWithheldListItem(TaxWithheldComponent retrochargeTaxWithheldListItem) {
+        if (this.retrochargeTaxWithheldList == null) {
+            this.retrochargeTaxWithheldList = new ArrayList<>();
+        }
+        this.retrochargeTaxWithheldList.add(retrochargeTaxWithheldListItem);
+        return this;
+    }
+
     /**
-     * Get retrochargeTaxWithheldList
+     * A list of information about taxes withheld.
      *
      * @return retrochargeTaxWithheldList
      */
-    @javax.annotation.Nullable public TaxWithheldComponentList getRetrochargeTaxWithheldList() {
+    @javax.annotation.Nullable public List<TaxWithheldComponent> getRetrochargeTaxWithheldList() {
         return retrochargeTaxWithheldList;
     }
 
-    public void setRetrochargeTaxWithheldList(TaxWithheldComponentList retrochargeTaxWithheldList) {
+    public void setRetrochargeTaxWithheldList(List<TaxWithheldComponent> retrochargeTaxWithheldList) {
         this.retrochargeTaxWithheldList = retrochargeTaxWithheldList;
     }
 
@@ -328,6 +339,24 @@ public class RetrochargeEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `MarketplaceName` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("MarketplaceName").toString()));
+        }
+        if (jsonObj.get("RetrochargeTaxWithheldList") != null
+                && !jsonObj.get("RetrochargeTaxWithheldList").isJsonNull()) {
+            JsonArray jsonArrayretrochargeTaxWithheldList = jsonObj.getAsJsonArray("RetrochargeTaxWithheldList");
+            if (jsonArrayretrochargeTaxWithheldList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RetrochargeTaxWithheldList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RetrochargeTaxWithheldList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RetrochargeTaxWithheldList").toString()));
+                }
+
+                // validate the optional field `RetrochargeTaxWithheldList` (array)
+                for (int i = 0; i < jsonArrayretrochargeTaxWithheldList.size(); i++) {
+                    TaxWithheldComponent.validateJsonElement(jsonArrayretrochargeTaxWithheldList.get(i));
+                }
+                ;
+            }
         }
     }
 

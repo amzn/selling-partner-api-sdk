@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +43,7 @@ public class Item {
     public static final String SERIALIZED_NAME_ORDER_ITEM_SERIAL_NUMBERS = "orderItemSerialNumbers";
 
     @SerializedName(SERIALIZED_NAME_ORDER_ITEM_SERIAL_NUMBERS)
-    private OrderItemSerialNumbers orderItemSerialNumbers = new ArrayList<>();
+    private List<String> orderItemSerialNumbers = new ArrayList<>();
 
     public Item() {}
 
@@ -63,21 +65,29 @@ public class Item {
         this.orderItemId = orderItemId;
     }
 
-    public Item orderItemSerialNumbers(OrderItemSerialNumbers orderItemSerialNumbers) {
+    public Item orderItemSerialNumbers(List<String> orderItemSerialNumbers) {
         this.orderItemSerialNumbers = orderItemSerialNumbers;
         return this;
     }
 
+    public Item addOrderItemSerialNumbersItem(String orderItemSerialNumbersItem) {
+        if (this.orderItemSerialNumbers == null) {
+            this.orderItemSerialNumbers = new ArrayList<>();
+        }
+        this.orderItemSerialNumbers.add(orderItemSerialNumbersItem);
+        return this;
+    }
+
     /**
-     * Get orderItemSerialNumbers
+     * A list of serial numbers for the items associated with the &#x60;OrderItemId&#x60; value.
      *
      * @return orderItemSerialNumbers
      */
-    @javax.annotation.Nullable public OrderItemSerialNumbers getOrderItemSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getOrderItemSerialNumbers() {
         return orderItemSerialNumbers;
     }
 
-    public void setOrderItemSerialNumbers(OrderItemSerialNumbers orderItemSerialNumbers) {
+    public void setOrderItemSerialNumbers(List<String> orderItemSerialNumbers) {
         this.orderItemSerialNumbers = orderItemSerialNumbers;
     }
 
@@ -163,6 +173,14 @@ public class Item {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `orderItemId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("orderItemId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("orderItemSerialNumbers") != null
+                && !jsonObj.get("orderItemSerialNumbers").isJsonNull()
+                && !jsonObj.get("orderItemSerialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderItemSerialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderItemSerialNumbers").toString()));
         }
     }
 

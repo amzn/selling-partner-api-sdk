@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -82,7 +85,7 @@ public class ShippingService {
     public static final String SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST = "AdjustmentItemList";
 
     @SerializedName(SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST)
-    private AdjustmentItemList adjustmentItemList = new ArrayList<>();
+    private List<RateItem> adjustmentItemList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPPING_SERVICE_OPTIONS = "ShippingServiceOptions";
 
@@ -97,12 +100,12 @@ public class ShippingService {
     public static final String SERIALIZED_NAME_AVAILABLE_LABEL_FORMATS = "AvailableLabelFormats";
 
     @SerializedName(SERIALIZED_NAME_AVAILABLE_LABEL_FORMATS)
-    private LabelFormatList availableLabelFormats = new ArrayList<>();
+    private List<LabelFormat> availableLabelFormats = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_AVAILABLE_FORMAT_OPTIONS_FOR_LABEL = "AvailableFormatOptionsForLabel";
 
     @SerializedName(SERIALIZED_NAME_AVAILABLE_FORMAT_OPTIONS_FOR_LABEL)
-    private AvailableFormatOptionsForLabelList availableFormatOptionsForLabel = new ArrayList<>();
+    private List<LabelFormatOption> availableFormatOptionsForLabel = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REQUIRES_ADDITIONAL_SELLER_INPUTS = "RequiresAdditionalSellerInputs";
 
@@ -286,21 +289,29 @@ public class ShippingService {
         this.rateWithAdjustments = rateWithAdjustments;
     }
 
-    public ShippingService adjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public ShippingService adjustmentItemList(List<RateItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
         return this;
     }
 
+    public ShippingService addAdjustmentItemListItem(RateItem adjustmentItemListItem) {
+        if (this.adjustmentItemList == null) {
+            this.adjustmentItemList = new ArrayList<>();
+        }
+        this.adjustmentItemList.add(adjustmentItemListItem);
+        return this;
+    }
+
     /**
-     * Get adjustmentItemList
+     * List of adjustments.
      *
      * @return adjustmentItemList
      */
-    @javax.annotation.Nullable public AdjustmentItemList getAdjustmentItemList() {
+    @javax.annotation.Nullable public List<RateItem> getAdjustmentItemList() {
         return adjustmentItemList;
     }
 
-    public void setAdjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public void setAdjustmentItemList(List<RateItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
     }
 
@@ -342,40 +353,55 @@ public class ShippingService {
         this.availableShippingServiceOptions = availableShippingServiceOptions;
     }
 
-    public ShippingService availableLabelFormats(LabelFormatList availableLabelFormats) {
+    public ShippingService availableLabelFormats(List<LabelFormat> availableLabelFormats) {
         this.availableLabelFormats = availableLabelFormats;
         return this;
     }
 
+    public ShippingService addAvailableLabelFormatsItem(LabelFormat availableLabelFormatsItem) {
+        if (this.availableLabelFormats == null) {
+            this.availableLabelFormats = new ArrayList<>();
+        }
+        this.availableLabelFormats.add(availableLabelFormatsItem);
+        return this;
+    }
+
     /**
-     * Get availableLabelFormats
+     * List of label formats.
      *
      * @return availableLabelFormats
      */
-    @javax.annotation.Nullable public LabelFormatList getAvailableLabelFormats() {
+    @javax.annotation.Nullable public List<LabelFormat> getAvailableLabelFormats() {
         return availableLabelFormats;
     }
 
-    public void setAvailableLabelFormats(LabelFormatList availableLabelFormats) {
+    public void setAvailableLabelFormats(List<LabelFormat> availableLabelFormats) {
         this.availableLabelFormats = availableLabelFormats;
     }
 
-    public ShippingService availableFormatOptionsForLabel(
-            AvailableFormatOptionsForLabelList availableFormatOptionsForLabel) {
+    public ShippingService availableFormatOptionsForLabel(List<LabelFormatOption> availableFormatOptionsForLabel) {
         this.availableFormatOptionsForLabel = availableFormatOptionsForLabel;
         return this;
     }
 
+    public ShippingService addAvailableFormatOptionsForLabelItem(LabelFormatOption availableFormatOptionsForLabelItem) {
+        if (this.availableFormatOptionsForLabel == null) {
+            this.availableFormatOptionsForLabel = new ArrayList<>();
+        }
+        this.availableFormatOptionsForLabel.add(availableFormatOptionsForLabelItem);
+        return this;
+    }
+
     /**
-     * Get availableFormatOptionsForLabel
+     * The available label formats.
      *
      * @return availableFormatOptionsForLabel
      */
-    @javax.annotation.Nullable public AvailableFormatOptionsForLabelList getAvailableFormatOptionsForLabel() {
+    @javax.annotation.Nullable public List<LabelFormatOption> getAvailableFormatOptionsForLabel() {
         return availableFormatOptionsForLabel;
     }
 
-    public void setAvailableFormatOptionsForLabel(AvailableFormatOptionsForLabelList availableFormatOptionsForLabel) {
+    public void setAvailableFormatOptionsForLabel(List<LabelFormatOption> availableFormatOptionsForLabel) {
         this.availableFormatOptionsForLabel = availableFormatOptionsForLabel;
     }
 
@@ -615,12 +641,57 @@ public class ShippingService {
         CurrencyAmount.validateJsonElement(jsonObj.get("Rate"));
         // validate the required field `RateWithAdjustments`
         CurrencyAmount.validateJsonElement(jsonObj.get("RateWithAdjustments"));
+        if (jsonObj.get("AdjustmentItemList") != null
+                && !jsonObj.get("AdjustmentItemList").isJsonNull()) {
+            JsonArray jsonArrayadjustmentItemList = jsonObj.getAsJsonArray("AdjustmentItemList");
+            if (jsonArrayadjustmentItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AdjustmentItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AdjustmentItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AdjustmentItemList").toString()));
+                }
+
+                // validate the optional field `AdjustmentItemList` (array)
+                for (int i = 0; i < jsonArrayadjustmentItemList.size(); i++) {
+                    RateItem.validateJsonElement(jsonArrayadjustmentItemList.get(i));
+                }
+                ;
+            }
+        }
         // validate the required field `ShippingServiceOptions`
         ShippingServiceOptions.validateJsonElement(jsonObj.get("ShippingServiceOptions"));
         // validate the optional field `AvailableShippingServiceOptions`
         if (jsonObj.get("AvailableShippingServiceOptions") != null
                 && !jsonObj.get("AvailableShippingServiceOptions").isJsonNull()) {
             AvailableShippingServiceOptions.validateJsonElement(jsonObj.get("AvailableShippingServiceOptions"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("AvailableLabelFormats") != null
+                && !jsonObj.get("AvailableLabelFormats").isJsonNull()
+                && !jsonObj.get("AvailableLabelFormats").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AvailableLabelFormats` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AvailableLabelFormats").toString()));
+        }
+        if (jsonObj.get("AvailableFormatOptionsForLabel") != null
+                && !jsonObj.get("AvailableFormatOptionsForLabel").isJsonNull()) {
+            JsonArray jsonArrayavailableFormatOptionsForLabel =
+                    jsonObj.getAsJsonArray("AvailableFormatOptionsForLabel");
+            if (jsonArrayavailableFormatOptionsForLabel != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AvailableFormatOptionsForLabel").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AvailableFormatOptionsForLabel` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AvailableFormatOptionsForLabel").toString()));
+                }
+
+                // validate the optional field `AvailableFormatOptionsForLabel` (array)
+                for (int i = 0; i < jsonArrayavailableFormatOptionsForLabel.size(); i++) {
+                    LabelFormatOption.validateJsonElement(jsonArrayavailableFormatOptionsForLabel.get(i));
+                }
+                ;
+            }
         }
         // validate the optional field `Benefits`
         if (jsonObj.get("Benefits") != null && !jsonObj.get("Benefits").isJsonNull()) {

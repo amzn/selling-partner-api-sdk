@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class GetSubscriptionsPayload {
     public static final String SERIALIZED_NAME_SUBSCRIPTIONS = "subscriptions";
 
     @SerializedName(SERIALIZED_NAME_SUBSCRIPTIONS)
-    private Subscriptions subscriptions = new ArrayList<>();
+    private List<Subscription> subscriptions = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
 
@@ -45,21 +48,29 @@ public class GetSubscriptionsPayload {
 
     public GetSubscriptionsPayload() {}
 
-    public GetSubscriptionsPayload subscriptions(Subscriptions subscriptions) {
+    public GetSubscriptionsPayload subscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
         return this;
     }
 
+    public GetSubscriptionsPayload addSubscriptionsItem(Subscription subscriptionsItem) {
+        if (this.subscriptions == null) {
+            this.subscriptions = new ArrayList<>();
+        }
+        this.subscriptions.add(subscriptionsItem);
+        return this;
+    }
+
     /**
-     * Get subscriptions
+     * A list of subscriptions.
      *
      * @return subscriptions
      */
-    @javax.annotation.Nullable public Subscriptions getSubscriptions() {
+    @javax.annotation.Nullable public List<Subscription> getSubscriptions() {
         return subscriptions;
     }
 
-    public void setSubscriptions(Subscriptions subscriptions) {
+    public void setSubscriptions(List<Subscription> subscriptions) {
         this.subscriptions = subscriptions;
     }
 
@@ -158,6 +169,24 @@ public class GetSubscriptionsPayload {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("subscriptions") != null
+                && !jsonObj.get("subscriptions").isJsonNull()) {
+            JsonArray jsonArraysubscriptions = jsonObj.getAsJsonArray("subscriptions");
+            if (jsonArraysubscriptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("subscriptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `subscriptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("subscriptions").toString()));
+                }
+
+                // validate the optional field `subscriptions` (array)
+                for (int i = 0; i < jsonArraysubscriptions.size(); i++) {
+                    Subscription.validateJsonElement(jsonArraysubscriptions.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
                 && !jsonObj.get("nextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

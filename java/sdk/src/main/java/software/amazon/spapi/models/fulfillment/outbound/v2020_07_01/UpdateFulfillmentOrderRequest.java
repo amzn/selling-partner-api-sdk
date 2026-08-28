@@ -85,7 +85,7 @@ public class UpdateFulfillmentOrderRequest {
     public static final String SERIALIZED_NAME_NOTIFICATION_EMAILS = "notificationEmails";
 
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_EMAILS)
-    private NotificationEmailList notificationEmails = new ArrayList<>();
+    private List<String> notificationEmails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FEATURE_CONSTRAINTS = "featureConstraints";
 
@@ -95,7 +95,7 @@ public class UpdateFulfillmentOrderRequest {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private UpdateFulfillmentOrderItemList items = new ArrayList<>();
+    private List<UpdateFulfillmentOrderItem> items = new ArrayList<>();
 
     public UpdateFulfillmentOrderRequest() {}
 
@@ -266,21 +266,30 @@ public class UpdateFulfillmentOrderRequest {
         this.shipFromCountryCode = shipFromCountryCode;
     }
 
-    public UpdateFulfillmentOrderRequest notificationEmails(NotificationEmailList notificationEmails) {
+    public UpdateFulfillmentOrderRequest notificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
         return this;
     }
 
+    public UpdateFulfillmentOrderRequest addNotificationEmailsItem(String notificationEmailsItem) {
+        if (this.notificationEmails == null) {
+            this.notificationEmails = new ArrayList<>();
+        }
+        this.notificationEmails.add(notificationEmailsItem);
+        return this;
+    }
+
     /**
-     * Get notificationEmails
+     * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to
+     * recipients on behalf of the seller.
      *
      * @return notificationEmails
      */
-    @javax.annotation.Nullable public NotificationEmailList getNotificationEmails() {
+    @javax.annotation.Nullable public List<String> getNotificationEmails() {
         return notificationEmails;
     }
 
-    public void setNotificationEmails(NotificationEmailList notificationEmails) {
+    public void setNotificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
     }
 
@@ -310,21 +319,29 @@ public class UpdateFulfillmentOrderRequest {
         this.featureConstraints = featureConstraints;
     }
 
-    public UpdateFulfillmentOrderRequest items(UpdateFulfillmentOrderItemList items) {
+    public UpdateFulfillmentOrderRequest items(List<UpdateFulfillmentOrderItem> items) {
         this.items = items;
         return this;
     }
 
+    public UpdateFulfillmentOrderRequest addItemsItem(UpdateFulfillmentOrderItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * An array of fulfillment order item information for updating a fulfillment order.
      *
      * @return items
      */
-    @javax.annotation.Nullable public UpdateFulfillmentOrderItemList getItems() {
+    @javax.annotation.Nullable public List<UpdateFulfillmentOrderItem> getItems() {
         return items;
     }
 
-    public void setItems(UpdateFulfillmentOrderItemList items) {
+    public void setItems(List<UpdateFulfillmentOrderItem> items) {
         this.items = items;
     }
 
@@ -514,6 +531,14 @@ public class UpdateFulfillmentOrderRequest {
                     "Expected the field `shipFromCountryCode` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("shipFromCountryCode").toString()));
         }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("notificationEmails") != null
+                && !jsonObj.get("notificationEmails").isJsonNull()
+                && !jsonObj.get("notificationEmails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `notificationEmails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("notificationEmails").toString()));
+        }
         if (jsonObj.get("featureConstraints") != null
                 && !jsonObj.get("featureConstraints").isJsonNull()) {
             JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");
@@ -528,6 +553,23 @@ public class UpdateFulfillmentOrderRequest {
                 // validate the optional field `featureConstraints` (array)
                 for (int i = 0; i < jsonArrayfeatureConstraints.size(); i++) {
                     FeatureSettings.validateJsonElement(jsonArrayfeatureConstraints.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    UpdateFulfillmentOrderItem.validateJsonElement(jsonArrayitems.get(i));
                 }
                 ;
             }

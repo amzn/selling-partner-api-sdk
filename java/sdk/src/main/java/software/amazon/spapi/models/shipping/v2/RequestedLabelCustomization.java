@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +38,33 @@ public class RequestedLabelCustomization {
     public static final String SERIALIZED_NAME_REQUEST_ATTRIBUTES = "requestAttributes";
 
     @SerializedName(SERIALIZED_NAME_REQUEST_ATTRIBUTES)
-    private RequestAttributes requestAttributes = new ArrayList<>();
+    private List<LabelAttribute> requestAttributes = new ArrayList<>();
 
     public RequestedLabelCustomization() {}
 
-    public RequestedLabelCustomization requestAttributes(RequestAttributes requestAttributes) {
+    public RequestedLabelCustomization requestAttributes(List<LabelAttribute> requestAttributes) {
         this.requestAttributes = requestAttributes;
         return this;
     }
 
+    public RequestedLabelCustomization addRequestAttributesItem(LabelAttribute requestAttributesItem) {
+        if (this.requestAttributes == null) {
+            this.requestAttributes = new ArrayList<>();
+        }
+        this.requestAttributes.add(requestAttributesItem);
+        return this;
+    }
+
     /**
-     * Get requestAttributes
+     * Specify the type of attributes to be added on a label.
      *
      * @return requestAttributes
      */
-    @javax.annotation.Nullable public RequestAttributes getRequestAttributes() {
+    @javax.annotation.Nullable public List<LabelAttribute> getRequestAttributes() {
         return requestAttributes;
     }
 
-    public void setRequestAttributes(RequestAttributes requestAttributes) {
+    public void setRequestAttributes(List<LabelAttribute> requestAttributes) {
         this.requestAttributes = requestAttributes;
     }
 
@@ -133,6 +143,14 @@ public class RequestedLabelCustomization {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("requestAttributes") != null
+                && !jsonObj.get("requestAttributes").isJsonNull()
+                && !jsonObj.get("requestAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requestAttributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("requestAttributes").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

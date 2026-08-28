@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,25 +42,33 @@ public class GetDeliveryOffersResult {
     public static final String SERIALIZED_NAME_DELIVERY_OFFERS = "deliveryOffers";
 
     @SerializedName(SERIALIZED_NAME_DELIVERY_OFFERS)
-    private DeliveryOffersList deliveryOffers = new ArrayList<>();
+    private List<DeliveryOffer> deliveryOffers = new ArrayList<>();
 
     public GetDeliveryOffersResult() {}
 
-    public GetDeliveryOffersResult deliveryOffers(DeliveryOffersList deliveryOffers) {
+    public GetDeliveryOffersResult deliveryOffers(List<DeliveryOffer> deliveryOffers) {
         this.deliveryOffers = deliveryOffers;
         return this;
     }
 
+    public GetDeliveryOffersResult addDeliveryOffersItem(DeliveryOffer deliveryOffersItem) {
+        if (this.deliveryOffers == null) {
+            this.deliveryOffers = new ArrayList<>();
+        }
+        this.deliveryOffers.add(deliveryOffersItem);
+        return this;
+    }
+
     /**
-     * Get deliveryOffers
+     * An array of delivery offer information.
      *
      * @return deliveryOffers
      */
-    @javax.annotation.Nullable public DeliveryOffersList getDeliveryOffers() {
+    @javax.annotation.Nullable public List<DeliveryOffer> getDeliveryOffers() {
         return deliveryOffers;
     }
 
-    public void setDeliveryOffers(DeliveryOffersList deliveryOffers) {
+    public void setDeliveryOffers(List<DeliveryOffer> deliveryOffers) {
         this.deliveryOffers = deliveryOffers;
     }
 
@@ -136,6 +147,24 @@ public class GetDeliveryOffersResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("deliveryOffers") != null
+                && !jsonObj.get("deliveryOffers").isJsonNull()) {
+            JsonArray jsonArraydeliveryOffers = jsonObj.getAsJsonArray("deliveryOffers");
+            if (jsonArraydeliveryOffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("deliveryOffers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `deliveryOffers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("deliveryOffers").toString()));
+                }
+
+                // validate the optional field `deliveryOffers` (array)
+                for (int i = 0; i < jsonArraydeliveryOffers.size(); i++) {
+                    DeliveryOffer.validateJsonElement(jsonArraydeliveryOffers.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

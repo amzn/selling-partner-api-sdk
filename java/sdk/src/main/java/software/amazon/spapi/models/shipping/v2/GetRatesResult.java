@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,12 +44,12 @@ public class GetRatesResult {
     public static final String SERIALIZED_NAME_RATES = "rates";
 
     @SerializedName(SERIALIZED_NAME_RATES)
-    private RateList rates = new ArrayList<>();
+    private List<Rate> rates = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INELIGIBLE_RATES = "ineligibleRates";
 
     @SerializedName(SERIALIZED_NAME_INELIGIBLE_RATES)
-    private IneligibleRateList ineligibleRates = new ArrayList<>();
+    private List<IneligibleRate> ineligibleRates = new ArrayList<>();
 
     public GetRatesResult() {}
 
@@ -69,40 +72,56 @@ public class GetRatesResult {
         this.requestToken = requestToken;
     }
 
-    public GetRatesResult rates(RateList rates) {
+    public GetRatesResult rates(List<Rate> rates) {
         this.rates = rates;
         return this;
     }
 
+    public GetRatesResult addRatesItem(Rate ratesItem) {
+        if (this.rates == null) {
+            this.rates = new ArrayList<>();
+        }
+        this.rates.add(ratesItem);
+        return this;
+    }
+
     /**
-     * Get rates
+     * A list of eligible shipping service offerings.
      *
      * @return rates
      */
     @javax.annotation.Nonnull
-    public RateList getRates() {
+    public List<Rate> getRates() {
         return rates;
     }
 
-    public void setRates(RateList rates) {
+    public void setRates(List<Rate> rates) {
         this.rates = rates;
     }
 
-    public GetRatesResult ineligibleRates(IneligibleRateList ineligibleRates) {
+    public GetRatesResult ineligibleRates(List<IneligibleRate> ineligibleRates) {
         this.ineligibleRates = ineligibleRates;
         return this;
     }
 
+    public GetRatesResult addIneligibleRatesItem(IneligibleRate ineligibleRatesItem) {
+        if (this.ineligibleRates == null) {
+            this.ineligibleRates = new ArrayList<>();
+        }
+        this.ineligibleRates.add(ineligibleRatesItem);
+        return this;
+    }
+
     /**
-     * Get ineligibleRates
+     * A list of ineligible shipping service offerings.
      *
      * @return ineligibleRates
      */
-    @javax.annotation.Nullable public IneligibleRateList getIneligibleRates() {
+    @javax.annotation.Nullable public List<IneligibleRate> getIneligibleRates() {
         return ineligibleRates;
     }
 
-    public void setIneligibleRates(IneligibleRateList ineligibleRates) {
+    public void setIneligibleRates(List<IneligibleRate> ineligibleRates) {
         this.ineligibleRates = ineligibleRates;
     }
 
@@ -201,6 +220,37 @@ public class GetRatesResult {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `requestToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("requestToken").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("rates").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rates` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("rates").toString()));
+        }
+
+        JsonArray jsonArrayrates = jsonObj.getAsJsonArray("rates");
+        // validate the required field `rates` (array)
+        for (int i = 0; i < jsonArrayrates.size(); i++) {
+            Rate.validateJsonElement(jsonArrayrates.get(i));
+        }
+        ;
+        if (jsonObj.get("ineligibleRates") != null
+                && !jsonObj.get("ineligibleRates").isJsonNull()) {
+            JsonArray jsonArrayineligibleRates = jsonObj.getAsJsonArray("ineligibleRates");
+            if (jsonArrayineligibleRates != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ineligibleRates").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ineligibleRates` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ineligibleRates").toString()));
+                }
+
+                // validate the optional field `ineligibleRates` (array)
+                for (int i = 0; i < jsonArrayineligibleRates.size(); i++) {
+                    IneligibleRate.validateJsonElement(jsonArrayineligibleRates.get(i));
+                }
+                ;
+            }
         }
     }
 

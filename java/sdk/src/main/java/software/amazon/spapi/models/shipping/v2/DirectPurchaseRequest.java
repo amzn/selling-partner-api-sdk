@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -54,7 +57,7 @@ public class DirectPurchaseRequest {
     public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
     @SerializedName(SERIALIZED_NAME_PACKAGES)
-    private PackageList packages = new ArrayList<>();
+    private List<ModelPackage> packages = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
 
@@ -122,21 +125,29 @@ public class DirectPurchaseRequest {
         this.returnTo = returnTo;
     }
 
-    public DirectPurchaseRequest packages(PackageList packages) {
+    public DirectPurchaseRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public DirectPurchaseRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * A list of packages to be shipped through a shipping service offering.
      *
      * @return packages
      */
-    @javax.annotation.Nullable public PackageList getPackages() {
+    @javax.annotation.Nullable public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackageList packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
@@ -290,6 +301,23 @@ public class DirectPurchaseRequest {
         // validate the optional field `returnTo`
         if (jsonObj.get("returnTo") != null && !jsonObj.get("returnTo").isJsonNull()) {
             Address.validateJsonElement(jsonObj.get("returnTo"));
+        }
+        if (jsonObj.get("packages") != null && !jsonObj.get("packages").isJsonNull()) {
+            JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+            if (jsonArraypackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packages").toString()));
+                }
+
+                // validate the optional field `packages` (array)
+                for (int i = 0; i < jsonArraypackages.size(); i++) {
+                    ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+                }
+                ;
+            }
         }
         // validate the required field `channelDetails`
         ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));

@@ -37,25 +37,33 @@ public class GetAdditionalInputsResponse {
     public static final String SERIALIZED_NAME_PAYLOAD = "payload";
 
     @SerializedName(SERIALIZED_NAME_PAYLOAD)
-    private GetAdditionalInputsResult payload = new HashMap<>();
+    private Map<String, Object> payload = new HashMap<>();
 
     public GetAdditionalInputsResponse() {}
 
-    public GetAdditionalInputsResponse payload(GetAdditionalInputsResult payload) {
+    public GetAdditionalInputsResponse payload(Map<String, Object> payload) {
         this.payload = payload;
         return this;
     }
 
+    public GetAdditionalInputsResponse putPayloadItem(String key, Object payloadItem) {
+        if (this.payload == null) {
+            this.payload = new HashMap<>();
+        }
+        this.payload.put(key, payloadItem);
+        return this;
+    }
+
     /**
-     * Get payload
+     * The JSON schema to use to provide additional inputs when required to purchase a shipping offering.
      *
      * @return payload
      */
-    @javax.annotation.Nullable public GetAdditionalInputsResult getPayload() {
+    @javax.annotation.Nullable public Map<String, Object> getPayload() {
         return payload;
     }
 
-    public void setPayload(GetAdditionalInputsResult payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 

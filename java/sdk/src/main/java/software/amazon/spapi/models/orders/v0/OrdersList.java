@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class OrdersList {
     public static final String SERIALIZED_NAME_ORDERS = "Orders";
 
     @SerializedName(SERIALIZED_NAME_ORDERS)
-    private OrderList orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
 
@@ -55,22 +58,30 @@ public class OrdersList {
 
     public OrdersList() {}
 
-    public OrdersList orders(OrderList orders) {
+    public OrdersList orders(List<Order> orders) {
         this.orders = orders;
         return this;
     }
 
+    public OrdersList addOrdersItem(Order ordersItem) {
+        if (this.orders == null) {
+            this.orders = new ArrayList<>();
+        }
+        this.orders.add(ordersItem);
+        return this;
+    }
+
     /**
-     * Get orders
+     * A list of orders.
      *
      * @return orders
      */
     @javax.annotation.Nonnull
-    public OrderList getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(OrderList orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -224,6 +235,19 @@ public class OrdersList {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("Orders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Orders` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Orders").toString()));
+        }
+
+        JsonArray jsonArrayorders = jsonObj.getAsJsonArray("Orders");
+        // validate the required field `Orders` (array)
+        for (int i = 0; i < jsonArrayorders.size(); i++) {
+            Order.validateJsonElement(jsonArrayorders.get(i));
+        }
+        ;
         if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
                 && !jsonObj.get("NextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -47,12 +50,12 @@ public class Summary {
     public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
-    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
 
     @SerializedName(SERIALIZED_NAME_BREAKDOWNS)
-    private Breakdowns breakdowns = new ArrayList<>();
+    private List<Breakdown> breakdowns = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PERIOD_START = "periodStart";
 
@@ -102,39 +105,55 @@ public class Summary {
         this.netProceeds = netProceeds;
     }
 
-    public Summary relatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public Summary relatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public Summary addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the transaction.
      *
      * @return relatedIdentifiers
      */
-    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
-    public Summary breakdowns(Breakdowns breakdowns) {
+    public Summary breakdowns(List<Breakdown> breakdowns) {
         this.breakdowns = breakdowns;
         return this;
     }
 
+    public Summary addBreakdownsItem(Breakdown breakdownsItem) {
+        if (this.breakdowns == null) {
+            this.breakdowns = new ArrayList<>();
+        }
+        this.breakdowns.add(breakdownsItem);
+        return this;
+    }
+
     /**
-     * Get breakdowns
+     * A list of breakdowns that detail how the total amount is calculated for the transaction.
      *
      * @return breakdowns
      */
-    @javax.annotation.Nullable public Breakdowns getBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
 
-    public void setBreakdowns(Breakdowns breakdowns) {
+    public void setBreakdowns(List<Breakdown> breakdowns) {
         this.breakdowns = breakdowns;
     }
 
@@ -273,6 +292,41 @@ public class Summary {
         // validate the optional field `netProceeds`
         if (jsonObj.get("netProceeds") != null && !jsonObj.get("netProceeds").isJsonNull()) {
             Currency.validateJsonElement(jsonObj.get("netProceeds"));
+        }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
+            JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");
+            if (jsonArraybreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("breakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `breakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("breakdowns").toString()));
+                }
+
+                // validate the optional field `breakdowns` (array)
+                for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
         }
     }
 

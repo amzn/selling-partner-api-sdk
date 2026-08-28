@@ -69,7 +69,7 @@ public class CompetitiveSummaryResponseBody {
     public static final String SERIALIZED_NAME_ERRORS = "errors";
 
     @SerializedName(SERIALIZED_NAME_ERRORS)
-    private ErrorList errors = new ArrayList<>();
+    private List<Error> errors = new ArrayList<>();
 
     public CompetitiveSummaryResponseBody() {}
 
@@ -216,21 +216,29 @@ public class CompetitiveSummaryResponseBody {
         this.similarItems = similarItems;
     }
 
-    public CompetitiveSummaryResponseBody errors(ErrorList errors) {
+    public CompetitiveSummaryResponseBody errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public CompetitiveSummaryResponseBody addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses that are returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @javax.annotation.Nullable public ErrorList getErrors() {
+    @javax.annotation.Nullable public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
@@ -420,6 +428,23 @@ public class CompetitiveSummaryResponseBody {
                 // validate the optional field `similarItems` (array)
                 for (int i = 0; i < jsonArraysimilarItems.size(); i++) {
                     SimilarItems.validateJsonElement(jsonArraysimilarItems.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+            if (jsonArrayerrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("errors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("errors").toString()));
+                }
+
+                // validate the optional field `errors` (array)
+                for (int i = 0; i < jsonArrayerrors.size(); i++) {
+                    Error.validateJsonElement(jsonArrayerrors.get(i));
                 }
                 ;
             }

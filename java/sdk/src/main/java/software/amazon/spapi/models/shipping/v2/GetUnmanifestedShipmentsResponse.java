@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -37,27 +40,36 @@ public class GetUnmanifestedShipmentsResponse {
             "unmanifestedCarrierInformationList";
 
     @SerializedName(SERIALIZED_NAME_UNMANIFESTED_CARRIER_INFORMATION_LIST)
-    private UnmanifestedCarrierInformationList unmanifestedCarrierInformationList = new ArrayList<>();
+    private List<UnmanifestedCarrierInformation> unmanifestedCarrierInformationList = new ArrayList<>();
 
     public GetUnmanifestedShipmentsResponse() {}
 
     public GetUnmanifestedShipmentsResponse unmanifestedCarrierInformationList(
-            UnmanifestedCarrierInformationList unmanifestedCarrierInformationList) {
+            List<UnmanifestedCarrierInformation> unmanifestedCarrierInformationList) {
         this.unmanifestedCarrierInformationList = unmanifestedCarrierInformationList;
         return this;
     }
 
+    public GetUnmanifestedShipmentsResponse addUnmanifestedCarrierInformationListItem(
+            UnmanifestedCarrierInformation unmanifestedCarrierInformationListItem) {
+        if (this.unmanifestedCarrierInformationList == null) {
+            this.unmanifestedCarrierInformationList = new ArrayList<>();
+        }
+        this.unmanifestedCarrierInformationList.add(unmanifestedCarrierInformationListItem);
+        return this;
+    }
+
     /**
-     * Get unmanifestedCarrierInformationList
+     * A list of UnmanifestedCarrierInformation
      *
      * @return unmanifestedCarrierInformationList
      */
-    @javax.annotation.Nullable public UnmanifestedCarrierInformationList getUnmanifestedCarrierInformationList() {
+    @javax.annotation.Nullable public List<UnmanifestedCarrierInformation> getUnmanifestedCarrierInformationList() {
         return unmanifestedCarrierInformationList;
     }
 
     public void setUnmanifestedCarrierInformationList(
-            UnmanifestedCarrierInformationList unmanifestedCarrierInformationList) {
+            List<UnmanifestedCarrierInformation> unmanifestedCarrierInformationList) {
         this.unmanifestedCarrierInformationList = unmanifestedCarrierInformationList;
     }
 
@@ -138,6 +150,26 @@ public class GetUnmanifestedShipmentsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("unmanifestedCarrierInformationList") != null
+                && !jsonObj.get("unmanifestedCarrierInformationList").isJsonNull()) {
+            JsonArray jsonArrayunmanifestedCarrierInformationList =
+                    jsonObj.getAsJsonArray("unmanifestedCarrierInformationList");
+            if (jsonArrayunmanifestedCarrierInformationList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("unmanifestedCarrierInformationList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `unmanifestedCarrierInformationList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("unmanifestedCarrierInformationList").toString()));
+                }
+
+                // validate the optional field `unmanifestedCarrierInformationList` (array)
+                for (int i = 0; i < jsonArrayunmanifestedCarrierInformationList.size(); i++) {
+                    UnmanifestedCarrierInformation.validateJsonElement(
+                            jsonArrayunmanifestedCarrierInformationList.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
