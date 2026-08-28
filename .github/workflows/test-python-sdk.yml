@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - main
+      - selling-partner-api-sdk-v2
 
 permissions:
   contents: read
