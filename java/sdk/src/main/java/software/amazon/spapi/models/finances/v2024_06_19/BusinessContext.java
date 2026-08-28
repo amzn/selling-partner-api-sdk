@@ -12,22 +12,31 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the line of business associated with a transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about the line of business associated with a transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BusinessContext {
     /** The store name associated with the transaction. */
     @JsonAdapter(StoreNameEnum.Adapter.class)
     public enum StoreNameEnum {
-        @SerializedName("AMAZON_HAUL")
         AMAZON_HAUL("AMAZON_HAUL");
 
         private String value;
@@ -45,31 +54,40 @@ public class BusinessContext {
             return String.valueOf(value);
         }
 
-        public static StoreNameEnum fromValue(String input) {
+        public static StoreNameEnum fromValue(String value) {
             for (StoreNameEnum b : StoreNameEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StoreNameEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StoreNameEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StoreNameEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StoreNameEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StoreNameEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StoreNameEnum.fromValue(value);
         }
     }
 
-    @SerializedName("storeName")
-    private StoreNameEnum storeName = null;
+    public static final String SERIALIZED_NAME_STORE_NAME = "storeName";
+
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private StoreNameEnum storeName;
+
+    public BusinessContext() {}
 
     public BusinessContext storeName(StoreNameEnum storeName) {
         this.storeName = storeName;
@@ -81,8 +99,7 @@ public class BusinessContext {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name associated with the transaction.")
-    public StoreNameEnum getStoreName() {
+    @javax.annotation.Nullable public StoreNameEnum getStoreName() {
         return storeName;
     }
 
@@ -91,7 +108,7 @@ public class BusinessContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -117,10 +134,109 @@ public class BusinessContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("storeName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BusinessContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BusinessContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BusinessContext is not found in the empty JSON string",
+                        BusinessContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BusinessContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BusinessContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("storeName") != null && !jsonObj.get("storeName").isJsonNull())
+                && !jsonObj.get("storeName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `storeName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("storeName").toString()));
+        }
+        // validate the optional field `storeName`
+        if (jsonObj.get("storeName") != null && !jsonObj.get("storeName").isJsonNull()) {
+            StoreNameEnum.validateJsonElement(jsonObj.get("storeName"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BusinessContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BusinessContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BusinessContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BusinessContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BusinessContext>() {
+                        @Override
+                        public void write(JsonWriter out, BusinessContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BusinessContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BusinessContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BusinessContext
+     * @throws IOException if the JSON string is invalid with respect to BusinessContext
+     */
+    public static BusinessContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BusinessContext.class);
+    }
+
+    /**
+     * Convert an instance of BusinessContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

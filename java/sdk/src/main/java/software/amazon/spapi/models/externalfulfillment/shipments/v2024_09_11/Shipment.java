@@ -12,65 +12,92 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Shipment {
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("locationId")
-    private String locationId = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("marketplaceAttributes")
-    private MarketplaceAttributes marketplaceAttributes = null;
+    public static final String SERIALIZED_NAME_LOCATION_ID = "locationId";
 
-    @SerializedName("shipmentInfo")
-    private ShipmentInfo shipmentInfo = null;
+    @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    private String locationId;
 
-    @SerializedName("invoiceInfo")
-    private InvoiceInfo invoiceInfo = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ATTRIBUTES = "marketplaceAttributes";
 
-    @SerializedName("partyInfoList")
-    private PartyIdentificationInfoList partyInfoList = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ATTRIBUTES)
+    private MarketplaceAttributes marketplaceAttributes;
 
-    @SerializedName("shipmentRequirements")
-    private ShipmentRequirements shipmentRequirements = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_INFO = "shipmentInfo";
 
-    @SerializedName("charges")
-    private Charges charges = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_INFO)
+    private ShipmentInfo shipmentInfo;
+
+    public static final String SERIALIZED_NAME_INVOICE_INFO = "invoiceInfo";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_INFO)
+    private InvoiceInfo invoiceInfo;
+
+    public static final String SERIALIZED_NAME_PARTY_INFO_LIST = "partyInfoList";
+
+    @SerializedName(SERIALIZED_NAME_PARTY_INFO_LIST)
+    private List<PartyIdentificationInfo> partyInfoList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_REQUIREMENTS = "shipmentRequirements";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_REQUIREMENTS)
+    private ShipmentRequirements shipmentRequirements;
+
+    public static final String SERIALIZED_NAME_CHARGES = "charges";
+
+    @SerializedName(SERIALIZED_NAME_CHARGES)
+    private List<Charge> charges = new ArrayList<>();
 
     /** The current status of the shipment. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("CREATED")
         CREATED("CREATED"),
-        @SerializedName("ACCEPTED")
+
         ACCEPTED("ACCEPTED"),
-        @SerializedName("CONFIRMED")
+
         CONFIRMED("CONFIRMED"),
-        @SerializedName("PACKAGE_CREATED")
+
         PACKAGE_CREATED("PACKAGE_CREATED"),
-        @SerializedName("PICKUP_SLOT_RETRIEVED")
+
         PICKUP_SLOT_RETRIEVED("PICKUP_SLOT_RETRIEVED"),
-        @SerializedName("INVOICE_GENERATED")
+
         INVOICE_GENERATED("INVOICE_GENERATED"),
-        @SerializedName("SHIPLABEL_GENERATED")
+
         SHIPLABEL_GENERATED("SHIPLABEL_GENERATED"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED"),
-        @SerializedName("SHIPPED")
+
         SHIPPED("SHIPPED"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED");
 
         private String value;
@@ -88,62 +115,68 @@ public class Shipment {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
 
     /** The sub status of the shipment. */
     @JsonAdapter(SubStatusEnum.Adapter.class)
     public enum SubStatusEnum {
-        @SerializedName("PENDING_SCHEDULE")
         PENDING_SCHEDULE("PENDING_SCHEDULE"),
-        @SerializedName("PENDING_PICKUP")
+
         PENDING_PICKUP("PENDING_PICKUP"),
-        @SerializedName("PENDING_DROP_OFF")
+
         PENDING_DROP_OFF("PENDING_DROP_OFF"),
-        @SerializedName("LABEL_CANCELED")
+
         LABEL_CANCELED("LABEL_CANCELED"),
-        @SerializedName("PICKED_UP")
+
         PICKED_UP("PICKED_UP"),
-        @SerializedName("DROPPED_OFF")
+
         DROPPED_OFF("DROPPED_OFF"),
-        @SerializedName("AT_ORIGIN_FC")
+
         AT_ORIGIN_FC("AT_ORIGIN_FC"),
-        @SerializedName("AT_DESTINATION_FC")
+
         AT_DESTINATION_FC("AT_DESTINATION_FC"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED"),
-        @SerializedName("NOT_DELIVERED")
+
         NOT_DELIVERED("NOT_DELIVERED"),
-        @SerializedName("UNDELIVERABLE")
+
         UNDELIVERABLE("UNDELIVERABLE"),
-        @SerializedName("LOST")
+
         LOST("LOST"),
-        @SerializedName("OUT_FOR_DELIVERY")
+
         OUT_FOR_DELIVERY("OUT_FOR_DELIVERY"),
-        @SerializedName("DAMAGED")
+
         DAMAGED("DAMAGED");
 
         private String value;
@@ -161,52 +194,75 @@ public class Shipment {
             return String.valueOf(value);
         }
 
-        public static SubStatusEnum fromValue(String input) {
+        public static SubStatusEnum fromValue(String value) {
             for (SubStatusEnum b : SubStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SubStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SubStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SubStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SubStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SubStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SubStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("subStatus")
-    private SubStatusEnum subStatus = null;
+    public static final String SERIALIZED_NAME_SUB_STATUS = "subStatus";
 
-    @SerializedName("reason")
-    private String reason = null;
+    @SerializedName(SERIALIZED_NAME_SUB_STATUS)
+    private SubStatusEnum subStatus;
 
-    @SerializedName("lineItems")
-    private List<ShipmentLineItem> lineItems = null;
+    public static final String SERIALIZED_NAME_REASON = "reason";
 
-    @SerializedName("shippingInfo")
-    private ShippingInfo shippingInfo = null;
+    @SerializedName(SERIALIZED_NAME_REASON)
+    private String reason;
 
-    @SerializedName("packages")
-    private List<ModelPackage> packages = null;
+    public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
 
-    @SerializedName("creationDateTime")
-    private String creationDateTime = null;
+    @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
+    private List<ShipmentLineItem> lineItems = new ArrayList<>();
 
-    @SerializedName("lastUpdatedDateTime")
-    private String lastUpdatedDateTime = null;
+    public static final String SERIALIZED_NAME_SHIPPING_INFO = "shippingInfo";
 
-    @SerializedName("earliestPackDateTime")
-    private String earliestPackDateTime = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_INFO)
+    private ShippingInfo shippingInfo;
+
+    public static final String SERIALIZED_NAME_PACKAGES = "packages";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGES)
+    private List<ModelPackage> packages = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CREATION_DATE_TIME = "creationDateTime";
+
+    @SerializedName(SERIALIZED_NAME_CREATION_DATE_TIME)
+    private String creationDateTime;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE_TIME = "lastUpdatedDateTime";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE_TIME)
+    private String lastUpdatedDateTime;
+
+    public static final String SERIALIZED_NAME_EARLIEST_PACK_DATE_TIME = "earliestPackDateTime";
+
+    @SerializedName(SERIALIZED_NAME_EARLIEST_PACK_DATE_TIME)
+    private String earliestPackDateTime;
+
+    public Shipment() {}
 
     public Shipment id(String id) {
         this.id = id;
@@ -218,7 +274,7 @@ public class Shipment {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The shipment's ID.")
+    @javax.annotation.Nonnull
     public String getId() {
         return id;
     }
@@ -238,10 +294,7 @@ public class Shipment {
      *
      * @return locationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The location identifier of the seller's location in the marketplace channel to which the shipment has been created for fulfillment.")
+    @javax.annotation.Nonnull
     public String getLocationId() {
         return locationId;
     }
@@ -260,7 +313,7 @@ public class Shipment {
      *
      * @return marketplaceAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }
@@ -279,7 +332,7 @@ public class Shipment {
      *
      * @return shipmentInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentInfo getShipmentInfo() {
         return shipmentInfo;
     }
@@ -298,8 +351,7 @@ public class Shipment {
      *
      * @return invoiceInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InvoiceInfo getInvoiceInfo() {
+    @javax.annotation.Nullable public InvoiceInfo getInvoiceInfo() {
         return invoiceInfo;
     }
 
@@ -307,22 +359,30 @@ public class Shipment {
         this.invoiceInfo = invoiceInfo;
     }
 
-    public Shipment partyInfoList(PartyIdentificationInfoList partyInfoList) {
+    public Shipment partyInfoList(List<PartyIdentificationInfo> partyInfoList) {
         this.partyInfoList = partyInfoList;
         return this;
     }
 
+    public Shipment addPartyInfoListItem(PartyIdentificationInfo partyInfoListItem) {
+        if (this.partyInfoList == null) {
+            this.partyInfoList = new ArrayList<>();
+        }
+        this.partyInfoList.add(partyInfoListItem);
+        return this;
+    }
+
     /**
-     * Get partyInfoList
+     * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for
+     * direct-fulfillment sellers.
      *
      * @return partyInfoList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentificationInfoList getPartyInfoList() {
+    @javax.annotation.Nullable public List<PartyIdentificationInfo> getPartyInfoList() {
         return partyInfoList;
     }
 
-    public void setPartyInfoList(PartyIdentificationInfoList partyInfoList) {
+    public void setPartyInfoList(List<PartyIdentificationInfo> partyInfoList) {
         this.partyInfoList = partyInfoList;
     }
 
@@ -336,7 +396,7 @@ public class Shipment {
      *
      * @return shipmentRequirements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentRequirements getShipmentRequirements() {
         return shipmentRequirements;
     }
@@ -345,22 +405,30 @@ public class Shipment {
         this.shipmentRequirements = shipmentRequirements;
     }
 
-    public Shipment charges(Charges charges) {
+    public Shipment charges(List<Charge> charges) {
         this.charges = charges;
         return this;
     }
 
+    public Shipment addChargesItem(Charge chargesItem) {
+        if (this.charges == null) {
+            this.charges = new ArrayList<>();
+        }
+        this.charges.add(chargesItem);
+        return this;
+    }
+
     /**
-     * Get charges
+     * The charges associated with the shipment.
      *
      * @return charges
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public Charges getCharges() {
+    @javax.annotation.Nonnull
+    public List<Charge> getCharges() {
         return charges;
     }
 
-    public void setCharges(Charges charges) {
+    public void setCharges(List<Charge> charges) {
         this.charges = charges;
     }
 
@@ -374,7 +442,7 @@ public class Shipment {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current status of the shipment.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         return status;
     }
@@ -393,8 +461,7 @@ public class Shipment {
      *
      * @return subStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The sub status of the shipment.")
-    public SubStatusEnum getSubStatus() {
+    @javax.annotation.Nullable public SubStatusEnum getSubStatus() {
         return subStatus;
     }
 
@@ -412,8 +479,7 @@ public class Shipment {
      *
      * @return reason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the sub-status.")
-    public String getReason() {
+    @javax.annotation.Nullable public String getReason() {
         return reason;
     }
 
@@ -439,7 +505,7 @@ public class Shipment {
      *
      * @return lineItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The line items in the shipment.")
+    @javax.annotation.Nonnull
     public List<ShipmentLineItem> getLineItems() {
         return lineItems;
     }
@@ -458,7 +524,7 @@ public class Shipment {
      *
      * @return shippingInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingInfo getShippingInfo() {
         return shippingInfo;
     }
@@ -485,8 +551,7 @@ public class Shipment {
      *
      * @return packages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of packages in the shipment.")
-    public List<ModelPackage> getPackages() {
+    @javax.annotation.Nullable public List<ModelPackage> getPackages() {
         return packages;
     }
 
@@ -504,10 +569,7 @@ public class Shipment {
      *
      * @return creationDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public String getCreationDateTime() {
         return creationDateTime;
     }
@@ -526,10 +588,7 @@ public class Shipment {
      *
      * @return lastUpdatedDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public String getLastUpdatedDateTime() {
         return lastUpdatedDateTime;
     }
@@ -548,10 +607,7 @@ public class Shipment {
      *
      * @return earliestPackDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getEarliestPackDateTime() {
+    @javax.annotation.Nullable public String getEarliestPackDateTime() {
         return earliestPackDateTime;
     }
 
@@ -560,7 +616,7 @@ public class Shipment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -645,10 +701,257 @@ public class Shipment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("id");
+        openapiFields.add("locationId");
+        openapiFields.add("marketplaceAttributes");
+        openapiFields.add("shipmentInfo");
+        openapiFields.add("invoiceInfo");
+        openapiFields.add("partyInfoList");
+        openapiFields.add("shipmentRequirements");
+        openapiFields.add("charges");
+        openapiFields.add("status");
+        openapiFields.add("subStatus");
+        openapiFields.add("reason");
+        openapiFields.add("lineItems");
+        openapiFields.add("shippingInfo");
+        openapiFields.add("packages");
+        openapiFields.add("creationDateTime");
+        openapiFields.add("lastUpdatedDateTime");
+        openapiFields.add("earliestPackDateTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("locationId");
+        openapiRequiredFields.add("marketplaceAttributes");
+        openapiRequiredFields.add("shipmentInfo");
+        openapiRequiredFields.add("shipmentRequirements");
+        openapiRequiredFields.add("charges");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("lineItems");
+        openapiRequiredFields.add("shippingInfo");
+        openapiRequiredFields.add("creationDateTime");
+        openapiRequiredFields.add("lastUpdatedDateTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Shipment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Shipment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Shipment is not found in the empty JSON string",
+                        Shipment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Shipment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Shipment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Shipment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if (!jsonObj.get("locationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `locationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("locationId").toString()));
+        }
+        // validate the required field `marketplaceAttributes`
+        MarketplaceAttributes.validateJsonElement(jsonObj.get("marketplaceAttributes"));
+        // validate the required field `shipmentInfo`
+        ShipmentInfo.validateJsonElement(jsonObj.get("shipmentInfo"));
+        // validate the optional field `invoiceInfo`
+        if (jsonObj.get("invoiceInfo") != null && !jsonObj.get("invoiceInfo").isJsonNull()) {
+            InvoiceInfo.validateJsonElement(jsonObj.get("invoiceInfo"));
+        }
+        if (jsonObj.get("partyInfoList") != null
+                && !jsonObj.get("partyInfoList").isJsonNull()) {
+            JsonArray jsonArraypartyInfoList = jsonObj.getAsJsonArray("partyInfoList");
+            if (jsonArraypartyInfoList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("partyInfoList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `partyInfoList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("partyInfoList").toString()));
+                }
+
+                // validate the optional field `partyInfoList` (array)
+                for (int i = 0; i < jsonArraypartyInfoList.size(); i++) {
+                    PartyIdentificationInfo.validateJsonElement(jsonArraypartyInfoList.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `shipmentRequirements`
+        ShipmentRequirements.validateJsonElement(jsonObj.get("shipmentRequirements"));
+        // ensure the json data is an array
+        if (!jsonObj.get("charges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `charges` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("charges").toString()));
+        }
+
+        JsonArray jsonArraycharges = jsonObj.getAsJsonArray("charges");
+        // validate the required field `charges` (array)
+        for (int i = 0; i < jsonArraycharges.size(); i++) {
+            Charge.validateJsonElement(jsonArraycharges.get(i));
+        }
+        ;
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
+        if ((jsonObj.get("subStatus") != null && !jsonObj.get("subStatus").isJsonNull())
+                && !jsonObj.get("subStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `subStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("subStatus").toString()));
+        }
+        // validate the optional field `subStatus`
+        if (jsonObj.get("subStatus") != null && !jsonObj.get("subStatus").isJsonNull()) {
+            SubStatusEnum.validateJsonElement(jsonObj.get("subStatus"));
+        }
+        if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull())
+                && !jsonObj.get("reason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reason").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("lineItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("lineItems").toString()));
+        }
+
+        JsonArray jsonArraylineItems = jsonObj.getAsJsonArray("lineItems");
+        // validate the required field `lineItems` (array)
+        for (int i = 0; i < jsonArraylineItems.size(); i++) {
+            ShipmentLineItem.validateJsonElement(jsonArraylineItems.get(i));
+        }
+        ;
+        // validate the required field `shippingInfo`
+        ShippingInfo.validateJsonElement(jsonObj.get("shippingInfo"));
+        if (jsonObj.get("packages") != null && !jsonObj.get("packages").isJsonNull()) {
+            JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+            if (jsonArraypackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packages").toString()));
+                }
+
+                // validate the optional field `packages` (array)
+                for (int i = 0; i < jsonArraypackages.size(); i++) {
+                    ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("creationDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `creationDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("creationDateTime").toString()));
+        }
+        if (!jsonObj.get("lastUpdatedDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lastUpdatedDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lastUpdatedDateTime").toString()));
+        }
+        if ((jsonObj.get("earliestPackDateTime") != null
+                        && !jsonObj.get("earliestPackDateTime").isJsonNull())
+                && !jsonObj.get("earliestPackDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `earliestPackDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("earliestPackDateTime").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Shipment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Shipment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Shipment> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Shipment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Shipment>() {
+                        @Override
+                        public void write(JsonWriter out, Shipment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Shipment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Shipment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Shipment
+     * @throws IOException if the JSON string is invalid with respect to Shipment
+     */
+    public static Shipment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Shipment.class);
+    }
+
+    /**
+     * Convert an instance of Shipment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

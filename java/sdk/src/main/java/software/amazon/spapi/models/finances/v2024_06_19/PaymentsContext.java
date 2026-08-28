@@ -12,25 +12,49 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information related to payments-related transactions. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Additional information related to payments-related transactions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PaymentsContext {
-    @SerializedName("paymentType")
-    private String paymentType = null;
+    public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
 
-    @SerializedName("paymentMethod")
-    private String paymentMethod = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_TYPE)
+    private String paymentType;
 
-    @SerializedName("paymentReference")
-    private String paymentReference = null;
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
 
-    @SerializedName("paymentDate")
-    private OffsetDateTime paymentDate = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
+    private String paymentMethod;
+
+    public static final String SERIALIZED_NAME_PAYMENT_REFERENCE = "paymentReference";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_REFERENCE)
+    private String paymentReference;
+
+    public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+    private OffsetDateTime paymentDate;
+
+    public PaymentsContext() {}
 
     public PaymentsContext paymentType(String paymentType) {
         this.paymentType = paymentType;
@@ -42,8 +66,7 @@ public class PaymentsContext {
      *
      * @return paymentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.")
-    public String getPaymentType() {
+    @javax.annotation.Nullable public String getPaymentType() {
         return paymentType;
     }
 
@@ -61,8 +84,7 @@ public class PaymentsContext {
      *
      * @return paymentMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The method of payment.")
-    public String getPaymentMethod() {
+    @javax.annotation.Nullable public String getPaymentMethod() {
         return paymentMethod;
     }
 
@@ -80,8 +102,7 @@ public class PaymentsContext {
      *
      * @return paymentReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reference number of the payment.")
-    public String getPaymentReference() {
+    @javax.annotation.Nullable public String getPaymentReference() {
         return paymentReference;
     }
 
@@ -99,10 +120,7 @@ public class PaymentsContext {
      *
      * @return paymentDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPaymentDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPaymentDate() {
         return paymentDate;
     }
 
@@ -111,7 +129,7 @@ public class PaymentsContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +163,122 @@ public class PaymentsContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("paymentType");
+        openapiFields.add("paymentMethod");
+        openapiFields.add("paymentReference");
+        openapiFields.add("paymentDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PaymentsContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PaymentsContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PaymentsContext is not found in the empty JSON string",
+                        PaymentsContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PaymentsContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PaymentsContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonNull())
+                && !jsonObj.get("paymentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentType").toString()));
+        }
+        if ((jsonObj.get("paymentMethod") != null
+                        && !jsonObj.get("paymentMethod").isJsonNull())
+                && !jsonObj.get("paymentMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentMethod").toString()));
+        }
+        if ((jsonObj.get("paymentReference") != null
+                        && !jsonObj.get("paymentReference").isJsonNull())
+                && !jsonObj.get("paymentReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentReference").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PaymentsContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PaymentsContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PaymentsContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PaymentsContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PaymentsContext>() {
+                        @Override
+                        public void write(JsonWriter out, PaymentsContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PaymentsContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PaymentsContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PaymentsContext
+     * @throws IOException if the JSON string is invalid with respect to PaymentsContext
+     */
+    public static PaymentsContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PaymentsContext.class);
+    }
+
+    /**
+     * Convert an instance of PaymentsContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

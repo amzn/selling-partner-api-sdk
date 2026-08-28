@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Payment information for the service job. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Payment information for the service job.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Payment {
-    @SerializedName("amount")
-    private MoneyAmount amount = null;
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
 
-    @SerializedName("instrument")
-    private String instrument = null;
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private MoneyAmount amount;
+
+    public static final String SERIALIZED_NAME_INSTRUMENT = "instrument";
+
+    @SerializedName(SERIALIZED_NAME_INSTRUMENT)
+    private String instrument;
+
+    public Payment() {}
 
     public Payment amount(MoneyAmount amount) {
         this.amount = amount;
@@ -34,8 +55,7 @@ public class Payment {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyAmount getAmount() {
+    @javax.annotation.Nullable public MoneyAmount getAmount() {
         return amount;
     }
 
@@ -53,8 +73,7 @@ public class Payment {
      *
      * @return instrument
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment instrument used for the transaction.")
-    public String getInstrument() {
+    @javax.annotation.Nullable public String getInstrument() {
         return instrument;
     }
 
@@ -63,7 +82,7 @@ public class Payment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -90,10 +109,109 @@ public class Payment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amount");
+        openapiFields.add("instrument");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Payment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Payment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Payment is not found in the empty JSON string",
+                        Payment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Payment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Payment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `amount`
+        if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+            MoneyAmount.validateJsonElement(jsonObj.get("amount"));
+        }
+        if ((jsonObj.get("instrument") != null && !jsonObj.get("instrument").isJsonNull())
+                && !jsonObj.get("instrument").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `instrument` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("instrument").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Payment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Payment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Payment> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Payment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Payment>() {
+                        @Override
+                        public void write(JsonWriter out, Payment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Payment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Payment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Payment
+     * @throws IOException if the JSON string is invalid with respect to Payment
+     */
+    public static Payment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Payment.class);
+    }
+
+    /**
+     * Convert an instance of Payment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

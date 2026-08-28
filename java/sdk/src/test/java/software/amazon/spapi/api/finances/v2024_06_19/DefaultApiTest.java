@@ -27,7 +27,6 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.ListBalancesResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.ListTransactionsResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.SummaryResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class DefaultApiTest {
 
@@ -45,10 +44,8 @@ public class DefaultApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void listBalancesTest() throws Exception {

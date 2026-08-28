@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The type of fee on the transaction. */
 @JsonAdapter(FeeType.Adapter.class)
 public enum FeeType {
-    @SerializedName("MISCELLANEOUS_FEE")
     MISCELLANEOUS_FEE("MISCELLANEOUS_FEE"),
 
-    @SerializedName("TAX")
     TAX("TAX"),
 
-    @SerializedName("TRANSACTION_FEE")
     TRANSACTION_FEE("TRANSACTION_FEE");
 
     private String value;
@@ -46,25 +43,30 @@ public enum FeeType {
         return String.valueOf(value);
     }
 
-    public static FeeType fromValue(String input) {
+    public static FeeType fromValue(String value) {
         for (FeeType b : FeeType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FeeType> {
         @Override
         public void write(final JsonWriter jsonWriter, final FeeType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public FeeType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return FeeType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return FeeType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        FeeType.fromValue(value);
     }
 }

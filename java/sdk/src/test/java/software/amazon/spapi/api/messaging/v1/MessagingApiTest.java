@@ -45,7 +45,6 @@ import software.amazon.spapi.models.messaging.v1.GetAttributesResponse;
 import software.amazon.spapi.models.messaging.v1.GetMessagingActionsForOrderResponse;
 import software.amazon.spapi.models.messaging.v1.InvoiceRequest;
 import software.amazon.spapi.models.messaging.v1.InvoiceResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class MessagingApiTest {
 
@@ -63,10 +62,8 @@ public class MessagingApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void confirmCustomizationDetailsTest() throws Exception {

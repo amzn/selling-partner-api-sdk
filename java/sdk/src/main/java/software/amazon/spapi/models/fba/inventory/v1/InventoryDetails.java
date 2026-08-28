@@ -12,34 +12,63 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Summarized inventory details. This object will not appear if the details parameter in the request is false. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Summarized inventory details. This object will not appear if the details parameter in the request is false.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventoryDetails {
-    @SerializedName("fulfillableQuantity")
-    private Integer fulfillableQuantity = null;
+    public static final String SERIALIZED_NAME_FULFILLABLE_QUANTITY = "fulfillableQuantity";
 
-    @SerializedName("inboundWorkingQuantity")
-    private Integer inboundWorkingQuantity = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLABLE_QUANTITY)
+    private Integer fulfillableQuantity;
 
-    @SerializedName("inboundShippedQuantity")
-    private Integer inboundShippedQuantity = null;
+    public static final String SERIALIZED_NAME_INBOUND_WORKING_QUANTITY = "inboundWorkingQuantity";
 
-    @SerializedName("inboundReceivingQuantity")
-    private Integer inboundReceivingQuantity = null;
+    @SerializedName(SERIALIZED_NAME_INBOUND_WORKING_QUANTITY)
+    private Integer inboundWorkingQuantity;
 
-    @SerializedName("reservedQuantity")
-    private ReservedQuantity reservedQuantity = null;
+    public static final String SERIALIZED_NAME_INBOUND_SHIPPED_QUANTITY = "inboundShippedQuantity";
 
-    @SerializedName("researchingQuantity")
-    private ResearchingQuantity researchingQuantity = null;
+    @SerializedName(SERIALIZED_NAME_INBOUND_SHIPPED_QUANTITY)
+    private Integer inboundShippedQuantity;
 
-    @SerializedName("unfulfillableQuantity")
-    private UnfulfillableQuantity unfulfillableQuantity = null;
+    public static final String SERIALIZED_NAME_INBOUND_RECEIVING_QUANTITY = "inboundReceivingQuantity";
+
+    @SerializedName(SERIALIZED_NAME_INBOUND_RECEIVING_QUANTITY)
+    private Integer inboundReceivingQuantity;
+
+    public static final String SERIALIZED_NAME_RESERVED_QUANTITY = "reservedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_RESERVED_QUANTITY)
+    private ReservedQuantity reservedQuantity;
+
+    public static final String SERIALIZED_NAME_RESEARCHING_QUANTITY = "researchingQuantity";
+
+    @SerializedName(SERIALIZED_NAME_RESEARCHING_QUANTITY)
+    private ResearchingQuantity researchingQuantity;
+
+    public static final String SERIALIZED_NAME_UNFULFILLABLE_QUANTITY = "unfulfillableQuantity";
+
+    @SerializedName(SERIALIZED_NAME_UNFULFILLABLE_QUANTITY)
+    private UnfulfillableQuantity unfulfillableQuantity;
+
+    public InventoryDetails() {}
 
     public InventoryDetails fulfillableQuantity(Integer fulfillableQuantity) {
         this.fulfillableQuantity = fulfillableQuantity;
@@ -51,9 +80,7 @@ public class InventoryDetails {
      *
      * @return fulfillableQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The item quantity that can be picked, packed, and shipped.")
-    public Integer getFulfillableQuantity() {
+    @javax.annotation.Nullable public Integer getFulfillableQuantity() {
         return fulfillableQuantity;
     }
 
@@ -71,9 +98,7 @@ public class InventoryDetails {
      *
      * @return inboundWorkingQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of units in an inbound shipment for which you have notified Amazon.")
-    public Integer getInboundWorkingQuantity() {
+    @javax.annotation.Nullable public Integer getInboundWorkingQuantity() {
         return inboundWorkingQuantity;
     }
 
@@ -92,10 +117,7 @@ public class InventoryDetails {
      *
      * @return inboundShippedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.")
-    public Integer getInboundShippedQuantity() {
+    @javax.annotation.Nullable public Integer getInboundShippedQuantity() {
         return inboundShippedQuantity;
     }
 
@@ -114,10 +136,7 @@ public class InventoryDetails {
      *
      * @return inboundReceivingQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.")
-    public Integer getInboundReceivingQuantity() {
+    @javax.annotation.Nullable public Integer getInboundReceivingQuantity() {
         return inboundReceivingQuantity;
     }
 
@@ -135,8 +154,7 @@ public class InventoryDetails {
      *
      * @return reservedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReservedQuantity getReservedQuantity() {
+    @javax.annotation.Nullable public ReservedQuantity getReservedQuantity() {
         return reservedQuantity;
     }
 
@@ -154,8 +172,7 @@ public class InventoryDetails {
      *
      * @return researchingQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ResearchingQuantity getResearchingQuantity() {
+    @javax.annotation.Nullable public ResearchingQuantity getResearchingQuantity() {
         return researchingQuantity;
     }
 
@@ -173,8 +190,7 @@ public class InventoryDetails {
      *
      * @return unfulfillableQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public UnfulfillableQuantity getUnfulfillableQuantity() {
+    @javax.annotation.Nullable public UnfulfillableQuantity getUnfulfillableQuantity() {
         return unfulfillableQuantity;
     }
 
@@ -183,7 +199,7 @@ public class InventoryDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -242,10 +258,120 @@ public class InventoryDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fulfillableQuantity");
+        openapiFields.add("inboundWorkingQuantity");
+        openapiFields.add("inboundShippedQuantity");
+        openapiFields.add("inboundReceivingQuantity");
+        openapiFields.add("reservedQuantity");
+        openapiFields.add("researchingQuantity");
+        openapiFields.add("unfulfillableQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventoryDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventoryDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventoryDetails is not found in the empty JSON string",
+                        InventoryDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventoryDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventoryDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `reservedQuantity`
+        if (jsonObj.get("reservedQuantity") != null
+                && !jsonObj.get("reservedQuantity").isJsonNull()) {
+            ReservedQuantity.validateJsonElement(jsonObj.get("reservedQuantity"));
+        }
+        // validate the optional field `researchingQuantity`
+        if (jsonObj.get("researchingQuantity") != null
+                && !jsonObj.get("researchingQuantity").isJsonNull()) {
+            ResearchingQuantity.validateJsonElement(jsonObj.get("researchingQuantity"));
+        }
+        // validate the optional field `unfulfillableQuantity`
+        if (jsonObj.get("unfulfillableQuantity") != null
+                && !jsonObj.get("unfulfillableQuantity").isJsonNull()) {
+            UnfulfillableQuantity.validateJsonElement(jsonObj.get("unfulfillableQuantity"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventoryDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventoryDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventoryDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventoryDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventoryDetails>() {
+                        @Override
+                        public void write(JsonWriter out, InventoryDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventoryDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventoryDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventoryDetails
+     * @throws IOException if the JSON string is invalid with respect to InventoryDetails
+     */
+    public static InventoryDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventoryDetails.class);
+    }
+
+    /**
+     * Convert an instance of InventoryDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

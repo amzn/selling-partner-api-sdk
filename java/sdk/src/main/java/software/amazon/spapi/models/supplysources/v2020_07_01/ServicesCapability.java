@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The services capability of a supply source. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The services capability of a supply source.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServicesCapability {
-    @SerializedName("isSupported")
-    private Boolean isSupported = null;
+    public static final String SERIALIZED_NAME_IS_SUPPORTED = "isSupported";
 
-    @SerializedName("operationalConfiguration")
-    private OperationalConfiguration operationalConfiguration = null;
+    @SerializedName(SERIALIZED_NAME_IS_SUPPORTED)
+    private Boolean isSupported;
+
+    public static final String SERIALIZED_NAME_OPERATIONAL_CONFIGURATION = "operationalConfiguration";
+
+    @SerializedName(SERIALIZED_NAME_OPERATIONAL_CONFIGURATION)
+    private OperationalConfiguration operationalConfiguration;
+
+    public ServicesCapability() {}
 
     public ServicesCapability isSupported(Boolean isSupported) {
         this.isSupported = isSupported;
@@ -34,9 +55,7 @@ public class ServicesCapability {
      *
      * @return isSupported
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, `SupplySource` supports the Service capability.")
-    public Boolean getIsSupported() {
+    @javax.annotation.Nullable public Boolean getIsSupported() {
         return isSupported;
     }
 
@@ -54,8 +73,7 @@ public class ServicesCapability {
      *
      * @return operationalConfiguration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperationalConfiguration getOperationalConfiguration() {
+    @javax.annotation.Nullable public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }
 
@@ -64,7 +82,7 @@ public class ServicesCapability {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,105 @@ public class ServicesCapability {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("isSupported");
+        openapiFields.add("operationalConfiguration");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServicesCapability
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServicesCapability.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServicesCapability is not found in the empty JSON string",
+                        ServicesCapability.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServicesCapability.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServicesCapability` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `operationalConfiguration`
+        if (jsonObj.get("operationalConfiguration") != null
+                && !jsonObj.get("operationalConfiguration").isJsonNull()) {
+            OperationalConfiguration.validateJsonElement(jsonObj.get("operationalConfiguration"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServicesCapability.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServicesCapability' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServicesCapability> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ServicesCapability.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServicesCapability>() {
+                        @Override
+                        public void write(JsonWriter out, ServicesCapability value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServicesCapability read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServicesCapability given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServicesCapability
+     * @throws IOException if the JSON string is invalid with respect to ServicesCapability
+     */
+    public static ServicesCapability fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServicesCapability.class);
+    }
+
+    /**
+     * Convert an instance of ServicesCapability to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

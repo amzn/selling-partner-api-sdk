@@ -12,29 +12,61 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The type of fee, fee amount, and other details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The type of fee, fee amount, and other details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeeDetail {
-    @SerializedName("FeeType")
-    private String feeType = null;
+    public static final String SERIALIZED_NAME_FEE_TYPE = "FeeType";
 
-    @SerializedName("FeeAmount")
-    private MoneyType feeAmount = null;
+    @SerializedName(SERIALIZED_NAME_FEE_TYPE)
+    private String feeType;
 
-    @SerializedName("FeePromotion")
-    private MoneyType feePromotion = null;
+    public static final String SERIALIZED_NAME_FEE_AMOUNT = "FeeAmount";
 
-    @SerializedName("TaxAmount")
-    private MoneyType taxAmount = null;
+    @SerializedName(SERIALIZED_NAME_FEE_AMOUNT)
+    private MoneyType feeAmount;
 
-    @SerializedName("FinalFee")
-    private MoneyType finalFee = null;
+    public static final String SERIALIZED_NAME_FEE_PROMOTION = "FeePromotion";
 
-    @SerializedName("IncludedFeeDetailList")
-    private IncludedFeeDetailList includedFeeDetailList = null;
+    @SerializedName(SERIALIZED_NAME_FEE_PROMOTION)
+    private MoneyType feePromotion;
+
+    public static final String SERIALIZED_NAME_TAX_AMOUNT = "TaxAmount";
+
+    @SerializedName(SERIALIZED_NAME_TAX_AMOUNT)
+    private MoneyType taxAmount;
+
+    public static final String SERIALIZED_NAME_FINAL_FEE = "FinalFee";
+
+    @SerializedName(SERIALIZED_NAME_FINAL_FEE)
+    private MoneyType finalFee;
+
+    public static final String SERIALIZED_NAME_INCLUDED_FEE_DETAIL_LIST = "IncludedFeeDetailList";
+
+    @SerializedName(SERIALIZED_NAME_INCLUDED_FEE_DETAIL_LIST)
+    private List<IncludedFeeDetail> includedFeeDetailList = new ArrayList<>();
+
+    public FeeDetail() {}
 
     public FeeDetail feeType(String feeType) {
         this.feeType = feeType;
@@ -46,7 +78,7 @@ public class FeeDetail {
      *
      * @return feeType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of fee charged to a seller.")
+    @javax.annotation.Nonnull
     public String getFeeType() {
         return feeType;
     }
@@ -65,7 +97,7 @@ public class FeeDetail {
      *
      * @return feeAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getFeeAmount() {
         return feeAmount;
     }
@@ -84,8 +116,7 @@ public class FeeDetail {
      *
      * @return feePromotion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getFeePromotion() {
+    @javax.annotation.Nullable public MoneyType getFeePromotion() {
         return feePromotion;
     }
 
@@ -103,8 +134,7 @@ public class FeeDetail {
      *
      * @return taxAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getTaxAmount() {
+    @javax.annotation.Nullable public MoneyType getTaxAmount() {
         return taxAmount;
     }
 
@@ -122,7 +152,7 @@ public class FeeDetail {
      *
      * @return finalFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getFinalFee() {
         return finalFee;
     }
@@ -131,27 +161,34 @@ public class FeeDetail {
         this.finalFee = finalFee;
     }
 
-    public FeeDetail includedFeeDetailList(IncludedFeeDetailList includedFeeDetailList) {
+    public FeeDetail includedFeeDetailList(List<IncludedFeeDetail> includedFeeDetailList) {
         this.includedFeeDetailList = includedFeeDetailList;
         return this;
     }
 
+    public FeeDetail addIncludedFeeDetailListItem(IncludedFeeDetail includedFeeDetailListItem) {
+        if (this.includedFeeDetailList == null) {
+            this.includedFeeDetailList = new ArrayList<>();
+        }
+        this.includedFeeDetailList.add(includedFeeDetailListItem);
+        return this;
+    }
+
     /**
-     * Get includedFeeDetailList
+     * A list of other fees that contribute to a given fee.
      *
      * @return includedFeeDetailList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public IncludedFeeDetailList getIncludedFeeDetailList() {
+    @javax.annotation.Nullable public List<IncludedFeeDetail> getIncludedFeeDetailList() {
         return includedFeeDetailList;
     }
 
-    public void setIncludedFeeDetailList(IncludedFeeDetailList includedFeeDetailList) {
+    public void setIncludedFeeDetailList(List<IncludedFeeDetail> includedFeeDetailList) {
         this.includedFeeDetailList = includedFeeDetailList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,10 +226,150 @@ public class FeeDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("FeeType");
+        openapiFields.add("FeeAmount");
+        openapiFields.add("FeePromotion");
+        openapiFields.add("TaxAmount");
+        openapiFields.add("FinalFee");
+        openapiFields.add("IncludedFeeDetailList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("FeeType");
+        openapiRequiredFields.add("FeeAmount");
+        openapiRequiredFields.add("FinalFee");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeeDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeeDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeeDetail is not found in the empty JSON string",
+                        FeeDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeeDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeeDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeeDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("FeeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FeeType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FeeType").toString()));
+        }
+        // validate the required field `FeeAmount`
+        MoneyType.validateJsonElement(jsonObj.get("FeeAmount"));
+        // validate the optional field `FeePromotion`
+        if (jsonObj.get("FeePromotion") != null && !jsonObj.get("FeePromotion").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("FeePromotion"));
+        }
+        // validate the optional field `TaxAmount`
+        if (jsonObj.get("TaxAmount") != null && !jsonObj.get("TaxAmount").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("TaxAmount"));
+        }
+        // validate the required field `FinalFee`
+        MoneyType.validateJsonElement(jsonObj.get("FinalFee"));
+        if (jsonObj.get("IncludedFeeDetailList") != null
+                && !jsonObj.get("IncludedFeeDetailList").isJsonNull()) {
+            JsonArray jsonArrayincludedFeeDetailList = jsonObj.getAsJsonArray("IncludedFeeDetailList");
+            if (jsonArrayincludedFeeDetailList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("IncludedFeeDetailList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `IncludedFeeDetailList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("IncludedFeeDetailList").toString()));
+                }
+
+                // validate the optional field `IncludedFeeDetailList` (array)
+                for (int i = 0; i < jsonArrayincludedFeeDetailList.size(); i++) {
+                    IncludedFeeDetail.validateJsonElement(jsonArrayincludedFeeDetailList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeeDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeeDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeeDetail> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(FeeDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeeDetail>() {
+                        @Override
+                        public void write(JsonWriter out, FeeDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeeDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeeDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeeDetail
+     * @throws IOException if the JSON string is invalid with respect to FeeDetail
+     */
+    public static FeeDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeeDetail.class);
+    }
+
+    /**
+     * Convert an instance of FeeDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

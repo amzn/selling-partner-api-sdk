@@ -12,29 +12,61 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Product {
-    @SerializedName("Identifiers")
-    private IdentifierType identifiers = null;
+    public static final String SERIALIZED_NAME_IDENTIFIERS = "Identifiers";
 
-    @SerializedName("AttributeSets")
-    private AttributeSetList attributeSets = null;
+    @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+    private IdentifierType identifiers;
 
-    @SerializedName("Relationships")
-    private RelationshipList relationships = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTE_SETS = "AttributeSets";
 
-    @SerializedName("CompetitivePricing")
-    private CompetitivePricingType competitivePricing = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTE_SETS)
+    private List<Object> attributeSets = new ArrayList<>();
 
-    @SerializedName("SalesRankings")
-    private SalesRankList salesRankings = null;
+    public static final String SERIALIZED_NAME_RELATIONSHIPS = "Relationships";
 
-    @SerializedName("Offers")
-    private OffersList offers = null;
+    @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
+    private List<Object> relationships = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_COMPETITIVE_PRICING = "CompetitivePricing";
+
+    @SerializedName(SERIALIZED_NAME_COMPETITIVE_PRICING)
+    private CompetitivePricingType competitivePricing;
+
+    public static final String SERIALIZED_NAME_SALES_RANKINGS = "SalesRankings";
+
+    @SerializedName(SERIALIZED_NAME_SALES_RANKINGS)
+    private List<SalesRankType> salesRankings = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_OFFERS = "Offers";
+
+    @SerializedName(SERIALIZED_NAME_OFFERS)
+    private List<OfferType> offers = new ArrayList<>();
+
+    public Product() {}
 
     public Product identifiers(IdentifierType identifiers) {
         this.identifiers = identifiers;
@@ -46,7 +78,7 @@ public class Product {
      *
      * @return identifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public IdentifierType getIdentifiers() {
         return identifiers;
     }
@@ -55,41 +87,55 @@ public class Product {
         this.identifiers = identifiers;
     }
 
-    public Product attributeSets(AttributeSetList attributeSets) {
+    public Product attributeSets(List<Object> attributeSets) {
         this.attributeSets = attributeSets;
         return this;
     }
 
+    public Product addAttributeSetsItem(Object attributeSetsItem) {
+        if (this.attributeSets == null) {
+            this.attributeSets = new ArrayList<>();
+        }
+        this.attributeSets.add(attributeSetsItem);
+        return this;
+    }
+
     /**
-     * Get attributeSets
+     * A list of product attributes if they are applicable to the product that is returned.
      *
      * @return attributeSets
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AttributeSetList getAttributeSets() {
+    @javax.annotation.Nullable public List<Object> getAttributeSets() {
         return attributeSets;
     }
 
-    public void setAttributeSets(AttributeSetList attributeSets) {
+    public void setAttributeSets(List<Object> attributeSets) {
         this.attributeSets = attributeSets;
     }
 
-    public Product relationships(RelationshipList relationships) {
+    public Product relationships(List<Object> relationships) {
         this.relationships = relationships;
         return this;
     }
 
+    public Product addRelationshipsItem(Object relationshipsItem) {
+        if (this.relationships == null) {
+            this.relationships = new ArrayList<>();
+        }
+        this.relationships.add(relationshipsItem);
+        return this;
+    }
+
     /**
-     * Get relationships
+     * A list that contains product variation information, if applicable.
      *
      * @return relationships
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RelationshipList getRelationships() {
+    @javax.annotation.Nullable public List<Object> getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(RelationshipList relationships) {
+    public void setRelationships(List<Object> relationships) {
         this.relationships = relationships;
     }
 
@@ -103,8 +149,7 @@ public class Product {
      *
      * @return competitivePricing
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CompetitivePricingType getCompetitivePricing() {
+    @javax.annotation.Nullable public CompetitivePricingType getCompetitivePricing() {
         return competitivePricing;
     }
 
@@ -112,46 +157,60 @@ public class Product {
         this.competitivePricing = competitivePricing;
     }
 
-    public Product salesRankings(SalesRankList salesRankings) {
+    public Product salesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
         return this;
     }
 
+    public Product addSalesRankingsItem(SalesRankType salesRankingsItem) {
+        if (this.salesRankings == null) {
+            this.salesRankings = new ArrayList<>();
+        }
+        this.salesRankings.add(salesRankingsItem);
+        return this;
+    }
+
     /**
-     * Get salesRankings
+     * A list of sales rank information for the item, by category.
      *
      * @return salesRankings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SalesRankList getSalesRankings() {
+    @javax.annotation.Nullable public List<SalesRankType> getSalesRankings() {
         return salesRankings;
     }
 
-    public void setSalesRankings(SalesRankList salesRankings) {
+    public void setSalesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
     }
 
-    public Product offers(OffersList offers) {
+    public Product offers(List<OfferType> offers) {
         this.offers = offers;
         return this;
     }
 
+    public Product addOffersItem(OfferType offersItem) {
+        if (this.offers == null) {
+            this.offers = new ArrayList<>();
+        }
+        this.offers.add(offersItem);
+        return this;
+    }
+
     /**
-     * Get offers
+     * A list of offers.
      *
      * @return offers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OffersList getOffers() {
+    @javax.annotation.Nullable public List<OfferType> getOffers() {
         return offers;
     }
 
-    public void setOffers(OffersList offers) {
+    public void setOffers(List<OfferType> offers) {
         this.offers = offers;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,10 +248,171 @@ public class Product {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Identifiers");
+        openapiFields.add("AttributeSets");
+        openapiFields.add("Relationships");
+        openapiFields.add("CompetitivePricing");
+        openapiFields.add("SalesRankings");
+        openapiFields.add("Offers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Identifiers");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Product
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Product.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Product is not found in the empty JSON string",
+                        Product.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Product.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Product` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Product.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `Identifiers`
+        IdentifierType.validateJsonElement(jsonObj.get("Identifiers"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("AttributeSets") != null
+                && !jsonObj.get("AttributeSets").isJsonNull()
+                && !jsonObj.get("AttributeSets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AttributeSets` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AttributeSets").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("Relationships") != null
+                && !jsonObj.get("Relationships").isJsonNull()
+                && !jsonObj.get("Relationships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Relationships` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Relationships").toString()));
+        }
+        // validate the optional field `CompetitivePricing`
+        if (jsonObj.get("CompetitivePricing") != null
+                && !jsonObj.get("CompetitivePricing").isJsonNull()) {
+            CompetitivePricingType.validateJsonElement(jsonObj.get("CompetitivePricing"));
+        }
+        if (jsonObj.get("SalesRankings") != null
+                && !jsonObj.get("SalesRankings").isJsonNull()) {
+            JsonArray jsonArraysalesRankings = jsonObj.getAsJsonArray("SalesRankings");
+            if (jsonArraysalesRankings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SalesRankings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SalesRankings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SalesRankings").toString()));
+                }
+
+                // validate the optional field `SalesRankings` (array)
+                for (int i = 0; i < jsonArraysalesRankings.size(); i++) {
+                    SalesRankType.validateJsonElement(jsonArraysalesRankings.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("Offers") != null && !jsonObj.get("Offers").isJsonNull()) {
+            JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("Offers");
+            if (jsonArrayoffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("Offers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `Offers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("Offers").toString()));
+                }
+
+                // validate the optional field `Offers` (array)
+                for (int i = 0; i < jsonArrayoffers.size(); i++) {
+                    OfferType.validateJsonElement(jsonArrayoffers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Product.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Product' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Product> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Product.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Product>() {
+                        @Override
+                        public void write(JsonWriter out, Product value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Product read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Product given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Product
+     * @throws IOException if the JSON string is invalid with respect to Product
+     */
+    public static Product fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Product.class);
+    }
+
+    /**
+     * Convert an instance of Product to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

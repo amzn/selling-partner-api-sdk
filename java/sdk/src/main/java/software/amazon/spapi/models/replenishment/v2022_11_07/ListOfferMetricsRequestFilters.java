@@ -12,48 +12,82 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOfferMetricsRequestFilters {
-    @SerializedName("aggregationFrequency")
-    private AggregationFrequency aggregationFrequency = null;
+    public static final String SERIALIZED_NAME_AGGREGATION_FREQUENCY = "aggregationFrequency";
 
-    @SerializedName("timeInterval")
-    private TimeInterval timeInterval = null;
+    @SerializedName(SERIALIZED_NAME_AGGREGATION_FREQUENCY)
+    private AggregationFrequency aggregationFrequency;
 
-    @SerializedName("timePeriodType")
-    private TimePeriodType timePeriodType = null;
+    public static final String SERIALIZED_NAME_TIME_INTERVAL = "timeInterval";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_TIME_INTERVAL)
+    private TimeInterval timeInterval;
 
-    @SerializedName("programTypes")
-    private ProgramTypes programTypes = null;
+    public static final String SERIALIZED_NAME_TIME_PERIOD_TYPE = "timePeriodType";
 
-    @SerializedName("asins")
-    private Set<String> asins = null;
+    @SerializedName(SERIALIZED_NAME_TIME_PERIOD_TYPE)
+    private TimePeriodType timePeriodType;
 
-    @SerializedName("skus")
-    private Set<String> skus = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("fulfillmentChannelTypes")
-    private Set<FulfillmentChannelType> fulfillmentChannelTypes = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("brandNames")
-    private Set<String> brandNames = null;
+    public static final String SERIALIZED_NAME_PROGRAM_TYPES = "programTypes";
 
-    @SerializedName("productGroups")
-    private Set<String> productGroups = null;
+    @SerializedName(SERIALIZED_NAME_PROGRAM_TYPES)
+    private Set<ProgramType> programTypes = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_ASINS = "asins";
+
+    @SerializedName(SERIALIZED_NAME_ASINS)
+    private Set<String> asins = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_SKUS = "skus";
+
+    @SerializedName(SERIALIZED_NAME_SKUS)
+    private Set<String> skus = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPES = "fulfillmentChannelTypes";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPES)
+    private Set<FulfillmentChannelType> fulfillmentChannelTypes = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_BRAND_NAMES = "brandNames";
+
+    @SerializedName(SERIALIZED_NAME_BRAND_NAMES)
+    private Set<String> brandNames = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_GROUPS = "productGroups";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_GROUPS)
+    private Set<String> productGroups = new LinkedHashSet<>();
+
+    public ListOfferMetricsRequestFilters() {}
 
     public ListOfferMetricsRequestFilters aggregationFrequency(AggregationFrequency aggregationFrequency) {
         this.aggregationFrequency = aggregationFrequency;
@@ -65,8 +99,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return aggregationFrequency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AggregationFrequency getAggregationFrequency() {
+    @javax.annotation.Nullable public AggregationFrequency getAggregationFrequency() {
         return aggregationFrequency;
     }
 
@@ -84,7 +117,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return timeInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -103,7 +136,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return timePeriodType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TimePeriodType getTimePeriodType() {
         return timePeriodType;
     }
@@ -124,10 +157,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -136,22 +166,30 @@ public class ListOfferMetricsRequestFilters {
         this.marketplaceId = marketplaceId;
     }
 
-    public ListOfferMetricsRequestFilters programTypes(ProgramTypes programTypes) {
+    public ListOfferMetricsRequestFilters programTypes(Set<ProgramType> programTypes) {
         this.programTypes = programTypes;
         return this;
     }
 
+    public ListOfferMetricsRequestFilters addProgramTypesItem(ProgramType programTypesItem) {
+        if (this.programTypes == null) {
+            this.programTypes = new LinkedHashSet<>();
+        }
+        this.programTypes.add(programTypesItem);
+        return this;
+    }
+
     /**
-     * Get programTypes
+     * A list of replenishment program types.
      *
      * @return programTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public ProgramTypes getProgramTypes() {
+    @javax.annotation.Nonnull
+    public Set<ProgramType> getProgramTypes() {
         return programTypes;
     }
 
-    public void setProgramTypes(ProgramTypes programTypes) {
+    public void setProgramTypes(Set<ProgramType> programTypes) {
         this.programTypes = programTypes;
     }
 
@@ -173,9 +211,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return asins
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of Amazon Standard Identification Numbers (ASINs) to filter by.")
-    public Set<String> getAsins() {
+    @javax.annotation.Nullable public Set<String> getAsins() {
         return asins;
     }
 
@@ -201,9 +237,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return skus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "[Applicable only for Sellers] A list of SKUs to filter by.")
-    public Set<String> getSkus() {
+    @javax.annotation.Nullable public Set<String> getSkus() {
         return skus;
     }
 
@@ -230,9 +264,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return fulfillmentChannelTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "[Applicable only for Sellers] The fulfillment channel types to filter by.")
-    public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
+    @javax.annotation.Nullable public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
         return fulfillmentChannelTypes;
     }
 
@@ -258,9 +290,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return brandNames
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "[Applicable only for US marketplace] A list of brand names to filter by.")
-    public Set<String> getBrandNames() {
+    @javax.annotation.Nullable public Set<String> getBrandNames() {
         return brandNames;
     }
 
@@ -286,9 +316,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return productGroups
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "[Applicable only for Vendors] A list of product group names to filter by.")
-    public Set<String> getProductGroups() {
+    @javax.annotation.Nullable public Set<String> getProductGroups() {
         return productGroups;
     }
 
@@ -297,7 +325,7 @@ public class ListOfferMetricsRequestFilters {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -357,10 +385,185 @@ public class ListOfferMetricsRequestFilters {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("aggregationFrequency");
+        openapiFields.add("timeInterval");
+        openapiFields.add("timePeriodType");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("programTypes");
+        openapiFields.add("asins");
+        openapiFields.add("skus");
+        openapiFields.add("fulfillmentChannelTypes");
+        openapiFields.add("brandNames");
+        openapiFields.add("productGroups");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("timeInterval");
+        openapiRequiredFields.add("timePeriodType");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("programTypes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOfferMetricsRequestFilters
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOfferMetricsRequestFilters.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOfferMetricsRequestFilters is not found in the empty JSON string",
+                        ListOfferMetricsRequestFilters.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOfferMetricsRequestFilters.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOfferMetricsRequestFilters` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListOfferMetricsRequestFilters.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `aggregationFrequency`
+        if (jsonObj.get("aggregationFrequency") != null
+                && !jsonObj.get("aggregationFrequency").isJsonNull()) {
+            AggregationFrequency.validateJsonElement(jsonObj.get("aggregationFrequency"));
+        }
+        // validate the required field `timeInterval`
+        TimeInterval.validateJsonElement(jsonObj.get("timeInterval"));
+        // validate the required field `timePeriodType`
+        TimePeriodType.validateJsonElement(jsonObj.get("timePeriodType"));
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("programTypes") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("programTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `programTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("programTypes").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("asins") != null
+                && !jsonObj.get("asins").isJsonNull()
+                && !jsonObj.get("asins").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asins` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("asins").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("skus") != null
+                && !jsonObj.get("skus").isJsonNull()
+                && !jsonObj.get("skus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `skus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("skus").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("fulfillmentChannelTypes") != null
+                && !jsonObj.get("fulfillmentChannelTypes").isJsonNull()
+                && !jsonObj.get("fulfillmentChannelTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentChannelTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentChannelTypes").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("brandNames") != null
+                && !jsonObj.get("brandNames").isJsonNull()
+                && !jsonObj.get("brandNames").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brandNames` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("brandNames").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("productGroups") != null
+                && !jsonObj.get("productGroups").isJsonNull()
+                && !jsonObj.get("productGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productGroups` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("productGroups").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOfferMetricsRequestFilters.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOfferMetricsRequestFilters' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOfferMetricsRequestFilters> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOfferMetricsRequestFilters.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOfferMetricsRequestFilters>() {
+                        @Override
+                        public void write(JsonWriter out, ListOfferMetricsRequestFilters value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOfferMetricsRequestFilters read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOfferMetricsRequestFilters given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOfferMetricsRequestFilters
+     * @throws IOException if the JSON string is invalid with respect to ListOfferMetricsRequestFilters
+     */
+    public static ListOfferMetricsRequestFilters fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOfferMetricsRequestFilters.class);
+    }
+
+    /**
+     * Convert an instance of ListOfferMetricsRequestFilters to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,49 +12,91 @@
 
 package software.amazon.spapi.models.vendor.invoices.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of the item being invoiced. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the item being invoiced.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceItem {
-    @SerializedName("itemSequenceNumber")
-    private Integer itemSequenceNumber = null;
+    public static final String SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER = "itemSequenceNumber";
 
-    @SerializedName("amazonProductIdentifier")
-    private String amazonProductIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER)
+    private Integer itemSequenceNumber;
 
-    @SerializedName("vendorProductIdentifier")
-    private String vendorProductIdentifier = null;
+    public static final String SERIALIZED_NAME_AMAZON_PRODUCT_IDENTIFIER = "amazonProductIdentifier";
 
-    @SerializedName("invoicedQuantity")
-    private ItemQuantity invoicedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_PRODUCT_IDENTIFIER)
+    private String amazonProductIdentifier;
 
-    @SerializedName("netCost")
-    private Money netCost = null;
+    public static final String SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER = "vendorProductIdentifier";
 
-    @SerializedName("netCostUnitOfMeasure")
-    private NetCostUnitOfMeasure netCostUnitOfMeasure = null;
+    @SerializedName(SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER)
+    private String vendorProductIdentifier;
 
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_INVOICED_QUANTITY = "invoicedQuantity";
 
-    @SerializedName("hsnCode")
-    private String hsnCode = null;
+    @SerializedName(SERIALIZED_NAME_INVOICED_QUANTITY)
+    private ItemQuantity invoicedQuantity;
 
-    @SerializedName("creditNoteDetails")
-    private CreditNoteDetails creditNoteDetails = null;
+    public static final String SERIALIZED_NAME_NET_COST = "netCost";
 
-    @SerializedName("taxDetails")
-    private List<TaxDetails> taxDetails = null;
+    @SerializedName(SERIALIZED_NAME_NET_COST)
+    private Money netCost;
 
-    @SerializedName("chargeDetails")
-    private List<ChargeDetails> chargeDetails = null;
+    public static final String SERIALIZED_NAME_NET_COST_UNIT_OF_MEASURE = "netCostUnitOfMeasure";
 
-    @SerializedName("allowanceDetails")
-    private List<AllowanceDetails> allowanceDetails = null;
+    @SerializedName(SERIALIZED_NAME_NET_COST_UNIT_OF_MEASURE)
+    private NetCostUnitOfMeasure netCostUnitOfMeasure;
+
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
+
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
+
+    public static final String SERIALIZED_NAME_HSN_CODE = "hsnCode";
+
+    @SerializedName(SERIALIZED_NAME_HSN_CODE)
+    private String hsnCode;
+
+    public static final String SERIALIZED_NAME_CREDIT_NOTE_DETAILS = "creditNoteDetails";
+
+    @SerializedName(SERIALIZED_NAME_CREDIT_NOTE_DETAILS)
+    private CreditNoteDetails creditNoteDetails;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetails> taxDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_DETAILS = "chargeDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_DETAILS)
+    private List<ChargeDetails> chargeDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ALLOWANCE_DETAILS = "allowanceDetails";
+
+    @SerializedName(SERIALIZED_NAME_ALLOWANCE_DETAILS)
+    private List<AllowanceDetails> allowanceDetails = new ArrayList<>();
+
+    public InvoiceItem() {}
 
     public InvoiceItem itemSequenceNumber(Integer itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;
@@ -66,9 +108,7 @@ public class InvoiceItem {
      *
      * @return itemSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Unique number related to this line item.")
+    @javax.annotation.Nonnull
     public Integer getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -87,9 +127,7 @@ public class InvoiceItem {
      *
      * @return amazonProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Amazon Standard Identification Number (ASIN) of an item.")
-    public String getAmazonProductIdentifier() {
+    @javax.annotation.Nullable public String getAmazonProductIdentifier() {
         return amazonProductIdentifier;
     }
 
@@ -107,10 +145,7 @@ public class InvoiceItem {
      *
      * @return vendorProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The vendor selected product identifier of the item. Should be the same as was provided in the purchase order.")
-    public String getVendorProductIdentifier() {
+    @javax.annotation.Nullable public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
 
@@ -128,7 +163,7 @@ public class InvoiceItem {
      *
      * @return invoicedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemQuantity getInvoicedQuantity() {
         return invoicedQuantity;
     }
@@ -147,7 +182,7 @@ public class InvoiceItem {
      *
      * @return netCost
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getNetCost() {
         return netCost;
     }
@@ -166,8 +201,7 @@ public class InvoiceItem {
      *
      * @return netCostUnitOfMeasure
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public NetCostUnitOfMeasure getNetCostUnitOfMeasure() {
+    @javax.annotation.Nullable public NetCostUnitOfMeasure getNetCostUnitOfMeasure() {
         return netCostUnitOfMeasure;
     }
 
@@ -186,10 +220,7 @@ public class InvoiceItem {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote.")
-    public String getPurchaseOrderNumber() {
+    @javax.annotation.Nullable public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
 
@@ -207,8 +238,7 @@ public class InvoiceItem {
      *
      * @return hsnCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "HSN Tax code. The HSN number cannot contain alphabets.")
-    public String getHsnCode() {
+    @javax.annotation.Nullable public String getHsnCode() {
         return hsnCode;
     }
 
@@ -226,8 +256,7 @@ public class InvoiceItem {
      *
      * @return creditNoteDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CreditNoteDetails getCreditNoteDetails() {
+    @javax.annotation.Nullable public CreditNoteDetails getCreditNoteDetails() {
         return creditNoteDetails;
     }
 
@@ -253,8 +282,7 @@ public class InvoiceItem {
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual tax details per line item.")
-    public List<TaxDetails> getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetails> getTaxDetails() {
         return taxDetails;
     }
 
@@ -280,8 +308,7 @@ public class InvoiceItem {
      *
      * @return chargeDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual charge details per line item.")
-    public List<ChargeDetails> getChargeDetails() {
+    @javax.annotation.Nullable public List<ChargeDetails> getChargeDetails() {
         return chargeDetails;
     }
 
@@ -307,8 +334,7 @@ public class InvoiceItem {
      *
      * @return allowanceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual allowance details per line item.")
-    public List<AllowanceDetails> getAllowanceDetails() {
+    @javax.annotation.Nullable public List<AllowanceDetails> getAllowanceDetails() {
         return allowanceDetails;
     }
 
@@ -317,7 +343,7 @@ public class InvoiceItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -393,10 +419,216 @@ public class InvoiceItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemSequenceNumber");
+        openapiFields.add("amazonProductIdentifier");
+        openapiFields.add("vendorProductIdentifier");
+        openapiFields.add("invoicedQuantity");
+        openapiFields.add("netCost");
+        openapiFields.add("netCostUnitOfMeasure");
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("hsnCode");
+        openapiFields.add("creditNoteDetails");
+        openapiFields.add("taxDetails");
+        openapiFields.add("chargeDetails");
+        openapiFields.add("allowanceDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("itemSequenceNumber");
+        openapiRequiredFields.add("invoicedQuantity");
+        openapiRequiredFields.add("netCost");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceItem is not found in the empty JSON string",
+                        InvoiceItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvoiceItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("amazonProductIdentifier") != null
+                        && !jsonObj.get("amazonProductIdentifier").isJsonNull())
+                && !jsonObj.get("amazonProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonProductIdentifier").toString()));
+        }
+        if ((jsonObj.get("vendorProductIdentifier") != null
+                        && !jsonObj.get("vendorProductIdentifier").isJsonNull())
+                && !jsonObj.get("vendorProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorProductIdentifier").toString()));
+        }
+        // validate the required field `invoicedQuantity`
+        ItemQuantity.validateJsonElement(jsonObj.get("invoicedQuantity"));
+        // validate the required field `netCost`
+        Money.validateJsonElement(jsonObj.get("netCost"));
+        // validate the optional field `netCostUnitOfMeasure`
+        if (jsonObj.get("netCostUnitOfMeasure") != null
+                && !jsonObj.get("netCostUnitOfMeasure").isJsonNull()) {
+            NetCostUnitOfMeasure.validateJsonElement(jsonObj.get("netCostUnitOfMeasure"));
+        }
+        if ((jsonObj.get("purchaseOrderNumber") != null
+                        && !jsonObj.get("purchaseOrderNumber").isJsonNull())
+                && !jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if ((jsonObj.get("hsnCode") != null && !jsonObj.get("hsnCode").isJsonNull())
+                && !jsonObj.get("hsnCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `hsnCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("hsnCode").toString()));
+        }
+        // validate the optional field `creditNoteDetails`
+        if (jsonObj.get("creditNoteDetails") != null
+                && !jsonObj.get("creditNoteDetails").isJsonNull()) {
+            CreditNoteDetails.validateJsonElement(jsonObj.get("creditNoteDetails"));
+        }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetails.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("chargeDetails") != null
+                && !jsonObj.get("chargeDetails").isJsonNull()) {
+            JsonArray jsonArraychargeDetails = jsonObj.getAsJsonArray("chargeDetails");
+            if (jsonArraychargeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("chargeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `chargeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("chargeDetails").toString()));
+                }
+
+                // validate the optional field `chargeDetails` (array)
+                for (int i = 0; i < jsonArraychargeDetails.size(); i++) {
+                    ChargeDetails.validateJsonElement(jsonArraychargeDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("allowanceDetails") != null
+                && !jsonObj.get("allowanceDetails").isJsonNull()) {
+            JsonArray jsonArrayallowanceDetails = jsonObj.getAsJsonArray("allowanceDetails");
+            if (jsonArrayallowanceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("allowanceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `allowanceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("allowanceDetails").toString()));
+                }
+
+                // validate the optional field `allowanceDetails` (array)
+                for (int i = 0; i < jsonArrayallowanceDetails.size(); i++) {
+                    AllowanceDetails.validateJsonElement(jsonArrayallowanceDetails.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceItem>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceItem
+     * @throws IOException if the JSON string is invalid with respect to InvoiceItem
+     */
+    public static InvoiceItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceItem.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

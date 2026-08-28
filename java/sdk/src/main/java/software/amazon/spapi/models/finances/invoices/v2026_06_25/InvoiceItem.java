@@ -12,42 +12,74 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A line item within an invoice, including unit costs, quantities, tax information, and contextual details about the
  * goods or services being invoiced.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A line item within an invoice, including unit costs, quantities, tax information, and contextual details about the goods or services being invoiced.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceItem {
-    @SerializedName("lineItemId")
-    private String lineItemId = null;
+    public static final String SERIALIZED_NAME_LINE_ITEM_ID = "lineItemId";
 
-    @SerializedName("unitCost")
-    private Currency unitCost = null;
+    @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
+    private String lineItemId;
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    public static final String SERIALIZED_NAME_UNIT_COST = "unitCost";
 
-    @SerializedName("taxRateCodes")
-    private List<String> taxRateCodes = null;
+    @SerializedName(SERIALIZED_NAME_UNIT_COST)
+    private Currency unitCost;
 
-    @SerializedName("totalAmount")
-    private Currency totalAmount = null;
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
 
-    @SerializedName("totalAmountBreakdown")
-    private List<Breakdown> totalAmountBreakdown = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
 
-    @SerializedName("lineItemContext")
-    private LineItemContext lineItemContext = null;
+    public static final String SERIALIZED_NAME_TAX_RATE_CODES = "taxRateCodes";
 
-    @SerializedName("relatedItemIdentifiers")
-    private List<RelatedIdentifier> relatedItemIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_TAX_RATE_CODES)
+    private List<String> taxRateCodes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "totalAmount";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
+    private Currency totalAmount;
+
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT_BREAKDOWN = "totalAmountBreakdown";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT_BREAKDOWN)
+    private List<Breakdown> totalAmountBreakdown = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_LINE_ITEM_CONTEXT = "lineItemContext";
+
+    @SerializedName(SERIALIZED_NAME_LINE_ITEM_CONTEXT)
+    private LineItemContext lineItemContext;
+
+    public static final String SERIALIZED_NAME_RELATED_ITEM_IDENTIFIERS = "relatedItemIdentifiers";
+
+    @SerializedName(SERIALIZED_NAME_RELATED_ITEM_IDENTIFIERS)
+    private List<RelatedIdentifier> relatedItemIdentifiers = new ArrayList<>();
+
+    public InvoiceItem() {}
 
     public InvoiceItem lineItemId(String lineItemId) {
         this.lineItemId = lineItemId;
@@ -59,9 +91,7 @@ public class InvoiceItem {
      *
      * @return lineItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier for the line item.")
+    @javax.annotation.Nonnull
     public String getLineItemId() {
         return lineItemId;
     }
@@ -80,8 +110,7 @@ public class InvoiceItem {
      *
      * @return unitCost
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getUnitCost() {
+    @javax.annotation.Nullable public Currency getUnitCost() {
         return unitCost;
     }
 
@@ -99,8 +128,7 @@ public class InvoiceItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units for the line item.")
-    public Integer getQuantity() {
+    @javax.annotation.Nullable public Integer getQuantity() {
         return quantity;
     }
 
@@ -126,9 +154,7 @@ public class InvoiceItem {
      *
      * @return taxRateCodes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of country code and tax rate combinations applied to the line item. Example: `DE 19`")
-    public List<String> getTaxRateCodes() {
+    @javax.annotation.Nullable public List<String> getTaxRateCodes() {
         return taxRateCodes;
     }
 
@@ -146,7 +172,7 @@ public class InvoiceItem {
      *
      * @return totalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTotalAmount() {
         return totalAmount;
     }
@@ -175,10 +201,7 @@ public class InvoiceItem {
      *
      * @return totalAmountBreakdown
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The breakdown of the total amount into sub-components.  **Possible `breakdownType` values:**  * `ItemCostWithoutTax`: Line item cost excluding tax. * `ItemTaxAmount`: Tax amount on the line item. * `Other`: Other line item breakdown type.")
-    public List<Breakdown> getTotalAmountBreakdown() {
+    @javax.annotation.Nullable public List<Breakdown> getTotalAmountBreakdown() {
         return totalAmountBreakdown;
     }
 
@@ -196,7 +219,7 @@ public class InvoiceItem {
      *
      * @return lineItemContext
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public LineItemContext getLineItemContext() {
         return lineItemContext;
     }
@@ -223,8 +246,7 @@ public class InvoiceItem {
      *
      * @return relatedItemIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of related item identifiers for the line item.")
-    public List<RelatedIdentifier> getRelatedItemIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedItemIdentifiers() {
         return relatedItemIdentifiers;
     }
 
@@ -233,7 +255,7 @@ public class InvoiceItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -287,10 +309,175 @@ public class InvoiceItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("lineItemId");
+        openapiFields.add("unitCost");
+        openapiFields.add("quantity");
+        openapiFields.add("taxRateCodes");
+        openapiFields.add("totalAmount");
+        openapiFields.add("totalAmountBreakdown");
+        openapiFields.add("lineItemContext");
+        openapiFields.add("relatedItemIdentifiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lineItemId");
+        openapiRequiredFields.add("totalAmount");
+        openapiRequiredFields.add("lineItemContext");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceItem is not found in the empty JSON string",
+                        InvoiceItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvoiceItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("lineItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lineItemId").toString()));
+        }
+        // validate the optional field `unitCost`
+        if (jsonObj.get("unitCost") != null && !jsonObj.get("unitCost").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("unitCost"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("taxRateCodes") != null
+                && !jsonObj.get("taxRateCodes").isJsonNull()
+                && !jsonObj.get("taxRateCodes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRateCodes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("taxRateCodes").toString()));
+        }
+        // validate the required field `totalAmount`
+        Currency.validateJsonElement(jsonObj.get("totalAmount"));
+        if (jsonObj.get("totalAmountBreakdown") != null
+                && !jsonObj.get("totalAmountBreakdown").isJsonNull()) {
+            JsonArray jsonArraytotalAmountBreakdown = jsonObj.getAsJsonArray("totalAmountBreakdown");
+            if (jsonArraytotalAmountBreakdown != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("totalAmountBreakdown").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `totalAmountBreakdown` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("totalAmountBreakdown").toString()));
+                }
+
+                // validate the optional field `totalAmountBreakdown` (array)
+                for (int i = 0; i < jsonArraytotalAmountBreakdown.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraytotalAmountBreakdown.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `lineItemContext`
+        LineItemContext.validateJsonElement(jsonObj.get("lineItemContext"));
+        if (jsonObj.get("relatedItemIdentifiers") != null
+                && !jsonObj.get("relatedItemIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedItemIdentifiers = jsonObj.getAsJsonArray("relatedItemIdentifiers");
+            if (jsonArrayrelatedItemIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedItemIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedItemIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedItemIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedItemIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedItemIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedItemIdentifiers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceItem>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceItem
+     * @throws IOException if the JSON string is invalid with respect to InvoiceItem
+     */
+    public static InvoiceItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceItem.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

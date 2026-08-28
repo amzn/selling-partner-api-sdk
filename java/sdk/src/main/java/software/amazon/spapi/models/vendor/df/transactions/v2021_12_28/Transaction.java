@@ -12,28 +12,40 @@
 
 package software.amazon.spapi.models.vendor.df.transactions.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The transaction status details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The transaction status details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Transaction {
-    @SerializedName("transactionId")
-    private String transactionId = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+    private String transactionId;
 
     /** Current processing status of the transaction. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("Failure")
         FAILURE("Failure"),
-        @SerializedName("Processing")
+
         PROCESSING("Processing"),
-        @SerializedName("Success")
+
         SUCCESS("Success");
 
         private String value;
@@ -51,34 +63,45 @@ public class Transaction {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("errors")
-    private ErrorList errors = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
+
+    public static final String SERIALIZED_NAME_ERRORS = "errors";
+
+    @SerializedName(SERIALIZED_NAME_ERRORS)
+    private ErrorList errors;
+
+    public Transaction() {}
 
     public Transaction transactionId(String transactionId) {
         this.transactionId = transactionId;
@@ -91,10 +114,7 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier sent in the 'transactionId' field in response to the post request of a specific transaction.")
+    @javax.annotation.Nonnull
     public String getTransactionId() {
         return transactionId;
     }
@@ -113,9 +133,7 @@ public class Transaction {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Current processing status of the transaction.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         return status;
     }
@@ -134,8 +152,7 @@ public class Transaction {
      *
      * @return errors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorList getErrors() {
+    @javax.annotation.Nullable public ErrorList getErrors() {
         return errors;
     }
 
@@ -144,7 +161,7 @@ public class Transaction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -174,10 +191,128 @@ public class Transaction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("transactionId");
+        openapiFields.add("status");
+        openapiFields.add("errors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("transactionId");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Transaction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Transaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Transaction is not found in the empty JSON string",
+                        Transaction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Transaction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Transaction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Transaction.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("transactionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionId").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
+        // validate the optional field `errors`
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            ErrorList.validateJsonElement(jsonObj.get("errors"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Transaction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Transaction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Transaction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Transaction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Transaction>() {
+                        @Override
+                        public void write(JsonWriter out, Transaction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Transaction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Transaction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Transaction
+     * @throws IOException if the JSON string is invalid with respect to Transaction
+     */
+    public static Transaction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Transaction.class);
+    }
+
+    /**
+     * Convert an instance of Transaction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

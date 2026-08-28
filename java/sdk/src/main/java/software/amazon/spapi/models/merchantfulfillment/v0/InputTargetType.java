@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Indicates whether the additional seller input is at the item or shipment level. */
 @JsonAdapter(InputTargetType.Adapter.class)
 public enum InputTargetType {
-    @SerializedName("SHIPMENT_LEVEL")
     SHIPMENT_LEVEL("SHIPMENT_LEVEL"),
 
-    @SerializedName("ITEM_LEVEL")
     ITEM_LEVEL("ITEM_LEVEL");
 
     private String value;
@@ -43,25 +41,30 @@ public enum InputTargetType {
         return String.valueOf(value);
     }
 
-    public static InputTargetType fromValue(String input) {
+    public static InputTargetType fromValue(String value) {
         for (InputTargetType b : InputTargetType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InputTargetType> {
         @Override
         public void write(final JsonWriter jsonWriter, final InputTargetType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InputTargetType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InputTargetType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InputTargetType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InputTargetType.fromValue(value);
     }
 }

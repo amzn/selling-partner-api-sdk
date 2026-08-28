@@ -12,27 +12,49 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Details about the movement of money. Breakdowns are further categorized into breakdown types, breakdown amounts, and
  * sub-breakdowns.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Details about the movement of money. Breakdowns are further categorized into breakdown types, breakdown amounts, and sub-breakdowns.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Breakdown {
-    @SerializedName("breakdownType")
-    private String breakdownType = null;
+    public static final String SERIALIZED_NAME_BREAKDOWN_TYPE = "breakdownType";
 
-    @SerializedName("breakdownAmount")
-    private Currency breakdownAmount = null;
+    @SerializedName(SERIALIZED_NAME_BREAKDOWN_TYPE)
+    private String breakdownType;
 
-    @SerializedName("breakdowns")
-    private List<Breakdown> breakdowns = null;
+    public static final String SERIALIZED_NAME_BREAKDOWN_AMOUNT = "breakdownAmount";
+
+    @SerializedName(SERIALIZED_NAME_BREAKDOWN_AMOUNT)
+    private Currency breakdownAmount;
+
+    public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
+
+    @SerializedName(SERIALIZED_NAME_BREAKDOWNS)
+    private List<Breakdown> breakdowns = new ArrayList<>();
+
+    public Breakdown() {}
 
     public Breakdown breakdownType(String breakdownType) {
         this.breakdownType = breakdownType;
@@ -53,10 +75,7 @@ public class Breakdown {
      *
      * @return breakdownType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The type of charge.  **Possible values for `invoiceAmountBreakdowns`:**  * `Total`: Total invoice amount. * `InvoiceAmountWithoutTax`: Invoice amount excluding tax. * `TaxAmount`: Tax amount on the invoice. * `MiscCharges`: Miscellaneous charges on the invoice. * `Other`: Other breakdown type.  **Possible values for `invoiceSettlementBreakdowns`:**  * `AmountPaid`: Amount that has been paid. * `QueuedForPayment`: Amount queued for payment. * `QuickPayDiscount`: Quick pay discount amount. * `QuantityVarianceAmount`: Quantity variance amount. * `PriceVariance`: Price variance amount. * `Other`: Other settlement breakdown type.  **Possible values for `totalAmountBreakdown` (line item level):**  * `ItemCostWithoutTax`: Line item cost excluding tax. * `ItemTaxAmount`: Tax amount on the line item. * `Other`: Other line item breakdown type.")
+    @javax.annotation.Nonnull
     public String getBreakdownType() {
         return breakdownType;
     }
@@ -75,7 +94,7 @@ public class Breakdown {
      *
      * @return breakdownAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getBreakdownAmount() {
         return breakdownAmount;
     }
@@ -102,9 +121,7 @@ public class Breakdown {
      *
      * @return breakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of breakdowns that detail how the total amount is calculated.")
-    public List<Breakdown> getBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
 
@@ -113,7 +130,7 @@ public class Breakdown {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +162,135 @@ public class Breakdown {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("breakdownType");
+        openapiFields.add("breakdownAmount");
+        openapiFields.add("breakdowns");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("breakdownType");
+        openapiRequiredFields.add("breakdownAmount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Breakdown
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Breakdown.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Breakdown is not found in the empty JSON string",
+                        Breakdown.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Breakdown.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Breakdown` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Breakdown.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("breakdownType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `breakdownType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("breakdownType").toString()));
+        }
+        // validate the required field `breakdownAmount`
+        Currency.validateJsonElement(jsonObj.get("breakdownAmount"));
+        if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
+            JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");
+            if (jsonArraybreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("breakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `breakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("breakdowns").toString()));
+                }
+
+                // validate the optional field `breakdowns` (array)
+                for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Breakdown.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Breakdown' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Breakdown> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Breakdown.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Breakdown>() {
+                        @Override
+                        public void write(JsonWriter out, Breakdown value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Breakdown read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Breakdown given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Breakdown
+     * @throws IOException if the JSON string is invalid with respect to Breakdown
+     */
+    public static Breakdown fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Breakdown.class);
+    }
+
+    /**
+     * Convert an instance of Breakdown to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A tax withholding event on a seller&#39;s account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A tax withholding event on a seller's account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TaxWithholdingEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("BaseAmount")
-    private Currency baseAmount = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("WithheldAmount")
-    private Currency withheldAmount = null;
+    public static final String SERIALIZED_NAME_BASE_AMOUNT = "BaseAmount";
 
-    @SerializedName("TaxWithholdingPeriod")
-    private TaxWithholdingPeriod taxWithholdingPeriod = null;
+    @SerializedName(SERIALIZED_NAME_BASE_AMOUNT)
+    private Currency baseAmount;
+
+    public static final String SERIALIZED_NAME_WITHHELD_AMOUNT = "WithheldAmount";
+
+    @SerializedName(SERIALIZED_NAME_WITHHELD_AMOUNT)
+    private Currency withheldAmount;
+
+    public static final String SERIALIZED_NAME_TAX_WITHHOLDING_PERIOD = "TaxWithholdingPeriod";
+
+    @SerializedName(SERIALIZED_NAME_TAX_WITHHOLDING_PERIOD)
+    private TaxWithholdingPeriod taxWithholdingPeriod;
+
+    public TaxWithholdingEvent() {}
 
     public TaxWithholdingEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -41,10 +66,7 @@ public class TaxWithholdingEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -62,8 +84,7 @@ public class TaxWithholdingEvent {
      *
      * @return baseAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getBaseAmount() {
+    @javax.annotation.Nullable public Currency getBaseAmount() {
         return baseAmount;
     }
 
@@ -81,8 +102,7 @@ public class TaxWithholdingEvent {
      *
      * @return withheldAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getWithheldAmount() {
+    @javax.annotation.Nullable public Currency getWithheldAmount() {
         return withheldAmount;
     }
 
@@ -100,8 +120,7 @@ public class TaxWithholdingEvent {
      *
      * @return taxWithholdingPeriod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithholdingPeriod getTaxWithholdingPeriod() {
+    @javax.annotation.Nullable public TaxWithholdingPeriod getTaxWithholdingPeriod() {
         return taxWithholdingPeriod;
     }
 
@@ -110,7 +129,7 @@ public class TaxWithholdingEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,10 +165,116 @@ public class TaxWithholdingEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("BaseAmount");
+        openapiFields.add("WithheldAmount");
+        openapiFields.add("TaxWithholdingPeriod");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TaxWithholdingEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TaxWithholdingEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TaxWithholdingEvent is not found in the empty JSON string",
+                        TaxWithholdingEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TaxWithholdingEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TaxWithholdingEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `BaseAmount`
+        if (jsonObj.get("BaseAmount") != null && !jsonObj.get("BaseAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("BaseAmount"));
+        }
+        // validate the optional field `WithheldAmount`
+        if (jsonObj.get("WithheldAmount") != null
+                && !jsonObj.get("WithheldAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("WithheldAmount"));
+        }
+        // validate the optional field `TaxWithholdingPeriod`
+        if (jsonObj.get("TaxWithholdingPeriod") != null
+                && !jsonObj.get("TaxWithholdingPeriod").isJsonNull()) {
+            TaxWithholdingPeriod.validateJsonElement(jsonObj.get("TaxWithholdingPeriod"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TaxWithholdingEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TaxWithholdingEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TaxWithholdingEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TaxWithholdingEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TaxWithholdingEvent>() {
+                        @Override
+                        public void write(JsonWriter out, TaxWithholdingEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TaxWithholdingEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TaxWithholdingEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TaxWithholdingEvent
+     * @throws IOException if the JSON string is invalid with respect to TaxWithholdingEvent
+     */
+    public static TaxWithholdingEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TaxWithholdingEvent.class);
+    }
+
+    /**
+     * Convert an instance of TaxWithholdingEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,62 +12,84 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The vendor details that are associated with an Amazon catalog item for the specified &#x60;marketplaceId&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The vendor details that are associated with an Amazon catalog item for the specified `marketplaceId`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemVendorDetailsByMarketplace {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("brandCode")
-    private String brandCode = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("manufacturerCode")
-    private String manufacturerCode = null;
+    public static final String SERIALIZED_NAME_BRAND_CODE = "brandCode";
 
-    @SerializedName("manufacturerCodeParent")
-    private String manufacturerCodeParent = null;
+    @SerializedName(SERIALIZED_NAME_BRAND_CODE)
+    private String brandCode;
 
-    @SerializedName("productCategory")
-    private ItemVendorDetailsCategory productCategory = null;
+    public static final String SERIALIZED_NAME_MANUFACTURER_CODE = "manufacturerCode";
 
-    @SerializedName("productGroup")
-    private String productGroup = null;
+    @SerializedName(SERIALIZED_NAME_MANUFACTURER_CODE)
+    private String manufacturerCode;
 
-    @SerializedName("productSubcategory")
-    private ItemVendorDetailsCategory productSubcategory = null;
+    public static final String SERIALIZED_NAME_MANUFACTURER_CODE_PARENT = "manufacturerCodeParent";
+
+    @SerializedName(SERIALIZED_NAME_MANUFACTURER_CODE_PARENT)
+    private String manufacturerCodeParent;
+
+    public static final String SERIALIZED_NAME_PRODUCT_CATEGORY = "productCategory";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_CATEGORY)
+    private ItemVendorDetailsCategory productCategory;
+
+    public static final String SERIALIZED_NAME_PRODUCT_GROUP = "productGroup";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP)
+    private String productGroup;
+
+    public static final String SERIALIZED_NAME_PRODUCT_SUBCATEGORY = "productSubcategory";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_SUBCATEGORY)
+    private ItemVendorDetailsCategory productSubcategory;
 
     /** The replenishment category that is associated with an Amazon catalog item. */
     @JsonAdapter(ReplenishmentCategoryEnum.Adapter.class)
     public enum ReplenishmentCategoryEnum {
-        @SerializedName("ALLOCATED")
         ALLOCATED("ALLOCATED"),
-        @SerializedName("BASIC_REPLENISHMENT")
+
         BASIC_REPLENISHMENT("BASIC_REPLENISHMENT"),
-        @SerializedName("IN_SEASON")
+
         IN_SEASON("IN_SEASON"),
-        @SerializedName("LIMITED_REPLENISHMENT")
+
         LIMITED_REPLENISHMENT("LIMITED_REPLENISHMENT"),
-        @SerializedName("MANUFACTURER_OUT_OF_STOCK")
+
         MANUFACTURER_OUT_OF_STOCK("MANUFACTURER_OUT_OF_STOCK"),
-        @SerializedName("NEW_PRODUCT")
+
         NEW_PRODUCT("NEW_PRODUCT"),
-        @SerializedName("NON_REPLENISHABLE")
+
         NON_REPLENISHABLE("NON_REPLENISHABLE"),
-        @SerializedName("NON_STOCKUPABLE")
+
         NON_STOCKUPABLE("NON_STOCKUPABLE"),
-        @SerializedName("OBSOLETE")
+
         OBSOLETE("OBSOLETE"),
-        @SerializedName("PLANNED_REPLENISHMENT")
+
         PLANNED_REPLENISHMENT("PLANNED_REPLENISHMENT");
 
         private String value;
@@ -85,32 +107,41 @@ public class ItemVendorDetailsByMarketplace {
             return String.valueOf(value);
         }
 
-        public static ReplenishmentCategoryEnum fromValue(String input) {
+        public static ReplenishmentCategoryEnum fromValue(String value) {
             for (ReplenishmentCategoryEnum b : ReplenishmentCategoryEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ReplenishmentCategoryEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ReplenishmentCategoryEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ReplenishmentCategoryEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ReplenishmentCategoryEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ReplenishmentCategoryEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ReplenishmentCategoryEnum.fromValue(value);
         }
     }
 
-    @SerializedName("replenishmentCategory")
-    private ReplenishmentCategoryEnum replenishmentCategory = null;
+    public static final String SERIALIZED_NAME_REPLENISHMENT_CATEGORY = "replenishmentCategory";
+
+    @SerializedName(SERIALIZED_NAME_REPLENISHMENT_CATEGORY)
+    private ReplenishmentCategoryEnum replenishmentCategory;
+
+    public ItemVendorDetailsByMarketplace() {}
 
     public ItemVendorDetailsByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -123,10 +154,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -145,9 +173,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return brandCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The brand code that is associated with an Amazon catalog item.")
-    public String getBrandCode() {
+    @javax.annotation.Nullable public String getBrandCode() {
         return brandCode;
     }
 
@@ -165,9 +191,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return manufacturerCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The manufacturer code that is associated with an Amazon catalog item.")
-    public String getManufacturerCode() {
+    @javax.annotation.Nullable public String getManufacturerCode() {
         return manufacturerCode;
     }
 
@@ -185,8 +209,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return manufacturerCodeParent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The parent vendor code of the manufacturer code.")
-    public String getManufacturerCodeParent() {
+    @javax.annotation.Nullable public String getManufacturerCodeParent() {
         return manufacturerCodeParent;
     }
 
@@ -204,8 +227,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemVendorDetailsCategory getProductCategory() {
+    @javax.annotation.Nullable public ItemVendorDetailsCategory getProductCategory() {
         return productCategory;
     }
 
@@ -223,9 +245,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productGroup
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The product group that is associated with an Amazon catalog item.")
-    public String getProductGroup() {
+    @javax.annotation.Nullable public String getProductGroup() {
         return productGroup;
     }
 
@@ -243,8 +263,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productSubcategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemVendorDetailsCategory getProductSubcategory() {
+    @javax.annotation.Nullable public ItemVendorDetailsCategory getProductSubcategory() {
         return productSubcategory;
     }
 
@@ -262,9 +281,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return replenishmentCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The replenishment category that is associated with an Amazon catalog item.")
-    public ReplenishmentCategoryEnum getReplenishmentCategory() {
+    @javax.annotation.Nullable public ReplenishmentCategoryEnum getReplenishmentCategory() {
         return replenishmentCategory;
     }
 
@@ -273,7 +290,7 @@ public class ItemVendorDetailsByMarketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -331,10 +348,170 @@ public class ItemVendorDetailsByMarketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("brandCode");
+        openapiFields.add("manufacturerCode");
+        openapiFields.add("manufacturerCodeParent");
+        openapiFields.add("productCategory");
+        openapiFields.add("productGroup");
+        openapiFields.add("productSubcategory");
+        openapiFields.add("replenishmentCategory");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemVendorDetailsByMarketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemVendorDetailsByMarketplace.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemVendorDetailsByMarketplace is not found in the empty JSON string",
+                        ItemVendorDetailsByMarketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemVendorDetailsByMarketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemVendorDetailsByMarketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemVendorDetailsByMarketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("brandCode") != null && !jsonObj.get("brandCode").isJsonNull())
+                && !jsonObj.get("brandCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brandCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("brandCode").toString()));
+        }
+        if ((jsonObj.get("manufacturerCode") != null
+                        && !jsonObj.get("manufacturerCode").isJsonNull())
+                && !jsonObj.get("manufacturerCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturerCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manufacturerCode").toString()));
+        }
+        if ((jsonObj.get("manufacturerCodeParent") != null
+                        && !jsonObj.get("manufacturerCodeParent").isJsonNull())
+                && !jsonObj.get("manufacturerCodeParent").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturerCodeParent` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manufacturerCodeParent").toString()));
+        }
+        // validate the optional field `productCategory`
+        if (jsonObj.get("productCategory") != null
+                && !jsonObj.get("productCategory").isJsonNull()) {
+            ItemVendorDetailsCategory.validateJsonElement(jsonObj.get("productCategory"));
+        }
+        if ((jsonObj.get("productGroup") != null && !jsonObj.get("productGroup").isJsonNull())
+                && !jsonObj.get("productGroup").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productGroup` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productGroup").toString()));
+        }
+        // validate the optional field `productSubcategory`
+        if (jsonObj.get("productSubcategory") != null
+                && !jsonObj.get("productSubcategory").isJsonNull()) {
+            ItemVendorDetailsCategory.validateJsonElement(jsonObj.get("productSubcategory"));
+        }
+        if ((jsonObj.get("replenishmentCategory") != null
+                        && !jsonObj.get("replenishmentCategory").isJsonNull())
+                && !jsonObj.get("replenishmentCategory").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `replenishmentCategory` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("replenishmentCategory").toString()));
+        }
+        // validate the optional field `replenishmentCategory`
+        if (jsonObj.get("replenishmentCategory") != null
+                && !jsonObj.get("replenishmentCategory").isJsonNull()) {
+            ReplenishmentCategoryEnum.validateJsonElement(jsonObj.get("replenishmentCategory"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemVendorDetailsByMarketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemVendorDetailsByMarketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemVendorDetailsByMarketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemVendorDetailsByMarketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemVendorDetailsByMarketplace>() {
+                        @Override
+                        public void write(JsonWriter out, ItemVendorDetailsByMarketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemVendorDetailsByMarketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemVendorDetailsByMarketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemVendorDetailsByMarketplace
+     * @throws IOException if the JSON string is invalid with respect to ItemVendorDetailsByMarketplace
+     */
+    public static ItemVendorDetailsByMarketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemVendorDetailsByMarketplace.class);
+    }
+
+    /**
+     * Convert an instance of ItemVendorDetailsByMarketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

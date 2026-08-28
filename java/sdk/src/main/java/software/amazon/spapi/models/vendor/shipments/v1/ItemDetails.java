@@ -12,30 +12,45 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is
  * appropriate.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemDetails {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("lotNumber")
-    private String lotNumber = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("lotNumberSourceReference")
-    private String lotNumberSourceReference = null;
+    public static final String SERIALIZED_NAME_LOT_NUMBER = "lotNumber";
+
+    @SerializedName(SERIALIZED_NAME_LOT_NUMBER)
+    private String lotNumber;
+
+    public static final String SERIALIZED_NAME_LOT_NUMBER_SOURCE_REFERENCE = "lotNumberSourceReference";
+
+    @SerializedName(SERIALIZED_NAME_LOT_NUMBER_SOURCE_REFERENCE)
+    private String lotNumberSourceReference;
 
     /**
      * The identifier type used for the lot number source. Provide this field when you specify
@@ -43,13 +58,12 @@ public class ItemDetails {
      */
     @JsonAdapter(LotNumberSourceTypeEnum.Adapter.class)
     public enum LotNumberSourceTypeEnum {
-        @SerializedName("GLN")
         GLN("GLN"),
-        @SerializedName("FFRN")
+
         FFRN("FFRN"),
-        @SerializedName("USDA_E")
+
         USDA_E("USDA_E"),
-        @SerializedName("URL")
+
         URL("URL");
 
         private String value;
@@ -67,55 +81,69 @@ public class ItemDetails {
             return String.valueOf(value);
         }
 
-        public static LotNumberSourceTypeEnum fromValue(String input) {
+        public static LotNumberSourceTypeEnum fromValue(String value) {
             for (LotNumberSourceTypeEnum b : LotNumberSourceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LotNumberSourceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final LotNumberSourceTypeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public LotNumberSourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return LotNumberSourceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return LotNumberSourceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LotNumberSourceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("lotNumberSourceType")
-    private LotNumberSourceTypeEnum lotNumberSourceType = null;
+    public static final String SERIALIZED_NAME_LOT_NUMBER_SOURCE_TYPE = "lotNumberSourceType";
 
-    @SerializedName("countryOfOrigin")
-    private String countryOfOrigin = null;
+    @SerializedName(SERIALIZED_NAME_LOT_NUMBER_SOURCE_TYPE)
+    private LotNumberSourceTypeEnum lotNumberSourceType;
 
-    @SerializedName("regulationReferences")
-    private RegulationReferences regulationReferences = null;
+    public static final String SERIALIZED_NAME_COUNTRY_OF_ORIGIN = "countryOfOrigin";
 
-    @SerializedName("expiry")
-    private Expiry expiry = null;
+    @SerializedName(SERIALIZED_NAME_COUNTRY_OF_ORIGIN)
+    private String countryOfOrigin;
 
-    @SerializedName("maximumRetailPrice")
-    private Money maximumRetailPrice = null;
+    public static final String SERIALIZED_NAME_REGULATION_REFERENCES = "regulationReferences";
+
+    @SerializedName(SERIALIZED_NAME_REGULATION_REFERENCES)
+    private RegulationReferences regulationReferences;
+
+    public static final String SERIALIZED_NAME_EXPIRY = "expiry";
+
+    @SerializedName(SERIALIZED_NAME_EXPIRY)
+    private Expiry expiry;
+
+    public static final String SERIALIZED_NAME_MAXIMUM_RETAIL_PRICE = "maximumRetailPrice";
+
+    @SerializedName(SERIALIZED_NAME_MAXIMUM_RETAIL_PRICE)
+    private Money maximumRetailPrice;
 
     /** Identification of the instructions on how specified item/carton/pallet should be handled. */
     @JsonAdapter(HandlingCodeEnum.Adapter.class)
     public enum HandlingCodeEnum {
-        @SerializedName("Oversized")
         OVERSIZED("Oversized"),
-        @SerializedName("Fragile")
+
         FRAGILE("Fragile"),
-        @SerializedName("Food")
+
         FOOD("Food"),
-        @SerializedName("HandleWithCare")
+
         HANDLE_WITH_CARE("HandleWithCare");
 
         private String value;
@@ -133,31 +161,40 @@ public class ItemDetails {
             return String.valueOf(value);
         }
 
-        public static HandlingCodeEnum fromValue(String input) {
+        public static HandlingCodeEnum fromValue(String value) {
             for (HandlingCodeEnum b : HandlingCodeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<HandlingCodeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final HandlingCodeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public HandlingCodeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return HandlingCodeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return HandlingCodeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            HandlingCodeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("handlingCode")
-    private HandlingCodeEnum handlingCode = null;
+    public static final String SERIALIZED_NAME_HANDLING_CODE = "handlingCode";
+
+    @SerializedName(SERIALIZED_NAME_HANDLING_CODE)
+    private HandlingCodeEnum handlingCode;
+
+    public ItemDetails() {}
 
     public ItemDetails purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -171,10 +208,7 @@ public class ItemDetails {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.")
-    public String getPurchaseOrderNumber() {
+    @javax.annotation.Nullable public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
 
@@ -194,10 +228,7 @@ public class ItemDetails {
      *
      * @return lotNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.")
-    public String getLotNumber() {
+    @javax.annotation.Nullable public String getLotNumber() {
         return lotNumber;
     }
 
@@ -218,10 +249,7 @@ public class ItemDetails {
      *
      * @return lotNumberSourceReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The location identifier where the product receives a traceability lot number. Provide this field for products subject to the FDA Food Safety Modernization Act (FSMA) Section 204. When you provide `lotNumberSourceReference`, you must also specify the corresponding `lotNumberSourceType` field.")
-    public String getLotNumberSourceReference() {
+    @javax.annotation.Nullable public String getLotNumberSourceReference() {
         return lotNumberSourceReference;
     }
 
@@ -240,10 +268,7 @@ public class ItemDetails {
      *
      * @return lotNumberSourceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier type used for the lot number source. Provide this field when you specify `lotNumberSourceReference`.")
-    public LotNumberSourceTypeEnum getLotNumberSourceType() {
+    @javax.annotation.Nullable public LotNumberSourceTypeEnum getLotNumberSourceType() {
         return lotNumberSourceType;
     }
 
@@ -262,10 +287,7 @@ public class ItemDetails {
      *
      * @return countryOfOrigin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The two-character country code for the country where the product was manufactured or originates. Use ISO 3166-1 alpha-2 format.")
-    public String getCountryOfOrigin() {
+    @javax.annotation.Nullable public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
 
@@ -283,8 +305,7 @@ public class ItemDetails {
      *
      * @return regulationReferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RegulationReferences getRegulationReferences() {
+    @javax.annotation.Nullable public RegulationReferences getRegulationReferences() {
         return regulationReferences;
     }
 
@@ -302,8 +323,7 @@ public class ItemDetails {
      *
      * @return expiry
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Expiry getExpiry() {
+    @javax.annotation.Nullable public Expiry getExpiry() {
         return expiry;
     }
 
@@ -321,8 +341,7 @@ public class ItemDetails {
      *
      * @return maximumRetailPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getMaximumRetailPrice() {
+    @javax.annotation.Nullable public Money getMaximumRetailPrice() {
         return maximumRetailPrice;
     }
 
@@ -340,9 +359,7 @@ public class ItemDetails {
      *
      * @return handlingCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Identification of the instructions on how specified item/carton/pallet should be handled.")
-    public HandlingCodeEnum getHandlingCode() {
+    @javax.annotation.Nullable public HandlingCodeEnum getHandlingCode() {
         return handlingCode;
     }
 
@@ -351,7 +368,7 @@ public class ItemDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -414,10 +431,170 @@ public class ItemDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("lotNumber");
+        openapiFields.add("lotNumberSourceReference");
+        openapiFields.add("lotNumberSourceType");
+        openapiFields.add("countryOfOrigin");
+        openapiFields.add("regulationReferences");
+        openapiFields.add("expiry");
+        openapiFields.add("maximumRetailPrice");
+        openapiFields.add("handlingCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemDetails is not found in the empty JSON string",
+                        ItemDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("purchaseOrderNumber") != null
+                        && !jsonObj.get("purchaseOrderNumber").isJsonNull())
+                && !jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if ((jsonObj.get("lotNumber") != null && !jsonObj.get("lotNumber").isJsonNull())
+                && !jsonObj.get("lotNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lotNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lotNumber").toString()));
+        }
+        if ((jsonObj.get("lotNumberSourceReference") != null
+                        && !jsonObj.get("lotNumberSourceReference").isJsonNull())
+                && !jsonObj.get("lotNumberSourceReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lotNumberSourceReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lotNumberSourceReference").toString()));
+        }
+        if ((jsonObj.get("lotNumberSourceType") != null
+                        && !jsonObj.get("lotNumberSourceType").isJsonNull())
+                && !jsonObj.get("lotNumberSourceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lotNumberSourceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lotNumberSourceType").toString()));
+        }
+        // validate the optional field `lotNumberSourceType`
+        if (jsonObj.get("lotNumberSourceType") != null
+                && !jsonObj.get("lotNumberSourceType").isJsonNull()) {
+            LotNumberSourceTypeEnum.validateJsonElement(jsonObj.get("lotNumberSourceType"));
+        }
+        if ((jsonObj.get("countryOfOrigin") != null
+                        && !jsonObj.get("countryOfOrigin").isJsonNull())
+                && !jsonObj.get("countryOfOrigin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryOfOrigin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryOfOrigin").toString()));
+        }
+        // validate the optional field `regulationReferences`
+        if (jsonObj.get("regulationReferences") != null
+                && !jsonObj.get("regulationReferences").isJsonNull()) {
+            RegulationReferences.validateJsonElement(jsonObj.get("regulationReferences"));
+        }
+        // validate the optional field `expiry`
+        if (jsonObj.get("expiry") != null && !jsonObj.get("expiry").isJsonNull()) {
+            Expiry.validateJsonElement(jsonObj.get("expiry"));
+        }
+        // validate the optional field `maximumRetailPrice`
+        if (jsonObj.get("maximumRetailPrice") != null
+                && !jsonObj.get("maximumRetailPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("maximumRetailPrice"));
+        }
+        if ((jsonObj.get("handlingCode") != null && !jsonObj.get("handlingCode").isJsonNull())
+                && !jsonObj.get("handlingCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `handlingCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("handlingCode").toString()));
+        }
+        // validate the optional field `handlingCode`
+        if (jsonObj.get("handlingCode") != null && !jsonObj.get("handlingCode").isJsonNull()) {
+            HandlingCodeEnum.validateJsonElement(jsonObj.get("handlingCode"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemDetails>() {
+                        @Override
+                        public void write(JsonWriter out, ItemDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemDetails
+     * @throws IOException if the JSON string is invalid with respect to ItemDetails
+     */
+    public static ItemDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemDetails.class);
+    }
+
+    /**
+     * Convert an instance of ItemDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

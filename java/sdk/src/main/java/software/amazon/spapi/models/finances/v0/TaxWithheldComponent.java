@@ -12,17 +12,41 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the taxes withheld. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the taxes withheld.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TaxWithheldComponent {
-    @SerializedName("TaxCollectionModel")
-    private String taxCollectionModel = null;
+    public static final String SERIALIZED_NAME_TAX_COLLECTION_MODEL = "TaxCollectionModel";
 
-    @SerializedName("TaxesWithheld")
-    private ChargeComponentList taxesWithheld = null;
+    @SerializedName(SERIALIZED_NAME_TAX_COLLECTION_MODEL)
+    private String taxCollectionModel;
+
+    public static final String SERIALIZED_NAME_TAXES_WITHHELD = "TaxesWithheld";
+
+    @SerializedName(SERIALIZED_NAME_TAXES_WITHHELD)
+    private List<ChargeComponent> taxesWithheld = new ArrayList<>();
+
+    public TaxWithheldComponent() {}
 
     public TaxWithheldComponent taxCollectionModel(String taxCollectionModel) {
         this.taxCollectionModel = taxCollectionModel;
@@ -36,10 +60,7 @@ public class TaxWithheldComponent {
      *
      * @return taxCollectionModel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The tax collection model applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.")
-    public String getTaxCollectionModel() {
+    @javax.annotation.Nullable public String getTaxCollectionModel() {
         return taxCollectionModel;
     }
 
@@ -47,27 +68,34 @@ public class TaxWithheldComponent {
         this.taxCollectionModel = taxCollectionModel;
     }
 
-    public TaxWithheldComponent taxesWithheld(ChargeComponentList taxesWithheld) {
+    public TaxWithheldComponent taxesWithheld(List<ChargeComponent> taxesWithheld) {
         this.taxesWithheld = taxesWithheld;
         return this;
     }
 
+    public TaxWithheldComponent addTaxesWithheldItem(ChargeComponent taxesWithheldItem) {
+        if (this.taxesWithheld == null) {
+            this.taxesWithheld = new ArrayList<>();
+        }
+        this.taxesWithheld.add(taxesWithheldItem);
+        return this;
+    }
+
     /**
-     * Get taxesWithheld
+     * A list of charge information on the seller&#39;s account.
      *
      * @return taxesWithheld
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getTaxesWithheld() {
+    @javax.annotation.Nullable public List<ChargeComponent> getTaxesWithheld() {
         return taxesWithheld;
     }
 
-    public void setTaxesWithheld(ChargeComponentList taxesWithheld) {
+    public void setTaxesWithheld(List<ChargeComponent> taxesWithheld) {
         this.taxesWithheld = taxesWithheld;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -97,10 +125,125 @@ public class TaxWithheldComponent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TaxCollectionModel");
+        openapiFields.add("TaxesWithheld");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TaxWithheldComponent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TaxWithheldComponent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TaxWithheldComponent is not found in the empty JSON string",
+                        TaxWithheldComponent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TaxWithheldComponent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TaxWithheldComponent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("TaxCollectionModel") != null
+                        && !jsonObj.get("TaxCollectionModel").isJsonNull())
+                && !jsonObj.get("TaxCollectionModel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TaxCollectionModel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TaxCollectionModel").toString()));
+        }
+        if (jsonObj.get("TaxesWithheld") != null
+                && !jsonObj.get("TaxesWithheld").isJsonNull()) {
+            JsonArray jsonArraytaxesWithheld = jsonObj.getAsJsonArray("TaxesWithheld");
+            if (jsonArraytaxesWithheld != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TaxesWithheld").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TaxesWithheld` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TaxesWithheld").toString()));
+                }
+
+                // validate the optional field `TaxesWithheld` (array)
+                for (int i = 0; i < jsonArraytaxesWithheld.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArraytaxesWithheld.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TaxWithheldComponent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TaxWithheldComponent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TaxWithheldComponent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TaxWithheldComponent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TaxWithheldComponent>() {
+                        @Override
+                        public void write(JsonWriter out, TaxWithheldComponent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TaxWithheldComponent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TaxWithheldComponent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TaxWithheldComponent
+     * @throws IOException if the JSON string is invalid with respect to TaxWithheldComponent
+     */
+    public static TaxWithheldComponent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TaxWithheldComponent.class);
+    }
+
+    /**
+     * Convert an instance of TaxWithheldComponent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

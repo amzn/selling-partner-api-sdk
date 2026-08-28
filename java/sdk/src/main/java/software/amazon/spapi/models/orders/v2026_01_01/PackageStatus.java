@@ -12,33 +12,41 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Current status and detailed tracking information for a shipping package throughout the delivery process. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Current status and detailed tracking information for a shipping package throughout the delivery process.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageStatus {
     /** Primary status classification of the package in the shipping workflow. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("PENDING")
         PENDING("PENDING"),
-        @SerializedName("IN_TRANSIT")
+
         IN_TRANSIT("IN_TRANSIT"),
-        @SerializedName("SHIPPED")
+
         SHIPPED("SHIPPED"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED"),
-        @SerializedName("UNDELIVERABLE")
+
         UNDELIVERABLE("UNDELIVERABLE");
 
         private String value;
@@ -56,34 +64,45 @@ public class PackageStatus {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("detailedStatus")
-    private String detailedStatus = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
+
+    public static final String SERIALIZED_NAME_DETAILED_STATUS = "detailedStatus";
+
+    @SerializedName(SERIALIZED_NAME_DETAILED_STATUS)
+    private String detailedStatus;
+
+    public PackageStatus() {}
 
     public PackageStatus status(StatusEnum status) {
         this.status = status;
@@ -95,9 +114,7 @@ public class PackageStatus {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Primary status classification of the package in the shipping workflow.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         return status;
     }
@@ -128,10 +145,7 @@ public class PackageStatus {
      *
      * @return detailedStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Granular status information providing specific details about the package's current location and handling stage.   **Possible values**: - `PENDING_SCHEDULE` (Package awaiting pickup scheduling) - `PENDING_PICK_UP` (Package ready for carrier collection from seller) - `PENDING_DROP_OFF` (Package awaiting seller delivery to carrier) - `LABEL_CANCELLED` (Shipping label canceled by seller) - `PICKED_UP` (Package collected by carrier from seller location) - `DROPPED_OFF` (Package delivered to carrier by seller) - `AT_ORIGIN_FC` (Package at originating fulfillment center) - `AT_DESTINATION_FC` (Package at destination fulfillment center) - `DELIVERED` (Package successfully delivered to recipient) - `REJECTED_BY_BUYER` (Package refused by intended recipient) - `UNDELIVERABLE` (Package cannot be delivered due to address or access issues) - `RETURNING_TO_SELLER` (Package in transit back to seller) - `RETURNED_TO_SELLER` (Package successfully returned to seller) - `LOST` (Package location unknown or confirmed lost) - `OUT_FOR_DELIVERY` (Package on delivery vehicle for final delivery) - `DAMAGED` (Package damaged during transit) ")
-    public String getDetailedStatus() {
+    @javax.annotation.Nullable public String getDetailedStatus() {
         return detailedStatus;
     }
 
@@ -140,7 +154,7 @@ public class PackageStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +184,124 @@ public class PackageStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("status");
+        openapiFields.add("detailedStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageStatus is not found in the empty JSON string",
+                        PackageStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackageStatus.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
+        if ((jsonObj.get("detailedStatus") != null
+                        && !jsonObj.get("detailedStatus").isJsonNull())
+                && !jsonObj.get("detailedStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `detailedStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("detailedStatus").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageStatus>() {
+                        @Override
+                        public void write(JsonWriter out, PackageStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageStatus
+     * @throws IOException if the JSON string is invalid with respect to PackageStatus
+     */
+    public static PackageStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageStatus.class);
+    }
+
+    /**
+     * Convert an instance of PackageStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

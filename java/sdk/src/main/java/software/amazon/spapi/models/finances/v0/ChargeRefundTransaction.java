@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The charge refund transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The charge refund transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChargeRefundTransaction {
-    @SerializedName("ChargeAmount")
-    private Currency chargeAmount = null;
+    public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "ChargeAmount";
 
-    @SerializedName("ChargeType")
-    private String chargeType = null;
+    @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+    private Currency chargeAmount;
+
+    public static final String SERIALIZED_NAME_CHARGE_TYPE = "ChargeType";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_TYPE)
+    private String chargeType;
+
+    public ChargeRefundTransaction() {}
 
     public ChargeRefundTransaction chargeAmount(Currency chargeAmount) {
         this.chargeAmount = chargeAmount;
@@ -34,8 +55,7 @@ public class ChargeRefundTransaction {
      *
      * @return chargeAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getChargeAmount() {
+    @javax.annotation.Nullable public Currency getChargeAmount() {
         return chargeAmount;
     }
 
@@ -53,8 +73,7 @@ public class ChargeRefundTransaction {
      *
      * @return chargeType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
-    public String getChargeType() {
+    @javax.annotation.Nullable public String getChargeType() {
         return chargeType;
     }
 
@@ -63,7 +82,7 @@ public class ChargeRefundTransaction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +110,111 @@ public class ChargeRefundTransaction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ChargeAmount");
+        openapiFields.add("ChargeType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChargeRefundTransaction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChargeRefundTransaction.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChargeRefundTransaction is not found in the empty JSON string",
+                        ChargeRefundTransaction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChargeRefundTransaction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChargeRefundTransaction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `ChargeAmount`
+        if (jsonObj.get("ChargeAmount") != null && !jsonObj.get("ChargeAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ChargeAmount"));
+        }
+        if ((jsonObj.get("ChargeType") != null && !jsonObj.get("ChargeType").isJsonNull())
+                && !jsonObj.get("ChargeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ChargeType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ChargeType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChargeRefundTransaction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeRefundTransaction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChargeRefundTransaction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChargeRefundTransaction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChargeRefundTransaction>() {
+                        @Override
+                        public void write(JsonWriter out, ChargeRefundTransaction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChargeRefundTransaction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChargeRefundTransaction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChargeRefundTransaction
+     * @throws IOException if the JSON string is invalid with respect to ChargeRefundTransaction
+     */
+    public static ChargeRefundTransaction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChargeRefundTransaction.class);
+    }
+
+    /**
+     * Convert an instance of ChargeRefundTransaction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,75 +12,140 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An object which contains offer metrics. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An object which contains offer metrics.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOfferMetricsResponseOffer {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("sku")
-    private String sku = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("fulfillmentChannelType")
-    private FulfillmentChannelType fulfillmentChannelType = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
 
-    @SerializedName("brandName")
-    private String brandName = null;
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
 
-    @SerializedName("productGroup")
-    private String productGroup = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPE = "fulfillmentChannelType";
 
-    @SerializedName("notDeliveredDueToOOS")
-    private Double notDeliveredDueToOOS = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPE)
+    private FulfillmentChannelType fulfillmentChannelType;
 
-    @SerializedName("totalSubscriptionsRevenue")
-    private Double totalSubscriptionsRevenue = null;
+    public static final String SERIALIZED_NAME_BRAND_NAME = "brandName";
 
-    @SerializedName("shippedSubscriptionUnits")
-    private BigDecimal shippedSubscriptionUnits = null;
+    @SerializedName(SERIALIZED_NAME_BRAND_NAME)
+    private String brandName;
 
-    @SerializedName("activeSubscriptions")
-    private BigDecimal activeSubscriptions = null;
+    public static final String SERIALIZED_NAME_PRODUCT_GROUP = "productGroup";
 
-    @SerializedName("revenuePenetration")
-    private Double revenuePenetration = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_GROUP)
+    private String productGroup;
 
-    @SerializedName("lostRevenueDueToOOS")
-    private Double lostRevenueDueToOOS = null;
+    public static final String SERIALIZED_NAME_NOT_DELIVERED_DUE_TO_O_O_S = "notDeliveredDueToOOS";
 
-    @SerializedName("couponsRevenuePenetration")
-    private Double couponsRevenuePenetration = null;
+    @SerializedName(SERIALIZED_NAME_NOT_DELIVERED_DUE_TO_O_O_S)
+    private Double notDeliveredDueToOOS;
 
-    @SerializedName("shareOfCouponSubscriptions")
-    private Double shareOfCouponSubscriptions = null;
+    public static final String SERIALIZED_NAME_TOTAL_SUBSCRIPTIONS_REVENUE = "totalSubscriptionsRevenue";
 
-    @SerializedName("next30DayTotalSubscriptionsRevenue")
-    private Double next30DayTotalSubscriptionsRevenue = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_SUBSCRIPTIONS_REVENUE)
+    private Double totalSubscriptionsRevenue;
 
-    @SerializedName("next60DayTotalSubscriptionsRevenue")
-    private Double next60DayTotalSubscriptionsRevenue = null;
+    public static final String SERIALIZED_NAME_SHIPPED_SUBSCRIPTION_UNITS = "shippedSubscriptionUnits";
 
-    @SerializedName("next90DayTotalSubscriptionsRevenue")
-    private Double next90DayTotalSubscriptionsRevenue = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPED_SUBSCRIPTION_UNITS)
+    private BigDecimal shippedSubscriptionUnits;
 
-    @SerializedName("next30DayShippedSubscriptionUnits")
-    private BigDecimal next30DayShippedSubscriptionUnits = null;
+    public static final String SERIALIZED_NAME_ACTIVE_SUBSCRIPTIONS = "activeSubscriptions";
 
-    @SerializedName("next60DayShippedSubscriptionUnits")
-    private BigDecimal next60DayShippedSubscriptionUnits = null;
+    @SerializedName(SERIALIZED_NAME_ACTIVE_SUBSCRIPTIONS)
+    private BigDecimal activeSubscriptions;
 
-    @SerializedName("next90DayShippedSubscriptionUnits")
-    private BigDecimal next90DayShippedSubscriptionUnits = null;
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION = "revenuePenetration";
 
-    @SerializedName("timeInterval")
-    private TimeInterval timeInterval = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION)
+    private Double revenuePenetration;
 
-    @SerializedName("currencyCode")
-    private String currencyCode = null;
+    public static final String SERIALIZED_NAME_LOST_REVENUE_DUE_TO_O_O_S = "lostRevenueDueToOOS";
+
+    @SerializedName(SERIALIZED_NAME_LOST_REVENUE_DUE_TO_O_O_S)
+    private Double lostRevenueDueToOOS;
+
+    public static final String SERIALIZED_NAME_COUPONS_REVENUE_PENETRATION = "couponsRevenuePenetration";
+
+    @SerializedName(SERIALIZED_NAME_COUPONS_REVENUE_PENETRATION)
+    private Double couponsRevenuePenetration;
+
+    public static final String SERIALIZED_NAME_SHARE_OF_COUPON_SUBSCRIPTIONS = "shareOfCouponSubscriptions";
+
+    @SerializedName(SERIALIZED_NAME_SHARE_OF_COUPON_SUBSCRIPTIONS)
+    private Double shareOfCouponSubscriptions;
+
+    public static final String SERIALIZED_NAME_NEXT30_DAY_TOTAL_SUBSCRIPTIONS_REVENUE =
+            "next30DayTotalSubscriptionsRevenue";
+
+    @SerializedName(SERIALIZED_NAME_NEXT30_DAY_TOTAL_SUBSCRIPTIONS_REVENUE)
+    private Double next30DayTotalSubscriptionsRevenue;
+
+    public static final String SERIALIZED_NAME_NEXT60_DAY_TOTAL_SUBSCRIPTIONS_REVENUE =
+            "next60DayTotalSubscriptionsRevenue";
+
+    @SerializedName(SERIALIZED_NAME_NEXT60_DAY_TOTAL_SUBSCRIPTIONS_REVENUE)
+    private Double next60DayTotalSubscriptionsRevenue;
+
+    public static final String SERIALIZED_NAME_NEXT90_DAY_TOTAL_SUBSCRIPTIONS_REVENUE =
+            "next90DayTotalSubscriptionsRevenue";
+
+    @SerializedName(SERIALIZED_NAME_NEXT90_DAY_TOTAL_SUBSCRIPTIONS_REVENUE)
+    private Double next90DayTotalSubscriptionsRevenue;
+
+    public static final String SERIALIZED_NAME_NEXT30_DAY_SHIPPED_SUBSCRIPTION_UNITS =
+            "next30DayShippedSubscriptionUnits";
+
+    @SerializedName(SERIALIZED_NAME_NEXT30_DAY_SHIPPED_SUBSCRIPTION_UNITS)
+    private BigDecimal next30DayShippedSubscriptionUnits;
+
+    public static final String SERIALIZED_NAME_NEXT60_DAY_SHIPPED_SUBSCRIPTION_UNITS =
+            "next60DayShippedSubscriptionUnits";
+
+    @SerializedName(SERIALIZED_NAME_NEXT60_DAY_SHIPPED_SUBSCRIPTION_UNITS)
+    private BigDecimal next60DayShippedSubscriptionUnits;
+
+    public static final String SERIALIZED_NAME_NEXT90_DAY_SHIPPED_SUBSCRIPTION_UNITS =
+            "next90DayShippedSubscriptionUnits";
+
+    @SerializedName(SERIALIZED_NAME_NEXT90_DAY_SHIPPED_SUBSCRIPTION_UNITS)
+    private BigDecimal next90DayShippedSubscriptionUnits;
+
+    public static final String SERIALIZED_NAME_TIME_INTERVAL = "timeInterval";
+
+    @SerializedName(SERIALIZED_NAME_TIME_INTERVAL)
+    private TimeInterval timeInterval;
+
+    public static final String SERIALIZED_NAME_CURRENCY_CODE = "currencyCode";
+
+    @SerializedName(SERIALIZED_NAME_CURRENCY_CODE)
+    private String currencyCode;
+
+    public ListOfferMetricsResponseOffer() {}
 
     public ListOfferMetricsResponseOffer asin(String asin) {
         this.asin = asin;
@@ -92,8 +157,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -111,9 +175,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The SKU. This property is only supported for sellers and not for vendors.")
-    public String getSku() {
+    @javax.annotation.Nullable public String getSku() {
         return sku;
     }
 
@@ -131,8 +193,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return fulfillmentChannelType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentChannelType getFulfillmentChannelType() {
+    @javax.annotation.Nullable public FulfillmentChannelType getFulfillmentChannelType() {
         return fulfillmentChannelType;
     }
 
@@ -150,8 +211,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return brandName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The brand name associated with the offer.")
-    public String getBrandName() {
+    @javax.annotation.Nullable public String getBrandName() {
         return brandName;
     }
 
@@ -169,10 +229,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return productGroup
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The product group associated with the offer. This property is only supported for vendors and not for sellers.")
-    public String getProductGroup() {
+    @javax.annotation.Nullable public String getProductGroup() {
         return productGroup;
     }
 
@@ -187,14 +244,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being
-     * out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return notDeliveredDueToOOS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getNotDeliveredDueToOOS() {
+    @javax.annotation.Nullable public Double getNotDeliveredDueToOOS() {
         return notDeliveredDueToOOS;
     }
 
@@ -209,14 +263,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The revenue generated from subscriptions over a period of time. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return totalSubscriptionsRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The revenue generated from subscriptions over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getTotalSubscriptionsRevenue() {
+    @javax.annotation.Nullable public Double getTotalSubscriptionsRevenue() {
         return totalSubscriptionsRevenue;
     }
 
@@ -231,14 +282,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The number of units shipped to the subscribers over a period of time. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return shippedSubscriptionUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of units shipped to the subscribers over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public BigDecimal getShippedSubscriptionUnits() {
+    @javax.annotation.Nullable public BigDecimal getShippedSubscriptionUnits() {
         return shippedSubscriptionUnits;
     }
 
@@ -253,14 +301,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return activeSubscriptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public BigDecimal getActiveSubscriptions() {
+    @javax.annotation.Nullable public BigDecimal getActiveSubscriptions() {
         return activeSubscriptions;
     }
 
@@ -275,14 +320,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The percentage of total program revenue out of total product revenue. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return revenuePenetration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of total program revenue out of total product revenue. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetration() {
+    @javax.annotation.Nullable public Double getRevenuePenetration() {
         return revenuePenetration;
     }
 
@@ -297,14 +339,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return lostRevenueDueToOOS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getLostRevenueDueToOOS() {
+    @javax.annotation.Nullable public Double getLostRevenueDueToOOS() {
         return lostRevenueDueToOOS;
     }
 
@@ -319,14 +358,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return couponsRevenuePenetration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getCouponsRevenuePenetration() {
+    @javax.annotation.Nullable public Double getCouponsRevenuePenetration() {
         return couponsRevenuePenetration;
     }
 
@@ -341,14 +377,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return shareOfCouponSubscriptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getShareOfCouponSubscriptions() {
+    @javax.annotation.Nullable public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
 
@@ -363,14 +396,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted total subscription revenue for the next 30 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next30DayTotalSubscriptionsRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted total subscription revenue for the next 30 days. Applicable to `FORECAST` `timePeriodType`.")
-    public Double getNext30DayTotalSubscriptionsRevenue() {
+    @javax.annotation.Nullable public Double getNext30DayTotalSubscriptionsRevenue() {
         return next30DayTotalSubscriptionsRevenue;
     }
 
@@ -385,14 +415,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted total subscription revenue for the next 60 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next60DayTotalSubscriptionsRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted total subscription revenue for the next 60 days. Applicable to `FORECAST` `timePeriodType`.")
-    public Double getNext60DayTotalSubscriptionsRevenue() {
+    @javax.annotation.Nullable public Double getNext60DayTotalSubscriptionsRevenue() {
         return next60DayTotalSubscriptionsRevenue;
     }
 
@@ -407,14 +434,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted total subscription revenue for the next 90 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next90DayTotalSubscriptionsRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted total subscription revenue for the next 90 days. Applicable to `FORECAST` `timePeriodType`.")
-    public Double getNext90DayTotalSubscriptionsRevenue() {
+    @javax.annotation.Nullable public Double getNext90DayTotalSubscriptionsRevenue() {
         return next90DayTotalSubscriptionsRevenue;
     }
 
@@ -430,14 +454,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted shipped subscription units for the next 30 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next30DayShippedSubscriptionUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted shipped subscription units for the next 30 days. Applicable to `FORECAST` `timePeriodType`.")
-    public BigDecimal getNext30DayShippedSubscriptionUnits() {
+    @javax.annotation.Nullable public BigDecimal getNext30DayShippedSubscriptionUnits() {
         return next30DayShippedSubscriptionUnits;
     }
 
@@ -453,14 +474,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted shipped subscription units for the next 60 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next60DayShippedSubscriptionUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted shipped subscription units for the next 60 days. Applicable to `FORECAST` `timePeriodType`.")
-    public BigDecimal getNext60DayShippedSubscriptionUnits() {
+    @javax.annotation.Nullable public BigDecimal getNext60DayShippedSubscriptionUnits() {
         return next60DayShippedSubscriptionUnits;
     }
 
@@ -476,14 +494,11 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The forecasted shipped subscription units for the next 90 days. Applicable to &#x60;FORECAST&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return next90DayShippedSubscriptionUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The forecasted shipped subscription units for the next 90 days. Applicable to `FORECAST` `timePeriodType`.")
-    public BigDecimal getNext90DayShippedSubscriptionUnits() {
+    @javax.annotation.Nullable public BigDecimal getNext90DayShippedSubscriptionUnits() {
         return next90DayShippedSubscriptionUnits;
     }
 
@@ -501,8 +516,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return timeInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeInterval getTimeInterval() {
+    @javax.annotation.Nullable public TimeInterval getTimeInterval() {
         return timeInterval;
     }
 
@@ -520,8 +534,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return currencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The currency code in ISO 4217 format.")
-    public String getCurrencyCode() {
+    @javax.annotation.Nullable public String getCurrencyCode() {
         return currencyCode;
     }
 
@@ -530,7 +543,7 @@ public class ListOfferMetricsResponseOffer {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -662,10 +675,159 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("sku");
+        openapiFields.add("fulfillmentChannelType");
+        openapiFields.add("brandName");
+        openapiFields.add("productGroup");
+        openapiFields.add("notDeliveredDueToOOS");
+        openapiFields.add("totalSubscriptionsRevenue");
+        openapiFields.add("shippedSubscriptionUnits");
+        openapiFields.add("activeSubscriptions");
+        openapiFields.add("revenuePenetration");
+        openapiFields.add("lostRevenueDueToOOS");
+        openapiFields.add("couponsRevenuePenetration");
+        openapiFields.add("shareOfCouponSubscriptions");
+        openapiFields.add("next30DayTotalSubscriptionsRevenue");
+        openapiFields.add("next60DayTotalSubscriptionsRevenue");
+        openapiFields.add("next90DayTotalSubscriptionsRevenue");
+        openapiFields.add("next30DayShippedSubscriptionUnits");
+        openapiFields.add("next60DayShippedSubscriptionUnits");
+        openapiFields.add("next90DayShippedSubscriptionUnits");
+        openapiFields.add("timeInterval");
+        openapiFields.add("currencyCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOfferMetricsResponseOffer
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOfferMetricsResponseOffer.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOfferMetricsResponseOffer is not found in the empty JSON string",
+                        ListOfferMetricsResponseOffer.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOfferMetricsResponseOffer.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOfferMetricsResponseOffer` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull())
+                && !jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        // validate the optional field `fulfillmentChannelType`
+        if (jsonObj.get("fulfillmentChannelType") != null
+                && !jsonObj.get("fulfillmentChannelType").isJsonNull()) {
+            FulfillmentChannelType.validateJsonElement(jsonObj.get("fulfillmentChannelType"));
+        }
+        if ((jsonObj.get("brandName") != null && !jsonObj.get("brandName").isJsonNull())
+                && !jsonObj.get("brandName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brandName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("brandName").toString()));
+        }
+        if ((jsonObj.get("productGroup") != null && !jsonObj.get("productGroup").isJsonNull())
+                && !jsonObj.get("productGroup").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productGroup` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productGroup").toString()));
+        }
+        // validate the optional field `timeInterval`
+        if (jsonObj.get("timeInterval") != null && !jsonObj.get("timeInterval").isJsonNull()) {
+            TimeInterval.validateJsonElement(jsonObj.get("timeInterval"));
+        }
+        if ((jsonObj.get("currencyCode") != null && !jsonObj.get("currencyCode").isJsonNull())
+                && !jsonObj.get("currencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `currencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("currencyCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOfferMetricsResponseOffer.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOfferMetricsResponseOffer' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOfferMetricsResponseOffer> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOfferMetricsResponseOffer.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOfferMetricsResponseOffer>() {
+                        @Override
+                        public void write(JsonWriter out, ListOfferMetricsResponseOffer value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOfferMetricsResponseOffer read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOfferMetricsResponseOffer given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOfferMetricsResponseOffer
+     * @throws IOException if the JSON string is invalid with respect to ListOfferMetricsResponseOffer
+     */
+    public static ListOfferMetricsResponseOffer fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOfferMetricsResponseOffer.class);
+    }
+
+    /**
+     * Convert an instance of ListOfferMetricsResponseOffer to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

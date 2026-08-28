@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The enrollment method used to enroll the offer into the program. */
 @JsonAdapter(EnrollmentMethod.Adapter.class)
 public enum EnrollmentMethod {
-    @SerializedName("MANUAL")
     MANUAL("MANUAL"),
 
-    @SerializedName("AUTOMATIC")
     AUTOMATIC("AUTOMATIC");
 
     private String value;
@@ -43,25 +41,30 @@ public enum EnrollmentMethod {
         return String.valueOf(value);
     }
 
-    public static EnrollmentMethod fromValue(String input) {
+    public static EnrollmentMethod fromValue(String value) {
         for (EnrollmentMethod b : EnrollmentMethod.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EnrollmentMethod> {
         @Override
         public void write(final JsonWriter jsonWriter, final EnrollmentMethod enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public EnrollmentMethod read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return EnrollmentMethod.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return EnrollmentMethod.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        EnrollmentMethod.fromValue(value);
     }
 }

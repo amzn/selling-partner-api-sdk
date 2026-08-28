@@ -12,42 +12,53 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Represents the header-level information for an invoice, including parties involved (payer/payee), financial amounts,
  * status, dates, and related business identifiers.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents the header-level information for an invoice, including parties involved (payer/payee), financial amounts, status, dates, and related business identifiers.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceHeader {
-    @SerializedName("invoiceNumber")
-    private String invoiceNumber = null;
+    public static final String SERIALIZED_NAME_INVOICE_NUMBER = "invoiceNumber";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_NUMBER)
+    private String invoiceNumber;
 
     /** The current state of the invoice. */
     @JsonAdapter(InvoiceStatusEnum.Adapter.class)
     public enum InvoiceStatusEnum {
-        @SerializedName("IN_PROGRESS")
         IN_PROGRESS("IN_PROGRESS"),
-        @SerializedName("REJECTED")
+
         REJECTED("REJECTED"),
-        @SerializedName("PARTIALLY_PAID")
+
         PARTIALLY_PAID("PARTIALLY_PAID"),
-        @SerializedName("PARTIALLY_DEDUCTED")
+
         PARTIALLY_DEDUCTED("PARTIALLY_DEDUCTED"),
-        @SerializedName("PAID")
+
         PAID("PAID"),
-        @SerializedName("DEDUCTED")
+
         DEDUCTED("DEDUCTED");
 
         private String value;
@@ -65,38 +76,44 @@ public class InvoiceHeader {
             return String.valueOf(value);
         }
 
-        public static InvoiceStatusEnum fromValue(String input) {
+        public static InvoiceStatusEnum fromValue(String value) {
             for (InvoiceStatusEnum b : InvoiceStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<InvoiceStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final InvoiceStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public InvoiceStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InvoiceStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return InvoiceStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            InvoiceStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("invoiceStatus")
-    private InvoiceStatusEnum invoiceStatus = null;
+    public static final String SERIALIZED_NAME_INVOICE_STATUS = "invoiceStatus";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_STATUS)
+    private InvoiceStatusEnum invoiceStatus;
 
     /** The type of invoice. */
     @JsonAdapter(InvoiceTypeEnum.Adapter.class)
     public enum InvoiceTypeEnum {
-        @SerializedName("AP_INVENTORY")
         AP_INVENTORY("AP_INVENTORY"),
-        @SerializedName("OTHER")
+
         OTHER("OTHER");
 
         private String value;
@@ -114,70 +131,105 @@ public class InvoiceHeader {
             return String.valueOf(value);
         }
 
-        public static InvoiceTypeEnum fromValue(String input) {
+        public static InvoiceTypeEnum fromValue(String value) {
             for (InvoiceTypeEnum b : InvoiceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<InvoiceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final InvoiceTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public InvoiceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InvoiceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return InvoiceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            InvoiceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("invoiceType")
-    private InvoiceTypeEnum invoiceType = null;
+    public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
 
-    @SerializedName("billingPeriod")
-    private BillingPeriod billingPeriod = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
+    private InvoiceTypeEnum invoiceType;
 
-    @SerializedName("payer")
-    private PartnerMetadata payer = null;
+    public static final String SERIALIZED_NAME_BILLING_PERIOD = "billingPeriod";
 
-    @SerializedName("payee")
-    private PartnerMetadata payee = null;
+    @SerializedName(SERIALIZED_NAME_BILLING_PERIOD)
+    private BillingPeriod billingPeriod;
 
-    @SerializedName("invoiceIdentifier")
-    private String invoiceIdentifier = null;
+    public static final String SERIALIZED_NAME_PAYER = "payer";
 
-    @SerializedName("issueDate")
-    private OffsetDateTime issueDate = null;
+    @SerializedName(SERIALIZED_NAME_PAYER)
+    private PartnerMetadata payer;
 
-    @SerializedName("dueDate")
-    private OffsetDateTime dueDate = null;
+    public static final String SERIALIZED_NAME_PAYEE = "payee";
 
-    @SerializedName("paymentTerms")
-    private String paymentTerms = null;
+    @SerializedName(SERIALIZED_NAME_PAYEE)
+    private PartnerMetadata payee;
 
-    @SerializedName("invoiceAmount")
-    private Currency invoiceAmount = null;
+    public static final String SERIALIZED_NAME_INVOICE_IDENTIFIER = "invoiceIdentifier";
 
-    @SerializedName("invoiceAmountBreakdowns")
-    private List<Breakdown> invoiceAmountBreakdowns = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_IDENTIFIER)
+    private String invoiceIdentifier;
 
-    @SerializedName("invoiceSettlementBreakdowns")
-    private List<Breakdown> invoiceSettlementBreakdowns = null;
+    public static final String SERIALIZED_NAME_ISSUE_DATE = "issueDate";
 
-    @SerializedName("relatedIdentifiers")
-    private List<RelatedIdentifier> relatedIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_ISSUE_DATE)
+    private OffsetDateTime issueDate;
 
-    @SerializedName("creationDate")
-    private OffsetDateTime creationDate = null;
+    public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
 
-    @SerializedName("lastUpdatedDate")
-    private OffsetDateTime lastUpdatedDate = null;
+    @SerializedName(SERIALIZED_NAME_DUE_DATE)
+    private OffsetDateTime dueDate;
+
+    public static final String SERIALIZED_NAME_PAYMENT_TERMS = "paymentTerms";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_TERMS)
+    private String paymentTerms;
+
+    public static final String SERIALIZED_NAME_INVOICE_AMOUNT = "invoiceAmount";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_AMOUNT)
+    private Currency invoiceAmount;
+
+    public static final String SERIALIZED_NAME_INVOICE_AMOUNT_BREAKDOWNS = "invoiceAmountBreakdowns";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_AMOUNT_BREAKDOWNS)
+    private List<Breakdown> invoiceAmountBreakdowns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_INVOICE_SETTLEMENT_BREAKDOWNS = "invoiceSettlementBreakdowns";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_SETTLEMENT_BREAKDOWNS)
+    private List<Breakdown> invoiceSettlementBreakdowns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
+
+    @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CREATION_DATE = "creationDate";
+
+    @SerializedName(SERIALIZED_NAME_CREATION_DATE)
+    private OffsetDateTime creationDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE = "lastUpdatedDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE)
+    private OffsetDateTime lastUpdatedDate;
+
+    public InvoiceHeader() {}
 
     public InvoiceHeader invoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -189,9 +241,7 @@ public class InvoiceHeader {
      *
      * @return invoiceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The invoice number provided when the invoice was created.")
+    @javax.annotation.Nonnull
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -210,7 +260,7 @@ public class InvoiceHeader {
      *
      * @return invoiceStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current state of the invoice.")
+    @javax.annotation.Nonnull
     public InvoiceStatusEnum getInvoiceStatus() {
         return invoiceStatus;
     }
@@ -229,7 +279,7 @@ public class InvoiceHeader {
      *
      * @return invoiceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of invoice.")
+    @javax.annotation.Nonnull
     public InvoiceTypeEnum getInvoiceType() {
         return invoiceType;
     }
@@ -248,8 +298,7 @@ public class InvoiceHeader {
      *
      * @return billingPeriod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BillingPeriod getBillingPeriod() {
+    @javax.annotation.Nullable public BillingPeriod getBillingPeriod() {
         return billingPeriod;
     }
 
@@ -267,7 +316,7 @@ public class InvoiceHeader {
      *
      * @return payer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartnerMetadata getPayer() {
         return payer;
     }
@@ -286,7 +335,7 @@ public class InvoiceHeader {
      *
      * @return payee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartnerMetadata getPayee() {
         return payee;
     }
@@ -307,10 +356,7 @@ public class InvoiceHeader {
      *
      * @return invoiceIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier for an invoice. For AP-Inventory invoices, this is formatted as `InvoiceNumber~PayeeCode`. This field can be used as an input to the `getInvoice` operation to fetch invoice details.")
+    @javax.annotation.Nonnull
     public String getInvoiceIdentifier() {
         return invoiceIdentifier;
     }
@@ -329,9 +375,7 @@ public class InvoiceHeader {
      *
      * @return issueDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When the invoice was issued. In ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getIssueDate() {
         return issueDate;
     }
@@ -350,8 +394,7 @@ public class InvoiceHeader {
      *
      * @return dueDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The due date of the invoice. In ISO 8601 format.")
-    public OffsetDateTime getDueDate() {
+    @javax.annotation.Nullable public OffsetDateTime getDueDate() {
         return dueDate;
     }
 
@@ -369,8 +412,7 @@ public class InvoiceHeader {
      *
      * @return paymentTerms
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Payment terms associated with the invoice.")
-    public String getPaymentTerms() {
+    @javax.annotation.Nullable public String getPaymentTerms() {
         return paymentTerms;
     }
 
@@ -388,7 +430,7 @@ public class InvoiceHeader {
      *
      * @return invoiceAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getInvoiceAmount() {
         return invoiceAmount;
     }
@@ -418,10 +460,7 @@ public class InvoiceHeader {
      *
      * @return invoiceAmountBreakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The breakdown of the invoice amount into sub-components.  **Possible `breakdownType` values:**  * `Total`: Total invoice amount. * `InvoiceAmountWithoutTax`: Invoice amount excluding tax. * `TaxAmount`: Tax amount on the invoice. * `MiscCharges`: Miscellaneous charges on the invoice. * `Other`: Other breakdown type.")
-    public List<Breakdown> getInvoiceAmountBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getInvoiceAmountBreakdowns() {
         return invoiceAmountBreakdowns;
     }
 
@@ -451,10 +490,7 @@ public class InvoiceHeader {
      *
      * @return invoiceSettlementBreakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The breakdown of the invoice settlement amount into sub-components.  **Possible `breakdownType` values:**  * `AmountPaid`: Amount that has been paid. * `QueuedForPayment`: Amount queued for payment. * `QuickPayDiscount`: Quick pay discount amount. * `QuantityVarianceAmount`: Quantity variance amount. * `PriceVariance`: Price variance amount. * `Other`: Other settlement breakdown type.")
-    public List<Breakdown> getInvoiceSettlementBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getInvoiceSettlementBreakdowns() {
         return invoiceSettlementBreakdowns;
     }
 
@@ -480,9 +516,7 @@ public class InvoiceHeader {
      *
      * @return relatedIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of related business identifiers associated with the invoice.")
-    public List<RelatedIdentifier> getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
@@ -500,9 +534,7 @@ public class InvoiceHeader {
      *
      * @return creationDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When the invoice was created. In ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreationDate() {
         return creationDate;
     }
@@ -521,9 +553,7 @@ public class InvoiceHeader {
      *
      * @return lastUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When the invoice was last updated. In ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -533,7 +563,7 @@ public class InvoiceHeader {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -615,10 +645,228 @@ public class InvoiceHeader {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("invoiceNumber");
+        openapiFields.add("invoiceStatus");
+        openapiFields.add("invoiceType");
+        openapiFields.add("billingPeriod");
+        openapiFields.add("payer");
+        openapiFields.add("payee");
+        openapiFields.add("invoiceIdentifier");
+        openapiFields.add("issueDate");
+        openapiFields.add("dueDate");
+        openapiFields.add("paymentTerms");
+        openapiFields.add("invoiceAmount");
+        openapiFields.add("invoiceAmountBreakdowns");
+        openapiFields.add("invoiceSettlementBreakdowns");
+        openapiFields.add("relatedIdentifiers");
+        openapiFields.add("creationDate");
+        openapiFields.add("lastUpdatedDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("invoiceNumber");
+        openapiRequiredFields.add("invoiceStatus");
+        openapiRequiredFields.add("invoiceType");
+        openapiRequiredFields.add("payer");
+        openapiRequiredFields.add("payee");
+        openapiRequiredFields.add("invoiceIdentifier");
+        openapiRequiredFields.add("issueDate");
+        openapiRequiredFields.add("invoiceAmount");
+        openapiRequiredFields.add("creationDate");
+        openapiRequiredFields.add("lastUpdatedDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceHeader
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceHeader.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceHeader is not found in the empty JSON string",
+                        InvoiceHeader.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceHeader.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceHeader` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvoiceHeader.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("invoiceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceNumber").toString()));
+        }
+        if (!jsonObj.get("invoiceStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceStatus").toString()));
+        }
+        // validate the required field `invoiceStatus`
+        InvoiceStatusEnum.validateJsonElement(jsonObj.get("invoiceStatus"));
+        if (!jsonObj.get("invoiceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceType").toString()));
+        }
+        // validate the required field `invoiceType`
+        InvoiceTypeEnum.validateJsonElement(jsonObj.get("invoiceType"));
+        // validate the optional field `billingPeriod`
+        if (jsonObj.get("billingPeriod") != null
+                && !jsonObj.get("billingPeriod").isJsonNull()) {
+            BillingPeriod.validateJsonElement(jsonObj.get("billingPeriod"));
+        }
+        // validate the required field `payer`
+        PartnerMetadata.validateJsonElement(jsonObj.get("payer"));
+        // validate the required field `payee`
+        PartnerMetadata.validateJsonElement(jsonObj.get("payee"));
+        if (!jsonObj.get("invoiceIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceIdentifier").toString()));
+        }
+        if ((jsonObj.get("paymentTerms") != null && !jsonObj.get("paymentTerms").isJsonNull())
+                && !jsonObj.get("paymentTerms").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentTerms` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentTerms").toString()));
+        }
+        // validate the required field `invoiceAmount`
+        Currency.validateJsonElement(jsonObj.get("invoiceAmount"));
+        if (jsonObj.get("invoiceAmountBreakdowns") != null
+                && !jsonObj.get("invoiceAmountBreakdowns").isJsonNull()) {
+            JsonArray jsonArrayinvoiceAmountBreakdowns = jsonObj.getAsJsonArray("invoiceAmountBreakdowns");
+            if (jsonArrayinvoiceAmountBreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invoiceAmountBreakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invoiceAmountBreakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invoiceAmountBreakdowns").toString()));
+                }
+
+                // validate the optional field `invoiceAmountBreakdowns` (array)
+                for (int i = 0; i < jsonArrayinvoiceAmountBreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArrayinvoiceAmountBreakdowns.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("invoiceSettlementBreakdowns") != null
+                && !jsonObj.get("invoiceSettlementBreakdowns").isJsonNull()) {
+            JsonArray jsonArrayinvoiceSettlementBreakdowns = jsonObj.getAsJsonArray("invoiceSettlementBreakdowns");
+            if (jsonArrayinvoiceSettlementBreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invoiceSettlementBreakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invoiceSettlementBreakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invoiceSettlementBreakdowns").toString()));
+                }
+
+                // validate the optional field `invoiceSettlementBreakdowns` (array)
+                for (int i = 0; i < jsonArrayinvoiceSettlementBreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArrayinvoiceSettlementBreakdowns.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceHeader.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceHeader' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceHeader> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceHeader.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceHeader>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceHeader value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceHeader read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceHeader given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceHeader
+     * @throws IOException if the JSON string is invalid with respect to InvoiceHeader
+     */
+    public static InvoiceHeader fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceHeader.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceHeader to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

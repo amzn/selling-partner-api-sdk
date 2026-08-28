@@ -12,10 +12,23 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are
@@ -23,15 +36,21 @@ import java.util.Objects;
  * less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean
  * less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are Amazon-Partnered Carrier and Use Your Own Carrier. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingRequirements {
-    @SerializedName("modes")
-    private List<String> modes = null;
+    public static final String SERIALIZED_NAME_MODES = "modes";
 
-    @SerializedName("solution")
-    private String solution = null;
+    @SerializedName(SERIALIZED_NAME_MODES)
+    private List<String> modes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SOLUTION = "solution";
+
+    @SerializedName(SERIALIZED_NAME_SOLUTION)
+    private String solution;
+
+    public ShippingRequirements() {}
 
     public ShippingRequirements modes(List<String> modes) {
         this.modes = modes;
@@ -51,9 +70,7 @@ public class ShippingRequirements {
      *
      * @return modes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Available shipment modes for this shipping program.")
+    @javax.annotation.Nonnull
     public List<String> getModes() {
         return modes;
     }
@@ -72,10 +89,7 @@ public class ShippingRequirements {
      *
      * @return solution
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.")
+    @javax.annotation.Nonnull
     public String getSolution() {
         return solution;
     }
@@ -85,7 +99,7 @@ public class ShippingRequirements {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -113,10 +127,125 @@ public class ShippingRequirements {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("modes");
+        openapiFields.add("solution");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("modes");
+        openapiRequiredFields.add("solution");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingRequirements
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingRequirements.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingRequirements is not found in the empty JSON string",
+                        ShippingRequirements.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingRequirements.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingRequirements` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShippingRequirements.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("modes") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("modes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `modes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("modes").toString()));
+        }
+        if (!jsonObj.get("solution").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `solution` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("solution").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingRequirements.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingRequirements' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingRequirements> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingRequirements.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingRequirements>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingRequirements value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingRequirements read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingRequirements given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingRequirements
+     * @throws IOException if the JSON string is invalid with respect to ShippingRequirements
+     */
+    public static ShippingRequirements fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingRequirements.class);
+    }
+
+    /**
+     * Convert an instance of ShippingRequirements to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

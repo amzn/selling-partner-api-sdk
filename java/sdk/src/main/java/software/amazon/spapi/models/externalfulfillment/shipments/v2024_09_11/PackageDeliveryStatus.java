@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The delivery status of the package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The delivery status of the package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageDeliveryStatus {
-    @SerializedName("status")
-    private PackageStatus status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("subStatus")
-    private PackageSubStatus subStatus = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private PackageStatus status;
 
-    @SerializedName("reason")
-    private String reason = null;
+    public static final String SERIALIZED_NAME_SUB_STATUS = "subStatus";
+
+    @SerializedName(SERIALIZED_NAME_SUB_STATUS)
+    private PackageSubStatus subStatus;
+
+    public static final String SERIALIZED_NAME_REASON = "reason";
+
+    @SerializedName(SERIALIZED_NAME_REASON)
+    private String reason;
+
+    public PackageDeliveryStatus() {}
 
     public PackageDeliveryStatus status(PackageStatus status) {
         this.status = status;
@@ -37,8 +60,7 @@ public class PackageDeliveryStatus {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PackageStatus getStatus() {
+    @javax.annotation.Nullable public PackageStatus getStatus() {
         return status;
     }
 
@@ -56,8 +78,7 @@ public class PackageDeliveryStatus {
      *
      * @return subStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PackageSubStatus getSubStatus() {
+    @javax.annotation.Nullable public PackageSubStatus getSubStatus() {
         return subStatus;
     }
 
@@ -75,8 +96,7 @@ public class PackageDeliveryStatus {
      *
      * @return reason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the sub-status.")
-    public String getReason() {
+    @javax.annotation.Nullable public String getReason() {
         return reason;
     }
 
@@ -85,7 +105,7 @@ public class PackageDeliveryStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -115,10 +135,116 @@ public class PackageDeliveryStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("status");
+        openapiFields.add("subStatus");
+        openapiFields.add("reason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageDeliveryStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageDeliveryStatus.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageDeliveryStatus is not found in the empty JSON string",
+                        PackageDeliveryStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageDeliveryStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageDeliveryStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            PackageStatus.validateJsonElement(jsonObj.get("status"));
+        }
+        // validate the optional field `subStatus`
+        if (jsonObj.get("subStatus") != null && !jsonObj.get("subStatus").isJsonNull()) {
+            PackageSubStatus.validateJsonElement(jsonObj.get("subStatus"));
+        }
+        if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull())
+                && !jsonObj.get("reason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reason").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageDeliveryStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageDeliveryStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageDeliveryStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageDeliveryStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageDeliveryStatus>() {
+                        @Override
+                        public void write(JsonWriter out, PackageDeliveryStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageDeliveryStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageDeliveryStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageDeliveryStatus
+     * @throws IOException if the JSON string is invalid with respect to PackageDeliveryStatus
+     */
+    public static PackageDeliveryStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageDeliveryStatus.class);
+    }
+
+    /**
+     * Convert an instance of PackageDeliveryStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

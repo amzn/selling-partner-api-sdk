@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required to create the query. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the query.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateQuerySpecification {
-    @SerializedName("query")
-    private String query = null;
+    public static final String SERIALIZED_NAME_QUERY = "query";
 
-    @SerializedName("paginationToken")
-    private String paginationToken = null;
+    @SerializedName(SERIALIZED_NAME_QUERY)
+    private String query;
+
+    public static final String SERIALIZED_NAME_PAGINATION_TOKEN = "paginationToken";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION_TOKEN)
+    private String paginationToken;
+
+    public CreateQuerySpecification() {}
 
     public CreateQuerySpecification query(String query) {
         this.query = query;
@@ -34,10 +55,7 @@ public class CreateQuerySpecification {
      *
      * @return query
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The GraphQL query to submit. A query must be at most 8000 characters after unnecessary whitespace is removed.")
+    @javax.annotation.Nonnull
     public String getQuery() {
         return query;
     }
@@ -61,10 +79,7 @@ public class CreateQuerySpecification {
      *
      * @return paginationToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A token to fetch a certain page of query results when there are multiple pages of query results available. The value of this token must be fetched from the `pagination.nextToken` field of the `Query` object, and the `query` field for this object must also be set to the `query` field of the same `Query` object. A `Query` object can be retrieved from either the `getQueries` or `getQuery` operation. In the absence of this token value, the first page of query results will be requested.")
-    public String getPaginationToken() {
+    @javax.annotation.Nullable public String getPaginationToken() {
         return paginationToken;
     }
 
@@ -73,7 +88,7 @@ public class CreateQuerySpecification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -103,10 +118,123 @@ public class CreateQuerySpecification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("query");
+        openapiFields.add("paginationToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("query");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateQuerySpecification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateQuerySpecification.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateQuerySpecification is not found in the empty JSON string",
+                        CreateQuerySpecification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateQuerySpecification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateQuerySpecification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateQuerySpecification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("query").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `query` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("query").toString()));
+        }
+        if ((jsonObj.get("paginationToken") != null
+                        && !jsonObj.get("paginationToken").isJsonNull())
+                && !jsonObj.get("paginationToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paginationToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paginationToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateQuerySpecification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateQuerySpecification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateQuerySpecification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateQuerySpecification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateQuerySpecification>() {
+                        @Override
+                        public void write(JsonWriter out, CreateQuerySpecification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateQuerySpecification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateQuerySpecification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateQuerySpecification
+     * @throws IOException if the JSON string is invalid with respect to CreateQuerySpecification
+     */
+    public static CreateQuerySpecification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateQuerySpecification.class);
+    }
+
+    /**
+     * Convert an instance of CreateQuerySpecification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

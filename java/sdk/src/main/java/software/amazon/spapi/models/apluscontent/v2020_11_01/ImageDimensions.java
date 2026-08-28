@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images).
  * &#x60;ImageDimensions&#x60; units must be in pixels.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). `ImageDimensions` units must be in pixels.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ImageDimensions {
-    @SerializedName("width")
-    private IntegerWithUnits width = null;
+    public static final String SERIALIZED_NAME_WIDTH = "width";
 
-    @SerializedName("height")
-    private IntegerWithUnits height = null;
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private IntegerWithUnits width;
+
+    public static final String SERIALIZED_NAME_HEIGHT = "height";
+
+    @SerializedName(SERIALIZED_NAME_HEIGHT)
+    private IntegerWithUnits height;
+
+    public ImageDimensions() {}
 
     public ImageDimensions width(IntegerWithUnits width) {
         this.width = width;
@@ -39,7 +58,7 @@ public class ImageDimensions {
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public IntegerWithUnits getWidth() {
         return width;
     }
@@ -58,7 +77,7 @@ public class ImageDimensions {
      *
      * @return height
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public IntegerWithUnits getHeight() {
         return height;
     }
@@ -68,7 +87,7 @@ public class ImageDimensions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +114,115 @@ public class ImageDimensions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("width");
+        openapiFields.add("height");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("width");
+        openapiRequiredFields.add("height");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ImageDimensions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ImageDimensions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ImageDimensions is not found in the empty JSON string",
+                        ImageDimensions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ImageDimensions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ImageDimensions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ImageDimensions.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `width`
+        IntegerWithUnits.validateJsonElement(jsonObj.get("width"));
+        // validate the required field `height`
+        IntegerWithUnits.validateJsonElement(jsonObj.get("height"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ImageDimensions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ImageDimensions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ImageDimensions> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ImageDimensions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ImageDimensions>() {
+                        @Override
+                        public void write(JsonWriter out, ImageDimensions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ImageDimensions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ImageDimensions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ImageDimensions
+     * @throws IOException if the JSON string is invalid with respect to ImageDimensions
+     */
+    public static ImageDimensions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ImageDimensions.class);
+    }
+
+    /**
+     * Convert an instance of ImageDimensions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

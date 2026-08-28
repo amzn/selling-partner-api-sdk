@@ -12,27 +12,37 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Related business identifiers of the item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Related business identifiers of the item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemRelatedIdentifier {
     /** Enumerated set of related item identifier names for the item. */
     @JsonAdapter(ItemRelatedIdentifierNameEnum.Adapter.class)
     public enum ItemRelatedIdentifierNameEnum {
-        @SerializedName("ORDER_ADJUSTMENT_ITEM_ID")
         ORDER_ADJUSTMENT_ITEM_ID("ORDER_ADJUSTMENT_ITEM_ID"),
-        @SerializedName("COUPON_ID")
+
         COUPON_ID("COUPON_ID"),
-        @SerializedName("REMOVAL_SHIPMENT_ITEM_ID")
+
         REMOVAL_SHIPMENT_ITEM_ID("REMOVAL_SHIPMENT_ITEM_ID"),
-        @SerializedName("TRANSACTION_ID")
+
         TRANSACTION_ID("TRANSACTION_ID");
 
         private String value;
@@ -50,35 +60,46 @@ public class ItemRelatedIdentifier {
             return String.valueOf(value);
         }
 
-        public static ItemRelatedIdentifierNameEnum fromValue(String input) {
+        public static ItemRelatedIdentifierNameEnum fromValue(String value) {
             for (ItemRelatedIdentifierNameEnum b : ItemRelatedIdentifierNameEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ItemRelatedIdentifierNameEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ItemRelatedIdentifierNameEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ItemRelatedIdentifierNameEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ItemRelatedIdentifierNameEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ItemRelatedIdentifierNameEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ItemRelatedIdentifierNameEnum.fromValue(value);
         }
     }
 
-    @SerializedName("itemRelatedIdentifierName")
-    private ItemRelatedIdentifierNameEnum itemRelatedIdentifierName = null;
+    public static final String SERIALIZED_NAME_ITEM_RELATED_IDENTIFIER_NAME = "itemRelatedIdentifierName";
 
-    @SerializedName("itemRelatedIdentifierValue")
-    private String itemRelatedIdentifierValue = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_RELATED_IDENTIFIER_NAME)
+    private ItemRelatedIdentifierNameEnum itemRelatedIdentifierName;
+
+    public static final String SERIALIZED_NAME_ITEM_RELATED_IDENTIFIER_VALUE = "itemRelatedIdentifierValue";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_RELATED_IDENTIFIER_VALUE)
+    private String itemRelatedIdentifierValue;
+
+    public ItemRelatedIdentifier() {}
 
     public ItemRelatedIdentifier itemRelatedIdentifierName(ItemRelatedIdentifierNameEnum itemRelatedIdentifierName) {
         this.itemRelatedIdentifierName = itemRelatedIdentifierName;
@@ -90,9 +111,7 @@ public class ItemRelatedIdentifier {
      *
      * @return itemRelatedIdentifierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Enumerated set of related item identifier names for the item.")
-    public ItemRelatedIdentifierNameEnum getItemRelatedIdentifierName() {
+    @javax.annotation.Nullable public ItemRelatedIdentifierNameEnum getItemRelatedIdentifierName() {
         return itemRelatedIdentifierName;
     }
 
@@ -110,8 +129,7 @@ public class ItemRelatedIdentifier {
      *
      * @return itemRelatedIdentifierValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Corresponding value to `ItemRelatedIdentifierName`.")
-    public String getItemRelatedIdentifierValue() {
+    @javax.annotation.Nullable public String getItemRelatedIdentifierValue() {
         return itemRelatedIdentifierValue;
     }
 
@@ -120,7 +138,7 @@ public class ItemRelatedIdentifier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,10 +170,120 @@ public class ItemRelatedIdentifier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemRelatedIdentifierName");
+        openapiFields.add("itemRelatedIdentifierValue");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemRelatedIdentifier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemRelatedIdentifier.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemRelatedIdentifier is not found in the empty JSON string",
+                        ItemRelatedIdentifier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemRelatedIdentifier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemRelatedIdentifier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("itemRelatedIdentifierName") != null
+                        && !jsonObj.get("itemRelatedIdentifierName").isJsonNull())
+                && !jsonObj.get("itemRelatedIdentifierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemRelatedIdentifierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemRelatedIdentifierName").toString()));
+        }
+        // validate the optional field `itemRelatedIdentifierName`
+        if (jsonObj.get("itemRelatedIdentifierName") != null
+                && !jsonObj.get("itemRelatedIdentifierName").isJsonNull()) {
+            ItemRelatedIdentifierNameEnum.validateJsonElement(jsonObj.get("itemRelatedIdentifierName"));
+        }
+        if ((jsonObj.get("itemRelatedIdentifierValue") != null
+                        && !jsonObj.get("itemRelatedIdentifierValue").isJsonNull())
+                && !jsonObj.get("itemRelatedIdentifierValue").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemRelatedIdentifierValue` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemRelatedIdentifierValue").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemRelatedIdentifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemRelatedIdentifier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemRelatedIdentifier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemRelatedIdentifier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemRelatedIdentifier>() {
+                        @Override
+                        public void write(JsonWriter out, ItemRelatedIdentifier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemRelatedIdentifier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemRelatedIdentifier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemRelatedIdentifier
+     * @throws IOException if the JSON string is invalid with respect to ItemRelatedIdentifier
+     */
+    public static ItemRelatedIdentifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemRelatedIdentifier.class);
+    }
+
+    /**
+     * Convert an instance of ItemRelatedIdentifier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

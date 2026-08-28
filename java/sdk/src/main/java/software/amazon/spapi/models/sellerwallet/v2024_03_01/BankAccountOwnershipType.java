@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The destination bank account&#39;s ownership type. */
 @JsonAdapter(BankAccountOwnershipType.Adapter.class)
 public enum BankAccountOwnershipType {
-    @SerializedName("THIRD_PARTY")
     THIRD_PARTY("THIRD_PARTY"),
 
-    @SerializedName("SELF")
     SELF("SELF");
 
     private String value;
@@ -43,25 +41,30 @@ public enum BankAccountOwnershipType {
         return String.valueOf(value);
     }
 
-    public static BankAccountOwnershipType fromValue(String input) {
+    public static BankAccountOwnershipType fromValue(String value) {
         for (BankAccountOwnershipType b : BankAccountOwnershipType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BankAccountOwnershipType> {
         @Override
         public void write(final JsonWriter jsonWriter, final BankAccountOwnershipType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BankAccountOwnershipType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BankAccountOwnershipType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BankAccountOwnershipType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BankAccountOwnershipType.fromValue(value);
     }
 }

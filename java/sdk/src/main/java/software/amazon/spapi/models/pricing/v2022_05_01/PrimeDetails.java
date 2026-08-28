@@ -12,25 +12,35 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Amazon Prime details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Prime details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrimeDetails {
     /** Indicates whether the offer is an Amazon Prime offer. */
     @JsonAdapter(EligibilityEnum.Adapter.class)
     public enum EligibilityEnum {
-        @SerializedName("NATIONAL")
         NATIONAL("NATIONAL"),
-        @SerializedName("REGIONAL")
+
         REGIONAL("REGIONAL"),
-        @SerializedName("NONE")
+
         NONE("NONE");
 
         private String value;
@@ -48,31 +58,40 @@ public class PrimeDetails {
             return String.valueOf(value);
         }
 
-        public static EligibilityEnum fromValue(String input) {
+        public static EligibilityEnum fromValue(String value) {
             for (EligibilityEnum b : EligibilityEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<EligibilityEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final EligibilityEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public EligibilityEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return EligibilityEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return EligibilityEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            EligibilityEnum.fromValue(value);
         }
     }
 
-    @SerializedName("eligibility")
-    private EligibilityEnum eligibility = null;
+    public static final String SERIALIZED_NAME_ELIGIBILITY = "eligibility";
+
+    @SerializedName(SERIALIZED_NAME_ELIGIBILITY)
+    private EligibilityEnum eligibility;
+
+    public PrimeDetails() {}
 
     public PrimeDetails eligibility(EligibilityEnum eligibility) {
         this.eligibility = eligibility;
@@ -84,9 +103,7 @@ public class PrimeDetails {
      *
      * @return eligibility
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Indicates whether the offer is an Amazon Prime offer.")
+    @javax.annotation.Nonnull
     public EligibilityEnum getEligibility() {
         return eligibility;
     }
@@ -96,7 +113,7 @@ public class PrimeDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -122,10 +139,116 @@ public class PrimeDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("eligibility");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("eligibility");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrimeDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrimeDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrimeDetails is not found in the empty JSON string",
+                        PrimeDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrimeDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrimeDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PrimeDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("eligibility").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eligibility` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("eligibility").toString()));
+        }
+        // validate the required field `eligibility`
+        EligibilityEnum.validateJsonElement(jsonObj.get("eligibility"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrimeDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrimeDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrimeDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrimeDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrimeDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PrimeDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrimeDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrimeDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrimeDetails
+     * @throws IOException if the JSON string is invalid with respect to PrimeDetails
+     */
+    public static PrimeDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrimeDetails.class);
+    }
+
+    /**
+     * Convert an instance of PrimeDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

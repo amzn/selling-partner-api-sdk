@@ -12,40 +12,77 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A listings item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A listings item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
 
-    @SerializedName("summaries")
-    private ItemSummaries summaries = null;
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
 
-    @SerializedName("attributes")
-    private ItemAttributes attributes = null;
+    public static final String SERIALIZED_NAME_SUMMARIES = "summaries";
 
-    @SerializedName("issues")
-    private ItemIssues issues = null;
+    @SerializedName(SERIALIZED_NAME_SUMMARIES)
+    private List<ItemSummaryByMarketplace> summaries = new ArrayList<>();
 
-    @SerializedName("offers")
-    private ItemOffers offers = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
 
-    @SerializedName("fulfillmentAvailability")
-    private List<FulfillmentAvailability> fulfillmentAvailability = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private Map<String, Object> attributes = new HashMap<>();
 
-    @SerializedName("procurement")
-    private List<ItemProcurement> procurement = null;
+    public static final String SERIALIZED_NAME_ISSUES = "issues";
 
-    @SerializedName("relationships")
-    private ItemRelationships relationships = null;
+    @SerializedName(SERIALIZED_NAME_ISSUES)
+    private List<Issue> issues = new ArrayList<>();
 
-    @SerializedName("productTypes")
-    private ItemProductTypes productTypes = null;
+    public static final String SERIALIZED_NAME_OFFERS = "offers";
+
+    @SerializedName(SERIALIZED_NAME_OFFERS)
+    private List<ItemOfferByMarketplace> offers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_AVAILABILITY = "fulfillmentAvailability";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_AVAILABILITY)
+    private List<FulfillmentAvailability> fulfillmentAvailability = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PROCUREMENT = "procurement";
+
+    @SerializedName(SERIALIZED_NAME_PROCUREMENT)
+    private List<ItemProcurement> procurement = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
+
+    @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
+    private List<ItemRelationshipsByMarketplace> relationships = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPES = "productTypes";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPES)
+    private List<ItemProductTypeByMarketplace> productTypes = new ArrayList<>();
+
+    public Item() {}
 
     public Item sku(String sku) {
         this.sku = sku;
@@ -57,9 +94,7 @@ public class Item {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A selling partner-provided identifier for an Amazon listing.")
+    @javax.annotation.Nonnull
     public String getSku() {
         return sku;
     }
@@ -68,79 +103,107 @@ public class Item {
         this.sku = sku;
     }
 
-    public Item summaries(ItemSummaries summaries) {
+    public Item summaries(List<ItemSummaryByMarketplace> summaries) {
         this.summaries = summaries;
         return this;
     }
 
+    public Item addSummariesItem(ItemSummaryByMarketplace summariesItem) {
+        if (this.summaries == null) {
+            this.summaries = new ArrayList<>();
+        }
+        this.summaries.add(summariesItem);
+        return this;
+    }
+
     /**
-     * Get summaries
+     * Summary details for a listings item.
      *
      * @return summaries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemSummaries getSummaries() {
+    @javax.annotation.Nullable public List<ItemSummaryByMarketplace> getSummaries() {
         return summaries;
     }
 
-    public void setSummaries(ItemSummaries summaries) {
+    public void setSummaries(List<ItemSummaryByMarketplace> summaries) {
         this.summaries = summaries;
     }
 
-    public Item attributes(ItemAttributes attributes) {
+    public Item attributes(Map<String, Object> attributes) {
         this.attributes = attributes;
         return this;
     }
 
+    public Item putAttributesItem(String key, Object attributesItem) {
+        if (this.attributes == null) {
+            this.attributes = new HashMap<>();
+        }
+        this.attributes.put(key, attributesItem);
+        return this;
+    }
+
     /**
-     * Get attributes
+     * JSON object containing structured listings item attribute data keyed by attribute name.
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemAttributes getAttributes() {
+    @javax.annotation.Nullable public Map<String, Object> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(ItemAttributes attributes) {
+    public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
-    public Item issues(ItemIssues issues) {
+    public Item issues(List<Issue> issues) {
         this.issues = issues;
         return this;
     }
 
+    public Item addIssuesItem(Issue issuesItem) {
+        if (this.issues == null) {
+            this.issues = new ArrayList<>();
+        }
+        this.issues.add(issuesItem);
+        return this;
+    }
+
     /**
-     * Get issues
+     * Issues associated with the listings item.
      *
      * @return issues
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemIssues getIssues() {
+    @javax.annotation.Nullable public List<Issue> getIssues() {
         return issues;
     }
 
-    public void setIssues(ItemIssues issues) {
+    public void setIssues(List<Issue> issues) {
         this.issues = issues;
     }
 
-    public Item offers(ItemOffers offers) {
+    public Item offers(List<ItemOfferByMarketplace> offers) {
         this.offers = offers;
         return this;
     }
 
+    public Item addOffersItem(ItemOfferByMarketplace offersItem) {
+        if (this.offers == null) {
+            this.offers = new ArrayList<>();
+        }
+        this.offers.add(offersItem);
+        return this;
+    }
+
     /**
-     * Get offers
+     * The listings item&#39;s offer details.
      *
      * @return offers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemOffers getOffers() {
+    @javax.annotation.Nullable public List<ItemOfferByMarketplace> getOffers() {
         return offers;
     }
 
-    public void setOffers(ItemOffers offers) {
+    public void setOffers(List<ItemOfferByMarketplace> offers) {
         this.offers = offers;
     }
 
@@ -162,8 +225,7 @@ public class Item {
      *
      * @return fulfillmentAvailability
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's fulfillment availability.")
-    public List<FulfillmentAvailability> getFulfillmentAvailability() {
+    @javax.annotation.Nullable public List<FulfillmentAvailability> getFulfillmentAvailability() {
         return fulfillmentAvailability;
     }
 
@@ -189,8 +251,7 @@ public class Item {
      *
      * @return procurement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's vendor procurement information.")
-    public List<ItemProcurement> getProcurement() {
+    @javax.annotation.Nullable public List<ItemProcurement> getProcurement() {
         return procurement;
     }
 
@@ -198,46 +259,60 @@ public class Item {
         this.procurement = procurement;
     }
 
-    public Item relationships(ItemRelationships relationships) {
+    public Item relationships(List<ItemRelationshipsByMarketplace> relationships) {
         this.relationships = relationships;
         return this;
     }
 
+    public Item addRelationshipsItem(ItemRelationshipsByMarketplace relationshipsItem) {
+        if (this.relationships == null) {
+            this.relationships = new ArrayList<>();
+        }
+        this.relationships.add(relationshipsItem);
+        return this;
+    }
+
     /**
-     * Get relationships
+     * Relationships for a listing item, by Amazon store (for example, variations).
      *
      * @return relationships
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemRelationships getRelationships() {
+    @javax.annotation.Nullable public List<ItemRelationshipsByMarketplace> getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(ItemRelationships relationships) {
+    public void setRelationships(List<ItemRelationshipsByMarketplace> relationships) {
         this.relationships = relationships;
     }
 
-    public Item productTypes(ItemProductTypes productTypes) {
+    public Item productTypes(List<ItemProductTypeByMarketplace> productTypes) {
         this.productTypes = productTypes;
         return this;
     }
 
+    public Item addProductTypesItem(ItemProductTypeByMarketplace productTypesItem) {
+        if (this.productTypes == null) {
+            this.productTypes = new ArrayList<>();
+        }
+        this.productTypes.add(productTypesItem);
+        return this;
+    }
+
     /**
-     * Get productTypes
+     * Product types for a listing item, by Amazon store.
      *
      * @return productTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemProductTypes getProductTypes() {
+    @javax.annotation.Nullable public List<ItemProductTypeByMarketplace> getProductTypes() {
         return productTypes;
     }
 
-    public void setProductTypes(ItemProductTypes productTypes) {
+    public void setProductTypes(List<ItemProductTypeByMarketplace> productTypes) {
         this.productTypes = productTypes;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -290,10 +365,242 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sku");
+        openapiFields.add("summaries");
+        openapiFields.add("attributes");
+        openapiFields.add("issues");
+        openapiFields.add("offers");
+        openapiFields.add("fulfillmentAvailability");
+        openapiFields.add("procurement");
+        openapiFields.add("relationships");
+        openapiFields.add("productTypes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sku");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Item.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        if (jsonObj.get("summaries") != null && !jsonObj.get("summaries").isJsonNull()) {
+            JsonArray jsonArraysummaries = jsonObj.getAsJsonArray("summaries");
+            if (jsonArraysummaries != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("summaries").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `summaries` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("summaries").toString()));
+                }
+
+                // validate the optional field `summaries` (array)
+                for (int i = 0; i < jsonArraysummaries.size(); i++) {
+                    ItemSummaryByMarketplace.validateJsonElement(jsonArraysummaries.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("issues") != null && !jsonObj.get("issues").isJsonNull()) {
+            JsonArray jsonArrayissues = jsonObj.getAsJsonArray("issues");
+            if (jsonArrayissues != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("issues").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `issues` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("issues").toString()));
+                }
+
+                // validate the optional field `issues` (array)
+                for (int i = 0; i < jsonArrayissues.size(); i++) {
+                    Issue.validateJsonElement(jsonArrayissues.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("offers") != null && !jsonObj.get("offers").isJsonNull()) {
+            JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("offers");
+            if (jsonArrayoffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("offers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `offers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("offers").toString()));
+                }
+
+                // validate the optional field `offers` (array)
+                for (int i = 0; i < jsonArrayoffers.size(); i++) {
+                    ItemOfferByMarketplace.validateJsonElement(jsonArrayoffers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("fulfillmentAvailability") != null
+                && !jsonObj.get("fulfillmentAvailability").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentAvailability = jsonObj.getAsJsonArray("fulfillmentAvailability");
+            if (jsonArrayfulfillmentAvailability != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentAvailability").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentAvailability` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentAvailability").toString()));
+                }
+
+                // validate the optional field `fulfillmentAvailability` (array)
+                for (int i = 0; i < jsonArrayfulfillmentAvailability.size(); i++) {
+                    FulfillmentAvailability.validateJsonElement(jsonArrayfulfillmentAvailability.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("procurement") != null && !jsonObj.get("procurement").isJsonNull()) {
+            JsonArray jsonArrayprocurement = jsonObj.getAsJsonArray("procurement");
+            if (jsonArrayprocurement != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("procurement").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `procurement` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("procurement").toString()));
+                }
+
+                // validate the optional field `procurement` (array)
+                for (int i = 0; i < jsonArrayprocurement.size(); i++) {
+                    ItemProcurement.validateJsonElement(jsonArrayprocurement.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("relationships") != null
+                && !jsonObj.get("relationships").isJsonNull()) {
+            JsonArray jsonArrayrelationships = jsonObj.getAsJsonArray("relationships");
+            if (jsonArrayrelationships != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relationships").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relationships` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relationships").toString()));
+                }
+
+                // validate the optional field `relationships` (array)
+                for (int i = 0; i < jsonArrayrelationships.size(); i++) {
+                    ItemRelationshipsByMarketplace.validateJsonElement(jsonArrayrelationships.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonNull()) {
+            JsonArray jsonArrayproductTypes = jsonObj.getAsJsonArray("productTypes");
+            if (jsonArrayproductTypes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("productTypes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `productTypes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("productTypes").toString()));
+                }
+
+                // validate the optional field `productTypes` (array)
+                for (int i = 0; i < jsonArrayproductTypes.size(); i++) {
+                    ItemProductTypeByMarketplace.validateJsonElement(jsonArrayproductTypes.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

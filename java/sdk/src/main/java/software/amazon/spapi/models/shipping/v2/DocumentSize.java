@@ -12,30 +12,44 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The size dimensions of the label. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The size dimensions of the label.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DocumentSize {
-    @SerializedName("width")
-    private BigDecimal width = null;
+    public static final String SERIALIZED_NAME_WIDTH = "width";
 
-    @SerializedName("length")
-    private BigDecimal length = null;
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private BigDecimal width;
+
+    public static final String SERIALIZED_NAME_LENGTH = "length";
+
+    @SerializedName(SERIALIZED_NAME_LENGTH)
+    private BigDecimal length;
 
     /** The unit of measurement. */
     @JsonAdapter(UnitEnum.Adapter.class)
     public enum UnitEnum {
-        @SerializedName("INCH")
         INCH("INCH"),
-        @SerializedName("CENTIMETER")
+
         CENTIMETER("CENTIMETER");
 
         private String value;
@@ -53,31 +67,40 @@ public class DocumentSize {
             return String.valueOf(value);
         }
 
-        public static UnitEnum fromValue(String input) {
+        public static UnitEnum fromValue(String value) {
             for (UnitEnum b : UnitEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<UnitEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final UnitEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public UnitEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return UnitEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return UnitEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            UnitEnum.fromValue(value);
         }
     }
 
-    @SerializedName("unit")
-    private UnitEnum unit = null;
+    public static final String SERIALIZED_NAME_UNIT = "unit";
+
+    @SerializedName(SERIALIZED_NAME_UNIT)
+    private UnitEnum unit;
+
+    public DocumentSize() {}
 
     public DocumentSize width(BigDecimal width) {
         this.width = width;
@@ -89,9 +112,7 @@ public class DocumentSize {
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The width of the document measured in the units specified.")
+    @javax.annotation.Nonnull
     public BigDecimal getWidth() {
         return width;
     }
@@ -110,9 +131,7 @@ public class DocumentSize {
      *
      * @return length
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The length of the document measured in the units specified.")
+    @javax.annotation.Nonnull
     public BigDecimal getLength() {
         return length;
     }
@@ -131,7 +150,7 @@ public class DocumentSize {
      *
      * @return unit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
+    @javax.annotation.Nonnull
     public UnitEnum getUnit() {
         return unit;
     }
@@ -141,7 +160,7 @@ public class DocumentSize {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -171,10 +190,120 @@ public class DocumentSize {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("width");
+        openapiFields.add("length");
+        openapiFields.add("unit");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("width");
+        openapiRequiredFields.add("length");
+        openapiRequiredFields.add("unit");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DocumentSize
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DocumentSize.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DocumentSize is not found in the empty JSON string",
+                        DocumentSize.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DocumentSize.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DocumentSize` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DocumentSize.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("unit").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `unit` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("unit").toString()));
+        }
+        // validate the required field `unit`
+        UnitEnum.validateJsonElement(jsonObj.get("unit"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DocumentSize.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DocumentSize' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DocumentSize> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DocumentSize.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DocumentSize>() {
+                        @Override
+                        public void write(JsonWriter out, DocumentSize value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DocumentSize read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DocumentSize given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DocumentSize
+     * @throws IOException if the JSON string is invalid with respect to DocumentSize
+     */
+    public static DocumentSize fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DocumentSize.class);
+    }
+
+    /**
+     * Convert an instance of DocumentSize to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

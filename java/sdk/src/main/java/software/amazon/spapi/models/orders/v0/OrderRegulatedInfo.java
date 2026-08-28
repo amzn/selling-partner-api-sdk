@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The order&#39;s regulated information along with its verification status. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The order's regulated information along with its verification status.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderRegulatedInfo {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("RegulatedInformation")
-    private RegulatedInformation regulatedInformation = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("RequiresDosageLabel")
-    private Boolean requiresDosageLabel = null;
+    public static final String SERIALIZED_NAME_REGULATED_INFORMATION = "RegulatedInformation";
 
-    @SerializedName("RegulatedOrderVerificationStatus")
-    private RegulatedOrderVerificationStatus regulatedOrderVerificationStatus = null;
+    @SerializedName(SERIALIZED_NAME_REGULATED_INFORMATION)
+    private RegulatedInformation regulatedInformation;
+
+    public static final String SERIALIZED_NAME_REQUIRES_DOSAGE_LABEL = "RequiresDosageLabel";
+
+    @SerializedName(SERIALIZED_NAME_REQUIRES_DOSAGE_LABEL)
+    private Boolean requiresDosageLabel;
+
+    public static final String SERIALIZED_NAME_REGULATED_ORDER_VERIFICATION_STATUS = "RegulatedOrderVerificationStatus";
+
+    @SerializedName(SERIALIZED_NAME_REGULATED_ORDER_VERIFICATION_STATUS)
+    private RegulatedOrderVerificationStatus regulatedOrderVerificationStatus;
+
+    public OrderRegulatedInfo() {}
 
     public OrderRegulatedInfo amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -41,9 +65,7 @@ public class OrderRegulatedInfo {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -62,7 +84,7 @@ public class OrderRegulatedInfo {
      *
      * @return regulatedInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RegulatedInformation getRegulatedInformation() {
         return regulatedInformation;
     }
@@ -81,9 +103,7 @@ public class OrderRegulatedInfo {
      *
      * @return requiresDosageLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, the order requires attaching a dosage information label when shipped.")
+    @javax.annotation.Nonnull
     public Boolean getRequiresDosageLabel() {
         return requiresDosageLabel;
     }
@@ -103,7 +123,7 @@ public class OrderRegulatedInfo {
      *
      * @return regulatedOrderVerificationStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RegulatedOrderVerificationStatus getRegulatedOrderVerificationStatus() {
         return regulatedOrderVerificationStatus;
     }
@@ -113,7 +133,7 @@ public class OrderRegulatedInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,10 +172,124 @@ public class OrderRegulatedInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("RegulatedInformation");
+        openapiFields.add("RequiresDosageLabel");
+        openapiFields.add("RegulatedOrderVerificationStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AmazonOrderId");
+        openapiRequiredFields.add("RegulatedInformation");
+        openapiRequiredFields.add("RequiresDosageLabel");
+        openapiRequiredFields.add("RegulatedOrderVerificationStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderRegulatedInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderRegulatedInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderRegulatedInfo is not found in the empty JSON string",
+                        OrderRegulatedInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderRegulatedInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderRegulatedInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderRegulatedInfo.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        // validate the required field `RegulatedInformation`
+        RegulatedInformation.validateJsonElement(jsonObj.get("RegulatedInformation"));
+        // validate the required field `RegulatedOrderVerificationStatus`
+        RegulatedOrderVerificationStatus.validateJsonElement(jsonObj.get("RegulatedOrderVerificationStatus"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderRegulatedInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderRegulatedInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderRegulatedInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderRegulatedInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderRegulatedInfo>() {
+                        @Override
+                        public void write(JsonWriter out, OrderRegulatedInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderRegulatedInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderRegulatedInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderRegulatedInfo
+     * @throws IOException if the JSON string is invalid with respect to OrderRegulatedInfo
+     */
+    public static OrderRegulatedInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderRegulatedInfo.class);
+    }
+
+    /**
+     * Convert an instance of OrderRegulatedInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

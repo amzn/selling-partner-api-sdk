@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The relative color scheme of your content. */
 @JsonAdapter(ColorType.Adapter.class)
 public enum ColorType {
-    @SerializedName("DARK")
     DARK("DARK"),
 
-    @SerializedName("LIGHT")
     LIGHT("LIGHT");
 
     private String value;
@@ -43,25 +41,30 @@ public enum ColorType {
         return String.valueOf(value);
     }
 
-    public static ColorType fromValue(String input) {
+    public static ColorType fromValue(String value) {
         for (ColorType b : ColorType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ColorType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ColorType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ColorType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ColorType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ColorType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ColorType.fromValue(value);
     }
 }

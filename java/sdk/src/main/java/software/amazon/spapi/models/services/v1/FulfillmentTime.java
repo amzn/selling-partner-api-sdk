@@ -12,18 +12,39 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Input for fulfillment time details */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Input for fulfillment time details")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentTime {
-    @SerializedName("startTime")
-    private OffsetDateTime startTime = null;
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
 
-    @SerializedName("endTime")
-    private OffsetDateTime endTime = null;
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private OffsetDateTime startTime;
+
+    public static final String SERIALIZED_NAME_END_TIME = "endTime";
+
+    @SerializedName(SERIALIZED_NAME_END_TIME)
+    private OffsetDateTime endTime;
+
+    public FulfillmentTime() {}
 
     public FulfillmentTime startTime(OffsetDateTime startTime) {
         this.startTime = startTime;
@@ -35,9 +56,7 @@ public class FulfillmentTime {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date, time in UTC of the fulfillment start time in ISO 8601 format.")
-    public OffsetDateTime getStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getStartTime() {
         return startTime;
     }
 
@@ -55,9 +74,7 @@ public class FulfillmentTime {
      *
      * @return endTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date, time in UTC of the fulfillment end time in ISO 8601 format.")
-    public OffsetDateTime getEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getEndTime() {
         return endTime;
     }
 
@@ -66,7 +83,7 @@ public class FulfillmentTime {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +111,100 @@ public class FulfillmentTime {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startTime");
+        openapiFields.add("endTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentTime
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentTime.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentTime is not found in the empty JSON string",
+                        FulfillmentTime.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentTime.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentTime` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentTime.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentTime' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentTime> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentTime.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentTime>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentTime value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentTime read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentTime given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentTime
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentTime
+     */
+    public static FulfillmentTime fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentTime.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentTime to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,31 +12,41 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body schema for the &#x60;putListingsItem&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request body schema for the `putListingsItem` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListingsItemPutRequest {
-    @SerializedName("productType")
-    private String productType = null;
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+    private String productType;
 
     /** The name of the requirements set for the provided data. */
     @JsonAdapter(RequirementsEnum.Adapter.class)
     public enum RequirementsEnum {
-        @SerializedName("LISTING")
         LISTING("LISTING"),
-        @SerializedName("LISTING_PRODUCT_ONLY")
+
         LISTING_PRODUCT_ONLY("LISTING_PRODUCT_ONLY"),
-        @SerializedName("LISTING_OFFER_ONLY")
+
         LISTING_OFFER_ONLY("LISTING_OFFER_ONLY");
 
         private String value;
@@ -54,34 +64,45 @@ public class ListingsItemPutRequest {
             return String.valueOf(value);
         }
 
-        public static RequirementsEnum fromValue(String input) {
+        public static RequirementsEnum fromValue(String value) {
             for (RequirementsEnum b : RequirementsEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RequirementsEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RequirementsEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RequirementsEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RequirementsEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RequirementsEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RequirementsEnum.fromValue(value);
         }
     }
 
-    @SerializedName("requirements")
-    private RequirementsEnum requirements = null;
+    public static final String SERIALIZED_NAME_REQUIREMENTS = "requirements";
 
-    @SerializedName("attributes")
-    private Map<String, Object> attributes = null;
+    @SerializedName(SERIALIZED_NAME_REQUIREMENTS)
+    private RequirementsEnum requirements;
+
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private Map<String, Object> attributes = new HashMap<>();
+
+    public ListingsItemPutRequest() {}
 
     public ListingsItemPutRequest productType(String productType) {
         this.productType = productType;
@@ -93,9 +114,7 @@ public class ListingsItemPutRequest {
      *
      * @return productType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The listings item's Amazon product type.")
+    @javax.annotation.Nonnull
     public String getProductType() {
         return productType;
     }
@@ -114,8 +133,7 @@ public class ListingsItemPutRequest {
      *
      * @return requirements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the requirements set for the provided data.")
-    public RequirementsEnum getRequirements() {
+    @javax.annotation.Nullable public RequirementsEnum getRequirements() {
         return requirements;
     }
 
@@ -141,9 +159,7 @@ public class ListingsItemPutRequest {
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "JSON object containing structured listings item attribute data keyed by attribute name.")
+    @javax.annotation.Nonnull
     public Map<String, Object> getAttributes() {
         return attributes;
     }
@@ -153,7 +169,7 @@ public class ListingsItemPutRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -183,10 +199,128 @@ public class ListingsItemPutRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("productType");
+        openapiFields.add("requirements");
+        openapiFields.add("attributes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("productType");
+        openapiRequiredFields.add("attributes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListingsItemPutRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListingsItemPutRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListingsItemPutRequest is not found in the empty JSON string",
+                        ListingsItemPutRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListingsItemPutRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListingsItemPutRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListingsItemPutRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("productType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productType").toString()));
+        }
+        if ((jsonObj.get("requirements") != null && !jsonObj.get("requirements").isJsonNull())
+                && !jsonObj.get("requirements").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requirements` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requirements").toString()));
+        }
+        // validate the optional field `requirements`
+        if (jsonObj.get("requirements") != null && !jsonObj.get("requirements").isJsonNull()) {
+            RequirementsEnum.validateJsonElement(jsonObj.get("requirements"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListingsItemPutRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListingsItemPutRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListingsItemPutRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListingsItemPutRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListingsItemPutRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ListingsItemPutRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListingsItemPutRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListingsItemPutRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListingsItemPutRequest
+     * @throws IOException if the JSON string is invalid with respect to ListingsItemPutRequest
+     */
+    public static ListingsItemPutRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListingsItemPutRequest.class);
+    }
+
+    /**
+     * Convert an instance of ListingsItemPutRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

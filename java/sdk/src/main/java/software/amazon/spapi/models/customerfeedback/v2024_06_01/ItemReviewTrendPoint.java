@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The review metrics for a certain month. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The review metrics for a certain month.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemReviewTrendPoint {
-    @SerializedName("dateRange")
-    private DateRange dateRange = null;
+    public static final String SERIALIZED_NAME_DATE_RANGE = "dateRange";
 
-    @SerializedName("asinMetrics")
-    private ReviewTrendMetrics asinMetrics = null;
+    @SerializedName(SERIALIZED_NAME_DATE_RANGE)
+    private DateRange dateRange;
 
-    @SerializedName("parentAsinMetrics")
-    private ReviewTrendMetrics parentAsinMetrics = null;
+    public static final String SERIALIZED_NAME_ASIN_METRICS = "asinMetrics";
 
-    @SerializedName("browseNodeMetrics")
-    private BrowseNodeTrendMetrics browseNodeMetrics = null;
+    @SerializedName(SERIALIZED_NAME_ASIN_METRICS)
+    private ReviewTrendMetrics asinMetrics;
+
+    public static final String SERIALIZED_NAME_PARENT_ASIN_METRICS = "parentAsinMetrics";
+
+    @SerializedName(SERIALIZED_NAME_PARENT_ASIN_METRICS)
+    private ReviewTrendMetrics parentAsinMetrics;
+
+    public static final String SERIALIZED_NAME_BROWSE_NODE_METRICS = "browseNodeMetrics";
+
+    @SerializedName(SERIALIZED_NAME_BROWSE_NODE_METRICS)
+    private BrowseNodeTrendMetrics browseNodeMetrics;
+
+    public ItemReviewTrendPoint() {}
 
     public ItemReviewTrendPoint dateRange(DateRange dateRange) {
         this.dateRange = dateRange;
@@ -40,7 +65,7 @@ public class ItemReviewTrendPoint {
      *
      * @return dateRange
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -59,7 +84,7 @@ public class ItemReviewTrendPoint {
      *
      * @return asinMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReviewTrendMetrics getAsinMetrics() {
         return asinMetrics;
     }
@@ -78,8 +103,7 @@ public class ItemReviewTrendPoint {
      *
      * @return parentAsinMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReviewTrendMetrics getParentAsinMetrics() {
+    @javax.annotation.Nullable public ReviewTrendMetrics getParentAsinMetrics() {
         return parentAsinMetrics;
     }
 
@@ -97,8 +121,7 @@ public class ItemReviewTrendPoint {
      *
      * @return browseNodeMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BrowseNodeTrendMetrics getBrowseNodeMetrics() {
+    @javax.annotation.Nullable public BrowseNodeTrendMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }
 
@@ -107,7 +130,7 @@ public class ItemReviewTrendPoint {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +166,127 @@ public class ItemReviewTrendPoint {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("dateRange");
+        openapiFields.add("asinMetrics");
+        openapiFields.add("parentAsinMetrics");
+        openapiFields.add("browseNodeMetrics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("dateRange");
+        openapiRequiredFields.add("asinMetrics");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemReviewTrendPoint
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemReviewTrendPoint.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemReviewTrendPoint is not found in the empty JSON string",
+                        ItemReviewTrendPoint.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemReviewTrendPoint.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemReviewTrendPoint` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemReviewTrendPoint.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `dateRange`
+        DateRange.validateJsonElement(jsonObj.get("dateRange"));
+        // validate the required field `asinMetrics`
+        ReviewTrendMetrics.validateJsonElement(jsonObj.get("asinMetrics"));
+        // validate the optional field `parentAsinMetrics`
+        if (jsonObj.get("parentAsinMetrics") != null
+                && !jsonObj.get("parentAsinMetrics").isJsonNull()) {
+            ReviewTrendMetrics.validateJsonElement(jsonObj.get("parentAsinMetrics"));
+        }
+        // validate the optional field `browseNodeMetrics`
+        if (jsonObj.get("browseNodeMetrics") != null
+                && !jsonObj.get("browseNodeMetrics").isJsonNull()) {
+            BrowseNodeTrendMetrics.validateJsonElement(jsonObj.get("browseNodeMetrics"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemReviewTrendPoint.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemReviewTrendPoint' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemReviewTrendPoint> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemReviewTrendPoint.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemReviewTrendPoint>() {
+                        @Override
+                        public void write(JsonWriter out, ItemReviewTrendPoint value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemReviewTrendPoint read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemReviewTrendPoint given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemReviewTrendPoint
+     * @throws IOException if the JSON string is invalid with respect to ItemReviewTrendPoint
+     */
+    public static ItemReviewTrendPoint fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemReviewTrendPoint.class);
+    }
+
+    /**
+     * Convert an instance of ItemReviewTrendPoint to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

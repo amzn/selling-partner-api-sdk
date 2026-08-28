@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The shipment status to apply. */
 @JsonAdapter(ShipmentStatus.Adapter.class)
 public enum ShipmentStatus {
-    @SerializedName("ReadyForPickup")
     READY_FOR_PICKUP("ReadyForPickup"),
 
-    @SerializedName("PickedUp")
     PICKED_UP("PickedUp"),
 
-    @SerializedName("RefusedPickup")
     REFUSED_PICKUP("RefusedPickup");
 
     private String value;
@@ -46,25 +43,30 @@ public enum ShipmentStatus {
         return String.valueOf(value);
     }
 
-    public static ShipmentStatus fromValue(String input) {
+    public static ShipmentStatus fromValue(String value) {
         for (ShipmentStatus b : ShipmentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ShipmentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final ShipmentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ShipmentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ShipmentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ShipmentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ShipmentStatus.fromValue(value);
     }
 }

@@ -34,7 +34,6 @@ import software.amazon.spapi.models.orders.v0.GetOrderRegulatedInfoResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderResponse;
 import software.amazon.spapi.models.orders.v0.GetOrdersResponse;
 import software.amazon.spapi.models.orders.v0.UpdateVerificationStatusRequest;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class OrdersV0ApiTest {
 
@@ -52,10 +51,8 @@ public class OrdersV0ApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void confirmShipmentTest() throws Exception {

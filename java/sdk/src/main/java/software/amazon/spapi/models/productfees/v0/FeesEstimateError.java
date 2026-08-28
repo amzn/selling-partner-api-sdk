@@ -12,23 +12,50 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An unexpected error occurred during this operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An unexpected error occurred during this operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeesEstimateError {
-    @SerializedName("Type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "Type";
 
-    @SerializedName("Code")
-    private String code = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
 
-    @SerializedName("Message")
-    private String message = null;
+    public static final String SERIALIZED_NAME_CODE = "Code";
 
-    @SerializedName("Detail")
-    private FeesEstimateErrorDetail detail = null;
+    @SerializedName(SERIALIZED_NAME_CODE)
+    private String code;
+
+    public static final String SERIALIZED_NAME_MESSAGE = "Message";
+
+    @SerializedName(SERIALIZED_NAME_MESSAGE)
+    private String message;
+
+    public static final String SERIALIZED_NAME_DETAIL = "Detail";
+
+    @SerializedName(SERIALIZED_NAME_DETAIL)
+    private List<Object> detail = new ArrayList<>();
+
+    public FeesEstimateError() {}
 
     public FeesEstimateError type(String type) {
         this.type = type;
@@ -40,10 +67,7 @@ public class FeesEstimateError {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "An error type, identifying either the receiver or the sender as the originator of the error.")
+    @javax.annotation.Nonnull
     public String getType() {
         return type;
     }
@@ -62,9 +86,7 @@ public class FeesEstimateError {
      *
      * @return code
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An error code that identifies the type of error that occurred.")
+    @javax.annotation.Nonnull
     public String getCode() {
         return code;
     }
@@ -83,9 +105,7 @@ public class FeesEstimateError {
      *
      * @return message
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A message that describes the error condition.")
+    @javax.annotation.Nonnull
     public String getMessage() {
         return message;
     }
@@ -94,27 +114,35 @@ public class FeesEstimateError {
         this.message = message;
     }
 
-    public FeesEstimateError detail(FeesEstimateErrorDetail detail) {
+    public FeesEstimateError detail(List<Object> detail) {
         this.detail = detail;
         return this;
     }
 
+    public FeesEstimateError addDetailItem(Object detailItem) {
+        if (this.detail == null) {
+            this.detail = new ArrayList<>();
+        }
+        this.detail.add(detailItem);
+        return this;
+    }
+
     /**
-     * Get detail
+     * Additional information that can help the caller understand or fix the issue.
      *
      * @return detail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public FeesEstimateErrorDetail getDetail() {
+    @javax.annotation.Nonnull
+    public List<Object> getDetail() {
         return detail;
     }
 
-    public void setDetail(FeesEstimateErrorDetail detail) {
+    public void setDetail(List<Object> detail) {
         this.detail = detail;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,10 +174,139 @@ public class FeesEstimateError {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Type");
+        openapiFields.add("Code");
+        openapiFields.add("Message");
+        openapiFields.add("Detail");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Type");
+        openapiRequiredFields.add("Code");
+        openapiRequiredFields.add("Message");
+        openapiRequiredFields.add("Detail");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeesEstimateError
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeesEstimateError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeesEstimateError is not found in the empty JSON string",
+                        FeesEstimateError.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeesEstimateError.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeesEstimateError` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeesEstimateError.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("Type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Type").toString()));
+        }
+        if (!jsonObj.get("Code").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Code` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Code").toString()));
+        }
+        if (!jsonObj.get("Message").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Message` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Message").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("Detail") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("Detail").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Detail` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Detail").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeesEstimateError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeesEstimateError' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeesEstimateError> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeesEstimateError.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeesEstimateError>() {
+                        @Override
+                        public void write(JsonWriter out, FeesEstimateError value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeesEstimateError read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeesEstimateError given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeesEstimateError
+     * @throws IOException if the JSON string is invalid with respect to FeesEstimateError
+     */
+    public static FeesEstimateError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeesEstimateError.class);
+    }
+
+    /**
+     * Convert an instance of FeesEstimateError to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

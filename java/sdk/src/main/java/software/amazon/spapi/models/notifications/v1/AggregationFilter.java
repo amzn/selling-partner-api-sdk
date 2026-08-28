@@ -12,19 +12,36 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one
  * notification every five minutes for high frequency notifications).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one notification every five minutes for high frequency notifications).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AggregationFilter {
-    @SerializedName("aggregationSettings")
-    private AggregationSettings aggregationSettings = null;
+    public static final String SERIALIZED_NAME_AGGREGATION_SETTINGS = "aggregationSettings";
+
+    @SerializedName(SERIALIZED_NAME_AGGREGATION_SETTINGS)
+    private AggregationSettings aggregationSettings;
+
+    public AggregationFilter() {}
 
     public AggregationFilter aggregationSettings(AggregationSettings aggregationSettings) {
         this.aggregationSettings = aggregationSettings;
@@ -36,8 +53,7 @@ public class AggregationFilter {
      *
      * @return aggregationSettings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AggregationSettings getAggregationSettings() {
+    @javax.annotation.Nullable public AggregationSettings getAggregationSettings() {
         return aggregationSettings;
     }
 
@@ -46,7 +62,7 @@ public class AggregationFilter {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -74,10 +90,104 @@ public class AggregationFilter {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("aggregationSettings");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AggregationFilter
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AggregationFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AggregationFilter is not found in the empty JSON string",
+                        AggregationFilter.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AggregationFilter.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AggregationFilter` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `aggregationSettings`
+        if (jsonObj.get("aggregationSettings") != null
+                && !jsonObj.get("aggregationSettings").isJsonNull()) {
+            AggregationSettings.validateJsonElement(jsonObj.get("aggregationSettings"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AggregationFilter.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AggregationFilter' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AggregationFilter> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AggregationFilter.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AggregationFilter>() {
+                        @Override
+                        public void write(JsonWriter out, AggregationFilter value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AggregationFilter read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AggregationFilter given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AggregationFilter
+     * @throws IOException if the JSON string is invalid with respect to AggregationFilter
+     */
+    public static AggregationFilter fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AggregationFilter.class);
+    }
+
+    /**
+     * Convert an instance of AggregationFilter to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

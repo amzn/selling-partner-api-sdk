@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Request schema for the &#x60;updateReservation&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema for the `updateReservation` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class UpdateReservationRequest {
-    @SerializedName("resourceId")
-    private String resourceId = null;
+    public static final String SERIALIZED_NAME_RESOURCE_ID = "resourceId";
 
-    @SerializedName("reservation")
-    private Reservation reservation = null;
+    @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
+    private String resourceId;
+
+    public static final String SERIALIZED_NAME_RESERVATION = "reservation";
+
+    @SerializedName(SERIALIZED_NAME_RESERVATION)
+    private Reservation reservation;
+
+    public UpdateReservationRequest() {}
 
     public UpdateReservationRequest resourceId(String resourceId) {
         this.resourceId = resourceId;
@@ -34,7 +55,7 @@ public class UpdateReservationRequest {
      *
      * @return resourceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Resource (store) identifier.")
+    @javax.annotation.Nonnull
     public String getResourceId() {
         return resourceId;
     }
@@ -53,7 +74,7 @@ public class UpdateReservationRequest {
      *
      * @return reservation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Reservation getReservation() {
         return reservation;
     }
@@ -63,7 +84,7 @@ public class UpdateReservationRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +112,119 @@ public class UpdateReservationRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("resourceId");
+        openapiFields.add("reservation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("resourceId");
+        openapiRequiredFields.add("reservation");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to UpdateReservationRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!UpdateReservationRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in UpdateReservationRequest is not found in the empty JSON string",
+                        UpdateReservationRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!UpdateReservationRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `UpdateReservationRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : UpdateReservationRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("resourceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resourceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("resourceId").toString()));
+        }
+        // validate the required field `reservation`
+        Reservation.validateJsonElement(jsonObj.get("reservation"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UpdateReservationRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UpdateReservationRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UpdateReservationRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UpdateReservationRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UpdateReservationRequest>() {
+                        @Override
+                        public void write(JsonWriter out, UpdateReservationRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UpdateReservationRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UpdateReservationRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UpdateReservationRequest
+     * @throws IOException if the JSON string is invalid with respect to UpdateReservationRequest
+     */
+    public static UpdateReservationRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UpdateReservationRequest.class);
+    }
+
+    /**
+     * Convert an instance of UpdateReservationRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,35 +12,46 @@
 
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Monetary and tax details of the charge. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Monetary and tax details of the charge.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChargeDetails {
     /** Type of charge applied. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("GIFTWRAP")
         GIFTWRAP("GIFTWRAP"),
-        @SerializedName("FULFILLMENT")
+
         FULFILLMENT("FULFILLMENT"),
-        @SerializedName("MARKETINGINSERT")
+
         MARKETINGINSERT("MARKETINGINSERT"),
-        @SerializedName("PACKAGING")
+
         PACKAGING("PACKAGING"),
-        @SerializedName("LOADING")
+
         LOADING("LOADING"),
-        @SerializedName("FREIGHTOUT")
+
         FREIGHTOUT("FREIGHTOUT"),
-        @SerializedName("TAX_COLLECTED_AT_SOURCE")
+
         TAX_COLLECTED_AT_SOURCE("TAX_COLLECTED_AT_SOURCE");
 
         private String value;
@@ -58,37 +69,50 @@ public class ChargeDetails {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("chargeAmount")
-    private Money chargeAmount = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
 
-    @SerializedName("taxDetails")
-    private List<TaxDetail> taxDetails = null;
+    public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "chargeAmount";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+    private Money chargeAmount;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetail> taxDetails = new ArrayList<>();
+
+    public ChargeDetails() {}
 
     public ChargeDetails type(TypeEnum type) {
         this.type = type;
@@ -100,7 +124,7 @@ public class ChargeDetails {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of charge applied.")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         return type;
     }
@@ -119,7 +143,7 @@ public class ChargeDetails {
      *
      * @return chargeAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getChargeAmount() {
         return chargeAmount;
     }
@@ -146,8 +170,7 @@ public class ChargeDetails {
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual tax details per line item.")
-    public List<TaxDetail> getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
@@ -156,7 +179,7 @@ public class ChargeDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -186,10 +209,138 @@ public class ChargeDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("chargeAmount");
+        openapiFields.add("taxDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+        openapiRequiredFields.add("chargeAmount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChargeDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChargeDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChargeDetails is not found in the empty JSON string",
+                        ChargeDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChargeDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChargeDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ChargeDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+        // validate the required field `chargeAmount`
+        Money.validateJsonElement(jsonObj.get("chargeAmount"));
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChargeDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChargeDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChargeDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChargeDetails>() {
+                        @Override
+                        public void write(JsonWriter out, ChargeDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChargeDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChargeDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChargeDetails
+     * @throws IOException if the JSON string is invalid with respect to ChargeDetails
+     */
+    public static ChargeDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChargeDetails.class);
+    }
+
+    /**
+     * Convert an instance of ChargeDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

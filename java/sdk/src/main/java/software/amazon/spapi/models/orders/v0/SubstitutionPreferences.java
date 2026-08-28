@@ -12,25 +12,38 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Substitution preferences for an order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Substitution preferences for an order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SubstitutionPreferences {
     /** The type of substitution that these preferences represent. */
     @JsonAdapter(SubstitutionTypeEnum.Adapter.class)
     public enum SubstitutionTypeEnum {
-        @SerializedName("CUSTOMER_PREFERENCE")
         CUSTOMER_PREFERENCE("CUSTOMER_PREFERENCE"),
-        @SerializedName("AMAZON_RECOMMENDED")
+
         AMAZON_RECOMMENDED("AMAZON_RECOMMENDED"),
-        @SerializedName("DO_NOT_SUBSTITUTE")
+
         DO_NOT_SUBSTITUTE("DO_NOT_SUBSTITUTE");
 
         private String value;
@@ -48,34 +61,45 @@ public class SubstitutionPreferences {
             return String.valueOf(value);
         }
 
-        public static SubstitutionTypeEnum fromValue(String input) {
+        public static SubstitutionTypeEnum fromValue(String value) {
             for (SubstitutionTypeEnum b : SubstitutionTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SubstitutionTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SubstitutionTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SubstitutionTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SubstitutionTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SubstitutionTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SubstitutionTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("SubstitutionType")
-    private SubstitutionTypeEnum substitutionType = null;
+    public static final String SERIALIZED_NAME_SUBSTITUTION_TYPE = "SubstitutionType";
 
-    @SerializedName("SubstitutionOptions")
-    private SubstitutionOptionList substitutionOptions = null;
+    @SerializedName(SERIALIZED_NAME_SUBSTITUTION_TYPE)
+    private SubstitutionTypeEnum substitutionType;
+
+    public static final String SERIALIZED_NAME_SUBSTITUTION_OPTIONS = "SubstitutionOptions";
+
+    @SerializedName(SERIALIZED_NAME_SUBSTITUTION_OPTIONS)
+    private List<SubstitutionOption> substitutionOptions = new ArrayList<>();
+
+    public SubstitutionPreferences() {}
 
     public SubstitutionPreferences substitutionType(SubstitutionTypeEnum substitutionType) {
         this.substitutionType = substitutionType;
@@ -87,9 +111,7 @@ public class SubstitutionPreferences {
      *
      * @return substitutionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The type of substitution that these preferences represent.")
+    @javax.annotation.Nonnull
     public SubstitutionTypeEnum getSubstitutionType() {
         return substitutionType;
     }
@@ -98,27 +120,34 @@ public class SubstitutionPreferences {
         this.substitutionType = substitutionType;
     }
 
-    public SubstitutionPreferences substitutionOptions(SubstitutionOptionList substitutionOptions) {
+    public SubstitutionPreferences substitutionOptions(List<SubstitutionOption> substitutionOptions) {
         this.substitutionOptions = substitutionOptions;
         return this;
     }
 
+    public SubstitutionPreferences addSubstitutionOptionsItem(SubstitutionOption substitutionOptionsItem) {
+        if (this.substitutionOptions == null) {
+            this.substitutionOptions = new ArrayList<>();
+        }
+        this.substitutionOptions.add(substitutionOptionsItem);
+        return this;
+    }
+
     /**
-     * Get substitutionOptions
+     * A collection of substitution options.
      *
      * @return substitutionOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SubstitutionOptionList getSubstitutionOptions() {
+    @javax.annotation.Nullable public List<SubstitutionOption> getSubstitutionOptions() {
         return substitutionOptions;
     }
 
-    public void setSubstitutionOptions(SubstitutionOptionList substitutionOptions) {
+    public void setSubstitutionOptions(List<SubstitutionOption> substitutionOptions) {
         this.substitutionOptions = substitutionOptions;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -150,10 +179,136 @@ public class SubstitutionPreferences {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SubstitutionType");
+        openapiFields.add("SubstitutionOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("SubstitutionType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SubstitutionPreferences
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SubstitutionPreferences.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SubstitutionPreferences is not found in the empty JSON string",
+                        SubstitutionPreferences.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SubstitutionPreferences.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SubstitutionPreferences` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SubstitutionPreferences.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("SubstitutionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SubstitutionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SubstitutionType").toString()));
+        }
+        // validate the required field `SubstitutionType`
+        SubstitutionTypeEnum.validateJsonElement(jsonObj.get("SubstitutionType"));
+        if (jsonObj.get("SubstitutionOptions") != null
+                && !jsonObj.get("SubstitutionOptions").isJsonNull()) {
+            JsonArray jsonArraysubstitutionOptions = jsonObj.getAsJsonArray("SubstitutionOptions");
+            if (jsonArraysubstitutionOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SubstitutionOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SubstitutionOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SubstitutionOptions").toString()));
+                }
+
+                // validate the optional field `SubstitutionOptions` (array)
+                for (int i = 0; i < jsonArraysubstitutionOptions.size(); i++) {
+                    SubstitutionOption.validateJsonElement(jsonArraysubstitutionOptions.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SubstitutionPreferences.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SubstitutionPreferences' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SubstitutionPreferences> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SubstitutionPreferences.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SubstitutionPreferences>() {
+                        @Override
+                        public void write(JsonWriter out, SubstitutionPreferences value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SubstitutionPreferences read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SubstitutionPreferences given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SubstitutionPreferences
+     * @throws IOException if the JSON string is invalid with respect to SubstitutionPreferences
+     */
+    public static SubstitutionPreferences fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SubstitutionPreferences.class);
+    }
+
+    /**
+     * Convert an instance of SubstitutionPreferences to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

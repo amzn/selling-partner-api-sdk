@@ -12,52 +12,76 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about an Amazon catalog item for the indicated `marketplaceId`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemSummaryByMarketplace {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("adultProduct")
-    private Boolean adultProduct = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("autographed")
-    private Boolean autographed = null;
+    public static final String SERIALIZED_NAME_ADULT_PRODUCT = "adultProduct";
 
-    @SerializedName("brand")
-    private String brand = null;
+    @SerializedName(SERIALIZED_NAME_ADULT_PRODUCT)
+    private Boolean adultProduct;
 
-    @SerializedName("browseClassification")
-    private ItemBrowseClassification browseClassification = null;
+    public static final String SERIALIZED_NAME_AUTOGRAPHED = "autographed";
 
-    @SerializedName("color")
-    private String color = null;
+    @SerializedName(SERIALIZED_NAME_AUTOGRAPHED)
+    private Boolean autographed;
 
-    @SerializedName("contributors")
-    private List<ItemContributor> contributors = null;
+    public static final String SERIALIZED_NAME_BRAND = "brand";
+
+    @SerializedName(SERIALIZED_NAME_BRAND)
+    private String brand;
+
+    public static final String SERIALIZED_NAME_BROWSE_CLASSIFICATION = "browseClassification";
+
+    @SerializedName(SERIALIZED_NAME_BROWSE_CLASSIFICATION)
+    private ItemBrowseClassification browseClassification;
+
+    public static final String SERIALIZED_NAME_COLOR = "color";
+
+    @SerializedName(SERIALIZED_NAME_COLOR)
+    private String color;
+
+    public static final String SERIALIZED_NAME_CONTRIBUTORS = "contributors";
+
+    @SerializedName(SERIALIZED_NAME_CONTRIBUTORS)
+    private List<ItemContributor> contributors = new ArrayList<>();
 
     /** Classification type that is associated with the Amazon catalog item. */
     @JsonAdapter(ItemClassificationEnum.Adapter.class)
     public enum ItemClassificationEnum {
-        @SerializedName("BASE_PRODUCT")
         BASE_PRODUCT("BASE_PRODUCT"),
-        @SerializedName("OTHER")
+
         OTHER("OTHER"),
-        @SerializedName("PRODUCT_BUNDLE")
+
         PRODUCT_BUNDLE("PRODUCT_BUNDLE"),
-        @SerializedName("VARIATION_PARENT")
+
         VARIATION_PARENT("VARIATION_PARENT");
 
         private String value;
@@ -75,68 +99,101 @@ public class ItemSummaryByMarketplace {
             return String.valueOf(value);
         }
 
-        public static ItemClassificationEnum fromValue(String input) {
+        public static ItemClassificationEnum fromValue(String value) {
             for (ItemClassificationEnum b : ItemClassificationEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ItemClassificationEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ItemClassificationEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ItemClassificationEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ItemClassificationEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ItemClassificationEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ItemClassificationEnum.fromValue(value);
         }
     }
 
-    @SerializedName("itemClassification")
-    private ItemClassificationEnum itemClassification = null;
+    public static final String SERIALIZED_NAME_ITEM_CLASSIFICATION = "itemClassification";
 
-    @SerializedName("itemName")
-    private String itemName = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_CLASSIFICATION)
+    private ItemClassificationEnum itemClassification;
 
-    @SerializedName("manufacturer")
-    private String manufacturer = null;
+    public static final String SERIALIZED_NAME_ITEM_NAME = "itemName";
 
-    @SerializedName("memorabilia")
-    private Boolean memorabilia = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_NAME)
+    private String itemName;
 
-    @SerializedName("modelNumber")
-    private String modelNumber = null;
+    public static final String SERIALIZED_NAME_MANUFACTURER = "manufacturer";
 
-    @SerializedName("packageQuantity")
-    private Integer packageQuantity = null;
+    @SerializedName(SERIALIZED_NAME_MANUFACTURER)
+    private String manufacturer;
 
-    @SerializedName("partNumber")
-    private String partNumber = null;
+    public static final String SERIALIZED_NAME_MEMORABILIA = "memorabilia";
 
-    @SerializedName("releaseDate")
-    private LocalDate releaseDate = null;
+    @SerializedName(SERIALIZED_NAME_MEMORABILIA)
+    private Boolean memorabilia;
 
-    @SerializedName("size")
-    private String size = null;
+    public static final String SERIALIZED_NAME_MODEL_NUMBER = "modelNumber";
 
-    @SerializedName("style")
-    private String style = null;
+    @SerializedName(SERIALIZED_NAME_MODEL_NUMBER)
+    private String modelNumber;
 
-    @SerializedName("tradeInEligible")
-    private Boolean tradeInEligible = null;
+    public static final String SERIALIZED_NAME_PACKAGE_QUANTITY = "packageQuantity";
 
-    @SerializedName("websiteDisplayGroup")
-    private String websiteDisplayGroup = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_QUANTITY)
+    private Integer packageQuantity;
 
-    @SerializedName("websiteDisplayGroupName")
-    private String websiteDisplayGroupName = null;
+    public static final String SERIALIZED_NAME_PART_NUMBER = "partNumber";
+
+    @SerializedName(SERIALIZED_NAME_PART_NUMBER)
+    private String partNumber;
+
+    public static final String SERIALIZED_NAME_RELEASE_DATE = "releaseDate";
+
+    @SerializedName(SERIALIZED_NAME_RELEASE_DATE)
+    private LocalDate releaseDate;
+
+    public static final String SERIALIZED_NAME_SIZE = "size";
+
+    @SerializedName(SERIALIZED_NAME_SIZE)
+    private String size;
+
+    public static final String SERIALIZED_NAME_STYLE = "style";
+
+    @SerializedName(SERIALIZED_NAME_STYLE)
+    private String style;
+
+    public static final String SERIALIZED_NAME_TRADE_IN_ELIGIBLE = "tradeInEligible";
+
+    @SerializedName(SERIALIZED_NAME_TRADE_IN_ELIGIBLE)
+    private Boolean tradeInEligible;
+
+    public static final String SERIALIZED_NAME_WEBSITE_DISPLAY_GROUP = "websiteDisplayGroup";
+
+    @SerializedName(SERIALIZED_NAME_WEBSITE_DISPLAY_GROUP)
+    private String websiteDisplayGroup;
+
+    public static final String SERIALIZED_NAME_WEBSITE_DISPLAY_GROUP_NAME = "websiteDisplayGroupName";
+
+    @SerializedName(SERIALIZED_NAME_WEBSITE_DISPLAY_GROUP_NAME)
+    private String websiteDisplayGroupName;
+
+    public ItemSummaryByMarketplace() {}
 
     public ItemSummaryByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -149,10 +206,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -171,10 +225,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return adultProduct
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.")
-    public Boolean getAdultProduct() {
+    @javax.annotation.Nullable public Boolean getAdultProduct() {
         return adultProduct;
     }
 
@@ -192,8 +243,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return autographed
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When `true`, the Amazon catalog item is autographed.")
-    public Boolean getAutographed() {
+    @javax.annotation.Nullable public Boolean getAutographed() {
         return autographed;
     }
 
@@ -211,9 +261,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return brand
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Name of the brand that is associated with the Amazon catalog item.")
-    public String getBrand() {
+    @javax.annotation.Nullable public String getBrand() {
         return brand;
     }
 
@@ -231,8 +279,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return browseClassification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemBrowseClassification getBrowseClassification() {
+    @javax.annotation.Nullable public ItemBrowseClassification getBrowseClassification() {
         return browseClassification;
     }
 
@@ -250,9 +297,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return color
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The color that is associated with the Amazon catalog item.")
-    public String getColor() {
+    @javax.annotation.Nullable public String getColor() {
         return color;
     }
 
@@ -278,9 +323,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return contributors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Individual contributors to the creation of the item, such as the authors or actors.")
-    public List<ItemContributor> getContributors() {
+    @javax.annotation.Nullable public List<ItemContributor> getContributors() {
         return contributors;
     }
 
@@ -298,9 +341,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemClassification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Classification type that is associated with the Amazon catalog item.")
-    public ItemClassificationEnum getItemClassification() {
+    @javax.annotation.Nullable public ItemClassificationEnum getItemClassification() {
         return itemClassification;
     }
 
@@ -318,9 +359,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name that is associated with the Amazon catalog item.")
-    public String getItemName() {
+    @javax.annotation.Nullable public String getItemName() {
         return itemName;
     }
 
@@ -338,9 +377,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return manufacturer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the manufacturer that is associated with the Amazon catalog item.")
-    public String getManufacturer() {
+    @javax.annotation.Nullable public String getManufacturer() {
         return manufacturer;
     }
 
@@ -358,8 +395,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return memorabilia
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the item is classified as memorabilia.")
-    public Boolean getMemorabilia() {
+    @javax.annotation.Nullable public Boolean getMemorabilia() {
         return memorabilia;
     }
 
@@ -377,9 +413,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return modelNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The model number that is associated with the Amazon catalog item.")
-    public String getModelNumber() {
+    @javax.annotation.Nullable public String getModelNumber() {
         return modelNumber;
     }
 
@@ -397,9 +431,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return packageQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The quantity of the Amazon catalog item within one package.")
-    public Integer getPackageQuantity() {
+    @javax.annotation.Nullable public Integer getPackageQuantity() {
         return packageQuantity;
     }
 
@@ -417,9 +449,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return partNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The part number that is associated with the Amazon catalog item.")
-    public String getPartNumber() {
+    @javax.annotation.Nullable public String getPartNumber() {
         return partNumber;
     }
 
@@ -437,9 +467,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return releaseDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The earliest date on which the Amazon catalog item can be shipped to customers.")
-    public LocalDate getReleaseDate() {
+    @javax.annotation.Nullable public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
@@ -457,8 +485,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return size
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the size of the Amazon catalog item.")
-    public String getSize() {
+    @javax.annotation.Nullable public String getSize() {
         return size;
     }
 
@@ -476,9 +503,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return style
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the style that is associated with the Amazon catalog item.")
-    public String getStyle() {
+    @javax.annotation.Nullable public String getStyle() {
         return style;
     }
 
@@ -496,9 +521,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return tradeInEligible
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, the Amazon catalog item is eligible for trade-in.")
-    public Boolean getTradeInEligible() {
+    @javax.annotation.Nullable public Boolean getTradeInEligible() {
         return tradeInEligible;
     }
 
@@ -516,10 +539,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return websiteDisplayGroup
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier of the website display group that is associated with the Amazon catalog item.")
-    public String getWebsiteDisplayGroup() {
+    @javax.annotation.Nullable public String getWebsiteDisplayGroup() {
         return websiteDisplayGroup;
     }
 
@@ -537,10 +557,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return websiteDisplayGroupName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The display name of the website display group that is associated with the Amazon catalog item.")
-    public String getWebsiteDisplayGroupName() {
+    @javax.annotation.Nullable public String getWebsiteDisplayGroupName() {
         return websiteDisplayGroupName;
     }
 
@@ -549,7 +566,7 @@ public class ItemSummaryByMarketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -645,10 +662,230 @@ public class ItemSummaryByMarketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("adultProduct");
+        openapiFields.add("autographed");
+        openapiFields.add("brand");
+        openapiFields.add("browseClassification");
+        openapiFields.add("color");
+        openapiFields.add("contributors");
+        openapiFields.add("itemClassification");
+        openapiFields.add("itemName");
+        openapiFields.add("manufacturer");
+        openapiFields.add("memorabilia");
+        openapiFields.add("modelNumber");
+        openapiFields.add("packageQuantity");
+        openapiFields.add("partNumber");
+        openapiFields.add("releaseDate");
+        openapiFields.add("size");
+        openapiFields.add("style");
+        openapiFields.add("tradeInEligible");
+        openapiFields.add("websiteDisplayGroup");
+        openapiFields.add("websiteDisplayGroupName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemSummaryByMarketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemSummaryByMarketplace.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemSummaryByMarketplace is not found in the empty JSON string",
+                        ItemSummaryByMarketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemSummaryByMarketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemSummaryByMarketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemSummaryByMarketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("brand") != null && !jsonObj.get("brand").isJsonNull())
+                && !jsonObj.get("brand").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brand` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("brand").toString()));
+        }
+        // validate the optional field `browseClassification`
+        if (jsonObj.get("browseClassification") != null
+                && !jsonObj.get("browseClassification").isJsonNull()) {
+            ItemBrowseClassification.validateJsonElement(jsonObj.get("browseClassification"));
+        }
+        if ((jsonObj.get("color") != null && !jsonObj.get("color").isJsonNull())
+                && !jsonObj.get("color").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `color` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("color").toString()));
+        }
+        if (jsonObj.get("contributors") != null && !jsonObj.get("contributors").isJsonNull()) {
+            JsonArray jsonArraycontributors = jsonObj.getAsJsonArray("contributors");
+            if (jsonArraycontributors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("contributors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `contributors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("contributors").toString()));
+                }
+
+                // validate the optional field `contributors` (array)
+                for (int i = 0; i < jsonArraycontributors.size(); i++) {
+                    ItemContributor.validateJsonElement(jsonArraycontributors.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("itemClassification") != null
+                        && !jsonObj.get("itemClassification").isJsonNull())
+                && !jsonObj.get("itemClassification").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemClassification` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemClassification").toString()));
+        }
+        // validate the optional field `itemClassification`
+        if (jsonObj.get("itemClassification") != null
+                && !jsonObj.get("itemClassification").isJsonNull()) {
+            ItemClassificationEnum.validateJsonElement(jsonObj.get("itemClassification"));
+        }
+        if ((jsonObj.get("itemName") != null && !jsonObj.get("itemName").isJsonNull())
+                && !jsonObj.get("itemName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemName").toString()));
+        }
+        if ((jsonObj.get("manufacturer") != null && !jsonObj.get("manufacturer").isJsonNull())
+                && !jsonObj.get("manufacturer").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturer` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manufacturer").toString()));
+        }
+        if ((jsonObj.get("modelNumber") != null && !jsonObj.get("modelNumber").isJsonNull())
+                && !jsonObj.get("modelNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `modelNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("modelNumber").toString()));
+        }
+        if ((jsonObj.get("partNumber") != null && !jsonObj.get("partNumber").isJsonNull())
+                && !jsonObj.get("partNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partNumber").toString()));
+        }
+        if ((jsonObj.get("size") != null && !jsonObj.get("size").isJsonNull())
+                && !jsonObj.get("size").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `size` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("size").toString()));
+        }
+        if ((jsonObj.get("style") != null && !jsonObj.get("style").isJsonNull())
+                && !jsonObj.get("style").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `style` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("style").toString()));
+        }
+        if ((jsonObj.get("websiteDisplayGroup") != null
+                        && !jsonObj.get("websiteDisplayGroup").isJsonNull())
+                && !jsonObj.get("websiteDisplayGroup").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `websiteDisplayGroup` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("websiteDisplayGroup").toString()));
+        }
+        if ((jsonObj.get("websiteDisplayGroupName") != null
+                        && !jsonObj.get("websiteDisplayGroupName").isJsonNull())
+                && !jsonObj.get("websiteDisplayGroupName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `websiteDisplayGroupName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("websiteDisplayGroupName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemSummaryByMarketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemSummaryByMarketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemSummaryByMarketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemSummaryByMarketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemSummaryByMarketplace>() {
+                        @Override
+                        public void write(JsonWriter out, ItemSummaryByMarketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemSummaryByMarketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemSummaryByMarketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemSummaryByMarketplace
+     * @throws IOException if the JSON string is invalid with respect to ItemSummaryByMarketplace
+     */
+    public static ItemSummaryByMarketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemSummaryByMarketplace.class);
+    }
+
+    /**
+     * Convert an instance of ItemSummaryByMarketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

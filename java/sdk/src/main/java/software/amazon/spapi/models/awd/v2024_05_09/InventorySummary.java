@@ -12,28 +12,56 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Summary of inventory per SKU. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Summary of inventory per SKU.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventorySummary {
-    @SerializedName("expirationDetails")
-    private List<ExpirationDetails> expirationDetails = null;
+    public static final String SERIALIZED_NAME_EXPIRATION_DETAILS = "expirationDetails";
 
-    @SerializedName("inventoryDetails")
-    private InventoryDetails inventoryDetails = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION_DETAILS)
+    private List<ExpirationDetails> expirationDetails = new ArrayList<>();
 
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_INVENTORY_DETAILS = "inventoryDetails";
 
-    @SerializedName("totalInboundQuantity")
-    private Long totalInboundQuantity = null;
+    @SerializedName(SERIALIZED_NAME_INVENTORY_DETAILS)
+    private InventoryDetails inventoryDetails;
 
-    @SerializedName("totalOnhandQuantity")
-    private Long totalOnhandQuantity = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
+
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
+
+    public static final String SERIALIZED_NAME_TOTAL_INBOUND_QUANTITY = "totalInboundQuantity";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_INBOUND_QUANTITY)
+    private Long totalInboundQuantity;
+
+    public static final String SERIALIZED_NAME_TOTAL_ONHAND_QUANTITY = "totalOnhandQuantity";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_ONHAND_QUANTITY)
+    private Long totalOnhandQuantity;
+
+    public InventorySummary() {}
 
     public InventorySummary expirationDetails(List<ExpirationDetails> expirationDetails) {
         this.expirationDetails = expirationDetails;
@@ -54,10 +82,7 @@ public class InventorySummary {
      *
      * @return expirationDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.")
-    public List<ExpirationDetails> getExpirationDetails() {
+    @javax.annotation.Nullable public List<ExpirationDetails> getExpirationDetails() {
         return expirationDetails;
     }
 
@@ -75,8 +100,7 @@ public class InventorySummary {
      *
      * @return inventoryDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InventoryDetails getInventoryDetails() {
+    @javax.annotation.Nullable public InventoryDetails getInventoryDetails() {
         return inventoryDetails;
     }
 
@@ -94,7 +118,7 @@ public class InventorySummary {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller or merchant SKU.")
+    @javax.annotation.Nonnull
     public String getSku() {
         return sku;
     }
@@ -113,10 +137,7 @@ public class InventorySummary {
      *
      * @return totalInboundQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Total quantity that is in-transit from the seller and has not yet been received at an AWD Distribution Center")
-    public Long getTotalInboundQuantity() {
+    @javax.annotation.Nullable public Long getTotalInboundQuantity() {
         return totalInboundQuantity;
     }
 
@@ -134,9 +155,7 @@ public class InventorySummary {
      *
      * @return totalOnhandQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Total quantity that is present in AWD distribution centers.")
-    public Long getTotalOnhandQuantity() {
+    @javax.annotation.Nullable public Long getTotalOnhandQuantity() {
         return totalOnhandQuantity;
     }
 
@@ -145,7 +164,7 @@ public class InventorySummary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -187,10 +206,141 @@ public class InventorySummary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("expirationDetails");
+        openapiFields.add("inventoryDetails");
+        openapiFields.add("sku");
+        openapiFields.add("totalInboundQuantity");
+        openapiFields.add("totalOnhandQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sku");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventorySummary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventorySummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventorySummary is not found in the empty JSON string",
+                        InventorySummary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventorySummary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventorySummary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InventorySummary.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("expirationDetails") != null
+                && !jsonObj.get("expirationDetails").isJsonNull()) {
+            JsonArray jsonArrayexpirationDetails = jsonObj.getAsJsonArray("expirationDetails");
+            if (jsonArrayexpirationDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("expirationDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `expirationDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("expirationDetails").toString()));
+                }
+
+                // validate the optional field `expirationDetails` (array)
+                for (int i = 0; i < jsonArrayexpirationDetails.size(); i++) {
+                    ExpirationDetails.validateJsonElement(jsonArrayexpirationDetails.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `inventoryDetails`
+        if (jsonObj.get("inventoryDetails") != null
+                && !jsonObj.get("inventoryDetails").isJsonNull()) {
+            InventoryDetails.validateJsonElement(jsonObj.get("inventoryDetails"));
+        }
+        if (!jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventorySummary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventorySummary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventorySummary> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventorySummary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventorySummary>() {
+                        @Override
+                        public void write(JsonWriter out, InventorySummary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventorySummary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventorySummary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventorySummary
+     * @throws IOException if the JSON string is invalid with respect to InventorySummary
+     */
+    public static InventorySummary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventorySummary.class);
+    }
+
+    /**
+     * Convert an instance of InventorySummary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

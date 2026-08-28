@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Line item information for a create order request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Line item information for a create order request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateOrderLineItem {
-    @SerializedName("lineItemId")
-    private String lineItemId = null;
+    public static final String SERIALIZED_NAME_LINE_ITEM_ID = "lineItemId";
 
-    @SerializedName("product")
-    private OrderProduct product = null;
+    @SerializedName(SERIALIZED_NAME_LINE_ITEM_ID)
+    private String lineItemId;
 
-    @SerializedName("amount")
-    private Amount amount = null;
+    public static final String SERIALIZED_NAME_PRODUCT = "product";
 
-    @SerializedName("fulfillmentConfiguration")
-    private LineItemFulfillmentConfiguration fulfillmentConfiguration = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT)
+    private OrderProduct product;
+
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Amount amount;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CONFIGURATION = "fulfillmentConfiguration";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CONFIGURATION)
+    private LineItemFulfillmentConfiguration fulfillmentConfiguration;
+
+    public CreateOrderLineItem() {}
 
     public CreateOrderLineItem lineItemId(String lineItemId) {
         this.lineItemId = lineItemId;
@@ -40,9 +65,7 @@ public class CreateOrderLineItem {
      *
      * @return lineItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The line item identifier for the fulfillment order.")
+    @javax.annotation.Nonnull
     public String getLineItemId() {
         return lineItemId;
     }
@@ -61,7 +84,7 @@ public class CreateOrderLineItem {
      *
      * @return product
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public OrderProduct getProduct() {
         return product;
     }
@@ -80,7 +103,7 @@ public class CreateOrderLineItem {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Amount getAmount() {
         return amount;
     }
@@ -99,8 +122,7 @@ public class CreateOrderLineItem {
      *
      * @return fulfillmentConfiguration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LineItemFulfillmentConfiguration getFulfillmentConfiguration() {
+    @javax.annotation.Nullable public LineItemFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
 
@@ -109,7 +131,7 @@ public class CreateOrderLineItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +165,128 @@ public class CreateOrderLineItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("lineItemId");
+        openapiFields.add("product");
+        openapiFields.add("amount");
+        openapiFields.add("fulfillmentConfiguration");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lineItemId");
+        openapiRequiredFields.add("product");
+        openapiRequiredFields.add("amount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateOrderLineItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateOrderLineItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateOrderLineItem is not found in the empty JSON string",
+                        CreateOrderLineItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateOrderLineItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateOrderLineItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateOrderLineItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("lineItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lineItemId").toString()));
+        }
+        // validate the required field `product`
+        OrderProduct.validateJsonElement(jsonObj.get("product"));
+        // validate the required field `amount`
+        Amount.validateJsonElement(jsonObj.get("amount"));
+        // validate the optional field `fulfillmentConfiguration`
+        if (jsonObj.get("fulfillmentConfiguration") != null
+                && !jsonObj.get("fulfillmentConfiguration").isJsonNull()) {
+            LineItemFulfillmentConfiguration.validateJsonElement(jsonObj.get("fulfillmentConfiguration"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateOrderLineItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateOrderLineItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateOrderLineItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateOrderLineItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateOrderLineItem>() {
+                        @Override
+                        public void write(JsonWriter out, CreateOrderLineItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateOrderLineItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateOrderLineItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateOrderLineItem
+     * @throws IOException if the JSON string is invalid with respect to CreateOrderLineItem
+     */
+    public static CreateOrderLineItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateOrderLineItem.class);
+    }
+
+    /**
+     * Convert an instance of CreateOrderLineItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

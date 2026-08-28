@@ -44,7 +44,6 @@ import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.SubmitFulfi
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.SubmitFulfillmentOrderStatusUpdateResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.UpdateFulfillmentOrderRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.UpdateFulfillmentOrderResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FbaOutboundApiTest {
 
@@ -62,10 +61,8 @@ public class FbaOutboundApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void cancelFulfillmentOrderTest() throws Exception {

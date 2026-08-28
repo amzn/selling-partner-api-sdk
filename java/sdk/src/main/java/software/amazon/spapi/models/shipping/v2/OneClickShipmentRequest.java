@@ -12,56 +12,100 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and
  * when channelType is Amazon shipTo is ignored.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OneClickShipmentRequest {
-    @SerializedName("shipTo")
-    private Address shipTo = null;
+    public static final String SERIALIZED_NAME_SHIP_TO = "shipTo";
 
-    @SerializedName("shipFrom")
-    private Address shipFrom = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO)
+    private Address shipTo;
 
-    @SerializedName("returnTo")
-    private Address returnTo = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM = "shipFrom";
 
-    @SerializedName("shipDate")
-    private OffsetDateTime shipDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM)
+    private Address shipFrom;
 
-    @SerializedName("goodsOwner")
-    private GoodsOwner goodsOwner = null;
+    public static final String SERIALIZED_NAME_RETURN_TO = "returnTo";
 
-    @SerializedName("packages")
-    private PackageList packages = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_TO)
+    private Address returnTo;
 
-    @SerializedName("valueAddedServicesDetails")
-    private OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails = null;
+    public static final String SERIALIZED_NAME_SHIP_DATE = "shipDate";
 
-    @SerializedName("taxDetails")
-    private TaxDetailList taxDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_DATE)
+    private OffsetDateTime shipDate;
 
-    @SerializedName("channelDetails")
-    private ChannelDetails channelDetails = null;
+    public static final String SERIALIZED_NAME_GOODS_OWNER = "goodsOwner";
 
-    @SerializedName("labelSpecifications")
-    private RequestedDocumentSpecification labelSpecifications = null;
+    @SerializedName(SERIALIZED_NAME_GOODS_OWNER)
+    private GoodsOwner goodsOwner;
 
-    @SerializedName("serviceSelection")
-    private ServiceSelection serviceSelection = null;
+    public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
-    @SerializedName("shipperInstruction")
-    private ShipperInstruction shipperInstruction = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGES)
+    private List<ModelPackage> packages = new ArrayList<>();
 
-    @SerializedName("destinationAccessPointDetails")
-    private AccessPointDetails destinationAccessPointDetails = null;
+    public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICES_DETAILS = "valueAddedServicesDetails";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICES_DETAILS)
+    private List<OneClickShipmentValueAddedService> valueAddedServicesDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetail> taxDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHANNEL_DETAILS)
+    private ChannelDetails channelDetails;
+
+    public static final String SERIALIZED_NAME_LABEL_SPECIFICATIONS = "labelSpecifications";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_SPECIFICATIONS)
+    private RequestedDocumentSpecification labelSpecifications;
+
+    public static final String SERIALIZED_NAME_SERVICE_SELECTION = "serviceSelection";
+
+    @SerializedName(SERIALIZED_NAME_SERVICE_SELECTION)
+    private ServiceSelection serviceSelection;
+
+    public static final String SERIALIZED_NAME_SHIPPER_INSTRUCTION = "shipperInstruction";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPER_INSTRUCTION)
+    private ShipperInstruction shipperInstruction;
+
+    public static final String SERIALIZED_NAME_DESTINATION_ACCESS_POINT_DETAILS = "destinationAccessPointDetails";
+
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ACCESS_POINT_DETAILS)
+    private AccessPointDetails destinationAccessPointDetails;
+
+    public OneClickShipmentRequest() {}
 
     public OneClickShipmentRequest shipTo(Address shipTo) {
         this.shipTo = shipTo;
@@ -73,8 +117,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShipTo() {
+    @javax.annotation.Nullable public Address getShipTo() {
         return shipTo;
     }
 
@@ -92,7 +135,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipFrom
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFrom() {
         return shipFrom;
     }
@@ -111,8 +154,7 @@ public class OneClickShipmentRequest {
      *
      * @return returnTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getReturnTo() {
+    @javax.annotation.Nullable public Address getReturnTo() {
         return returnTo;
     }
 
@@ -130,9 +172,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
-    public OffsetDateTime getShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShipDate() {
         return shipDate;
     }
 
@@ -150,8 +190,7 @@ public class OneClickShipmentRequest {
      *
      * @return goodsOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GoodsOwner getGoodsOwner() {
+    @javax.annotation.Nullable public GoodsOwner getGoodsOwner() {
         return goodsOwner;
     }
 
@@ -159,61 +198,84 @@ public class OneClickShipmentRequest {
         this.goodsOwner = goodsOwner;
     }
 
-    public OneClickShipmentRequest packages(PackageList packages) {
+    public OneClickShipmentRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public OneClickShipmentRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * A list of packages to be shipped through a shipping service offering.
      *
      * @return packages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public PackageList getPackages() {
+    @javax.annotation.Nonnull
+    public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackageList packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
     public OneClickShipmentRequest valueAddedServicesDetails(
-            OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails) {
+            List<OneClickShipmentValueAddedService> valueAddedServicesDetails) {
         this.valueAddedServicesDetails = valueAddedServicesDetails;
         return this;
     }
 
+    public OneClickShipmentRequest addValueAddedServicesDetailsItem(
+            OneClickShipmentValueAddedService valueAddedServicesDetailsItem) {
+        if (this.valueAddedServicesDetails == null) {
+            this.valueAddedServicesDetails = new ArrayList<>();
+        }
+        this.valueAddedServicesDetails.add(valueAddedServicesDetailsItem);
+        return this;
+    }
+
     /**
-     * Get valueAddedServicesDetails
+     * The value-added services to be added to a shipping service purchase.
      *
      * @return valueAddedServicesDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OneClickShipmentValueAddedServiceDetails getValueAddedServicesDetails() {
+    @javax.annotation.Nullable public List<OneClickShipmentValueAddedService> getValueAddedServicesDetails() {
         return valueAddedServicesDetails;
     }
 
-    public void setValueAddedServicesDetails(OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails) {
+    public void setValueAddedServicesDetails(List<OneClickShipmentValueAddedService> valueAddedServicesDetails) {
         this.valueAddedServicesDetails = valueAddedServicesDetails;
     }
 
-    public OneClickShipmentRequest taxDetails(TaxDetailList taxDetails) {
+    public OneClickShipmentRequest taxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
         return this;
     }
 
+    public OneClickShipmentRequest addTaxDetailsItem(TaxDetail taxDetailsItem) {
+        if (this.taxDetails == null) {
+            this.taxDetails = new ArrayList<>();
+        }
+        this.taxDetails.add(taxDetailsItem);
+        return this;
+    }
+
     /**
-     * Get taxDetails
+     * A list of tax detail information.
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxDetailList getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
-    public void setTaxDetails(TaxDetailList taxDetails) {
+    public void setTaxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
     }
 
@@ -227,7 +289,7 @@ public class OneClickShipmentRequest {
      *
      * @return channelDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -246,7 +308,7 @@ public class OneClickShipmentRequest {
      *
      * @return labelSpecifications
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RequestedDocumentSpecification getLabelSpecifications() {
         return labelSpecifications;
     }
@@ -265,7 +327,7 @@ public class OneClickShipmentRequest {
      *
      * @return serviceSelection
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ServiceSelection getServiceSelection() {
         return serviceSelection;
     }
@@ -284,8 +346,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipperInstruction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipperInstruction getShipperInstruction() {
+    @javax.annotation.Nullable public ShipperInstruction getShipperInstruction() {
         return shipperInstruction;
     }
 
@@ -303,8 +364,7 @@ public class OneClickShipmentRequest {
      *
      * @return destinationAccessPointDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AccessPointDetails getDestinationAccessPointDetails() {
+    @javax.annotation.Nullable public AccessPointDetails getDestinationAccessPointDetails() {
         return destinationAccessPointDetails;
     }
 
@@ -313,7 +373,7 @@ public class OneClickShipmentRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -389,10 +449,204 @@ public class OneClickShipmentRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipTo");
+        openapiFields.add("shipFrom");
+        openapiFields.add("returnTo");
+        openapiFields.add("shipDate");
+        openapiFields.add("goodsOwner");
+        openapiFields.add("packages");
+        openapiFields.add("valueAddedServicesDetails");
+        openapiFields.add("taxDetails");
+        openapiFields.add("channelDetails");
+        openapiFields.add("labelSpecifications");
+        openapiFields.add("serviceSelection");
+        openapiFields.add("shipperInstruction");
+        openapiFields.add("destinationAccessPointDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shipFrom");
+        openapiRequiredFields.add("packages");
+        openapiRequiredFields.add("channelDetails");
+        openapiRequiredFields.add("labelSpecifications");
+        openapiRequiredFields.add("serviceSelection");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OneClickShipmentRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OneClickShipmentRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OneClickShipmentRequest is not found in the empty JSON string",
+                        OneClickShipmentRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OneClickShipmentRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OneClickShipmentRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OneClickShipmentRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `shipTo`
+        if (jsonObj.get("shipTo") != null && !jsonObj.get("shipTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("shipTo"));
+        }
+        // validate the required field `shipFrom`
+        Address.validateJsonElement(jsonObj.get("shipFrom"));
+        // validate the optional field `returnTo`
+        if (jsonObj.get("returnTo") != null && !jsonObj.get("returnTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("returnTo"));
+        }
+        // validate the optional field `goodsOwner`
+        if (jsonObj.get("goodsOwner") != null && !jsonObj.get("goodsOwner").isJsonNull()) {
+            GoodsOwner.validateJsonElement(jsonObj.get("goodsOwner"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("packages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packages").toString()));
+        }
+
+        JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+        // validate the required field `packages` (array)
+        for (int i = 0; i < jsonArraypackages.size(); i++) {
+            ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+        }
+        ;
+        if (jsonObj.get("valueAddedServicesDetails") != null
+                && !jsonObj.get("valueAddedServicesDetails").isJsonNull()) {
+            JsonArray jsonArrayvalueAddedServicesDetails = jsonObj.getAsJsonArray("valueAddedServicesDetails");
+            if (jsonArrayvalueAddedServicesDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("valueAddedServicesDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `valueAddedServicesDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("valueAddedServicesDetails").toString()));
+                }
+
+                // validate the optional field `valueAddedServicesDetails` (array)
+                for (int i = 0; i < jsonArrayvalueAddedServicesDetails.size(); i++) {
+                    OneClickShipmentValueAddedService.validateJsonElement(jsonArrayvalueAddedServicesDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `channelDetails`
+        ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));
+        // validate the required field `labelSpecifications`
+        RequestedDocumentSpecification.validateJsonElement(jsonObj.get("labelSpecifications"));
+        // validate the required field `serviceSelection`
+        ServiceSelection.validateJsonElement(jsonObj.get("serviceSelection"));
+        // validate the optional field `shipperInstruction`
+        if (jsonObj.get("shipperInstruction") != null
+                && !jsonObj.get("shipperInstruction").isJsonNull()) {
+            ShipperInstruction.validateJsonElement(jsonObj.get("shipperInstruction"));
+        }
+        // validate the optional field `destinationAccessPointDetails`
+        if (jsonObj.get("destinationAccessPointDetails") != null
+                && !jsonObj.get("destinationAccessPointDetails").isJsonNull()) {
+            AccessPointDetails.validateJsonElement(jsonObj.get("destinationAccessPointDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OneClickShipmentRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OneClickShipmentRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OneClickShipmentRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OneClickShipmentRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OneClickShipmentRequest>() {
+                        @Override
+                        public void write(JsonWriter out, OneClickShipmentRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OneClickShipmentRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OneClickShipmentRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OneClickShipmentRequest
+     * @throws IOException if the JSON string is invalid with respect to OneClickShipmentRequest
+     */
+    public static OneClickShipmentRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OneClickShipmentRequest.class);
+    }
+
+    /**
+     * Convert an instance of OneClickShipmentRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

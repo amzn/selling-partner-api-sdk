@@ -12,37 +12,65 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body for the &#x60;getFeaturedOfferExpectedPriceBatch&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request body for the `getFeaturedOfferExpectedPriceBatch` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetFeaturedOfferExpectedPriceBatchRequest {
-    @SerializedName("requests")
-    private FeaturedOfferExpectedPriceRequestList requests = null;
+    public static final String SERIALIZED_NAME_REQUESTS = "requests";
 
-    public GetFeaturedOfferExpectedPriceBatchRequest requests(FeaturedOfferExpectedPriceRequestList requests) {
+    @SerializedName(SERIALIZED_NAME_REQUESTS)
+    private List<FeaturedOfferExpectedPriceRequest> requests = new ArrayList<>();
+
+    public GetFeaturedOfferExpectedPriceBatchRequest() {}
+
+    public GetFeaturedOfferExpectedPriceBatchRequest requests(List<FeaturedOfferExpectedPriceRequest> requests) {
         this.requests = requests;
         return this;
     }
 
+    public GetFeaturedOfferExpectedPriceBatchRequest addRequestsItem(FeaturedOfferExpectedPriceRequest requestsItem) {
+        if (this.requests == null) {
+            this.requests = new ArrayList<>();
+        }
+        this.requests.add(requestsItem);
+        return this;
+    }
+
     /**
-     * Get requests
+     * A batched list of FOEP requests.
      *
      * @return requests
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOfferExpectedPriceRequestList getRequests() {
+    @javax.annotation.Nullable public List<FeaturedOfferExpectedPriceRequest> getRequests() {
         return requests;
     }
 
-    public void setRequests(FeaturedOfferExpectedPriceRequestList requests) {
+    public void setRequests(List<FeaturedOfferExpectedPriceRequest> requests) {
         this.requests = requests;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -69,10 +97,118 @@ public class GetFeaturedOfferExpectedPriceBatchRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("requests");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetFeaturedOfferExpectedPriceBatchRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetFeaturedOfferExpectedPriceBatchRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetFeaturedOfferExpectedPriceBatchRequest is not found in the empty JSON string",
+                        GetFeaturedOfferExpectedPriceBatchRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetFeaturedOfferExpectedPriceBatchRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetFeaturedOfferExpectedPriceBatchRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("requests") != null && !jsonObj.get("requests").isJsonNull()) {
+            JsonArray jsonArrayrequests = jsonObj.getAsJsonArray("requests");
+            if (jsonArrayrequests != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("requests").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `requests` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("requests").toString()));
+                }
+
+                // validate the optional field `requests` (array)
+                for (int i = 0; i < jsonArrayrequests.size(); i++) {
+                    FeaturedOfferExpectedPriceRequest.validateJsonElement(jsonArrayrequests.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetFeaturedOfferExpectedPriceBatchRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetFeaturedOfferExpectedPriceBatchRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetFeaturedOfferExpectedPriceBatchRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetFeaturedOfferExpectedPriceBatchRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetFeaturedOfferExpectedPriceBatchRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetFeaturedOfferExpectedPriceBatchRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetFeaturedOfferExpectedPriceBatchRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetFeaturedOfferExpectedPriceBatchRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetFeaturedOfferExpectedPriceBatchRequest
+     * @throws IOException if the JSON string is invalid with respect to GetFeaturedOfferExpectedPriceBatchRequest
+     */
+    public static GetFeaturedOfferExpectedPriceBatchRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetFeaturedOfferExpectedPriceBatchRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetFeaturedOfferExpectedPriceBatchRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

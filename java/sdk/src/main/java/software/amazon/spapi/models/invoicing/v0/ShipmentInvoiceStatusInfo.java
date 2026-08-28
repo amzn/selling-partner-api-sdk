@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The shipment invoice status information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The shipment invoice status information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentInvoiceStatusInfo {
-    @SerializedName("AmazonShipmentId")
-    private String amazonShipmentId = null;
+    public static final String SERIALIZED_NAME_AMAZON_SHIPMENT_ID = "AmazonShipmentId";
 
-    @SerializedName("InvoiceStatus")
-    private ShipmentInvoiceStatus invoiceStatus = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_SHIPMENT_ID)
+    private String amazonShipmentId;
+
+    public static final String SERIALIZED_NAME_INVOICE_STATUS = "InvoiceStatus";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_STATUS)
+    private ShipmentInvoiceStatus invoiceStatus;
+
+    public ShipmentInvoiceStatusInfo() {}
 
     public ShipmentInvoiceStatusInfo amazonShipmentId(String amazonShipmentId) {
         this.amazonShipmentId = amazonShipmentId;
@@ -34,8 +55,7 @@ public class ShipmentInvoiceStatusInfo {
      *
      * @return amazonShipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined shipment identifier.")
-    public String getAmazonShipmentId() {
+    @javax.annotation.Nullable public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
 
@@ -53,8 +73,7 @@ public class ShipmentInvoiceStatusInfo {
      *
      * @return invoiceStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentInvoiceStatus getInvoiceStatus() {
+    @javax.annotation.Nullable public ShipmentInvoiceStatus getInvoiceStatus() {
         return invoiceStatus;
     }
 
@@ -63,7 +82,7 @@ public class ShipmentInvoiceStatusInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +112,113 @@ public class ShipmentInvoiceStatusInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonShipmentId");
+        openapiFields.add("InvoiceStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentInvoiceStatusInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentInvoiceStatusInfo.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentInvoiceStatusInfo is not found in the empty JSON string",
+                        ShipmentInvoiceStatusInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentInvoiceStatusInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentInvoiceStatusInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AmazonShipmentId") != null
+                        && !jsonObj.get("AmazonShipmentId").isJsonNull())
+                && !jsonObj.get("AmazonShipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonShipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonShipmentId").toString()));
+        }
+        // validate the optional field `InvoiceStatus`
+        if (jsonObj.get("InvoiceStatus") != null
+                && !jsonObj.get("InvoiceStatus").isJsonNull()) {
+            ShipmentInvoiceStatus.validateJsonElement(jsonObj.get("InvoiceStatus"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentInvoiceStatusInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentInvoiceStatusInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentInvoiceStatusInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentInvoiceStatusInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentInvoiceStatusInfo>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentInvoiceStatusInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentInvoiceStatusInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentInvoiceStatusInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentInvoiceStatusInfo
+     * @throws IOException if the JSON string is invalid with respect to ShipmentInvoiceStatusInfo
+     */
+    public static ShipmentInvoiceStatusInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentInvoiceStatusInfo.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentInvoiceStatusInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

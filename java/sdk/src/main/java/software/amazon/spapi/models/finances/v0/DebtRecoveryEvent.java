@@ -12,26 +12,56 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A debt payment or debt adjustment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A debt payment or debt adjustment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DebtRecoveryEvent {
-    @SerializedName("DebtRecoveryType")
-    private String debtRecoveryType = null;
+    public static final String SERIALIZED_NAME_DEBT_RECOVERY_TYPE = "DebtRecoveryType";
 
-    @SerializedName("RecoveryAmount")
-    private Currency recoveryAmount = null;
+    @SerializedName(SERIALIZED_NAME_DEBT_RECOVERY_TYPE)
+    private String debtRecoveryType;
 
-    @SerializedName("OverPaymentCredit")
-    private Currency overPaymentCredit = null;
+    public static final String SERIALIZED_NAME_RECOVERY_AMOUNT = "RecoveryAmount";
 
-    @SerializedName("DebtRecoveryItemList")
-    private DebtRecoveryItemList debtRecoveryItemList = null;
+    @SerializedName(SERIALIZED_NAME_RECOVERY_AMOUNT)
+    private Currency recoveryAmount;
 
-    @SerializedName("ChargeInstrumentList")
-    private ChargeInstrumentList chargeInstrumentList = null;
+    public static final String SERIALIZED_NAME_OVER_PAYMENT_CREDIT = "OverPaymentCredit";
+
+    @SerializedName(SERIALIZED_NAME_OVER_PAYMENT_CREDIT)
+    private Currency overPaymentCredit;
+
+    public static final String SERIALIZED_NAME_DEBT_RECOVERY_ITEM_LIST = "DebtRecoveryItemList";
+
+    @SerializedName(SERIALIZED_NAME_DEBT_RECOVERY_ITEM_LIST)
+    private List<DebtRecoveryItem> debtRecoveryItemList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_INSTRUMENT_LIST = "ChargeInstrumentList";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_INSTRUMENT_LIST)
+    private List<ChargeInstrument> chargeInstrumentList = new ArrayList<>();
+
+    public DebtRecoveryEvent() {}
 
     public DebtRecoveryEvent debtRecoveryType(String debtRecoveryType) {
         this.debtRecoveryType = debtRecoveryType;
@@ -44,10 +74,7 @@ public class DebtRecoveryEvent {
      *
      * @return debtRecoveryType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The debt recovery type.  Possible values:  * `DebtPayment` * `DebtPaymentFailure` * `DebtAdjustment`")
-    public String getDebtRecoveryType() {
+    @javax.annotation.Nullable public String getDebtRecoveryType() {
         return debtRecoveryType;
     }
 
@@ -65,8 +92,7 @@ public class DebtRecoveryEvent {
      *
      * @return recoveryAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRecoveryAmount() {
+    @javax.annotation.Nullable public Currency getRecoveryAmount() {
         return recoveryAmount;
     }
 
@@ -84,8 +110,7 @@ public class DebtRecoveryEvent {
      *
      * @return overPaymentCredit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getOverPaymentCredit() {
+    @javax.annotation.Nullable public Currency getOverPaymentCredit() {
         return overPaymentCredit;
     }
 
@@ -93,46 +118,60 @@ public class DebtRecoveryEvent {
         this.overPaymentCredit = overPaymentCredit;
     }
 
-    public DebtRecoveryEvent debtRecoveryItemList(DebtRecoveryItemList debtRecoveryItemList) {
+    public DebtRecoveryEvent debtRecoveryItemList(List<DebtRecoveryItem> debtRecoveryItemList) {
         this.debtRecoveryItemList = debtRecoveryItemList;
         return this;
     }
 
+    public DebtRecoveryEvent addDebtRecoveryItemListItem(DebtRecoveryItem debtRecoveryItemListItem) {
+        if (this.debtRecoveryItemList == null) {
+            this.debtRecoveryItemList = new ArrayList<>();
+        }
+        this.debtRecoveryItemList.add(debtRecoveryItemListItem);
+        return this;
+    }
+
     /**
-     * Get debtRecoveryItemList
+     * A list of debt recovery item information.
      *
      * @return debtRecoveryItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DebtRecoveryItemList getDebtRecoveryItemList() {
+    @javax.annotation.Nullable public List<DebtRecoveryItem> getDebtRecoveryItemList() {
         return debtRecoveryItemList;
     }
 
-    public void setDebtRecoveryItemList(DebtRecoveryItemList debtRecoveryItemList) {
+    public void setDebtRecoveryItemList(List<DebtRecoveryItem> debtRecoveryItemList) {
         this.debtRecoveryItemList = debtRecoveryItemList;
     }
 
-    public DebtRecoveryEvent chargeInstrumentList(ChargeInstrumentList chargeInstrumentList) {
+    public DebtRecoveryEvent chargeInstrumentList(List<ChargeInstrument> chargeInstrumentList) {
         this.chargeInstrumentList = chargeInstrumentList;
         return this;
     }
 
+    public DebtRecoveryEvent addChargeInstrumentListItem(ChargeInstrument chargeInstrumentListItem) {
+        if (this.chargeInstrumentList == null) {
+            this.chargeInstrumentList = new ArrayList<>();
+        }
+        this.chargeInstrumentList.add(chargeInstrumentListItem);
+        return this;
+    }
+
     /**
-     * Get chargeInstrumentList
+     * A list of payment instruments.
      *
      * @return chargeInstrumentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeInstrumentList getChargeInstrumentList() {
+    @javax.annotation.Nullable public List<ChargeInstrument> getChargeInstrumentList() {
         return chargeInstrumentList;
     }
 
-    public void setChargeInstrumentList(ChargeInstrumentList chargeInstrumentList) {
+    public void setChargeInstrumentList(List<ChargeInstrument> chargeInstrumentList) {
         this.chargeInstrumentList = chargeInstrumentList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -177,10 +216,156 @@ public class DebtRecoveryEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DebtRecoveryType");
+        openapiFields.add("RecoveryAmount");
+        openapiFields.add("OverPaymentCredit");
+        openapiFields.add("DebtRecoveryItemList");
+        openapiFields.add("ChargeInstrumentList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DebtRecoveryEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DebtRecoveryEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DebtRecoveryEvent is not found in the empty JSON string",
+                        DebtRecoveryEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DebtRecoveryEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DebtRecoveryEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("DebtRecoveryType") != null
+                        && !jsonObj.get("DebtRecoveryType").isJsonNull())
+                && !jsonObj.get("DebtRecoveryType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DebtRecoveryType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DebtRecoveryType").toString()));
+        }
+        // validate the optional field `RecoveryAmount`
+        if (jsonObj.get("RecoveryAmount") != null
+                && !jsonObj.get("RecoveryAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("RecoveryAmount"));
+        }
+        // validate the optional field `OverPaymentCredit`
+        if (jsonObj.get("OverPaymentCredit") != null
+                && !jsonObj.get("OverPaymentCredit").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("OverPaymentCredit"));
+        }
+        if (jsonObj.get("DebtRecoveryItemList") != null
+                && !jsonObj.get("DebtRecoveryItemList").isJsonNull()) {
+            JsonArray jsonArraydebtRecoveryItemList = jsonObj.getAsJsonArray("DebtRecoveryItemList");
+            if (jsonArraydebtRecoveryItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("DebtRecoveryItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `DebtRecoveryItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("DebtRecoveryItemList").toString()));
+                }
+
+                // validate the optional field `DebtRecoveryItemList` (array)
+                for (int i = 0; i < jsonArraydebtRecoveryItemList.size(); i++) {
+                    DebtRecoveryItem.validateJsonElement(jsonArraydebtRecoveryItemList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ChargeInstrumentList") != null
+                && !jsonObj.get("ChargeInstrumentList").isJsonNull()) {
+            JsonArray jsonArraychargeInstrumentList = jsonObj.getAsJsonArray("ChargeInstrumentList");
+            if (jsonArraychargeInstrumentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargeInstrumentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargeInstrumentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargeInstrumentList").toString()));
+                }
+
+                // validate the optional field `ChargeInstrumentList` (array)
+                for (int i = 0; i < jsonArraychargeInstrumentList.size(); i++) {
+                    ChargeInstrument.validateJsonElement(jsonArraychargeInstrumentList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DebtRecoveryEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DebtRecoveryEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DebtRecoveryEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DebtRecoveryEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DebtRecoveryEvent>() {
+                        @Override
+                        public void write(JsonWriter out, DebtRecoveryEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DebtRecoveryEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DebtRecoveryEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DebtRecoveryEvent
+     * @throws IOException if the JSON string is invalid with respect to DebtRecoveryEvent
+     */
+    public static DebtRecoveryEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DebtRecoveryEvent.class);
+    }
+
+    /**
+     * Convert an instance of DebtRecoveryEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

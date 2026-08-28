@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,22 +22,16 @@ import java.io.IOException;
 /** Payment methods */
 @JsonAdapter(PaymentMethodEnum.Adapter.class)
 public enum PaymentMethodEnum {
-    @SerializedName("CreditCard")
     CREDIT_CARD("CreditCard"),
 
-    @SerializedName("DebitCard")
     DEBIT_CARD("DebitCard"),
 
-    @SerializedName("Pix")
     PIX("Pix"),
 
-    @SerializedName("BankSlip")
     BANK_SLIP("BankSlip"),
 
-    @SerializedName("GiftCard")
     GIFT_CARD("GiftCard"),
 
-    @SerializedName("Other")
     OTHER("Other");
 
     private String value;
@@ -55,25 +49,30 @@ public enum PaymentMethodEnum {
         return String.valueOf(value);
     }
 
-    public static PaymentMethodEnum fromValue(String input) {
+    public static PaymentMethodEnum fromValue(String value) {
         for (PaymentMethodEnum b : PaymentMethodEnum.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PaymentMethodEnum> {
         @Override
         public void write(final JsonWriter jsonWriter, final PaymentMethodEnum enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PaymentMethodEnum read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PaymentMethodEnum.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PaymentMethodEnum.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PaymentMethodEnum.fromValue(value);
     }
 }

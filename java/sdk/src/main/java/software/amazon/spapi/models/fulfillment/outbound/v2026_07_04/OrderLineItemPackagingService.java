@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Packaging settings for the line item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Packaging settings for the line item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderLineItemPackagingService {
-    @SerializedName("packingSlip")
-    private OrderPackingSlip packingSlip = null;
+    public static final String SERIALIZED_NAME_PACKING_SLIP = "packingSlip";
+
+    @SerializedName(SERIALIZED_NAME_PACKING_SLIP)
+    private OrderPackingSlip packingSlip;
+
+    public OrderLineItemPackagingService() {}
 
     public OrderLineItemPackagingService packingSlip(OrderPackingSlip packingSlip) {
         this.packingSlip = packingSlip;
@@ -31,8 +50,7 @@ public class OrderLineItemPackagingService {
      *
      * @return packingSlip
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderPackingSlip getPackingSlip() {
+    @javax.annotation.Nullable public OrderPackingSlip getPackingSlip() {
         return packingSlip;
     }
 
@@ -41,7 +59,7 @@ public class OrderLineItemPackagingService {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -67,10 +85,104 @@ public class OrderLineItemPackagingService {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packingSlip");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderLineItemPackagingService
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderLineItemPackagingService.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderLineItemPackagingService is not found in the empty JSON string",
+                        OrderLineItemPackagingService.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderLineItemPackagingService.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderLineItemPackagingService` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `packingSlip`
+        if (jsonObj.get("packingSlip") != null && !jsonObj.get("packingSlip").isJsonNull()) {
+            OrderPackingSlip.validateJsonElement(jsonObj.get("packingSlip"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderLineItemPackagingService.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderLineItemPackagingService' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderLineItemPackagingService> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderLineItemPackagingService.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderLineItemPackagingService>() {
+                        @Override
+                        public void write(JsonWriter out, OrderLineItemPackagingService value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderLineItemPackagingService read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderLineItemPackagingService given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderLineItemPackagingService
+     * @throws IOException if the JSON string is invalid with respect to OrderLineItemPackagingService
+     */
+    public static OrderLineItemPackagingService fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderLineItemPackagingService.class);
+    }
+
+    /**
+     * Convert an instance of OrderLineItemPackagingService to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,42 +12,82 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to a rental transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to a rental transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RentalTransactionEvent {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("RentalEventType")
-    private String rentalEventType = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("ExtensionLength")
-    private Integer extensionLength = null;
+    public static final String SERIALIZED_NAME_RENTAL_EVENT_TYPE = "RentalEventType";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_RENTAL_EVENT_TYPE)
+    private String rentalEventType;
 
-    @SerializedName("RentalChargeList")
-    private ChargeComponentList rentalChargeList = null;
+    public static final String SERIALIZED_NAME_EXTENSION_LENGTH = "ExtensionLength";
 
-    @SerializedName("RentalFeeList")
-    private FeeComponentList rentalFeeList = null;
+    @SerializedName(SERIALIZED_NAME_EXTENSION_LENGTH)
+    private Integer extensionLength;
 
-    @SerializedName("MarketplaceName")
-    private String marketplaceName = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("RentalInitialValue")
-    private Currency rentalInitialValue = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("RentalReimbursement")
-    private Currency rentalReimbursement = null;
+    public static final String SERIALIZED_NAME_RENTAL_CHARGE_LIST = "RentalChargeList";
 
-    @SerializedName("RentalTaxWithheldList")
-    private TaxWithheldComponentList rentalTaxWithheldList = null;
+    @SerializedName(SERIALIZED_NAME_RENTAL_CHARGE_LIST)
+    private List<ChargeComponent> rentalChargeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RENTAL_FEE_LIST = "RentalFeeList";
+
+    @SerializedName(SERIALIZED_NAME_RENTAL_FEE_LIST)
+    private List<FeeComponent> rentalFeeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_NAME = "MarketplaceName";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_NAME)
+    private String marketplaceName;
+
+    public static final String SERIALIZED_NAME_RENTAL_INITIAL_VALUE = "RentalInitialValue";
+
+    @SerializedName(SERIALIZED_NAME_RENTAL_INITIAL_VALUE)
+    private Currency rentalInitialValue;
+
+    public static final String SERIALIZED_NAME_RENTAL_REIMBURSEMENT = "RentalReimbursement";
+
+    @SerializedName(SERIALIZED_NAME_RENTAL_REIMBURSEMENT)
+    private Currency rentalReimbursement;
+
+    public static final String SERIALIZED_NAME_RENTAL_TAX_WITHHELD_LIST = "RentalTaxWithheldList";
+
+    @SerializedName(SERIALIZED_NAME_RENTAL_TAX_WITHHELD_LIST)
+    private List<TaxWithheldComponent> rentalTaxWithheldList = new ArrayList<>();
+
+    public RentalTransactionEvent() {}
 
     public RentalTransactionEvent amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -59,8 +99,7 @@ public class RentalTransactionEvent {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
-    public String getAmazonOrderId() {
+    @javax.annotation.Nullable public String getAmazonOrderId() {
         return amazonOrderId;
     }
 
@@ -87,10 +126,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalEventType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The type of rental event.  Possible values:  * `RentalCustomerPayment-Buyout`: A transaction type that represents when the customer wants to buy out a rented item.  * `RentalCustomerPayment-Extension`: A transaction type that represents when the customer wants to extend the rental period.  * `RentalCustomerRefund-Buyout`: A transaction type that represents when the customer requests a refund for the buyout of the rented item.  * `RentalCustomerRefund-Extension`: A transaction type that represents when the customer requests a refund over the extension on the rented item.  * `RentalHandlingFee`: A transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * `RentalChargeFailureReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * `RentalLostItemReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a lost item.")
-    public String getRentalEventType() {
+    @javax.annotation.Nullable public String getRentalEventType() {
         return rentalEventType;
     }
 
@@ -109,10 +145,7 @@ public class RentalTransactionEvent {
      *
      * @return extensionLength
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of days that the buyer extended an already rented item. This value is only returned for `RentalCustomerPayment-Extension` and `RentalCustomerRefund-Extension` events.")
-    public Integer getExtensionLength() {
+    @javax.annotation.Nullable public Integer getExtensionLength() {
         return extensionLength;
     }
 
@@ -130,10 +163,7 @@ public class RentalTransactionEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -141,41 +171,55 @@ public class RentalTransactionEvent {
         this.postedDate = postedDate;
     }
 
-    public RentalTransactionEvent rentalChargeList(ChargeComponentList rentalChargeList) {
+    public RentalTransactionEvent rentalChargeList(List<ChargeComponent> rentalChargeList) {
         this.rentalChargeList = rentalChargeList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalChargeListItem(ChargeComponent rentalChargeListItem) {
+        if (this.rentalChargeList == null) {
+            this.rentalChargeList = new ArrayList<>();
+        }
+        this.rentalChargeList.add(rentalChargeListItem);
+        return this;
+    }
+
     /**
-     * Get rentalChargeList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return rentalChargeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getRentalChargeList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getRentalChargeList() {
         return rentalChargeList;
     }
 
-    public void setRentalChargeList(ChargeComponentList rentalChargeList) {
+    public void setRentalChargeList(List<ChargeComponent> rentalChargeList) {
         this.rentalChargeList = rentalChargeList;
     }
 
-    public RentalTransactionEvent rentalFeeList(FeeComponentList rentalFeeList) {
+    public RentalTransactionEvent rentalFeeList(List<FeeComponent> rentalFeeList) {
         this.rentalFeeList = rentalFeeList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalFeeListItem(FeeComponent rentalFeeListItem) {
+        if (this.rentalFeeList == null) {
+            this.rentalFeeList = new ArrayList<>();
+        }
+        this.rentalFeeList.add(rentalFeeListItem);
+        return this;
+    }
+
     /**
-     * Get rentalFeeList
+     * A list of fee component information.
      *
      * @return rentalFeeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getRentalFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getRentalFeeList() {
         return rentalFeeList;
     }
 
-    public void setRentalFeeList(FeeComponentList rentalFeeList) {
+    public void setRentalFeeList(List<FeeComponent> rentalFeeList) {
         this.rentalFeeList = rentalFeeList;
     }
 
@@ -189,8 +233,7 @@ public class RentalTransactionEvent {
      *
      * @return marketplaceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the marketplace.")
-    public String getMarketplaceName() {
+    @javax.annotation.Nullable public String getMarketplaceName() {
         return marketplaceName;
     }
 
@@ -208,8 +251,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalInitialValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRentalInitialValue() {
+    @javax.annotation.Nullable public Currency getRentalInitialValue() {
         return rentalInitialValue;
     }
 
@@ -227,8 +269,7 @@ public class RentalTransactionEvent {
      *
      * @return rentalReimbursement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRentalReimbursement() {
+    @javax.annotation.Nullable public Currency getRentalReimbursement() {
         return rentalReimbursement;
     }
 
@@ -236,27 +277,34 @@ public class RentalTransactionEvent {
         this.rentalReimbursement = rentalReimbursement;
     }
 
-    public RentalTransactionEvent rentalTaxWithheldList(TaxWithheldComponentList rentalTaxWithheldList) {
+    public RentalTransactionEvent rentalTaxWithheldList(List<TaxWithheldComponent> rentalTaxWithheldList) {
         this.rentalTaxWithheldList = rentalTaxWithheldList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalTaxWithheldListItem(TaxWithheldComponent rentalTaxWithheldListItem) {
+        if (this.rentalTaxWithheldList == null) {
+            this.rentalTaxWithheldList = new ArrayList<>();
+        }
+        this.rentalTaxWithheldList.add(rentalTaxWithheldListItem);
+        return this;
+    }
+
     /**
-     * Get rentalTaxWithheldList
+     * A list of information about taxes withheld.
      *
      * @return rentalTaxWithheldList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithheldComponentList getRentalTaxWithheldList() {
+    @javax.annotation.Nullable public List<TaxWithheldComponent> getRentalTaxWithheldList() {
         return rentalTaxWithheldList;
     }
 
-    public void setRentalTaxWithheldList(TaxWithheldComponentList rentalTaxWithheldList) {
+    public void setRentalTaxWithheldList(List<TaxWithheldComponent> rentalTaxWithheldList) {
         this.rentalTaxWithheldList = rentalTaxWithheldList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -324,10 +372,194 @@ public class RentalTransactionEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("RentalEventType");
+        openapiFields.add("ExtensionLength");
+        openapiFields.add("PostedDate");
+        openapiFields.add("RentalChargeList");
+        openapiFields.add("RentalFeeList");
+        openapiFields.add("MarketplaceName");
+        openapiFields.add("RentalInitialValue");
+        openapiFields.add("RentalReimbursement");
+        openapiFields.add("RentalTaxWithheldList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RentalTransactionEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RentalTransactionEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RentalTransactionEvent is not found in the empty JSON string",
+                        RentalTransactionEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RentalTransactionEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RentalTransactionEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AmazonOrderId") != null
+                        && !jsonObj.get("AmazonOrderId").isJsonNull())
+                && !jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("RentalEventType") != null
+                        && !jsonObj.get("RentalEventType").isJsonNull())
+                && !jsonObj.get("RentalEventType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RentalEventType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("RentalEventType").toString()));
+        }
+        if (jsonObj.get("RentalChargeList") != null
+                && !jsonObj.get("RentalChargeList").isJsonNull()) {
+            JsonArray jsonArrayrentalChargeList = jsonObj.getAsJsonArray("RentalChargeList");
+            if (jsonArrayrentalChargeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalChargeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalChargeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalChargeList").toString()));
+                }
+
+                // validate the optional field `RentalChargeList` (array)
+                for (int i = 0; i < jsonArrayrentalChargeList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayrentalChargeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RentalFeeList") != null
+                && !jsonObj.get("RentalFeeList").isJsonNull()) {
+            JsonArray jsonArrayrentalFeeList = jsonObj.getAsJsonArray("RentalFeeList");
+            if (jsonArrayrentalFeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalFeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalFeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalFeeList").toString()));
+                }
+
+                // validate the optional field `RentalFeeList` (array)
+                for (int i = 0; i < jsonArrayrentalFeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayrentalFeeList.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("MarketplaceName") != null
+                        && !jsonObj.get("MarketplaceName").isJsonNull())
+                && !jsonObj.get("MarketplaceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceName").toString()));
+        }
+        // validate the optional field `RentalInitialValue`
+        if (jsonObj.get("RentalInitialValue") != null
+                && !jsonObj.get("RentalInitialValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("RentalInitialValue"));
+        }
+        // validate the optional field `RentalReimbursement`
+        if (jsonObj.get("RentalReimbursement") != null
+                && !jsonObj.get("RentalReimbursement").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("RentalReimbursement"));
+        }
+        if (jsonObj.get("RentalTaxWithheldList") != null
+                && !jsonObj.get("RentalTaxWithheldList").isJsonNull()) {
+            JsonArray jsonArrayrentalTaxWithheldList = jsonObj.getAsJsonArray("RentalTaxWithheldList");
+            if (jsonArrayrentalTaxWithheldList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalTaxWithheldList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalTaxWithheldList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalTaxWithheldList").toString()));
+                }
+
+                // validate the optional field `RentalTaxWithheldList` (array)
+                for (int i = 0; i < jsonArrayrentalTaxWithheldList.size(); i++) {
+                    TaxWithheldComponent.validateJsonElement(jsonArrayrentalTaxWithheldList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RentalTransactionEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RentalTransactionEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RentalTransactionEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RentalTransactionEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RentalTransactionEvent>() {
+                        @Override
+                        public void write(JsonWriter out, RentalTransactionEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RentalTransactionEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RentalTransactionEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RentalTransactionEvent
+     * @throws IOException if the JSON string is invalid with respect to RentalTransactionEvent
+     */
+    public static RentalTransactionEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RentalTransactionEvent.class);
+    }
+
+    /**
+     * Convert an instance of RentalTransactionEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,50 +12,88 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Box {
-    @SerializedName("boxId")
-    private String boxId = null;
+    public static final String SERIALIZED_NAME_BOX_ID = "boxId";
 
-    @SerializedName("contentInformationSource")
-    private BoxContentInformationSource contentInformationSource = null;
+    @SerializedName(SERIALIZED_NAME_BOX_ID)
+    private String boxId;
 
-    @SerializedName("destinationRegion")
-    private Region destinationRegion = null;
+    public static final String SERIALIZED_NAME_CONTENT_INFORMATION_SOURCE = "contentInformationSource";
 
-    @SerializedName("dimensions")
-    private Dimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_INFORMATION_SOURCE)
+    private BoxContentInformationSource contentInformationSource;
 
-    @SerializedName("externalContainerIdentifier")
-    private String externalContainerIdentifier = null;
+    public static final String SERIALIZED_NAME_DESTINATION_REGION = "destinationRegion";
 
-    @SerializedName("externalContainerIdentifierType")
-    private String externalContainerIdentifierType = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_REGION)
+    private Region destinationRegion;
 
-    @SerializedName("items")
-    private List<Item> items = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("packageId")
-    private String packageId = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private Dimensions dimensions;
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_CONTAINER_IDENTIFIER = "externalContainerIdentifier";
 
-    @SerializedName("templateName")
-    private String templateName = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_CONTAINER_IDENTIFIER)
+    private String externalContainerIdentifier;
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_CONTAINER_IDENTIFIER_TYPE = "externalContainerIdentifierType";
+
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_CONTAINER_IDENTIFIER_TYPE)
+    private String externalContainerIdentifierType;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<Item> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKAGE_ID = "packageId";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_ID)
+    private String packageId;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_TEMPLATE_NAME = "templateName";
+
+    @SerializedName(SERIALIZED_NAME_TEMPLATE_NAME)
+    private String templateName;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public Box() {}
 
     public Box boxId(String boxId) {
         this.boxId = boxId;
@@ -68,10 +106,7 @@ public class Box {
      *
      * @return boxId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.")
-    public String getBoxId() {
+    @javax.annotation.Nullable public String getBoxId() {
         return boxId;
     }
 
@@ -89,8 +124,7 @@ public class Box {
      *
      * @return contentInformationSource
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BoxContentInformationSource getContentInformationSource() {
+    @javax.annotation.Nullable public BoxContentInformationSource getContentInformationSource() {
         return contentInformationSource;
     }
 
@@ -108,8 +142,7 @@ public class Box {
      *
      * @return destinationRegion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Region getDestinationRegion() {
+    @javax.annotation.Nullable public Region getDestinationRegion() {
         return destinationRegion;
     }
 
@@ -127,8 +160,7 @@ public class Box {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dimensions getDimensions() {
+    @javax.annotation.Nullable public Dimensions getDimensions() {
         return dimensions;
     }
 
@@ -146,8 +178,7 @@ public class Box {
      *
      * @return externalContainerIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The external identifier for this container / box.")
-    public String getExternalContainerIdentifier() {
+    @javax.annotation.Nullable public String getExternalContainerIdentifier() {
         return externalContainerIdentifier;
     }
 
@@ -165,9 +196,7 @@ public class Box {
      *
      * @return externalContainerIdentifierType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Type of the external identifier used. Can be: `AMAZON`, `SSCC`.")
-    public String getExternalContainerIdentifierType() {
+    @javax.annotation.Nullable public String getExternalContainerIdentifierType() {
         return externalContainerIdentifierType;
     }
 
@@ -193,8 +222,7 @@ public class Box {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Items contained within the box.")
-    public List<Item> getItems() {
+    @javax.annotation.Nullable public List<Item> getItems() {
         return items;
     }
 
@@ -212,9 +240,7 @@ public class Box {
      *
      * @return packageId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Primary key to uniquely identify a Package (Box or Pallet).")
+    @javax.annotation.Nonnull
     public String getPackageId() {
         return packageId;
     }
@@ -229,14 +255,12 @@ public class Box {
     }
 
     /**
-     * The number of containers where all other properties like weight or dimensions are identical.
+     * The number of containers where all other properties like weight or dimensions are identical. minimum: 1 maximum:
+     * 10000
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of containers where all other properties like weight or dimensions are identical.")
-    public Integer getQuantity() {
+    @javax.annotation.Nullable public Integer getQuantity() {
         return quantity;
     }
 
@@ -254,8 +278,7 @@ public class Box {
      *
      * @return templateName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Template name of the box.")
-    public String getTemplateName() {
+    @javax.annotation.Nullable public String getTemplateName() {
         return templateName;
     }
 
@@ -273,8 +296,7 @@ public class Box {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getWeight() {
+    @javax.annotation.Nullable public Weight getWeight() {
         return weight;
     }
 
@@ -283,7 +305,7 @@ public class Box {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -348,10 +370,184 @@ public class Box {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("boxId");
+        openapiFields.add("contentInformationSource");
+        openapiFields.add("destinationRegion");
+        openapiFields.add("dimensions");
+        openapiFields.add("externalContainerIdentifier");
+        openapiFields.add("externalContainerIdentifierType");
+        openapiFields.add("items");
+        openapiFields.add("packageId");
+        openapiFields.add("quantity");
+        openapiFields.add("templateName");
+        openapiFields.add("weight");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Box
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Box.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Box is not found in the empty JSON string",
+                        Box.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Box.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Box` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Box.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("boxId") != null && !jsonObj.get("boxId").isJsonNull())
+                && !jsonObj.get("boxId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `boxId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("boxId").toString()));
+        }
+        // validate the optional field `contentInformationSource`
+        if (jsonObj.get("contentInformationSource") != null
+                && !jsonObj.get("contentInformationSource").isJsonNull()) {
+            BoxContentInformationSource.validateJsonElement(jsonObj.get("contentInformationSource"));
+        }
+        // validate the optional field `destinationRegion`
+        if (jsonObj.get("destinationRegion") != null
+                && !jsonObj.get("destinationRegion").isJsonNull()) {
+            Region.validateJsonElement(jsonObj.get("destinationRegion"));
+        }
+        // validate the optional field `dimensions`
+        if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull()) {
+            Dimensions.validateJsonElement(jsonObj.get("dimensions"));
+        }
+        if ((jsonObj.get("externalContainerIdentifier") != null
+                        && !jsonObj.get("externalContainerIdentifier").isJsonNull())
+                && !jsonObj.get("externalContainerIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalContainerIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalContainerIdentifier").toString()));
+        }
+        if ((jsonObj.get("externalContainerIdentifierType") != null
+                        && !jsonObj.get("externalContainerIdentifierType").isJsonNull())
+                && !jsonObj.get("externalContainerIdentifierType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalContainerIdentifierType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalContainerIdentifierType").toString()));
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    Item.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("packageId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageId").toString()));
+        }
+        if ((jsonObj.get("templateName") != null && !jsonObj.get("templateName").isJsonNull())
+                && !jsonObj.get("templateName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `templateName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("templateName").toString()));
+        }
+        // validate the optional field `weight`
+        if (jsonObj.get("weight") != null && !jsonObj.get("weight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("weight"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Box.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Box' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Box> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Box.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Box>() {
+                        @Override
+                        public void write(JsonWriter out, Box value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Box read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Box given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Box
+     * @throws IOException if the JSON string is invalid with respect to Box
+     */
+    public static Box fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Box.class);
+    }
+
+    /**
+     * Convert an instance of Box to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

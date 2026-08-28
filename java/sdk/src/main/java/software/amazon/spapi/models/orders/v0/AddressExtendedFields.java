@@ -12,31 +12,56 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Extended address fields for additional address components including the street name or number. Note: Available for
  * grocery sellers and Brazil shipping addresses.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AddressExtendedFields {
-    @SerializedName("StreetName")
-    private String streetName = null;
+    public static final String SERIALIZED_NAME_STREET_NAME = "StreetName";
 
-    @SerializedName("StreetNumber")
-    private String streetNumber = null;
+    @SerializedName(SERIALIZED_NAME_STREET_NAME)
+    private String streetName;
 
-    @SerializedName("Complement")
-    private String complement = null;
+    public static final String SERIALIZED_NAME_STREET_NUMBER = "StreetNumber";
 
-    @SerializedName("Neighborhood")
-    private String neighborhood = null;
+    @SerializedName(SERIALIZED_NAME_STREET_NUMBER)
+    private String streetNumber;
 
-    @SerializedName("GeoCoordinates")
-    private GeoCoordinates geoCoordinates = null;
+    public static final String SERIALIZED_NAME_COMPLEMENT = "Complement";
+
+    @SerializedName(SERIALIZED_NAME_COMPLEMENT)
+    private String complement;
+
+    public static final String SERIALIZED_NAME_NEIGHBORHOOD = "Neighborhood";
+
+    @SerializedName(SERIALIZED_NAME_NEIGHBORHOOD)
+    private String neighborhood;
+
+    public static final String SERIALIZED_NAME_GEO_COORDINATES = "GeoCoordinates";
+
+    @SerializedName(SERIALIZED_NAME_GEO_COORDINATES)
+    private GeoCoordinates geoCoordinates;
+
+    public AddressExtendedFields() {}
 
     public AddressExtendedFields streetName(String streetName) {
         this.streetName = streetName;
@@ -48,8 +73,7 @@ public class AddressExtendedFields {
      *
      * @return streetName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The street name.")
-    public String getStreetName() {
+    @javax.annotation.Nullable public String getStreetName() {
         return streetName;
     }
 
@@ -67,9 +91,7 @@ public class AddressExtendedFields {
      *
      * @return streetNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The house, building, or property number associated with the location's street address.")
-    public String getStreetNumber() {
+    @javax.annotation.Nullable public String getStreetNumber() {
         return streetNumber;
     }
 
@@ -87,9 +109,7 @@ public class AddressExtendedFields {
      *
      * @return complement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The floor number/unit number in the building/private house number.")
-    public String getComplement() {
+    @javax.annotation.Nullable public String getComplement() {
         return complement;
     }
 
@@ -107,9 +127,7 @@ public class AddressExtendedFields {
      *
      * @return neighborhood
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The neighborhood. This value is only used in some countries (such as Brazil).")
-    public String getNeighborhood() {
+    @javax.annotation.Nullable public String getNeighborhood() {
         return neighborhood;
     }
 
@@ -127,8 +145,7 @@ public class AddressExtendedFields {
      *
      * @return geoCoordinates
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GeoCoordinates getGeoCoordinates() {
+    @javax.annotation.Nullable public GeoCoordinates getGeoCoordinates() {
         return geoCoordinates;
     }
 
@@ -137,7 +154,7 @@ public class AddressExtendedFields {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +190,133 @@ public class AddressExtendedFields {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("StreetName");
+        openapiFields.add("StreetNumber");
+        openapiFields.add("Complement");
+        openapiFields.add("Neighborhood");
+        openapiFields.add("GeoCoordinates");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AddressExtendedFields
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AddressExtendedFields.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AddressExtendedFields is not found in the empty JSON string",
+                        AddressExtendedFields.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AddressExtendedFields.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AddressExtendedFields` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("StreetName") != null && !jsonObj.get("StreetName").isJsonNull())
+                && !jsonObj.get("StreetName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StreetName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StreetName").toString()));
+        }
+        if ((jsonObj.get("StreetNumber") != null && !jsonObj.get("StreetNumber").isJsonNull())
+                && !jsonObj.get("StreetNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StreetNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StreetNumber").toString()));
+        }
+        if ((jsonObj.get("Complement") != null && !jsonObj.get("Complement").isJsonNull())
+                && !jsonObj.get("Complement").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Complement` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Complement").toString()));
+        }
+        if ((jsonObj.get("Neighborhood") != null && !jsonObj.get("Neighborhood").isJsonNull())
+                && !jsonObj.get("Neighborhood").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Neighborhood` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Neighborhood").toString()));
+        }
+        // validate the optional field `GeoCoordinates`
+        if (jsonObj.get("GeoCoordinates") != null
+                && !jsonObj.get("GeoCoordinates").isJsonNull()) {
+            GeoCoordinates.validateJsonElement(jsonObj.get("GeoCoordinates"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AddressExtendedFields.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AddressExtendedFields' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AddressExtendedFields> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AddressExtendedFields.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AddressExtendedFields>() {
+                        @Override
+                        public void write(JsonWriter out, AddressExtendedFields value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AddressExtendedFields read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AddressExtendedFields given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AddressExtendedFields
+     * @throws IOException if the JSON string is invalid with respect to AddressExtendedFields
+     */
+    public static AddressExtendedFields fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AddressExtendedFields.class);
+    }
+
+    /**
+     * Convert an instance of AddressExtendedFields to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

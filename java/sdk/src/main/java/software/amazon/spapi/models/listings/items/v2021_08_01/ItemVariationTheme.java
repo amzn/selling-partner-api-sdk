@@ -12,21 +12,40 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A variation theme that indicates the combination of listing item attributes that define the variation family. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A variation theme that indicates the combination of listing item attributes that define the variation family.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemVariationTheme {
-    @SerializedName("attributes")
-    private List<String> attributes = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
 
-    @SerializedName("theme")
-    private String theme = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private List<String> attributes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_THEME = "theme";
+
+    @SerializedName(SERIALIZED_NAME_THEME)
+    private String theme;
+
+    public ItemVariationTheme() {}
 
     public ItemVariationTheme attributes(List<String> attributes) {
         this.attributes = attributes;
@@ -46,9 +65,7 @@ public class ItemVariationTheme {
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The names of the listing item attributes that are associated with the variation theme.")
+    @javax.annotation.Nonnull
     public List<String> getAttributes() {
         return attributes;
     }
@@ -67,10 +84,7 @@ public class ItemVariationTheme {
      *
      * @return theme
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The variation theme that indicates the combination of listing item attributes that define the variation family.")
+    @javax.annotation.Nonnull
     public String getTheme() {
         return theme;
     }
@@ -80,7 +94,7 @@ public class ItemVariationTheme {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -108,10 +122,125 @@ public class ItemVariationTheme {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("attributes");
+        openapiFields.add("theme");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("attributes");
+        openapiRequiredFields.add("theme");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemVariationTheme
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemVariationTheme.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemVariationTheme is not found in the empty JSON string",
+                        ItemVariationTheme.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemVariationTheme.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemVariationTheme` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemVariationTheme.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("attributes") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("attributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `attributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("attributes").toString()));
+        }
+        if (!jsonObj.get("theme").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `theme` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("theme").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemVariationTheme.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemVariationTheme' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemVariationTheme> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemVariationTheme.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemVariationTheme>() {
+                        @Override
+                        public void write(JsonWriter out, ItemVariationTheme value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemVariationTheme read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemVariationTheme given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemVariationTheme
+     * @throws IOException if the JSON string is invalid with respect to ItemVariationTheme
+     */
+    public static ItemVariationTheme fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemVariationTheme.class);
+    }
+
+    /**
+     * Convert an instance of ItemVariationTheme to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

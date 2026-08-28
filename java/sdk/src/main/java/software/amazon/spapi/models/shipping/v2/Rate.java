@@ -12,53 +12,102 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The details of a shipping service offering. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a shipping service offering.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Rate {
-    @SerializedName("rateId")
-    private String rateId = null;
+    public static final String SERIALIZED_NAME_RATE_ID = "rateId";
 
-    @SerializedName("carrierId")
-    private String carrierId = null;
+    @SerializedName(SERIALIZED_NAME_RATE_ID)
+    private String rateId;
 
-    @SerializedName("carrierName")
-    private String carrierName = null;
+    public static final String SERIALIZED_NAME_CARRIER_ID = "carrierId";
 
-    @SerializedName("serviceId")
-    private String serviceId = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_ID)
+    private String carrierId;
 
-    @SerializedName("serviceName")
-    private String serviceName = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
 
-    @SerializedName("billedWeight")
-    private Weight billedWeight = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
 
-    @SerializedName("totalCharge")
-    private Currency totalCharge = null;
+    public static final String SERIALIZED_NAME_SERVICE_ID = "serviceId";
 
-    @SerializedName("promise")
-    private Promise promise = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_ID)
+    private String serviceId;
 
-    @SerializedName("supportedDocumentSpecifications")
-    private SupportedDocumentSpecificationList supportedDocumentSpecifications = null;
+    public static final String SERIALIZED_NAME_SERVICE_NAME = "serviceName";
 
-    @SerializedName("availableValueAddedServiceGroups")
-    private AvailableValueAddedServiceGroupList availableValueAddedServiceGroups = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_NAME)
+    private String serviceName;
 
-    @SerializedName("requiresAdditionalInputs")
-    private Boolean requiresAdditionalInputs = null;
+    public static final String SERIALIZED_NAME_BILLED_WEIGHT = "billedWeight";
 
-    @SerializedName("rateItemList")
-    private RateItemList rateItemList = null;
+    @SerializedName(SERIALIZED_NAME_BILLED_WEIGHT)
+    private Weight billedWeight;
 
-    @SerializedName("paymentType")
-    private PaymentType paymentType = null;
+    public static final String SERIALIZED_NAME_TOTAL_CHARGE = "totalCharge";
 
-    @SerializedName("benefits")
-    private Benefits benefits = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_CHARGE)
+    private Currency totalCharge;
+
+    public static final String SERIALIZED_NAME_PROMISE = "promise";
+
+    @SerializedName(SERIALIZED_NAME_PROMISE)
+    private Promise promise;
+
+    public static final String SERIALIZED_NAME_SUPPORTED_DOCUMENT_SPECIFICATIONS = "supportedDocumentSpecifications";
+
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_DOCUMENT_SPECIFICATIONS)
+    private List<SupportedDocumentSpecification> supportedDocumentSpecifications = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AVAILABLE_VALUE_ADDED_SERVICE_GROUPS =
+            "availableValueAddedServiceGroups";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_VALUE_ADDED_SERVICE_GROUPS)
+    private List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REQUIRES_ADDITIONAL_INPUTS = "requiresAdditionalInputs";
+
+    @SerializedName(SERIALIZED_NAME_REQUIRES_ADDITIONAL_INPUTS)
+    private Boolean requiresAdditionalInputs;
+
+    public static final String SERIALIZED_NAME_RATE_ITEM_LIST = "rateItemList";
+
+    @SerializedName(SERIALIZED_NAME_RATE_ITEM_LIST)
+    private List<RateItem> rateItemList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_TYPE)
+    private PaymentType paymentType;
+
+    public static final String SERIALIZED_NAME_BENEFITS = "benefits";
+
+    @SerializedName(SERIALIZED_NAME_BENEFITS)
+    private Benefits benefits;
+
+    public Rate() {}
 
     public Rate rateId(String rateId) {
         this.rateId = rateId;
@@ -70,9 +119,7 @@ public class Rate {
      *
      * @return rateId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier for the rate (shipment offering) provided by a shipping service provider.")
+    @javax.annotation.Nonnull
     public String getRateId() {
         return rateId;
     }
@@ -91,9 +138,7 @@ public class Rate {
      *
      * @return carrierId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The carrier identifier for the offering, provided by the carrier.")
+    @javax.annotation.Nonnull
     public String getCarrierId() {
         return carrierId;
     }
@@ -112,7 +157,7 @@ public class Rate {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The carrier name for the offering.")
+    @javax.annotation.Nonnull
     public String getCarrierName() {
         return carrierName;
     }
@@ -131,9 +176,7 @@ public class Rate {
      *
      * @return serviceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier for the shipping service.")
+    @javax.annotation.Nonnull
     public String getServiceId() {
         return serviceId;
     }
@@ -152,7 +195,7 @@ public class Rate {
      *
      * @return serviceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the shipping service.")
+    @javax.annotation.Nonnull
     public String getServiceName() {
         return serviceName;
     }
@@ -171,8 +214,7 @@ public class Rate {
      *
      * @return billedWeight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getBilledWeight() {
+    @javax.annotation.Nullable public Weight getBilledWeight() {
         return billedWeight;
     }
 
@@ -190,7 +232,7 @@ public class Rate {
      *
      * @return totalCharge
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTotalCharge() {
         return totalCharge;
     }
@@ -209,7 +251,7 @@ public class Rate {
      *
      * @return promise
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Promise getPromise() {
         return promise;
     }
@@ -218,42 +260,61 @@ public class Rate {
         this.promise = promise;
     }
 
-    public Rate supportedDocumentSpecifications(SupportedDocumentSpecificationList supportedDocumentSpecifications) {
+    public Rate supportedDocumentSpecifications(List<SupportedDocumentSpecification> supportedDocumentSpecifications) {
         this.supportedDocumentSpecifications = supportedDocumentSpecifications;
         return this;
     }
 
+    public Rate addSupportedDocumentSpecificationsItem(
+            SupportedDocumentSpecification supportedDocumentSpecificationsItem) {
+        if (this.supportedDocumentSpecifications == null) {
+            this.supportedDocumentSpecifications = new ArrayList<>();
+        }
+        this.supportedDocumentSpecifications.add(supportedDocumentSpecificationsItem);
+        return this;
+    }
+
     /**
-     * Get supportedDocumentSpecifications
+     * A list of the document specifications supported for a shipment service offering.
      *
      * @return supportedDocumentSpecifications
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public SupportedDocumentSpecificationList getSupportedDocumentSpecifications() {
+    @javax.annotation.Nonnull
+    public List<SupportedDocumentSpecification> getSupportedDocumentSpecifications() {
         return supportedDocumentSpecifications;
     }
 
-    public void setSupportedDocumentSpecifications(SupportedDocumentSpecificationList supportedDocumentSpecifications) {
+    public void setSupportedDocumentSpecifications(
+            List<SupportedDocumentSpecification> supportedDocumentSpecifications) {
         this.supportedDocumentSpecifications = supportedDocumentSpecifications;
     }
 
-    public Rate availableValueAddedServiceGroups(AvailableValueAddedServiceGroupList availableValueAddedServiceGroups) {
+    public Rate availableValueAddedServiceGroups(
+            List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups) {
         this.availableValueAddedServiceGroups = availableValueAddedServiceGroups;
         return this;
     }
 
+    public Rate addAvailableValueAddedServiceGroupsItem(
+            AvailableValueAddedServiceGroup availableValueAddedServiceGroupsItem) {
+        if (this.availableValueAddedServiceGroups == null) {
+            this.availableValueAddedServiceGroups = new ArrayList<>();
+        }
+        this.availableValueAddedServiceGroups.add(availableValueAddedServiceGroupsItem);
+        return this;
+    }
+
     /**
-     * Get availableValueAddedServiceGroups
+     * A list of value-added services available for a shipping service offering.
      *
      * @return availableValueAddedServiceGroups
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AvailableValueAddedServiceGroupList getAvailableValueAddedServiceGroups() {
+    @javax.annotation.Nullable public List<AvailableValueAddedServiceGroup> getAvailableValueAddedServiceGroups() {
         return availableValueAddedServiceGroups;
     }
 
     public void setAvailableValueAddedServiceGroups(
-            AvailableValueAddedServiceGroupList availableValueAddedServiceGroups) {
+            List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups) {
         this.availableValueAddedServiceGroups = availableValueAddedServiceGroups;
     }
 
@@ -269,10 +330,7 @@ public class Rate {
      *
      * @return requiresAdditionalInputs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.")
+    @javax.annotation.Nonnull
     public Boolean getRequiresAdditionalInputs() {
         return requiresAdditionalInputs;
     }
@@ -281,22 +339,29 @@ public class Rate {
         this.requiresAdditionalInputs = requiresAdditionalInputs;
     }
 
-    public Rate rateItemList(RateItemList rateItemList) {
+    public Rate rateItemList(List<RateItem> rateItemList) {
         this.rateItemList = rateItemList;
         return this;
     }
 
+    public Rate addRateItemListItem(RateItem rateItemListItem) {
+        if (this.rateItemList == null) {
+            this.rateItemList = new ArrayList<>();
+        }
+        this.rateItemList.add(rateItemListItem);
+        return this;
+    }
+
     /**
-     * Get rateItemList
+     * A list of RateItem
      *
      * @return rateItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RateItemList getRateItemList() {
+    @javax.annotation.Nullable public List<RateItem> getRateItemList() {
         return rateItemList;
     }
 
-    public void setRateItemList(RateItemList rateItemList) {
+    public void setRateItemList(List<RateItem> rateItemList) {
         this.rateItemList = rateItemList;
     }
 
@@ -310,8 +375,7 @@ public class Rate {
      *
      * @return paymentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentType getPaymentType() {
+    @javax.annotation.Nullable public PaymentType getPaymentType() {
         return paymentType;
     }
 
@@ -329,8 +393,7 @@ public class Rate {
      *
      * @return benefits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Benefits getBenefits() {
+    @javax.annotation.Nullable public Benefits getBenefits() {
         return benefits;
     }
 
@@ -339,7 +402,7 @@ public class Rate {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -411,10 +474,220 @@ public class Rate {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("rateId");
+        openapiFields.add("carrierId");
+        openapiFields.add("carrierName");
+        openapiFields.add("serviceId");
+        openapiFields.add("serviceName");
+        openapiFields.add("billedWeight");
+        openapiFields.add("totalCharge");
+        openapiFields.add("promise");
+        openapiFields.add("supportedDocumentSpecifications");
+        openapiFields.add("availableValueAddedServiceGroups");
+        openapiFields.add("requiresAdditionalInputs");
+        openapiFields.add("rateItemList");
+        openapiFields.add("paymentType");
+        openapiFields.add("benefits");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("rateId");
+        openapiRequiredFields.add("carrierId");
+        openapiRequiredFields.add("carrierName");
+        openapiRequiredFields.add("serviceId");
+        openapiRequiredFields.add("serviceName");
+        openapiRequiredFields.add("totalCharge");
+        openapiRequiredFields.add("promise");
+        openapiRequiredFields.add("supportedDocumentSpecifications");
+        openapiRequiredFields.add("requiresAdditionalInputs");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Rate
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Rate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Rate is not found in the empty JSON string",
+                        Rate.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Rate.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Rate` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Rate.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("rateId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rateId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rateId").toString()));
+        }
+        if (!jsonObj.get("carrierId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierId").toString()));
+        }
+        if (!jsonObj.get("carrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierName").toString()));
+        }
+        if (!jsonObj.get("serviceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceId").toString()));
+        }
+        if (!jsonObj.get("serviceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceName").toString()));
+        }
+        // validate the optional field `billedWeight`
+        if (jsonObj.get("billedWeight") != null && !jsonObj.get("billedWeight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("billedWeight"));
+        }
+        // validate the required field `totalCharge`
+        Currency.validateJsonElement(jsonObj.get("totalCharge"));
+        // validate the required field `promise`
+        Promise.validateJsonElement(jsonObj.get("promise"));
+        // ensure the json data is an array
+        if (!jsonObj.get("supportedDocumentSpecifications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedDocumentSpecifications` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedDocumentSpecifications").toString()));
+        }
+
+        JsonArray jsonArraysupportedDocumentSpecifications = jsonObj.getAsJsonArray("supportedDocumentSpecifications");
+        // validate the required field `supportedDocumentSpecifications` (array)
+        for (int i = 0; i < jsonArraysupportedDocumentSpecifications.size(); i++) {
+            SupportedDocumentSpecification.validateJsonElement(jsonArraysupportedDocumentSpecifications.get(i));
+        }
+        ;
+        if (jsonObj.get("availableValueAddedServiceGroups") != null
+                && !jsonObj.get("availableValueAddedServiceGroups").isJsonNull()) {
+            JsonArray jsonArrayavailableValueAddedServiceGroups =
+                    jsonObj.getAsJsonArray("availableValueAddedServiceGroups");
+            if (jsonArrayavailableValueAddedServiceGroups != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("availableValueAddedServiceGroups").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `availableValueAddedServiceGroups` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("availableValueAddedServiceGroups").toString()));
+                }
+
+                // validate the optional field `availableValueAddedServiceGroups` (array)
+                for (int i = 0; i < jsonArrayavailableValueAddedServiceGroups.size(); i++) {
+                    AvailableValueAddedServiceGroup.validateJsonElement(
+                            jsonArrayavailableValueAddedServiceGroups.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("rateItemList") != null && !jsonObj.get("rateItemList").isJsonNull()) {
+            JsonArray jsonArrayrateItemList = jsonObj.getAsJsonArray("rateItemList");
+            if (jsonArrayrateItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("rateItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `rateItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("rateItemList").toString()));
+                }
+
+                // validate the optional field `rateItemList` (array)
+                for (int i = 0; i < jsonArrayrateItemList.size(); i++) {
+                    RateItem.validateJsonElement(jsonArrayrateItemList.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `paymentType`
+        if (jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonNull()) {
+            PaymentType.validateJsonElement(jsonObj.get("paymentType"));
+        }
+        // validate the optional field `benefits`
+        if (jsonObj.get("benefits") != null && !jsonObj.get("benefits").isJsonNull()) {
+            Benefits.validateJsonElement(jsonObj.get("benefits"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Rate.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Rate' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Rate> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Rate.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Rate>() {
+                        @Override
+                        public void write(JsonWriter out, Rate value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Rate read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Rate given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Rate
+     * @throws IOException if the JSON string is invalid with respect to Rate
+     */
+    public static Rate fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Rate.class);
+    }
+
+    /**
+     * Convert an instance of Rate to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

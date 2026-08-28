@@ -12,36 +12,48 @@
 
 package software.amazon.spapi.models.fba.eligibility.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The response object which contains the ASIN, marketplaceId if required, eligibility program, the eligibility status
  * (boolean), and a list of ineligibility reason codes.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The response object which contains the ASIN, marketplaceId if required, eligibility program, the eligibility status (boolean), and a list of ineligibility reason codes.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemEligibilityPreview {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
     /** The program for which eligibility was determined. */
     @JsonAdapter(ProgramEnum.Adapter.class)
     public enum ProgramEnum {
-        @SerializedName("INBOUND")
         INBOUND("INBOUND"),
-        @SerializedName("COMMINGLING")
+
         COMMINGLING("COMMINGLING");
 
         private String value;
@@ -59,119 +71,127 @@ public class ItemEligibilityPreview {
             return String.valueOf(value);
         }
 
-        public static ProgramEnum fromValue(String input) {
+        public static ProgramEnum fromValue(String value) {
             for (ProgramEnum b : ProgramEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ProgramEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ProgramEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ProgramEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ProgramEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ProgramEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ProgramEnum.fromValue(value);
         }
     }
 
-    @SerializedName("program")
-    private ProgramEnum program = null;
+    public static final String SERIALIZED_NAME_PROGRAM = "program";
 
-    @SerializedName("isEligibleForProgram")
-    private Boolean isEligibleForProgram = null;
+    @SerializedName(SERIALIZED_NAME_PROGRAM)
+    private ProgramEnum program;
+
+    public static final String SERIALIZED_NAME_IS_ELIGIBLE_FOR_PROGRAM = "isEligibleForProgram";
+
+    @SerializedName(SERIALIZED_NAME_IS_ELIGIBLE_FOR_PROGRAM)
+    private Boolean isEligibleForProgram;
 
     /** Potential Ineligibility Reason Codes. */
     @JsonAdapter(IneligibilityReasonListEnum.Adapter.class)
     public enum IneligibilityReasonListEnum {
-        @SerializedName("FBA_INB_0004")
         FBA_INB_0004("FBA_INB_0004"),
-        @SerializedName("FBA_INB_0006")
+
         FBA_INB_0006("FBA_INB_0006"),
-        @SerializedName("FBA_INB_0007")
+
         FBA_INB_0007("FBA_INB_0007"),
-        @SerializedName("FBA_INB_0008")
+
         FBA_INB_0008("FBA_INB_0008"),
-        @SerializedName("FBA_INB_0009")
+
         FBA_INB_0009("FBA_INB_0009"),
-        @SerializedName("FBA_INB_0010")
+
         FBA_INB_0010("FBA_INB_0010"),
-        @SerializedName("FBA_INB_0011")
+
         FBA_INB_0011("FBA_INB_0011"),
-        @SerializedName("FBA_INB_0012")
+
         FBA_INB_0012("FBA_INB_0012"),
-        @SerializedName("FBA_INB_0013")
+
         FBA_INB_0013("FBA_INB_0013"),
-        @SerializedName("FBA_INB_0014")
+
         FBA_INB_0014("FBA_INB_0014"),
-        @SerializedName("FBA_INB_0015")
+
         FBA_INB_0015("FBA_INB_0015"),
-        @SerializedName("FBA_INB_0016")
+
         FBA_INB_0016("FBA_INB_0016"),
-        @SerializedName("FBA_INB_0017")
+
         FBA_INB_0017("FBA_INB_0017"),
-        @SerializedName("FBA_INB_0018")
+
         FBA_INB_0018("FBA_INB_0018"),
-        @SerializedName("FBA_INB_0019")
+
         FBA_INB_0019("FBA_INB_0019"),
-        @SerializedName("FBA_INB_0034")
+
         FBA_INB_0034("FBA_INB_0034"),
-        @SerializedName("FBA_INB_0035")
+
         FBA_INB_0035("FBA_INB_0035"),
-        @SerializedName("FBA_INB_0036")
+
         FBA_INB_0036("FBA_INB_0036"),
-        @SerializedName("FBA_INB_0037")
+
         FBA_INB_0037("FBA_INB_0037"),
-        @SerializedName("FBA_INB_0038")
+
         FBA_INB_0038("FBA_INB_0038"),
-        @SerializedName("FBA_INB_0050")
+
         FBA_INB_0050("FBA_INB_0050"),
-        @SerializedName("FBA_INB_0051")
+
         FBA_INB_0051("FBA_INB_0051"),
-        @SerializedName("FBA_INB_0053")
+
         FBA_INB_0053("FBA_INB_0053"),
-        @SerializedName("FBA_INB_0055")
+
         FBA_INB_0055("FBA_INB_0055"),
-        @SerializedName("FBA_INB_0056")
+
         FBA_INB_0056("FBA_INB_0056"),
-        @SerializedName("FBA_INB_0059")
+
         FBA_INB_0059("FBA_INB_0059"),
-        @SerializedName("FBA_INB_0065")
+
         FBA_INB_0065("FBA_INB_0065"),
-        @SerializedName("FBA_INB_0066")
+
         FBA_INB_0066("FBA_INB_0066"),
-        @SerializedName("FBA_INB_0067")
+
         FBA_INB_0067("FBA_INB_0067"),
-        @SerializedName("FBA_INB_0068")
+
         FBA_INB_0068("FBA_INB_0068"),
-        @SerializedName("FBA_INB_0095")
+
         FBA_INB_0095("FBA_INB_0095"),
-        @SerializedName("FBA_INB_0097")
+
         FBA_INB_0097("FBA_INB_0097"),
-        @SerializedName("FBA_INB_0098")
+
         FBA_INB_0098("FBA_INB_0098"),
-        @SerializedName("FBA_INB_0099")
+
         FBA_INB_0099("FBA_INB_0099"),
-        @SerializedName("FBA_INB_0100")
+
         FBA_INB_0100("FBA_INB_0100"),
-        @SerializedName("FBA_INB_0103")
+
         FBA_INB_0103("FBA_INB_0103"),
-        @SerializedName("FBA_INB_0104")
+
         FBA_INB_0104("FBA_INB_0104"),
-        @SerializedName("FBA_INB_0197")
+
         FBA_INB_0197("FBA_INB_0197"),
-        @SerializedName("FBA_INB_0342")
+
         FBA_INB_0342("FBA_INB_0342"),
-        @SerializedName("FBA_INB_0465")
+
         FBA_INB_0465("FBA_INB_0465"),
-        @SerializedName("UNKNOWN_INB_ERROR_CODE")
+
         UNKNOWN_INB_ERROR_CODE("UNKNOWN_INB_ERROR_CODE");
 
         private String value;
@@ -189,32 +209,41 @@ public class ItemEligibilityPreview {
             return String.valueOf(value);
         }
 
-        public static IneligibilityReasonListEnum fromValue(String input) {
+        public static IneligibilityReasonListEnum fromValue(String value) {
             for (IneligibilityReasonListEnum b : IneligibilityReasonListEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<IneligibilityReasonListEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final IneligibilityReasonListEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public IneligibilityReasonListEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return IneligibilityReasonListEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return IneligibilityReasonListEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            IneligibilityReasonListEnum.fromValue(value);
         }
     }
 
-    @SerializedName("ineligibilityReasonList")
-    private List<IneligibilityReasonListEnum> ineligibilityReasonList = null;
+    public static final String SERIALIZED_NAME_INELIGIBILITY_REASON_LIST = "ineligibilityReasonList";
+
+    @SerializedName(SERIALIZED_NAME_INELIGIBILITY_REASON_LIST)
+    private List<IneligibilityReasonListEnum> ineligibilityReasonList = new ArrayList<>();
+
+    public ItemEligibilityPreview() {}
 
     public ItemEligibilityPreview asin(String asin) {
         this.asin = asin;
@@ -226,9 +255,7 @@ public class ItemEligibilityPreview {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ASIN for which eligibility was determined.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -247,8 +274,7 @@ public class ItemEligibilityPreview {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace for which eligibility was determined.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -266,9 +292,7 @@ public class ItemEligibilityPreview {
      *
      * @return program
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The program for which eligibility was determined.")
+    @javax.annotation.Nonnull
     public ProgramEnum getProgram() {
         return program;
     }
@@ -287,9 +311,7 @@ public class ItemEligibilityPreview {
      *
      * @return isEligibleForProgram
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Indicates if the item is eligible for the program.")
+    @javax.annotation.Nonnull
     public Boolean getIsEligibleForProgram() {
         return isEligibleForProgram;
     }
@@ -317,8 +339,7 @@ public class ItemEligibilityPreview {
      *
      * @return ineligibilityReasonList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Potential Ineligibility Reason Codes.")
-    public List<IneligibilityReasonListEnum> getIneligibilityReasonList() {
+    @javax.annotation.Nullable public List<IneligibilityReasonListEnum> getIneligibilityReasonList() {
         return ineligibilityReasonList;
     }
 
@@ -327,7 +348,7 @@ public class ItemEligibilityPreview {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -365,10 +386,143 @@ public class ItemEligibilityPreview {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("program");
+        openapiFields.add("isEligibleForProgram");
+        openapiFields.add("ineligibilityReasonList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+        openapiRequiredFields.add("program");
+        openapiRequiredFields.add("isEligibleForProgram");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemEligibilityPreview
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemEligibilityPreview.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemEligibilityPreview is not found in the empty JSON string",
+                        ItemEligibilityPreview.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemEligibilityPreview.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemEligibilityPreview` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemEligibilityPreview.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("marketplaceId") != null
+                        && !jsonObj.get("marketplaceId").isJsonNull())
+                && !jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("program").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `program` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("program").toString()));
+        }
+        // validate the required field `program`
+        ProgramEnum.validateJsonElement(jsonObj.get("program"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("ineligibilityReasonList") != null
+                && !jsonObj.get("ineligibilityReasonList").isJsonNull()
+                && !jsonObj.get("ineligibilityReasonList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ineligibilityReasonList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("ineligibilityReasonList").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemEligibilityPreview.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemEligibilityPreview' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemEligibilityPreview> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemEligibilityPreview.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemEligibilityPreview>() {
+                        @Override
+                        public void write(JsonWriter out, ItemEligibilityPreview value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemEligibilityPreview read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemEligibilityPreview given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemEligibilityPreview
+     * @throws IOException if the JSON string is invalid with respect to ItemEligibilityPreview
+     */
+    public static ItemEligibilityPreview fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemEligibilityPreview.class);
+    }
+
+    /**
+     * Convert an instance of ItemEligibilityPreview to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

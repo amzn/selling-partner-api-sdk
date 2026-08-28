@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The estimated price information for the fulfillment order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The estimated price information for the fulfillment order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class EstimatedPrice {
-    @SerializedName("rollupPrices")
-    private List<RollupPrice> rollupPrices = null;
+    public static final String SERIALIZED_NAME_ROLLUP_PRICES = "rollupPrices";
 
-    @SerializedName("totalPrice")
-    private Money totalPrice = null;
+    @SerializedName(SERIALIZED_NAME_ROLLUP_PRICES)
+    private List<RollupPrice> rollupPrices = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TOTAL_PRICE = "totalPrice";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_PRICE)
+    private Money totalPrice;
+
+    public EstimatedPrice() {}
 
     public EstimatedPrice rollupPrices(List<RollupPrice> rollupPrices) {
         this.rollupPrices = rollupPrices;
@@ -44,9 +66,7 @@ public class EstimatedPrice {
      *
      * @return rollupPrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A breakdown of the price associated with the delivery preview.")
+    @javax.annotation.Nonnull
     public List<RollupPrice> getRollupPrices() {
         return rollupPrices;
     }
@@ -65,7 +85,7 @@ public class EstimatedPrice {
      *
      * @return totalPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getTotalPrice() {
         return totalPrice;
     }
@@ -75,7 +95,7 @@ public class EstimatedPrice {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -103,10 +123,126 @@ public class EstimatedPrice {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("rollupPrices");
+        openapiFields.add("totalPrice");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("rollupPrices");
+        openapiRequiredFields.add("totalPrice");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to EstimatedPrice
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!EstimatedPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in EstimatedPrice is not found in the empty JSON string",
+                        EstimatedPrice.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!EstimatedPrice.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `EstimatedPrice` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : EstimatedPrice.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("rollupPrices").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rollupPrices` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("rollupPrices").toString()));
+        }
+
+        JsonArray jsonArrayrollupPrices = jsonObj.getAsJsonArray("rollupPrices");
+        // validate the required field `rollupPrices` (array)
+        for (int i = 0; i < jsonArrayrollupPrices.size(); i++) {
+            RollupPrice.validateJsonElement(jsonArrayrollupPrices.get(i));
+        }
+        ;
+        // validate the required field `totalPrice`
+        Money.validateJsonElement(jsonObj.get("totalPrice"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!EstimatedPrice.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'EstimatedPrice' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<EstimatedPrice> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(EstimatedPrice.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<EstimatedPrice>() {
+                        @Override
+                        public void write(JsonWriter out, EstimatedPrice value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public EstimatedPrice read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of EstimatedPrice given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of EstimatedPrice
+     * @throws IOException if the JSON string is invalid with respect to EstimatedPrice
+     */
+    public static EstimatedPrice fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, EstimatedPrice.class);
+    }
+
+    /**
+     * Convert an instance of EstimatedPrice to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

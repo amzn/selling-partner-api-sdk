@@ -12,23 +12,47 @@
 
 package software.amazon.spapi.models.messaging.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request schema for the createWarranty operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the createWarranty operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateWarrantyRequest {
-    @SerializedName("attachments")
-    private List<Attachment> attachments = null;
+    public static final String SERIALIZED_NAME_ATTACHMENTS = "attachments";
 
-    @SerializedName("coverageStartDate")
-    private OffsetDateTime coverageStartDate = null;
+    @SerializedName(SERIALIZED_NAME_ATTACHMENTS)
+    private List<Attachment> attachments = new ArrayList<>();
 
-    @SerializedName("coverageEndDate")
-    private OffsetDateTime coverageEndDate = null;
+    public static final String SERIALIZED_NAME_COVERAGE_START_DATE = "coverageStartDate";
+
+    @SerializedName(SERIALIZED_NAME_COVERAGE_START_DATE)
+    private OffsetDateTime coverageStartDate;
+
+    public static final String SERIALIZED_NAME_COVERAGE_END_DATE = "coverageEndDate";
+
+    @SerializedName(SERIALIZED_NAME_COVERAGE_END_DATE)
+    private OffsetDateTime coverageEndDate;
+
+    public CreateWarrantyRequest() {}
 
     public CreateWarrantyRequest attachments(List<Attachment> attachments) {
         this.attachments = attachments;
@@ -49,10 +73,7 @@ public class CreateWarrantyRequest {
      *
      * @return attachments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.")
-    public List<Attachment> getAttachments() {
+    @javax.annotation.Nullable public List<Attachment> getAttachments() {
         return attachments;
     }
 
@@ -70,9 +91,7 @@ public class CreateWarrantyRequest {
      *
      * @return coverageStartDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The start date of the warranty coverage to include in the message to the buyer.")
-    public OffsetDateTime getCoverageStartDate() {
+    @javax.annotation.Nullable public OffsetDateTime getCoverageStartDate() {
         return coverageStartDate;
     }
 
@@ -90,9 +109,7 @@ public class CreateWarrantyRequest {
      *
      * @return coverageEndDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The end date of the warranty coverage to include in the message to the buyer.")
-    public OffsetDateTime getCoverageEndDate() {
+    @javax.annotation.Nullable public OffsetDateTime getCoverageEndDate() {
         return coverageEndDate;
     }
 
@@ -101,7 +118,7 @@ public class CreateWarrantyRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -135,10 +152,119 @@ public class CreateWarrantyRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("attachments");
+        openapiFields.add("coverageStartDate");
+        openapiFields.add("coverageEndDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateWarrantyRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateWarrantyRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateWarrantyRequest is not found in the empty JSON string",
+                        CreateWarrantyRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateWarrantyRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateWarrantyRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("attachments") != null && !jsonObj.get("attachments").isJsonNull()) {
+            JsonArray jsonArrayattachments = jsonObj.getAsJsonArray("attachments");
+            if (jsonArrayattachments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("attachments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `attachments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("attachments").toString()));
+                }
+
+                // validate the optional field `attachments` (array)
+                for (int i = 0; i < jsonArrayattachments.size(); i++) {
+                    Attachment.validateJsonElement(jsonArrayattachments.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateWarrantyRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateWarrantyRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateWarrantyRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateWarrantyRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateWarrantyRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateWarrantyRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateWarrantyRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateWarrantyRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateWarrantyRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateWarrantyRequest
+     */
+    public static CreateWarrantyRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateWarrantyRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateWarrantyRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,64 +12,102 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (eg.
  * CLAIMS_PROTECTED, etc.) when sellers purchase shipping through Amazon. Benefit details will be made available for any
  * shipment placed on or after January 1st 2024 00:00 UTC.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (eg. CLAIMS_PROTECTED, etc.) when sellers purchase shipping through Amazon. Benefit details will be made available for any shipment placed on or after January 1st 2024 00:00 UTC.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Benefits {
-    @SerializedName("includedBenefits")
-    private IncludedBenefits includedBenefits = null;
+    public static final String SERIALIZED_NAME_INCLUDED_BENEFITS = "includedBenefits";
 
-    @SerializedName("excludedBenefits")
-    private ExcludedBenefits excludedBenefits = null;
+    @SerializedName(SERIALIZED_NAME_INCLUDED_BENEFITS)
+    private List<String> includedBenefits = new ArrayList<>();
 
-    public Benefits includedBenefits(IncludedBenefits includedBenefits) {
+    public static final String SERIALIZED_NAME_EXCLUDED_BENEFITS = "excludedBenefits";
+
+    @SerializedName(SERIALIZED_NAME_EXCLUDED_BENEFITS)
+    private List<ExcludedBenefit> excludedBenefits = new ArrayList<>();
+
+    public Benefits() {}
+
+    public Benefits includedBenefits(List<String> includedBenefits) {
         this.includedBenefits = includedBenefits;
         return this;
     }
 
+    public Benefits addIncludedBenefitsItem(String includedBenefitsItem) {
+        if (this.includedBenefits == null) {
+            this.includedBenefits = new ArrayList<>();
+        }
+        this.includedBenefits.add(includedBenefitsItem);
+        return this;
+    }
+
     /**
-     * Get includedBenefits
+     * A list of included benefits.
      *
      * @return includedBenefits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public IncludedBenefits getIncludedBenefits() {
+    @javax.annotation.Nonnull
+    public List<String> getIncludedBenefits() {
         return includedBenefits;
     }
 
-    public void setIncludedBenefits(IncludedBenefits includedBenefits) {
+    public void setIncludedBenefits(List<String> includedBenefits) {
         this.includedBenefits = includedBenefits;
     }
 
-    public Benefits excludedBenefits(ExcludedBenefits excludedBenefits) {
+    public Benefits excludedBenefits(List<ExcludedBenefit> excludedBenefits) {
         this.excludedBenefits = excludedBenefits;
         return this;
     }
 
+    public Benefits addExcludedBenefitsItem(ExcludedBenefit excludedBenefitsItem) {
+        if (this.excludedBenefits == null) {
+            this.excludedBenefits = new ArrayList<>();
+        }
+        this.excludedBenefits.add(excludedBenefitsItem);
+        return this;
+    }
+
     /**
-     * Get excludedBenefits
+     * A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
      *
      * @return excludedBenefits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public ExcludedBenefits getExcludedBenefits() {
+    @javax.annotation.Nonnull
+    public List<ExcludedBenefit> getExcludedBenefits() {
         return excludedBenefits;
     }
 
-    public void setExcludedBenefits(ExcludedBenefits excludedBenefits) {
+    public void setExcludedBenefits(List<ExcludedBenefit> excludedBenefits) {
         this.excludedBenefits = excludedBenefits;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +139,132 @@ public class Benefits {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("includedBenefits");
+        openapiFields.add("excludedBenefits");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("includedBenefits");
+        openapiRequiredFields.add("excludedBenefits");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Benefits
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Benefits.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Benefits is not found in the empty JSON string",
+                        Benefits.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Benefits.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Benefits` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Benefits.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("includedBenefits") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("includedBenefits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `includedBenefits` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("includedBenefits").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("excludedBenefits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `excludedBenefits` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("excludedBenefits").toString()));
+        }
+
+        JsonArray jsonArrayexcludedBenefits = jsonObj.getAsJsonArray("excludedBenefits");
+        // validate the required field `excludedBenefits` (array)
+        for (int i = 0; i < jsonArrayexcludedBenefits.size(); i++) {
+            ExcludedBenefit.validateJsonElement(jsonArrayexcludedBenefits.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Benefits.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Benefits' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Benefits> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Benefits.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Benefits>() {
+                        @Override
+                        public void write(JsonWriter out, Benefits value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Benefits read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Benefits given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Benefits
+     * @throws IOException if the JSON string is invalid with respect to Benefits
+     */
+    public static Benefits fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Benefits.class);
+    }
+
+    /**
+     * Convert an instance of Benefits to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

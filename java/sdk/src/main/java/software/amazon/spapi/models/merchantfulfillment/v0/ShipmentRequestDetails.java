@@ -12,44 +12,82 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Shipment information required for requesting shipping service offers or for creating a shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Shipment information required for requesting shipping service offers or for creating a shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentRequestDetails {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("ItemList")
-    private ItemList itemList = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("ShipFromAddress")
-    private Address shipFromAddress = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
 
-    @SerializedName("PackageDimensions")
-    private PackageDimensions packageDimensions = null;
+    public static final String SERIALIZED_NAME_ITEM_LIST = "ItemList";
 
-    @SerializedName("Weight")
-    private Weight weight = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_LIST)
+    private List<Item> itemList = new ArrayList<>();
 
-    @SerializedName("MustArriveByDate")
-    private OffsetDateTime mustArriveByDate = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "ShipFromAddress";
 
-    @SerializedName("ShipDate")
-    private OffsetDateTime shipDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_ADDRESS)
+    private Address shipFromAddress;
 
-    @SerializedName("ShippingServiceOptions")
-    private ShippingServiceOptions shippingServiceOptions = null;
+    public static final String SERIALIZED_NAME_PACKAGE_DIMENSIONS = "PackageDimensions";
 
-    @SerializedName("LabelCustomization")
-    private LabelCustomization labelCustomization = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_DIMENSIONS)
+    private PackageDimensions packageDimensions;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "Weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public static final String SERIALIZED_NAME_MUST_ARRIVE_BY_DATE = "MustArriveByDate";
+
+    @SerializedName(SERIALIZED_NAME_MUST_ARRIVE_BY_DATE)
+    private OffsetDateTime mustArriveByDate;
+
+    public static final String SERIALIZED_NAME_SHIP_DATE = "ShipDate";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_DATE)
+    private OffsetDateTime shipDate;
+
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_OPTIONS = "ShippingServiceOptions";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_OPTIONS)
+    private ShippingServiceOptions shippingServiceOptions;
+
+    public static final String SERIALIZED_NAME_LABEL_CUSTOMIZATION = "LabelCustomization";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_CUSTOMIZATION)
+    private LabelCustomization labelCustomization;
+
+    public ShipmentRequestDetails() {}
 
     public ShipmentRequestDetails amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -61,9 +99,7 @@ public class ShipmentRequestDetails {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -82,8 +118,7 @@ public class ShipmentRequestDetails {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined order identifier.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -91,22 +126,30 @@ public class ShipmentRequestDetails {
         this.sellerOrderId = sellerOrderId;
     }
 
-    public ShipmentRequestDetails itemList(ItemList itemList) {
+    public ShipmentRequestDetails itemList(List<Item> itemList) {
         this.itemList = itemList;
         return this;
     }
 
+    public ShipmentRequestDetails addItemListItem(Item itemListItem) {
+        if (this.itemList == null) {
+            this.itemList = new ArrayList<>();
+        }
+        this.itemList.add(itemListItem);
+        return this;
+    }
+
     /**
-     * Get itemList
+     * The list of items you want to include in a shipment.
      *
      * @return itemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public ItemList getItemList() {
+    @javax.annotation.Nonnull
+    public List<Item> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ItemList itemList) {
+    public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
     }
 
@@ -120,7 +163,7 @@ public class ShipmentRequestDetails {
      *
      * @return shipFromAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -139,7 +182,7 @@ public class ShipmentRequestDetails {
      *
      * @return packageDimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageDimensions getPackageDimensions() {
         return packageDimensions;
     }
@@ -158,7 +201,7 @@ public class ShipmentRequestDetails {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Weight getWeight() {
         return weight;
     }
@@ -177,8 +220,7 @@ public class ShipmentRequestDetails {
      *
      * @return mustArriveByDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getMustArriveByDate() {
+    @javax.annotation.Nullable public OffsetDateTime getMustArriveByDate() {
         return mustArriveByDate;
     }
 
@@ -196,8 +238,7 @@ public class ShipmentRequestDetails {
      *
      * @return shipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShipDate() {
         return shipDate;
     }
 
@@ -215,7 +256,7 @@ public class ShipmentRequestDetails {
      *
      * @return shippingServiceOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingServiceOptions getShippingServiceOptions() {
         return shippingServiceOptions;
     }
@@ -234,8 +275,7 @@ public class ShipmentRequestDetails {
      *
      * @return labelCustomization
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelCustomization getLabelCustomization() {
+    @javax.annotation.Nullable public LabelCustomization getLabelCustomization() {
         return labelCustomization;
     }
 
@@ -244,7 +284,7 @@ public class ShipmentRequestDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -308,10 +348,162 @@ public class ShipmentRequestDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("ItemList");
+        openapiFields.add("ShipFromAddress");
+        openapiFields.add("PackageDimensions");
+        openapiFields.add("Weight");
+        openapiFields.add("MustArriveByDate");
+        openapiFields.add("ShipDate");
+        openapiFields.add("ShippingServiceOptions");
+        openapiFields.add("LabelCustomization");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AmazonOrderId");
+        openapiRequiredFields.add("ItemList");
+        openapiRequiredFields.add("ShipFromAddress");
+        openapiRequiredFields.add("PackageDimensions");
+        openapiRequiredFields.add("Weight");
+        openapiRequiredFields.add("ShippingServiceOptions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentRequestDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentRequestDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentRequestDetails is not found in the empty JSON string",
+                        ShipmentRequestDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentRequestDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentRequestDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipmentRequestDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("ItemList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ItemList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("ItemList").toString()));
+        }
+
+        JsonArray jsonArrayitemList = jsonObj.getAsJsonArray("ItemList");
+        // validate the required field `ItemList` (array)
+        for (int i = 0; i < jsonArrayitemList.size(); i++) {
+            Item.validateJsonElement(jsonArrayitemList.get(i));
+        }
+        ;
+        // validate the required field `ShipFromAddress`
+        Address.validateJsonElement(jsonObj.get("ShipFromAddress"));
+        // validate the required field `PackageDimensions`
+        PackageDimensions.validateJsonElement(jsonObj.get("PackageDimensions"));
+        // validate the required field `Weight`
+        Weight.validateJsonElement(jsonObj.get("Weight"));
+        // validate the required field `ShippingServiceOptions`
+        ShippingServiceOptions.validateJsonElement(jsonObj.get("ShippingServiceOptions"));
+        // validate the optional field `LabelCustomization`
+        if (jsonObj.get("LabelCustomization") != null
+                && !jsonObj.get("LabelCustomization").isJsonNull()) {
+            LabelCustomization.validateJsonElement(jsonObj.get("LabelCustomization"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentRequestDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentRequestDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentRequestDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentRequestDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentRequestDetails>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentRequestDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentRequestDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentRequestDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentRequestDetails
+     * @throws IOException if the JSON string is invalid with respect to ShipmentRequestDetails
+     */
+    public static ShipmentRequestDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentRequestDetails.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentRequestDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

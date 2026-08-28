@@ -12,60 +12,112 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A shipping service offer made by a carrier. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A shipping service offer made by a carrier.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingService {
-    @SerializedName("ShippingServiceName")
-    private String shippingServiceName = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_NAME = "ShippingServiceName";
 
-    @SerializedName("CarrierName")
-    private String carrierName = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_NAME)
+    private String shippingServiceName;
 
-    @SerializedName("ShippingServiceId")
-    private String shippingServiceId = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "CarrierName";
 
-    @SerializedName("ShippingServiceOfferId")
-    private String shippingServiceOfferId = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
 
-    @SerializedName("ShipDate")
-    private OffsetDateTime shipDate = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_ID = "ShippingServiceId";
 
-    @SerializedName("EarliestEstimatedDeliveryDate")
-    private OffsetDateTime earliestEstimatedDeliveryDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_ID)
+    private String shippingServiceId;
 
-    @SerializedName("LatestEstimatedDeliveryDate")
-    private OffsetDateTime latestEstimatedDeliveryDate = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_OFFER_ID = "ShippingServiceOfferId";
 
-    @SerializedName("Rate")
-    private CurrencyAmount rate = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_OFFER_ID)
+    private String shippingServiceOfferId;
 
-    @SerializedName("RateWithAdjustments")
-    private CurrencyAmount rateWithAdjustments = null;
+    public static final String SERIALIZED_NAME_SHIP_DATE = "ShipDate";
 
-    @SerializedName("AdjustmentItemList")
-    private AdjustmentItemList adjustmentItemList = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_DATE)
+    private OffsetDateTime shipDate;
 
-    @SerializedName("ShippingServiceOptions")
-    private ShippingServiceOptions shippingServiceOptions = null;
+    public static final String SERIALIZED_NAME_EARLIEST_ESTIMATED_DELIVERY_DATE = "EarliestEstimatedDeliveryDate";
 
-    @SerializedName("AvailableShippingServiceOptions")
-    private AvailableShippingServiceOptions availableShippingServiceOptions = null;
+    @SerializedName(SERIALIZED_NAME_EARLIEST_ESTIMATED_DELIVERY_DATE)
+    private OffsetDateTime earliestEstimatedDeliveryDate;
 
-    @SerializedName("AvailableLabelFormats")
-    private LabelFormatList availableLabelFormats = null;
+    public static final String SERIALIZED_NAME_LATEST_ESTIMATED_DELIVERY_DATE = "LatestEstimatedDeliveryDate";
 
-    @SerializedName("AvailableFormatOptionsForLabel")
-    private AvailableFormatOptionsForLabelList availableFormatOptionsForLabel = null;
+    @SerializedName(SERIALIZED_NAME_LATEST_ESTIMATED_DELIVERY_DATE)
+    private OffsetDateTime latestEstimatedDeliveryDate;
 
-    @SerializedName("RequiresAdditionalSellerInputs")
-    private Boolean requiresAdditionalSellerInputs = null;
+    public static final String SERIALIZED_NAME_RATE = "Rate";
 
-    @SerializedName("Benefits")
-    private Benefits benefits = null;
+    @SerializedName(SERIALIZED_NAME_RATE)
+    private CurrencyAmount rate;
+
+    public static final String SERIALIZED_NAME_RATE_WITH_ADJUSTMENTS = "RateWithAdjustments";
+
+    @SerializedName(SERIALIZED_NAME_RATE_WITH_ADJUSTMENTS)
+    private CurrencyAmount rateWithAdjustments;
+
+    public static final String SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST = "AdjustmentItemList";
+
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST)
+    private List<RateItem> adjustmentItemList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_OPTIONS = "ShippingServiceOptions";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_OPTIONS)
+    private ShippingServiceOptions shippingServiceOptions;
+
+    public static final String SERIALIZED_NAME_AVAILABLE_SHIPPING_SERVICE_OPTIONS = "AvailableShippingServiceOptions";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_SHIPPING_SERVICE_OPTIONS)
+    private AvailableShippingServiceOptions availableShippingServiceOptions;
+
+    public static final String SERIALIZED_NAME_AVAILABLE_LABEL_FORMATS = "AvailableLabelFormats";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_LABEL_FORMATS)
+    private List<LabelFormat> availableLabelFormats = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AVAILABLE_FORMAT_OPTIONS_FOR_LABEL = "AvailableFormatOptionsForLabel";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_FORMAT_OPTIONS_FOR_LABEL)
+    private List<LabelFormatOption> availableFormatOptionsForLabel = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REQUIRES_ADDITIONAL_SELLER_INPUTS = "RequiresAdditionalSellerInputs";
+
+    @SerializedName(SERIALIZED_NAME_REQUIRES_ADDITIONAL_SELLER_INPUTS)
+    private Boolean requiresAdditionalSellerInputs;
+
+    public static final String SERIALIZED_NAME_BENEFITS = "Benefits";
+
+    @SerializedName(SERIALIZED_NAME_BENEFITS)
+    private Benefits benefits;
+
+    public ShippingService() {}
 
     public ShippingService shippingServiceName(String shippingServiceName) {
         this.shippingServiceName = shippingServiceName;
@@ -78,10 +130,7 @@ public class ShippingService {
      *
      * @return shippingServiceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\". ")
+    @javax.annotation.Nonnull
     public String getShippingServiceName() {
         return shippingServiceName;
     }
@@ -100,7 +149,7 @@ public class ShippingService {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
+    @javax.annotation.Nonnull
     public String getCarrierName() {
         return carrierName;
     }
@@ -119,9 +168,7 @@ public class ShippingService {
      *
      * @return shippingServiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined shipping service identifier.")
+    @javax.annotation.Nonnull
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -140,9 +187,7 @@ public class ShippingService {
      *
      * @return shippingServiceOfferId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined shipping service offer identifier.")
+    @javax.annotation.Nonnull
     public String getShippingServiceOfferId() {
         return shippingServiceOfferId;
     }
@@ -161,7 +206,7 @@ public class ShippingService {
      *
      * @return shipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date-time formatted timestamp.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getShipDate() {
         return shipDate;
     }
@@ -180,8 +225,7 @@ public class ShippingService {
      *
      * @return earliestEstimatedDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getEarliestEstimatedDeliveryDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEarliestEstimatedDeliveryDate() {
         return earliestEstimatedDeliveryDate;
     }
 
@@ -199,8 +243,7 @@ public class ShippingService {
      *
      * @return latestEstimatedDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getLatestEstimatedDeliveryDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLatestEstimatedDeliveryDate() {
         return latestEstimatedDeliveryDate;
     }
 
@@ -218,7 +261,7 @@ public class ShippingService {
      *
      * @return rate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public CurrencyAmount getRate() {
         return rate;
     }
@@ -237,7 +280,7 @@ public class ShippingService {
      *
      * @return rateWithAdjustments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public CurrencyAmount getRateWithAdjustments() {
         return rateWithAdjustments;
     }
@@ -246,22 +289,29 @@ public class ShippingService {
         this.rateWithAdjustments = rateWithAdjustments;
     }
 
-    public ShippingService adjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public ShippingService adjustmentItemList(List<RateItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
         return this;
     }
 
+    public ShippingService addAdjustmentItemListItem(RateItem adjustmentItemListItem) {
+        if (this.adjustmentItemList == null) {
+            this.adjustmentItemList = new ArrayList<>();
+        }
+        this.adjustmentItemList.add(adjustmentItemListItem);
+        return this;
+    }
+
     /**
-     * Get adjustmentItemList
+     * List of adjustments.
      *
      * @return adjustmentItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdjustmentItemList getAdjustmentItemList() {
+    @javax.annotation.Nullable public List<RateItem> getAdjustmentItemList() {
         return adjustmentItemList;
     }
 
-    public void setAdjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public void setAdjustmentItemList(List<RateItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
     }
 
@@ -275,7 +325,7 @@ public class ShippingService {
      *
      * @return shippingServiceOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingServiceOptions getShippingServiceOptions() {
         return shippingServiceOptions;
     }
@@ -295,8 +345,7 @@ public class ShippingService {
      *
      * @return availableShippingServiceOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AvailableShippingServiceOptions getAvailableShippingServiceOptions() {
+    @javax.annotation.Nullable public AvailableShippingServiceOptions getAvailableShippingServiceOptions() {
         return availableShippingServiceOptions;
     }
 
@@ -304,42 +353,55 @@ public class ShippingService {
         this.availableShippingServiceOptions = availableShippingServiceOptions;
     }
 
-    public ShippingService availableLabelFormats(LabelFormatList availableLabelFormats) {
+    public ShippingService availableLabelFormats(List<LabelFormat> availableLabelFormats) {
         this.availableLabelFormats = availableLabelFormats;
         return this;
     }
 
+    public ShippingService addAvailableLabelFormatsItem(LabelFormat availableLabelFormatsItem) {
+        if (this.availableLabelFormats == null) {
+            this.availableLabelFormats = new ArrayList<>();
+        }
+        this.availableLabelFormats.add(availableLabelFormatsItem);
+        return this;
+    }
+
     /**
-     * Get availableLabelFormats
+     * List of label formats.
      *
      * @return availableLabelFormats
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelFormatList getAvailableLabelFormats() {
+    @javax.annotation.Nullable public List<LabelFormat> getAvailableLabelFormats() {
         return availableLabelFormats;
     }
 
-    public void setAvailableLabelFormats(LabelFormatList availableLabelFormats) {
+    public void setAvailableLabelFormats(List<LabelFormat> availableLabelFormats) {
         this.availableLabelFormats = availableLabelFormats;
     }
 
-    public ShippingService availableFormatOptionsForLabel(
-            AvailableFormatOptionsForLabelList availableFormatOptionsForLabel) {
+    public ShippingService availableFormatOptionsForLabel(List<LabelFormatOption> availableFormatOptionsForLabel) {
         this.availableFormatOptionsForLabel = availableFormatOptionsForLabel;
         return this;
     }
 
+    public ShippingService addAvailableFormatOptionsForLabelItem(LabelFormatOption availableFormatOptionsForLabelItem) {
+        if (this.availableFormatOptionsForLabel == null) {
+            this.availableFormatOptionsForLabel = new ArrayList<>();
+        }
+        this.availableFormatOptionsForLabel.add(availableFormatOptionsForLabelItem);
+        return this;
+    }
+
     /**
-     * Get availableFormatOptionsForLabel
+     * The available label formats.
      *
      * @return availableFormatOptionsForLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AvailableFormatOptionsForLabelList getAvailableFormatOptionsForLabel() {
+    @javax.annotation.Nullable public List<LabelFormatOption> getAvailableFormatOptionsForLabel() {
         return availableFormatOptionsForLabel;
     }
 
-    public void setAvailableFormatOptionsForLabel(AvailableFormatOptionsForLabelList availableFormatOptionsForLabel) {
+    public void setAvailableFormatOptionsForLabel(List<LabelFormatOption> availableFormatOptionsForLabel) {
         this.availableFormatOptionsForLabel = availableFormatOptionsForLabel;
     }
 
@@ -353,9 +415,7 @@ public class ShippingService {
      *
      * @return requiresAdditionalSellerInputs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, additional seller inputs are required.")
+    @javax.annotation.Nonnull
     public Boolean getRequiresAdditionalSellerInputs() {
         return requiresAdditionalSellerInputs;
     }
@@ -374,8 +434,7 @@ public class ShippingService {
      *
      * @return benefits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Benefits getBenefits() {
+    @javax.annotation.Nullable public Benefits getBenefits() {
         return benefits;
     }
 
@@ -384,7 +443,7 @@ public class ShippingService {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -480,10 +539,212 @@ public class ShippingService {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShippingServiceName");
+        openapiFields.add("CarrierName");
+        openapiFields.add("ShippingServiceId");
+        openapiFields.add("ShippingServiceOfferId");
+        openapiFields.add("ShipDate");
+        openapiFields.add("EarliestEstimatedDeliveryDate");
+        openapiFields.add("LatestEstimatedDeliveryDate");
+        openapiFields.add("Rate");
+        openapiFields.add("RateWithAdjustments");
+        openapiFields.add("AdjustmentItemList");
+        openapiFields.add("ShippingServiceOptions");
+        openapiFields.add("AvailableShippingServiceOptions");
+        openapiFields.add("AvailableLabelFormats");
+        openapiFields.add("AvailableFormatOptionsForLabel");
+        openapiFields.add("RequiresAdditionalSellerInputs");
+        openapiFields.add("Benefits");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShippingServiceName");
+        openapiRequiredFields.add("CarrierName");
+        openapiRequiredFields.add("ShippingServiceId");
+        openapiRequiredFields.add("ShippingServiceOfferId");
+        openapiRequiredFields.add("ShipDate");
+        openapiRequiredFields.add("Rate");
+        openapiRequiredFields.add("RateWithAdjustments");
+        openapiRequiredFields.add("ShippingServiceOptions");
+        openapiRequiredFields.add("RequiresAdditionalSellerInputs");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingService
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingService.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingService is not found in the empty JSON string",
+                        ShippingService.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingService.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingService` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShippingService.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("ShippingServiceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceName").toString()));
+        }
+        if (!jsonObj.get("CarrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CarrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CarrierName").toString()));
+        }
+        if (!jsonObj.get("ShippingServiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceId").toString()));
+        }
+        if (!jsonObj.get("ShippingServiceOfferId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceOfferId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceOfferId").toString()));
+        }
+        // validate the required field `Rate`
+        CurrencyAmount.validateJsonElement(jsonObj.get("Rate"));
+        // validate the required field `RateWithAdjustments`
+        CurrencyAmount.validateJsonElement(jsonObj.get("RateWithAdjustments"));
+        if (jsonObj.get("AdjustmentItemList") != null
+                && !jsonObj.get("AdjustmentItemList").isJsonNull()) {
+            JsonArray jsonArrayadjustmentItemList = jsonObj.getAsJsonArray("AdjustmentItemList");
+            if (jsonArrayadjustmentItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AdjustmentItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AdjustmentItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AdjustmentItemList").toString()));
+                }
+
+                // validate the optional field `AdjustmentItemList` (array)
+                for (int i = 0; i < jsonArrayadjustmentItemList.size(); i++) {
+                    RateItem.validateJsonElement(jsonArrayadjustmentItemList.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `ShippingServiceOptions`
+        ShippingServiceOptions.validateJsonElement(jsonObj.get("ShippingServiceOptions"));
+        // validate the optional field `AvailableShippingServiceOptions`
+        if (jsonObj.get("AvailableShippingServiceOptions") != null
+                && !jsonObj.get("AvailableShippingServiceOptions").isJsonNull()) {
+            AvailableShippingServiceOptions.validateJsonElement(jsonObj.get("AvailableShippingServiceOptions"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("AvailableLabelFormats") != null
+                && !jsonObj.get("AvailableLabelFormats").isJsonNull()
+                && !jsonObj.get("AvailableLabelFormats").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AvailableLabelFormats` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AvailableLabelFormats").toString()));
+        }
+        if (jsonObj.get("AvailableFormatOptionsForLabel") != null
+                && !jsonObj.get("AvailableFormatOptionsForLabel").isJsonNull()) {
+            JsonArray jsonArrayavailableFormatOptionsForLabel =
+                    jsonObj.getAsJsonArray("AvailableFormatOptionsForLabel");
+            if (jsonArrayavailableFormatOptionsForLabel != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AvailableFormatOptionsForLabel").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AvailableFormatOptionsForLabel` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AvailableFormatOptionsForLabel").toString()));
+                }
+
+                // validate the optional field `AvailableFormatOptionsForLabel` (array)
+                for (int i = 0; i < jsonArrayavailableFormatOptionsForLabel.size(); i++) {
+                    LabelFormatOption.validateJsonElement(jsonArrayavailableFormatOptionsForLabel.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `Benefits`
+        if (jsonObj.get("Benefits") != null && !jsonObj.get("Benefits").isJsonNull()) {
+            Benefits.validateJsonElement(jsonObj.get("Benefits"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingService.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingService' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingService> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingService.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingService>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingService value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingService read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingService given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingService
+     * @throws IOException if the JSON string is invalid with respect to ShippingService
+     */
+    public static ShippingService fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingService.class);
+    }
+
+    /**
+     * Convert an instance of ShippingService to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

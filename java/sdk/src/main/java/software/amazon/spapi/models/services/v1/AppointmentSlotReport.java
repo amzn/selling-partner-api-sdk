@@ -12,27 +12,37 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Availability information as per the service context queried. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Availability information as per the service context queried.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AppointmentSlotReport {
     /** Defines the type of slots. */
     @JsonAdapter(SchedulingTypeEnum.Adapter.class)
     public enum SchedulingTypeEnum {
-        @SerializedName("REAL_TIME_SCHEDULING")
         REAL_TIME_SCHEDULING("REAL_TIME_SCHEDULING"),
-        @SerializedName("NON_REAL_TIME_SCHEDULING")
+
         NON_REAL_TIME_SCHEDULING("NON_REAL_TIME_SCHEDULING");
 
         private String value;
@@ -50,40 +60,55 @@ public class AppointmentSlotReport {
             return String.valueOf(value);
         }
 
-        public static SchedulingTypeEnum fromValue(String input) {
+        public static SchedulingTypeEnum fromValue(String value) {
             for (SchedulingTypeEnum b : SchedulingTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SchedulingTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SchedulingTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SchedulingTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SchedulingTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SchedulingTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SchedulingTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("schedulingType")
-    private SchedulingTypeEnum schedulingType = null;
+    public static final String SERIALIZED_NAME_SCHEDULING_TYPE = "schedulingType";
 
-    @SerializedName("startTime")
-    private OffsetDateTime startTime = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULING_TYPE)
+    private SchedulingTypeEnum schedulingType;
 
-    @SerializedName("endTime")
-    private OffsetDateTime endTime = null;
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
 
-    @SerializedName("appointmentSlots")
-    private List<AppointmentSlot> appointmentSlots = null;
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private OffsetDateTime startTime;
+
+    public static final String SERIALIZED_NAME_END_TIME = "endTime";
+
+    @SerializedName(SERIALIZED_NAME_END_TIME)
+    private OffsetDateTime endTime;
+
+    public static final String SERIALIZED_NAME_APPOINTMENT_SLOTS = "appointmentSlots";
+
+    @SerializedName(SERIALIZED_NAME_APPOINTMENT_SLOTS)
+    private List<AppointmentSlot> appointmentSlots = new ArrayList<>();
+
+    public AppointmentSlotReport() {}
 
     public AppointmentSlotReport schedulingType(SchedulingTypeEnum schedulingType) {
         this.schedulingType = schedulingType;
@@ -95,8 +120,7 @@ public class AppointmentSlotReport {
      *
      * @return schedulingType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Defines the type of slots.")
-    public SchedulingTypeEnum getSchedulingType() {
+    @javax.annotation.Nullable public SchedulingTypeEnum getSchedulingType() {
         return schedulingType;
     }
 
@@ -114,9 +138,7 @@ public class AppointmentSlotReport {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Start Time from which the appointment slots are generated in ISO 8601 format.")
-    public OffsetDateTime getStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getStartTime() {
         return startTime;
     }
 
@@ -134,9 +156,7 @@ public class AppointmentSlotReport {
      *
      * @return endTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "End Time up to which the appointment slots are generated in ISO 8601 format.")
-    public OffsetDateTime getEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getEndTime() {
         return endTime;
     }
 
@@ -162,10 +182,7 @@ public class AppointmentSlotReport {
      *
      * @return appointmentSlots
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of time windows along with associated capacity in which the service can be performed.")
-    public List<AppointmentSlot> getAppointmentSlots() {
+    @javax.annotation.Nullable public List<AppointmentSlot> getAppointmentSlots() {
         return appointmentSlots;
     }
 
@@ -174,7 +191,7 @@ public class AppointmentSlotReport {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -210,10 +227,133 @@ public class AppointmentSlotReport {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("schedulingType");
+        openapiFields.add("startTime");
+        openapiFields.add("endTime");
+        openapiFields.add("appointmentSlots");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AppointmentSlotReport
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AppointmentSlotReport.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AppointmentSlotReport is not found in the empty JSON string",
+                        AppointmentSlotReport.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AppointmentSlotReport.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AppointmentSlotReport` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("schedulingType") != null
+                        && !jsonObj.get("schedulingType").isJsonNull())
+                && !jsonObj.get("schedulingType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `schedulingType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("schedulingType").toString()));
+        }
+        // validate the optional field `schedulingType`
+        if (jsonObj.get("schedulingType") != null
+                && !jsonObj.get("schedulingType").isJsonNull()) {
+            SchedulingTypeEnum.validateJsonElement(jsonObj.get("schedulingType"));
+        }
+        if (jsonObj.get("appointmentSlots") != null
+                && !jsonObj.get("appointmentSlots").isJsonNull()) {
+            JsonArray jsonArrayappointmentSlots = jsonObj.getAsJsonArray("appointmentSlots");
+            if (jsonArrayappointmentSlots != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("appointmentSlots").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `appointmentSlots` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("appointmentSlots").toString()));
+                }
+
+                // validate the optional field `appointmentSlots` (array)
+                for (int i = 0; i < jsonArrayappointmentSlots.size(); i++) {
+                    AppointmentSlot.validateJsonElement(jsonArrayappointmentSlots.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AppointmentSlotReport.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AppointmentSlotReport' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AppointmentSlotReport> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AppointmentSlotReport.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AppointmentSlotReport>() {
+                        @Override
+                        public void write(JsonWriter out, AppointmentSlotReport value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AppointmentSlotReport read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AppointmentSlotReport given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AppointmentSlotReport
+     * @throws IOException if the JSON string is invalid with respect to AppointmentSlotReport
+     */
+    public static AppointmentSlotReport fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AppointmentSlotReport.class);
+    }
+
+    /**
+     * Convert an instance of AppointmentSlotReport to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

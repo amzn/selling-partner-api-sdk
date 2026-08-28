@@ -12,23 +12,101 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The marketplace attributes associated with the location. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace attributes associated with the location.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MarketplaceAttributes {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("channelName")
-    private String channelName = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("merchantId")
-    private String merchantId = null;
+    public static final String SERIALIZED_NAME_CHANNEL_NAME = "channelName";
 
-    @SerializedName("customAttributes")
-    private CustomChannelAttribute customAttributes = null;
+    @SerializedName(SERIALIZED_NAME_CHANNEL_NAME)
+    private String channelName;
+
+    public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
+
+    @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
+    private String merchantId;
+
+    /** Gets or Sets customAttributes */
+    @JsonAdapter(CustomAttributesEnum.Adapter.class)
+    public enum CustomAttributesEnum {
+        PRIME("PRIME"),
+
+        FASTTRACK("FASTTRACK");
+
+        private String value;
+
+        CustomAttributesEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CustomAttributesEnum fromValue(String value) {
+            for (CustomAttributesEnum b : CustomAttributesEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<CustomAttributesEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final CustomAttributesEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public CustomAttributesEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return CustomAttributesEnum.fromValue(value);
+            }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CustomAttributesEnum.fromValue(value);
+        }
+    }
+
+    public static final String SERIALIZED_NAME_CUSTOM_ATTRIBUTES = "customAttributes";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOM_ATTRIBUTES)
+    private List<CustomAttributesEnum> customAttributes = new ArrayList<>();
+
+    public MarketplaceAttributes() {}
 
     public MarketplaceAttributes marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -41,10 +119,7 @@ public class MarketplaceAttributes {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -63,9 +138,7 @@ public class MarketplaceAttributes {
      *
      * @return channelName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The channel name associated with the location.")
+    @javax.annotation.Nonnull
     public String getChannelName() {
         return channelName;
     }
@@ -84,9 +157,7 @@ public class MarketplaceAttributes {
      *
      * @return merchantId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The ID of the merchant or seller to whom this order is created.")
-    public String getMerchantId() {
+    @javax.annotation.Nullable public String getMerchantId() {
         return merchantId;
     }
 
@@ -94,27 +165,34 @@ public class MarketplaceAttributes {
         this.merchantId = merchantId;
     }
 
-    public MarketplaceAttributes customAttributes(CustomChannelAttribute customAttributes) {
+    public MarketplaceAttributes customAttributes(List<CustomAttributesEnum> customAttributes) {
         this.customAttributes = customAttributes;
         return this;
     }
 
+    public MarketplaceAttributes addCustomAttributesItem(CustomAttributesEnum customAttributesItem) {
+        if (this.customAttributes == null) {
+            this.customAttributes = new ArrayList<>();
+        }
+        this.customAttributes.add(customAttributesItem);
+        return this;
+    }
+
     /**
-     * Get customAttributes
+     * Marketplace channel-specific attribute value.
      *
      * @return customAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CustomChannelAttribute getCustomAttributes() {
+    @javax.annotation.Nullable public List<CustomAttributesEnum> getCustomAttributes() {
         return customAttributes;
     }
 
-    public void setCustomAttributes(CustomChannelAttribute customAttributes) {
+    public void setCustomAttributes(List<CustomAttributesEnum> customAttributes) {
         this.customAttributes = customAttributes;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +226,138 @@ public class MarketplaceAttributes {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("channelName");
+        openapiFields.add("merchantId");
+        openapiFields.add("customAttributes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("channelName");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MarketplaceAttributes
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MarketplaceAttributes.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MarketplaceAttributes is not found in the empty JSON string",
+                        MarketplaceAttributes.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MarketplaceAttributes.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MarketplaceAttributes` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : MarketplaceAttributes.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("channelName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `channelName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("channelName").toString()));
+        }
+        if ((jsonObj.get("merchantId") != null && !jsonObj.get("merchantId").isJsonNull())
+                && !jsonObj.get("merchantId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `merchantId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("merchantId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("customAttributes") != null
+                && !jsonObj.get("customAttributes").isJsonNull()
+                && !jsonObj.get("customAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `customAttributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("customAttributes").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MarketplaceAttributes.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MarketplaceAttributes' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MarketplaceAttributes> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MarketplaceAttributes.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MarketplaceAttributes>() {
+                        @Override
+                        public void write(JsonWriter out, MarketplaceAttributes value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MarketplaceAttributes read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MarketplaceAttributes given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MarketplaceAttributes
+     * @throws IOException if the JSON string is invalid with respect to MarketplaceAttributes
+     */
+    public static MarketplaceAttributes fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MarketplaceAttributes.class);
+    }
+
+    /**
+     * Convert an instance of MarketplaceAttributes to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

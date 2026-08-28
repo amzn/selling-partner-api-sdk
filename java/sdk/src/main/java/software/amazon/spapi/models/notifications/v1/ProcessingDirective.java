@@ -12,8 +12,21 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Additional information passed to the subscription to control the processing of notifications. For example, you can
@@ -23,15 +36,21 @@ import java.util.Objects;
  * also use &#x60;filterExpression&#x60; to filter events based on notification payload. The specific features available
  * can vary by the &#x60;notificationType&#x60;.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Additional information passed to the subscription to control the processing of notifications. For example, you can use an `eventFilter` to customize your subscription to send notifications for only the `marketplaceId`s that you specify, or select the aggregation time period at which to send notifications (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can also use `filterExpression` to filter events based on notification payload. The specific features available can vary by the `notificationType`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProcessingDirective {
-    @SerializedName("eventFilter")
-    private EventFilter eventFilter = null;
+    public static final String SERIALIZED_NAME_EVENT_FILTER = "eventFilter";
 
-    @SerializedName("filterExpression")
-    private String filterExpression = null;
+    @SerializedName(SERIALIZED_NAME_EVENT_FILTER)
+    private EventFilter eventFilter;
+
+    public static final String SERIALIZED_NAME_FILTER_EXPRESSION = "filterExpression";
+
+    @SerializedName(SERIALIZED_NAME_FILTER_EXPRESSION)
+    private String filterExpression;
+
+    public ProcessingDirective() {}
 
     public ProcessingDirective eventFilter(EventFilter eventFilter) {
         this.eventFilter = eventFilter;
@@ -43,8 +62,7 @@ public class ProcessingDirective {
      *
      * @return eventFilter
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EventFilter getEventFilter() {
+    @javax.annotation.Nullable public EventFilter getEventFilter() {
         return eventFilter;
     }
 
@@ -69,10 +87,7 @@ public class ProcessingDirective {
      *
      * @return filterExpression
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.")
-    public String getFilterExpression() {
+    @javax.annotation.Nullable public String getFilterExpression() {
         return filterExpression;
     }
 
@@ -81,7 +96,7 @@ public class ProcessingDirective {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,10 +126,111 @@ public class ProcessingDirective {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("eventFilter");
+        openapiFields.add("filterExpression");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProcessingDirective
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProcessingDirective.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProcessingDirective is not found in the empty JSON string",
+                        ProcessingDirective.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProcessingDirective.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProcessingDirective` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `eventFilter`
+        if (jsonObj.get("eventFilter") != null && !jsonObj.get("eventFilter").isJsonNull()) {
+            EventFilter.validateJsonElement(jsonObj.get("eventFilter"));
+        }
+        if ((jsonObj.get("filterExpression") != null
+                        && !jsonObj.get("filterExpression").isJsonNull())
+                && !jsonObj.get("filterExpression").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `filterExpression` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("filterExpression").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProcessingDirective.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProcessingDirective' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProcessingDirective> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProcessingDirective.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProcessingDirective>() {
+                        @Override
+                        public void write(JsonWriter out, ProcessingDirective value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProcessingDirective read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProcessingDirective given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProcessingDirective
+     * @throws IOException if the JSON string is invalid with respect to ProcessingDirective
+     */
+    public static ProcessingDirective fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProcessingDirective.class);
+    }
+
+    /**
+     * Convert an instance of ProcessingDirective to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

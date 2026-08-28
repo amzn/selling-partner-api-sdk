@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Active Account Details */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Active Account Details")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ActiveAccount {
-    @SerializedName("accountId")
-    private String accountId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
 
-    @SerializedName("carrierId")
-    private String carrierId = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
+
+    public static final String SERIALIZED_NAME_CARRIER_ID = "carrierId";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_ID)
+    private String carrierId;
+
+    public ActiveAccount() {}
 
     public ActiveAccount accountId(String accountId) {
         this.accountId = accountId;
@@ -34,8 +55,7 @@ public class ActiveAccount {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for the seller's carrier account.")
-    public String getAccountId() {
+    @javax.annotation.Nullable public String getAccountId() {
         return accountId;
     }
 
@@ -53,9 +73,7 @@ public class ActiveAccount {
      *
      * @return carrierId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The carrier identifier for the offering, provided by the carrier.")
-    public String getCarrierId() {
+    @javax.annotation.Nullable public String getCarrierId() {
         return carrierId;
     }
 
@@ -64,7 +82,7 @@ public class ActiveAccount {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -92,10 +110,112 @@ public class ActiveAccount {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountId");
+        openapiFields.add("carrierId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ActiveAccount
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ActiveAccount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ActiveAccount is not found in the empty JSON string",
+                        ActiveAccount.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ActiveAccount.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ActiveAccount` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull())
+                && !jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+        if ((jsonObj.get("carrierId") != null && !jsonObj.get("carrierId").isJsonNull())
+                && !jsonObj.get("carrierId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ActiveAccount.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ActiveAccount' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ActiveAccount> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ActiveAccount.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ActiveAccount>() {
+                        @Override
+                        public void write(JsonWriter out, ActiveAccount value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ActiveAccount read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ActiveAccount given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ActiveAccount
+     * @throws IOException if the JSON string is invalid with respect to ActiveAccount
+     */
+    public static ActiveAccount fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ActiveAccount.class);
+    }
+
+    /**
+     * Convert an instance of ActiveAccount to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

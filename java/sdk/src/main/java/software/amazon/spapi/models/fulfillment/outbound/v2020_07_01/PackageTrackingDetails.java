@@ -12,57 +12,107 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tracking details of package */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking details of package")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageTrackingDetails {
-    @SerializedName("packageNumber")
-    private Integer packageNumber = null;
+    public static final String SERIALIZED_NAME_PACKAGE_NUMBER = "packageNumber";
 
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_NUMBER)
+    private Integer packageNumber;
 
-    @SerializedName("customerTrackingLink")
-    private String customerTrackingLink = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("carrierCode")
-    private String carrierCode = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("carrierPhoneNumber")
-    private String carrierPhoneNumber = null;
+    public static final String SERIALIZED_NAME_CUSTOMER_TRACKING_LINK = "customerTrackingLink";
 
-    @SerializedName("carrierURL")
-    private String carrierURL = null;
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_TRACKING_LINK)
+    private String customerTrackingLink;
 
-    @SerializedName("shipDate")
-    private OffsetDateTime shipDate = null;
+    public static final String SERIALIZED_NAME_CARRIER_CODE = "carrierCode";
 
-    @SerializedName("estimatedArrivalDate")
-    private OffsetDateTime estimatedArrivalDate = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_CODE)
+    private String carrierCode;
 
-    @SerializedName("shipToAddress")
-    private TrackingAddress shipToAddress = null;
+    public static final String SERIALIZED_NAME_CARRIER_PHONE_NUMBER = "carrierPhoneNumber";
 
-    @SerializedName("currentStatus")
-    private CurrentStatus currentStatus = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_PHONE_NUMBER)
+    private String carrierPhoneNumber;
 
-    @SerializedName("currentStatusDescription")
-    private String currentStatusDescription = null;
+    public static final String SERIALIZED_NAME_CARRIER_U_R_L = "carrierURL";
 
-    @SerializedName("deliveryWindow")
-    private DateRange deliveryWindow = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_U_R_L)
+    private String carrierURL;
 
-    @SerializedName("signedForBy")
-    private String signedForBy = null;
+    public static final String SERIALIZED_NAME_SHIP_DATE = "shipDate";
 
-    @SerializedName("additionalLocationInfo")
-    private AdditionalLocationInfo additionalLocationInfo = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_DATE)
+    private OffsetDateTime shipDate;
 
-    @SerializedName("trackingEvents")
-    private TrackingEventList trackingEvents = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_ARRIVAL_DATE = "estimatedArrivalDate";
+
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_ARRIVAL_DATE)
+    private OffsetDateTime estimatedArrivalDate;
+
+    public static final String SERIALIZED_NAME_SHIP_TO_ADDRESS = "shipToAddress";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_TO_ADDRESS)
+    private TrackingAddress shipToAddress;
+
+    public static final String SERIALIZED_NAME_CURRENT_STATUS = "currentStatus";
+
+    @SerializedName(SERIALIZED_NAME_CURRENT_STATUS)
+    private CurrentStatus currentStatus;
+
+    public static final String SERIALIZED_NAME_CURRENT_STATUS_DESCRIPTION = "currentStatusDescription";
+
+    @SerializedName(SERIALIZED_NAME_CURRENT_STATUS_DESCRIPTION)
+    private String currentStatusDescription;
+
+    public static final String SERIALIZED_NAME_DELIVERY_WINDOW = "deliveryWindow";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_WINDOW)
+    private DateRange deliveryWindow;
+
+    public static final String SERIALIZED_NAME_SIGNED_FOR_BY = "signedForBy";
+
+    @SerializedName(SERIALIZED_NAME_SIGNED_FOR_BY)
+    private String signedForBy;
+
+    public static final String SERIALIZED_NAME_ADDITIONAL_LOCATION_INFO = "additionalLocationInfo";
+
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_LOCATION_INFO)
+    private AdditionalLocationInfo additionalLocationInfo;
+
+    public static final String SERIALIZED_NAME_TRACKING_EVENTS = "trackingEvents";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
+    private List<TrackingEvent> trackingEvents = new ArrayList<>();
+
+    public PackageTrackingDetails() {}
 
     public PackageTrackingDetails packageNumber(Integer packageNumber) {
         this.packageNumber = packageNumber;
@@ -74,7 +124,7 @@ public class PackageTrackingDetails {
      *
      * @return packageNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The package identifier.")
+    @javax.annotation.Nonnull
     public Integer getPackageNumber() {
         return packageNumber;
     }
@@ -93,8 +143,7 @@ public class PackageTrackingDetails {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number for the package.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -112,9 +161,7 @@ public class PackageTrackingDetails {
      *
      * @return customerTrackingLink
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Link on swiship.com that allows customers to track the package.")
-    public String getCustomerTrackingLink() {
+    @javax.annotation.Nullable public String getCustomerTrackingLink() {
         return customerTrackingLink;
     }
 
@@ -132,8 +179,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the carrier.")
-    public String getCarrierCode() {
+    @javax.annotation.Nullable public String getCarrierCode() {
         return carrierCode;
     }
 
@@ -151,8 +197,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierPhoneNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The phone number of the carrier.")
-    public String getCarrierPhoneNumber() {
+    @javax.annotation.Nullable public String getCarrierPhoneNumber() {
         return carrierPhoneNumber;
     }
 
@@ -170,8 +215,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierURL
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The URL of the carrier's website.")
-    public String getCarrierURL() {
+    @javax.annotation.Nullable public String getCarrierURL() {
         return carrierURL;
     }
 
@@ -189,8 +233,7 @@ public class PackageTrackingDetails {
      *
      * @return shipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShipDate() {
         return shipDate;
     }
 
@@ -208,8 +251,7 @@ public class PackageTrackingDetails {
      *
      * @return estimatedArrivalDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getEstimatedArrivalDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
 
@@ -227,8 +269,7 @@ public class PackageTrackingDetails {
      *
      * @return shipToAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingAddress getShipToAddress() {
+    @javax.annotation.Nullable public TrackingAddress getShipToAddress() {
         return shipToAddress;
     }
 
@@ -246,8 +287,7 @@ public class PackageTrackingDetails {
      *
      * @return currentStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CurrentStatus getCurrentStatus() {
+    @javax.annotation.Nullable public CurrentStatus getCurrentStatus() {
         return currentStatus;
     }
 
@@ -265,8 +305,7 @@ public class PackageTrackingDetails {
      *
      * @return currentStatusDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Description corresponding to the `CurrentStatus` value.")
-    public String getCurrentStatusDescription() {
+    @javax.annotation.Nullable public String getCurrentStatusDescription() {
         return currentStatusDescription;
     }
 
@@ -284,8 +323,7 @@ public class PackageTrackingDetails {
      *
      * @return deliveryWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateRange getDeliveryWindow() {
+    @javax.annotation.Nullable public DateRange getDeliveryWindow() {
         return deliveryWindow;
     }
 
@@ -303,8 +341,7 @@ public class PackageTrackingDetails {
      *
      * @return signedForBy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the person who signed for the package.")
-    public String getSignedForBy() {
+    @javax.annotation.Nullable public String getSignedForBy() {
         return signedForBy;
     }
 
@@ -322,8 +359,7 @@ public class PackageTrackingDetails {
      *
      * @return additionalLocationInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdditionalLocationInfo getAdditionalLocationInfo() {
+    @javax.annotation.Nullable public AdditionalLocationInfo getAdditionalLocationInfo() {
         return additionalLocationInfo;
     }
 
@@ -331,27 +367,34 @@ public class PackageTrackingDetails {
         this.additionalLocationInfo = additionalLocationInfo;
     }
 
-    public PackageTrackingDetails trackingEvents(TrackingEventList trackingEvents) {
+    public PackageTrackingDetails trackingEvents(List<TrackingEvent> trackingEvents) {
         this.trackingEvents = trackingEvents;
         return this;
     }
 
+    public PackageTrackingDetails addTrackingEventsItem(TrackingEvent trackingEventsItem) {
+        if (this.trackingEvents == null) {
+            this.trackingEvents = new ArrayList<>();
+        }
+        this.trackingEvents.add(trackingEventsItem);
+        return this;
+    }
+
     /**
-     * Get trackingEvents
+     * An array of tracking event information.
      *
      * @return trackingEvents
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingEventList getTrackingEvents() {
+    @javax.annotation.Nullable public List<TrackingEvent> getTrackingEvents() {
         return trackingEvents;
     }
 
-    public void setTrackingEvents(TrackingEventList trackingEvents) {
+    public void setTrackingEvents(List<TrackingEvent> trackingEvents) {
         this.trackingEvents = trackingEvents;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -436,10 +479,208 @@ public class PackageTrackingDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageNumber");
+        openapiFields.add("trackingNumber");
+        openapiFields.add("customerTrackingLink");
+        openapiFields.add("carrierCode");
+        openapiFields.add("carrierPhoneNumber");
+        openapiFields.add("carrierURL");
+        openapiFields.add("shipDate");
+        openapiFields.add("estimatedArrivalDate");
+        openapiFields.add("shipToAddress");
+        openapiFields.add("currentStatus");
+        openapiFields.add("currentStatusDescription");
+        openapiFields.add("deliveryWindow");
+        openapiFields.add("signedForBy");
+        openapiFields.add("additionalLocationInfo");
+        openapiFields.add("trackingEvents");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageNumber");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageTrackingDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageTrackingDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageTrackingDetails is not found in the empty JSON string",
+                        PackageTrackingDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageTrackingDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageTrackingDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackageTrackingDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if ((jsonObj.get("customerTrackingLink") != null
+                        && !jsonObj.get("customerTrackingLink").isJsonNull())
+                && !jsonObj.get("customerTrackingLink").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `customerTrackingLink` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("customerTrackingLink").toString()));
+        }
+        if ((jsonObj.get("carrierCode") != null && !jsonObj.get("carrierCode").isJsonNull())
+                && !jsonObj.get("carrierCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierCode").toString()));
+        }
+        if ((jsonObj.get("carrierPhoneNumber") != null
+                        && !jsonObj.get("carrierPhoneNumber").isJsonNull())
+                && !jsonObj.get("carrierPhoneNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierPhoneNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierPhoneNumber").toString()));
+        }
+        if ((jsonObj.get("carrierURL") != null && !jsonObj.get("carrierURL").isJsonNull())
+                && !jsonObj.get("carrierURL").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierURL` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierURL").toString()));
+        }
+        // validate the optional field `shipToAddress`
+        if (jsonObj.get("shipToAddress") != null
+                && !jsonObj.get("shipToAddress").isJsonNull()) {
+            TrackingAddress.validateJsonElement(jsonObj.get("shipToAddress"));
+        }
+        // validate the optional field `currentStatus`
+        if (jsonObj.get("currentStatus") != null
+                && !jsonObj.get("currentStatus").isJsonNull()) {
+            CurrentStatus.validateJsonElement(jsonObj.get("currentStatus"));
+        }
+        if ((jsonObj.get("currentStatusDescription") != null
+                        && !jsonObj.get("currentStatusDescription").isJsonNull())
+                && !jsonObj.get("currentStatusDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `currentStatusDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("currentStatusDescription").toString()));
+        }
+        // validate the optional field `deliveryWindow`
+        if (jsonObj.get("deliveryWindow") != null
+                && !jsonObj.get("deliveryWindow").isJsonNull()) {
+            DateRange.validateJsonElement(jsonObj.get("deliveryWindow"));
+        }
+        if ((jsonObj.get("signedForBy") != null && !jsonObj.get("signedForBy").isJsonNull())
+                && !jsonObj.get("signedForBy").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `signedForBy` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("signedForBy").toString()));
+        }
+        // validate the optional field `additionalLocationInfo`
+        if (jsonObj.get("additionalLocationInfo") != null
+                && !jsonObj.get("additionalLocationInfo").isJsonNull()) {
+            AdditionalLocationInfo.validateJsonElement(jsonObj.get("additionalLocationInfo"));
+        }
+        if (jsonObj.get("trackingEvents") != null
+                && !jsonObj.get("trackingEvents").isJsonNull()) {
+            JsonArray jsonArraytrackingEvents = jsonObj.getAsJsonArray("trackingEvents");
+            if (jsonArraytrackingEvents != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("trackingEvents").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `trackingEvents` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("trackingEvents").toString()));
+                }
+
+                // validate the optional field `trackingEvents` (array)
+                for (int i = 0; i < jsonArraytrackingEvents.size(); i++) {
+                    TrackingEvent.validateJsonElement(jsonArraytrackingEvents.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageTrackingDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageTrackingDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageTrackingDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageTrackingDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageTrackingDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PackageTrackingDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageTrackingDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageTrackingDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageTrackingDetails
+     * @throws IOException if the JSON string is invalid with respect to PackageTrackingDetails
+     */
+    public static PackageTrackingDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageTrackingDetails.class);
+    }
+
+    /**
+     * Convert an instance of PackageTrackingDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

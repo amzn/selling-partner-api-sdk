@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,13 +25,10 @@ import java.io.IOException;
  */
 @JsonAdapter(BarcodeInstruction.Adapter.class)
 public enum BarcodeInstruction {
-    @SerializedName("RequiresFNSKULabel")
     REQUIRES_FNSKU_LABEL("RequiresFNSKULabel"),
 
-    @SerializedName("CanUseOriginalBarcode")
     CAN_USE_ORIGINAL_BARCODE("CanUseOriginalBarcode"),
 
-    @SerializedName("MustProvideSellerSKU")
     MUST_PROVIDE_SELLER_SKU("MustProvideSellerSKU");
 
     private String value;
@@ -49,25 +46,30 @@ public enum BarcodeInstruction {
         return String.valueOf(value);
     }
 
-    public static BarcodeInstruction fromValue(String input) {
+    public static BarcodeInstruction fromValue(String value) {
         for (BarcodeInstruction b : BarcodeInstruction.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BarcodeInstruction> {
         @Override
         public void write(final JsonWriter jsonWriter, final BarcodeInstruction enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BarcodeInstruction read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BarcodeInstruction.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BarcodeInstruction.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BarcodeInstruction.fromValue(value);
     }
 }

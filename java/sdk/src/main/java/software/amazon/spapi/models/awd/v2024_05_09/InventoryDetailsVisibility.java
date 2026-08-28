@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Enum to specify if returned summaries should include additional summarized inventory details and quantities. */
 @JsonAdapter(InventoryDetailsVisibility.Adapter.class)
 public enum InventoryDetailsVisibility {
-    @SerializedName("SHOW")
     SHOW("SHOW"),
 
-    @SerializedName("HIDE")
     HIDE("HIDE");
 
     private String value;
@@ -43,26 +41,31 @@ public enum InventoryDetailsVisibility {
         return String.valueOf(value);
     }
 
-    public static InventoryDetailsVisibility fromValue(String input) {
+    public static InventoryDetailsVisibility fromValue(String value) {
         for (InventoryDetailsVisibility b : InventoryDetailsVisibility.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InventoryDetailsVisibility> {
         @Override
         public void write(final JsonWriter jsonWriter, final InventoryDetailsVisibility enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InventoryDetailsVisibility read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InventoryDetailsVisibility.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InventoryDetailsVisibility.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InventoryDetailsVisibility.fromValue(value);
     }
 }

@@ -12,30 +12,54 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep
  * instructions are generated based on the specified category.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The preparation details for a product. This contains the prep category, prep owner, and label owner. Prep instructions are generated based on the specified category.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrepDetails {
-    @SerializedName("labelOwner")
-    private LabelOwner labelOwner = null;
+    public static final String SERIALIZED_NAME_LABEL_OWNER = "labelOwner";
 
-    @SerializedName("prepCategory")
-    private PrepCategory prepCategory = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_OWNER)
+    private LabelOwner labelOwner;
 
-    @SerializedName("prepInstructions")
-    private List<PrepInstruction> prepInstructions = null;
+    public static final String SERIALIZED_NAME_PREP_CATEGORY = "prepCategory";
 
-    @SerializedName("prepOwner")
-    private PrepOwner prepOwner = null;
+    @SerializedName(SERIALIZED_NAME_PREP_CATEGORY)
+    private PrepCategory prepCategory;
+
+    public static final String SERIALIZED_NAME_PREP_INSTRUCTIONS = "prepInstructions";
+
+    @SerializedName(SERIALIZED_NAME_PREP_INSTRUCTIONS)
+    private List<PrepInstruction> prepInstructions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PREP_OWNER = "prepOwner";
+
+    @SerializedName(SERIALIZED_NAME_PREP_OWNER)
+    private PrepOwner prepOwner;
+
+    public PrepDetails() {}
 
     public PrepDetails labelOwner(LabelOwner labelOwner) {
         this.labelOwner = labelOwner;
@@ -47,8 +71,7 @@ public class PrepDetails {
      *
      * @return labelOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelOwner getLabelOwner() {
+    @javax.annotation.Nullable public LabelOwner getLabelOwner() {
         return labelOwner;
     }
 
@@ -66,8 +89,7 @@ public class PrepDetails {
      *
      * @return prepCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrepCategory getPrepCategory() {
+    @javax.annotation.Nullable public PrepCategory getPrepCategory() {
         return prepCategory;
     }
 
@@ -95,10 +117,7 @@ public class PrepDetails {
      *
      * @return prepInstructions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.")
-    public List<PrepInstruction> getPrepInstructions() {
+    @javax.annotation.Nullable public List<PrepInstruction> getPrepInstructions() {
         return prepInstructions;
     }
 
@@ -116,8 +135,7 @@ public class PrepDetails {
      *
      * @return prepOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrepOwner getPrepOwner() {
+    @javax.annotation.Nullable public PrepOwner getPrepOwner() {
         return prepOwner;
     }
 
@@ -126,7 +144,7 @@ public class PrepDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -160,10 +178,132 @@ public class PrepDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("labelOwner");
+        openapiFields.add("prepCategory");
+        openapiFields.add("prepInstructions");
+        openapiFields.add("prepOwner");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrepDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrepDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrepDetails is not found in the empty JSON string",
+                        PrepDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrepDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrepDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `labelOwner`
+        if (jsonObj.get("labelOwner") != null && !jsonObj.get("labelOwner").isJsonNull()) {
+            LabelOwner.validateJsonElement(jsonObj.get("labelOwner"));
+        }
+        // validate the optional field `prepCategory`
+        if (jsonObj.get("prepCategory") != null && !jsonObj.get("prepCategory").isJsonNull()) {
+            PrepCategory.validateJsonElement(jsonObj.get("prepCategory"));
+        }
+        if (jsonObj.get("prepInstructions") != null
+                && !jsonObj.get("prepInstructions").isJsonNull()) {
+            JsonArray jsonArrayprepInstructions = jsonObj.getAsJsonArray("prepInstructions");
+            if (jsonArrayprepInstructions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("prepInstructions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `prepInstructions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("prepInstructions").toString()));
+                }
+
+                // validate the optional field `prepInstructions` (array)
+                for (int i = 0; i < jsonArrayprepInstructions.size(); i++) {
+                    PrepInstruction.validateJsonElement(jsonArrayprepInstructions.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `prepOwner`
+        if (jsonObj.get("prepOwner") != null && !jsonObj.get("prepOwner").isJsonNull()) {
+            PrepOwner.validateJsonElement(jsonObj.get("prepOwner"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrepDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrepDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrepDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrepDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrepDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PrepDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrepDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrepDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrepDetails
+     * @throws IOException if the JSON string is invalid with respect to PrepDetails
+     */
+    public static PrepDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrepDetails.class);
+    }
+
+    /**
+     * Convert an instance of PrepDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

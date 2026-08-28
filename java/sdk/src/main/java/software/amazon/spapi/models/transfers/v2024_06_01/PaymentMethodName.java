@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Enumerated set of payment methods for payout transfers. */
 @JsonAdapter(PaymentMethodName.Adapter.class)
 public enum PaymentMethodName {
-    @SerializedName("BANK_ACCOUNT")
     BANK_ACCOUNT("BANK_ACCOUNT"),
 
-    @SerializedName("DEBIT_CARD")
     DEBIT_CARD("DEBIT_CARD");
 
     private String value;
@@ -43,25 +41,30 @@ public enum PaymentMethodName {
         return String.valueOf(value);
     }
 
-    public static PaymentMethodName fromValue(String input) {
+    public static PaymentMethodName fromValue(String value) {
         for (PaymentMethodName b : PaymentMethodName.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PaymentMethodName> {
         @Override
         public void write(final JsonWriter jsonWriter, final PaymentMethodName enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PaymentMethodName read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PaymentMethodName.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PaymentMethodName.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PaymentMethodName.fromValue(value);
     }
 }

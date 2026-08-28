@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A component of the total price. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A component of the total price.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RollupPrice {
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("value")
-    private Money value = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
+
+    public static final String SERIALIZED_NAME_VALUE = "value";
+
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private Money value;
+
+    public RollupPrice() {}
 
     public RollupPrice type(String type) {
         this.type = type;
@@ -34,7 +55,7 @@ public class RollupPrice {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of price.")
+    @javax.annotation.Nonnull
     public String getType() {
         return type;
     }
@@ -53,7 +74,7 @@ public class RollupPrice {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getValue() {
         return value;
     }
@@ -63,7 +84,7 @@ public class RollupPrice {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -90,10 +111,118 @@ public class RollupPrice {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+        openapiRequiredFields.add("value");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RollupPrice
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RollupPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RollupPrice is not found in the empty JSON string",
+                        RollupPrice.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RollupPrice.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RollupPrice` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RollupPrice.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `value`
+        Money.validateJsonElement(jsonObj.get("value"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RollupPrice.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RollupPrice' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RollupPrice> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RollupPrice.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RollupPrice>() {
+                        @Override
+                        public void write(JsonWriter out, RollupPrice value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RollupPrice read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RollupPrice given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RollupPrice
+     * @throws IOException if the JSON string is invalid with respect to RollupPrice
+     */
+    public static RollupPrice fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RollupPrice.class);
+    }
+
+    /**
+     * Convert an instance of RollupPrice to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

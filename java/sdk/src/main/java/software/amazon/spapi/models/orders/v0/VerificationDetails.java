@@ -12,21 +12,46 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information related to the verification of a regulated order. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Additional information related to the verification of a regulated order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class VerificationDetails {
-    @SerializedName("prescriptionDetail")
-    private PrescriptionDetail prescriptionDetail = null;
+    public static final String SERIALIZED_NAME_PRESCRIPTION_DETAIL = "prescriptionDetail";
 
-    @SerializedName("approvedAlternativeDetails")
-    private ApprovedAlternativeDetails approvedAlternativeDetails = null;
+    @SerializedName(SERIALIZED_NAME_PRESCRIPTION_DETAIL)
+    private PrescriptionDetail prescriptionDetail;
 
-    @SerializedName("interimStatusDetail")
-    private InterimStatusDetail interimStatusDetail = null;
+    public static final String SERIALIZED_NAME_APPROVED_ALTERNATIVE_DETAILS = "approvedAlternativeDetails";
+
+    @SerializedName(SERIALIZED_NAME_APPROVED_ALTERNATIVE_DETAILS)
+    private List<ApprovedAttribute> approvedAlternativeDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_INTERIM_STATUS_DETAIL = "interimStatusDetail";
+
+    @SerializedName(SERIALIZED_NAME_INTERIM_STATUS_DETAIL)
+    private InterimStatusDetail interimStatusDetail;
+
+    public VerificationDetails() {}
 
     public VerificationDetails prescriptionDetail(PrescriptionDetail prescriptionDetail) {
         this.prescriptionDetail = prescriptionDetail;
@@ -38,8 +63,7 @@ public class VerificationDetails {
      *
      * @return prescriptionDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrescriptionDetail getPrescriptionDetail() {
+    @javax.annotation.Nullable public PrescriptionDetail getPrescriptionDetail() {
         return prescriptionDetail;
     }
 
@@ -47,22 +71,31 @@ public class VerificationDetails {
         this.prescriptionDetail = prescriptionDetail;
     }
 
-    public VerificationDetails approvedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+    public VerificationDetails approvedAlternativeDetails(List<ApprovedAttribute> approvedAlternativeDetails) {
         this.approvedAlternativeDetails = approvedAlternativeDetails;
         return this;
     }
 
+    public VerificationDetails addApprovedAlternativeDetailsItem(ApprovedAttribute approvedAlternativeDetailsItem) {
+        if (this.approvedAlternativeDetails == null) {
+            this.approvedAlternativeDetails = new ArrayList<>();
+        }
+        this.approvedAlternativeDetails.add(approvedAlternativeDetailsItem);
+        return this;
+    }
+
     /**
-     * Get approvedAlternativeDetails
+     * Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute
+     * name, its original value from the rejected order, and the corrected value that would result in approval (for
+     * example, a substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;).
      *
      * @return approvedAlternativeDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ApprovedAlternativeDetails getApprovedAlternativeDetails() {
+    @javax.annotation.Nullable public List<ApprovedAttribute> getApprovedAlternativeDetails() {
         return approvedAlternativeDetails;
     }
 
-    public void setApprovedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+    public void setApprovedAlternativeDetails(List<ApprovedAttribute> approvedAlternativeDetails) {
         this.approvedAlternativeDetails = approvedAlternativeDetails;
     }
 
@@ -76,8 +109,7 @@ public class VerificationDetails {
      *
      * @return interimStatusDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InterimStatusDetail getInterimStatusDetail() {
+    @javax.annotation.Nullable public InterimStatusDetail getInterimStatusDetail() {
         return interimStatusDetail;
     }
 
@@ -86,7 +118,7 @@ public class VerificationDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -122,10 +154,129 @@ public class VerificationDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("prescriptionDetail");
+        openapiFields.add("approvedAlternativeDetails");
+        openapiFields.add("interimStatusDetail");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to VerificationDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!VerificationDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in VerificationDetails is not found in the empty JSON string",
+                        VerificationDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!VerificationDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `VerificationDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `prescriptionDetail`
+        if (jsonObj.get("prescriptionDetail") != null
+                && !jsonObj.get("prescriptionDetail").isJsonNull()) {
+            PrescriptionDetail.validateJsonElement(jsonObj.get("prescriptionDetail"));
+        }
+        if (jsonObj.get("approvedAlternativeDetails") != null
+                && !jsonObj.get("approvedAlternativeDetails").isJsonNull()) {
+            JsonArray jsonArrayapprovedAlternativeDetails = jsonObj.getAsJsonArray("approvedAlternativeDetails");
+            if (jsonArrayapprovedAlternativeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("approvedAlternativeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `approvedAlternativeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("approvedAlternativeDetails").toString()));
+                }
+
+                // validate the optional field `approvedAlternativeDetails` (array)
+                for (int i = 0; i < jsonArrayapprovedAlternativeDetails.size(); i++) {
+                    ApprovedAttribute.validateJsonElement(jsonArrayapprovedAlternativeDetails.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `interimStatusDetail`
+        if (jsonObj.get("interimStatusDetail") != null
+                && !jsonObj.get("interimStatusDetail").isJsonNull()) {
+            InterimStatusDetail.validateJsonElement(jsonObj.get("interimStatusDetail"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!VerificationDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VerificationDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<VerificationDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(VerificationDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<VerificationDetails>() {
+                        @Override
+                        public void write(JsonWriter out, VerificationDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public VerificationDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of VerificationDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of VerificationDetails
+     * @throws IOException if the JSON string is invalid with respect to VerificationDetails
+     */
+    public static VerificationDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, VerificationDetails.class);
+    }
+
+    /**
+     * Convert an instance of VerificationDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

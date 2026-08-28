@@ -12,31 +12,55 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Represents an acknowledgement for an order, including the purchase order number, selling party details,
  * acknowledgement date, and a list of acknowledged items.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents an acknowledgement for an order, including the purchase order number, selling party details, acknowledgement date, and a list of acknowledged items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderAcknowledgement {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("acknowledgementDate")
-    private OffsetDateTime acknowledgementDate = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
 
-    @SerializedName("items")
-    private List<OrderAcknowledgementItem> items = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_ACKNOWLEDGEMENT_DATE = "acknowledgementDate";
+
+    @SerializedName(SERIALIZED_NAME_ACKNOWLEDGEMENT_DATE)
+    private OffsetDateTime acknowledgementDate;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<OrderAcknowledgementItem> items = new ArrayList<>();
+
+    public OrderAcknowledgement() {}
 
     public OrderAcknowledgement purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -48,9 +72,7 @@ public class OrderAcknowledgement {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The purchase order number. Formatting Notes: 8-character alpha-numeric code.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -69,7 +91,7 @@ public class OrderAcknowledgement {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -88,9 +110,7 @@ public class OrderAcknowledgement {
      *
      * @return acknowledgementDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getAcknowledgementDate() {
         return acknowledgementDate;
     }
@@ -117,9 +137,7 @@ public class OrderAcknowledgement {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of the items being acknowledged with associated details.")
+    @javax.annotation.Nonnull
     public List<OrderAcknowledgementItem> getItems() {
         return items;
     }
@@ -129,7 +147,7 @@ public class OrderAcknowledgement {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -165,10 +183,135 @@ public class OrderAcknowledgement {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("sellingParty");
+        openapiFields.add("acknowledgementDate");
+        openapiFields.add("items");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("acknowledgementDate");
+        openapiRequiredFields.add("items");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderAcknowledgement
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderAcknowledgement.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderAcknowledgement is not found in the empty JSON string",
+                        OrderAcknowledgement.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderAcknowledgement.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderAcknowledgement` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderAcknowledgement.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            OrderAcknowledgementItem.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderAcknowledgement.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderAcknowledgement' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderAcknowledgement> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderAcknowledgement.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderAcknowledgement>() {
+                        @Override
+                        public void write(JsonWriter out, OrderAcknowledgement value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderAcknowledgement read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderAcknowledgement given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderAcknowledgement
+     * @throws IOException if the JSON string is invalid with respect to OrderAcknowledgement
+     */
+    public static OrderAcknowledgement fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderAcknowledgement.class);
+    }
+
+    /**
+     * Convert an instance of OrderAcknowledgement to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

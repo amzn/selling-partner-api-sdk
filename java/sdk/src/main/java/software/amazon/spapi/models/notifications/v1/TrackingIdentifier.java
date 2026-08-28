@@ -12,34 +12,61 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Specifies the tracking identifier used to filter your subscription notifications. Provide exactly one identifier
  * field. Providing multiple identifier fields in a single request is not supported.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Specifies the tracking identifier used to filter your subscription notifications. Provide exactly one identifier field. Providing multiple identifier fields in a single request is not supported.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingIdentifier {
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("acsin")
-    private String acsin = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("aftn")
-    private String aftn = null;
+    public static final String SERIALIZED_NAME_ACSIN = "acsin";
 
-    @SerializedName("containerNumber")
-    private String containerNumber = null;
+    @SerializedName(SERIALIZED_NAME_ACSIN)
+    private String acsin;
 
-    @SerializedName("houseBillOfLadingNumber")
-    private String houseBillOfLadingNumber = null;
+    public static final String SERIALIZED_NAME_AFTN = "aftn";
 
-    @SerializedName("carrierTracking")
-    private TrackingIdentifierCarrierTracking carrierTracking = null;
+    @SerializedName(SERIALIZED_NAME_AFTN)
+    private String aftn;
+
+    public static final String SERIALIZED_NAME_CONTAINER_NUMBER = "containerNumber";
+
+    @SerializedName(SERIALIZED_NAME_CONTAINER_NUMBER)
+    private String containerNumber;
+
+    public static final String SERIALIZED_NAME_HOUSE_BILL_OF_LADING_NUMBER = "houseBillOfLadingNumber";
+
+    @SerializedName(SERIALIZED_NAME_HOUSE_BILL_OF_LADING_NUMBER)
+    private String houseBillOfLadingNumber;
+
+    public static final String SERIALIZED_NAME_CARRIER_TRACKING = "carrierTracking";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_TRACKING)
+    private TrackingIdentifierCarrierTracking carrierTracking;
+
+    public TrackingIdentifier() {}
 
     public TrackingIdentifier id(String id) {
         this.id = id;
@@ -51,8 +78,7 @@ public class TrackingIdentifier {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon unique tracking identifier.")
-    public String getId() {
+    @javax.annotation.Nullable public String getId() {
         return id;
     }
 
@@ -70,8 +96,7 @@ public class TrackingIdentifier {
      *
      * @return acsin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Air Cargo Shipment Identification Number.")
-    public String getAcsin() {
+    @javax.annotation.Nullable public String getAcsin() {
         return acsin;
     }
 
@@ -89,8 +114,7 @@ public class TrackingIdentifier {
      *
      * @return aftn
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Fulfillment Tracking Number.")
-    public String getAftn() {
+    @javax.annotation.Nullable public String getAftn() {
         return aftn;
     }
 
@@ -108,9 +132,7 @@ public class TrackingIdentifier {
      *
      * @return containerNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Container number provided by the Logistics Service Provider.")
-    public String getContainerNumber() {
+    @javax.annotation.Nullable public String getContainerNumber() {
         return containerNumber;
     }
 
@@ -128,8 +150,7 @@ public class TrackingIdentifier {
      *
      * @return houseBillOfLadingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "House Bill of Lading number.")
-    public String getHouseBillOfLadingNumber() {
+    @javax.annotation.Nullable public String getHouseBillOfLadingNumber() {
         return houseBillOfLadingNumber;
     }
 
@@ -147,8 +168,7 @@ public class TrackingIdentifier {
      *
      * @return carrierTracking
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingIdentifierCarrierTracking getCarrierTracking() {
+    @javax.annotation.Nullable public TrackingIdentifierCarrierTracking getCarrierTracking() {
         return carrierTracking;
     }
 
@@ -157,7 +177,7 @@ public class TrackingIdentifier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -199,10 +219,141 @@ public class TrackingIdentifier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("id");
+        openapiFields.add("acsin");
+        openapiFields.add("aftn");
+        openapiFields.add("containerNumber");
+        openapiFields.add("houseBillOfLadingNumber");
+        openapiFields.add("carrierTracking");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingIdentifier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingIdentifier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingIdentifier is not found in the empty JSON string",
+                        TrackingIdentifier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingIdentifier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingIdentifier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull())
+                && !jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if ((jsonObj.get("acsin") != null && !jsonObj.get("acsin").isJsonNull())
+                && !jsonObj.get("acsin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `acsin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("acsin").toString()));
+        }
+        if ((jsonObj.get("aftn") != null && !jsonObj.get("aftn").isJsonNull())
+                && !jsonObj.get("aftn").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `aftn` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("aftn").toString()));
+        }
+        if ((jsonObj.get("containerNumber") != null
+                        && !jsonObj.get("containerNumber").isJsonNull())
+                && !jsonObj.get("containerNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("containerNumber").toString()));
+        }
+        if ((jsonObj.get("houseBillOfLadingNumber") != null
+                        && !jsonObj.get("houseBillOfLadingNumber").isJsonNull())
+                && !jsonObj.get("houseBillOfLadingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `houseBillOfLadingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("houseBillOfLadingNumber").toString()));
+        }
+        // validate the optional field `carrierTracking`
+        if (jsonObj.get("carrierTracking") != null
+                && !jsonObj.get("carrierTracking").isJsonNull()) {
+            TrackingIdentifierCarrierTracking.validateJsonElement(jsonObj.get("carrierTracking"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingIdentifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingIdentifier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingIdentifier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingIdentifier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingIdentifier>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingIdentifier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingIdentifier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingIdentifier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingIdentifier
+     * @throws IOException if the JSON string is invalid with respect to TrackingIdentifier
+     */
+    public static TrackingIdentifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingIdentifier.class);
+    }
+
+    /**
+     * Convert an instance of TrackingIdentifier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

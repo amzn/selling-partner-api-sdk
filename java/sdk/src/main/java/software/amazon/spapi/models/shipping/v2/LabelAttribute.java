@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,13 +25,10 @@ import java.io.IOException;
  */
 @JsonAdapter(LabelAttribute.Adapter.class)
 public enum LabelAttribute {
-    @SerializedName("PACKAGE_CLIENT_REFERENCE_ID")
     PACKAGE_CLIENT_REFERENCE_ID("PACKAGE_CLIENT_REFERENCE_ID"),
 
-    @SerializedName("SELLER_DISPLAY_NAME")
     SELLER_DISPLAY_NAME("SELLER_DISPLAY_NAME"),
 
-    @SerializedName("COLLECT_ON_DELIVERY_AMOUNT")
     COLLECT_ON_DELIVERY_AMOUNT("COLLECT_ON_DELIVERY_AMOUNT");
 
     private String value;
@@ -49,25 +46,30 @@ public enum LabelAttribute {
         return String.valueOf(value);
     }
 
-    public static LabelAttribute fromValue(String input) {
+    public static LabelAttribute fromValue(String value) {
         for (LabelAttribute b : LabelAttribute.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<LabelAttribute> {
         @Override
         public void write(final JsonWriter jsonWriter, final LabelAttribute enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public LabelAttribute read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return LabelAttribute.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return LabelAttribute.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        LabelAttribute.fromValue(value);
     }
 }

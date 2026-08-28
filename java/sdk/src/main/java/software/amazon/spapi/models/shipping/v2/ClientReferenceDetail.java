@@ -12,23 +12,33 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Client Reference Details */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Client Reference Details")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ClientReferenceDetail {
     /** Client Reference type. */
     @JsonAdapter(ClientReferenceTypeEnum.Adapter.class)
     public enum ClientReferenceTypeEnum {
-        @SerializedName("IntegratorShipperId")
         INTEGRATOR_SHIPPER_ID("IntegratorShipperId"),
-        @SerializedName("IntegratorMerchantId")
+
         INTEGRATOR_MERCHANT_ID("IntegratorMerchantId");
 
         private String value;
@@ -46,35 +56,46 @@ public class ClientReferenceDetail {
             return String.valueOf(value);
         }
 
-        public static ClientReferenceTypeEnum fromValue(String input) {
+        public static ClientReferenceTypeEnum fromValue(String value) {
             for (ClientReferenceTypeEnum b : ClientReferenceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ClientReferenceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ClientReferenceTypeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ClientReferenceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ClientReferenceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ClientReferenceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ClientReferenceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("clientReferenceType")
-    private ClientReferenceTypeEnum clientReferenceType = null;
+    public static final String SERIALIZED_NAME_CLIENT_REFERENCE_TYPE = "clientReferenceType";
 
-    @SerializedName("clientReferenceId")
-    private String clientReferenceId = null;
+    @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_TYPE)
+    private ClientReferenceTypeEnum clientReferenceType;
+
+    public static final String SERIALIZED_NAME_CLIENT_REFERENCE_ID = "clientReferenceId";
+
+    @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_ID)
+    private String clientReferenceId;
+
+    public ClientReferenceDetail() {}
 
     public ClientReferenceDetail clientReferenceType(ClientReferenceTypeEnum clientReferenceType) {
         this.clientReferenceType = clientReferenceType;
@@ -86,7 +107,7 @@ public class ClientReferenceDetail {
      *
      * @return clientReferenceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Client Reference type.")
+    @javax.annotation.Nonnull
     public ClientReferenceTypeEnum getClientReferenceType() {
         return clientReferenceType;
     }
@@ -105,7 +126,7 @@ public class ClientReferenceDetail {
      *
      * @return clientReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The Client Reference Id.")
+    @javax.annotation.Nonnull
     public String getClientReferenceId() {
         return clientReferenceId;
     }
@@ -115,7 +136,7 @@ public class ClientReferenceDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +168,124 @@ public class ClientReferenceDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("clientReferenceType");
+        openapiFields.add("clientReferenceId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("clientReferenceType");
+        openapiRequiredFields.add("clientReferenceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ClientReferenceDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ClientReferenceDetail.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ClientReferenceDetail is not found in the empty JSON string",
+                        ClientReferenceDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ClientReferenceDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ClientReferenceDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ClientReferenceDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("clientReferenceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `clientReferenceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("clientReferenceType").toString()));
+        }
+        // validate the required field `clientReferenceType`
+        ClientReferenceTypeEnum.validateJsonElement(jsonObj.get("clientReferenceType"));
+        if (!jsonObj.get("clientReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `clientReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("clientReferenceId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ClientReferenceDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ClientReferenceDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ClientReferenceDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ClientReferenceDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ClientReferenceDetail>() {
+                        @Override
+                        public void write(JsonWriter out, ClientReferenceDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ClientReferenceDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ClientReferenceDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ClientReferenceDetail
+     * @throws IOException if the JSON string is invalid with respect to ClientReferenceDetail
+     */
+    public static ClientReferenceDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ClientReferenceDetail.class);
+    }
+
+    /**
+     * Convert an instance of ClientReferenceDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

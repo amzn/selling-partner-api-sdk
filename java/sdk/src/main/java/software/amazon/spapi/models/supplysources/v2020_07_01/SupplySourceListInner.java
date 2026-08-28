@@ -12,22 +12,48 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** SupplySourceListInner */
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SupplySourceListInner {
-    @SerializedName("alias")
-    private String alias = null;
+    public static final String SERIALIZED_NAME_ALIAS = "alias";
 
-    @SerializedName("supplySourceId")
-    private String supplySourceId = null;
+    @SerializedName(SERIALIZED_NAME_ALIAS)
+    private String alias;
 
-    @SerializedName("supplySourceCode")
-    private String supplySourceCode = null;
+    public static final String SERIALIZED_NAME_SUPPLY_SOURCE_ID = "supplySourceId";
 
-    @SerializedName("address")
-    private Address address = null;
+    @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCE_ID)
+    private String supplySourceId;
+
+    public static final String SERIALIZED_NAME_SUPPLY_SOURCE_CODE = "supplySourceCode";
+
+    @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCE_CODE)
+    private String supplySourceCode;
+
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public SupplySourceListInner() {}
 
     public SupplySourceListInner alias(String alias) {
         this.alias = alias;
@@ -39,8 +65,7 @@ public class SupplySourceListInner {
      *
      * @return alias
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The custom alias for this supply source")
-    public String getAlias() {
+    @javax.annotation.Nullable public String getAlias() {
         return alias;
     }
 
@@ -58,8 +83,7 @@ public class SupplySourceListInner {
      *
      * @return supplySourceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon generated unique supply source ID.")
-    public String getSupplySourceId() {
+    @javax.annotation.Nullable public String getSupplySourceId() {
         return supplySourceId;
     }
 
@@ -77,8 +101,7 @@ public class SupplySourceListInner {
      *
      * @return supplySourceCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller-provided unique supply source code.")
-    public String getSupplySourceCode() {
+    @javax.annotation.Nullable public String getSupplySourceCode() {
         return supplySourceCode;
     }
 
@@ -96,8 +119,7 @@ public class SupplySourceListInner {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -106,7 +128,7 @@ public class SupplySourceListInner {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -142,10 +164,127 @@ public class SupplySourceListInner {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("alias");
+        openapiFields.add("supplySourceId");
+        openapiFields.add("supplySourceCode");
+        openapiFields.add("address");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SupplySourceListInner
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SupplySourceListInner.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SupplySourceListInner is not found in the empty JSON string",
+                        SupplySourceListInner.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SupplySourceListInner.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SupplySourceListInner` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull())
+                && !jsonObj.get("alias").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `alias` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("alias").toString()));
+        }
+        if ((jsonObj.get("supplySourceId") != null
+                        && !jsonObj.get("supplySourceId").isJsonNull())
+                && !jsonObj.get("supplySourceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supplySourceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("supplySourceId").toString()));
+        }
+        if ((jsonObj.get("supplySourceCode") != null
+                        && !jsonObj.get("supplySourceCode").isJsonNull())
+                && !jsonObj.get("supplySourceCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supplySourceCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("supplySourceCode").toString()));
+        }
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SupplySourceListInner.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SupplySourceListInner' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SupplySourceListInner> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SupplySourceListInner.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SupplySourceListInner>() {
+                        @Override
+                        public void write(JsonWriter out, SupplySourceListInner value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SupplySourceListInner read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SupplySourceListInner given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SupplySourceListInner
+     * @throws IOException if the JSON string is invalid with respect to SupplySourceListInner
+     */
+    public static SupplySourceListInner fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SupplySourceListInner.class);
+    }
+
+    /**
+     * Convert an instance of SupplySourceListInner to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

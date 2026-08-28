@@ -12,31 +12,43 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Response containing the results of a submission to the Selling Partner API for Listings Items. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Response containing the results of a submission to the Selling Partner API for Listings Items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListingsItemSubmissionResponse {
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
+
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
 
     /** The status of the listings item submission. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("ACCEPTED")
         ACCEPTED("ACCEPTED"),
-        @SerializedName("INVALID")
+
         INVALID("INVALID"),
-        @SerializedName("VALID")
+
         VALID("VALID");
 
         private String value;
@@ -54,40 +66,55 @@ public class ListingsItemSubmissionResponse {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("submissionId")
-    private String submissionId = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
 
-    @SerializedName("issues")
-    private List<Issue> issues = null;
+    public static final String SERIALIZED_NAME_SUBMISSION_ID = "submissionId";
 
-    @SerializedName("identifiers")
-    private ItemIdentifiers identifiers = null;
+    @SerializedName(SERIALIZED_NAME_SUBMISSION_ID)
+    private String submissionId;
+
+    public static final String SERIALIZED_NAME_ISSUES = "issues";
+
+    @SerializedName(SERIALIZED_NAME_ISSUES)
+    private List<Issue> issues = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+
+    @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+    private List<ItemIdentifiersByMarketplace> identifiers = new ArrayList<>();
+
+    public ListingsItemSubmissionResponse() {}
 
     public ListingsItemSubmissionResponse sku(String sku) {
         this.sku = sku;
@@ -99,9 +126,7 @@ public class ListingsItemSubmissionResponse {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A selling partner-provided identifier for an Amazon listing.")
+    @javax.annotation.Nonnull
     public String getSku() {
         return sku;
     }
@@ -120,9 +145,7 @@ public class ListingsItemSubmissionResponse {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The status of the listings item submission.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         return status;
     }
@@ -141,9 +164,7 @@ public class ListingsItemSubmissionResponse {
      *
      * @return submissionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier of the listings item submission.")
+    @javax.annotation.Nonnull
     public String getSubmissionId() {
         return submissionId;
     }
@@ -170,9 +191,7 @@ public class ListingsItemSubmissionResponse {
      *
      * @return issues
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Listings item issues related to the listings item submission.")
-    public List<Issue> getIssues() {
+    @javax.annotation.Nullable public List<Issue> getIssues() {
         return issues;
     }
 
@@ -180,27 +199,34 @@ public class ListingsItemSubmissionResponse {
         this.issues = issues;
     }
 
-    public ListingsItemSubmissionResponse identifiers(ItemIdentifiers identifiers) {
+    public ListingsItemSubmissionResponse identifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
         return this;
     }
 
+    public ListingsItemSubmissionResponse addIdentifiersItem(ItemIdentifiersByMarketplace identifiersItem) {
+        if (this.identifiers == null) {
+            this.identifiers = new ArrayList<>();
+        }
+        this.identifiers.add(identifiersItem);
+        return this;
+    }
+
     /**
-     * Get identifiers
+     * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
      *
      * @return identifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemIdentifiers getIdentifiers() {
+    @javax.annotation.Nullable public List<ItemIdentifiersByMarketplace> getIdentifiers() {
         return identifiers;
     }
 
-    public void setIdentifiers(ItemIdentifiers identifiers) {
+    public void setIdentifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -234,10 +260,167 @@ public class ListingsItemSubmissionResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sku");
+        openapiFields.add("status");
+        openapiFields.add("submissionId");
+        openapiFields.add("issues");
+        openapiFields.add("identifiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sku");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("submissionId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListingsItemSubmissionResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListingsItemSubmissionResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListingsItemSubmissionResponse is not found in the empty JSON string",
+                        ListingsItemSubmissionResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListingsItemSubmissionResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListingsItemSubmissionResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListingsItemSubmissionResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
+        if (!jsonObj.get("submissionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `submissionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("submissionId").toString()));
+        }
+        if (jsonObj.get("issues") != null && !jsonObj.get("issues").isJsonNull()) {
+            JsonArray jsonArrayissues = jsonObj.getAsJsonArray("issues");
+            if (jsonArrayissues != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("issues").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `issues` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("issues").toString()));
+                }
+
+                // validate the optional field `issues` (array)
+                for (int i = 0; i < jsonArrayissues.size(); i++) {
+                    Issue.validateJsonElement(jsonArrayissues.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("identifiers") != null && !jsonObj.get("identifiers").isJsonNull()) {
+            JsonArray jsonArrayidentifiers = jsonObj.getAsJsonArray("identifiers");
+            if (jsonArrayidentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("identifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `identifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("identifiers").toString()));
+                }
+
+                // validate the optional field `identifiers` (array)
+                for (int i = 0; i < jsonArrayidentifiers.size(); i++) {
+                    ItemIdentifiersByMarketplace.validateJsonElement(jsonArrayidentifiers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListingsItemSubmissionResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListingsItemSubmissionResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListingsItemSubmissionResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListingsItemSubmissionResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListingsItemSubmissionResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListingsItemSubmissionResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListingsItemSubmissionResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListingsItemSubmissionResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListingsItemSubmissionResponse
+     * @throws IOException if the JSON string is invalid with respect to ListingsItemSubmissionResponse
+     */
+    public static ListingsItemSubmissionResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListingsItemSubmissionResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListingsItemSubmissionResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

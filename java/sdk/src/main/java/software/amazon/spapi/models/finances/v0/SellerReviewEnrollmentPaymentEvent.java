@@ -12,30 +12,59 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A fee payment event for the Early Reviewer Program. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A fee payment event for the Early Reviewer Program.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SellerReviewEnrollmentPaymentEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("EnrollmentId")
-    private String enrollmentId = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("ParentASIN")
-    private String parentASIN = null;
+    public static final String SERIALIZED_NAME_ENROLLMENT_ID = "EnrollmentId";
 
-    @SerializedName("FeeComponent")
-    private FeeComponent feeComponent = null;
+    @SerializedName(SERIALIZED_NAME_ENROLLMENT_ID)
+    private String enrollmentId;
 
-    @SerializedName("ChargeComponent")
-    private ChargeComponent chargeComponent = null;
+    public static final String SERIALIZED_NAME_PARENT_A_S_I_N = "ParentASIN";
 
-    @SerializedName("TotalAmount")
-    private Currency totalAmount = null;
+    @SerializedName(SERIALIZED_NAME_PARENT_A_S_I_N)
+    private String parentASIN;
+
+    public static final String SERIALIZED_NAME_FEE_COMPONENT = "FeeComponent";
+
+    @SerializedName(SERIALIZED_NAME_FEE_COMPONENT)
+    private FeeComponent feeComponent;
+
+    public static final String SERIALIZED_NAME_CHARGE_COMPONENT = "ChargeComponent";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_COMPONENT)
+    private ChargeComponent chargeComponent;
+
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
+    private Currency totalAmount;
+
+    public SellerReviewEnrollmentPaymentEvent() {}
 
     public SellerReviewEnrollmentPaymentEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -47,10 +76,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -68,8 +94,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return enrollmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An enrollment identifier.")
-    public String getEnrollmentId() {
+    @javax.annotation.Nullable public String getEnrollmentId() {
         return enrollmentId;
     }
 
@@ -87,10 +112,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return parentASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.")
-    public String getParentASIN() {
+    @javax.annotation.Nullable public String getParentASIN() {
         return parentASIN;
     }
 
@@ -108,8 +130,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return feeComponent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponent getFeeComponent() {
+    @javax.annotation.Nullable public FeeComponent getFeeComponent() {
         return feeComponent;
     }
 
@@ -127,8 +148,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return chargeComponent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponent getChargeComponent() {
+    @javax.annotation.Nullable public ChargeComponent getChargeComponent() {
         return chargeComponent;
     }
 
@@ -146,8 +166,7 @@ public class SellerReviewEnrollmentPaymentEvent {
      *
      * @return totalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTotalAmount() {
+    @javax.annotation.Nullable public Currency getTotalAmount() {
         return totalAmount;
     }
 
@@ -156,7 +175,7 @@ public class SellerReviewEnrollmentPaymentEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -194,10 +213,130 @@ public class SellerReviewEnrollmentPaymentEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("EnrollmentId");
+        openapiFields.add("ParentASIN");
+        openapiFields.add("FeeComponent");
+        openapiFields.add("ChargeComponent");
+        openapiFields.add("TotalAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SellerReviewEnrollmentPaymentEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SellerReviewEnrollmentPaymentEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SellerReviewEnrollmentPaymentEvent is not found in the empty JSON string",
+                        SellerReviewEnrollmentPaymentEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SellerReviewEnrollmentPaymentEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SellerReviewEnrollmentPaymentEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("EnrollmentId") != null && !jsonObj.get("EnrollmentId").isJsonNull())
+                && !jsonObj.get("EnrollmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `EnrollmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("EnrollmentId").toString()));
+        }
+        if ((jsonObj.get("ParentASIN") != null && !jsonObj.get("ParentASIN").isJsonNull())
+                && !jsonObj.get("ParentASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ParentASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ParentASIN").toString()));
+        }
+        // validate the optional field `FeeComponent`
+        if (jsonObj.get("FeeComponent") != null && !jsonObj.get("FeeComponent").isJsonNull()) {
+            FeeComponent.validateJsonElement(jsonObj.get("FeeComponent"));
+        }
+        // validate the optional field `ChargeComponent`
+        if (jsonObj.get("ChargeComponent") != null
+                && !jsonObj.get("ChargeComponent").isJsonNull()) {
+            ChargeComponent.validateJsonElement(jsonObj.get("ChargeComponent"));
+        }
+        // validate the optional field `TotalAmount`
+        if (jsonObj.get("TotalAmount") != null && !jsonObj.get("TotalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TotalAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SellerReviewEnrollmentPaymentEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SellerReviewEnrollmentPaymentEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SellerReviewEnrollmentPaymentEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SellerReviewEnrollmentPaymentEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SellerReviewEnrollmentPaymentEvent>() {
+                        @Override
+                        public void write(JsonWriter out, SellerReviewEnrollmentPaymentEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SellerReviewEnrollmentPaymentEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SellerReviewEnrollmentPaymentEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SellerReviewEnrollmentPaymentEvent
+     * @throws IOException if the JSON string is invalid with respect to SellerReviewEnrollmentPaymentEvent
+     */
+    public static SellerReviewEnrollmentPaymentEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SellerReviewEnrollmentPaymentEvent.class);
+    }
+
+    /**
+     * Convert an instance of SellerReviewEnrollmentPaymentEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

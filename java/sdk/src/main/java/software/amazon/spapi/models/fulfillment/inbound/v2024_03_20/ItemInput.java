@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Defines an item&#39;s input parameters. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Defines an item's input parameters.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemInput {
-    @SerializedName("expiration")
-    private String expiration = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
 
-    @SerializedName("labelOwner")
-    private LabelOwner labelOwner = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private String expiration;
 
-    @SerializedName("manufacturingLotCode")
-    private String manufacturingLotCode = null;
+    public static final String SERIALIZED_NAME_LABEL_OWNER = "labelOwner";
 
-    @SerializedName("msku")
-    private String msku = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_OWNER)
+    private LabelOwner labelOwner;
 
-    @SerializedName("prepOwner")
-    private PrepOwner prepOwner = null;
+    public static final String SERIALIZED_NAME_MANUFACTURING_LOT_CODE = "manufacturingLotCode";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_MANUFACTURING_LOT_CODE)
+    private String manufacturingLotCode;
+
+    public static final String SERIALIZED_NAME_MSKU = "msku";
+
+    @SerializedName(SERIALIZED_NAME_MSKU)
+    private String msku;
+
+    public static final String SERIALIZED_NAME_PREP_OWNER = "prepOwner";
+
+    @SerializedName(SERIALIZED_NAME_PREP_OWNER)
+    private PrepOwner prepOwner;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public ItemInput() {}
 
     public ItemInput expiration(String expiration) {
         this.expiration = expiration;
@@ -48,10 +77,7 @@ public class ItemInput {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `YYYY-MM-DD`. Items with the same MSKU but different expiration dates cannot go into the same box.")
-    public String getExpiration() {
+    @javax.annotation.Nullable public String getExpiration() {
         return expiration;
     }
 
@@ -69,7 +95,7 @@ public class ItemInput {
      *
      * @return labelOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public LabelOwner getLabelOwner() {
         return labelOwner;
     }
@@ -88,8 +114,7 @@ public class ItemInput {
      *
      * @return manufacturingLotCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The manufacturing lot code.")
-    public String getManufacturingLotCode() {
+    @javax.annotation.Nullable public String getManufacturingLotCode() {
         return manufacturingLotCode;
     }
 
@@ -107,9 +132,7 @@ public class ItemInput {
      *
      * @return msku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The merchant SKU, a merchant-supplied identifier of a specific SKU.")
+    @javax.annotation.Nonnull
     public String getMsku() {
         return msku;
     }
@@ -128,7 +151,7 @@ public class ItemInput {
      *
      * @return prepOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PrepOwner getPrepOwner() {
         return prepOwner;
     }
@@ -143,13 +166,11 @@ public class ItemInput {
     }
 
     /**
-     * The number of units of the specified MSKU that will be shipped.
+     * The number of units of the specified MSKU that will be shipped. minimum: 1 maximum: 500000
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of units of the specified MSKU that will be shipped.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -159,7 +180,7 @@ public class ItemInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,10 +218,138 @@ public class ItemInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("expiration");
+        openapiFields.add("labelOwner");
+        openapiFields.add("manufacturingLotCode");
+        openapiFields.add("msku");
+        openapiFields.add("prepOwner");
+        openapiFields.add("quantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("labelOwner");
+        openapiRequiredFields.add("msku");
+        openapiRequiredFields.add("prepOwner");
+        openapiRequiredFields.add("quantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemInput is not found in the empty JSON string",
+                        ItemInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemInput.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull())
+                && !jsonObj.get("expiration").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `expiration` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("expiration").toString()));
+        }
+        // validate the required field `labelOwner`
+        LabelOwner.validateJsonElement(jsonObj.get("labelOwner"));
+        if ((jsonObj.get("manufacturingLotCode") != null
+                        && !jsonObj.get("manufacturingLotCode").isJsonNull())
+                && !jsonObj.get("manufacturingLotCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturingLotCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manufacturingLotCode").toString()));
+        }
+        if (!jsonObj.get("msku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `msku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("msku").toString()));
+        }
+        // validate the required field `prepOwner`
+        PrepOwner.validateJsonElement(jsonObj.get("prepOwner"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemInput> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ItemInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemInput>() {
+                        @Override
+                        public void write(JsonWriter out, ItemInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemInput
+     * @throws IOException if the JSON string is invalid with respect to ItemInput
+     */
+    public static ItemInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemInput.class);
+    }
+
+    /**
+     * Convert an instance of ItemInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,41 +12,52 @@
 
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A product type definition represents the attributes and data requirements for a product type in the Amazon catalog.
  * Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner
  * API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A product type definition represents the attributes and data requirements for a product type in the Amazon catalog. Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductTypeDefinition {
-    @SerializedName("metaSchema")
-    private SchemaLink metaSchema = null;
+    public static final String SERIALIZED_NAME_META_SCHEMA = "metaSchema";
 
-    @SerializedName("schema")
-    private SchemaLink schema = null;
+    @SerializedName(SERIALIZED_NAME_META_SCHEMA)
+    private SchemaLink metaSchema;
+
+    public static final String SERIALIZED_NAME_SCHEMA = "schema";
+
+    @SerializedName(SERIALIZED_NAME_SCHEMA)
+    private SchemaLink schema;
 
     /** Name of the requirements set represented in this product type definition. */
     @JsonAdapter(RequirementsEnum.Adapter.class)
     public enum RequirementsEnum {
-        @SerializedName("LISTING")
         LISTING("LISTING"),
-        @SerializedName("LISTING_PRODUCT_ONLY")
+
         LISTING_PRODUCT_ONLY("LISTING_PRODUCT_ONLY"),
-        @SerializedName("LISTING_OFFER_ONLY")
+
         LISTING_OFFER_ONLY("LISTING_OFFER_ONLY");
 
         private String value;
@@ -64,31 +75,38 @@ public class ProductTypeDefinition {
             return String.valueOf(value);
         }
 
-        public static RequirementsEnum fromValue(String input) {
+        public static RequirementsEnum fromValue(String value) {
             for (RequirementsEnum b : RequirementsEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RequirementsEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RequirementsEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RequirementsEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RequirementsEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RequirementsEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RequirementsEnum.fromValue(value);
         }
     }
 
-    @SerializedName("requirements")
-    private RequirementsEnum requirements = null;
+    public static final String SERIALIZED_NAME_REQUIREMENTS = "requirements";
+
+    @SerializedName(SERIALIZED_NAME_REQUIREMENTS)
+    private RequirementsEnum requirements;
 
     /**
      * Identifies if the required attributes for a requirements set are enforced by the product type definition schema.
@@ -97,9 +115,8 @@ public class ProductTypeDefinition {
      */
     @JsonAdapter(RequirementsEnforcedEnum.Adapter.class)
     public enum RequirementsEnforcedEnum {
-        @SerializedName("ENFORCED")
         ENFORCED("ENFORCED"),
-        @SerializedName("NOT_ENFORCED")
+
         NOT_ENFORCED("NOT_ENFORCED");
 
         private String value;
@@ -117,50 +134,71 @@ public class ProductTypeDefinition {
             return String.valueOf(value);
         }
 
-        public static RequirementsEnforcedEnum fromValue(String input) {
+        public static RequirementsEnforcedEnum fromValue(String value) {
             for (RequirementsEnforcedEnum b : RequirementsEnforcedEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RequirementsEnforcedEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RequirementsEnforcedEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RequirementsEnforcedEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RequirementsEnforcedEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RequirementsEnforcedEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RequirementsEnforcedEnum.fromValue(value);
         }
     }
 
-    @SerializedName("requirementsEnforced")
-    private RequirementsEnforcedEnum requirementsEnforced = null;
+    public static final String SERIALIZED_NAME_REQUIREMENTS_ENFORCED = "requirementsEnforced";
 
-    @SerializedName("propertyGroups")
-    private Map<String, PropertyGroup> propertyGroups = null;
+    @SerializedName(SERIALIZED_NAME_REQUIREMENTS_ENFORCED)
+    private RequirementsEnforcedEnum requirementsEnforced;
 
-    @SerializedName("locale")
-    private String locale = null;
+    public static final String SERIALIZED_NAME_PROPERTY_GROUPS = "propertyGroups";
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    @SerializedName(SERIALIZED_NAME_PROPERTY_GROUPS)
+    private Map<String, PropertyGroup> propertyGroups = new HashMap<>();
 
-    @SerializedName("productType")
-    private String productType = null;
+    public static final String SERIALIZED_NAME_LOCALE = "locale";
 
-    @SerializedName("displayName")
-    private String displayName = null;
+    @SerializedName(SERIALIZED_NAME_LOCALE)
+    private String locale;
 
-    @SerializedName("productTypeVersion")
-    private ProductTypeVersion productTypeVersion = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+    private String productType;
+
+    public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+
+    @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    private String displayName;
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE_VERSION = "productTypeVersion";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE_VERSION)
+    private ProductTypeVersion productTypeVersion;
+
+    public ProductTypeDefinition() {}
 
     public ProductTypeDefinition metaSchema(SchemaLink metaSchema) {
         this.metaSchema = metaSchema;
@@ -172,8 +210,7 @@ public class ProductTypeDefinition {
      *
      * @return metaSchema
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SchemaLink getMetaSchema() {
+    @javax.annotation.Nullable public SchemaLink getMetaSchema() {
         return metaSchema;
     }
 
@@ -191,7 +228,7 @@ public class ProductTypeDefinition {
      *
      * @return schema
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public SchemaLink getSchema() {
         return schema;
     }
@@ -210,9 +247,7 @@ public class ProductTypeDefinition {
      *
      * @return requirements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Name of the requirements set represented in this product type definition.")
+    @javax.annotation.Nonnull
     public RequirementsEnum getRequirements() {
         return requirements;
     }
@@ -233,10 +268,7 @@ public class ProductTypeDefinition {
      *
      * @return requirementsEnforced
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all of the required attributes being present (such as for partial updates).")
+    @javax.annotation.Nonnull
     public RequirementsEnforcedEnum getRequirementsEnforced() {
         return requirementsEnforced;
     }
@@ -264,10 +296,7 @@ public class ProductTypeDefinition {
      *
      * @return propertyGroups
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.")
+    @javax.annotation.Nonnull
     public Map<String, PropertyGroup> getPropertyGroups() {
         return propertyGroups;
     }
@@ -286,9 +315,7 @@ public class ProductTypeDefinition {
      *
      * @return locale
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Locale of the display elements contained in the product type definition.")
+    @javax.annotation.Nonnull
     public String getLocale() {
         return locale;
     }
@@ -315,9 +342,7 @@ public class ProductTypeDefinition {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Amazon marketplace identifiers for which the product type definition is applicable.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -336,9 +361,7 @@ public class ProductTypeDefinition {
      *
      * @return productType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The name of the Amazon product type that this product type definition applies to.")
+    @javax.annotation.Nonnull
     public String getProductType() {
         return productType;
     }
@@ -357,9 +380,7 @@ public class ProductTypeDefinition {
      *
      * @return displayName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Human-readable and localized description of the Amazon product type.")
+    @javax.annotation.Nonnull
     public String getDisplayName() {
         return displayName;
     }
@@ -378,7 +399,7 @@ public class ProductTypeDefinition {
      *
      * @return productTypeVersion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ProductTypeVersion getProductTypeVersion() {
         return productTypeVersion;
     }
@@ -388,7 +409,7 @@ public class ProductTypeDefinition {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -450,10 +471,173 @@ public class ProductTypeDefinition {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("metaSchema");
+        openapiFields.add("schema");
+        openapiFields.add("requirements");
+        openapiFields.add("requirementsEnforced");
+        openapiFields.add("propertyGroups");
+        openapiFields.add("locale");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("productType");
+        openapiFields.add("displayName");
+        openapiFields.add("productTypeVersion");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("schema");
+        openapiRequiredFields.add("requirements");
+        openapiRequiredFields.add("requirementsEnforced");
+        openapiRequiredFields.add("propertyGroups");
+        openapiRequiredFields.add("locale");
+        openapiRequiredFields.add("marketplaceIds");
+        openapiRequiredFields.add("productType");
+        openapiRequiredFields.add("displayName");
+        openapiRequiredFields.add("productTypeVersion");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductTypeDefinition
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductTypeDefinition.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductTypeDefinition is not found in the empty JSON string",
+                        ProductTypeDefinition.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductTypeDefinition.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductTypeDefinition` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ProductTypeDefinition.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `metaSchema`
+        if (jsonObj.get("metaSchema") != null && !jsonObj.get("metaSchema").isJsonNull()) {
+            SchemaLink.validateJsonElement(jsonObj.get("metaSchema"));
+        }
+        // validate the required field `schema`
+        SchemaLink.validateJsonElement(jsonObj.get("schema"));
+        if (!jsonObj.get("requirements").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requirements` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requirements").toString()));
+        }
+        // validate the required field `requirements`
+        RequirementsEnum.validateJsonElement(jsonObj.get("requirements"));
+        if (!jsonObj.get("requirementsEnforced").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requirementsEnforced` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requirementsEnforced").toString()));
+        }
+        // validate the required field `requirementsEnforced`
+        RequirementsEnforcedEnum.validateJsonElement(jsonObj.get("requirementsEnforced"));
+        if (!jsonObj.get("locale").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `locale` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("locale").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("productType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productType").toString()));
+        }
+        if (!jsonObj.get("displayName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayName").toString()));
+        }
+        // validate the required field `productTypeVersion`
+        ProductTypeVersion.validateJsonElement(jsonObj.get("productTypeVersion"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductTypeDefinition.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductTypeDefinition' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductTypeDefinition> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductTypeDefinition.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductTypeDefinition>() {
+                        @Override
+                        public void write(JsonWriter out, ProductTypeDefinition value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductTypeDefinition read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductTypeDefinition given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductTypeDefinition
+     * @throws IOException if the JSON string is invalid with respect to ProductTypeDefinition
+     */
+    public static ProductTypeDefinition fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductTypeDefinition.class);
+    }
+
+    /**
+     * Convert an instance of ProductTypeDefinition to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

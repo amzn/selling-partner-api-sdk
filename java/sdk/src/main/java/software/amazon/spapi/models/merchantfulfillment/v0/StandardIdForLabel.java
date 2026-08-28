@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** The type of standard identifier to print on the label. */
 @JsonAdapter(StandardIdForLabel.Adapter.class)
 public enum StandardIdForLabel {
-    @SerializedName("AmazonOrderId")
     AMAZON_ORDER_ID("AmazonOrderId");
 
     private String value;
@@ -40,25 +39,30 @@ public enum StandardIdForLabel {
         return String.valueOf(value);
     }
 
-    public static StandardIdForLabel fromValue(String input) {
+    public static StandardIdForLabel fromValue(String value) {
         for (StandardIdForLabel b : StandardIdForLabel.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<StandardIdForLabel> {
         @Override
         public void write(final JsonWriter jsonWriter, final StandardIdForLabel enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public StandardIdForLabel read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return StandardIdForLabel.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return StandardIdForLabel.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        StandardIdForLabel.fromValue(value);
     }
 }

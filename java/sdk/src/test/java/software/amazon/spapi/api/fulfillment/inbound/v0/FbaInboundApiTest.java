@@ -29,7 +29,6 @@ import software.amazon.spapi.models.fulfillment.inbound.v0.GetLabelsResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v0.GetPrepInstructionsResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v0.GetShipmentItemsResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v0.GetShipmentsResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FbaInboundApiTest {
 
@@ -47,10 +46,8 @@ public class FbaInboundApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getBillOfLadingTest() throws Exception {

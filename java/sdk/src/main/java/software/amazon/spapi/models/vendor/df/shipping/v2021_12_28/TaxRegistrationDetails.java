@@ -12,23 +12,33 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tax registration details of the entity. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tax registration details of the entity.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TaxRegistrationDetails {
     /** Tax registration type for the entity. */
     @JsonAdapter(TaxRegistrationTypeEnum.Adapter.class)
     public enum TaxRegistrationTypeEnum {
-        @SerializedName("VAT")
         VAT("VAT"),
-        @SerializedName("GST")
+
         GST("GST");
 
         private String value;
@@ -46,41 +56,56 @@ public class TaxRegistrationDetails {
             return String.valueOf(value);
         }
 
-        public static TaxRegistrationTypeEnum fromValue(String input) {
+        public static TaxRegistrationTypeEnum fromValue(String value) {
             for (TaxRegistrationTypeEnum b : TaxRegistrationTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TaxRegistrationTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TaxRegistrationTypeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TaxRegistrationTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TaxRegistrationTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TaxRegistrationTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TaxRegistrationTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("taxRegistrationType")
-    private TaxRegistrationTypeEnum taxRegistrationType = null;
+    public static final String SERIALIZED_NAME_TAX_REGISTRATION_TYPE = "taxRegistrationType";
 
-    @SerializedName("taxRegistrationNumber")
-    private String taxRegistrationNumber = null;
+    @SerializedName(SERIALIZED_NAME_TAX_REGISTRATION_TYPE)
+    private TaxRegistrationTypeEnum taxRegistrationType;
 
-    @SerializedName("taxRegistrationAddress")
-    private Address taxRegistrationAddress = null;
+    public static final String SERIALIZED_NAME_TAX_REGISTRATION_NUMBER = "taxRegistrationNumber";
 
-    @SerializedName("taxRegistrationMessages")
-    private String taxRegistrationMessages = null;
+    @SerializedName(SERIALIZED_NAME_TAX_REGISTRATION_NUMBER)
+    private String taxRegistrationNumber;
+
+    public static final String SERIALIZED_NAME_TAX_REGISTRATION_ADDRESS = "taxRegistrationAddress";
+
+    @SerializedName(SERIALIZED_NAME_TAX_REGISTRATION_ADDRESS)
+    private Address taxRegistrationAddress;
+
+    public static final String SERIALIZED_NAME_TAX_REGISTRATION_MESSAGES = "taxRegistrationMessages";
+
+    @SerializedName(SERIALIZED_NAME_TAX_REGISTRATION_MESSAGES)
+    private String taxRegistrationMessages;
+
+    public TaxRegistrationDetails() {}
 
     public TaxRegistrationDetails taxRegistrationType(TaxRegistrationTypeEnum taxRegistrationType) {
         this.taxRegistrationType = taxRegistrationType;
@@ -92,8 +117,7 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax registration type for the entity.")
-    public TaxRegistrationTypeEnum getTaxRegistrationType() {
+    @javax.annotation.Nullable public TaxRegistrationTypeEnum getTaxRegistrationType() {
         return taxRegistrationType;
     }
 
@@ -111,9 +135,7 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Tax registration number for the party. For example, VAT ID.")
+    @javax.annotation.Nonnull
     public String getTaxRegistrationNumber() {
         return taxRegistrationNumber;
     }
@@ -132,8 +154,7 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getTaxRegistrationAddress() {
+    @javax.annotation.Nullable public Address getTaxRegistrationAddress() {
         return taxRegistrationAddress;
     }
 
@@ -151,9 +172,7 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationMessages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Tax registration message that can be used for additional tax related details.")
-    public String getTaxRegistrationMessages() {
+    @javax.annotation.Nullable public String getTaxRegistrationMessages() {
         return taxRegistrationMessages;
     }
 
@@ -162,7 +181,7 @@ public class TaxRegistrationDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -203,10 +222,142 @@ public class TaxRegistrationDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("taxRegistrationType");
+        openapiFields.add("taxRegistrationNumber");
+        openapiFields.add("taxRegistrationAddress");
+        openapiFields.add("taxRegistrationMessages");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("taxRegistrationNumber");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TaxRegistrationDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TaxRegistrationDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TaxRegistrationDetails is not found in the empty JSON string",
+                        TaxRegistrationDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TaxRegistrationDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TaxRegistrationDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TaxRegistrationDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("taxRegistrationType") != null
+                        && !jsonObj.get("taxRegistrationType").isJsonNull())
+                && !jsonObj.get("taxRegistrationType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRegistrationType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxRegistrationType").toString()));
+        }
+        // validate the optional field `taxRegistrationType`
+        if (jsonObj.get("taxRegistrationType") != null
+                && !jsonObj.get("taxRegistrationType").isJsonNull()) {
+            TaxRegistrationTypeEnum.validateJsonElement(jsonObj.get("taxRegistrationType"));
+        }
+        if (!jsonObj.get("taxRegistrationNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRegistrationNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxRegistrationNumber").toString()));
+        }
+        // validate the optional field `taxRegistrationAddress`
+        if (jsonObj.get("taxRegistrationAddress") != null
+                && !jsonObj.get("taxRegistrationAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("taxRegistrationAddress"));
+        }
+        if ((jsonObj.get("taxRegistrationMessages") != null
+                        && !jsonObj.get("taxRegistrationMessages").isJsonNull())
+                && !jsonObj.get("taxRegistrationMessages").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRegistrationMessages` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxRegistrationMessages").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TaxRegistrationDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TaxRegistrationDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TaxRegistrationDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TaxRegistrationDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TaxRegistrationDetails>() {
+                        @Override
+                        public void write(JsonWriter out, TaxRegistrationDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TaxRegistrationDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TaxRegistrationDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TaxRegistrationDetails
+     * @throws IOException if the JSON string is invalid with respect to TaxRegistrationDetails
+     */
+    public static TaxRegistrationDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TaxRegistrationDetails.class);
+    }
+
+    /**
+     * Convert an instance of TaxRegistrationDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

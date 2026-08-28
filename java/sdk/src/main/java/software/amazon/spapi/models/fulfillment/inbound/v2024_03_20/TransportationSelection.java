@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The transportation option selected to confirm. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The transportation option selected to confirm.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationSelection {
-    @SerializedName("contactInformation")
-    private ContactInformation contactInformation = null;
+    public static final String SERIALIZED_NAME_CONTACT_INFORMATION = "contactInformation";
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    @SerializedName(SERIALIZED_NAME_CONTACT_INFORMATION)
+    private ContactInformation contactInformation;
 
-    @SerializedName("transportationOptionId")
-    private String transportationOptionId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public static final String SERIALIZED_NAME_TRANSPORTATION_OPTION_ID = "transportationOptionId";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_OPTION_ID)
+    private String transportationOptionId;
+
+    public TransportationSelection() {}
 
     public TransportationSelection contactInformation(ContactInformation contactInformation) {
         this.contactInformation = contactInformation;
@@ -37,8 +60,7 @@ public class TransportationSelection {
      *
      * @return contactInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContactInformation getContactInformation() {
+    @javax.annotation.Nullable public ContactInformation getContactInformation() {
         return contactInformation;
     }
 
@@ -56,9 +78,7 @@ public class TransportationSelection {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Shipment ID that the transportation Option is for.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -77,9 +97,7 @@ public class TransportationSelection {
      *
      * @return transportationOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Transportation option being selected for the provided shipment.")
+    @javax.annotation.Nonnull
     public String getTransportationOptionId() {
         return transportationOptionId;
     }
@@ -89,7 +107,7 @@ public class TransportationSelection {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -123,10 +141,128 @@ public class TransportationSelection {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contactInformation");
+        openapiFields.add("shipmentId");
+        openapiFields.add("transportationOptionId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("transportationOptionId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationSelection
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationSelection.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationSelection is not found in the empty JSON string",
+                        TransportationSelection.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationSelection.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationSelection` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransportationSelection.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `contactInformation`
+        if (jsonObj.get("contactInformation") != null
+                && !jsonObj.get("contactInformation").isJsonNull()) {
+            ContactInformation.validateJsonElement(jsonObj.get("contactInformation"));
+        }
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        if (!jsonObj.get("transportationOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transportationOptionId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationSelection.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationSelection' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationSelection> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationSelection.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationSelection>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationSelection value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationSelection read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationSelection given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationSelection
+     * @throws IOException if the JSON string is invalid with respect to TransportationSelection
+     */
+    public static TransportationSelection fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationSelection.class);
+    }
+
+    /**
+     * Convert an instance of TransportationSelection to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

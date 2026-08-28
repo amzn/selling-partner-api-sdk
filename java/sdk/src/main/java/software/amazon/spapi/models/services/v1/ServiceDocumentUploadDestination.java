@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about an upload destination. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about an upload destination.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServiceDocumentUploadDestination {
-    @SerializedName("uploadDestinationId")
-    private String uploadDestinationId = null;
+    public static final String SERIALIZED_NAME_UPLOAD_DESTINATION_ID = "uploadDestinationId";
 
-    @SerializedName("url")
-    private String url = null;
+    @SerializedName(SERIALIZED_NAME_UPLOAD_DESTINATION_ID)
+    private String uploadDestinationId;
 
-    @SerializedName("encryptionDetails")
-    private EncryptionDetails encryptionDetails = null;
+    public static final String SERIALIZED_NAME_URL = "url";
 
-    @SerializedName("headers")
-    private Object headers = null;
+    @SerializedName(SERIALIZED_NAME_URL)
+    private String url;
+
+    public static final String SERIALIZED_NAME_ENCRYPTION_DETAILS = "encryptionDetails";
+
+    @SerializedName(SERIALIZED_NAME_ENCRYPTION_DETAILS)
+    private EncryptionDetails encryptionDetails;
+
+    public static final String SERIALIZED_NAME_HEADERS = "headers";
+
+    @SerializedName(SERIALIZED_NAME_HEADERS)
+    private Object headers;
+
+    public ServiceDocumentUploadDestination() {}
 
     public ServiceDocumentUploadDestination uploadDestinationId(String uploadDestinationId) {
         this.uploadDestinationId = uploadDestinationId;
@@ -40,9 +65,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return uploadDestinationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier to be used by APIs that reference the upload destination.")
+    @javax.annotation.Nonnull
     public String getUploadDestinationId() {
         return uploadDestinationId;
     }
@@ -61,7 +84,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return url
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The URL to which to upload the file.")
+    @javax.annotation.Nonnull
     public String getUrl() {
         return url;
     }
@@ -80,7 +103,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return encryptionDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public EncryptionDetails getEncryptionDetails() {
         return encryptionDetails;
     }
@@ -99,8 +122,7 @@ public class ServiceDocumentUploadDestination {
      *
      * @return headers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The headers to include in the upload request.")
-    public Object getHeaders() {
+    @javax.annotation.Nullable public Object getHeaders() {
         return headers;
     }
 
@@ -109,7 +131,7 @@ public class ServiceDocumentUploadDestination {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +167,127 @@ public class ServiceDocumentUploadDestination {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("uploadDestinationId");
+        openapiFields.add("url");
+        openapiFields.add("encryptionDetails");
+        openapiFields.add("headers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("uploadDestinationId");
+        openapiRequiredFields.add("url");
+        openapiRequiredFields.add("encryptionDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServiceDocumentUploadDestination
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServiceDocumentUploadDestination.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServiceDocumentUploadDestination is not found in the empty JSON string",
+                        ServiceDocumentUploadDestination.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServiceDocumentUploadDestination.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServiceDocumentUploadDestination` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ServiceDocumentUploadDestination.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("uploadDestinationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uploadDestinationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uploadDestinationId").toString()));
+        }
+        if (!jsonObj.get("url").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `url` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("url").toString()));
+        }
+        // validate the required field `encryptionDetails`
+        EncryptionDetails.validateJsonElement(jsonObj.get("encryptionDetails"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServiceDocumentUploadDestination.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServiceDocumentUploadDestination' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServiceDocumentUploadDestination> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ServiceDocumentUploadDestination.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServiceDocumentUploadDestination>() {
+                        @Override
+                        public void write(JsonWriter out, ServiceDocumentUploadDestination value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServiceDocumentUploadDestination read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServiceDocumentUploadDestination given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServiceDocumentUploadDestination
+     * @throws IOException if the JSON string is invalid with respect to ServiceDocumentUploadDestination
+     */
+    public static ServiceDocumentUploadDestination fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServiceDocumentUploadDestination.class);
+    }
+
+    /**
+     * Convert an instance of ServiceDocumentUploadDestination to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

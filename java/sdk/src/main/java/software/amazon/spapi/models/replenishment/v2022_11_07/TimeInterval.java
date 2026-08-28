@@ -12,9 +12,22 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A date-time interval in ISO 8601 format used to compute metrics. Only the date is required, but you must pass the
@@ -25,15 +38,21 @@ import java.util.Objects;
  * For the &#x60;getSellingPartnerMetrics&#x60; operation with DAY aggregation frequency, the time interval cannot
  * exceed 31 days.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A date-time interval in ISO 8601 format used to compute metrics. Only the date is required, but you must pass the complete date and time value. For example, November 11, 2022 should be passed as \"2022-11-11T00:00:00Z\". Note that only data for the trailing 2 years is supported.  **Note**: * The `listOfferMetrics` operation only supports a time interval which covers a single unit of the aggregation frequency. For example, for a MONTH aggregation frequency, the duration of the interval between the startDate and endDate can not be more than 1 month. * For the `getSellingPartnerMetrics` operation with DAY aggregation frequency, the time interval cannot exceed 31 days.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TimeInterval {
-    @SerializedName("startDate")
-    private OffsetDateTime startDate = null;
+    public static final String SERIALIZED_NAME_START_DATE = "startDate";
 
-    @SerializedName("endDate")
-    private OffsetDateTime endDate = null;
+    @SerializedName(SERIALIZED_NAME_START_DATE)
+    private OffsetDateTime startDate;
+
+    public static final String SERIALIZED_NAME_END_DATE = "endDate";
+
+    @SerializedName(SERIALIZED_NAME_END_DATE)
+    private OffsetDateTime endDate;
+
+    public TimeInterval() {}
 
     public TimeInterval startDate(OffsetDateTime startDate) {
         this.startDate = startDate;
@@ -51,10 +70,7 @@ public class TimeInterval {
      *
      * @return startDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed from the specific day indicated by the `startDate`. * For `WEEK` the metric is computed from the first day of the week (Monday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -80,10 +96,7 @@ public class TimeInterval {
      *
      * @return endDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed up to the specific day indicated by the `endDate`. * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day of the month that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEndDate() {
         return endDate;
     }
@@ -93,7 +106,7 @@ public class TimeInterval {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +134,111 @@ public class TimeInterval {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startDate");
+        openapiFields.add("endDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("startDate");
+        openapiRequiredFields.add("endDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TimeInterval
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TimeInterval.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TimeInterval is not found in the empty JSON string",
+                        TimeInterval.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TimeInterval.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TimeInterval` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TimeInterval.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TimeInterval.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TimeInterval' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TimeInterval> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TimeInterval.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TimeInterval>() {
+                        @Override
+                        public void write(JsonWriter out, TimeInterval value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TimeInterval read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TimeInterval given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TimeInterval
+     * @throws IOException if the JSON string is invalid with respect to TimeInterval
+     */
+    public static TimeInterval fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TimeInterval.class);
+    }
+
+    /**
+     * Convert an instance of TimeInterval to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

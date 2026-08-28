@@ -12,24 +12,52 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A fee event related to Amazon Imaging services. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A fee event related to Amazon Imaging services.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ImagingServicesFeeEvent {
-    @SerializedName("ImagingRequestBillingItemID")
-    private String imagingRequestBillingItemID = null;
+    public static final String SERIALIZED_NAME_IMAGING_REQUEST_BILLING_ITEM_I_D = "ImagingRequestBillingItemID";
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    @SerializedName(SERIALIZED_NAME_IMAGING_REQUEST_BILLING_ITEM_I_D)
+    private String imagingRequestBillingItemID;
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
 
-    @SerializedName("FeeList")
-    private FeeComponentList feeList = null;
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
+
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
+
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_FEE_LIST = "FeeList";
+
+    @SerializedName(SERIALIZED_NAME_FEE_LIST)
+    private List<FeeComponent> feeList = new ArrayList<>();
+
+    public ImagingServicesFeeEvent() {}
 
     public ImagingServicesFeeEvent imagingRequestBillingItemID(String imagingRequestBillingItemID) {
         this.imagingRequestBillingItemID = imagingRequestBillingItemID;
@@ -41,8 +69,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return imagingRequestBillingItemID
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the imaging services request.")
-    public String getImagingRequestBillingItemID() {
+    @javax.annotation.Nullable public String getImagingRequestBillingItemID() {
         return imagingRequestBillingItemID;
     }
 
@@ -60,10 +87,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -81,10 +105,7 @@ public class ImagingServicesFeeEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -92,27 +113,34 @@ public class ImagingServicesFeeEvent {
         this.postedDate = postedDate;
     }
 
-    public ImagingServicesFeeEvent feeList(FeeComponentList feeList) {
+    public ImagingServicesFeeEvent feeList(List<FeeComponent> feeList) {
         this.feeList = feeList;
         return this;
     }
 
+    public ImagingServicesFeeEvent addFeeListItem(FeeComponent feeListItem) {
+        if (this.feeList == null) {
+            this.feeList = new ArrayList<>();
+        }
+        this.feeList.add(feeListItem);
+        return this;
+    }
+
     /**
-     * Get feeList
+     * A list of fee component information.
      *
      * @return feeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getFeeList() {
         return feeList;
     }
 
-    public void setFeeList(FeeComponentList feeList) {
+    public void setFeeList(List<FeeComponent> feeList) {
         this.feeList = feeList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,10 +174,133 @@ public class ImagingServicesFeeEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ImagingRequestBillingItemID");
+        openapiFields.add("ASIN");
+        openapiFields.add("PostedDate");
+        openapiFields.add("FeeList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ImagingServicesFeeEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ImagingServicesFeeEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ImagingServicesFeeEvent is not found in the empty JSON string",
+                        ImagingServicesFeeEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ImagingServicesFeeEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ImagingServicesFeeEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ImagingRequestBillingItemID") != null
+                        && !jsonObj.get("ImagingRequestBillingItemID").isJsonNull())
+                && !jsonObj.get("ImagingRequestBillingItemID").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ImagingRequestBillingItemID` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ImagingRequestBillingItemID").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if (jsonObj.get("FeeList") != null && !jsonObj.get("FeeList").isJsonNull()) {
+            JsonArray jsonArrayfeeList = jsonObj.getAsJsonArray("FeeList");
+            if (jsonArrayfeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FeeList").toString()));
+                }
+
+                // validate the optional field `FeeList` (array)
+                for (int i = 0; i < jsonArrayfeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayfeeList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ImagingServicesFeeEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ImagingServicesFeeEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ImagingServicesFeeEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ImagingServicesFeeEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ImagingServicesFeeEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ImagingServicesFeeEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ImagingServicesFeeEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ImagingServicesFeeEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ImagingServicesFeeEvent
+     * @throws IOException if the JSON string is invalid with respect to ImagingServicesFeeEvent
+     */
+    public static ImagingServicesFeeEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ImagingServicesFeeEvent.class);
+    }
+
+    /**
+     * Convert an instance of ImagingServicesFeeEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

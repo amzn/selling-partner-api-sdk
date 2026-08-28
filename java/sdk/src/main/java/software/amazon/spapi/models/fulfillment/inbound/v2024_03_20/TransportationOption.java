@@ -12,38 +12,70 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains information pertaining to a transportation option and the related carrier. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains information pertaining to a transportation option and the related carrier.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationOption {
-    @SerializedName("carrier")
-    private Carrier carrier = null;
+    public static final String SERIALIZED_NAME_CARRIER = "carrier";
 
-    @SerializedName("carrierAppointment")
-    private CarrierAppointment carrierAppointment = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER)
+    private Carrier carrier;
 
-    @SerializedName("preconditions")
-    private List<String> preconditions = null;
+    public static final String SERIALIZED_NAME_CARRIER_APPOINTMENT = "carrierAppointment";
 
-    @SerializedName("quote")
-    private Quote quote = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_APPOINTMENT)
+    private CarrierAppointment carrierAppointment;
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_PRECONDITIONS = "preconditions";
 
-    @SerializedName("shippingMode")
-    private String shippingMode = null;
+    @SerializedName(SERIALIZED_NAME_PRECONDITIONS)
+    private List<String> preconditions = new ArrayList<>();
 
-    @SerializedName("shippingSolution")
-    private String shippingSolution = null;
+    public static final String SERIALIZED_NAME_QUOTE = "quote";
 
-    @SerializedName("transportationOptionId")
-    private String transportationOptionId = null;
+    @SerializedName(SERIALIZED_NAME_QUOTE)
+    private Quote quote;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public static final String SERIALIZED_NAME_SHIPPING_MODE = "shippingMode";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_MODE)
+    private String shippingMode;
+
+    public static final String SERIALIZED_NAME_SHIPPING_SOLUTION = "shippingSolution";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SOLUTION)
+    private String shippingSolution;
+
+    public static final String SERIALIZED_NAME_TRANSPORTATION_OPTION_ID = "transportationOptionId";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_OPTION_ID)
+    private String transportationOptionId;
+
+    public TransportationOption() {}
 
     public TransportationOption carrier(Carrier carrier) {
         this.carrier = carrier;
@@ -55,7 +87,7 @@ public class TransportationOption {
      *
      * @return carrier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Carrier getCarrier() {
         return carrier;
     }
@@ -74,8 +106,7 @@ public class TransportationOption {
      *
      * @return carrierAppointment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierAppointment getCarrierAppointment() {
+    @javax.annotation.Nullable public CarrierAppointment getCarrierAppointment() {
         return carrierAppointment;
     }
 
@@ -101,9 +132,7 @@ public class TransportationOption {
      *
      * @return preconditions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifies a list of preconditions for confirming the transportation option.")
+    @javax.annotation.Nonnull
     public List<String> getPreconditions() {
         return preconditions;
     }
@@ -122,8 +151,7 @@ public class TransportationOption {
      *
      * @return quote
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Quote getQuote() {
+    @javax.annotation.Nullable public Quote getQuote() {
         return quote;
     }
 
@@ -141,9 +169,7 @@ public class TransportationOption {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -164,10 +190,7 @@ public class TransportationOption {
      *
      * @return shippingMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.")
+    @javax.annotation.Nonnull
     public String getShippingMode() {
         return shippingMode;
     }
@@ -187,10 +210,7 @@ public class TransportationOption {
      *
      * @return shippingSolution
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.")
+    @javax.annotation.Nonnull
     public String getShippingSolution() {
         return shippingSolution;
     }
@@ -209,10 +229,7 @@ public class TransportationOption {
      *
      * @return transportationOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Identifier of a transportation option. A transportation option represent one option for how to send a shipment.")
+    @javax.annotation.Nonnull
     public String getTransportationOptionId() {
         return transportationOptionId;
     }
@@ -222,7 +239,7 @@ public class TransportationOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -276,10 +293,161 @@ public class TransportationOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrier");
+        openapiFields.add("carrierAppointment");
+        openapiFields.add("preconditions");
+        openapiFields.add("quote");
+        openapiFields.add("shipmentId");
+        openapiFields.add("shippingMode");
+        openapiFields.add("shippingSolution");
+        openapiFields.add("transportationOptionId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("carrier");
+        openapiRequiredFields.add("preconditions");
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("shippingMode");
+        openapiRequiredFields.add("shippingSolution");
+        openapiRequiredFields.add("transportationOptionId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationOption is not found in the empty JSON string",
+                        TransportationOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransportationOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `carrier`
+        Carrier.validateJsonElement(jsonObj.get("carrier"));
+        // validate the optional field `carrierAppointment`
+        if (jsonObj.get("carrierAppointment") != null
+                && !jsonObj.get("carrierAppointment").isJsonNull()) {
+            CarrierAppointment.validateJsonElement(jsonObj.get("carrierAppointment"));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("preconditions") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("preconditions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `preconditions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("preconditions").toString()));
+        }
+        // validate the optional field `quote`
+        if (jsonObj.get("quote") != null && !jsonObj.get("quote").isJsonNull()) {
+            Quote.validateJsonElement(jsonObj.get("quote"));
+        }
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        if (!jsonObj.get("shippingMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingMode").toString()));
+        }
+        if (!jsonObj.get("shippingSolution").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingSolution` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingSolution").toString()));
+        }
+        if (!jsonObj.get("transportationOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transportationOptionId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationOption>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationOption
+     * @throws IOException if the JSON string is invalid with respect to TransportationOption
+     */
+    public static TransportationOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationOption.class);
+    }
+
+    /**
+     * Convert an instance of TransportationOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

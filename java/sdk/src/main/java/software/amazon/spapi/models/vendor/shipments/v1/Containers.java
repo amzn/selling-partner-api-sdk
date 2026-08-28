@@ -12,30 +12,39 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A list of the items in this transportation and their associated inner container details. If any of the item detail
  * fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Containers {
     /** The type of container. */
     @JsonAdapter(ContainerTypeEnum.Adapter.class)
     public enum ContainerTypeEnum {
-        @SerializedName("carton")
         CARTON("carton"),
-        @SerializedName("pallet")
+
         PALLET("pallet");
 
         private String value;
@@ -53,58 +62,85 @@ public class Containers {
             return String.valueOf(value);
         }
 
-        public static ContainerTypeEnum fromValue(String input) {
+        public static ContainerTypeEnum fromValue(String value) {
             for (ContainerTypeEnum b : ContainerTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContainerTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ContainerTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ContainerTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ContainerTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ContainerTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContainerTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("containerType")
-    private ContainerTypeEnum containerType = null;
+    public static final String SERIALIZED_NAME_CONTAINER_TYPE = "containerType";
 
-    @SerializedName("containerSequenceNumber")
-    private String containerSequenceNumber = null;
+    @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE)
+    private ContainerTypeEnum containerType;
 
-    @SerializedName("containerIdentifiers")
-    private List<ContainerIdentification> containerIdentifiers = null;
+    public static final String SERIALIZED_NAME_CONTAINER_SEQUENCE_NUMBER = "containerSequenceNumber";
 
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    @SerializedName(SERIALIZED_NAME_CONTAINER_SEQUENCE_NUMBER)
+    private String containerSequenceNumber;
 
-    @SerializedName("dimensions")
-    private Dimensions dimensions = null;
+    public static final String SERIALIZED_NAME_CONTAINER_IDENTIFIERS = "containerIdentifiers";
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    @SerializedName(SERIALIZED_NAME_CONTAINER_IDENTIFIERS)
+    private List<ContainerIdentification> containerIdentifiers = new ArrayList<>();
 
-    @SerializedName("tier")
-    private Integer tier = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("block")
-    private Integer block = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("innerContainersDetails")
-    private InnerContainersDetails innerContainersDetails = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("packedItems")
-    private List<PackedItems> packedItems = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private Dimensions dimensions;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public static final String SERIALIZED_NAME_TIER = "tier";
+
+    @SerializedName(SERIALIZED_NAME_TIER)
+    private Integer tier;
+
+    public static final String SERIALIZED_NAME_BLOCK = "block";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK)
+    private Integer block;
+
+    public static final String SERIALIZED_NAME_INNER_CONTAINERS_DETAILS = "innerContainersDetails";
+
+    @SerializedName(SERIALIZED_NAME_INNER_CONTAINERS_DETAILS)
+    private InnerContainersDetails innerContainersDetails;
+
+    public static final String SERIALIZED_NAME_PACKED_ITEMS = "packedItems";
+
+    @SerializedName(SERIALIZED_NAME_PACKED_ITEMS)
+    private List<PackedItems> packedItems = new ArrayList<>();
+
+    public Containers() {}
 
     public Containers containerType(ContainerTypeEnum containerType) {
         this.containerType = containerType;
@@ -116,7 +152,7 @@ public class Containers {
      *
      * @return containerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of container.")
+    @javax.annotation.Nonnull
     public ContainerTypeEnum getContainerType() {
         return containerType;
     }
@@ -135,10 +171,7 @@ public class Containers {
      *
      * @return containerSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.")
-    public String getContainerSequenceNumber() {
+    @javax.annotation.Nullable public String getContainerSequenceNumber() {
         return containerSequenceNumber;
     }
 
@@ -164,7 +197,7 @@ public class Containers {
      *
      * @return containerIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of carton identifiers.")
+    @javax.annotation.Nonnull
     public List<ContainerIdentification> getContainerIdentifiers() {
         return containerIdentifiers;
     }
@@ -183,8 +216,7 @@ public class Containers {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number used for identifying the shipment.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -202,8 +234,7 @@ public class Containers {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dimensions getDimensions() {
+    @javax.annotation.Nullable public Dimensions getDimensions() {
         return dimensions;
     }
 
@@ -221,8 +252,7 @@ public class Containers {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getWeight() {
+    @javax.annotation.Nullable public Weight getWeight() {
         return weight;
     }
 
@@ -240,8 +270,7 @@ public class Containers {
      *
      * @return tier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Number of layers per pallet.")
-    public Integer getTier() {
+    @javax.annotation.Nullable public Integer getTier() {
         return tier;
     }
 
@@ -259,8 +288,7 @@ public class Containers {
      *
      * @return block
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Number of cartons per layer on the pallet.")
-    public Integer getBlock() {
+    @javax.annotation.Nullable public Integer getBlock() {
         return block;
     }
 
@@ -278,8 +306,7 @@ public class Containers {
      *
      * @return innerContainersDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InnerContainersDetails getInnerContainersDetails() {
+    @javax.annotation.Nullable public InnerContainersDetails getInnerContainersDetails() {
         return innerContainersDetails;
     }
 
@@ -305,8 +332,7 @@ public class Containers {
      *
      * @return packedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of packed items.")
-    public List<PackedItems> getPackedItems() {
+    @javax.annotation.Nullable public List<PackedItems> getPackedItems() {
         return packedItems;
     }
 
@@ -315,7 +341,7 @@ public class Containers {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -377,10 +403,182 @@ public class Containers {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("containerType");
+        openapiFields.add("containerSequenceNumber");
+        openapiFields.add("containerIdentifiers");
+        openapiFields.add("trackingNumber");
+        openapiFields.add("dimensions");
+        openapiFields.add("weight");
+        openapiFields.add("tier");
+        openapiFields.add("block");
+        openapiFields.add("innerContainersDetails");
+        openapiFields.add("packedItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("containerType");
+        openapiRequiredFields.add("containerIdentifiers");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Containers
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Containers.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Containers is not found in the empty JSON string",
+                        Containers.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Containers.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Containers` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Containers.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("containerType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("containerType").toString()));
+        }
+        // validate the required field `containerType`
+        ContainerTypeEnum.validateJsonElement(jsonObj.get("containerType"));
+        if ((jsonObj.get("containerSequenceNumber") != null
+                        && !jsonObj.get("containerSequenceNumber").isJsonNull())
+                && !jsonObj.get("containerSequenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerSequenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("containerSequenceNumber").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("containerIdentifiers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerIdentifiers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("containerIdentifiers").toString()));
+        }
+
+        JsonArray jsonArraycontainerIdentifiers = jsonObj.getAsJsonArray("containerIdentifiers");
+        // validate the required field `containerIdentifiers` (array)
+        for (int i = 0; i < jsonArraycontainerIdentifiers.size(); i++) {
+            ContainerIdentification.validateJsonElement(jsonArraycontainerIdentifiers.get(i));
+        }
+        ;
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        // validate the optional field `dimensions`
+        if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull()) {
+            Dimensions.validateJsonElement(jsonObj.get("dimensions"));
+        }
+        // validate the optional field `weight`
+        if (jsonObj.get("weight") != null && !jsonObj.get("weight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("weight"));
+        }
+        // validate the optional field `innerContainersDetails`
+        if (jsonObj.get("innerContainersDetails") != null
+                && !jsonObj.get("innerContainersDetails").isJsonNull()) {
+            InnerContainersDetails.validateJsonElement(jsonObj.get("innerContainersDetails"));
+        }
+        if (jsonObj.get("packedItems") != null && !jsonObj.get("packedItems").isJsonNull()) {
+            JsonArray jsonArraypackedItems = jsonObj.getAsJsonArray("packedItems");
+            if (jsonArraypackedItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packedItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packedItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packedItems").toString()));
+                }
+
+                // validate the optional field `packedItems` (array)
+                for (int i = 0; i < jsonArraypackedItems.size(); i++) {
+                    PackedItems.validateJsonElement(jsonArraypackedItems.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Containers.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Containers' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Containers> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Containers.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Containers>() {
+                        @Override
+                        public void write(JsonWriter out, Containers value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Containers read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Containers given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Containers
+     * @throws IOException if the JSON string is invalid with respect to Containers
+     */
+    public static Containers fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Containers.class);
+    }
+
+    /**
+     * Convert an instance of Containers to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

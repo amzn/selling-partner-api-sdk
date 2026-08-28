@@ -12,53 +12,68 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The offer data of a product. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The offer data of a product.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Offer {
-    @SerializedName("sellerId")
-    private String sellerId = null;
+    public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
 
-    @SerializedName("condition")
-    private Condition condition = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
+
+    public static final String SERIALIZED_NAME_CONDITION = "condition";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION)
+    private Condition condition;
 
     /** The item subcondition of the offer. */
     @JsonAdapter(SubConditionEnum.Adapter.class)
     public enum SubConditionEnum {
-        @SerializedName("New")
         NEW("New"),
-        @SerializedName("Mint")
+
         MINT("Mint"),
-        @SerializedName("VeryGood")
+
         VERY_GOOD("VeryGood"),
-        @SerializedName("Good")
+
         GOOD("Good"),
-        @SerializedName("Acceptable")
+
         ACCEPTABLE("Acceptable"),
-        @SerializedName("Poor")
+
         POOR("Poor"),
-        @SerializedName("Club")
+
         CLUB("Club"),
-        @SerializedName("OEM")
+
         OEM("OEM"),
-        @SerializedName("Warranty")
+
         WARRANTY("Warranty"),
-        @SerializedName("RefurbishedWarranty")
+
         REFURBISHED_WARRANTY("RefurbishedWarranty"),
-        @SerializedName("Refurbished")
+
         REFURBISHED("Refurbished"),
-        @SerializedName("OpenBox")
+
         OPEN_BOX("OpenBox"),
-        @SerializedName("Other")
+
         OTHER("Other");
 
         private String value;
@@ -76,49 +91,70 @@ public class Offer {
             return String.valueOf(value);
         }
 
-        public static SubConditionEnum fromValue(String input) {
+        public static SubConditionEnum fromValue(String value) {
             for (SubConditionEnum b : SubConditionEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SubConditionEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SubConditionEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SubConditionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SubConditionEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SubConditionEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SubConditionEnum.fromValue(value);
         }
     }
 
-    @SerializedName("subCondition")
-    private SubConditionEnum subCondition = null;
+    public static final String SERIALIZED_NAME_SUB_CONDITION = "subCondition";
 
-    @SerializedName("fulfillmentType")
-    private FulfillmentType fulfillmentType = null;
+    @SerializedName(SERIALIZED_NAME_SUB_CONDITION)
+    private SubConditionEnum subCondition;
 
-    @SerializedName("listingPrice")
-    private MoneyType listingPrice = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_TYPE = "fulfillmentType";
 
-    @SerializedName("shippingOptions")
-    private List<ShippingOption> shippingOptions = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_TYPE)
+    private FulfillmentType fulfillmentType;
 
-    @SerializedName("points")
-    private Points points = null;
+    public static final String SERIALIZED_NAME_LISTING_PRICE = "listingPrice";
 
-    @SerializedName("primeDetails")
-    private PrimeDetails primeDetails = null;
+    @SerializedName(SERIALIZED_NAME_LISTING_PRICE)
+    private MoneyType listingPrice;
 
-    @SerializedName("promotions")
-    private Promotions promotions = null;
+    public static final String SERIALIZED_NAME_SHIPPING_OPTIONS = "shippingOptions";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_OPTIONS)
+    private List<ShippingOption> shippingOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_POINTS = "points";
+
+    @SerializedName(SERIALIZED_NAME_POINTS)
+    private Points points;
+
+    public static final String SERIALIZED_NAME_PRIME_DETAILS = "primeDetails";
+
+    @SerializedName(SERIALIZED_NAME_PRIME_DETAILS)
+    private PrimeDetails primeDetails;
+
+    public static final String SERIALIZED_NAME_PROMOTIONS = "promotions";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTIONS)
+    private List<Promotion> promotions = new ArrayList<>();
+
+    public Offer() {}
 
     public Offer sellerId(String sellerId) {
         this.sellerId = sellerId;
@@ -130,7 +166,7 @@ public class Offer {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller identifier for the offer.")
+    @javax.annotation.Nonnull
     public String getSellerId() {
         return sellerId;
     }
@@ -149,7 +185,7 @@ public class Offer {
      *
      * @return condition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Condition getCondition() {
         return condition;
     }
@@ -168,8 +204,7 @@ public class Offer {
      *
      * @return subCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item subcondition of the offer.")
-    public SubConditionEnum getSubCondition() {
+    @javax.annotation.Nullable public SubConditionEnum getSubCondition() {
         return subCondition;
     }
 
@@ -187,7 +222,7 @@ public class Offer {
      *
      * @return fulfillmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentType getFulfillmentType() {
         return fulfillmentType;
     }
@@ -206,7 +241,7 @@ public class Offer {
      *
      * @return listingPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -233,8 +268,7 @@ public class Offer {
      *
      * @return shippingOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipping options associated with this offer")
-    public List<ShippingOption> getShippingOptions() {
+    @javax.annotation.Nullable public List<ShippingOption> getShippingOptions() {
         return shippingOptions;
     }
 
@@ -252,8 +286,7 @@ public class Offer {
      *
      * @return points
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Points getPoints() {
+    @javax.annotation.Nullable public Points getPoints() {
         return points;
     }
 
@@ -271,8 +304,7 @@ public class Offer {
      *
      * @return primeDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrimeDetails getPrimeDetails() {
+    @javax.annotation.Nullable public PrimeDetails getPrimeDetails() {
         return primeDetails;
     }
 
@@ -280,27 +312,34 @@ public class Offer {
         this.primeDetails = primeDetails;
     }
 
-    public Offer promotions(Promotions promotions) {
+    public Offer promotions(List<Promotion> promotions) {
         this.promotions = promotions;
         return this;
     }
 
+    public Offer addPromotionsItem(Promotion promotionsItem) {
+        if (this.promotions == null) {
+            this.promotions = new ArrayList<>();
+        }
+        this.promotions.add(promotionsItem);
+        return this;
+    }
+
     /**
-     * Get promotions
+     * A list of live promotions applicable to this offer.
      *
      * @return promotions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Promotions getPromotions() {
+    @javax.annotation.Nullable public List<Promotion> getPromotions() {
         return promotions;
     }
 
-    public void setPromotions(Promotions promotions) {
+    public void setPromotions(List<Promotion> promotions) {
         this.promotions = promotions;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -355,10 +394,183 @@ public class Offer {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerId");
+        openapiFields.add("condition");
+        openapiFields.add("subCondition");
+        openapiFields.add("fulfillmentType");
+        openapiFields.add("listingPrice");
+        openapiFields.add("shippingOptions");
+        openapiFields.add("points");
+        openapiFields.add("primeDetails");
+        openapiFields.add("promotions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellerId");
+        openapiRequiredFields.add("condition");
+        openapiRequiredFields.add("fulfillmentType");
+        openapiRequiredFields.add("listingPrice");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Offer
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Offer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Offer is not found in the empty JSON string",
+                        Offer.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Offer.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Offer` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Offer.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerId").toString()));
+        }
+        // validate the required field `condition`
+        Condition.validateJsonElement(jsonObj.get("condition"));
+        if ((jsonObj.get("subCondition") != null && !jsonObj.get("subCondition").isJsonNull())
+                && !jsonObj.get("subCondition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `subCondition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("subCondition").toString()));
+        }
+        // validate the optional field `subCondition`
+        if (jsonObj.get("subCondition") != null && !jsonObj.get("subCondition").isJsonNull()) {
+            SubConditionEnum.validateJsonElement(jsonObj.get("subCondition"));
+        }
+        // validate the required field `fulfillmentType`
+        FulfillmentType.validateJsonElement(jsonObj.get("fulfillmentType"));
+        // validate the required field `listingPrice`
+        MoneyType.validateJsonElement(jsonObj.get("listingPrice"));
+        if (jsonObj.get("shippingOptions") != null
+                && !jsonObj.get("shippingOptions").isJsonNull()) {
+            JsonArray jsonArrayshippingOptions = jsonObj.getAsJsonArray("shippingOptions");
+            if (jsonArrayshippingOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippingOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippingOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippingOptions").toString()));
+                }
+
+                // validate the optional field `shippingOptions` (array)
+                for (int i = 0; i < jsonArrayshippingOptions.size(); i++) {
+                    ShippingOption.validateJsonElement(jsonArrayshippingOptions.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `points`
+        if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+            Points.validateJsonElement(jsonObj.get("points"));
+        }
+        // validate the optional field `primeDetails`
+        if (jsonObj.get("primeDetails") != null && !jsonObj.get("primeDetails").isJsonNull()) {
+            PrimeDetails.validateJsonElement(jsonObj.get("primeDetails"));
+        }
+        if (jsonObj.get("promotions") != null && !jsonObj.get("promotions").isJsonNull()) {
+            JsonArray jsonArraypromotions = jsonObj.getAsJsonArray("promotions");
+            if (jsonArraypromotions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("promotions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `promotions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("promotions").toString()));
+                }
+
+                // validate the optional field `promotions` (array)
+                for (int i = 0; i < jsonArraypromotions.size(); i++) {
+                    Promotion.validateJsonElement(jsonArraypromotions.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Offer.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Offer' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Offer> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Offer.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Offer>() {
+                        @Override
+                        public void write(JsonWriter out, Offer value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Offer read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Offer given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Offer
+     * @throws IOException if the JSON string is invalid with respect to Offer
+     */
+    public static Offer fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Offer.class);
+    }
+
+    /**
+     * Convert an instance of Offer to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

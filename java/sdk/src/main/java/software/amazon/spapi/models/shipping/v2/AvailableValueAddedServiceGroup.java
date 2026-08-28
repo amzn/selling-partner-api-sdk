@@ -12,26 +12,51 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The value-added services available for purchase with a shipping service offering. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The value-added services available for purchase with a shipping service offering.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AvailableValueAddedServiceGroup {
-    @SerializedName("groupId")
-    private String groupId = null;
+    public static final String SERIALIZED_NAME_GROUP_ID = "groupId";
 
-    @SerializedName("groupDescription")
-    private String groupDescription = null;
+    @SerializedName(SERIALIZED_NAME_GROUP_ID)
+    private String groupId;
 
-    @SerializedName("isRequired")
-    private Boolean isRequired = null;
+    public static final String SERIALIZED_NAME_GROUP_DESCRIPTION = "groupDescription";
 
-    @SerializedName("valueAddedServices")
-    private List<ValueAddedService> valueAddedServices = null;
+    @SerializedName(SERIALIZED_NAME_GROUP_DESCRIPTION)
+    private String groupDescription;
+
+    public static final String SERIALIZED_NAME_IS_REQUIRED = "isRequired";
+
+    @SerializedName(SERIALIZED_NAME_IS_REQUIRED)
+    private Boolean isRequired;
+
+    public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICES = "valueAddedServices";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICES)
+    private List<ValueAddedService> valueAddedServices = new ArrayList<>();
+
+    public AvailableValueAddedServiceGroup() {}
 
     public AvailableValueAddedServiceGroup groupId(String groupId) {
         this.groupId = groupId;
@@ -43,9 +68,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return groupId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The type of the value-added service group.")
+    @javax.annotation.Nonnull
     public String getGroupId() {
         return groupId;
     }
@@ -64,9 +87,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return groupDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The name of the value-added service group.")
+    @javax.annotation.Nonnull
     public String getGroupDescription() {
         return groupDescription;
     }
@@ -85,9 +106,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return isRequired
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, one or more of the value-added services listed must be specified.")
+    @javax.annotation.Nonnull
     public Boolean getIsRequired() {
         return isRequired;
     }
@@ -114,10 +133,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return valueAddedServices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of optional value-added services available for purchase with a shipping service offering.")
-    public List<ValueAddedService> getValueAddedServices() {
+    @javax.annotation.Nullable public List<ValueAddedService> getValueAddedServices() {
         return valueAddedServices;
     }
 
@@ -126,7 +142,7 @@ public class AvailableValueAddedServiceGroup {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -162,10 +178,143 @@ public class AvailableValueAddedServiceGroup {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("groupId");
+        openapiFields.add("groupDescription");
+        openapiFields.add("isRequired");
+        openapiFields.add("valueAddedServices");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("groupId");
+        openapiRequiredFields.add("groupDescription");
+        openapiRequiredFields.add("isRequired");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AvailableValueAddedServiceGroup
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AvailableValueAddedServiceGroup.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AvailableValueAddedServiceGroup is not found in the empty JSON string",
+                        AvailableValueAddedServiceGroup.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AvailableValueAddedServiceGroup.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AvailableValueAddedServiceGroup` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AvailableValueAddedServiceGroup.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("groupId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `groupId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("groupId").toString()));
+        }
+        if (!jsonObj.get("groupDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `groupDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("groupDescription").toString()));
+        }
+        if (jsonObj.get("valueAddedServices") != null
+                && !jsonObj.get("valueAddedServices").isJsonNull()) {
+            JsonArray jsonArrayvalueAddedServices = jsonObj.getAsJsonArray("valueAddedServices");
+            if (jsonArrayvalueAddedServices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("valueAddedServices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `valueAddedServices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("valueAddedServices").toString()));
+                }
+
+                // validate the optional field `valueAddedServices` (array)
+                for (int i = 0; i < jsonArrayvalueAddedServices.size(); i++) {
+                    ValueAddedService.validateJsonElement(jsonArrayvalueAddedServices.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AvailableValueAddedServiceGroup.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AvailableValueAddedServiceGroup' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AvailableValueAddedServiceGroup> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AvailableValueAddedServiceGroup.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AvailableValueAddedServiceGroup>() {
+                        @Override
+                        public void write(JsonWriter out, AvailableValueAddedServiceGroup value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AvailableValueAddedServiceGroup read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AvailableValueAddedServiceGroup given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AvailableValueAddedServiceGroup
+     * @throws IOException if the JSON string is invalid with respect to AvailableValueAddedServiceGroup
+     */
+    public static AvailableValueAddedServiceGroup fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AvailableValueAddedServiceGroup.class);
+    }
+
+    /**
+     * Convert an instance of AvailableValueAddedServiceGroup to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

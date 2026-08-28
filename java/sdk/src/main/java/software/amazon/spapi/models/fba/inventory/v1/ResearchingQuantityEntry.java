@@ -12,27 +12,35 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ResearchingQuantityEntry {
     /** The duration of the research. */
     @JsonAdapter(NameEnum.Adapter.class)
     public enum NameEnum {
-        @SerializedName("researchingQuantityInShortTerm")
         RESEARCHING_QUANTITY_IN_SHORT_TERM("researchingQuantityInShortTerm"),
-        @SerializedName("researchingQuantityInMidTerm")
+
         RESEARCHING_QUANTITY_IN_MID_TERM("researchingQuantityInMidTerm"),
-        @SerializedName("researchingQuantityInLongTerm")
+
         RESEARCHING_QUANTITY_IN_LONG_TERM("researchingQuantityInLongTerm");
 
         private String value;
@@ -50,34 +58,45 @@ public class ResearchingQuantityEntry {
             return String.valueOf(value);
         }
 
-        public static NameEnum fromValue(String input) {
+        public static NameEnum fromValue(String value) {
             for (NameEnum b : NameEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<NameEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final NameEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public NameEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return NameEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return NameEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            NameEnum.fromValue(value);
         }
     }
 
-    @SerializedName("name")
-    private NameEnum name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private NameEnum name;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public ResearchingQuantityEntry() {}
 
     public ResearchingQuantityEntry name(NameEnum name) {
         this.name = name;
@@ -89,7 +108,7 @@ public class ResearchingQuantityEntry {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The duration of the research.")
+    @javax.annotation.Nonnull
     public NameEnum getName() {
         return name;
     }
@@ -108,7 +127,7 @@ public class ResearchingQuantityEntry {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of units.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -118,7 +137,7 @@ public class ResearchingQuantityEntry {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,10 +165,119 @@ public class ResearchingQuantityEntry {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("quantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("quantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ResearchingQuantityEntry
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ResearchingQuantityEntry.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ResearchingQuantityEntry is not found in the empty JSON string",
+                        ResearchingQuantityEntry.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ResearchingQuantityEntry.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ResearchingQuantityEntry` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ResearchingQuantityEntry.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `name`
+        NameEnum.validateJsonElement(jsonObj.get("name"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ResearchingQuantityEntry.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ResearchingQuantityEntry' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ResearchingQuantityEntry> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ResearchingQuantityEntry.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ResearchingQuantityEntry>() {
+                        @Override
+                        public void write(JsonWriter out, ResearchingQuantityEntry value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ResearchingQuantityEntry read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ResearchingQuantityEntry given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ResearchingQuantityEntry
+     * @throws IOException if the JSON string is invalid with respect to ResearchingQuantityEntry
+     */
+    public static ResearchingQuantityEntry fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ResearchingQuantityEntry.class);
+    }
+
+    /**
+     * Convert an instance of ResearchingQuantityEntry to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

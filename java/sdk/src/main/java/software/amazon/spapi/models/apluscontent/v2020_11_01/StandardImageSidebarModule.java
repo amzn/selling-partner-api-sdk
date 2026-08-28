@@ -12,31 +12,58 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Two images, two paragraphs, and two bulleted lists. One image is smaller and displayed in the sidebar. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Two images, two paragraphs, and two bulleted lists. One image is smaller and displayed in the sidebar.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardImageSidebarModule {
-    @SerializedName("headline")
-    private TextComponent headline = null;
+    public static final String SERIALIZED_NAME_HEADLINE = "headline";
 
-    @SerializedName("imageCaptionBlock")
-    private StandardImageCaptionBlock imageCaptionBlock = null;
+    @SerializedName(SERIALIZED_NAME_HEADLINE)
+    private TextComponent headline;
 
-    @SerializedName("descriptionTextBlock")
-    private StandardTextBlock descriptionTextBlock = null;
+    public static final String SERIALIZED_NAME_IMAGE_CAPTION_BLOCK = "imageCaptionBlock";
 
-    @SerializedName("descriptionListBlock")
-    private StandardTextListBlock descriptionListBlock = null;
+    @SerializedName(SERIALIZED_NAME_IMAGE_CAPTION_BLOCK)
+    private StandardImageCaptionBlock imageCaptionBlock;
 
-    @SerializedName("sidebarImageTextBlock")
-    private StandardImageTextBlock sidebarImageTextBlock = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION_TEXT_BLOCK = "descriptionTextBlock";
 
-    @SerializedName("sidebarListBlock")
-    private StandardTextListBlock sidebarListBlock = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION_TEXT_BLOCK)
+    private StandardTextBlock descriptionTextBlock;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION_LIST_BLOCK = "descriptionListBlock";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION_LIST_BLOCK)
+    private StandardTextListBlock descriptionListBlock;
+
+    public static final String SERIALIZED_NAME_SIDEBAR_IMAGE_TEXT_BLOCK = "sidebarImageTextBlock";
+
+    @SerializedName(SERIALIZED_NAME_SIDEBAR_IMAGE_TEXT_BLOCK)
+    private StandardImageTextBlock sidebarImageTextBlock;
+
+    public static final String SERIALIZED_NAME_SIDEBAR_LIST_BLOCK = "sidebarListBlock";
+
+    @SerializedName(SERIALIZED_NAME_SIDEBAR_LIST_BLOCK)
+    private StandardTextListBlock sidebarListBlock;
+
+    public StandardImageSidebarModule() {}
 
     public StandardImageSidebarModule headline(TextComponent headline) {
         this.headline = headline;
@@ -48,8 +75,7 @@ public class StandardImageSidebarModule {
      *
      * @return headline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getHeadline() {
+    @javax.annotation.Nullable public TextComponent getHeadline() {
         return headline;
     }
 
@@ -67,8 +93,7 @@ public class StandardImageSidebarModule {
      *
      * @return imageCaptionBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageCaptionBlock getImageCaptionBlock() {
+    @javax.annotation.Nullable public StandardImageCaptionBlock getImageCaptionBlock() {
         return imageCaptionBlock;
     }
 
@@ -86,8 +111,7 @@ public class StandardImageSidebarModule {
      *
      * @return descriptionTextBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextBlock getDescriptionTextBlock() {
+    @javax.annotation.Nullable public StandardTextBlock getDescriptionTextBlock() {
         return descriptionTextBlock;
     }
 
@@ -105,8 +129,7 @@ public class StandardImageSidebarModule {
      *
      * @return descriptionListBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextListBlock getDescriptionListBlock() {
+    @javax.annotation.Nullable public StandardTextListBlock getDescriptionListBlock() {
         return descriptionListBlock;
     }
 
@@ -124,8 +147,7 @@ public class StandardImageSidebarModule {
      *
      * @return sidebarImageTextBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getSidebarImageTextBlock() {
+    @javax.annotation.Nullable public StandardImageTextBlock getSidebarImageTextBlock() {
         return sidebarImageTextBlock;
     }
 
@@ -143,8 +165,7 @@ public class StandardImageSidebarModule {
      *
      * @return sidebarListBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextListBlock getSidebarListBlock() {
+    @javax.annotation.Nullable public StandardTextListBlock getSidebarListBlock() {
         return sidebarListBlock;
     }
 
@@ -153,7 +174,7 @@ public class StandardImageSidebarModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -205,10 +226,134 @@ public class StandardImageSidebarModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headline");
+        openapiFields.add("imageCaptionBlock");
+        openapiFields.add("descriptionTextBlock");
+        openapiFields.add("descriptionListBlock");
+        openapiFields.add("sidebarImageTextBlock");
+        openapiFields.add("sidebarListBlock");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardImageSidebarModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardImageSidebarModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardImageSidebarModule is not found in the empty JSON string",
+                        StandardImageSidebarModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardImageSidebarModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardImageSidebarModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `headline`
+        if (jsonObj.get("headline") != null && !jsonObj.get("headline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("headline"));
+        }
+        // validate the optional field `imageCaptionBlock`
+        if (jsonObj.get("imageCaptionBlock") != null
+                && !jsonObj.get("imageCaptionBlock").isJsonNull()) {
+            StandardImageCaptionBlock.validateJsonElement(jsonObj.get("imageCaptionBlock"));
+        }
+        // validate the optional field `descriptionTextBlock`
+        if (jsonObj.get("descriptionTextBlock") != null
+                && !jsonObj.get("descriptionTextBlock").isJsonNull()) {
+            StandardTextBlock.validateJsonElement(jsonObj.get("descriptionTextBlock"));
+        }
+        // validate the optional field `descriptionListBlock`
+        if (jsonObj.get("descriptionListBlock") != null
+                && !jsonObj.get("descriptionListBlock").isJsonNull()) {
+            StandardTextListBlock.validateJsonElement(jsonObj.get("descriptionListBlock"));
+        }
+        // validate the optional field `sidebarImageTextBlock`
+        if (jsonObj.get("sidebarImageTextBlock") != null
+                && !jsonObj.get("sidebarImageTextBlock").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("sidebarImageTextBlock"));
+        }
+        // validate the optional field `sidebarListBlock`
+        if (jsonObj.get("sidebarListBlock") != null
+                && !jsonObj.get("sidebarListBlock").isJsonNull()) {
+            StandardTextListBlock.validateJsonElement(jsonObj.get("sidebarListBlock"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardImageSidebarModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardImageSidebarModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardImageSidebarModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardImageSidebarModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardImageSidebarModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardImageSidebarModule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardImageSidebarModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardImageSidebarModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardImageSidebarModule
+     * @throws IOException if the JSON string is invalid with respect to StandardImageSidebarModule
+     */
+    public static StandardImageSidebarModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardImageSidebarModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardImageSidebarModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

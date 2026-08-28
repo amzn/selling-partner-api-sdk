@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The destination resource types. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The destination resource types.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DestinationResource {
-    @SerializedName("sqs")
-    private SqsResource sqs = null;
+    public static final String SERIALIZED_NAME_SQS = "sqs";
 
-    @SerializedName("eventBridge")
-    private EventBridgeResource eventBridge = null;
+    @SerializedName(SERIALIZED_NAME_SQS)
+    private SqsResource sqs;
+
+    public static final String SERIALIZED_NAME_EVENT_BRIDGE = "eventBridge";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_BRIDGE)
+    private EventBridgeResource eventBridge;
+
+    public DestinationResource() {}
 
     public DestinationResource sqs(SqsResource sqs) {
         this.sqs = sqs;
@@ -34,8 +55,7 @@ public class DestinationResource {
      *
      * @return sqs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SqsResource getSqs() {
+    @javax.annotation.Nullable public SqsResource getSqs() {
         return sqs;
     }
 
@@ -53,8 +73,7 @@ public class DestinationResource {
      *
      * @return eventBridge
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EventBridgeResource getEventBridge() {
+    @javax.annotation.Nullable public EventBridgeResource getEventBridge() {
         return eventBridge;
     }
 
@@ -63,7 +82,7 @@ public class DestinationResource {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +110,108 @@ public class DestinationResource {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sqs");
+        openapiFields.add("eventBridge");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DestinationResource
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DestinationResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DestinationResource is not found in the empty JSON string",
+                        DestinationResource.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DestinationResource.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DestinationResource` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `sqs`
+        if (jsonObj.get("sqs") != null && !jsonObj.get("sqs").isJsonNull()) {
+            SqsResource.validateJsonElement(jsonObj.get("sqs"));
+        }
+        // validate the optional field `eventBridge`
+        if (jsonObj.get("eventBridge") != null && !jsonObj.get("eventBridge").isJsonNull()) {
+            EventBridgeResource.validateJsonElement(jsonObj.get("eventBridge"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DestinationResource.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DestinationResource' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DestinationResource> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DestinationResource.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DestinationResource>() {
+                        @Override
+                        public void write(JsonWriter out, DestinationResource value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DestinationResource read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DestinationResource given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DestinationResource
+     * @throws IOException if the JSON string is invalid with respect to DestinationResource
+     */
+    public static DestinationResource fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DestinationResource.class);
+    }
+
+    /**
+     * Convert an instance of DestinationResource to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

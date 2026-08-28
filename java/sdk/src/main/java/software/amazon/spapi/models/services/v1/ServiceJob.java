@@ -12,42 +12,57 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The job details of a service. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The job details of a service.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServiceJob {
-    @SerializedName("createTime")
-    private OffsetDateTime createTime = null;
+    public static final String SERIALIZED_NAME_CREATE_TIME = "createTime";
 
-    @SerializedName("serviceJobId")
-    private String serviceJobId = null;
+    @SerializedName(SERIALIZED_NAME_CREATE_TIME)
+    private OffsetDateTime createTime;
+
+    public static final String SERIALIZED_NAME_SERVICE_JOB_ID = "serviceJobId";
+
+    @SerializedName(SERIALIZED_NAME_SERVICE_JOB_ID)
+    private String serviceJobId;
 
     /** The status of the service job. */
     @JsonAdapter(ServiceJobStatusEnum.Adapter.class)
     public enum ServiceJobStatusEnum {
-        @SerializedName("NOT_SERVICED")
         NOT_SERVICED("NOT_SERVICED"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED"),
-        @SerializedName("COMPLETED")
+
         COMPLETED("COMPLETED"),
-        @SerializedName("PENDING_SCHEDULE")
+
         PENDING_SCHEDULE("PENDING_SCHEDULE"),
-        @SerializedName("NOT_FULFILLABLE")
+
         NOT_FULFILLABLE("NOT_FULFILLABLE"),
-        @SerializedName("HOLD")
+
         HOLD("HOLD"),
-        @SerializedName("PAYMENT_DECLINED")
+
         PAYMENT_DECLINED("PAYMENT_DECLINED");
 
         private String value;
@@ -65,73 +80,110 @@ public class ServiceJob {
             return String.valueOf(value);
         }
 
-        public static ServiceJobStatusEnum fromValue(String input) {
+        public static ServiceJobStatusEnum fromValue(String value) {
             for (ServiceJobStatusEnum b : ServiceJobStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ServiceJobStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ServiceJobStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ServiceJobStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ServiceJobStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ServiceJobStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ServiceJobStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("serviceJobStatus")
-    private ServiceJobStatusEnum serviceJobStatus = null;
+    public static final String SERIALIZED_NAME_SERVICE_JOB_STATUS = "serviceJobStatus";
 
-    @SerializedName("scopeOfWork")
-    private ScopeOfWork scopeOfWork = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_JOB_STATUS)
+    private ServiceJobStatusEnum serviceJobStatus;
 
-    @SerializedName("seller")
-    private Seller seller = null;
+    public static final String SERIALIZED_NAME_SCOPE_OF_WORK = "scopeOfWork";
 
-    @SerializedName("serviceJobProvider")
-    private ServiceJobProvider serviceJobProvider = null;
+    @SerializedName(SERIALIZED_NAME_SCOPE_OF_WORK)
+    private ScopeOfWork scopeOfWork;
 
-    @SerializedName("preferredAppointmentTimes")
-    private List<AppointmentTime> preferredAppointmentTimes = null;
+    public static final String SERIALIZED_NAME_SELLER = "seller";
 
-    @SerializedName("appointments")
-    private List<Appointment> appointments = null;
+    @SerializedName(SERIALIZED_NAME_SELLER)
+    private Seller seller;
 
-    @SerializedName("serviceOrderId")
-    private String serviceOrderId = null;
+    public static final String SERIALIZED_NAME_SERVICE_JOB_PROVIDER = "serviceJobProvider";
 
-    @SerializedName("productOrderIds")
-    private List<String> productOrderIds = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_JOB_PROVIDER)
+    private ServiceJobProvider serviceJobProvider;
 
-    @SerializedName("trackingIds")
-    private List<String> trackingIds = null;
+    public static final String SERIALIZED_NAME_PREFERRED_APPOINTMENT_TIMES = "preferredAppointmentTimes";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_PREFERRED_APPOINTMENT_TIMES)
+    private List<AppointmentTime> preferredAppointmentTimes = new ArrayList<>();
 
-    @SerializedName("storeId")
-    private String storeId = null;
+    public static final String SERIALIZED_NAME_APPOINTMENTS = "appointments";
 
-    @SerializedName("buyer")
-    private Buyer buyer = null;
+    @SerializedName(SERIALIZED_NAME_APPOINTMENTS)
+    private List<Appointment> appointments = new ArrayList<>();
 
-    @SerializedName("associatedItems")
-    private List<AssociatedItem> associatedItems = null;
+    public static final String SERIALIZED_NAME_SERVICE_ORDER_ID = "serviceOrderId";
 
-    @SerializedName("serviceLocation")
-    private ServiceLocation serviceLocation = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_ORDER_ID)
+    private String serviceOrderId;
 
-    @SerializedName("payments")
-    private List<Payment> payments = null;
+    public static final String SERIALIZED_NAME_PRODUCT_ORDER_IDS = "productOrderIds";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_ORDER_IDS)
+    private List<String> productOrderIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRACKING_IDS = "trackingIds";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_IDS)
+    private List<String> trackingIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_STORE_ID = "storeId";
+
+    @SerializedName(SERIALIZED_NAME_STORE_ID)
+    private String storeId;
+
+    public static final String SERIALIZED_NAME_BUYER = "buyer";
+
+    @SerializedName(SERIALIZED_NAME_BUYER)
+    private Buyer buyer;
+
+    public static final String SERIALIZED_NAME_ASSOCIATED_ITEMS = "associatedItems";
+
+    @SerializedName(SERIALIZED_NAME_ASSOCIATED_ITEMS)
+    private List<AssociatedItem> associatedItems = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SERVICE_LOCATION = "serviceLocation";
+
+    @SerializedName(SERIALIZED_NAME_SERVICE_LOCATION)
+    private ServiceLocation serviceLocation;
+
+    public static final String SERIALIZED_NAME_PAYMENTS = "payments";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENTS)
+    private List<Payment> payments = new ArrayList<>();
+
+    public ServiceJob() {}
 
     public ServiceJob createTime(OffsetDateTime createTime) {
         this.createTime = createTime;
@@ -143,9 +195,7 @@ public class ServiceJob {
      *
      * @return createTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time of the creation of the job in ISO 8601 format.")
-    public OffsetDateTime getCreateTime() {
+    @javax.annotation.Nullable public OffsetDateTime getCreateTime() {
         return createTime;
     }
 
@@ -163,8 +213,7 @@ public class ServiceJob {
      *
      * @return serviceJobId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon identifier for the service job.")
-    public String getServiceJobId() {
+    @javax.annotation.Nullable public String getServiceJobId() {
         return serviceJobId;
     }
 
@@ -182,8 +231,7 @@ public class ServiceJob {
      *
      * @return serviceJobStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the service job.")
-    public ServiceJobStatusEnum getServiceJobStatus() {
+    @javax.annotation.Nullable public ServiceJobStatusEnum getServiceJobStatus() {
         return serviceJobStatus;
     }
 
@@ -201,8 +249,7 @@ public class ServiceJob {
      *
      * @return scopeOfWork
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ScopeOfWork getScopeOfWork() {
+    @javax.annotation.Nullable public ScopeOfWork getScopeOfWork() {
         return scopeOfWork;
     }
 
@@ -220,8 +267,7 @@ public class ServiceJob {
      *
      * @return seller
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Seller getSeller() {
+    @javax.annotation.Nullable public Seller getSeller() {
         return seller;
     }
 
@@ -239,8 +285,7 @@ public class ServiceJob {
      *
      * @return serviceJobProvider
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ServiceJobProvider getServiceJobProvider() {
+    @javax.annotation.Nullable public ServiceJobProvider getServiceJobProvider() {
         return serviceJobProvider;
     }
 
@@ -267,10 +312,7 @@ public class ServiceJob {
      *
      * @return preferredAppointmentTimes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.")
-    public List<AppointmentTime> getPreferredAppointmentTimes() {
+    @javax.annotation.Nullable public List<AppointmentTime> getPreferredAppointmentTimes() {
         return preferredAppointmentTimes;
     }
 
@@ -296,8 +338,7 @@ public class ServiceJob {
      *
      * @return appointments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of appointments.")
-    public List<Appointment> getAppointments() {
+    @javax.annotation.Nullable public List<Appointment> getAppointments() {
         return appointments;
     }
 
@@ -315,9 +356,7 @@ public class ServiceJob {
      *
      * @return serviceOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
-    public String getServiceOrderId() {
+    @javax.annotation.Nullable public String getServiceOrderId() {
         return serviceOrderId;
     }
 
@@ -343,9 +382,7 @@ public class ServiceJob {
      *
      * @return productOrderIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of associated product order IDs for the service job.")
-    public List<String> getProductOrderIds() {
+    @javax.annotation.Nullable public List<String> getProductOrderIds() {
         return productOrderIds;
     }
 
@@ -371,9 +408,7 @@ public class ServiceJob {
      *
      * @return trackingIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of associated product tracking IDs for the service job.")
-    public List<String> getTrackingIds() {
+    @javax.annotation.Nullable public List<String> getTrackingIds() {
         return trackingIds;
     }
 
@@ -391,8 +426,7 @@ public class ServiceJob {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace identifier.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -410,8 +444,7 @@ public class ServiceJob {
      *
      * @return storeId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the region scope.")
-    public String getStoreId() {
+    @javax.annotation.Nullable public String getStoreId() {
         return storeId;
     }
 
@@ -429,8 +462,7 @@ public class ServiceJob {
      *
      * @return buyer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Buyer getBuyer() {
+    @javax.annotation.Nullable public Buyer getBuyer() {
         return buyer;
     }
 
@@ -456,8 +488,7 @@ public class ServiceJob {
      *
      * @return associatedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of items associated with the service job.")
-    public List<AssociatedItem> getAssociatedItems() {
+    @javax.annotation.Nullable public List<AssociatedItem> getAssociatedItems() {
         return associatedItems;
     }
 
@@ -475,8 +506,7 @@ public class ServiceJob {
      *
      * @return serviceLocation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ServiceLocation getServiceLocation() {
+    @javax.annotation.Nullable public ServiceLocation getServiceLocation() {
         return serviceLocation;
     }
 
@@ -502,9 +532,7 @@ public class ServiceJob {
      *
      * @return payments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list that contains payment information for the service job.")
-    public List<Payment> getPayments() {
+    @javax.annotation.Nullable public List<Payment> getPayments() {
         return payments;
     }
 
@@ -513,7 +541,7 @@ public class ServiceJob {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -602,10 +630,260 @@ public class ServiceJob {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("createTime");
+        openapiFields.add("serviceJobId");
+        openapiFields.add("serviceJobStatus");
+        openapiFields.add("scopeOfWork");
+        openapiFields.add("seller");
+        openapiFields.add("serviceJobProvider");
+        openapiFields.add("preferredAppointmentTimes");
+        openapiFields.add("appointments");
+        openapiFields.add("serviceOrderId");
+        openapiFields.add("productOrderIds");
+        openapiFields.add("trackingIds");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("storeId");
+        openapiFields.add("buyer");
+        openapiFields.add("associatedItems");
+        openapiFields.add("serviceLocation");
+        openapiFields.add("payments");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServiceJob
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServiceJob.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServiceJob is not found in the empty JSON string",
+                        ServiceJob.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServiceJob.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServiceJob` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("serviceJobId") != null && !jsonObj.get("serviceJobId").isJsonNull())
+                && !jsonObj.get("serviceJobId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceJobId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceJobId").toString()));
+        }
+        if ((jsonObj.get("serviceJobStatus") != null
+                        && !jsonObj.get("serviceJobStatus").isJsonNull())
+                && !jsonObj.get("serviceJobStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceJobStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceJobStatus").toString()));
+        }
+        // validate the optional field `serviceJobStatus`
+        if (jsonObj.get("serviceJobStatus") != null
+                && !jsonObj.get("serviceJobStatus").isJsonNull()) {
+            ServiceJobStatusEnum.validateJsonElement(jsonObj.get("serviceJobStatus"));
+        }
+        // validate the optional field `scopeOfWork`
+        if (jsonObj.get("scopeOfWork") != null && !jsonObj.get("scopeOfWork").isJsonNull()) {
+            ScopeOfWork.validateJsonElement(jsonObj.get("scopeOfWork"));
+        }
+        // validate the optional field `seller`
+        if (jsonObj.get("seller") != null && !jsonObj.get("seller").isJsonNull()) {
+            Seller.validateJsonElement(jsonObj.get("seller"));
+        }
+        // validate the optional field `serviceJobProvider`
+        if (jsonObj.get("serviceJobProvider") != null
+                && !jsonObj.get("serviceJobProvider").isJsonNull()) {
+            ServiceJobProvider.validateJsonElement(jsonObj.get("serviceJobProvider"));
+        }
+        if (jsonObj.get("preferredAppointmentTimes") != null
+                && !jsonObj.get("preferredAppointmentTimes").isJsonNull()) {
+            JsonArray jsonArraypreferredAppointmentTimes = jsonObj.getAsJsonArray("preferredAppointmentTimes");
+            if (jsonArraypreferredAppointmentTimes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("preferredAppointmentTimes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `preferredAppointmentTimes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("preferredAppointmentTimes").toString()));
+                }
+
+                // validate the optional field `preferredAppointmentTimes` (array)
+                for (int i = 0; i < jsonArraypreferredAppointmentTimes.size(); i++) {
+                    AppointmentTime.validateJsonElement(jsonArraypreferredAppointmentTimes.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("appointments") != null && !jsonObj.get("appointments").isJsonNull()) {
+            JsonArray jsonArrayappointments = jsonObj.getAsJsonArray("appointments");
+            if (jsonArrayappointments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("appointments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `appointments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("appointments").toString()));
+                }
+
+                // validate the optional field `appointments` (array)
+                for (int i = 0; i < jsonArrayappointments.size(); i++) {
+                    Appointment.validateJsonElement(jsonArrayappointments.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("serviceOrderId") != null
+                        && !jsonObj.get("serviceOrderId").isJsonNull())
+                && !jsonObj.get("serviceOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceOrderId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("productOrderIds") != null
+                && !jsonObj.get("productOrderIds").isJsonNull()
+                && !jsonObj.get("productOrderIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productOrderIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("productOrderIds").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("trackingIds") != null
+                && !jsonObj.get("trackingIds").isJsonNull()
+                && !jsonObj.get("trackingIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("trackingIds").toString()));
+        }
+        if ((jsonObj.get("marketplaceId") != null
+                        && !jsonObj.get("marketplaceId").isJsonNull())
+                && !jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("storeId") != null && !jsonObj.get("storeId").isJsonNull())
+                && !jsonObj.get("storeId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `storeId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("storeId").toString()));
+        }
+        // validate the optional field `buyer`
+        if (jsonObj.get("buyer") != null && !jsonObj.get("buyer").isJsonNull()) {
+            Buyer.validateJsonElement(jsonObj.get("buyer"));
+        }
+        if (jsonObj.get("associatedItems") != null
+                && !jsonObj.get("associatedItems").isJsonNull()) {
+            JsonArray jsonArrayassociatedItems = jsonObj.getAsJsonArray("associatedItems");
+            if (jsonArrayassociatedItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("associatedItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `associatedItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("associatedItems").toString()));
+                }
+
+                // validate the optional field `associatedItems` (array)
+                for (int i = 0; i < jsonArrayassociatedItems.size(); i++) {
+                    AssociatedItem.validateJsonElement(jsonArrayassociatedItems.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `serviceLocation`
+        if (jsonObj.get("serviceLocation") != null
+                && !jsonObj.get("serviceLocation").isJsonNull()) {
+            ServiceLocation.validateJsonElement(jsonObj.get("serviceLocation"));
+        }
+        if (jsonObj.get("payments") != null && !jsonObj.get("payments").isJsonNull()) {
+            JsonArray jsonArraypayments = jsonObj.getAsJsonArray("payments");
+            if (jsonArraypayments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("payments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `payments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("payments").toString()));
+                }
+
+                // validate the optional field `payments` (array)
+                for (int i = 0; i < jsonArraypayments.size(); i++) {
+                    Payment.validateJsonElement(jsonArraypayments.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServiceJob.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServiceJob' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServiceJob> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ServiceJob.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServiceJob>() {
+                        @Override
+                        public void write(JsonWriter out, ServiceJob value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServiceJob read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServiceJob given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServiceJob
+     * @throws IOException if the JSON string is invalid with respect to ServiceJob
+     */
+    public static ServiceJob fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServiceJob.class);
+    }
+
+    /**
+     * Convert an instance of ServiceJob to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

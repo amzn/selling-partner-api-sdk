@@ -12,8 +12,21 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The customer segment. When &#x60;segmentType&#x60; is &#x60;BRAND&#x60;, &#x60;segmentId&#x60; contains the segment /
@@ -21,18 +34,26 @@ import java.util.Objects;
  * &#x60;PROGRAM&#x60;, &#x60;segmentId&#x60; contains the program name (for example, &#x60;PRIME_EXCLUSIVE&#x60;,
  * &#x60;MOM&#x60;, &#x60;STUDENT&#x60;).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The customer segment. When `segmentType` is `BRAND`, `segmentId` contains the segment / audience ID and `segmentDetails.brandSegmentDetails` must be provided. When `segmentType` is `PROGRAM`, `segmentId` contains the program name (for example, `PRIME_EXCLUSIVE`, `MOM`, `STUDENT`).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CustomerSegment {
-    @SerializedName("segmentType")
-    private CustomerSegmentType segmentType = null;
+    public static final String SERIALIZED_NAME_SEGMENT_TYPE = "segmentType";
 
-    @SerializedName("segmentId")
-    private String segmentId = null;
+    @SerializedName(SERIALIZED_NAME_SEGMENT_TYPE)
+    private CustomerSegmentType segmentType;
 
-    @SerializedName("segmentDetails")
-    private CustomerSegmentDetails segmentDetails = null;
+    public static final String SERIALIZED_NAME_SEGMENT_ID = "segmentId";
+
+    @SerializedName(SERIALIZED_NAME_SEGMENT_ID)
+    private String segmentId;
+
+    public static final String SERIALIZED_NAME_SEGMENT_DETAILS = "segmentDetails";
+
+    @SerializedName(SERIALIZED_NAME_SEGMENT_DETAILS)
+    private CustomerSegmentDetails segmentDetails;
+
+    public CustomerSegment() {}
 
     public CustomerSegment segmentType(CustomerSegmentType segmentType) {
         this.segmentType = segmentType;
@@ -44,7 +65,7 @@ public class CustomerSegment {
      *
      * @return segmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public CustomerSegmentType getSegmentType() {
         return segmentType;
     }
@@ -64,10 +85,7 @@ public class CustomerSegment {
      *
      * @return segmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The segment identifier. For `BRAND`: the segment / audience ID. For `PROGRAM`: the program name (for example, `PRIME_EXCLUSIVE`, `MOM`, `STUDENT` etc).")
+    @javax.annotation.Nonnull
     public String getSegmentId() {
         return segmentId;
     }
@@ -86,8 +104,7 @@ public class CustomerSegment {
      *
      * @return segmentDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CustomerSegmentDetails getSegmentDetails() {
+    @javax.annotation.Nullable public CustomerSegmentDetails getSegmentDetails() {
         return segmentDetails;
     }
 
@@ -96,7 +113,7 @@ public class CustomerSegment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -128,10 +145,124 @@ public class CustomerSegment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("segmentType");
+        openapiFields.add("segmentId");
+        openapiFields.add("segmentDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("segmentType");
+        openapiRequiredFields.add("segmentId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CustomerSegment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CustomerSegment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CustomerSegment is not found in the empty JSON string",
+                        CustomerSegment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CustomerSegment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CustomerSegment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CustomerSegment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `segmentType`
+        CustomerSegmentType.validateJsonElement(jsonObj.get("segmentType"));
+        if (!jsonObj.get("segmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `segmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("segmentId").toString()));
+        }
+        // validate the optional field `segmentDetails`
+        if (jsonObj.get("segmentDetails") != null
+                && !jsonObj.get("segmentDetails").isJsonNull()) {
+            CustomerSegmentDetails.validateJsonElement(jsonObj.get("segmentDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CustomerSegment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CustomerSegment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CustomerSegment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CustomerSegment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CustomerSegment>() {
+                        @Override
+                        public void write(JsonWriter out, CustomerSegment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CustomerSegment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CustomerSegment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CustomerSegment
+     * @throws IOException if the JSON string is invalid with respect to CustomerSegment
+     */
+    public static CustomerSegment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CustomerSegment.class);
+    }
+
+    /**
+     * Convert an instance of CustomerSegment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

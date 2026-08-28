@@ -12,28 +12,54 @@
 
 package software.amazon.spapi.models.solicitations.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Describes a solicitation action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL)
  * link to the JSON schema document that describes the expected input.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Describes a solicitation action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL) link to the JSON schema document that describes the expected input.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSolicitationActionResponse {
-    @SerializedName("_links")
-    private GetSolicitationActionResponseLinks links = null;
+    public static final String SERIALIZED_NAME_LINKS = "_links";
 
-    @SerializedName("_embedded")
-    private GetSolicitationActionResponseEmbedded embedded = null;
+    @SerializedName(SERIALIZED_NAME_LINKS)
+    private GetSolicitationActionResponseLinks links;
 
-    @SerializedName("payload")
-    private SolicitationsAction payload = null;
+    public static final String SERIALIZED_NAME_EMBEDDED = "_embedded";
 
-    @SerializedName("errors")
-    private ErrorList errors = null;
+    @SerializedName(SERIALIZED_NAME_EMBEDDED)
+    private GetSolicitationActionResponseEmbedded embedded;
+
+    public static final String SERIALIZED_NAME_PAYLOAD = "payload";
+
+    @SerializedName(SERIALIZED_NAME_PAYLOAD)
+    private SolicitationsAction payload;
+
+    public static final String SERIALIZED_NAME_ERRORS = "errors";
+
+    @SerializedName(SERIALIZED_NAME_ERRORS)
+    private List<Error> errors = new ArrayList<>();
+
+    public GetSolicitationActionResponse() {}
 
     public GetSolicitationActionResponse links(GetSolicitationActionResponseLinks links) {
         this.links = links;
@@ -45,8 +71,7 @@ public class GetSolicitationActionResponse {
      *
      * @return links
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetSolicitationActionResponseLinks getLinks() {
+    @javax.annotation.Nullable public GetSolicitationActionResponseLinks getLinks() {
         return links;
     }
 
@@ -64,8 +89,7 @@ public class GetSolicitationActionResponse {
      *
      * @return embedded
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetSolicitationActionResponseEmbedded getEmbedded() {
+    @javax.annotation.Nullable public GetSolicitationActionResponseEmbedded getEmbedded() {
         return embedded;
     }
 
@@ -83,8 +107,7 @@ public class GetSolicitationActionResponse {
      *
      * @return payload
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SolicitationsAction getPayload() {
+    @javax.annotation.Nullable public SolicitationsAction getPayload() {
         return payload;
     }
 
@@ -92,27 +115,34 @@ public class GetSolicitationActionResponse {
         this.payload = payload;
     }
 
-    public GetSolicitationActionResponse errors(ErrorList errors) {
+    public GetSolicitationActionResponse errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public GetSolicitationActionResponse addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorList getErrors() {
+    @javax.annotation.Nullable public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,10 +174,132 @@ public class GetSolicitationActionResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("_links");
+        openapiFields.add("_embedded");
+        openapiFields.add("payload");
+        openapiFields.add("errors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSolicitationActionResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSolicitationActionResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSolicitationActionResponse is not found in the empty JSON string",
+                        GetSolicitationActionResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSolicitationActionResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSolicitationActionResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `_links`
+        if (jsonObj.get("_links") != null && !jsonObj.get("_links").isJsonNull()) {
+            GetSolicitationActionResponseLinks.validateJsonElement(jsonObj.get("_links"));
+        }
+        // validate the optional field `_embedded`
+        if (jsonObj.get("_embedded") != null && !jsonObj.get("_embedded").isJsonNull()) {
+            GetSolicitationActionResponseEmbedded.validateJsonElement(jsonObj.get("_embedded"));
+        }
+        // validate the optional field `payload`
+        if (jsonObj.get("payload") != null && !jsonObj.get("payload").isJsonNull()) {
+            SolicitationsAction.validateJsonElement(jsonObj.get("payload"));
+        }
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+            if (jsonArrayerrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("errors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("errors").toString()));
+                }
+
+                // validate the optional field `errors` (array)
+                for (int i = 0; i < jsonArrayerrors.size(); i++) {
+                    Error.validateJsonElement(jsonArrayerrors.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSolicitationActionResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSolicitationActionResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSolicitationActionResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSolicitationActionResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSolicitationActionResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetSolicitationActionResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSolicitationActionResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSolicitationActionResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSolicitationActionResponse
+     * @throws IOException if the JSON string is invalid with respect to GetSolicitationActionResponse
+     */
+    public static GetSolicitationActionResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSolicitationActionResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetSolicitationActionResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

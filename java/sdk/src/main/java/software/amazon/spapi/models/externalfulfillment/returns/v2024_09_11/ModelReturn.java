@@ -12,32 +12,48 @@
 
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the return item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the return item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ModelReturn {
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("returnLocationId")
-    private String returnLocationId = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("merchantSku")
-    private String merchantSku = null;
+    public static final String SERIALIZED_NAME_RETURN_LOCATION_ID = "returnLocationId";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_LOCATION_ID)
+    private String returnLocationId;
+
+    public static final String SERIALIZED_NAME_MERCHANT_SKU = "merchantSku";
+
+    @SerializedName(SERIALIZED_NAME_MERCHANT_SKU)
+    private String merchantSku;
 
     /** The type of return. */
     @JsonAdapter(ReturnTypeEnum.Adapter.class)
     public enum ReturnTypeEnum {
-        @SerializedName("CUSTOMER")
         CUSTOMER("CUSTOMER"),
-        @SerializedName("REJECT")
+
         REJECT("REJECT");
 
         private String value;
@@ -55,40 +71,46 @@ public class ModelReturn {
             return String.valueOf(value);
         }
 
-        public static ReturnTypeEnum fromValue(String input) {
+        public static ReturnTypeEnum fromValue(String value) {
             for (ReturnTypeEnum b : ReturnTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ReturnTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ReturnTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ReturnTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ReturnTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ReturnTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ReturnTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("returnType")
-    private ReturnTypeEnum returnType = null;
+    public static final String SERIALIZED_NAME_RETURN_TYPE = "returnType";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_TYPE)
+    private ReturnTypeEnum returnType;
 
     /** The sub-type of return. */
     @JsonAdapter(ReturnSubTypeEnum.Adapter.class)
     public enum ReturnSubTypeEnum {
-        @SerializedName("NORMAL")
         NORMAL("NORMAL"),
-        @SerializedName("REPLACEMENT")
+
         REPLACEMENT("REPLACEMENT"),
-        @SerializedName("EXCHANGE")
+
         EXCHANGE("EXCHANGE");
 
         private String value;
@@ -106,67 +128,75 @@ public class ModelReturn {
             return String.valueOf(value);
         }
 
-        public static ReturnSubTypeEnum fromValue(String input) {
+        public static ReturnSubTypeEnum fromValue(String value) {
             for (ReturnSubTypeEnum b : ReturnSubTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ReturnSubTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ReturnSubTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ReturnSubTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ReturnSubTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ReturnSubTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ReturnSubTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("returnSubType")
-    private ReturnSubTypeEnum returnSubType = null;
+    public static final String SERIALIZED_NAME_RETURN_SUB_TYPE = "returnSubType";
 
-    @SerializedName("numberOfUnits")
-    private Integer numberOfUnits = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_SUB_TYPE)
+    private ReturnSubTypeEnum returnSubType;
+
+    public static final String SERIALIZED_NAME_NUMBER_OF_UNITS = "numberOfUnits";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_UNITS)
+    private Integer numberOfUnits;
 
     /** The current status of the return. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("CREATED")
         CREATED("CREATED"),
-        @SerializedName("CARRIER_NOTIFIED_TO_PICK_UP_FROM_CUSTOMER")
+
         CARRIER_NOTIFIED_TO_PICK_UP_FROM_CUSTOMER("CARRIER_NOTIFIED_TO_PICK_UP_FROM_CUSTOMER"),
-        @SerializedName("CARRIER_OUT_FOR_PICK_UP_FROM_CUSTOMER")
+
         CARRIER_OUT_FOR_PICK_UP_FROM_CUSTOMER("CARRIER_OUT_FOR_PICK_UP_FROM_CUSTOMER"),
-        @SerializedName("CUSTOMER_CANCELLED_PICK_UP")
+
         CUSTOMER_CANCELLED_PICK_UP("CUSTOMER_CANCELLED_PICK_UP"),
-        @SerializedName("CUSTOMER_RESCHEDULED_PICK_UP")
+
         CUSTOMER_RESCHEDULED_PICK_UP("CUSTOMER_RESCHEDULED_PICK_UP"),
-        @SerializedName("PICKED_FROM_CUSTOMER")
+
         PICKED_FROM_CUSTOMER("PICKED_FROM_CUSTOMER"),
-        @SerializedName("IN_TRANSIT")
+
         IN_TRANSIT("IN_TRANSIT"),
-        @SerializedName("OUT_FOR_DELIVERY")
+
         OUT_FOR_DELIVERY("OUT_FOR_DELIVERY"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED"),
-        @SerializedName("REPLANNED")
+
         REPLANNED("REPLANNED"),
-        @SerializedName("CUSTOMER_DROPPED_OFF")
+
         CUSTOMER_DROPPED_OFF("CUSTOMER_DROPPED_OFF"),
-        @SerializedName("PARTIALLY_PROCESSED")
+
         PARTIALLY_PROCESSED("PARTIALLY_PROCESSED"),
-        @SerializedName("PROCESSED")
+
         PROCESSED("PROCESSED"),
-        @SerializedName("REJECTED")
+
         REJECTED("REJECTED"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED");
 
         private String value;
@@ -184,52 +214,73 @@ public class ModelReturn {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("fulfillmentLocationId")
-    private String fulfillmentLocationId = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
 
-    @SerializedName("creationDateTime")
-    private String creationDateTime = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_LOCATION_ID = "fulfillmentLocationId";
 
-    @SerializedName("lastUpdatedDateTime")
-    private String lastUpdatedDateTime = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_LOCATION_ID)
+    private String fulfillmentLocationId;
 
-    @SerializedName("returnMetadata")
-    private ReturnMetadata returnMetadata = null;
+    public static final String SERIALIZED_NAME_CREATION_DATE_TIME = "creationDateTime";
 
-    @SerializedName("returnShippingInfo")
-    private ReturnShippingInfo returnShippingInfo = null;
+    @SerializedName(SERIALIZED_NAME_CREATION_DATE_TIME)
+    private String creationDateTime;
 
-    @SerializedName("marketplaceChannelDetails")
-    private MarketplaceChannelDetails marketplaceChannelDetails = null;
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE_TIME = "lastUpdatedDateTime";
 
-    @SerializedName("otpDetails")
-    private OtpDetails otpDetails = null;
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE_TIME)
+    private String lastUpdatedDateTime;
+
+    public static final String SERIALIZED_NAME_RETURN_METADATA = "returnMetadata";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_METADATA)
+    private ReturnMetadata returnMetadata;
+
+    public static final String SERIALIZED_NAME_RETURN_SHIPPING_INFO = "returnShippingInfo";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_SHIPPING_INFO)
+    private ReturnShippingInfo returnShippingInfo;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_CHANNEL_DETAILS = "marketplaceChannelDetails";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_CHANNEL_DETAILS)
+    private MarketplaceChannelDetails marketplaceChannelDetails;
+
+    public static final String SERIALIZED_NAME_OTP_DETAILS = "otpDetails";
+
+    @SerializedName(SERIALIZED_NAME_OTP_DETAILS)
+    private OtpDetails otpDetails;
 
     /**
      * The package delivery mode. This indicates whether the return was delivered to the seller with or without a
@@ -237,9 +288,8 @@ public class ModelReturn {
      */
     @JsonAdapter(PackageDeliveryModeEnum.Adapter.class)
     public enum PackageDeliveryModeEnum {
-        @SerializedName("WITH_OTP")
         WITH_OTP("WITH_OTP"),
-        @SerializedName("WITHOUT_OTP")
+
         WITHOUT_OTP("WITHOUT_OTP");
 
         private String value;
@@ -257,35 +307,46 @@ public class ModelReturn {
             return String.valueOf(value);
         }
 
-        public static PackageDeliveryModeEnum fromValue(String input) {
+        public static PackageDeliveryModeEnum fromValue(String value) {
             for (PackageDeliveryModeEnum b : PackageDeliveryModeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PackageDeliveryModeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PackageDeliveryModeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PackageDeliveryModeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PackageDeliveryModeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PackageDeliveryModeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PackageDeliveryModeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("packageDeliveryMode")
-    private PackageDeliveryModeEnum packageDeliveryMode = null;
+    public static final String SERIALIZED_NAME_PACKAGE_DELIVERY_MODE = "packageDeliveryMode";
 
-    @SerializedName("replanningDetails")
-    private ReplanningDetails replanningDetails = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_DELIVERY_MODE)
+    private PackageDeliveryModeEnum packageDeliveryMode;
+
+    public static final String SERIALIZED_NAME_REPLANNING_DETAILS = "replanningDetails";
+
+    @SerializedName(SERIALIZED_NAME_REPLANNING_DETAILS)
+    private ReplanningDetails replanningDetails;
+
+    public ModelReturn() {}
 
     public ModelReturn id(String id) {
         this.id = id;
@@ -297,7 +358,7 @@ public class ModelReturn {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The return item's ID.")
+    @javax.annotation.Nonnull
     public String getId() {
         return id;
     }
@@ -316,9 +377,7 @@ public class ModelReturn {
      *
      * @return returnLocationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The SmartConnect identifier for where the return item was dropped for delivery.")
-    public String getReturnLocationId() {
+    @javax.annotation.Nullable public String getReturnLocationId() {
         return returnLocationId;
     }
 
@@ -336,8 +395,7 @@ public class ModelReturn {
      *
      * @return merchantSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller's identifier for the SKU.")
-    public String getMerchantSku() {
+    @javax.annotation.Nullable public String getMerchantSku() {
         return merchantSku;
     }
 
@@ -355,7 +413,7 @@ public class ModelReturn {
      *
      * @return returnType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of return.")
+    @javax.annotation.Nonnull
     public ReturnTypeEnum getReturnType() {
         return returnType;
     }
@@ -374,8 +432,7 @@ public class ModelReturn {
      *
      * @return returnSubType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The sub-type of return.")
-    public ReturnSubTypeEnum getReturnSubType() {
+    @javax.annotation.Nullable public ReturnSubTypeEnum getReturnSubType() {
         return returnSubType;
     }
 
@@ -389,12 +446,11 @@ public class ModelReturn {
     }
 
     /**
-     * The total number of units in the return.
+     * The total number of units in the return. minimum: 1
      *
      * @return numberOfUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The total number of units in the return.")
-    public Integer getNumberOfUnits() {
+    @javax.annotation.Nullable public Integer getNumberOfUnits() {
         return numberOfUnits;
     }
 
@@ -412,7 +468,7 @@ public class ModelReturn {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current status of the return.")
+    @javax.annotation.Nonnull
     public StatusEnum getStatus() {
         return status;
     }
@@ -431,9 +487,7 @@ public class ModelReturn {
      *
      * @return fulfillmentLocationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ID of the location that fulfilled the order.")
+    @javax.annotation.Nonnull
     public String getFulfillmentLocationId() {
         return fulfillmentLocationId;
     }
@@ -452,10 +506,7 @@ public class ModelReturn {
      *
      * @return creationDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getCreationDateTime() {
+    @javax.annotation.Nullable public String getCreationDateTime() {
         return creationDateTime;
     }
 
@@ -473,10 +524,7 @@ public class ModelReturn {
      *
      * @return lastUpdatedDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public String getLastUpdatedDateTime() {
         return lastUpdatedDateTime;
     }
@@ -495,7 +543,7 @@ public class ModelReturn {
      *
      * @return returnMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReturnMetadata getReturnMetadata() {
         return returnMetadata;
     }
@@ -514,7 +562,7 @@ public class ModelReturn {
      *
      * @return returnShippingInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReturnShippingInfo getReturnShippingInfo() {
         return returnShippingInfo;
     }
@@ -533,7 +581,7 @@ public class ModelReturn {
      *
      * @return marketplaceChannelDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MarketplaceChannelDetails getMarketplaceChannelDetails() {
         return marketplaceChannelDetails;
     }
@@ -552,8 +600,7 @@ public class ModelReturn {
      *
      * @return otpDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OtpDetails getOtpDetails() {
+    @javax.annotation.Nullable public OtpDetails getOtpDetails() {
         return otpDetails;
     }
 
@@ -572,10 +619,7 @@ public class ModelReturn {
      *
      * @return packageDeliveryMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The package delivery mode. This indicates whether the return was delivered to the seller with or without a one-time password (OTP).")
-    public PackageDeliveryModeEnum getPackageDeliveryMode() {
+    @javax.annotation.Nullable public PackageDeliveryModeEnum getPackageDeliveryMode() {
         return packageDeliveryMode;
     }
 
@@ -593,8 +637,7 @@ public class ModelReturn {
      *
      * @return replanningDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReplanningDetails getReplanningDetails() {
+    @javax.annotation.Nullable public ReplanningDetails getReplanningDetails() {
         return replanningDetails;
     }
 
@@ -603,7 +646,7 @@ public class ModelReturn {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -693,10 +736,219 @@ public class ModelReturn {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("id");
+        openapiFields.add("returnLocationId");
+        openapiFields.add("merchantSku");
+        openapiFields.add("returnType");
+        openapiFields.add("returnSubType");
+        openapiFields.add("numberOfUnits");
+        openapiFields.add("status");
+        openapiFields.add("fulfillmentLocationId");
+        openapiFields.add("creationDateTime");
+        openapiFields.add("lastUpdatedDateTime");
+        openapiFields.add("returnMetadata");
+        openapiFields.add("returnShippingInfo");
+        openapiFields.add("marketplaceChannelDetails");
+        openapiFields.add("otpDetails");
+        openapiFields.add("packageDeliveryMode");
+        openapiFields.add("replanningDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("returnType");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("fulfillmentLocationId");
+        openapiRequiredFields.add("lastUpdatedDateTime");
+        openapiRequiredFields.add("returnMetadata");
+        openapiRequiredFields.add("returnShippingInfo");
+        openapiRequiredFields.add("marketplaceChannelDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ModelReturn
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ModelReturn.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ModelReturn is not found in the empty JSON string",
+                        ModelReturn.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ModelReturn.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ModelReturn` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ModelReturn.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if ((jsonObj.get("returnLocationId") != null
+                        && !jsonObj.get("returnLocationId").isJsonNull())
+                && !jsonObj.get("returnLocationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnLocationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnLocationId").toString()));
+        }
+        if ((jsonObj.get("merchantSku") != null && !jsonObj.get("merchantSku").isJsonNull())
+                && !jsonObj.get("merchantSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `merchantSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("merchantSku").toString()));
+        }
+        if (!jsonObj.get("returnType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnType").toString()));
+        }
+        // validate the required field `returnType`
+        ReturnTypeEnum.validateJsonElement(jsonObj.get("returnType"));
+        if ((jsonObj.get("returnSubType") != null
+                        && !jsonObj.get("returnSubType").isJsonNull())
+                && !jsonObj.get("returnSubType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnSubType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnSubType").toString()));
+        }
+        // validate the optional field `returnSubType`
+        if (jsonObj.get("returnSubType") != null
+                && !jsonObj.get("returnSubType").isJsonNull()) {
+            ReturnSubTypeEnum.validateJsonElement(jsonObj.get("returnSubType"));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `status`
+        StatusEnum.validateJsonElement(jsonObj.get("status"));
+        if (!jsonObj.get("fulfillmentLocationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentLocationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentLocationId").toString()));
+        }
+        if ((jsonObj.get("creationDateTime") != null
+                        && !jsonObj.get("creationDateTime").isJsonNull())
+                && !jsonObj.get("creationDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `creationDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("creationDateTime").toString()));
+        }
+        if (!jsonObj.get("lastUpdatedDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lastUpdatedDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lastUpdatedDateTime").toString()));
+        }
+        // validate the required field `returnMetadata`
+        ReturnMetadata.validateJsonElement(jsonObj.get("returnMetadata"));
+        // validate the required field `returnShippingInfo`
+        ReturnShippingInfo.validateJsonElement(jsonObj.get("returnShippingInfo"));
+        // validate the required field `marketplaceChannelDetails`
+        MarketplaceChannelDetails.validateJsonElement(jsonObj.get("marketplaceChannelDetails"));
+        // validate the optional field `otpDetails`
+        if (jsonObj.get("otpDetails") != null && !jsonObj.get("otpDetails").isJsonNull()) {
+            OtpDetails.validateJsonElement(jsonObj.get("otpDetails"));
+        }
+        if ((jsonObj.get("packageDeliveryMode") != null
+                        && !jsonObj.get("packageDeliveryMode").isJsonNull())
+                && !jsonObj.get("packageDeliveryMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageDeliveryMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageDeliveryMode").toString()));
+        }
+        // validate the optional field `packageDeliveryMode`
+        if (jsonObj.get("packageDeliveryMode") != null
+                && !jsonObj.get("packageDeliveryMode").isJsonNull()) {
+            PackageDeliveryModeEnum.validateJsonElement(jsonObj.get("packageDeliveryMode"));
+        }
+        // validate the optional field `replanningDetails`
+        if (jsonObj.get("replanningDetails") != null
+                && !jsonObj.get("replanningDetails").isJsonNull()) {
+            ReplanningDetails.validateJsonElement(jsonObj.get("replanningDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ModelReturn.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ModelReturn' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ModelReturn> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ModelReturn.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ModelReturn>() {
+                        @Override
+                        public void write(JsonWriter out, ModelReturn value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ModelReturn read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ModelReturn given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ModelReturn
+     * @throws IOException if the JSON string is invalid with respect to ModelReturn
+     */
+    public static ModelReturn fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ModelReturn.class);
+    }
+
+    /**
+     * Convert an instance of ModelReturn to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

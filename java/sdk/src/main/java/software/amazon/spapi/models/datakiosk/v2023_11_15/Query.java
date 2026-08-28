@@ -12,39 +12,55 @@
 
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed information about the query. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the query.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Query {
-    @SerializedName("queryId")
-    private String queryId = null;
+    public static final String SERIALIZED_NAME_QUERY_ID = "queryId";
 
-    @SerializedName("query")
-    private String query = null;
+    @SerializedName(SERIALIZED_NAME_QUERY_ID)
+    private String queryId;
 
-    @SerializedName("createdTime")
-    private OffsetDateTime createdTime = null;
+    public static final String SERIALIZED_NAME_QUERY = "query";
+
+    @SerializedName(SERIALIZED_NAME_QUERY)
+    private String query;
+
+    public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+    private OffsetDateTime createdTime;
 
     /** The processing status of the query. */
     @JsonAdapter(ProcessingStatusEnum.Adapter.class)
     public enum ProcessingStatusEnum {
-        @SerializedName("CANCELLED")
         CANCELLED("CANCELLED"),
-        @SerializedName("DONE")
+
         DONE("DONE"),
-        @SerializedName("FATAL")
+
         FATAL("FATAL"),
-        @SerializedName("IN_PROGRESS")
+
         IN_PROGRESS("IN_PROGRESS"),
-        @SerializedName("IN_QUEUE")
+
         IN_QUEUE("IN_QUEUE");
 
         private String value;
@@ -62,46 +78,65 @@ public class Query {
             return String.valueOf(value);
         }
 
-        public static ProcessingStatusEnum fromValue(String input) {
+        public static ProcessingStatusEnum fromValue(String value) {
             for (ProcessingStatusEnum b : ProcessingStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ProcessingStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ProcessingStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ProcessingStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ProcessingStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ProcessingStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ProcessingStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("processingStatus")
-    private ProcessingStatusEnum processingStatus = null;
+    public static final String SERIALIZED_NAME_PROCESSING_STATUS = "processingStatus";
 
-    @SerializedName("processingStartTime")
-    private OffsetDateTime processingStartTime = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_STATUS)
+    private ProcessingStatusEnum processingStatus;
 
-    @SerializedName("processingEndTime")
-    private OffsetDateTime processingEndTime = null;
+    public static final String SERIALIZED_NAME_PROCESSING_START_TIME = "processingStartTime";
 
-    @SerializedName("dataDocumentId")
-    private String dataDocumentId = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_START_TIME)
+    private OffsetDateTime processingStartTime;
 
-    @SerializedName("errorDocumentId")
-    private String errorDocumentId = null;
+    public static final String SERIALIZED_NAME_PROCESSING_END_TIME = "processingEndTime";
 
-    @SerializedName("pagination")
-    private QueryPagination pagination = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_END_TIME)
+    private OffsetDateTime processingEndTime;
+
+    public static final String SERIALIZED_NAME_DATA_DOCUMENT_ID = "dataDocumentId";
+
+    @SerializedName(SERIALIZED_NAME_DATA_DOCUMENT_ID)
+    private String dataDocumentId;
+
+    public static final String SERIALIZED_NAME_ERROR_DOCUMENT_ID = "errorDocumentId";
+
+    @SerializedName(SERIALIZED_NAME_ERROR_DOCUMENT_ID)
+    private String errorDocumentId;
+
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private QueryPagination pagination;
+
+    public Query() {}
 
     public Query queryId(String queryId) {
         this.queryId = queryId;
@@ -113,10 +148,7 @@ public class Query {
      *
      * @return queryId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The query identifier. This identifier is unique only in combination with a selling partner account ID.")
+    @javax.annotation.Nonnull
     public String getQueryId() {
         return queryId;
     }
@@ -135,7 +167,7 @@ public class Query {
      *
      * @return query
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The submitted query.")
+    @javax.annotation.Nonnull
     public String getQuery() {
         return query;
     }
@@ -154,9 +186,7 @@ public class Query {
      *
      * @return createdTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time when the query was created, in ISO 8601 date time format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -175,7 +205,7 @@ public class Query {
      *
      * @return processingStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the query.")
+    @javax.annotation.Nonnull
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -194,9 +224,7 @@ public class Query {
      *
      * @return processingStartTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time when the query processing started, in ISO 8601 date time format.")
-    public OffsetDateTime getProcessingStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingStartTime() {
         return processingStartTime;
     }
 
@@ -214,9 +242,7 @@ public class Query {
      *
      * @return processingEndTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time when the query processing completed, in ISO 8601 date time format.")
-    public OffsetDateTime getProcessingEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingEndTime() {
         return processingEndTime;
     }
 
@@ -237,10 +263,7 @@ public class Query {
      *
      * @return dataDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the data document's contents.")
-    public String getDataDocumentId() {
+    @javax.annotation.Nullable public String getDataDocumentId() {
         return dataDocumentId;
     }
 
@@ -260,10 +283,7 @@ public class Query {
      *
      * @return errorDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the error document's contents.")
-    public String getErrorDocumentId() {
+    @javax.annotation.Nullable public String getErrorDocumentId() {
         return errorDocumentId;
     }
 
@@ -281,8 +301,7 @@ public class Query {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public QueryPagination getPagination() {
+    @javax.annotation.Nullable public QueryPagination getPagination() {
         return pagination;
     }
 
@@ -291,7 +310,7 @@ public class Query {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -352,10 +371,154 @@ public class Query {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("queryId");
+        openapiFields.add("query");
+        openapiFields.add("createdTime");
+        openapiFields.add("processingStatus");
+        openapiFields.add("processingStartTime");
+        openapiFields.add("processingEndTime");
+        openapiFields.add("dataDocumentId");
+        openapiFields.add("errorDocumentId");
+        openapiFields.add("pagination");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("queryId");
+        openapiRequiredFields.add("query");
+        openapiRequiredFields.add("createdTime");
+        openapiRequiredFields.add("processingStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Query
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Query.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Query is not found in the empty JSON string",
+                        Query.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Query.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Query` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Query.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("queryId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `queryId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("queryId").toString()));
+        }
+        if (!jsonObj.get("query").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `query` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("query").toString()));
+        }
+        if (!jsonObj.get("processingStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `processingStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("processingStatus").toString()));
+        }
+        // validate the required field `processingStatus`
+        ProcessingStatusEnum.validateJsonElement(jsonObj.get("processingStatus"));
+        if ((jsonObj.get("dataDocumentId") != null
+                        && !jsonObj.get("dataDocumentId").isJsonNull())
+                && !jsonObj.get("dataDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dataDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("dataDocumentId").toString()));
+        }
+        if ((jsonObj.get("errorDocumentId") != null
+                        && !jsonObj.get("errorDocumentId").isJsonNull())
+                && !jsonObj.get("errorDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorDocumentId").toString()));
+        }
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            QueryPagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Query.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Query' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Query> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Query.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Query>() {
+                        @Override
+                        public void write(JsonWriter out, Query value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Query read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Query given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Query
+     * @throws IOException if the JSON string is invalid with respect to Query
+     */
+    public static Query fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Query.class);
+    }
+
+    /**
+     * Convert an instance of Query to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

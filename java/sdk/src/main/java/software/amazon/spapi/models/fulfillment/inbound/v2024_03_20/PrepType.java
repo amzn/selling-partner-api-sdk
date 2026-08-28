@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -26,52 +26,36 @@ import java.io.IOException;
  */
 @JsonAdapter(PrepType.Adapter.class)
 public enum PrepType {
-    @SerializedName("ITEM_BLACK_SHRINKWRAP")
     BLACK_SHRINKWRAP("ITEM_BLACK_SHRINKWRAP"),
 
-    @SerializedName("ITEM_BLANKSTK")
     BLANKSTK("ITEM_BLANKSTK"),
 
-    @SerializedName("ITEM_BOXING")
     BOXING("ITEM_BOXING"),
 
-    @SerializedName("ITEM_BUBBLEWRAP")
     BUBBLEWRAP("ITEM_BUBBLEWRAP"),
 
-    @SerializedName("ITEM_CAP_SEALING")
     CAP_SEALING("ITEM_CAP_SEALING"),
 
-    @SerializedName("ITEM_DEBUNDLE")
     DEBUNDLE("ITEM_DEBUNDLE"),
 
-    @SerializedName("ITEM_HANG_GARMENT")
     HANG_GARMENT("ITEM_HANG_GARMENT"),
 
-    @SerializedName("ITEM_LABELING")
     LABELING("ITEM_LABELING"),
 
-    @SerializedName("ITEM_NO_PREP")
     NO_PREP("ITEM_NO_PREP"),
 
-    @SerializedName("ITEM_POLYBAGGING")
     POLYBAGGING("ITEM_POLYBAGGING"),
 
-    @SerializedName("ITEM_RMOVHANG")
     RMOVHANG("ITEM_RMOVHANG"),
 
-    @SerializedName("ITEM_SETCREAT")
     SETCREAT("ITEM_SETCREAT"),
 
-    @SerializedName("ITEM_SETSTK")
     SETSTK("ITEM_SETSTK"),
 
-    @SerializedName("ITEM_SIOC")
     SIOC("ITEM_SIOC"),
 
-    @SerializedName("ITEM_SUFFOSTK")
     SUFFOSTK("ITEM_SUFFOSTK"),
 
-    @SerializedName("ITEM_TAPING")
     TAPING("ITEM_TAPING");
 
     private String value;
@@ -89,25 +73,30 @@ public enum PrepType {
         return String.valueOf(value);
     }
 
-    public static PrepType fromValue(String input) {
+    public static PrepType fromValue(String value) {
         for (PrepType b : PrepType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PrepType> {
         @Override
         public void write(final JsonWriter jsonWriter, final PrepType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PrepType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PrepType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PrepType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PrepType.fromValue(value);
     }
 }

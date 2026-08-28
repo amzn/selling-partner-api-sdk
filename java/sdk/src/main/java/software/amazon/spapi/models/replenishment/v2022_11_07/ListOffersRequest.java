@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body for the &#x60;listOffers&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the `listOffers` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOffersRequest {
-    @SerializedName("pagination")
-    private ListOffersRequestPagination pagination = null;
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
 
-    @SerializedName("filters")
-    private ListOffersRequestFilters filters = null;
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private ListOffersRequestPagination pagination;
 
-    @SerializedName("sort")
-    private ListOffersRequestSort sort = null;
+    public static final String SERIALIZED_NAME_FILTERS = "filters";
+
+    @SerializedName(SERIALIZED_NAME_FILTERS)
+    private ListOffersRequestFilters filters;
+
+    public static final String SERIALIZED_NAME_SORT = "sort";
+
+    @SerializedName(SERIALIZED_NAME_SORT)
+    private ListOffersRequestSort sort;
+
+    public ListOffersRequest() {}
 
     public ListOffersRequest pagination(ListOffersRequestPagination pagination) {
         this.pagination = pagination;
@@ -37,7 +60,7 @@ public class ListOffersRequest {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ListOffersRequestPagination getPagination() {
         return pagination;
     }
@@ -56,7 +79,7 @@ public class ListOffersRequest {
      *
      * @return filters
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ListOffersRequestFilters getFilters() {
         return filters;
     }
@@ -75,8 +98,7 @@ public class ListOffersRequest {
      *
      * @return sort
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ListOffersRequestSort getSort() {
+    @javax.annotation.Nullable public ListOffersRequestSort getSort() {
         return sort;
     }
 
@@ -85,7 +107,7 @@ public class ListOffersRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -115,10 +137,120 @@ public class ListOffersRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("pagination");
+        openapiFields.add("filters");
+        openapiFields.add("sort");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("pagination");
+        openapiRequiredFields.add("filters");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOffersRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOffersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOffersRequest is not found in the empty JSON string",
+                        ListOffersRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOffersRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOffersRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListOffersRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `pagination`
+        ListOffersRequestPagination.validateJsonElement(jsonObj.get("pagination"));
+        // validate the required field `filters`
+        ListOffersRequestFilters.validateJsonElement(jsonObj.get("filters"));
+        // validate the optional field `sort`
+        if (jsonObj.get("sort") != null && !jsonObj.get("sort").isJsonNull()) {
+            ListOffersRequestSort.validateJsonElement(jsonObj.get("sort"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOffersRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOffersRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOffersRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOffersRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOffersRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ListOffersRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOffersRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOffersRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOffersRequest
+     * @throws IOException if the JSON string is invalid with respect to ListOffersRequest
+     */
+    public static ListOffersRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOffersRequest.class);
+    }
+
+    /**
+     * Convert an instance of ListOffersRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

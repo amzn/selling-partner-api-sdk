@@ -12,25 +12,49 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Response schema for the &#x60;addAppointmentForServiceJobByServiceJobId&#x60; and
  * &#x60;rescheduleAppointmentForServiceJobByServiceJobId&#x60; operations.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Response schema for the `addAppointmentForServiceJobByServiceJobId` and `rescheduleAppointmentForServiceJobByServiceJobId` operations.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SetAppointmentResponse {
-    @SerializedName("appointmentId")
-    private String appointmentId = null;
+    public static final String SERIALIZED_NAME_APPOINTMENT_ID = "appointmentId";
 
-    @SerializedName("warnings")
-    private WarningList warnings = null;
+    @SerializedName(SERIALIZED_NAME_APPOINTMENT_ID)
+    private String appointmentId;
 
-    @SerializedName("errors")
-    private ErrorList errors = null;
+    public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+
+    @SerializedName(SERIALIZED_NAME_WARNINGS)
+    private List<Warning> warnings = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ERRORS = "errors";
+
+    @SerializedName(SERIALIZED_NAME_ERRORS)
+    private List<Error> errors = new ArrayList<>();
+
+    public SetAppointmentResponse() {}
 
     public SetAppointmentResponse appointmentId(String appointmentId) {
         this.appointmentId = appointmentId;
@@ -42,8 +66,7 @@ public class SetAppointmentResponse {
      *
      * @return appointmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The appointment identifier.")
-    public String getAppointmentId() {
+    @javax.annotation.Nullable public String getAppointmentId() {
         return appointmentId;
     }
 
@@ -51,46 +74,60 @@ public class SetAppointmentResponse {
         this.appointmentId = appointmentId;
     }
 
-    public SetAppointmentResponse warnings(WarningList warnings) {
+    public SetAppointmentResponse warnings(List<Warning> warnings) {
         this.warnings = warnings;
         return this;
     }
 
+    public SetAppointmentResponse addWarningsItem(Warning warningsItem) {
+        if (this.warnings == null) {
+            this.warnings = new ArrayList<>();
+        }
+        this.warnings.add(warningsItem);
+        return this;
+    }
+
     /**
-     * Get warnings
+     * A list of warnings returned in the sucessful execution response of an API request.
      *
      * @return warnings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public WarningList getWarnings() {
+    @javax.annotation.Nullable public List<Warning> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(WarningList warnings) {
+    public void setWarnings(List<Warning> warnings) {
         this.warnings = warnings;
     }
 
-    public SetAppointmentResponse errors(ErrorList errors) {
+    public SetAppointmentResponse errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public SetAppointmentResponse addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorList getErrors() {
+    @javax.annotation.Nullable public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -120,10 +157,143 @@ public class SetAppointmentResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("appointmentId");
+        openapiFields.add("warnings");
+        openapiFields.add("errors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SetAppointmentResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SetAppointmentResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SetAppointmentResponse is not found in the empty JSON string",
+                        SetAppointmentResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SetAppointmentResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SetAppointmentResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("appointmentId") != null
+                        && !jsonObj.get("appointmentId").isJsonNull())
+                && !jsonObj.get("appointmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `appointmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("appointmentId").toString()));
+        }
+        if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+            JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+            if (jsonArraywarnings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("warnings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `warnings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("warnings").toString()));
+                }
+
+                // validate the optional field `warnings` (array)
+                for (int i = 0; i < jsonArraywarnings.size(); i++) {
+                    Warning.validateJsonElement(jsonArraywarnings.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+            if (jsonArrayerrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("errors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("errors").toString()));
+                }
+
+                // validate the optional field `errors` (array)
+                for (int i = 0; i < jsonArrayerrors.size(); i++) {
+                    Error.validateJsonElement(jsonArrayerrors.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SetAppointmentResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SetAppointmentResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SetAppointmentResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SetAppointmentResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SetAppointmentResponse>() {
+                        @Override
+                        public void write(JsonWriter out, SetAppointmentResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SetAppointmentResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SetAppointmentResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SetAppointmentResponse
+     * @throws IOException if the JSON string is invalid with respect to SetAppointmentResponse
+     */
+    public static SetAppointmentResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SetAppointmentResponse.class);
+    }
+
+    /**
+     * Convert an instance of SetAppointmentResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

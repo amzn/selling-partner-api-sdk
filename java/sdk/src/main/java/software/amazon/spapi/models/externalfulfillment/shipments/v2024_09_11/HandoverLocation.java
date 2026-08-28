@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The drop-off location details for package handover. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The drop-off location details for package handover.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class HandoverLocation {
-    @SerializedName("address")
-    private Address address = null;
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
 
-    @SerializedName("distance")
-    private Distance distance = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
 
-    @SerializedName("mapUrl")
-    private String mapUrl = null;
+    public static final String SERIALIZED_NAME_DISTANCE = "distance";
+
+    @SerializedName(SERIALIZED_NAME_DISTANCE)
+    private Distance distance;
+
+    public static final String SERIALIZED_NAME_MAP_URL = "mapUrl";
+
+    @SerializedName(SERIALIZED_NAME_MAP_URL)
+    private String mapUrl;
+
+    public HandoverLocation() {}
 
     public HandoverLocation address(Address address) {
         this.address = address;
@@ -37,8 +60,7 @@ public class HandoverLocation {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -56,8 +78,7 @@ public class HandoverLocation {
      *
      * @return distance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Distance getDistance() {
+    @javax.annotation.Nullable public Distance getDistance() {
         return distance;
     }
 
@@ -75,8 +96,7 @@ public class HandoverLocation {
      *
      * @return mapUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "URL to the map that shows the drop-off location.")
-    public String getMapUrl() {
+    @javax.annotation.Nullable public String getMapUrl() {
         return mapUrl;
     }
 
@@ -85,7 +105,7 @@ public class HandoverLocation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -115,10 +135,115 @@ public class HandoverLocation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("address");
+        openapiFields.add("distance");
+        openapiFields.add("mapUrl");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to HandoverLocation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!HandoverLocation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in HandoverLocation is not found in the empty JSON string",
+                        HandoverLocation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!HandoverLocation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `HandoverLocation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+        // validate the optional field `distance`
+        if (jsonObj.get("distance") != null && !jsonObj.get("distance").isJsonNull()) {
+            Distance.validateJsonElement(jsonObj.get("distance"));
+        }
+        if ((jsonObj.get("mapUrl") != null && !jsonObj.get("mapUrl").isJsonNull())
+                && !jsonObj.get("mapUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `mapUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("mapUrl").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!HandoverLocation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'HandoverLocation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<HandoverLocation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(HandoverLocation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<HandoverLocation>() {
+                        @Override
+                        public void write(JsonWriter out, HandoverLocation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public HandoverLocation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of HandoverLocation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of HandoverLocation
+     * @throws IOException if the JSON string is invalid with respect to HandoverLocation
+     */
+    public static HandoverLocation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, HandoverLocation.class);
+    }
+
+    /**
+     * Convert an instance of HandoverLocation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

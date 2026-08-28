@@ -12,19 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Another order that has a direct business relationship with the current order, such as replacements or exchanges. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Another order that has a direct business relationship with the current order, such as replacements or exchanges.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AssociatedOrder {
-    @SerializedName("orderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("associationType")
-    private String associationType = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
+
+    public static final String SERIALIZED_NAME_ASSOCIATION_TYPE = "associationType";
+
+    @SerializedName(SERIALIZED_NAME_ASSOCIATION_TYPE)
+    private String associationType;
+
+    public AssociatedOrder() {}
 
     public AssociatedOrder orderId(String orderId) {
         this.orderId = orderId;
@@ -36,9 +55,7 @@ public class AssociatedOrder {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The unique identifier of the related order that is associated with the current order.")
-    public String getOrderId() {
+    @javax.annotation.Nullable public String getOrderId() {
         return orderId;
     }
 
@@ -57,10 +74,7 @@ public class AssociatedOrder {
      *
      * @return associationType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The relationship between the current order and the associated order.  **Possible values**: `REPLACEMENT_ORIGINAL_ID`, `EXCHANGE_ORIGINAL_ID`")
-    public String getAssociationType() {
+    @javax.annotation.Nullable public String getAssociationType() {
         return associationType;
     }
 
@@ -69,7 +83,7 @@ public class AssociatedOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -99,10 +113,113 @@ public class AssociatedOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("orderId");
+        openapiFields.add("associationType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AssociatedOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AssociatedOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AssociatedOrder is not found in the empty JSON string",
+                        AssociatedOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AssociatedOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AssociatedOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("orderId") != null && !jsonObj.get("orderId").isJsonNull())
+                && !jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        if ((jsonObj.get("associationType") != null
+                        && !jsonObj.get("associationType").isJsonNull())
+                && !jsonObj.get("associationType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `associationType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("associationType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AssociatedOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AssociatedOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AssociatedOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AssociatedOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AssociatedOrder>() {
+                        @Override
+                        public void write(JsonWriter out, AssociatedOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AssociatedOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AssociatedOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AssociatedOrder
+     * @throws IOException if the JSON string is invalid with respect to AssociatedOrder
+     */
+    public static AssociatedOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AssociatedOrder.class);
+    }
+
+    /**
+     * Convert an instance of AssociatedOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

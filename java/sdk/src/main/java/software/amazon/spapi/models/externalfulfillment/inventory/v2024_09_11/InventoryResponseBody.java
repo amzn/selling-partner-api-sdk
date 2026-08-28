@@ -12,34 +12,66 @@
 
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response to an inventory request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response to an inventory request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventoryResponseBody {
-    @SerializedName("clientSequenceNumber")
-    private Integer clientSequenceNumber = null;
+    public static final String SERIALIZED_NAME_CLIENT_SEQUENCE_NUMBER = "clientSequenceNumber";
 
-    @SerializedName("locationId")
-    private String locationId = null;
+    @SerializedName(SERIALIZED_NAME_CLIENT_SEQUENCE_NUMBER)
+    private Integer clientSequenceNumber;
 
-    @SerializedName("skuId")
-    private String skuId = null;
+    public static final String SERIALIZED_NAME_LOCATION_ID = "locationId";
 
-    @SerializedName("sellableQuantity")
-    private Integer sellableQuantity = null;
+    @SerializedName(SERIALIZED_NAME_LOCATION_ID)
+    private String locationId;
 
-    @SerializedName("reservedQuantity")
-    private Integer reservedQuantity = null;
+    public static final String SERIALIZED_NAME_SKU_ID = "skuId";
 
-    @SerializedName("marketplaceAttributes")
-    private MarketplaceAttributes marketplaceAttributes = null;
+    @SerializedName(SERIALIZED_NAME_SKU_ID)
+    private String skuId;
 
-    @SerializedName("actionableErrors")
-    private List<ActionableError> actionableErrors = null;
+    public static final String SERIALIZED_NAME_SELLABLE_QUANTITY = "sellableQuantity";
+
+    @SerializedName(SERIALIZED_NAME_SELLABLE_QUANTITY)
+    private Integer sellableQuantity;
+
+    public static final String SERIALIZED_NAME_RESERVED_QUANTITY = "reservedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_RESERVED_QUANTITY)
+    private Integer reservedQuantity;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ATTRIBUTES = "marketplaceAttributes";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ATTRIBUTES)
+    private MarketplaceAttributes marketplaceAttributes;
+
+    public static final String SERIALIZED_NAME_ACTIONABLE_ERRORS = "actionableErrors";
+
+    @SerializedName(SERIALIZED_NAME_ACTIONABLE_ERRORS)
+    private List<ActionableError> actionableErrors = new ArrayList<>();
+
+    public InventoryResponseBody() {}
 
     public InventoryResponseBody clientSequenceNumber(Integer clientSequenceNumber) {
         this.clientSequenceNumber = clientSequenceNumber;
@@ -51,8 +83,7 @@ public class InventoryResponseBody {
      *
      * @return clientSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Latest sequence number for an inventory update.")
-    public Integer getClientSequenceNumber() {
+    @javax.annotation.Nullable public Integer getClientSequenceNumber() {
         return clientSequenceNumber;
     }
 
@@ -70,8 +101,7 @@ public class InventoryResponseBody {
      *
      * @return locationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The location where inventory is updated or retrieved.")
-    public String getLocationId() {
+    @javax.annotation.Nullable public String getLocationId() {
         return locationId;
     }
 
@@ -89,8 +119,7 @@ public class InventoryResponseBody {
      *
      * @return skuId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The SKU ID for which inventory is updated or retrieved")
-    public String getSkuId() {
+    @javax.annotation.Nullable public String getSkuId() {
         return skuId;
     }
 
@@ -104,13 +133,11 @@ public class InventoryResponseBody {
     }
 
     /**
-     * The number of items of the specified SKU that are available for purchase.
+     * The number of items of the specified SKU that are available for purchase. minimum: 0
      *
      * @return sellableQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of items of the specified SKU that are available for purchase.")
-    public Integer getSellableQuantity() {
+    @javax.annotation.Nullable public Integer getSellableQuantity() {
         return sellableQuantity;
     }
 
@@ -125,14 +152,11 @@ public class InventoryResponseBody {
 
     /**
      * The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be
-     * fulfilled.
+     * fulfilled. minimum: 0
      *
      * @return reservedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled.")
-    public Integer getReservedQuantity() {
+    @javax.annotation.Nullable public Integer getReservedQuantity() {
         return reservedQuantity;
     }
 
@@ -150,8 +174,7 @@ public class InventoryResponseBody {
      *
      * @return marketplaceAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MarketplaceAttributes getMarketplaceAttributes() {
+    @javax.annotation.Nullable public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }
 
@@ -177,10 +200,7 @@ public class InventoryResponseBody {
      *
      * @return actionableErrors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Inventory operation errors that require seller action before retrying the inventory request.")
-    public List<ActionableError> getActionableErrors() {
+    @javax.annotation.Nullable public List<ActionableError> getActionableErrors() {
         return actionableErrors;
     }
 
@@ -189,7 +209,7 @@ public class InventoryResponseBody {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -244,10 +264,141 @@ public class InventoryResponseBody {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("clientSequenceNumber");
+        openapiFields.add("locationId");
+        openapiFields.add("skuId");
+        openapiFields.add("sellableQuantity");
+        openapiFields.add("reservedQuantity");
+        openapiFields.add("marketplaceAttributes");
+        openapiFields.add("actionableErrors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventoryResponseBody
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventoryResponseBody.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventoryResponseBody is not found in the empty JSON string",
+                        InventoryResponseBody.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventoryResponseBody.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventoryResponseBody` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("locationId") != null && !jsonObj.get("locationId").isJsonNull())
+                && !jsonObj.get("locationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `locationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("locationId").toString()));
+        }
+        if ((jsonObj.get("skuId") != null && !jsonObj.get("skuId").isJsonNull())
+                && !jsonObj.get("skuId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `skuId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("skuId").toString()));
+        }
+        // validate the optional field `marketplaceAttributes`
+        if (jsonObj.get("marketplaceAttributes") != null
+                && !jsonObj.get("marketplaceAttributes").isJsonNull()) {
+            MarketplaceAttributes.validateJsonElement(jsonObj.get("marketplaceAttributes"));
+        }
+        if (jsonObj.get("actionableErrors") != null
+                && !jsonObj.get("actionableErrors").isJsonNull()) {
+            JsonArray jsonArrayactionableErrors = jsonObj.getAsJsonArray("actionableErrors");
+            if (jsonArrayactionableErrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("actionableErrors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `actionableErrors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("actionableErrors").toString()));
+                }
+
+                // validate the optional field `actionableErrors` (array)
+                for (int i = 0; i < jsonArrayactionableErrors.size(); i++) {
+                    ActionableError.validateJsonElement(jsonArrayactionableErrors.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventoryResponseBody.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventoryResponseBody' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventoryResponseBody> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventoryResponseBody.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventoryResponseBody>() {
+                        @Override
+                        public void write(JsonWriter out, InventoryResponseBody value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventoryResponseBody read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventoryResponseBody given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventoryResponseBody
+     * @throws IOException if the JSON string is invalid with respect to InventoryResponseBody
+     */
+    public static InventoryResponseBody fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventoryResponseBody.class);
+    }
+
+    /**
+     * Convert an instance of InventoryResponseBody to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

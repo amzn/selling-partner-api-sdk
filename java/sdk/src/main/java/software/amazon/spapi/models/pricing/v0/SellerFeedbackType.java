@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Information about the seller&#39;s feedback, including the percentage of positive feedback, and the total number of
  * ratings received.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about the seller's feedback, including the percentage of positive feedback, and the total number of ratings received.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SellerFeedbackType {
-    @SerializedName("SellerPositiveFeedbackRating")
-    private Double sellerPositiveFeedbackRating = null;
+    public static final String SERIALIZED_NAME_SELLER_POSITIVE_FEEDBACK_RATING = "SellerPositiveFeedbackRating";
 
-    @SerializedName("FeedbackCount")
-    private Long feedbackCount = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_POSITIVE_FEEDBACK_RATING)
+    private Double sellerPositiveFeedbackRating;
+
+    public static final String SERIALIZED_NAME_FEEDBACK_COUNT = "FeedbackCount";
+
+    @SerializedName(SERIALIZED_NAME_FEEDBACK_COUNT)
+    private Long feedbackCount;
+
+    public SellerFeedbackType() {}
 
     public SellerFeedbackType sellerPositiveFeedbackRating(Double sellerPositiveFeedbackRating) {
         this.sellerPositiveFeedbackRating = sellerPositiveFeedbackRating;
@@ -39,9 +58,7 @@ public class SellerFeedbackType {
      *
      * @return sellerPositiveFeedbackRating
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The percentage of positive feedback for the seller in the past 365 days.")
-    public Double getSellerPositiveFeedbackRating() {
+    @javax.annotation.Nullable public Double getSellerPositiveFeedbackRating() {
         return sellerPositiveFeedbackRating;
     }
 
@@ -59,9 +76,7 @@ public class SellerFeedbackType {
      *
      * @return feedbackCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of ratings received about the seller.")
+    @javax.annotation.Nonnull
     public Long getFeedbackCount() {
         return feedbackCount;
     }
@@ -71,7 +86,7 @@ public class SellerFeedbackType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +116,110 @@ public class SellerFeedbackType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SellerPositiveFeedbackRating");
+        openapiFields.add("FeedbackCount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("FeedbackCount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SellerFeedbackType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SellerFeedbackType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SellerFeedbackType is not found in the empty JSON string",
+                        SellerFeedbackType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SellerFeedbackType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SellerFeedbackType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SellerFeedbackType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SellerFeedbackType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SellerFeedbackType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SellerFeedbackType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SellerFeedbackType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SellerFeedbackType>() {
+                        @Override
+                        public void write(JsonWriter out, SellerFeedbackType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SellerFeedbackType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SellerFeedbackType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SellerFeedbackType
+     * @throws IOException if the JSON string is invalid with respect to SellerFeedbackType
+     */
+    public static SellerFeedbackType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SellerFeedbackType.class);
+    }
+
+    /**
+     * Convert an instance of SellerFeedbackType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

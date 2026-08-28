@@ -12,44 +12,87 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item in the Amazon catalog. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item in the Amazon catalog.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("attributes")
-    private ItemAttributes attributes = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("classifications")
-    private ItemBrowseClassifications classifications = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
 
-    @SerializedName("dimensions")
-    private ItemDimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private Map<String, Object> attributes = new HashMap<>();
 
-    @SerializedName("identifiers")
-    private ItemIdentifiers identifiers = null;
+    public static final String SERIALIZED_NAME_CLASSIFICATIONS = "classifications";
 
-    @SerializedName("images")
-    private ItemImages images = null;
+    @SerializedName(SERIALIZED_NAME_CLASSIFICATIONS)
+    private List<ItemBrowseClassificationsByMarketplace> classifications = new ArrayList<>();
 
-    @SerializedName("productTypes")
-    private ItemProductTypes productTypes = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("relationships")
-    private ItemRelationships relationships = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private List<ItemDimensionsByMarketplace> dimensions = new ArrayList<>();
 
-    @SerializedName("salesRanks")
-    private ItemSalesRanks salesRanks = null;
+    public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
 
-    @SerializedName("summaries")
-    private ItemSummaries summaries = null;
+    @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+    private List<ItemIdentifiersByMarketplace> identifiers = new ArrayList<>();
 
-    @SerializedName("vendorDetails")
-    private ItemVendorDetails vendorDetails = null;
+    public static final String SERIALIZED_NAME_IMAGES = "images";
+
+    @SerializedName(SERIALIZED_NAME_IMAGES)
+    private List<ItemImagesByMarketplace> images = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPES = "productTypes";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPES)
+    private List<ItemProductTypeByMarketplace> productTypes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
+
+    @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
+    private List<ItemRelationshipsByMarketplace> relationships = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SALES_RANKS = "salesRanks";
+
+    @SerializedName(SERIALIZED_NAME_SALES_RANKS)
+    private List<ItemSalesRanksByMarketplace> salesRanks = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUMMARIES = "summaries";
+
+    @SerializedName(SERIALIZED_NAME_SUMMARIES)
+    private List<ItemSummaryByMarketplace> summaries = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VENDOR_DETAILS = "vendorDetails";
+
+    @SerializedName(SERIALIZED_NAME_VENDOR_DETAILS)
+    private List<ItemVendorDetailsByMarketplace> vendorDetails = new ArrayList<>();
+
+    public Item() {}
 
     public Item asin(String asin) {
         this.asin = asin;
@@ -61,9 +104,7 @@ public class Item {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier of an item in the Amazon catalog.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -72,198 +113,272 @@ public class Item {
         this.asin = asin;
     }
 
-    public Item attributes(ItemAttributes attributes) {
+    public Item attributes(Map<String, Object> attributes) {
         this.attributes = attributes;
         return this;
     }
 
+    public Item putAttributesItem(String key, Object attributesItem) {
+        if (this.attributes == null) {
+            this.attributes = new HashMap<>();
+        }
+        this.attributes.put(key, attributesItem);
+        return this;
+    }
+
     /**
-     * Get attributes
+     * A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes
+     * conform to the related Amazon product type definitions that you can get from the [Product Type Definitions
+     * API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemAttributes getAttributes() {
+    @javax.annotation.Nullable public Map<String, Object> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(ItemAttributes attributes) {
+    public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
-    public Item classifications(ItemBrowseClassifications classifications) {
+    public Item classifications(List<ItemBrowseClassificationsByMarketplace> classifications) {
         this.classifications = classifications;
         return this;
     }
 
+    public Item addClassificationsItem(ItemBrowseClassificationsByMarketplace classificationsItem) {
+        if (this.classifications == null) {
+            this.classifications = new ArrayList<>();
+        }
+        this.classifications.add(classificationsItem);
+        return this;
+    }
+
     /**
-     * Get classifications
+     * An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by
+     * &#x60;marketplaceId&#x60;.
      *
      * @return classifications
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemBrowseClassifications getClassifications() {
+    @javax.annotation.Nullable public List<ItemBrowseClassificationsByMarketplace> getClassifications() {
         return classifications;
     }
 
-    public void setClassifications(ItemBrowseClassifications classifications) {
+    public void setClassifications(List<ItemBrowseClassificationsByMarketplace> classifications) {
         this.classifications = classifications;
     }
 
-    public Item dimensions(ItemDimensions dimensions) {
+    public Item dimensions(List<ItemDimensionsByMarketplace> dimensions) {
         this.dimensions = dimensions;
         return this;
     }
 
+    public Item addDimensionsItem(ItemDimensionsByMarketplace dimensionsItem) {
+        if (this.dimensions == null) {
+            this.dimensions = new ArrayList<>();
+        }
+        this.dimensions.add(dimensionsItem);
+        return this;
+    }
+
     /**
-     * Get dimensions
+     * An array of dimensions that are associated with the item in the Amazon catalog, grouped by
+     * &#x60;marketplaceId&#x60;.
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemDimensions getDimensions() {
+    @javax.annotation.Nullable public List<ItemDimensionsByMarketplace> getDimensions() {
         return dimensions;
     }
 
-    public void setDimensions(ItemDimensions dimensions) {
+    public void setDimensions(List<ItemDimensionsByMarketplace> dimensions) {
         this.dimensions = dimensions;
     }
 
-    public Item identifiers(ItemIdentifiers identifiers) {
+    public Item identifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
         return this;
     }
 
+    public Item addIdentifiersItem(ItemIdentifiersByMarketplace identifiersItem) {
+        if (this.identifiers == null) {
+            this.identifiers = new ArrayList<>();
+        }
+        this.identifiers.add(identifiersItem);
+        return this;
+    }
+
     /**
-     * Get identifiers
+     * Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.
      *
      * @return identifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemIdentifiers getIdentifiers() {
+    @javax.annotation.Nullable public List<ItemIdentifiersByMarketplace> getIdentifiers() {
         return identifiers;
     }
 
-    public void setIdentifiers(ItemIdentifiers identifiers) {
+    public void setIdentifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
     }
 
-    public Item images(ItemImages images) {
+    public Item images(List<ItemImagesByMarketplace> images) {
         this.images = images;
         return this;
     }
 
+    public Item addImagesItem(ItemImagesByMarketplace imagesItem) {
+        if (this.images == null) {
+            this.images = new ArrayList<>();
+        }
+        this.images.add(imagesItem);
+        return this;
+    }
+
     /**
-     * Get images
+     * The images for an item in the Amazon catalog.
      *
      * @return images
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemImages getImages() {
+    @javax.annotation.Nullable public List<ItemImagesByMarketplace> getImages() {
         return images;
     }
 
-    public void setImages(ItemImages images) {
+    public void setImages(List<ItemImagesByMarketplace> images) {
         this.images = images;
     }
 
-    public Item productTypes(ItemProductTypes productTypes) {
+    public Item productTypes(List<ItemProductTypeByMarketplace> productTypes) {
         this.productTypes = productTypes;
         return this;
     }
 
+    public Item addProductTypesItem(ItemProductTypeByMarketplace productTypesItem) {
+        if (this.productTypes == null) {
+            this.productTypes = new ArrayList<>();
+        }
+        this.productTypes.add(productTypesItem);
+        return this;
+    }
+
     /**
-     * Get productTypes
+     * Product types that are associated with the Amazon catalog item.
      *
      * @return productTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemProductTypes getProductTypes() {
+    @javax.annotation.Nullable public List<ItemProductTypeByMarketplace> getProductTypes() {
         return productTypes;
     }
 
-    public void setProductTypes(ItemProductTypes productTypes) {
+    public void setProductTypes(List<ItemProductTypeByMarketplace> productTypes) {
         this.productTypes = productTypes;
     }
 
-    public Item relationships(ItemRelationships relationships) {
+    public Item relationships(List<ItemRelationshipsByMarketplace> relationships) {
         this.relationships = relationships;
         return this;
     }
 
+    public Item addRelationshipsItem(ItemRelationshipsByMarketplace relationshipsItem) {
+        if (this.relationships == null) {
+            this.relationships = new ArrayList<>();
+        }
+        this.relationships.add(relationshipsItem);
+        return this;
+    }
+
     /**
-     * Get relationships
+     * Relationships grouped by &#x60;marketplaceId&#x60; for an Amazon catalog item (for example, variations).
      *
      * @return relationships
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemRelationships getRelationships() {
+    @javax.annotation.Nullable public List<ItemRelationshipsByMarketplace> getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(ItemRelationships relationships) {
+    public void setRelationships(List<ItemRelationshipsByMarketplace> relationships) {
         this.relationships = relationships;
     }
 
-    public Item salesRanks(ItemSalesRanks salesRanks) {
+    public Item salesRanks(List<ItemSalesRanksByMarketplace> salesRanks) {
         this.salesRanks = salesRanks;
         return this;
     }
 
+    public Item addSalesRanksItem(ItemSalesRanksByMarketplace salesRanksItem) {
+        if (this.salesRanks == null) {
+            this.salesRanks = new ArrayList<>();
+        }
+        this.salesRanks.add(salesRanksItem);
+        return this;
+    }
+
     /**
-     * Get salesRanks
+     * Sales ranks of an Amazon catalog item.
      *
      * @return salesRanks
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemSalesRanks getSalesRanks() {
+    @javax.annotation.Nullable public List<ItemSalesRanksByMarketplace> getSalesRanks() {
         return salesRanks;
     }
 
-    public void setSalesRanks(ItemSalesRanks salesRanks) {
+    public void setSalesRanks(List<ItemSalesRanksByMarketplace> salesRanks) {
         this.salesRanks = salesRanks;
     }
 
-    public Item summaries(ItemSummaries summaries) {
+    public Item summaries(List<ItemSummaryByMarketplace> summaries) {
         this.summaries = summaries;
         return this;
     }
 
+    public Item addSummariesItem(ItemSummaryByMarketplace summariesItem) {
+        if (this.summaries == null) {
+            this.summaries = new ArrayList<>();
+        }
+        this.summaries.add(summariesItem);
+        return this;
+    }
+
     /**
-     * Get summaries
+     * Summaries of Amazon catalog items.
      *
      * @return summaries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemSummaries getSummaries() {
+    @javax.annotation.Nullable public List<ItemSummaryByMarketplace> getSummaries() {
         return summaries;
     }
 
-    public void setSummaries(ItemSummaries summaries) {
+    public void setSummaries(List<ItemSummaryByMarketplace> summaries) {
         this.summaries = summaries;
     }
 
-    public Item vendorDetails(ItemVendorDetails vendorDetails) {
+    public Item vendorDetails(List<ItemVendorDetailsByMarketplace> vendorDetails) {
         this.vendorDetails = vendorDetails;
         return this;
     }
 
+    public Item addVendorDetailsItem(ItemVendorDetailsByMarketplace vendorDetailsItem) {
+        if (this.vendorDetails == null) {
+            this.vendorDetails = new ArrayList<>();
+        }
+        this.vendorDetails.add(vendorDetailsItem);
+        return this;
+    }
+
     /**
-     * Get vendorDetails
+     * The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
      *
      * @return vendorDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemVendorDetails getVendorDetails() {
+    @javax.annotation.Nullable public List<ItemVendorDetailsByMarketplace> getVendorDetails() {
         return vendorDetails;
     }
 
-    public void setVendorDetails(ItemVendorDetails vendorDetails) {
+    public void setVendorDetails(List<ItemVendorDetailsByMarketplace> vendorDetails) {
         this.vendorDetails = vendorDetails;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -322,10 +437,279 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("attributes");
+        openapiFields.add("classifications");
+        openapiFields.add("dimensions");
+        openapiFields.add("identifiers");
+        openapiFields.add("images");
+        openapiFields.add("productTypes");
+        openapiFields.add("relationships");
+        openapiFields.add("salesRanks");
+        openapiFields.add("summaries");
+        openapiFields.add("vendorDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Item.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if (jsonObj.get("classifications") != null
+                && !jsonObj.get("classifications").isJsonNull()) {
+            JsonArray jsonArrayclassifications = jsonObj.getAsJsonArray("classifications");
+            if (jsonArrayclassifications != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("classifications").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `classifications` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("classifications").toString()));
+                }
+
+                // validate the optional field `classifications` (array)
+                for (int i = 0; i < jsonArrayclassifications.size(); i++) {
+                    ItemBrowseClassificationsByMarketplace.validateJsonElement(jsonArrayclassifications.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull()) {
+            JsonArray jsonArraydimensions = jsonObj.getAsJsonArray("dimensions");
+            if (jsonArraydimensions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("dimensions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `dimensions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("dimensions").toString()));
+                }
+
+                // validate the optional field `dimensions` (array)
+                for (int i = 0; i < jsonArraydimensions.size(); i++) {
+                    ItemDimensionsByMarketplace.validateJsonElement(jsonArraydimensions.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("identifiers") != null && !jsonObj.get("identifiers").isJsonNull()) {
+            JsonArray jsonArrayidentifiers = jsonObj.getAsJsonArray("identifiers");
+            if (jsonArrayidentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("identifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `identifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("identifiers").toString()));
+                }
+
+                // validate the optional field `identifiers` (array)
+                for (int i = 0; i < jsonArrayidentifiers.size(); i++) {
+                    ItemIdentifiersByMarketplace.validateJsonElement(jsonArrayidentifiers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("images") != null && !jsonObj.get("images").isJsonNull()) {
+            JsonArray jsonArrayimages = jsonObj.getAsJsonArray("images");
+            if (jsonArrayimages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("images").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `images` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("images").toString()));
+                }
+
+                // validate the optional field `images` (array)
+                for (int i = 0; i < jsonArrayimages.size(); i++) {
+                    ItemImagesByMarketplace.validateJsonElement(jsonArrayimages.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("productTypes") != null && !jsonObj.get("productTypes").isJsonNull()) {
+            JsonArray jsonArrayproductTypes = jsonObj.getAsJsonArray("productTypes");
+            if (jsonArrayproductTypes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("productTypes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `productTypes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("productTypes").toString()));
+                }
+
+                // validate the optional field `productTypes` (array)
+                for (int i = 0; i < jsonArrayproductTypes.size(); i++) {
+                    ItemProductTypeByMarketplace.validateJsonElement(jsonArrayproductTypes.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("relationships") != null
+                && !jsonObj.get("relationships").isJsonNull()) {
+            JsonArray jsonArrayrelationships = jsonObj.getAsJsonArray("relationships");
+            if (jsonArrayrelationships != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relationships").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relationships` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relationships").toString()));
+                }
+
+                // validate the optional field `relationships` (array)
+                for (int i = 0; i < jsonArrayrelationships.size(); i++) {
+                    ItemRelationshipsByMarketplace.validateJsonElement(jsonArrayrelationships.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("salesRanks") != null && !jsonObj.get("salesRanks").isJsonNull()) {
+            JsonArray jsonArraysalesRanks = jsonObj.getAsJsonArray("salesRanks");
+            if (jsonArraysalesRanks != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("salesRanks").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `salesRanks` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("salesRanks").toString()));
+                }
+
+                // validate the optional field `salesRanks` (array)
+                for (int i = 0; i < jsonArraysalesRanks.size(); i++) {
+                    ItemSalesRanksByMarketplace.validateJsonElement(jsonArraysalesRanks.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("summaries") != null && !jsonObj.get("summaries").isJsonNull()) {
+            JsonArray jsonArraysummaries = jsonObj.getAsJsonArray("summaries");
+            if (jsonArraysummaries != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("summaries").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `summaries` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("summaries").toString()));
+                }
+
+                // validate the optional field `summaries` (array)
+                for (int i = 0; i < jsonArraysummaries.size(); i++) {
+                    ItemSummaryByMarketplace.validateJsonElement(jsonArraysummaries.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("vendorDetails") != null
+                && !jsonObj.get("vendorDetails").isJsonNull()) {
+            JsonArray jsonArrayvendorDetails = jsonObj.getAsJsonArray("vendorDetails");
+            if (jsonArrayvendorDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("vendorDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `vendorDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("vendorDetails").toString()));
+                }
+
+                // validate the optional field `vendorDetails` (array)
+                for (int i = 0; i < jsonArrayvendorDetails.size(); i++) {
+                    ItemVendorDetailsByMarketplace.validateJsonElement(jsonArrayvendorDetails.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

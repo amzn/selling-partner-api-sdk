@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response to the &#x60;listReturns&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listReturns` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReturnsResponse {
-    @SerializedName("returns")
-    private List<ModelReturn> returns = null;
+    public static final String SERIALIZED_NAME_RETURNS = "returns";
 
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_RETURNS)
+    private List<ModelReturn> returns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public ReturnsResponse() {}
 
     public ReturnsResponse returns(List<ModelReturn> returns) {
         this.returns = returns;
@@ -44,8 +66,7 @@ public class ReturnsResponse {
      *
      * @return returns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of returns.")
-    public List<ModelReturn> getReturns() {
+    @javax.annotation.Nullable public List<ModelReturn> getReturns() {
         return returns;
     }
 
@@ -66,10 +87,7 @@ public class ReturnsResponse {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A token that you use to retrieve the next page of results. The response includes `nextToken` when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -78,7 +96,7 @@ public class ReturnsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -106,10 +124,123 @@ public class ReturnsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("returns");
+        openapiFields.add("nextToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReturnsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReturnsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReturnsResponse is not found in the empty JSON string",
+                        ReturnsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReturnsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReturnsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("returns") != null && !jsonObj.get("returns").isJsonNull()) {
+            JsonArray jsonArrayreturns = jsonObj.getAsJsonArray("returns");
+            if (jsonArrayreturns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("returns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `returns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("returns").toString()));
+                }
+
+                // validate the optional field `returns` (array)
+                for (int i = 0; i < jsonArrayreturns.size(); i++) {
+                    ModelReturn.validateJsonElement(jsonArrayreturns.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReturnsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReturnsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReturnsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReturnsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReturnsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ReturnsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReturnsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReturnsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReturnsResponse
+     * @throws IOException if the JSON string is invalid with respect to ReturnsResponse
+     */
+    public static ReturnsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReturnsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ReturnsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

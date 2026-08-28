@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Destination details of an inbound order based on the assigned region and DC for the order. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Destination details of an inbound order based on the assigned region and DC for the order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DestinationDetails {
-    @SerializedName("destinationAddress")
-    private Address destinationAddress = null;
+    public static final String SERIALIZED_NAME_DESTINATION_ADDRESS = "destinationAddress";
 
-    @SerializedName("destinationRegion")
-    private String destinationRegion = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ADDRESS)
+    private Address destinationAddress;
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_DESTINATION_REGION = "destinationRegion";
+
+    @SerializedName(SERIALIZED_NAME_DESTINATION_REGION)
+    private String destinationRegion;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public DestinationDetails() {}
 
     public DestinationDetails destinationAddress(Address destinationAddress) {
         this.destinationAddress = destinationAddress;
@@ -38,8 +60,7 @@ public class DestinationDetails {
      *
      * @return destinationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getDestinationAddress() {
+    @javax.annotation.Nullable public Address getDestinationAddress() {
         return destinationAddress;
     }
 
@@ -58,10 +79,7 @@ public class DestinationDetails {
      *
      * @return destinationRegion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]")
-    public String getDestinationRegion() {
+    @javax.annotation.Nullable public String getDestinationRegion() {
         return destinationRegion;
     }
 
@@ -80,10 +98,7 @@ public class DestinationDetails {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment.")
-    public String getShipmentId() {
+    @javax.annotation.Nullable public String getShipmentId() {
         return shipmentId;
     }
 
@@ -92,7 +107,7 @@ public class DestinationDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -126,10 +141,119 @@ public class DestinationDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("destinationAddress");
+        openapiFields.add("destinationRegion");
+        openapiFields.add("shipmentId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DestinationDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DestinationDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DestinationDetails is not found in the empty JSON string",
+                        DestinationDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DestinationDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DestinationDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `destinationAddress`
+        if (jsonObj.get("destinationAddress") != null
+                && !jsonObj.get("destinationAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("destinationAddress"));
+        }
+        if ((jsonObj.get("destinationRegion") != null
+                        && !jsonObj.get("destinationRegion").isJsonNull())
+                && !jsonObj.get("destinationRegion").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `destinationRegion` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("destinationRegion").toString()));
+        }
+        if ((jsonObj.get("shipmentId") != null && !jsonObj.get("shipmentId").isJsonNull())
+                && !jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DestinationDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DestinationDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DestinationDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DestinationDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DestinationDetails>() {
+                        @Override
+                        public void write(JsonWriter out, DestinationDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DestinationDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DestinationDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DestinationDetails
+     * @throws IOException if the JSON string is invalid with respect to DestinationDetails
+     */
+    public static DestinationDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DestinationDetails.class);
+    }
+
+    /**
+     * Convert an instance of DestinationDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

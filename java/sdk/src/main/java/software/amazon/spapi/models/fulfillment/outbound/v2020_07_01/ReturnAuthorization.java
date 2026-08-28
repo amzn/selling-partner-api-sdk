@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Return authorization information for items accepted for return. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Return authorization information for items accepted for return.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReturnAuthorization {
-    @SerializedName("returnAuthorizationId")
-    private String returnAuthorizationId = null;
+    public static final String SERIALIZED_NAME_RETURN_AUTHORIZATION_ID = "returnAuthorizationId";
 
-    @SerializedName("fulfillmentCenterId")
-    private String fulfillmentCenterId = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_AUTHORIZATION_ID)
+    private String returnAuthorizationId;
 
-    @SerializedName("returnToAddress")
-    private Address returnToAddress = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_CENTER_ID = "fulfillmentCenterId";
 
-    @SerializedName("amazonRmaId")
-    private String amazonRmaId = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CENTER_ID)
+    private String fulfillmentCenterId;
 
-    @SerializedName("rmaPageURL")
-    private String rmaPageURL = null;
+    public static final String SERIALIZED_NAME_RETURN_TO_ADDRESS = "returnToAddress";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_TO_ADDRESS)
+    private Address returnToAddress;
+
+    public static final String SERIALIZED_NAME_AMAZON_RMA_ID = "amazonRmaId";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_RMA_ID)
+    private String amazonRmaId;
+
+    public static final String SERIALIZED_NAME_RMA_PAGE_U_R_L = "rmaPageURL";
+
+    @SerializedName(SERIALIZED_NAME_RMA_PAGE_U_R_L)
+    private String rmaPageURL;
+
+    public ReturnAuthorization() {}
 
     public ReturnAuthorization returnAuthorizationId(String returnAuthorizationId) {
         this.returnAuthorizationId = returnAuthorizationId;
@@ -45,10 +71,7 @@ public class ReturnAuthorization {
      *
      * @return returnAuthorizationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "An identifier for the return authorization. This identifier associates return items with the return authorization used to return them.")
+    @javax.annotation.Nonnull
     public String getReturnAuthorizationId() {
         return returnAuthorizationId;
     }
@@ -67,9 +90,7 @@ public class ReturnAuthorization {
      *
      * @return fulfillmentCenterId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier for the Amazon fulfillment center to which the return items should be sent.")
+    @javax.annotation.Nonnull
     public String getFulfillmentCenterId() {
         return fulfillmentCenterId;
     }
@@ -88,7 +109,7 @@ public class ReturnAuthorization {
      *
      * @return returnToAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getReturnToAddress() {
         return returnToAddress;
     }
@@ -107,9 +128,7 @@ public class ReturnAuthorization {
      *
      * @return amazonRmaId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The return merchandise authorization (RMA) that Amazon needs to process the return.")
+    @javax.annotation.Nonnull
     public String getAmazonRmaId() {
         return amazonRmaId;
     }
@@ -129,10 +148,7 @@ public class ReturnAuthorization {
      *
      * @return rmaPageURL
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A URL for a web page that contains the return authorization barcode and the mailing label. This does not include pre-paid shipping.")
+    @javax.annotation.Nonnull
     public String getRmaPageURL() {
         return rmaPageURL;
     }
@@ -142,7 +158,7 @@ public class ReturnAuthorization {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -182,10 +198,139 @@ public class ReturnAuthorization {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("returnAuthorizationId");
+        openapiFields.add("fulfillmentCenterId");
+        openapiFields.add("returnToAddress");
+        openapiFields.add("amazonRmaId");
+        openapiFields.add("rmaPageURL");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("returnAuthorizationId");
+        openapiRequiredFields.add("fulfillmentCenterId");
+        openapiRequiredFields.add("returnToAddress");
+        openapiRequiredFields.add("amazonRmaId");
+        openapiRequiredFields.add("rmaPageURL");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReturnAuthorization
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReturnAuthorization.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReturnAuthorization is not found in the empty JSON string",
+                        ReturnAuthorization.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReturnAuthorization.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReturnAuthorization` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ReturnAuthorization.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("returnAuthorizationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnAuthorizationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnAuthorizationId").toString()));
+        }
+        if (!jsonObj.get("fulfillmentCenterId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentCenterId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentCenterId").toString()));
+        }
+        // validate the required field `returnToAddress`
+        Address.validateJsonElement(jsonObj.get("returnToAddress"));
+        if (!jsonObj.get("amazonRmaId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonRmaId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonRmaId").toString()));
+        }
+        if (!jsonObj.get("rmaPageURL").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rmaPageURL` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rmaPageURL").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReturnAuthorization.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReturnAuthorization' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReturnAuthorization> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReturnAuthorization.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReturnAuthorization>() {
+                        @Override
+                        public void write(JsonWriter out, ReturnAuthorization value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReturnAuthorization read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReturnAuthorization given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReturnAuthorization
+     * @throws IOException if the JSON string is invalid with respect to ReturnAuthorization
+     */
+    public static ReturnAuthorization fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReturnAuthorization.class);
+    }
+
+    /**
+     * Convert an instance of ReturnAuthorization to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

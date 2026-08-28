@@ -12,18 +12,39 @@
 
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents a month in a specific year. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents a month in a specific year.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MonthAndYear {
-    @SerializedName("year")
-    private BigDecimal year = null;
+    public static final String SERIALIZED_NAME_YEAR = "year";
 
-    @SerializedName("month")
-    private BigDecimal month = null;
+    @SerializedName(SERIALIZED_NAME_YEAR)
+    private BigDecimal year;
+
+    public static final String SERIALIZED_NAME_MONTH = "month";
+
+    @SerializedName(SERIALIZED_NAME_MONTH)
+    private BigDecimal month;
+
+    public MonthAndYear() {}
 
     public MonthAndYear year(BigDecimal year) {
         this.year = year;
@@ -35,8 +56,7 @@ public class MonthAndYear {
      *
      * @return year
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Year in YYYY format")
-    public BigDecimal getYear() {
+    @javax.annotation.Nullable public BigDecimal getYear() {
         return year;
     }
 
@@ -54,8 +74,7 @@ public class MonthAndYear {
      *
      * @return month
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Month in MM format")
-    public BigDecimal getMonth() {
+    @javax.annotation.Nullable public BigDecimal getMonth() {
         return month;
     }
 
@@ -64,7 +83,7 @@ public class MonthAndYear {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +110,100 @@ public class MonthAndYear {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("year");
+        openapiFields.add("month");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MonthAndYear
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MonthAndYear.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MonthAndYear is not found in the empty JSON string",
+                        MonthAndYear.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MonthAndYear.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MonthAndYear` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MonthAndYear.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MonthAndYear' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MonthAndYear> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MonthAndYear.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MonthAndYear>() {
+                        @Override
+                        public void write(JsonWriter out, MonthAndYear value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MonthAndYear read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MonthAndYear given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MonthAndYear
+     * @throws IOException if the JSON string is invalid with respect to MonthAndYear
+     */
+    public static MonthAndYear fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MonthAndYear.class);
+    }
+
+    /**
+     * Convert an instance of MonthAndYear to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

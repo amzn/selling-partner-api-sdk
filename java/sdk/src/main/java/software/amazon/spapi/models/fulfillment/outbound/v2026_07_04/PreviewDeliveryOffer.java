@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An available offer for delivery of a group of items. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An available offer for delivery of a group of items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PreviewDeliveryOffer {
-    @SerializedName("estimatedPrice")
-    private EstimatedPrice estimatedPrice = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_PRICE = "estimatedPrice";
 
-    @SerializedName("fulfillmentConfiguration")
-    private PreviewOfferFulfillmentConfiguration fulfillmentConfiguration = null;
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_PRICE)
+    private EstimatedPrice estimatedPrice;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CONFIGURATION = "fulfillmentConfiguration";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CONFIGURATION)
+    private PreviewOfferFulfillmentConfiguration fulfillmentConfiguration;
+
+    public PreviewDeliveryOffer() {}
 
     public PreviewDeliveryOffer estimatedPrice(EstimatedPrice estimatedPrice) {
         this.estimatedPrice = estimatedPrice;
@@ -34,8 +55,7 @@ public class PreviewDeliveryOffer {
      *
      * @return estimatedPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EstimatedPrice getEstimatedPrice() {
+    @javax.annotation.Nullable public EstimatedPrice getEstimatedPrice() {
         return estimatedPrice;
     }
 
@@ -54,8 +74,7 @@ public class PreviewDeliveryOffer {
      *
      * @return fulfillmentConfiguration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PreviewOfferFulfillmentConfiguration getFulfillmentConfiguration() {
+    @javax.annotation.Nullable public PreviewOfferFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
 
@@ -64,7 +83,7 @@ public class PreviewDeliveryOffer {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +115,110 @@ public class PreviewDeliveryOffer {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("estimatedPrice");
+        openapiFields.add("fulfillmentConfiguration");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PreviewDeliveryOffer
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PreviewDeliveryOffer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PreviewDeliveryOffer is not found in the empty JSON string",
+                        PreviewDeliveryOffer.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PreviewDeliveryOffer.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PreviewDeliveryOffer` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `estimatedPrice`
+        if (jsonObj.get("estimatedPrice") != null
+                && !jsonObj.get("estimatedPrice").isJsonNull()) {
+            EstimatedPrice.validateJsonElement(jsonObj.get("estimatedPrice"));
+        }
+        // validate the optional field `fulfillmentConfiguration`
+        if (jsonObj.get("fulfillmentConfiguration") != null
+                && !jsonObj.get("fulfillmentConfiguration").isJsonNull()) {
+            PreviewOfferFulfillmentConfiguration.validateJsonElement(jsonObj.get("fulfillmentConfiguration"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PreviewDeliveryOffer.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PreviewDeliveryOffer' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PreviewDeliveryOffer> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PreviewDeliveryOffer.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PreviewDeliveryOffer>() {
+                        @Override
+                        public void write(JsonWriter out, PreviewDeliveryOffer value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PreviewDeliveryOffer read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PreviewDeliveryOffer given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PreviewDeliveryOffer
+     * @throws IOException if the JSON string is invalid with respect to PreviewDeliveryOffer
+     */
+    public static PreviewDeliveryOffer fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PreviewDeliveryOffer.class);
+    }
+
+    /**
+     * Convert an instance of PreviewDeliveryOffer to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Standard followed to uniquely identify a vehicle. */
 @JsonAdapter(VehicleStandard.Adapter.class)
 public enum VehicleStandard {
-    @SerializedName("KTYPE")
     KTYPE("KTYPE"),
 
-    @SerializedName("AMAZON_ID")
     AMAZON_ID("AMAZON_ID");
 
     private String value;
@@ -43,25 +41,30 @@ public enum VehicleStandard {
         return String.valueOf(value);
     }
 
-    public static VehicleStandard fromValue(String input) {
+    public static VehicleStandard fromValue(String value) {
         for (VehicleStandard b : VehicleStandard.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<VehicleStandard> {
         @Override
         public void write(final JsonWriter jsonWriter, final VehicleStandard enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public VehicleStandard read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return VehicleStandard.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return VehicleStandard.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        VehicleStandard.fromValue(value);
     }
 }

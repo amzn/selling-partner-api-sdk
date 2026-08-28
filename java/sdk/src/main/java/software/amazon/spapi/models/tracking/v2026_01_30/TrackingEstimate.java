@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A time-based estimate for the shipment, such as estimated delivery date. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A time-based estimate for the shipment, such as estimated delivery date.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingEstimate {
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("estimatedInterval")
-    private BoundedInterval estimatedInterval = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
 
-    @SerializedName("lastUpdatedTime")
-    private String lastUpdatedTime = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_INTERVAL = "estimatedInterval";
+
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_INTERVAL)
+    private BoundedInterval estimatedInterval;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "lastUpdatedTime";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+    private String lastUpdatedTime;
+
+    public TrackingEstimate() {}
 
     public TrackingEstimate type(String type) {
         this.type = type;
@@ -39,10 +61,7 @@ public class TrackingEstimate {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The type of estimate. For example, `ESTIMATED_DELIVERY_DATE` or `ESTIMATED_TIME_OF_DEPARTURE`.")
+    @javax.annotation.Nonnull
     public String getType() {
         return type;
     }
@@ -61,7 +80,7 @@ public class TrackingEstimate {
      *
      * @return estimatedInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public BoundedInterval getEstimatedInterval() {
         return estimatedInterval;
     }
@@ -80,9 +99,7 @@ public class TrackingEstimate {
      *
      * @return lastUpdatedTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A timestamp in UTC RFC 3339 date-time format.")
+    @javax.annotation.Nonnull
     public String getLastUpdatedTime() {
         return lastUpdatedTime;
     }
@@ -92,7 +109,7 @@ public class TrackingEstimate {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -126,10 +143,125 @@ public class TrackingEstimate {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("estimatedInterval");
+        openapiFields.add("lastUpdatedTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+        openapiRequiredFields.add("estimatedInterval");
+        openapiRequiredFields.add("lastUpdatedTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingEstimate
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingEstimate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingEstimate is not found in the empty JSON string",
+                        TrackingEstimate.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingEstimate.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingEstimate` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TrackingEstimate.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `estimatedInterval`
+        BoundedInterval.validateJsonElement(jsonObj.get("estimatedInterval"));
+        if (!jsonObj.get("lastUpdatedTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lastUpdatedTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lastUpdatedTime").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingEstimate.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingEstimate' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingEstimate> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingEstimate.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingEstimate>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingEstimate value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingEstimate read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingEstimate given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingEstimate
+     * @throws IOException if the JSON string is invalid with respect to TrackingEstimate
+     */
+    public static TrackingEstimate fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingEstimate.class);
+    }
+
+    /**
+     * Convert an instance of TrackingEstimate to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

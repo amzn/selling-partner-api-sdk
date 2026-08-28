@@ -12,51 +12,96 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item of a shipment, refund, guarantee claim, or chargeback. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An item of a shipment, refund, guarantee claim, or chargeback.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentItem {
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("OrderItemId")
-    private String orderItemId = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
 
-    @SerializedName("OrderAdjustmentItemId")
-    private String orderAdjustmentItemId = null;
+    public static final String SERIALIZED_NAME_ORDER_ITEM_ID = "OrderItemId";
 
-    @SerializedName("QuantityShipped")
-    private Integer quantityShipped = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEM_ID)
+    private String orderItemId;
 
-    @SerializedName("ItemChargeList")
-    private ChargeComponentList itemChargeList = null;
+    public static final String SERIALIZED_NAME_ORDER_ADJUSTMENT_ITEM_ID = "OrderAdjustmentItemId";
 
-    @SerializedName("ItemChargeAdjustmentList")
-    private ChargeComponentList itemChargeAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ADJUSTMENT_ITEM_ID)
+    private String orderAdjustmentItemId;
 
-    @SerializedName("ItemFeeList")
-    private FeeComponentList itemFeeList = null;
+    public static final String SERIALIZED_NAME_QUANTITY_SHIPPED = "QuantityShipped";
 
-    @SerializedName("ItemFeeAdjustmentList")
-    private FeeComponentList itemFeeAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_SHIPPED)
+    private Integer quantityShipped;
 
-    @SerializedName("ItemTaxWithheldList")
-    private TaxWithheldComponentList itemTaxWithheldList = null;
+    public static final String SERIALIZED_NAME_ITEM_CHARGE_LIST = "ItemChargeList";
 
-    @SerializedName("PromotionList")
-    private PromotionList promotionList = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_CHARGE_LIST)
+    private List<ChargeComponent> itemChargeList = new ArrayList<>();
 
-    @SerializedName("PromotionAdjustmentList")
-    private PromotionList promotionAdjustmentList = null;
+    public static final String SERIALIZED_NAME_ITEM_CHARGE_ADJUSTMENT_LIST = "ItemChargeAdjustmentList";
 
-    @SerializedName("CostOfPointsGranted")
-    private Currency costOfPointsGranted = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_CHARGE_ADJUSTMENT_LIST)
+    private List<ChargeComponent> itemChargeAdjustmentList = new ArrayList<>();
 
-    @SerializedName("CostOfPointsReturned")
-    private Currency costOfPointsReturned = null;
+    public static final String SERIALIZED_NAME_ITEM_FEE_LIST = "ItemFeeList";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_FEE_LIST)
+    private List<FeeComponent> itemFeeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ITEM_FEE_ADJUSTMENT_LIST = "ItemFeeAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_FEE_ADJUSTMENT_LIST)
+    private List<FeeComponent> itemFeeAdjustmentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ITEM_TAX_WITHHELD_LIST = "ItemTaxWithheldList";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_TAX_WITHHELD_LIST)
+    private List<TaxWithheldComponent> itemTaxWithheldList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PROMOTION_LIST = "PromotionList";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_LIST)
+    private List<Promotion> promotionList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PROMOTION_ADJUSTMENT_LIST = "PromotionAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_ADJUSTMENT_LIST)
+    private List<Promotion> promotionAdjustmentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_COST_OF_POINTS_GRANTED = "CostOfPointsGranted";
+
+    @SerializedName(SERIALIZED_NAME_COST_OF_POINTS_GRANTED)
+    private Currency costOfPointsGranted;
+
+    public static final String SERIALIZED_NAME_COST_OF_POINTS_RETURNED = "CostOfPointsReturned";
+
+    @SerializedName(SERIALIZED_NAME_COST_OF_POINTS_RETURNED)
+    private Currency costOfPointsReturned;
+
+    public ShipmentItem() {}
 
     public ShipmentItem sellerSKU(String sellerSKU) {
         this.sellerSKU = sellerSKU;
@@ -69,10 +114,7 @@ public class ShipmentItem {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -90,8 +132,7 @@ public class ShipmentItem {
      *
      * @return orderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined order item identifier.")
-    public String getOrderItemId() {
+    @javax.annotation.Nullable public String getOrderItemId() {
         return orderItemId;
     }
 
@@ -109,10 +150,7 @@ public class ShipmentItem {
      *
      * @return orderAdjustmentItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.")
-    public String getOrderAdjustmentItemId() {
+    @javax.annotation.Nullable public String getOrderAdjustmentItemId() {
         return orderAdjustmentItemId;
     }
 
@@ -130,8 +168,7 @@ public class ShipmentItem {
      *
      * @return quantityShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
-    public Integer getQuantityShipped() {
+    @javax.annotation.Nullable public Integer getQuantityShipped() {
         return quantityShipped;
     }
 
@@ -139,136 +176,185 @@ public class ShipmentItem {
         this.quantityShipped = quantityShipped;
     }
 
-    public ShipmentItem itemChargeList(ChargeComponentList itemChargeList) {
+    public ShipmentItem itemChargeList(List<ChargeComponent> itemChargeList) {
         this.itemChargeList = itemChargeList;
         return this;
     }
 
+    public ShipmentItem addItemChargeListItem(ChargeComponent itemChargeListItem) {
+        if (this.itemChargeList == null) {
+            this.itemChargeList = new ArrayList<>();
+        }
+        this.itemChargeList.add(itemChargeListItem);
+        return this;
+    }
+
     /**
-     * Get itemChargeList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return itemChargeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getItemChargeList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getItemChargeList() {
         return itemChargeList;
     }
 
-    public void setItemChargeList(ChargeComponentList itemChargeList) {
+    public void setItemChargeList(List<ChargeComponent> itemChargeList) {
         this.itemChargeList = itemChargeList;
     }
 
-    public ShipmentItem itemChargeAdjustmentList(ChargeComponentList itemChargeAdjustmentList) {
+    public ShipmentItem itemChargeAdjustmentList(List<ChargeComponent> itemChargeAdjustmentList) {
         this.itemChargeAdjustmentList = itemChargeAdjustmentList;
         return this;
     }
 
+    public ShipmentItem addItemChargeAdjustmentListItem(ChargeComponent itemChargeAdjustmentListItem) {
+        if (this.itemChargeAdjustmentList == null) {
+            this.itemChargeAdjustmentList = new ArrayList<>();
+        }
+        this.itemChargeAdjustmentList.add(itemChargeAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get itemChargeAdjustmentList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return itemChargeAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getItemChargeAdjustmentList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getItemChargeAdjustmentList() {
         return itemChargeAdjustmentList;
     }
 
-    public void setItemChargeAdjustmentList(ChargeComponentList itemChargeAdjustmentList) {
+    public void setItemChargeAdjustmentList(List<ChargeComponent> itemChargeAdjustmentList) {
         this.itemChargeAdjustmentList = itemChargeAdjustmentList;
     }
 
-    public ShipmentItem itemFeeList(FeeComponentList itemFeeList) {
+    public ShipmentItem itemFeeList(List<FeeComponent> itemFeeList) {
         this.itemFeeList = itemFeeList;
         return this;
     }
 
+    public ShipmentItem addItemFeeListItem(FeeComponent itemFeeListItem) {
+        if (this.itemFeeList == null) {
+            this.itemFeeList = new ArrayList<>();
+        }
+        this.itemFeeList.add(itemFeeListItem);
+        return this;
+    }
+
     /**
-     * Get itemFeeList
+     * A list of fee component information.
      *
      * @return itemFeeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getItemFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getItemFeeList() {
         return itemFeeList;
     }
 
-    public void setItemFeeList(FeeComponentList itemFeeList) {
+    public void setItemFeeList(List<FeeComponent> itemFeeList) {
         this.itemFeeList = itemFeeList;
     }
 
-    public ShipmentItem itemFeeAdjustmentList(FeeComponentList itemFeeAdjustmentList) {
+    public ShipmentItem itemFeeAdjustmentList(List<FeeComponent> itemFeeAdjustmentList) {
         this.itemFeeAdjustmentList = itemFeeAdjustmentList;
         return this;
     }
 
+    public ShipmentItem addItemFeeAdjustmentListItem(FeeComponent itemFeeAdjustmentListItem) {
+        if (this.itemFeeAdjustmentList == null) {
+            this.itemFeeAdjustmentList = new ArrayList<>();
+        }
+        this.itemFeeAdjustmentList.add(itemFeeAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get itemFeeAdjustmentList
+     * A list of fee component information.
      *
      * @return itemFeeAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getItemFeeAdjustmentList() {
+    @javax.annotation.Nullable public List<FeeComponent> getItemFeeAdjustmentList() {
         return itemFeeAdjustmentList;
     }
 
-    public void setItemFeeAdjustmentList(FeeComponentList itemFeeAdjustmentList) {
+    public void setItemFeeAdjustmentList(List<FeeComponent> itemFeeAdjustmentList) {
         this.itemFeeAdjustmentList = itemFeeAdjustmentList;
     }
 
-    public ShipmentItem itemTaxWithheldList(TaxWithheldComponentList itemTaxWithheldList) {
+    public ShipmentItem itemTaxWithheldList(List<TaxWithheldComponent> itemTaxWithheldList) {
         this.itemTaxWithheldList = itemTaxWithheldList;
         return this;
     }
 
+    public ShipmentItem addItemTaxWithheldListItem(TaxWithheldComponent itemTaxWithheldListItem) {
+        if (this.itemTaxWithheldList == null) {
+            this.itemTaxWithheldList = new ArrayList<>();
+        }
+        this.itemTaxWithheldList.add(itemTaxWithheldListItem);
+        return this;
+    }
+
     /**
-     * Get itemTaxWithheldList
+     * A list of information about taxes withheld.
      *
      * @return itemTaxWithheldList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithheldComponentList getItemTaxWithheldList() {
+    @javax.annotation.Nullable public List<TaxWithheldComponent> getItemTaxWithheldList() {
         return itemTaxWithheldList;
     }
 
-    public void setItemTaxWithheldList(TaxWithheldComponentList itemTaxWithheldList) {
+    public void setItemTaxWithheldList(List<TaxWithheldComponent> itemTaxWithheldList) {
         this.itemTaxWithheldList = itemTaxWithheldList;
     }
 
-    public ShipmentItem promotionList(PromotionList promotionList) {
+    public ShipmentItem promotionList(List<Promotion> promotionList) {
         this.promotionList = promotionList;
         return this;
     }
 
+    public ShipmentItem addPromotionListItem(Promotion promotionListItem) {
+        if (this.promotionList == null) {
+            this.promotionList = new ArrayList<>();
+        }
+        this.promotionList.add(promotionListItem);
+        return this;
+    }
+
     /**
-     * Get promotionList
+     * A list of promotions.
      *
      * @return promotionList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PromotionList getPromotionList() {
+    @javax.annotation.Nullable public List<Promotion> getPromotionList() {
         return promotionList;
     }
 
-    public void setPromotionList(PromotionList promotionList) {
+    public void setPromotionList(List<Promotion> promotionList) {
         this.promotionList = promotionList;
     }
 
-    public ShipmentItem promotionAdjustmentList(PromotionList promotionAdjustmentList) {
+    public ShipmentItem promotionAdjustmentList(List<Promotion> promotionAdjustmentList) {
         this.promotionAdjustmentList = promotionAdjustmentList;
         return this;
     }
 
+    public ShipmentItem addPromotionAdjustmentListItem(Promotion promotionAdjustmentListItem) {
+        if (this.promotionAdjustmentList == null) {
+            this.promotionAdjustmentList = new ArrayList<>();
+        }
+        this.promotionAdjustmentList.add(promotionAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get promotionAdjustmentList
+     * A list of promotions.
      *
      * @return promotionAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PromotionList getPromotionAdjustmentList() {
+    @javax.annotation.Nullable public List<Promotion> getPromotionAdjustmentList() {
         return promotionAdjustmentList;
     }
 
-    public void setPromotionAdjustmentList(PromotionList promotionAdjustmentList) {
+    public void setPromotionAdjustmentList(List<Promotion> promotionAdjustmentList) {
         this.promotionAdjustmentList = promotionAdjustmentList;
     }
 
@@ -282,8 +368,7 @@ public class ShipmentItem {
      *
      * @return costOfPointsGranted
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getCostOfPointsGranted() {
+    @javax.annotation.Nullable public Currency getCostOfPointsGranted() {
         return costOfPointsGranted;
     }
 
@@ -301,8 +386,7 @@ public class ShipmentItem {
      *
      * @return costOfPointsReturned
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getCostOfPointsReturned() {
+    @javax.annotation.Nullable public Currency getCostOfPointsReturned() {
         return costOfPointsReturned;
     }
 
@@ -311,7 +395,7 @@ public class ShipmentItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -392,10 +476,265 @@ public class ShipmentItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SellerSKU");
+        openapiFields.add("OrderItemId");
+        openapiFields.add("OrderAdjustmentItemId");
+        openapiFields.add("QuantityShipped");
+        openapiFields.add("ItemChargeList");
+        openapiFields.add("ItemChargeAdjustmentList");
+        openapiFields.add("ItemFeeList");
+        openapiFields.add("ItemFeeAdjustmentList");
+        openapiFields.add("ItemTaxWithheldList");
+        openapiFields.add("PromotionList");
+        openapiFields.add("PromotionAdjustmentList");
+        openapiFields.add("CostOfPointsGranted");
+        openapiFields.add("CostOfPointsReturned");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentItem is not found in the empty JSON string",
+                        ShipmentItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if ((jsonObj.get("OrderItemId") != null && !jsonObj.get("OrderItemId").isJsonNull())
+                && !jsonObj.get("OrderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderItemId").toString()));
+        }
+        if ((jsonObj.get("OrderAdjustmentItemId") != null
+                        && !jsonObj.get("OrderAdjustmentItemId").isJsonNull())
+                && !jsonObj.get("OrderAdjustmentItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderAdjustmentItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderAdjustmentItemId").toString()));
+        }
+        if (jsonObj.get("ItemChargeList") != null
+                && !jsonObj.get("ItemChargeList").isJsonNull()) {
+            JsonArray jsonArrayitemChargeList = jsonObj.getAsJsonArray("ItemChargeList");
+            if (jsonArrayitemChargeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemChargeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemChargeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemChargeList").toString()));
+                }
+
+                // validate the optional field `ItemChargeList` (array)
+                for (int i = 0; i < jsonArrayitemChargeList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayitemChargeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ItemChargeAdjustmentList") != null
+                && !jsonObj.get("ItemChargeAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayitemChargeAdjustmentList = jsonObj.getAsJsonArray("ItemChargeAdjustmentList");
+            if (jsonArrayitemChargeAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemChargeAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemChargeAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemChargeAdjustmentList").toString()));
+                }
+
+                // validate the optional field `ItemChargeAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayitemChargeAdjustmentList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayitemChargeAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ItemFeeList") != null && !jsonObj.get("ItemFeeList").isJsonNull()) {
+            JsonArray jsonArrayitemFeeList = jsonObj.getAsJsonArray("ItemFeeList");
+            if (jsonArrayitemFeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemFeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemFeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemFeeList").toString()));
+                }
+
+                // validate the optional field `ItemFeeList` (array)
+                for (int i = 0; i < jsonArrayitemFeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayitemFeeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ItemFeeAdjustmentList") != null
+                && !jsonObj.get("ItemFeeAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayitemFeeAdjustmentList = jsonObj.getAsJsonArray("ItemFeeAdjustmentList");
+            if (jsonArrayitemFeeAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemFeeAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemFeeAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemFeeAdjustmentList").toString()));
+                }
+
+                // validate the optional field `ItemFeeAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayitemFeeAdjustmentList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayitemFeeAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ItemTaxWithheldList") != null
+                && !jsonObj.get("ItemTaxWithheldList").isJsonNull()) {
+            JsonArray jsonArrayitemTaxWithheldList = jsonObj.getAsJsonArray("ItemTaxWithheldList");
+            if (jsonArrayitemTaxWithheldList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemTaxWithheldList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemTaxWithheldList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemTaxWithheldList").toString()));
+                }
+
+                // validate the optional field `ItemTaxWithheldList` (array)
+                for (int i = 0; i < jsonArrayitemTaxWithheldList.size(); i++) {
+                    TaxWithheldComponent.validateJsonElement(jsonArrayitemTaxWithheldList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("PromotionList") != null
+                && !jsonObj.get("PromotionList").isJsonNull()) {
+            JsonArray jsonArraypromotionList = jsonObj.getAsJsonArray("PromotionList");
+            if (jsonArraypromotionList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("PromotionList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `PromotionList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("PromotionList").toString()));
+                }
+
+                // validate the optional field `PromotionList` (array)
+                for (int i = 0; i < jsonArraypromotionList.size(); i++) {
+                    Promotion.validateJsonElement(jsonArraypromotionList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("PromotionAdjustmentList") != null
+                && !jsonObj.get("PromotionAdjustmentList").isJsonNull()) {
+            JsonArray jsonArraypromotionAdjustmentList = jsonObj.getAsJsonArray("PromotionAdjustmentList");
+            if (jsonArraypromotionAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("PromotionAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `PromotionAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("PromotionAdjustmentList").toString()));
+                }
+
+                // validate the optional field `PromotionAdjustmentList` (array)
+                for (int i = 0; i < jsonArraypromotionAdjustmentList.size(); i++) {
+                    Promotion.validateJsonElement(jsonArraypromotionAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `CostOfPointsGranted`
+        if (jsonObj.get("CostOfPointsGranted") != null
+                && !jsonObj.get("CostOfPointsGranted").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("CostOfPointsGranted"));
+        }
+        // validate the optional field `CostOfPointsReturned`
+        if (jsonObj.get("CostOfPointsReturned") != null
+                && !jsonObj.get("CostOfPointsReturned").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("CostOfPointsReturned"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentItem>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentItem
+     * @throws IOException if the JSON string is invalid with respect to ShipmentItem
+     */
+    public static ShipmentItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentItem.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

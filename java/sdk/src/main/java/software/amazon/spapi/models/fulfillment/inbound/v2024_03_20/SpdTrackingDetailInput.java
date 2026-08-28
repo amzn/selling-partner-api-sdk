@@ -12,17 +12,36 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains input information to update Small Parcel Delivery (SPD) tracking information. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains input information to update Small Parcel Delivery (SPD) tracking information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SpdTrackingDetailInput {
-    @SerializedName("spdTrackingItems")
-    private List<SpdTrackingItemInput> spdTrackingItems = null;
+    public static final String SERIALIZED_NAME_SPD_TRACKING_ITEMS = "spdTrackingItems";
+
+    @SerializedName(SERIALIZED_NAME_SPD_TRACKING_ITEMS)
+    private List<SpdTrackingItemInput> spdTrackingItems = new ArrayList<>();
+
+    public SpdTrackingDetailInput() {}
 
     public SpdTrackingDetailInput spdTrackingItems(List<SpdTrackingItemInput> spdTrackingItems) {
         this.spdTrackingItems = spdTrackingItems;
@@ -42,9 +61,7 @@ public class SpdTrackingDetailInput {
      *
      * @return spdTrackingItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "List of Small Parcel Delivery (SPD) tracking items input.")
+    @javax.annotation.Nonnull
     public List<SpdTrackingItemInput> getSpdTrackingItems() {
         return spdTrackingItems;
     }
@@ -54,7 +71,7 @@ public class SpdTrackingDetailInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -82,10 +99,123 @@ public class SpdTrackingDetailInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("spdTrackingItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("spdTrackingItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SpdTrackingDetailInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SpdTrackingDetailInput.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SpdTrackingDetailInput is not found in the empty JSON string",
+                        SpdTrackingDetailInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SpdTrackingDetailInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SpdTrackingDetailInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SpdTrackingDetailInput.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("spdTrackingItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `spdTrackingItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("spdTrackingItems").toString()));
+        }
+
+        JsonArray jsonArrayspdTrackingItems = jsonObj.getAsJsonArray("spdTrackingItems");
+        // validate the required field `spdTrackingItems` (array)
+        for (int i = 0; i < jsonArrayspdTrackingItems.size(); i++) {
+            SpdTrackingItemInput.validateJsonElement(jsonArrayspdTrackingItems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SpdTrackingDetailInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SpdTrackingDetailInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SpdTrackingDetailInput> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SpdTrackingDetailInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SpdTrackingDetailInput>() {
+                        @Override
+                        public void write(JsonWriter out, SpdTrackingDetailInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SpdTrackingDetailInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SpdTrackingDetailInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SpdTrackingDetailInput
+     * @throws IOException if the JSON string is invalid with respect to SpdTrackingDetailInput
+     */
+    public static SpdTrackingDetailInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SpdTrackingDetailInput.class);
+    }
+
+    /**
+     * Convert an instance of SpdTrackingDetailInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

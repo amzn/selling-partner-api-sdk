@@ -12,31 +12,60 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An MSKU and its related prep details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An MSKU and its related prep details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MskuPrepDetail {
-    @SerializedName("allOwnersConstraint")
-    private AllOwnersConstraint allOwnersConstraint = null;
+    public static final String SERIALIZED_NAME_ALL_OWNERS_CONSTRAINT = "allOwnersConstraint";
 
-    @SerializedName("labelOwnerConstraint")
-    private OwnerConstraint labelOwnerConstraint = null;
+    @SerializedName(SERIALIZED_NAME_ALL_OWNERS_CONSTRAINT)
+    private AllOwnersConstraint allOwnersConstraint;
 
-    @SerializedName("msku")
-    private String msku = null;
+    public static final String SERIALIZED_NAME_LABEL_OWNER_CONSTRAINT = "labelOwnerConstraint";
 
-    @SerializedName("prepCategory")
-    private PrepCategory prepCategory = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_OWNER_CONSTRAINT)
+    private OwnerConstraint labelOwnerConstraint;
 
-    @SerializedName("prepOwnerConstraint")
-    private OwnerConstraint prepOwnerConstraint = null;
+    public static final String SERIALIZED_NAME_MSKU = "msku";
 
-    @SerializedName("prepTypes")
-    private List<PrepType> prepTypes = null;
+    @SerializedName(SERIALIZED_NAME_MSKU)
+    private String msku;
+
+    public static final String SERIALIZED_NAME_PREP_CATEGORY = "prepCategory";
+
+    @SerializedName(SERIALIZED_NAME_PREP_CATEGORY)
+    private PrepCategory prepCategory;
+
+    public static final String SERIALIZED_NAME_PREP_OWNER_CONSTRAINT = "prepOwnerConstraint";
+
+    @SerializedName(SERIALIZED_NAME_PREP_OWNER_CONSTRAINT)
+    private OwnerConstraint prepOwnerConstraint;
+
+    public static final String SERIALIZED_NAME_PREP_TYPES = "prepTypes";
+
+    @SerializedName(SERIALIZED_NAME_PREP_TYPES)
+    private List<PrepType> prepTypes = new ArrayList<>();
+
+    public MskuPrepDetail() {}
 
     public MskuPrepDetail allOwnersConstraint(AllOwnersConstraint allOwnersConstraint) {
         this.allOwnersConstraint = allOwnersConstraint;
@@ -48,8 +77,7 @@ public class MskuPrepDetail {
      *
      * @return allOwnersConstraint
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AllOwnersConstraint getAllOwnersConstraint() {
+    @javax.annotation.Nullable public AllOwnersConstraint getAllOwnersConstraint() {
         return allOwnersConstraint;
     }
 
@@ -67,8 +95,7 @@ public class MskuPrepDetail {
      *
      * @return labelOwnerConstraint
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OwnerConstraint getLabelOwnerConstraint() {
+    @javax.annotation.Nullable public OwnerConstraint getLabelOwnerConstraint() {
         return labelOwnerConstraint;
     }
 
@@ -86,9 +113,7 @@ public class MskuPrepDetail {
      *
      * @return msku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
+    @javax.annotation.Nonnull
     public String getMsku() {
         return msku;
     }
@@ -107,7 +132,7 @@ public class MskuPrepDetail {
      *
      * @return prepCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PrepCategory getPrepCategory() {
         return prepCategory;
     }
@@ -126,8 +151,7 @@ public class MskuPrepDetail {
      *
      * @return prepOwnerConstraint
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OwnerConstraint getPrepOwnerConstraint() {
+    @javax.annotation.Nullable public OwnerConstraint getPrepOwnerConstraint() {
         return prepOwnerConstraint;
     }
 
@@ -153,9 +177,7 @@ public class MskuPrepDetail {
      *
      * @return prepTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of preparation types associated with a preparation category.")
+    @javax.annotation.Nonnull
     public List<PrepType> getPrepTypes() {
         return prepTypes;
     }
@@ -165,7 +187,7 @@ public class MskuPrepDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -208,10 +230,147 @@ public class MskuPrepDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("allOwnersConstraint");
+        openapiFields.add("labelOwnerConstraint");
+        openapiFields.add("msku");
+        openapiFields.add("prepCategory");
+        openapiFields.add("prepOwnerConstraint");
+        openapiFields.add("prepTypes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("msku");
+        openapiRequiredFields.add("prepCategory");
+        openapiRequiredFields.add("prepTypes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MskuPrepDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MskuPrepDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MskuPrepDetail is not found in the empty JSON string",
+                        MskuPrepDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MskuPrepDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MskuPrepDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : MskuPrepDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `allOwnersConstraint`
+        if (jsonObj.get("allOwnersConstraint") != null
+                && !jsonObj.get("allOwnersConstraint").isJsonNull()) {
+            AllOwnersConstraint.validateJsonElement(jsonObj.get("allOwnersConstraint"));
+        }
+        // validate the optional field `labelOwnerConstraint`
+        if (jsonObj.get("labelOwnerConstraint") != null
+                && !jsonObj.get("labelOwnerConstraint").isJsonNull()) {
+            OwnerConstraint.validateJsonElement(jsonObj.get("labelOwnerConstraint"));
+        }
+        if (!jsonObj.get("msku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `msku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("msku").toString()));
+        }
+        // validate the required field `prepCategory`
+        PrepCategory.validateJsonElement(jsonObj.get("prepCategory"));
+        // validate the optional field `prepOwnerConstraint`
+        if (jsonObj.get("prepOwnerConstraint") != null
+                && !jsonObj.get("prepOwnerConstraint").isJsonNull()) {
+            OwnerConstraint.validateJsonElement(jsonObj.get("prepOwnerConstraint"));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("prepTypes") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("prepTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `prepTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("prepTypes").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MskuPrepDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MskuPrepDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MskuPrepDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MskuPrepDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MskuPrepDetail>() {
+                        @Override
+                        public void write(JsonWriter out, MskuPrepDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MskuPrepDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MskuPrepDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MskuPrepDetail
+     * @throws IOException if the JSON string is invalid with respect to MskuPrepDetail
+     */
+    public static MskuPrepDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MskuPrepDetail.class);
+    }
+
+    /**
+     * Convert an instance of MskuPrepDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

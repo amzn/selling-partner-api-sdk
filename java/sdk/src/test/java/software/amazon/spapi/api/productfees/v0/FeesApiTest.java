@@ -20,14 +20,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.models.productfees.v0.FeesEstimateByIdRequest;
+import software.amazon.spapi.models.productfees.v0.FeesEstimateResult;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesResponse;
 
 public class FeesApiTest {
 
@@ -45,10 +46,8 @@ public class FeesApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getMyFeesEstimateForASINTest() throws Exception {
@@ -82,9 +81,10 @@ public class FeesApiTest {
     public void getMyFeesEstimatesTest() throws Exception {
         instructBackendMock("fees", "getMyFeesEstimates", "200");
 
-        GetMyFeesEstimatesRequest body = easyRandom.nextObject(GetMyFeesEstimatesRequest.class);
+        List<FeesEstimateByIdRequest> body =
+                easyRandom.objects(FeesEstimateByIdRequest.class, 2).collect(Collectors.toList());
 
-        ApiResponse<GetMyFeesEstimatesResponse> response = api.getMyFeesEstimatesWithHttpInfo(body);
+        ApiResponse<List<FeesEstimateResult>> response = api.getMyFeesEstimatesWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

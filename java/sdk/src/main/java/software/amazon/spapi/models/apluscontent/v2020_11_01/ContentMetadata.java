@@ -12,27 +12,55 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ Content document&#39;s metadata. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content document's metadata.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContentMetadata {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("status")
-    private ContentStatus status = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("badgeSet")
-    private ContentBadgeSet badgeSet = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("updateTime")
-    private OffsetDateTime updateTime = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private ContentStatus status;
+
+    public static final String SERIALIZED_NAME_BADGE_SET = "badgeSet";
+
+    @SerializedName(SERIALIZED_NAME_BADGE_SET)
+    private Set<ContentBadge> badgeSet = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_UPDATE_TIME = "updateTime";
+
+    @SerializedName(SERIALIZED_NAME_UPDATE_TIME)
+    private OffsetDateTime updateTime;
+
+    public ContentMetadata() {}
 
     public ContentMetadata name(String name) {
         this.name = name;
@@ -44,7 +72,7 @@ public class ContentMetadata {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document's name.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -64,10 +92,7 @@ public class ContentMetadata {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -86,7 +111,7 @@ public class ContentMetadata {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ContentStatus getStatus() {
         return status;
     }
@@ -95,22 +120,30 @@ public class ContentMetadata {
         this.status = status;
     }
 
-    public ContentMetadata badgeSet(ContentBadgeSet badgeSet) {
+    public ContentMetadata badgeSet(Set<ContentBadge> badgeSet) {
         this.badgeSet = badgeSet;
         return this;
     }
 
+    public ContentMetadata addBadgeSetItem(ContentBadge badgeSetItem) {
+        if (this.badgeSet == null) {
+            this.badgeSet = new LinkedHashSet<>();
+        }
+        this.badgeSet.add(badgeSetItem);
+        return this;
+    }
+
     /**
-     * Get badgeSet
+     * The set of content badges.
      *
      * @return badgeSet
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public ContentBadgeSet getBadgeSet() {
+    @javax.annotation.Nonnull
+    public Set<ContentBadge> getBadgeSet() {
         return badgeSet;
     }
 
-    public void setBadgeSet(ContentBadgeSet badgeSet) {
+    public void setBadgeSet(Set<ContentBadge> badgeSet) {
         this.badgeSet = badgeSet;
     }
 
@@ -124,9 +157,7 @@ public class ContentMetadata {
      *
      * @return updateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The approximate age of the A+ Content document and metadata.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getUpdateTime() {
         return updateTime;
     }
@@ -136,7 +167,7 @@ public class ContentMetadata {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +201,138 @@ public class ContentMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("status");
+        openapiFields.add("badgeSet");
+        openapiFields.add("updateTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("badgeSet");
+        openapiRequiredFields.add("updateTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContentMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContentMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContentMetadata is not found in the empty JSON string",
+                        ContentMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContentMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContentMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContentMetadata.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // validate the required field `status`
+        ContentStatus.validateJsonElement(jsonObj.get("status"));
+        // ensure the required json array is present
+        if (jsonObj.get("badgeSet") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("badgeSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `badgeSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("badgeSet").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContentMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContentMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContentMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContentMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContentMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, ContentMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContentMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContentMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContentMetadata
+     * @throws IOException if the JSON string is invalid with respect to ContentMetadata
+     */
+    public static ContentMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContentMetadata.class);
+    }
+
+    /**
+     * Convert an instance of ContentMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

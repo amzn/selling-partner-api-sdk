@@ -12,27 +12,42 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Current status of a purchase order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Current status of a purchase order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderStatus {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
+
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
     /** The status of the buyer&#39;s purchase order for this order. */
     @JsonAdapter(PurchaseOrderStatusEnum.Adapter.class)
     public enum PurchaseOrderStatusEnum {
-        @SerializedName("OPEN")
         OPEN("OPEN"),
-        @SerializedName("CLOSED")
+
         CLOSED("CLOSED");
 
         private String value;
@@ -50,47 +65,66 @@ public class OrderStatus {
             return String.valueOf(value);
         }
 
-        public static PurchaseOrderStatusEnum fromValue(String input) {
+        public static PurchaseOrderStatusEnum fromValue(String value) {
             for (PurchaseOrderStatusEnum b : PurchaseOrderStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PurchaseOrderStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PurchaseOrderStatusEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PurchaseOrderStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PurchaseOrderStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PurchaseOrderStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PurchaseOrderStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("purchaseOrderStatus")
-    private PurchaseOrderStatusEnum purchaseOrderStatus = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_STATUS = "purchaseOrderStatus";
 
-    @SerializedName("purchaseOrderDate")
-    private OffsetDateTime purchaseOrderDate = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_STATUS)
+    private PurchaseOrderStatusEnum purchaseOrderStatus;
 
-    @SerializedName("lastUpdatedDate")
-    private OffsetDateTime lastUpdatedDate = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_DATE = "purchaseOrderDate";
 
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_DATE)
+    private OffsetDateTime purchaseOrderDate;
 
-    @SerializedName("shipToParty")
-    private PartyIdentification shipToParty = null;
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE = "lastUpdatedDate";
 
-    @SerializedName("itemStatus")
-    private ItemStatus itemStatus = null;
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE)
+    private OffsetDateTime lastUpdatedDate;
+
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
+
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_SHIP_TO_PARTY = "shipToParty";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_TO_PARTY)
+    private PartyIdentification shipToParty;
+
+    public static final String SERIALIZED_NAME_ITEM_STATUS = "itemStatus";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_STATUS)
+    private List<OrderItemStatus> itemStatus = new ArrayList<>();
+
+    public OrderStatus() {}
 
     public OrderStatus purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -102,10 +136,7 @@ public class OrderStatus {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The buyer's purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -124,9 +155,7 @@ public class OrderStatus {
      *
      * @return purchaseOrderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The status of the buyer's purchase order for this order.")
+    @javax.annotation.Nonnull
     public PurchaseOrderStatusEnum getPurchaseOrderStatus() {
         return purchaseOrderStatus;
     }
@@ -145,9 +174,7 @@ public class OrderStatus {
      *
      * @return purchaseOrderDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date the purchase order was placed. Must be in ISO-8601 date/time format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getPurchaseOrderDate() {
         return purchaseOrderDate;
     }
@@ -166,9 +193,7 @@ public class OrderStatus {
      *
      * @return lastUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date when the purchase order was last updated. Must be in ISO-8601 date/time format.")
-    public OffsetDateTime getLastUpdatedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
 
@@ -186,7 +211,7 @@ public class OrderStatus {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -205,7 +230,7 @@ public class OrderStatus {
      *
      * @return shipToParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getShipToParty() {
         return shipToParty;
     }
@@ -214,27 +239,35 @@ public class OrderStatus {
         this.shipToParty = shipToParty;
     }
 
-    public OrderStatus itemStatus(ItemStatus itemStatus) {
+    public OrderStatus itemStatus(List<OrderItemStatus> itemStatus) {
         this.itemStatus = itemStatus;
         return this;
     }
 
+    public OrderStatus addItemStatusItem(OrderItemStatus itemStatusItem) {
+        if (this.itemStatus == null) {
+            this.itemStatus = new ArrayList<>();
+        }
+        this.itemStatus.add(itemStatusItem);
+        return this;
+    }
+
     /**
-     * Get itemStatus
+     * Detailed description of items order status.
      *
      * @return itemStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public ItemStatus getItemStatus() {
+    @javax.annotation.Nonnull
+    public List<OrderItemStatus> getItemStatus() {
         return itemStatus;
     }
 
-    public void setItemStatus(ItemStatus itemStatus) {
+    public void setItemStatus(List<OrderItemStatus> itemStatus) {
         this.itemStatus = itemStatus;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -287,10 +320,149 @@ public class OrderStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("purchaseOrderStatus");
+        openapiFields.add("purchaseOrderDate");
+        openapiFields.add("lastUpdatedDate");
+        openapiFields.add("sellingParty");
+        openapiFields.add("shipToParty");
+        openapiFields.add("itemStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("purchaseOrderStatus");
+        openapiRequiredFields.add("purchaseOrderDate");
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("shipToParty");
+        openapiRequiredFields.add("itemStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderStatus is not found in the empty JSON string",
+                        OrderStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderStatus.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if (!jsonObj.get("purchaseOrderStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderStatus").toString()));
+        }
+        // validate the required field `purchaseOrderStatus`
+        PurchaseOrderStatusEnum.validateJsonElement(jsonObj.get("purchaseOrderStatus"));
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // validate the required field `shipToParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("shipToParty"));
+        // ensure the json data is an array
+        if (!jsonObj.get("itemStatus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemStatus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("itemStatus").toString()));
+        }
+
+        JsonArray jsonArrayitemStatus = jsonObj.getAsJsonArray("itemStatus");
+        // validate the required field `itemStatus` (array)
+        for (int i = 0; i < jsonArrayitemStatus.size(); i++) {
+            OrderItemStatus.validateJsonElement(jsonArrayitemStatus.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderStatus>() {
+                        @Override
+                        public void write(JsonWriter out, OrderStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderStatus
+     * @throws IOException if the JSON string is invalid with respect to OrderStatus
+     */
+    public static OrderStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderStatus.class);
+    }
+
+    /**
+     * Convert an instance of OrderStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

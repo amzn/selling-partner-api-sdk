@@ -12,44 +12,82 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents an AWD replenishment order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD replenishment order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReplenishmentOrder {
-    @SerializedName("confirmedOn")
-    private OffsetDateTime confirmedOn = null;
+    public static final String SERIALIZED_NAME_CONFIRMED_ON = "confirmedOn";
 
-    @SerializedName("createdAt")
-    private OffsetDateTime createdAt = null;
+    @SerializedName(SERIALIZED_NAME_CONFIRMED_ON)
+    private OffsetDateTime confirmedOn;
 
-    @SerializedName("distributionIneligibleReasons")
-    private List<DistributionIneligibleReason> distributionIneligibleReasons = null;
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
 
-    @SerializedName("eligibleProducts")
-    private List<DistributionProduct> eligibleProducts = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
-    @SerializedName("orderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_DISTRIBUTION_INELIGIBLE_REASONS = "distributionIneligibleReasons";
 
-    @SerializedName("status")
-    private ReplenishmentOrderStatus status = null;
+    @SerializedName(SERIALIZED_NAME_DISTRIBUTION_INELIGIBLE_REASONS)
+    private List<DistributionIneligibleReason> distributionIneligibleReasons = new ArrayList<>();
 
-    @SerializedName("outboundShipments")
-    private List<OutboundShipmentSummary> outboundShipments = null;
+    public static final String SERIALIZED_NAME_ELIGIBLE_PRODUCTS = "eligibleProducts";
 
-    @SerializedName("products")
-    private List<DistributionProduct> products = null;
+    @SerializedName(SERIALIZED_NAME_ELIGIBLE_PRODUCTS)
+    private List<DistributionProduct> eligibleProducts = new ArrayList<>();
 
-    @SerializedName("shippedProducts")
-    private List<DistributionProduct> shippedProducts = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("updatedAt")
-    private OffsetDateTime updatedAt = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private ReplenishmentOrderStatus status;
+
+    public static final String SERIALIZED_NAME_OUTBOUND_SHIPMENTS = "outboundShipments";
+
+    @SerializedName(SERIALIZED_NAME_OUTBOUND_SHIPMENTS)
+    private List<OutboundShipmentSummary> outboundShipments = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCTS = "products";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCTS)
+    private List<DistributionProduct> products = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPPED_PRODUCTS = "shippedProducts";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPED_PRODUCTS)
+    private List<DistributionProduct> shippedProducts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
+
+    public ReplenishmentOrder() {}
 
     public ReplenishmentOrder confirmedOn(OffsetDateTime confirmedOn) {
         this.confirmedOn = confirmedOn;
@@ -61,8 +99,7 @@ public class ReplenishmentOrder {
      *
      * @return confirmedOn
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this replenishment order was confirmed.")
-    public OffsetDateTime getConfirmedOn() {
+    @javax.annotation.Nullable public OffsetDateTime getConfirmedOn() {
         return confirmedOn;
     }
 
@@ -80,8 +117,7 @@ public class ReplenishmentOrder {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this replenishment order was created.")
-    public OffsetDateTime getCreatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
@@ -110,10 +146,7 @@ public class ReplenishmentOrder {
      *
      * @return distributionIneligibleReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.")
-    public List<DistributionIneligibleReason> getDistributionIneligibleReasons() {
+    @javax.annotation.Nullable public List<DistributionIneligibleReason> getDistributionIneligibleReasons() {
         return distributionIneligibleReasons;
     }
 
@@ -139,9 +172,7 @@ public class ReplenishmentOrder {
      *
      * @return eligibleProducts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "List of product units that are eligible for replenishment.")
-    public List<DistributionProduct> getEligibleProducts() {
+    @javax.annotation.Nullable public List<DistributionProduct> getEligibleProducts() {
         return eligibleProducts;
     }
 
@@ -159,7 +190,7 @@ public class ReplenishmentOrder {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Order Id of the replenishment order.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -178,7 +209,7 @@ public class ReplenishmentOrder {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReplenishmentOrderStatus getStatus() {
         return status;
     }
@@ -205,9 +236,7 @@ public class ReplenishmentOrder {
      *
      * @return outboundShipments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "List of outbound shipments that are part of this order.")
+    @javax.annotation.Nonnull
     public List<OutboundShipmentSummary> getOutboundShipments() {
         return outboundShipments;
     }
@@ -234,9 +263,7 @@ public class ReplenishmentOrder {
      *
      * @return products
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Requested amount of single product units to be replenished.")
-    public List<DistributionProduct> getProducts() {
+    @javax.annotation.Nullable public List<DistributionProduct> getProducts() {
         return products;
     }
 
@@ -262,10 +289,7 @@ public class ReplenishmentOrder {
      *
      * @return shippedProducts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Outbound product units that are shipped after the execution has completed post confirmation.")
-    public List<DistributionProduct> getShippedProducts() {
+    @javax.annotation.Nullable public List<DistributionProduct> getShippedProducts() {
         return shippedProducts;
     }
 
@@ -283,9 +307,7 @@ public class ReplenishmentOrder {
      *
      * @return updatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Date on which this replenishment order was last updated.")
-    public OffsetDateTime getUpdatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
@@ -294,7 +316,7 @@ public class ReplenishmentOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -356,10 +378,211 @@ public class ReplenishmentOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("confirmedOn");
+        openapiFields.add("createdAt");
+        openapiFields.add("distributionIneligibleReasons");
+        openapiFields.add("eligibleProducts");
+        openapiFields.add("orderId");
+        openapiFields.add("status");
+        openapiFields.add("outboundShipments");
+        openapiFields.add("products");
+        openapiFields.add("shippedProducts");
+        openapiFields.add("updatedAt");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("orderId");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("outboundShipments");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReplenishmentOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReplenishmentOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReplenishmentOrder is not found in the empty JSON string",
+                        ReplenishmentOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReplenishmentOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReplenishmentOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ReplenishmentOrder.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("distributionIneligibleReasons") != null
+                && !jsonObj.get("distributionIneligibleReasons").isJsonNull()) {
+            JsonArray jsonArraydistributionIneligibleReasons = jsonObj.getAsJsonArray("distributionIneligibleReasons");
+            if (jsonArraydistributionIneligibleReasons != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("distributionIneligibleReasons").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `distributionIneligibleReasons` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("distributionIneligibleReasons").toString()));
+                }
+
+                // validate the optional field `distributionIneligibleReasons` (array)
+                for (int i = 0; i < jsonArraydistributionIneligibleReasons.size(); i++) {
+                    DistributionIneligibleReason.validateJsonElement(jsonArraydistributionIneligibleReasons.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("eligibleProducts") != null
+                && !jsonObj.get("eligibleProducts").isJsonNull()) {
+            JsonArray jsonArrayeligibleProducts = jsonObj.getAsJsonArray("eligibleProducts");
+            if (jsonArrayeligibleProducts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("eligibleProducts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `eligibleProducts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("eligibleProducts").toString()));
+                }
+
+                // validate the optional field `eligibleProducts` (array)
+                for (int i = 0; i < jsonArrayeligibleProducts.size(); i++) {
+                    DistributionProduct.validateJsonElement(jsonArrayeligibleProducts.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        // validate the required field `status`
+        ReplenishmentOrderStatus.validateJsonElement(jsonObj.get("status"));
+        // ensure the json data is an array
+        if (!jsonObj.get("outboundShipments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `outboundShipments` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("outboundShipments").toString()));
+        }
+
+        JsonArray jsonArrayoutboundShipments = jsonObj.getAsJsonArray("outboundShipments");
+        // validate the required field `outboundShipments` (array)
+        for (int i = 0; i < jsonArrayoutboundShipments.size(); i++) {
+            OutboundShipmentSummary.validateJsonElement(jsonArrayoutboundShipments.get(i));
+        }
+        ;
+        if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
+            JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
+            if (jsonArrayproducts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("products").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `products` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("products").toString()));
+                }
+
+                // validate the optional field `products` (array)
+                for (int i = 0; i < jsonArrayproducts.size(); i++) {
+                    DistributionProduct.validateJsonElement(jsonArrayproducts.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("shippedProducts") != null
+                && !jsonObj.get("shippedProducts").isJsonNull()) {
+            JsonArray jsonArrayshippedProducts = jsonObj.getAsJsonArray("shippedProducts");
+            if (jsonArrayshippedProducts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippedProducts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippedProducts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippedProducts").toString()));
+                }
+
+                // validate the optional field `shippedProducts` (array)
+                for (int i = 0; i < jsonArrayshippedProducts.size(); i++) {
+                    DistributionProduct.validateJsonElement(jsonArrayshippedProducts.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReplenishmentOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReplenishmentOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReplenishmentOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReplenishmentOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReplenishmentOrder>() {
+                        @Override
+                        public void write(JsonWriter out, ReplenishmentOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReplenishmentOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReplenishmentOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReplenishmentOrder
+     * @throws IOException if the JSON string is invalid with respect to ReplenishmentOrder
+     */
+    public static ReplenishmentOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReplenishmentOrder.class);
+    }
+
+    /**
+     * Convert an instance of ReplenishmentOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

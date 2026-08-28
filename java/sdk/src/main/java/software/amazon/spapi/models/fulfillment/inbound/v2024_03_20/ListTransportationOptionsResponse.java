@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;listTransportationOptions&#x60; response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `listTransportationOptions` response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListTransportationOptionsResponse {
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
 
-    @SerializedName("transportationOptions")
-    private List<TransportationOption> transportationOptions = null;
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public static final String SERIALIZED_NAME_TRANSPORTATION_OPTIONS = "transportationOptions";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_OPTIONS)
+    private List<TransportationOption> transportationOptions = new ArrayList<>();
+
+    public ListTransportationOptionsResponse() {}
 
     public ListTransportationOptionsResponse pagination(Pagination pagination) {
         this.pagination = pagination;
@@ -36,8 +58,7 @@ public class ListTransportationOptionsResponse {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -64,9 +85,7 @@ public class ListTransportationOptionsResponse {
      *
      * @return transportationOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Transportation options generated for the placement option.")
+    @javax.annotation.Nonnull
     public List<TransportationOption> getTransportationOptions() {
         return transportationOptions;
     }
@@ -76,7 +95,7 @@ public class ListTransportationOptionsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -106,10 +125,128 @@ public class ListTransportationOptionsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("pagination");
+        openapiFields.add("transportationOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("transportationOptions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListTransportationOptionsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListTransportationOptionsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListTransportationOptionsResponse is not found in the empty JSON string",
+                        ListTransportationOptionsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListTransportationOptionsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListTransportationOptionsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListTransportationOptionsResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("transportationOptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationOptions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("transportationOptions").toString()));
+        }
+
+        JsonArray jsonArraytransportationOptions = jsonObj.getAsJsonArray("transportationOptions");
+        // validate the required field `transportationOptions` (array)
+        for (int i = 0; i < jsonArraytransportationOptions.size(); i++) {
+            TransportationOption.validateJsonElement(jsonArraytransportationOptions.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListTransportationOptionsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListTransportationOptionsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListTransportationOptionsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListTransportationOptionsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListTransportationOptionsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListTransportationOptionsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListTransportationOptionsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListTransportationOptionsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListTransportationOptionsResponse
+     * @throws IOException if the JSON string is invalid with respect to ListTransportationOptionsResponse
+     */
+    public static ListTransportationOptionsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListTransportationOptionsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListTransportationOptionsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

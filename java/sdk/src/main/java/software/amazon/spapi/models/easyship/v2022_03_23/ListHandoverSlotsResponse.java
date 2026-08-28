@@ -12,17 +12,41 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;listHandoverSlots&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `listHandoverSlots` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListHandoverSlotsResponse {
-    @SerializedName("amazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "amazonOrderId";
 
-    @SerializedName("timeSlots")
-    private TimeSlots timeSlots = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
+
+    public static final String SERIALIZED_NAME_TIME_SLOTS = "timeSlots";
+
+    @SerializedName(SERIALIZED_NAME_TIME_SLOTS)
+    private List<TimeSlot> timeSlots = new ArrayList<>();
+
+    public ListHandoverSlotsResponse() {}
 
     public ListHandoverSlotsResponse amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -34,10 +58,7 @@ public class ListHandoverSlotsResponse {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -46,27 +67,35 @@ public class ListHandoverSlotsResponse {
         this.amazonOrderId = amazonOrderId;
     }
 
-    public ListHandoverSlotsResponse timeSlots(TimeSlots timeSlots) {
+    public ListHandoverSlotsResponse timeSlots(List<TimeSlot> timeSlots) {
         this.timeSlots = timeSlots;
         return this;
     }
 
+    public ListHandoverSlotsResponse addTimeSlotsItem(TimeSlot timeSlotsItem) {
+        if (this.timeSlots == null) {
+            this.timeSlots = new ArrayList<>();
+        }
+        this.timeSlots.add(timeSlotsItem);
+        return this;
+    }
+
     /**
-     * Get timeSlots
+     * A list of time slots.
      *
      * @return timeSlots
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public TimeSlots getTimeSlots() {
+    @javax.annotation.Nonnull
+    public List<TimeSlot> getTimeSlots() {
         return timeSlots;
     }
 
-    public void setTimeSlots(TimeSlots timeSlots) {
+    public void setTimeSlots(List<TimeSlot> timeSlots) {
         this.timeSlots = timeSlots;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +123,130 @@ public class ListHandoverSlotsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amazonOrderId");
+        openapiFields.add("timeSlots");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("amazonOrderId");
+        openapiRequiredFields.add("timeSlots");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListHandoverSlotsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListHandoverSlotsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListHandoverSlotsResponse is not found in the empty JSON string",
+                        ListHandoverSlotsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListHandoverSlotsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListHandoverSlotsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListHandoverSlotsResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("amazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonOrderId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("timeSlots").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `timeSlots` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("timeSlots").toString()));
+        }
+
+        JsonArray jsonArraytimeSlots = jsonObj.getAsJsonArray("timeSlots");
+        // validate the required field `timeSlots` (array)
+        for (int i = 0; i < jsonArraytimeSlots.size(); i++) {
+            TimeSlot.validateJsonElement(jsonArraytimeSlots.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListHandoverSlotsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListHandoverSlotsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListHandoverSlotsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListHandoverSlotsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListHandoverSlotsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListHandoverSlotsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListHandoverSlotsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListHandoverSlotsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListHandoverSlotsResponse
+     * @throws IOException if the JSON string is invalid with respect to ListHandoverSlotsResponse
+     */
+    public static ListHandoverSlotsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListHandoverSlotsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListHandoverSlotsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

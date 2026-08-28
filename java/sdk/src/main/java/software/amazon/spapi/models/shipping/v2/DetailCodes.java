@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,94 +22,64 @@ import java.io.IOException;
 /** A list of codes used to provide additional shipment information. */
 @JsonAdapter(DetailCodes.Adapter.class)
 public enum DetailCodes {
-    @SerializedName("BusinessClosed")
     BUSINESS_CLOSED("BusinessClosed"),
 
-    @SerializedName("CustomerUnavailable")
     CUSTOMER_UNAVAILABLE("CustomerUnavailable"),
 
-    @SerializedName("PaymentNotReady")
     PAYMENT_NOT_READY("PaymentNotReady"),
 
-    @SerializedName("OtpNotAvailable")
     OTP_NOT_AVAILABLE("OtpNotAvailable"),
 
-    @SerializedName("DeliveryAttempted")
     DELIVERY_ATTEMPTED("DeliveryAttempted"),
 
-    @SerializedName("UnableToAccess")
     UNABLE_TO_ACCESS("UnableToAccess"),
 
-    @SerializedName("UnableToContactRecipient")
     UNABLE_TO_CONTACT_RECIPIENT("UnableToContactRecipient"),
 
-    @SerializedName("DeliveredToBehindWheelieBin")
     DELIVERED_TO_BEHIND_WHEELIE_BIN("DeliveredToBehindWheelieBin"),
 
-    @SerializedName("DeliveredToPorch")
     DELIVERED_TO_PORCH("DeliveredToPorch"),
 
-    @SerializedName("DeliveredToGarage")
     DELIVERED_TO_GARAGE("DeliveredToGarage"),
 
-    @SerializedName("DeliveredToGarden")
     DELIVERED_TO_GARDEN("DeliveredToGarden"),
 
-    @SerializedName("DeliveredToGreenhouse")
     DELIVERED_TO_GREENHOUSE("DeliveredToGreenhouse"),
 
-    @SerializedName("DeliveredToMailSlot")
     DELIVERED_TO_MAIL_SLOT("DeliveredToMailSlot"),
 
-    @SerializedName("DeliveredToMailRoom")
     DELIVERED_TO_MAIL_ROOM("DeliveredToMailRoom"),
 
-    @SerializedName("DeliveredToNeighbor")
     DELIVERED_TO_NEIGHBOR("DeliveredToNeighbor"),
 
-    @SerializedName("DeliveredToRearDoor")
     DELIVERED_TO_REAR_DOOR("DeliveredToRearDoor"),
 
-    @SerializedName("DeliveredToReceptionist")
     DELIVERED_TO_RECEPTIONIST("DeliveredToReceptionist"),
 
-    @SerializedName("DeliveredToShed")
     DELIVERED_TO_SHED("DeliveredToShed"),
 
-    @SerializedName("DeliveredWithOTP")
     DELIVERED_WITH_OTP("DeliveredWithOTP"),
 
-    @SerializedName("Signed")
     SIGNED("Signed"),
 
-    @SerializedName("Damaged")
     DAMAGED("Damaged"),
 
-    @SerializedName("IncorrectItems")
     INCORRECT_ITEMS("IncorrectItems"),
 
-    @SerializedName("NotRequired")
     NOT_REQUIRED("NotRequired"),
 
-    @SerializedName("Rejected")
     REJECTED("Rejected"),
 
-    @SerializedName("RejectedByRecipientWithVerification")
     REJECTED_BY_RECIPIENT_WITH_VERIFICATION("RejectedByRecipientWithVerification"),
 
-    @SerializedName("CancelledByRecipient")
     CANCELLED_BY_RECIPIENT("CancelledByRecipient"),
 
-    @SerializedName("AddressNotFound")
     ADDRESS_NOT_FOUND("AddressNotFound"),
 
-    @SerializedName("HazmatShipment")
     HAZMAT_SHIPMENT("HazmatShipment"),
 
-    @SerializedName("Undeliverable")
     UNDELIVERABLE("Undeliverable"),
 
-    @SerializedName("ArrivedAtLocalFacility")
     ARRIVED_AT_LOCAL_FACILITY("ArrivedAtLocalFacility");
 
     private String value;
@@ -127,25 +97,30 @@ public enum DetailCodes {
         return String.valueOf(value);
     }
 
-    public static DetailCodes fromValue(String input) {
+    public static DetailCodes fromValue(String value) {
         for (DetailCodes b : DetailCodes.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DetailCodes> {
         @Override
         public void write(final JsonWriter jsonWriter, final DetailCodes enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DetailCodes read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DetailCodes.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DetailCodes.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DetailCodes.fromValue(value);
     }
 }

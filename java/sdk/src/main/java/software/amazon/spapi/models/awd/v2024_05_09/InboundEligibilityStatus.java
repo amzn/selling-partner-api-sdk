@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Enum denoting the package inbound eligibility. */
 @JsonAdapter(InboundEligibilityStatus.Adapter.class)
 public enum InboundEligibilityStatus {
-    @SerializedName("ELIGIBLE")
     ELIGIBLE("ELIGIBLE"),
 
-    @SerializedName("INELIGIBLE")
     INELIGIBLE("INELIGIBLE");
 
     private String value;
@@ -43,25 +41,30 @@ public enum InboundEligibilityStatus {
         return String.valueOf(value);
     }
 
-    public static InboundEligibilityStatus fromValue(String input) {
+    public static InboundEligibilityStatus fromValue(String value) {
         for (InboundEligibilityStatus b : InboundEligibilityStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InboundEligibilityStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final InboundEligibilityStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InboundEligibilityStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InboundEligibilityStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InboundEligibilityStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InboundEligibilityStatus.fromValue(value);
     }
 }

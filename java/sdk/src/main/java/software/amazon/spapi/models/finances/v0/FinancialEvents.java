@@ -12,777 +12,1124 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** All the information that is related to a financial event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "All the information that is related to a financial event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FinancialEvents {
-    @SerializedName("ShipmentEventList")
-    private ShipmentEventList shipmentEventList = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_EVENT_LIST = "ShipmentEventList";
 
-    @SerializedName("ShipmentSettleEventList")
-    private ShipmentSettleEventList shipmentSettleEventList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_EVENT_LIST)
+    private List<ShipmentEvent> shipmentEventList = new ArrayList<>();
 
-    @SerializedName("RefundEventList")
-    private ShipmentEventList refundEventList = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_SETTLE_EVENT_LIST = "ShipmentSettleEventList";
 
-    @SerializedName("GuaranteeClaimEventList")
-    private ShipmentEventList guaranteeClaimEventList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_SETTLE_EVENT_LIST)
+    private List<ShipmentEvent> shipmentSettleEventList = new ArrayList<>();
 
-    @SerializedName("EBTRefundReimbursementOnlyEventList")
-    private EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList = null;
+    public static final String SERIALIZED_NAME_REFUND_EVENT_LIST = "RefundEventList";
 
-    @SerializedName("ChargebackEventList")
-    private ShipmentEventList chargebackEventList = null;
+    @SerializedName(SERIALIZED_NAME_REFUND_EVENT_LIST)
+    private List<ShipmentEvent> refundEventList = new ArrayList<>();
 
-    @SerializedName("PayWithAmazonEventList")
-    private PayWithAmazonEventList payWithAmazonEventList = null;
+    public static final String SERIALIZED_NAME_GUARANTEE_CLAIM_EVENT_LIST = "GuaranteeClaimEventList";
 
-    @SerializedName("ServiceProviderCreditEventList")
-    private SolutionProviderCreditEventList serviceProviderCreditEventList = null;
+    @SerializedName(SERIALIZED_NAME_GUARANTEE_CLAIM_EVENT_LIST)
+    private List<ShipmentEvent> guaranteeClaimEventList = new ArrayList<>();
 
-    @SerializedName("RetrochargeEventList")
-    private RetrochargeEventList retrochargeEventList = null;
+    public static final String SERIALIZED_NAME_EB_T_REFUND_REIMBURSEMENT_ONLY_EVENT_LIST =
+            "EBTRefundReimbursementOnlyEventList";
 
-    @SerializedName("RentalTransactionEventList")
-    private RentalTransactionEventList rentalTransactionEventList = null;
+    @SerializedName(SERIALIZED_NAME_EB_T_REFUND_REIMBURSEMENT_ONLY_EVENT_LIST)
+    private List<EBTRefundReimbursementOnlyEvent> ebTRefundReimbursementOnlyEventList = new ArrayList<>();
 
-    @SerializedName("ProductAdsPaymentEventList")
-    private ProductAdsPaymentEventList productAdsPaymentEventList = null;
+    public static final String SERIALIZED_NAME_CHARGEBACK_EVENT_LIST = "ChargebackEventList";
 
-    @SerializedName("ServiceFeeEventList")
-    private ServiceFeeEventList serviceFeeEventList = null;
+    @SerializedName(SERIALIZED_NAME_CHARGEBACK_EVENT_LIST)
+    private List<ShipmentEvent> chargebackEventList = new ArrayList<>();
 
-    @SerializedName("SellerDealPaymentEventList")
-    private SellerDealPaymentEventList sellerDealPaymentEventList = null;
+    public static final String SERIALIZED_NAME_PAY_WITH_AMAZON_EVENT_LIST = "PayWithAmazonEventList";
 
-    @SerializedName("DebtRecoveryEventList")
-    private DebtRecoveryEventList debtRecoveryEventList = null;
+    @SerializedName(SERIALIZED_NAME_PAY_WITH_AMAZON_EVENT_LIST)
+    private List<PayWithAmazonEvent> payWithAmazonEventList = new ArrayList<>();
 
-    @SerializedName("LoanServicingEventList")
-    private LoanServicingEventList loanServicingEventList = null;
+    public static final String SERIALIZED_NAME_SERVICE_PROVIDER_CREDIT_EVENT_LIST = "ServiceProviderCreditEventList";
 
-    @SerializedName("AdjustmentEventList")
-    private AdjustmentEventList adjustmentEventList = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_PROVIDER_CREDIT_EVENT_LIST)
+    private List<SolutionProviderCreditEvent> serviceProviderCreditEventList = new ArrayList<>();
 
-    @SerializedName("SAFETReimbursementEventList")
-    private SAFETReimbursementEventList saFETReimbursementEventList = null;
+    public static final String SERIALIZED_NAME_RETROCHARGE_EVENT_LIST = "RetrochargeEventList";
 
-    @SerializedName("SellerReviewEnrollmentPaymentEventList")
-    private SellerReviewEnrollmentPaymentEventList sellerReviewEnrollmentPaymentEventList = null;
+    @SerializedName(SERIALIZED_NAME_RETROCHARGE_EVENT_LIST)
+    private List<RetrochargeEvent> retrochargeEventList = new ArrayList<>();
 
-    @SerializedName("FBALiquidationEventList")
-    private FBALiquidationEventList fbALiquidationEventList = null;
+    public static final String SERIALIZED_NAME_RENTAL_TRANSACTION_EVENT_LIST = "RentalTransactionEventList";
 
-    @SerializedName("CouponPaymentEventList")
-    private CouponPaymentEventList couponPaymentEventList = null;
+    @SerializedName(SERIALIZED_NAME_RENTAL_TRANSACTION_EVENT_LIST)
+    private List<RentalTransactionEvent> rentalTransactionEventList = new ArrayList<>();
 
-    @SerializedName("ImagingServicesFeeEventList")
-    private ImagingServicesFeeEventList imagingServicesFeeEventList = null;
+    public static final String SERIALIZED_NAME_PRODUCT_ADS_PAYMENT_EVENT_LIST = "ProductAdsPaymentEventList";
 
-    @SerializedName("NetworkComminglingTransactionEventList")
-    private NetworkComminglingTransactionEventList networkComminglingTransactionEventList = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_ADS_PAYMENT_EVENT_LIST)
+    private List<ProductAdsPaymentEvent> productAdsPaymentEventList = new ArrayList<>();
 
-    @SerializedName("AffordabilityExpenseEventList")
-    private AffordabilityExpenseEventList affordabilityExpenseEventList = null;
+    public static final String SERIALIZED_NAME_SERVICE_FEE_EVENT_LIST = "ServiceFeeEventList";
 
-    @SerializedName("AffordabilityExpenseReversalEventList")
-    private AffordabilityExpenseEventList affordabilityExpenseReversalEventList = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_FEE_EVENT_LIST)
+    private List<ServiceFeeEvent> serviceFeeEventList = new ArrayList<>();
 
-    @SerializedName("RemovalShipmentEventList")
-    private RemovalShipmentEventList removalShipmentEventList = null;
+    public static final String SERIALIZED_NAME_SELLER_DEAL_PAYMENT_EVENT_LIST = "SellerDealPaymentEventList";
 
-    @SerializedName("RemovalShipmentAdjustmentEventList")
-    private RemovalShipmentAdjustmentEventList removalShipmentAdjustmentEventList = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_DEAL_PAYMENT_EVENT_LIST)
+    private List<SellerDealPaymentEvent> sellerDealPaymentEventList = new ArrayList<>();
 
-    @SerializedName("TrialShipmentEventList")
-    private TrialShipmentEventList trialShipmentEventList = null;
+    public static final String SERIALIZED_NAME_DEBT_RECOVERY_EVENT_LIST = "DebtRecoveryEventList";
 
-    @SerializedName("TDSReimbursementEventList")
-    private TDSReimbursementEventList tdSReimbursementEventList = null;
+    @SerializedName(SERIALIZED_NAME_DEBT_RECOVERY_EVENT_LIST)
+    private List<DebtRecoveryEvent> debtRecoveryEventList = new ArrayList<>();
 
-    @SerializedName("AdhocDisbursementEventList")
-    private AdhocDisbursementEventList adhocDisbursementEventList = null;
+    public static final String SERIALIZED_NAME_LOAN_SERVICING_EVENT_LIST = "LoanServicingEventList";
 
-    @SerializedName("TaxWithholdingEventList")
-    private TaxWithholdingEventList taxWithholdingEventList = null;
+    @SerializedName(SERIALIZED_NAME_LOAN_SERVICING_EVENT_LIST)
+    private List<LoanServicingEvent> loanServicingEventList = new ArrayList<>();
 
-    @SerializedName("ChargeRefundEventList")
-    private ChargeRefundEventList chargeRefundEventList = null;
+    public static final String SERIALIZED_NAME_ADJUSTMENT_EVENT_LIST = "AdjustmentEventList";
 
-    @SerializedName("FailedAdhocDisbursementEventList")
-    private FailedAdhocDisbursementEventList failedAdhocDisbursementEventList = null;
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_EVENT_LIST)
+    private List<AdjustmentEvent> adjustmentEventList = new ArrayList<>();
 
-    @SerializedName("ValueAddedServiceChargeEventList")
-    private ValueAddedServiceChargeEventList valueAddedServiceChargeEventList = null;
+    public static final String SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_EVENT_LIST = "SAFETReimbursementEventList";
 
-    @SerializedName("CapacityReservationBillingEventList")
-    private CapacityReservationBillingEventList capacityReservationBillingEventList = null;
+    @SerializedName(SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_EVENT_LIST)
+    private List<SAFETReimbursementEvent> saFETReimbursementEventList = new ArrayList<>();
 
-    public FinancialEvents shipmentEventList(ShipmentEventList shipmentEventList) {
+    public static final String SERIALIZED_NAME_SELLER_REVIEW_ENROLLMENT_PAYMENT_EVENT_LIST =
+            "SellerReviewEnrollmentPaymentEventList";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_REVIEW_ENROLLMENT_PAYMENT_EVENT_LIST)
+    private List<SellerReviewEnrollmentPaymentEvent> sellerReviewEnrollmentPaymentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FB_A_LIQUIDATION_EVENT_LIST = "FBALiquidationEventList";
+
+    @SerializedName(SERIALIZED_NAME_FB_A_LIQUIDATION_EVENT_LIST)
+    private List<FBALiquidationEvent> fbALiquidationEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_COUPON_PAYMENT_EVENT_LIST = "CouponPaymentEventList";
+
+    @SerializedName(SERIALIZED_NAME_COUPON_PAYMENT_EVENT_LIST)
+    private List<CouponPaymentEvent> couponPaymentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_IMAGING_SERVICES_FEE_EVENT_LIST = "ImagingServicesFeeEventList";
+
+    @SerializedName(SERIALIZED_NAME_IMAGING_SERVICES_FEE_EVENT_LIST)
+    private List<ImagingServicesFeeEvent> imagingServicesFeeEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NETWORK_COMMINGLING_TRANSACTION_EVENT_LIST =
+            "NetworkComminglingTransactionEventList";
+
+    @SerializedName(SERIALIZED_NAME_NETWORK_COMMINGLING_TRANSACTION_EVENT_LIST)
+    private List<NetworkComminglingTransactionEvent> networkComminglingTransactionEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AFFORDABILITY_EXPENSE_EVENT_LIST = "AffordabilityExpenseEventList";
+
+    @SerializedName(SERIALIZED_NAME_AFFORDABILITY_EXPENSE_EVENT_LIST)
+    private List<AffordabilityExpenseEvent> affordabilityExpenseEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AFFORDABILITY_EXPENSE_REVERSAL_EVENT_LIST =
+            "AffordabilityExpenseReversalEventList";
+
+    @SerializedName(SERIALIZED_NAME_AFFORDABILITY_EXPENSE_REVERSAL_EVENT_LIST)
+    private List<AffordabilityExpenseEvent> affordabilityExpenseReversalEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_EVENT_LIST = "RemovalShipmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_EVENT_LIST)
+    private List<RemovalShipmentEvent> removalShipmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_ADJUSTMENT_EVENT_LIST =
+            "RemovalShipmentAdjustmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_ADJUSTMENT_EVENT_LIST)
+    private List<RemovalShipmentAdjustmentEvent> removalShipmentAdjustmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRIAL_SHIPMENT_EVENT_LIST = "TrialShipmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_TRIAL_SHIPMENT_EVENT_LIST)
+    private List<TrialShipmentEvent> trialShipmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TD_S_REIMBURSEMENT_EVENT_LIST = "TDSReimbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_TD_S_REIMBURSEMENT_EVENT_LIST)
+    private List<TDSReimbursementEvent> tdSReimbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ADHOC_DISBURSEMENT_EVENT_LIST = "AdhocDisbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_ADHOC_DISBURSEMENT_EVENT_LIST)
+    private List<AdhocDisbursementEvent> adhocDisbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TAX_WITHHOLDING_EVENT_LIST = "TaxWithholdingEventList";
+
+    @SerializedName(SERIALIZED_NAME_TAX_WITHHOLDING_EVENT_LIST)
+    private List<TaxWithholdingEvent> taxWithholdingEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_REFUND_EVENT_LIST = "ChargeRefundEventList";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_REFUND_EVENT_LIST)
+    private List<ChargeRefundEvent> chargeRefundEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FAILED_ADHOC_DISBURSEMENT_EVENT_LIST =
+            "FailedAdhocDisbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_FAILED_ADHOC_DISBURSEMENT_EVENT_LIST)
+    private List<FailedAdhocDisbursementEvent> failedAdhocDisbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICE_CHARGE_EVENT_LIST =
+            "ValueAddedServiceChargeEventList";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICE_CHARGE_EVENT_LIST)
+    private List<ValueAddedServiceChargeEvent> valueAddedServiceChargeEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CAPACITY_RESERVATION_BILLING_EVENT_LIST =
+            "CapacityReservationBillingEventList";
+
+    @SerializedName(SERIALIZED_NAME_CAPACITY_RESERVATION_BILLING_EVENT_LIST)
+    private List<CapacityReservationBillingEvent> capacityReservationBillingEventList = new ArrayList<>();
+
+    public FinancialEvents() {}
+
+    public FinancialEvents shipmentEventList(List<ShipmentEvent> shipmentEventList) {
         this.shipmentEventList = shipmentEventList;
         return this;
     }
 
+    public FinancialEvents addShipmentEventListItem(ShipmentEvent shipmentEventListItem) {
+        if (this.shipmentEventList == null) {
+            this.shipmentEventList = new ArrayList<>();
+        }
+        this.shipmentEventList.add(shipmentEventListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentEventList
+     * A list of shipment event information.
      *
      * @return shipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getShipmentEventList() {
+    @javax.annotation.Nullable public List<ShipmentEvent> getShipmentEventList() {
         return shipmentEventList;
     }
 
-    public void setShipmentEventList(ShipmentEventList shipmentEventList) {
+    public void setShipmentEventList(List<ShipmentEvent> shipmentEventList) {
         this.shipmentEventList = shipmentEventList;
     }
 
-    public FinancialEvents shipmentSettleEventList(ShipmentSettleEventList shipmentSettleEventList) {
+    public FinancialEvents shipmentSettleEventList(List<ShipmentEvent> shipmentSettleEventList) {
         this.shipmentSettleEventList = shipmentSettleEventList;
         return this;
     }
 
+    public FinancialEvents addShipmentSettleEventListItem(ShipmentEvent shipmentSettleEventListItem) {
+        if (this.shipmentSettleEventList == null) {
+            this.shipmentSettleEventList = new ArrayList<>();
+        }
+        this.shipmentSettleEventList.add(shipmentSettleEventListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentSettleEventList
+     * A list of &#x60;ShipmentEvent&#x60; items.
      *
      * @return shipmentSettleEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentSettleEventList getShipmentSettleEventList() {
+    @javax.annotation.Nullable public List<ShipmentEvent> getShipmentSettleEventList() {
         return shipmentSettleEventList;
     }
 
-    public void setShipmentSettleEventList(ShipmentSettleEventList shipmentSettleEventList) {
+    public void setShipmentSettleEventList(List<ShipmentEvent> shipmentSettleEventList) {
         this.shipmentSettleEventList = shipmentSettleEventList;
     }
 
-    public FinancialEvents refundEventList(ShipmentEventList refundEventList) {
+    public FinancialEvents refundEventList(List<ShipmentEvent> refundEventList) {
         this.refundEventList = refundEventList;
         return this;
     }
 
+    public FinancialEvents addRefundEventListItem(ShipmentEvent refundEventListItem) {
+        if (this.refundEventList == null) {
+            this.refundEventList = new ArrayList<>();
+        }
+        this.refundEventList.add(refundEventListItem);
+        return this;
+    }
+
     /**
-     * Get refundEventList
+     * A list of shipment event information.
      *
      * @return refundEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getRefundEventList() {
+    @javax.annotation.Nullable public List<ShipmentEvent> getRefundEventList() {
         return refundEventList;
     }
 
-    public void setRefundEventList(ShipmentEventList refundEventList) {
+    public void setRefundEventList(List<ShipmentEvent> refundEventList) {
         this.refundEventList = refundEventList;
     }
 
-    public FinancialEvents guaranteeClaimEventList(ShipmentEventList guaranteeClaimEventList) {
+    public FinancialEvents guaranteeClaimEventList(List<ShipmentEvent> guaranteeClaimEventList) {
         this.guaranteeClaimEventList = guaranteeClaimEventList;
         return this;
     }
 
+    public FinancialEvents addGuaranteeClaimEventListItem(ShipmentEvent guaranteeClaimEventListItem) {
+        if (this.guaranteeClaimEventList == null) {
+            this.guaranteeClaimEventList = new ArrayList<>();
+        }
+        this.guaranteeClaimEventList.add(guaranteeClaimEventListItem);
+        return this;
+    }
+
     /**
-     * Get guaranteeClaimEventList
+     * A list of shipment event information.
      *
      * @return guaranteeClaimEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getGuaranteeClaimEventList() {
+    @javax.annotation.Nullable public List<ShipmentEvent> getGuaranteeClaimEventList() {
         return guaranteeClaimEventList;
     }
 
-    public void setGuaranteeClaimEventList(ShipmentEventList guaranteeClaimEventList) {
+    public void setGuaranteeClaimEventList(List<ShipmentEvent> guaranteeClaimEventList) {
         this.guaranteeClaimEventList = guaranteeClaimEventList;
     }
 
     public FinancialEvents ebTRefundReimbursementOnlyEventList(
-            EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList) {
+            List<EBTRefundReimbursementOnlyEvent> ebTRefundReimbursementOnlyEventList) {
         this.ebTRefundReimbursementOnlyEventList = ebTRefundReimbursementOnlyEventList;
         return this;
     }
 
+    public FinancialEvents addEbTRefundReimbursementOnlyEventListItem(
+            EBTRefundReimbursementOnlyEvent ebTRefundReimbursementOnlyEventListItem) {
+        if (this.ebTRefundReimbursementOnlyEventList == null) {
+            this.ebTRefundReimbursementOnlyEventList = new ArrayList<>();
+        }
+        this.ebTRefundReimbursementOnlyEventList.add(ebTRefundReimbursementOnlyEventListItem);
+        return this;
+    }
+
     /**
-     * Get ebTRefundReimbursementOnlyEventList
+     * A list of EBT refund reimbursement events.
      *
      * @return ebTRefundReimbursementOnlyEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EBTRefundReimbursementOnlyEventList getEbTRefundReimbursementOnlyEventList() {
+    @javax.annotation.Nullable public List<EBTRefundReimbursementOnlyEvent> getEbTRefundReimbursementOnlyEventList() {
         return ebTRefundReimbursementOnlyEventList;
     }
 
     public void setEbTRefundReimbursementOnlyEventList(
-            EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList) {
+            List<EBTRefundReimbursementOnlyEvent> ebTRefundReimbursementOnlyEventList) {
         this.ebTRefundReimbursementOnlyEventList = ebTRefundReimbursementOnlyEventList;
     }
 
-    public FinancialEvents chargebackEventList(ShipmentEventList chargebackEventList) {
+    public FinancialEvents chargebackEventList(List<ShipmentEvent> chargebackEventList) {
         this.chargebackEventList = chargebackEventList;
         return this;
     }
 
+    public FinancialEvents addChargebackEventListItem(ShipmentEvent chargebackEventListItem) {
+        if (this.chargebackEventList == null) {
+            this.chargebackEventList = new ArrayList<>();
+        }
+        this.chargebackEventList.add(chargebackEventListItem);
+        return this;
+    }
+
     /**
-     * Get chargebackEventList
+     * A list of shipment event information.
      *
      * @return chargebackEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getChargebackEventList() {
+    @javax.annotation.Nullable public List<ShipmentEvent> getChargebackEventList() {
         return chargebackEventList;
     }
 
-    public void setChargebackEventList(ShipmentEventList chargebackEventList) {
+    public void setChargebackEventList(List<ShipmentEvent> chargebackEventList) {
         this.chargebackEventList = chargebackEventList;
     }
 
-    public FinancialEvents payWithAmazonEventList(PayWithAmazonEventList payWithAmazonEventList) {
+    public FinancialEvents payWithAmazonEventList(List<PayWithAmazonEvent> payWithAmazonEventList) {
         this.payWithAmazonEventList = payWithAmazonEventList;
         return this;
     }
 
+    public FinancialEvents addPayWithAmazonEventListItem(PayWithAmazonEvent payWithAmazonEventListItem) {
+        if (this.payWithAmazonEventList == null) {
+            this.payWithAmazonEventList = new ArrayList<>();
+        }
+        this.payWithAmazonEventList.add(payWithAmazonEventListItem);
+        return this;
+    }
+
     /**
-     * Get payWithAmazonEventList
+     * A list of events related to the seller&#39;s Pay with Amazon account.
      *
      * @return payWithAmazonEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PayWithAmazonEventList getPayWithAmazonEventList() {
+    @javax.annotation.Nullable public List<PayWithAmazonEvent> getPayWithAmazonEventList() {
         return payWithAmazonEventList;
     }
 
-    public void setPayWithAmazonEventList(PayWithAmazonEventList payWithAmazonEventList) {
+    public void setPayWithAmazonEventList(List<PayWithAmazonEvent> payWithAmazonEventList) {
         this.payWithAmazonEventList = payWithAmazonEventList;
     }
 
     public FinancialEvents serviceProviderCreditEventList(
-            SolutionProviderCreditEventList serviceProviderCreditEventList) {
+            List<SolutionProviderCreditEvent> serviceProviderCreditEventList) {
         this.serviceProviderCreditEventList = serviceProviderCreditEventList;
         return this;
     }
 
+    public FinancialEvents addServiceProviderCreditEventListItem(
+            SolutionProviderCreditEvent serviceProviderCreditEventListItem) {
+        if (this.serviceProviderCreditEventList == null) {
+            this.serviceProviderCreditEventList = new ArrayList<>();
+        }
+        this.serviceProviderCreditEventList.add(serviceProviderCreditEventListItem);
+        return this;
+    }
+
     /**
-     * Get serviceProviderCreditEventList
+     * A list of &#x60;SolutionProviderCreditEvent&#x60;.
      *
      * @return serviceProviderCreditEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SolutionProviderCreditEventList getServiceProviderCreditEventList() {
+    @javax.annotation.Nullable public List<SolutionProviderCreditEvent> getServiceProviderCreditEventList() {
         return serviceProviderCreditEventList;
     }
 
-    public void setServiceProviderCreditEventList(SolutionProviderCreditEventList serviceProviderCreditEventList) {
+    public void setServiceProviderCreditEventList(List<SolutionProviderCreditEvent> serviceProviderCreditEventList) {
         this.serviceProviderCreditEventList = serviceProviderCreditEventList;
     }
 
-    public FinancialEvents retrochargeEventList(RetrochargeEventList retrochargeEventList) {
+    public FinancialEvents retrochargeEventList(List<RetrochargeEvent> retrochargeEventList) {
         this.retrochargeEventList = retrochargeEventList;
         return this;
     }
 
+    public FinancialEvents addRetrochargeEventListItem(RetrochargeEvent retrochargeEventListItem) {
+        if (this.retrochargeEventList == null) {
+            this.retrochargeEventList = new ArrayList<>();
+        }
+        this.retrochargeEventList.add(retrochargeEventListItem);
+        return this;
+    }
+
     /**
-     * Get retrochargeEventList
+     * A list of information about &#x60;Retrocharge&#x60; or &#x60;RetrochargeReversal&#x60; events.
      *
      * @return retrochargeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RetrochargeEventList getRetrochargeEventList() {
+    @javax.annotation.Nullable public List<RetrochargeEvent> getRetrochargeEventList() {
         return retrochargeEventList;
     }
 
-    public void setRetrochargeEventList(RetrochargeEventList retrochargeEventList) {
+    public void setRetrochargeEventList(List<RetrochargeEvent> retrochargeEventList) {
         this.retrochargeEventList = retrochargeEventList;
     }
 
-    public FinancialEvents rentalTransactionEventList(RentalTransactionEventList rentalTransactionEventList) {
+    public FinancialEvents rentalTransactionEventList(List<RentalTransactionEvent> rentalTransactionEventList) {
         this.rentalTransactionEventList = rentalTransactionEventList;
         return this;
     }
 
+    public FinancialEvents addRentalTransactionEventListItem(RentalTransactionEvent rentalTransactionEventListItem) {
+        if (this.rentalTransactionEventList == null) {
+            this.rentalTransactionEventList = new ArrayList<>();
+        }
+        this.rentalTransactionEventList.add(rentalTransactionEventListItem);
+        return this;
+    }
+
     /**
-     * Get rentalTransactionEventList
+     * A list of rental transaction event information.
      *
      * @return rentalTransactionEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RentalTransactionEventList getRentalTransactionEventList() {
+    @javax.annotation.Nullable public List<RentalTransactionEvent> getRentalTransactionEventList() {
         return rentalTransactionEventList;
     }
 
-    public void setRentalTransactionEventList(RentalTransactionEventList rentalTransactionEventList) {
+    public void setRentalTransactionEventList(List<RentalTransactionEvent> rentalTransactionEventList) {
         this.rentalTransactionEventList = rentalTransactionEventList;
     }
 
-    public FinancialEvents productAdsPaymentEventList(ProductAdsPaymentEventList productAdsPaymentEventList) {
+    public FinancialEvents productAdsPaymentEventList(List<ProductAdsPaymentEvent> productAdsPaymentEventList) {
         this.productAdsPaymentEventList = productAdsPaymentEventList;
         return this;
     }
 
+    public FinancialEvents addProductAdsPaymentEventListItem(ProductAdsPaymentEvent productAdsPaymentEventListItem) {
+        if (this.productAdsPaymentEventList == null) {
+            this.productAdsPaymentEventList = new ArrayList<>();
+        }
+        this.productAdsPaymentEventList.add(productAdsPaymentEventListItem);
+        return this;
+    }
+
     /**
-     * Get productAdsPaymentEventList
+     * A list of sponsored products payment events.
      *
      * @return productAdsPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ProductAdsPaymentEventList getProductAdsPaymentEventList() {
+    @javax.annotation.Nullable public List<ProductAdsPaymentEvent> getProductAdsPaymentEventList() {
         return productAdsPaymentEventList;
     }
 
-    public void setProductAdsPaymentEventList(ProductAdsPaymentEventList productAdsPaymentEventList) {
+    public void setProductAdsPaymentEventList(List<ProductAdsPaymentEvent> productAdsPaymentEventList) {
         this.productAdsPaymentEventList = productAdsPaymentEventList;
     }
 
-    public FinancialEvents serviceFeeEventList(ServiceFeeEventList serviceFeeEventList) {
+    public FinancialEvents serviceFeeEventList(List<ServiceFeeEvent> serviceFeeEventList) {
         this.serviceFeeEventList = serviceFeeEventList;
         return this;
     }
 
+    public FinancialEvents addServiceFeeEventListItem(ServiceFeeEvent serviceFeeEventListItem) {
+        if (this.serviceFeeEventList == null) {
+            this.serviceFeeEventList = new ArrayList<>();
+        }
+        this.serviceFeeEventList.add(serviceFeeEventListItem);
+        return this;
+    }
+
     /**
-     * Get serviceFeeEventList
+     * A list of information about service fee events.
      *
      * @return serviceFeeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ServiceFeeEventList getServiceFeeEventList() {
+    @javax.annotation.Nullable public List<ServiceFeeEvent> getServiceFeeEventList() {
         return serviceFeeEventList;
     }
 
-    public void setServiceFeeEventList(ServiceFeeEventList serviceFeeEventList) {
+    public void setServiceFeeEventList(List<ServiceFeeEvent> serviceFeeEventList) {
         this.serviceFeeEventList = serviceFeeEventList;
     }
 
-    public FinancialEvents sellerDealPaymentEventList(SellerDealPaymentEventList sellerDealPaymentEventList) {
+    public FinancialEvents sellerDealPaymentEventList(List<SellerDealPaymentEvent> sellerDealPaymentEventList) {
         this.sellerDealPaymentEventList = sellerDealPaymentEventList;
         return this;
     }
 
+    public FinancialEvents addSellerDealPaymentEventListItem(SellerDealPaymentEvent sellerDealPaymentEventListItem) {
+        if (this.sellerDealPaymentEventList == null) {
+            this.sellerDealPaymentEventList = new ArrayList<>();
+        }
+        this.sellerDealPaymentEventList.add(sellerDealPaymentEventListItem);
+        return this;
+    }
+
     /**
-     * Get sellerDealPaymentEventList
+     * A list of payment events for deal-related fees.
      *
      * @return sellerDealPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellerDealPaymentEventList getSellerDealPaymentEventList() {
+    @javax.annotation.Nullable public List<SellerDealPaymentEvent> getSellerDealPaymentEventList() {
         return sellerDealPaymentEventList;
     }
 
-    public void setSellerDealPaymentEventList(SellerDealPaymentEventList sellerDealPaymentEventList) {
+    public void setSellerDealPaymentEventList(List<SellerDealPaymentEvent> sellerDealPaymentEventList) {
         this.sellerDealPaymentEventList = sellerDealPaymentEventList;
     }
 
-    public FinancialEvents debtRecoveryEventList(DebtRecoveryEventList debtRecoveryEventList) {
+    public FinancialEvents debtRecoveryEventList(List<DebtRecoveryEvent> debtRecoveryEventList) {
         this.debtRecoveryEventList = debtRecoveryEventList;
         return this;
     }
 
+    public FinancialEvents addDebtRecoveryEventListItem(DebtRecoveryEvent debtRecoveryEventListItem) {
+        if (this.debtRecoveryEventList == null) {
+            this.debtRecoveryEventList = new ArrayList<>();
+        }
+        this.debtRecoveryEventList.add(debtRecoveryEventListItem);
+        return this;
+    }
+
     /**
-     * Get debtRecoveryEventList
+     * A list of debt recovery event information.
      *
      * @return debtRecoveryEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DebtRecoveryEventList getDebtRecoveryEventList() {
+    @javax.annotation.Nullable public List<DebtRecoveryEvent> getDebtRecoveryEventList() {
         return debtRecoveryEventList;
     }
 
-    public void setDebtRecoveryEventList(DebtRecoveryEventList debtRecoveryEventList) {
+    public void setDebtRecoveryEventList(List<DebtRecoveryEvent> debtRecoveryEventList) {
         this.debtRecoveryEventList = debtRecoveryEventList;
     }
 
-    public FinancialEvents loanServicingEventList(LoanServicingEventList loanServicingEventList) {
+    public FinancialEvents loanServicingEventList(List<LoanServicingEvent> loanServicingEventList) {
         this.loanServicingEventList = loanServicingEventList;
         return this;
     }
 
+    public FinancialEvents addLoanServicingEventListItem(LoanServicingEvent loanServicingEventListItem) {
+        if (this.loanServicingEventList == null) {
+            this.loanServicingEventList = new ArrayList<>();
+        }
+        this.loanServicingEventList.add(loanServicingEventListItem);
+        return this;
+    }
+
     /**
-     * Get loanServicingEventList
+     * A list of loan servicing events.
      *
      * @return loanServicingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LoanServicingEventList getLoanServicingEventList() {
+    @javax.annotation.Nullable public List<LoanServicingEvent> getLoanServicingEventList() {
         return loanServicingEventList;
     }
 
-    public void setLoanServicingEventList(LoanServicingEventList loanServicingEventList) {
+    public void setLoanServicingEventList(List<LoanServicingEvent> loanServicingEventList) {
         this.loanServicingEventList = loanServicingEventList;
     }
 
-    public FinancialEvents adjustmentEventList(AdjustmentEventList adjustmentEventList) {
+    public FinancialEvents adjustmentEventList(List<AdjustmentEvent> adjustmentEventList) {
         this.adjustmentEventList = adjustmentEventList;
         return this;
     }
 
+    public FinancialEvents addAdjustmentEventListItem(AdjustmentEvent adjustmentEventListItem) {
+        if (this.adjustmentEventList == null) {
+            this.adjustmentEventList = new ArrayList<>();
+        }
+        this.adjustmentEventList.add(adjustmentEventListItem);
+        return this;
+    }
+
     /**
-     * Get adjustmentEventList
+     * A list of adjustment event information for the seller&#39;s account.
      *
      * @return adjustmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdjustmentEventList getAdjustmentEventList() {
+    @javax.annotation.Nullable public List<AdjustmentEvent> getAdjustmentEventList() {
         return adjustmentEventList;
     }
 
-    public void setAdjustmentEventList(AdjustmentEventList adjustmentEventList) {
+    public void setAdjustmentEventList(List<AdjustmentEvent> adjustmentEventList) {
         this.adjustmentEventList = adjustmentEventList;
     }
 
-    public FinancialEvents saFETReimbursementEventList(SAFETReimbursementEventList saFETReimbursementEventList) {
+    public FinancialEvents saFETReimbursementEventList(List<SAFETReimbursementEvent> saFETReimbursementEventList) {
         this.saFETReimbursementEventList = saFETReimbursementEventList;
         return this;
     }
 
+    public FinancialEvents addSaFETReimbursementEventListItem(SAFETReimbursementEvent saFETReimbursementEventListItem) {
+        if (this.saFETReimbursementEventList == null) {
+            this.saFETReimbursementEventList = new ArrayList<>();
+        }
+        this.saFETReimbursementEventList.add(saFETReimbursementEventListItem);
+        return this;
+    }
+
     /**
-     * Get saFETReimbursementEventList
+     * A list of &#x60;SAFETReimbursementEvent&#x60;.
      *
      * @return saFETReimbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SAFETReimbursementEventList getSaFETReimbursementEventList() {
+    @javax.annotation.Nullable public List<SAFETReimbursementEvent> getSaFETReimbursementEventList() {
         return saFETReimbursementEventList;
     }
 
-    public void setSaFETReimbursementEventList(SAFETReimbursementEventList saFETReimbursementEventList) {
+    public void setSaFETReimbursementEventList(List<SAFETReimbursementEvent> saFETReimbursementEventList) {
         this.saFETReimbursementEventList = saFETReimbursementEventList;
     }
 
     public FinancialEvents sellerReviewEnrollmentPaymentEventList(
-            SellerReviewEnrollmentPaymentEventList sellerReviewEnrollmentPaymentEventList) {
+            List<SellerReviewEnrollmentPaymentEvent> sellerReviewEnrollmentPaymentEventList) {
         this.sellerReviewEnrollmentPaymentEventList = sellerReviewEnrollmentPaymentEventList;
         return this;
     }
 
+    public FinancialEvents addSellerReviewEnrollmentPaymentEventListItem(
+            SellerReviewEnrollmentPaymentEvent sellerReviewEnrollmentPaymentEventListItem) {
+        if (this.sellerReviewEnrollmentPaymentEventList == null) {
+            this.sellerReviewEnrollmentPaymentEventList = new ArrayList<>();
+        }
+        this.sellerReviewEnrollmentPaymentEventList.add(sellerReviewEnrollmentPaymentEventListItem);
+        return this;
+    }
+
     /**
-     * Get sellerReviewEnrollmentPaymentEventList
+     * A list of information about fee events for the Early Reviewer Program.
      *
      * @return sellerReviewEnrollmentPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellerReviewEnrollmentPaymentEventList getSellerReviewEnrollmentPaymentEventList() {
+    @javax.annotation.Nullable public List<SellerReviewEnrollmentPaymentEvent> getSellerReviewEnrollmentPaymentEventList() {
         return sellerReviewEnrollmentPaymentEventList;
     }
 
     public void setSellerReviewEnrollmentPaymentEventList(
-            SellerReviewEnrollmentPaymentEventList sellerReviewEnrollmentPaymentEventList) {
+            List<SellerReviewEnrollmentPaymentEvent> sellerReviewEnrollmentPaymentEventList) {
         this.sellerReviewEnrollmentPaymentEventList = sellerReviewEnrollmentPaymentEventList;
     }
 
-    public FinancialEvents fbALiquidationEventList(FBALiquidationEventList fbALiquidationEventList) {
+    public FinancialEvents fbALiquidationEventList(List<FBALiquidationEvent> fbALiquidationEventList) {
         this.fbALiquidationEventList = fbALiquidationEventList;
         return this;
     }
 
+    public FinancialEvents addFbALiquidationEventListItem(FBALiquidationEvent fbALiquidationEventListItem) {
+        if (this.fbALiquidationEventList == null) {
+            this.fbALiquidationEventList = new ArrayList<>();
+        }
+        this.fbALiquidationEventList.add(fbALiquidationEventListItem);
+        return this;
+    }
+
     /**
-     * Get fbALiquidationEventList
+     * A list of FBA inventory liquidation payment events.
      *
      * @return fbALiquidationEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FBALiquidationEventList getFbALiquidationEventList() {
+    @javax.annotation.Nullable public List<FBALiquidationEvent> getFbALiquidationEventList() {
         return fbALiquidationEventList;
     }
 
-    public void setFbALiquidationEventList(FBALiquidationEventList fbALiquidationEventList) {
+    public void setFbALiquidationEventList(List<FBALiquidationEvent> fbALiquidationEventList) {
         this.fbALiquidationEventList = fbALiquidationEventList;
     }
 
-    public FinancialEvents couponPaymentEventList(CouponPaymentEventList couponPaymentEventList) {
+    public FinancialEvents couponPaymentEventList(List<CouponPaymentEvent> couponPaymentEventList) {
         this.couponPaymentEventList = couponPaymentEventList;
         return this;
     }
 
+    public FinancialEvents addCouponPaymentEventListItem(CouponPaymentEvent couponPaymentEventListItem) {
+        if (this.couponPaymentEventList == null) {
+            this.couponPaymentEventList = new ArrayList<>();
+        }
+        this.couponPaymentEventList.add(couponPaymentEventListItem);
+        return this;
+    }
+
     /**
-     * Get couponPaymentEventList
+     * A list of coupon payment event information.
      *
      * @return couponPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CouponPaymentEventList getCouponPaymentEventList() {
+    @javax.annotation.Nullable public List<CouponPaymentEvent> getCouponPaymentEventList() {
         return couponPaymentEventList;
     }
 
-    public void setCouponPaymentEventList(CouponPaymentEventList couponPaymentEventList) {
+    public void setCouponPaymentEventList(List<CouponPaymentEvent> couponPaymentEventList) {
         this.couponPaymentEventList = couponPaymentEventList;
     }
 
-    public FinancialEvents imagingServicesFeeEventList(ImagingServicesFeeEventList imagingServicesFeeEventList) {
+    public FinancialEvents imagingServicesFeeEventList(List<ImagingServicesFeeEvent> imagingServicesFeeEventList) {
         this.imagingServicesFeeEventList = imagingServicesFeeEventList;
         return this;
     }
 
+    public FinancialEvents addImagingServicesFeeEventListItem(ImagingServicesFeeEvent imagingServicesFeeEventListItem) {
+        if (this.imagingServicesFeeEventList == null) {
+            this.imagingServicesFeeEventList = new ArrayList<>();
+        }
+        this.imagingServicesFeeEventList.add(imagingServicesFeeEventListItem);
+        return this;
+    }
+
     /**
-     * Get imagingServicesFeeEventList
+     * A list of fee events related to Amazon Imaging services.
      *
      * @return imagingServicesFeeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ImagingServicesFeeEventList getImagingServicesFeeEventList() {
+    @javax.annotation.Nullable public List<ImagingServicesFeeEvent> getImagingServicesFeeEventList() {
         return imagingServicesFeeEventList;
     }
 
-    public void setImagingServicesFeeEventList(ImagingServicesFeeEventList imagingServicesFeeEventList) {
+    public void setImagingServicesFeeEventList(List<ImagingServicesFeeEvent> imagingServicesFeeEventList) {
         this.imagingServicesFeeEventList = imagingServicesFeeEventList;
     }
 
     public FinancialEvents networkComminglingTransactionEventList(
-            NetworkComminglingTransactionEventList networkComminglingTransactionEventList) {
+            List<NetworkComminglingTransactionEvent> networkComminglingTransactionEventList) {
         this.networkComminglingTransactionEventList = networkComminglingTransactionEventList;
         return this;
     }
 
+    public FinancialEvents addNetworkComminglingTransactionEventListItem(
+            NetworkComminglingTransactionEvent networkComminglingTransactionEventListItem) {
+        if (this.networkComminglingTransactionEventList == null) {
+            this.networkComminglingTransactionEventList = new ArrayList<>();
+        }
+        this.networkComminglingTransactionEventList.add(networkComminglingTransactionEventListItem);
+        return this;
+    }
+
     /**
-     * Get networkComminglingTransactionEventList
+     * A list of network commingling transaction events.
      *
      * @return networkComminglingTransactionEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public NetworkComminglingTransactionEventList getNetworkComminglingTransactionEventList() {
+    @javax.annotation.Nullable public List<NetworkComminglingTransactionEvent> getNetworkComminglingTransactionEventList() {
         return networkComminglingTransactionEventList;
     }
 
     public void setNetworkComminglingTransactionEventList(
-            NetworkComminglingTransactionEventList networkComminglingTransactionEventList) {
+            List<NetworkComminglingTransactionEvent> networkComminglingTransactionEventList) {
         this.networkComminglingTransactionEventList = networkComminglingTransactionEventList;
     }
 
-    public FinancialEvents affordabilityExpenseEventList(AffordabilityExpenseEventList affordabilityExpenseEventList) {
+    public FinancialEvents affordabilityExpenseEventList(
+            List<AffordabilityExpenseEvent> affordabilityExpenseEventList) {
         this.affordabilityExpenseEventList = affordabilityExpenseEventList;
         return this;
     }
 
+    public FinancialEvents addAffordabilityExpenseEventListItem(
+            AffordabilityExpenseEvent affordabilityExpenseEventListItem) {
+        if (this.affordabilityExpenseEventList == null) {
+            this.affordabilityExpenseEventList = new ArrayList<>();
+        }
+        this.affordabilityExpenseEventList.add(affordabilityExpenseEventListItem);
+        return this;
+    }
+
     /**
-     * Get affordabilityExpenseEventList
+     * A list of expense information related to an affordability promotion.
      *
      * @return affordabilityExpenseEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AffordabilityExpenseEventList getAffordabilityExpenseEventList() {
+    @javax.annotation.Nullable public List<AffordabilityExpenseEvent> getAffordabilityExpenseEventList() {
         return affordabilityExpenseEventList;
     }
 
-    public void setAffordabilityExpenseEventList(AffordabilityExpenseEventList affordabilityExpenseEventList) {
+    public void setAffordabilityExpenseEventList(List<AffordabilityExpenseEvent> affordabilityExpenseEventList) {
         this.affordabilityExpenseEventList = affordabilityExpenseEventList;
     }
 
     public FinancialEvents affordabilityExpenseReversalEventList(
-            AffordabilityExpenseEventList affordabilityExpenseReversalEventList) {
+            List<AffordabilityExpenseEvent> affordabilityExpenseReversalEventList) {
         this.affordabilityExpenseReversalEventList = affordabilityExpenseReversalEventList;
         return this;
     }
 
+    public FinancialEvents addAffordabilityExpenseReversalEventListItem(
+            AffordabilityExpenseEvent affordabilityExpenseReversalEventListItem) {
+        if (this.affordabilityExpenseReversalEventList == null) {
+            this.affordabilityExpenseReversalEventList = new ArrayList<>();
+        }
+        this.affordabilityExpenseReversalEventList.add(affordabilityExpenseReversalEventListItem);
+        return this;
+    }
+
     /**
-     * Get affordabilityExpenseReversalEventList
+     * A list of expense information related to an affordability promotion.
      *
      * @return affordabilityExpenseReversalEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AffordabilityExpenseEventList getAffordabilityExpenseReversalEventList() {
+    @javax.annotation.Nullable public List<AffordabilityExpenseEvent> getAffordabilityExpenseReversalEventList() {
         return affordabilityExpenseReversalEventList;
     }
 
     public void setAffordabilityExpenseReversalEventList(
-            AffordabilityExpenseEventList affordabilityExpenseReversalEventList) {
+            List<AffordabilityExpenseEvent> affordabilityExpenseReversalEventList) {
         this.affordabilityExpenseReversalEventList = affordabilityExpenseReversalEventList;
     }
 
-    public FinancialEvents removalShipmentEventList(RemovalShipmentEventList removalShipmentEventList) {
+    public FinancialEvents removalShipmentEventList(List<RemovalShipmentEvent> removalShipmentEventList) {
         this.removalShipmentEventList = removalShipmentEventList;
         return this;
     }
 
+    public FinancialEvents addRemovalShipmentEventListItem(RemovalShipmentEvent removalShipmentEventListItem) {
+        if (this.removalShipmentEventList == null) {
+            this.removalShipmentEventList = new ArrayList<>();
+        }
+        this.removalShipmentEventList.add(removalShipmentEventListItem);
+        return this;
+    }
+
     /**
-     * Get removalShipmentEventList
+     * A list of removal shipment event information.
      *
      * @return removalShipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RemovalShipmentEventList getRemovalShipmentEventList() {
+    @javax.annotation.Nullable public List<RemovalShipmentEvent> getRemovalShipmentEventList() {
         return removalShipmentEventList;
     }
 
-    public void setRemovalShipmentEventList(RemovalShipmentEventList removalShipmentEventList) {
+    public void setRemovalShipmentEventList(List<RemovalShipmentEvent> removalShipmentEventList) {
         this.removalShipmentEventList = removalShipmentEventList;
     }
 
     public FinancialEvents removalShipmentAdjustmentEventList(
-            RemovalShipmentAdjustmentEventList removalShipmentAdjustmentEventList) {
+            List<RemovalShipmentAdjustmentEvent> removalShipmentAdjustmentEventList) {
         this.removalShipmentAdjustmentEventList = removalShipmentAdjustmentEventList;
         return this;
     }
 
+    public FinancialEvents addRemovalShipmentAdjustmentEventListItem(
+            RemovalShipmentAdjustmentEvent removalShipmentAdjustmentEventListItem) {
+        if (this.removalShipmentAdjustmentEventList == null) {
+            this.removalShipmentAdjustmentEventList = new ArrayList<>();
+        }
+        this.removalShipmentAdjustmentEventList.add(removalShipmentAdjustmentEventListItem);
+        return this;
+    }
+
     /**
-     * Get removalShipmentAdjustmentEventList
+     * A comma-delimited list of &#x60;RemovalShipmentAdjustment&#x60; details for FBA inventory.
      *
      * @return removalShipmentAdjustmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RemovalShipmentAdjustmentEventList getRemovalShipmentAdjustmentEventList() {
+    @javax.annotation.Nullable public List<RemovalShipmentAdjustmentEvent> getRemovalShipmentAdjustmentEventList() {
         return removalShipmentAdjustmentEventList;
     }
 
     public void setRemovalShipmentAdjustmentEventList(
-            RemovalShipmentAdjustmentEventList removalShipmentAdjustmentEventList) {
+            List<RemovalShipmentAdjustmentEvent> removalShipmentAdjustmentEventList) {
         this.removalShipmentAdjustmentEventList = removalShipmentAdjustmentEventList;
     }
 
-    public FinancialEvents trialShipmentEventList(TrialShipmentEventList trialShipmentEventList) {
+    public FinancialEvents trialShipmentEventList(List<TrialShipmentEvent> trialShipmentEventList) {
         this.trialShipmentEventList = trialShipmentEventList;
         return this;
     }
 
+    public FinancialEvents addTrialShipmentEventListItem(TrialShipmentEvent trialShipmentEventListItem) {
+        if (this.trialShipmentEventList == null) {
+            this.trialShipmentEventList = new ArrayList<>();
+        }
+        this.trialShipmentEventList.add(trialShipmentEventListItem);
+        return this;
+    }
+
     /**
-     * Get trialShipmentEventList
+     * A list of information about trial shipment financial events.
      *
      * @return trialShipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrialShipmentEventList getTrialShipmentEventList() {
+    @javax.annotation.Nullable public List<TrialShipmentEvent> getTrialShipmentEventList() {
         return trialShipmentEventList;
     }
 
-    public void setTrialShipmentEventList(TrialShipmentEventList trialShipmentEventList) {
+    public void setTrialShipmentEventList(List<TrialShipmentEvent> trialShipmentEventList) {
         this.trialShipmentEventList = trialShipmentEventList;
     }
 
-    public FinancialEvents tdSReimbursementEventList(TDSReimbursementEventList tdSReimbursementEventList) {
+    public FinancialEvents tdSReimbursementEventList(List<TDSReimbursementEvent> tdSReimbursementEventList) {
         this.tdSReimbursementEventList = tdSReimbursementEventList;
         return this;
     }
 
+    public FinancialEvents addTdSReimbursementEventListItem(TDSReimbursementEvent tdSReimbursementEventListItem) {
+        if (this.tdSReimbursementEventList == null) {
+            this.tdSReimbursementEventList = new ArrayList<>();
+        }
+        this.tdSReimbursementEventList.add(tdSReimbursementEventListItem);
+        return this;
+    }
+
     /**
-     * Get tdSReimbursementEventList
+     * A list of &#x60;TDSReimbursementEvent&#x60; items.
      *
      * @return tdSReimbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TDSReimbursementEventList getTdSReimbursementEventList() {
+    @javax.annotation.Nullable public List<TDSReimbursementEvent> getTdSReimbursementEventList() {
         return tdSReimbursementEventList;
     }
 
-    public void setTdSReimbursementEventList(TDSReimbursementEventList tdSReimbursementEventList) {
+    public void setTdSReimbursementEventList(List<TDSReimbursementEvent> tdSReimbursementEventList) {
         this.tdSReimbursementEventList = tdSReimbursementEventList;
     }
 
-    public FinancialEvents adhocDisbursementEventList(AdhocDisbursementEventList adhocDisbursementEventList) {
+    public FinancialEvents adhocDisbursementEventList(List<AdhocDisbursementEvent> adhocDisbursementEventList) {
         this.adhocDisbursementEventList = adhocDisbursementEventList;
         return this;
     }
 
+    public FinancialEvents addAdhocDisbursementEventListItem(AdhocDisbursementEvent adhocDisbursementEventListItem) {
+        if (this.adhocDisbursementEventList == null) {
+            this.adhocDisbursementEventList = new ArrayList<>();
+        }
+        this.adhocDisbursementEventList.add(adhocDisbursementEventListItem);
+        return this;
+    }
+
     /**
-     * Get adhocDisbursementEventList
+     * A list of &#x60;AdhocDisbursement&#x60; events.
      *
      * @return adhocDisbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdhocDisbursementEventList getAdhocDisbursementEventList() {
+    @javax.annotation.Nullable public List<AdhocDisbursementEvent> getAdhocDisbursementEventList() {
         return adhocDisbursementEventList;
     }
 
-    public void setAdhocDisbursementEventList(AdhocDisbursementEventList adhocDisbursementEventList) {
+    public void setAdhocDisbursementEventList(List<AdhocDisbursementEvent> adhocDisbursementEventList) {
         this.adhocDisbursementEventList = adhocDisbursementEventList;
     }
 
-    public FinancialEvents taxWithholdingEventList(TaxWithholdingEventList taxWithholdingEventList) {
+    public FinancialEvents taxWithholdingEventList(List<TaxWithholdingEvent> taxWithholdingEventList) {
         this.taxWithholdingEventList = taxWithholdingEventList;
         return this;
     }
 
+    public FinancialEvents addTaxWithholdingEventListItem(TaxWithholdingEvent taxWithholdingEventListItem) {
+        if (this.taxWithholdingEventList == null) {
+            this.taxWithholdingEventList = new ArrayList<>();
+        }
+        this.taxWithholdingEventList.add(taxWithholdingEventListItem);
+        return this;
+    }
+
     /**
-     * Get taxWithholdingEventList
+     * A list of tax withholding events.
      *
      * @return taxWithholdingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithholdingEventList getTaxWithholdingEventList() {
+    @javax.annotation.Nullable public List<TaxWithholdingEvent> getTaxWithholdingEventList() {
         return taxWithholdingEventList;
     }
 
-    public void setTaxWithholdingEventList(TaxWithholdingEventList taxWithholdingEventList) {
+    public void setTaxWithholdingEventList(List<TaxWithholdingEvent> taxWithholdingEventList) {
         this.taxWithholdingEventList = taxWithholdingEventList;
     }
 
-    public FinancialEvents chargeRefundEventList(ChargeRefundEventList chargeRefundEventList) {
+    public FinancialEvents chargeRefundEventList(List<ChargeRefundEvent> chargeRefundEventList) {
         this.chargeRefundEventList = chargeRefundEventList;
         return this;
     }
 
+    public FinancialEvents addChargeRefundEventListItem(ChargeRefundEvent chargeRefundEventListItem) {
+        if (this.chargeRefundEventList == null) {
+            this.chargeRefundEventList = new ArrayList<>();
+        }
+        this.chargeRefundEventList.add(chargeRefundEventListItem);
+        return this;
+    }
+
     /**
-     * Get chargeRefundEventList
+     * A list of charge refund events.
      *
      * @return chargeRefundEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeRefundEventList getChargeRefundEventList() {
+    @javax.annotation.Nullable public List<ChargeRefundEvent> getChargeRefundEventList() {
         return chargeRefundEventList;
     }
 
-    public void setChargeRefundEventList(ChargeRefundEventList chargeRefundEventList) {
+    public void setChargeRefundEventList(List<ChargeRefundEvent> chargeRefundEventList) {
         this.chargeRefundEventList = chargeRefundEventList;
     }
 
     public FinancialEvents failedAdhocDisbursementEventList(
-            FailedAdhocDisbursementEventList failedAdhocDisbursementEventList) {
+            List<FailedAdhocDisbursementEvent> failedAdhocDisbursementEventList) {
         this.failedAdhocDisbursementEventList = failedAdhocDisbursementEventList;
         return this;
     }
 
+    public FinancialEvents addFailedAdhocDisbursementEventListItem(
+            FailedAdhocDisbursementEvent failedAdhocDisbursementEventListItem) {
+        if (this.failedAdhocDisbursementEventList == null) {
+            this.failedAdhocDisbursementEventList = new ArrayList<>();
+        }
+        this.failedAdhocDisbursementEventList.add(failedAdhocDisbursementEventListItem);
+        return this;
+    }
+
     /**
-     * Get failedAdhocDisbursementEventList
+     * A list of &#x60;FailedAdhocDisbursementEvent&#x60;.
      *
      * @return failedAdhocDisbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FailedAdhocDisbursementEventList getFailedAdhocDisbursementEventList() {
+    @javax.annotation.Nullable public List<FailedAdhocDisbursementEvent> getFailedAdhocDisbursementEventList() {
         return failedAdhocDisbursementEventList;
     }
 
-    public void setFailedAdhocDisbursementEventList(FailedAdhocDisbursementEventList failedAdhocDisbursementEventList) {
+    public void setFailedAdhocDisbursementEventList(
+            List<FailedAdhocDisbursementEvent> failedAdhocDisbursementEventList) {
         this.failedAdhocDisbursementEventList = failedAdhocDisbursementEventList;
     }
 
     public FinancialEvents valueAddedServiceChargeEventList(
-            ValueAddedServiceChargeEventList valueAddedServiceChargeEventList) {
+            List<ValueAddedServiceChargeEvent> valueAddedServiceChargeEventList) {
         this.valueAddedServiceChargeEventList = valueAddedServiceChargeEventList;
         return this;
     }
 
+    public FinancialEvents addValueAddedServiceChargeEventListItem(
+            ValueAddedServiceChargeEvent valueAddedServiceChargeEventListItem) {
+        if (this.valueAddedServiceChargeEventList == null) {
+            this.valueAddedServiceChargeEventList = new ArrayList<>();
+        }
+        this.valueAddedServiceChargeEventList.add(valueAddedServiceChargeEventListItem);
+        return this;
+    }
+
     /**
-     * Get valueAddedServiceChargeEventList
+     * A list of &#x60;ValueAddedServiceCharge&#x60; events.
      *
      * @return valueAddedServiceChargeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ValueAddedServiceChargeEventList getValueAddedServiceChargeEventList() {
+    @javax.annotation.Nullable public List<ValueAddedServiceChargeEvent> getValueAddedServiceChargeEventList() {
         return valueAddedServiceChargeEventList;
     }
 
-    public void setValueAddedServiceChargeEventList(ValueAddedServiceChargeEventList valueAddedServiceChargeEventList) {
+    public void setValueAddedServiceChargeEventList(
+            List<ValueAddedServiceChargeEvent> valueAddedServiceChargeEventList) {
         this.valueAddedServiceChargeEventList = valueAddedServiceChargeEventList;
     }
 
     public FinancialEvents capacityReservationBillingEventList(
-            CapacityReservationBillingEventList capacityReservationBillingEventList) {
+            List<CapacityReservationBillingEvent> capacityReservationBillingEventList) {
         this.capacityReservationBillingEventList = capacityReservationBillingEventList;
         return this;
     }
 
+    public FinancialEvents addCapacityReservationBillingEventListItem(
+            CapacityReservationBillingEvent capacityReservationBillingEventListItem) {
+        if (this.capacityReservationBillingEventList == null) {
+            this.capacityReservationBillingEventList = new ArrayList<>();
+        }
+        this.capacityReservationBillingEventList.add(capacityReservationBillingEventListItem);
+        return this;
+    }
+
     /**
-     * Get capacityReservationBillingEventList
+     * A list of &#x60;CapacityReservationBillingEvent&#x60; events.
      *
      * @return capacityReservationBillingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CapacityReservationBillingEventList getCapacityReservationBillingEventList() {
+    @javax.annotation.Nullable public List<CapacityReservationBillingEvent> getCapacityReservationBillingEventList() {
         return capacityReservationBillingEventList;
     }
 
     public void setCapacityReservationBillingEventList(
-            CapacityReservationBillingEventList capacityReservationBillingEventList) {
+            List<CapacityReservationBillingEvent> capacityReservationBillingEventList) {
         this.capacityReservationBillingEventList = capacityReservationBillingEventList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -987,10 +1334,761 @@ public class FinancialEvents {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentEventList");
+        openapiFields.add("ShipmentSettleEventList");
+        openapiFields.add("RefundEventList");
+        openapiFields.add("GuaranteeClaimEventList");
+        openapiFields.add("EBTRefundReimbursementOnlyEventList");
+        openapiFields.add("ChargebackEventList");
+        openapiFields.add("PayWithAmazonEventList");
+        openapiFields.add("ServiceProviderCreditEventList");
+        openapiFields.add("RetrochargeEventList");
+        openapiFields.add("RentalTransactionEventList");
+        openapiFields.add("ProductAdsPaymentEventList");
+        openapiFields.add("ServiceFeeEventList");
+        openapiFields.add("SellerDealPaymentEventList");
+        openapiFields.add("DebtRecoveryEventList");
+        openapiFields.add("LoanServicingEventList");
+        openapiFields.add("AdjustmentEventList");
+        openapiFields.add("SAFETReimbursementEventList");
+        openapiFields.add("SellerReviewEnrollmentPaymentEventList");
+        openapiFields.add("FBALiquidationEventList");
+        openapiFields.add("CouponPaymentEventList");
+        openapiFields.add("ImagingServicesFeeEventList");
+        openapiFields.add("NetworkComminglingTransactionEventList");
+        openapiFields.add("AffordabilityExpenseEventList");
+        openapiFields.add("AffordabilityExpenseReversalEventList");
+        openapiFields.add("RemovalShipmentEventList");
+        openapiFields.add("RemovalShipmentAdjustmentEventList");
+        openapiFields.add("TrialShipmentEventList");
+        openapiFields.add("TDSReimbursementEventList");
+        openapiFields.add("AdhocDisbursementEventList");
+        openapiFields.add("TaxWithholdingEventList");
+        openapiFields.add("ChargeRefundEventList");
+        openapiFields.add("FailedAdhocDisbursementEventList");
+        openapiFields.add("ValueAddedServiceChargeEventList");
+        openapiFields.add("CapacityReservationBillingEventList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FinancialEvents
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FinancialEvents.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FinancialEvents is not found in the empty JSON string",
+                        FinancialEvents.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FinancialEvents.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FinancialEvents` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("ShipmentEventList") != null
+                && !jsonObj.get("ShipmentEventList").isJsonNull()) {
+            JsonArray jsonArrayshipmentEventList = jsonObj.getAsJsonArray("ShipmentEventList");
+            if (jsonArrayshipmentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentEventList").toString()));
+                }
+
+                // validate the optional field `ShipmentEventList` (array)
+                for (int i = 0; i < jsonArrayshipmentEventList.size(); i++) {
+                    ShipmentEvent.validateJsonElement(jsonArrayshipmentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ShipmentSettleEventList") != null
+                && !jsonObj.get("ShipmentSettleEventList").isJsonNull()) {
+            JsonArray jsonArrayshipmentSettleEventList = jsonObj.getAsJsonArray("ShipmentSettleEventList");
+            if (jsonArrayshipmentSettleEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentSettleEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentSettleEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentSettleEventList").toString()));
+                }
+
+                // validate the optional field `ShipmentSettleEventList` (array)
+                for (int i = 0; i < jsonArrayshipmentSettleEventList.size(); i++) {
+                    ShipmentEvent.validateJsonElement(jsonArrayshipmentSettleEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RefundEventList") != null
+                && !jsonObj.get("RefundEventList").isJsonNull()) {
+            JsonArray jsonArrayrefundEventList = jsonObj.getAsJsonArray("RefundEventList");
+            if (jsonArrayrefundEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RefundEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RefundEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RefundEventList").toString()));
+                }
+
+                // validate the optional field `RefundEventList` (array)
+                for (int i = 0; i < jsonArrayrefundEventList.size(); i++) {
+                    ShipmentEvent.validateJsonElement(jsonArrayrefundEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("GuaranteeClaimEventList") != null
+                && !jsonObj.get("GuaranteeClaimEventList").isJsonNull()) {
+            JsonArray jsonArrayguaranteeClaimEventList = jsonObj.getAsJsonArray("GuaranteeClaimEventList");
+            if (jsonArrayguaranteeClaimEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("GuaranteeClaimEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `GuaranteeClaimEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("GuaranteeClaimEventList").toString()));
+                }
+
+                // validate the optional field `GuaranteeClaimEventList` (array)
+                for (int i = 0; i < jsonArrayguaranteeClaimEventList.size(); i++) {
+                    ShipmentEvent.validateJsonElement(jsonArrayguaranteeClaimEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("EBTRefundReimbursementOnlyEventList") != null
+                && !jsonObj.get("EBTRefundReimbursementOnlyEventList").isJsonNull()) {
+            JsonArray jsonArrayebTRefundReimbursementOnlyEventList =
+                    jsonObj.getAsJsonArray("EBTRefundReimbursementOnlyEventList");
+            if (jsonArrayebTRefundReimbursementOnlyEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("EBTRefundReimbursementOnlyEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `EBTRefundReimbursementOnlyEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("EBTRefundReimbursementOnlyEventList").toString()));
+                }
+
+                // validate the optional field `EBTRefundReimbursementOnlyEventList` (array)
+                for (int i = 0; i < jsonArrayebTRefundReimbursementOnlyEventList.size(); i++) {
+                    EBTRefundReimbursementOnlyEvent.validateJsonElement(
+                            jsonArrayebTRefundReimbursementOnlyEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ChargebackEventList") != null
+                && !jsonObj.get("ChargebackEventList").isJsonNull()) {
+            JsonArray jsonArraychargebackEventList = jsonObj.getAsJsonArray("ChargebackEventList");
+            if (jsonArraychargebackEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargebackEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargebackEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargebackEventList").toString()));
+                }
+
+                // validate the optional field `ChargebackEventList` (array)
+                for (int i = 0; i < jsonArraychargebackEventList.size(); i++) {
+                    ShipmentEvent.validateJsonElement(jsonArraychargebackEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("PayWithAmazonEventList") != null
+                && !jsonObj.get("PayWithAmazonEventList").isJsonNull()) {
+            JsonArray jsonArraypayWithAmazonEventList = jsonObj.getAsJsonArray("PayWithAmazonEventList");
+            if (jsonArraypayWithAmazonEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("PayWithAmazonEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `PayWithAmazonEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("PayWithAmazonEventList").toString()));
+                }
+
+                // validate the optional field `PayWithAmazonEventList` (array)
+                for (int i = 0; i < jsonArraypayWithAmazonEventList.size(); i++) {
+                    PayWithAmazonEvent.validateJsonElement(jsonArraypayWithAmazonEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ServiceProviderCreditEventList") != null
+                && !jsonObj.get("ServiceProviderCreditEventList").isJsonNull()) {
+            JsonArray jsonArrayserviceProviderCreditEventList =
+                    jsonObj.getAsJsonArray("ServiceProviderCreditEventList");
+            if (jsonArrayserviceProviderCreditEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ServiceProviderCreditEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ServiceProviderCreditEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ServiceProviderCreditEventList").toString()));
+                }
+
+                // validate the optional field `ServiceProviderCreditEventList` (array)
+                for (int i = 0; i < jsonArrayserviceProviderCreditEventList.size(); i++) {
+                    SolutionProviderCreditEvent.validateJsonElement(jsonArrayserviceProviderCreditEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RetrochargeEventList") != null
+                && !jsonObj.get("RetrochargeEventList").isJsonNull()) {
+            JsonArray jsonArrayretrochargeEventList = jsonObj.getAsJsonArray("RetrochargeEventList");
+            if (jsonArrayretrochargeEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RetrochargeEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RetrochargeEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RetrochargeEventList").toString()));
+                }
+
+                // validate the optional field `RetrochargeEventList` (array)
+                for (int i = 0; i < jsonArrayretrochargeEventList.size(); i++) {
+                    RetrochargeEvent.validateJsonElement(jsonArrayretrochargeEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RentalTransactionEventList") != null
+                && !jsonObj.get("RentalTransactionEventList").isJsonNull()) {
+            JsonArray jsonArrayrentalTransactionEventList = jsonObj.getAsJsonArray("RentalTransactionEventList");
+            if (jsonArrayrentalTransactionEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalTransactionEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalTransactionEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalTransactionEventList").toString()));
+                }
+
+                // validate the optional field `RentalTransactionEventList` (array)
+                for (int i = 0; i < jsonArrayrentalTransactionEventList.size(); i++) {
+                    RentalTransactionEvent.validateJsonElement(jsonArrayrentalTransactionEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ProductAdsPaymentEventList") != null
+                && !jsonObj.get("ProductAdsPaymentEventList").isJsonNull()) {
+            JsonArray jsonArrayproductAdsPaymentEventList = jsonObj.getAsJsonArray("ProductAdsPaymentEventList");
+            if (jsonArrayproductAdsPaymentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ProductAdsPaymentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ProductAdsPaymentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ProductAdsPaymentEventList").toString()));
+                }
+
+                // validate the optional field `ProductAdsPaymentEventList` (array)
+                for (int i = 0; i < jsonArrayproductAdsPaymentEventList.size(); i++) {
+                    ProductAdsPaymentEvent.validateJsonElement(jsonArrayproductAdsPaymentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ServiceFeeEventList") != null
+                && !jsonObj.get("ServiceFeeEventList").isJsonNull()) {
+            JsonArray jsonArrayserviceFeeEventList = jsonObj.getAsJsonArray("ServiceFeeEventList");
+            if (jsonArrayserviceFeeEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ServiceFeeEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ServiceFeeEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ServiceFeeEventList").toString()));
+                }
+
+                // validate the optional field `ServiceFeeEventList` (array)
+                for (int i = 0; i < jsonArrayserviceFeeEventList.size(); i++) {
+                    ServiceFeeEvent.validateJsonElement(jsonArrayserviceFeeEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("SellerDealPaymentEventList") != null
+                && !jsonObj.get("SellerDealPaymentEventList").isJsonNull()) {
+            JsonArray jsonArraysellerDealPaymentEventList = jsonObj.getAsJsonArray("SellerDealPaymentEventList");
+            if (jsonArraysellerDealPaymentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SellerDealPaymentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SellerDealPaymentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SellerDealPaymentEventList").toString()));
+                }
+
+                // validate the optional field `SellerDealPaymentEventList` (array)
+                for (int i = 0; i < jsonArraysellerDealPaymentEventList.size(); i++) {
+                    SellerDealPaymentEvent.validateJsonElement(jsonArraysellerDealPaymentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("DebtRecoveryEventList") != null
+                && !jsonObj.get("DebtRecoveryEventList").isJsonNull()) {
+            JsonArray jsonArraydebtRecoveryEventList = jsonObj.getAsJsonArray("DebtRecoveryEventList");
+            if (jsonArraydebtRecoveryEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("DebtRecoveryEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `DebtRecoveryEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("DebtRecoveryEventList").toString()));
+                }
+
+                // validate the optional field `DebtRecoveryEventList` (array)
+                for (int i = 0; i < jsonArraydebtRecoveryEventList.size(); i++) {
+                    DebtRecoveryEvent.validateJsonElement(jsonArraydebtRecoveryEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("LoanServicingEventList") != null
+                && !jsonObj.get("LoanServicingEventList").isJsonNull()) {
+            JsonArray jsonArrayloanServicingEventList = jsonObj.getAsJsonArray("LoanServicingEventList");
+            if (jsonArrayloanServicingEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("LoanServicingEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `LoanServicingEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("LoanServicingEventList").toString()));
+                }
+
+                // validate the optional field `LoanServicingEventList` (array)
+                for (int i = 0; i < jsonArrayloanServicingEventList.size(); i++) {
+                    LoanServicingEvent.validateJsonElement(jsonArrayloanServicingEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("AdjustmentEventList") != null
+                && !jsonObj.get("AdjustmentEventList").isJsonNull()) {
+            JsonArray jsonArrayadjustmentEventList = jsonObj.getAsJsonArray("AdjustmentEventList");
+            if (jsonArrayadjustmentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AdjustmentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AdjustmentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AdjustmentEventList").toString()));
+                }
+
+                // validate the optional field `AdjustmentEventList` (array)
+                for (int i = 0; i < jsonArrayadjustmentEventList.size(); i++) {
+                    AdjustmentEvent.validateJsonElement(jsonArrayadjustmentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("SAFETReimbursementEventList") != null
+                && !jsonObj.get("SAFETReimbursementEventList").isJsonNull()) {
+            JsonArray jsonArraysaFETReimbursementEventList = jsonObj.getAsJsonArray("SAFETReimbursementEventList");
+            if (jsonArraysaFETReimbursementEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SAFETReimbursementEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SAFETReimbursementEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SAFETReimbursementEventList").toString()));
+                }
+
+                // validate the optional field `SAFETReimbursementEventList` (array)
+                for (int i = 0; i < jsonArraysaFETReimbursementEventList.size(); i++) {
+                    SAFETReimbursementEvent.validateJsonElement(jsonArraysaFETReimbursementEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("SellerReviewEnrollmentPaymentEventList") != null
+                && !jsonObj.get("SellerReviewEnrollmentPaymentEventList").isJsonNull()) {
+            JsonArray jsonArraysellerReviewEnrollmentPaymentEventList =
+                    jsonObj.getAsJsonArray("SellerReviewEnrollmentPaymentEventList");
+            if (jsonArraysellerReviewEnrollmentPaymentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SellerReviewEnrollmentPaymentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SellerReviewEnrollmentPaymentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SellerReviewEnrollmentPaymentEventList")
+                                    .toString()));
+                }
+
+                // validate the optional field `SellerReviewEnrollmentPaymentEventList` (array)
+                for (int i = 0; i < jsonArraysellerReviewEnrollmentPaymentEventList.size(); i++) {
+                    SellerReviewEnrollmentPaymentEvent.validateJsonElement(
+                            jsonArraysellerReviewEnrollmentPaymentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("FBALiquidationEventList") != null
+                && !jsonObj.get("FBALiquidationEventList").isJsonNull()) {
+            JsonArray jsonArrayfbALiquidationEventList = jsonObj.getAsJsonArray("FBALiquidationEventList");
+            if (jsonArrayfbALiquidationEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FBALiquidationEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FBALiquidationEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FBALiquidationEventList").toString()));
+                }
+
+                // validate the optional field `FBALiquidationEventList` (array)
+                for (int i = 0; i < jsonArrayfbALiquidationEventList.size(); i++) {
+                    FBALiquidationEvent.validateJsonElement(jsonArrayfbALiquidationEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("CouponPaymentEventList") != null
+                && !jsonObj.get("CouponPaymentEventList").isJsonNull()) {
+            JsonArray jsonArraycouponPaymentEventList = jsonObj.getAsJsonArray("CouponPaymentEventList");
+            if (jsonArraycouponPaymentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("CouponPaymentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `CouponPaymentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("CouponPaymentEventList").toString()));
+                }
+
+                // validate the optional field `CouponPaymentEventList` (array)
+                for (int i = 0; i < jsonArraycouponPaymentEventList.size(); i++) {
+                    CouponPaymentEvent.validateJsonElement(jsonArraycouponPaymentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ImagingServicesFeeEventList") != null
+                && !jsonObj.get("ImagingServicesFeeEventList").isJsonNull()) {
+            JsonArray jsonArrayimagingServicesFeeEventList = jsonObj.getAsJsonArray("ImagingServicesFeeEventList");
+            if (jsonArrayimagingServicesFeeEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ImagingServicesFeeEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ImagingServicesFeeEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ImagingServicesFeeEventList").toString()));
+                }
+
+                // validate the optional field `ImagingServicesFeeEventList` (array)
+                for (int i = 0; i < jsonArrayimagingServicesFeeEventList.size(); i++) {
+                    ImagingServicesFeeEvent.validateJsonElement(jsonArrayimagingServicesFeeEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("NetworkComminglingTransactionEventList") != null
+                && !jsonObj.get("NetworkComminglingTransactionEventList").isJsonNull()) {
+            JsonArray jsonArraynetworkComminglingTransactionEventList =
+                    jsonObj.getAsJsonArray("NetworkComminglingTransactionEventList");
+            if (jsonArraynetworkComminglingTransactionEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("NetworkComminglingTransactionEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `NetworkComminglingTransactionEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("NetworkComminglingTransactionEventList")
+                                    .toString()));
+                }
+
+                // validate the optional field `NetworkComminglingTransactionEventList` (array)
+                for (int i = 0; i < jsonArraynetworkComminglingTransactionEventList.size(); i++) {
+                    NetworkComminglingTransactionEvent.validateJsonElement(
+                            jsonArraynetworkComminglingTransactionEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("AffordabilityExpenseEventList") != null
+                && !jsonObj.get("AffordabilityExpenseEventList").isJsonNull()) {
+            JsonArray jsonArrayaffordabilityExpenseEventList = jsonObj.getAsJsonArray("AffordabilityExpenseEventList");
+            if (jsonArrayaffordabilityExpenseEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AffordabilityExpenseEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AffordabilityExpenseEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AffordabilityExpenseEventList").toString()));
+                }
+
+                // validate the optional field `AffordabilityExpenseEventList` (array)
+                for (int i = 0; i < jsonArrayaffordabilityExpenseEventList.size(); i++) {
+                    AffordabilityExpenseEvent.validateJsonElement(jsonArrayaffordabilityExpenseEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("AffordabilityExpenseReversalEventList") != null
+                && !jsonObj.get("AffordabilityExpenseReversalEventList").isJsonNull()) {
+            JsonArray jsonArrayaffordabilityExpenseReversalEventList =
+                    jsonObj.getAsJsonArray("AffordabilityExpenseReversalEventList");
+            if (jsonArrayaffordabilityExpenseReversalEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AffordabilityExpenseReversalEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AffordabilityExpenseReversalEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AffordabilityExpenseReversalEventList").toString()));
+                }
+
+                // validate the optional field `AffordabilityExpenseReversalEventList` (array)
+                for (int i = 0; i < jsonArrayaffordabilityExpenseReversalEventList.size(); i++) {
+                    AffordabilityExpenseEvent.validateJsonElement(
+                            jsonArrayaffordabilityExpenseReversalEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RemovalShipmentEventList") != null
+                && !jsonObj.get("RemovalShipmentEventList").isJsonNull()) {
+            JsonArray jsonArrayremovalShipmentEventList = jsonObj.getAsJsonArray("RemovalShipmentEventList");
+            if (jsonArrayremovalShipmentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RemovalShipmentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RemovalShipmentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RemovalShipmentEventList").toString()));
+                }
+
+                // validate the optional field `RemovalShipmentEventList` (array)
+                for (int i = 0; i < jsonArrayremovalShipmentEventList.size(); i++) {
+                    RemovalShipmentEvent.validateJsonElement(jsonArrayremovalShipmentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RemovalShipmentAdjustmentEventList") != null
+                && !jsonObj.get("RemovalShipmentAdjustmentEventList").isJsonNull()) {
+            JsonArray jsonArrayremovalShipmentAdjustmentEventList =
+                    jsonObj.getAsJsonArray("RemovalShipmentAdjustmentEventList");
+            if (jsonArrayremovalShipmentAdjustmentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RemovalShipmentAdjustmentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RemovalShipmentAdjustmentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RemovalShipmentAdjustmentEventList").toString()));
+                }
+
+                // validate the optional field `RemovalShipmentAdjustmentEventList` (array)
+                for (int i = 0; i < jsonArrayremovalShipmentAdjustmentEventList.size(); i++) {
+                    RemovalShipmentAdjustmentEvent.validateJsonElement(
+                            jsonArrayremovalShipmentAdjustmentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("TrialShipmentEventList") != null
+                && !jsonObj.get("TrialShipmentEventList").isJsonNull()) {
+            JsonArray jsonArraytrialShipmentEventList = jsonObj.getAsJsonArray("TrialShipmentEventList");
+            if (jsonArraytrialShipmentEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TrialShipmentEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TrialShipmentEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TrialShipmentEventList").toString()));
+                }
+
+                // validate the optional field `TrialShipmentEventList` (array)
+                for (int i = 0; i < jsonArraytrialShipmentEventList.size(); i++) {
+                    TrialShipmentEvent.validateJsonElement(jsonArraytrialShipmentEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("TDSReimbursementEventList") != null
+                && !jsonObj.get("TDSReimbursementEventList").isJsonNull()) {
+            JsonArray jsonArraytdSReimbursementEventList = jsonObj.getAsJsonArray("TDSReimbursementEventList");
+            if (jsonArraytdSReimbursementEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TDSReimbursementEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TDSReimbursementEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TDSReimbursementEventList").toString()));
+                }
+
+                // validate the optional field `TDSReimbursementEventList` (array)
+                for (int i = 0; i < jsonArraytdSReimbursementEventList.size(); i++) {
+                    TDSReimbursementEvent.validateJsonElement(jsonArraytdSReimbursementEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("AdhocDisbursementEventList") != null
+                && !jsonObj.get("AdhocDisbursementEventList").isJsonNull()) {
+            JsonArray jsonArrayadhocDisbursementEventList = jsonObj.getAsJsonArray("AdhocDisbursementEventList");
+            if (jsonArrayadhocDisbursementEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AdhocDisbursementEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AdhocDisbursementEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AdhocDisbursementEventList").toString()));
+                }
+
+                // validate the optional field `AdhocDisbursementEventList` (array)
+                for (int i = 0; i < jsonArrayadhocDisbursementEventList.size(); i++) {
+                    AdhocDisbursementEvent.validateJsonElement(jsonArrayadhocDisbursementEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("TaxWithholdingEventList") != null
+                && !jsonObj.get("TaxWithholdingEventList").isJsonNull()) {
+            JsonArray jsonArraytaxWithholdingEventList = jsonObj.getAsJsonArray("TaxWithholdingEventList");
+            if (jsonArraytaxWithholdingEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TaxWithholdingEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TaxWithholdingEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TaxWithholdingEventList").toString()));
+                }
+
+                // validate the optional field `TaxWithholdingEventList` (array)
+                for (int i = 0; i < jsonArraytaxWithholdingEventList.size(); i++) {
+                    TaxWithholdingEvent.validateJsonElement(jsonArraytaxWithholdingEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ChargeRefundEventList") != null
+                && !jsonObj.get("ChargeRefundEventList").isJsonNull()) {
+            JsonArray jsonArraychargeRefundEventList = jsonObj.getAsJsonArray("ChargeRefundEventList");
+            if (jsonArraychargeRefundEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargeRefundEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargeRefundEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargeRefundEventList").toString()));
+                }
+
+                // validate the optional field `ChargeRefundEventList` (array)
+                for (int i = 0; i < jsonArraychargeRefundEventList.size(); i++) {
+                    ChargeRefundEvent.validateJsonElement(jsonArraychargeRefundEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("FailedAdhocDisbursementEventList") != null
+                && !jsonObj.get("FailedAdhocDisbursementEventList").isJsonNull()) {
+            JsonArray jsonArrayfailedAdhocDisbursementEventList =
+                    jsonObj.getAsJsonArray("FailedAdhocDisbursementEventList");
+            if (jsonArrayfailedAdhocDisbursementEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("FailedAdhocDisbursementEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `FailedAdhocDisbursementEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("FailedAdhocDisbursementEventList").toString()));
+                }
+
+                // validate the optional field `FailedAdhocDisbursementEventList` (array)
+                for (int i = 0; i < jsonArrayfailedAdhocDisbursementEventList.size(); i++) {
+                    FailedAdhocDisbursementEvent.validateJsonElement(jsonArrayfailedAdhocDisbursementEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ValueAddedServiceChargeEventList") != null
+                && !jsonObj.get("ValueAddedServiceChargeEventList").isJsonNull()) {
+            JsonArray jsonArrayvalueAddedServiceChargeEventList =
+                    jsonObj.getAsJsonArray("ValueAddedServiceChargeEventList");
+            if (jsonArrayvalueAddedServiceChargeEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ValueAddedServiceChargeEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ValueAddedServiceChargeEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ValueAddedServiceChargeEventList").toString()));
+                }
+
+                // validate the optional field `ValueAddedServiceChargeEventList` (array)
+                for (int i = 0; i < jsonArrayvalueAddedServiceChargeEventList.size(); i++) {
+                    ValueAddedServiceChargeEvent.validateJsonElement(jsonArrayvalueAddedServiceChargeEventList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("CapacityReservationBillingEventList") != null
+                && !jsonObj.get("CapacityReservationBillingEventList").isJsonNull()) {
+            JsonArray jsonArraycapacityReservationBillingEventList =
+                    jsonObj.getAsJsonArray("CapacityReservationBillingEventList");
+            if (jsonArraycapacityReservationBillingEventList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("CapacityReservationBillingEventList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `CapacityReservationBillingEventList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("CapacityReservationBillingEventList").toString()));
+                }
+
+                // validate the optional field `CapacityReservationBillingEventList` (array)
+                for (int i = 0; i < jsonArraycapacityReservationBillingEventList.size(); i++) {
+                    CapacityReservationBillingEvent.validateJsonElement(
+                            jsonArraycapacityReservationBillingEventList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FinancialEvents.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FinancialEvents' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FinancialEvents> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FinancialEvents.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FinancialEvents>() {
+                        @Override
+                        public void write(JsonWriter out, FinancialEvents value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FinancialEvents read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FinancialEvents given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FinancialEvents
+     * @throws IOException if the JSON string is invalid with respect to FinancialEvents
+     */
+    public static FinancialEvents fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FinancialEvents.class);
+    }
+
+    /**
+     * Convert an instance of FinancialEvents to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

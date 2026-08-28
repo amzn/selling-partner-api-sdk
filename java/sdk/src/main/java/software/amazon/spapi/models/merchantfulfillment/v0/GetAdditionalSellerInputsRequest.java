@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Request schema. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetAdditionalSellerInputsRequest {
-    @SerializedName("ShippingServiceId")
-    private String shippingServiceId = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_ID = "ShippingServiceId";
 
-    @SerializedName("ShipFromAddress")
-    private Address shipFromAddress = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_ID)
+    private String shippingServiceId;
 
-    @SerializedName("OrderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "ShipFromAddress";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_ADDRESS)
+    private Address shipFromAddress;
+
+    public static final String SERIALIZED_NAME_ORDER_ID = "OrderId";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
+
+    public GetAdditionalSellerInputsRequest() {}
 
     public GetAdditionalSellerInputsRequest shippingServiceId(String shippingServiceId) {
         this.shippingServiceId = shippingServiceId;
@@ -37,9 +60,7 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return shippingServiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined shipping service identifier.")
+    @javax.annotation.Nonnull
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -58,7 +79,7 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return shipFromAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -77,9 +98,7 @@ public class GetAdditionalSellerInputsRequest {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -89,7 +108,7 @@ public class GetAdditionalSellerInputsRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -123,10 +142,126 @@ public class GetAdditionalSellerInputsRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShippingServiceId");
+        openapiFields.add("ShipFromAddress");
+        openapiFields.add("OrderId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShippingServiceId");
+        openapiRequiredFields.add("ShipFromAddress");
+        openapiRequiredFields.add("OrderId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetAdditionalSellerInputsRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetAdditionalSellerInputsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetAdditionalSellerInputsRequest is not found in the empty JSON string",
+                        GetAdditionalSellerInputsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetAdditionalSellerInputsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetAdditionalSellerInputsRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetAdditionalSellerInputsRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("ShippingServiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceId").toString()));
+        }
+        // validate the required field `ShipFromAddress`
+        Address.validateJsonElement(jsonObj.get("ShipFromAddress"));
+        if (!jsonObj.get("OrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetAdditionalSellerInputsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetAdditionalSellerInputsRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetAdditionalSellerInputsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetAdditionalSellerInputsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetAdditionalSellerInputsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetAdditionalSellerInputsRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetAdditionalSellerInputsRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetAdditionalSellerInputsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetAdditionalSellerInputsRequest
+     * @throws IOException if the JSON string is invalid with respect to GetAdditionalSellerInputsRequest
+     */
+    public static GetAdditionalSellerInputsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetAdditionalSellerInputsRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetAdditionalSellerInputsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

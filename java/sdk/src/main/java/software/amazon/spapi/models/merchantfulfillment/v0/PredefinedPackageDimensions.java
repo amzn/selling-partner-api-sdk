@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -29,154 +29,104 @@ import java.io.IOException;
  */
 @JsonAdapter(PredefinedPackageDimensions.Adapter.class)
 public enum PredefinedPackageDimensions {
-    @SerializedName("FedEx_Box_10kg")
     FED_EX_BOX_10KG("FedEx_Box_10kg"),
 
-    @SerializedName("FedEx_Box_25kg")
     FED_EX_BOX_25KG("FedEx_Box_25kg"),
 
-    @SerializedName("FedEx_Box_Extra_Large_1")
     FED_EX_BOX_EXTRA_LARGE_1("FedEx_Box_Extra_Large_1"),
 
-    @SerializedName("FedEx_Box_Extra_Large_2")
     FED_EX_BOX_EXTRA_LARGE_2("FedEx_Box_Extra_Large_2"),
 
-    @SerializedName("FedEx_Box_Large_1")
     FED_EX_BOX_LARGE_1("FedEx_Box_Large_1"),
 
-    @SerializedName("FedEx_Box_Large_2")
     FED_EX_BOX_LARGE_2("FedEx_Box_Large_2"),
 
-    @SerializedName("FedEx_Box_Medium_1")
     FED_EX_BOX_MEDIUM_1("FedEx_Box_Medium_1"),
 
-    @SerializedName("FedEx_Box_Medium_2")
     FED_EX_BOX_MEDIUM_2("FedEx_Box_Medium_2"),
 
-    @SerializedName("FedEx_Box_Small_1")
     FED_EX_BOX_SMALL_1("FedEx_Box_Small_1"),
 
-    @SerializedName("FedEx_Box_Small_2")
     FED_EX_BOX_SMALL_2("FedEx_Box_Small_2"),
 
-    @SerializedName("FedEx_Envelope")
     FED_EX_ENVELOPE("FedEx_Envelope"),
 
-    @SerializedName("FedEx_Padded_Pak")
     FED_EX_PADDED_PAK("FedEx_Padded_Pak"),
 
-    @SerializedName("FedEx_Pak_1")
     FED_EX_PAK_1("FedEx_Pak_1"),
 
-    @SerializedName("FedEx_Pak_2")
     FED_EX_PAK_2("FedEx_Pak_2"),
 
-    @SerializedName("FedEx_Tube")
     FED_EX_TUBE("FedEx_Tube"),
 
-    @SerializedName("FedEx_XL_Pak")
     FED_EX_XL_PAK("FedEx_XL_Pak"),
 
-    @SerializedName("UPS_Box_10kg")
     UPS_BOX_10KG("UPS_Box_10kg"),
 
-    @SerializedName("UPS_Box_25kg")
     UPS_BOX_25KG("UPS_Box_25kg"),
 
-    @SerializedName("UPS_Express_Box")
     UPS_EXPRESS_BOX("UPS_Express_Box"),
 
-    @SerializedName("UPS_Express_Box_Large")
     UPS_EXPRESS_BOX_LARGE("UPS_Express_Box_Large"),
 
-    @SerializedName("UPS_Express_Box_Medium")
     UPS_EXPRESS_BOX_MEDIUM("UPS_Express_Box_Medium"),
 
-    @SerializedName("UPS_Express_Box_Small")
     UPS_EXPRESS_BOX_SMALL("UPS_Express_Box_Small"),
 
-    @SerializedName("UPS_Express_Envelope")
     UPS_EXPRESS_ENVELOPE("UPS_Express_Envelope"),
 
-    @SerializedName("UPS_Express_Hard_Pak")
     UPS_EXPRESS_HARD_PAK("UPS_Express_Hard_Pak"),
 
-    @SerializedName("UPS_Express_Legal_Envelope")
     UPS_EXPRESS_LEGAL_ENVELOPE("UPS_Express_Legal_Envelope"),
 
-    @SerializedName("UPS_Express_Pak")
     UPS_EXPRESS_PAK("UPS_Express_Pak"),
 
-    @SerializedName("UPS_Express_Tube")
     UPS_EXPRESS_TUBE("UPS_Express_Tube"),
 
-    @SerializedName("UPS_Laboratory_Pak")
     UPS_LABORATORY_PAK("UPS_Laboratory_Pak"),
 
-    @SerializedName("UPS_Pad_Pak")
     UPS_PAD_PAK("UPS_Pad_Pak"),
 
-    @SerializedName("UPS_Pallet")
     UPS_PALLET("UPS_Pallet"),
 
-    @SerializedName("USPS_Card")
     USPS_CARD("USPS_Card"),
 
-    @SerializedName("USPS_Flat")
     USPS_FLAT("USPS_Flat"),
 
-    @SerializedName("USPS_FlatRateCardboardEnvelope")
     USPS_FLAT_RATE_CARDBOARD_ENVELOPE("USPS_FlatRateCardboardEnvelope"),
 
-    @SerializedName("USPS_FlatRateEnvelope")
     USPS_FLAT_RATE_ENVELOPE("USPS_FlatRateEnvelope"),
 
-    @SerializedName("USPS_FlatRateGiftCardEnvelope")
     USPS_FLAT_RATE_GIFT_CARD_ENVELOPE("USPS_FlatRateGiftCardEnvelope"),
 
-    @SerializedName("USPS_FlatRateLegalEnvelope")
     USPS_FLAT_RATE_LEGAL_ENVELOPE("USPS_FlatRateLegalEnvelope"),
 
-    @SerializedName("USPS_FlatRatePaddedEnvelope")
     USPS_FLAT_RATE_PADDED_ENVELOPE("USPS_FlatRatePaddedEnvelope"),
 
-    @SerializedName("USPS_FlatRateWindowEnvelope")
     USPS_FLAT_RATE_WINDOW_ENVELOPE("USPS_FlatRateWindowEnvelope"),
 
-    @SerializedName("USPS_LargeFlatRateBoardGameBox")
     USPS_LARGE_FLAT_RATE_BOARD_GAME_BOX("USPS_LargeFlatRateBoardGameBox"),
 
-    @SerializedName("USPS_LargeFlatRateBox")
     USPS_LARGE_FLAT_RATE_BOX("USPS_LargeFlatRateBox"),
 
-    @SerializedName("USPS_Letter")
     USPS_LETTER("USPS_Letter"),
 
-    @SerializedName("USPS_MediumFlatRateBox1")
     USPS_MEDIUM_FLAT_RATE_BOX1("USPS_MediumFlatRateBox1"),
 
-    @SerializedName("USPS_MediumFlatRateBox2")
     USPS_MEDIUM_FLAT_RATE_BOX2("USPS_MediumFlatRateBox2"),
 
-    @SerializedName("USPS_RegionalRateBoxA1")
     USPS_REGIONAL_RATE_BOX_A1("USPS_RegionalRateBoxA1"),
 
-    @SerializedName("USPS_RegionalRateBoxA2")
     USPS_REGIONAL_RATE_BOX_A2("USPS_RegionalRateBoxA2"),
 
-    @SerializedName("USPS_RegionalRateBoxB1")
     USPS_REGIONAL_RATE_BOX_B1("USPS_RegionalRateBoxB1"),
 
-    @SerializedName("USPS_RegionalRateBoxB2")
     USPS_REGIONAL_RATE_BOX_B2("USPS_RegionalRateBoxB2"),
 
-    @SerializedName("USPS_RegionalRateBoxC")
     USPS_REGIONAL_RATE_BOX_C("USPS_RegionalRateBoxC"),
 
-    @SerializedName("USPS_SmallFlatRateBox")
     USPS_SMALL_FLAT_RATE_BOX("USPS_SmallFlatRateBox"),
 
-    @SerializedName("USPS_SmallFlatRateEnvelope")
     USPS_SMALL_FLAT_RATE_ENVELOPE("USPS_SmallFlatRateEnvelope");
 
     private String value;
@@ -194,26 +144,31 @@ public enum PredefinedPackageDimensions {
         return String.valueOf(value);
     }
 
-    public static PredefinedPackageDimensions fromValue(String input) {
+    public static PredefinedPackageDimensions fromValue(String value) {
         for (PredefinedPackageDimensions b : PredefinedPackageDimensions.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PredefinedPackageDimensions> {
         @Override
         public void write(final JsonWriter jsonWriter, final PredefinedPackageDimensions enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PredefinedPackageDimensions read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PredefinedPackageDimensions.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PredefinedPackageDimensions.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PredefinedPackageDimensions.fromValue(value);
     }
 }

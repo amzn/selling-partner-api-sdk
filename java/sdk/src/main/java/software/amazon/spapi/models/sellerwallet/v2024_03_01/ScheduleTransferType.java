@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** The type of schedule the transfer is on. Schedules based on time patterns use EventBridge. */
 @JsonAdapter(ScheduleTransferType.Adapter.class)
 public enum ScheduleTransferType {
-    @SerializedName("TIME_BASED")
     TIME_BASED("TIME_BASED");
 
     private String value;
@@ -40,25 +39,30 @@ public enum ScheduleTransferType {
         return String.valueOf(value);
     }
 
-    public static ScheduleTransferType fromValue(String input) {
+    public static ScheduleTransferType fromValue(String value) {
         for (ScheduleTransferType b : ScheduleTransferType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ScheduleTransferType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ScheduleTransferType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ScheduleTransferType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ScheduleTransferType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ScheduleTransferType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ScheduleTransferType.fromValue(value);
     }
 }

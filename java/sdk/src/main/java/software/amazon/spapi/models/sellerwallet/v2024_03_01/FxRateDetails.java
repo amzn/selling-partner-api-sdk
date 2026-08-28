@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Foreign exchange rate details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Foreign exchange rate details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FxRateDetails {
-    @SerializedName("fxRateId")
-    private String fxRateId = null;
+    public static final String SERIALIZED_NAME_FX_RATE_ID = "fxRateId";
 
-    @SerializedName("baseRate")
-    private BigDecimal baseRate = null;
+    @SerializedName(SERIALIZED_NAME_FX_RATE_ID)
+    private String fxRateId;
 
-    @SerializedName("effectiveFxRate")
-    private BigDecimal effectiveFxRate = null;
+    public static final String SERIALIZED_NAME_BASE_RATE = "baseRate";
 
-    @SerializedName("rateDirection")
-    private RateDirection rateDirection = null;
+    @SerializedName(SERIALIZED_NAME_BASE_RATE)
+    private BigDecimal baseRate;
+
+    public static final String SERIALIZED_NAME_EFFECTIVE_FX_RATE = "effectiveFxRate";
+
+    @SerializedName(SERIALIZED_NAME_EFFECTIVE_FX_RATE)
+    private BigDecimal effectiveFxRate;
+
+    public static final String SERIALIZED_NAME_RATE_DIRECTION = "rateDirection";
+
+    @SerializedName(SERIALIZED_NAME_RATE_DIRECTION)
+    private RateDirection rateDirection;
+
+    public FxRateDetails() {}
 
     public FxRateDetails fxRateId(String fxRateId) {
         this.fxRateId = fxRateId;
@@ -41,9 +66,7 @@ public class FxRateDetails {
      *
      * @return fxRateId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier assigned to the fees / foreign exchange rate of a transaction.")
+    @javax.annotation.Nonnull
     public String getFxRateId() {
         return fxRateId;
     }
@@ -62,9 +85,7 @@ public class FxRateDetails {
      *
      * @return baseRate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A decimal number, such as an amount or FX rate.")
+    @javax.annotation.Nonnull
     public BigDecimal getBaseRate() {
         return baseRate;
     }
@@ -83,9 +104,7 @@ public class FxRateDetails {
      *
      * @return effectiveFxRate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A decimal number, such as an amount or FX rate.")
+    @javax.annotation.Nonnull
     public BigDecimal getEffectiveFxRate() {
         return effectiveFxRate;
     }
@@ -104,7 +123,7 @@ public class FxRateDetails {
      *
      * @return rateDirection
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RateDirection getRateDirection() {
         return rateDirection;
     }
@@ -114,7 +133,7 @@ public class FxRateDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +167,122 @@ public class FxRateDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fxRateId");
+        openapiFields.add("baseRate");
+        openapiFields.add("effectiveFxRate");
+        openapiFields.add("rateDirection");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("fxRateId");
+        openapiRequiredFields.add("baseRate");
+        openapiRequiredFields.add("effectiveFxRate");
+        openapiRequiredFields.add("rateDirection");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FxRateDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FxRateDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FxRateDetails is not found in the empty JSON string",
+                        FxRateDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FxRateDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FxRateDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FxRateDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("fxRateId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fxRateId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fxRateId").toString()));
+        }
+        // validate the required field `rateDirection`
+        RateDirection.validateJsonElement(jsonObj.get("rateDirection"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FxRateDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FxRateDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FxRateDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FxRateDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FxRateDetails>() {
+                        @Override
+                        public void write(JsonWriter out, FxRateDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FxRateDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FxRateDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FxRateDetails
+     * @throws IOException if the JSON string is invalid with respect to FxRateDetails
+     */
+    public static FxRateDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FxRateDetails.class);
+    }
+
+    /**
+     * Convert an instance of FxRateDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

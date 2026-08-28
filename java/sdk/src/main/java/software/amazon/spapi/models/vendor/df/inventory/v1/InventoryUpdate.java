@@ -12,23 +12,46 @@
 
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Inventory details required to update some or all items for the requested warehouse. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Inventory details required to update some or all items for the requested warehouse.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventoryUpdate {
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
 
-    @SerializedName("isFullUpdate")
-    private Boolean isFullUpdate = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
 
-    @SerializedName("items")
-    private List<ItemDetails> items = null;
+    public static final String SERIALIZED_NAME_IS_FULL_UPDATE = "isFullUpdate";
+
+    @SerializedName(SERIALIZED_NAME_IS_FULL_UPDATE)
+    private Boolean isFullUpdate;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<ItemDetails> items = new ArrayList<>();
+
+    public InventoryUpdate() {}
 
     public InventoryUpdate sellingParty(PartyIdentification sellingParty) {
         this.sellingParty = sellingParty;
@@ -40,7 +63,7 @@ public class InventoryUpdate {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -62,10 +85,7 @@ public class InventoryUpdate {
      *
      * @return isFullUpdate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When true, this request contains a full feed. Otherwise, this request contains a partial feed. When sending a full feed, you must send information about all items in the warehouse. Any items not in the full feed are updated as not available. When sending a partial feed, only include the items that need an update to inventory. The status of other items will remain unchanged.")
+    @javax.annotation.Nonnull
     public Boolean getIsFullUpdate() {
         return isFullUpdate;
     }
@@ -92,9 +112,7 @@ public class InventoryUpdate {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of inventory items with updated details, including quantity available.")
+    @javax.annotation.Nonnull
     public List<ItemDetails> getItems() {
         return items;
     }
@@ -104,7 +122,7 @@ public class InventoryUpdate {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -134,10 +152,128 @@ public class InventoryUpdate {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellingParty");
+        openapiFields.add("isFullUpdate");
+        openapiFields.add("items");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("isFullUpdate");
+        openapiRequiredFields.add("items");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventoryUpdate
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventoryUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventoryUpdate is not found in the empty JSON string",
+                        InventoryUpdate.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventoryUpdate.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventoryUpdate` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InventoryUpdate.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            ItemDetails.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventoryUpdate.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventoryUpdate' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventoryUpdate> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventoryUpdate.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventoryUpdate>() {
+                        @Override
+                        public void write(JsonWriter out, InventoryUpdate value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventoryUpdate read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventoryUpdate given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventoryUpdate
+     * @throws IOException if the JSON string is invalid with respect to InventoryUpdate
+     */
+    public static InventoryUpdate fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventoryUpdate.class);
+    }
+
+    /**
+     * Convert an instance of InventoryUpdate to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

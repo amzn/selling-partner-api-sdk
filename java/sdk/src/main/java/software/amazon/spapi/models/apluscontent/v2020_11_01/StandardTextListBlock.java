@@ -12,17 +12,36 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ Content standard fixed-length list of text, usually presented as bullet points. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The A+ Content standard fixed-length list of text, usually presented as bullet points.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardTextListBlock {
-    @SerializedName("textList")
-    private List<TextItem> textList = null;
+    public static final String SERIALIZED_NAME_TEXT_LIST = "textList";
+
+    @SerializedName(SERIALIZED_NAME_TEXT_LIST)
+    private List<TextItem> textList = new ArrayList<>();
+
+    public StandardTextListBlock() {}
 
     public StandardTextListBlock textList(List<TextItem> textList) {
         this.textList = textList;
@@ -42,7 +61,7 @@ public class StandardTextListBlock {
      *
      * @return textList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public List<TextItem> getTextList() {
         return textList;
     }
@@ -52,7 +71,7 @@ public class StandardTextListBlock {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -78,10 +97,123 @@ public class StandardTextListBlock {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("textList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("textList");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardTextListBlock
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardTextListBlock.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardTextListBlock is not found in the empty JSON string",
+                        StandardTextListBlock.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardTextListBlock.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardTextListBlock` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StandardTextListBlock.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("textList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `textList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("textList").toString()));
+        }
+
+        JsonArray jsonArraytextList = jsonObj.getAsJsonArray("textList");
+        // validate the required field `textList` (array)
+        for (int i = 0; i < jsonArraytextList.size(); i++) {
+            TextItem.validateJsonElement(jsonArraytextList.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardTextListBlock.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardTextListBlock' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardTextListBlock> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardTextListBlock.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardTextListBlock>() {
+                        @Override
+                        public void write(JsonWriter out, StandardTextListBlock value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardTextListBlock read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardTextListBlock given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardTextListBlock
+     * @throws IOException if the JSON string is invalid with respect to StandardTextListBlock
+     */
+    public static StandardTextListBlock fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardTextListBlock.class);
+    }
+
+    /**
+     * Convert an instance of StandardTextListBlock to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

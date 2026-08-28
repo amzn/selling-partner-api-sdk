@@ -12,22 +12,31 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Encryption details for required client-side encryption and decryption of document contents. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Encryption details for required client-side encryption and decryption of document contents.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class EncryptionDetails {
     /** The encryption standard required to encrypt or decrypt the document contents. */
     @JsonAdapter(StandardEnum.Adapter.class)
     public enum StandardEnum {
-        @SerializedName("AES")
         AES("AES");
 
         private String value;
@@ -45,37 +54,50 @@ public class EncryptionDetails {
             return String.valueOf(value);
         }
 
-        public static StandardEnum fromValue(String input) {
+        public static StandardEnum fromValue(String value) {
             for (StandardEnum b : StandardEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StandardEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StandardEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StandardEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StandardEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StandardEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StandardEnum.fromValue(value);
         }
     }
 
-    @SerializedName("standard")
-    private StandardEnum standard = null;
+    public static final String SERIALIZED_NAME_STANDARD = "standard";
 
-    @SerializedName("initializationVector")
-    private String initializationVector = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD)
+    private StandardEnum standard;
 
-    @SerializedName("key")
-    private String key = null;
+    public static final String SERIALIZED_NAME_INITIALIZATION_VECTOR = "initializationVector";
+
+    @SerializedName(SERIALIZED_NAME_INITIALIZATION_VECTOR)
+    private String initializationVector;
+
+    public static final String SERIALIZED_NAME_KEY = "key";
+
+    @SerializedName(SERIALIZED_NAME_KEY)
+    private String key;
+
+    public EncryptionDetails() {}
 
     public EncryptionDetails standard(StandardEnum standard) {
         this.standard = standard;
@@ -87,9 +109,7 @@ public class EncryptionDetails {
      *
      * @return standard
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The encryption standard required to encrypt or decrypt the document contents.")
+    @javax.annotation.Nonnull
     public StandardEnum getStandard() {
         return standard;
     }
@@ -108,9 +128,7 @@ public class EncryptionDetails {
      *
      * @return initializationVector
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The vector to encrypt or decrypt the document contents using Cipher Block Chaining (CBC).")
+    @javax.annotation.Nonnull
     public String getInitializationVector() {
         return initializationVector;
     }
@@ -129,9 +147,7 @@ public class EncryptionDetails {
      *
      * @return key
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The encryption key used to encrypt or decrypt the document contents.")
+    @javax.annotation.Nonnull
     public String getKey() {
         return key;
     }
@@ -141,7 +157,7 @@ public class EncryptionDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +189,130 @@ public class EncryptionDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("standard");
+        openapiFields.add("initializationVector");
+        openapiFields.add("key");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("standard");
+        openapiRequiredFields.add("initializationVector");
+        openapiRequiredFields.add("key");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to EncryptionDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!EncryptionDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in EncryptionDetails is not found in the empty JSON string",
+                        EncryptionDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!EncryptionDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `EncryptionDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : EncryptionDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("standard").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `standard` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("standard").toString()));
+        }
+        // validate the required field `standard`
+        StandardEnum.validateJsonElement(jsonObj.get("standard"));
+        if (!jsonObj.get("initializationVector").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `initializationVector` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("initializationVector").toString()));
+        }
+        if (!jsonObj.get("key").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `key` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("key").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!EncryptionDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'EncryptionDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<EncryptionDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(EncryptionDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<EncryptionDetails>() {
+                        @Override
+                        public void write(JsonWriter out, EncryptionDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public EncryptionDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of EncryptionDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of EncryptionDetails
+     * @throws IOException if the JSON string is invalid with respect to EncryptionDetails
+     */
+    public static EncryptionDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, EncryptionDetails.class);
+    }
+
+    /**
+     * Convert an instance of EncryptionDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

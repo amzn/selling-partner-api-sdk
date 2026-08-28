@@ -12,27 +12,49 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The response schema for the &#x60;searchPromotions&#x60; operation. **Note:** The &#x60;selectionDetails&#x60; field
  * is not present in the selection object within promotion summaries.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The response schema for the `searchPromotions` operation. **Note:** The `selectionDetails` field is not present in the selection object within promotion summaries.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SearchPromotionsResponse {
-    @SerializedName("totalResults")
-    private Integer totalResults = null;
+    public static final String SERIALIZED_NAME_TOTAL_RESULTS = "totalResults";
 
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_RESULTS)
+    private Integer totalResults;
 
-    @SerializedName("promotions")
-    private List<PromotionSummary> promotions = null;
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public static final String SERIALIZED_NAME_PROMOTIONS = "promotions";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTIONS)
+    private List<PromotionSummary> promotions = new ArrayList<>();
+
+    public SearchPromotionsResponse() {}
 
     public SearchPromotionsResponse totalResults(Integer totalResults) {
         this.totalResults = totalResults;
@@ -44,13 +66,11 @@ public class SearchPromotionsResponse {
      * across paginated requests. **Note:** In rare cases, individual records cannot be returned and are omitted from
      * the response. When this happens, a page may contain fewer items than expected, and the combined number of items
      * across all pages may be less than &#x60;totalResults&#x60;. The request itself still completes successfully.
+     * minimum: 0
      *
      * @return totalResults
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The total number of promotions matching the search criteria, across all pages. This count remains consistent across paginated requests. **Note:** In rare cases, individual records cannot be returned and are omitted from the response. When this happens, a page may contain fewer items than expected, and the combined number of items across all pages may be less than `totalResults`. The request itself still completes successfully.")
+    @javax.annotation.Nonnull
     public Integer getTotalResults() {
         return totalResults;
     }
@@ -69,8 +89,7 @@ public class SearchPromotionsResponse {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -96,9 +115,7 @@ public class SearchPromotionsResponse {
      *
      * @return promotions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of promotion summaries that matches the search criteria.")
+    @javax.annotation.Nonnull
     public List<PromotionSummary> getPromotions() {
         return promotions;
     }
@@ -108,7 +125,7 @@ public class SearchPromotionsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -138,10 +155,130 @@ public class SearchPromotionsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("totalResults");
+        openapiFields.add("pagination");
+        openapiFields.add("promotions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("totalResults");
+        openapiRequiredFields.add("promotions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SearchPromotionsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SearchPromotionsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SearchPromotionsResponse is not found in the empty JSON string",
+                        SearchPromotionsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SearchPromotionsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SearchPromotionsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SearchPromotionsResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("promotions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `promotions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("promotions").toString()));
+        }
+
+        JsonArray jsonArraypromotions = jsonObj.getAsJsonArray("promotions");
+        // validate the required field `promotions` (array)
+        for (int i = 0; i < jsonArraypromotions.size(); i++) {
+            PromotionSummary.validateJsonElement(jsonArraypromotions.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SearchPromotionsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SearchPromotionsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SearchPromotionsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SearchPromotionsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SearchPromotionsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, SearchPromotionsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SearchPromotionsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SearchPromotionsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SearchPromotionsResponse
+     * @throws IOException if the JSON string is invalid with respect to SearchPromotionsResponse
+     */
+    public static SearchPromotionsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SearchPromotionsResponse.class);
+    }
+
+    /**
+     * Convert an instance of SearchPromotionsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,33 +12,63 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Item-level information for a removal shipment item adjustment. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Item-level information for a removal shipment item adjustment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RemovalShipmentItemAdjustment {
-    @SerializedName("RemovalShipmentItemId")
-    private String removalShipmentItemId = null;
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_ID = "RemovalShipmentItemId";
 
-    @SerializedName("TaxCollectionModel")
-    private String taxCollectionModel = null;
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_ID)
+    private String removalShipmentItemId;
 
-    @SerializedName("FulfillmentNetworkSKU")
-    private String fulfillmentNetworkSKU = null;
+    public static final String SERIALIZED_NAME_TAX_COLLECTION_MODEL = "TaxCollectionModel";
 
-    @SerializedName("AdjustedQuantity")
-    private Integer adjustedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_TAX_COLLECTION_MODEL)
+    private String taxCollectionModel;
 
-    @SerializedName("RevenueAdjustment")
-    private Currency revenueAdjustment = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_NETWORK_S_K_U = "FulfillmentNetworkSKU";
 
-    @SerializedName("TaxAmountAdjustment")
-    private Currency taxAmountAdjustment = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_NETWORK_S_K_U)
+    private String fulfillmentNetworkSKU;
 
-    @SerializedName("TaxWithheldAdjustment")
-    private Currency taxWithheldAdjustment = null;
+    public static final String SERIALIZED_NAME_ADJUSTED_QUANTITY = "AdjustedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_ADJUSTED_QUANTITY)
+    private Integer adjustedQuantity;
+
+    public static final String SERIALIZED_NAME_REVENUE_ADJUSTMENT = "RevenueAdjustment";
+
+    @SerializedName(SERIALIZED_NAME_REVENUE_ADJUSTMENT)
+    private Currency revenueAdjustment;
+
+    public static final String SERIALIZED_NAME_TAX_AMOUNT_ADJUSTMENT = "TaxAmountAdjustment";
+
+    @SerializedName(SERIALIZED_NAME_TAX_AMOUNT_ADJUSTMENT)
+    private Currency taxAmountAdjustment;
+
+    public static final String SERIALIZED_NAME_TAX_WITHHELD_ADJUSTMENT = "TaxWithheldAdjustment";
+
+    @SerializedName(SERIALIZED_NAME_TAX_WITHHELD_ADJUSTMENT)
+    private Currency taxWithheldAdjustment;
+
+    public RemovalShipmentItemAdjustment() {}
 
     public RemovalShipmentItemAdjustment removalShipmentItemId(String removalShipmentItemId) {
         this.removalShipmentItemId = removalShipmentItemId;
@@ -50,8 +80,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return removalShipmentItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An identifier for an item in a removal shipment.")
-    public String getRemovalShipmentItemId() {
+    @javax.annotation.Nullable public String getRemovalShipmentItemId() {
         return removalShipmentItemId;
     }
 
@@ -71,10 +100,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxCollectionModel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.")
-    public String getTaxCollectionModel() {
+    @javax.annotation.Nullable public String getTaxCollectionModel() {
         return taxCollectionModel;
     }
 
@@ -92,8 +118,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return fulfillmentNetworkSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon fulfillment network SKU for the item.")
-    public String getFulfillmentNetworkSKU() {
+    @javax.annotation.Nullable public String getFulfillmentNetworkSKU() {
         return fulfillmentNetworkSKU;
     }
 
@@ -111,9 +136,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return adjustedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Adjusted quantity of `RemovalShipmentItemAdjustment` items.")
-    public Integer getAdjustedQuantity() {
+    @javax.annotation.Nullable public Integer getAdjustedQuantity() {
         return adjustedQuantity;
     }
 
@@ -131,8 +154,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return revenueAdjustment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRevenueAdjustment() {
+    @javax.annotation.Nullable public Currency getRevenueAdjustment() {
         return revenueAdjustment;
     }
 
@@ -150,8 +172,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxAmountAdjustment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTaxAmountAdjustment() {
+    @javax.annotation.Nullable public Currency getTaxAmountAdjustment() {
         return taxAmountAdjustment;
     }
 
@@ -169,8 +190,7 @@ public class RemovalShipmentItemAdjustment {
      *
      * @return taxWithheldAdjustment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTaxWithheldAdjustment() {
+    @javax.annotation.Nullable public Currency getTaxWithheldAdjustment() {
         return taxWithheldAdjustment;
     }
 
@@ -179,7 +199,7 @@ public class RemovalShipmentItemAdjustment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -238,10 +258,142 @@ public class RemovalShipmentItemAdjustment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("RemovalShipmentItemId");
+        openapiFields.add("TaxCollectionModel");
+        openapiFields.add("FulfillmentNetworkSKU");
+        openapiFields.add("AdjustedQuantity");
+        openapiFields.add("RevenueAdjustment");
+        openapiFields.add("TaxAmountAdjustment");
+        openapiFields.add("TaxWithheldAdjustment");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RemovalShipmentItemAdjustment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RemovalShipmentItemAdjustment.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RemovalShipmentItemAdjustment is not found in the empty JSON string",
+                        RemovalShipmentItemAdjustment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RemovalShipmentItemAdjustment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RemovalShipmentItemAdjustment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("RemovalShipmentItemId") != null
+                        && !jsonObj.get("RemovalShipmentItemId").isJsonNull())
+                && !jsonObj.get("RemovalShipmentItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RemovalShipmentItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("RemovalShipmentItemId").toString()));
+        }
+        if ((jsonObj.get("TaxCollectionModel") != null
+                        && !jsonObj.get("TaxCollectionModel").isJsonNull())
+                && !jsonObj.get("TaxCollectionModel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TaxCollectionModel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TaxCollectionModel").toString()));
+        }
+        if ((jsonObj.get("FulfillmentNetworkSKU") != null
+                        && !jsonObj.get("FulfillmentNetworkSKU").isJsonNull())
+                && !jsonObj.get("FulfillmentNetworkSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FulfillmentNetworkSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FulfillmentNetworkSKU").toString()));
+        }
+        // validate the optional field `RevenueAdjustment`
+        if (jsonObj.get("RevenueAdjustment") != null
+                && !jsonObj.get("RevenueAdjustment").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("RevenueAdjustment"));
+        }
+        // validate the optional field `TaxAmountAdjustment`
+        if (jsonObj.get("TaxAmountAdjustment") != null
+                && !jsonObj.get("TaxAmountAdjustment").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TaxAmountAdjustment"));
+        }
+        // validate the optional field `TaxWithheldAdjustment`
+        if (jsonObj.get("TaxWithheldAdjustment") != null
+                && !jsonObj.get("TaxWithheldAdjustment").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TaxWithheldAdjustment"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RemovalShipmentItemAdjustment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RemovalShipmentItemAdjustment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RemovalShipmentItemAdjustment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RemovalShipmentItemAdjustment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RemovalShipmentItemAdjustment>() {
+                        @Override
+                        public void write(JsonWriter out, RemovalShipmentItemAdjustment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RemovalShipmentItemAdjustment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RemovalShipmentItemAdjustment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RemovalShipmentItemAdjustment
+     * @throws IOException if the JSON string is invalid with respect to RemovalShipmentItemAdjustment
+     */
+    public static RemovalShipmentItemAdjustment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RemovalShipmentItemAdjustment.class);
+    }
+
+    /**
+     * Convert an instance of RemovalShipmentItemAdjustment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

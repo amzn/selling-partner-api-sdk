@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The type of shipping document. */
 @JsonAdapter(DocumentType.Adapter.class)
 public enum DocumentType {
-    @SerializedName("PACKSLIP")
     PACKSLIP("PACKSLIP"),
 
-    @SerializedName("LABEL")
     LABEL("LABEL"),
 
-    @SerializedName("RECEIPT")
     RECEIPT("RECEIPT"),
 
-    @SerializedName("CUSTOM_FORM")
     CUSTOM_FORM("CUSTOM_FORM");
 
     private String value;
@@ -49,25 +45,30 @@ public enum DocumentType {
         return String.valueOf(value);
     }
 
-    public static DocumentType fromValue(String input) {
+    public static DocumentType fromValue(String value) {
         for (DocumentType b : DocumentType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DocumentType> {
         @Override
         public void write(final JsonWriter jsonWriter, final DocumentType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DocumentType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DocumentType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DocumentType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DocumentType.fromValue(value);
     }
 }

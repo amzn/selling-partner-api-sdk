@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The supported data types in the &#x60;getCompetitiveSummary&#x60; API. */
 @JsonAdapter(CompetitiveSummaryIncludedData.Adapter.class)
 public enum CompetitiveSummaryIncludedData {
-    @SerializedName("featuredBuyingOptions")
     FEATURED_BUYING_OPTIONS("featuredBuyingOptions"),
 
-    @SerializedName("referencePrices")
     REFERENCE_PRICES("referencePrices"),
 
-    @SerializedName("lowestPricedOffers")
     LOWEST_PRICED_OFFERS("lowestPricedOffers"),
 
-    @SerializedName("similarItems")
     SIMILAR_ITEMS("similarItems");
 
     private String value;
@@ -49,26 +45,31 @@ public enum CompetitiveSummaryIncludedData {
         return String.valueOf(value);
     }
 
-    public static CompetitiveSummaryIncludedData fromValue(String input) {
+    public static CompetitiveSummaryIncludedData fromValue(String value) {
         for (CompetitiveSummaryIncludedData b : CompetitiveSummaryIncludedData.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CompetitiveSummaryIncludedData> {
         @Override
         public void write(final JsonWriter jsonWriter, final CompetitiveSummaryIncludedData enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public CompetitiveSummaryIncludedData read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return CompetitiveSummaryIncludedData.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return CompetitiveSummaryIncludedData.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        CompetitiveSummaryIncludedData.fromValue(value);
     }
 }

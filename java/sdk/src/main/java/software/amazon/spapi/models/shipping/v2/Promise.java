@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The time windows promised for pickup and delivery events. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The time windows promised for pickup and delivery events.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Promise {
-    @SerializedName("deliveryWindow")
-    private TimeWindow deliveryWindow = null;
+    public static final String SERIALIZED_NAME_DELIVERY_WINDOW = "deliveryWindow";
 
-    @SerializedName("pickupWindow")
-    private TimeWindow pickupWindow = null;
+    @SerializedName(SERIALIZED_NAME_DELIVERY_WINDOW)
+    private TimeWindow deliveryWindow;
+
+    public static final String SERIALIZED_NAME_PICKUP_WINDOW = "pickupWindow";
+
+    @SerializedName(SERIALIZED_NAME_PICKUP_WINDOW)
+    private TimeWindow pickupWindow;
+
+    public Promise() {}
 
     public Promise deliveryWindow(TimeWindow deliveryWindow) {
         this.deliveryWindow = deliveryWindow;
@@ -34,8 +55,7 @@ public class Promise {
      *
      * @return deliveryWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeWindow getDeliveryWindow() {
+    @javax.annotation.Nullable public TimeWindow getDeliveryWindow() {
         return deliveryWindow;
     }
 
@@ -53,8 +73,7 @@ public class Promise {
      *
      * @return pickupWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeWindow getPickupWindow() {
+    @javax.annotation.Nullable public TimeWindow getPickupWindow() {
         return pickupWindow;
     }
 
@@ -63,7 +82,7 @@ public class Promise {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +112,108 @@ public class Promise {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("deliveryWindow");
+        openapiFields.add("pickupWindow");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Promise
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Promise.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Promise is not found in the empty JSON string",
+                        Promise.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Promise.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Promise` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `deliveryWindow`
+        if (jsonObj.get("deliveryWindow") != null
+                && !jsonObj.get("deliveryWindow").isJsonNull()) {
+            TimeWindow.validateJsonElement(jsonObj.get("deliveryWindow"));
+        }
+        // validate the optional field `pickupWindow`
+        if (jsonObj.get("pickupWindow") != null && !jsonObj.get("pickupWindow").isJsonNull()) {
+            TimeWindow.validateJsonElement(jsonObj.get("pickupWindow"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Promise.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Promise' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Promise> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Promise.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Promise>() {
+                        @Override
+                        public void write(JsonWriter out, Promise value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Promise read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Promise given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Promise
+     * @throws IOException if the JSON string is invalid with respect to Promise
+     */
+    public static Promise fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Promise.class);
+    }
+
+    /**
+     * Convert an instance of Promise to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

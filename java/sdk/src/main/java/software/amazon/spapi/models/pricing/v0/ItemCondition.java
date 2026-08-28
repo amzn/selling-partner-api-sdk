@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,19 +25,14 @@ import java.io.IOException;
  */
 @JsonAdapter(ItemCondition.Adapter.class)
 public enum ItemCondition {
-    @SerializedName("New")
     NEW("New"),
 
-    @SerializedName("Used")
     USED("Used"),
 
-    @SerializedName("Collectible")
     COLLECTIBLE("Collectible"),
 
-    @SerializedName("Refurbished")
     REFURBISHED("Refurbished"),
 
-    @SerializedName("Club")
     CLUB("Club");
 
     private String value;
@@ -55,25 +50,30 @@ public enum ItemCondition {
         return String.valueOf(value);
     }
 
-    public static ItemCondition fromValue(String input) {
+    public static ItemCondition fromValue(String value) {
         for (ItemCondition b : ItemCondition.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ItemCondition> {
         @Override
         public void write(final JsonWriter jsonWriter, final ItemCondition enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ItemCondition read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ItemCondition.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ItemCondition.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ItemCondition.fromValue(value);
     }
 }

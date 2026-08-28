@@ -12,38 +12,71 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The verification status of the order, along with associated approval or rejection metadata. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The verification status of the order, along with associated approval or rejection metadata.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RegulatedOrderVerificationStatus {
-    @SerializedName("Status")
-    private VerificationStatus status = null;
+    public static final String SERIALIZED_NAME_STATUS = "Status";
 
-    @SerializedName("RequiresMerchantAction")
-    private Boolean requiresMerchantAction = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private VerificationStatus status;
 
-    @SerializedName("ValidRejectionReasons")
-    private List<RejectionReason> validRejectionReasons = null;
+    public static final String SERIALIZED_NAME_REQUIRES_MERCHANT_ACTION = "RequiresMerchantAction";
 
-    @SerializedName("RejectionReason")
-    private RejectionReason rejectionReason = null;
+    @SerializedName(SERIALIZED_NAME_REQUIRES_MERCHANT_ACTION)
+    private Boolean requiresMerchantAction;
 
-    @SerializedName("ReviewDate")
-    private String reviewDate = null;
+    public static final String SERIALIZED_NAME_VALID_REJECTION_REASONS = "ValidRejectionReasons";
 
-    @SerializedName("ExternalReviewerId")
-    private String externalReviewerId = null;
+    @SerializedName(SERIALIZED_NAME_VALID_REJECTION_REASONS)
+    private List<RejectionReason> validRejectionReasons = new ArrayList<>();
 
-    @SerializedName("ValidVerificationDetails")
-    private List<ValidVerificationDetail> validVerificationDetails = null;
+    public static final String SERIALIZED_NAME_REJECTION_REASON = "RejectionReason";
 
-    @SerializedName("ValidInterimStatusCodes")
-    private List<ValidInterimStatusCode> validInterimStatusCodes = null;
+    @SerializedName(SERIALIZED_NAME_REJECTION_REASON)
+    private RejectionReason rejectionReason;
+
+    public static final String SERIALIZED_NAME_REVIEW_DATE = "ReviewDate";
+
+    @SerializedName(SERIALIZED_NAME_REVIEW_DATE)
+    private String reviewDate;
+
+    public static final String SERIALIZED_NAME_EXTERNAL_REVIEWER_ID = "ExternalReviewerId";
+
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_REVIEWER_ID)
+    private String externalReviewerId;
+
+    public static final String SERIALIZED_NAME_VALID_VERIFICATION_DETAILS = "ValidVerificationDetails";
+
+    @SerializedName(SERIALIZED_NAME_VALID_VERIFICATION_DETAILS)
+    private List<ValidVerificationDetail> validVerificationDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VALID_INTERIM_STATUS_CODES = "ValidInterimStatusCodes";
+
+    @SerializedName(SERIALIZED_NAME_VALID_INTERIM_STATUS_CODES)
+    private List<ValidInterimStatusCode> validInterimStatusCodes = new ArrayList<>();
+
+    public RegulatedOrderVerificationStatus() {}
 
     public RegulatedOrderVerificationStatus status(VerificationStatus status) {
         this.status = status;
@@ -55,7 +88,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public VerificationStatus getStatus() {
         return status;
     }
@@ -74,10 +107,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return requiresMerchantAction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When true, the regulated information provided in the order requires a review by the merchant.")
+    @javax.annotation.Nonnull
     public Boolean getRequiresMerchantAction() {
         return requiresMerchantAction;
     }
@@ -104,10 +134,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validRejectionReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A list of valid rejection reasons that may be used to reject the order's regulated information.")
+    @javax.annotation.Nonnull
     public List<RejectionReason> getValidRejectionReasons() {
         return validRejectionReasons;
     }
@@ -126,8 +153,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return rejectionReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RejectionReason getRejectionReason() {
+    @javax.annotation.Nullable public RejectionReason getRejectionReason() {
         return rejectionReason;
     }
 
@@ -146,10 +172,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return reviewDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
-    public String getReviewDate() {
+    @javax.annotation.Nullable public String getReviewDate() {
         return reviewDate;
     }
 
@@ -167,9 +190,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return externalReviewerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier for the order's regulated information reviewer.")
-    public String getExternalReviewerId() {
+    @javax.annotation.Nullable public String getExternalReviewerId() {
         return externalReviewerId;
     }
 
@@ -198,10 +219,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validVerificationDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.")
-    public List<ValidVerificationDetail> getValidVerificationDetails() {
+    @javax.annotation.Nullable public List<ValidVerificationDetail> getValidVerificationDetails() {
         return validVerificationDetails;
     }
 
@@ -230,10 +248,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validInterimStatusCodes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.")
-    public List<ValidInterimStatusCode> getValidInterimStatusCodes() {
+    @javax.annotation.Nullable public List<ValidInterimStatusCode> getValidInterimStatusCodes() {
         return validInterimStatusCodes;
     }
 
@@ -242,7 +257,7 @@ public class RegulatedOrderVerificationStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -304,10 +319,188 @@ public class RegulatedOrderVerificationStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Status");
+        openapiFields.add("RequiresMerchantAction");
+        openapiFields.add("ValidRejectionReasons");
+        openapiFields.add("RejectionReason");
+        openapiFields.add("ReviewDate");
+        openapiFields.add("ExternalReviewerId");
+        openapiFields.add("ValidVerificationDetails");
+        openapiFields.add("ValidInterimStatusCodes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Status");
+        openapiRequiredFields.add("RequiresMerchantAction");
+        openapiRequiredFields.add("ValidRejectionReasons");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RegulatedOrderVerificationStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RegulatedOrderVerificationStatus.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RegulatedOrderVerificationStatus is not found in the empty JSON string",
+                        RegulatedOrderVerificationStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RegulatedOrderVerificationStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RegulatedOrderVerificationStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RegulatedOrderVerificationStatus.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `Status`
+        VerificationStatus.validateJsonElement(jsonObj.get("Status"));
+        // ensure the json data is an array
+        if (!jsonObj.get("ValidRejectionReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ValidRejectionReasons` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("ValidRejectionReasons").toString()));
+        }
+
+        JsonArray jsonArrayvalidRejectionReasons = jsonObj.getAsJsonArray("ValidRejectionReasons");
+        // validate the required field `ValidRejectionReasons` (array)
+        for (int i = 0; i < jsonArrayvalidRejectionReasons.size(); i++) {
+            RejectionReason.validateJsonElement(jsonArrayvalidRejectionReasons.get(i));
+        }
+        ;
+        // validate the optional field `RejectionReason`
+        if (jsonObj.get("RejectionReason") != null
+                && !jsonObj.get("RejectionReason").isJsonNull()) {
+            RejectionReason.validateJsonElement(jsonObj.get("RejectionReason"));
+        }
+        if ((jsonObj.get("ReviewDate") != null && !jsonObj.get("ReviewDate").isJsonNull())
+                && !jsonObj.get("ReviewDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ReviewDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ReviewDate").toString()));
+        }
+        if ((jsonObj.get("ExternalReviewerId") != null
+                        && !jsonObj.get("ExternalReviewerId").isJsonNull())
+                && !jsonObj.get("ExternalReviewerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ExternalReviewerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ExternalReviewerId").toString()));
+        }
+        if (jsonObj.get("ValidVerificationDetails") != null
+                && !jsonObj.get("ValidVerificationDetails").isJsonNull()) {
+            JsonArray jsonArrayvalidVerificationDetails = jsonObj.getAsJsonArray("ValidVerificationDetails");
+            if (jsonArrayvalidVerificationDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ValidVerificationDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ValidVerificationDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ValidVerificationDetails").toString()));
+                }
+
+                // validate the optional field `ValidVerificationDetails` (array)
+                for (int i = 0; i < jsonArrayvalidVerificationDetails.size(); i++) {
+                    ValidVerificationDetail.validateJsonElement(jsonArrayvalidVerificationDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ValidInterimStatusCodes") != null
+                && !jsonObj.get("ValidInterimStatusCodes").isJsonNull()) {
+            JsonArray jsonArrayvalidInterimStatusCodes = jsonObj.getAsJsonArray("ValidInterimStatusCodes");
+            if (jsonArrayvalidInterimStatusCodes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ValidInterimStatusCodes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ValidInterimStatusCodes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ValidInterimStatusCodes").toString()));
+                }
+
+                // validate the optional field `ValidInterimStatusCodes` (array)
+                for (int i = 0; i < jsonArrayvalidInterimStatusCodes.size(); i++) {
+                    ValidInterimStatusCode.validateJsonElement(jsonArrayvalidInterimStatusCodes.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RegulatedOrderVerificationStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RegulatedOrderVerificationStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RegulatedOrderVerificationStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RegulatedOrderVerificationStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RegulatedOrderVerificationStatus>() {
+                        @Override
+                        public void write(JsonWriter out, RegulatedOrderVerificationStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RegulatedOrderVerificationStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RegulatedOrderVerificationStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RegulatedOrderVerificationStatus
+     * @throws IOException if the JSON string is invalid with respect to RegulatedOrderVerificationStatus
+     */
+    public static RegulatedOrderVerificationStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RegulatedOrderVerificationStatus.class);
+    }
+
+    /**
+     * Convert an instance of RegulatedOrderVerificationStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

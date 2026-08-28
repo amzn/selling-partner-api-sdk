@@ -12,29 +12,61 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Request schema. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateShipmentRequest {
-    @SerializedName("ShipmentRequestDetails")
-    private ShipmentRequestDetails shipmentRequestDetails = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_REQUEST_DETAILS = "ShipmentRequestDetails";
 
-    @SerializedName("ShippingServiceId")
-    private String shippingServiceId = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_REQUEST_DETAILS)
+    private ShipmentRequestDetails shipmentRequestDetails;
 
-    @SerializedName("ShippingServiceOfferId")
-    private String shippingServiceOfferId = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_ID = "ShippingServiceId";
 
-    @SerializedName("HazmatType")
-    private HazmatType hazmatType = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_ID)
+    private String shippingServiceId;
 
-    @SerializedName("LabelFormatOption")
-    private LabelFormatOptionRequest labelFormatOption = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_OFFER_ID = "ShippingServiceOfferId";
 
-    @SerializedName("ShipmentLevelSellerInputsList")
-    private AdditionalSellerInputsList shipmentLevelSellerInputsList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_OFFER_ID)
+    private String shippingServiceOfferId;
+
+    public static final String SERIALIZED_NAME_HAZMAT_TYPE = "HazmatType";
+
+    @SerializedName(SERIALIZED_NAME_HAZMAT_TYPE)
+    private HazmatType hazmatType;
+
+    public static final String SERIALIZED_NAME_LABEL_FORMAT_OPTION = "LabelFormatOption";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_FORMAT_OPTION)
+    private LabelFormatOptionRequest labelFormatOption;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_LEVEL_SELLER_INPUTS_LIST = "ShipmentLevelSellerInputsList";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_LEVEL_SELLER_INPUTS_LIST)
+    private List<AdditionalSellerInputs> shipmentLevelSellerInputsList = new ArrayList<>();
+
+    public CreateShipmentRequest() {}
 
     public CreateShipmentRequest shipmentRequestDetails(ShipmentRequestDetails shipmentRequestDetails) {
         this.shipmentRequestDetails = shipmentRequestDetails;
@@ -46,7 +78,7 @@ public class CreateShipmentRequest {
      *
      * @return shipmentRequestDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentRequestDetails getShipmentRequestDetails() {
         return shipmentRequestDetails;
     }
@@ -65,9 +97,7 @@ public class CreateShipmentRequest {
      *
      * @return shippingServiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined shipping service identifier.")
+    @javax.annotation.Nonnull
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -86,8 +116,7 @@ public class CreateShipmentRequest {
      *
      * @return shippingServiceOfferId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifies a shipping service order made by a carrier.")
-    public String getShippingServiceOfferId() {
+    @javax.annotation.Nullable public String getShippingServiceOfferId() {
         return shippingServiceOfferId;
     }
 
@@ -105,8 +134,7 @@ public class CreateShipmentRequest {
      *
      * @return hazmatType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public HazmatType getHazmatType() {
+    @javax.annotation.Nullable public HazmatType getHazmatType() {
         return hazmatType;
     }
 
@@ -124,8 +152,7 @@ public class CreateShipmentRequest {
      *
      * @return labelFormatOption
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelFormatOptionRequest getLabelFormatOption() {
+    @javax.annotation.Nullable public LabelFormatOptionRequest getLabelFormatOption() {
         return labelFormatOption;
     }
 
@@ -134,27 +161,35 @@ public class CreateShipmentRequest {
     }
 
     public CreateShipmentRequest shipmentLevelSellerInputsList(
-            AdditionalSellerInputsList shipmentLevelSellerInputsList) {
+            List<AdditionalSellerInputs> shipmentLevelSellerInputsList) {
         this.shipmentLevelSellerInputsList = shipmentLevelSellerInputsList;
         return this;
     }
 
+    public CreateShipmentRequest addShipmentLevelSellerInputsListItem(
+            AdditionalSellerInputs shipmentLevelSellerInputsListItem) {
+        if (this.shipmentLevelSellerInputsList == null) {
+            this.shipmentLevelSellerInputsList = new ArrayList<>();
+        }
+        this.shipmentLevelSellerInputsList.add(shipmentLevelSellerInputsListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentLevelSellerInputsList
+     * A list of additional seller input pairs required to purchase shipping.
      *
      * @return shipmentLevelSellerInputsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdditionalSellerInputsList getShipmentLevelSellerInputsList() {
+    @javax.annotation.Nullable public List<AdditionalSellerInputs> getShipmentLevelSellerInputsList() {
         return shipmentLevelSellerInputsList;
     }
 
-    public void setShipmentLevelSellerInputsList(AdditionalSellerInputsList shipmentLevelSellerInputsList) {
+    public void setShipmentLevelSellerInputsList(List<AdditionalSellerInputs> shipmentLevelSellerInputsList) {
         this.shipmentLevelSellerInputsList = shipmentLevelSellerInputsList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -207,10 +242,157 @@ public class CreateShipmentRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentRequestDetails");
+        openapiFields.add("ShippingServiceId");
+        openapiFields.add("ShippingServiceOfferId");
+        openapiFields.add("HazmatType");
+        openapiFields.add("LabelFormatOption");
+        openapiFields.add("ShipmentLevelSellerInputsList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShipmentRequestDetails");
+        openapiRequiredFields.add("ShippingServiceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateShipmentRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateShipmentRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateShipmentRequest is not found in the empty JSON string",
+                        CreateShipmentRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateShipmentRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateShipmentRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateShipmentRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `ShipmentRequestDetails`
+        ShipmentRequestDetails.validateJsonElement(jsonObj.get("ShipmentRequestDetails"));
+        if (!jsonObj.get("ShippingServiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceId").toString()));
+        }
+        if ((jsonObj.get("ShippingServiceOfferId") != null
+                        && !jsonObj.get("ShippingServiceOfferId").isJsonNull())
+                && !jsonObj.get("ShippingServiceOfferId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceOfferId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceOfferId").toString()));
+        }
+        // validate the optional field `HazmatType`
+        if (jsonObj.get("HazmatType") != null && !jsonObj.get("HazmatType").isJsonNull()) {
+            HazmatType.validateJsonElement(jsonObj.get("HazmatType"));
+        }
+        // validate the optional field `LabelFormatOption`
+        if (jsonObj.get("LabelFormatOption") != null
+                && !jsonObj.get("LabelFormatOption").isJsonNull()) {
+            LabelFormatOptionRequest.validateJsonElement(jsonObj.get("LabelFormatOption"));
+        }
+        if (jsonObj.get("ShipmentLevelSellerInputsList") != null
+                && !jsonObj.get("ShipmentLevelSellerInputsList").isJsonNull()) {
+            JsonArray jsonArrayshipmentLevelSellerInputsList = jsonObj.getAsJsonArray("ShipmentLevelSellerInputsList");
+            if (jsonArrayshipmentLevelSellerInputsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentLevelSellerInputsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentLevelSellerInputsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentLevelSellerInputsList").toString()));
+                }
+
+                // validate the optional field `ShipmentLevelSellerInputsList` (array)
+                for (int i = 0; i < jsonArrayshipmentLevelSellerInputsList.size(); i++) {
+                    AdditionalSellerInputs.validateJsonElement(jsonArrayshipmentLevelSellerInputsList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateShipmentRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateShipmentRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateShipmentRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateShipmentRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateShipmentRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateShipmentRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateShipmentRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateShipmentRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateShipmentRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateShipmentRequest
+     */
+    public static CreateShipmentRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateShipmentRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateShipmentRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

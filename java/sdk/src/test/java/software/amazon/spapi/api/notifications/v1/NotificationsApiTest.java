@@ -38,7 +38,6 @@ import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionsResponse;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationRequest;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class NotificationsApiTest {
 
@@ -56,10 +55,8 @@ public class NotificationsApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createDestinationTest() throws Exception {

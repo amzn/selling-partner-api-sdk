@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Whether the element is present or absent. */
 @JsonAdapter(PresenceStatus.Adapter.class)
 public enum PresenceStatus {
-    @SerializedName("ABSENT")
     ABSENT("ABSENT"),
 
-    @SerializedName("PRESENT")
     PRESENT("PRESENT");
 
     private String value;
@@ -43,25 +41,30 @@ public enum PresenceStatus {
         return String.valueOf(value);
     }
 
-    public static PresenceStatus fromValue(String input) {
+    public static PresenceStatus fromValue(String value) {
         for (PresenceStatus b : PresenceStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PresenceStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final PresenceStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PresenceStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PresenceStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PresenceStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PresenceStatus.fromValue(value);
     }
 }

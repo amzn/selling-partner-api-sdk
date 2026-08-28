@@ -12,33 +12,52 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A &#x60;notificationType&#x60; filter. This object contains all of the available filters and properties that you can
  * use to define a &#x60;notificationType&#x60; specific filter.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A `notificationType` filter. This object contains all of the available filters and properties that you can use to define a `notificationType` specific filter.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class EventFilter {
-    @SerializedName("aggregationSettings")
-    private AggregationSettings aggregationSettings = null;
+    public static final String SERIALIZED_NAME_AGGREGATION_SETTINGS = "aggregationSettings";
 
-    @SerializedName("marketplaceIds")
-    private MarketplaceIds marketplaceIds = null;
+    @SerializedName(SERIALIZED_NAME_AGGREGATION_SETTINGS)
+    private AggregationSettings aggregationSettings;
 
-    @SerializedName("orderChangeTypes")
-    private OrderChangeTypes orderChangeTypes = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
 
-    @SerializedName("trackingIdentifier")
-    private TrackingIdentifier trackingIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ORDER_CHANGE_TYPES = "orderChangeTypes";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_CHANGE_TYPES)
+    private List<OrderChangeTypeEnum> orderChangeTypes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRACKING_IDENTIFIER = "trackingIdentifier";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_IDENTIFIER)
+    private TrackingIdentifier trackingIdentifier;
 
     /**
      * An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service
@@ -48,11 +67,10 @@ public class EventFilter {
      */
     @JsonAdapter(EventFilterTypeEnum.Adapter.class)
     public enum EventFilterTypeEnum {
-        @SerializedName("ANY_OFFER_CHANGED")
         ANY_OFFER_CHANGED("ANY_OFFER_CHANGED"),
-        @SerializedName("ORDER_CHANGE")
+
         ORDER_CHANGE("ORDER_CHANGE"),
-        @SerializedName("SHIPMENT_TRACKING_MILESTONE_CHANGED")
+
         SHIPMENT_TRACKING_MILESTONE_CHANGED("SHIPMENT_TRACKING_MILESTONE_CHANGED");
 
         private String value;
@@ -70,31 +88,40 @@ public class EventFilter {
             return String.valueOf(value);
         }
 
-        public static EventFilterTypeEnum fromValue(String input) {
+        public static EventFilterTypeEnum fromValue(String value) {
             for (EventFilterTypeEnum b : EventFilterTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<EventFilterTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final EventFilterTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public EventFilterTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return EventFilterTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return EventFilterTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            EventFilterTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("eventFilterType")
-    private EventFilterTypeEnum eventFilterType = null;
+    public static final String SERIALIZED_NAME_EVENT_FILTER_TYPE = "eventFilterType";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_FILTER_TYPE)
+    private EventFilterTypeEnum eventFilterType;
+
+    public EventFilter() {}
 
     public EventFilter aggregationSettings(AggregationSettings aggregationSettings) {
         this.aggregationSettings = aggregationSettings;
@@ -106,8 +133,7 @@ public class EventFilter {
      *
      * @return aggregationSettings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AggregationSettings getAggregationSettings() {
+    @javax.annotation.Nullable public AggregationSettings getAggregationSettings() {
         return aggregationSettings;
     }
 
@@ -115,41 +141,57 @@ public class EventFilter {
         this.aggregationSettings = aggregationSettings;
     }
 
-    public EventFilter marketplaceIds(MarketplaceIds marketplaceIds) {
+    public EventFilter marketplaceIds(List<String> marketplaceIds) {
         this.marketplaceIds = marketplaceIds;
         return this;
     }
 
+    public EventFilter addMarketplaceIdsItem(String marketplaceIdsItem) {
+        if (this.marketplaceIds == null) {
+            this.marketplaceIds = new ArrayList<>();
+        }
+        this.marketplaceIds.add(marketplaceIdsItem);
+        return this;
+    }
+
     /**
-     * Get marketplaceIds
+     * A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive
+     * notifications in every marketplace, do not provide this list.
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MarketplaceIds getMarketplaceIds() {
+    @javax.annotation.Nullable public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
 
-    public void setMarketplaceIds(MarketplaceIds marketplaceIds) {
+    public void setMarketplaceIds(List<String> marketplaceIds) {
         this.marketplaceIds = marketplaceIds;
     }
 
-    public EventFilter orderChangeTypes(OrderChangeTypes orderChangeTypes) {
+    public EventFilter orderChangeTypes(List<OrderChangeTypeEnum> orderChangeTypes) {
         this.orderChangeTypes = orderChangeTypes;
         return this;
     }
 
+    public EventFilter addOrderChangeTypesItem(OrderChangeTypeEnum orderChangeTypesItem) {
+        if (this.orderChangeTypes == null) {
+            this.orderChangeTypes = new ArrayList<>();
+        }
+        this.orderChangeTypes.add(orderChangeTypesItem);
+        return this;
+    }
+
     /**
-     * Get orderChangeTypes
+     * A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive
+     * notifications of all change types, do not provide this list.
      *
      * @return orderChangeTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderChangeTypes getOrderChangeTypes() {
+    @javax.annotation.Nullable public List<OrderChangeTypeEnum> getOrderChangeTypes() {
         return orderChangeTypes;
     }
 
-    public void setOrderChangeTypes(OrderChangeTypes orderChangeTypes) {
+    public void setOrderChangeTypes(List<OrderChangeTypeEnum> orderChangeTypes) {
         this.orderChangeTypes = orderChangeTypes;
     }
 
@@ -163,8 +205,7 @@ public class EventFilter {
      *
      * @return trackingIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingIdentifier getTrackingIdentifier() {
+    @javax.annotation.Nullable public TrackingIdentifier getTrackingIdentifier() {
         return trackingIdentifier;
     }
 
@@ -185,10 +226,7 @@ public class EventFilter {
      *
      * @return eventFilterType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).")
+    @javax.annotation.Nonnull
     public EventFilterTypeEnum getEventFilterType() {
         return eventFilterType;
     }
@@ -198,7 +236,7 @@ public class EventFilter {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -242,10 +280,146 @@ public class EventFilter {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("aggregationSettings");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("orderChangeTypes");
+        openapiFields.add("trackingIdentifier");
+        openapiFields.add("eventFilterType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("eventFilterType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to EventFilter
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!EventFilter.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in EventFilter is not found in the empty JSON string",
+                        EventFilter.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!EventFilter.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `EventFilter` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : EventFilter.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `aggregationSettings`
+        if (jsonObj.get("aggregationSettings") != null
+                && !jsonObj.get("aggregationSettings").isJsonNull()) {
+            AggregationSettings.validateJsonElement(jsonObj.get("aggregationSettings"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("marketplaceIds") != null
+                && !jsonObj.get("marketplaceIds").isJsonNull()
+                && !jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("orderChangeTypes") != null
+                && !jsonObj.get("orderChangeTypes").isJsonNull()
+                && !jsonObj.get("orderChangeTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderChangeTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderChangeTypes").toString()));
+        }
+        // validate the optional field `trackingIdentifier`
+        if (jsonObj.get("trackingIdentifier") != null
+                && !jsonObj.get("trackingIdentifier").isJsonNull()) {
+            TrackingIdentifier.validateJsonElement(jsonObj.get("trackingIdentifier"));
+        }
+        if (!jsonObj.get("eventFilterType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eventFilterType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("eventFilterType").toString()));
+        }
+        // validate the required field `eventFilterType`
+        EventFilterTypeEnum.validateJsonElement(jsonObj.get("eventFilterType"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!EventFilter.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'EventFilter' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<EventFilter> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(EventFilter.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<EventFilter>() {
+                        @Override
+                        public void write(JsonWriter out, EventFilter value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public EventFilter read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of EventFilter given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of EventFilter
+     * @throws IOException if the JSON string is invalid with respect to EventFilter
+     */
+    public static EventFilter fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, EventFilter.class);
+    }
+
+    /**
+     * Convert an instance of EventFilter to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

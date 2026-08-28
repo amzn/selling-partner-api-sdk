@@ -12,31 +12,59 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details for the shipment status update given by the vendor for the specific package. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Details for the shipment status update given by the vendor for the specific package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StatusUpdateDetails {
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("statusCode")
-    private String statusCode = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("reasonCode")
-    private String reasonCode = null;
+    public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
 
-    @SerializedName("statusDateTime")
-    private OffsetDateTime statusDateTime = null;
+    @SerializedName(SERIALIZED_NAME_STATUS_CODE)
+    private String statusCode;
 
-    @SerializedName("statusLocationAddress")
-    private Address statusLocationAddress = null;
+    public static final String SERIALIZED_NAME_REASON_CODE = "reasonCode";
 
-    @SerializedName("shipmentSchedule")
-    private ShipmentSchedule shipmentSchedule = null;
+    @SerializedName(SERIALIZED_NAME_REASON_CODE)
+    private String reasonCode;
+
+    public static final String SERIALIZED_NAME_STATUS_DATE_TIME = "statusDateTime";
+
+    @SerializedName(SERIALIZED_NAME_STATUS_DATE_TIME)
+    private OffsetDateTime statusDateTime;
+
+    public static final String SERIALIZED_NAME_STATUS_LOCATION_ADDRESS = "statusLocationAddress";
+
+    @SerializedName(SERIALIZED_NAME_STATUS_LOCATION_ADDRESS)
+    private Address statusLocationAddress;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_SCHEDULE = "shipmentSchedule";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_SCHEDULE)
+    private ShipmentSchedule shipmentSchedule;
+
+    public StatusUpdateDetails() {}
 
     public StatusUpdateDetails trackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
@@ -49,10 +77,7 @@ public class StatusUpdateDetails {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The shipment tracking number is required for every package and should match the `trackingNumber` sent for the shipment confirmation.")
+    @javax.annotation.Nonnull
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -73,10 +98,7 @@ public class StatusUpdateDetails {
      *
      * @return statusCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Indicates the shipment status code of the package that provides transportation information for Amazon tracking systems and ultimately for the final customer. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).")
+    @javax.annotation.Nonnull
     public String getStatusCode() {
         return statusCode;
     }
@@ -97,10 +119,7 @@ public class StatusUpdateDetails {
      *
      * @return reasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Provides a reason code for the status of the package that will provide additional information about the transportation status. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).")
+    @javax.annotation.Nonnull
     public String getReasonCode() {
         return reasonCode;
     }
@@ -121,10 +140,7 @@ public class StatusUpdateDetails {
      *
      * @return statusDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The date and time when the shipment status was updated. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStatusDateTime() {
         return statusDateTime;
     }
@@ -143,7 +159,7 @@ public class StatusUpdateDetails {
      *
      * @return statusLocationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getStatusLocationAddress() {
         return statusLocationAddress;
     }
@@ -162,8 +178,7 @@ public class StatusUpdateDetails {
      *
      * @return shipmentSchedule
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentSchedule getShipmentSchedule() {
+    @javax.annotation.Nullable public ShipmentSchedule getShipmentSchedule() {
         return shipmentSchedule;
     }
 
@@ -172,7 +187,7 @@ public class StatusUpdateDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -217,10 +232,140 @@ public class StatusUpdateDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("trackingNumber");
+        openapiFields.add("statusCode");
+        openapiFields.add("reasonCode");
+        openapiFields.add("statusDateTime");
+        openapiFields.add("statusLocationAddress");
+        openapiFields.add("shipmentSchedule");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("trackingNumber");
+        openapiRequiredFields.add("statusCode");
+        openapiRequiredFields.add("reasonCode");
+        openapiRequiredFields.add("statusDateTime");
+        openapiRequiredFields.add("statusLocationAddress");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StatusUpdateDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StatusUpdateDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StatusUpdateDetails is not found in the empty JSON string",
+                        StatusUpdateDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StatusUpdateDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StatusUpdateDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StatusUpdateDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if (!jsonObj.get("statusCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `statusCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("statusCode").toString()));
+        }
+        if (!jsonObj.get("reasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reasonCode").toString()));
+        }
+        // validate the required field `statusLocationAddress`
+        Address.validateJsonElement(jsonObj.get("statusLocationAddress"));
+        // validate the optional field `shipmentSchedule`
+        if (jsonObj.get("shipmentSchedule") != null
+                && !jsonObj.get("shipmentSchedule").isJsonNull()) {
+            ShipmentSchedule.validateJsonElement(jsonObj.get("shipmentSchedule"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StatusUpdateDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StatusUpdateDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StatusUpdateDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StatusUpdateDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StatusUpdateDetails>() {
+                        @Override
+                        public void write(JsonWriter out, StatusUpdateDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StatusUpdateDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StatusUpdateDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StatusUpdateDetails
+     * @throws IOException if the JSON string is invalid with respect to StatusUpdateDetails
+     */
+    public static StatusUpdateDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StatusUpdateDetails.class);
+    }
+
+    /**
+     * Convert an instance of StatusUpdateDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

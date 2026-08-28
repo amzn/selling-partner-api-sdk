@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The status of an operation. */
 @JsonAdapter(OperationStatus.Adapter.class)
 public enum OperationStatus {
-    @SerializedName("SUCCESS")
     SUCCESS("SUCCESS"),
 
-    @SerializedName("FAILED")
     FAILED("FAILED"),
 
-    @SerializedName("IN_PROGRESS")
     IN_PROGRESS("IN_PROGRESS");
 
     private String value;
@@ -46,25 +43,30 @@ public enum OperationStatus {
         return String.valueOf(value);
     }
 
-    public static OperationStatus fromValue(String input) {
+    public static OperationStatus fromValue(String value) {
         for (OperationStatus b : OperationStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OperationStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final OperationStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OperationStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OperationStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OperationStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OperationStatus.fromValue(value);
     }
 }

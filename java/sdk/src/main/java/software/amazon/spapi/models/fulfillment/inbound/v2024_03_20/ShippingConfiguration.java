@@ -12,23 +12,42 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The shipping configurations supported for the packing option. Available modes are ground small parcel, freight
  * less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean
  * less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The shipping configurations supported for the packing option. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingConfiguration {
-    @SerializedName("shippingMode")
-    private String shippingMode = null;
+    public static final String SERIALIZED_NAME_SHIPPING_MODE = "shippingMode";
 
-    @SerializedName("shippingSolution")
-    private String shippingSolution = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_MODE)
+    private String shippingMode;
+
+    public static final String SERIALIZED_NAME_SHIPPING_SOLUTION = "shippingSolution";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SOLUTION)
+    private String shippingSolution;
+
+    public ShippingConfiguration() {}
 
     public ShippingConfiguration shippingMode(String shippingMode) {
         this.shippingMode = shippingMode;
@@ -42,10 +61,7 @@ public class ShippingConfiguration {
      *
      * @return shippingMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.")
-    public String getShippingMode() {
+    @javax.annotation.Nullable public String getShippingMode() {
         return shippingMode;
     }
 
@@ -64,10 +80,7 @@ public class ShippingConfiguration {
      *
      * @return shippingSolution
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.")
-    public String getShippingSolution() {
+    @javax.annotation.Nullable public String getShippingSolution() {
         return shippingSolution;
     }
 
@@ -76,7 +89,7 @@ public class ShippingConfiguration {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -106,10 +119,114 @@ public class ShippingConfiguration {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shippingMode");
+        openapiFields.add("shippingSolution");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingConfiguration
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingConfiguration.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingConfiguration is not found in the empty JSON string",
+                        ShippingConfiguration.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingConfiguration.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingConfiguration` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("shippingMode") != null && !jsonObj.get("shippingMode").isJsonNull())
+                && !jsonObj.get("shippingMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingMode").toString()));
+        }
+        if ((jsonObj.get("shippingSolution") != null
+                        && !jsonObj.get("shippingSolution").isJsonNull())
+                && !jsonObj.get("shippingSolution").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingSolution` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingSolution").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingConfiguration.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingConfiguration' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingConfiguration> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingConfiguration.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingConfiguration>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingConfiguration value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingConfiguration read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingConfiguration given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingConfiguration
+     * @throws IOException if the JSON string is invalid with respect to ShippingConfiguration
+     */
+    public static ShippingConfiguration fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingConfiguration.class);
+    }
+
+    /**
+     * Convert an instance of ShippingConfiguration to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

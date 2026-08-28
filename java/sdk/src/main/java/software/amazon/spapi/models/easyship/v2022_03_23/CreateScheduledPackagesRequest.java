@@ -12,23 +12,46 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body for the POST /easyShip/2022-03-23/packages/bulk API. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request body for the POST /easyShip/2022-03-23/packages/bulk API.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateScheduledPackagesRequest {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("orderScheduleDetailsList")
-    private List<OrderScheduleDetails> orderScheduleDetailsList = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("labelFormat")
-    private LabelFormat labelFormat = null;
+    public static final String SERIALIZED_NAME_ORDER_SCHEDULE_DETAILS_LIST = "orderScheduleDetailsList";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_SCHEDULE_DETAILS_LIST)
+    private List<OrderScheduleDetails> orderScheduleDetailsList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_LABEL_FORMAT = "labelFormat";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_FORMAT)
+    private LabelFormat labelFormat;
+
+    public CreateScheduledPackagesRequest() {}
 
     public CreateScheduledPackagesRequest marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -40,7 +63,7 @@ public class CreateScheduledPackagesRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -69,9 +92,7 @@ public class CreateScheduledPackagesRequest {
      *
      * @return orderScheduleDetailsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An array allowing users to specify orders to be scheduled.")
+    @javax.annotation.Nonnull
     public List<OrderScheduleDetails> getOrderScheduleDetailsList() {
         return orderScheduleDetailsList;
     }
@@ -90,7 +111,7 @@ public class CreateScheduledPackagesRequest {
      *
      * @return labelFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public LabelFormat getLabelFormat() {
         return labelFormat;
     }
@@ -100,7 +121,7 @@ public class CreateScheduledPackagesRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -133,10 +154,134 @@ public class CreateScheduledPackagesRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("orderScheduleDetailsList");
+        openapiFields.add("labelFormat");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("orderScheduleDetailsList");
+        openapiRequiredFields.add("labelFormat");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateScheduledPackagesRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateScheduledPackagesRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateScheduledPackagesRequest is not found in the empty JSON string",
+                        CreateScheduledPackagesRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateScheduledPackagesRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateScheduledPackagesRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateScheduledPackagesRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("orderScheduleDetailsList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderScheduleDetailsList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderScheduleDetailsList").toString()));
+        }
+
+        JsonArray jsonArrayorderScheduleDetailsList = jsonObj.getAsJsonArray("orderScheduleDetailsList");
+        // validate the required field `orderScheduleDetailsList` (array)
+        for (int i = 0; i < jsonArrayorderScheduleDetailsList.size(); i++) {
+            OrderScheduleDetails.validateJsonElement(jsonArrayorderScheduleDetailsList.get(i));
+        }
+        ;
+        // validate the required field `labelFormat`
+        LabelFormat.validateJsonElement(jsonObj.get("labelFormat"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateScheduledPackagesRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateScheduledPackagesRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateScheduledPackagesRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateScheduledPackagesRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateScheduledPackagesRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateScheduledPackagesRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateScheduledPackagesRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateScheduledPackagesRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateScheduledPackagesRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateScheduledPackagesRequest
+     */
+    public static CreateScheduledPackagesRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateScheduledPackagesRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateScheduledPackagesRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

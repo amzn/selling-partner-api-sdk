@@ -12,22 +12,45 @@
 
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An Amazon product type with a definition available. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon product type with a definition available.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductType {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("displayName")
-    private String displayName = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+
+    @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    private String displayName;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public ProductType() {}
 
     public ProductType name(String name) {
         this.name = name;
@@ -39,7 +62,7 @@ public class ProductType {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the Amazon product type.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -58,9 +81,7 @@ public class ProductType {
      *
      * @return displayName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Human-readable and localized description of the Amazon product type.")
+    @javax.annotation.Nonnull
     public String getDisplayName() {
         return displayName;
     }
@@ -87,9 +108,7 @@ public class ProductType {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The Amazon marketplace identifiers for which the product type definition is available.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -99,7 +118,7 @@ public class ProductType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -131,10 +150,132 @@ public class ProductType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("displayName");
+        openapiFields.add("marketplaceIds");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("displayName");
+        openapiRequiredFields.add("marketplaceIds");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductType is not found in the empty JSON string",
+                        ProductType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ProductType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("displayName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayName").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductType>() {
+                        @Override
+                        public void write(JsonWriter out, ProductType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductType
+     * @throws IOException if the JSON string is invalid with respect to ProductType
+     */
+    public static ProductType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductType.class);
+    }
+
+    /**
+     * Convert an instance of ProductType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

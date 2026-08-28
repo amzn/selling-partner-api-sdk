@@ -12,41 +12,76 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A list of orders along with additional information to make subsequent API calls. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A list of orders along with additional information to make subsequent API calls.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrdersList {
-    @SerializedName("Orders")
-    private OrderList orders = null;
+    public static final String SERIALIZED_NAME_ORDERS = "Orders";
 
-    @SerializedName("NextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_ORDERS)
+    private List<Order> orders = new ArrayList<>();
 
-    @SerializedName("LastUpdatedBefore")
-    private String lastUpdatedBefore = null;
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
 
-    @SerializedName("CreatedBefore")
-    private String createdBefore = null;
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
 
-    public OrdersList orders(OrderList orders) {
+    public static final String SERIALIZED_NAME_LAST_UPDATED_BEFORE = "LastUpdatedBefore";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_BEFORE)
+    private String lastUpdatedBefore;
+
+    public static final String SERIALIZED_NAME_CREATED_BEFORE = "CreatedBefore";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_BEFORE)
+    private String createdBefore;
+
+    public OrdersList() {}
+
+    public OrdersList orders(List<Order> orders) {
         this.orders = orders;
         return this;
     }
 
+    public OrdersList addOrdersItem(Order ordersItem) {
+        if (this.orders == null) {
+            this.orders = new ArrayList<>();
+        }
+        this.orders.add(ordersItem);
+        return this;
+    }
+
     /**
-     * Get orders
+     * A list of orders.
      *
      * @return orders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public OrderList getOrders() {
+    @javax.annotation.Nonnull
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(OrderList orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -60,10 +95,7 @@ public class OrdersList {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When present and not empty, pass this string token in the next request to return the next response page.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -83,10 +115,7 @@ public class OrdersList {
      *
      * @return lastUpdatedBefore
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Use this date to select orders that were last updated before (or at) a specified time. An update is defined as any change in order status, including the creation of a new order. Includes updates made by Amazon and by the seller. Use [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format for all dates.")
-    public String getLastUpdatedBefore() {
+    @javax.annotation.Nullable public String getLastUpdatedBefore() {
         return lastUpdatedBefore;
     }
 
@@ -105,10 +134,7 @@ public class OrdersList {
      *
      * @return createdBefore
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Use this date to select orders created before (or at) a specified time. Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getCreatedBefore() {
+    @javax.annotation.Nullable public String getCreatedBefore() {
         return createdBefore;
     }
 
@@ -117,7 +143,7 @@ public class OrdersList {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -151,10 +177,144 @@ public class OrdersList {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Orders");
+        openapiFields.add("NextToken");
+        openapiFields.add("LastUpdatedBefore");
+        openapiFields.add("CreatedBefore");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Orders");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrdersList
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrdersList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrdersList is not found in the empty JSON string",
+                        OrdersList.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrdersList.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrdersList` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrdersList.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("Orders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Orders` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Orders").toString()));
+        }
+
+        JsonArray jsonArrayorders = jsonObj.getAsJsonArray("Orders");
+        // validate the required field `Orders` (array)
+        for (int i = 0; i < jsonArrayorders.size(); i++) {
+            Order.validateJsonElement(jsonArrayorders.get(i));
+        }
+        ;
+        if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
+                && !jsonObj.get("NextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("NextToken").toString()));
+        }
+        if ((jsonObj.get("LastUpdatedBefore") != null
+                        && !jsonObj.get("LastUpdatedBefore").isJsonNull())
+                && !jsonObj.get("LastUpdatedBefore").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `LastUpdatedBefore` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("LastUpdatedBefore").toString()));
+        }
+        if ((jsonObj.get("CreatedBefore") != null
+                        && !jsonObj.get("CreatedBefore").isJsonNull())
+                && !jsonObj.get("CreatedBefore").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CreatedBefore` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CreatedBefore").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrdersList.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrdersList' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrdersList> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(OrdersList.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrdersList>() {
+                        @Override
+                        public void write(JsonWriter out, OrdersList value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrdersList read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrdersList given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrdersList
+     * @throws IOException if the JSON string is invalid with respect to OrdersList
+     */
+    public static OrdersList fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrdersList.class);
+    }
+
+    /**
+     * Convert an instance of OrdersList to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

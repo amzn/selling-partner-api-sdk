@@ -12,48 +12,86 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a fulfillment order preview, including delivery and fee information based on shipping method. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about a fulfillment order preview, including delivery and fee information based on shipping method.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentPreview {
-    @SerializedName("shippingSpeedCategory")
-    private ShippingSpeedCategory shippingSpeedCategory = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SPEED_CATEGORY = "shippingSpeedCategory";
 
-    @SerializedName("scheduledDeliveryInfo")
-    private ScheduledDeliveryInfo scheduledDeliveryInfo = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SPEED_CATEGORY)
+    private ShippingSpeedCategory shippingSpeedCategory;
 
-    @SerializedName("isFulfillable")
-    private Boolean isFulfillable = null;
+    public static final String SERIALIZED_NAME_SCHEDULED_DELIVERY_INFO = "scheduledDeliveryInfo";
 
-    @SerializedName("isCODCapable")
-    private Boolean isCODCapable = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DELIVERY_INFO)
+    private ScheduledDeliveryInfo scheduledDeliveryInfo;
 
-    @SerializedName("estimatedShippingWeight")
-    private Weight estimatedShippingWeight = null;
+    public static final String SERIALIZED_NAME_IS_FULFILLABLE = "isFulfillable";
 
-    @SerializedName("estimatedFees")
-    private FeeList estimatedFees = null;
+    @SerializedName(SERIALIZED_NAME_IS_FULFILLABLE)
+    private Boolean isFulfillable;
 
-    @SerializedName("fulfillmentPreviewShipments")
-    private FulfillmentPreviewShipmentList fulfillmentPreviewShipments = null;
+    public static final String SERIALIZED_NAME_IS_C_O_D_CAPABLE = "isCODCapable";
 
-    @SerializedName("unfulfillablePreviewItems")
-    private UnfulfillablePreviewItemList unfulfillablePreviewItems = null;
+    @SerializedName(SERIALIZED_NAME_IS_C_O_D_CAPABLE)
+    private Boolean isCODCapable;
 
-    @SerializedName("orderUnfulfillableReasons")
-    private StringList orderUnfulfillableReasons = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_SHIPPING_WEIGHT = "estimatedShippingWeight";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_SHIPPING_WEIGHT)
+    private Weight estimatedShippingWeight;
 
-    @SerializedName("featureConstraints")
-    private List<FeatureSettings> featureConstraints = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_FEES = "estimatedFees";
+
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_FEES)
+    private List<Fee> estimatedFees = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_PREVIEW_SHIPMENTS = "fulfillmentPreviewShipments";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_PREVIEW_SHIPMENTS)
+    private List<FulfillmentPreviewShipment> fulfillmentPreviewShipments = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_UNFULFILLABLE_PREVIEW_ITEMS = "unfulfillablePreviewItems";
+
+    @SerializedName(SERIALIZED_NAME_UNFULFILLABLE_PREVIEW_ITEMS)
+    private List<UnfulfillablePreviewItem> unfulfillablePreviewItems = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ORDER_UNFULFILLABLE_REASONS = "orderUnfulfillableReasons";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_UNFULFILLABLE_REASONS)
+    private List<String> orderUnfulfillableReasons = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_FEATURE_CONSTRAINTS = "featureConstraints";
+
+    @SerializedName(SERIALIZED_NAME_FEATURE_CONSTRAINTS)
+    private List<FeatureSettings> featureConstraints = new ArrayList<>();
+
+    public FulfillmentPreview() {}
 
     public FulfillmentPreview shippingSpeedCategory(ShippingSpeedCategory shippingSpeedCategory) {
         this.shippingSpeedCategory = shippingSpeedCategory;
@@ -65,7 +103,7 @@ public class FulfillmentPreview {
      *
      * @return shippingSpeedCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingSpeedCategory getShippingSpeedCategory() {
         return shippingSpeedCategory;
     }
@@ -84,8 +122,7 @@ public class FulfillmentPreview {
      *
      * @return scheduledDeliveryInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ScheduledDeliveryInfo getScheduledDeliveryInfo() {
+    @javax.annotation.Nullable public ScheduledDeliveryInfo getScheduledDeliveryInfo() {
         return scheduledDeliveryInfo;
     }
 
@@ -103,9 +140,7 @@ public class FulfillmentPreview {
      *
      * @return isFulfillable
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, this fulfillment order preview is fulfillable.")
+    @javax.annotation.Nonnull
     public Boolean getIsFulfillable() {
         return isFulfillable;
     }
@@ -124,9 +159,7 @@ public class FulfillmentPreview {
      *
      * @return isCODCapable
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, this fulfillment order preview is for COD (Cash On Delivery).")
+    @javax.annotation.Nonnull
     public Boolean getIsCODCapable() {
         return isCODCapable;
     }
@@ -145,8 +178,7 @@ public class FulfillmentPreview {
      *
      * @return estimatedShippingWeight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getEstimatedShippingWeight() {
+    @javax.annotation.Nullable public Weight getEstimatedShippingWeight() {
         return estimatedShippingWeight;
     }
 
@@ -154,79 +186,109 @@ public class FulfillmentPreview {
         this.estimatedShippingWeight = estimatedShippingWeight;
     }
 
-    public FulfillmentPreview estimatedFees(FeeList estimatedFees) {
+    public FulfillmentPreview estimatedFees(List<Fee> estimatedFees) {
         this.estimatedFees = estimatedFees;
         return this;
     }
 
+    public FulfillmentPreview addEstimatedFeesItem(Fee estimatedFeesItem) {
+        if (this.estimatedFees == null) {
+            this.estimatedFees = new ArrayList<>();
+        }
+        this.estimatedFees.add(estimatedFeesItem);
+        return this;
+    }
+
     /**
-     * Get estimatedFees
+     * An array of fee type and cost pairs.
      *
      * @return estimatedFees
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeList getEstimatedFees() {
+    @javax.annotation.Nullable public List<Fee> getEstimatedFees() {
         return estimatedFees;
     }
 
-    public void setEstimatedFees(FeeList estimatedFees) {
+    public void setEstimatedFees(List<Fee> estimatedFees) {
         this.estimatedFees = estimatedFees;
     }
 
-    public FulfillmentPreview fulfillmentPreviewShipments(FulfillmentPreviewShipmentList fulfillmentPreviewShipments) {
+    public FulfillmentPreview fulfillmentPreviewShipments(
+            List<FulfillmentPreviewShipment> fulfillmentPreviewShipments) {
         this.fulfillmentPreviewShipments = fulfillmentPreviewShipments;
         return this;
     }
 
+    public FulfillmentPreview addFulfillmentPreviewShipmentsItem(
+            FulfillmentPreviewShipment fulfillmentPreviewShipmentsItem) {
+        if (this.fulfillmentPreviewShipments == null) {
+            this.fulfillmentPreviewShipments = new ArrayList<>();
+        }
+        this.fulfillmentPreviewShipments.add(fulfillmentPreviewShipmentsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentPreviewShipments
+     * An array of fulfillment preview shipment information.
      *
      * @return fulfillmentPreviewShipments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentPreviewShipmentList getFulfillmentPreviewShipments() {
+    @javax.annotation.Nullable public List<FulfillmentPreviewShipment> getFulfillmentPreviewShipments() {
         return fulfillmentPreviewShipments;
     }
 
-    public void setFulfillmentPreviewShipments(FulfillmentPreviewShipmentList fulfillmentPreviewShipments) {
+    public void setFulfillmentPreviewShipments(List<FulfillmentPreviewShipment> fulfillmentPreviewShipments) {
         this.fulfillmentPreviewShipments = fulfillmentPreviewShipments;
     }
 
-    public FulfillmentPreview unfulfillablePreviewItems(UnfulfillablePreviewItemList unfulfillablePreviewItems) {
+    public FulfillmentPreview unfulfillablePreviewItems(List<UnfulfillablePreviewItem> unfulfillablePreviewItems) {
         this.unfulfillablePreviewItems = unfulfillablePreviewItems;
         return this;
     }
 
+    public FulfillmentPreview addUnfulfillablePreviewItemsItem(UnfulfillablePreviewItem unfulfillablePreviewItemsItem) {
+        if (this.unfulfillablePreviewItems == null) {
+            this.unfulfillablePreviewItems = new ArrayList<>();
+        }
+        this.unfulfillablePreviewItems.add(unfulfillablePreviewItemsItem);
+        return this;
+    }
+
     /**
-     * Get unfulfillablePreviewItems
+     * An array of unfulfillable preview item information.
      *
      * @return unfulfillablePreviewItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public UnfulfillablePreviewItemList getUnfulfillablePreviewItems() {
+    @javax.annotation.Nullable public List<UnfulfillablePreviewItem> getUnfulfillablePreviewItems() {
         return unfulfillablePreviewItems;
     }
 
-    public void setUnfulfillablePreviewItems(UnfulfillablePreviewItemList unfulfillablePreviewItems) {
+    public void setUnfulfillablePreviewItems(List<UnfulfillablePreviewItem> unfulfillablePreviewItems) {
         this.unfulfillablePreviewItems = unfulfillablePreviewItems;
     }
 
-    public FulfillmentPreview orderUnfulfillableReasons(StringList orderUnfulfillableReasons) {
+    public FulfillmentPreview orderUnfulfillableReasons(List<String> orderUnfulfillableReasons) {
         this.orderUnfulfillableReasons = orderUnfulfillableReasons;
         return this;
     }
 
+    public FulfillmentPreview addOrderUnfulfillableReasonsItem(String orderUnfulfillableReasonsItem) {
+        if (this.orderUnfulfillableReasons == null) {
+            this.orderUnfulfillableReasons = new ArrayList<>();
+        }
+        this.orderUnfulfillableReasons.add(orderUnfulfillableReasonsItem);
+        return this;
+    }
+
     /**
-     * Get orderUnfulfillableReasons
+     * String list
      *
      * @return orderUnfulfillableReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StringList getOrderUnfulfillableReasons() {
+    @javax.annotation.Nullable public List<String> getOrderUnfulfillableReasons() {
         return orderUnfulfillableReasons;
     }
 
-    public void setOrderUnfulfillableReasons(StringList orderUnfulfillableReasons) {
+    public void setOrderUnfulfillableReasons(List<String> orderUnfulfillableReasons) {
         this.orderUnfulfillableReasons = orderUnfulfillableReasons;
     }
 
@@ -240,9 +302,7 @@ public class FulfillmentPreview {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The marketplace the fulfillment order is placed against.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -269,9 +329,7 @@ public class FulfillmentPreview {
      *
      * @return featureConstraints
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of features and their fulfillment policies to apply to the order.")
-    public List<FeatureSettings> getFeatureConstraints() {
+    @javax.annotation.Nullable public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }
 
@@ -280,7 +338,7 @@ public class FulfillmentPreview {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -351,10 +409,219 @@ public class FulfillmentPreview {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shippingSpeedCategory");
+        openapiFields.add("scheduledDeliveryInfo");
+        openapiFields.add("isFulfillable");
+        openapiFields.add("isCODCapable");
+        openapiFields.add("estimatedShippingWeight");
+        openapiFields.add("estimatedFees");
+        openapiFields.add("fulfillmentPreviewShipments");
+        openapiFields.add("unfulfillablePreviewItems");
+        openapiFields.add("orderUnfulfillableReasons");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("featureConstraints");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shippingSpeedCategory");
+        openapiRequiredFields.add("isFulfillable");
+        openapiRequiredFields.add("isCODCapable");
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentPreview
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentPreview.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentPreview is not found in the empty JSON string",
+                        FulfillmentPreview.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentPreview.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentPreview` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FulfillmentPreview.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `shippingSpeedCategory`
+        ShippingSpeedCategory.validateJsonElement(jsonObj.get("shippingSpeedCategory"));
+        // validate the optional field `scheduledDeliveryInfo`
+        if (jsonObj.get("scheduledDeliveryInfo") != null
+                && !jsonObj.get("scheduledDeliveryInfo").isJsonNull()) {
+            ScheduledDeliveryInfo.validateJsonElement(jsonObj.get("scheduledDeliveryInfo"));
+        }
+        // validate the optional field `estimatedShippingWeight`
+        if (jsonObj.get("estimatedShippingWeight") != null
+                && !jsonObj.get("estimatedShippingWeight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("estimatedShippingWeight"));
+        }
+        if (jsonObj.get("estimatedFees") != null
+                && !jsonObj.get("estimatedFees").isJsonNull()) {
+            JsonArray jsonArrayestimatedFees = jsonObj.getAsJsonArray("estimatedFees");
+            if (jsonArrayestimatedFees != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("estimatedFees").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `estimatedFees` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("estimatedFees").toString()));
+                }
+
+                // validate the optional field `estimatedFees` (array)
+                for (int i = 0; i < jsonArrayestimatedFees.size(); i++) {
+                    Fee.validateJsonElement(jsonArrayestimatedFees.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("fulfillmentPreviewShipments") != null
+                && !jsonObj.get("fulfillmentPreviewShipments").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentPreviewShipments = jsonObj.getAsJsonArray("fulfillmentPreviewShipments");
+            if (jsonArrayfulfillmentPreviewShipments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentPreviewShipments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentPreviewShipments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentPreviewShipments").toString()));
+                }
+
+                // validate the optional field `fulfillmentPreviewShipments` (array)
+                for (int i = 0; i < jsonArrayfulfillmentPreviewShipments.size(); i++) {
+                    FulfillmentPreviewShipment.validateJsonElement(jsonArrayfulfillmentPreviewShipments.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("unfulfillablePreviewItems") != null
+                && !jsonObj.get("unfulfillablePreviewItems").isJsonNull()) {
+            JsonArray jsonArrayunfulfillablePreviewItems = jsonObj.getAsJsonArray("unfulfillablePreviewItems");
+            if (jsonArrayunfulfillablePreviewItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("unfulfillablePreviewItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `unfulfillablePreviewItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("unfulfillablePreviewItems").toString()));
+                }
+
+                // validate the optional field `unfulfillablePreviewItems` (array)
+                for (int i = 0; i < jsonArrayunfulfillablePreviewItems.size(); i++) {
+                    UnfulfillablePreviewItem.validateJsonElement(jsonArrayunfulfillablePreviewItems.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("orderUnfulfillableReasons") != null
+                && !jsonObj.get("orderUnfulfillableReasons").isJsonNull()
+                && !jsonObj.get("orderUnfulfillableReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderUnfulfillableReasons` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderUnfulfillableReasons").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (jsonObj.get("featureConstraints") != null
+                && !jsonObj.get("featureConstraints").isJsonNull()) {
+            JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");
+            if (jsonArrayfeatureConstraints != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("featureConstraints").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `featureConstraints` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("featureConstraints").toString()));
+                }
+
+                // validate the optional field `featureConstraints` (array)
+                for (int i = 0; i < jsonArrayfeatureConstraints.size(); i++) {
+                    FeatureSettings.validateJsonElement(jsonArrayfeatureConstraints.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentPreview.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentPreview' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentPreview> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentPreview.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentPreview>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentPreview value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentPreview read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentPreview given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentPreview
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentPreview
+     */
+    public static FulfillmentPreview fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentPreview.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentPreview to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

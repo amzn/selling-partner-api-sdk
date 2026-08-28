@@ -12,38 +12,67 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Information about the prescription that is used to verify a regulated product. This must be provided once per order
  * and reflect the seller’s own records. Only approved orders can have prescriptions.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about the prescription that is used to verify a regulated product. This must be provided once per order and reflect the seller’s own records. Only approved orders can have prescriptions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrescriptionDetail {
-    @SerializedName("prescriptionId")
-    private String prescriptionId = null;
+    public static final String SERIALIZED_NAME_PRESCRIPTION_ID = "prescriptionId";
 
-    @SerializedName("expirationDate")
-    private OffsetDateTime expirationDate = null;
+    @SerializedName(SERIALIZED_NAME_PRESCRIPTION_ID)
+    private String prescriptionId;
 
-    @SerializedName("writtenQuantity")
-    private Integer writtenQuantity = null;
+    public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expirationDate";
 
-    @SerializedName("totalRefillsAuthorized")
-    private Integer totalRefillsAuthorized = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
+    private OffsetDateTime expirationDate;
 
-    @SerializedName("refillsRemaining")
-    private Integer refillsRemaining = null;
+    public static final String SERIALIZED_NAME_WRITTEN_QUANTITY = "writtenQuantity";
 
-    @SerializedName("clinicId")
-    private String clinicId = null;
+    @SerializedName(SERIALIZED_NAME_WRITTEN_QUANTITY)
+    private Integer writtenQuantity;
 
-    @SerializedName("usageInstructions")
-    private String usageInstructions = null;
+    public static final String SERIALIZED_NAME_TOTAL_REFILLS_AUTHORIZED = "totalRefillsAuthorized";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_REFILLS_AUTHORIZED)
+    private Integer totalRefillsAuthorized;
+
+    public static final String SERIALIZED_NAME_REFILLS_REMAINING = "refillsRemaining";
+
+    @SerializedName(SERIALIZED_NAME_REFILLS_REMAINING)
+    private Integer refillsRemaining;
+
+    public static final String SERIALIZED_NAME_CLINIC_ID = "clinicId";
+
+    @SerializedName(SERIALIZED_NAME_CLINIC_ID)
+    private String clinicId;
+
+    public static final String SERIALIZED_NAME_USAGE_INSTRUCTIONS = "usageInstructions";
+
+    @SerializedName(SERIALIZED_NAME_USAGE_INSTRUCTIONS)
+    private String usageInstructions;
+
+    public PrescriptionDetail() {}
 
     public PrescriptionDetail prescriptionId(String prescriptionId) {
         this.prescriptionId = prescriptionId;
@@ -55,9 +84,7 @@ public class PrescriptionDetail {
      *
      * @return prescriptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier for the prescription used to verify the regulated product.")
+    @javax.annotation.Nonnull
     public String getPrescriptionId() {
         return prescriptionId;
     }
@@ -77,10 +104,7 @@ public class PrescriptionDetail {
      *
      * @return expirationDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The expiration date of the prescription used to verify the regulated product, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getExpirationDate() {
         return expirationDate;
     }
@@ -95,13 +119,11 @@ public class PrescriptionDetail {
     }
 
     /**
-     * The number of units in each fill as provided in the prescription.
+     * The number of units in each fill as provided in the prescription. minimum: 1
      *
      * @return writtenQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of units in each fill as provided in the prescription.")
+    @javax.annotation.Nonnull
     public Integer getWrittenQuantity() {
         return writtenQuantity;
     }
@@ -117,14 +139,11 @@ public class PrescriptionDetail {
 
     /**
      * The total number of refills written in the original prescription used to verify the regulated product. If a
-     * prescription originally had no refills, this value must be 0.
+     * prescription originally had no refills, this value must be 0. minimum: 0
      *
      * @return totalRefillsAuthorized
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The total number of refills written in the original prescription used to verify the regulated product. If a prescription originally had no refills, this value must be 0.")
+    @javax.annotation.Nonnull
     public Integer getTotalRefillsAuthorized() {
         return totalRefillsAuthorized;
     }
@@ -142,14 +161,11 @@ public class PrescriptionDetail {
      * The number of refills remaining for the prescription used to verify the regulated product. If a prescription
      * originally had 10 total refills, this value must be &#x60;10&#x60; for the first order, &#x60;9&#x60; for the
      * second order, and &#x60;0&#x60; for the eleventh order. If a prescription originally had no refills, this value
-     * must be 0.
+     * must be 0. minimum: 0
      *
      * @return refillsRemaining
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be `10` for the first order, `9` for the second order, and `0` for the eleventh order. If a prescription originally had no refills, this value must be 0.")
+    @javax.annotation.Nonnull
     public Integer getRefillsRemaining() {
         return refillsRemaining;
     }
@@ -168,10 +184,7 @@ public class PrescriptionDetail {
      *
      * @return clinicId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the clinic which provided the prescription used to verify the regulated product.")
+    @javax.annotation.Nonnull
     public String getClinicId() {
         return clinicId;
     }
@@ -190,9 +203,7 @@ public class PrescriptionDetail {
      *
      * @return usageInstructions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The instructions for the prescription as provided by the approver of the regulated product.")
+    @javax.annotation.Nonnull
     public String getUsageInstructions() {
         return usageInstructions;
     }
@@ -202,7 +213,7 @@ public class PrescriptionDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -259,10 +270,136 @@ public class PrescriptionDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("prescriptionId");
+        openapiFields.add("expirationDate");
+        openapiFields.add("writtenQuantity");
+        openapiFields.add("totalRefillsAuthorized");
+        openapiFields.add("refillsRemaining");
+        openapiFields.add("clinicId");
+        openapiFields.add("usageInstructions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("prescriptionId");
+        openapiRequiredFields.add("expirationDate");
+        openapiRequiredFields.add("writtenQuantity");
+        openapiRequiredFields.add("totalRefillsAuthorized");
+        openapiRequiredFields.add("refillsRemaining");
+        openapiRequiredFields.add("clinicId");
+        openapiRequiredFields.add("usageInstructions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrescriptionDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrescriptionDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrescriptionDetail is not found in the empty JSON string",
+                        PrescriptionDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrescriptionDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrescriptionDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PrescriptionDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("prescriptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `prescriptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("prescriptionId").toString()));
+        }
+        if (!jsonObj.get("clinicId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `clinicId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("clinicId").toString()));
+        }
+        if (!jsonObj.get("usageInstructions").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `usageInstructions` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("usageInstructions").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrescriptionDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrescriptionDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrescriptionDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrescriptionDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrescriptionDetail>() {
+                        @Override
+                        public void write(JsonWriter out, PrescriptionDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrescriptionDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrescriptionDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrescriptionDetail
+     * @throws IOException if the JSON string is invalid with respect to PrescriptionDetail
+     */
+    public static PrescriptionDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrescriptionDetail.class);
+    }
+
+    /**
+     * Convert an instance of PrescriptionDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,28 +12,57 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request schema for the purchaseShipment operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the purchaseShipment operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PurchaseShipmentRequest {
-    @SerializedName("requestToken")
-    private String requestToken = null;
+    public static final String SERIALIZED_NAME_REQUEST_TOKEN = "requestToken";
 
-    @SerializedName("rateId")
-    private String rateId = null;
+    @SerializedName(SERIALIZED_NAME_REQUEST_TOKEN)
+    private String requestToken;
 
-    @SerializedName("requestedDocumentSpecification")
-    private RequestedDocumentSpecification requestedDocumentSpecification = null;
+    public static final String SERIALIZED_NAME_RATE_ID = "rateId";
 
-    @SerializedName("requestedValueAddedServices")
-    private RequestedValueAddedServiceList requestedValueAddedServices = null;
+    @SerializedName(SERIALIZED_NAME_RATE_ID)
+    private String rateId;
 
-    @SerializedName("additionalInputs")
-    private Map<String, Object> additionalInputs = null;
+    public static final String SERIALIZED_NAME_REQUESTED_DOCUMENT_SPECIFICATION = "requestedDocumentSpecification";
+
+    @SerializedName(SERIALIZED_NAME_REQUESTED_DOCUMENT_SPECIFICATION)
+    private RequestedDocumentSpecification requestedDocumentSpecification;
+
+    public static final String SERIALIZED_NAME_REQUESTED_VALUE_ADDED_SERVICES = "requestedValueAddedServices";
+
+    @SerializedName(SERIALIZED_NAME_REQUESTED_VALUE_ADDED_SERVICES)
+    private List<RequestedValueAddedService> requestedValueAddedServices = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ADDITIONAL_INPUTS = "additionalInputs";
+
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_INPUTS)
+    private Map<String, Object> additionalInputs = new HashMap<>();
+
+    public PurchaseShipmentRequest() {}
 
     public PurchaseShipmentRequest requestToken(String requestToken) {
         this.requestToken = requestToken;
@@ -45,9 +74,7 @@ public class PurchaseShipmentRequest {
      *
      * @return requestToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A unique token generated to identify a getRates operation.")
+    @javax.annotation.Nonnull
     public String getRequestToken() {
         return requestToken;
     }
@@ -66,9 +93,7 @@ public class PurchaseShipmentRequest {
      *
      * @return rateId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier for the rate (shipment offering) provided by a shipping service provider.")
+    @javax.annotation.Nonnull
     public String getRateId() {
         return rateId;
     }
@@ -88,7 +113,7 @@ public class PurchaseShipmentRequest {
      *
      * @return requestedDocumentSpecification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RequestedDocumentSpecification getRequestedDocumentSpecification() {
         return requestedDocumentSpecification;
     }
@@ -98,22 +123,30 @@ public class PurchaseShipmentRequest {
     }
 
     public PurchaseShipmentRequest requestedValueAddedServices(
-            RequestedValueAddedServiceList requestedValueAddedServices) {
+            List<RequestedValueAddedService> requestedValueAddedServices) {
         this.requestedValueAddedServices = requestedValueAddedServices;
         return this;
     }
 
+    public PurchaseShipmentRequest addRequestedValueAddedServicesItem(
+            RequestedValueAddedService requestedValueAddedServicesItem) {
+        if (this.requestedValueAddedServices == null) {
+            this.requestedValueAddedServices = new ArrayList<>();
+        }
+        this.requestedValueAddedServices.add(requestedValueAddedServicesItem);
+        return this;
+    }
+
     /**
-     * Get requestedValueAddedServices
+     * The value-added services to be added to a shipping service purchase.
      *
      * @return requestedValueAddedServices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RequestedValueAddedServiceList getRequestedValueAddedServices() {
+    @javax.annotation.Nullable public List<RequestedValueAddedService> getRequestedValueAddedServices() {
         return requestedValueAddedServices;
     }
 
-    public void setRequestedValueAddedServices(RequestedValueAddedServiceList requestedValueAddedServices) {
+    public void setRequestedValueAddedServices(List<RequestedValueAddedService> requestedValueAddedServices) {
         this.requestedValueAddedServices = requestedValueAddedServices;
     }
 
@@ -138,10 +171,7 @@ public class PurchaseShipmentRequest {
      *
      * @return additionalInputs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.")
-    public Map<String, Object> getAdditionalInputs() {
+    @javax.annotation.Nullable public Map<String, Object> getAdditionalInputs() {
         return additionalInputs;
     }
 
@@ -150,7 +180,7 @@ public class PurchaseShipmentRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -192,10 +222,146 @@ public class PurchaseShipmentRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("requestToken");
+        openapiFields.add("rateId");
+        openapiFields.add("requestedDocumentSpecification");
+        openapiFields.add("requestedValueAddedServices");
+        openapiFields.add("additionalInputs");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("requestToken");
+        openapiRequiredFields.add("rateId");
+        openapiRequiredFields.add("requestedDocumentSpecification");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PurchaseShipmentRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PurchaseShipmentRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PurchaseShipmentRequest is not found in the empty JSON string",
+                        PurchaseShipmentRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PurchaseShipmentRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PurchaseShipmentRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PurchaseShipmentRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("requestToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requestToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requestToken").toString()));
+        }
+        if (!jsonObj.get("rateId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rateId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rateId").toString()));
+        }
+        // validate the required field `requestedDocumentSpecification`
+        RequestedDocumentSpecification.validateJsonElement(jsonObj.get("requestedDocumentSpecification"));
+        if (jsonObj.get("requestedValueAddedServices") != null
+                && !jsonObj.get("requestedValueAddedServices").isJsonNull()) {
+            JsonArray jsonArrayrequestedValueAddedServices = jsonObj.getAsJsonArray("requestedValueAddedServices");
+            if (jsonArrayrequestedValueAddedServices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("requestedValueAddedServices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `requestedValueAddedServices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("requestedValueAddedServices").toString()));
+                }
+
+                // validate the optional field `requestedValueAddedServices` (array)
+                for (int i = 0; i < jsonArrayrequestedValueAddedServices.size(); i++) {
+                    RequestedValueAddedService.validateJsonElement(jsonArrayrequestedValueAddedServices.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PurchaseShipmentRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PurchaseShipmentRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PurchaseShipmentRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PurchaseShipmentRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PurchaseShipmentRequest>() {
+                        @Override
+                        public void write(JsonWriter out, PurchaseShipmentRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PurchaseShipmentRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PurchaseShipmentRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PurchaseShipmentRequest
+     * @throws IOException if the JSON string is invalid with respect to PurchaseShipmentRequest
+     */
+    public static PurchaseShipmentRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PurchaseShipmentRequest.class);
+    }
+
+    /**
+     * Convert an instance of PurchaseShipmentRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The file format of the document. */
 @JsonAdapter(DocumentFormat.Adapter.class)
 public enum DocumentFormat {
-    @SerializedName("PDF")
     PDF("PDF"),
 
-    @SerializedName("PNG")
     PNG("PNG"),
 
-    @SerializedName("ZPL")
     ZPL("ZPL");
 
     private String value;
@@ -46,25 +43,30 @@ public enum DocumentFormat {
         return String.valueOf(value);
     }
 
-    public static DocumentFormat fromValue(String input) {
+    public static DocumentFormat fromValue(String value) {
         for (DocumentFormat b : DocumentFormat.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DocumentFormat> {
         @Override
         public void write(final JsonWriter jsonWriter, final DocumentFormat enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DocumentFormat read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DocumentFormat.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DocumentFormat.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DocumentFormat.fromValue(value);
     }
 }

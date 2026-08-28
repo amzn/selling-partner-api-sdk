@@ -12,44 +12,81 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request schema to get query collections form history API . */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request schema to get query collections form history API .")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetCollectionFormHistoryRequest {
-    @SerializedName("clientReferenceDetails")
-    private ClientReferenceDetails clientReferenceDetails = null;
+    public static final String SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS = "clientReferenceDetails";
 
-    @SerializedName("maxResults")
-    private Integer maxResults = null;
+    @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS)
+    private List<ClientReferenceDetail> clientReferenceDetails = new ArrayList<>();
 
-    @SerializedName("carrierId")
-    private String carrierId = null;
+    public static final String SERIALIZED_NAME_MAX_RESULTS = "maxResults";
 
-    @SerializedName("shipFromAddress")
-    private Address shipFromAddress = null;
+    @SerializedName(SERIALIZED_NAME_MAX_RESULTS)
+    private Integer maxResults;
 
-    @SerializedName("dateRange")
-    private DateRange dateRange = null;
+    public static final String SERIALIZED_NAME_CARRIER_ID = "carrierId";
 
-    public GetCollectionFormHistoryRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    @SerializedName(SERIALIZED_NAME_CARRIER_ID)
+    private String carrierId;
+
+    public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "shipFromAddress";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_ADDRESS)
+    private Address shipFromAddress;
+
+    public static final String SERIALIZED_NAME_DATE_RANGE = "dateRange";
+
+    @SerializedName(SERIALIZED_NAME_DATE_RANGE)
+    private DateRange dateRange;
+
+    public GetCollectionFormHistoryRequest() {}
+
+    public GetCollectionFormHistoryRequest clientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
         return this;
     }
 
+    public GetCollectionFormHistoryRequest addClientReferenceDetailsItem(
+            ClientReferenceDetail clientReferenceDetailsItem) {
+        if (this.clientReferenceDetails == null) {
+            this.clientReferenceDetails = new ArrayList<>();
+        }
+        this.clientReferenceDetails.add(clientReferenceDetailsItem);
+        return this;
+    }
+
     /**
-     * Get clientReferenceDetails
+     * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      *
      * @return clientReferenceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ClientReferenceDetails getClientReferenceDetails() {
+    @javax.annotation.Nullable public List<ClientReferenceDetail> getClientReferenceDetails() {
         return clientReferenceDetails;
     }
 
-    public void setClientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public void setClientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
     }
 
@@ -63,8 +100,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return maxResults
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "max Number of Results for query .")
-    public Integer getMaxResults() {
+    @javax.annotation.Nullable public Integer getMaxResults() {
         return maxResults;
     }
 
@@ -82,9 +118,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return carrierId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The carrier identifier for the offering, provided by the carrier.")
-    public String getCarrierId() {
+    @javax.annotation.Nullable public String getCarrierId() {
         return carrierId;
     }
 
@@ -102,8 +136,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return shipFromAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShipFromAddress() {
+    @javax.annotation.Nullable public Address getShipFromAddress() {
         return shipFromAddress;
     }
 
@@ -121,8 +154,7 @@ public class GetCollectionFormHistoryRequest {
      *
      * @return dateRange
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateRange getDateRange() {
+    @javax.annotation.Nullable public DateRange getDateRange() {
         return dateRange;
     }
 
@@ -131,7 +163,7 @@ public class GetCollectionFormHistoryRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -169,10 +201,137 @@ public class GetCollectionFormHistoryRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("clientReferenceDetails");
+        openapiFields.add("maxResults");
+        openapiFields.add("carrierId");
+        openapiFields.add("shipFromAddress");
+        openapiFields.add("dateRange");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetCollectionFormHistoryRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetCollectionFormHistoryRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetCollectionFormHistoryRequest is not found in the empty JSON string",
+                        GetCollectionFormHistoryRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetCollectionFormHistoryRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetCollectionFormHistoryRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("clientReferenceDetails") != null
+                && !jsonObj.get("clientReferenceDetails").isJsonNull()) {
+            JsonArray jsonArrayclientReferenceDetails = jsonObj.getAsJsonArray("clientReferenceDetails");
+            if (jsonArrayclientReferenceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("clientReferenceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `clientReferenceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("clientReferenceDetails").toString()));
+                }
+
+                // validate the optional field `clientReferenceDetails` (array)
+                for (int i = 0; i < jsonArrayclientReferenceDetails.size(); i++) {
+                    ClientReferenceDetail.validateJsonElement(jsonArrayclientReferenceDetails.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("carrierId") != null && !jsonObj.get("carrierId").isJsonNull())
+                && !jsonObj.get("carrierId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierId").toString()));
+        }
+        // validate the optional field `shipFromAddress`
+        if (jsonObj.get("shipFromAddress") != null
+                && !jsonObj.get("shipFromAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("shipFromAddress"));
+        }
+        // validate the optional field `dateRange`
+        if (jsonObj.get("dateRange") != null && !jsonObj.get("dateRange").isJsonNull()) {
+            DateRange.validateJsonElement(jsonObj.get("dateRange"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetCollectionFormHistoryRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetCollectionFormHistoryRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetCollectionFormHistoryRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetCollectionFormHistoryRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetCollectionFormHistoryRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetCollectionFormHistoryRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetCollectionFormHistoryRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetCollectionFormHistoryRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetCollectionFormHistoryRequest
+     * @throws IOException if the JSON string is invalid with respect to GetCollectionFormHistoryRequest
+     */
+    public static GetCollectionFormHistoryRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetCollectionFormHistoryRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetCollectionFormHistoryRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

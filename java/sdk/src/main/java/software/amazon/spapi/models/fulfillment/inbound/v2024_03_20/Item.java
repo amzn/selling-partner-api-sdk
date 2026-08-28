@@ -12,38 +12,71 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information associated with a single SKU in the seller&#39;s catalog. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information associated with a single SKU in the seller's catalog.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("expiration")
-    private String expiration = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("fnsku")
-    private String fnsku = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
 
-    @SerializedName("labelOwner")
-    private String labelOwner = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private String expiration;
 
-    @SerializedName("manufacturingLotCode")
-    private String manufacturingLotCode = null;
+    public static final String SERIALIZED_NAME_FNSKU = "fnsku";
 
-    @SerializedName("msku")
-    private String msku = null;
+    @SerializedName(SERIALIZED_NAME_FNSKU)
+    private String fnsku;
 
-    @SerializedName("prepInstructions")
-    private List<PrepInstruction> prepInstructions = null;
+    public static final String SERIALIZED_NAME_LABEL_OWNER = "labelOwner";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_OWNER)
+    private String labelOwner;
+
+    public static final String SERIALIZED_NAME_MANUFACTURING_LOT_CODE = "manufacturingLotCode";
+
+    @SerializedName(SERIALIZED_NAME_MANUFACTURING_LOT_CODE)
+    private String manufacturingLotCode;
+
+    public static final String SERIALIZED_NAME_MSKU = "msku";
+
+    @SerializedName(SERIALIZED_NAME_MSKU)
+    private String msku;
+
+    public static final String SERIALIZED_NAME_PREP_INSTRUCTIONS = "prepInstructions";
+
+    @SerializedName(SERIALIZED_NAME_PREP_INSTRUCTIONS)
+    private List<PrepInstruction> prepInstructions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public Item() {}
 
     public Item asin(String asin) {
         this.asin = asin;
@@ -55,9 +88,7 @@ public class Item {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -78,10 +109,7 @@ public class Item {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern`YYYY-MM-DD`. The same MSKU with different expiration dates cannot go into the same box.")
-    public String getExpiration() {
+    @javax.annotation.Nullable public String getExpiration() {
         return expiration;
     }
 
@@ -99,10 +127,7 @@ public class Item {
      *
      * @return fnsku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.")
+    @javax.annotation.Nonnull
     public String getFnsku() {
         return fnsku;
     }
@@ -122,10 +147,7 @@ public class Item {
      *
      * @return labelOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
+    @javax.annotation.Nonnull
     public String getLabelOwner() {
         return labelOwner;
     }
@@ -144,8 +166,7 @@ public class Item {
      *
      * @return manufacturingLotCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The manufacturing lot code.")
-    public String getManufacturingLotCode() {
+    @javax.annotation.Nullable public String getManufacturingLotCode() {
         return manufacturingLotCode;
     }
 
@@ -163,7 +184,7 @@ public class Item {
      *
      * @return msku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The merchant-defined SKU ID.")
+    @javax.annotation.Nonnull
     public String getMsku() {
         return msku;
     }
@@ -190,9 +211,7 @@ public class Item {
      *
      * @return prepInstructions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Special preparations that are required for an item.")
+    @javax.annotation.Nonnull
     public List<PrepInstruction> getPrepInstructions() {
         return prepInstructions;
     }
@@ -207,11 +226,11 @@ public class Item {
     }
 
     /**
-     * The number of the specified MSKU.
+     * The number of the specified MSKU. minimum: 1 maximum: 500000
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of the specified MSKU.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -221,7 +240,7 @@ public class Item {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -266,10 +285,166 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("expiration");
+        openapiFields.add("fnsku");
+        openapiFields.add("labelOwner");
+        openapiFields.add("manufacturingLotCode");
+        openapiFields.add("msku");
+        openapiFields.add("prepInstructions");
+        openapiFields.add("quantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+        openapiRequiredFields.add("fnsku");
+        openapiRequiredFields.add("labelOwner");
+        openapiRequiredFields.add("msku");
+        openapiRequiredFields.add("prepInstructions");
+        openapiRequiredFields.add("quantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Item.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("expiration") != null && !jsonObj.get("expiration").isJsonNull())
+                && !jsonObj.get("expiration").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `expiration` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("expiration").toString()));
+        }
+        if (!jsonObj.get("fnsku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fnsku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fnsku").toString()));
+        }
+        if (!jsonObj.get("labelOwner").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `labelOwner` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("labelOwner").toString()));
+        }
+        if ((jsonObj.get("manufacturingLotCode") != null
+                        && !jsonObj.get("manufacturingLotCode").isJsonNull())
+                && !jsonObj.get("manufacturingLotCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manufacturingLotCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manufacturingLotCode").toString()));
+        }
+        if (!jsonObj.get("msku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `msku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("msku").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("prepInstructions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `prepInstructions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("prepInstructions").toString()));
+        }
+
+        JsonArray jsonArrayprepInstructions = jsonObj.getAsJsonArray("prepInstructions");
+        // validate the required field `prepInstructions` (array)
+        for (int i = 0; i < jsonArrayprepInstructions.size(); i++) {
+            PrepInstruction.validateJsonElement(jsonArrayprepInstructions.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

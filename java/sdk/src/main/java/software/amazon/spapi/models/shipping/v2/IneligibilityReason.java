@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The reason why a shipping service offering is ineligible. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The reason why a shipping service offering is ineligible.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class IneligibilityReason {
-    @SerializedName("code")
-    private IneligibilityReasonCode code = null;
+    public static final String SERIALIZED_NAME_CODE = "code";
 
-    @SerializedName("message")
-    private String message = null;
+    @SerializedName(SERIALIZED_NAME_CODE)
+    private IneligibilityReasonCode code;
+
+    public static final String SERIALIZED_NAME_MESSAGE = "message";
+
+    @SerializedName(SERIALIZED_NAME_MESSAGE)
+    private String message;
+
+    public IneligibilityReason() {}
 
     public IneligibilityReason code(IneligibilityReasonCode code) {
         this.code = code;
@@ -34,7 +55,7 @@ public class IneligibilityReason {
      *
      * @return code
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public IneligibilityReasonCode getCode() {
         return code;
     }
@@ -53,7 +74,7 @@ public class IneligibilityReason {
      *
      * @return message
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ineligibility reason.")
+    @javax.annotation.Nonnull
     public String getMessage() {
         return message;
     }
@@ -63,7 +84,7 @@ public class IneligibilityReason {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +112,118 @@ public class IneligibilityReason {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("code");
+        openapiFields.add("message");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("code");
+        openapiRequiredFields.add("message");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to IneligibilityReason
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!IneligibilityReason.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in IneligibilityReason is not found in the empty JSON string",
+                        IneligibilityReason.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!IneligibilityReason.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `IneligibilityReason` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : IneligibilityReason.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `code`
+        IneligibilityReasonCode.validateJsonElement(jsonObj.get("code"));
+        if (!jsonObj.get("message").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `message` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("message").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!IneligibilityReason.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'IneligibilityReason' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<IneligibilityReason> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(IneligibilityReason.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<IneligibilityReason>() {
+                        @Override
+                        public void write(JsonWriter out, IneligibilityReason value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public IneligibilityReason read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of IneligibilityReason given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of IneligibilityReason
+     * @throws IOException if the JSON string is invalid with respect to IneligibilityReason
+     */
+    public static IneligibilityReason fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, IneligibilityReason.class);
+    }
+
+    /**
+     * Convert an instance of IneligibilityReason to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

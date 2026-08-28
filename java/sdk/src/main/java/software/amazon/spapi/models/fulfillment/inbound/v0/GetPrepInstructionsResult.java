@@ -12,102 +12,159 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Result for the get prep instructions operation */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Result for the get prep instructions operation")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetPrepInstructionsResult {
-    @SerializedName("SKUPrepInstructionsList")
-    private SKUPrepInstructionsList skUPrepInstructionsList = null;
+    public static final String SERIALIZED_NAME_SK_U_PREP_INSTRUCTIONS_LIST = "SKUPrepInstructionsList";
 
-    @SerializedName("InvalidSKUList")
-    private InvalidSKUList invalidSKUList = null;
+    @SerializedName(SERIALIZED_NAME_SK_U_PREP_INSTRUCTIONS_LIST)
+    private List<SKUPrepInstructions> skUPrepInstructionsList = new ArrayList<>();
 
-    @SerializedName("ASINPrepInstructionsList")
-    private ASINPrepInstructionsList asINPrepInstructionsList = null;
+    public static final String SERIALIZED_NAME_INVALID_S_K_U_LIST = "InvalidSKUList";
 
-    @SerializedName("InvalidASINList")
-    private InvalidASINList invalidASINList = null;
+    @SerializedName(SERIALIZED_NAME_INVALID_S_K_U_LIST)
+    private List<InvalidSKU> invalidSKUList = new ArrayList<>();
 
-    public GetPrepInstructionsResult skUPrepInstructionsList(SKUPrepInstructionsList skUPrepInstructionsList) {
+    public static final String SERIALIZED_NAME_AS_I_N_PREP_INSTRUCTIONS_LIST = "ASINPrepInstructionsList";
+
+    @SerializedName(SERIALIZED_NAME_AS_I_N_PREP_INSTRUCTIONS_LIST)
+    private List<ASINPrepInstructions> asINPrepInstructionsList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_INVALID_A_S_I_N_LIST = "InvalidASINList";
+
+    @SerializedName(SERIALIZED_NAME_INVALID_A_S_I_N_LIST)
+    private List<InvalidASIN> invalidASINList = new ArrayList<>();
+
+    public GetPrepInstructionsResult() {}
+
+    public GetPrepInstructionsResult skUPrepInstructionsList(List<SKUPrepInstructions> skUPrepInstructionsList) {
         this.skUPrepInstructionsList = skUPrepInstructionsList;
         return this;
     }
 
+    public GetPrepInstructionsResult addSkUPrepInstructionsListItem(SKUPrepInstructions skUPrepInstructionsListItem) {
+        if (this.skUPrepInstructionsList == null) {
+            this.skUPrepInstructionsList = new ArrayList<>();
+        }
+        this.skUPrepInstructionsList.add(skUPrepInstructionsListItem);
+        return this;
+    }
+
     /**
-     * Get skUPrepInstructionsList
+     * A list of SKU labeling requirements and item preparation instructions.
      *
      * @return skUPrepInstructionsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SKUPrepInstructionsList getSkUPrepInstructionsList() {
+    @javax.annotation.Nullable public List<SKUPrepInstructions> getSkUPrepInstructionsList() {
         return skUPrepInstructionsList;
     }
 
-    public void setSkUPrepInstructionsList(SKUPrepInstructionsList skUPrepInstructionsList) {
+    public void setSkUPrepInstructionsList(List<SKUPrepInstructions> skUPrepInstructionsList) {
         this.skUPrepInstructionsList = skUPrepInstructionsList;
     }
 
-    public GetPrepInstructionsResult invalidSKUList(InvalidSKUList invalidSKUList) {
+    public GetPrepInstructionsResult invalidSKUList(List<InvalidSKU> invalidSKUList) {
         this.invalidSKUList = invalidSKUList;
         return this;
     }
 
+    public GetPrepInstructionsResult addInvalidSKUListItem(InvalidSKU invalidSKUListItem) {
+        if (this.invalidSKUList == null) {
+            this.invalidSKUList = new ArrayList<>();
+        }
+        this.invalidSKUList.add(invalidSKUListItem);
+        return this;
+    }
+
     /**
-     * Get invalidSKUList
+     * A list of invalid SKU values and the reason they are invalid.
      *
      * @return invalidSKUList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InvalidSKUList getInvalidSKUList() {
+    @javax.annotation.Nullable public List<InvalidSKU> getInvalidSKUList() {
         return invalidSKUList;
     }
 
-    public void setInvalidSKUList(InvalidSKUList invalidSKUList) {
+    public void setInvalidSKUList(List<InvalidSKU> invalidSKUList) {
         this.invalidSKUList = invalidSKUList;
     }
 
-    public GetPrepInstructionsResult asINPrepInstructionsList(ASINPrepInstructionsList asINPrepInstructionsList) {
+    public GetPrepInstructionsResult asINPrepInstructionsList(List<ASINPrepInstructions> asINPrepInstructionsList) {
         this.asINPrepInstructionsList = asINPrepInstructionsList;
         return this;
     }
 
+    public GetPrepInstructionsResult addAsINPrepInstructionsListItem(
+            ASINPrepInstructions asINPrepInstructionsListItem) {
+        if (this.asINPrepInstructionsList == null) {
+            this.asINPrepInstructionsList = new ArrayList<>();
+        }
+        this.asINPrepInstructionsList.add(asINPrepInstructionsListItem);
+        return this;
+    }
+
     /**
-     * Get asINPrepInstructionsList
+     * A list of item preparation instructions.
      *
      * @return asINPrepInstructionsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ASINPrepInstructionsList getAsINPrepInstructionsList() {
+    @javax.annotation.Nullable public List<ASINPrepInstructions> getAsINPrepInstructionsList() {
         return asINPrepInstructionsList;
     }
 
-    public void setAsINPrepInstructionsList(ASINPrepInstructionsList asINPrepInstructionsList) {
+    public void setAsINPrepInstructionsList(List<ASINPrepInstructions> asINPrepInstructionsList) {
         this.asINPrepInstructionsList = asINPrepInstructionsList;
     }
 
-    public GetPrepInstructionsResult invalidASINList(InvalidASINList invalidASINList) {
+    public GetPrepInstructionsResult invalidASINList(List<InvalidASIN> invalidASINList) {
         this.invalidASINList = invalidASINList;
         return this;
     }
 
+    public GetPrepInstructionsResult addInvalidASINListItem(InvalidASIN invalidASINListItem) {
+        if (this.invalidASINList == null) {
+            this.invalidASINList = new ArrayList<>();
+        }
+        this.invalidASINList.add(invalidASINListItem);
+        return this;
+    }
+
     /**
-     * Get invalidASINList
+     * A list of invalid ASIN values and the reasons they are invalid.
      *
      * @return invalidASINList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InvalidASINList getInvalidASINList() {
+    @javax.annotation.Nullable public List<InvalidASIN> getInvalidASINList() {
         return invalidASINList;
     }
 
-    public void setInvalidASINList(InvalidASINList invalidASINList) {
+    public void setInvalidASINList(List<InvalidASIN> invalidASINList) {
         this.invalidASINList = invalidASINList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +204,175 @@ public class GetPrepInstructionsResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SKUPrepInstructionsList");
+        openapiFields.add("InvalidSKUList");
+        openapiFields.add("ASINPrepInstructionsList");
+        openapiFields.add("InvalidASINList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetPrepInstructionsResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetPrepInstructionsResult.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetPrepInstructionsResult is not found in the empty JSON string",
+                        GetPrepInstructionsResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetPrepInstructionsResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetPrepInstructionsResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("SKUPrepInstructionsList") != null
+                && !jsonObj.get("SKUPrepInstructionsList").isJsonNull()) {
+            JsonArray jsonArrayskUPrepInstructionsList = jsonObj.getAsJsonArray("SKUPrepInstructionsList");
+            if (jsonArrayskUPrepInstructionsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SKUPrepInstructionsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SKUPrepInstructionsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SKUPrepInstructionsList").toString()));
+                }
+
+                // validate the optional field `SKUPrepInstructionsList` (array)
+                for (int i = 0; i < jsonArrayskUPrepInstructionsList.size(); i++) {
+                    SKUPrepInstructions.validateJsonElement(jsonArrayskUPrepInstructionsList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("InvalidSKUList") != null
+                && !jsonObj.get("InvalidSKUList").isJsonNull()) {
+            JsonArray jsonArrayinvalidSKUList = jsonObj.getAsJsonArray("InvalidSKUList");
+            if (jsonArrayinvalidSKUList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("InvalidSKUList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `InvalidSKUList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("InvalidSKUList").toString()));
+                }
+
+                // validate the optional field `InvalidSKUList` (array)
+                for (int i = 0; i < jsonArrayinvalidSKUList.size(); i++) {
+                    InvalidSKU.validateJsonElement(jsonArrayinvalidSKUList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ASINPrepInstructionsList") != null
+                && !jsonObj.get("ASINPrepInstructionsList").isJsonNull()) {
+            JsonArray jsonArrayasINPrepInstructionsList = jsonObj.getAsJsonArray("ASINPrepInstructionsList");
+            if (jsonArrayasINPrepInstructionsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ASINPrepInstructionsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ASINPrepInstructionsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ASINPrepInstructionsList").toString()));
+                }
+
+                // validate the optional field `ASINPrepInstructionsList` (array)
+                for (int i = 0; i < jsonArrayasINPrepInstructionsList.size(); i++) {
+                    ASINPrepInstructions.validateJsonElement(jsonArrayasINPrepInstructionsList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("InvalidASINList") != null
+                && !jsonObj.get("InvalidASINList").isJsonNull()) {
+            JsonArray jsonArrayinvalidASINList = jsonObj.getAsJsonArray("InvalidASINList");
+            if (jsonArrayinvalidASINList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("InvalidASINList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `InvalidASINList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("InvalidASINList").toString()));
+                }
+
+                // validate the optional field `InvalidASINList` (array)
+                for (int i = 0; i < jsonArrayinvalidASINList.size(); i++) {
+                    InvalidASIN.validateJsonElement(jsonArrayinvalidASINList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetPrepInstructionsResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetPrepInstructionsResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetPrepInstructionsResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetPrepInstructionsResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetPrepInstructionsResult>() {
+                        @Override
+                        public void write(JsonWriter out, GetPrepInstructionsResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetPrepInstructionsResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetPrepInstructionsResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetPrepInstructionsResult
+     * @throws IOException if the JSON string is invalid with respect to GetPrepInstructionsResult
+     */
+    public static GetPrepInstructionsResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetPrepInstructionsResult.class);
+    }
+
+    /**
+     * Convert an instance of GetPrepInstructionsResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

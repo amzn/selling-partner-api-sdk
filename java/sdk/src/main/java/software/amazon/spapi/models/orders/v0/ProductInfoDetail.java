@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Product information on the number of items. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Product information on the number of items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductInfoDetail {
-    @SerializedName("NumberOfItems")
-    private String numberOfItems = null;
+    public static final String SERIALIZED_NAME_NUMBER_OF_ITEMS = "NumberOfItems";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_ITEMS)
+    private String numberOfItems;
+
+    public ProductInfoDetail() {}
 
     public ProductInfoDetail numberOfItems(String numberOfItems) {
         this.numberOfItems = numberOfItems;
@@ -31,9 +50,7 @@ public class ProductInfoDetail {
      *
      * @return numberOfItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The total number of items that are included in the ASIN.")
-    public String getNumberOfItems() {
+    @javax.annotation.Nullable public String getNumberOfItems() {
         return numberOfItems;
     }
 
@@ -42,7 +59,7 @@ public class ProductInfoDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -68,10 +85,106 @@ public class ProductInfoDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("NumberOfItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductInfoDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductInfoDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductInfoDetail is not found in the empty JSON string",
+                        ProductInfoDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductInfoDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductInfoDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("NumberOfItems") != null
+                        && !jsonObj.get("NumberOfItems").isJsonNull())
+                && !jsonObj.get("NumberOfItems").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `NumberOfItems` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("NumberOfItems").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductInfoDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductInfoDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductInfoDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductInfoDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductInfoDetail>() {
+                        @Override
+                        public void write(JsonWriter out, ProductInfoDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductInfoDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductInfoDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductInfoDetail
+     * @throws IOException if the JSON string is invalid with respect to ProductInfoDetail
+     */
+    public static ProductInfoDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductInfoDetail.class);
+    }
+
+    /**
+     * Convert an instance of ProductInfoDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

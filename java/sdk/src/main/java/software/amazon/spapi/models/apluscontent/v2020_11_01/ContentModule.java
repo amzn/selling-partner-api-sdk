@@ -12,64 +12,111 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60;
  * property selects which content module types to use.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "An A+ Content module. An A+ Content document is composed of content modules. The `contentModuleType` property selects which content module types to use.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContentModule {
-    @SerializedName("contentModuleType")
-    private ContentModuleType contentModuleType = null;
+    public static final String SERIALIZED_NAME_CONTENT_MODULE_TYPE = "contentModuleType";
 
-    @SerializedName("standardCompanyLogo")
-    private StandardCompanyLogoModule standardCompanyLogo = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_MODULE_TYPE)
+    private ContentModuleType contentModuleType;
 
-    @SerializedName("standardComparisonTable")
-    private StandardComparisonTableModule standardComparisonTable = null;
+    public static final String SERIALIZED_NAME_STANDARD_COMPANY_LOGO = "standardCompanyLogo";
 
-    @SerializedName("standardFourImageText")
-    private StandardFourImageTextModule standardFourImageText = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_COMPANY_LOGO)
+    private StandardCompanyLogoModule standardCompanyLogo;
 
-    @SerializedName("standardFourImageTextQuadrant")
-    private StandardFourImageTextQuadrantModule standardFourImageTextQuadrant = null;
+    public static final String SERIALIZED_NAME_STANDARD_COMPARISON_TABLE = "standardComparisonTable";
 
-    @SerializedName("standardHeaderImageText")
-    private StandardHeaderImageTextModule standardHeaderImageText = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_COMPARISON_TABLE)
+    private StandardComparisonTableModule standardComparisonTable;
 
-    @SerializedName("standardImageSidebar")
-    private StandardImageSidebarModule standardImageSidebar = null;
+    public static final String SERIALIZED_NAME_STANDARD_FOUR_IMAGE_TEXT = "standardFourImageText";
 
-    @SerializedName("standardImageTextOverlay")
-    private StandardImageTextOverlayModule standardImageTextOverlay = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_FOUR_IMAGE_TEXT)
+    private StandardFourImageTextModule standardFourImageText;
 
-    @SerializedName("standardMultipleImageText")
-    private StandardMultipleImageTextModule standardMultipleImageText = null;
+    public static final String SERIALIZED_NAME_STANDARD_FOUR_IMAGE_TEXT_QUADRANT = "standardFourImageTextQuadrant";
 
-    @SerializedName("standardProductDescription")
-    private StandardProductDescriptionModule standardProductDescription = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_FOUR_IMAGE_TEXT_QUADRANT)
+    private StandardFourImageTextQuadrantModule standardFourImageTextQuadrant;
 
-    @SerializedName("standardSingleImageHighlights")
-    private StandardSingleImageHighlightsModule standardSingleImageHighlights = null;
+    public static final String SERIALIZED_NAME_STANDARD_HEADER_IMAGE_TEXT = "standardHeaderImageText";
 
-    @SerializedName("standardSingleImageSpecsDetail")
-    private StandardSingleImageSpecsDetailModule standardSingleImageSpecsDetail = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_HEADER_IMAGE_TEXT)
+    private StandardHeaderImageTextModule standardHeaderImageText;
 
-    @SerializedName("standardSingleSideImage")
-    private StandardSingleSideImageModule standardSingleSideImage = null;
+    public static final String SERIALIZED_NAME_STANDARD_IMAGE_SIDEBAR = "standardImageSidebar";
 
-    @SerializedName("standardTechSpecs")
-    private StandardTechSpecsModule standardTechSpecs = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_IMAGE_SIDEBAR)
+    private StandardImageSidebarModule standardImageSidebar;
 
-    @SerializedName("standardText")
-    private StandardTextModule standardText = null;
+    public static final String SERIALIZED_NAME_STANDARD_IMAGE_TEXT_OVERLAY = "standardImageTextOverlay";
 
-    @SerializedName("standardThreeImageText")
-    private StandardThreeImageTextModule standardThreeImageText = null;
+    @SerializedName(SERIALIZED_NAME_STANDARD_IMAGE_TEXT_OVERLAY)
+    private StandardImageTextOverlayModule standardImageTextOverlay;
+
+    public static final String SERIALIZED_NAME_STANDARD_MULTIPLE_IMAGE_TEXT = "standardMultipleImageText";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_MULTIPLE_IMAGE_TEXT)
+    private StandardMultipleImageTextModule standardMultipleImageText;
+
+    public static final String SERIALIZED_NAME_STANDARD_PRODUCT_DESCRIPTION = "standardProductDescription";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_PRODUCT_DESCRIPTION)
+    private StandardProductDescriptionModule standardProductDescription;
+
+    public static final String SERIALIZED_NAME_STANDARD_SINGLE_IMAGE_HIGHLIGHTS = "standardSingleImageHighlights";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_SINGLE_IMAGE_HIGHLIGHTS)
+    private StandardSingleImageHighlightsModule standardSingleImageHighlights;
+
+    public static final String SERIALIZED_NAME_STANDARD_SINGLE_IMAGE_SPECS_DETAIL = "standardSingleImageSpecsDetail";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_SINGLE_IMAGE_SPECS_DETAIL)
+    private StandardSingleImageSpecsDetailModule standardSingleImageSpecsDetail;
+
+    public static final String SERIALIZED_NAME_STANDARD_SINGLE_SIDE_IMAGE = "standardSingleSideImage";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_SINGLE_SIDE_IMAGE)
+    private StandardSingleSideImageModule standardSingleSideImage;
+
+    public static final String SERIALIZED_NAME_STANDARD_TECH_SPECS = "standardTechSpecs";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_TECH_SPECS)
+    private StandardTechSpecsModule standardTechSpecs;
+
+    public static final String SERIALIZED_NAME_STANDARD_TEXT = "standardText";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_TEXT)
+    private StandardTextModule standardText;
+
+    public static final String SERIALIZED_NAME_STANDARD_THREE_IMAGE_TEXT = "standardThreeImageText";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_THREE_IMAGE_TEXT)
+    private StandardThreeImageTextModule standardThreeImageText;
+
+    public ContentModule() {}
 
     public ContentModule contentModuleType(ContentModuleType contentModuleType) {
         this.contentModuleType = contentModuleType;
@@ -81,7 +128,7 @@ public class ContentModule {
      *
      * @return contentModuleType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ContentModuleType getContentModuleType() {
         return contentModuleType;
     }
@@ -100,8 +147,7 @@ public class ContentModule {
      *
      * @return standardCompanyLogo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardCompanyLogoModule getStandardCompanyLogo() {
+    @javax.annotation.Nullable public StandardCompanyLogoModule getStandardCompanyLogo() {
         return standardCompanyLogo;
     }
 
@@ -119,8 +165,7 @@ public class ContentModule {
      *
      * @return standardComparisonTable
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardComparisonTableModule getStandardComparisonTable() {
+    @javax.annotation.Nullable public StandardComparisonTableModule getStandardComparisonTable() {
         return standardComparisonTable;
     }
 
@@ -138,8 +183,7 @@ public class ContentModule {
      *
      * @return standardFourImageText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardFourImageTextModule getStandardFourImageText() {
+    @javax.annotation.Nullable public StandardFourImageTextModule getStandardFourImageText() {
         return standardFourImageText;
     }
 
@@ -158,8 +202,7 @@ public class ContentModule {
      *
      * @return standardFourImageTextQuadrant
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardFourImageTextQuadrantModule getStandardFourImageTextQuadrant() {
+    @javax.annotation.Nullable public StandardFourImageTextQuadrantModule getStandardFourImageTextQuadrant() {
         return standardFourImageTextQuadrant;
     }
 
@@ -177,8 +220,7 @@ public class ContentModule {
      *
      * @return standardHeaderImageText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardHeaderImageTextModule getStandardHeaderImageText() {
+    @javax.annotation.Nullable public StandardHeaderImageTextModule getStandardHeaderImageText() {
         return standardHeaderImageText;
     }
 
@@ -196,8 +238,7 @@ public class ContentModule {
      *
      * @return standardImageSidebar
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageSidebarModule getStandardImageSidebar() {
+    @javax.annotation.Nullable public StandardImageSidebarModule getStandardImageSidebar() {
         return standardImageSidebar;
     }
 
@@ -215,8 +256,7 @@ public class ContentModule {
      *
      * @return standardImageTextOverlay
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextOverlayModule getStandardImageTextOverlay() {
+    @javax.annotation.Nullable public StandardImageTextOverlayModule getStandardImageTextOverlay() {
         return standardImageTextOverlay;
     }
 
@@ -234,8 +274,7 @@ public class ContentModule {
      *
      * @return standardMultipleImageText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardMultipleImageTextModule getStandardMultipleImageText() {
+    @javax.annotation.Nullable public StandardMultipleImageTextModule getStandardMultipleImageText() {
         return standardMultipleImageText;
     }
 
@@ -253,8 +292,7 @@ public class ContentModule {
      *
      * @return standardProductDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardProductDescriptionModule getStandardProductDescription() {
+    @javax.annotation.Nullable public StandardProductDescriptionModule getStandardProductDescription() {
         return standardProductDescription;
     }
 
@@ -273,8 +311,7 @@ public class ContentModule {
      *
      * @return standardSingleImageHighlights
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardSingleImageHighlightsModule getStandardSingleImageHighlights() {
+    @javax.annotation.Nullable public StandardSingleImageHighlightsModule getStandardSingleImageHighlights() {
         return standardSingleImageHighlights;
     }
 
@@ -293,8 +330,7 @@ public class ContentModule {
      *
      * @return standardSingleImageSpecsDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardSingleImageSpecsDetailModule getStandardSingleImageSpecsDetail() {
+    @javax.annotation.Nullable public StandardSingleImageSpecsDetailModule getStandardSingleImageSpecsDetail() {
         return standardSingleImageSpecsDetail;
     }
 
@@ -312,8 +348,7 @@ public class ContentModule {
      *
      * @return standardSingleSideImage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardSingleSideImageModule getStandardSingleSideImage() {
+    @javax.annotation.Nullable public StandardSingleSideImageModule getStandardSingleSideImage() {
         return standardSingleSideImage;
     }
 
@@ -331,8 +366,7 @@ public class ContentModule {
      *
      * @return standardTechSpecs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTechSpecsModule getStandardTechSpecs() {
+    @javax.annotation.Nullable public StandardTechSpecsModule getStandardTechSpecs() {
         return standardTechSpecs;
     }
 
@@ -350,8 +384,7 @@ public class ContentModule {
      *
      * @return standardText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextModule getStandardText() {
+    @javax.annotation.Nullable public StandardTextModule getStandardText() {
         return standardText;
     }
 
@@ -369,8 +402,7 @@ public class ContentModule {
      *
      * @return standardThreeImageText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardThreeImageTextModule getStandardThreeImageText() {
+    @javax.annotation.Nullable public StandardThreeImageTextModule getStandardThreeImageText() {
         return standardThreeImageText;
     }
 
@@ -379,7 +411,7 @@ public class ContentModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -481,10 +513,200 @@ public class ContentModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contentModuleType");
+        openapiFields.add("standardCompanyLogo");
+        openapiFields.add("standardComparisonTable");
+        openapiFields.add("standardFourImageText");
+        openapiFields.add("standardFourImageTextQuadrant");
+        openapiFields.add("standardHeaderImageText");
+        openapiFields.add("standardImageSidebar");
+        openapiFields.add("standardImageTextOverlay");
+        openapiFields.add("standardMultipleImageText");
+        openapiFields.add("standardProductDescription");
+        openapiFields.add("standardSingleImageHighlights");
+        openapiFields.add("standardSingleImageSpecsDetail");
+        openapiFields.add("standardSingleSideImage");
+        openapiFields.add("standardTechSpecs");
+        openapiFields.add("standardText");
+        openapiFields.add("standardThreeImageText");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contentModuleType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContentModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContentModule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContentModule is not found in the empty JSON string",
+                        ContentModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContentModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContentModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContentModule.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `contentModuleType`
+        ContentModuleType.validateJsonElement(jsonObj.get("contentModuleType"));
+        // validate the optional field `standardCompanyLogo`
+        if (jsonObj.get("standardCompanyLogo") != null
+                && !jsonObj.get("standardCompanyLogo").isJsonNull()) {
+            StandardCompanyLogoModule.validateJsonElement(jsonObj.get("standardCompanyLogo"));
+        }
+        // validate the optional field `standardComparisonTable`
+        if (jsonObj.get("standardComparisonTable") != null
+                && !jsonObj.get("standardComparisonTable").isJsonNull()) {
+            StandardComparisonTableModule.validateJsonElement(jsonObj.get("standardComparisonTable"));
+        }
+        // validate the optional field `standardFourImageText`
+        if (jsonObj.get("standardFourImageText") != null
+                && !jsonObj.get("standardFourImageText").isJsonNull()) {
+            StandardFourImageTextModule.validateJsonElement(jsonObj.get("standardFourImageText"));
+        }
+        // validate the optional field `standardFourImageTextQuadrant`
+        if (jsonObj.get("standardFourImageTextQuadrant") != null
+                && !jsonObj.get("standardFourImageTextQuadrant").isJsonNull()) {
+            StandardFourImageTextQuadrantModule.validateJsonElement(jsonObj.get("standardFourImageTextQuadrant"));
+        }
+        // validate the optional field `standardHeaderImageText`
+        if (jsonObj.get("standardHeaderImageText") != null
+                && !jsonObj.get("standardHeaderImageText").isJsonNull()) {
+            StandardHeaderImageTextModule.validateJsonElement(jsonObj.get("standardHeaderImageText"));
+        }
+        // validate the optional field `standardImageSidebar`
+        if (jsonObj.get("standardImageSidebar") != null
+                && !jsonObj.get("standardImageSidebar").isJsonNull()) {
+            StandardImageSidebarModule.validateJsonElement(jsonObj.get("standardImageSidebar"));
+        }
+        // validate the optional field `standardImageTextOverlay`
+        if (jsonObj.get("standardImageTextOverlay") != null
+                && !jsonObj.get("standardImageTextOverlay").isJsonNull()) {
+            StandardImageTextOverlayModule.validateJsonElement(jsonObj.get("standardImageTextOverlay"));
+        }
+        // validate the optional field `standardMultipleImageText`
+        if (jsonObj.get("standardMultipleImageText") != null
+                && !jsonObj.get("standardMultipleImageText").isJsonNull()) {
+            StandardMultipleImageTextModule.validateJsonElement(jsonObj.get("standardMultipleImageText"));
+        }
+        // validate the optional field `standardProductDescription`
+        if (jsonObj.get("standardProductDescription") != null
+                && !jsonObj.get("standardProductDescription").isJsonNull()) {
+            StandardProductDescriptionModule.validateJsonElement(jsonObj.get("standardProductDescription"));
+        }
+        // validate the optional field `standardSingleImageHighlights`
+        if (jsonObj.get("standardSingleImageHighlights") != null
+                && !jsonObj.get("standardSingleImageHighlights").isJsonNull()) {
+            StandardSingleImageHighlightsModule.validateJsonElement(jsonObj.get("standardSingleImageHighlights"));
+        }
+        // validate the optional field `standardSingleImageSpecsDetail`
+        if (jsonObj.get("standardSingleImageSpecsDetail") != null
+                && !jsonObj.get("standardSingleImageSpecsDetail").isJsonNull()) {
+            StandardSingleImageSpecsDetailModule.validateJsonElement(jsonObj.get("standardSingleImageSpecsDetail"));
+        }
+        // validate the optional field `standardSingleSideImage`
+        if (jsonObj.get("standardSingleSideImage") != null
+                && !jsonObj.get("standardSingleSideImage").isJsonNull()) {
+            StandardSingleSideImageModule.validateJsonElement(jsonObj.get("standardSingleSideImage"));
+        }
+        // validate the optional field `standardTechSpecs`
+        if (jsonObj.get("standardTechSpecs") != null
+                && !jsonObj.get("standardTechSpecs").isJsonNull()) {
+            StandardTechSpecsModule.validateJsonElement(jsonObj.get("standardTechSpecs"));
+        }
+        // validate the optional field `standardText`
+        if (jsonObj.get("standardText") != null && !jsonObj.get("standardText").isJsonNull()) {
+            StandardTextModule.validateJsonElement(jsonObj.get("standardText"));
+        }
+        // validate the optional field `standardThreeImageText`
+        if (jsonObj.get("standardThreeImageText") != null
+                && !jsonObj.get("standardThreeImageText").isJsonNull()) {
+            StandardThreeImageTextModule.validateJsonElement(jsonObj.get("standardThreeImageText"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContentModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContentModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContentModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContentModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContentModule>() {
+                        @Override
+                        public void write(JsonWriter out, ContentModule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContentModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContentModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContentModule
+     * @throws IOException if the JSON string is invalid with respect to ContentModule
+     */
+    public static ContentModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContentModule.class);
+    }
+
+    /**
+     * Convert an instance of ContentModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

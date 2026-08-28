@@ -12,35 +12,63 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The A+ Content ASIN with additional metadata for content management. If you don&#39;t include the
  * &#x60;includedDataSet&#x60; parameter in a call to the &#x60;listContentDocumentAsinRelations&#x60; operation, the
  * related ASINs are returned without metadata.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The A+ Content ASIN with additional metadata for content management. If you don't include the `includedDataSet` parameter in a call to the `listContentDocumentAsinRelations` operation, the related ASINs are returned without metadata.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AsinMetadata {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("badgeSet")
-    private AsinBadgeSet badgeSet = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("parent")
-    private String parent = null;
+    public static final String SERIALIZED_NAME_BADGE_SET = "badgeSet";
 
-    @SerializedName("title")
-    private String title = null;
+    @SerializedName(SERIALIZED_NAME_BADGE_SET)
+    private Set<AsinBadge> badgeSet = new LinkedHashSet<>();
 
-    @SerializedName("imageUrl")
-    private String imageUrl = null;
+    public static final String SERIALIZED_NAME_PARENT = "parent";
 
-    @SerializedName("contentReferenceKeySet")
-    private ContentReferenceKeySet contentReferenceKeySet = null;
+    @SerializedName(SERIALIZED_NAME_PARENT)
+    private String parent;
+
+    public static final String SERIALIZED_NAME_TITLE = "title";
+
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
+
+    @SerializedName(SERIALIZED_NAME_IMAGE_URL)
+    private String imageUrl;
+
+    public static final String SERIALIZED_NAME_CONTENT_REFERENCE_KEY_SET = "contentReferenceKeySet";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_REFERENCE_KEY_SET)
+    private Set<String> contentReferenceKeySet = new LinkedHashSet<>();
+
+    public AsinMetadata() {}
 
     public AsinMetadata asin(String asin) {
         this.asin = asin;
@@ -52,9 +80,7 @@ public class AsinMetadata {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The Amazon Standard Identification Number (ASIN).")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -63,22 +89,29 @@ public class AsinMetadata {
         this.asin = asin;
     }
 
-    public AsinMetadata badgeSet(AsinBadgeSet badgeSet) {
+    public AsinMetadata badgeSet(Set<AsinBadge> badgeSet) {
         this.badgeSet = badgeSet;
         return this;
     }
 
+    public AsinMetadata addBadgeSetItem(AsinBadge badgeSetItem) {
+        if (this.badgeSet == null) {
+            this.badgeSet = new LinkedHashSet<>();
+        }
+        this.badgeSet.add(badgeSetItem);
+        return this;
+    }
+
     /**
-     * Get badgeSet
+     * The set of ASIN badges.
      *
      * @return badgeSet
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AsinBadgeSet getBadgeSet() {
+    @javax.annotation.Nullable public Set<AsinBadge> getBadgeSet() {
         return badgeSet;
     }
 
-    public void setBadgeSet(AsinBadgeSet badgeSet) {
+    public void setBadgeSet(Set<AsinBadge> badgeSet) {
         this.badgeSet = badgeSet;
     }
 
@@ -92,8 +125,7 @@ public class AsinMetadata {
      *
      * @return parent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
-    public String getParent() {
+    @javax.annotation.Nullable public String getParent() {
         return parent;
     }
 
@@ -111,8 +143,7 @@ public class AsinMetadata {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The title for the ASIN in the Amazon catalog.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -130,8 +161,7 @@ public class AsinMetadata {
      *
      * @return imageUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The default image for the ASIN in the Amazon catalog.")
-    public String getImageUrl() {
+    @javax.annotation.Nullable public String getImageUrl() {
         return imageUrl;
     }
 
@@ -139,27 +169,34 @@ public class AsinMetadata {
         this.imageUrl = imageUrl;
     }
 
-    public AsinMetadata contentReferenceKeySet(ContentReferenceKeySet contentReferenceKeySet) {
+    public AsinMetadata contentReferenceKeySet(Set<String> contentReferenceKeySet) {
         this.contentReferenceKeySet = contentReferenceKeySet;
         return this;
     }
 
+    public AsinMetadata addContentReferenceKeySetItem(String contentReferenceKeySetItem) {
+        if (this.contentReferenceKeySet == null) {
+            this.contentReferenceKeySet = new LinkedHashSet<>();
+        }
+        this.contentReferenceKeySet.add(contentReferenceKeySetItem);
+        return this;
+    }
+
     /**
-     * Get contentReferenceKeySet
+     * A set of content reference keys.
      *
      * @return contentReferenceKeySet
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContentReferenceKeySet getContentReferenceKeySet() {
+    @javax.annotation.Nullable public Set<String> getContentReferenceKeySet() {
         return contentReferenceKeySet;
     }
 
-    public void setContentReferenceKeySet(ContentReferenceKeySet contentReferenceKeySet) {
+    public void setContentReferenceKeySet(Set<String> contentReferenceKeySet) {
         this.contentReferenceKeySet = contentReferenceKeySet;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,10 +234,153 @@ public class AsinMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("badgeSet");
+        openapiFields.add("parent");
+        openapiFields.add("title");
+        openapiFields.add("imageUrl");
+        openapiFields.add("contentReferenceKeySet");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AsinMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AsinMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AsinMetadata is not found in the empty JSON string",
+                        AsinMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AsinMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AsinMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AsinMetadata.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("badgeSet") != null
+                && !jsonObj.get("badgeSet").isJsonNull()
+                && !jsonObj.get("badgeSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `badgeSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("badgeSet").toString()));
+        }
+        if ((jsonObj.get("parent") != null && !jsonObj.get("parent").isJsonNull())
+                && !jsonObj.get("parent").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `parent` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("parent").toString()));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if ((jsonObj.get("imageUrl") != null && !jsonObj.get("imageUrl").isJsonNull())
+                && !jsonObj.get("imageUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("imageUrl").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("contentReferenceKeySet") != null
+                && !jsonObj.get("contentReferenceKeySet").isJsonNull()
+                && !jsonObj.get("contentReferenceKeySet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentReferenceKeySet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("contentReferenceKeySet").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AsinMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AsinMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AsinMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AsinMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AsinMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, AsinMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AsinMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AsinMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AsinMetadata
+     * @throws IOException if the JSON string is invalid with respect to AsinMetadata
+     */
+    public static AsinMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AsinMetadata.class);
+    }
+
+    /**
+     * Convert an instance of AsinMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

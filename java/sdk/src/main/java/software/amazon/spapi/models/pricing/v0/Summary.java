@@ -12,47 +12,85 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the
  * SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Summary {
-    @SerializedName("TotalOfferCount")
-    private Integer totalOfferCount = null;
+    public static final String SERIALIZED_NAME_TOTAL_OFFER_COUNT = "TotalOfferCount";
 
-    @SerializedName("NumberOfOffers")
-    private NumberOfOffers numberOfOffers = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_OFFER_COUNT)
+    private Integer totalOfferCount;
 
-    @SerializedName("LowestPrices")
-    private LowestPrices lowestPrices = null;
+    public static final String SERIALIZED_NAME_NUMBER_OF_OFFERS = "NumberOfOffers";
 
-    @SerializedName("BuyBoxPrices")
-    private BuyBoxPrices buyBoxPrices = null;
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_OFFERS)
+    private List<OfferCountType> numberOfOffers = new ArrayList<>();
 
-    @SerializedName("ListPrice")
-    private MoneyType listPrice = null;
+    public static final String SERIALIZED_NAME_LOWEST_PRICES = "LowestPrices";
 
-    @SerializedName("CompetitivePriceThreshold")
-    private MoneyType competitivePriceThreshold = null;
+    @SerializedName(SERIALIZED_NAME_LOWEST_PRICES)
+    private List<LowestPriceType> lowestPrices = new ArrayList<>();
 
-    @SerializedName("SuggestedLowerPricePlusShipping")
-    private MoneyType suggestedLowerPricePlusShipping = null;
+    public static final String SERIALIZED_NAME_BUY_BOX_PRICES = "BuyBoxPrices";
 
-    @SerializedName("SalesRankings")
-    private SalesRankList salesRankings = null;
+    @SerializedName(SERIALIZED_NAME_BUY_BOX_PRICES)
+    private List<BuyBoxPriceType> buyBoxPrices = new ArrayList<>();
 
-    @SerializedName("BuyBoxEligibleOffers")
-    private BuyBoxEligibleOffers buyBoxEligibleOffers = null;
+    public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
 
-    @SerializedName("OffersAvailableTime")
-    private OffsetDateTime offersAvailableTime = null;
+    @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+    private MoneyType listPrice;
+
+    public static final String SERIALIZED_NAME_COMPETITIVE_PRICE_THRESHOLD = "CompetitivePriceThreshold";
+
+    @SerializedName(SERIALIZED_NAME_COMPETITIVE_PRICE_THRESHOLD)
+    private MoneyType competitivePriceThreshold;
+
+    public static final String SERIALIZED_NAME_SUGGESTED_LOWER_PRICE_PLUS_SHIPPING = "SuggestedLowerPricePlusShipping";
+
+    @SerializedName(SERIALIZED_NAME_SUGGESTED_LOWER_PRICE_PLUS_SHIPPING)
+    private MoneyType suggestedLowerPricePlusShipping;
+
+    public static final String SERIALIZED_NAME_SALES_RANKINGS = "SalesRankings";
+
+    @SerializedName(SERIALIZED_NAME_SALES_RANKINGS)
+    private List<SalesRankType> salesRankings = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_BUY_BOX_ELIGIBLE_OFFERS = "BuyBoxEligibleOffers";
+
+    @SerializedName(SERIALIZED_NAME_BUY_BOX_ELIGIBLE_OFFERS)
+    private List<OfferCountType> buyBoxEligibleOffers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_OFFERS_AVAILABLE_TIME = "OffersAvailableTime";
+
+    @SerializedName(SERIALIZED_NAME_OFFERS_AVAILABLE_TIME)
+    private OffsetDateTime offersAvailableTime;
+
+    public Summary() {}
 
     public Summary totalOfferCount(Integer totalOfferCount) {
         this.totalOfferCount = totalOfferCount;
@@ -64,9 +102,7 @@ public class Summary {
      *
      * @return totalOfferCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of unique offers contained in NumberOfOffers.")
+    @javax.annotation.Nonnull
     public Integer getTotalOfferCount() {
         return totalOfferCount;
     }
@@ -75,60 +111,81 @@ public class Summary {
         this.totalOfferCount = totalOfferCount;
     }
 
-    public Summary numberOfOffers(NumberOfOffers numberOfOffers) {
+    public Summary numberOfOffers(List<OfferCountType> numberOfOffers) {
         this.numberOfOffers = numberOfOffers;
         return this;
     }
 
+    public Summary addNumberOfOffersItem(OfferCountType numberOfOffersItem) {
+        if (this.numberOfOffers == null) {
+            this.numberOfOffers = new ArrayList<>();
+        }
+        this.numberOfOffers.add(numberOfOffersItem);
+        return this;
+    }
+
     /**
-     * Get numberOfOffers
+     * A list that contains the total number of offers information for given conditions and fulfillment channels.
      *
      * @return numberOfOffers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public NumberOfOffers getNumberOfOffers() {
+    @javax.annotation.Nullable public List<OfferCountType> getNumberOfOffers() {
         return numberOfOffers;
     }
 
-    public void setNumberOfOffers(NumberOfOffers numberOfOffers) {
+    public void setNumberOfOffers(List<OfferCountType> numberOfOffers) {
         this.numberOfOffers = numberOfOffers;
     }
 
-    public Summary lowestPrices(LowestPrices lowestPrices) {
+    public Summary lowestPrices(List<LowestPriceType> lowestPrices) {
         this.lowestPrices = lowestPrices;
         return this;
     }
 
+    public Summary addLowestPricesItem(LowestPriceType lowestPricesItem) {
+        if (this.lowestPrices == null) {
+            this.lowestPrices = new ArrayList<>();
+        }
+        this.lowestPrices.add(lowestPricesItem);
+        return this;
+    }
+
     /**
-     * Get lowestPrices
+     * A list of the lowest prices.
      *
      * @return lowestPrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LowestPrices getLowestPrices() {
+    @javax.annotation.Nullable public List<LowestPriceType> getLowestPrices() {
         return lowestPrices;
     }
 
-    public void setLowestPrices(LowestPrices lowestPrices) {
+    public void setLowestPrices(List<LowestPriceType> lowestPrices) {
         this.lowestPrices = lowestPrices;
     }
 
-    public Summary buyBoxPrices(BuyBoxPrices buyBoxPrices) {
+    public Summary buyBoxPrices(List<BuyBoxPriceType> buyBoxPrices) {
         this.buyBoxPrices = buyBoxPrices;
         return this;
     }
 
+    public Summary addBuyBoxPricesItem(BuyBoxPriceType buyBoxPricesItem) {
+        if (this.buyBoxPrices == null) {
+            this.buyBoxPrices = new ArrayList<>();
+        }
+        this.buyBoxPrices.add(buyBoxPricesItem);
+        return this;
+    }
+
     /**
-     * Get buyBoxPrices
+     * A list of the Buy Box prices.
      *
      * @return buyBoxPrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyBoxPrices getBuyBoxPrices() {
+    @javax.annotation.Nullable public List<BuyBoxPriceType> getBuyBoxPrices() {
         return buyBoxPrices;
     }
 
-    public void setBuyBoxPrices(BuyBoxPrices buyBoxPrices) {
+    public void setBuyBoxPrices(List<BuyBoxPriceType> buyBoxPrices) {
         this.buyBoxPrices = buyBoxPrices;
     }
 
@@ -142,8 +199,7 @@ public class Summary {
      *
      * @return listPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getListPrice() {
+    @javax.annotation.Nullable public MoneyType getListPrice() {
         return listPrice;
     }
 
@@ -161,8 +217,7 @@ public class Summary {
      *
      * @return competitivePriceThreshold
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getCompetitivePriceThreshold() {
+    @javax.annotation.Nullable public MoneyType getCompetitivePriceThreshold() {
         return competitivePriceThreshold;
     }
 
@@ -180,8 +235,7 @@ public class Summary {
      *
      * @return suggestedLowerPricePlusShipping
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getSuggestedLowerPricePlusShipping() {
+    @javax.annotation.Nullable public MoneyType getSuggestedLowerPricePlusShipping() {
         return suggestedLowerPricePlusShipping;
     }
 
@@ -189,41 +243,56 @@ public class Summary {
         this.suggestedLowerPricePlusShipping = suggestedLowerPricePlusShipping;
     }
 
-    public Summary salesRankings(SalesRankList salesRankings) {
+    public Summary salesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
         return this;
     }
 
+    public Summary addSalesRankingsItem(SalesRankType salesRankingsItem) {
+        if (this.salesRankings == null) {
+            this.salesRankings = new ArrayList<>();
+        }
+        this.salesRankings.add(salesRankingsItem);
+        return this;
+    }
+
     /**
-     * Get salesRankings
+     * A list of sales rank information for the item, by category.
      *
      * @return salesRankings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SalesRankList getSalesRankings() {
+    @javax.annotation.Nullable public List<SalesRankType> getSalesRankings() {
         return salesRankings;
     }
 
-    public void setSalesRankings(SalesRankList salesRankings) {
+    public void setSalesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
     }
 
-    public Summary buyBoxEligibleOffers(BuyBoxEligibleOffers buyBoxEligibleOffers) {
+    public Summary buyBoxEligibleOffers(List<OfferCountType> buyBoxEligibleOffers) {
         this.buyBoxEligibleOffers = buyBoxEligibleOffers;
         return this;
     }
 
+    public Summary addBuyBoxEligibleOffersItem(OfferCountType buyBoxEligibleOffersItem) {
+        if (this.buyBoxEligibleOffers == null) {
+            this.buyBoxEligibleOffers = new ArrayList<>();
+        }
+        this.buyBoxEligibleOffers.add(buyBoxEligibleOffersItem);
+        return this;
+    }
+
     /**
-     * Get buyBoxEligibleOffers
+     * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and
+     * fulfillment channels.
      *
      * @return buyBoxEligibleOffers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyBoxEligibleOffers getBuyBoxEligibleOffers() {
+    @javax.annotation.Nullable public List<OfferCountType> getBuyBoxEligibleOffers() {
         return buyBoxEligibleOffers;
     }
 
-    public void setBuyBoxEligibleOffers(BuyBoxEligibleOffers buyBoxEligibleOffers) {
+    public void setBuyBoxEligibleOffers(List<OfferCountType> buyBoxEligibleOffers) {
         this.buyBoxEligibleOffers = buyBoxEligibleOffers;
     }
 
@@ -238,10 +307,7 @@ public class Summary {
      *
      * @return offersAvailableTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.")
-    public OffsetDateTime getOffersAvailableTime() {
+    @javax.annotation.Nullable public OffsetDateTime getOffersAvailableTime() {
         return offersAvailableTime;
     }
 
@@ -250,7 +316,7 @@ public class Summary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -316,10 +382,219 @@ public class Summary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TotalOfferCount");
+        openapiFields.add("NumberOfOffers");
+        openapiFields.add("LowestPrices");
+        openapiFields.add("BuyBoxPrices");
+        openapiFields.add("ListPrice");
+        openapiFields.add("CompetitivePriceThreshold");
+        openapiFields.add("SuggestedLowerPricePlusShipping");
+        openapiFields.add("SalesRankings");
+        openapiFields.add("BuyBoxEligibleOffers");
+        openapiFields.add("OffersAvailableTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("TotalOfferCount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Summary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Summary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Summary is not found in the empty JSON string",
+                        Summary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Summary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Summary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Summary.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("NumberOfOffers") != null
+                && !jsonObj.get("NumberOfOffers").isJsonNull()) {
+            JsonArray jsonArraynumberOfOffers = jsonObj.getAsJsonArray("NumberOfOffers");
+            if (jsonArraynumberOfOffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("NumberOfOffers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `NumberOfOffers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("NumberOfOffers").toString()));
+                }
+
+                // validate the optional field `NumberOfOffers` (array)
+                for (int i = 0; i < jsonArraynumberOfOffers.size(); i++) {
+                    OfferCountType.validateJsonElement(jsonArraynumberOfOffers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("LowestPrices") != null && !jsonObj.get("LowestPrices").isJsonNull()) {
+            JsonArray jsonArraylowestPrices = jsonObj.getAsJsonArray("LowestPrices");
+            if (jsonArraylowestPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("LowestPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `LowestPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("LowestPrices").toString()));
+                }
+
+                // validate the optional field `LowestPrices` (array)
+                for (int i = 0; i < jsonArraylowestPrices.size(); i++) {
+                    LowestPriceType.validateJsonElement(jsonArraylowestPrices.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("BuyBoxPrices") != null && !jsonObj.get("BuyBoxPrices").isJsonNull()) {
+            JsonArray jsonArraybuyBoxPrices = jsonObj.getAsJsonArray("BuyBoxPrices");
+            if (jsonArraybuyBoxPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("BuyBoxPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `BuyBoxPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("BuyBoxPrices").toString()));
+                }
+
+                // validate the optional field `BuyBoxPrices` (array)
+                for (int i = 0; i < jsonArraybuyBoxPrices.size(); i++) {
+                    BuyBoxPriceType.validateJsonElement(jsonArraybuyBoxPrices.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `ListPrice`
+        if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("ListPrice"));
+        }
+        // validate the optional field `CompetitivePriceThreshold`
+        if (jsonObj.get("CompetitivePriceThreshold") != null
+                && !jsonObj.get("CompetitivePriceThreshold").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("CompetitivePriceThreshold"));
+        }
+        // validate the optional field `SuggestedLowerPricePlusShipping`
+        if (jsonObj.get("SuggestedLowerPricePlusShipping") != null
+                && !jsonObj.get("SuggestedLowerPricePlusShipping").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("SuggestedLowerPricePlusShipping"));
+        }
+        if (jsonObj.get("SalesRankings") != null
+                && !jsonObj.get("SalesRankings").isJsonNull()) {
+            JsonArray jsonArraysalesRankings = jsonObj.getAsJsonArray("SalesRankings");
+            if (jsonArraysalesRankings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SalesRankings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SalesRankings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SalesRankings").toString()));
+                }
+
+                // validate the optional field `SalesRankings` (array)
+                for (int i = 0; i < jsonArraysalesRankings.size(); i++) {
+                    SalesRankType.validateJsonElement(jsonArraysalesRankings.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("BuyBoxEligibleOffers") != null
+                && !jsonObj.get("BuyBoxEligibleOffers").isJsonNull()) {
+            JsonArray jsonArraybuyBoxEligibleOffers = jsonObj.getAsJsonArray("BuyBoxEligibleOffers");
+            if (jsonArraybuyBoxEligibleOffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("BuyBoxEligibleOffers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `BuyBoxEligibleOffers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("BuyBoxEligibleOffers").toString()));
+                }
+
+                // validate the optional field `BuyBoxEligibleOffers` (array)
+                for (int i = 0; i < jsonArraybuyBoxEligibleOffers.size(); i++) {
+                    OfferCountType.validateJsonElement(jsonArraybuyBoxEligibleOffers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Summary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Summary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Summary> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Summary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Summary>() {
+                        @Override
+                        public void write(JsonWriter out, Summary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Summary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Summary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Summary
+     * @throws IOException if the JSON string is invalid with respect to Summary
+     */
+    public static Summary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Summary.class);
+    }
+
+    /**
+     * Convert an instance of Summary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,36 +12,69 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A network commingling transaction event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A network commingling transaction event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class NetworkComminglingTransactionEvent {
-    @SerializedName("TransactionType")
-    private String transactionType = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "TransactionType";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("NetCoTransactionID")
-    private String netCoTransactionID = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("SwapReason")
-    private String swapReason = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    public static final String SERIALIZED_NAME_NET_CO_TRANSACTION_I_D = "NetCoTransactionID";
 
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_NET_CO_TRANSACTION_I_D)
+    private String netCoTransactionID;
 
-    @SerializedName("TaxExclusiveAmount")
-    private Currency taxExclusiveAmount = null;
+    public static final String SERIALIZED_NAME_SWAP_REASON = "SwapReason";
 
-    @SerializedName("TaxAmount")
-    private Currency taxAmount = null;
+    @SerializedName(SERIALIZED_NAME_SWAP_REASON)
+    private String swapReason;
+
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
+
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_TAX_EXCLUSIVE_AMOUNT = "TaxExclusiveAmount";
+
+    @SerializedName(SERIALIZED_NAME_TAX_EXCLUSIVE_AMOUNT)
+    private Currency taxExclusiveAmount;
+
+    public static final String SERIALIZED_NAME_TAX_AMOUNT = "TaxAmount";
+
+    @SerializedName(SERIALIZED_NAME_TAX_AMOUNT)
+    private Currency taxAmount;
+
+    public NetworkComminglingTransactionEvent() {}
 
     public NetworkComminglingTransactionEvent transactionType(String transactionType) {
         this.transactionType = transactionType;
@@ -55,10 +88,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -76,10 +106,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -97,8 +124,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return netCoTransactionID
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the network item swap.")
-    public String getNetCoTransactionID() {
+    @javax.annotation.Nullable public String getNetCoTransactionID() {
         return netCoTransactionID;
     }
 
@@ -116,8 +142,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return swapReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the network item swap.")
-    public String getSwapReason() {
+    @javax.annotation.Nullable public String getSwapReason() {
         return swapReason;
     }
 
@@ -135,9 +160,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the swapped item.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -155,8 +178,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace in which the event took place.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -174,8 +196,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return taxExclusiveAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTaxExclusiveAmount() {
+    @javax.annotation.Nullable public Currency getTaxExclusiveAmount() {
         return taxExclusiveAmount;
     }
 
@@ -193,8 +214,7 @@ public class NetworkComminglingTransactionEvent {
      *
      * @return taxAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTaxAmount() {
+    @javax.annotation.Nullable public Currency getTaxAmount() {
         return taxAmount;
     }
 
@@ -203,7 +223,7 @@ public class NetworkComminglingTransactionEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -257,10 +277,149 @@ public class NetworkComminglingTransactionEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TransactionType");
+        openapiFields.add("PostedDate");
+        openapiFields.add("NetCoTransactionID");
+        openapiFields.add("SwapReason");
+        openapiFields.add("ASIN");
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("TaxExclusiveAmount");
+        openapiFields.add("TaxAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to NetworkComminglingTransactionEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!NetworkComminglingTransactionEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in NetworkComminglingTransactionEvent is not found in the empty JSON string",
+                        NetworkComminglingTransactionEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!NetworkComminglingTransactionEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `NetworkComminglingTransactionEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("TransactionType") != null
+                        && !jsonObj.get("TransactionType").isJsonNull())
+                && !jsonObj.get("TransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionType").toString()));
+        }
+        if ((jsonObj.get("NetCoTransactionID") != null
+                        && !jsonObj.get("NetCoTransactionID").isJsonNull())
+                && !jsonObj.get("NetCoTransactionID").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `NetCoTransactionID` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("NetCoTransactionID").toString()));
+        }
+        if ((jsonObj.get("SwapReason") != null && !jsonObj.get("SwapReason").isJsonNull())
+                && !jsonObj.get("SwapReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SwapReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SwapReason").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if ((jsonObj.get("MarketplaceId") != null
+                        && !jsonObj.get("MarketplaceId").isJsonNull())
+                && !jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        // validate the optional field `TaxExclusiveAmount`
+        if (jsonObj.get("TaxExclusiveAmount") != null
+                && !jsonObj.get("TaxExclusiveAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TaxExclusiveAmount"));
+        }
+        // validate the optional field `TaxAmount`
+        if (jsonObj.get("TaxAmount") != null && !jsonObj.get("TaxAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TaxAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!NetworkComminglingTransactionEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'NetworkComminglingTransactionEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<NetworkComminglingTransactionEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(NetworkComminglingTransactionEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<NetworkComminglingTransactionEvent>() {
+                        @Override
+                        public void write(JsonWriter out, NetworkComminglingTransactionEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public NetworkComminglingTransactionEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of NetworkComminglingTransactionEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of NetworkComminglingTransactionEvent
+     * @throws IOException if the JSON string is invalid with respect to NetworkComminglingTransactionEvent
+     */
+    public static NetworkComminglingTransactionEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, NetworkComminglingTransactionEvent.class);
+    }
+
+    /**
+     * Convert an instance of NetworkComminglingTransactionEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

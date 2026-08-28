@@ -12,27 +12,38 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Offer details for a listings item for the specified Amazon store. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Offer details for a listings item for the specified Amazon store.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemOfferByMarketplace {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
     /** The listings item&#39;s offer type. */
     @JsonAdapter(OfferTypeEnum.Adapter.class)
     public enum OfferTypeEnum {
-        @SerializedName("B2C")
         B2_C("B2C"),
-        @SerializedName("B2B")
+
         B2_B("B2B");
 
         private String value;
@@ -50,40 +61,55 @@ public class ItemOfferByMarketplace {
             return String.valueOf(value);
         }
 
-        public static OfferTypeEnum fromValue(String input) {
+        public static OfferTypeEnum fromValue(String value) {
             for (OfferTypeEnum b : OfferTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OfferTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final OfferTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public OfferTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OfferTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return OfferTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OfferTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("offerType")
-    private OfferTypeEnum offerType = null;
+    public static final String SERIALIZED_NAME_OFFER_TYPE = "offerType";
 
-    @SerializedName("price")
-    private Money price = null;
+    @SerializedName(SERIALIZED_NAME_OFFER_TYPE)
+    private OfferTypeEnum offerType;
 
-    @SerializedName("points")
-    private Points points = null;
+    public static final String SERIALIZED_NAME_PRICE = "price";
 
-    @SerializedName("audience")
-    private Audience audience = null;
+    @SerializedName(SERIALIZED_NAME_PRICE)
+    private Money price;
+
+    public static final String SERIALIZED_NAME_POINTS = "points";
+
+    @SerializedName(SERIALIZED_NAME_POINTS)
+    private Points points;
+
+    public static final String SERIALIZED_NAME_AUDIENCE = "audience";
+
+    @SerializedName(SERIALIZED_NAME_AUDIENCE)
+    private Audience audience;
+
+    public ItemOfferByMarketplace() {}
 
     public ItemOfferByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -95,7 +121,7 @@ public class ItemOfferByMarketplace {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Amazon store identifier.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -114,7 +140,7 @@ public class ItemOfferByMarketplace {
      *
      * @return offerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The listings item's offer type.")
+    @javax.annotation.Nonnull
     public OfferTypeEnum getOfferType() {
         return offerType;
     }
@@ -133,7 +159,7 @@ public class ItemOfferByMarketplace {
      *
      * @return price
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getPrice() {
         return price;
     }
@@ -152,8 +178,7 @@ public class ItemOfferByMarketplace {
      *
      * @return points
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Points getPoints() {
+    @javax.annotation.Nullable public Points getPoints() {
         return points;
     }
 
@@ -171,8 +196,7 @@ public class ItemOfferByMarketplace {
      *
      * @return audience
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Audience getAudience() {
+    @javax.annotation.Nullable public Audience getAudience() {
         return audience;
     }
 
@@ -181,7 +205,7 @@ public class ItemOfferByMarketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -215,10 +239,138 @@ public class ItemOfferByMarketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("offerType");
+        openapiFields.add("price");
+        openapiFields.add("points");
+        openapiFields.add("audience");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("offerType");
+        openapiRequiredFields.add("price");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemOfferByMarketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemOfferByMarketplace.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemOfferByMarketplace is not found in the empty JSON string",
+                        ItemOfferByMarketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemOfferByMarketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemOfferByMarketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemOfferByMarketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("offerType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `offerType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("offerType").toString()));
+        }
+        // validate the required field `offerType`
+        OfferTypeEnum.validateJsonElement(jsonObj.get("offerType"));
+        // validate the required field `price`
+        Money.validateJsonElement(jsonObj.get("price"));
+        // validate the optional field `points`
+        if (jsonObj.get("points") != null && !jsonObj.get("points").isJsonNull()) {
+            Points.validateJsonElement(jsonObj.get("points"));
+        }
+        // validate the optional field `audience`
+        if (jsonObj.get("audience") != null && !jsonObj.get("audience").isJsonNull()) {
+            Audience.validateJsonElement(jsonObj.get("audience"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemOfferByMarketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemOfferByMarketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemOfferByMarketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemOfferByMarketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemOfferByMarketplace>() {
+                        @Override
+                        public void write(JsonWriter out, ItemOfferByMarketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemOfferByMarketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemOfferByMarketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemOfferByMarketplace
+     * @throws IOException if the JSON string is invalid with respect to ItemOfferByMarketplace
+     */
+    public static ItemOfferByMarketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemOfferByMarketplace.class);
+    }
+
+    /**
+     * Convert an instance of ItemOfferByMarketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

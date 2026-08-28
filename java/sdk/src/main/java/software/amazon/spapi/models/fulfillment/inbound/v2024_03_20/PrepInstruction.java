@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information pertaining to the preparation of inbound goods. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information pertaining to the preparation of inbound goods.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrepInstruction {
-    @SerializedName("fee")
-    private Currency fee = null;
+    public static final String SERIALIZED_NAME_FEE = "fee";
 
-    @SerializedName("prepOwner")
-    private String prepOwner = null;
+    @SerializedName(SERIALIZED_NAME_FEE)
+    private Currency fee;
 
-    @SerializedName("prepType")
-    private String prepType = null;
+    public static final String SERIALIZED_NAME_PREP_OWNER = "prepOwner";
+
+    @SerializedName(SERIALIZED_NAME_PREP_OWNER)
+    private String prepOwner;
+
+    public static final String SERIALIZED_NAME_PREP_TYPE = "prepType";
+
+    @SerializedName(SERIALIZED_NAME_PREP_TYPE)
+    private String prepType;
+
+    public PrepInstruction() {}
 
     public PrepInstruction fee(Currency fee) {
         this.fee = fee;
@@ -37,8 +60,7 @@ public class PrepInstruction {
      *
      * @return fee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getFee() {
+    @javax.annotation.Nullable public Currency getFee() {
         return fee;
     }
 
@@ -58,10 +80,7 @@ public class PrepInstruction {
      *
      * @return prepOwner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
-    public String getPrepOwner() {
+    @javax.annotation.Nullable public String getPrepOwner() {
         return prepOwner;
     }
 
@@ -86,10 +105,7 @@ public class PrepInstruction {
      *
      * @return prepType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Type of preparation that should be done.  Possible values: `ITEM_LABELING`, `ITEM_BUBBLEWRAP`, `ITEM_POLYBAGGING`, `ITEM_TAPING`, `ITEM_BLACK_SHRINKWRAP`, `ITEM_HANG_GARMENT`, `ITEM_BOXING`, `ITEM_SETCREAT`, `ITEM_RMOVHANG`, `ITEM_SUFFOSTK`, `ITEM_CAP_SEALING`, `ITEM_DEBUNDLE`, `ITEM_SETSTK`, `ITEM_SIOC`, `ITEM_NO_PREP`, `ADULT`, `BABY`, `TEXTILE`, `HANGER`, `FRAGILE`, `LIQUID`, `SHARP`, `SMALL`, `PERFORATED`, `GRANULAR`, `SET`, `FC_PROVIDED`, `UNKNOWN`, `NONE`.")
-    public String getPrepType() {
+    @javax.annotation.Nullable public String getPrepType() {
         return prepType;
     }
 
@@ -98,7 +114,7 @@ public class PrepInstruction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -128,10 +144,117 @@ public class PrepInstruction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fee");
+        openapiFields.add("prepOwner");
+        openapiFields.add("prepType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrepInstruction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrepInstruction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrepInstruction is not found in the empty JSON string",
+                        PrepInstruction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrepInstruction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrepInstruction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `fee`
+        if (jsonObj.get("fee") != null && !jsonObj.get("fee").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("fee"));
+        }
+        if ((jsonObj.get("prepOwner") != null && !jsonObj.get("prepOwner").isJsonNull())
+                && !jsonObj.get("prepOwner").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `prepOwner` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("prepOwner").toString()));
+        }
+        if ((jsonObj.get("prepType") != null && !jsonObj.get("prepType").isJsonNull())
+                && !jsonObj.get("prepType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `prepType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("prepType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrepInstruction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrepInstruction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrepInstruction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrepInstruction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrepInstruction>() {
+                        @Override
+                        public void write(JsonWriter out, PrepInstruction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrepInstruction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrepInstruction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrepInstruction
+     * @throws IOException if the JSON string is invalid with respect to PrepInstruction
+     */
+    public static PrepInstruction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrepInstruction.class);
+    }
+
+    /**
+     * Convert an instance of PrepInstruction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

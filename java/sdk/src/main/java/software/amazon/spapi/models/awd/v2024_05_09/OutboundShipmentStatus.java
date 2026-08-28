@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,28 +22,20 @@ import java.io.IOException;
 /** Possible shipment statuses for outbound shipments. */
 @JsonAdapter(OutboundShipmentStatus.Adapter.class)
 public enum OutboundShipmentStatus {
-    @SerializedName("CREATED")
     CREATED("CREATED"),
 
-    @SerializedName("IN_TRANSIT")
     IN_TRANSIT("IN_TRANSIT"),
 
-    @SerializedName("DELIVERED")
     DELIVERED("DELIVERED"),
 
-    @SerializedName("RECEIVING")
     RECEIVING("RECEIVING"),
 
-    @SerializedName("RECEIVED")
     RECEIVED("RECEIVED"),
 
-    @SerializedName("CLOSED")
     CLOSED("CLOSED"),
 
-    @SerializedName("CANCELLED")
     CANCELLED("CANCELLED"),
 
-    @SerializedName("FAILED")
     FAILED("FAILED");
 
     private String value;
@@ -61,25 +53,30 @@ public enum OutboundShipmentStatus {
         return String.valueOf(value);
     }
 
-    public static OutboundShipmentStatus fromValue(String input) {
+    public static OutboundShipmentStatus fromValue(String value) {
         for (OutboundShipmentStatus b : OutboundShipmentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OutboundShipmentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final OutboundShipmentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OutboundShipmentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OutboundShipmentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OutboundShipmentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OutboundShipmentStatus.fromValue(value);
     }
 }

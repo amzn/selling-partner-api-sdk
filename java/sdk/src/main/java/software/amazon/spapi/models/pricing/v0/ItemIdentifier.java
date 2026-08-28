@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information that identifies an item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information that identifies an item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemIdentifier {
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
 
-    @SerializedName("ItemCondition")
-    private ConditionType itemCondition = null;
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
+
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public static final String SERIALIZED_NAME_ITEM_CONDITION = "ItemCondition";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_CONDITION)
+    private ConditionType itemCondition;
+
+    public ItemIdentifier() {}
 
     public ItemIdentifier marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -40,9 +65,7 @@ public class ItemIdentifier {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A marketplace identifier. Specifies the marketplace from which prices are returned.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -61,9 +84,7 @@ public class ItemIdentifier {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -81,8 +102,7 @@ public class ItemIdentifier {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller stock keeping unit (SKU) of the item.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -100,7 +120,7 @@ public class ItemIdentifier {
      *
      * @return itemCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ConditionType getItemCondition() {
         return itemCondition;
     }
@@ -110,7 +130,7 @@ public class ItemIdentifier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -142,10 +162,132 @@ public class ItemIdentifier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("ASIN");
+        openapiFields.add("SellerSKU");
+        openapiFields.add("ItemCondition");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("MarketplaceId");
+        openapiRequiredFields.add("ItemCondition");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemIdentifier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemIdentifier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemIdentifier is not found in the empty JSON string",
+                        ItemIdentifier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemIdentifier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemIdentifier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemIdentifier.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        // validate the required field `ItemCondition`
+        ConditionType.validateJsonElement(jsonObj.get("ItemCondition"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemIdentifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemIdentifier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemIdentifier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemIdentifier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemIdentifier>() {
+                        @Override
+                        public void write(JsonWriter out, ItemIdentifier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemIdentifier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemIdentifier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemIdentifier
+     * @throws IOException if the JSON string is invalid with respect to ItemIdentifier
+     */
+    public static ItemIdentifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemIdentifier.class);
+    }
+
+    /**
+     * Convert an instance of ItemIdentifier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

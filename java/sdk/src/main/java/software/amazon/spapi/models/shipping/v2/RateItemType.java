@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** Type of the rateItem. */
 @JsonAdapter(RateItemType.Adapter.class)
 public enum RateItemType {
-    @SerializedName("MANDATORY")
     MANDATORY("MANDATORY"),
 
-    @SerializedName("OPTIONAL")
     OPTIONAL("OPTIONAL"),
 
-    @SerializedName("INCLUDED")
     INCLUDED("INCLUDED");
 
     private String value;
@@ -46,25 +43,30 @@ public enum RateItemType {
         return String.valueOf(value);
     }
 
-    public static RateItemType fromValue(String input) {
+    public static RateItemType fromValue(String value) {
         for (RateItemType b : RateItemType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RateItemType> {
         @Override
         public void write(final JsonWriter jsonWriter, final RateItemType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public RateItemType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return RateItemType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return RateItemType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        RateItemType.fromValue(value);
     }
 }

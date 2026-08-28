@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** The label format. */
 @JsonAdapter(LabelFormat.Adapter.class)
 public enum LabelFormat {
-    @SerializedName("PDF")
     PDF("PDF"),
 
-    @SerializedName("PNG")
     PNG("PNG"),
 
-    @SerializedName("ZPL203")
     ZPL203("ZPL203"),
 
-    @SerializedName("ZPL300")
     ZPL300("ZPL300"),
 
-    @SerializedName("ShippingServiceDefault")
     SHIPPING_SERVICE_DEFAULT("ShippingServiceDefault");
 
     private String value;
@@ -52,25 +47,30 @@ public enum LabelFormat {
         return String.valueOf(value);
     }
 
-    public static LabelFormat fromValue(String input) {
+    public static LabelFormat fromValue(String value) {
         for (LabelFormat b : LabelFormat.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<LabelFormat> {
         @Override
         public void write(final JsonWriter jsonWriter, final LabelFormat enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public LabelFormat read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return LabelFormat.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return LabelFormat.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        LabelFormat.fromValue(value);
     }
 }

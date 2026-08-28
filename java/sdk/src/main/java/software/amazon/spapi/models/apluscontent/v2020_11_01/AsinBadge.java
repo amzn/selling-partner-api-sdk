@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,16 +25,12 @@ import java.io.IOException;
  */
 @JsonAdapter(AsinBadge.Adapter.class)
 public enum AsinBadge {
-    @SerializedName("BRAND_NOT_ELIGIBLE")
     BRAND_NOT_ELIGIBLE("BRAND_NOT_ELIGIBLE"),
 
-    @SerializedName("CATALOG_NOT_FOUND")
     CATALOG_NOT_FOUND("CATALOG_NOT_FOUND"),
 
-    @SerializedName("CONTENT_NOT_PUBLISHED")
     CONTENT_NOT_PUBLISHED("CONTENT_NOT_PUBLISHED"),
 
-    @SerializedName("CONTENT_PUBLISHED")
     CONTENT_PUBLISHED("CONTENT_PUBLISHED");
 
     private String value;
@@ -52,25 +48,30 @@ public enum AsinBadge {
         return String.valueOf(value);
     }
 
-    public static AsinBadge fromValue(String input) {
+    public static AsinBadge fromValue(String value) {
         for (AsinBadge b : AsinBadge.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AsinBadge> {
         @Override
         public void write(final JsonWriter jsonWriter, final AsinBadge enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AsinBadge read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AsinBadge.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AsinBadge.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AsinBadge.fromValue(value);
     }
 }

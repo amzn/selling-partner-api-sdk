@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ Content standard label and description block, which contains a pair of text components. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The A+ Content standard label and description block, which contains a pair of text components.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardTextPairBlock {
-    @SerializedName("label")
-    private TextComponent label = null;
+    public static final String SERIALIZED_NAME_LABEL = "label";
 
-    @SerializedName("description")
-    private TextComponent description = null;
+    @SerializedName(SERIALIZED_NAME_LABEL)
+    private TextComponent label;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private TextComponent description;
+
+    public StandardTextPairBlock() {}
 
     public StandardTextPairBlock label(TextComponent label) {
         this.label = label;
@@ -35,8 +55,7 @@ public class StandardTextPairBlock {
      *
      * @return label
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getLabel() {
+    @javax.annotation.Nullable public TextComponent getLabel() {
         return label;
     }
 
@@ -54,8 +73,7 @@ public class StandardTextPairBlock {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getDescription() {
+    @javax.annotation.Nullable public TextComponent getDescription() {
         return description;
     }
 
@@ -64,7 +82,7 @@ public class StandardTextPairBlock {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -92,10 +110,109 @@ public class StandardTextPairBlock {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("label");
+        openapiFields.add("description");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardTextPairBlock
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardTextPairBlock.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardTextPairBlock is not found in the empty JSON string",
+                        StandardTextPairBlock.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardTextPairBlock.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardTextPairBlock` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `label`
+        if (jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("label"));
+        }
+        // validate the optional field `description`
+        if (jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("description"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardTextPairBlock.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardTextPairBlock' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardTextPairBlock> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardTextPairBlock.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardTextPairBlock>() {
+                        @Override
+                        public void write(JsonWriter out, StandardTextPairBlock value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardTextPairBlock read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardTextPairBlock given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardTextPairBlock
+     * @throws IOException if the JSON string is invalid with respect to StandardTextPairBlock
+     */
+    public static StandardTextPairBlock fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardTextPairBlock.class);
+    }
+
+    /**
+     * Convert an instance of StandardTextPairBlock to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

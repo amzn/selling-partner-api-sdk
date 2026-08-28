@@ -12,35 +12,68 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item in an adjustment to the seller&#39;s account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item in an adjustment to the seller's account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AdjustmentItem {
-    @SerializedName("Quantity")
-    private String quantity = null;
+    public static final String SERIALIZED_NAME_QUANTITY = "Quantity";
 
-    @SerializedName("PerUnitAmount")
-    private Currency perUnitAmount = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private String quantity;
 
-    @SerializedName("TotalAmount")
-    private Currency totalAmount = null;
+    public static final String SERIALIZED_NAME_PER_UNIT_AMOUNT = "PerUnitAmount";
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    @SerializedName(SERIALIZED_NAME_PER_UNIT_AMOUNT)
+    private Currency perUnitAmount;
 
-    @SerializedName("FnSKU")
-    private String fnSKU = null;
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
 
-    @SerializedName("ProductDescription")
-    private String productDescription = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
+    private Currency totalAmount;
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("TransactionNumber")
-    private String transactionNumber = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public static final String SERIALIZED_NAME_FN_S_K_U = "FnSKU";
+
+    @SerializedName(SERIALIZED_NAME_FN_S_K_U)
+    private String fnSKU;
+
+    public static final String SERIALIZED_NAME_PRODUCT_DESCRIPTION = "ProductDescription";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_DESCRIPTION)
+    private String productDescription;
+
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
+
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_NUMBER = "TransactionNumber";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_NUMBER)
+    private String transactionNumber;
+
+    public AdjustmentItem() {}
 
     public AdjustmentItem quantity(String quantity) {
         this.quantity = quantity;
@@ -53,10 +86,7 @@ public class AdjustmentItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Represents the number of units in the seller's inventory when the `AdjustmentType` is `FBAInventoryReimbursement`.")
-    public String getQuantity() {
+    @javax.annotation.Nullable public String getQuantity() {
         return quantity;
     }
 
@@ -74,8 +104,7 @@ public class AdjustmentItem {
      *
      * @return perUnitAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getPerUnitAmount() {
+    @javax.annotation.Nullable public Currency getPerUnitAmount() {
         return perUnitAmount;
     }
 
@@ -93,8 +122,7 @@ public class AdjustmentItem {
      *
      * @return totalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTotalAmount() {
+    @javax.annotation.Nullable public Currency getTotalAmount() {
         return totalAmount;
     }
 
@@ -113,10 +141,7 @@ public class AdjustmentItem {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -134,9 +159,7 @@ public class AdjustmentItem {
      *
      * @return fnSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A unique identifier assigned to products stored in and fulfilled from a fulfillment center.")
-    public String getFnSKU() {
+    @javax.annotation.Nullable public String getFnSKU() {
         return fnSKU;
     }
 
@@ -154,8 +177,7 @@ public class AdjustmentItem {
      *
      * @return productDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the item.")
-    public String getProductDescription() {
+    @javax.annotation.Nullable public String getProductDescription() {
         return productDescription;
     }
 
@@ -173,9 +195,7 @@ public class AdjustmentItem {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -193,9 +213,7 @@ public class AdjustmentItem {
      *
      * @return transactionNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The transaction number that is related to the adjustment.")
-    public String getTransactionNumber() {
+    @javax.annotation.Nullable public String getTransactionNumber() {
         return transactionNumber;
     }
 
@@ -204,7 +222,7 @@ public class AdjustmentItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -249,10 +267,153 @@ public class AdjustmentItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Quantity");
+        openapiFields.add("PerUnitAmount");
+        openapiFields.add("TotalAmount");
+        openapiFields.add("SellerSKU");
+        openapiFields.add("FnSKU");
+        openapiFields.add("ProductDescription");
+        openapiFields.add("ASIN");
+        openapiFields.add("TransactionNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AdjustmentItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AdjustmentItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AdjustmentItem is not found in the empty JSON string",
+                        AdjustmentItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AdjustmentItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AdjustmentItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("Quantity") != null && !jsonObj.get("Quantity").isJsonNull())
+                && !jsonObj.get("Quantity").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Quantity` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Quantity").toString()));
+        }
+        // validate the optional field `PerUnitAmount`
+        if (jsonObj.get("PerUnitAmount") != null
+                && !jsonObj.get("PerUnitAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("PerUnitAmount"));
+        }
+        // validate the optional field `TotalAmount`
+        if (jsonObj.get("TotalAmount") != null && !jsonObj.get("TotalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TotalAmount"));
+        }
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if ((jsonObj.get("FnSKU") != null && !jsonObj.get("FnSKU").isJsonNull())
+                && !jsonObj.get("FnSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FnSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FnSKU").toString()));
+        }
+        if ((jsonObj.get("ProductDescription") != null
+                        && !jsonObj.get("ProductDescription").isJsonNull())
+                && !jsonObj.get("ProductDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ProductDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ProductDescription").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if ((jsonObj.get("TransactionNumber") != null
+                        && !jsonObj.get("TransactionNumber").isJsonNull())
+                && !jsonObj.get("TransactionNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AdjustmentItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AdjustmentItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AdjustmentItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AdjustmentItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AdjustmentItem>() {
+                        @Override
+                        public void write(JsonWriter out, AdjustmentItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AdjustmentItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AdjustmentItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AdjustmentItem
+     * @throws IOException if the JSON string is invalid with respect to AdjustmentItem
+     */
+    public static AdjustmentItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AdjustmentItem.class);
+    }
+
+    /**
+     * Convert an instance of AdjustmentItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

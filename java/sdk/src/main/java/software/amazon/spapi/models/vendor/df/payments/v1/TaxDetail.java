@@ -12,47 +12,57 @@
 
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of tax amount applied. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of tax amount applied.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TaxDetail {
     /** Type of the tax applied. */
     @JsonAdapter(TaxTypeEnum.Adapter.class)
     public enum TaxTypeEnum {
-        @SerializedName("CGST")
         CGST("CGST"),
-        @SerializedName("SGST")
+
         SGST("SGST"),
-        @SerializedName("CESS")
+
         CESS("CESS"),
-        @SerializedName("UTGST")
+
         UTGST("UTGST"),
-        @SerializedName("IGST")
+
         IGST("IGST"),
-        @SerializedName("MwSt.")
+
         MW_ST_("MwSt."),
-        @SerializedName("PST")
+
         PST("PST"),
-        @SerializedName("TVA")
+
         TVA("TVA"),
-        @SerializedName("VAT")
+
         VAT("VAT"),
-        @SerializedName("GST")
+
         GST("GST"),
-        @SerializedName("ST")
+
         ST("ST"),
-        @SerializedName("Consumption")
+
         CONSUMPTION("Consumption"),
-        @SerializedName("MutuallyDefined")
+
         MUTUALLY_DEFINED("MutuallyDefined"),
-        @SerializedName("DomesticVAT")
+
         DOMESTIC_VAT("DomesticVAT");
 
         private String value;
@@ -70,40 +80,55 @@ public class TaxDetail {
             return String.valueOf(value);
         }
 
-        public static TaxTypeEnum fromValue(String input) {
+        public static TaxTypeEnum fromValue(String value) {
             for (TaxTypeEnum b : TaxTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TaxTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TaxTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TaxTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TaxTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TaxTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TaxTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("taxType")
-    private TaxTypeEnum taxType = null;
+    public static final String SERIALIZED_NAME_TAX_TYPE = "taxType";
 
-    @SerializedName("taxRate")
-    private String taxRate = null;
+    @SerializedName(SERIALIZED_NAME_TAX_TYPE)
+    private TaxTypeEnum taxType;
 
-    @SerializedName("taxAmount")
-    private Money taxAmount = null;
+    public static final String SERIALIZED_NAME_TAX_RATE = "taxRate";
 
-    @SerializedName("taxableAmount")
-    private Money taxableAmount = null;
+    @SerializedName(SERIALIZED_NAME_TAX_RATE)
+    private String taxRate;
+
+    public static final String SERIALIZED_NAME_TAX_AMOUNT = "taxAmount";
+
+    @SerializedName(SERIALIZED_NAME_TAX_AMOUNT)
+    private Money taxAmount;
+
+    public static final String SERIALIZED_NAME_TAXABLE_AMOUNT = "taxableAmount";
+
+    @SerializedName(SERIALIZED_NAME_TAXABLE_AMOUNT)
+    private Money taxableAmount;
+
+    public TaxDetail() {}
 
     public TaxDetail taxType(TaxTypeEnum taxType) {
         this.taxType = taxType;
@@ -115,7 +140,7 @@ public class TaxDetail {
      *
      * @return taxType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of the tax applied.")
+    @javax.annotation.Nonnull
     public TaxTypeEnum getTaxType() {
         return taxType;
     }
@@ -136,10 +161,7 @@ public class TaxDetail {
      *
      * @return taxRate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
-    public String getTaxRate() {
+    @javax.annotation.Nullable public String getTaxRate() {
         return taxRate;
     }
 
@@ -157,7 +179,7 @@ public class TaxDetail {
      *
      * @return taxAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getTaxAmount() {
         return taxAmount;
     }
@@ -176,8 +198,7 @@ public class TaxDetail {
      *
      * @return taxableAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getTaxableAmount() {
+    @javax.annotation.Nullable public Money getTaxableAmount() {
         return taxableAmount;
     }
 
@@ -186,7 +207,7 @@ public class TaxDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -218,10 +239,132 @@ public class TaxDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("taxType");
+        openapiFields.add("taxRate");
+        openapiFields.add("taxAmount");
+        openapiFields.add("taxableAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("taxType");
+        openapiRequiredFields.add("taxAmount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TaxDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TaxDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TaxDetail is not found in the empty JSON string",
+                        TaxDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TaxDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TaxDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TaxDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("taxType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxType").toString()));
+        }
+        // validate the required field `taxType`
+        TaxTypeEnum.validateJsonElement(jsonObj.get("taxType"));
+        if ((jsonObj.get("taxRate") != null && !jsonObj.get("taxRate").isJsonNull())
+                && !jsonObj.get("taxRate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxRate").toString()));
+        }
+        // validate the required field `taxAmount`
+        Money.validateJsonElement(jsonObj.get("taxAmount"));
+        // validate the optional field `taxableAmount`
+        if (jsonObj.get("taxableAmount") != null
+                && !jsonObj.get("taxableAmount").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("taxableAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TaxDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TaxDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TaxDetail> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(TaxDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TaxDetail>() {
+                        @Override
+                        public void write(JsonWriter out, TaxDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TaxDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TaxDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TaxDetail
+     * @throws IOException if the JSON string is invalid with respect to TaxDetail
+     */
+    public static TaxDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TaxDetail.class);
+    }
+
+    /**
+     * Convert an instance of TaxDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

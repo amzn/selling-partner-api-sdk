@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The type of product identifier used in a &#x60;FeesEstimateByIdRequest&#x60;. */
 @JsonAdapter(IdType.Adapter.class)
 public enum IdType {
-    @SerializedName("ASIN")
     ASIN("ASIN"),
 
-    @SerializedName("SellerSKU")
     SELLER_SKU("SellerSKU");
 
     private String value;
@@ -43,25 +41,30 @@ public enum IdType {
         return String.valueOf(value);
     }
 
-    public static IdType fromValue(String input) {
+    public static IdType fromValue(String value) {
         for (IdType b : IdType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<IdType> {
         @Override
         public void write(final JsonWriter jsonWriter, final IdType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public IdType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return IdType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return IdType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        IdType.fromValue(value);
     }
 }

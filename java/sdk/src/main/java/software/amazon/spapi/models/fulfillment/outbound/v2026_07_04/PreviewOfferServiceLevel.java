@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Service configuration for a preview offer. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Service configuration for a preview offer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PreviewOfferServiceLevel {
-    @SerializedName("serviceTier")
-    private String serviceTier = null;
+    public static final String SERIALIZED_NAME_SERVICE_TIER = "serviceTier";
 
-    @SerializedName("deliveryInterval")
-    private TimeInterval deliveryInterval = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_TIER)
+    private String serviceTier;
 
-    @SerializedName("shipInterval")
-    private TimeInterval shipInterval = null;
+    public static final String SERIALIZED_NAME_DELIVERY_INTERVAL = "deliveryInterval";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_INTERVAL)
+    private TimeInterval deliveryInterval;
+
+    public static final String SERIALIZED_NAME_SHIP_INTERVAL = "shipInterval";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_INTERVAL)
+    private TimeInterval shipInterval;
+
+    public PreviewOfferServiceLevel() {}
 
     public PreviewOfferServiceLevel serviceTier(String serviceTier) {
         this.serviceTier = serviceTier;
@@ -39,10 +62,7 @@ public class PreviewOfferServiceLevel {
      *
      * @return serviceTier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The service tier for this offer. Possible values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan).")
-    public String getServiceTier() {
+    @javax.annotation.Nullable public String getServiceTier() {
         return serviceTier;
     }
 
@@ -60,8 +80,7 @@ public class PreviewOfferServiceLevel {
      *
      * @return deliveryInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeInterval getDeliveryInterval() {
+    @javax.annotation.Nullable public TimeInterval getDeliveryInterval() {
         return deliveryInterval;
     }
 
@@ -79,8 +98,7 @@ public class PreviewOfferServiceLevel {
      *
      * @return shipInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeInterval getShipInterval() {
+    @javax.annotation.Nullable public TimeInterval getShipInterval() {
         return shipInterval;
     }
 
@@ -89,7 +107,7 @@ public class PreviewOfferServiceLevel {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +139,117 @@ public class PreviewOfferServiceLevel {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("serviceTier");
+        openapiFields.add("deliveryInterval");
+        openapiFields.add("shipInterval");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PreviewOfferServiceLevel
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PreviewOfferServiceLevel.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PreviewOfferServiceLevel is not found in the empty JSON string",
+                        PreviewOfferServiceLevel.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PreviewOfferServiceLevel.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PreviewOfferServiceLevel` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("serviceTier") != null && !jsonObj.get("serviceTier").isJsonNull())
+                && !jsonObj.get("serviceTier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceTier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceTier").toString()));
+        }
+        // validate the optional field `deliveryInterval`
+        if (jsonObj.get("deliveryInterval") != null
+                && !jsonObj.get("deliveryInterval").isJsonNull()) {
+            TimeInterval.validateJsonElement(jsonObj.get("deliveryInterval"));
+        }
+        // validate the optional field `shipInterval`
+        if (jsonObj.get("shipInterval") != null && !jsonObj.get("shipInterval").isJsonNull()) {
+            TimeInterval.validateJsonElement(jsonObj.get("shipInterval"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PreviewOfferServiceLevel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PreviewOfferServiceLevel' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PreviewOfferServiceLevel> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PreviewOfferServiceLevel.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PreviewOfferServiceLevel>() {
+                        @Override
+                        public void write(JsonWriter out, PreviewOfferServiceLevel value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PreviewOfferServiceLevel read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PreviewOfferServiceLevel given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PreviewOfferServiceLevel
+     * @throws IOException if the JSON string is invalid with respect to PreviewOfferServiceLevel
+     */
+    public static PreviewOfferServiceLevel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PreviewOfferServiceLevel.class);
+    }
+
+    /**
+     * Convert an instance of PreviewOfferServiceLevel to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

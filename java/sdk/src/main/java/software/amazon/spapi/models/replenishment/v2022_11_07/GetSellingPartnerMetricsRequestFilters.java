@@ -12,33 +12,57 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSellingPartnerMetricsRequestFilters {
-    @SerializedName("asins")
-    private Set<String> asins = null;
+    public static final String SERIALIZED_NAME_ASINS = "asins";
 
-    @SerializedName("skus")
-    private Set<String> skus = null;
+    @SerializedName(SERIALIZED_NAME_ASINS)
+    private Set<String> asins = new LinkedHashSet<>();
 
-    @SerializedName("fulfillmentChannelTypes")
-    private Set<FulfillmentChannelType> fulfillmentChannelTypes = null;
+    public static final String SERIALIZED_NAME_SKUS = "skus";
 
-    @SerializedName("brandNames")
-    private Set<String> brandNames = null;
+    @SerializedName(SERIALIZED_NAME_SKUS)
+    private Set<String> skus = new LinkedHashSet<>();
 
-    @SerializedName("productGroups")
-    private Set<String> productGroups = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPES = "fulfillmentChannelTypes";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL_TYPES)
+    private Set<FulfillmentChannelType> fulfillmentChannelTypes = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_BRAND_NAMES = "brandNames";
+
+    @SerializedName(SERIALIZED_NAME_BRAND_NAMES)
+    private Set<String> brandNames = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_GROUPS = "productGroups";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_GROUPS)
+    private Set<String> productGroups = new LinkedHashSet<>();
+
+    public GetSellingPartnerMetricsRequestFilters() {}
 
     public GetSellingPartnerMetricsRequestFilters asins(Set<String> asins) {
         this.asins = asins;
@@ -60,10 +84,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return asins
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of Amazon Standard Identification Numbers (ASINs) to filter by. ASIN filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
-    public Set<String> getAsins() {
+    @javax.annotation.Nullable public Set<String> getAsins() {
         return asins;
     }
 
@@ -91,10 +112,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return skus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] A list of SKUs to filter by. SKU filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
-    public Set<String> getSkus() {
+    @javax.annotation.Nullable public Set<String> getSkus() {
         return skus;
     }
 
@@ -125,10 +143,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return fulfillmentChannelTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] The fulfillment channel types to filter by. Fulfillment channel type filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
-    public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
+    @javax.annotation.Nullable public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
         return fulfillmentChannelTypes;
     }
 
@@ -159,10 +174,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return brandNames
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for US marketplace] A list of brand names to filter by. Brand name filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS, REVENUE_PENETRATION, SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE, SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS, REVENUE_BY_DELIVERIES, SUBSCRIBER_RETENTION, REVENUE_PENETRATION_BY_SELLER_FUNDING, SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT and SIGNUP_CONVERSION_BY_SELLER_FUNDING.")
-    public Set<String> getBrandNames() {
+    @javax.annotation.Nullable public Set<String> getBrandNames() {
         return brandNames;
     }
 
@@ -191,10 +203,7 @@ public class GetSellingPartnerMetricsRequestFilters {
      *
      * @return productGroups
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Vendors] A list of product group names to filter by. Product group filter is supported for these metrics: SHIPPED_SUBSCRIPTION_UNITS, TOTAL_SUBSCRIPTIONS_REVENUE, ACTIVE_SUBSCRIPTIONS, NOT_DELIVERED_DUE_TO_OOS, LOST_REVENUE_DUE_TO_OOS, COUPONS_REVENUE_PENETRATION, SHARE_OF_COUPON_SUBSCRIPTIONS and REVENUE_PENETRATION.")
-    public Set<String> getProductGroups() {
+    @javax.annotation.Nullable public Set<String> getProductGroups() {
         return productGroups;
     }
 
@@ -203,7 +212,7 @@ public class GetSellingPartnerMetricsRequestFilters {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -241,10 +250,145 @@ public class GetSellingPartnerMetricsRequestFilters {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asins");
+        openapiFields.add("skus");
+        openapiFields.add("fulfillmentChannelTypes");
+        openapiFields.add("brandNames");
+        openapiFields.add("productGroups");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSellingPartnerMetricsRequestFilters
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSellingPartnerMetricsRequestFilters.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSellingPartnerMetricsRequestFilters is not found in the empty JSON string",
+                        GetSellingPartnerMetricsRequestFilters.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSellingPartnerMetricsRequestFilters.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSellingPartnerMetricsRequestFilters` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("asins") != null
+                && !jsonObj.get("asins").isJsonNull()
+                && !jsonObj.get("asins").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asins` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("asins").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("skus") != null
+                && !jsonObj.get("skus").isJsonNull()
+                && !jsonObj.get("skus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `skus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("skus").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("fulfillmentChannelTypes") != null
+                && !jsonObj.get("fulfillmentChannelTypes").isJsonNull()
+                && !jsonObj.get("fulfillmentChannelTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentChannelTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentChannelTypes").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("brandNames") != null
+                && !jsonObj.get("brandNames").isJsonNull()
+                && !jsonObj.get("brandNames").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brandNames` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("brandNames").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("productGroups") != null
+                && !jsonObj.get("productGroups").isJsonNull()
+                && !jsonObj.get("productGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productGroups` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("productGroups").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSellingPartnerMetricsRequestFilters.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSellingPartnerMetricsRequestFilters' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSellingPartnerMetricsRequestFilters> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSellingPartnerMetricsRequestFilters.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSellingPartnerMetricsRequestFilters>() {
+                        @Override
+                        public void write(JsonWriter out, GetSellingPartnerMetricsRequestFilters value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSellingPartnerMetricsRequestFilters read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSellingPartnerMetricsRequestFilters given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSellingPartnerMetricsRequestFilters
+     * @throws IOException if the JSON string is invalid with respect to GetSellingPartnerMetricsRequestFilters
+     */
+    public static GetSellingPartnerMetricsRequestFilters fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSellingPartnerMetricsRequestFilters.class);
+    }
+
+    /**
+     * Convert an instance of GetSellingPartnerMetricsRequestFilters to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

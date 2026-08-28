@@ -12,27 +12,57 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A SAFE-T claim reimbursement on the seller&#39;s account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A SAFE-T claim reimbursement on the seller's account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SAFETReimbursementEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("SAFETClaimId")
-    private String saFETClaimId = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("ReimbursedAmount")
-    private Currency reimbursedAmount = null;
+    public static final String SERIALIZED_NAME_SA_F_E_T_CLAIM_ID = "SAFETClaimId";
 
-    @SerializedName("ReasonCode")
-    private String reasonCode = null;
+    @SerializedName(SERIALIZED_NAME_SA_F_E_T_CLAIM_ID)
+    private String saFETClaimId;
 
-    @SerializedName("SAFETReimbursementItemList")
-    private SAFETReimbursementItemList saFETReimbursementItemList = null;
+    public static final String SERIALIZED_NAME_REIMBURSED_AMOUNT = "ReimbursedAmount";
+
+    @SerializedName(SERIALIZED_NAME_REIMBURSED_AMOUNT)
+    private Currency reimbursedAmount;
+
+    public static final String SERIALIZED_NAME_REASON_CODE = "ReasonCode";
+
+    @SerializedName(SERIALIZED_NAME_REASON_CODE)
+    private String reasonCode;
+
+    public static final String SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_ITEM_LIST = "SAFETReimbursementItemList";
+
+    @SerializedName(SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_ITEM_LIST)
+    private List<SAFETReimbursementItem> saFETReimbursementItemList = new ArrayList<>();
+
+    public SAFETReimbursementEvent() {}
 
     public SAFETReimbursementEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -44,10 +74,7 @@ public class SAFETReimbursementEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -65,8 +92,7 @@ public class SAFETReimbursementEvent {
      *
      * @return saFETClaimId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A SAFE-T claim identifier.")
-    public String getSaFETClaimId() {
+    @javax.annotation.Nullable public String getSaFETClaimId() {
         return saFETClaimId;
     }
 
@@ -84,8 +110,7 @@ public class SAFETReimbursementEvent {
      *
      * @return reimbursedAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getReimbursedAmount() {
+    @javax.annotation.Nullable public Currency getReimbursedAmount() {
         return reimbursedAmount;
     }
 
@@ -103,8 +128,7 @@ public class SAFETReimbursementEvent {
      *
      * @return reasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates why the seller was reimbursed.")
-    public String getReasonCode() {
+    @javax.annotation.Nullable public String getReasonCode() {
         return reasonCode;
     }
 
@@ -112,27 +136,35 @@ public class SAFETReimbursementEvent {
         this.reasonCode = reasonCode;
     }
 
-    public SAFETReimbursementEvent saFETReimbursementItemList(SAFETReimbursementItemList saFETReimbursementItemList) {
+    public SAFETReimbursementEvent saFETReimbursementItemList(List<SAFETReimbursementItem> saFETReimbursementItemList) {
         this.saFETReimbursementItemList = saFETReimbursementItemList;
         return this;
     }
 
+    public SAFETReimbursementEvent addSaFETReimbursementItemListItem(
+            SAFETReimbursementItem saFETReimbursementItemListItem) {
+        if (this.saFETReimbursementItemList == null) {
+            this.saFETReimbursementItemList = new ArrayList<>();
+        }
+        this.saFETReimbursementItemList.add(saFETReimbursementItemListItem);
+        return this;
+    }
+
     /**
-     * Get saFETReimbursementItemList
+     * A list of &#x60;SAFETReimbursementItem&#x60;.
      *
      * @return saFETReimbursementItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SAFETReimbursementItemList getSaFETReimbursementItemList() {
+    @javax.annotation.Nullable public List<SAFETReimbursementItem> getSaFETReimbursementItemList() {
         return saFETReimbursementItemList;
     }
 
-    public void setSaFETReimbursementItemList(SAFETReimbursementItemList saFETReimbursementItemList) {
+    public void setSaFETReimbursementItemList(List<SAFETReimbursementItem> saFETReimbursementItemList) {
         this.saFETReimbursementItemList = saFETReimbursementItemList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +202,139 @@ public class SAFETReimbursementEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("SAFETClaimId");
+        openapiFields.add("ReimbursedAmount");
+        openapiFields.add("ReasonCode");
+        openapiFields.add("SAFETReimbursementItemList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SAFETReimbursementEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SAFETReimbursementEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SAFETReimbursementEvent is not found in the empty JSON string",
+                        SAFETReimbursementEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SAFETReimbursementEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SAFETReimbursementEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("SAFETClaimId") != null && !jsonObj.get("SAFETClaimId").isJsonNull())
+                && !jsonObj.get("SAFETClaimId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SAFETClaimId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SAFETClaimId").toString()));
+        }
+        // validate the optional field `ReimbursedAmount`
+        if (jsonObj.get("ReimbursedAmount") != null
+                && !jsonObj.get("ReimbursedAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ReimbursedAmount"));
+        }
+        if ((jsonObj.get("ReasonCode") != null && !jsonObj.get("ReasonCode").isJsonNull())
+                && !jsonObj.get("ReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ReasonCode").toString()));
+        }
+        if (jsonObj.get("SAFETReimbursementItemList") != null
+                && !jsonObj.get("SAFETReimbursementItemList").isJsonNull()) {
+            JsonArray jsonArraysaFETReimbursementItemList = jsonObj.getAsJsonArray("SAFETReimbursementItemList");
+            if (jsonArraysaFETReimbursementItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SAFETReimbursementItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SAFETReimbursementItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SAFETReimbursementItemList").toString()));
+                }
+
+                // validate the optional field `SAFETReimbursementItemList` (array)
+                for (int i = 0; i < jsonArraysaFETReimbursementItemList.size(); i++) {
+                    SAFETReimbursementItem.validateJsonElement(jsonArraysaFETReimbursementItemList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SAFETReimbursementEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SAFETReimbursementEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SAFETReimbursementEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SAFETReimbursementEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SAFETReimbursementEvent>() {
+                        @Override
+                        public void write(JsonWriter out, SAFETReimbursementEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SAFETReimbursementEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SAFETReimbursementEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SAFETReimbursementEvent
+     * @throws IOException if the JSON string is invalid with respect to SAFETReimbursementEvent
+     */
+    public static SAFETReimbursementEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SAFETReimbursementEvent.class);
+    }
+
+    /**
+     * Convert an instance of SAFETReimbursementEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

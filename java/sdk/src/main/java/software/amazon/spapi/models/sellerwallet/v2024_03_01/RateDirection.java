@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Whether the customer is buying or selling the source currency. */
 @JsonAdapter(RateDirection.Adapter.class)
 public enum RateDirection {
-    @SerializedName("BUY")
     BUY("BUY"),
 
-    @SerializedName("SELL")
     SELL("SELL");
 
     private String value;
@@ -43,25 +41,30 @@ public enum RateDirection {
         return String.valueOf(value);
     }
 
-    public static RateDirection fromValue(String input) {
+    public static RateDirection fromValue(String value) {
         for (RateDirection b : RateDirection.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<RateDirection> {
         @Override
         public void write(final JsonWriter jsonWriter, final RateDirection enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public RateDirection read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return RateDirection.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return RateDirection.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        RateDirection.fromValue(value);
     }
 }

@@ -12,39 +12,54 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Shipping label information for an order, including the purchase order number, selling party, ship from party, label
  * format, and package details.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Shipping label information for an order, including the purchase order number, selling party, ship from party, label format, and package details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingLabel {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("shipFromParty")
-    private PartyIdentification shipFromParty = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
+
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_SHIP_FROM_PARTY = "shipFromParty";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_PARTY)
+    private PartyIdentification shipFromParty;
 
     /** Format of the label. */
     @JsonAdapter(LabelFormatEnum.Adapter.class)
     public enum LabelFormatEnum {
-        @SerializedName("PNG")
         PNG("PNG"),
-        @SerializedName("ZPL")
+
         ZPL("ZPL");
 
         private String value;
@@ -62,34 +77,45 @@ public class ShippingLabel {
             return String.valueOf(value);
         }
 
-        public static LabelFormatEnum fromValue(String input) {
+        public static LabelFormatEnum fromValue(String value) {
             for (LabelFormatEnum b : LabelFormatEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LabelFormatEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final LabelFormatEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public LabelFormatEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return LabelFormatEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return LabelFormatEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LabelFormatEnum.fromValue(value);
         }
     }
 
-    @SerializedName("labelFormat")
-    private LabelFormatEnum labelFormat = null;
+    public static final String SERIALIZED_NAME_LABEL_FORMAT = "labelFormat";
 
-    @SerializedName("labelData")
-    private List<LabelData> labelData = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_FORMAT)
+    private LabelFormatEnum labelFormat;
+
+    public static final String SERIALIZED_NAME_LABEL_DATA = "labelData";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_DATA)
+    private List<LabelData> labelData = new ArrayList<>();
+
+    public ShippingLabel() {}
 
     public ShippingLabel purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -101,9 +127,7 @@ public class ShippingLabel {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "This field will contain the Purchase Order Number for this order.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -122,7 +146,7 @@ public class ShippingLabel {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -141,7 +165,7 @@ public class ShippingLabel {
      *
      * @return shipFromParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -160,7 +184,7 @@ public class ShippingLabel {
      *
      * @return labelFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Format of the label.")
+    @javax.annotation.Nonnull
     public LabelFormatEnum getLabelFormat() {
         return labelFormat;
     }
@@ -187,9 +211,7 @@ public class ShippingLabel {
      *
      * @return labelData
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Provides the details of the packages in this shipment.")
+    @javax.annotation.Nonnull
     public List<LabelData> getLabelData() {
         return labelData;
     }
@@ -199,7 +221,7 @@ public class ShippingLabel {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -235,10 +257,146 @@ public class ShippingLabel {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("sellingParty");
+        openapiFields.add("shipFromParty");
+        openapiFields.add("labelFormat");
+        openapiFields.add("labelData");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("shipFromParty");
+        openapiRequiredFields.add("labelFormat");
+        openapiRequiredFields.add("labelData");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingLabel
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingLabel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingLabel is not found in the empty JSON string",
+                        ShippingLabel.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingLabel.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingLabel` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShippingLabel.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // validate the required field `shipFromParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("shipFromParty"));
+        if (!jsonObj.get("labelFormat").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `labelFormat` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("labelFormat").toString()));
+        }
+        // validate the required field `labelFormat`
+        LabelFormatEnum.validateJsonElement(jsonObj.get("labelFormat"));
+        // ensure the json data is an array
+        if (!jsonObj.get("labelData").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `labelData` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("labelData").toString()));
+        }
+
+        JsonArray jsonArraylabelData = jsonObj.getAsJsonArray("labelData");
+        // validate the required field `labelData` (array)
+        for (int i = 0; i < jsonArraylabelData.size(); i++) {
+            LabelData.validateJsonElement(jsonArraylabelData.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingLabel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingLabel' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingLabel> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingLabel.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingLabel>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingLabel value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingLabel read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingLabel given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingLabel
+     * @throws IOException if the JSON string is invalid with respect to ShippingLabel
+     */
+    public static ShippingLabel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingLabel.class);
+    }
+
+    /**
+     * Convert an instance of ShippingLabel to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,53 +12,77 @@
 
 package software.amazon.spapi.models.reports.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed information about the report. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the report.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Report {
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
 
-    @SerializedName("reportId")
-    private String reportId = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
 
-    @SerializedName("reportType")
-    private String reportType = null;
+    public static final String SERIALIZED_NAME_REPORT_ID = "reportId";
 
-    @SerializedName("dataStartTime")
-    private OffsetDateTime dataStartTime = null;
+    @SerializedName(SERIALIZED_NAME_REPORT_ID)
+    private String reportId;
 
-    @SerializedName("dataEndTime")
-    private OffsetDateTime dataEndTime = null;
+    public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
 
-    @SerializedName("reportScheduleId")
-    private String reportScheduleId = null;
+    @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+    private String reportType;
 
-    @SerializedName("createdTime")
-    private OffsetDateTime createdTime = null;
+    public static final String SERIALIZED_NAME_DATA_START_TIME = "dataStartTime";
+
+    @SerializedName(SERIALIZED_NAME_DATA_START_TIME)
+    private OffsetDateTime dataStartTime;
+
+    public static final String SERIALIZED_NAME_DATA_END_TIME = "dataEndTime";
+
+    @SerializedName(SERIALIZED_NAME_DATA_END_TIME)
+    private OffsetDateTime dataEndTime;
+
+    public static final String SERIALIZED_NAME_REPORT_SCHEDULE_ID = "reportScheduleId";
+
+    @SerializedName(SERIALIZED_NAME_REPORT_SCHEDULE_ID)
+    private String reportScheduleId;
+
+    public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+    private OffsetDateTime createdTime;
 
     /** The processing status of the report. */
     @JsonAdapter(ProcessingStatusEnum.Adapter.class)
     public enum ProcessingStatusEnum {
-        @SerializedName("CANCELLED")
         CANCELLED("CANCELLED"),
-        @SerializedName("DONE")
+
         DONE("DONE"),
-        @SerializedName("FATAL")
+
         FATAL("FATAL"),
-        @SerializedName("IN_PROGRESS")
+
         IN_PROGRESS("IN_PROGRESS"),
-        @SerializedName("IN_QUEUE")
+
         IN_QUEUE("IN_QUEUE");
 
         private String value;
@@ -76,40 +100,55 @@ public class Report {
             return String.valueOf(value);
         }
 
-        public static ProcessingStatusEnum fromValue(String input) {
+        public static ProcessingStatusEnum fromValue(String value) {
             for (ProcessingStatusEnum b : ProcessingStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ProcessingStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ProcessingStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ProcessingStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ProcessingStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ProcessingStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ProcessingStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("processingStatus")
-    private ProcessingStatusEnum processingStatus = null;
+    public static final String SERIALIZED_NAME_PROCESSING_STATUS = "processingStatus";
 
-    @SerializedName("processingStartTime")
-    private OffsetDateTime processingStartTime = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_STATUS)
+    private ProcessingStatusEnum processingStatus;
 
-    @SerializedName("processingEndTime")
-    private OffsetDateTime processingEndTime = null;
+    public static final String SERIALIZED_NAME_PROCESSING_START_TIME = "processingStartTime";
 
-    @SerializedName("reportDocumentId")
-    private String reportDocumentId = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_START_TIME)
+    private OffsetDateTime processingStartTime;
+
+    public static final String SERIALIZED_NAME_PROCESSING_END_TIME = "processingEndTime";
+
+    @SerializedName(SERIALIZED_NAME_PROCESSING_END_TIME)
+    private OffsetDateTime processingEndTime;
+
+    public static final String SERIALIZED_NAME_REPORT_DOCUMENT_ID = "reportDocumentId";
+
+    @SerializedName(SERIALIZED_NAME_REPORT_DOCUMENT_ID)
+    private String reportDocumentId;
+
+    public Report() {}
 
     public Report marketplaceIds(List<String> marketplaceIds) {
         this.marketplaceIds = marketplaceIds;
@@ -129,8 +168,7 @@ public class Report {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of marketplace identifiers for the report.")
-    public List<String> getMarketplaceIds() {
+    @javax.annotation.Nullable public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
 
@@ -148,10 +186,7 @@ public class Report {
      *
      * @return reportId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the report. This identifier is unique only in combination with a seller ID.")
+    @javax.annotation.Nonnull
     public String getReportId() {
         return reportId;
     }
@@ -171,10 +206,7 @@ public class Report {
      *
      * @return reportType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
+    @javax.annotation.Nonnull
     public String getReportType() {
         return reportType;
     }
@@ -193,9 +225,7 @@ public class Report {
      *
      * @return dataStartTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The start of a date and time range used for selecting the data to report.")
-    public OffsetDateTime getDataStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getDataStartTime() {
         return dataStartTime;
     }
 
@@ -213,9 +243,7 @@ public class Report {
      *
      * @return dataEndTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The end of a date and time range used for selecting the data to report.")
-    public OffsetDateTime getDataEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getDataEndTime() {
         return dataEndTime;
     }
 
@@ -234,10 +262,7 @@ public class Report {
      *
      * @return reportScheduleId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier of the report schedule that created this report (if any). This identifier is unique only in combination with a seller ID.")
-    public String getReportScheduleId() {
+    @javax.annotation.Nullable public String getReportScheduleId() {
         return reportScheduleId;
     }
 
@@ -255,9 +280,7 @@ public class Report {
      *
      * @return createdTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time when the report was created.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -276,7 +299,7 @@ public class Report {
      *
      * @return processingStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the report.")
+    @javax.annotation.Nonnull
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -297,10 +320,7 @@ public class Report {
      *
      * @return processingStartTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the report processing started, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
-    public OffsetDateTime getProcessingStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingStartTime() {
         return processingStartTime;
     }
 
@@ -320,10 +340,7 @@ public class Report {
      *
      * @return processingEndTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the report processing completed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
-    public OffsetDateTime getProcessingEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingEndTime() {
         return processingEndTime;
     }
 
@@ -342,10 +359,7 @@ public class Report {
      *
      * @return reportDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier for the report document. Pass this into the `getReportDocument` operation to get the information you will need to retrieve the report document's contents.")
-    public String getReportDocumentId() {
+    @javax.annotation.Nullable public String getReportDocumentId() {
         return reportDocumentId;
     }
 
@@ -354,7 +368,7 @@ public class Report {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -423,10 +437,160 @@ public class Report {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("reportId");
+        openapiFields.add("reportType");
+        openapiFields.add("dataStartTime");
+        openapiFields.add("dataEndTime");
+        openapiFields.add("reportScheduleId");
+        openapiFields.add("createdTime");
+        openapiFields.add("processingStatus");
+        openapiFields.add("processingStartTime");
+        openapiFields.add("processingEndTime");
+        openapiFields.add("reportDocumentId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("reportId");
+        openapiRequiredFields.add("reportType");
+        openapiRequiredFields.add("createdTime");
+        openapiRequiredFields.add("processingStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Report
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Report.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Report is not found in the empty JSON string",
+                        Report.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Report.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Report` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Report.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("marketplaceIds") != null
+                && !jsonObj.get("marketplaceIds").isJsonNull()
+                && !jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("reportId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportId").toString()));
+        }
+        if (!jsonObj.get("reportType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportType").toString()));
+        }
+        if ((jsonObj.get("reportScheduleId") != null
+                        && !jsonObj.get("reportScheduleId").isJsonNull())
+                && !jsonObj.get("reportScheduleId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportScheduleId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportScheduleId").toString()));
+        }
+        if (!jsonObj.get("processingStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `processingStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("processingStatus").toString()));
+        }
+        // validate the required field `processingStatus`
+        ProcessingStatusEnum.validateJsonElement(jsonObj.get("processingStatus"));
+        if ((jsonObj.get("reportDocumentId") != null
+                        && !jsonObj.get("reportDocumentId").isJsonNull())
+                && !jsonObj.get("reportDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportDocumentId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Report.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Report' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Report> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Report.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Report>() {
+                        @Override
+                        public void write(JsonWriter out, Report value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Report read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Report given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Report
+     * @throws IOException if the JSON string is invalid with respect to Report
+     */
+    public static Report fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Report.class);
+    }
+
+    /**
+     * Convert an instance of Report to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

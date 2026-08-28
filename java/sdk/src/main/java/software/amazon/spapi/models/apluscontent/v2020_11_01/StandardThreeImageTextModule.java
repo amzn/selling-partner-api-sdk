@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Three standard images with text, presented across a single row. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Three standard images with text, presented across a single row.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardThreeImageTextModule {
-    @SerializedName("headline")
-    private TextComponent headline = null;
+    public static final String SERIALIZED_NAME_HEADLINE = "headline";
 
-    @SerializedName("block1")
-    private StandardImageTextBlock block1 = null;
+    @SerializedName(SERIALIZED_NAME_HEADLINE)
+    private TextComponent headline;
 
-    @SerializedName("block2")
-    private StandardImageTextBlock block2 = null;
+    public static final String SERIALIZED_NAME_BLOCK1 = "block1";
 
-    @SerializedName("block3")
-    private StandardImageTextBlock block3 = null;
+    @SerializedName(SERIALIZED_NAME_BLOCK1)
+    private StandardImageTextBlock block1;
+
+    public static final String SERIALIZED_NAME_BLOCK2 = "block2";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK2)
+    private StandardImageTextBlock block2;
+
+    public static final String SERIALIZED_NAME_BLOCK3 = "block3";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK3)
+    private StandardImageTextBlock block3;
+
+    public StandardThreeImageTextModule() {}
 
     public StandardThreeImageTextModule headline(TextComponent headline) {
         this.headline = headline;
@@ -41,8 +65,7 @@ public class StandardThreeImageTextModule {
      *
      * @return headline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getHeadline() {
+    @javax.annotation.Nullable public TextComponent getHeadline() {
         return headline;
     }
 
@@ -60,8 +83,7 @@ public class StandardThreeImageTextModule {
      *
      * @return block1
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getBlock1() {
+    @javax.annotation.Nullable public StandardImageTextBlock getBlock1() {
         return block1;
     }
 
@@ -79,8 +101,7 @@ public class StandardThreeImageTextModule {
      *
      * @return block2
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getBlock2() {
+    @javax.annotation.Nullable public StandardImageTextBlock getBlock2() {
         return block2;
     }
 
@@ -98,8 +119,7 @@ public class StandardThreeImageTextModule {
      *
      * @return block3
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getBlock3() {
+    @javax.annotation.Nullable public StandardImageTextBlock getBlock3() {
         return block3;
     }
 
@@ -108,7 +128,7 @@ public class StandardThreeImageTextModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -140,10 +160,119 @@ public class StandardThreeImageTextModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headline");
+        openapiFields.add("block1");
+        openapiFields.add("block2");
+        openapiFields.add("block3");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardThreeImageTextModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardThreeImageTextModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardThreeImageTextModule is not found in the empty JSON string",
+                        StandardThreeImageTextModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardThreeImageTextModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardThreeImageTextModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `headline`
+        if (jsonObj.get("headline") != null && !jsonObj.get("headline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("headline"));
+        }
+        // validate the optional field `block1`
+        if (jsonObj.get("block1") != null && !jsonObj.get("block1").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("block1"));
+        }
+        // validate the optional field `block2`
+        if (jsonObj.get("block2") != null && !jsonObj.get("block2").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("block2"));
+        }
+        // validate the optional field `block3`
+        if (jsonObj.get("block3") != null && !jsonObj.get("block3").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("block3"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardThreeImageTextModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardThreeImageTextModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardThreeImageTextModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardThreeImageTextModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardThreeImageTextModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardThreeImageTextModule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardThreeImageTextModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardThreeImageTextModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardThreeImageTextModule
+     * @throws IOException if the JSON string is invalid with respect to StandardThreeImageTextModule
+     */
+    public static StandardThreeImageTextModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardThreeImageTextModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardThreeImageTextModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

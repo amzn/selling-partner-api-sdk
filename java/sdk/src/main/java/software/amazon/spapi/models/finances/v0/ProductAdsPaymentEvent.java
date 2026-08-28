@@ -12,30 +12,59 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A Sponsored Products payment event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A Sponsored Products payment event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductAdsPaymentEvent {
-    @SerializedName("postedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "postedDate";
 
-    @SerializedName("transactionType")
-    private String transactionType = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("invoiceId")
-    private String invoiceId = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
 
-    @SerializedName("baseValue")
-    private Currency baseValue = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("taxValue")
-    private Currency taxValue = null;
+    public static final String SERIALIZED_NAME_INVOICE_ID = "invoiceId";
 
-    @SerializedName("transactionValue")
-    private Currency transactionValue = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_ID)
+    private String invoiceId;
+
+    public static final String SERIALIZED_NAME_BASE_VALUE = "baseValue";
+
+    @SerializedName(SERIALIZED_NAME_BASE_VALUE)
+    private Currency baseValue;
+
+    public static final String SERIALIZED_NAME_TAX_VALUE = "taxValue";
+
+    @SerializedName(SERIALIZED_NAME_TAX_VALUE)
+    private Currency taxValue;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_VALUE = "transactionValue";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_VALUE)
+    private Currency transactionValue;
+
+    public ProductAdsPaymentEvent() {}
 
     public ProductAdsPaymentEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -47,10 +76,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -69,10 +95,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates if the transaction is for a charge or a refund.  Possible values:  * `charge`  * `refund`")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -90,9 +113,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return invoiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier for the invoice that includes the transaction.")
-    public String getInvoiceId() {
+    @javax.annotation.Nullable public String getInvoiceId() {
         return invoiceId;
     }
 
@@ -110,8 +131,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return baseValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getBaseValue() {
+    @javax.annotation.Nullable public Currency getBaseValue() {
         return baseValue;
     }
 
@@ -129,8 +149,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return taxValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTaxValue() {
+    @javax.annotation.Nullable public Currency getTaxValue() {
         return taxValue;
     }
 
@@ -148,8 +167,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return transactionValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTransactionValue() {
+    @javax.annotation.Nullable public Currency getTransactionValue() {
         return transactionValue;
     }
 
@@ -158,7 +176,7 @@ public class ProductAdsPaymentEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -198,10 +216,131 @@ public class ProductAdsPaymentEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("postedDate");
+        openapiFields.add("transactionType");
+        openapiFields.add("invoiceId");
+        openapiFields.add("baseValue");
+        openapiFields.add("taxValue");
+        openapiFields.add("transactionValue");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductAdsPaymentEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductAdsPaymentEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductAdsPaymentEvent is not found in the empty JSON string",
+                        ProductAdsPaymentEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductAdsPaymentEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductAdsPaymentEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("transactionType") != null
+                        && !jsonObj.get("transactionType").isJsonNull())
+                && !jsonObj.get("transactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionType").toString()));
+        }
+        if ((jsonObj.get("invoiceId") != null && !jsonObj.get("invoiceId").isJsonNull())
+                && !jsonObj.get("invoiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceId").toString()));
+        }
+        // validate the optional field `baseValue`
+        if (jsonObj.get("baseValue") != null && !jsonObj.get("baseValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("baseValue"));
+        }
+        // validate the optional field `taxValue`
+        if (jsonObj.get("taxValue") != null && !jsonObj.get("taxValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("taxValue"));
+        }
+        // validate the optional field `transactionValue`
+        if (jsonObj.get("transactionValue") != null
+                && !jsonObj.get("transactionValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("transactionValue"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductAdsPaymentEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductAdsPaymentEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductAdsPaymentEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductAdsPaymentEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductAdsPaymentEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ProductAdsPaymentEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductAdsPaymentEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductAdsPaymentEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductAdsPaymentEvent
+     * @throws IOException if the JSON string is invalid with respect to ProductAdsPaymentEvent
+     */
+    public static ProductAdsPaymentEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductAdsPaymentEvent.class);
+    }
+
+    /**
+     * Convert an instance of ProductAdsPaymentEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

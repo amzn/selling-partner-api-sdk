@@ -12,17 +12,41 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the &#x60;listTransactions&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `listTransactions` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransactionsPayload {
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
 
-    @SerializedName("transactions")
-    private Transactions transactions = null;
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
+    private List<Transaction> transactions = new ArrayList<>();
+
+    public TransactionsPayload() {}
 
     public TransactionsPayload nextToken(String nextToken) {
         this.nextToken = nextToken;
@@ -37,10 +61,7 @@ public class TransactionsPayload {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -48,27 +69,34 @@ public class TransactionsPayload {
         this.nextToken = nextToken;
     }
 
-    public TransactionsPayload transactions(Transactions transactions) {
+    public TransactionsPayload transactions(List<Transaction> transactions) {
         this.transactions = transactions;
         return this;
     }
 
+    public TransactionsPayload addTransactionsItem(Transaction transactionsItem) {
+        if (this.transactions == null) {
+            this.transactions = new ArrayList<>();
+        }
+        this.transactions.add(transactionsItem);
+        return this;
+    }
+
     /**
-     * Get transactions
+     * A list of transactions within the specified time period.
      *
      * @return transactions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Transactions getTransactions() {
+    @javax.annotation.Nullable public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Transactions transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +124,123 @@ public class TransactionsPayload {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("nextToken");
+        openapiFields.add("transactions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransactionsPayload
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransactionsPayload.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransactionsPayload is not found in the empty JSON string",
+                        TransactionsPayload.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransactionsPayload.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransactionsPayload` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+        if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {
+            JsonArray jsonArraytransactions = jsonObj.getAsJsonArray("transactions");
+            if (jsonArraytransactions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transactions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transactions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transactions").toString()));
+                }
+
+                // validate the optional field `transactions` (array)
+                for (int i = 0; i < jsonArraytransactions.size(); i++) {
+                    Transaction.validateJsonElement(jsonArraytransactions.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransactionsPayload.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransactionsPayload' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransactionsPayload> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransactionsPayload.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransactionsPayload>() {
+                        @Override
+                        public void write(JsonWriter out, TransactionsPayload value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransactionsPayload read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransactionsPayload given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransactionsPayload
+     * @throws IOException if the JSON string is invalid with respect to TransactionsPayload
+     */
+    public static TransactionsPayload fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransactionsPayload.class);
+    }
+
+    /**
+     * Convert an instance of TransactionsPayload to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

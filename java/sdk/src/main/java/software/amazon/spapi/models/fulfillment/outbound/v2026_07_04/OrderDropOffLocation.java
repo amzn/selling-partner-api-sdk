@@ -12,17 +12,39 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Drop-off location for the fulfillment order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Drop-off location for the fulfillment order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderDropOffLocation {
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("attributes")
-    private OrderDropOffLocationAttributes attributes = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
+
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private Map<String, Object> attributes = new HashMap<>();
+
+    public OrderDropOffLocation() {}
 
     public OrderDropOffLocation type(String type) {
         this.type = type;
@@ -37,10 +59,7 @@ public class OrderDropOffLocation {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Specifies the preferred location to leave the package at the destination address. Possible values: `FRONT_DOOR`, `DELIVERY_BOX`, `GAS_METER_BOX`, `BICYCLE_BASKET`, `GARAGE`, `RECEPTIONIST`, `FALLBACK_NEIGHBOR_DELIVERY`, `DO_NOT_LEAVE_UNATTENDED`, `LOCKER`.")
-    public String getType() {
+    @javax.annotation.Nullable public String getType() {
         return type;
     }
 
@@ -48,27 +67,34 @@ public class OrderDropOffLocation {
         this.type = type;
     }
 
-    public OrderDropOffLocation attributes(OrderDropOffLocationAttributes attributes) {
+    public OrderDropOffLocation attributes(Map<String, Object> attributes) {
         this.attributes = attributes;
         return this;
     }
 
+    public OrderDropOffLocation putAttributesItem(String key, Object attributesItem) {
+        if (this.attributes == null) {
+            this.attributes = new HashMap<>();
+        }
+        this.attributes.put(key, attributesItem);
+        return this;
+    }
+
     /**
-     * Get attributes
+     * Drop-off location attributes.
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderDropOffLocationAttributes getAttributes() {
+    @javax.annotation.Nullable public Map<String, Object> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(OrderDropOffLocationAttributes attributes) {
+    public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +122,106 @@ public class OrderDropOffLocation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("attributes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderDropOffLocation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderDropOffLocation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderDropOffLocation is not found in the empty JSON string",
+                        OrderDropOffLocation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderDropOffLocation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderDropOffLocation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull())
+                && !jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderDropOffLocation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderDropOffLocation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderDropOffLocation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderDropOffLocation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderDropOffLocation>() {
+                        @Override
+                        public void write(JsonWriter out, OrderDropOffLocation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderDropOffLocation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderDropOffLocation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderDropOffLocation
+     * @throws IOException if the JSON string is invalid with respect to OrderDropOffLocation
+     */
+    public static OrderDropOffLocation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderDropOffLocation.class);
+    }
+
+    /**
+     * Convert an instance of OrderDropOffLocation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

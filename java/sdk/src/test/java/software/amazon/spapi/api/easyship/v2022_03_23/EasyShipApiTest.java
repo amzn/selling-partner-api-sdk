@@ -30,7 +30,6 @@ import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackages
 import software.amazon.spapi.models.easyship.v2022_03_23.ListHandoverSlotsResponse;
 import software.amazon.spapi.models.easyship.v2022_03_23.ModelPackage;
 import software.amazon.spapi.models.easyship.v2022_03_23.Packages;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class EasyShipApiTest {
 
@@ -48,10 +47,8 @@ public class EasyShipApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createScheduledPackageTest() throws Exception {

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Value for the order preference. */
 @JsonAdapter(OrderPreferenceValue.Adapter.class)
 public enum OrderPreferenceValue {
-    @SerializedName("SET")
     SET("SET"),
 
-    @SerializedName("UNSET")
     UNSET("UNSET");
 
     private String value;
@@ -43,25 +41,30 @@ public enum OrderPreferenceValue {
         return String.valueOf(value);
     }
 
-    public static OrderPreferenceValue fromValue(String input) {
+    public static OrderPreferenceValue fromValue(String value) {
         for (OrderPreferenceValue b : OrderPreferenceValue.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OrderPreferenceValue> {
         @Override
         public void write(final JsonWriter jsonWriter, final OrderPreferenceValue enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OrderPreferenceValue read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OrderPreferenceValue.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OrderPreferenceValue.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OrderPreferenceValue.fromValue(value);
     }
 }

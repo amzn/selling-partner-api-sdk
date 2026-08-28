@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** The data type of the custom attribute value to aid with parsing during deserialization. */
 @JsonAdapter(CustomAttributeType.Adapter.class)
 public enum CustomAttributeType {
-    @SerializedName("STRING")
     STRING("STRING"),
 
-    @SerializedName("BOOLEAN")
     BOOLEAN("BOOLEAN"),
 
-    @SerializedName("INTEGER")
     INTEGER("INTEGER"),
 
-    @SerializedName("DOUBLE")
     DOUBLE("DOUBLE"),
 
-    @SerializedName("JSON_STRING")
     JSON_STRING("JSON_STRING");
 
     private String value;
@@ -52,25 +47,30 @@ public enum CustomAttributeType {
         return String.valueOf(value);
     }
 
-    public static CustomAttributeType fromValue(String input) {
+    public static CustomAttributeType fromValue(String value) {
         for (CustomAttributeType b : CustomAttributeType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CustomAttributeType> {
         @Override
         public void write(final JsonWriter jsonWriter, final CustomAttributeType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public CustomAttributeType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return CustomAttributeType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return CustomAttributeType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        CustomAttributeType.fromValue(value);
     }
 }

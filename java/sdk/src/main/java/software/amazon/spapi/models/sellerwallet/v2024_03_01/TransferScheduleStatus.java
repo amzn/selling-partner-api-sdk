@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The schedule status of the transfer. */
 @JsonAdapter(TransferScheduleStatus.Adapter.class)
 public enum TransferScheduleStatus {
-    @SerializedName("ENABLED")
     ENABLED("ENABLED"),
 
-    @SerializedName("DISABLED")
     DISABLED("DISABLED"),
 
-    @SerializedName("EXPIRED")
     EXPIRED("EXPIRED"),
 
-    @SerializedName("DELETED")
     DELETED("DELETED");
 
     private String value;
@@ -49,25 +45,30 @@ public enum TransferScheduleStatus {
         return String.valueOf(value);
     }
 
-    public static TransferScheduleStatus fromValue(String input) {
+    public static TransferScheduleStatus fromValue(String value) {
         for (TransferScheduleStatus b : TransferScheduleStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TransferScheduleStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final TransferScheduleStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public TransferScheduleStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return TransferScheduleStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return TransferScheduleStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        TransferScheduleStatus.fromValue(value);
     }
 }

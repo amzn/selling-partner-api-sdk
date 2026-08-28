@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Resource to download the requested document. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Resource to download the requested document.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DocumentDownload {
-    @SerializedName("downloadType")
-    private String downloadType = null;
+    public static final String SERIALIZED_NAME_DOWNLOAD_TYPE = "downloadType";
 
-    @SerializedName("expiration")
-    private OffsetDateTime expiration = null;
+    @SerializedName(SERIALIZED_NAME_DOWNLOAD_TYPE)
+    private String downloadType;
 
-    @SerializedName("uri")
-    private String uri = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
+
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private OffsetDateTime expiration;
+
+    public static final String SERIALIZED_NAME_URI = "uri";
+
+    @SerializedName(SERIALIZED_NAME_URI)
+    private String uri;
+
+    public DocumentDownload() {}
 
     public DocumentDownload downloadType(String downloadType) {
         this.downloadType = downloadType;
@@ -38,9 +61,7 @@ public class DocumentDownload {
      *
      * @return downloadType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The type of download. Possible values: `URL`.")
+    @javax.annotation.Nonnull
     public String getDownloadType() {
         return downloadType;
     }
@@ -60,10 +81,7 @@ public class DocumentDownload {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The URI's expiration time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
-    public OffsetDateTime getExpiration() {
+    @javax.annotation.Nullable public OffsetDateTime getExpiration() {
         return expiration;
     }
 
@@ -81,9 +99,7 @@ public class DocumentDownload {
      *
      * @return uri
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Uniform resource identifier to identify where the document is located.")
+    @javax.annotation.Nonnull
     public String getUri() {
         return uri;
     }
@@ -93,7 +109,7 @@ public class DocumentDownload {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -123,10 +139,122 @@ public class DocumentDownload {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("downloadType");
+        openapiFields.add("expiration");
+        openapiFields.add("uri");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("downloadType");
+        openapiRequiredFields.add("uri");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DocumentDownload
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DocumentDownload.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DocumentDownload is not found in the empty JSON string",
+                        DocumentDownload.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DocumentDownload.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DocumentDownload` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DocumentDownload.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("downloadType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `downloadType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("downloadType").toString()));
+        }
+        if (!jsonObj.get("uri").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uri` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uri").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DocumentDownload.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DocumentDownload' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DocumentDownload> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DocumentDownload.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DocumentDownload>() {
+                        @Override
+                        public void write(JsonWriter out, DocumentDownload value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DocumentDownload read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DocumentDownload given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DocumentDownload
+     * @throws IOException if the JSON string is invalid with respect to DocumentDownload
+     */
+    public static DocumentDownload fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DocumentDownload.class);
+    }
+
+    /**
+     * Convert an instance of DocumentDownload to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

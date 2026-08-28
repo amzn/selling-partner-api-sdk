@@ -12,114 +12,217 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An object which contains metric data for a selling partner. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An object which contains metric data for a selling partner.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSellingPartnerMetricsResponseMetric {
-    @SerializedName("notDeliveredDueToOOS")
-    private Double notDeliveredDueToOOS = null;
+    public static final String SERIALIZED_NAME_NOT_DELIVERED_DUE_TO_O_O_S = "notDeliveredDueToOOS";
 
-    @SerializedName("totalSubscriptionsRevenue")
-    private Double totalSubscriptionsRevenue = null;
+    @SerializedName(SERIALIZED_NAME_NOT_DELIVERED_DUE_TO_O_O_S)
+    private Double notDeliveredDueToOOS;
 
-    @SerializedName("shippedSubscriptionUnits")
-    private BigDecimal shippedSubscriptionUnits = null;
+    public static final String SERIALIZED_NAME_TOTAL_SUBSCRIPTIONS_REVENUE = "totalSubscriptionsRevenue";
 
-    @SerializedName("activeSubscriptions")
-    private BigDecimal activeSubscriptions = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_SUBSCRIPTIONS_REVENUE)
+    private Double totalSubscriptionsRevenue;
 
-    @SerializedName("subscriberAverageRevenue")
-    private Double subscriberAverageRevenue = null;
+    public static final String SERIALIZED_NAME_SHIPPED_SUBSCRIPTION_UNITS = "shippedSubscriptionUnits";
 
-    @SerializedName("nonSubscriberAverageRevenue")
-    private Double nonSubscriberAverageRevenue = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPED_SUBSCRIPTION_UNITS)
+    private BigDecimal shippedSubscriptionUnits;
 
-    @SerializedName("lostRevenueDueToOOS")
-    private Double lostRevenueDueToOOS = null;
+    public static final String SERIALIZED_NAME_ACTIVE_SUBSCRIPTIONS = "activeSubscriptions";
 
-    @SerializedName("subscriberAverageReorders")
-    private Double subscriberAverageReorders = null;
+    @SerializedName(SERIALIZED_NAME_ACTIVE_SUBSCRIPTIONS)
+    private BigDecimal activeSubscriptions;
 
-    @SerializedName("nonSubscriberAverageReorders")
-    private Double nonSubscriberAverageReorders = null;
+    public static final String SERIALIZED_NAME_SUBSCRIBER_AVERAGE_REVENUE = "subscriberAverageRevenue";
 
-    @SerializedName("couponsRevenuePenetration")
-    private Double couponsRevenuePenetration = null;
+    @SerializedName(SERIALIZED_NAME_SUBSCRIBER_AVERAGE_REVENUE)
+    private Double subscriberAverageRevenue;
 
-    @SerializedName("revenueFromSubscriptionsWithMultipleDeliveries")
-    private Double revenueFromSubscriptionsWithMultipleDeliveries = null;
+    public static final String SERIALIZED_NAME_NON_SUBSCRIBER_AVERAGE_REVENUE = "nonSubscriberAverageRevenue";
 
-    @SerializedName("revenueFromActiveSubscriptionsWithSingleDelivery")
-    private Double revenueFromActiveSubscriptionsWithSingleDelivery = null;
+    @SerializedName(SERIALIZED_NAME_NON_SUBSCRIBER_AVERAGE_REVENUE)
+    private Double nonSubscriberAverageRevenue;
 
-    @SerializedName("revenueFromCancelledSubscriptionsAfterSingleDelivery")
-    private Double revenueFromCancelledSubscriptionsAfterSingleDelivery = null;
+    public static final String SERIALIZED_NAME_LOST_REVENUE_DUE_TO_O_O_S = "lostRevenueDueToOOS";
 
-    @SerializedName("subscriberRetentionFor30Days")
-    private Double subscriberRetentionFor30Days = null;
+    @SerializedName(SERIALIZED_NAME_LOST_REVENUE_DUE_TO_O_O_S)
+    private Double lostRevenueDueToOOS;
 
-    @SerializedName("subscriberRetentionFor90Days")
-    private Double subscriberRetentionFor90Days = null;
+    public static final String SERIALIZED_NAME_SUBSCRIBER_AVERAGE_REORDERS = "subscriberAverageReorders";
 
-    @SerializedName("revenuePenetrationFor0PercentSellerFunding")
-    private Double revenuePenetrationFor0PercentSellerFunding = null;
+    @SerializedName(SERIALIZED_NAME_SUBSCRIBER_AVERAGE_REORDERS)
+    private Double subscriberAverageReorders;
 
-    @SerializedName("revenuePenetrationFor5PercentSellerFunding")
-    private Double revenuePenetrationFor5PercentSellerFunding = null;
+    public static final String SERIALIZED_NAME_NON_SUBSCRIBER_AVERAGE_REORDERS = "nonSubscriberAverageReorders";
 
-    @SerializedName("revenuePenetrationFor10PercentSellerFunding")
-    private Double revenuePenetrationFor10PercentSellerFunding = null;
+    @SerializedName(SERIALIZED_NAME_NON_SUBSCRIBER_AVERAGE_REORDERS)
+    private Double nonSubscriberAverageReorders;
 
-    @SerializedName("revenuePenetrationFor5PlusPercentSellerFunding")
-    private Double revenuePenetrationFor5PlusPercentSellerFunding = null;
+    public static final String SERIALIZED_NAME_COUPONS_REVENUE_PENETRATION = "couponsRevenuePenetration";
 
-    @SerializedName("shareOfCouponSubscriptions")
-    private Double shareOfCouponSubscriptions = null;
+    @SerializedName(SERIALIZED_NAME_COUPONS_REVENUE_PENETRATION)
+    private Double couponsRevenuePenetration;
 
-    @SerializedName("nonSubscriberLifeTimeValueFromOTP")
-    private Double nonSubscriberLifeTimeValueFromOTP = null;
+    public static final String SERIALIZED_NAME_REVENUE_FROM_SUBSCRIPTIONS_WITH_MULTIPLE_DELIVERIES =
+            "revenueFromSubscriptionsWithMultipleDeliveries";
 
-    @SerializedName("lostSubscriberLifeTimeValueFromOTP")
-    private Double lostSubscriberLifeTimeValueFromOTP = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_FROM_SUBSCRIPTIONS_WITH_MULTIPLE_DELIVERIES)
+    private Double revenueFromSubscriptionsWithMultipleDeliveries;
 
-    @SerializedName("lostSubscriberLifeTimeValueFromSNS")
-    private Double lostSubscriberLifeTimeValueFromSNS = null;
+    public static final String SERIALIZED_NAME_REVENUE_FROM_ACTIVE_SUBSCRIPTIONS_WITH_SINGLE_DELIVERY =
+            "revenueFromActiveSubscriptionsWithSingleDelivery";
 
-    @SerializedName("growingSubscriberLifeTimeValueFromOTP")
-    private Double growingSubscriberLifeTimeValueFromOTP = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_FROM_ACTIVE_SUBSCRIPTIONS_WITH_SINGLE_DELIVERY)
+    private Double revenueFromActiveSubscriptionsWithSingleDelivery;
 
-    @SerializedName("growingSubscriberLifeTimeValueFromSNS")
-    private Double growingSubscriberLifeTimeValueFromSNS = null;
+    public static final String SERIALIZED_NAME_REVENUE_FROM_CANCELLED_SUBSCRIPTIONS_AFTER_SINGLE_DELIVERY =
+            "revenueFromCancelledSubscriptionsAfterSingleDelivery";
 
-    @SerializedName("establishedSubscriberLifeTimeValueFromOTP")
-    private Double establishedSubscriberLifeTimeValueFromOTP = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_FROM_CANCELLED_SUBSCRIPTIONS_AFTER_SINGLE_DELIVERY)
+    private Double revenueFromCancelledSubscriptionsAfterSingleDelivery;
 
-    @SerializedName("establishedSubscriberLifeTimeValueFromSNS")
-    private Double establishedSubscriberLifeTimeValueFromSNS = null;
+    public static final String SERIALIZED_NAME_SUBSCRIBER_RETENTION_FOR30_DAYS = "subscriberRetentionFor30Days";
 
-    @SerializedName("signupConversionFor0PercentSellerFunding")
-    private Double signupConversionFor0PercentSellerFunding = null;
+    @SerializedName(SERIALIZED_NAME_SUBSCRIBER_RETENTION_FOR30_DAYS)
+    private Double subscriberRetentionFor30Days;
 
-    @SerializedName("signupConversionFor5PercentSellerFunding")
-    private Double signupConversionFor5PercentSellerFunding = null;
+    public static final String SERIALIZED_NAME_SUBSCRIBER_RETENTION_FOR90_DAYS = "subscriberRetentionFor90Days";
 
-    @SerializedName("signupConversionFor10PercentSellerFunding")
-    private Double signupConversionFor10PercentSellerFunding = null;
+    @SerializedName(SERIALIZED_NAME_SUBSCRIBER_RETENTION_FOR90_DAYS)
+    private Double subscriberRetentionFor90Days;
 
-    @SerializedName("signupConversionFor5PlusPercentSellerFunding")
-    private Double signupConversionFor5PlusPercentSellerFunding = null;
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION_FOR0_PERCENT_SELLER_FUNDING =
+            "revenuePenetrationFor0PercentSellerFunding";
 
-    @SerializedName("revenuePenetration")
-    private Double revenuePenetration = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION_FOR0_PERCENT_SELLER_FUNDING)
+    private Double revenuePenetrationFor0PercentSellerFunding;
 
-    @SerializedName("timeInterval")
-    private TimeInterval timeInterval = null;
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION_FOR5_PERCENT_SELLER_FUNDING =
+            "revenuePenetrationFor5PercentSellerFunding";
 
-    @SerializedName("currencyCode")
-    private String currencyCode = null;
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION_FOR5_PERCENT_SELLER_FUNDING)
+    private Double revenuePenetrationFor5PercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION_FOR10_PERCENT_SELLER_FUNDING =
+            "revenuePenetrationFor10PercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION_FOR10_PERCENT_SELLER_FUNDING)
+    private Double revenuePenetrationFor10PercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION_FOR5_PLUS_PERCENT_SELLER_FUNDING =
+            "revenuePenetrationFor5PlusPercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION_FOR5_PLUS_PERCENT_SELLER_FUNDING)
+    private Double revenuePenetrationFor5PlusPercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_SHARE_OF_COUPON_SUBSCRIPTIONS = "shareOfCouponSubscriptions";
+
+    @SerializedName(SERIALIZED_NAME_SHARE_OF_COUPON_SUBSCRIPTIONS)
+    private Double shareOfCouponSubscriptions;
+
+    public static final String SERIALIZED_NAME_NON_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P =
+            "nonSubscriberLifeTimeValueFromOTP";
+
+    @SerializedName(SERIALIZED_NAME_NON_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P)
+    private Double nonSubscriberLifeTimeValueFromOTP;
+
+    public static final String SERIALIZED_NAME_LOST_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P =
+            "lostSubscriberLifeTimeValueFromOTP";
+
+    @SerializedName(SERIALIZED_NAME_LOST_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P)
+    private Double lostSubscriberLifeTimeValueFromOTP;
+
+    public static final String SERIALIZED_NAME_LOST_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S =
+            "lostSubscriberLifeTimeValueFromSNS";
+
+    @SerializedName(SERIALIZED_NAME_LOST_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S)
+    private Double lostSubscriberLifeTimeValueFromSNS;
+
+    public static final String SERIALIZED_NAME_GROWING_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P =
+            "growingSubscriberLifeTimeValueFromOTP";
+
+    @SerializedName(SERIALIZED_NAME_GROWING_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P)
+    private Double growingSubscriberLifeTimeValueFromOTP;
+
+    public static final String SERIALIZED_NAME_GROWING_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S =
+            "growingSubscriberLifeTimeValueFromSNS";
+
+    @SerializedName(SERIALIZED_NAME_GROWING_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S)
+    private Double growingSubscriberLifeTimeValueFromSNS;
+
+    public static final String SERIALIZED_NAME_ESTABLISHED_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P =
+            "establishedSubscriberLifeTimeValueFromOTP";
+
+    @SerializedName(SERIALIZED_NAME_ESTABLISHED_SUBSCRIBER_LIFE_TIME_VALUE_FROM_O_T_P)
+    private Double establishedSubscriberLifeTimeValueFromOTP;
+
+    public static final String SERIALIZED_NAME_ESTABLISHED_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S =
+            "establishedSubscriberLifeTimeValueFromSNS";
+
+    @SerializedName(SERIALIZED_NAME_ESTABLISHED_SUBSCRIBER_LIFE_TIME_VALUE_FROM_S_N_S)
+    private Double establishedSubscriberLifeTimeValueFromSNS;
+
+    public static final String SERIALIZED_NAME_SIGNUP_CONVERSION_FOR0_PERCENT_SELLER_FUNDING =
+            "signupConversionFor0PercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_SIGNUP_CONVERSION_FOR0_PERCENT_SELLER_FUNDING)
+    private Double signupConversionFor0PercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_SIGNUP_CONVERSION_FOR5_PERCENT_SELLER_FUNDING =
+            "signupConversionFor5PercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_SIGNUP_CONVERSION_FOR5_PERCENT_SELLER_FUNDING)
+    private Double signupConversionFor5PercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_SIGNUP_CONVERSION_FOR10_PERCENT_SELLER_FUNDING =
+            "signupConversionFor10PercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_SIGNUP_CONVERSION_FOR10_PERCENT_SELLER_FUNDING)
+    private Double signupConversionFor10PercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_SIGNUP_CONVERSION_FOR5_PLUS_PERCENT_SELLER_FUNDING =
+            "signupConversionFor5PlusPercentSellerFunding";
+
+    @SerializedName(SERIALIZED_NAME_SIGNUP_CONVERSION_FOR5_PLUS_PERCENT_SELLER_FUNDING)
+    private Double signupConversionFor5PlusPercentSellerFunding;
+
+    public static final String SERIALIZED_NAME_REVENUE_PENETRATION = "revenuePenetration";
+
+    @SerializedName(SERIALIZED_NAME_REVENUE_PENETRATION)
+    private Double revenuePenetration;
+
+    public static final String SERIALIZED_NAME_TIME_INTERVAL = "timeInterval";
+
+    @SerializedName(SERIALIZED_NAME_TIME_INTERVAL)
+    private TimeInterval timeInterval;
+
+    public static final String SERIALIZED_NAME_CURRENCY_CODE = "currencyCode";
+
+    @SerializedName(SERIALIZED_NAME_CURRENCY_CODE)
+    private String currencyCode;
+
+    public GetSellingPartnerMetricsResponseMetric() {}
 
     public GetSellingPartnerMetricsResponseMetric notDeliveredDueToOOS(Double notDeliveredDueToOOS) {
         this.notDeliveredDueToOOS = notDeliveredDueToOOS;
@@ -128,14 +231,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being
-     * out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return notDeliveredDueToOOS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getNotDeliveredDueToOOS() {
+    @javax.annotation.Nullable public Double getNotDeliveredDueToOOS() {
         return notDeliveredDueToOOS;
     }
 
@@ -150,14 +250,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The revenue generated from subscriptions over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60;
-     * and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+     * and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return totalSubscriptionsRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
-    public Double getTotalSubscriptionsRevenue() {
+    @javax.annotation.Nullable public Double getTotalSubscriptionsRevenue() {
         return totalSubscriptionsRevenue;
     }
 
@@ -172,14 +269,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The number of units shipped to the subscribers over a period of time. Applicable for both the
-     * &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return shippedSubscriptionUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
-    public BigDecimal getShippedSubscriptionUnits() {
+    @javax.annotation.Nullable public BigDecimal getShippedSubscriptionUnits() {
         return shippedSubscriptionUnits;
     }
 
@@ -194,14 +288,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return activeSubscriptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public BigDecimal getActiveSubscriptions() {
+    @javax.annotation.Nullable public BigDecimal getActiveSubscriptions() {
         return activeSubscriptions;
     }
 
@@ -216,14 +307,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for
-     * vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return subscriberAverageRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getSubscriberAverageRevenue() {
+    @javax.annotation.Nullable public Double getSubscriberAverageRevenue() {
         return subscriberAverageRevenue;
     }
 
@@ -238,14 +326,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months
-     * for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return nonSubscriberAverageRevenue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getNonSubscriberAverageRevenue() {
+    @javax.annotation.Nullable public Double getNonSubscriberAverageRevenue() {
         return nonSubscriberAverageRevenue;
     }
 
@@ -260,14 +345,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return lostRevenueDueToOOS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getLostRevenueDueToOOS() {
+    @javax.annotation.Nullable public Double getLostRevenueDueToOOS() {
         return lostRevenueDueToOOS;
     }
 
@@ -282,14 +364,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average reorders per subscriber of the program over a period of 12 months. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return subscriberAverageReorders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getSubscriberAverageReorders() {
+    @javax.annotation.Nullable public Double getSubscriberAverageReorders() {
         return subscriberAverageReorders;
     }
 
@@ -304,14 +383,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return nonSubscriberAverageReorders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getNonSubscriberAverageReorders() {
+    @javax.annotation.Nullable public Double getNonSubscriberAverageReorders() {
         return nonSubscriberAverageReorders;
     }
 
@@ -326,14 +402,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return couponsRevenuePenetration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getCouponsRevenuePenetration() {
+    @javax.annotation.Nullable public Double getCouponsRevenuePenetration() {
         return couponsRevenuePenetration;
     }
 
@@ -349,14 +422,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from subscriptions with over two deliveries over the past 12 months.
-     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromSubscriptionsWithMultipleDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenueFromSubscriptionsWithMultipleDeliveries() {
+    @javax.annotation.Nullable public Double getRevenueFromSubscriptionsWithMultipleDeliveries() {
         return revenueFromSubscriptionsWithMultipleDeliveries;
     }
 
@@ -373,14 +443,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from active subscriptions with one delivery over the past 12 months.
-     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromActiveSubscriptionsWithSingleDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenueFromActiveSubscriptionsWithSingleDelivery() {
+    @javax.annotation.Nullable public Double getRevenueFromActiveSubscriptionsWithSingleDelivery() {
         return revenueFromActiveSubscriptionsWithSingleDelivery;
     }
 
@@ -398,14 +465,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12
-     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromCancelledSubscriptionsAfterSingleDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenueFromCancelledSubscriptionsAfterSingleDelivery() {
+    @javax.annotation.Nullable public Double getRevenueFromCancelledSubscriptionsAfterSingleDelivery() {
         return revenueFromCancelledSubscriptionsAfterSingleDelivery;
     }
 
@@ -422,14 +486,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of subscriptions retained after 30 days of subscription creation. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return subscriberRetentionFor30Days
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getSubscriberRetentionFor30Days() {
+    @javax.annotation.Nullable public Double getSubscriberRetentionFor30Days() {
         return subscriberRetentionFor30Days;
     }
 
@@ -444,14 +505,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of subscriptions retained after 90 days of subscription creation. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return subscriberRetentionFor90Days
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getSubscriberRetentionFor90Days() {
+    @javax.annotation.Nullable public Double getSubscriberRetentionFor90Days() {
         return subscriberRetentionFor90Days;
     }
 
@@ -467,14 +525,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12
-     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return revenuePenetrationFor0PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetrationFor0PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getRevenuePenetrationFor0PercentSellerFunding() {
         return revenuePenetrationFor0PercentSellerFunding;
     }
 
@@ -490,14 +545,12 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded
-     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
+     * maximum: 1E+2
      *
      * @return revenuePenetrationFor5PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetrationFor5PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getRevenuePenetrationFor5PercentSellerFunding() {
         return revenuePenetrationFor5PercentSellerFunding;
     }
 
@@ -513,14 +566,12 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded
-     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
+     * maximum: 1E+2
      *
      * @return revenuePenetrationFor10PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetrationFor10PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getRevenuePenetrationFor10PercentSellerFunding() {
         return revenuePenetrationFor10PercentSellerFunding;
     }
 
@@ -537,13 +588,11 @@ public class GetSellingPartnerMetricsResponseMetric {
     /**
      * [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above
      * seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * minimum: 0 maximum: 1E+2
      *
      * @return revenuePenetrationFor5PlusPercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetrationFor5PlusPercentSellerFunding() {
+    @javax.annotation.Nullable public Double getRevenuePenetrationFor5PlusPercentSellerFunding() {
         return revenuePenetrationFor5PlusPercentSellerFunding;
     }
 
@@ -559,14 +608,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60;
-     * &#x60;timePeriodType&#x60;.
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return shareOfCouponSubscriptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getShareOfCouponSubscriptions() {
+    @javax.annotation.Nullable public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
 
@@ -582,13 +628,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.
+     * minimum: 0
      *
      * @return nonSubscriberLifeTimeValueFromOTP
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.")
-    public Double getNonSubscriberLifeTimeValueFromOTP() {
+    @javax.annotation.Nullable public Double getNonSubscriberLifeTimeValueFromOTP() {
         return nonSubscriberLifeTimeValueFromOTP;
     }
 
@@ -604,14 +648,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have
-     * none active in your catalog.
+     * none active in your catalog. minimum: 0
      *
      * @return lostSubscriberLifeTimeValueFromOTP
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
-    public Double getLostSubscriberLifeTimeValueFromOTP() {
+    @javax.annotation.Nullable public Double getLostSubscriberLifeTimeValueFromOTP() {
         return lostSubscriberLifeTimeValueFromOTP;
     }
 
@@ -627,14 +668,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from Subscribe &amp; Save orders placed by customers who previously had subscriptions but currently have
-     * none active in your catalog.
+     * none active in your catalog. minimum: 0
      *
      * @return lostSubscriberLifeTimeValueFromSNS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
-    public Double getLostSubscriberLifeTimeValueFromSNS() {
+    @javax.annotation.Nullable public Double getLostSubscriberLifeTimeValueFromSNS() {
         return lostSubscriberLifeTimeValueFromSNS;
     }
 
@@ -650,14 +688,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog
-     * within the past 12 months.
+     * within the past 12 months. minimum: 0
      *
      * @return growingSubscriberLifeTimeValueFromOTP
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.")
-    public Double getGrowingSubscriberLifeTimeValueFromOTP() {
+    @javax.annotation.Nullable public Double getGrowingSubscriberLifeTimeValueFromOTP() {
         return growingSubscriberLifeTimeValueFromOTP;
     }
 
@@ -673,14 +708,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from Subscribe &amp; Save orders placed by customers who started their first subscription with your
-     * catalog within the past 12 months.
+     * catalog within the past 12 months. minimum: 0
      *
      * @return growingSubscriberLifeTimeValueFromSNS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.")
-    public Double getGrowingSubscriberLifeTimeValueFromSNS() {
+    @javax.annotation.Nullable public Double getGrowingSubscriberLifeTimeValueFromSNS() {
         return growingSubscriberLifeTimeValueFromSNS;
     }
 
@@ -696,14 +728,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your
-     * catalog for more than 12 months.
+     * catalog for more than 12 months. minimum: 0
      *
      * @return establishedSubscriberLifeTimeValueFromOTP
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
-    public Double getEstablishedSubscriberLifeTimeValueFromOTP() {
+    @javax.annotation.Nullable public Double getEstablishedSubscriberLifeTimeValueFromOTP() {
         return establishedSubscriberLifeTimeValueFromOTP;
     }
 
@@ -719,14 +748,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Revenue from Subscribe &amp; Save orders placed by customers who have maintained an active subscription with your
-     * catalog for more than 12 months.
+     * catalog for more than 12 months. minimum: 0
      *
      * @return establishedSubscriberLifeTimeValueFromSNS
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
-    public Double getEstablishedSubscriberLifeTimeValueFromSNS() {
+    @javax.annotation.Nullable public Double getEstablishedSubscriberLifeTimeValueFromSNS() {
         return establishedSubscriberLifeTimeValueFromSNS;
     }
 
@@ -742,14 +768,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders
-     * placed over the past 12 months.
+     * placed over the past 12 months. minimum: 0 maximum: 1E+2
      *
      * @return signupConversionFor0PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.")
-    public Double getSignupConversionFor0PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getSignupConversionFor0PercentSellerFunding() {
         return signupConversionFor0PercentSellerFunding;
     }
 
@@ -765,14 +788,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the
-     * total number of new orders placed over the past 12 months.
+     * total number of new orders placed over the past 12 months. minimum: 0 maximum: 1E+2
      *
      * @return signupConversionFor5PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.")
-    public Double getSignupConversionFor5PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getSignupConversionFor5PercentSellerFunding() {
         return signupConversionFor5PercentSellerFunding;
     }
 
@@ -788,14 +808,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the
-     * total number of new orders placed over the past 12 months.
+     * total number of new orders placed over the past 12 months. minimum: 0 maximum: 1E+2
      *
      * @return signupConversionFor10PercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.")
-    public Double getSignupConversionFor10PercentSellerFunding() {
+    @javax.annotation.Nullable public Double getSignupConversionFor10PercentSellerFunding() {
         return signupConversionFor10PercentSellerFunding;
     }
 
@@ -811,14 +828,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out
-     * of the total number of new orders placed over the past 12 months.
+     * of the total number of new orders placed over the past 12 months. minimum: 0 maximum: 1E+2
      *
      * @return signupConversionFor5PlusPercentSellerFunding
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "[Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.")
-    public Double getSignupConversionFor5PlusPercentSellerFunding() {
+    @javax.annotation.Nullable public Double getSignupConversionFor5PlusPercentSellerFunding() {
         return signupConversionFor5PlusPercentSellerFunding;
     }
 
@@ -833,14 +847,11 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of total program revenue out of total product revenue over a period of time. Applicable to
-     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 1E+2
      *
      * @return revenuePenetration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
-    public Double getRevenuePenetration() {
+    @javax.annotation.Nullable public Double getRevenuePenetration() {
         return revenuePenetration;
     }
 
@@ -858,8 +869,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return timeInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeInterval getTimeInterval() {
+    @javax.annotation.Nullable public TimeInterval getTimeInterval() {
         return timeInterval;
     }
 
@@ -877,8 +887,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return currencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The currency code in ISO 4217 format.")
-    public String getCurrencyCode() {
+    @javax.annotation.Nullable public String getCurrencyCode() {
         return currencyCode;
     }
 
@@ -887,7 +896,7 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1132,10 +1141,144 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("notDeliveredDueToOOS");
+        openapiFields.add("totalSubscriptionsRevenue");
+        openapiFields.add("shippedSubscriptionUnits");
+        openapiFields.add("activeSubscriptions");
+        openapiFields.add("subscriberAverageRevenue");
+        openapiFields.add("nonSubscriberAverageRevenue");
+        openapiFields.add("lostRevenueDueToOOS");
+        openapiFields.add("subscriberAverageReorders");
+        openapiFields.add("nonSubscriberAverageReorders");
+        openapiFields.add("couponsRevenuePenetration");
+        openapiFields.add("revenueFromSubscriptionsWithMultipleDeliveries");
+        openapiFields.add("revenueFromActiveSubscriptionsWithSingleDelivery");
+        openapiFields.add("revenueFromCancelledSubscriptionsAfterSingleDelivery");
+        openapiFields.add("subscriberRetentionFor30Days");
+        openapiFields.add("subscriberRetentionFor90Days");
+        openapiFields.add("revenuePenetrationFor0PercentSellerFunding");
+        openapiFields.add("revenuePenetrationFor5PercentSellerFunding");
+        openapiFields.add("revenuePenetrationFor10PercentSellerFunding");
+        openapiFields.add("revenuePenetrationFor5PlusPercentSellerFunding");
+        openapiFields.add("shareOfCouponSubscriptions");
+        openapiFields.add("nonSubscriberLifeTimeValueFromOTP");
+        openapiFields.add("lostSubscriberLifeTimeValueFromOTP");
+        openapiFields.add("lostSubscriberLifeTimeValueFromSNS");
+        openapiFields.add("growingSubscriberLifeTimeValueFromOTP");
+        openapiFields.add("growingSubscriberLifeTimeValueFromSNS");
+        openapiFields.add("establishedSubscriberLifeTimeValueFromOTP");
+        openapiFields.add("establishedSubscriberLifeTimeValueFromSNS");
+        openapiFields.add("signupConversionFor0PercentSellerFunding");
+        openapiFields.add("signupConversionFor5PercentSellerFunding");
+        openapiFields.add("signupConversionFor10PercentSellerFunding");
+        openapiFields.add("signupConversionFor5PlusPercentSellerFunding");
+        openapiFields.add("revenuePenetration");
+        openapiFields.add("timeInterval");
+        openapiFields.add("currencyCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSellingPartnerMetricsResponseMetric
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSellingPartnerMetricsResponseMetric.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSellingPartnerMetricsResponseMetric is not found in the empty JSON string",
+                        GetSellingPartnerMetricsResponseMetric.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSellingPartnerMetricsResponseMetric.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSellingPartnerMetricsResponseMetric` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `timeInterval`
+        if (jsonObj.get("timeInterval") != null && !jsonObj.get("timeInterval").isJsonNull()) {
+            TimeInterval.validateJsonElement(jsonObj.get("timeInterval"));
+        }
+        if ((jsonObj.get("currencyCode") != null && !jsonObj.get("currencyCode").isJsonNull())
+                && !jsonObj.get("currencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `currencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("currencyCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSellingPartnerMetricsResponseMetric.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSellingPartnerMetricsResponseMetric' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSellingPartnerMetricsResponseMetric> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSellingPartnerMetricsResponseMetric.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSellingPartnerMetricsResponseMetric>() {
+                        @Override
+                        public void write(JsonWriter out, GetSellingPartnerMetricsResponseMetric value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSellingPartnerMetricsResponseMetric read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSellingPartnerMetricsResponseMetric given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSellingPartnerMetricsResponseMetric
+     * @throws IOException if the JSON string is invalid with respect to GetSellingPartnerMetricsResponseMetric
+     */
+    public static GetSellingPartnerMetricsResponseMetric fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSellingPartnerMetricsResponseMetric.class);
+    }
+
+    /**
+     * Convert an instance of GetSellingPartnerMetricsResponseMetric to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

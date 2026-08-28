@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,22 +22,16 @@ import java.io.IOException;
 /** The supported statuses for an inbound order. */
 @JsonAdapter(InboundStatus.Adapter.class)
 public enum InboundStatus {
-    @SerializedName("DRAFT")
     DRAFT("DRAFT"),
 
-    @SerializedName("VALIDATING")
     VALIDATING("VALIDATING"),
 
-    @SerializedName("CONFIRMED")
     CONFIRMED("CONFIRMED"),
 
-    @SerializedName("CLOSED")
     CLOSED("CLOSED"),
 
-    @SerializedName("EXPIRED")
     EXPIRED("EXPIRED"),
 
-    @SerializedName("CANCELLED")
     CANCELLED("CANCELLED");
 
     private String value;
@@ -55,25 +49,30 @@ public enum InboundStatus {
         return String.valueOf(value);
     }
 
-    public static InboundStatus fromValue(String input) {
+    public static InboundStatus fromValue(String value) {
         for (InboundStatus b : InboundStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InboundStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final InboundStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InboundStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InboundStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InboundStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InboundStatus.fromValue(value);
     }
 }

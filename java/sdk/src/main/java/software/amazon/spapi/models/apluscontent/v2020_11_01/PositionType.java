@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The content&#39;s relative positioning. */
 @JsonAdapter(PositionType.Adapter.class)
 public enum PositionType {
-    @SerializedName("LEFT")
     LEFT("LEFT"),
 
-    @SerializedName("RIGHT")
     RIGHT("RIGHT");
 
     private String value;
@@ -43,25 +41,30 @@ public enum PositionType {
         return String.valueOf(value);
     }
 
-    public static PositionType fromValue(String input) {
+    public static PositionType fromValue(String value) {
         for (PositionType b : PositionType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PositionType> {
         @Override
         public void write(final JsonWriter jsonWriter, final PositionType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PositionType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PositionType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PositionType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PositionType.fromValue(value);
     }
 }

@@ -12,24 +12,52 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to charge refund. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to charge refund.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChargeRefundEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("ReasonCode")
-    private String reasonCode = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("ReasonCodeDescription")
-    private String reasonCodeDescription = null;
+    public static final String SERIALIZED_NAME_REASON_CODE = "ReasonCode";
 
-    @SerializedName("ChargeRefundTransactions")
-    private ChargeRefundTransactions chargeRefundTransactions = null;
+    @SerializedName(SERIALIZED_NAME_REASON_CODE)
+    private String reasonCode;
+
+    public static final String SERIALIZED_NAME_REASON_CODE_DESCRIPTION = "ReasonCodeDescription";
+
+    @SerializedName(SERIALIZED_NAME_REASON_CODE_DESCRIPTION)
+    private String reasonCodeDescription;
+
+    public static final String SERIALIZED_NAME_CHARGE_REFUND_TRANSACTIONS = "ChargeRefundTransactions";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_REFUND_TRANSACTIONS)
+    private List<ChargeRefundTransaction> chargeRefundTransactions = new ArrayList<>();
+
+    public ChargeRefundEvent() {}
 
     public ChargeRefundEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -41,10 +69,7 @@ public class ChargeRefundEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -62,9 +87,7 @@ public class ChargeRefundEvent {
      *
      * @return reasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The reason given for a charge refund. For example, `SubscriptionFeeCorrection`.")
-    public String getReasonCode() {
+    @javax.annotation.Nullable public String getReasonCode() {
         return reasonCode;
     }
 
@@ -82,9 +105,7 @@ public class ChargeRefundEvent {
      *
      * @return reasonCodeDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A description of the Reason Code. For example, `SubscriptionFeeCorrection`.")
-    public String getReasonCodeDescription() {
+    @javax.annotation.Nullable public String getReasonCodeDescription() {
         return reasonCodeDescription;
     }
 
@@ -92,27 +113,34 @@ public class ChargeRefundEvent {
         this.reasonCodeDescription = reasonCodeDescription;
     }
 
-    public ChargeRefundEvent chargeRefundTransactions(ChargeRefundTransactions chargeRefundTransactions) {
+    public ChargeRefundEvent chargeRefundTransactions(List<ChargeRefundTransaction> chargeRefundTransactions) {
         this.chargeRefundTransactions = chargeRefundTransactions;
         return this;
     }
 
+    public ChargeRefundEvent addChargeRefundTransactionsItem(ChargeRefundTransaction chargeRefundTransactionsItem) {
+        if (this.chargeRefundTransactions == null) {
+            this.chargeRefundTransactions = new ArrayList<>();
+        }
+        this.chargeRefundTransactions.add(chargeRefundTransactionsItem);
+        return this;
+    }
+
     /**
-     * Get chargeRefundTransactions
+     * A list of &#x60;ChargeRefund&#x60; transactions
      *
      * @return chargeRefundTransactions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeRefundTransactions getChargeRefundTransactions() {
+    @javax.annotation.Nullable public List<ChargeRefundTransaction> getChargeRefundTransactions() {
         return chargeRefundTransactions;
     }
 
-    public void setChargeRefundTransactions(ChargeRefundTransactions chargeRefundTransactions) {
+    public void setChargeRefundTransactions(List<ChargeRefundTransaction> chargeRefundTransactions) {
         this.chargeRefundTransactions = chargeRefundTransactions;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +176,133 @@ public class ChargeRefundEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("ReasonCode");
+        openapiFields.add("ReasonCodeDescription");
+        openapiFields.add("ChargeRefundTransactions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChargeRefundEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChargeRefundEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChargeRefundEvent is not found in the empty JSON string",
+                        ChargeRefundEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChargeRefundEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChargeRefundEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ReasonCode") != null && !jsonObj.get("ReasonCode").isJsonNull())
+                && !jsonObj.get("ReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ReasonCode").toString()));
+        }
+        if ((jsonObj.get("ReasonCodeDescription") != null
+                        && !jsonObj.get("ReasonCodeDescription").isJsonNull())
+                && !jsonObj.get("ReasonCodeDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ReasonCodeDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ReasonCodeDescription").toString()));
+        }
+        if (jsonObj.get("ChargeRefundTransactions") != null
+                && !jsonObj.get("ChargeRefundTransactions").isJsonNull()) {
+            JsonArray jsonArraychargeRefundTransactions = jsonObj.getAsJsonArray("ChargeRefundTransactions");
+            if (jsonArraychargeRefundTransactions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargeRefundTransactions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargeRefundTransactions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargeRefundTransactions").toString()));
+                }
+
+                // validate the optional field `ChargeRefundTransactions` (array)
+                for (int i = 0; i < jsonArraychargeRefundTransactions.size(); i++) {
+                    ChargeRefundTransaction.validateJsonElement(jsonArraychargeRefundTransactions.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChargeRefundEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeRefundEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChargeRefundEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChargeRefundEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChargeRefundEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ChargeRefundEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChargeRefundEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChargeRefundEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChargeRefundEvent
+     * @throws IOException if the JSON string is invalid with respect to ChargeRefundEvent
+     */
+    public static ChargeRefundEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChargeRefundEvent.class);
+    }
+
+    /**
+     * Convert an instance of ChargeRefundEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

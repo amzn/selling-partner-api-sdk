@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Indicates whether the item is fulfilled by Amazon or by the seller (merchant). */
 @JsonAdapter(FulfillmentType.Adapter.class)
 public enum FulfillmentType {
-    @SerializedName("AFN")
     AFN("AFN"),
 
-    @SerializedName("MFN")
     MFN("MFN");
 
     private String value;
@@ -43,25 +41,30 @@ public enum FulfillmentType {
         return String.valueOf(value);
     }
 
-    public static FulfillmentType fromValue(String input) {
+    public static FulfillmentType fromValue(String value) {
         for (FulfillmentType b : FulfillmentType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FulfillmentType> {
         @Override
         public void write(final JsonWriter jsonWriter, final FulfillmentType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public FulfillmentType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return FulfillmentType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return FulfillmentType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        FulfillmentType.fromValue(value);
     }
 }

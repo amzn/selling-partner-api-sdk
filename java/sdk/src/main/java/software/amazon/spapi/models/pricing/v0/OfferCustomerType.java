@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Indicates whether the offer is a B2B or B2C offer */
 @JsonAdapter(OfferCustomerType.Adapter.class)
 public enum OfferCustomerType {
-    @SerializedName("B2C")
     B2_C("B2C"),
 
-    @SerializedName("B2B")
     B2_B("B2B");
 
     private String value;
@@ -43,25 +41,30 @@ public enum OfferCustomerType {
         return String.valueOf(value);
     }
 
-    public static OfferCustomerType fromValue(String input) {
+    public static OfferCustomerType fromValue(String value) {
         for (OfferCustomerType b : OfferCustomerType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OfferCustomerType> {
         @Override
         public void write(final JsonWriter jsonWriter, final OfferCustomerType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OfferCustomerType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OfferCustomerType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OfferCustomerType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OfferCustomerType.fromValue(value);
     }
 }

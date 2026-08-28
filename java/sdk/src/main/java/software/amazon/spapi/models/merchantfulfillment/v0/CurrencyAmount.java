@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Currency type and amount. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Currency type and amount.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CurrencyAmount {
-    @SerializedName("CurrencyCode")
-    private String currencyCode = null;
+    public static final String SERIALIZED_NAME_CURRENCY_CODE = "CurrencyCode";
 
-    @SerializedName("Amount")
-    private Double amount = null;
+    @SerializedName(SERIALIZED_NAME_CURRENCY_CODE)
+    private String currencyCode;
+
+    public static final String SERIALIZED_NAME_AMOUNT = "Amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Double amount;
+
+    public CurrencyAmount() {}
 
     public CurrencyAmount currencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
@@ -34,9 +55,7 @@ public class CurrencyAmount {
      *
      * @return currencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Three-digit currency code in ISO 4217 format.")
+    @javax.annotation.Nonnull
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -55,7 +74,7 @@ public class CurrencyAmount {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The currency amount.")
+    @javax.annotation.Nonnull
     public Double getAmount() {
         return amount;
     }
@@ -65,7 +84,7 @@ public class CurrencyAmount {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +112,116 @@ public class CurrencyAmount {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("CurrencyCode");
+        openapiFields.add("Amount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("CurrencyCode");
+        openapiRequiredFields.add("Amount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CurrencyAmount
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CurrencyAmount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CurrencyAmount is not found in the empty JSON string",
+                        CurrencyAmount.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CurrencyAmount.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CurrencyAmount` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CurrencyAmount.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("CurrencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CurrencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CurrencyCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CurrencyAmount.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CurrencyAmount' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CurrencyAmount> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CurrencyAmount.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CurrencyAmount>() {
+                        @Override
+                        public void write(JsonWriter out, CurrencyAmount value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CurrencyAmount read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CurrencyAmount given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CurrencyAmount
+     * @throws IOException if the JSON string is invalid with respect to CurrencyAmount
+     */
+    public static CurrencyAmount fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CurrencyAmount.class);
+    }
+
+    /**
+     * Convert an instance of CurrencyAmount to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

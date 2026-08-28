@@ -12,22 +12,37 @@
 
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required for the feed document. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required for the feed document.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeedDocument {
-    @SerializedName("feedDocumentId")
-    private String feedDocumentId = null;
+    public static final String SERIALIZED_NAME_FEED_DOCUMENT_ID = "feedDocumentId";
 
-    @SerializedName("url")
-    private String url = null;
+    @SerializedName(SERIALIZED_NAME_FEED_DOCUMENT_ID)
+    private String feedDocumentId;
+
+    public static final String SERIALIZED_NAME_URL = "url";
+
+    @SerializedName(SERIALIZED_NAME_URL)
+    private String url;
 
     /**
      * If the feed document contents have been compressed, the compression algorithm used is returned in this property
@@ -38,7 +53,6 @@ public class FeedDocument {
      */
     @JsonAdapter(CompressionAlgorithmEnum.Adapter.class)
     public enum CompressionAlgorithmEnum {
-        @SerializedName("GZIP")
         GZIP("GZIP");
 
         private String value;
@@ -56,32 +70,41 @@ public class FeedDocument {
             return String.valueOf(value);
         }
 
-        public static CompressionAlgorithmEnum fromValue(String input) {
+        public static CompressionAlgorithmEnum fromValue(String value) {
             for (CompressionAlgorithmEnum b : CompressionAlgorithmEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<CompressionAlgorithmEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final CompressionAlgorithmEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public CompressionAlgorithmEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return CompressionAlgorithmEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return CompressionAlgorithmEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CompressionAlgorithmEnum.fromValue(value);
         }
     }
 
-    @SerializedName("compressionAlgorithm")
-    private CompressionAlgorithmEnum compressionAlgorithm = null;
+    public static final String SERIALIZED_NAME_COMPRESSION_ALGORITHM = "compressionAlgorithm";
+
+    @SerializedName(SERIALIZED_NAME_COMPRESSION_ALGORITHM)
+    private CompressionAlgorithmEnum compressionAlgorithm;
+
+    public FeedDocument() {}
 
     public FeedDocument feedDocumentId(String feedDocumentId) {
         this.feedDocumentId = feedDocumentId;
@@ -93,10 +116,7 @@ public class FeedDocument {
      *
      * @return feedDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the feed document. This identifier is unique only in combination with a seller ID.")
+    @javax.annotation.Nonnull
     public String getFeedDocumentId() {
         return feedDocumentId;
     }
@@ -116,10 +136,7 @@ public class FeedDocument {
      *
      * @return url
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A presigned URL for the feed document. If `compressionAlgorithm` is not returned, you can download the feed directly from this URL. This URL expires after 5 minutes.")
+    @javax.annotation.Nonnull
     public String getUrl() {
         return url;
     }
@@ -142,10 +159,7 @@ public class FeedDocument {
      *
      * @return compressionAlgorithm
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "If the feed document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the feed when you download. Otherwise, you can download the feed directly. Refer to [Step 7. Download the feed processing report](doc:feeds-api-v2021-06-30-use-case-guide#step-7-download-the-feed-processing-report) in the use case guide, where sample code is provided.")
-    public CompressionAlgorithmEnum getCompressionAlgorithm() {
+    @javax.annotation.Nullable public CompressionAlgorithmEnum getCompressionAlgorithm() {
         return compressionAlgorithm;
     }
 
@@ -154,7 +168,7 @@ public class FeedDocument {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -188,10 +202,134 @@ public class FeedDocument {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("feedDocumentId");
+        openapiFields.add("url");
+        openapiFields.add("compressionAlgorithm");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("feedDocumentId");
+        openapiRequiredFields.add("url");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeedDocument
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeedDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeedDocument is not found in the empty JSON string",
+                        FeedDocument.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeedDocument.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeedDocument` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeedDocument.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("feedDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `feedDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("feedDocumentId").toString()));
+        }
+        if (!jsonObj.get("url").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `url` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("url").toString()));
+        }
+        if ((jsonObj.get("compressionAlgorithm") != null
+                        && !jsonObj.get("compressionAlgorithm").isJsonNull())
+                && !jsonObj.get("compressionAlgorithm").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `compressionAlgorithm` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("compressionAlgorithm").toString()));
+        }
+        // validate the optional field `compressionAlgorithm`
+        if (jsonObj.get("compressionAlgorithm") != null
+                && !jsonObj.get("compressionAlgorithm").isJsonNull()) {
+            CompressionAlgorithmEnum.validateJsonElement(jsonObj.get("compressionAlgorithm"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeedDocument.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeedDocument' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeedDocument> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeedDocument.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeedDocument>() {
+                        @Override
+                        public void write(JsonWriter out, FeedDocument value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeedDocument read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeedDocument given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeedDocument
+     * @throws IOException if the JSON string is invalid with respect to FeedDocument
+     */
+    public static FeedDocument fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeedDocument.class);
+    }
+
+    /**
+     * Convert an instance of FeedDocument to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

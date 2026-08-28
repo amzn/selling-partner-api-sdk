@@ -12,40 +12,72 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Package details. Includes `packageItems`, `packageTimeSlot`, and `packageIdentifier`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageDetails {
-    @SerializedName("packageItems")
-    private Items packageItems = null;
+    public static final String SERIALIZED_NAME_PACKAGE_ITEMS = "packageItems";
 
-    @SerializedName("packageTimeSlot")
-    private TimeSlot packageTimeSlot = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_ITEMS)
+    private List<Item> packageItems = new ArrayList<>();
 
-    @SerializedName("packageIdentifier")
-    private String packageIdentifier = null;
+    public static final String SERIALIZED_NAME_PACKAGE_TIME_SLOT = "packageTimeSlot";
 
-    public PackageDetails packageItems(Items packageItems) {
+    @SerializedName(SERIALIZED_NAME_PACKAGE_TIME_SLOT)
+    private TimeSlot packageTimeSlot;
+
+    public static final String SERIALIZED_NAME_PACKAGE_IDENTIFIER = "packageIdentifier";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_IDENTIFIER)
+    private String packageIdentifier;
+
+    public PackageDetails() {}
+
+    public PackageDetails packageItems(List<Item> packageItems) {
         this.packageItems = packageItems;
         return this;
     }
 
+    public PackageDetails addPackageItemsItem(Item packageItemsItem) {
+        if (this.packageItems == null) {
+            this.packageItems = new ArrayList<>();
+        }
+        this.packageItems.add(packageItemsItem);
+        return this;
+    }
+
     /**
-     * Get packageItems
+     * A list of items contained in the package.
      *
      * @return packageItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Items getPackageItems() {
+    @javax.annotation.Nullable public List<Item> getPackageItems() {
         return packageItems;
     }
 
-    public void setPackageItems(Items packageItems) {
+    public void setPackageItems(List<Item> packageItems) {
         this.packageItems = packageItems;
     }
 
@@ -59,7 +91,7 @@ public class PackageDetails {
      *
      * @return packageTimeSlot
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TimeSlot getPackageTimeSlot() {
         return packageTimeSlot;
     }
@@ -78,10 +110,7 @@ public class PackageDetails {
      *
      * @return packageIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.")
-    public String getPackageIdentifier() {
+    @javax.annotation.Nullable public String getPackageIdentifier() {
         return packageIdentifier;
     }
 
@@ -90,7 +119,7 @@ public class PackageDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -124,10 +153,137 @@ public class PackageDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageItems");
+        openapiFields.add("packageTimeSlot");
+        openapiFields.add("packageIdentifier");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageTimeSlot");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageDetails is not found in the empty JSON string",
+                        PackageDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackageDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("packageItems") != null && !jsonObj.get("packageItems").isJsonNull()) {
+            JsonArray jsonArraypackageItems = jsonObj.getAsJsonArray("packageItems");
+            if (jsonArraypackageItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packageItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packageItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packageItems").toString()));
+                }
+
+                // validate the optional field `packageItems` (array)
+                for (int i = 0; i < jsonArraypackageItems.size(); i++) {
+                    Item.validateJsonElement(jsonArraypackageItems.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `packageTimeSlot`
+        TimeSlot.validateJsonElement(jsonObj.get("packageTimeSlot"));
+        if ((jsonObj.get("packageIdentifier") != null
+                        && !jsonObj.get("packageIdentifier").isJsonNull())
+                && !jsonObj.get("packageIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageIdentifier").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PackageDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageDetails
+     * @throws IOException if the JSON string is invalid with respect to PackageDetails
+     */
+    public static PackageDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageDetails.class);
+    }
+
+    /**
+     * Convert an instance of PackageDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

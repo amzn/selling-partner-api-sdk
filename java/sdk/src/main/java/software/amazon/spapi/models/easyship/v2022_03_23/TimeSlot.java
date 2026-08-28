@@ -12,25 +12,49 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A time window to hand over an Easy Ship package to Amazon Logistics. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A time window to hand over an Easy Ship package to Amazon Logistics.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TimeSlot {
-    @SerializedName("slotId")
-    private String slotId = null;
+    public static final String SERIALIZED_NAME_SLOT_ID = "slotId";
 
-    @SerializedName("startTime")
-    private OffsetDateTime startTime = null;
+    @SerializedName(SERIALIZED_NAME_SLOT_ID)
+    private String slotId;
 
-    @SerializedName("endTime")
-    private OffsetDateTime endTime = null;
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
 
-    @SerializedName("handoverMethod")
-    private HandoverMethod handoverMethod = null;
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private OffsetDateTime startTime;
+
+    public static final String SERIALIZED_NAME_END_TIME = "endTime";
+
+    @SerializedName(SERIALIZED_NAME_END_TIME)
+    private OffsetDateTime endTime;
+
+    public static final String SERIALIZED_NAME_HANDOVER_METHOD = "handoverMethod";
+
+    @SerializedName(SERIALIZED_NAME_HANDOVER_METHOD)
+    private HandoverMethod handoverMethod;
+
+    public TimeSlot() {}
 
     public TimeSlot slotId(String slotId) {
         this.slotId = slotId;
@@ -42,7 +66,7 @@ public class TimeSlot {
      *
      * @return slotId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
+    @javax.annotation.Nonnull
     public String getSlotId() {
         return slotId;
     }
@@ -61,8 +85,7 @@ public class TimeSlot {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
-    public OffsetDateTime getStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getStartTime() {
         return startTime;
     }
 
@@ -80,8 +103,7 @@ public class TimeSlot {
      *
      * @return endTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
-    public OffsetDateTime getEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getEndTime() {
         return endTime;
     }
 
@@ -99,8 +121,7 @@ public class TimeSlot {
      *
      * @return handoverMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public HandoverMethod getHandoverMethod() {
+    @javax.annotation.Nullable public HandoverMethod getHandoverMethod() {
         return handoverMethod;
     }
 
@@ -109,7 +130,7 @@ public class TimeSlot {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +164,121 @@ public class TimeSlot {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("slotId");
+        openapiFields.add("startTime");
+        openapiFields.add("endTime");
+        openapiFields.add("handoverMethod");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("slotId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TimeSlot
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TimeSlot.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TimeSlot is not found in the empty JSON string",
+                        TimeSlot.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TimeSlot.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TimeSlot` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TimeSlot.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("slotId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `slotId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("slotId").toString()));
+        }
+        // validate the optional field `handoverMethod`
+        if (jsonObj.get("handoverMethod") != null
+                && !jsonObj.get("handoverMethod").isJsonNull()) {
+            HandoverMethod.validateJsonElement(jsonObj.get("handoverMethod"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TimeSlot.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TimeSlot' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TimeSlot> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(TimeSlot.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TimeSlot>() {
+                        @Override
+                        public void write(JsonWriter out, TimeSlot value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TimeSlot read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TimeSlot given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TimeSlot
+     * @throws IOException if the JSON string is invalid with respect to TimeSlot
+     */
+    public static TimeSlot fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TimeSlot.class);
+    }
+
+    /**
+     * Convert an instance of TimeSlot to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

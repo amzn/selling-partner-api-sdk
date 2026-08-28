@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The status of the Amazon Seller Wallet account holder. */
 @JsonAdapter(BankAccountHolderStatus.Adapter.class)
 public enum BankAccountHolderStatus {
-    @SerializedName("ACTIVE")
     ACTIVE("ACTIVE"),
 
-    @SerializedName("INACTIVE")
     INACTIVE("INACTIVE"),
 
-    @SerializedName("UNDER_REVIEW")
     UNDER_REVIEW("UNDER_REVIEW"),
 
-    @SerializedName("VERIFICATION_FAILED")
     VERIFICATION_FAILED("VERIFICATION_FAILED");
 
     private String value;
@@ -49,25 +45,30 @@ public enum BankAccountHolderStatus {
         return String.valueOf(value);
     }
 
-    public static BankAccountHolderStatus fromValue(String input) {
+    public static BankAccountHolderStatus fromValue(String value) {
         for (BankAccountHolderStatus b : BankAccountHolderStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BankAccountHolderStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final BankAccountHolderStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BankAccountHolderStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BankAccountHolderStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BankAccountHolderStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BankAccountHolderStatus.fromValue(value);
     }
 }

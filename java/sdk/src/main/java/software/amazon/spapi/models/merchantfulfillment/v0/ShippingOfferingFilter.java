@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Filter for use when requesting eligible shipping services. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Filter for use when requesting eligible shipping services.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingOfferingFilter {
-    @SerializedName("IncludePackingSlipWithLabel")
-    private Boolean includePackingSlipWithLabel = null;
+    public static final String SERIALIZED_NAME_INCLUDE_PACKING_SLIP_WITH_LABEL = "IncludePackingSlipWithLabel";
 
-    @SerializedName("IncludeComplexShippingOptions")
-    private Boolean includeComplexShippingOptions = null;
+    @SerializedName(SERIALIZED_NAME_INCLUDE_PACKING_SLIP_WITH_LABEL)
+    private Boolean includePackingSlipWithLabel;
 
-    @SerializedName("CarrierWillPickUp")
-    private CarrierWillPickUpOption carrierWillPickUp = null;
+    public static final String SERIALIZED_NAME_INCLUDE_COMPLEX_SHIPPING_OPTIONS = "IncludeComplexShippingOptions";
 
-    @SerializedName("DeliveryExperience")
-    private DeliveryExperienceOption deliveryExperience = null;
+    @SerializedName(SERIALIZED_NAME_INCLUDE_COMPLEX_SHIPPING_OPTIONS)
+    private Boolean includeComplexShippingOptions;
+
+    public static final String SERIALIZED_NAME_CARRIER_WILL_PICK_UP = "CarrierWillPickUp";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_WILL_PICK_UP)
+    private CarrierWillPickUpOption carrierWillPickUp;
+
+    public static final String SERIALIZED_NAME_DELIVERY_EXPERIENCE = "DeliveryExperience";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_EXPERIENCE)
+    private DeliveryExperienceOption deliveryExperience;
+
+    public ShippingOfferingFilter() {}
 
     public ShippingOfferingFilter includePackingSlipWithLabel(Boolean includePackingSlipWithLabel) {
         this.includePackingSlipWithLabel = includePackingSlipWithLabel;
@@ -40,8 +65,7 @@ public class ShippingOfferingFilter {
      *
      * @return includePackingSlipWithLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include a packing slip with the label.")
-    public Boolean getIncludePackingSlipWithLabel() {
+    @javax.annotation.Nullable public Boolean getIncludePackingSlipWithLabel() {
         return includePackingSlipWithLabel;
     }
 
@@ -59,8 +83,7 @@ public class ShippingOfferingFilter {
      *
      * @return includeComplexShippingOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include complex shipping options.")
-    public Boolean getIncludeComplexShippingOptions() {
+    @javax.annotation.Nullable public Boolean getIncludeComplexShippingOptions() {
         return includeComplexShippingOptions;
     }
 
@@ -78,8 +101,7 @@ public class ShippingOfferingFilter {
      *
      * @return carrierWillPickUp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierWillPickUpOption getCarrierWillPickUp() {
+    @javax.annotation.Nullable public CarrierWillPickUpOption getCarrierWillPickUp() {
         return carrierWillPickUp;
     }
 
@@ -97,8 +119,7 @@ public class ShippingOfferingFilter {
      *
      * @return deliveryExperience
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DeliveryExperienceOption getDeliveryExperience() {
+    @javax.annotation.Nullable public DeliveryExperienceOption getDeliveryExperience() {
         return deliveryExperience;
     }
 
@@ -107,7 +128,7 @@ public class ShippingOfferingFilter {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -149,10 +170,113 @@ public class ShippingOfferingFilter {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("IncludePackingSlipWithLabel");
+        openapiFields.add("IncludeComplexShippingOptions");
+        openapiFields.add("CarrierWillPickUp");
+        openapiFields.add("DeliveryExperience");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingOfferingFilter
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingOfferingFilter.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingOfferingFilter is not found in the empty JSON string",
+                        ShippingOfferingFilter.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingOfferingFilter.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingOfferingFilter` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `CarrierWillPickUp`
+        if (jsonObj.get("CarrierWillPickUp") != null
+                && !jsonObj.get("CarrierWillPickUp").isJsonNull()) {
+            CarrierWillPickUpOption.validateJsonElement(jsonObj.get("CarrierWillPickUp"));
+        }
+        // validate the optional field `DeliveryExperience`
+        if (jsonObj.get("DeliveryExperience") != null
+                && !jsonObj.get("DeliveryExperience").isJsonNull()) {
+            DeliveryExperienceOption.validateJsonElement(jsonObj.get("DeliveryExperience"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingOfferingFilter.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingOfferingFilter' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingOfferingFilter> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingOfferingFilter.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingOfferingFilter>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingOfferingFilter value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingOfferingFilter read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingOfferingFilter given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingOfferingFilter
+     * @throws IOException if the JSON string is invalid with respect to ShippingOfferingFilter
+     */
+    public static ShippingOfferingFilter fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingOfferingFilter.class);
+    }
+
+    /**
+     * Convert an instance of ShippingOfferingFilter to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

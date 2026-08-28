@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Defines a progressive (multi-tier) benefit tier that applies when customers exceed a higher purchase quantity for
  * basket building promotions. Each tier specifies a purchase condition and corresponding enhanced discount.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Defines a progressive (multi-tier) benefit tier that applies when customers exceed a higher purchase quantity for basket building promotions. Each tier specifies a purchase condition and corresponding enhanced discount.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BenefitTier {
-    @SerializedName("purchaseCondition")
-    private PurchaseCondition purchaseCondition = null;
+    public static final String SERIALIZED_NAME_PURCHASE_CONDITION = "purchaseCondition";
 
-    @SerializedName("discount")
-    private Discount discount = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_CONDITION)
+    private PurchaseCondition purchaseCondition;
+
+    public static final String SERIALIZED_NAME_DISCOUNT = "discount";
+
+    @SerializedName(SERIALIZED_NAME_DISCOUNT)
+    private Discount discount;
+
+    public BenefitTier() {}
 
     public BenefitTier purchaseCondition(PurchaseCondition purchaseCondition) {
         this.purchaseCondition = purchaseCondition;
@@ -39,7 +58,7 @@ public class BenefitTier {
      *
      * @return purchaseCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PurchaseCondition getPurchaseCondition() {
         return purchaseCondition;
     }
@@ -58,7 +77,7 @@ public class BenefitTier {
      *
      * @return discount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Discount getDiscount() {
         return discount;
     }
@@ -68,7 +87,7 @@ public class BenefitTier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +117,115 @@ public class BenefitTier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseCondition");
+        openapiFields.add("discount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseCondition");
+        openapiRequiredFields.add("discount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BenefitTier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BenefitTier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BenefitTier is not found in the empty JSON string",
+                        BenefitTier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BenefitTier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BenefitTier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BenefitTier.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `purchaseCondition`
+        PurchaseCondition.validateJsonElement(jsonObj.get("purchaseCondition"));
+        // validate the required field `discount`
+        Discount.validateJsonElement(jsonObj.get("discount"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BenefitTier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BenefitTier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BenefitTier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BenefitTier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BenefitTier>() {
+                        @Override
+                        public void write(JsonWriter out, BenefitTier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BenefitTier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BenefitTier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BenefitTier
+     * @throws IOException if the JSON string is invalid with respect to BenefitTier
+     */
+    public static BenefitTier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BenefitTier.class);
+    }
+
+    /**
+     * Convert an instance of BenefitTier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

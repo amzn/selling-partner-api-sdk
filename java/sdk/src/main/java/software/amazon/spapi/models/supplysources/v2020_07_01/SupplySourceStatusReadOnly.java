@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The &#x60;SupplySource&#x60; status. */
 @JsonAdapter(SupplySourceStatusReadOnly.Adapter.class)
 public enum SupplySourceStatusReadOnly {
-    @SerializedName("Active")
     ACTIVE("Active"),
 
-    @SerializedName("Inactive")
     INACTIVE("Inactive"),
 
-    @SerializedName("Archived")
     ARCHIVED("Archived");
 
     private String value;
@@ -46,26 +43,31 @@ public enum SupplySourceStatusReadOnly {
         return String.valueOf(value);
     }
 
-    public static SupplySourceStatusReadOnly fromValue(String input) {
+    public static SupplySourceStatusReadOnly fromValue(String value) {
         for (SupplySourceStatusReadOnly b : SupplySourceStatusReadOnly.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SupplySourceStatusReadOnly> {
         @Override
         public void write(final JsonWriter jsonWriter, final SupplySourceStatusReadOnly enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public SupplySourceStatusReadOnly read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return SupplySourceStatusReadOnly.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return SupplySourceStatusReadOnly.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        SupplySourceStatusReadOnly.fromValue(value);
     }
 }

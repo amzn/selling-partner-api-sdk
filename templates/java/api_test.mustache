@@ -8,7 +8,6 @@ import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 {{#imports}}import {{import}};
 {{/imports}}
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
@@ -39,7 +38,6 @@ public class {{classname}}Test {
     private final EasyRandom easyRandom = new EasyRandom(
         new EasyRandomParameters().collectionSizeRange(1, 2)
                 .randomizationDepth(10)
-                .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new)
     );
 
 {{#operations}}{{#operation}}

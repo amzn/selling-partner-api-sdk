@@ -12,33 +12,67 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A retrocharge or retrocharge reversal. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A retrocharge or retrocharge reversal.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RetrochargeEvent {
-    @SerializedName("RetrochargeEventType")
-    private String retrochargeEventType = null;
+    public static final String SERIALIZED_NAME_RETROCHARGE_EVENT_TYPE = "RetrochargeEventType";
 
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    @SerializedName(SERIALIZED_NAME_RETROCHARGE_EVENT_TYPE)
+    private String retrochargeEventType;
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("BaseTax")
-    private Currency baseTax = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("ShippingTax")
-    private Currency shippingTax = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("MarketplaceName")
-    private String marketplaceName = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("RetrochargeTaxWithheldList")
-    private TaxWithheldComponentList retrochargeTaxWithheldList = null;
+    public static final String SERIALIZED_NAME_BASE_TAX = "BaseTax";
+
+    @SerializedName(SERIALIZED_NAME_BASE_TAX)
+    private Currency baseTax;
+
+    public static final String SERIALIZED_NAME_SHIPPING_TAX = "ShippingTax";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_TAX)
+    private Currency shippingTax;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_NAME = "MarketplaceName";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_NAME)
+    private String marketplaceName;
+
+    public static final String SERIALIZED_NAME_RETROCHARGE_TAX_WITHHELD_LIST = "RetrochargeTaxWithheldList";
+
+    @SerializedName(SERIALIZED_NAME_RETROCHARGE_TAX_WITHHELD_LIST)
+    private List<TaxWithheldComponent> retrochargeTaxWithheldList = new ArrayList<>();
+
+    public RetrochargeEvent() {}
 
     public RetrochargeEvent retrochargeEventType(String retrochargeEventType) {
         this.retrochargeEventType = retrochargeEventType;
@@ -50,9 +84,7 @@ public class RetrochargeEvent {
      *
      * @return retrochargeEventType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`")
-    public String getRetrochargeEventType() {
+    @javax.annotation.Nullable public String getRetrochargeEventType() {
         return retrochargeEventType;
     }
 
@@ -70,8 +102,7 @@ public class RetrochargeEvent {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
-    public String getAmazonOrderId() {
+    @javax.annotation.Nullable public String getAmazonOrderId() {
         return amazonOrderId;
     }
 
@@ -89,10 +120,7 @@ public class RetrochargeEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -110,8 +138,7 @@ public class RetrochargeEvent {
      *
      * @return baseTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getBaseTax() {
+    @javax.annotation.Nullable public Currency getBaseTax() {
         return baseTax;
     }
 
@@ -129,8 +156,7 @@ public class RetrochargeEvent {
      *
      * @return shippingTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getShippingTax() {
+    @javax.annotation.Nullable public Currency getShippingTax() {
         return shippingTax;
     }
 
@@ -148,9 +174,7 @@ public class RetrochargeEvent {
      *
      * @return marketplaceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the marketplace where the retrocharge event occurred.")
-    public String getMarketplaceName() {
+    @javax.annotation.Nullable public String getMarketplaceName() {
         return marketplaceName;
     }
 
@@ -158,27 +182,34 @@ public class RetrochargeEvent {
         this.marketplaceName = marketplaceName;
     }
 
-    public RetrochargeEvent retrochargeTaxWithheldList(TaxWithheldComponentList retrochargeTaxWithheldList) {
+    public RetrochargeEvent retrochargeTaxWithheldList(List<TaxWithheldComponent> retrochargeTaxWithheldList) {
         this.retrochargeTaxWithheldList = retrochargeTaxWithheldList;
         return this;
     }
 
+    public RetrochargeEvent addRetrochargeTaxWithheldListItem(TaxWithheldComponent retrochargeTaxWithheldListItem) {
+        if (this.retrochargeTaxWithheldList == null) {
+            this.retrochargeTaxWithheldList = new ArrayList<>();
+        }
+        this.retrochargeTaxWithheldList.add(retrochargeTaxWithheldListItem);
+        return this;
+    }
+
     /**
-     * Get retrochargeTaxWithheldList
+     * A list of information about taxes withheld.
      *
      * @return retrochargeTaxWithheldList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithheldComponentList getRetrochargeTaxWithheldList() {
+    @javax.annotation.Nullable public List<TaxWithheldComponent> getRetrochargeTaxWithheldList() {
         return retrochargeTaxWithheldList;
     }
 
-    public void setRetrochargeTaxWithheldList(TaxWithheldComponentList retrochargeTaxWithheldList) {
+    public void setRetrochargeTaxWithheldList(List<TaxWithheldComponent> retrochargeTaxWithheldList) {
         this.retrochargeTaxWithheldList = retrochargeTaxWithheldList;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -229,10 +260,152 @@ public class RetrochargeEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("RetrochargeEventType");
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("PostedDate");
+        openapiFields.add("BaseTax");
+        openapiFields.add("ShippingTax");
+        openapiFields.add("MarketplaceName");
+        openapiFields.add("RetrochargeTaxWithheldList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RetrochargeEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RetrochargeEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RetrochargeEvent is not found in the empty JSON string",
+                        RetrochargeEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RetrochargeEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RetrochargeEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("RetrochargeEventType") != null
+                        && !jsonObj.get("RetrochargeEventType").isJsonNull())
+                && !jsonObj.get("RetrochargeEventType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RetrochargeEventType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("RetrochargeEventType").toString()));
+        }
+        if ((jsonObj.get("AmazonOrderId") != null
+                        && !jsonObj.get("AmazonOrderId").isJsonNull())
+                && !jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        // validate the optional field `BaseTax`
+        if (jsonObj.get("BaseTax") != null && !jsonObj.get("BaseTax").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("BaseTax"));
+        }
+        // validate the optional field `ShippingTax`
+        if (jsonObj.get("ShippingTax") != null && !jsonObj.get("ShippingTax").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ShippingTax"));
+        }
+        if ((jsonObj.get("MarketplaceName") != null
+                        && !jsonObj.get("MarketplaceName").isJsonNull())
+                && !jsonObj.get("MarketplaceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceName").toString()));
+        }
+        if (jsonObj.get("RetrochargeTaxWithheldList") != null
+                && !jsonObj.get("RetrochargeTaxWithheldList").isJsonNull()) {
+            JsonArray jsonArrayretrochargeTaxWithheldList = jsonObj.getAsJsonArray("RetrochargeTaxWithheldList");
+            if (jsonArrayretrochargeTaxWithheldList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RetrochargeTaxWithheldList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RetrochargeTaxWithheldList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RetrochargeTaxWithheldList").toString()));
+                }
+
+                // validate the optional field `RetrochargeTaxWithheldList` (array)
+                for (int i = 0; i < jsonArrayretrochargeTaxWithheldList.size(); i++) {
+                    TaxWithheldComponent.validateJsonElement(jsonArrayretrochargeTaxWithheldList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RetrochargeEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RetrochargeEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RetrochargeEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RetrochargeEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RetrochargeEvent>() {
+                        @Override
+                        public void write(JsonWriter out, RetrochargeEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RetrochargeEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RetrochargeEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RetrochargeEvent
+     * @throws IOException if the JSON string is invalid with respect to RetrochargeEvent
+     */
+    public static RetrochargeEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RetrochargeEvent.class);
+    }
+
+    /**
+     * Convert an instance of RetrochargeEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,26 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The type and amount of a charge applied on a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The type and amount of a charge applied on a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChargeComponent {
-    @SerializedName("amount")
-    private Currency amount = null;
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Currency amount;
 
     /** The type of charge. */
     @JsonAdapter(ChargeTypeEnum.Adapter.class)
     public enum ChargeTypeEnum {
-        @SerializedName("TAX")
         TAX("TAX"),
-        @SerializedName("DISCOUNT")
+
         DISCOUNT("DISCOUNT");
 
         private String value;
@@ -49,31 +61,40 @@ public class ChargeComponent {
             return String.valueOf(value);
         }
 
-        public static ChargeTypeEnum fromValue(String input) {
+        public static ChargeTypeEnum fromValue(String value) {
             for (ChargeTypeEnum b : ChargeTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ChargeTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ChargeTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ChargeTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ChargeTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ChargeTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ChargeTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("chargeType")
-    private ChargeTypeEnum chargeType = null;
+    public static final String SERIALIZED_NAME_CHARGE_TYPE = "chargeType";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_TYPE)
+    private ChargeTypeEnum chargeType;
+
+    public ChargeComponent() {}
 
     public ChargeComponent amount(Currency amount) {
         this.amount = amount;
@@ -85,8 +106,7 @@ public class ChargeComponent {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getAmount() {
+    @javax.annotation.Nullable public Currency getAmount() {
         return amount;
     }
 
@@ -104,8 +124,7 @@ public class ChargeComponent {
      *
      * @return chargeType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
-    public ChargeTypeEnum getChargeType() {
+    @javax.annotation.Nullable public ChargeTypeEnum getChargeType() {
         return chargeType;
     }
 
@@ -114,7 +133,7 @@ public class ChargeComponent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -142,10 +161,114 @@ public class ChargeComponent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amount");
+        openapiFields.add("chargeType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChargeComponent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChargeComponent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChargeComponent is not found in the empty JSON string",
+                        ChargeComponent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChargeComponent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChargeComponent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `amount`
+        if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("amount"));
+        }
+        if ((jsonObj.get("chargeType") != null && !jsonObj.get("chargeType").isJsonNull())
+                && !jsonObj.get("chargeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `chargeType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("chargeType").toString()));
+        }
+        // validate the optional field `chargeType`
+        if (jsonObj.get("chargeType") != null && !jsonObj.get("chargeType").isJsonNull()) {
+            ChargeTypeEnum.validateJsonElement(jsonObj.get("chargeType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChargeComponent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeComponent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChargeComponent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChargeComponent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChargeComponent>() {
+                        @Override
+                        public void write(JsonWriter out, ChargeComponent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChargeComponent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChargeComponent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChargeComponent
+     * @throws IOException if the JSON string is invalid with respect to ChargeComponent
+     */
+    public static ChargeComponent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChargeComponent.class);
+    }
+
+    /**
+     * Convert an instance of ChargeComponent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

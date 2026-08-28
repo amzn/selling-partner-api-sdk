@@ -12,56 +12,100 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and
  * will be ignored.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and will be ignored.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetRatesRequest {
-    @SerializedName("shipTo")
-    private Address shipTo = null;
+    public static final String SERIALIZED_NAME_SHIP_TO = "shipTo";
 
-    @SerializedName("shipFrom")
-    private Address shipFrom = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO)
+    private Address shipTo;
 
-    @SerializedName("returnTo")
-    private Address returnTo = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM = "shipFrom";
 
-    @SerializedName("shipDate")
-    private OffsetDateTime shipDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM)
+    private Address shipFrom;
 
-    @SerializedName("shipperInstruction")
-    private ShipperInstruction shipperInstruction = null;
+    public static final String SERIALIZED_NAME_RETURN_TO = "returnTo";
 
-    @SerializedName("packages")
-    private PackageList packages = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_TO)
+    private Address returnTo;
 
-    @SerializedName("valueAddedServices")
-    private ValueAddedServiceDetails valueAddedServices = null;
+    public static final String SERIALIZED_NAME_SHIP_DATE = "shipDate";
 
-    @SerializedName("taxDetails")
-    private TaxDetailList taxDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_DATE)
+    private OffsetDateTime shipDate;
 
-    @SerializedName("channelDetails")
-    private ChannelDetails channelDetails = null;
+    public static final String SERIALIZED_NAME_SHIPPER_INSTRUCTION = "shipperInstruction";
 
-    @SerializedName("clientReferenceDetails")
-    private ClientReferenceDetails clientReferenceDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPER_INSTRUCTION)
+    private ShipperInstruction shipperInstruction;
 
-    @SerializedName("shipmentType")
-    private ShipmentType shipmentType = null;
+    public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
-    @SerializedName("destinationAccessPointDetails")
-    private AccessPointDetails destinationAccessPointDetails = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGES)
+    private List<ModelPackage> packages = new ArrayList<>();
 
-    @SerializedName("carrierAccounts")
-    private CarrierAccounts carrierAccounts = null;
+    public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICES = "valueAddedServices";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICES)
+    private ValueAddedServiceDetails valueAddedServices;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetail> taxDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHANNEL_DETAILS)
+    private ChannelDetails channelDetails;
+
+    public static final String SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS = "clientReferenceDetails";
+
+    @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS)
+    private List<ClientReferenceDetail> clientReferenceDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_TYPE = "shipmentType";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_TYPE)
+    private ShipmentType shipmentType;
+
+    public static final String SERIALIZED_NAME_DESTINATION_ACCESS_POINT_DETAILS = "destinationAccessPointDetails";
+
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ACCESS_POINT_DETAILS)
+    private AccessPointDetails destinationAccessPointDetails;
+
+    public static final String SERIALIZED_NAME_CARRIER_ACCOUNTS = "carrierAccounts";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_ACCOUNTS)
+    private List<CarrierAccount> carrierAccounts = new ArrayList<>();
+
+    public GetRatesRequest() {}
 
     public GetRatesRequest shipTo(Address shipTo) {
         this.shipTo = shipTo;
@@ -73,8 +117,7 @@ public class GetRatesRequest {
      *
      * @return shipTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShipTo() {
+    @javax.annotation.Nullable public Address getShipTo() {
         return shipTo;
     }
 
@@ -92,7 +135,7 @@ public class GetRatesRequest {
      *
      * @return shipFrom
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFrom() {
         return shipFrom;
     }
@@ -111,8 +154,7 @@ public class GetRatesRequest {
      *
      * @return returnTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getReturnTo() {
+    @javax.annotation.Nullable public Address getReturnTo() {
         return returnTo;
     }
 
@@ -130,9 +172,7 @@ public class GetRatesRequest {
      *
      * @return shipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
-    public OffsetDateTime getShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShipDate() {
         return shipDate;
     }
 
@@ -150,8 +190,7 @@ public class GetRatesRequest {
      *
      * @return shipperInstruction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipperInstruction getShipperInstruction() {
+    @javax.annotation.Nullable public ShipperInstruction getShipperInstruction() {
         return shipperInstruction;
     }
 
@@ -159,22 +198,30 @@ public class GetRatesRequest {
         this.shipperInstruction = shipperInstruction;
     }
 
-    public GetRatesRequest packages(PackageList packages) {
+    public GetRatesRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public GetRatesRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * A list of packages to be shipped through a shipping service offering.
      *
      * @return packages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
-    public PackageList getPackages() {
+    @javax.annotation.Nonnull
+    public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackageList packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
@@ -188,8 +235,7 @@ public class GetRatesRequest {
      *
      * @return valueAddedServices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ValueAddedServiceDetails getValueAddedServices() {
+    @javax.annotation.Nullable public ValueAddedServiceDetails getValueAddedServices() {
         return valueAddedServices;
     }
 
@@ -197,22 +243,29 @@ public class GetRatesRequest {
         this.valueAddedServices = valueAddedServices;
     }
 
-    public GetRatesRequest taxDetails(TaxDetailList taxDetails) {
+    public GetRatesRequest taxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
         return this;
     }
 
+    public GetRatesRequest addTaxDetailsItem(TaxDetail taxDetailsItem) {
+        if (this.taxDetails == null) {
+            this.taxDetails = new ArrayList<>();
+        }
+        this.taxDetails.add(taxDetailsItem);
+        return this;
+    }
+
     /**
-     * Get taxDetails
+     * A list of tax detail information.
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxDetailList getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
-    public void setTaxDetails(TaxDetailList taxDetails) {
+    public void setTaxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
     }
 
@@ -226,7 +279,7 @@ public class GetRatesRequest {
      *
      * @return channelDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -235,22 +288,29 @@ public class GetRatesRequest {
         this.channelDetails = channelDetails;
     }
 
-    public GetRatesRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public GetRatesRequest clientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
         return this;
     }
 
+    public GetRatesRequest addClientReferenceDetailsItem(ClientReferenceDetail clientReferenceDetailsItem) {
+        if (this.clientReferenceDetails == null) {
+            this.clientReferenceDetails = new ArrayList<>();
+        }
+        this.clientReferenceDetails.add(clientReferenceDetailsItem);
+        return this;
+    }
+
     /**
-     * Get clientReferenceDetails
+     * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      *
      * @return clientReferenceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ClientReferenceDetails getClientReferenceDetails() {
+    @javax.annotation.Nullable public List<ClientReferenceDetail> getClientReferenceDetails() {
         return clientReferenceDetails;
     }
 
-    public void setClientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public void setClientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
     }
 
@@ -264,8 +324,7 @@ public class GetRatesRequest {
      *
      * @return shipmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentType getShipmentType() {
+    @javax.annotation.Nullable public ShipmentType getShipmentType() {
         return shipmentType;
     }
 
@@ -283,8 +342,7 @@ public class GetRatesRequest {
      *
      * @return destinationAccessPointDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AccessPointDetails getDestinationAccessPointDetails() {
+    @javax.annotation.Nullable public AccessPointDetails getDestinationAccessPointDetails() {
         return destinationAccessPointDetails;
     }
 
@@ -292,27 +350,34 @@ public class GetRatesRequest {
         this.destinationAccessPointDetails = destinationAccessPointDetails;
     }
 
-    public GetRatesRequest carrierAccounts(CarrierAccounts carrierAccounts) {
+    public GetRatesRequest carrierAccounts(List<CarrierAccount> carrierAccounts) {
         this.carrierAccounts = carrierAccounts;
         return this;
     }
 
+    public GetRatesRequest addCarrierAccountsItem(CarrierAccount carrierAccountsItem) {
+        if (this.carrierAccounts == null) {
+            this.carrierAccounts = new ArrayList<>();
+        }
+        this.carrierAccounts.add(carrierAccountsItem);
+        return this;
+    }
+
     /**
-     * Get carrierAccounts
+     * A list of CarrierAccounts
      *
      * @return carrierAccounts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierAccounts getCarrierAccounts() {
+    @javax.annotation.Nullable public List<CarrierAccount> getCarrierAccounts() {
         return carrierAccounts;
     }
 
-    public void setCarrierAccounts(CarrierAccounts carrierAccounts) {
+    public void setCarrierAccounts(List<CarrierAccount> carrierAccounts) {
         this.carrierAccounts = carrierAccounts;
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -387,10 +452,220 @@ public class GetRatesRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipTo");
+        openapiFields.add("shipFrom");
+        openapiFields.add("returnTo");
+        openapiFields.add("shipDate");
+        openapiFields.add("shipperInstruction");
+        openapiFields.add("packages");
+        openapiFields.add("valueAddedServices");
+        openapiFields.add("taxDetails");
+        openapiFields.add("channelDetails");
+        openapiFields.add("clientReferenceDetails");
+        openapiFields.add("shipmentType");
+        openapiFields.add("destinationAccessPointDetails");
+        openapiFields.add("carrierAccounts");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shipFrom");
+        openapiRequiredFields.add("packages");
+        openapiRequiredFields.add("channelDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetRatesRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetRatesRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetRatesRequest is not found in the empty JSON string",
+                        GetRatesRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetRatesRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetRatesRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetRatesRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `shipTo`
+        if (jsonObj.get("shipTo") != null && !jsonObj.get("shipTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("shipTo"));
+        }
+        // validate the required field `shipFrom`
+        Address.validateJsonElement(jsonObj.get("shipFrom"));
+        // validate the optional field `returnTo`
+        if (jsonObj.get("returnTo") != null && !jsonObj.get("returnTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("returnTo"));
+        }
+        // validate the optional field `shipperInstruction`
+        if (jsonObj.get("shipperInstruction") != null
+                && !jsonObj.get("shipperInstruction").isJsonNull()) {
+            ShipperInstruction.validateJsonElement(jsonObj.get("shipperInstruction"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("packages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packages").toString()));
+        }
+
+        JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+        // validate the required field `packages` (array)
+        for (int i = 0; i < jsonArraypackages.size(); i++) {
+            ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+        }
+        ;
+        // validate the optional field `valueAddedServices`
+        if (jsonObj.get("valueAddedServices") != null
+                && !jsonObj.get("valueAddedServices").isJsonNull()) {
+            ValueAddedServiceDetails.validateJsonElement(jsonObj.get("valueAddedServices"));
+        }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `channelDetails`
+        ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));
+        if (jsonObj.get("clientReferenceDetails") != null
+                && !jsonObj.get("clientReferenceDetails").isJsonNull()) {
+            JsonArray jsonArrayclientReferenceDetails = jsonObj.getAsJsonArray("clientReferenceDetails");
+            if (jsonArrayclientReferenceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("clientReferenceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `clientReferenceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("clientReferenceDetails").toString()));
+                }
+
+                // validate the optional field `clientReferenceDetails` (array)
+                for (int i = 0; i < jsonArrayclientReferenceDetails.size(); i++) {
+                    ClientReferenceDetail.validateJsonElement(jsonArrayclientReferenceDetails.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `shipmentType`
+        if (jsonObj.get("shipmentType") != null && !jsonObj.get("shipmentType").isJsonNull()) {
+            ShipmentType.validateJsonElement(jsonObj.get("shipmentType"));
+        }
+        // validate the optional field `destinationAccessPointDetails`
+        if (jsonObj.get("destinationAccessPointDetails") != null
+                && !jsonObj.get("destinationAccessPointDetails").isJsonNull()) {
+            AccessPointDetails.validateJsonElement(jsonObj.get("destinationAccessPointDetails"));
+        }
+        if (jsonObj.get("carrierAccounts") != null
+                && !jsonObj.get("carrierAccounts").isJsonNull()) {
+            JsonArray jsonArraycarrierAccounts = jsonObj.getAsJsonArray("carrierAccounts");
+            if (jsonArraycarrierAccounts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("carrierAccounts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `carrierAccounts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("carrierAccounts").toString()));
+                }
+
+                // validate the optional field `carrierAccounts` (array)
+                for (int i = 0; i < jsonArraycarrierAccounts.size(); i++) {
+                    CarrierAccount.validateJsonElement(jsonArraycarrierAccounts.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetRatesRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetRatesRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetRatesRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetRatesRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetRatesRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetRatesRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetRatesRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetRatesRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetRatesRequest
+     * @throws IOException if the JSON string is invalid with respect to GetRatesRequest
+     */
+    public static GetRatesRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetRatesRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetRatesRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -28,7 +28,6 @@ import software.amazon.spapi.models.pricing.v2022_05_01.CompetitiveSummaryBatchR
 import software.amazon.spapi.models.pricing.v2022_05_01.CompetitiveSummaryBatchResponse;
 import software.amazon.spapi.models.pricing.v2022_05_01.GetFeaturedOfferExpectedPriceBatchRequest;
 import software.amazon.spapi.models.pricing.v2022_05_01.GetFeaturedOfferExpectedPriceBatchResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class ProductPricingApiTest {
 
@@ -46,10 +45,8 @@ public class ProductPricingApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getCompetitiveSummaryTest() throws Exception {

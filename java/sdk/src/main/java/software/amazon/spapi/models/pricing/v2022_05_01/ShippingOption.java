@@ -12,21 +12,31 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The shipping option available for the offer. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The shipping option available for the offer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingOption {
     /** The type of shipping option. */
     @JsonAdapter(ShippingOptionTypeEnum.Adapter.class)
     public enum ShippingOptionTypeEnum {
-        @SerializedName("DEFAULT")
         DEFAULT("DEFAULT");
 
         private String value;
@@ -44,35 +54,46 @@ public class ShippingOption {
             return String.valueOf(value);
         }
 
-        public static ShippingOptionTypeEnum fromValue(String input) {
+        public static ShippingOptionTypeEnum fromValue(String value) {
             for (ShippingOptionTypeEnum b : ShippingOptionTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ShippingOptionTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ShippingOptionTypeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ShippingOptionTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ShippingOptionTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ShippingOptionTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ShippingOptionTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("shippingOptionType")
-    private ShippingOptionTypeEnum shippingOptionType = null;
+    public static final String SERIALIZED_NAME_SHIPPING_OPTION_TYPE = "shippingOptionType";
 
-    @SerializedName("price")
-    private MoneyType price = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_OPTION_TYPE)
+    private ShippingOptionTypeEnum shippingOptionType;
+
+    public static final String SERIALIZED_NAME_PRICE = "price";
+
+    @SerializedName(SERIALIZED_NAME_PRICE)
+    private MoneyType price;
+
+    public ShippingOption() {}
 
     public ShippingOption shippingOptionType(ShippingOptionTypeEnum shippingOptionType) {
         this.shippingOptionType = shippingOptionType;
@@ -84,7 +105,7 @@ public class ShippingOption {
      *
      * @return shippingOptionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of shipping option.")
+    @javax.annotation.Nonnull
     public ShippingOptionTypeEnum getShippingOptionType() {
         return shippingOptionType;
     }
@@ -103,7 +124,7 @@ public class ShippingOption {
      *
      * @return price
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getPrice() {
         return price;
     }
@@ -113,7 +134,7 @@ public class ShippingOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +164,120 @@ public class ShippingOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shippingOptionType");
+        openapiFields.add("price");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shippingOptionType");
+        openapiRequiredFields.add("price");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingOption is not found in the empty JSON string",
+                        ShippingOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShippingOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("shippingOptionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingOptionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingOptionType").toString()));
+        }
+        // validate the required field `shippingOptionType`
+        ShippingOptionTypeEnum.validateJsonElement(jsonObj.get("shippingOptionType"));
+        // validate the required field `price`
+        MoneyType.validateJsonElement(jsonObj.get("price"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingOption>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingOption
+     * @throws IOException if the JSON string is invalid with respect to ShippingOption
+     */
+    public static ShippingOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingOption.class);
+    }
+
+    /**
+     * Convert an instance of ShippingOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

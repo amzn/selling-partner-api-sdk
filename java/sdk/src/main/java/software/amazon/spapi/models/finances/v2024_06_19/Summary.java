@@ -12,30 +12,62 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains all information related to the financial summary. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Contains all information related to the financial summary.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Summary {
-    @SerializedName("partnerMetadata")
-    private PartnerMetadata partnerMetadata = null;
+    public static final String SERIALIZED_NAME_PARTNER_METADATA = "partnerMetadata";
 
-    @SerializedName("netProceeds")
-    private Currency netProceeds = null;
+    @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+    private PartnerMetadata partnerMetadata;
 
-    @SerializedName("relatedIdentifiers")
-    private RelatedIdentifiers relatedIdentifiers = null;
+    public static final String SERIALIZED_NAME_NET_PROCEEDS = "netProceeds";
 
-    @SerializedName("breakdowns")
-    private Breakdowns breakdowns = null;
+    @SerializedName(SERIALIZED_NAME_NET_PROCEEDS)
+    private Currency netProceeds;
 
-    @SerializedName("periodStart")
-    private OffsetDateTime periodStart = null;
+    public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
-    @SerializedName("periodEnd")
-    private OffsetDateTime periodEnd = null;
+    @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
+
+    @SerializedName(SERIALIZED_NAME_BREAKDOWNS)
+    private List<Breakdown> breakdowns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PERIOD_START = "periodStart";
+
+    @SerializedName(SERIALIZED_NAME_PERIOD_START)
+    private OffsetDateTime periodStart;
+
+    public static final String SERIALIZED_NAME_PERIOD_END = "periodEnd";
+
+    @SerializedName(SERIALIZED_NAME_PERIOD_END)
+    private OffsetDateTime periodEnd;
+
+    public Summary() {}
 
     public Summary partnerMetadata(PartnerMetadata partnerMetadata) {
         this.partnerMetadata = partnerMetadata;
@@ -47,8 +79,7 @@ public class Summary {
      *
      * @return partnerMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartnerMetadata getPartnerMetadata() {
+    @javax.annotation.Nullable public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
 
@@ -66,8 +97,7 @@ public class Summary {
      *
      * @return netProceeds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getNetProceeds() {
+    @javax.annotation.Nullable public Currency getNetProceeds() {
         return netProceeds;
     }
 
@@ -75,41 +105,55 @@ public class Summary {
         this.netProceeds = netProceeds;
     }
 
-    public Summary relatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public Summary relatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public Summary addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the transaction.
      *
      * @return relatedIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
-    public Summary breakdowns(Breakdowns breakdowns) {
+    public Summary breakdowns(List<Breakdown> breakdowns) {
         this.breakdowns = breakdowns;
         return this;
     }
 
+    public Summary addBreakdownsItem(Breakdown breakdownsItem) {
+        if (this.breakdowns == null) {
+            this.breakdowns = new ArrayList<>();
+        }
+        this.breakdowns.add(breakdownsItem);
+        return this;
+    }
+
     /**
-     * Get breakdowns
+     * A list of breakdowns that detail how the total amount is calculated for the transaction.
      *
      * @return breakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Breakdowns getBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
 
-    public void setBreakdowns(Breakdowns breakdowns) {
+    public void setBreakdowns(List<Breakdown> breakdowns) {
         this.breakdowns = breakdowns;
     }
 
@@ -123,10 +167,7 @@ public class Summary {
      *
      * @return periodStart
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPeriodStart() {
+    @javax.annotation.Nullable public OffsetDateTime getPeriodStart() {
         return periodStart;
     }
 
@@ -144,10 +185,7 @@ public class Summary {
      *
      * @return periodEnd
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPeriodEnd() {
+    @javax.annotation.Nullable public OffsetDateTime getPeriodEnd() {
         return periodEnd;
     }
 
@@ -156,7 +194,7 @@ public class Summary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -196,10 +234,147 @@ public class Summary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partnerMetadata");
+        openapiFields.add("netProceeds");
+        openapiFields.add("relatedIdentifiers");
+        openapiFields.add("breakdowns");
+        openapiFields.add("periodStart");
+        openapiFields.add("periodEnd");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Summary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Summary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Summary is not found in the empty JSON string",
+                        Summary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Summary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Summary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `partnerMetadata`
+        if (jsonObj.get("partnerMetadata") != null
+                && !jsonObj.get("partnerMetadata").isJsonNull()) {
+            PartnerMetadata.validateJsonElement(jsonObj.get("partnerMetadata"));
+        }
+        // validate the optional field `netProceeds`
+        if (jsonObj.get("netProceeds") != null && !jsonObj.get("netProceeds").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("netProceeds"));
+        }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
+            JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");
+            if (jsonArraybreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("breakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `breakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("breakdowns").toString()));
+                }
+
+                // validate the optional field `breakdowns` (array)
+                for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Summary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Summary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Summary> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Summary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Summary>() {
+                        @Override
+                        public void write(JsonWriter out, Summary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Summary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Summary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Summary
+     * @throws IOException if the JSON string is invalid with respect to Summary
+     */
+    public static Summary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Summary.class);
+    }
+
+    /**
+     * Convert an instance of Summary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,16 +12,36 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;listItemComplianceDetails&#x60; response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `listItemComplianceDetails` response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListItemComplianceDetailsResponse {
-    @SerializedName("complianceDetails")
-    private List<ComplianceDetail> complianceDetails = null;
+    public static final String SERIALIZED_NAME_COMPLIANCE_DETAILS = "complianceDetails";
+
+    @SerializedName(SERIALIZED_NAME_COMPLIANCE_DETAILS)
+    private List<ComplianceDetail> complianceDetails = new ArrayList<>();
+
+    public ListItemComplianceDetailsResponse() {}
 
     public ListItemComplianceDetailsResponse complianceDetails(List<ComplianceDetail> complianceDetails) {
         this.complianceDetails = complianceDetails;
@@ -41,8 +61,7 @@ public class ListItemComplianceDetailsResponse {
      *
      * @return complianceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of compliance details.")
-    public List<ComplianceDetail> getComplianceDetails() {
+    @javax.annotation.Nullable public List<ComplianceDetail> getComplianceDetails() {
         return complianceDetails;
     }
 
@@ -51,7 +70,7 @@ public class ListItemComplianceDetailsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -79,10 +98,118 @@ public class ListItemComplianceDetailsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("complianceDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListItemComplianceDetailsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListItemComplianceDetailsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListItemComplianceDetailsResponse is not found in the empty JSON string",
+                        ListItemComplianceDetailsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListItemComplianceDetailsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListItemComplianceDetailsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("complianceDetails") != null
+                && !jsonObj.get("complianceDetails").isJsonNull()) {
+            JsonArray jsonArraycomplianceDetails = jsonObj.getAsJsonArray("complianceDetails");
+            if (jsonArraycomplianceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("complianceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `complianceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("complianceDetails").toString()));
+                }
+
+                // validate the optional field `complianceDetails` (array)
+                for (int i = 0; i < jsonArraycomplianceDetails.size(); i++) {
+                    ComplianceDetail.validateJsonElement(jsonArraycomplianceDetails.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListItemComplianceDetailsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListItemComplianceDetailsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListItemComplianceDetailsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListItemComplianceDetailsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListItemComplianceDetailsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListItemComplianceDetailsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListItemComplianceDetailsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListItemComplianceDetailsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListItemComplianceDetailsResponse
+     * @throws IOException if the JSON string is invalid with respect to ListItemComplianceDetailsResponse
+     */
+    public static ListItemComplianceDetailsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListItemComplianceDetailsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListItemComplianceDetailsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }
