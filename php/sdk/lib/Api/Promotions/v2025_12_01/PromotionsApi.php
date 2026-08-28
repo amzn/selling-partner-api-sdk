@@ -45,9 +45,7 @@ use SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse;
 use SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse;
 use SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
+use SpApi\RateLimitHandler;
 
 /**
  * PromotionsApi Class Doc Comment.
@@ -60,9 +58,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class PromotionsApi
 {
-    public ?LimiterInterface $getPromotionRateLimiter;
-    public ?LimiterInterface $getSelectionRateLimiter;
-    public ?LimiterInterface $searchPromotionsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,8 +69,7 @@ class PromotionsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
+    protected RateLimitHandler $rateLimitHandler;
 
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -83,27 +77,14 @@ class PromotionsApi
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('PromotionsApi-getPromotion'), $this->rateLimitStorage);
-            $this->getPromotionRateLimiter = $factory->create('PromotionsApi-getPromotion');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('PromotionsApi-getSelection'), $this->rateLimitStorage);
-            $this->getSelectionRateLimiter = $factory->create('PromotionsApi-getSelection');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('PromotionsApi-searchPromotions'), $this->rateLimitStorage);
-            $this->searchPromotionsRateLimiter = $factory->create('PromotionsApi-searchPromotions');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
+        $this->rateLimitHandler = new RateLimitHandler($config->getRateLimitEnabled());
     }
 
     /**
@@ -185,71 +166,74 @@ class PromotionsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /promotions/2025-12-01/promotions/{promotionId}';
 
+        $requestFn = function () use ($request) {
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPromotionRateLimiter->consume()->ensureAccepted();
+                $options = $this->createHttpClientOption();
+
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
 
-            $statusCode = $response->getStatusCode();
+                $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
                         $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse' !== 'string') {
-                    $content = json_decode($content);
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
                 }
+                if ('\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\GetPromotionResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -302,9 +286,6 @@ class PromotionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'PromotionsApi-getPromotion');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPromotionRateLimiter->consume()->ensureAccepted();
         }
 
         $skipModelValidation = $this->config->getSkipModelValidation();
@@ -541,71 +522,74 @@ class PromotionsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /promotions/2025-12-01/promotions/{promotionId}/selections/{selectionId}';
 
+        $requestFn = function () use ($request) {
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSelectionRateLimiter->consume()->ensureAccepted();
+                $options = $this->createHttpClientOption();
+
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
 
-            $statusCode = $response->getStatusCode();
+                $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
                         $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse' !== 'string') {
-                    $content = json_decode($content);
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
                 }
+                if ('\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\GetSelectionResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -682,9 +666,6 @@ class PromotionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'PromotionsApi-getSelection');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSelectionRateLimiter->consume()->ensureAccepted();
         }
 
         $skipModelValidation = $this->config->getSkipModelValidation();
@@ -1048,71 +1029,74 @@ class PromotionsApi
             $request = $this->config->sign($request);
         }
 
-        try {
-            $options = $this->createHttpClientOption();
+        $operationKey = 'GET /promotions/2025-12-01/promotions';
 
+        $requestFn = function () use ($request) {
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->searchPromotionsRateLimiter->consume()->ensureAccepted();
+                $options = $this->createHttpClientOption();
+
+                try {
+                    $response = $this->client->send($request, $options);
+                } catch (RequestException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                        (int) $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                    );
+                } catch (ConnectException $e) {
+                    throw new ApiException(
+                        "[{$e->getCode()}] {$e->getMessage()}",
+                        (int) $e->getCode(),
+                        null,
+                        null
+                    );
                 }
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
 
-            $statusCode = $response->getStatusCode();
+                $statusCode = $response->getStatusCode();
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
+                if ($statusCode < 200 || $statusCode > 299) {
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            (string) $request->getUri()
+                        ),
                         $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-            if ('\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse' === '\SplFileObject') {
-                $content = $response->getBody(); // stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ('\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse' !== 'string') {
-                    $content = json_decode($content);
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
                 }
+                if ('\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse' === '\SplFileObject') {
+                    $content = $response->getBody(); // stream goes to serializer
+                } else {
+                    $content = (string) $response->getBody();
+                    if ('\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse' !== 'string') {
+                        $content = json_decode($content);
+                    }
+                }
+
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+
+                return [
+                    ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse', []),
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            } catch (ApiException $e) {
+                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
+                $data = ObjectSerializer::deserialize(
+                    $e->getResponseBody(),
+                    '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
+                    $e->getResponseHeaders()
+                );
+                $e->setResponseObject($data);
+
+                throw $e;
             }
+        };
 
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-
-            return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\Promotions\v2025_12_01\SearchPromotionsResponse', []),
-                $response->getStatusCode(),
-                $response->getHeaders(),
-            ];
-        } catch (ApiException $e) {
-            ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
-            $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\SpApi\Model\Promotions\v2025_12_01\ErrorList',
-                $e->getResponseHeaders()
-            );
-            $e->setResponseObject($data);
-
-            throw $e;
-        }
+        return $this->rateLimitHandler->executeWithProtection($operationKey, $requestFn);
     }
 
     /**
@@ -1243,9 +1227,6 @@ class PromotionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'PromotionsApi-searchPromotions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->searchPromotionsRateLimiter->consume()->ensureAccepted();
         }
 
         $skipModelValidation = $this->config->getSkipModelValidation();

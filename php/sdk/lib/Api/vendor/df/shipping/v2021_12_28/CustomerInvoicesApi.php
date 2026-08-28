@@ -214,12 +214,13 @@ class CustomerInvoicesApi
                         }
                     }
 
-                    return [
+                    ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoice', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             } catch (ApiException $e) {
+                                                                                                                                                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
@@ -278,10 +279,12 @@ class CustomerInvoicesApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ($returnType === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -290,6 +293,8 @@ class CustomerInvoicesApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
@@ -530,12 +535,13 @@ class CustomerInvoicesApi
                         }
                     }
 
-                    return [
+                    ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());return [
                         ObjectSerializer::deserialize($content, '\SpApi\Model\vendor\df\shipping\v2021_12_28\CustomerInvoiceList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             } catch (ApiException $e) {
+                                                                                                                                ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SpApi\Model\vendor\df\shipping\v2021_12_28\ErrorList',
@@ -624,10 +630,12 @@ class CustomerInvoicesApi
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     if ($returnType === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -636,6 +644,8 @@ class CustomerInvoicesApi
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
