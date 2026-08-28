@@ -61,8 +61,6 @@ esac
 
 # Every language is generated through the openapi-generator-cli wrapper.
 GENERATOR=(openapi-generator-cli generate)
-# Java keeps the historical --generate-alias-as-model behaviour.
-[[ "$LANGUAGE" == "java" ]] && GENERATOR+=(--generate-alias-as-model)
 TEMPLATE="../templates/$LANGUAGE"
 
 # Strip leading/trailing whitespace.
