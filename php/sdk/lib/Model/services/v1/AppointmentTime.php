@@ -294,11 +294,11 @@ class AppointmentTime implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($duration_in_minutes)) {
             throw new \InvalidArgumentException('non-nullable duration_in_minutes cannot be null');
         }
-
-        if ($duration_in_minutes < 1) {
-            throw new \InvalidArgumentException('invalid value for $duration_in_minutes when calling AppointmentTime., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($duration_in_minutes < 1) {
+                throw new \InvalidArgumentException('invalid value for $duration_in_minutes when calling AppointmentTime., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['duration_in_minutes'] = $duration_in_minutes;
 
         return $this;

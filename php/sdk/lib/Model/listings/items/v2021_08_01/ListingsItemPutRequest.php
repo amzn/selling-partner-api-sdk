@@ -332,15 +332,17 @@ class ListingsItemPutRequest implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getRequirementsAllowableValues();
-        if (!is_null($requirements) && !in_array($requirements, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'requirements', must be one of '%s'",
-                    $requirements,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRequirementsAllowableValues();
+            if (!is_null($requirements) && !in_array($requirements, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'requirements', must be one of '%s'",
+                        $requirements,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['requirements'] = $requirements;
 

@@ -261,9 +261,10 @@ class SetPackingInformationRequest implements ModelInterface, \ArrayAccess, \Jso
         if (is_null($package_groupings)) {
             throw new \InvalidArgumentException('non-nullable package_groupings cannot be null');
         }
-
-        if (count($package_groupings) < 1) {
-            throw new \InvalidArgumentException('invalid length for $package_groupings when calling SetPackingInformationRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($package_groupings) < 1) {
+                throw new \InvalidArgumentException('invalid length for $package_groupings when calling SetPackingInformationRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['package_groupings'] = $package_groupings;
 

@@ -1,0 +1,36 @@
+# Model files to EXCLUDE from SDK generation.
+#
+# generate-sdk.sh walks every *.json file under <models-repo>/models and
+# generates an SDK for each one. Any file whose path (relative to the models
+# repo, e.g. "models/foo-api-model/bar.json") matches an entry below is skipped.
+#
+# Entries are matched as shell glob patterns, so wildcards work, for example:
+#   models/foo-api-model/*.json        skip every model in a folder
+#   models/*/*Sandbox*.json            skip sandbox specs anywhere
+#
+# Blank lines and lines starting with '#' are ignored.
+#
+# The entries below are superseded/duplicate specs and non-API fixtures that
+# were never part of the generated SDK. Keeping them here preserves the exact
+# previous output (no breaking changes).
+
+# Superseded catalog-items versions (current: catalogItems_2022-04-01.json)
+models/catalog-items-api-model/catalogItems_2020-12-01.json
+models/catalog-items-api-model/catalogItemsV0.json
+
+# Superseded listings-items version (current: listingsItems_2021-08-01.json)
+models/listings-items-api-model/listingsItems_2020-09-01.json
+
+# Superseded shipping version (current: shippingV2.json)
+models/shipping-api-model/shipping.json
+
+# Superseded vendor direct fulfillment V1 specs (current: *_2021-12-28.json)
+models/vendor-direct-fulfillment-orders-api-model/vendorDirectFulfillmentOrdersV1.json
+models/vendor-direct-fulfillment-shipping-api-model/vendorDirectFulfillmentShippingV1.json
+models/vendor-direct-fulfillment-transactions-api-model/vendorDirectFulfillmentTransactionsV1.json
+
+# Sandbox test-data fixture, not a generatable API
+models/vendor-direct-fulfillment-sandbox-test-data-api-model/vendorDirectFulfillmentSandboxData_2021-10-28.json
+
+# Never onboarded into the SDK. Remove this line to start generating it.
+models/delivery-by-amazon/deliveryShipmentInvoiceV2022-07-01.json

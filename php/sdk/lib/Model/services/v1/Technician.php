@@ -276,13 +276,14 @@ class Technician implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($technician_id) && (mb_strlen($technician_id) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be smaller than or equal to 50.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($technician_id) && (mb_strlen($technician_id) > 50)) {
+                throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be smaller than or equal to 50.');
+            }
+            if (!is_null($technician_id) && (mb_strlen($technician_id) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($technician_id) && (mb_strlen($technician_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $technician_id when calling Technician., must be bigger than or equal to 1.');
-        }
-
         $this->container['technician_id'] = $technician_id;
 
         return $this;

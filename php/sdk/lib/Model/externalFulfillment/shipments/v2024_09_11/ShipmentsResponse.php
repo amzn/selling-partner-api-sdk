@@ -273,9 +273,10 @@ class ShipmentsResponse implements ModelInterface, \ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($shipments) && (count($shipments) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $shipments when calling ShipmentsResponse., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipments) && (count($shipments) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $shipments when calling ShipmentsResponse., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['shipments'] = $shipments;
 

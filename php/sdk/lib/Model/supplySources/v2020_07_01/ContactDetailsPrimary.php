@@ -270,11 +270,11 @@ class ContactDetailsPrimary implements ModelInterface, \ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($email) && (!preg_match('/^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/', ObjectSerializer::toString($email)))) {
-            throw new \InvalidArgumentException('invalid value for $email when calling ContactDetailsPrimary., must conform to the pattern /^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($email) && (!preg_match('/^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/', ObjectSerializer::toString($email)))) {
+                throw new \InvalidArgumentException('invalid value for $email when calling ContactDetailsPrimary., must conform to the pattern /^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$/.');
+            }
         }
-
         $this->container['email'] = $email;
 
         return $this;

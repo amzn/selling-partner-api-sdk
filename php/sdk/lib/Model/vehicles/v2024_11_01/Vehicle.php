@@ -521,9 +521,10 @@ class Vehicle implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($engine_output) && (count($engine_output) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $engine_output when calling Vehicle., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($engine_output) && (count($engine_output) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $engine_output when calling Vehicle., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['engine_output'] = $engine_output;
 
@@ -668,9 +669,10 @@ class Vehicle implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($identifiers)) {
             throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
         }
-
-        if (count($identifiers) < 1) {
-            throw new \InvalidArgumentException('invalid length for $identifiers when calling Vehicle., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($identifiers) < 1) {
+                throw new \InvalidArgumentException('invalid length for $identifiers when calling Vehicle., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['identifiers'] = $identifiers;
 

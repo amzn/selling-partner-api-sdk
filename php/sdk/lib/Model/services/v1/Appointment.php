@@ -343,13 +343,14 @@ class Appointment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($appointment_id) && (mb_strlen($appointment_id) > 100)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be smaller than or equal to 100.');
+            }
+            if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
+                throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be bigger than or equal to 5.');
+            }
         }
-        if (!is_null($appointment_id) && (mb_strlen($appointment_id) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $appointment_id when calling Appointment., must be bigger than or equal to 5.');
-        }
-
         $this->container['appointment_id'] = $appointment_id;
 
         return $this;
@@ -380,15 +381,17 @@ class Appointment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAppointmentStatusAllowableValues();
-        if (!is_null($appointment_status) && !in_array($appointment_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'appointment_status', must be one of '%s'",
-                    $appointment_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getAppointmentStatusAllowableValues();
+            if (!is_null($appointment_status) && !in_array($appointment_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'appointment_status', must be one of '%s'",
+                        $appointment_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['appointment_status'] = $appointment_status;
 
@@ -450,9 +453,10 @@ class Appointment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($assigned_technicians) && (count($assigned_technicians) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $assigned_technicians when calling Appointment., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($assigned_technicians) && (count($assigned_technicians) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $assigned_technicians when calling Appointment., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['assigned_technicians'] = $assigned_technicians;
 
@@ -484,13 +488,14 @@ class Appointment implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) > 100)) {
+                throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be smaller than or equal to 100.');
+            }
+            if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) < 5)) {
+                throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be bigger than or equal to 5.');
+            }
         }
-        if (!is_null($rescheduled_appointment_id) && (mb_strlen($rescheduled_appointment_id) < 5)) {
-            throw new \InvalidArgumentException('invalid length for $rescheduled_appointment_id when calling Appointment., must be bigger than or equal to 5.');
-        }
-
         $this->container['rescheduled_appointment_id'] = $rescheduled_appointment_id;
 
         return $this;

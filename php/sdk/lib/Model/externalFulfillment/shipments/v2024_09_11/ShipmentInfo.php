@@ -406,15 +406,17 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($shipment_type)) {
             throw new \InvalidArgumentException('non-nullable shipment_type cannot be null');
         }
-        $allowedValues = $this->getShipmentTypeAllowableValues();
-        if (!in_array($shipment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_type', must be one of '%s'",
-                    $shipment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentTypeAllowableValues();
+            if (!in_array($shipment_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_type', must be one of '%s'",
+                        $shipment_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_type'] = $shipment_type;
 
@@ -469,11 +471,11 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($number_of_units)) {
             throw new \InvalidArgumentException('non-nullable number_of_units cannot be null');
         }
-
-        if ($number_of_units < 1) {
-            throw new \InvalidArgumentException('invalid value for $number_of_units when calling ShipmentInfo., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($number_of_units < 1) {
+                throw new \InvalidArgumentException('invalid value for $number_of_units when calling ShipmentInfo., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['number_of_units'] = $number_of_units;
 
         return $this;
@@ -550,9 +552,10 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($order_states_eligible_for_rejection) && (count($order_states_eligible_for_rejection) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $order_states_eligible_for_rejection when calling ShipmentInfo., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($order_states_eligible_for_rejection) && (count($order_states_eligible_for_rejection) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $order_states_eligible_for_rejection when calling ShipmentInfo., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['order_states_eligible_for_rejection'] = $order_states_eligible_for_rejection;
 
@@ -614,15 +617,17 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getProcessingSourceAllowableValues();
-        if (!is_null($processing_source) && !in_array($processing_source, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'processing_source', must be one of '%s'",
-                    $processing_source,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getProcessingSourceAllowableValues();
+            if (!is_null($processing_source) && !in_array($processing_source, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'processing_source', must be one of '%s'",
+                        $processing_source,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['processing_source'] = $processing_source;
 
@@ -654,15 +659,17 @@ class ShipmentInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_method', must be one of '%s'",
-                    $payment_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPaymentMethodAllowableValues();
+            if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'payment_method', must be one of '%s'",
+                        $payment_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['payment_method'] = $payment_method;
 

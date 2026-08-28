@@ -299,9 +299,10 @@ class ShipmentAcknowledgementRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($line_items)) {
             throw new \InvalidArgumentException('non-nullable line_items cannot be null');
         }
-
-        if (count($line_items) < 0) {
-            throw new \InvalidArgumentException('invalid length for $line_items when calling ShipmentAcknowledgementRequest., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($line_items) < 0) {
+                throw new \InvalidArgumentException('invalid length for $line_items when calling ShipmentAcknowledgementRequest., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['line_items'] = $line_items;
 

@@ -399,15 +399,17 @@ class DetailedShippingTimeType implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAvailabilityTypeAllowableValues();
-        if (!is_null($availability_type) && !in_array($availability_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'availability_type', must be one of '%s'",
-                    $availability_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getAvailabilityTypeAllowableValues();
+            if (!is_null($availability_type) && !in_array($availability_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'availability_type', must be one of '%s'",
+                        $availability_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['availability_type'] = $availability_type;
 

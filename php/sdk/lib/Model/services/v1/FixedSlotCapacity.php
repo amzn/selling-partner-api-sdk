@@ -310,7 +310,8 @@ class FixedSlotCapacity implements ModelInterface, \ArrayAccess, \JsonSerializab
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['slot_duration'] = $slot_duration;
 
         return $this;

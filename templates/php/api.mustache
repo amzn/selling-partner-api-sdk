@@ -264,7 +264,7 @@ use {{invokerPackage}}\RateLimitHandler;
                         }
                     }
 
-                    return [
+                    ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());return [
                         ObjectSerializer::deserialize($content, '{{{dataType}}}', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
@@ -276,7 +276,7 @@ use {{invokerPackage}}\RateLimitHandler;
             } catch (ApiException $e) {
                 {{#responses}}
                 {{#dataType}}
-                {{#-last}}
+                {{#-last}}ObjectSerializer::setSkipModelValidation($this->config->getSkipModelValidation());
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '{{{dataType}}}',
@@ -388,10 +388,12 @@ use {{invokerPackage}}\RateLimitHandler;
             $request = $this->config->sign($request);
         }
 
+        $skipModelValidation = $this->config->getSkipModelValidation();
+
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
+                function ($response) use ($returnType, $skipModelValidation) {
                     {{#returnType}}
                     if ($returnType === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -401,6 +403,8 @@ use {{invokerPackage}}\RateLimitHandler;
                             $content = json_decode($content);
                         }
                     }
+
+                    ObjectSerializer::setSkipModelValidation($skipModelValidation);
 
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),

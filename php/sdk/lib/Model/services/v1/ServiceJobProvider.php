@@ -265,11 +265,11 @@ class ServiceJobProvider implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($service_job_provider_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($service_job_provider_id)))) {
-            throw new \InvalidArgumentException('invalid value for $service_job_provider_id when calling ServiceJobProvider., must conform to the pattern /^[A-Z0-9]*$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($service_job_provider_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($service_job_provider_id)))) {
+                throw new \InvalidArgumentException('invalid value for $service_job_provider_id when calling ServiceJobProvider., must conform to the pattern /^[A-Z0-9]*$/.');
+            }
         }
-
         $this->container['service_job_provider_id'] = $service_job_provider_id;
 
         return $this;

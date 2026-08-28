@@ -272,10 +272,11 @@ class DeliveryPreferences implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($delivery_instructions) && (mb_strlen($delivery_instructions) > 250)) {
-            throw new \InvalidArgumentException('invalid length for $delivery_instructions when calling DeliveryPreferences., must be smaller than or equal to 250.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($delivery_instructions) && (mb_strlen($delivery_instructions) > 250)) {
+                throw new \InvalidArgumentException('invalid length for $delivery_instructions when calling DeliveryPreferences., must be smaller than or equal to 250.');
+            }
         }
-
         $this->container['delivery_instructions'] = $delivery_instructions;
 
         return $this;

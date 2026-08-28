@@ -284,12 +284,13 @@ class StandardComparisonTableModule implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($product_columns) && (count($product_columns) > 6)) {
-            throw new \InvalidArgumentException('invalid value for $product_columns when calling StandardComparisonTableModule., number of items must be less than or equal to 6.');
-        }
-        if (!is_null($product_columns) && (count($product_columns) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $product_columns when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($product_columns) && (count($product_columns) > 6)) {
+                throw new \InvalidArgumentException('invalid value for $product_columns when calling StandardComparisonTableModule., number of items must be less than or equal to 6.');
+            }
+            if (!is_null($product_columns) && (count($product_columns) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $product_columns when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['product_columns'] = $product_columns;
 
@@ -321,12 +322,13 @@ class StandardComparisonTableModule implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($metric_row_labels) && (count($metric_row_labels) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $metric_row_labels when calling StandardComparisonTableModule., number of items must be less than or equal to 10.');
-        }
-        if (!is_null($metric_row_labels) && (count($metric_row_labels) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $metric_row_labels when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($metric_row_labels) && (count($metric_row_labels) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $metric_row_labels when calling StandardComparisonTableModule., number of items must be less than or equal to 10.');
+            }
+            if (!is_null($metric_row_labels) && (count($metric_row_labels) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $metric_row_labels when calling StandardComparisonTableModule., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['metric_row_labels'] = $metric_row_labels;
 

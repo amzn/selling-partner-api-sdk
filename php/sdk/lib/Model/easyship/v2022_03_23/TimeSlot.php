@@ -286,13 +286,14 @@ class TimeSlot implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($slot_id)) {
             throw new \InvalidArgumentException('non-nullable slot_id cannot be null');
         }
-        if (mb_strlen($slot_id) > 255) {
-            throw new \InvalidArgumentException('invalid length for $slot_id when calling TimeSlot., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($slot_id) > 255) {
+                throw new \InvalidArgumentException('invalid length for $slot_id when calling TimeSlot., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($slot_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $slot_id when calling TimeSlot., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($slot_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $slot_id when calling TimeSlot., must be bigger than or equal to 1.');
-        }
-
         $this->container['slot_id'] = $slot_id;
 
         return $this;

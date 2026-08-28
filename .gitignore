@@ -16,7 +16,8 @@ php/sdk/composer.lock
 javascript/openapitools.json
 python/openapitools.json
 **/testreports/
-**/.openapi-generator/
+**/sdk/.openapi-generator/
 **/.idea
 **/Folder.DotSettings.user
+csharp/sdk/api/
 .kiro/**

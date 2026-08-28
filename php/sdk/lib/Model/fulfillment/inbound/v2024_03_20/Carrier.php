@@ -284,13 +284,14 @@ class Carrier implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($alpha_code) && (mb_strlen($alpha_code) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($alpha_code) && (mb_strlen($alpha_code) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($alpha_code) && (mb_strlen($alpha_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($alpha_code) && (mb_strlen($alpha_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $alpha_code when calling Carrier., must be bigger than or equal to 1.');
-        }
-
         $this->container['alpha_code'] = $alpha_code;
 
         return $this;
@@ -321,13 +322,14 @@ class Carrier implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($name) && (mb_strlen($name) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($name) && (mb_strlen($name) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($name) && (mb_strlen($name) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($name) && (mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Carrier., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;

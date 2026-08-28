@@ -309,12 +309,13 @@ class CreateInboundPlanRequest implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($destination_marketplaces)) {
             throw new \InvalidArgumentException('non-nullable destination_marketplaces cannot be null');
         }
-
-        if (count($destination_marketplaces) > 1) {
-            throw new \InvalidArgumentException('invalid value for $destination_marketplaces when calling CreateInboundPlanRequest., number of items must be less than or equal to 1.');
-        }
-        if (count($destination_marketplaces) < 1) {
-            throw new \InvalidArgumentException('invalid length for $destination_marketplaces when calling CreateInboundPlanRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($destination_marketplaces) > 1) {
+                throw new \InvalidArgumentException('invalid value for $destination_marketplaces when calling CreateInboundPlanRequest., number of items must be less than or equal to 1.');
+            }
+            if (count($destination_marketplaces) < 1) {
+                throw new \InvalidArgumentException('invalid length for $destination_marketplaces when calling CreateInboundPlanRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['destination_marketplaces'] = $destination_marketplaces;
 
@@ -339,12 +340,13 @@ class CreateInboundPlanRequest implements ModelInterface, \ArrayAccess, \JsonSer
         if (is_null($items)) {
             throw new \InvalidArgumentException('non-nullable items cannot be null');
         }
-
-        if (count($items) > 2000) {
-            throw new \InvalidArgumentException('invalid value for $items when calling CreateInboundPlanRequest., number of items must be less than or equal to 2000.');
-        }
-        if (count($items) < 1) {
-            throw new \InvalidArgumentException('invalid length for $items when calling CreateInboundPlanRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($items) > 2000) {
+                throw new \InvalidArgumentException('invalid value for $items when calling CreateInboundPlanRequest., number of items must be less than or equal to 2000.');
+            }
+            if (count($items) < 1) {
+                throw new \InvalidArgumentException('invalid length for $items when calling CreateInboundPlanRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['items'] = $items;
 
@@ -376,13 +378,14 @@ class CreateInboundPlanRequest implements ModelInterface, \ArrayAccess, \JsonSer
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($name) && (mb_strlen($name) > 40)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($name) && (mb_strlen($name) > 40)) {
+                throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be smaller than or equal to 40.');
+            }
+            if (!is_null($name) && (mb_strlen($name) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($name) && (mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateInboundPlanRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;

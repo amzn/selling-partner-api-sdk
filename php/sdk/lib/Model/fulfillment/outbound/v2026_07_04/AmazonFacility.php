@@ -268,10 +268,11 @@ class AmazonFacility implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($facility_id)) {
             throw new \InvalidArgumentException('non-nullable facility_id cannot be null');
         }
-        if (mb_strlen($facility_id) > 40) {
-            throw new \InvalidArgumentException('invalid length for $facility_id when calling AmazonFacility., must be smaller than or equal to 40.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($facility_id) > 40) {
+                throw new \InvalidArgumentException('invalid length for $facility_id when calling AmazonFacility., must be smaller than or equal to 40.');
+            }
         }
-
         $this->container['facility_id'] = $facility_id;
 
         return $this;

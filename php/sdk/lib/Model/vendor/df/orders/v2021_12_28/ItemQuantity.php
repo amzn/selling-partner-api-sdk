@@ -383,15 +383,17 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getUnitOfMeasureAllowableValues();
-        if (!is_null($unit_of_measure) && !in_array($unit_of_measure, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
-                    $unit_of_measure,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getUnitOfMeasureAllowableValues();
+            if (!is_null($unit_of_measure) && !in_array($unit_of_measure, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                        $unit_of_measure,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['unit_of_measure'] = $unit_of_measure;
 

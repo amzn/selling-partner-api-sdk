@@ -265,11 +265,11 @@ class Seller implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($seller_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($seller_id)))) {
-            throw new \InvalidArgumentException('invalid value for $seller_id when calling Seller., must conform to the pattern /^[A-Z0-9]*$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($seller_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($seller_id)))) {
+                throw new \InvalidArgumentException('invalid value for $seller_id when calling Seller., must conform to the pattern /^[A-Z0-9]*$/.');
+            }
         }
-
         $this->container['seller_id'] = $seller_id;
 
         return $this;

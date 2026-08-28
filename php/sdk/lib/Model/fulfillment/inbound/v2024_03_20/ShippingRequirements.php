@@ -298,13 +298,14 @@ class ShippingRequirements implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($solution)) {
             throw new \InvalidArgumentException('non-nullable solution cannot be null');
         }
-        if (mb_strlen($solution) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $solution when calling ShippingRequirements., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($solution) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $solution when calling ShippingRequirements., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($solution) < 1) {
+                throw new \InvalidArgumentException('invalid length for $solution when calling ShippingRequirements., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($solution) < 1) {
-            throw new \InvalidArgumentException('invalid length for $solution when calling ShippingRequirements., must be bigger than or equal to 1.');
-        }
-
         $this->container['solution'] = $solution;
 
         return $this;

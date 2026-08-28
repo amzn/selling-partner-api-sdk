@@ -269,13 +269,14 @@ class Pagination implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($next_token) && (mb_strlen($next_token) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next_token) && (mb_strlen($next_token) > 1024)) {
+                throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be smaller than or equal to 1024.');
+            }
+            if (!is_null($next_token) && (mb_strlen($next_token) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($next_token) && (mb_strlen($next_token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $next_token when calling Pagination., must be bigger than or equal to 1.');
-        }
-
         $this->container['next_token'] = $next_token;
 
         return $this;

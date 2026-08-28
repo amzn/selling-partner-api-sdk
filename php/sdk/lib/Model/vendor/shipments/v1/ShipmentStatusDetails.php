@@ -355,15 +355,17 @@ class ShipmentStatusDetails implements ModelInterface, ArrayAccess, \JsonSeriali
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShipmentStatusAllowableValues();
-        if (!is_null($shipment_status) && !in_array($shipment_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shipment_status', must be one of '%s'",
-                    $shipment_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipmentStatusAllowableValues();
+            if (!is_null($shipment_status) && !in_array($shipment_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'shipment_status', must be one of '%s'",
+                        $shipment_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['shipment_status'] = $shipment_status;
 

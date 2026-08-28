@@ -287,16 +287,17 @@ class PlacementOptionSummary implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($placement_option_id)) {
             throw new \InvalidArgumentException('non-nullable placement_option_id cannot be null');
         }
-        if (mb_strlen($placement_option_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $placement_option_id when calling PlacementOptionSummary., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($placement_option_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $placement_option_id when calling PlacementOptionSummary., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($placement_option_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $placement_option_id when calling PlacementOptionSummary., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($placement_option_id))) {
+                throw new \InvalidArgumentException('invalid value for $placement_option_id when calling PlacementOptionSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($placement_option_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $placement_option_id when calling PlacementOptionSummary., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($placement_option_id))) {
-            throw new \InvalidArgumentException('invalid value for $placement_option_id when calling PlacementOptionSummary., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['placement_option_id'] = $placement_option_id;
 
         return $this;
@@ -320,13 +321,14 @@ class PlacementOptionSummary implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        if (mb_strlen($status) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $status when calling PlacementOptionSummary., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($status) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $status when calling PlacementOptionSummary., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($status) < 1) {
+                throw new \InvalidArgumentException('invalid length for $status when calling PlacementOptionSummary., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($status) < 1) {
-            throw new \InvalidArgumentException('invalid length for $status when calling PlacementOptionSummary., must be bigger than or equal to 1.');
-        }
-
         $this->container['status'] = $status;
 
         return $this;

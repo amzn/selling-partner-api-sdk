@@ -320,15 +320,17 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($weight_unit)) {
             throw new \InvalidArgumentException('non-nullable weight_unit cannot be null');
         }
-        $allowedValues = $this->getWeightUnitAllowableValues();
-        if (!in_array($weight_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'weight_unit', must be one of '%s'",
-                    $weight_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getWeightUnitAllowableValues();
+            if (!in_array($weight_unit, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'weight_unit', must be one of '%s'",
+                        $weight_unit,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['weight_unit'] = $weight_unit;
 

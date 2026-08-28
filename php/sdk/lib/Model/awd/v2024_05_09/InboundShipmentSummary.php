@@ -367,11 +367,11 @@ class InboundShipmentSummary implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($order_id)) {
             throw new \InvalidArgumentException('non-nullable order_id cannot be null');
         }
-
-        if (mb_strlen($order_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $order_id when calling InboundShipmentSummary., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($order_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $order_id when calling InboundShipmentSummary., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -395,11 +395,11 @@ class InboundShipmentSummary implements ModelInterface, \ArrayAccess, \JsonSeria
         if (is_null($shipment_id)) {
             throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
         }
-
-        if (mb_strlen($shipment_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling InboundShipmentSummary., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($shipment_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling InboundShipmentSummary., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['shipment_id'] = $shipment_id;
 
         return $this;

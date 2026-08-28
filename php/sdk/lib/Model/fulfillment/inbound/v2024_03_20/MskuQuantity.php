@@ -283,13 +283,14 @@ class MskuQuantity implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($msku)) {
             throw new \InvalidArgumentException('non-nullable msku cannot be null');
         }
-        if (mb_strlen($msku) > 255) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling MskuQuantity., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($msku) > 255) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling MskuQuantity., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($msku) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling MskuQuantity., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($msku) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling MskuQuantity., must be bigger than or equal to 1.');
-        }
-
         $this->container['msku'] = $msku;
 
         return $this;
@@ -313,14 +314,14 @@ class MskuQuantity implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity > 10000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling MskuQuantity., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity > 10000) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling MskuQuantity., must be smaller than or equal to 10000.');
+            }
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling MskuQuantity., must be bigger than or equal to 1.');
+            }
         }
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling MskuQuantity., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

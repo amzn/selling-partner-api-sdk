@@ -623,14 +623,14 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos < 0)) {
+                throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($not_delivered_due_to_oos) && ($not_delivered_due_to_oos < 0)) {
-            throw new \InvalidArgumentException('invalid value for $not_delivered_due_to_oos when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
-        }
-
         $this->container['not_delivered_due_to_oos'] = $not_delivered_due_to_oos;
 
         return $this;
@@ -661,11 +661,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($total_subscriptions_revenue) && ($total_subscriptions_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($total_subscriptions_revenue) && ($total_subscriptions_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['total_subscriptions_revenue'] = $total_subscriptions_revenue;
 
         return $this;
@@ -696,11 +696,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($shipped_subscription_units) && ($shipped_subscription_units < 0)) {
-            throw new \InvalidArgumentException('invalid value for $shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipped_subscription_units) && ($shipped_subscription_units < 0)) {
+                throw new \InvalidArgumentException('invalid value for $shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['shipped_subscription_units'] = $shipped_subscription_units;
 
         return $this;
@@ -731,11 +731,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($active_subscriptions) && ($active_subscriptions < 0)) {
-            throw new \InvalidArgumentException('invalid value for $active_subscriptions when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($active_subscriptions) && ($active_subscriptions < 0)) {
+                throw new \InvalidArgumentException('invalid value for $active_subscriptions when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['active_subscriptions'] = $active_subscriptions;
 
         return $this;
@@ -766,14 +766,14 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($revenue_penetration) && ($revenue_penetration > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($revenue_penetration) && ($revenue_penetration > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($revenue_penetration) && ($revenue_penetration < 0)) {
+                throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($revenue_penetration) && ($revenue_penetration < 0)) {
-            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
-        }
-
         $this->container['revenue_penetration'] = $revenue_penetration;
 
         return $this;
@@ -804,11 +804,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($lost_revenue_due_to_oos) && ($lost_revenue_due_to_oos < 0)) {
-            throw new \InvalidArgumentException('invalid value for $lost_revenue_due_to_oos when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($lost_revenue_due_to_oos) && ($lost_revenue_due_to_oos < 0)) {
+                throw new \InvalidArgumentException('invalid value for $lost_revenue_due_to_oos when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['lost_revenue_due_to_oos'] = $lost_revenue_due_to_oos;
 
         return $this;
@@ -839,14 +839,14 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration < 0)) {
+                throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($coupons_revenue_penetration) && ($coupons_revenue_penetration < 0)) {
-            throw new \InvalidArgumentException('invalid value for $coupons_revenue_penetration when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
-        }
-
         $this->container['coupons_revenue_penetration'] = $coupons_revenue_penetration;
 
         return $this;
@@ -877,14 +877,14 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling ListOfferMetricsResponseOffer., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions < 0)) {
+                throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-        if (!is_null($share_of_coupon_subscriptions) && ($share_of_coupon_subscriptions < 0)) {
-            throw new \InvalidArgumentException('invalid value for $share_of_coupon_subscriptions when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
-        }
-
         $this->container['share_of_coupon_subscriptions'] = $share_of_coupon_subscriptions;
 
         return $this;
@@ -915,11 +915,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next30_day_total_subscriptions_revenue) && ($next30_day_total_subscriptions_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next30_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next30_day_total_subscriptions_revenue) && ($next30_day_total_subscriptions_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next30_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next30_day_total_subscriptions_revenue'] = $next30_day_total_subscriptions_revenue;
 
         return $this;
@@ -950,11 +950,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next60_day_total_subscriptions_revenue) && ($next60_day_total_subscriptions_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next60_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next60_day_total_subscriptions_revenue) && ($next60_day_total_subscriptions_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next60_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next60_day_total_subscriptions_revenue'] = $next60_day_total_subscriptions_revenue;
 
         return $this;
@@ -985,11 +985,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next90_day_total_subscriptions_revenue) && ($next90_day_total_subscriptions_revenue < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next90_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next90_day_total_subscriptions_revenue) && ($next90_day_total_subscriptions_revenue < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next90_day_total_subscriptions_revenue when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next90_day_total_subscriptions_revenue'] = $next90_day_total_subscriptions_revenue;
 
         return $this;
@@ -1020,11 +1020,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next30_day_shipped_subscription_units) && ($next30_day_shipped_subscription_units < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next30_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next30_day_shipped_subscription_units) && ($next30_day_shipped_subscription_units < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next30_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next30_day_shipped_subscription_units'] = $next30_day_shipped_subscription_units;
 
         return $this;
@@ -1055,11 +1055,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next60_day_shipped_subscription_units) && ($next60_day_shipped_subscription_units < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next60_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next60_day_shipped_subscription_units) && ($next60_day_shipped_subscription_units < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next60_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next60_day_shipped_subscription_units'] = $next60_day_shipped_subscription_units;
 
         return $this;
@@ -1090,11 +1090,11 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($next90_day_shipped_subscription_units) && ($next90_day_shipped_subscription_units < 0)) {
-            throw new \InvalidArgumentException('invalid value for $next90_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($next90_day_shipped_subscription_units) && ($next90_day_shipped_subscription_units < 0)) {
+                throw new \InvalidArgumentException('invalid value for $next90_day_shipped_subscription_units when calling ListOfferMetricsResponseOffer., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['next90_day_shipped_subscription_units'] = $next90_day_shipped_subscription_units;
 
         return $this;

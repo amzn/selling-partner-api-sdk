@@ -373,13 +373,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($asin)) {
             throw new \InvalidArgumentException('non-nullable asin cannot be null');
         }
-        if (mb_strlen($asin) > 10) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling Item., must be smaller than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($asin) > 10) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling Item., must be smaller than or equal to 10.');
+            }
+            if (mb_strlen($asin) < 1) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($asin) < 1) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['asin'] = $asin;
 
         return $this;
@@ -410,11 +411,11 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($expiration) && (!preg_match('/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', ObjectSerializer::toString($expiration)))) {
-            throw new \InvalidArgumentException('invalid value for $expiration when calling Item., must conform to the pattern /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($expiration) && (!preg_match('/^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', ObjectSerializer::toString($expiration)))) {
+                throw new \InvalidArgumentException('invalid value for $expiration when calling Item., must conform to the pattern /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.');
+            }
         }
-
         $this->container['expiration'] = $expiration;
 
         return $this;
@@ -438,13 +439,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($fnsku)) {
             throw new \InvalidArgumentException('non-nullable fnsku cannot be null');
         }
-        if (mb_strlen($fnsku) > 10) {
-            throw new \InvalidArgumentException('invalid length for $fnsku when calling Item., must be smaller than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($fnsku) > 10) {
+                throw new \InvalidArgumentException('invalid length for $fnsku when calling Item., must be smaller than or equal to 10.');
+            }
+            if (mb_strlen($fnsku) < 1) {
+                throw new \InvalidArgumentException('invalid length for $fnsku when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($fnsku) < 1) {
-            throw new \InvalidArgumentException('invalid length for $fnsku when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['fnsku'] = $fnsku;
 
         return $this;
@@ -468,13 +470,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($label_owner)) {
             throw new \InvalidArgumentException('non-nullable label_owner cannot be null');
         }
-        if (mb_strlen($label_owner) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $label_owner when calling Item., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($label_owner) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $label_owner when calling Item., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($label_owner) < 1) {
+                throw new \InvalidArgumentException('invalid length for $label_owner when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($label_owner) < 1) {
-            throw new \InvalidArgumentException('invalid length for $label_owner when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['label_owner'] = $label_owner;
 
         return $this;
@@ -505,13 +508,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) > 256)) {
-            throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling Item., must be smaller than or equal to 256.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) > 256)) {
+                throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling Item., must be smaller than or equal to 256.');
+            }
+            if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($manufacturing_lot_code) && (mb_strlen($manufacturing_lot_code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $manufacturing_lot_code when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['manufacturing_lot_code'] = $manufacturing_lot_code;
 
         return $this;
@@ -535,13 +539,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($msku)) {
             throw new \InvalidArgumentException('non-nullable msku cannot be null');
         }
-        if (mb_strlen($msku) > 255) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling Item., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($msku) > 255) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling Item., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($msku) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($msku) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['msku'] = $msku;
 
         return $this;
@@ -588,14 +593,14 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity > 500000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Item., must be smaller than or equal to 500000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity > 500000) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling Item., must be smaller than or equal to 500000.');
+            }
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling Item., must be bigger than or equal to 1.');
+            }
         }
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling Item., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

@@ -470,15 +470,17 @@ class InvoiceHeader implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($invoice_status)) {
             throw new \InvalidArgumentException('non-nullable invoice_status cannot be null');
         }
-        $allowedValues = $this->getInvoiceStatusAllowableValues();
-        if (!in_array($invoice_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'invoice_status', must be one of '%s'",
-                    $invoice_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getInvoiceStatusAllowableValues();
+            if (!in_array($invoice_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'invoice_status', must be one of '%s'",
+                        $invoice_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['invoice_status'] = $invoice_status;
 
@@ -503,15 +505,17 @@ class InvoiceHeader implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($invoice_type)) {
             throw new \InvalidArgumentException('non-nullable invoice_type cannot be null');
         }
-        $allowedValues = $this->getInvoiceTypeAllowableValues();
-        if (!in_array($invoice_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'invoice_type', must be one of '%s'",
-                    $invoice_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getInvoiceTypeAllowableValues();
+            if (!in_array($invoice_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'invoice_type', must be one of '%s'",
+                        $invoice_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['invoice_type'] = $invoice_type;
 

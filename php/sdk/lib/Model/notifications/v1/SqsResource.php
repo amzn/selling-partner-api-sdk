@@ -265,13 +265,14 @@ class SqsResource implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($arn)) {
             throw new \InvalidArgumentException('non-nullable arn cannot be null');
         }
-        if (mb_strlen($arn) > 1000) {
-            throw new \InvalidArgumentException('invalid length for $arn when calling SqsResource., must be smaller than or equal to 1000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($arn) > 1000) {
+                throw new \InvalidArgumentException('invalid length for $arn when calling SqsResource., must be smaller than or equal to 1000.');
+            }
+            if (!preg_match('/^arn:aws:sqs:\\S+:\\S+:\\S+/', ObjectSerializer::toString($arn))) {
+                throw new \InvalidArgumentException('invalid value for $arn when calling SqsResource., must conform to the pattern /^arn:aws:sqs:\\S+:\\S+:\\S+/.');
+            }
         }
-        if (!preg_match('/^arn:aws:sqs:\\S+:\\S+:\\S+/', ObjectSerializer::toString($arn))) {
-            throw new \InvalidArgumentException('invalid value for $arn when calling SqsResource., must conform to the pattern /^arn:aws:sqs:\\S+:\\S+:\\S+/.');
-        }
-
         $this->container['arn'] = $arn;
 
         return $this;

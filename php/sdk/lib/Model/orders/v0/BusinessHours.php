@@ -303,15 +303,17 @@ class BusinessHours implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getDayOfWeekAllowableValues();
-        if (!is_null($day_of_week) && !in_array($day_of_week, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'day_of_week', must be one of '%s'",
-                    $day_of_week,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getDayOfWeekAllowableValues();
+            if (!is_null($day_of_week) && !in_array($day_of_week, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'day_of_week', must be one of '%s'",
+                        $day_of_week,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['day_of_week'] = $day_of_week;
 

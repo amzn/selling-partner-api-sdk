@@ -283,13 +283,14 @@ class UpdateScheduledPackagesRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-        if (mb_strlen($marketplace_id) > 255) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling UpdateScheduledPackagesRequest., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) > 255) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling UpdateScheduledPackagesRequest., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling UpdateScheduledPackagesRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling UpdateScheduledPackagesRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -313,12 +314,13 @@ class UpdateScheduledPackagesRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($update_package_details_list)) {
             throw new \InvalidArgumentException('non-nullable update_package_details_list cannot be null');
         }
-
-        if (count($update_package_details_list) > 500) {
-            throw new \InvalidArgumentException('invalid value for $update_package_details_list when calling UpdateScheduledPackagesRequest., number of items must be less than or equal to 500.');
-        }
-        if (count($update_package_details_list) < 1) {
-            throw new \InvalidArgumentException('invalid length for $update_package_details_list when calling UpdateScheduledPackagesRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($update_package_details_list) > 500) {
+                throw new \InvalidArgumentException('invalid value for $update_package_details_list when calling UpdateScheduledPackagesRequest., number of items must be less than or equal to 500.');
+            }
+            if (count($update_package_details_list) < 1) {
+                throw new \InvalidArgumentException('invalid length for $update_package_details_list when calling UpdateScheduledPackagesRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['update_package_details_list'] = $update_package_details_list;
 

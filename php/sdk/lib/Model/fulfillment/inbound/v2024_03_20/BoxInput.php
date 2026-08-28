@@ -379,14 +379,14 @@ class BoxInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity > 10000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling BoxInput., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity > 10000) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling BoxInput., must be smaller than or equal to 10000.');
+            }
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling BoxInput., must be bigger than or equal to 1.');
+            }
         }
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling BoxInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;

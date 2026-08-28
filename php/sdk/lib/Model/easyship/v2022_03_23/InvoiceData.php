@@ -272,13 +272,14 @@ class InvoiceData implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($invoice_number)) {
             throw new \InvalidArgumentException('non-nullable invoice_number cannot be null');
         }
-        if (mb_strlen($invoice_number) > 255) {
-            throw new \InvalidArgumentException('invalid length for $invoice_number when calling InvoiceData., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($invoice_number) > 255) {
+                throw new \InvalidArgumentException('invalid length for $invoice_number when calling InvoiceData., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($invoice_number) < 1) {
+                throw new \InvalidArgumentException('invalid length for $invoice_number when calling InvoiceData., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($invoice_number) < 1) {
-            throw new \InvalidArgumentException('invalid length for $invoice_number when calling InvoiceData., must be bigger than or equal to 1.');
-        }
-
         $this->container['invoice_number'] = $invoice_number;
 
         return $this;

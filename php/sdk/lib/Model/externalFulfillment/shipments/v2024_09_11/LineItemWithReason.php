@@ -320,15 +320,17 @@ class LineItemWithReason implements ModelInterface, \ArrayAccess, \JsonSerializa
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getReasonAllowableValues();
-        if (!is_null($reason) && !in_array($reason, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'reason', must be one of '%s'",
-                    $reason,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReasonAllowableValues();
+            if (!is_null($reason) && !in_array($reason, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'reason', must be one of '%s'",
+                        $reason,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['reason'] = $reason;
 

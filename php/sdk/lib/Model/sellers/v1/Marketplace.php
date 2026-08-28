@@ -358,11 +358,11 @@ class Marketplace implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($country_code)) {
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
-
-        if (!preg_match('/^([A-Z]{2})$/', ObjectSerializer::toString($country_code))) {
-            throw new \InvalidArgumentException('invalid value for $country_code when calling Marketplace., must conform to the pattern /^([A-Z]{2})$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!preg_match('/^([A-Z]{2})$/', ObjectSerializer::toString($country_code))) {
+                throw new \InvalidArgumentException('invalid value for $country_code when calling Marketplace., must conform to the pattern /^([A-Z]{2})$/.');
+            }
         }
-
         $this->container['country_code'] = $country_code;
 
         return $this;

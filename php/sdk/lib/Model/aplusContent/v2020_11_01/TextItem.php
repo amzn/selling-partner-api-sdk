@@ -276,14 +276,14 @@ class TextItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($position)) {
             throw new \InvalidArgumentException('non-nullable position cannot be null');
         }
-
-        if ($position > 100) {
-            throw new \InvalidArgumentException('invalid value for $position when calling TextItem., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($position > 100) {
+                throw new \InvalidArgumentException('invalid value for $position when calling TextItem., must be smaller than or equal to 100.');
+            }
+            if ($position < 1) {
+                throw new \InvalidArgumentException('invalid value for $position when calling TextItem., must be bigger than or equal to 1.');
+            }
         }
-        if ($position < 1) {
-            throw new \InvalidArgumentException('invalid value for $position when calling TextItem., must be bigger than or equal to 1.');
-        }
-
         $this->container['position'] = $position;
 
         return $this;

@@ -294,15 +294,17 @@ class ClientReferenceDetail implements ModelInterface, \ArrayAccess, \JsonSerial
         if (is_null($client_reference_type)) {
             throw new \InvalidArgumentException('non-nullable client_reference_type cannot be null');
         }
-        $allowedValues = $this->getClientReferenceTypeAllowableValues();
-        if (!in_array($client_reference_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'client_reference_type', must be one of '%s'",
-                    $client_reference_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getClientReferenceTypeAllowableValues();
+            if (!in_array($client_reference_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'client_reference_type', must be one of '%s'",
+                        $client_reference_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['client_reference_type'] = $client_reference_type;
 

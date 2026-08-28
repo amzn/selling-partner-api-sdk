@@ -348,14 +348,14 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($height) && ($height > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($height) && ($height > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($height) && ($height < 25)) {
+                throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
+            }
         }
-        if (!is_null($height) && ($height < 25)) {
-            throw new \InvalidArgumentException('invalid value for $height when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
-        }
-
         $this->container['height'] = $height;
 
         return $this;
@@ -409,11 +409,11 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($locale_code) && (!preg_match('/^[a-z]{2}_[A-Z]{2}$/', ObjectSerializer::toString($locale_code)))) {
-            throw new \InvalidArgumentException('invalid value for $locale_code when calling CreateMarketplaceItemLabelsRequest., must conform to the pattern /^[a-z]{2}_[A-Z]{2}$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($locale_code) && (!preg_match('/^[a-z]{2}_[A-Z]{2}$/', ObjectSerializer::toString($locale_code)))) {
+                throw new \InvalidArgumentException('invalid value for $locale_code when calling CreateMarketplaceItemLabelsRequest., must conform to the pattern /^[a-z]{2}_[A-Z]{2}$/.');
+            }
         }
-
         $this->container['locale_code'] = $locale_code;
 
         return $this;
@@ -437,13 +437,14 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-        if (mb_strlen($marketplace_id) > 20) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 20.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) > 20) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 20.');
+            }
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -467,12 +468,13 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess
         if (is_null($msku_quantities)) {
             throw new \InvalidArgumentException('non-nullable msku_quantities cannot be null');
         }
-
-        if (count($msku_quantities) > 100) {
-            throw new \InvalidArgumentException('invalid value for $msku_quantities when calling CreateMarketplaceItemLabelsRequest., number of items must be less than or equal to 100.');
-        }
-        if (count($msku_quantities) < 1) {
-            throw new \InvalidArgumentException('invalid length for $msku_quantities when calling CreateMarketplaceItemLabelsRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($msku_quantities) > 100) {
+                throw new \InvalidArgumentException('invalid value for $msku_quantities when calling CreateMarketplaceItemLabelsRequest., number of items must be less than or equal to 100.');
+            }
+            if (count($msku_quantities) < 1) {
+                throw new \InvalidArgumentException('invalid length for $msku_quantities when calling CreateMarketplaceItemLabelsRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['msku_quantities'] = $msku_quantities;
 
@@ -534,14 +536,14 @@ class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($width) && ($width > 1E+2)) {
-            throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($width) && ($width > 1E+2)) {
+                throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be smaller than or equal to 1E+2.');
+            }
+            if (!is_null($width) && ($width < 25)) {
+                throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
+            }
         }
-        if (!is_null($width) && ($width < 25)) {
-            throw new \InvalidArgumentException('invalid value for $width when calling CreateMarketplaceItemLabelsRequest., must be bigger than or equal to 25.');
-        }
-
         $this->container['width'] = $width;
 
         return $this;

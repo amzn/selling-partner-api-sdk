@@ -348,15 +348,17 @@ class ShippingOptions implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($ship_by)) {
             throw new \InvalidArgumentException('non-nullable ship_by cannot be null');
         }
-        $allowedValues = $this->getShipByAllowableValues();
-        if (!in_array($ship_by, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ship_by', must be one of '%s'",
-                    $ship_by,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getShipByAllowableValues();
+            if (!in_array($ship_by, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'ship_by', must be one of '%s'",
+                        $ship_by,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['ship_by'] = $ship_by;
 

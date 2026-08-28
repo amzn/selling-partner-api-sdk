@@ -49,6 +49,15 @@ class ObjectSerializer
     private static string $dateTimeFormat = 'Y-m-d\TH:i:s.v\Z';
 
     /**
+     * Whether the additional model setter validations should be skipped while
+     * deserializing responses. Set by the API client from the Configuration
+     * before deserializing a response so that models generated from the
+     * OpenAPI spec can accept backend responses that violate the declared
+     * constraints.
+     */
+    private static bool $skipModelValidation = false;
+
+    /**
      * Change the date format.
      *
      * @param string $format the new date format to use
@@ -56,6 +65,24 @@ class ObjectSerializer
     public static function setDateTimeFormat(string $format): void
     {
         self::$dateTimeFormat = $format;
+    }
+
+    /**
+     * Sets whether the additional model setter validations should be skipped.
+     *
+     * @param bool $skipModelValidation Whether to skip model validations
+     */
+    public static function setSkipModelValidation(bool $skipModelValidation): void
+    {
+        self::$skipModelValidation = $skipModelValidation;
+    }
+
+    /**
+     * Gets whether the additional model setter validations should be skipped.
+     */
+    public static function getSkipModelValidation(): bool
+    {
+        return self::$skipModelValidation;
     }
 
     /**

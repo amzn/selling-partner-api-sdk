@@ -360,15 +360,17 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getReceiveStatusAllowableValues();
-        if (!is_null($receive_status) && !in_array($receive_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'receive_status', must be one of '%s'",
-                    $receive_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getReceiveStatusAllowableValues();
+            if (!is_null($receive_status) && !in_array($receive_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'receive_status', must be one of '%s'",
+                        $receive_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['receive_status'] = $receive_status;
 

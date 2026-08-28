@@ -283,9 +283,10 @@ class PackageDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($package_items) && (count($package_items) > 500)) {
-            throw new \InvalidArgumentException('invalid value for $package_items when calling PackageDetails., number of items must be less than or equal to 500.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($package_items) && (count($package_items) > 500)) {
+                throw new \InvalidArgumentException('invalid value for $package_items when calling PackageDetails., number of items must be less than or equal to 500.');
+            }
         }
         $this->container['package_items'] = $package_items;
 

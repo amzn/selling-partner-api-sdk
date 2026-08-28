@@ -91,6 +91,28 @@ try {
 }
 ```
 
+### Skipping model validation
+
+Model classes contain additional validations in their setters (allowable enum values, string length, numeric range, regular expression pattern, and item counts) that are derived from the OpenAPI model definitions. Backend responses are not always consistent with those constraints, so deserializing a response can throw an `\InvalidArgumentException` even though the response itself is valid.
+
+To handle these cases, you can disable the additional model validations at the configuration level. When enabled, model setters still store the returned values but no longer throw for values that violate the declared constraints. This applies to every response (including error responses) deserialized by an API instance that uses the configuration:
+
+```php
+// Initialize config
+$config = new Configuration([], $lwaAuthorizationCredentials);
+
+// Skip the additional model validations during deserialization
+$config->setSkipModelValidation(true);
+
+// APIs created with this config will no longer throw InvalidArgumentException
+// for backend responses that violate the OpenAPI model constraints
+$api = new OrdersV0Api($config, $client);
+```
+
+The flag defaults to `false`, so validation is applied unless you explicitly opt out.
+
+> **⚠️ Use with caution.** Skipping model validation disables the safeguards that normally reject malformed values. It is intended as a workaround for responses that are known to be valid but do not match the OpenAPI constraints. When the flag is enabled, unverified values pass through unchecked, which can lead to downstream errors (for example, invalid enum or out-of-range values propagating into your application logic or into subsequent API requests). Only enable it when you understand the responses you are processing, and validate the data yourself before relying on it.
+
 ### Restricted Data Token (RDT) Support
 
 The SDK provides built-in support for working with Restricted Data Tokens (RDTs), which are required to access personally identifiable information (PII) in [certain API operations](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide#restricted-operations).

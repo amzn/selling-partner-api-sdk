@@ -347,15 +347,17 @@ class LineItemContext implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($line_item_type)) {
             throw new \InvalidArgumentException('non-nullable line_item_type cannot be null');
         }
-        $allowedValues = $this->getLineItemTypeAllowableValues();
-        if (!in_array($line_item_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'line_item_type', must be one of '%s'",
-                    $line_item_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getLineItemTypeAllowableValues();
+            if (!in_array($line_item_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'line_item_type', must be one of '%s'",
+                        $line_item_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['line_item_type'] = $line_item_type;
 
@@ -447,15 +449,17 @@ class LineItemContext implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getServiceChargeTypeAllowableValues();
-        if (!is_null($service_charge_type) && !in_array($service_charge_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'service_charge_type', must be one of '%s'",
-                    $service_charge_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getServiceChargeTypeAllowableValues();
+            if (!is_null($service_charge_type) && !in_array($service_charge_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'service_charge_type', must be one of '%s'",
+                        $service_charge_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['service_charge_type'] = $service_charge_type;
 

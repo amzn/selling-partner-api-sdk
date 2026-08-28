@@ -442,11 +442,11 @@ class ShipmentLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($number_of_units)) {
             throw new \InvalidArgumentException('non-nullable number_of_units cannot be null');
         }
-
-        if ($number_of_units < 1) {
-            throw new \InvalidArgumentException('invalid value for $number_of_units when calling ShipmentLineItem., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($number_of_units < 1) {
+                throw new \InvalidArgumentException('invalid value for $number_of_units when calling ShipmentLineItem., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['number_of_units'] = $number_of_units;
 
         return $this;
@@ -477,9 +477,10 @@ class ShipmentLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($serial_numbers) && (count($serial_numbers) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $serial_numbers when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($serial_numbers) && (count($serial_numbers) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $serial_numbers when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['serial_numbers'] = $serial_numbers;
 
@@ -541,9 +542,10 @@ class ShipmentLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($hazmat_labels) && (count($hazmat_labels) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $hazmat_labels when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($hazmat_labels) && (count($hazmat_labels) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $hazmat_labels when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['hazmat_labels'] = $hazmat_labels;
 
@@ -598,9 +600,10 @@ class ShipmentLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
         if (is_null($charges)) {
             throw new \InvalidArgumentException('non-nullable charges cannot be null');
         }
-
-        if (count($charges) < 1) {
-            throw new \InvalidArgumentException('invalid length for $charges when calling ShipmentLineItem., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($charges) < 1) {
+                throw new \InvalidArgumentException('invalid length for $charges when calling ShipmentLineItem., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['charges'] = $charges;
 
@@ -632,9 +635,10 @@ class ShipmentLineItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($cancellations) && (count($cancellations) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $cancellations when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($cancellations) && (count($cancellations) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $cancellations when calling ShipmentLineItem., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['cancellations'] = $cancellations;
 

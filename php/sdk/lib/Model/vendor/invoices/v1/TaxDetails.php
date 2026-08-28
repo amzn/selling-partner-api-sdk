@@ -388,15 +388,17 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($tax_type)) {
             throw new \InvalidArgumentException('non-nullable tax_type cannot be null');
         }
-        $allowedValues = $this->getTaxTypeAllowableValues();
-        if (!in_array($tax_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_type', must be one of '%s'",
-                    $tax_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getTaxTypeAllowableValues();
+            if (!in_array($tax_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'tax_type', must be one of '%s'",
+                        $tax_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['tax_type'] = $tax_type;
 

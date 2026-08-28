@@ -273,9 +273,10 @@ class ReturnsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($returns) && (count($returns) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $returns when calling ReturnsResponse., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($returns) && (count($returns) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $returns when calling ReturnsResponse., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['returns'] = $returns;
 

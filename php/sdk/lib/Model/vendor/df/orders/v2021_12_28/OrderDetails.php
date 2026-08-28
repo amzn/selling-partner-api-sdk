@@ -496,15 +496,17 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getOrderStatusAllowableValues();
-        if (!is_null($order_status) && !in_array($order_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'order_status', must be one of '%s'",
-                    $order_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getOrderStatusAllowableValues();
+            if (!is_null($order_status) && !in_array($order_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'order_status', must be one of '%s'",
+                        $order_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['order_status'] = $order_status;
 

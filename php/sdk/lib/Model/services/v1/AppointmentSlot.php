@@ -339,11 +339,11 @@ class AppointmentSlot implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($capacity) && ($capacity < 0)) {
-            throw new \InvalidArgumentException('invalid value for $capacity when calling AppointmentSlot., must be bigger than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($capacity) && ($capacity < 0)) {
+                throw new \InvalidArgumentException('invalid value for $capacity when calling AppointmentSlot., must be bigger than or equal to 0.');
+            }
         }
-
         $this->container['capacity'] = $capacity;
 
         return $this;

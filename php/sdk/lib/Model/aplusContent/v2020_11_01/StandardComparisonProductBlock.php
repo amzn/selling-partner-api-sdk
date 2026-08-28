@@ -320,14 +320,14 @@ class StandardComparisonProductBlock implements ModelInterface, \ArrayAccess, \J
         if (is_null($position)) {
             throw new \InvalidArgumentException('non-nullable position cannot be null');
         }
-
-        if ($position > 6) {
-            throw new \InvalidArgumentException('invalid value for $position when calling StandardComparisonProductBlock., must be smaller than or equal to 6.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($position > 6) {
+                throw new \InvalidArgumentException('invalid value for $position when calling StandardComparisonProductBlock., must be smaller than or equal to 6.');
+            }
+            if ($position < 1) {
+                throw new \InvalidArgumentException('invalid value for $position when calling StandardComparisonProductBlock., must be bigger than or equal to 1.');
+            }
         }
-        if ($position < 1) {
-            throw new \InvalidArgumentException('invalid value for $position when calling StandardComparisonProductBlock., must be bigger than or equal to 1.');
-        }
-
         $this->container['position'] = $position;
 
         return $this;
@@ -388,13 +388,14 @@ class StandardComparisonProductBlock implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($title) && (mb_strlen($title) > 80)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be smaller than or equal to 80.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($title) && (mb_strlen($title) > 80)) {
+                throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be smaller than or equal to 80.');
+            }
+            if (!is_null($title) && (mb_strlen($title) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($title) && (mb_strlen($title) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling StandardComparisonProductBlock., must be bigger than or equal to 1.');
-        }
-
         $this->container['title'] = $title;
 
         return $this;
@@ -425,11 +426,11 @@ class StandardComparisonProductBlock implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($asin) && (mb_strlen($asin) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling StandardComparisonProductBlock., must be bigger than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($asin) && (mb_strlen($asin) < 10)) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling StandardComparisonProductBlock., must be bigger than or equal to 10.');
+            }
         }
-
         $this->container['asin'] = $asin;
 
         return $this;
@@ -490,12 +491,13 @@ class StandardComparisonProductBlock implements ModelInterface, \ArrayAccess, \J
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($metrics) && (count($metrics) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $metrics when calling StandardComparisonProductBlock., number of items must be less than or equal to 10.');
-        }
-        if (!is_null($metrics) && (count($metrics) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $metrics when calling StandardComparisonProductBlock., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($metrics) && (count($metrics) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $metrics when calling StandardComparisonProductBlock., number of items must be less than or equal to 10.');
+            }
+            if (!is_null($metrics) && (count($metrics) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $metrics when calling StandardComparisonProductBlock., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['metrics'] = $metrics;
 

@@ -265,12 +265,13 @@ class CompetitiveSummaryBatchRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($requests)) {
             throw new \InvalidArgumentException('non-nullable requests cannot be null');
         }
-
-        if (count($requests) > 20) {
-            throw new \InvalidArgumentException('invalid value for $requests when calling CompetitiveSummaryBatchRequest., number of items must be less than or equal to 20.');
-        }
-        if (count($requests) < 1) {
-            throw new \InvalidArgumentException('invalid length for $requests when calling CompetitiveSummaryBatchRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($requests) > 20) {
+                throw new \InvalidArgumentException('invalid value for $requests when calling CompetitiveSummaryBatchRequest., number of items must be less than or equal to 20.');
+            }
+            if (count($requests) < 1) {
+                throw new \InvalidArgumentException('invalid length for $requests when calling CompetitiveSummaryBatchRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['requests'] = $requests;
 

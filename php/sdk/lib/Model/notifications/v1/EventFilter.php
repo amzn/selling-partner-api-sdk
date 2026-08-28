@@ -432,15 +432,17 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($event_filter_type)) {
             throw new \InvalidArgumentException('non-nullable event_filter_type cannot be null');
         }
-        $allowedValues = $this->getEventFilterTypeAllowableValues();
-        if (!in_array($event_filter_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event_filter_type', must be one of '%s'",
-                    $event_filter_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getEventFilterTypeAllowableValues();
+            if (!in_array($event_filter_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'event_filter_type', must be one of '%s'",
+                        $event_filter_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['event_filter_type'] = $event_filter_type;
 

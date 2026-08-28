@@ -467,16 +467,17 @@ class TransportationOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($shipment_id)) {
             throw new \InvalidArgumentException('non-nullable shipment_id cannot be null');
         }
-        if (mb_strlen($shipment_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling TransportationOption., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($shipment_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling TransportationOption., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($shipment_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $shipment_id when calling TransportationOption., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id))) {
+                throw new \InvalidArgumentException('invalid value for $shipment_id when calling TransportationOption., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($shipment_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $shipment_id when calling TransportationOption., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($shipment_id))) {
-            throw new \InvalidArgumentException('invalid value for $shipment_id when calling TransportationOption., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['shipment_id'] = $shipment_id;
 
         return $this;
@@ -500,13 +501,14 @@ class TransportationOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($shipping_mode)) {
             throw new \InvalidArgumentException('non-nullable shipping_mode cannot be null');
         }
-        if (mb_strlen($shipping_mode) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $shipping_mode when calling TransportationOption., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($shipping_mode) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $shipping_mode when calling TransportationOption., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($shipping_mode) < 1) {
+                throw new \InvalidArgumentException('invalid length for $shipping_mode when calling TransportationOption., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($shipping_mode) < 1) {
-            throw new \InvalidArgumentException('invalid length for $shipping_mode when calling TransportationOption., must be bigger than or equal to 1.');
-        }
-
         $this->container['shipping_mode'] = $shipping_mode;
 
         return $this;
@@ -530,13 +532,14 @@ class TransportationOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($shipping_solution)) {
             throw new \InvalidArgumentException('non-nullable shipping_solution cannot be null');
         }
-        if (mb_strlen($shipping_solution) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $shipping_solution when calling TransportationOption., must be smaller than or equal to 1024.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($shipping_solution) > 1024) {
+                throw new \InvalidArgumentException('invalid length for $shipping_solution when calling TransportationOption., must be smaller than or equal to 1024.');
+            }
+            if (mb_strlen($shipping_solution) < 1) {
+                throw new \InvalidArgumentException('invalid length for $shipping_solution when calling TransportationOption., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($shipping_solution) < 1) {
-            throw new \InvalidArgumentException('invalid length for $shipping_solution when calling TransportationOption., must be bigger than or equal to 1.');
-        }
-
         $this->container['shipping_solution'] = $shipping_solution;
 
         return $this;
@@ -560,16 +563,17 @@ class TransportationOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($transportation_option_id)) {
             throw new \InvalidArgumentException('non-nullable transportation_option_id cannot be null');
         }
-        if (mb_strlen($transportation_option_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $transportation_option_id when calling TransportationOption., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($transportation_option_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $transportation_option_id when calling TransportationOption., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($transportation_option_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $transportation_option_id when calling TransportationOption., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($transportation_option_id))) {
+                throw new \InvalidArgumentException('invalid value for $transportation_option_id when calling TransportationOption., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($transportation_option_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $transportation_option_id when calling TransportationOption., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($transportation_option_id))) {
-            throw new \InvalidArgumentException('invalid value for $transportation_option_id when calling TransportationOption., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['transportation_option_id'] = $transportation_option_id;
 
         return $this;

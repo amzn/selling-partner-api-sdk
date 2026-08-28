@@ -32,6 +32,7 @@ namespace SpApi;
 
 use Composer\InstalledVersions;
 use GuzzleHttp\Psr7\Request;
+use InvalidArgumentException;
 use SpApi\AuthAndAuth\LWAAccessTokenCache;
 use SpApi\AuthAndAuth\LWAAuthorizationCredentials;
 use SpApi\AuthAndAuth\LWAAuthorizationSigner;
@@ -92,6 +93,17 @@ class Configuration
      * Debug file location (log to STDOUT by default).
      */
     protected string $tempFolderPath;
+
+    /**
+     * Whether to skip the additional value validations performed inside model
+     * setters (allowable enum values, string length, numeric range, pattern,
+     * item counts). The backend responses are not always consistent with the
+     * constraints declared in the OpenAPI model, so this flag allows callers to
+     * deserialize such responses without triggering InvalidArgumentException.
+     *
+     * Defaults to false to preserve the previous (validating) behavior.
+     */
+    protected bool $skipModelValidation = false;
 
     private static ?Configuration $defaultConfiguration = null;
 
@@ -310,6 +322,33 @@ class Configuration
     }
 
     /**
+     * Sets whether the additional model setter validations should be skipped
+     * when deserializing API responses.
+     *
+     * When enabled, model setters will still store the returned values but will
+     * not throw \InvalidArgumentException for values that violate the OpenAPI
+     * constraints (allowable enum values, length, range, pattern, item counts).
+     *
+     * @param bool $skipModelValidation Whether to skip model validations
+     *
+     * @return $this
+     */
+    public function setSkipModelValidation(bool $skipModelValidation): Configuration
+    {
+        $this->skipModelValidation = $skipModelValidation;
+
+        return $this;
+    }
+
+    /**
+     * Gets whether the additional model setter validations should be skipped.
+     */
+    public function getSkipModelValidation(): bool
+    {
+        return $this->skipModelValidation;
+    }
+
+    /**
      * Sets the temp folder path.
      *
      * @param string $tempFolderPath Temp folder path
@@ -365,7 +404,7 @@ class Configuration
         $report = 'PHP SDK (SpApi) Debug Report:'.PHP_EOL;
         $report .= '    OS: '.php_uname().PHP_EOL;
         $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 2026-01-30'.PHP_EOL;
+        $report .= '    The version of the OpenAPI document: v1'.PHP_EOL;
         $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().PHP_EOL;
 
         return $report;

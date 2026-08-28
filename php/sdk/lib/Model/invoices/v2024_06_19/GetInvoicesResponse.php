@@ -272,9 +272,10 @@ class GetInvoicesResponse implements ModelInterface, \ArrayAccess, \JsonSerializ
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($invoices) && (count($invoices) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $invoices when calling GetInvoicesResponse., number of items must be less than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($invoices) && (count($invoices) > 100)) {
+                throw new \InvalidArgumentException('invalid value for $invoices when calling GetInvoicesResponse., number of items must be less than or equal to 100.');
+            }
         }
         $this->container['invoices'] = $invoices;
 

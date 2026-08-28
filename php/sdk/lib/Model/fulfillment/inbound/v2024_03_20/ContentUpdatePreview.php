@@ -300,16 +300,17 @@ class ContentUpdatePreview implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($content_update_preview_id)) {
             throw new \InvalidArgumentException('non-nullable content_update_preview_id cannot be null');
         }
-        if (mb_strlen($content_update_preview_id) > 38) {
-            throw new \InvalidArgumentException('invalid length for $content_update_preview_id when calling ContentUpdatePreview., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($content_update_preview_id) > 38) {
+                throw new \InvalidArgumentException('invalid length for $content_update_preview_id when calling ContentUpdatePreview., must be smaller than or equal to 38.');
+            }
+            if (mb_strlen($content_update_preview_id) < 38) {
+                throw new \InvalidArgumentException('invalid length for $content_update_preview_id when calling ContentUpdatePreview., must be bigger than or equal to 38.');
+            }
+            if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($content_update_preview_id))) {
+                throw new \InvalidArgumentException('invalid value for $content_update_preview_id when calling ContentUpdatePreview., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (mb_strlen($content_update_preview_id) < 38) {
-            throw new \InvalidArgumentException('invalid length for $content_update_preview_id when calling ContentUpdatePreview., must be bigger than or equal to 38.');
-        }
-        if (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($content_update_preview_id))) {
-            throw new \InvalidArgumentException('invalid value for $content_update_preview_id when calling ContentUpdatePreview., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['content_update_preview_id'] = $content_update_preview_id;
 
         return $this;

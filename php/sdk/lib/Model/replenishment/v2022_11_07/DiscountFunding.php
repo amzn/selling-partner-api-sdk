@@ -269,12 +269,13 @@ class DiscountFunding implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($percentage) && (count($percentage) > 10)) {
-            throw new \InvalidArgumentException('invalid value for $percentage when calling DiscountFunding., number of items must be less than or equal to 10.');
-        }
-        if (!is_null($percentage) && (count($percentage) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $percentage when calling DiscountFunding., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($percentage) && (count($percentage) > 10)) {
+                throw new \InvalidArgumentException('invalid value for $percentage when calling DiscountFunding., number of items must be less than or equal to 10.');
+            }
+            if (!is_null($percentage) && (count($percentage) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $percentage when calling DiscountFunding., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['percentage'] = $percentage;
 

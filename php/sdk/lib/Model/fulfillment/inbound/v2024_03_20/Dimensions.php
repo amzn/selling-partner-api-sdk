@@ -311,14 +311,14 @@ class Dimensions implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($height)) {
             throw new \InvalidArgumentException('non-nullable height cannot be null');
         }
-
-        if ($height > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $height when calling Dimensions., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($height > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $height when calling Dimensions., must be smaller than or equal to 1E+5.');
+            }
+            if ($height < 0) {
+                throw new \InvalidArgumentException('invalid value for $height when calling Dimensions., must be bigger than or equal to 0.');
+            }
         }
-        if ($height < 0) {
-            throw new \InvalidArgumentException('invalid value for $height when calling Dimensions., must be bigger than or equal to 0.');
-        }
-
         $this->container['height'] = $height;
 
         return $this;
@@ -342,14 +342,14 @@ class Dimensions implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($length)) {
             throw new \InvalidArgumentException('non-nullable length cannot be null');
         }
-
-        if ($length > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $length when calling Dimensions., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($length > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $length when calling Dimensions., must be smaller than or equal to 1E+5.');
+            }
+            if ($length < 0) {
+                throw new \InvalidArgumentException('invalid value for $length when calling Dimensions., must be bigger than or equal to 0.');
+            }
         }
-        if ($length < 0) {
-            throw new \InvalidArgumentException('invalid value for $length when calling Dimensions., must be bigger than or equal to 0.');
-        }
-
         $this->container['length'] = $length;
 
         return $this;
@@ -396,14 +396,14 @@ class Dimensions implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($width)) {
             throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
-
-        if ($width > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $width when calling Dimensions., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($width > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $width when calling Dimensions., must be smaller than or equal to 1E+5.');
+            }
+            if ($width < 0) {
+                throw new \InvalidArgumentException('invalid value for $width when calling Dimensions., must be bigger than or equal to 0.');
+            }
         }
-        if ($width < 0) {
-            throw new \InvalidArgumentException('invalid value for $width when calling Dimensions., must be bigger than or equal to 0.');
-        }
-
         $this->container['width'] = $width;
 
         return $this;

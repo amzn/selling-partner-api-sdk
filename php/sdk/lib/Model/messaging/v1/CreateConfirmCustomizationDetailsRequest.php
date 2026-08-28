@@ -276,13 +276,14 @@ class CreateConfirmCustomizationDetailsRequest implements ModelInterface, \Array
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($text) && (mb_strlen($text) > 800)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmCustomizationDetailsRequest., must be smaller than or equal to 800.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($text) && (mb_strlen($text) > 800)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmCustomizationDetailsRequest., must be smaller than or equal to 800.');
+            }
+            if (!is_null($text) && (mb_strlen($text) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmCustomizationDetailsRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (!is_null($text) && (mb_strlen($text) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $text when calling CreateConfirmCustomizationDetailsRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['text'] = $text;
 
         return $this;

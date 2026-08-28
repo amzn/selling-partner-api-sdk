@@ -308,11 +308,11 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($asin)) {
             throw new \InvalidArgumentException('non-nullable asin cannot be null');
         }
-
-        if (mb_strlen($asin) < 10) {
-            throw new \InvalidArgumentException('invalid length for $asin when calling AsinMetadata., must be bigger than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($asin) < 10) {
+                throw new \InvalidArgumentException('invalid length for $asin when calling AsinMetadata., must be bigger than or equal to 10.');
+            }
         }
-
         $this->container['asin'] = $asin;
 
         return $this;
@@ -343,7 +343,8 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['badge_set'] = $badge_set;
 
         return $this;
@@ -374,11 +375,11 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($parent) && (mb_strlen($parent) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $parent when calling AsinMetadata., must be bigger than or equal to 10.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($parent) && (mb_strlen($parent) < 10)) {
+                throw new \InvalidArgumentException('invalid length for $parent when calling AsinMetadata., must be bigger than or equal to 10.');
+            }
         }
-
         $this->container['parent'] = $parent;
 
         return $this;
@@ -409,11 +410,11 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($title) && (mb_strlen($title) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling AsinMetadata., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($title) && (mb_strlen($title) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $title when calling AsinMetadata., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['title'] = $title;
 
         return $this;
@@ -444,11 +445,11 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($image_url) && (mb_strlen($image_url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $image_url when calling AsinMetadata., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($image_url) && (mb_strlen($image_url) < 1)) {
+                throw new \InvalidArgumentException('invalid length for $image_url when calling AsinMetadata., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['image_url'] = $image_url;
 
         return $this;
@@ -479,7 +480,8 @@ class AsinMetadata implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
+        if (!ObjectSerializer::getSkipModelValidation()) {
+        }
         $this->container['content_reference_key_set'] = $content_reference_key_set;
 
         return $this;

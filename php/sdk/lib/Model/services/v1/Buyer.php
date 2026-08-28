@@ -286,11 +286,11 @@ class Buyer implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($buyer_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($buyer_id)))) {
-            throw new \InvalidArgumentException('invalid value for $buyer_id when calling Buyer., must conform to the pattern /^[A-Z0-9]*$/.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($buyer_id) && (!preg_match('/^[A-Z0-9]*$/', ObjectSerializer::toString($buyer_id)))) {
+                throw new \InvalidArgumentException('invalid value for $buyer_id when calling Buyer., must conform to the pattern /^[A-Z0-9]*$/.');
+            }
         }
-
         $this->container['buyer_id'] = $buyer_id;
 
         return $this;

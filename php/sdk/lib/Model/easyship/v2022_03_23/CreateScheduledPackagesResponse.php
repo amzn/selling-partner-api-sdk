@@ -279,9 +279,10 @@ class CreateScheduledPackagesResponse implements ModelInterface, \ArrayAccess, \
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($scheduled_packages) && (count($scheduled_packages) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $scheduled_packages when calling CreateScheduledPackagesResponse., number of items must be less than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($scheduled_packages) && (count($scheduled_packages) > 100)) {
+                throw new \InvalidArgumentException('invalid value for $scheduled_packages when calling CreateScheduledPackagesResponse., number of items must be less than or equal to 100.');
+            }
         }
         $this->container['scheduled_packages'] = $scheduled_packages;
 

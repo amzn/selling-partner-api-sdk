@@ -295,15 +295,17 @@ class FeaturedOfferSegment implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($customer_membership)) {
             throw new \InvalidArgumentException('non-nullable customer_membership cannot be null');
         }
-        $allowedValues = $this->getCustomerMembershipAllowableValues();
-        if (!in_array($customer_membership, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'customer_membership', must be one of '%s'",
-                    $customer_membership,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCustomerMembershipAllowableValues();
+            if (!in_array($customer_membership, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'customer_membership', must be one of '%s'",
+                        $customer_membership,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['customer_membership'] = $customer_membership;
 

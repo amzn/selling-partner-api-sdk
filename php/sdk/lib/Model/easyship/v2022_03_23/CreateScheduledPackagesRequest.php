@@ -290,13 +290,14 @@ class CreateScheduledPackagesRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($marketplace_id)) {
             throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
         }
-        if (mb_strlen($marketplace_id) > 255) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackagesRequest., must be smaller than or equal to 255.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($marketplace_id) > 255) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackagesRequest., must be smaller than or equal to 255.');
+            }
+            if (mb_strlen($marketplace_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackagesRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($marketplace_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $marketplace_id when calling CreateScheduledPackagesRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['marketplace_id'] = $marketplace_id;
 
         return $this;
@@ -320,9 +321,10 @@ class CreateScheduledPackagesRequest implements ModelInterface, \ArrayAccess, \J
         if (is_null($order_schedule_details_list)) {
             throw new \InvalidArgumentException('non-nullable order_schedule_details_list cannot be null');
         }
-
-        if (count($order_schedule_details_list) < 1) {
-            throw new \InvalidArgumentException('invalid length for $order_schedule_details_list when calling CreateScheduledPackagesRequest., number of items must be greater than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (count($order_schedule_details_list) < 1) {
+                throw new \InvalidArgumentException('invalid length for $order_schedule_details_list when calling CreateScheduledPackagesRequest., number of items must be greater than or equal to 1.');
+            }
         }
         $this->container['order_schedule_details_list'] = $order_schedule_details_list;
 

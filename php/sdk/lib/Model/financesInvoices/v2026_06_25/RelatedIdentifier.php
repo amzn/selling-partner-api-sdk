@@ -309,15 +309,17 @@ class RelatedIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializab
         if (is_null($related_identifier_name)) {
             throw new \InvalidArgumentException('non-nullable related_identifier_name cannot be null');
         }
-        $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
-        if (!in_array($related_identifier_name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'related_identifier_name', must be one of '%s'",
-                    $related_identifier_name,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
+            if (!in_array($related_identifier_name, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'related_identifier_name', must be one of '%s'",
+                        $related_identifier_name,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['related_identifier_name'] = $related_identifier_name;
 

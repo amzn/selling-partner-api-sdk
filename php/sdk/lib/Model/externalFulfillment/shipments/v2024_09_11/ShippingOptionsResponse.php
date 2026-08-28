@@ -273,9 +273,10 @@ class ShippingOptionsResponse implements ModelInterface, \ArrayAccess, \JsonSeri
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($shipping_options) && (count($shipping_options) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $shipping_options when calling ShippingOptionsResponse., number of items must be greater than or equal to 0.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($shipping_options) && (count($shipping_options) < 0)) {
+                throw new \InvalidArgumentException('invalid length for $shipping_options when calling ShippingOptionsResponse., number of items must be greater than or equal to 0.');
+            }
         }
         $this->container['shipping_options'] = $shipping_options;
 

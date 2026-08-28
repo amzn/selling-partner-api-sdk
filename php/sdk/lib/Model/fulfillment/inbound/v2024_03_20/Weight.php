@@ -298,14 +298,14 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($value)) {
             throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-
-        if ($value > 1E+5) {
-            throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be smaller than or equal to 1E+5.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($value > 1E+5) {
+                throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be smaller than or equal to 1E+5.');
+            }
+            if ($value < 0) {
+                throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be bigger than or equal to 0.');
+            }
         }
-        if ($value < 0) {
-            throw new \InvalidArgumentException('invalid value for $value when calling Weight., must be bigger than or equal to 0.');
-        }
-
         $this->container['value'] = $value;
 
         return $this;

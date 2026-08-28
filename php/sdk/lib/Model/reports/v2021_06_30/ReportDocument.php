@@ -350,15 +350,17 @@ class ReportDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getCompressionAlgorithmAllowableValues();
-        if (!is_null($compression_algorithm) && !in_array($compression_algorithm, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'compression_algorithm', must be one of '%s'",
-                    $compression_algorithm,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getCompressionAlgorithmAllowableValues();
+            if (!is_null($compression_algorithm) && !in_array($compression_algorithm, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'compression_algorithm', must be one of '%s'",
+                        $compression_algorithm,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['compression_algorithm'] = $compression_algorithm;
 

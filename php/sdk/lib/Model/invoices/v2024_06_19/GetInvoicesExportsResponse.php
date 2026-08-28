@@ -272,9 +272,10 @@ class GetInvoicesExportsResponse implements ModelInterface, \ArrayAccess, \JsonS
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($exports) && (count($exports) > 100)) {
-            throw new \InvalidArgumentException('invalid value for $exports when calling GetInvoicesExportsResponse., number of items must be less than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($exports) && (count($exports) > 100)) {
+                throw new \InvalidArgumentException('invalid value for $exports when calling GetInvoicesExportsResponse., number of items must be less than or equal to 100.');
+            }
         }
         $this->container['exports'] = $exports;
 

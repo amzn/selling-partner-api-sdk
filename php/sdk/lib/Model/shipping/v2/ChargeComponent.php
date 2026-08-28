@@ -324,15 +324,17 @@ class ChargeComponent implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getChargeTypeAllowableValues();
-        if (!is_null($charge_type) && !in_array($charge_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'charge_type', must be one of '%s'",
-                    $charge_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getChargeTypeAllowableValues();
+            if (!is_null($charge_type) && !in_array($charge_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'charge_type', must be one of '%s'",
+                        $charge_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['charge_type'] = $charge_type;
 

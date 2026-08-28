@@ -828,15 +828,17 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($order_status)) {
             throw new \InvalidArgumentException('non-nullable order_status cannot be null');
         }
-        $allowedValues = $this->getOrderStatusAllowableValues();
-        if (!in_array($order_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'order_status', must be one of '%s'",
-                    $order_status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getOrderStatusAllowableValues();
+            if (!in_array($order_status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'order_status', must be one of '%s'",
+                        $order_status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['order_status'] = $order_status;
 
@@ -868,15 +870,17 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getFulfillmentChannelAllowableValues();
-        if (!is_null($fulfillment_channel) && !in_array($fulfillment_channel, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'fulfillment_channel', must be one of '%s'",
-                    $fulfillment_channel,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getFulfillmentChannelAllowableValues();
+            if (!is_null($fulfillment_channel) && !in_array($fulfillment_channel, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'fulfillment_channel', must be one of '%s'",
+                        $fulfillment_channel,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['fulfillment_channel'] = $fulfillment_channel;
 
@@ -1118,15 +1122,17 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPaymentMethodAllowableValues();
-        if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'payment_method', must be one of '%s'",
-                    $payment_method,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getPaymentMethodAllowableValues();
+            if (!is_null($payment_method) && !in_array($payment_method, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'payment_method', must be one of '%s'",
+                        $payment_method,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['payment_method'] = $payment_method;
 
@@ -1308,15 +1314,17 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getOrderTypeAllowableValues();
-        if (!is_null($order_type) && !in_array($order_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'order_type', must be one of '%s'",
-                    $order_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getOrderTypeAllowableValues();
+            if (!is_null($order_type) && !in_array($order_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'order_type', must be one of '%s'",
+                        $order_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['order_type'] = $order_type;
 
@@ -1798,15 +1806,17 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getBuyerInvoicePreferenceAllowableValues();
-        if (!is_null($buyer_invoice_preference) && !in_array($buyer_invoice_preference, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'buyer_invoice_preference', must be one of '%s'",
-                    $buyer_invoice_preference,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getBuyerInvoicePreferenceAllowableValues();
+            if (!is_null($buyer_invoice_preference) && !in_array($buyer_invoice_preference, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'buyer_invoice_preference', must be one of '%s'",
+                        $buyer_invoice_preference,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['buyer_invoice_preference'] = $buyer_invoice_preference;
 

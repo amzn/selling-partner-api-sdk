@@ -368,15 +368,17 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getTaxRegistrationTypeAllowableValues();
-        if (!is_null($tax_registration_type) && !in_array($tax_registration_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tax_registration_type', must be one of '%s'",
-                    $tax_registration_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getTaxRegistrationTypeAllowableValues();
+            if (!is_null($tax_registration_type) && !in_array($tax_registration_type, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'tax_registration_type', must be one of '%s'",
+                        $tax_registration_type,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['tax_registration_type'] = $tax_registration_type;
 

@@ -265,13 +265,14 @@ class UpdateShipmentNameRequest implements ModelInterface, \ArrayAccess, \JsonSe
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if (mb_strlen($name) > 100) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateShipmentNameRequest., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($name) > 100) {
+                throw new \InvalidArgumentException('invalid length for $name when calling UpdateShipmentNameRequest., must be smaller than or equal to 100.');
+            }
+            if (mb_strlen($name) < 1) {
+                throw new \InvalidArgumentException('invalid length for $name when calling UpdateShipmentNameRequest., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($name) < 1) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateShipmentNameRequest., must be bigger than or equal to 1.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;

@@ -289,11 +289,11 @@ class ImageComponent implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($upload_destination_id)) {
             throw new \InvalidArgumentException('non-nullable upload_destination_id cannot be null');
         }
-
-        if (mb_strlen($upload_destination_id) < 1) {
-            throw new \InvalidArgumentException('invalid length for $upload_destination_id when calling ImageComponent., must be bigger than or equal to 1.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($upload_destination_id) < 1) {
+                throw new \InvalidArgumentException('invalid length for $upload_destination_id when calling ImageComponent., must be bigger than or equal to 1.');
+            }
         }
-
         $this->container['upload_destination_id'] = $upload_destination_id;
 
         return $this;
@@ -340,13 +340,14 @@ class ImageComponent implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($alt_text)) {
             throw new \InvalidArgumentException('non-nullable alt_text cannot be null');
         }
-        if (mb_strlen($alt_text) > 100) {
-            throw new \InvalidArgumentException('invalid length for $alt_text when calling ImageComponent., must be smaller than or equal to 100.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (mb_strlen($alt_text) > 100) {
+                throw new \InvalidArgumentException('invalid length for $alt_text when calling ImageComponent., must be smaller than or equal to 100.');
+            }
+            if (mb_strlen($alt_text) < 1) {
+                throw new \InvalidArgumentException('invalid length for $alt_text when calling ImageComponent., must be bigger than or equal to 1.');
+            }
         }
-        if (mb_strlen($alt_text) < 1) {
-            throw new \InvalidArgumentException('invalid length for $alt_text when calling ImageComponent., must be bigger than or equal to 1.');
-        }
-
         $this->container['alt_text'] = $alt_text;
 
         return $this;

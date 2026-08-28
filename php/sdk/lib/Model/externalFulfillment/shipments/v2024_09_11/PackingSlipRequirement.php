@@ -318,15 +318,17 @@ class PackingSlipRequirement implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getRequirementAllowableValues();
-        if (!is_null($requirement) && !in_array($requirement, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'requirement', must be one of '%s'",
-                    $requirement,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getRequirementAllowableValues();
+            if (!is_null($requirement) && !in_array($requirement, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'requirement', must be one of '%s'",
+                        $requirement,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['requirement'] = $requirement;
 
@@ -358,15 +360,17 @@ class PackingSlipRequirement implements ModelInterface, \ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            $allowedValues = $this->getStatusAllowableValues();
+            if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        "Invalid value '%s' for 'status', must be one of '%s'",
+                        $status,
+                        implode("', '", $allowedValues)
+                    )
+                );
+            }
         }
         $this->container['status'] = $status;
 

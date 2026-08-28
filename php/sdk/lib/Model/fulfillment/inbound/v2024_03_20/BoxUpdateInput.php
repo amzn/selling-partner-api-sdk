@@ -405,16 +405,17 @@ class BoxUpdateInput implements ModelInterface, \ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($package_id) && (mb_strlen($package_id) > 38)) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be smaller than or equal to 38.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if (!is_null($package_id) && (mb_strlen($package_id) > 38)) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be smaller than or equal to 38.');
+            }
+            if (!is_null($package_id) && (mb_strlen($package_id) < 38)) {
+                throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be bigger than or equal to 38.');
+            }
+            if (!is_null($package_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($package_id)))) {
+                throw new \InvalidArgumentException('invalid value for $package_id when calling BoxUpdateInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
+            }
         }
-        if (!is_null($package_id) && (mb_strlen($package_id) < 38)) {
-            throw new \InvalidArgumentException('invalid length for $package_id when calling BoxUpdateInput., must be bigger than or equal to 38.');
-        }
-        if (!is_null($package_id) && (!preg_match('/^[a-zA-Z0-9-]*$/', ObjectSerializer::toString($package_id)))) {
-            throw new \InvalidArgumentException('invalid value for $package_id when calling BoxUpdateInput., must conform to the pattern /^[a-zA-Z0-9-]*$/.');
-        }
-
         $this->container['package_id'] = $package_id;
 
         return $this;
@@ -438,14 +439,14 @@ class BoxUpdateInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
-        if ($quantity > 10000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling BoxUpdateInput., must be smaller than or equal to 10000.');
+        if (!ObjectSerializer::getSkipModelValidation()) {
+            if ($quantity > 10000) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling BoxUpdateInput., must be smaller than or equal to 10000.');
+            }
+            if ($quantity < 1) {
+                throw new \InvalidArgumentException('invalid value for $quantity when calling BoxUpdateInput., must be bigger than or equal to 1.');
+            }
         }
-        if ($quantity < 1) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling BoxUpdateInput., must be bigger than or equal to 1.');
-        }
-
         $this->container['quantity'] = $quantity;
 
         return $this;
