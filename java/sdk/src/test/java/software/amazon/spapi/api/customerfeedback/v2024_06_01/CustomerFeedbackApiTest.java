@@ -31,7 +31,6 @@ import software.amazon.spapi.models.customerfeedback.v2024_06_01.BrowseNodeRevie
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.BrowseNodeReviewTrendsResponse;
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.ItemReviewTopicsResponse;
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.ItemReviewTrendsResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class CustomerFeedbackApiTest {
 
@@ -49,10 +48,8 @@ public class CustomerFeedbackApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getBrowseNodeReturnTopicsTest() throws Exception {

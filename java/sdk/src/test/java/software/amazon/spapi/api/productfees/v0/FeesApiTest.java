@@ -29,7 +29,6 @@ import software.amazon.spapi.models.productfees.v0.FeesEstimateByIdRequest;
 import software.amazon.spapi.models.productfees.v0.FeesEstimateResult;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FeesApiTest {
 
@@ -47,10 +46,8 @@ public class FeesApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void getMyFeesEstimateForASINTest() throws Exception {

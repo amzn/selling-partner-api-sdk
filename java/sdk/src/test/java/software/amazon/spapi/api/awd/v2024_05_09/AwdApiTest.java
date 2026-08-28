@@ -43,7 +43,6 @@ import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabelPageTypes;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
 import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class AwdApiTest {
 
@@ -61,10 +60,8 @@ public class AwdApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void cancelInboundTest() throws Exception {

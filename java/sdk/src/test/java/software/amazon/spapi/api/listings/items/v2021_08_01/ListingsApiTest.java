@@ -30,7 +30,6 @@ import software.amazon.spapi.models.listings.items.v2021_08_01.ItemSearchResults
 import software.amazon.spapi.models.listings.items.v2021_08_01.ListingsItemPatchRequest;
 import software.amazon.spapi.models.listings.items.v2021_08_01.ListingsItemPutRequest;
 import software.amazon.spapi.models.listings.items.v2021_08_01.ListingsItemSubmissionResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class ListingsApiTest {
 
@@ -48,10 +47,8 @@ public class ListingsApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void deleteListingsItemTest() throws Exception {

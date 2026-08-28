@@ -31,7 +31,6 @@ import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedSpecification;
 import software.amazon.spapi.models.feeds.v2021_06_30.Feed;
 import software.amazon.spapi.models.feeds.v2021_06_30.FeedDocument;
 import software.amazon.spapi.models.feeds.v2021_06_30.GetFeedsResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class FeedsApiTest {
 
@@ -49,10 +48,8 @@ public class FeedsApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void cancelFeedTest() throws Exception {

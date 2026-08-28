@@ -29,7 +29,6 @@ import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.Mo
 import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.Packages;
 import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.ShipLabelsResponse;
 import software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11.ShippingOptionsResponse;
-import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimatesRequest;
 
 public class ShipmentProcessingApiTest {
 
@@ -47,10 +46,8 @@ public class ShipmentProcessingApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10)
-            .randomize(GetMyFeesEstimatesRequest.class, GetMyFeesEstimatesRequest::new));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createPackagesTest() throws Exception {
