@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,31 +22,22 @@ import java.io.IOException;
 /** The current status of the fulfillment order. */
 @JsonAdapter(FulfillmentOrderStatus.Adapter.class)
 public enum FulfillmentOrderStatus {
-    @SerializedName("New")
     NEW("New"),
 
-    @SerializedName("Received")
     RECEIVED("Received"),
 
-    @SerializedName("Planning")
     PLANNING("Planning"),
 
-    @SerializedName("Processing")
     PROCESSING("Processing"),
 
-    @SerializedName("Cancelled")
     CANCELLED("Cancelled"),
 
-    @SerializedName("Complete")
     COMPLETE("Complete"),
 
-    @SerializedName("CompletePartialled")
     COMPLETE_PARTIALLED("CompletePartialled"),
 
-    @SerializedName("Unfulfillable")
     UNFULFILLABLE("Unfulfillable"),
 
-    @SerializedName("Invalid")
     INVALID("Invalid");
 
     private String value;
@@ -64,25 +55,30 @@ public enum FulfillmentOrderStatus {
         return String.valueOf(value);
     }
 
-    public static FulfillmentOrderStatus fromValue(String input) {
+    public static FulfillmentOrderStatus fromValue(String value) {
         for (FulfillmentOrderStatus b : FulfillmentOrderStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FulfillmentOrderStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final FulfillmentOrderStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public FulfillmentOrderStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return FulfillmentOrderStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return FulfillmentOrderStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        FulfillmentOrderStatus.fromValue(value);
     }
 }

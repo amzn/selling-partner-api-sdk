@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,46 +22,32 @@ import java.io.IOException;
 /** The tracking event type. */
 @JsonAdapter(EventCode.Adapter.class)
 public enum EventCode {
-    @SerializedName("ReadyForReceive")
     READY_FOR_RECEIVE("ReadyForReceive"),
 
-    @SerializedName("PickupDone")
     PICKUP_DONE("PickupDone"),
 
-    @SerializedName("Delivered")
     DELIVERED("Delivered"),
 
-    @SerializedName("Departed")
     DEPARTED("Departed"),
 
-    @SerializedName("DeliveryAttempted")
     DELIVERY_ATTEMPTED("DeliveryAttempted"),
 
-    @SerializedName("Lost")
     LOST("Lost"),
 
-    @SerializedName("OutForDelivery")
     OUT_FOR_DELIVERY("OutForDelivery"),
 
-    @SerializedName("ArrivedAtCarrierFacility")
     ARRIVED_AT_CARRIER_FACILITY("ArrivedAtCarrierFacility"),
 
-    @SerializedName("Rejected")
     REJECTED("Rejected"),
 
-    @SerializedName("Undeliverable")
     UNDELIVERABLE("Undeliverable"),
 
-    @SerializedName("PickupCancelled")
     PICKUP_CANCELLED("PickupCancelled"),
 
-    @SerializedName("ReturnInitiated")
     RETURN_INITIATED("ReturnInitiated"),
 
-    @SerializedName("AvailableForPickup")
     AVAILABLE_FOR_PICKUP("AvailableForPickup"),
 
-    @SerializedName("RecipientRequestedAlternateDeliveryTiming")
     RECIPIENT_REQUESTED_ALTERNATE_DELIVERY_TIMING("RecipientRequestedAlternateDeliveryTiming");
 
     private String value;
@@ -79,25 +65,30 @@ public enum EventCode {
         return String.valueOf(value);
     }
 
-    public static EventCode fromValue(String input) {
+    public static EventCode fromValue(String value) {
         for (EventCode b : EventCode.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EventCode> {
         @Override
         public void write(final JsonWriter jsonWriter, final EventCode enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public EventCode read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return EventCode.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return EventCode.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        EventCode.fromValue(value);
     }
 }

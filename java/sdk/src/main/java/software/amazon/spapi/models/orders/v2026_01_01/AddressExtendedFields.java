@@ -12,28 +12,51 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Additional address components that provide more detailed location information, helping with precise delivery routing.
  * **Note**: Only available with Brazil shipping addresses.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Additional address components that provide more detailed location information, helping with precise delivery routing.   **Note**: Only available with Brazil shipping addresses.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AddressExtendedFields {
-    @SerializedName("streetName")
-    private String streetName = null;
+    public static final String SERIALIZED_NAME_STREET_NAME = "streetName";
 
-    @SerializedName("streetNumber")
-    private String streetNumber = null;
+    @SerializedName(SERIALIZED_NAME_STREET_NAME)
+    private String streetName;
 
-    @SerializedName("complement")
-    private String complement = null;
+    public static final String SERIALIZED_NAME_STREET_NUMBER = "streetNumber";
 
-    @SerializedName("neighborhood")
-    private String neighborhood = null;
+    @SerializedName(SERIALIZED_NAME_STREET_NUMBER)
+    private String streetNumber;
+
+    public static final String SERIALIZED_NAME_COMPLEMENT = "complement";
+
+    @SerializedName(SERIALIZED_NAME_COMPLEMENT)
+    private String complement;
+
+    public static final String SERIALIZED_NAME_NEIGHBORHOOD = "neighborhood";
+
+    @SerializedName(SERIALIZED_NAME_NEIGHBORHOOD)
+    private String neighborhood;
+
+    public AddressExtendedFields() {}
 
     public AddressExtendedFields streetName(String streetName) {
         this.streetName = streetName;
@@ -45,8 +68,7 @@ public class AddressExtendedFields {
      *
      * @return streetName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the street.")
-    public String getStreetName() {
+    @javax.annotation.Nullable public String getStreetName() {
         return streetName;
     }
 
@@ -64,9 +86,7 @@ public class AddressExtendedFields {
      *
      * @return streetNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The house, building, or property number associated with the location's street address.")
-    public String getStreetNumber() {
+    @javax.annotation.Nullable public String getStreetNumber() {
         return streetNumber;
     }
 
@@ -84,8 +104,7 @@ public class AddressExtendedFields {
      *
      * @return complement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The floor number / unit number.")
-    public String getComplement() {
+    @javax.annotation.Nullable public String getComplement() {
         return complement;
     }
 
@@ -103,9 +122,7 @@ public class AddressExtendedFields {
      *
      * @return neighborhood
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The neighborhood. This value is only used in some countries (such as Brazil).")
-    public String getNeighborhood() {
+    @javax.annotation.Nullable public String getNeighborhood() {
         return neighborhood;
     }
 
@@ -114,7 +131,7 @@ public class AddressExtendedFields {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -146,10 +163,127 @@ public class AddressExtendedFields {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("streetName");
+        openapiFields.add("streetNumber");
+        openapiFields.add("complement");
+        openapiFields.add("neighborhood");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AddressExtendedFields
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AddressExtendedFields.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AddressExtendedFields is not found in the empty JSON string",
+                        AddressExtendedFields.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AddressExtendedFields.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AddressExtendedFields` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("streetName") != null && !jsonObj.get("streetName").isJsonNull())
+                && !jsonObj.get("streetName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `streetName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("streetName").toString()));
+        }
+        if ((jsonObj.get("streetNumber") != null && !jsonObj.get("streetNumber").isJsonNull())
+                && !jsonObj.get("streetNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `streetNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("streetNumber").toString()));
+        }
+        if ((jsonObj.get("complement") != null && !jsonObj.get("complement").isJsonNull())
+                && !jsonObj.get("complement").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `complement` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("complement").toString()));
+        }
+        if ((jsonObj.get("neighborhood") != null && !jsonObj.get("neighborhood").isJsonNull())
+                && !jsonObj.get("neighborhood").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `neighborhood` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("neighborhood").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AddressExtendedFields.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AddressExtendedFields' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AddressExtendedFields> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AddressExtendedFields.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AddressExtendedFields>() {
+                        @Override
+                        public void write(JsonWriter out, AddressExtendedFields value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AddressExtendedFields read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AddressExtendedFields given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AddressExtendedFields
+     * @throws IOException if the JSON string is invalid with respect to AddressExtendedFields
+     */
+    public static AddressExtendedFields fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AddressExtendedFields.class);
+    }
+
+    /**
+     * Convert an instance of AddressExtendedFields to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

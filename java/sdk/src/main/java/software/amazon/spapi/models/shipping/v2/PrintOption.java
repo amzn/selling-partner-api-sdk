@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The format options available for a label. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The format options available for a label.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrintOption {
-    @SerializedName("supportedDPIs")
-    private List<Integer> supportedDPIs = null;
+    public static final String SERIALIZED_NAME_SUPPORTED_D_P_IS = "supportedDPIs";
 
-    @SerializedName("supportedPageLayouts")
-    private List<String> supportedPageLayouts = null;
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_D_P_IS)
+    private List<Integer> supportedDPIs = new ArrayList<>();
 
-    @SerializedName("supportedFileJoiningOptions")
-    private List<Boolean> supportedFileJoiningOptions = null;
+    public static final String SERIALIZED_NAME_SUPPORTED_PAGE_LAYOUTS = "supportedPageLayouts";
 
-    @SerializedName("supportedDocumentDetails")
-    private List<SupportedDocumentDetail> supportedDocumentDetails = null;
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_PAGE_LAYOUTS)
+    private List<String> supportedPageLayouts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUPPORTED_FILE_JOINING_OPTIONS = "supportedFileJoiningOptions";
+
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_FILE_JOINING_OPTIONS)
+    private List<Boolean> supportedFileJoiningOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUPPORTED_DOCUMENT_DETAILS = "supportedDocumentDetails";
+
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_DOCUMENT_DETAILS)
+    private List<SupportedDocumentDetail> supportedDocumentDetails = new ArrayList<>();
+
+    public PrintOption() {}
 
     public PrintOption supportedDPIs(List<Integer> supportedDPIs) {
         this.supportedDPIs = supportedDPIs;
@@ -50,8 +76,7 @@ public class PrintOption {
      *
      * @return supportedDPIs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of the supported DPI options for a document.")
-    public List<Integer> getSupportedDPIs() {
+    @javax.annotation.Nullable public List<Integer> getSupportedDPIs() {
         return supportedDPIs;
     }
 
@@ -77,9 +102,7 @@ public class PrintOption {
      *
      * @return supportedPageLayouts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of the supported page layout options for a document.")
+    @javax.annotation.Nonnull
     public List<String> getSupportedPageLayouts() {
         return supportedPageLayouts;
     }
@@ -106,9 +129,7 @@ public class PrintOption {
      *
      * @return supportedFileJoiningOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of the supported needFileJoining boolean values for a document.")
+    @javax.annotation.Nonnull
     public List<Boolean> getSupportedFileJoiningOptions() {
         return supportedFileJoiningOptions;
     }
@@ -135,9 +156,7 @@ public class PrintOption {
      *
      * @return supportedDocumentDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of the supported documented details.")
+    @javax.annotation.Nonnull
     public List<SupportedDocumentDetail> getSupportedDocumentDetails() {
         return supportedDocumentDetails;
     }
@@ -147,7 +166,7 @@ public class PrintOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -185,10 +204,153 @@ public class PrintOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("supportedDPIs");
+        openapiFields.add("supportedPageLayouts");
+        openapiFields.add("supportedFileJoiningOptions");
+        openapiFields.add("supportedDocumentDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("supportedPageLayouts");
+        openapiRequiredFields.add("supportedFileJoiningOptions");
+        openapiRequiredFields.add("supportedDocumentDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrintOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrintOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrintOption is not found in the empty JSON string",
+                        PrintOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrintOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrintOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PrintOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("supportedDPIs") != null
+                && !jsonObj.get("supportedDPIs").isJsonNull()
+                && !jsonObj.get("supportedDPIs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedDPIs` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedDPIs").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("supportedPageLayouts") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("supportedPageLayouts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedPageLayouts` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedPageLayouts").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("supportedFileJoiningOptions") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("supportedFileJoiningOptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedFileJoiningOptions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedFileJoiningOptions").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("supportedDocumentDetails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedDocumentDetails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedDocumentDetails").toString()));
+        }
+
+        JsonArray jsonArraysupportedDocumentDetails = jsonObj.getAsJsonArray("supportedDocumentDetails");
+        // validate the required field `supportedDocumentDetails` (array)
+        for (int i = 0; i < jsonArraysupportedDocumentDetails.size(); i++) {
+            SupportedDocumentDetail.validateJsonElement(jsonArraysupportedDocumentDetails.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrintOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrintOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrintOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrintOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrintOption>() {
+                        @Override
+                        public void write(JsonWriter out, PrintOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrintOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrintOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrintOption
+     * @throws IOException if the JSON string is invalid with respect to PrintOption
+     */
+    public static PrintOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrintOption.class);
+    }
+
+    /**
+     * Convert an instance of PrintOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,50 +12,92 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** All the information related to a transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "All the information related to a transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Transaction {
-    @SerializedName("sellingPartnerMetadata")
-    private SellingPartnerMetadata sellingPartnerMetadata = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTNER_METADATA = "sellingPartnerMetadata";
 
-    @SerializedName("relatedIdentifiers")
-    private RelatedIdentifiers relatedIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTNER_METADATA)
+    private SellingPartnerMetadata sellingPartnerMetadata;
 
-    @SerializedName("transactionType")
-    private String transactionType = null;
+    public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
-    @SerializedName("transactionId")
-    private String transactionId = null;
+    @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
+    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
 
-    @SerializedName("transactionStatus")
-    private String transactionStatus = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
 
-    @SerializedName("description")
-    private String description = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("postedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
 
-    @SerializedName("totalAmount")
-    private Currency totalAmount = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+    private String transactionId;
 
-    @SerializedName("marketplaceDetails")
-    private MarketplaceDetails marketplaceDetails = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_STATUS = "transactionStatus";
 
-    @SerializedName("items")
-    private Items items = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_STATUS)
+    private String transactionStatus;
 
-    @SerializedName("contexts")
-    private Contexts contexts = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-    @SerializedName("breakdowns")
-    private List<Breakdown> breakdowns = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
+    public static final String SERIALIZED_NAME_POSTED_DATE = "postedDate";
+
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "totalAmount";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
+    private Currency totalAmount;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_DETAILS = "marketplaceDetails";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_DETAILS)
+    private MarketplaceDetails marketplaceDetails;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private Items items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CONTEXTS = "contexts";
+
+    @SerializedName(SERIALIZED_NAME_CONTEXTS)
+    private Contexts contexts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
+
+    @SerializedName(SERIALIZED_NAME_BREAKDOWNS)
+    private List<Breakdown> breakdowns = new ArrayList<>();
+
+    public Transaction() {}
 
     public Transaction sellingPartnerMetadata(SellingPartnerMetadata sellingPartnerMetadata) {
         this.sellingPartnerMetadata = sellingPartnerMetadata;
@@ -67,8 +109,7 @@ public class Transaction {
      *
      * @return sellingPartnerMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellingPartnerMetadata getSellingPartnerMetadata() {
+    @javax.annotation.Nullable public SellingPartnerMetadata getSellingPartnerMetadata() {
         return sellingPartnerMetadata;
     }
 
@@ -86,8 +127,7 @@ public class Transaction {
      *
      * @return relatedIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
@@ -105,9 +145,7 @@ public class Transaction {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The type of transaction.  **Possible value:** `Shipment`")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -125,8 +163,7 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier of the transaction.")
-    public String getTransactionId() {
+    @javax.annotation.Nullable public String getTransactionId() {
         return transactionId;
     }
 
@@ -147,10 +184,7 @@ public class Transaction {
      *
      * @return transactionStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.")
-    public String getTransactionStatus() {
+    @javax.annotation.Nullable public String getTransactionStatus() {
         return transactionStatus;
     }
 
@@ -168,9 +202,7 @@ public class Transaction {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`")
-    public String getDescription() {
+    @javax.annotation.Nullable public String getDescription() {
         return description;
     }
 
@@ -188,10 +220,7 @@ public class Transaction {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -209,8 +238,7 @@ public class Transaction {
      *
      * @return totalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTotalAmount() {
+    @javax.annotation.Nullable public Currency getTotalAmount() {
         return totalAmount;
     }
 
@@ -228,8 +256,7 @@ public class Transaction {
      *
      * @return marketplaceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MarketplaceDetails getMarketplaceDetails() {
+    @javax.annotation.Nullable public MarketplaceDetails getMarketplaceDetails() {
         return marketplaceDetails;
     }
 
@@ -247,8 +274,7 @@ public class Transaction {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Items getItems() {
+    @javax.annotation.Nullable public Items getItems() {
         return items;
     }
 
@@ -266,8 +292,7 @@ public class Transaction {
      *
      * @return contexts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Contexts getContexts() {
+    @javax.annotation.Nullable public Contexts getContexts() {
         return contexts;
     }
 
@@ -293,9 +318,7 @@ public class Transaction {
      *
      * @return breakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
-    public List<Breakdown> getBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
 
@@ -304,7 +327,7 @@ public class Transaction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -374,10 +397,168 @@ public class Transaction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellingPartnerMetadata");
+        openapiFields.add("relatedIdentifiers");
+        openapiFields.add("transactionType");
+        openapiFields.add("transactionId");
+        openapiFields.add("transactionStatus");
+        openapiFields.add("description");
+        openapiFields.add("postedDate");
+        openapiFields.add("totalAmount");
+        openapiFields.add("marketplaceDetails");
+        openapiFields.add("items");
+        openapiFields.add("contexts");
+        openapiFields.add("breakdowns");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Transaction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Transaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Transaction is not found in the empty JSON string",
+                        Transaction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Transaction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Transaction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `sellingPartnerMetadata`
+        if (jsonObj.get("sellingPartnerMetadata") != null
+                && !jsonObj.get("sellingPartnerMetadata").isJsonNull()) {
+            SellingPartnerMetadata.validateJsonElement(jsonObj.get("sellingPartnerMetadata"));
+        }
+        if ((jsonObj.get("transactionType") != null
+                        && !jsonObj.get("transactionType").isJsonNull())
+                && !jsonObj.get("transactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionType").toString()));
+        }
+        if ((jsonObj.get("transactionId") != null
+                        && !jsonObj.get("transactionId").isJsonNull())
+                && !jsonObj.get("transactionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionId").toString()));
+        }
+        if ((jsonObj.get("transactionStatus") != null
+                        && !jsonObj.get("transactionStatus").isJsonNull())
+                && !jsonObj.get("transactionStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionStatus").toString()));
+        }
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+        // validate the optional field `totalAmount`
+        if (jsonObj.get("totalAmount") != null && !jsonObj.get("totalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("totalAmount"));
+        }
+        // validate the optional field `marketplaceDetails`
+        if (jsonObj.get("marketplaceDetails") != null
+                && !jsonObj.get("marketplaceDetails").isJsonNull()) {
+            MarketplaceDetails.validateJsonElement(jsonObj.get("marketplaceDetails"));
+        }
+        if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
+            JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");
+            if (jsonArraybreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("breakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `breakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("breakdowns").toString()));
+                }
+
+                // validate the optional field `breakdowns` (array)
+                for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Transaction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Transaction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Transaction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Transaction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Transaction>() {
+                        @Override
+                        public void write(JsonWriter out, Transaction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Transaction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Transaction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Transaction
+     * @throws IOException if the JSON string is invalid with respect to Transaction
+     */
+    public static Transaction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Transaction.class);
+    }
+
+    /**
+     * Convert an instance of Transaction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

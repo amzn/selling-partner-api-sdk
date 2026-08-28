@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The document data and checksum. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The document data and checksum.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FileContents {
-    @SerializedName("Contents")
-    private String contents = null;
+    public static final String SERIALIZED_NAME_CONTENTS = "Contents";
 
-    @SerializedName("FileType")
-    private FileType fileType = null;
+    @SerializedName(SERIALIZED_NAME_CONTENTS)
+    private String contents;
 
-    @SerializedName("Checksum")
-    private String checksum = null;
+    public static final String SERIALIZED_NAME_FILE_TYPE = "FileType";
+
+    @SerializedName(SERIALIZED_NAME_FILE_TYPE)
+    private FileType fileType;
+
+    public static final String SERIALIZED_NAME_CHECKSUM = "Checksum";
+
+    @SerializedName(SERIALIZED_NAME_CHECKSUM)
+    private String checksum;
+
+    public FileContents() {}
 
     public FileContents contents(String contents) {
         this.contents = contents;
@@ -37,9 +60,7 @@ public class FileContents {
      *
      * @return contents
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Data for printing labels encoded into a Base64, GZip-compressed string.")
+    @javax.annotation.Nonnull
     public String getContents() {
         return contents;
     }
@@ -58,7 +79,7 @@ public class FileContents {
      *
      * @return fileType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FileType getFileType() {
         return fileType;
     }
@@ -77,9 +98,7 @@ public class FileContents {
      *
      * @return checksum
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An MD5 hash to validate the PDF document data, in the form of a Base64 string.")
+    @javax.annotation.Nonnull
     public String getChecksum() {
         return checksum;
     }
@@ -89,7 +108,7 @@ public class FileContents {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -119,10 +138,125 @@ public class FileContents {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Contents");
+        openapiFields.add("FileType");
+        openapiFields.add("Checksum");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Contents");
+        openapiRequiredFields.add("FileType");
+        openapiRequiredFields.add("Checksum");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FileContents
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FileContents.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FileContents is not found in the empty JSON string",
+                        FileContents.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FileContents.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FileContents` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FileContents.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("Contents").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Contents` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Contents").toString()));
+        }
+        // validate the required field `FileType`
+        FileType.validateJsonElement(jsonObj.get("FileType"));
+        if (!jsonObj.get("Checksum").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Checksum` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Checksum").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FileContents.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FileContents' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FileContents> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FileContents.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FileContents>() {
+                        @Override
+                        public void write(JsonWriter out, FileContents value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FileContents read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FileContents given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FileContents
+     * @throws IOException if the JSON string is invalid with respect to FileContents
+     */
+    public static FileContents fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FileContents.class);
+    }
+
+    /**
+     * Convert an instance of FileContents to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

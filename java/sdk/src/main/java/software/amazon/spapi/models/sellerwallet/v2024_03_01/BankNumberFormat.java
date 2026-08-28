@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The format of the bank number. Also known as the routing number type. */
 @JsonAdapter(BankNumberFormat.Adapter.class)
 public enum BankNumberFormat {
-    @SerializedName("BIC")
     BIC("BIC"),
 
-    @SerializedName("BASIC")
     BASIC("BASIC");
 
     private String value;
@@ -43,25 +41,30 @@ public enum BankNumberFormat {
         return String.valueOf(value);
     }
 
-    public static BankNumberFormat fromValue(String input) {
+    public static BankNumberFormat fromValue(String value) {
         for (BankNumberFormat b : BankNumberFormat.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BankNumberFormat> {
         @Override
         public void write(final JsonWriter jsonWriter, final BankNumberFormat enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BankNumberFormat read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BankNumberFormat.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BankNumberFormat.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BankNumberFormat.fromValue(value);
     }
 }

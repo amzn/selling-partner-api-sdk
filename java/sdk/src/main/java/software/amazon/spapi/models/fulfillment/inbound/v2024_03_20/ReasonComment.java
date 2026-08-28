@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,31 +22,22 @@ import java.io.IOException;
 /** Reason for cancelling or rescheduling a self-ship appointment. */
 @JsonAdapter(ReasonComment.Adapter.class)
 public enum ReasonComment {
-    @SerializedName("APPOINTMENT_REQUESTED_BY_MISTAKE")
     APPOINTMENT_REQUESTED_BY_MISTAKE("APPOINTMENT_REQUESTED_BY_MISTAKE"),
 
-    @SerializedName("VEHICLE_DELAY")
     VEHICLE_DELAY("VEHICLE_DELAY"),
 
-    @SerializedName("SLOT_NOT_SUITABLE")
     SLOT_NOT_SUITABLE("SLOT_NOT_SUITABLE"),
 
-    @SerializedName("OUTSIDE_CARRIER_BUSINESS_HOURS")
     OUTSIDE_CARRIER_BUSINESS_HOURS("OUTSIDE_CARRIER_BUSINESS_HOURS"),
 
-    @SerializedName("UNFAVOURABLE_EXTERNAL_CONDITIONS")
     UNFAVOURABLE_EXTERNAL_CONDITIONS("UNFAVOURABLE_EXTERNAL_CONDITIONS"),
 
-    @SerializedName("PROCUREMENT_DELAY")
     PROCUREMENT_DELAY("PROCUREMENT_DELAY"),
 
-    @SerializedName("SHIPPING_PLAN_CHANGED")
     SHIPPING_PLAN_CHANGED("SHIPPING_PLAN_CHANGED"),
 
-    @SerializedName("INCREASED_QUANTITY")
     INCREASED_QUANTITY("INCREASED_QUANTITY"),
 
-    @SerializedName("OTHER")
     OTHER("OTHER");
 
     private String value;
@@ -64,25 +55,30 @@ public enum ReasonComment {
         return String.valueOf(value);
     }
 
-    public static ReasonComment fromValue(String input) {
+    public static ReasonComment fromValue(String value) {
         for (ReasonComment b : ReasonComment.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ReasonComment> {
         @Override
         public void write(final JsonWriter jsonWriter, final ReasonComment enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ReasonComment read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ReasonComment.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ReasonComment.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ReasonComment.fromValue(value);
     }
 }

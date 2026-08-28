@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Document specification that is supported for a service offering. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Document specification that is supported for a service offering.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SupportedDocumentSpecification {
-    @SerializedName("format")
-    private DocumentFormat format = null;
+    public static final String SERIALIZED_NAME_FORMAT = "format";
 
-    @SerializedName("size")
-    private DocumentSize size = null;
+    @SerializedName(SERIALIZED_NAME_FORMAT)
+    private DocumentFormat format;
 
-    @SerializedName("printOptions")
-    private PrintOptionList printOptions = null;
+    public static final String SERIALIZED_NAME_SIZE = "size";
+
+    @SerializedName(SERIALIZED_NAME_SIZE)
+    private DocumentSize size;
+
+    public static final String SERIALIZED_NAME_PRINT_OPTIONS = "printOptions";
+
+    @SerializedName(SERIALIZED_NAME_PRINT_OPTIONS)
+    private PrintOptionList printOptions = new ArrayList<>();
+
+    public SupportedDocumentSpecification() {}
 
     public SupportedDocumentSpecification format(DocumentFormat format) {
         this.format = format;
@@ -38,7 +60,7 @@ public class SupportedDocumentSpecification {
      *
      * @return format
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DocumentFormat getFormat() {
         return format;
     }
@@ -57,7 +79,7 @@ public class SupportedDocumentSpecification {
      *
      * @return size
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DocumentSize getSize() {
         return size;
     }
@@ -76,7 +98,7 @@ public class SupportedDocumentSpecification {
      *
      * @return printOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PrintOptionList getPrintOptions() {
         return printOptions;
     }
@@ -86,7 +108,7 @@ public class SupportedDocumentSpecification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +138,118 @@ public class SupportedDocumentSpecification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("format");
+        openapiFields.add("size");
+        openapiFields.add("printOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("format");
+        openapiRequiredFields.add("size");
+        openapiRequiredFields.add("printOptions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SupportedDocumentSpecification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SupportedDocumentSpecification.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SupportedDocumentSpecification is not found in the empty JSON string",
+                        SupportedDocumentSpecification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SupportedDocumentSpecification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SupportedDocumentSpecification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SupportedDocumentSpecification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `format`
+        DocumentFormat.validateJsonElement(jsonObj.get("format"));
+        // validate the required field `size`
+        DocumentSize.validateJsonElement(jsonObj.get("size"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SupportedDocumentSpecification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SupportedDocumentSpecification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SupportedDocumentSpecification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SupportedDocumentSpecification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SupportedDocumentSpecification>() {
+                        @Override
+                        public void write(JsonWriter out, SupportedDocumentSpecification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SupportedDocumentSpecification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SupportedDocumentSpecification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SupportedDocumentSpecification
+     * @throws IOException if the JSON string is invalid with respect to SupportedDocumentSpecification
+     */
+    public static SupportedDocumentSpecification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SupportedDocumentSpecification.class);
+    }
+
+    /**
+     * Convert an instance of SupportedDocumentSpecification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

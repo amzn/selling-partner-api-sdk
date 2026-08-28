@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents an update to the status of a shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an update to the status of a shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentStatusUpdate {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("shipFromParty")
-    private PartyIdentification shipFromParty = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
 
-    @SerializedName("statusUpdateDetails")
-    private StatusUpdateDetails statusUpdateDetails = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_SHIP_FROM_PARTY = "shipFromParty";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_PARTY)
+    private PartyIdentification shipFromParty;
+
+    public static final String SERIALIZED_NAME_STATUS_UPDATE_DETAILS = "statusUpdateDetails";
+
+    @SerializedName(SERIALIZED_NAME_STATUS_UPDATE_DETAILS)
+    private StatusUpdateDetails statusUpdateDetails;
+
+    public ShipmentStatusUpdate() {}
 
     public ShipmentStatusUpdate purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -40,9 +65,7 @@ public class ShipmentStatusUpdate {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Purchase order number of the shipment for which to update the shipment status.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -61,7 +84,7 @@ public class ShipmentStatusUpdate {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -80,7 +103,7 @@ public class ShipmentStatusUpdate {
      *
      * @return shipFromParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -99,7 +122,7 @@ public class ShipmentStatusUpdate {
      *
      * @return statusUpdateDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public StatusUpdateDetails getStatusUpdateDetails() {
         return statusUpdateDetails;
     }
@@ -109,7 +132,7 @@ public class ShipmentStatusUpdate {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +168,126 @@ public class ShipmentStatusUpdate {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("sellingParty");
+        openapiFields.add("shipFromParty");
+        openapiFields.add("statusUpdateDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("shipFromParty");
+        openapiRequiredFields.add("statusUpdateDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentStatusUpdate
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentStatusUpdate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentStatusUpdate is not found in the empty JSON string",
+                        ShipmentStatusUpdate.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentStatusUpdate.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentStatusUpdate` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipmentStatusUpdate.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // validate the required field `shipFromParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("shipFromParty"));
+        // validate the required field `statusUpdateDetails`
+        StatusUpdateDetails.validateJsonElement(jsonObj.get("statusUpdateDetails"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentStatusUpdate.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentStatusUpdate' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentStatusUpdate> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentStatusUpdate.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentStatusUpdate>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentStatusUpdate value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentStatusUpdate read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentStatusUpdate given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentStatusUpdate
+     * @throws IOException if the JSON string is invalid with respect to ShipmentStatusUpdate
+     */
+    public static ShipmentStatusUpdate fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentStatusUpdate.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentStatusUpdate to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

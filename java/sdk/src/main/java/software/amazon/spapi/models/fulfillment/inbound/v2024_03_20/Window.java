@@ -12,22 +12,44 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains a start and end DateTime representing a time range. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains a start and end DateTime representing a time range.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Window {
-    @SerializedName("editableUntil")
-    private OffsetDateTime editableUntil = null;
+    public static final String SERIALIZED_NAME_EDITABLE_UNTIL = "editableUntil";
 
-    @SerializedName("end")
-    private OffsetDateTime end = null;
+    @SerializedName(SERIALIZED_NAME_EDITABLE_UNTIL)
+    private OffsetDateTime editableUntil;
 
-    @SerializedName("start")
-    private OffsetDateTime start = null;
+    public static final String SERIALIZED_NAME_END = "end";
+
+    @SerializedName(SERIALIZED_NAME_END)
+    private OffsetDateTime end;
+
+    public static final String SERIALIZED_NAME_START = "start";
+
+    @SerializedName(SERIALIZED_NAME_START)
+    private OffsetDateTime start;
+
+    public Window() {}
 
     public Window editableUntil(OffsetDateTime editableUntil) {
         this.editableUntil = editableUntil;
@@ -39,9 +61,7 @@ public class Window {
      *
      * @return editableUntil
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The timestamp at which this Window can no longer be edited.")
-    public OffsetDateTime getEditableUntil() {
+    @javax.annotation.Nullable public OffsetDateTime getEditableUntil() {
         return editableUntil;
     }
 
@@ -59,7 +79,7 @@ public class Window {
      *
      * @return end
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The end timestamp of the window.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEnd() {
         return end;
     }
@@ -78,7 +98,7 @@ public class Window {
      *
      * @return start
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The start timestamp of the window.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStart() {
         return start;
     }
@@ -88,7 +108,7 @@ public class Window {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -118,10 +138,111 @@ public class Window {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("editableUntil");
+        openapiFields.add("end");
+        openapiFields.add("start");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("end");
+        openapiRequiredFields.add("start");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Window
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Window.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Window is not found in the empty JSON string",
+                        Window.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Window.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Window` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Window.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Window.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Window' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Window> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Window.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Window>() {
+                        @Override
+                        public void write(JsonWriter out, Window value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Window read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Window given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Window
+     * @throws IOException if the JSON string is invalid with respect to Window
+     */
+    public static Window fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Window.class);
+    }
+
+    /**
+     * Convert an instance of Window to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

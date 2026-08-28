@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The A+ Content document type. */
 @JsonAdapter(ContentType.Adapter.class)
 public enum ContentType {
-    @SerializedName("EBC")
     EBC("EBC"),
 
-    @SerializedName("EMC")
     EMC("EMC");
 
     private String value;
@@ -43,25 +41,30 @@ public enum ContentType {
         return String.valueOf(value);
     }
 
-    public static ContentType fromValue(String input) {
+    public static ContentType fromValue(String value) {
         for (ContentType b : ContentType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ContentType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ContentType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ContentType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ContentType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ContentType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ContentType.fromValue(value);
     }
 }

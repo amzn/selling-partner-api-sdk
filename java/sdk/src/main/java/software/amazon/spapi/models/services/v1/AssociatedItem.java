@@ -12,41 +12,60 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about an item associated with the service job. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about an item associated with the service job.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AssociatedItem {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("title")
-    private String title = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    public static final String SERIALIZED_NAME_TITLE = "title";
 
-    @SerializedName("orderId")
-    private String orderId = null;
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
     /** The status of the item. */
     @JsonAdapter(ItemStatusEnum.Adapter.class)
     public enum ItemStatusEnum {
-        @SerializedName("ACTIVE")
         ACTIVE("ACTIVE"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED"),
-        @SerializedName("SHIPPED")
+
         SHIPPED("SHIPPED"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED");
 
         private String value;
@@ -64,40 +83,55 @@ public class AssociatedItem {
             return String.valueOf(value);
         }
 
-        public static ItemStatusEnum fromValue(String input) {
+        public static ItemStatusEnum fromValue(String value) {
             for (ItemStatusEnum b : ItemStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ItemStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ItemStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ItemStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ItemStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ItemStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ItemStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("itemStatus")
-    private ItemStatusEnum itemStatus = null;
+    public static final String SERIALIZED_NAME_ITEM_STATUS = "itemStatus";
 
-    @SerializedName("brandName")
-    private String brandName = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_STATUS)
+    private ItemStatusEnum itemStatus;
 
-    @SerializedName("itemDelivery")
-    private ItemDelivery itemDelivery = null;
+    public static final String SERIALIZED_NAME_BRAND_NAME = "brandName";
 
-    @SerializedName("linkedAssets")
-    private List<LinkedAsset> linkedAssets = null;
+    @SerializedName(SERIALIZED_NAME_BRAND_NAME)
+    private String brandName;
+
+    public static final String SERIALIZED_NAME_ITEM_DELIVERY = "itemDelivery";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_DELIVERY)
+    private ItemDelivery itemDelivery;
+
+    public static final String SERIALIZED_NAME_LINKED_ASSETS = "linkedAssets";
+
+    @SerializedName(SERIALIZED_NAME_LINKED_ASSETS)
+    private List<LinkedAsset> linkedAssets = new ArrayList<>();
+
+    public AssociatedItem() {}
 
     public AssociatedItem asin(String asin) {
         this.asin = asin;
@@ -109,9 +143,7 @@ public class AssociatedItem {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -129,8 +161,7 @@ public class AssociatedItem {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The title of the item.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -148,8 +179,7 @@ public class AssociatedItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The total number of items included in the order.")
-    public Integer getQuantity() {
+    @javax.annotation.Nullable public Integer getQuantity() {
         return quantity;
     }
 
@@ -167,9 +197,7 @@ public class AssociatedItem {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.")
-    public String getOrderId() {
+    @javax.annotation.Nullable public String getOrderId() {
         return orderId;
     }
 
@@ -187,8 +215,7 @@ public class AssociatedItem {
      *
      * @return itemStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the item.")
-    public ItemStatusEnum getItemStatus() {
+    @javax.annotation.Nullable public ItemStatusEnum getItemStatus() {
         return itemStatus;
     }
 
@@ -206,8 +233,7 @@ public class AssociatedItem {
      *
      * @return brandName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The brand name of the item.")
-    public String getBrandName() {
+    @javax.annotation.Nullable public String getBrandName() {
         return brandName;
     }
 
@@ -225,8 +251,7 @@ public class AssociatedItem {
      *
      * @return itemDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemDelivery getItemDelivery() {
+    @javax.annotation.Nullable public ItemDelivery getItemDelivery() {
         return itemDelivery;
     }
 
@@ -252,9 +277,7 @@ public class AssociatedItem {
      *
      * @return linkedAssets
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of customer-owned assets on which the service must be performed.")
-    public List<LinkedAsset> getLinkedAssets() {
+    @javax.annotation.Nullable public List<LinkedAsset> getLinkedAssets() {
         return linkedAssets;
     }
 
@@ -263,7 +286,7 @@ public class AssociatedItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -303,10 +326,161 @@ public class AssociatedItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("title");
+        openapiFields.add("quantity");
+        openapiFields.add("orderId");
+        openapiFields.add("itemStatus");
+        openapiFields.add("brandName");
+        openapiFields.add("itemDelivery");
+        openapiFields.add("linkedAssets");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AssociatedItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AssociatedItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AssociatedItem is not found in the empty JSON string",
+                        AssociatedItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AssociatedItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AssociatedItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if ((jsonObj.get("orderId") != null && !jsonObj.get("orderId").isJsonNull())
+                && !jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        if ((jsonObj.get("itemStatus") != null && !jsonObj.get("itemStatus").isJsonNull())
+                && !jsonObj.get("itemStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemStatus").toString()));
+        }
+        // validate the optional field `itemStatus`
+        if (jsonObj.get("itemStatus") != null && !jsonObj.get("itemStatus").isJsonNull()) {
+            ItemStatusEnum.validateJsonElement(jsonObj.get("itemStatus"));
+        }
+        if ((jsonObj.get("brandName") != null && !jsonObj.get("brandName").isJsonNull())
+                && !jsonObj.get("brandName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `brandName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("brandName").toString()));
+        }
+        // validate the optional field `itemDelivery`
+        if (jsonObj.get("itemDelivery") != null && !jsonObj.get("itemDelivery").isJsonNull()) {
+            ItemDelivery.validateJsonElement(jsonObj.get("itemDelivery"));
+        }
+        if (jsonObj.get("linkedAssets") != null && !jsonObj.get("linkedAssets").isJsonNull()) {
+            JsonArray jsonArraylinkedAssets = jsonObj.getAsJsonArray("linkedAssets");
+            if (jsonArraylinkedAssets != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("linkedAssets").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `linkedAssets` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("linkedAssets").toString()));
+                }
+
+                // validate the optional field `linkedAssets` (array)
+                for (int i = 0; i < jsonArraylinkedAssets.size(); i++) {
+                    LinkedAsset.validateJsonElement(jsonArraylinkedAssets.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AssociatedItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AssociatedItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AssociatedItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AssociatedItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AssociatedItem>() {
+                        @Override
+                        public void write(JsonWriter out, AssociatedItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AssociatedItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AssociatedItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AssociatedItem
+     * @throws IOException if the JSON string is invalid with respect to AssociatedItem
+     */
+    public static AssociatedItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AssociatedItem.class);
+    }
+
+    /**
+     * Convert an instance of AssociatedItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

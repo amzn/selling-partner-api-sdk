@@ -12,39 +12,73 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The supply source details, including configurations and capabilities. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The supply source details, including configurations and capabilities.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SupplySource {
-    @SerializedName("supplySourceId")
-    private String supplySourceId = null;
+    public static final String SERIALIZED_NAME_SUPPLY_SOURCE_ID = "supplySourceId";
 
-    @SerializedName("supplySourceCode")
-    private String supplySourceCode = null;
+    @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCE_ID)
+    private String supplySourceId;
 
-    @SerializedName("alias")
-    private String alias = null;
+    public static final String SERIALIZED_NAME_SUPPLY_SOURCE_CODE = "supplySourceCode";
 
-    @SerializedName("status")
-    private SupplySourceStatusReadOnly status = null;
+    @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCE_CODE)
+    private String supplySourceCode;
 
-    @SerializedName("address")
-    private Address address = null;
+    public static final String SERIALIZED_NAME_ALIAS = "alias";
 
-    @SerializedName("configuration")
-    private SupplySourceConfiguration _configuration = null;
+    @SerializedName(SERIALIZED_NAME_ALIAS)
+    private String alias;
 
-    @SerializedName("capabilities")
-    private SupplySourceCapabilities capabilities = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("createdAt")
-    private String createdAt = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private SupplySourceStatusReadOnly status;
 
-    @SerializedName("updatedAt")
-    private String updatedAt = null;
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public static final String SERIALIZED_NAME_CONFIGURATION = "configuration";
+
+    @SerializedName(SERIALIZED_NAME_CONFIGURATION)
+    private SupplySourceConfiguration _configuration;
+
+    public static final String SERIALIZED_NAME_CAPABILITIES = "capabilities";
+
+    @SerializedName(SERIALIZED_NAME_CAPABILITIES)
+    private SupplySourceCapabilities capabilities;
+
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private String createdAt;
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private String updatedAt;
+
+    public SupplySource() {}
 
     public SupplySource supplySourceId(String supplySourceId) {
         this.supplySourceId = supplySourceId;
@@ -56,8 +90,7 @@ public class SupplySource {
      *
      * @return supplySourceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon generated unique supply source ID.")
-    public String getSupplySourceId() {
+    @javax.annotation.Nullable public String getSupplySourceId() {
         return supplySourceId;
     }
 
@@ -75,8 +108,7 @@ public class SupplySource {
      *
      * @return supplySourceCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller-provided unique supply source code.")
-    public String getSupplySourceCode() {
+    @javax.annotation.Nullable public String getSupplySourceCode() {
         return supplySourceCode;
     }
 
@@ -94,8 +126,7 @@ public class SupplySource {
      *
      * @return alias
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The custom alias for this supply source")
-    public String getAlias() {
+    @javax.annotation.Nullable public String getAlias() {
         return alias;
     }
 
@@ -113,8 +144,7 @@ public class SupplySource {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SupplySourceStatusReadOnly getStatus() {
+    @javax.annotation.Nullable public SupplySourceStatusReadOnly getStatus() {
         return status;
     }
 
@@ -132,8 +162,7 @@ public class SupplySource {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -151,8 +180,7 @@ public class SupplySource {
      *
      * @return _configuration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SupplySourceConfiguration getConfiguration() {
+    @javax.annotation.Nullable public SupplySourceConfiguration getConfiguration() {
         return _configuration;
     }
 
@@ -170,8 +198,7 @@ public class SupplySource {
      *
      * @return capabilities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SupplySourceCapabilities getCapabilities() {
+    @javax.annotation.Nullable public SupplySourceCapabilities getCapabilities() {
         return capabilities;
     }
 
@@ -189,8 +216,7 @@ public class SupplySource {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A date and time in the rfc3339 format.")
-    public String getCreatedAt() {
+    @javax.annotation.Nullable public String getCreatedAt() {
         return createdAt;
     }
 
@@ -208,8 +234,7 @@ public class SupplySource {
      *
      * @return updatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A date and time in the rfc3339 format.")
-    public String getUpdatedAt() {
+    @javax.annotation.Nullable public String getUpdatedAt() {
         return updatedAt;
     }
 
@@ -218,7 +243,7 @@ public class SupplySource {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -275,10 +300,156 @@ public class SupplySource {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("supplySourceId");
+        openapiFields.add("supplySourceCode");
+        openapiFields.add("alias");
+        openapiFields.add("status");
+        openapiFields.add("address");
+        openapiFields.add("configuration");
+        openapiFields.add("capabilities");
+        openapiFields.add("createdAt");
+        openapiFields.add("updatedAt");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SupplySource
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SupplySource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SupplySource is not found in the empty JSON string",
+                        SupplySource.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SupplySource.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SupplySource` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("supplySourceId") != null
+                        && !jsonObj.get("supplySourceId").isJsonNull())
+                && !jsonObj.get("supplySourceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supplySourceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("supplySourceId").toString()));
+        }
+        if ((jsonObj.get("supplySourceCode") != null
+                        && !jsonObj.get("supplySourceCode").isJsonNull())
+                && !jsonObj.get("supplySourceCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supplySourceCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("supplySourceCode").toString()));
+        }
+        if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull())
+                && !jsonObj.get("alias").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `alias` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("alias").toString()));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            SupplySourceStatusReadOnly.validateJsonElement(jsonObj.get("status"));
+        }
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+        // validate the optional field `configuration`
+        if (jsonObj.get("configuration") != null
+                && !jsonObj.get("configuration").isJsonNull()) {
+            SupplySourceConfiguration.validateJsonElement(jsonObj.get("configuration"));
+        }
+        // validate the optional field `capabilities`
+        if (jsonObj.get("capabilities") != null && !jsonObj.get("capabilities").isJsonNull()) {
+            SupplySourceCapabilities.validateJsonElement(jsonObj.get("capabilities"));
+        }
+        if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull())
+                && !jsonObj.get("createdAt").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("createdAt").toString()));
+        }
+        if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull())
+                && !jsonObj.get("updatedAt").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("updatedAt").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SupplySource.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SupplySource' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SupplySource> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SupplySource.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SupplySource>() {
+                        @Override
+                        public void write(JsonWriter out, SupplySource value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SupplySource read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SupplySource given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SupplySource
+     * @throws IOException if the JSON string is invalid with respect to SupplySource
+     */
+    public static SupplySource fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SupplySource.class);
+    }
+
+    /**
+     * Convert an instance of SupplySource to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

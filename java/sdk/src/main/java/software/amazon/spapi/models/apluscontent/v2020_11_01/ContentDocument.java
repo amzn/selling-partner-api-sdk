@@ -12,28 +12,53 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ Content document. This is the enhanced content that is published to product detail pages. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The A+ Content document. This is the enhanced content that is published to product detail pages.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContentDocument {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("contentType")
-    private ContentType contentType = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("contentSubType")
-    private String contentSubType = null;
+    public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
 
-    @SerializedName("locale")
-    private String locale = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+    private ContentType contentType;
 
-    @SerializedName("contentModuleList")
-    private ContentModuleList contentModuleList = null;
+    public static final String SERIALIZED_NAME_CONTENT_SUB_TYPE = "contentSubType";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_SUB_TYPE)
+    private String contentSubType;
+
+    public static final String SERIALIZED_NAME_LOCALE = "locale";
+
+    @SerializedName(SERIALIZED_NAME_LOCALE)
+    private String locale;
+
+    public static final String SERIALIZED_NAME_CONTENT_MODULE_LIST = "contentModuleList";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_MODULE_LIST)
+    private ContentModuleList contentModuleList = new ArrayList<>();
+
+    public ContentDocument() {}
 
     public ContentDocument name(String name) {
         this.name = name;
@@ -45,7 +70,7 @@ public class ContentDocument {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document name.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -64,7 +89,7 @@ public class ContentDocument {
      *
      * @return contentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ContentType getContentType() {
         return contentType;
     }
@@ -84,10 +109,7 @@ public class ContentDocument {
      *
      * @return contentSubType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.")
-    public String getContentSubType() {
+    @javax.annotation.Nullable public String getContentSubType() {
         return contentSubType;
     }
 
@@ -107,10 +129,7 @@ public class ContentDocument {
      *
      * @return locale
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$")
+    @javax.annotation.Nonnull
     public String getLocale() {
         return locale;
     }
@@ -129,7 +148,7 @@ public class ContentDocument {
      *
      * @return contentModuleList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ContentModuleList getContentModuleList() {
         return contentModuleList;
     }
@@ -139,7 +158,7 @@ public class ContentDocument {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -177,10 +196,135 @@ public class ContentDocument {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("contentType");
+        openapiFields.add("contentSubType");
+        openapiFields.add("locale");
+        openapiFields.add("contentModuleList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("contentType");
+        openapiRequiredFields.add("locale");
+        openapiRequiredFields.add("contentModuleList");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContentDocument
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContentDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContentDocument is not found in the empty JSON string",
+                        ContentDocument.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContentDocument.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContentDocument` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContentDocument.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `contentType`
+        ContentType.validateJsonElement(jsonObj.get("contentType"));
+        if ((jsonObj.get("contentSubType") != null
+                        && !jsonObj.get("contentSubType").isJsonNull())
+                && !jsonObj.get("contentSubType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentSubType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentSubType").toString()));
+        }
+        if (!jsonObj.get("locale").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `locale` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("locale").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContentDocument.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContentDocument' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContentDocument> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContentDocument.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContentDocument>() {
+                        @Override
+                        public void write(JsonWriter out, ContentDocument value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContentDocument read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContentDocument given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContentDocument
+     * @throws IOException if the JSON string is invalid with respect to ContentDocument
+     */
+    public static ContentDocument fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContentDocument.class);
+    }
+
+    /**
+     * Convert an instance of ContentDocument to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to an Adhoc Disbursement. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to an Adhoc Disbursement.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AdhocDisbursementEvent {
-    @SerializedName("TransactionType")
-    private String transactionType = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "TransactionType";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("TransactionId")
-    private String transactionId = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("TransactionAmount")
-    private Currency transactionAmount = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_ID = "TransactionId";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+    private String transactionId;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_AMOUNT = "TransactionAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_AMOUNT)
+    private Currency transactionAmount;
+
+    public AdhocDisbursementEvent() {}
 
     public AdhocDisbursementEvent transactionType(String transactionType) {
         this.transactionType = transactionType;
@@ -41,9 +66,7 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The type of transaction. For example, \"Disbursed to Amazon Gift Card balance\".")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -61,10 +84,7 @@ public class AdhocDisbursementEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -82,8 +102,7 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the transaction.")
-    public String getTransactionId() {
+    @javax.annotation.Nullable public String getTransactionId() {
         return transactionId;
     }
 
@@ -101,8 +120,7 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTransactionAmount() {
+    @javax.annotation.Nullable public Currency getTransactionAmount() {
         return transactionAmount;
     }
 
@@ -111,7 +129,7 @@ public class AdhocDisbursementEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +165,122 @@ public class AdhocDisbursementEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TransactionType");
+        openapiFields.add("PostedDate");
+        openapiFields.add("TransactionId");
+        openapiFields.add("TransactionAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AdhocDisbursementEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AdhocDisbursementEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AdhocDisbursementEvent is not found in the empty JSON string",
+                        AdhocDisbursementEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AdhocDisbursementEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AdhocDisbursementEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("TransactionType") != null
+                        && !jsonObj.get("TransactionType").isJsonNull())
+                && !jsonObj.get("TransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionType").toString()));
+        }
+        if ((jsonObj.get("TransactionId") != null
+                        && !jsonObj.get("TransactionId").isJsonNull())
+                && !jsonObj.get("TransactionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionId").toString()));
+        }
+        // validate the optional field `TransactionAmount`
+        if (jsonObj.get("TransactionAmount") != null
+                && !jsonObj.get("TransactionAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TransactionAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AdhocDisbursementEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AdhocDisbursementEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AdhocDisbursementEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AdhocDisbursementEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AdhocDisbursementEvent>() {
+                        @Override
+                        public void write(JsonWriter out, AdhocDisbursementEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AdhocDisbursementEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AdhocDisbursementEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AdhocDisbursementEvent
+     * @throws IOException if the JSON string is invalid with respect to AdhocDisbursementEvent
+     */
+    public static AdhocDisbursementEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AdhocDisbursementEvent.class);
+    }
+
+    /**
+     * Convert an instance of AdhocDisbursementEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

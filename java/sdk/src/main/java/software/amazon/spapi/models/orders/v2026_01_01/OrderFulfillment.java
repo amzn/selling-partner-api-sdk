@@ -12,30 +12,58 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about how the order is being processed, packed, and shipped to the customer. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about how the order is being processed, packed, and shipped to the customer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderFulfillment {
-    @SerializedName("fulfillmentStatus")
-    private FulfillmentStatus fulfillmentStatus = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_STATUS = "fulfillmentStatus";
 
-    @SerializedName("fulfilledBy")
-    private String fulfilledBy = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_STATUS)
+    private FulfillmentStatus fulfillmentStatus;
 
-    @SerializedName("fulfillmentServiceLevel")
-    private String fulfillmentServiceLevel = null;
+    public static final String SERIALIZED_NAME_FULFILLED_BY = "fulfilledBy";
 
-    @SerializedName("shipByWindow")
-    private DateTimeRange shipByWindow = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLED_BY)
+    private String fulfilledBy;
 
-    @SerializedName("deliverByWindow")
-    private DateTimeRange deliverByWindow = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_SERVICE_LEVEL = "fulfillmentServiceLevel";
 
-    @SerializedName("labelPrintingWindow")
-    private DateTimeRange labelPrintingWindow = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_SERVICE_LEVEL)
+    private String fulfillmentServiceLevel;
+
+    public static final String SERIALIZED_NAME_SHIP_BY_WINDOW = "shipByWindow";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_BY_WINDOW)
+    private DateTimeRange shipByWindow;
+
+    public static final String SERIALIZED_NAME_DELIVER_BY_WINDOW = "deliverByWindow";
+
+    @SerializedName(SERIALIZED_NAME_DELIVER_BY_WINDOW)
+    private DateTimeRange deliverByWindow;
+
+    public static final String SERIALIZED_NAME_LABEL_PRINTING_WINDOW = "labelPrintingWindow";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_PRINTING_WINDOW)
+    private DateTimeRange labelPrintingWindow;
+
+    public OrderFulfillment() {}
 
     public OrderFulfillment fulfillmentStatus(FulfillmentStatus fulfillmentStatus) {
         this.fulfillmentStatus = fulfillmentStatus;
@@ -47,7 +75,7 @@ public class OrderFulfillment {
      *
      * @return fulfillmentStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentStatus getFulfillmentStatus() {
         return fulfillmentStatus;
     }
@@ -67,10 +95,7 @@ public class OrderFulfillment {
      *
      * @return fulfilledBy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Specifies whether Amazon or the merchant is responsible for fulfilling this order.  **Possible values**: `AMAZON`, `MERCHANT`.")
-    public String getFulfilledBy() {
+    @javax.annotation.Nullable public String getFulfilledBy() {
         return fulfilledBy;
     }
 
@@ -90,10 +115,7 @@ public class OrderFulfillment {
      *
      * @return fulfillmentServiceLevel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The category of the shipping speed option selected by the customer at checkout.  **Possible values**: `EXPEDITED`, `FREE_ECONOMY`, `NEXT_DAY`, `PRIORITY`, `SAME_DAY`, `SECOND_DAY`, `SCHEDULED`, `STANDARD`.")
-    public String getFulfillmentServiceLevel() {
+    @javax.annotation.Nullable public String getFulfillmentServiceLevel() {
         return fulfillmentServiceLevel;
     }
 
@@ -111,8 +133,7 @@ public class OrderFulfillment {
      *
      * @return shipByWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateTimeRange getShipByWindow() {
+    @javax.annotation.Nullable public DateTimeRange getShipByWindow() {
         return shipByWindow;
     }
 
@@ -130,8 +151,7 @@ public class OrderFulfillment {
      *
      * @return deliverByWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateTimeRange getDeliverByWindow() {
+    @javax.annotation.Nullable public DateTimeRange getDeliverByWindow() {
         return deliverByWindow;
     }
 
@@ -149,8 +169,7 @@ public class OrderFulfillment {
      *
      * @return labelPrintingWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateTimeRange getLabelPrintingWindow() {
+    @javax.annotation.Nullable public DateTimeRange getLabelPrintingWindow() {
         return labelPrintingWindow;
     }
 
@@ -159,7 +178,7 @@ public class OrderFulfillment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -209,10 +228,143 @@ public class OrderFulfillment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fulfillmentStatus");
+        openapiFields.add("fulfilledBy");
+        openapiFields.add("fulfillmentServiceLevel");
+        openapiFields.add("shipByWindow");
+        openapiFields.add("deliverByWindow");
+        openapiFields.add("labelPrintingWindow");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("fulfillmentStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderFulfillment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderFulfillment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderFulfillment is not found in the empty JSON string",
+                        OrderFulfillment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderFulfillment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderFulfillment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderFulfillment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `fulfillmentStatus`
+        FulfillmentStatus.validateJsonElement(jsonObj.get("fulfillmentStatus"));
+        if ((jsonObj.get("fulfilledBy") != null && !jsonObj.get("fulfilledBy").isJsonNull())
+                && !jsonObj.get("fulfilledBy").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfilledBy` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfilledBy").toString()));
+        }
+        if ((jsonObj.get("fulfillmentServiceLevel") != null
+                        && !jsonObj.get("fulfillmentServiceLevel").isJsonNull())
+                && !jsonObj.get("fulfillmentServiceLevel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentServiceLevel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentServiceLevel").toString()));
+        }
+        // validate the optional field `shipByWindow`
+        if (jsonObj.get("shipByWindow") != null && !jsonObj.get("shipByWindow").isJsonNull()) {
+            DateTimeRange.validateJsonElement(jsonObj.get("shipByWindow"));
+        }
+        // validate the optional field `deliverByWindow`
+        if (jsonObj.get("deliverByWindow") != null
+                && !jsonObj.get("deliverByWindow").isJsonNull()) {
+            DateTimeRange.validateJsonElement(jsonObj.get("deliverByWindow"));
+        }
+        // validate the optional field `labelPrintingWindow`
+        if (jsonObj.get("labelPrintingWindow") != null
+                && !jsonObj.get("labelPrintingWindow").isJsonNull()) {
+            DateTimeRange.validateJsonElement(jsonObj.get("labelPrintingWindow"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderFulfillment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderFulfillment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderFulfillment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderFulfillment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderFulfillment>() {
+                        @Override
+                        public void write(JsonWriter out, OrderFulfillment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderFulfillment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderFulfillment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderFulfillment
+     * @throws IOException if the JSON string is invalid with respect to OrderFulfillment
+     */
+    public static OrderFulfillment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderFulfillment.class);
+    }
+
+    /**
+     * Convert an instance of OrderFulfillment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

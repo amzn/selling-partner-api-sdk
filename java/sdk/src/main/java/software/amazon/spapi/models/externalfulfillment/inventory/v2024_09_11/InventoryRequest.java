@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An inventory request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An inventory request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventoryRequest {
-    @SerializedName("uri")
-    private String uri = null;
+    public static final String SERIALIZED_NAME_URI = "uri";
 
-    @SerializedName("method")
-    private HttpMethod method = null;
+    @SerializedName(SERIALIZED_NAME_URI)
+    private String uri;
 
-    @SerializedName("body")
-    private InventoryRequestParams body = null;
+    public static final String SERIALIZED_NAME_METHOD = "method";
+
+    @SerializedName(SERIALIZED_NAME_METHOD)
+    private HttpMethod method;
+
+    public static final String SERIALIZED_NAME_BODY = "body";
+
+    @SerializedName(SERIALIZED_NAME_BODY)
+    private InventoryRequestParams body;
+
+    public InventoryRequest() {}
 
     public InventoryRequest uri(String uri) {
         this.uri = uri;
@@ -38,10 +61,7 @@ public class InventoryRequest {
      *
      * @return uri
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The URI associated with the individual APIs from the batch request. The user must provide the resource identifier for the operation they want to use. ")
+    @javax.annotation.Nonnull
     public String getUri() {
         return uri;
     }
@@ -60,7 +80,7 @@ public class InventoryRequest {
      *
      * @return method
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public HttpMethod getMethod() {
         return method;
     }
@@ -79,8 +99,7 @@ public class InventoryRequest {
      *
      * @return body
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InventoryRequestParams getBody() {
+    @javax.annotation.Nullable public InventoryRequestParams getBody() {
         return body;
     }
 
@@ -89,7 +108,7 @@ public class InventoryRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -119,10 +138,123 @@ public class InventoryRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("uri");
+        openapiFields.add("method");
+        openapiFields.add("body");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("uri");
+        openapiRequiredFields.add("method");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventoryRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventoryRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventoryRequest is not found in the empty JSON string",
+                        InventoryRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventoryRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventoryRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InventoryRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("uri").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uri` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uri").toString()));
+        }
+        // validate the required field `method`
+        HttpMethod.validateJsonElement(jsonObj.get("method"));
+        // validate the optional field `body`
+        if (jsonObj.get("body") != null && !jsonObj.get("body").isJsonNull()) {
+            InventoryRequestParams.validateJsonElement(jsonObj.get("body"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventoryRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventoryRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventoryRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventoryRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventoryRequest>() {
+                        @Override
+                        public void write(JsonWriter out, InventoryRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventoryRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventoryRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventoryRequest
+     * @throws IOException if the JSON string is invalid with respect to InventoryRequest
+     */
+    public static InventoryRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventoryRequest.class);
+    }
+
+    /**
+     * Convert an instance of InventoryRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

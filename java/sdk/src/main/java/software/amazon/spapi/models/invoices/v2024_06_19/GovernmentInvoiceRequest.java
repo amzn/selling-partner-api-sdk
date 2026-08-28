@@ -12,31 +12,61 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required to create the government invoice. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the government invoice.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GovernmentInvoiceRequest {
-    @SerializedName("contexts")
-    private List<CarrierDetailsContext> contexts = null;
+    public static final String SERIALIZED_NAME_CONTEXTS = "contexts";
 
-    @SerializedName("inboundPlanId")
-    private String inboundPlanId = null;
+    @SerializedName(SERIALIZED_NAME_CONTEXTS)
+    private List<CarrierDetailsContext> contexts = new ArrayList<>();
 
-    @SerializedName("invoiceType")
-    private String invoiceType = null;
+    public static final String SERIALIZED_NAME_INBOUND_PLAN_ID = "inboundPlanId";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_INBOUND_PLAN_ID)
+    private String inboundPlanId;
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
 
-    @SerializedName("transactionType")
-    private String transactionType = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
+    private String invoiceType;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
+
+    public GovernmentInvoiceRequest() {}
 
     public GovernmentInvoiceRequest contexts(List<CarrierDetailsContext> contexts) {
         this.contexts = contexts;
@@ -56,8 +86,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return contexts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional information for invoice creation.")
-    public List<CarrierDetailsContext> getContexts() {
+    @javax.annotation.Nullable public List<CarrierDetailsContext> getContexts() {
         return contexts;
     }
 
@@ -75,10 +104,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return inboundPlanId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.")
-    public String getInboundPlanId() {
+    @javax.annotation.Nullable public String getInboundPlanId() {
         return inboundPlanId;
     }
 
@@ -97,10 +123,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return invoiceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.")
+    @javax.annotation.Nonnull
     public String getInvoiceType() {
         return invoiceType;
     }
@@ -119,10 +142,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace of the national authoritative source that will be on the government invoice creation request.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -141,9 +161,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique shipment identifier for which to get an invoice.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -163,10 +181,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.")
+    @javax.annotation.Nonnull
     public String getTransactionType() {
         return transactionType;
     }
@@ -176,7 +191,7 @@ public class GovernmentInvoiceRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -214,10 +229,162 @@ public class GovernmentInvoiceRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contexts");
+        openapiFields.add("inboundPlanId");
+        openapiFields.add("invoiceType");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("shipmentId");
+        openapiFields.add("transactionType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("invoiceType");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("transactionType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GovernmentInvoiceRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GovernmentInvoiceRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GovernmentInvoiceRequest is not found in the empty JSON string",
+                        GovernmentInvoiceRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GovernmentInvoiceRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GovernmentInvoiceRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GovernmentInvoiceRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("contexts") != null && !jsonObj.get("contexts").isJsonNull()) {
+            JsonArray jsonArraycontexts = jsonObj.getAsJsonArray("contexts");
+            if (jsonArraycontexts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("contexts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `contexts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("contexts").toString()));
+                }
+
+                // validate the optional field `contexts` (array)
+                for (int i = 0; i < jsonArraycontexts.size(); i++) {
+                    CarrierDetailsContext.validateJsonElement(jsonArraycontexts.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("inboundPlanId") != null
+                        && !jsonObj.get("inboundPlanId").isJsonNull())
+                && !jsonObj.get("inboundPlanId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `inboundPlanId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("inboundPlanId").toString()));
+        }
+        if (!jsonObj.get("invoiceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceType").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        if (!jsonObj.get("transactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GovernmentInvoiceRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GovernmentInvoiceRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GovernmentInvoiceRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GovernmentInvoiceRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GovernmentInvoiceRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GovernmentInvoiceRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GovernmentInvoiceRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GovernmentInvoiceRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GovernmentInvoiceRequest
+     * @throws IOException if the JSON string is invalid with respect to GovernmentInvoiceRequest
+     */
+    public static GovernmentInvoiceRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GovernmentInvoiceRequest.class);
+    }
+
+    /**
+     * Convert an instance of GovernmentInvoiceRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

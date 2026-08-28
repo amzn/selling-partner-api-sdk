@@ -12,24 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Service level configuration for fulfillment. Available service tiers: &#x60;STANDARD&#x60;, &#x60;EXPEDITED&#x60;,
  * &#x60;PRIORITY&#x60; (only available in Canada, India, and Mexico), &#x60;SCHEDULED&#x60; (only available in Japan).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Service level configuration for fulfillment. Available service tiers: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServiceLevel {
-    @SerializedName("serviceTiers")
-    private List<String> serviceTiers = null;
+    public static final String SERIALIZED_NAME_SERVICE_TIERS = "serviceTiers";
 
-    @SerializedName("deliveryInterval")
-    private TimeInterval deliveryInterval = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_TIERS)
+    private List<String> serviceTiers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_DELIVERY_INTERVAL = "deliveryInterval";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_INTERVAL)
+    private TimeInterval deliveryInterval;
+
+    public ServiceLevel() {}
 
     public ServiceLevel serviceTiers(List<String> serviceTiers) {
         this.serviceTiers = serviceTiers;
@@ -52,10 +71,7 @@ public class ServiceLevel {
      *
      * @return serviceTiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The service tiers that are acceptable for this order, listed in order of preference. The first value is the preferred tier and is used for fulfillment if possible. Available values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan). Currently, only the first value in the array is used.")
-    public List<String> getServiceTiers() {
+    @javax.annotation.Nullable public List<String> getServiceTiers() {
         return serviceTiers;
     }
 
@@ -73,8 +89,7 @@ public class ServiceLevel {
      *
      * @return deliveryInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeInterval getDeliveryInterval() {
+    @javax.annotation.Nullable public TimeInterval getDeliveryInterval() {
         return deliveryInterval;
     }
 
@@ -83,7 +98,7 @@ public class ServiceLevel {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -113,10 +128,113 @@ public class ServiceLevel {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("serviceTiers");
+        openapiFields.add("deliveryInterval");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServiceLevel
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServiceLevel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServiceLevel is not found in the empty JSON string",
+                        ServiceLevel.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServiceLevel.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServiceLevel` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("serviceTiers") != null
+                && !jsonObj.get("serviceTiers").isJsonNull()
+                && !jsonObj.get("serviceTiers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceTiers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("serviceTiers").toString()));
+        }
+        // validate the optional field `deliveryInterval`
+        if (jsonObj.get("deliveryInterval") != null
+                && !jsonObj.get("deliveryInterval").isJsonNull()) {
+            TimeInterval.validateJsonElement(jsonObj.get("deliveryInterval"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServiceLevel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServiceLevel' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServiceLevel> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ServiceLevel.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServiceLevel>() {
+                        @Override
+                        public void write(JsonWriter out, ServiceLevel value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServiceLevel read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServiceLevel given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServiceLevel
+     * @throws IOException if the JSON string is invalid with respect to ServiceLevel
+     */
+    public static ServiceLevel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServiceLevel.class);
+    }
+
+    /**
+     * Convert an instance of ServiceLevel to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response for the &#x60;createQuery&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `createQuery` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateQueryResponse {
-    @SerializedName("queryId")
-    private String queryId = null;
+    public static final String SERIALIZED_NAME_QUERY_ID = "queryId";
+
+    @SerializedName(SERIALIZED_NAME_QUERY_ID)
+    private String queryId;
+
+    public CreateQueryResponse() {}
 
     public CreateQueryResponse queryId(String queryId) {
         this.queryId = queryId;
@@ -31,10 +50,7 @@ public class CreateQueryResponse {
      *
      * @return queryId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the query. This identifier is unique only in combination with a selling partner account ID.")
+    @javax.annotation.Nonnull
     public String getQueryId() {
         return queryId;
     }
@@ -44,7 +60,7 @@ public class CreateQueryResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -70,10 +86,114 @@ public class CreateQueryResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("queryId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("queryId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateQueryResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateQueryResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateQueryResponse is not found in the empty JSON string",
+                        CreateQueryResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateQueryResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateQueryResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateQueryResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("queryId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `queryId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("queryId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateQueryResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateQueryResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateQueryResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateQueryResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateQueryResponse>() {
+                        @Override
+                        public void write(JsonWriter out, CreateQueryResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateQueryResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateQueryResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateQueryResponse
+     * @throws IOException if the JSON string is invalid with respect to CreateQueryResponse
+     */
+    public static CreateQueryResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateQueryResponse.class);
+    }
+
+    /**
+     * Convert an instance of CreateQueryResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

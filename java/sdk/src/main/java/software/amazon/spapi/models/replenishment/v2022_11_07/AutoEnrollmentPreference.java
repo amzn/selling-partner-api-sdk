@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,10 +25,8 @@ import java.io.IOException;
  */
 @JsonAdapter(AutoEnrollmentPreference.Adapter.class)
 public enum AutoEnrollmentPreference {
-    @SerializedName("OPTED_IN")
     IN("OPTED_IN"),
 
-    @SerializedName("OPTED_OUT")
     OUT("OPTED_OUT");
 
     private String value;
@@ -46,25 +44,30 @@ public enum AutoEnrollmentPreference {
         return String.valueOf(value);
     }
 
-    public static AutoEnrollmentPreference fromValue(String input) {
+    public static AutoEnrollmentPreference fromValue(String value) {
         for (AutoEnrollmentPreference b : AutoEnrollmentPreference.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AutoEnrollmentPreference> {
         @Override
         public void write(final JsonWriter jsonWriter, final AutoEnrollmentPreference enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AutoEnrollmentPreference read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AutoEnrollmentPreference.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AutoEnrollmentPreference.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AutoEnrollmentPreference.fromValue(value);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -24,13 +24,10 @@ import java.io.IOException;
  */
 @JsonAdapter(FulfillmentPolicy.Adapter.class)
 public enum FulfillmentPolicy {
-    @SerializedName("FillOrKill")
     FILL_OR_KILL("FillOrKill"),
 
-    @SerializedName("FillAll")
     FILL_ALL("FillAll"),
 
-    @SerializedName("FillAllAvailable")
     FILL_ALL_AVAILABLE("FillAllAvailable");
 
     private String value;
@@ -48,25 +45,30 @@ public enum FulfillmentPolicy {
         return String.valueOf(value);
     }
 
-    public static FulfillmentPolicy fromValue(String input) {
+    public static FulfillmentPolicy fromValue(String value) {
         for (FulfillmentPolicy b : FulfillmentPolicy.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FulfillmentPolicy> {
         @Override
         public void write(final JsonWriter jsonWriter, final FulfillmentPolicy enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public FulfillmentPolicy read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return FulfillmentPolicy.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return FulfillmentPolicy.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        FulfillmentPolicy.fromValue(value);
     }
 }

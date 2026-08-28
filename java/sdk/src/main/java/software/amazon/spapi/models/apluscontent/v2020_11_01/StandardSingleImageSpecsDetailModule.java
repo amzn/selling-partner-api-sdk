@@ -12,36 +12,68 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A standard image with paragraphs, a bulleted list, and extra space for technical details. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A standard image with paragraphs, a bulleted list, and extra space for technical details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardSingleImageSpecsDetailModule {
-    @SerializedName("headline")
-    private TextComponent headline = null;
+    public static final String SERIALIZED_NAME_HEADLINE = "headline";
 
-    @SerializedName("image")
-    private ImageComponent image = null;
+    @SerializedName(SERIALIZED_NAME_HEADLINE)
+    private TextComponent headline;
 
-    @SerializedName("descriptionHeadline")
-    private TextComponent descriptionHeadline = null;
+    public static final String SERIALIZED_NAME_IMAGE = "image";
 
-    @SerializedName("descriptionBlock1")
-    private StandardTextBlock descriptionBlock1 = null;
+    @SerializedName(SERIALIZED_NAME_IMAGE)
+    private ImageComponent image;
 
-    @SerializedName("descriptionBlock2")
-    private StandardTextBlock descriptionBlock2 = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION_HEADLINE = "descriptionHeadline";
 
-    @SerializedName("specificationHeadline")
-    private TextComponent specificationHeadline = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION_HEADLINE)
+    private TextComponent descriptionHeadline;
 
-    @SerializedName("specificationListBlock")
-    private StandardHeaderTextListBlock specificationListBlock = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION_BLOCK1 = "descriptionBlock1";
 
-    @SerializedName("specificationTextBlock")
-    private StandardTextBlock specificationTextBlock = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION_BLOCK1)
+    private StandardTextBlock descriptionBlock1;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION_BLOCK2 = "descriptionBlock2";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION_BLOCK2)
+    private StandardTextBlock descriptionBlock2;
+
+    public static final String SERIALIZED_NAME_SPECIFICATION_HEADLINE = "specificationHeadline";
+
+    @SerializedName(SERIALIZED_NAME_SPECIFICATION_HEADLINE)
+    private TextComponent specificationHeadline;
+
+    public static final String SERIALIZED_NAME_SPECIFICATION_LIST_BLOCK = "specificationListBlock";
+
+    @SerializedName(SERIALIZED_NAME_SPECIFICATION_LIST_BLOCK)
+    private StandardHeaderTextListBlock specificationListBlock;
+
+    public static final String SERIALIZED_NAME_SPECIFICATION_TEXT_BLOCK = "specificationTextBlock";
+
+    @SerializedName(SERIALIZED_NAME_SPECIFICATION_TEXT_BLOCK)
+    private StandardTextBlock specificationTextBlock;
+
+    public StandardSingleImageSpecsDetailModule() {}
 
     public StandardSingleImageSpecsDetailModule headline(TextComponent headline) {
         this.headline = headline;
@@ -53,8 +85,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return headline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getHeadline() {
+    @javax.annotation.Nullable public TextComponent getHeadline() {
         return headline;
     }
 
@@ -72,8 +103,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return image
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ImageComponent getImage() {
+    @javax.annotation.Nullable public ImageComponent getImage() {
         return image;
     }
 
@@ -91,8 +121,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionHeadline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getDescriptionHeadline() {
+    @javax.annotation.Nullable public TextComponent getDescriptionHeadline() {
         return descriptionHeadline;
     }
 
@@ -110,8 +139,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionBlock1
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextBlock getDescriptionBlock1() {
+    @javax.annotation.Nullable public StandardTextBlock getDescriptionBlock1() {
         return descriptionBlock1;
     }
 
@@ -129,8 +157,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionBlock2
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextBlock getDescriptionBlock2() {
+    @javax.annotation.Nullable public StandardTextBlock getDescriptionBlock2() {
         return descriptionBlock2;
     }
 
@@ -148,8 +175,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationHeadline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getSpecificationHeadline() {
+    @javax.annotation.Nullable public TextComponent getSpecificationHeadline() {
         return specificationHeadline;
     }
 
@@ -168,8 +194,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationListBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardHeaderTextListBlock getSpecificationListBlock() {
+    @javax.annotation.Nullable public StandardHeaderTextListBlock getSpecificationListBlock() {
         return specificationListBlock;
     }
 
@@ -187,8 +212,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationTextBlock
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextBlock getSpecificationTextBlock() {
+    @javax.annotation.Nullable public StandardTextBlock getSpecificationTextBlock() {
         return specificationTextBlock;
     }
 
@@ -197,7 +221,7 @@ public class StandardSingleImageSpecsDetailModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -261,10 +285,146 @@ public class StandardSingleImageSpecsDetailModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headline");
+        openapiFields.add("image");
+        openapiFields.add("descriptionHeadline");
+        openapiFields.add("descriptionBlock1");
+        openapiFields.add("descriptionBlock2");
+        openapiFields.add("specificationHeadline");
+        openapiFields.add("specificationListBlock");
+        openapiFields.add("specificationTextBlock");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardSingleImageSpecsDetailModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardSingleImageSpecsDetailModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardSingleImageSpecsDetailModule is not found in the empty JSON string",
+                        StandardSingleImageSpecsDetailModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardSingleImageSpecsDetailModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardSingleImageSpecsDetailModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `headline`
+        if (jsonObj.get("headline") != null && !jsonObj.get("headline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("headline"));
+        }
+        // validate the optional field `image`
+        if (jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) {
+            ImageComponent.validateJsonElement(jsonObj.get("image"));
+        }
+        // validate the optional field `descriptionHeadline`
+        if (jsonObj.get("descriptionHeadline") != null
+                && !jsonObj.get("descriptionHeadline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("descriptionHeadline"));
+        }
+        // validate the optional field `descriptionBlock1`
+        if (jsonObj.get("descriptionBlock1") != null
+                && !jsonObj.get("descriptionBlock1").isJsonNull()) {
+            StandardTextBlock.validateJsonElement(jsonObj.get("descriptionBlock1"));
+        }
+        // validate the optional field `descriptionBlock2`
+        if (jsonObj.get("descriptionBlock2") != null
+                && !jsonObj.get("descriptionBlock2").isJsonNull()) {
+            StandardTextBlock.validateJsonElement(jsonObj.get("descriptionBlock2"));
+        }
+        // validate the optional field `specificationHeadline`
+        if (jsonObj.get("specificationHeadline") != null
+                && !jsonObj.get("specificationHeadline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("specificationHeadline"));
+        }
+        // validate the optional field `specificationListBlock`
+        if (jsonObj.get("specificationListBlock") != null
+                && !jsonObj.get("specificationListBlock").isJsonNull()) {
+            StandardHeaderTextListBlock.validateJsonElement(jsonObj.get("specificationListBlock"));
+        }
+        // validate the optional field `specificationTextBlock`
+        if (jsonObj.get("specificationTextBlock") != null
+                && !jsonObj.get("specificationTextBlock").isJsonNull()) {
+            StandardTextBlock.validateJsonElement(jsonObj.get("specificationTextBlock"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardSingleImageSpecsDetailModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardSingleImageSpecsDetailModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardSingleImageSpecsDetailModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardSingleImageSpecsDetailModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardSingleImageSpecsDetailModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardSingleImageSpecsDetailModule value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardSingleImageSpecsDetailModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardSingleImageSpecsDetailModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardSingleImageSpecsDetailModule
+     * @throws IOException if the JSON string is invalid with respect to StandardSingleImageSpecsDetailModule
+     */
+    public static StandardSingleImageSpecsDetailModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardSingleImageSpecsDetailModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardSingleImageSpecsDetailModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

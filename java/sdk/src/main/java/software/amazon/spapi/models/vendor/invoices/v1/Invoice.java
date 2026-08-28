@@ -12,30 +12,39 @@
 
 package software.amazon.spapi.models.vendor.invoices.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Represents an invoice or credit note document with details about the transaction, parties involved, and line items.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents an invoice or credit note document with details about the transaction, parties involved, and line items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Invoice {
     /** Identifies the type of invoice. */
     @JsonAdapter(InvoiceTypeEnum.Adapter.class)
     public enum InvoiceTypeEnum {
-        @SerializedName("Invoice")
         INVOICE("Invoice"),
-        @SerializedName("CreditNote")
+
         CREDIT_NOTE("CreditNote");
 
         private String value;
@@ -53,73 +62,110 @@ public class Invoice {
             return String.valueOf(value);
         }
 
-        public static InvoiceTypeEnum fromValue(String input) {
+        public static InvoiceTypeEnum fromValue(String value) {
             for (InvoiceTypeEnum b : InvoiceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<InvoiceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final InvoiceTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public InvoiceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InvoiceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return InvoiceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            InvoiceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("invoiceType")
-    private InvoiceTypeEnum invoiceType = null;
+    public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
 
-    @SerializedName("id")
-    private String id = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
+    private InvoiceTypeEnum invoiceType;
 
-    @SerializedName("referenceNumber")
-    private String referenceNumber = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("date")
-    private OffsetDateTime date = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("remitToParty")
-    private PartyIdentification remitToParty = null;
+    public static final String SERIALIZED_NAME_REFERENCE_NUMBER = "referenceNumber";
 
-    @SerializedName("shipToParty")
-    private PartyIdentification shipToParty = null;
+    @SerializedName(SERIALIZED_NAME_REFERENCE_NUMBER)
+    private String referenceNumber;
 
-    @SerializedName("shipFromParty")
-    private PartyIdentification shipFromParty = null;
+    public static final String SERIALIZED_NAME_DATE = "date";
 
-    @SerializedName("billToParty")
-    private PartyIdentification billToParty = null;
+    @SerializedName(SERIALIZED_NAME_DATE)
+    private OffsetDateTime date;
 
-    @SerializedName("paymentTerms")
-    private PaymentTerms paymentTerms = null;
+    public static final String SERIALIZED_NAME_REMIT_TO_PARTY = "remitToParty";
 
-    @SerializedName("invoiceTotal")
-    private Money invoiceTotal = null;
+    @SerializedName(SERIALIZED_NAME_REMIT_TO_PARTY)
+    private PartyIdentification remitToParty;
 
-    @SerializedName("taxDetails")
-    private List<TaxDetails> taxDetails = null;
+    public static final String SERIALIZED_NAME_SHIP_TO_PARTY = "shipToParty";
 
-    @SerializedName("additionalDetails")
-    private List<AdditionalDetails> additionalDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO_PARTY)
+    private PartyIdentification shipToParty;
 
-    @SerializedName("chargeDetails")
-    private List<ChargeDetails> chargeDetails = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_PARTY = "shipFromParty";
 
-    @SerializedName("allowanceDetails")
-    private List<AllowanceDetails> allowanceDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_PARTY)
+    private PartyIdentification shipFromParty;
 
-    @SerializedName("items")
-    private List<InvoiceItem> items = null;
+    public static final String SERIALIZED_NAME_BILL_TO_PARTY = "billToParty";
+
+    @SerializedName(SERIALIZED_NAME_BILL_TO_PARTY)
+    private PartyIdentification billToParty;
+
+    public static final String SERIALIZED_NAME_PAYMENT_TERMS = "paymentTerms";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_TERMS)
+    private PaymentTerms paymentTerms;
+
+    public static final String SERIALIZED_NAME_INVOICE_TOTAL = "invoiceTotal";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_TOTAL)
+    private Money invoiceTotal;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetails> taxDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ADDITIONAL_DETAILS = "additionalDetails";
+
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_DETAILS)
+    private List<AdditionalDetails> additionalDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_DETAILS = "chargeDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_DETAILS)
+    private List<ChargeDetails> chargeDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ALLOWANCE_DETAILS = "allowanceDetails";
+
+    @SerializedName(SERIALIZED_NAME_ALLOWANCE_DETAILS)
+    private List<AllowanceDetails> allowanceDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<InvoiceItem> items = new ArrayList<>();
+
+    public Invoice() {}
 
     public Invoice invoiceType(InvoiceTypeEnum invoiceType) {
         this.invoiceType = invoiceType;
@@ -131,7 +177,7 @@ public class Invoice {
      *
      * @return invoiceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifies the type of invoice.")
+    @javax.annotation.Nonnull
     public InvoiceTypeEnum getInvoiceType() {
         return invoiceType;
     }
@@ -152,10 +198,7 @@ public class Invoice {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Unique number relating to the charges defined in this document. This will be invoice number if the document type is Invoice or CreditNote number if the document type is Credit Note. Failure to provide this reference will result in a rejection.")
+    @javax.annotation.Nonnull
     public String getId() {
         return id;
     }
@@ -174,9 +217,7 @@ public class Invoice {
      *
      * @return referenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "An additional unique reference number used for regulatory or other purposes.")
-    public String getReferenceNumber() {
+    @javax.annotation.Nullable public String getReferenceNumber() {
         return referenceNumber;
     }
 
@@ -194,9 +235,7 @@ public class Invoice {
      *
      * @return date
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Defines a date and time according to ISO8601.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDate() {
         return date;
     }
@@ -215,7 +254,7 @@ public class Invoice {
      *
      * @return remitToParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getRemitToParty() {
         return remitToParty;
     }
@@ -234,8 +273,7 @@ public class Invoice {
      *
      * @return shipToParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getShipToParty() {
+    @javax.annotation.Nullable public PartyIdentification getShipToParty() {
         return shipToParty;
     }
 
@@ -253,8 +291,7 @@ public class Invoice {
      *
      * @return shipFromParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getShipFromParty() {
+    @javax.annotation.Nullable public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
 
@@ -272,8 +309,7 @@ public class Invoice {
      *
      * @return billToParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getBillToParty() {
+    @javax.annotation.Nullable public PartyIdentification getBillToParty() {
         return billToParty;
     }
 
@@ -291,8 +327,7 @@ public class Invoice {
      *
      * @return paymentTerms
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentTerms getPaymentTerms() {
+    @javax.annotation.Nullable public PaymentTerms getPaymentTerms() {
         return paymentTerms;
     }
 
@@ -310,7 +345,7 @@ public class Invoice {
      *
      * @return invoiceTotal
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getInvoiceTotal() {
         return invoiceTotal;
     }
@@ -337,8 +372,7 @@ public class Invoice {
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Total tax amount details for all line items.")
-    public List<TaxDetails> getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetails> getTaxDetails() {
         return taxDetails;
     }
 
@@ -364,9 +398,7 @@ public class Invoice {
      *
      * @return additionalDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Additional details provided by the selling party, for tax related or other purposes.")
-    public List<AdditionalDetails> getAdditionalDetails() {
+    @javax.annotation.Nullable public List<AdditionalDetails> getAdditionalDetails() {
         return additionalDetails;
     }
 
@@ -392,8 +424,7 @@ public class Invoice {
      *
      * @return chargeDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Total charge amount details for all line items.")
-    public List<ChargeDetails> getChargeDetails() {
+    @javax.annotation.Nullable public List<ChargeDetails> getChargeDetails() {
         return chargeDetails;
     }
 
@@ -419,8 +450,7 @@ public class Invoice {
      *
      * @return allowanceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Total allowance amount details for all line items.")
-    public List<AllowanceDetails> getAllowanceDetails() {
+    @javax.annotation.Nullable public List<AllowanceDetails> getAllowanceDetails() {
         return allowanceDetails;
     }
 
@@ -446,8 +476,7 @@ public class Invoice {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of invoice items.")
-    public List<InvoiceItem> getItems() {
+    @javax.annotation.Nullable public List<InvoiceItem> getItems() {
         return items;
     }
 
@@ -456,7 +485,7 @@ public class Invoice {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -531,10 +560,254 @@ public class Invoice {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("invoiceType");
+        openapiFields.add("id");
+        openapiFields.add("referenceNumber");
+        openapiFields.add("date");
+        openapiFields.add("remitToParty");
+        openapiFields.add("shipToParty");
+        openapiFields.add("shipFromParty");
+        openapiFields.add("billToParty");
+        openapiFields.add("paymentTerms");
+        openapiFields.add("invoiceTotal");
+        openapiFields.add("taxDetails");
+        openapiFields.add("additionalDetails");
+        openapiFields.add("chargeDetails");
+        openapiFields.add("allowanceDetails");
+        openapiFields.add("items");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("invoiceType");
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("date");
+        openapiRequiredFields.add("remitToParty");
+        openapiRequiredFields.add("invoiceTotal");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Invoice
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Invoice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Invoice is not found in the empty JSON string",
+                        Invoice.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Invoice.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Invoice` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Invoice.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("invoiceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceType").toString()));
+        }
+        // validate the required field `invoiceType`
+        InvoiceTypeEnum.validateJsonElement(jsonObj.get("invoiceType"));
+        if (!jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if ((jsonObj.get("referenceNumber") != null
+                        && !jsonObj.get("referenceNumber").isJsonNull())
+                && !jsonObj.get("referenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `referenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("referenceNumber").toString()));
+        }
+        // validate the required field `remitToParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("remitToParty"));
+        // validate the optional field `shipToParty`
+        if (jsonObj.get("shipToParty") != null && !jsonObj.get("shipToParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("shipToParty"));
+        }
+        // validate the optional field `shipFromParty`
+        if (jsonObj.get("shipFromParty") != null
+                && !jsonObj.get("shipFromParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("shipFromParty"));
+        }
+        // validate the optional field `billToParty`
+        if (jsonObj.get("billToParty") != null && !jsonObj.get("billToParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("billToParty"));
+        }
+        // validate the optional field `paymentTerms`
+        if (jsonObj.get("paymentTerms") != null && !jsonObj.get("paymentTerms").isJsonNull()) {
+            PaymentTerms.validateJsonElement(jsonObj.get("paymentTerms"));
+        }
+        // validate the required field `invoiceTotal`
+        Money.validateJsonElement(jsonObj.get("invoiceTotal"));
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetails.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("additionalDetails") != null
+                && !jsonObj.get("additionalDetails").isJsonNull()) {
+            JsonArray jsonArrayadditionalDetails = jsonObj.getAsJsonArray("additionalDetails");
+            if (jsonArrayadditionalDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("additionalDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `additionalDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("additionalDetails").toString()));
+                }
+
+                // validate the optional field `additionalDetails` (array)
+                for (int i = 0; i < jsonArrayadditionalDetails.size(); i++) {
+                    AdditionalDetails.validateJsonElement(jsonArrayadditionalDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("chargeDetails") != null
+                && !jsonObj.get("chargeDetails").isJsonNull()) {
+            JsonArray jsonArraychargeDetails = jsonObj.getAsJsonArray("chargeDetails");
+            if (jsonArraychargeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("chargeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `chargeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("chargeDetails").toString()));
+                }
+
+                // validate the optional field `chargeDetails` (array)
+                for (int i = 0; i < jsonArraychargeDetails.size(); i++) {
+                    ChargeDetails.validateJsonElement(jsonArraychargeDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("allowanceDetails") != null
+                && !jsonObj.get("allowanceDetails").isJsonNull()) {
+            JsonArray jsonArrayallowanceDetails = jsonObj.getAsJsonArray("allowanceDetails");
+            if (jsonArrayallowanceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("allowanceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `allowanceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("allowanceDetails").toString()));
+                }
+
+                // validate the optional field `allowanceDetails` (array)
+                for (int i = 0; i < jsonArrayallowanceDetails.size(); i++) {
+                    AllowanceDetails.validateJsonElement(jsonArrayallowanceDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    InvoiceItem.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Invoice.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Invoice' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Invoice> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Invoice.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Invoice>() {
+                        @Override
+                        public void write(JsonWriter out, Invoice value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Invoice read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Invoice given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Invoice
+     * @throws IOException if the JSON string is invalid with respect to Invoice
+     */
+    public static Invoice fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Invoice.class);
+    }
+
+    /**
+     * Convert an instance of Invoice to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

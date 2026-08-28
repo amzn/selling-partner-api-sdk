@@ -12,49 +12,91 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a single product within an order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a single product within an order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItem {
-    @SerializedName("orderItemId")
-    private String orderItemId = null;
+    public static final String SERIALIZED_NAME_ORDER_ITEM_ID = "orderItemId";
 
-    @SerializedName("quantityOrdered")
-    private Integer quantityOrdered = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEM_ID)
+    private String orderItemId;
 
-    @SerializedName("measurement")
-    private Measurement measurement = null;
+    public static final String SERIALIZED_NAME_QUANTITY_ORDERED = "quantityOrdered";
 
-    @SerializedName("associatedOrderItems")
-    private List<AssociatedOrderItem> associatedOrderItems = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_ORDERED)
+    private Integer quantityOrdered;
 
-    @SerializedName("programs")
-    private List<String> programs = null;
+    public static final String SERIALIZED_NAME_MEASUREMENT = "measurement";
 
-    @SerializedName("product")
-    private ItemProduct product = null;
+    @SerializedName(SERIALIZED_NAME_MEASUREMENT)
+    private Measurement measurement;
 
-    @SerializedName("proceeds")
-    private ItemProceeds proceeds = null;
+    public static final String SERIALIZED_NAME_ASSOCIATED_ORDER_ITEMS = "associatedOrderItems";
 
-    @SerializedName("expense")
-    private ItemExpense expense = null;
+    @SerializedName(SERIALIZED_NAME_ASSOCIATED_ORDER_ITEMS)
+    private List<AssociatedOrderItem> associatedOrderItems = new ArrayList<>();
 
-    @SerializedName("promotion")
-    private ItemPromotion promotion = null;
+    public static final String SERIALIZED_NAME_PROGRAMS = "programs";
 
-    @SerializedName("cancellation")
-    private ItemCancellation cancellation = null;
+    @SerializedName(SERIALIZED_NAME_PROGRAMS)
+    private List<String> programs = new ArrayList<>();
 
-    @SerializedName("fulfillment")
-    private ItemFulfillment fulfillment = null;
+    public static final String SERIALIZED_NAME_PRODUCT = "product";
 
-    @SerializedName("tax")
-    private ItemTax tax = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT)
+    private ItemProduct product;
+
+    public static final String SERIALIZED_NAME_PROCEEDS = "proceeds";
+
+    @SerializedName(SERIALIZED_NAME_PROCEEDS)
+    private ItemProceeds proceeds;
+
+    public static final String SERIALIZED_NAME_EXPENSE = "expense";
+
+    @SerializedName(SERIALIZED_NAME_EXPENSE)
+    private ItemExpense expense;
+
+    public static final String SERIALIZED_NAME_PROMOTION = "promotion";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION)
+    private ItemPromotion promotion;
+
+    public static final String SERIALIZED_NAME_CANCELLATION = "cancellation";
+
+    @SerializedName(SERIALIZED_NAME_CANCELLATION)
+    private ItemCancellation cancellation;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT = "fulfillment";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT)
+    private ItemFulfillment fulfillment;
+
+    public static final String SERIALIZED_NAME_TAX = "tax";
+
+    @SerializedName(SERIALIZED_NAME_TAX)
+    private ItemTax tax;
+
+    public OrderItem() {}
 
     public OrderItem orderItemId(String orderItemId) {
         this.orderItemId = orderItemId;
@@ -66,9 +108,7 @@ public class OrderItem {
      *
      * @return orderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A unique identifier for this specific item within the order.")
+    @javax.annotation.Nonnull
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -87,9 +127,7 @@ public class OrderItem {
      *
      * @return quantityOrdered
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of units of this item that the customer ordered.")
+    @javax.annotation.Nonnull
     public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -108,8 +146,7 @@ public class OrderItem {
      *
      * @return measurement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Measurement getMeasurement() {
+    @javax.annotation.Nullable public Measurement getMeasurement() {
         return measurement;
     }
 
@@ -135,10 +172,7 @@ public class OrderItem {
      *
      * @return associatedOrderItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of order items associated with this item. For example, a value-add service purchased with the product.")
-    public List<AssociatedOrderItem> getAssociatedOrderItems() {
+    @javax.annotation.Nullable public List<AssociatedOrderItem> getAssociatedOrderItems() {
         return associatedOrderItems;
     }
 
@@ -165,10 +199,7 @@ public class OrderItem {
      *
      * @return programs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Special programs that apply specifically to this item within the order.  **Possible values**: `TRANSPARENCY`, `SUBSCRIBE_AND_SAVE`")
-    public List<String> getPrograms() {
+    @javax.annotation.Nullable public List<String> getPrograms() {
         return programs;
     }
 
@@ -186,7 +217,7 @@ public class OrderItem {
      *
      * @return product
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemProduct getProduct() {
         return product;
     }
@@ -205,8 +236,7 @@ public class OrderItem {
      *
      * @return proceeds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemProceeds getProceeds() {
+    @javax.annotation.Nullable public ItemProceeds getProceeds() {
         return proceeds;
     }
 
@@ -224,8 +254,7 @@ public class OrderItem {
      *
      * @return expense
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemExpense getExpense() {
+    @javax.annotation.Nullable public ItemExpense getExpense() {
         return expense;
     }
 
@@ -243,8 +272,7 @@ public class OrderItem {
      *
      * @return promotion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemPromotion getPromotion() {
+    @javax.annotation.Nullable public ItemPromotion getPromotion() {
         return promotion;
     }
 
@@ -262,8 +290,7 @@ public class OrderItem {
      *
      * @return cancellation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemCancellation getCancellation() {
+    @javax.annotation.Nullable public ItemCancellation getCancellation() {
         return cancellation;
     }
 
@@ -281,8 +308,7 @@ public class OrderItem {
      *
      * @return fulfillment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemFulfillment getFulfillment() {
+    @javax.annotation.Nullable public ItemFulfillment getFulfillment() {
         return fulfillment;
     }
 
@@ -300,8 +326,7 @@ public class OrderItem {
      *
      * @return tax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemTax getTax() {
+    @javax.annotation.Nullable public ItemTax getTax() {
         return tax;
     }
 
@@ -310,7 +335,7 @@ public class OrderItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -374,10 +399,182 @@ public class OrderItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("orderItemId");
+        openapiFields.add("quantityOrdered");
+        openapiFields.add("measurement");
+        openapiFields.add("associatedOrderItems");
+        openapiFields.add("programs");
+        openapiFields.add("product");
+        openapiFields.add("proceeds");
+        openapiFields.add("expense");
+        openapiFields.add("promotion");
+        openapiFields.add("cancellation");
+        openapiFields.add("fulfillment");
+        openapiFields.add("tax");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("orderItemId");
+        openapiRequiredFields.add("quantityOrdered");
+        openapiRequiredFields.add("product");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItem is not found in the empty JSON string",
+                        OrderItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("orderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderItemId").toString()));
+        }
+        // validate the optional field `measurement`
+        if (jsonObj.get("measurement") != null && !jsonObj.get("measurement").isJsonNull()) {
+            Measurement.validateJsonElement(jsonObj.get("measurement"));
+        }
+        if (jsonObj.get("associatedOrderItems") != null
+                && !jsonObj.get("associatedOrderItems").isJsonNull()) {
+            JsonArray jsonArrayassociatedOrderItems = jsonObj.getAsJsonArray("associatedOrderItems");
+            if (jsonArrayassociatedOrderItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("associatedOrderItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `associatedOrderItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("associatedOrderItems").toString()));
+                }
+
+                // validate the optional field `associatedOrderItems` (array)
+                for (int i = 0; i < jsonArrayassociatedOrderItems.size(); i++) {
+                    AssociatedOrderItem.validateJsonElement(jsonArrayassociatedOrderItems.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("programs") != null
+                && !jsonObj.get("programs").isJsonNull()
+                && !jsonObj.get("programs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `programs` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("programs").toString()));
+        }
+        // validate the required field `product`
+        ItemProduct.validateJsonElement(jsonObj.get("product"));
+        // validate the optional field `proceeds`
+        if (jsonObj.get("proceeds") != null && !jsonObj.get("proceeds").isJsonNull()) {
+            ItemProceeds.validateJsonElement(jsonObj.get("proceeds"));
+        }
+        // validate the optional field `expense`
+        if (jsonObj.get("expense") != null && !jsonObj.get("expense").isJsonNull()) {
+            ItemExpense.validateJsonElement(jsonObj.get("expense"));
+        }
+        // validate the optional field `promotion`
+        if (jsonObj.get("promotion") != null && !jsonObj.get("promotion").isJsonNull()) {
+            ItemPromotion.validateJsonElement(jsonObj.get("promotion"));
+        }
+        // validate the optional field `cancellation`
+        if (jsonObj.get("cancellation") != null && !jsonObj.get("cancellation").isJsonNull()) {
+            ItemCancellation.validateJsonElement(jsonObj.get("cancellation"));
+        }
+        // validate the optional field `fulfillment`
+        if (jsonObj.get("fulfillment") != null && !jsonObj.get("fulfillment").isJsonNull()) {
+            ItemFulfillment.validateJsonElement(jsonObj.get("fulfillment"));
+        }
+        // validate the optional field `tax`
+        if (jsonObj.get("tax") != null && !jsonObj.get("tax").isJsonNull()) {
+            ItemTax.validateJsonElement(jsonObj.get("tax"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItem> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(OrderItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItem>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItem
+     * @throws IOException if the JSON string is invalid with respect to OrderItem
+     */
+    public static OrderItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItem.class);
+    }
+
+    /**
+     * Convert an instance of OrderItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,26 +12,52 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Response schema for the &#x60;getFixedSlotCapacity&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the `getFixedSlotCapacity` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FixedSlotCapacity {
-    @SerializedName("resourceId")
-    private String resourceId = null;
+    public static final String SERIALIZED_NAME_RESOURCE_ID = "resourceId";
 
-    @SerializedName("slotDuration")
-    private BigDecimal slotDuration = null;
+    @SerializedName(SERIALIZED_NAME_RESOURCE_ID)
+    private String resourceId;
 
-    @SerializedName("capacities")
-    private List<FixedSlot> capacities = null;
+    public static final String SERIALIZED_NAME_SLOT_DURATION = "slotDuration";
 
-    @SerializedName("nextPageToken")
-    private String nextPageToken = null;
+    @SerializedName(SERIALIZED_NAME_SLOT_DURATION)
+    private BigDecimal slotDuration;
+
+    public static final String SERIALIZED_NAME_CAPACITIES = "capacities";
+
+    @SerializedName(SERIALIZED_NAME_CAPACITIES)
+    private List<FixedSlot> capacities = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
+    private String nextPageToken;
+
+    public FixedSlotCapacity() {}
 
     public FixedSlotCapacity resourceId(String resourceId) {
         this.resourceId = resourceId;
@@ -43,8 +69,7 @@ public class FixedSlotCapacity {
      *
      * @return resourceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Resource Identifier.")
-    public String getResourceId() {
+    @javax.annotation.Nullable public String getResourceId() {
         return resourceId;
     }
 
@@ -63,10 +88,7 @@ public class FixedSlotCapacity {
      *
      * @return slotDuration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 <= `slotDuration` <= 360.")
-    public BigDecimal getSlotDuration() {
+    @javax.annotation.Nullable public BigDecimal getSlotDuration() {
         return slotDuration;
     }
 
@@ -92,8 +114,7 @@ public class FixedSlotCapacity {
      *
      * @return capacities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Array of capacity slots in fixed slot format.")
-    public List<FixedSlot> getCapacities() {
+    @javax.annotation.Nullable public List<FixedSlot> getCapacities() {
         return capacities;
     }
 
@@ -111,8 +132,7 @@ public class FixedSlotCapacity {
      *
      * @return nextPageToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Next page token, if there are more pages.")
-    public String getNextPageToken() {
+    @javax.annotation.Nullable public String getNextPageToken() {
         return nextPageToken;
     }
 
@@ -121,7 +141,7 @@ public class FixedSlotCapacity {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -153,10 +173,132 @@ public class FixedSlotCapacity {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("resourceId");
+        openapiFields.add("slotDuration");
+        openapiFields.add("capacities");
+        openapiFields.add("nextPageToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FixedSlotCapacity
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FixedSlotCapacity.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FixedSlotCapacity is not found in the empty JSON string",
+                        FixedSlotCapacity.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FixedSlotCapacity.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FixedSlotCapacity` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("resourceId") != null && !jsonObj.get("resourceId").isJsonNull())
+                && !jsonObj.get("resourceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resourceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("resourceId").toString()));
+        }
+        if (jsonObj.get("capacities") != null && !jsonObj.get("capacities").isJsonNull()) {
+            JsonArray jsonArraycapacities = jsonObj.getAsJsonArray("capacities");
+            if (jsonArraycapacities != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("capacities").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `capacities` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("capacities").toString()));
+                }
+
+                // validate the optional field `capacities` (array)
+                for (int i = 0; i < jsonArraycapacities.size(); i++) {
+                    FixedSlot.validateJsonElement(jsonArraycapacities.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("nextPageToken") != null
+                        && !jsonObj.get("nextPageToken").isJsonNull())
+                && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextPageToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FixedSlotCapacity.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FixedSlotCapacity' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FixedSlotCapacity> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FixedSlotCapacity.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FixedSlotCapacity>() {
+                        @Override
+                        public void write(JsonWriter out, FixedSlotCapacity value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FixedSlotCapacity read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FixedSlotCapacity given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FixedSlotCapacity
+     * @throws IOException if the JSON string is invalid with respect to FixedSlotCapacity
+     */
+    public static FixedSlotCapacity fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FixedSlotCapacity.class);
+    }
+
+    /**
+     * Convert an instance of FixedSlotCapacity to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

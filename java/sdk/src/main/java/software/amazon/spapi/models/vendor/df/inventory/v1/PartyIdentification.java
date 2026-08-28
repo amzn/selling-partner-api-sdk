@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Name, address and tax details of a party. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Name, address and tax details of a party.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PartyIdentification {
-    @SerializedName("partyId")
-    private String partyId = null;
+    public static final String SERIALIZED_NAME_PARTY_ID = "partyId";
+
+    @SerializedName(SERIALIZED_NAME_PARTY_ID)
+    private String partyId;
+
+    public PartyIdentification() {}
 
     public PartyIdentification partyId(String partyId) {
         this.partyId = partyId;
@@ -31,7 +50,7 @@ public class PartyIdentification {
      *
      * @return partyId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Assigned identification for the party.")
+    @javax.annotation.Nonnull
     public String getPartyId() {
         return partyId;
     }
@@ -41,7 +60,7 @@ public class PartyIdentification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -67,10 +86,114 @@ public class PartyIdentification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partyId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("partyId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PartyIdentification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PartyIdentification.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PartyIdentification is not found in the empty JSON string",
+                        PartyIdentification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PartyIdentification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PartyIdentification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PartyIdentification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("partyId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partyId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partyId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PartyIdentification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PartyIdentification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PartyIdentification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PartyIdentification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PartyIdentification>() {
+                        @Override
+                        public void write(JsonWriter out, PartyIdentification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PartyIdentification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PartyIdentification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PartyIdentification
+     * @throws IOException if the JSON string is invalid with respect to PartyIdentification
+     */
+    public static PartyIdentification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PartyIdentification.class);
+    }
+
+    /**
+     * Convert an instance of PartyIdentification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

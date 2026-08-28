@@ -12,25 +12,48 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An object which contains the projected subscriber demand for the offer over different time horizons. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "An object which contains the projected subscriber demand for the offer over different time horizons.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ForecastDeliveries {
-    @SerializedName("next15DaysDeliveries")
-    private Long next15DaysDeliveries = null;
+    public static final String SERIALIZED_NAME_NEXT15_DAYS_DELIVERIES = "next15DaysDeliveries";
 
-    @SerializedName("next30DaysDeliveries")
-    private Long next30DaysDeliveries = null;
+    @SerializedName(SERIALIZED_NAME_NEXT15_DAYS_DELIVERIES)
+    private Long next15DaysDeliveries;
 
-    @SerializedName("next60DaysDeliveries")
-    private Long next60DaysDeliveries = null;
+    public static final String SERIALIZED_NAME_NEXT30_DAYS_DELIVERIES = "next30DaysDeliveries";
 
-    @SerializedName("next90DaysDeliveries")
-    private Long next90DaysDeliveries = null;
+    @SerializedName(SERIALIZED_NAME_NEXT30_DAYS_DELIVERIES)
+    private Long next30DaysDeliveries;
+
+    public static final String SERIALIZED_NAME_NEXT60_DAYS_DELIVERIES = "next60DaysDeliveries";
+
+    @SerializedName(SERIALIZED_NAME_NEXT60_DAYS_DELIVERIES)
+    private Long next60DaysDeliveries;
+
+    public static final String SERIALIZED_NAME_NEXT90_DAYS_DELIVERIES = "next90DaysDeliveries";
+
+    @SerializedName(SERIALIZED_NAME_NEXT90_DAYS_DELIVERIES)
+    private Long next90DaysDeliveries;
+
+    public ForecastDeliveries() {}
 
     public ForecastDeliveries next15DaysDeliveries(Long next15DaysDeliveries) {
         this.next15DaysDeliveries = next15DaysDeliveries;
@@ -38,13 +61,11 @@ public class ForecastDeliveries {
     }
 
     /**
-     * The projected number of subscriber deliveries in the next 15 days.
+     * The projected number of subscriber deliveries in the next 15 days. minimum: 0
      *
      * @return next15DaysDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The projected number of subscriber deliveries in the next 15 days.")
-    public Long getNext15DaysDeliveries() {
+    @javax.annotation.Nullable public Long getNext15DaysDeliveries() {
         return next15DaysDeliveries;
     }
 
@@ -58,13 +79,11 @@ public class ForecastDeliveries {
     }
 
     /**
-     * The projected number of subscriber deliveries in the next 30 days.
+     * The projected number of subscriber deliveries in the next 30 days. minimum: 0
      *
      * @return next30DaysDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The projected number of subscriber deliveries in the next 30 days.")
-    public Long getNext30DaysDeliveries() {
+    @javax.annotation.Nullable public Long getNext30DaysDeliveries() {
         return next30DaysDeliveries;
     }
 
@@ -78,13 +97,11 @@ public class ForecastDeliveries {
     }
 
     /**
-     * The projected number of subscriber deliveries in the next 60 days.
+     * The projected number of subscriber deliveries in the next 60 days. minimum: 0
      *
      * @return next60DaysDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The projected number of subscriber deliveries in the next 60 days.")
-    public Long getNext60DaysDeliveries() {
+    @javax.annotation.Nullable public Long getNext60DaysDeliveries() {
         return next60DaysDeliveries;
     }
 
@@ -98,13 +115,11 @@ public class ForecastDeliveries {
     }
 
     /**
-     * The projected number of subscriber deliveries in the next 90 days.
+     * The projected number of subscriber deliveries in the next 90 days. minimum: 0
      *
      * @return next90DaysDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The projected number of subscriber deliveries in the next 90 days.")
-    public Long getNext90DaysDeliveries() {
+    @javax.annotation.Nullable public Long getNext90DaysDeliveries() {
         return next90DaysDeliveries;
     }
 
@@ -113,7 +128,7 @@ public class ForecastDeliveries {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -153,10 +168,102 @@ public class ForecastDeliveries {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("next15DaysDeliveries");
+        openapiFields.add("next30DaysDeliveries");
+        openapiFields.add("next60DaysDeliveries");
+        openapiFields.add("next90DaysDeliveries");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ForecastDeliveries
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ForecastDeliveries.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ForecastDeliveries is not found in the empty JSON string",
+                        ForecastDeliveries.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ForecastDeliveries.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ForecastDeliveries` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ForecastDeliveries.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ForecastDeliveries' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ForecastDeliveries> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ForecastDeliveries.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ForecastDeliveries>() {
+                        @Override
+                        public void write(JsonWriter out, ForecastDeliveries value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ForecastDeliveries read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ForecastDeliveries given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ForecastDeliveries
+     * @throws IOException if the JSON string is invalid with respect to ForecastDeliveries
+     */
+    public static ForecastDeliveries fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ForecastDeliveries.class);
+    }
+
+    /**
+     * Convert an instance of ForecastDeliveries to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

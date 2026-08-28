@@ -12,31 +12,45 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Transportation details for this shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for this shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationDetailsForShipmentConfirmation {
-    @SerializedName("carrierScac")
-    private String carrierScac = null;
+    public static final String SERIALIZED_NAME_CARRIER_SCAC = "carrierScac";
 
-    @SerializedName("carrierShipmentReferenceNumber")
-    private String carrierShipmentReferenceNumber = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_SCAC)
+    private String carrierScac;
+
+    public static final String SERIALIZED_NAME_CARRIER_SHIPMENT_REFERENCE_NUMBER = "carrierShipmentReferenceNumber";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_SHIPMENT_REFERENCE_NUMBER)
+    private String carrierShipmentReferenceNumber;
 
     /** The mode of transportation for this shipment. */
     @JsonAdapter(TransportationModeEnum.Adapter.class)
     public enum TransportationModeEnum {
-        @SerializedName("Road")
         ROAD("Road"),
-        @SerializedName("Air")
+
         AIR("Air"),
-        @SerializedName("Ocean")
+
         OCEAN("Ocean");
 
         private String value;
@@ -54,35 +68,46 @@ public class TransportationDetailsForShipmentConfirmation {
             return String.valueOf(value);
         }
 
-        public static TransportationModeEnum fromValue(String input) {
+        public static TransportationModeEnum fromValue(String value) {
             for (TransportationModeEnum b : TransportationModeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TransportationModeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TransportationModeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TransportationModeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TransportationModeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TransportationModeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TransportationModeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("transportationMode")
-    private TransportationModeEnum transportationMode = null;
+    public static final String SERIALIZED_NAME_TRANSPORTATION_MODE = "transportationMode";
 
-    @SerializedName("billOfLadingNumber")
-    private String billOfLadingNumber = null;
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_MODE)
+    private TransportationModeEnum transportationMode;
+
+    public static final String SERIALIZED_NAME_BILL_OF_LADING_NUMBER = "billOfLadingNumber";
+
+    @SerializedName(SERIALIZED_NAME_BILL_OF_LADING_NUMBER)
+    private String billOfLadingNumber;
+
+    public TransportationDetailsForShipmentConfirmation() {}
 
     public TransportationDetailsForShipmentConfirmation carrierScac(String carrierScac) {
         this.carrierScac = carrierScac;
@@ -96,10 +121,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return carrierScac
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association). This field is mandatory for US, CA, MX shipment confirmations.")
-    public String getCarrierScac() {
+    @javax.annotation.Nullable public String getCarrierScac() {
         return carrierScac;
     }
 
@@ -119,10 +141,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return carrierShipmentReferenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The field also known as PRO number is a unique number assigned by the carrier. It is used to identify and track the shipment that goes out for delivery. This field is mandatory for UA, CA, MX shipment confirmations.")
-    public String getCarrierShipmentReferenceNumber() {
+    @javax.annotation.Nullable public String getCarrierShipmentReferenceNumber() {
         return carrierShipmentReferenceNumber;
     }
 
@@ -140,8 +159,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return transportationMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The mode of transportation for this shipment.")
-    public TransportationModeEnum getTransportationMode() {
+    @javax.annotation.Nullable public TransportationModeEnum getTransportationMode() {
         return transportationMode;
     }
 
@@ -163,10 +181,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return billOfLadingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.")
-    public String getBillOfLadingNumber() {
+    @javax.annotation.Nullable public String getBillOfLadingNumber() {
         return billOfLadingNumber;
     }
 
@@ -175,7 +190,7 @@ public class TransportationDetailsForShipmentConfirmation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -218,10 +233,137 @@ public class TransportationDetailsForShipmentConfirmation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrierScac");
+        openapiFields.add("carrierShipmentReferenceNumber");
+        openapiFields.add("transportationMode");
+        openapiFields.add("billOfLadingNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationDetailsForShipmentConfirmation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationDetailsForShipmentConfirmation.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationDetailsForShipmentConfirmation is not found in the empty JSON string",
+                        TransportationDetailsForShipmentConfirmation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationDetailsForShipmentConfirmation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationDetailsForShipmentConfirmation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("carrierScac") != null && !jsonObj.get("carrierScac").isJsonNull())
+                && !jsonObj.get("carrierScac").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierScac` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierScac").toString()));
+        }
+        if ((jsonObj.get("carrierShipmentReferenceNumber") != null
+                        && !jsonObj.get("carrierShipmentReferenceNumber").isJsonNull())
+                && !jsonObj.get("carrierShipmentReferenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierShipmentReferenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierShipmentReferenceNumber").toString()));
+        }
+        if ((jsonObj.get("transportationMode") != null
+                        && !jsonObj.get("transportationMode").isJsonNull())
+                && !jsonObj.get("transportationMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transportationMode").toString()));
+        }
+        // validate the optional field `transportationMode`
+        if (jsonObj.get("transportationMode") != null
+                && !jsonObj.get("transportationMode").isJsonNull()) {
+            TransportationModeEnum.validateJsonElement(jsonObj.get("transportationMode"));
+        }
+        if ((jsonObj.get("billOfLadingNumber") != null
+                        && !jsonObj.get("billOfLadingNumber").isJsonNull())
+                && !jsonObj.get("billOfLadingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `billOfLadingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("billOfLadingNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationDetailsForShipmentConfirmation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationDetailsForShipmentConfirmation' and its
+                // subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationDetailsForShipmentConfirmation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationDetailsForShipmentConfirmation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationDetailsForShipmentConfirmation>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationDetailsForShipmentConfirmation value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationDetailsForShipmentConfirmation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationDetailsForShipmentConfirmation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationDetailsForShipmentConfirmation
+     * @throws IOException if the JSON string is invalid with respect to TransportationDetailsForShipmentConfirmation
+     */
+    public static TransportationDetailsForShipmentConfirmation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationDetailsForShipmentConfirmation.class);
+    }
+
+    /**
+     * Convert an instance of TransportationDetailsForShipmentConfirmation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

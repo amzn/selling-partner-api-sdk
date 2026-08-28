@@ -12,35 +12,67 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;createMarketplaceItemLabels&#x60; request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `createMarketplaceItemLabels` request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateMarketplaceItemLabelsRequest {
-    @SerializedName("height")
-    private BigDecimal height = null;
+    public static final String SERIALIZED_NAME_HEIGHT = "height";
 
-    @SerializedName("labelType")
-    private LabelPrintType labelType = null;
+    @SerializedName(SERIALIZED_NAME_HEIGHT)
+    private BigDecimal height;
 
-    @SerializedName("localeCode")
-    private String localeCode = null;
+    public static final String SERIALIZED_NAME_LABEL_TYPE = "labelType";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_TYPE)
+    private LabelPrintType labelType;
 
-    @SerializedName("mskuQuantities")
-    private List<MskuQuantity> mskuQuantities = null;
+    public static final String SERIALIZED_NAME_LOCALE_CODE = "localeCode";
 
-    @SerializedName("pageType")
-    private ItemLabelPageType pageType = null;
+    @SerializedName(SERIALIZED_NAME_LOCALE_CODE)
+    private String localeCode = "en_US";
 
-    @SerializedName("width")
-    private BigDecimal width = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_MSKU_QUANTITIES = "mskuQuantities";
+
+    @SerializedName(SERIALIZED_NAME_MSKU_QUANTITIES)
+    private List<MskuQuantity> mskuQuantities = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAGE_TYPE = "pageType";
+
+    @SerializedName(SERIALIZED_NAME_PAGE_TYPE)
+    private ItemLabelPageType pageType;
+
+    public static final String SERIALIZED_NAME_WIDTH = "width";
+
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private BigDecimal width;
+
+    public CreateMarketplaceItemLabelsRequest() {}
 
     public CreateMarketplaceItemLabelsRequest height(BigDecimal height) {
         this.height = height;
@@ -48,12 +80,11 @@ public class CreateMarketplaceItemLabelsRequest {
     }
 
     /**
-     * The height of the item label.
+     * The height of the item label. minimum: 25 maximum: 1E+2
      *
      * @return height
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The height of the item label.")
-    public BigDecimal getHeight() {
+    @javax.annotation.Nullable public BigDecimal getHeight() {
         return height;
     }
 
@@ -71,7 +102,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return labelType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public LabelPrintType getLabelType() {
         return labelType;
     }
@@ -91,10 +122,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return localeCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character.")
-    public String getLocaleCode() {
+    @javax.annotation.Nullable public String getLocaleCode() {
         return localeCode;
     }
 
@@ -113,10 +141,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -143,9 +168,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return mskuQuantities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Represents the quantity of an MSKU to print item labels for.")
+    @javax.annotation.Nonnull
     public List<MskuQuantity> getMskuQuantities() {
         return mskuQuantities;
     }
@@ -164,8 +187,7 @@ public class CreateMarketplaceItemLabelsRequest {
      *
      * @return pageType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemLabelPageType getPageType() {
+    @javax.annotation.Nullable public ItemLabelPageType getPageType() {
         return pageType;
     }
 
@@ -179,12 +201,11 @@ public class CreateMarketplaceItemLabelsRequest {
     }
 
     /**
-     * The width of the item label.
+     * The width of the item label. minimum: 25 maximum: 1E+2
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The width of the item label.")
-    public BigDecimal getWidth() {
+    @javax.annotation.Nullable public BigDecimal getWidth() {
         return width;
     }
 
@@ -193,7 +214,7 @@ public class CreateMarketplaceItemLabelsRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -233,10 +254,148 @@ public class CreateMarketplaceItemLabelsRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("height");
+        openapiFields.add("labelType");
+        openapiFields.add("localeCode");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("mskuQuantities");
+        openapiFields.add("pageType");
+        openapiFields.add("width");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("labelType");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("mskuQuantities");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateMarketplaceItemLabelsRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateMarketplaceItemLabelsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateMarketplaceItemLabelsRequest is not found in the empty JSON string",
+                        CreateMarketplaceItemLabelsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateMarketplaceItemLabelsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateMarketplaceItemLabelsRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateMarketplaceItemLabelsRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `labelType`
+        LabelPrintType.validateJsonElement(jsonObj.get("labelType"));
+        if ((jsonObj.get("localeCode") != null && !jsonObj.get("localeCode").isJsonNull())
+                && !jsonObj.get("localeCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `localeCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("localeCode").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("mskuQuantities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `mskuQuantities` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("mskuQuantities").toString()));
+        }
+
+        JsonArray jsonArraymskuQuantities = jsonObj.getAsJsonArray("mskuQuantities");
+        // validate the required field `mskuQuantities` (array)
+        for (int i = 0; i < jsonArraymskuQuantities.size(); i++) {
+            MskuQuantity.validateJsonElement(jsonArraymskuQuantities.get(i));
+        }
+        ;
+        // validate the optional field `pageType`
+        if (jsonObj.get("pageType") != null && !jsonObj.get("pageType").isJsonNull()) {
+            ItemLabelPageType.validateJsonElement(jsonObj.get("pageType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateMarketplaceItemLabelsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateMarketplaceItemLabelsRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateMarketplaceItemLabelsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateMarketplaceItemLabelsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateMarketplaceItemLabelsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateMarketplaceItemLabelsRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateMarketplaceItemLabelsRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateMarketplaceItemLabelsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateMarketplaceItemLabelsRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateMarketplaceItemLabelsRequest
+     */
+    public static CreateMarketplaceItemLabelsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateMarketplaceItemLabelsRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateMarketplaceItemLabelsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A decorator that is applied to a content string value in order to create rich text. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A decorator that is applied to a content string value in order to create rich text.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Decorator {
-    @SerializedName("type")
-    private DecoratorType type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("offset")
-    private Integer offset = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private DecoratorType type;
 
-    @SerializedName("length")
-    private Integer length = null;
+    public static final String SERIALIZED_NAME_OFFSET = "offset";
 
-    @SerializedName("depth")
-    private Integer depth = null;
+    @SerializedName(SERIALIZED_NAME_OFFSET)
+    private Integer offset;
+
+    public static final String SERIALIZED_NAME_LENGTH = "length";
+
+    @SerializedName(SERIALIZED_NAME_LENGTH)
+    private Integer length;
+
+    public static final String SERIALIZED_NAME_DEPTH = "depth";
+
+    @SerializedName(SERIALIZED_NAME_DEPTH)
+    private Integer depth;
+
+    public Decorator() {}
 
     public Decorator type(DecoratorType type) {
         this.type = type;
@@ -41,8 +65,7 @@ public class Decorator {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DecoratorType getType() {
+    @javax.annotation.Nullable public DecoratorType getType() {
         return type;
     }
 
@@ -57,13 +80,11 @@ public class Decorator {
 
     /**
      * The starting value of this decorator within the content string. Use zero (&#x60;0&#x60;) for the first value.
+     * minimum: 0 maximum: 10000
      *
      * @return offset
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The starting value of this decorator within the content string. Use zero (`0`) for the first value.")
-    public Integer getOffset() {
+    @javax.annotation.Nullable public Integer getOffset() {
         return offset;
     }
 
@@ -78,14 +99,11 @@ public class Decorator {
 
     /**
      * The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero
-     * length and fit between characters.
+     * length and fit between characters. minimum: 0 maximum: 10000
      *
      * @return length
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.")
-    public Integer getLength() {
+    @javax.annotation.Nullable public Integer getLength() {
         return length;
     }
 
@@ -100,14 +118,11 @@ public class Decorator {
 
     /**
      * The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple
-     * indentation depths.
+     * indentation depths. minimum: 0 maximum: 100
      *
      * @return depth
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.")
-    public Integer getDepth() {
+    @javax.annotation.Nullable public Integer getDepth() {
         return depth;
     }
 
@@ -116,7 +131,7 @@ public class Decorator {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +163,105 @@ public class Decorator {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("offset");
+        openapiFields.add("length");
+        openapiFields.add("depth");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Decorator
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Decorator.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Decorator is not found in the empty JSON string",
+                        Decorator.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Decorator.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Decorator` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `type`
+        if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+            DecoratorType.validateJsonElement(jsonObj.get("type"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Decorator.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Decorator' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Decorator> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Decorator.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Decorator>() {
+                        @Override
+                        public void write(JsonWriter out, Decorator value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Decorator read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Decorator given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Decorator
+     * @throws IOException if the JSON string is invalid with respect to Decorator
+     */
+    public static Decorator fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Decorator.class);
+    }
+
+    /**
+     * Convert an instance of Decorator to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

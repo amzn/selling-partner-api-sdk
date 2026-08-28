@@ -12,35 +12,68 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A service fee on the seller&#39;s account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A service fee on the seller's account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServiceFeeEvent {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("FeeReason")
-    private String feeReason = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("FeeList")
-    private FeeComponentList feeList = null;
+    public static final String SERIALIZED_NAME_FEE_REASON = "FeeReason";
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    @SerializedName(SERIALIZED_NAME_FEE_REASON)
+    private String feeReason;
 
-    @SerializedName("FnSKU")
-    private String fnSKU = null;
+    public static final String SERIALIZED_NAME_FEE_LIST = "FeeList";
 
-    @SerializedName("FeeDescription")
-    private String feeDescription = null;
+    @SerializedName(SERIALIZED_NAME_FEE_LIST)
+    private FeeComponentList feeList = new ArrayList<>();
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("StoreName")
-    private String storeName = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public static final String SERIALIZED_NAME_FN_S_K_U = "FnSKU";
+
+    @SerializedName(SERIALIZED_NAME_FN_S_K_U)
+    private String fnSKU;
+
+    public static final String SERIALIZED_NAME_FEE_DESCRIPTION = "FeeDescription";
+
+    @SerializedName(SERIALIZED_NAME_FEE_DESCRIPTION)
+    private String feeDescription;
+
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
+
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
+
+    public static final String SERIALIZED_NAME_STORE_NAME = "StoreName";
+
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private String storeName;
+
+    public ServiceFeeEvent() {}
 
     public ServiceFeeEvent amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -52,8 +85,7 @@ public class ServiceFeeEvent {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
-    public String getAmazonOrderId() {
+    @javax.annotation.Nullable public String getAmazonOrderId() {
         return amazonOrderId;
     }
 
@@ -71,8 +103,7 @@ public class ServiceFeeEvent {
      *
      * @return feeReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the service fee reason.")
-    public String getFeeReason() {
+    @javax.annotation.Nullable public String getFeeReason() {
         return feeReason;
     }
 
@@ -90,8 +121,7 @@ public class ServiceFeeEvent {
      *
      * @return feeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getFeeList() {
+    @javax.annotation.Nullable public FeeComponentList getFeeList() {
         return feeList;
     }
 
@@ -110,10 +140,7 @@ public class ServiceFeeEvent {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -131,10 +158,7 @@ public class ServiceFeeEvent {
      *
      * @return fnSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.")
-    public String getFnSKU() {
+    @javax.annotation.Nullable public String getFnSKU() {
         return fnSKU;
     }
 
@@ -152,8 +176,7 @@ public class ServiceFeeEvent {
      *
      * @return feeDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the service fee event.")
-    public String getFeeDescription() {
+    @javax.annotation.Nullable public String getFeeDescription() {
         return feeDescription;
     }
 
@@ -171,9 +194,7 @@ public class ServiceFeeEvent {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -191,8 +212,7 @@ public class ServiceFeeEvent {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
-    public String getStoreName() {
+    @javax.annotation.Nullable public String getStoreName() {
         return storeName;
     }
 
@@ -201,7 +221,7 @@ public class ServiceFeeEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -243,10 +263,150 @@ public class ServiceFeeEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("FeeReason");
+        openapiFields.add("FeeList");
+        openapiFields.add("SellerSKU");
+        openapiFields.add("FnSKU");
+        openapiFields.add("FeeDescription");
+        openapiFields.add("ASIN");
+        openapiFields.add("StoreName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServiceFeeEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServiceFeeEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServiceFeeEvent is not found in the empty JSON string",
+                        ServiceFeeEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServiceFeeEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServiceFeeEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AmazonOrderId") != null
+                        && !jsonObj.get("AmazonOrderId").isJsonNull())
+                && !jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("FeeReason") != null && !jsonObj.get("FeeReason").isJsonNull())
+                && !jsonObj.get("FeeReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FeeReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FeeReason").toString()));
+        }
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if ((jsonObj.get("FnSKU") != null && !jsonObj.get("FnSKU").isJsonNull())
+                && !jsonObj.get("FnSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FnSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FnSKU").toString()));
+        }
+        if ((jsonObj.get("FeeDescription") != null
+                        && !jsonObj.get("FeeDescription").isJsonNull())
+                && !jsonObj.get("FeeDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FeeDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FeeDescription").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if ((jsonObj.get("StoreName") != null && !jsonObj.get("StoreName").isJsonNull())
+                && !jsonObj.get("StoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StoreName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServiceFeeEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServiceFeeEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServiceFeeEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ServiceFeeEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServiceFeeEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ServiceFeeEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServiceFeeEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServiceFeeEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServiceFeeEvent
+     * @throws IOException if the JSON string is invalid with respect to ServiceFeeEvent
+     */
+    public static ServiceFeeEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServiceFeeEvent.class);
+    }
+
+    /**
+     * Convert an instance of ServiceFeeEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

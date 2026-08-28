@@ -12,28 +12,56 @@
 
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tracking information for the shipment identifier. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking information for the shipment identifier.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingDetail {
-    @SerializedName("identifier")
-    private TrackingIdentifier identifier = null;
+    public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
 
-    @SerializedName("trackingUrl")
-    private String trackingUrl = null;
+    @SerializedName(SERIALIZED_NAME_IDENTIFIER)
+    private TrackingIdentifier identifier;
 
-    @SerializedName("trackingEstimates")
-    private List<TrackingEstimate> trackingEstimates = null;
+    public static final String SERIALIZED_NAME_TRACKING_URL = "trackingUrl";
 
-    @SerializedName("latestMilestone")
-    private TrackingMilestone latestMilestone = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_URL)
+    private String trackingUrl;
 
-    @SerializedName("milestoneHistory")
-    private List<TrackingMilestone> milestoneHistory = null;
+    public static final String SERIALIZED_NAME_TRACKING_ESTIMATES = "trackingEstimates";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ESTIMATES)
+    private List<TrackingEstimate> trackingEstimates = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_LATEST_MILESTONE = "latestMilestone";
+
+    @SerializedName(SERIALIZED_NAME_LATEST_MILESTONE)
+    private TrackingMilestone latestMilestone;
+
+    public static final String SERIALIZED_NAME_MILESTONE_HISTORY = "milestoneHistory";
+
+    @SerializedName(SERIALIZED_NAME_MILESTONE_HISTORY)
+    private List<TrackingMilestone> milestoneHistory = new ArrayList<>();
+
+    public TrackingDetail() {}
 
     public TrackingDetail identifier(TrackingIdentifier identifier) {
         this.identifier = identifier;
@@ -45,7 +73,7 @@ public class TrackingDetail {
      *
      * @return identifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TrackingIdentifier getIdentifier() {
         return identifier;
     }
@@ -64,8 +92,7 @@ public class TrackingDetail {
      *
      * @return trackingUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The URL to view the shipment's tracking information.")
-    public String getTrackingUrl() {
+    @javax.annotation.Nullable public String getTrackingUrl() {
         return trackingUrl;
     }
 
@@ -91,9 +118,7 @@ public class TrackingDetail {
      *
      * @return trackingEstimates
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of time-based estimated intervals for the shipment, such as estimated delivery date.")
-    public List<TrackingEstimate> getTrackingEstimates() {
+    @javax.annotation.Nullable public List<TrackingEstimate> getTrackingEstimates() {
         return trackingEstimates;
     }
 
@@ -111,8 +136,7 @@ public class TrackingDetail {
      *
      * @return latestMilestone
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingMilestone getLatestMilestone() {
+    @javax.annotation.Nullable public TrackingMilestone getLatestMilestone() {
         return latestMilestone;
     }
 
@@ -138,9 +162,7 @@ public class TrackingDetail {
      *
      * @return milestoneHistory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A chronological list of all milestone events for the shipment, from most recent to oldest.")
+    @javax.annotation.Nonnull
     public List<TrackingMilestone> getMilestoneHistory() {
         return milestoneHistory;
     }
@@ -150,7 +172,7 @@ public class TrackingDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -190,10 +212,158 @@ public class TrackingDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("identifier");
+        openapiFields.add("trackingUrl");
+        openapiFields.add("trackingEstimates");
+        openapiFields.add("latestMilestone");
+        openapiFields.add("milestoneHistory");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("identifier");
+        openapiRequiredFields.add("milestoneHistory");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingDetail is not found in the empty JSON string",
+                        TrackingDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TrackingDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `identifier`
+        TrackingIdentifier.validateJsonElement(jsonObj.get("identifier"));
+        if ((jsonObj.get("trackingUrl") != null && !jsonObj.get("trackingUrl").isJsonNull())
+                && !jsonObj.get("trackingUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingUrl").toString()));
+        }
+        if (jsonObj.get("trackingEstimates") != null
+                && !jsonObj.get("trackingEstimates").isJsonNull()) {
+            JsonArray jsonArraytrackingEstimates = jsonObj.getAsJsonArray("trackingEstimates");
+            if (jsonArraytrackingEstimates != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("trackingEstimates").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `trackingEstimates` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("trackingEstimates").toString()));
+                }
+
+                // validate the optional field `trackingEstimates` (array)
+                for (int i = 0; i < jsonArraytrackingEstimates.size(); i++) {
+                    TrackingEstimate.validateJsonElement(jsonArraytrackingEstimates.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `latestMilestone`
+        if (jsonObj.get("latestMilestone") != null
+                && !jsonObj.get("latestMilestone").isJsonNull()) {
+            TrackingMilestone.validateJsonElement(jsonObj.get("latestMilestone"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("milestoneHistory").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `milestoneHistory` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("milestoneHistory").toString()));
+        }
+
+        JsonArray jsonArraymilestoneHistory = jsonObj.getAsJsonArray("milestoneHistory");
+        // validate the required field `milestoneHistory` (array)
+        for (int i = 0; i < jsonArraymilestoneHistory.size(); i++) {
+            TrackingMilestone.validateJsonElement(jsonArraymilestoneHistory.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingDetail>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingDetail
+     * @throws IOException if the JSON string is invalid with respect to TrackingDetail
+     */
+    public static TrackingDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingDetail.class);
+    }
+
+    /**
+     * Convert an instance of TrackingDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

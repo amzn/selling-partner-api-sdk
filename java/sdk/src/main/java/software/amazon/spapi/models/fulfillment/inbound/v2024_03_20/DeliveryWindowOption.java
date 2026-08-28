@@ -12,33 +12,62 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains information pertaining to a delivery window option. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains information pertaining to a delivery window option.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DeliveryWindowOption {
-    @SerializedName("availabilityType")
-    private String availabilityType = null;
+    public static final String SERIALIZED_NAME_AVAILABILITY_TYPE = "availabilityType";
 
-    @SerializedName("deliveryWindowOptionId")
-    private String deliveryWindowOptionId = null;
+    @SerializedName(SERIALIZED_NAME_AVAILABILITY_TYPE)
+    private String availabilityType;
 
-    @SerializedName("discounts")
-    private List<Incentive> discounts = null;
+    public static final String SERIALIZED_NAME_DELIVERY_WINDOW_OPTION_ID = "deliveryWindowOptionId";
 
-    @SerializedName("endDate")
-    private OffsetDateTime endDate = null;
+    @SerializedName(SERIALIZED_NAME_DELIVERY_WINDOW_OPTION_ID)
+    private String deliveryWindowOptionId;
 
-    @SerializedName("startDate")
-    private OffsetDateTime startDate = null;
+    public static final String SERIALIZED_NAME_DISCOUNTS = "discounts";
 
-    @SerializedName("validUntil")
-    private OffsetDateTime validUntil = null;
+    @SerializedName(SERIALIZED_NAME_DISCOUNTS)
+    private List<Incentive> discounts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_END_DATE = "endDate";
+
+    @SerializedName(SERIALIZED_NAME_END_DATE)
+    private OffsetDateTime endDate;
+
+    public static final String SERIALIZED_NAME_START_DATE = "startDate";
+
+    @SerializedName(SERIALIZED_NAME_START_DATE)
+    private OffsetDateTime startDate;
+
+    public static final String SERIALIZED_NAME_VALID_UNTIL = "validUntil";
+
+    @SerializedName(SERIALIZED_NAME_VALID_UNTIL)
+    private OffsetDateTime validUntil;
+
+    public DeliveryWindowOption() {}
 
     public DeliveryWindowOption availabilityType(String availabilityType) {
         this.availabilityType = availabilityType;
@@ -51,10 +80,7 @@ public class DeliveryWindowOption {
      *
      * @return availabilityType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`")
+    @javax.annotation.Nonnull
     public String getAvailabilityType() {
         return availabilityType;
     }
@@ -74,10 +100,7 @@ public class DeliveryWindowOption {
      *
      * @return deliveryWindowOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.")
+    @javax.annotation.Nonnull
     public String getDeliveryWindowOptionId() {
         return deliveryWindowOptionId;
     }
@@ -104,8 +127,7 @@ public class DeliveryWindowOption {
      *
      * @return discounts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Discounts for the offered option.")
-    public List<Incentive> getDiscounts() {
+    @javax.annotation.Nullable public List<Incentive> getDiscounts() {
         return discounts;
     }
 
@@ -125,10 +147,7 @@ public class DeliveryWindowOption {
      *
      * @return endDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEndDate() {
         return endDate;
     }
@@ -149,10 +168,7 @@ public class DeliveryWindowOption {
      *
      * @return startDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which this delivery window option starts. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -173,10 +189,7 @@ public class DeliveryWindowOption {
      *
      * @return validUntil
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which this window delivery option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getValidUntil() {
         return validUntil;
     }
@@ -186,7 +199,7 @@ public class DeliveryWindowOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -226,10 +239,145 @@ public class DeliveryWindowOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("availabilityType");
+        openapiFields.add("deliveryWindowOptionId");
+        openapiFields.add("discounts");
+        openapiFields.add("endDate");
+        openapiFields.add("startDate");
+        openapiFields.add("validUntil");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("availabilityType");
+        openapiRequiredFields.add("deliveryWindowOptionId");
+        openapiRequiredFields.add("endDate");
+        openapiRequiredFields.add("startDate");
+        openapiRequiredFields.add("validUntil");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DeliveryWindowOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DeliveryWindowOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DeliveryWindowOption is not found in the empty JSON string",
+                        DeliveryWindowOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DeliveryWindowOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DeliveryWindowOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DeliveryWindowOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("availabilityType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `availabilityType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("availabilityType").toString()));
+        }
+        if (!jsonObj.get("deliveryWindowOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `deliveryWindowOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("deliveryWindowOptionId").toString()));
+        }
+        if (jsonObj.get("discounts") != null && !jsonObj.get("discounts").isJsonNull()) {
+            JsonArray jsonArraydiscounts = jsonObj.getAsJsonArray("discounts");
+            if (jsonArraydiscounts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("discounts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `discounts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("discounts").toString()));
+                }
+
+                // validate the optional field `discounts` (array)
+                for (int i = 0; i < jsonArraydiscounts.size(); i++) {
+                    Incentive.validateJsonElement(jsonArraydiscounts.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeliveryWindowOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeliveryWindowOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeliveryWindowOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeliveryWindowOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeliveryWindowOption>() {
+                        @Override
+                        public void write(JsonWriter out, DeliveryWindowOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeliveryWindowOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeliveryWindowOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeliveryWindowOption
+     * @throws IOException if the JSON string is invalid with respect to DeliveryWindowOption
+     */
+    public static DeliveryWindowOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeliveryWindowOption.class);
+    }
+
+    /**
+     * Convert an instance of DeliveryWindowOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

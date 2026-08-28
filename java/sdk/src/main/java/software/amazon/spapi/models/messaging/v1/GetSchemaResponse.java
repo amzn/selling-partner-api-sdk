@@ -12,20 +12,45 @@
 
 package software.amazon.spapi.models.messaging.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;GET&#x60; request schema response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `GET` request schema response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSchemaResponse {
-    @SerializedName("_links")
-    private GetSchemaResponseLinks links = null;
+    public static final String SERIALIZED_NAME_LINKS = "_links";
 
-    @SerializedName("payload")
-    private Schema payload = null;
+    @SerializedName(SERIALIZED_NAME_LINKS)
+    private GetSchemaResponseLinks links;
 
-    @SerializedName("errors")
-    private ErrorList errors = null;
+    public static final String SERIALIZED_NAME_PAYLOAD = "payload";
+
+    @SerializedName(SERIALIZED_NAME_PAYLOAD)
+    private Schema payload = new HashMap<>();
+
+    public static final String SERIALIZED_NAME_ERRORS = "errors";
+
+    @SerializedName(SERIALIZED_NAME_ERRORS)
+    private ErrorList errors = new ArrayList<>();
+
+    public GetSchemaResponse() {}
 
     public GetSchemaResponse links(GetSchemaResponseLinks links) {
         this.links = links;
@@ -37,8 +62,7 @@ public class GetSchemaResponse {
      *
      * @return links
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetSchemaResponseLinks getLinks() {
+    @javax.annotation.Nullable public GetSchemaResponseLinks getLinks() {
         return links;
     }
 
@@ -56,8 +80,7 @@ public class GetSchemaResponse {
      *
      * @return payload
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Schema getPayload() {
+    @javax.annotation.Nullable public Schema getPayload() {
         return payload;
     }
 
@@ -75,8 +98,7 @@ public class GetSchemaResponse {
      *
      * @return errors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorList getErrors() {
+    @javax.annotation.Nullable public ErrorList getErrors() {
         return errors;
     }
 
@@ -85,7 +107,7 @@ public class GetSchemaResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -115,10 +137,105 @@ public class GetSchemaResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("_links");
+        openapiFields.add("payload");
+        openapiFields.add("errors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSchemaResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSchemaResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSchemaResponse is not found in the empty JSON string",
+                        GetSchemaResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSchemaResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSchemaResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `_links`
+        if (jsonObj.get("_links") != null && !jsonObj.get("_links").isJsonNull()) {
+            GetSchemaResponseLinks.validateJsonElement(jsonObj.get("_links"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSchemaResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSchemaResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSchemaResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSchemaResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSchemaResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetSchemaResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSchemaResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSchemaResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSchemaResponse
+     * @throws IOException if the JSON string is invalid with respect to GetSchemaResponse
+     */
+    public static GetSchemaResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSchemaResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetSchemaResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

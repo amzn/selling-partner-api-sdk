@@ -12,35 +12,64 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request body for the `getSellingPartnerMetrics` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSellingPartnerMetricsRequest {
-    @SerializedName("aggregationFrequency")
-    private AggregationFrequency aggregationFrequency = null;
+    public static final String SERIALIZED_NAME_AGGREGATION_FREQUENCY = "aggregationFrequency";
 
-    @SerializedName("timeInterval")
-    private TimeInterval timeInterval = null;
+    @SerializedName(SERIALIZED_NAME_AGGREGATION_FREQUENCY)
+    private AggregationFrequency aggregationFrequency;
 
-    @SerializedName("metrics")
-    private Set<Metric> metrics = null;
+    public static final String SERIALIZED_NAME_TIME_INTERVAL = "timeInterval";
 
-    @SerializedName("filters")
-    private GetSellingPartnerMetricsRequestFilters filters = null;
+    @SerializedName(SERIALIZED_NAME_TIME_INTERVAL)
+    private TimeInterval timeInterval;
 
-    @SerializedName("timePeriodType")
-    private TimePeriodType timePeriodType = null;
+    public static final String SERIALIZED_NAME_METRICS = "metrics";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_METRICS)
+    private Set<Metric> metrics = new LinkedHashSet<>();
 
-    @SerializedName("programTypes")
-    private ProgramTypes programTypes = null;
+    public static final String SERIALIZED_NAME_FILTERS = "filters";
+
+    @SerializedName(SERIALIZED_NAME_FILTERS)
+    private GetSellingPartnerMetricsRequestFilters filters;
+
+    public static final String SERIALIZED_NAME_TIME_PERIOD_TYPE = "timePeriodType";
+
+    @SerializedName(SERIALIZED_NAME_TIME_PERIOD_TYPE)
+    private TimePeriodType timePeriodType;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_PROGRAM_TYPES = "programTypes";
+
+    @SerializedName(SERIALIZED_NAME_PROGRAM_TYPES)
+    private ProgramTypes programTypes = new LinkedHashSet<>();
+
+    public GetSellingPartnerMetricsRequest() {}
 
     public GetSellingPartnerMetricsRequest aggregationFrequency(AggregationFrequency aggregationFrequency) {
         this.aggregationFrequency = aggregationFrequency;
@@ -52,8 +81,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return aggregationFrequency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AggregationFrequency getAggregationFrequency() {
+    @javax.annotation.Nullable public AggregationFrequency getAggregationFrequency() {
         return aggregationFrequency;
     }
 
@@ -71,7 +99,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return timeInterval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -98,10 +126,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return metrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The list of metrics requested. If no metric value is provided, data for all metrics will be returned.")
-    public Set<Metric> getMetrics() {
+    @javax.annotation.Nullable public Set<Metric> getMetrics() {
         return metrics;
     }
 
@@ -119,8 +144,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return filters
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetSellingPartnerMetricsRequestFilters getFilters() {
+    @javax.annotation.Nullable public GetSellingPartnerMetricsRequestFilters getFilters() {
         return filters;
     }
 
@@ -138,7 +162,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return timePeriodType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TimePeriodType getTimePeriodType() {
         return timePeriodType;
     }
@@ -159,10 +183,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -181,7 +202,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return programTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ProgramTypes getProgramTypes() {
         return programTypes;
     }
@@ -191,7 +212,7 @@ public class GetSellingPartnerMetricsRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -234,10 +255,145 @@ public class GetSellingPartnerMetricsRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("aggregationFrequency");
+        openapiFields.add("timeInterval");
+        openapiFields.add("metrics");
+        openapiFields.add("filters");
+        openapiFields.add("timePeriodType");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("programTypes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("timeInterval");
+        openapiRequiredFields.add("timePeriodType");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("programTypes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSellingPartnerMetricsRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSellingPartnerMetricsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSellingPartnerMetricsRequest is not found in the empty JSON string",
+                        GetSellingPartnerMetricsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSellingPartnerMetricsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSellingPartnerMetricsRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetSellingPartnerMetricsRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `aggregationFrequency`
+        if (jsonObj.get("aggregationFrequency") != null
+                && !jsonObj.get("aggregationFrequency").isJsonNull()) {
+            AggregationFrequency.validateJsonElement(jsonObj.get("aggregationFrequency"));
+        }
+        // validate the required field `timeInterval`
+        TimeInterval.validateJsonElement(jsonObj.get("timeInterval"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("metrics") != null
+                && !jsonObj.get("metrics").isJsonNull()
+                && !jsonObj.get("metrics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `metrics` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("metrics").toString()));
+        }
+        // validate the optional field `filters`
+        if (jsonObj.get("filters") != null && !jsonObj.get("filters").isJsonNull()) {
+            GetSellingPartnerMetricsRequestFilters.validateJsonElement(jsonObj.get("filters"));
+        }
+        // validate the required field `timePeriodType`
+        TimePeriodType.validateJsonElement(jsonObj.get("timePeriodType"));
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSellingPartnerMetricsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSellingPartnerMetricsRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSellingPartnerMetricsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSellingPartnerMetricsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSellingPartnerMetricsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetSellingPartnerMetricsRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSellingPartnerMetricsRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSellingPartnerMetricsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSellingPartnerMetricsRequest
+     * @throws IOException if the JSON string is invalid with respect to GetSellingPartnerMetricsRequest
+     */
+    public static GetSellingPartnerMetricsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSellingPartnerMetricsRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetSellingPartnerMetricsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

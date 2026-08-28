@@ -12,31 +12,58 @@
 
 package software.amazon.spapi.models.sellers.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about an Amazon marketplace where a seller can list items and customers can view and purchase items. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Marketplace {
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("name")
-    private String name = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("defaultCurrencyCode")
-    private String defaultCurrencyCode = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("defaultLanguageCode")
-    private String defaultLanguageCode = null;
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
 
-    @SerializedName("domainName")
-    private String domainName = null;
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_DEFAULT_CURRENCY_CODE = "defaultCurrencyCode";
+
+    @SerializedName(SERIALIZED_NAME_DEFAULT_CURRENCY_CODE)
+    private String defaultCurrencyCode;
+
+    public static final String SERIALIZED_NAME_DEFAULT_LANGUAGE_CODE = "defaultLanguageCode";
+
+    @SerializedName(SERIALIZED_NAME_DEFAULT_LANGUAGE_CODE)
+    private String defaultLanguageCode;
+
+    public static final String SERIALIZED_NAME_DOMAIN_NAME = "domainName";
+
+    @SerializedName(SERIALIZED_NAME_DOMAIN_NAME)
+    private String domainName;
+
+    public Marketplace() {}
 
     public Marketplace id(String id) {
         this.id = id;
@@ -48,7 +75,7 @@ public class Marketplace {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The encrypted marketplace value.")
+    @javax.annotation.Nonnull
     public String getId() {
         return id;
     }
@@ -67,7 +94,7 @@ public class Marketplace {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The marketplace name.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -86,9 +113,7 @@ public class Marketplace {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ISO 3166-1 alpha-2 format country code of the marketplace.")
+    @javax.annotation.Nonnull
     public String getCountryCode() {
         return countryCode;
     }
@@ -107,9 +132,7 @@ public class Marketplace {
      *
      * @return defaultCurrencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ISO 4217 format currency code of the marketplace.")
+    @javax.annotation.Nonnull
     public String getDefaultCurrencyCode() {
         return defaultCurrencyCode;
     }
@@ -128,9 +151,7 @@ public class Marketplace {
      *
      * @return defaultLanguageCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ISO 639-1 format language code of the marketplace.")
+    @javax.annotation.Nonnull
     public String getDefaultLanguageCode() {
         return defaultLanguageCode;
     }
@@ -149,7 +170,7 @@ public class Marketplace {
      *
      * @return domainName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The domain name of the marketplace.")
+    @javax.annotation.Nonnull
     public String getDomainName() {
         return domainName;
     }
@@ -159,7 +180,7 @@ public class Marketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -199,10 +220,149 @@ public class Marketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("id");
+        openapiFields.add("name");
+        openapiFields.add("countryCode");
+        openapiFields.add("defaultCurrencyCode");
+        openapiFields.add("defaultLanguageCode");
+        openapiFields.add("domainName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("countryCode");
+        openapiRequiredFields.add("defaultCurrencyCode");
+        openapiRequiredFields.add("defaultLanguageCode");
+        openapiRequiredFields.add("domainName");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Marketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Marketplace.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Marketplace is not found in the empty JSON string",
+                        Marketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Marketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Marketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Marketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+        if (!jsonObj.get("defaultCurrencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `defaultCurrencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("defaultCurrencyCode").toString()));
+        }
+        if (!jsonObj.get("defaultLanguageCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `defaultLanguageCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("defaultLanguageCode").toString()));
+        }
+        if (!jsonObj.get("domainName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `domainName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("domainName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Marketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Marketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Marketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Marketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Marketplace>() {
+                        @Override
+                        public void write(JsonWriter out, Marketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Marketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Marketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Marketplace
+     * @throws IOException if the JSON string is invalid with respect to Marketplace
+     */
+    public static Marketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Marketplace.class);
+    }
+
+    /**
+     * Convert an instance of Marketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

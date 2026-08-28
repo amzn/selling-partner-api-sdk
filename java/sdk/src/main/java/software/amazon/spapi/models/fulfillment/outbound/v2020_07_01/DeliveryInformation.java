@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The delivery information of the package, this information is only available post package delivery to its intended
  * destination.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The delivery information of the package, this information is only available post package delivery to its intended destination.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DeliveryInformation {
-    @SerializedName("deliveryDocumentList")
-    private DeliveryDocumentList deliveryDocumentList = null;
+    public static final String SERIALIZED_NAME_DELIVERY_DOCUMENT_LIST = "deliveryDocumentList";
 
-    @SerializedName("dropOffLocation")
-    private DropOffLocation dropOffLocation = null;
+    @SerializedName(SERIALIZED_NAME_DELIVERY_DOCUMENT_LIST)
+    private DeliveryDocumentList deliveryDocumentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_DROP_OFF_LOCATION = "dropOffLocation";
+
+    @SerializedName(SERIALIZED_NAME_DROP_OFF_LOCATION)
+    private DropOffLocation dropOffLocation;
+
+    public DeliveryInformation() {}
 
     public DeliveryInformation deliveryDocumentList(DeliveryDocumentList deliveryDocumentList) {
         this.deliveryDocumentList = deliveryDocumentList;
@@ -39,8 +58,7 @@ public class DeliveryInformation {
      *
      * @return deliveryDocumentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DeliveryDocumentList getDeliveryDocumentList() {
+    @javax.annotation.Nullable public DeliveryDocumentList getDeliveryDocumentList() {
         return deliveryDocumentList;
     }
 
@@ -58,8 +76,7 @@ public class DeliveryInformation {
      *
      * @return dropOffLocation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DropOffLocation getDropOffLocation() {
+    @javax.annotation.Nullable public DropOffLocation getDropOffLocation() {
         return dropOffLocation;
     }
 
@@ -68,7 +85,7 @@ public class DeliveryInformation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -100,10 +117,105 @@ public class DeliveryInformation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("deliveryDocumentList");
+        openapiFields.add("dropOffLocation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DeliveryInformation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DeliveryInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DeliveryInformation is not found in the empty JSON string",
+                        DeliveryInformation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DeliveryInformation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DeliveryInformation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `dropOffLocation`
+        if (jsonObj.get("dropOffLocation") != null
+                && !jsonObj.get("dropOffLocation").isJsonNull()) {
+            DropOffLocation.validateJsonElement(jsonObj.get("dropOffLocation"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeliveryInformation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeliveryInformation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeliveryInformation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeliveryInformation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeliveryInformation>() {
+                        @Override
+                        public void write(JsonWriter out, DeliveryInformation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeliveryInformation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeliveryInformation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeliveryInformation
+     * @throws IOException if the JSON string is invalid with respect to DeliveryInformation
+     */
+    public static DeliveryInformation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeliveryInformation.class);
+    }
+
+    /**
+     * Convert an instance of DeliveryInformation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

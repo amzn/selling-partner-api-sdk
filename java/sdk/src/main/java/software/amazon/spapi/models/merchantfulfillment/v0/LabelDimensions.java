@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Dimensions for printing a shipping label. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Dimensions for printing a shipping label.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LabelDimensions {
-    @SerializedName("Length")
-    private BigDecimal length = null;
+    public static final String SERIALIZED_NAME_LENGTH = "Length";
 
-    @SerializedName("Width")
-    private BigDecimal width = null;
+    @SerializedName(SERIALIZED_NAME_LENGTH)
+    private BigDecimal length;
 
-    @SerializedName("Unit")
-    private UnitOfLength unit = null;
+    public static final String SERIALIZED_NAME_WIDTH = "Width";
+
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private BigDecimal width;
+
+    public static final String SERIALIZED_NAME_UNIT = "Unit";
+
+    @SerializedName(SERIALIZED_NAME_UNIT)
+    private UnitOfLength unit;
+
+    public LabelDimensions() {}
 
     public LabelDimensions length(BigDecimal length) {
         this.length = length;
@@ -38,7 +61,7 @@ public class LabelDimensions {
      *
      * @return length
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A label dimension.")
+    @javax.annotation.Nonnull
     public BigDecimal getLength() {
         return length;
     }
@@ -57,7 +80,7 @@ public class LabelDimensions {
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A label dimension.")
+    @javax.annotation.Nonnull
     public BigDecimal getWidth() {
         return width;
     }
@@ -76,7 +99,7 @@ public class LabelDimensions {
      *
      * @return unit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public UnitOfLength getUnit() {
         return unit;
     }
@@ -86,7 +109,7 @@ public class LabelDimensions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +139,115 @@ public class LabelDimensions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Length");
+        openapiFields.add("Width");
+        openapiFields.add("Unit");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Length");
+        openapiRequiredFields.add("Width");
+        openapiRequiredFields.add("Unit");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LabelDimensions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LabelDimensions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LabelDimensions is not found in the empty JSON string",
+                        LabelDimensions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LabelDimensions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LabelDimensions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LabelDimensions.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `Unit`
+        UnitOfLength.validateJsonElement(jsonObj.get("Unit"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LabelDimensions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LabelDimensions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LabelDimensions> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LabelDimensions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LabelDimensions>() {
+                        @Override
+                        public void write(JsonWriter out, LabelDimensions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LabelDimensions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LabelDimensions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LabelDimensions
+     * @throws IOException if the JSON string is invalid with respect to LabelDimensions
+     */
+    public static LabelDimensions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LabelDimensions.class);
+    }
+
+    /**
+     * Convert an instance of LabelDimensions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

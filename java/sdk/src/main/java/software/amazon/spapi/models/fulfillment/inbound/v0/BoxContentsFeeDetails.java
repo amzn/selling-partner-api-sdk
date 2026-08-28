@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The manual processing fee per unit and total fee for a shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The manual processing fee per unit and total fee for a shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BoxContentsFeeDetails {
-    @SerializedName("TotalUnits")
-    private Integer totalUnits = null;
+    public static final String SERIALIZED_NAME_TOTAL_UNITS = "TotalUnits";
 
-    @SerializedName("FeePerUnit")
-    private Amount feePerUnit = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_UNITS)
+    private Integer totalUnits;
 
-    @SerializedName("TotalFee")
-    private Amount totalFee = null;
+    public static final String SERIALIZED_NAME_FEE_PER_UNIT = "FeePerUnit";
+
+    @SerializedName(SERIALIZED_NAME_FEE_PER_UNIT)
+    private Amount feePerUnit;
+
+    public static final String SERIALIZED_NAME_TOTAL_FEE = "TotalFee";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_FEE)
+    private Amount totalFee;
+
+    public BoxContentsFeeDetails() {}
 
     public BoxContentsFeeDetails totalUnits(Integer totalUnits) {
         this.totalUnits = totalUnits;
@@ -38,8 +60,7 @@ public class BoxContentsFeeDetails {
      *
      * @return totalUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
-    public Integer getTotalUnits() {
+    @javax.annotation.Nullable public Integer getTotalUnits() {
         return totalUnits;
     }
 
@@ -57,8 +78,7 @@ public class BoxContentsFeeDetails {
      *
      * @return feePerUnit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Amount getFeePerUnit() {
+    @javax.annotation.Nullable public Amount getFeePerUnit() {
         return feePerUnit;
     }
 
@@ -76,8 +96,7 @@ public class BoxContentsFeeDetails {
      *
      * @return totalFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Amount getTotalFee() {
+    @javax.annotation.Nullable public Amount getTotalFee() {
         return totalFee;
     }
 
@@ -86,7 +105,7 @@ public class BoxContentsFeeDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +135,110 @@ public class BoxContentsFeeDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TotalUnits");
+        openapiFields.add("FeePerUnit");
+        openapiFields.add("TotalFee");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BoxContentsFeeDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BoxContentsFeeDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BoxContentsFeeDetails is not found in the empty JSON string",
+                        BoxContentsFeeDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BoxContentsFeeDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BoxContentsFeeDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `FeePerUnit`
+        if (jsonObj.get("FeePerUnit") != null && !jsonObj.get("FeePerUnit").isJsonNull()) {
+            Amount.validateJsonElement(jsonObj.get("FeePerUnit"));
+        }
+        // validate the optional field `TotalFee`
+        if (jsonObj.get("TotalFee") != null && !jsonObj.get("TotalFee").isJsonNull()) {
+            Amount.validateJsonElement(jsonObj.get("TotalFee"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BoxContentsFeeDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BoxContentsFeeDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BoxContentsFeeDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BoxContentsFeeDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BoxContentsFeeDetails>() {
+                        @Override
+                        public void write(JsonWriter out, BoxContentsFeeDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BoxContentsFeeDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BoxContentsFeeDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BoxContentsFeeDetails
+     * @throws IOException if the JSON string is invalid with respect to BoxContentsFeeDetails
+     */
+    public static BoxContentsFeeDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BoxContentsFeeDetails.class);
+    }
+
+    /**
+     * Convert an instance of BoxContentsFeeDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

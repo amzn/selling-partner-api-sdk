@@ -12,41 +12,76 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Inventory summary for a specific item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Inventory summary for a specific item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InventorySummary {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("fnSku")
-    private String fnSku = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("sellerSku")
-    private String sellerSku = null;
+    public static final String SERIALIZED_NAME_FN_SKU = "fnSku";
 
-    @SerializedName("condition")
-    private String condition = null;
+    @SerializedName(SERIALIZED_NAME_FN_SKU)
+    private String fnSku;
 
-    @SerializedName("inventoryDetails")
-    private InventoryDetails inventoryDetails = null;
+    public static final String SERIALIZED_NAME_SELLER_SKU = "sellerSku";
 
-    @SerializedName("lastUpdatedTime")
-    private OffsetDateTime lastUpdatedTime = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_SKU)
+    private String sellerSku;
 
-    @SerializedName("productName")
-    private String productName = null;
+    public static final String SERIALIZED_NAME_CONDITION = "condition";
 
-    @SerializedName("totalQuantity")
-    private Integer totalQuantity = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION)
+    private String condition;
 
-    @SerializedName("stores")
-    private List<String> stores = null;
+    public static final String SERIALIZED_NAME_INVENTORY_DETAILS = "inventoryDetails";
+
+    @SerializedName(SERIALIZED_NAME_INVENTORY_DETAILS)
+    private InventoryDetails inventoryDetails;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "lastUpdatedTime";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+    private OffsetDateTime lastUpdatedTime;
+
+    public static final String SERIALIZED_NAME_PRODUCT_NAME = "productName";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_NAME)
+    private String productName;
+
+    public static final String SERIALIZED_NAME_TOTAL_QUANTITY = "totalQuantity";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_QUANTITY)
+    private Integer totalQuantity;
+
+    public static final String SERIALIZED_NAME_STORES = "stores";
+
+    @SerializedName(SERIALIZED_NAME_STORES)
+    private List<String> stores = new ArrayList<>();
+
+    public InventorySummary() {}
 
     public InventorySummary asin(String asin) {
         this.asin = asin;
@@ -58,9 +93,7 @@ public class InventorySummary {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of an item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -78,8 +111,7 @@ public class InventorySummary {
      *
      * @return fnSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU identifier.")
-    public String getFnSku() {
+    @javax.annotation.Nullable public String getFnSku() {
         return fnSku;
     }
 
@@ -97,8 +129,7 @@ public class InventorySummary {
      *
      * @return sellerSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
-    public String getSellerSku() {
+    @javax.annotation.Nullable public String getSellerSku() {
         return sellerSku;
     }
 
@@ -116,9 +147,7 @@ public class InventorySummary {
      *
      * @return condition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The condition of the item as described by the seller (for example, New Item).")
-    public String getCondition() {
+    @javax.annotation.Nullable public String getCondition() {
         return condition;
     }
 
@@ -136,8 +165,7 @@ public class InventorySummary {
      *
      * @return inventoryDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InventoryDetails getInventoryDetails() {
+    @javax.annotation.Nullable public InventoryDetails getInventoryDetails() {
         return inventoryDetails;
     }
 
@@ -155,8 +183,7 @@ public class InventorySummary {
      *
      * @return lastUpdatedTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The date and time that any quantity was last updated.")
-    public OffsetDateTime getLastUpdatedTime() {
+    @javax.annotation.Nullable public OffsetDateTime getLastUpdatedTime() {
         return lastUpdatedTime;
     }
 
@@ -174,9 +201,7 @@ public class InventorySummary {
      *
      * @return productName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The localized language product title of the item within the specific marketplace.")
-    public String getProductName() {
+    @javax.annotation.Nullable public String getProductName() {
         return productName;
     }
 
@@ -194,9 +219,7 @@ public class InventorySummary {
      *
      * @return totalQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The total number of units in an inbound shipment or in Amazon fulfillment centers.")
-    public Integer getTotalQuantity() {
+    @javax.annotation.Nullable public Integer getTotalQuantity() {
         return totalQuantity;
     }
 
@@ -222,9 +245,7 @@ public class InventorySummary {
      *
      * @return stores
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of seller-enrolled stores that apply to this seller SKU.")
-    public List<String> getStores() {
+    @javax.annotation.Nullable public List<String> getStores() {
         return stores;
     }
 
@@ -233,7 +254,7 @@ public class InventorySummary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -288,10 +309,150 @@ public class InventorySummary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("fnSku");
+        openapiFields.add("sellerSku");
+        openapiFields.add("condition");
+        openapiFields.add("inventoryDetails");
+        openapiFields.add("lastUpdatedTime");
+        openapiFields.add("productName");
+        openapiFields.add("totalQuantity");
+        openapiFields.add("stores");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InventorySummary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InventorySummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InventorySummary is not found in the empty JSON string",
+                        InventorySummary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InventorySummary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InventorySummary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("fnSku") != null && !jsonObj.get("fnSku").isJsonNull())
+                && !jsonObj.get("fnSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fnSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fnSku").toString()));
+        }
+        if ((jsonObj.get("sellerSku") != null && !jsonObj.get("sellerSku").isJsonNull())
+                && !jsonObj.get("sellerSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerSku").toString()));
+        }
+        if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull())
+                && !jsonObj.get("condition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `condition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("condition").toString()));
+        }
+        // validate the optional field `inventoryDetails`
+        if (jsonObj.get("inventoryDetails") != null
+                && !jsonObj.get("inventoryDetails").isJsonNull()) {
+            InventoryDetails.validateJsonElement(jsonObj.get("inventoryDetails"));
+        }
+        if ((jsonObj.get("productName") != null && !jsonObj.get("productName").isJsonNull())
+                && !jsonObj.get("productName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productName").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("stores") != null
+                && !jsonObj.get("stores").isJsonNull()
+                && !jsonObj.get("stores").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `stores` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("stores").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InventorySummary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InventorySummary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InventorySummary> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InventorySummary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InventorySummary>() {
+                        @Override
+                        public void write(JsonWriter out, InventorySummary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InventorySummary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InventorySummary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InventorySummary
+     * @throws IOException if the JSON string is invalid with respect to InventorySummary
+     */
+    public static InventorySummary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InventorySummary.class);
+    }
+
+    /**
+     * Convert an instance of InventorySummary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

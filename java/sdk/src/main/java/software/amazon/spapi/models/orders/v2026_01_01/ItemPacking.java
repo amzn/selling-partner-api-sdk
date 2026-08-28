@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information related to the packaging process for an order item. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information related to the packaging process for an order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemPacking {
-    @SerializedName("giftOption")
-    private GiftOption giftOption = null;
+    public static final String SERIALIZED_NAME_GIFT_OPTION = "giftOption";
 
-    @SerializedName("serialNumberRequirement")
-    private SerialNumberRequirement serialNumberRequirement = null;
+    @SerializedName(SERIALIZED_NAME_GIFT_OPTION)
+    private GiftOption giftOption;
+
+    public static final String SERIALIZED_NAME_SERIAL_NUMBER_REQUIREMENT = "serialNumberRequirement";
+
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBER_REQUIREMENT)
+    private SerialNumberRequirement serialNumberRequirement;
+
+    public ItemPacking() {}
 
     public ItemPacking giftOption(GiftOption giftOption) {
         this.giftOption = giftOption;
@@ -35,8 +55,7 @@ public class ItemPacking {
      *
      * @return giftOption
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GiftOption getGiftOption() {
+    @javax.annotation.Nullable public GiftOption getGiftOption() {
         return giftOption;
     }
 
@@ -54,8 +73,7 @@ public class ItemPacking {
      *
      * @return serialNumberRequirement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SerialNumberRequirement getSerialNumberRequirement() {
+    @javax.annotation.Nullable public SerialNumberRequirement getSerialNumberRequirement() {
         return serialNumberRequirement;
     }
 
@@ -64,7 +82,7 @@ public class ItemPacking {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,109 @@ public class ItemPacking {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("giftOption");
+        openapiFields.add("serialNumberRequirement");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemPacking
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemPacking.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemPacking is not found in the empty JSON string",
+                        ItemPacking.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemPacking.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemPacking` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `giftOption`
+        if (jsonObj.get("giftOption") != null && !jsonObj.get("giftOption").isJsonNull()) {
+            GiftOption.validateJsonElement(jsonObj.get("giftOption"));
+        }
+        // validate the optional field `serialNumberRequirement`
+        if (jsonObj.get("serialNumberRequirement") != null
+                && !jsonObj.get("serialNumberRequirement").isJsonNull()) {
+            SerialNumberRequirement.validateJsonElement(jsonObj.get("serialNumberRequirement"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemPacking.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemPacking' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemPacking> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemPacking.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemPacking>() {
+                        @Override
+                        public void write(JsonWriter out, ItemPacking value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemPacking read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemPacking given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemPacking
+     * @throws IOException if the JSON string is invalid with respect to ItemPacking
+     */
+    public static ItemPacking fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemPacking.class);
+    }
+
+    /**
+     * Convert an instance of ItemPacking to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,26 +12,42 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The time range in which an item will likely be shipped once an order has been placed. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The time range in which an item will likely be shipped once an order has been placed.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DetailedShippingTimeType {
-    @SerializedName("minimumHours")
-    private Long minimumHours = null;
+    public static final String SERIALIZED_NAME_MINIMUM_HOURS = "minimumHours";
 
-    @SerializedName("maximumHours")
-    private Long maximumHours = null;
+    @SerializedName(SERIALIZED_NAME_MINIMUM_HOURS)
+    private Long minimumHours;
 
-    @SerializedName("availableDate")
-    private String availableDate = null;
+    public static final String SERIALIZED_NAME_MAXIMUM_HOURS = "maximumHours";
+
+    @SerializedName(SERIALIZED_NAME_MAXIMUM_HOURS)
+    private Long maximumHours;
+
+    public static final String SERIALIZED_NAME_AVAILABLE_DATE = "availableDate";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_DATE)
+    private String availableDate;
 
     /**
      * Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If
@@ -40,11 +56,10 @@ public class DetailedShippingTimeType {
      */
     @JsonAdapter(AvailabilityTypeEnum.Adapter.class)
     public enum AvailabilityTypeEnum {
-        @SerializedName("NOW")
         NOW("NOW"),
-        @SerializedName("FUTURE_WITHOUT_DATE")
+
         FUTURE_WITHOUT_DATE("FUTURE_WITHOUT_DATE"),
-        @SerializedName("FUTURE_WITH_DATE")
+
         FUTURE_WITH_DATE("FUTURE_WITH_DATE");
 
         private String value;
@@ -62,31 +77,40 @@ public class DetailedShippingTimeType {
             return String.valueOf(value);
         }
 
-        public static AvailabilityTypeEnum fromValue(String input) {
+        public static AvailabilityTypeEnum fromValue(String value) {
             for (AvailabilityTypeEnum b : AvailabilityTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<AvailabilityTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final AvailabilityTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public AvailabilityTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return AvailabilityTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return AvailabilityTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            AvailabilityTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("availabilityType")
-    private AvailabilityTypeEnum availabilityType = null;
+    public static final String SERIALIZED_NAME_AVAILABILITY_TYPE = "availabilityType";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABILITY_TYPE)
+    private AvailabilityTypeEnum availabilityType;
+
+    public DetailedShippingTimeType() {}
 
     public DetailedShippingTimeType minimumHours(Long minimumHours) {
         this.minimumHours = minimumHours;
@@ -98,10 +122,7 @@ public class DetailedShippingTimeType {
      *
      * @return minimumHours
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The minimum time, in hours, that the item will likely be shipped after the order has been placed.")
-    public Long getMinimumHours() {
+    @javax.annotation.Nullable public Long getMinimumHours() {
         return minimumHours;
     }
 
@@ -119,10 +140,7 @@ public class DetailedShippingTimeType {
      *
      * @return maximumHours
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The maximum time, in hours, that the item will likely be shipped after the order has been placed.")
-    public Long getMaximumHours() {
+    @javax.annotation.Nullable public Long getMaximumHours() {
         return maximumHours;
     }
 
@@ -141,10 +159,7 @@ public class DetailedShippingTimeType {
      *
      * @return availableDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.")
-    public String getAvailableDate() {
+    @javax.annotation.Nullable public String getAvailableDate() {
         return availableDate;
     }
 
@@ -164,10 +179,7 @@ public class DetailedShippingTimeType {
      *
      * @return availabilityType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If known, the availableDate property indicates the date that the item will be available for shipping. Possible values: NOW, FUTURE_WITHOUT_DATE, FUTURE_WITH_DATE.")
-    public AvailabilityTypeEnum getAvailabilityType() {
+    @javax.annotation.Nullable public AvailabilityTypeEnum getAvailabilityType() {
         return availabilityType;
     }
 
@@ -176,7 +188,7 @@ public class DetailedShippingTimeType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -210,10 +222,122 @@ public class DetailedShippingTimeType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("minimumHours");
+        openapiFields.add("maximumHours");
+        openapiFields.add("availableDate");
+        openapiFields.add("availabilityType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DetailedShippingTimeType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DetailedShippingTimeType.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DetailedShippingTimeType is not found in the empty JSON string",
+                        DetailedShippingTimeType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DetailedShippingTimeType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DetailedShippingTimeType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("availableDate") != null
+                        && !jsonObj.get("availableDate").isJsonNull())
+                && !jsonObj.get("availableDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `availableDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("availableDate").toString()));
+        }
+        if ((jsonObj.get("availabilityType") != null
+                        && !jsonObj.get("availabilityType").isJsonNull())
+                && !jsonObj.get("availabilityType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `availabilityType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("availabilityType").toString()));
+        }
+        // validate the optional field `availabilityType`
+        if (jsonObj.get("availabilityType") != null
+                && !jsonObj.get("availabilityType").isJsonNull()) {
+            AvailabilityTypeEnum.validateJsonElement(jsonObj.get("availabilityType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DetailedShippingTimeType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DetailedShippingTimeType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DetailedShippingTimeType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DetailedShippingTimeType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DetailedShippingTimeType>() {
+                        @Override
+                        public void write(JsonWriter out, DetailedShippingTimeType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DetailedShippingTimeType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DetailedShippingTimeType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DetailedShippingTimeType
+     * @throws IOException if the JSON string is invalid with respect to DetailedShippingTimeType
+     */
+    public static DetailedShippingTimeType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DetailedShippingTimeType.class);
+    }
+
+    /**
+     * Convert an instance of DetailedShippingTimeType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

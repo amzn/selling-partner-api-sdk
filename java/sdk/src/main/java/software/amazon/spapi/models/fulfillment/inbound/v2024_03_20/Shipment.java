@@ -12,59 +12,106 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains information pertaining to a shipment in an inbound plan. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains information pertaining to a shipment in an inbound plan.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Shipment {
-    @SerializedName("amazonReferenceId")
-    private String amazonReferenceId = null;
+    public static final String SERIALIZED_NAME_AMAZON_REFERENCE_ID = "amazonReferenceId";
 
-    @SerializedName("contactInformation")
-    private ContactInformation contactInformation = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_REFERENCE_ID)
+    private String amazonReferenceId;
 
-    @SerializedName("dates")
-    private Dates dates = null;
+    public static final String SERIALIZED_NAME_CONTACT_INFORMATION = "contactInformation";
 
-    @SerializedName("destination")
-    private ShipmentDestination destination = null;
+    @SerializedName(SERIALIZED_NAME_CONTACT_INFORMATION)
+    private ContactInformation contactInformation;
 
-    @SerializedName("freightInformation")
-    private FreightInformation freightInformation = null;
+    public static final String SERIALIZED_NAME_DATES = "dates";
 
-    @SerializedName("name")
-    private String name = null;
+    @SerializedName(SERIALIZED_NAME_DATES)
+    private Dates dates;
 
-    @SerializedName("placementOptionId")
-    private String placementOptionId = null;
+    public static final String SERIALIZED_NAME_DESTINATION = "destination";
 
-    @SerializedName("selectedDeliveryWindow")
-    private SelectedDeliveryWindow selectedDeliveryWindow = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION)
+    private ShipmentDestination destination;
 
-    @SerializedName("selectedTransportationOptionId")
-    private String selectedTransportationOptionId = null;
+    public static final String SERIALIZED_NAME_FREIGHT_INFORMATION = "freightInformation";
 
-    @SerializedName("selfShipAppointmentDetails")
-    private List<SelfShipAppointmentDetails> selfShipAppointmentDetails = null;
+    @SerializedName(SERIALIZED_NAME_FREIGHT_INFORMATION)
+    private FreightInformation freightInformation;
 
-    @SerializedName("shipmentConfirmationId")
-    private String shipmentConfirmationId = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("source")
-    private ShipmentSource source = null;
+    public static final String SERIALIZED_NAME_PLACEMENT_OPTION_ID = "placementOptionId";
 
-    @SerializedName("status")
-    private String status = null;
+    @SerializedName(SERIALIZED_NAME_PLACEMENT_OPTION_ID)
+    private String placementOptionId;
 
-    @SerializedName("trackingDetails")
-    private TrackingDetails trackingDetails = null;
+    public static final String SERIALIZED_NAME_SELECTED_DELIVERY_WINDOW = "selectedDeliveryWindow";
+
+    @SerializedName(SERIALIZED_NAME_SELECTED_DELIVERY_WINDOW)
+    private SelectedDeliveryWindow selectedDeliveryWindow;
+
+    public static final String SERIALIZED_NAME_SELECTED_TRANSPORTATION_OPTION_ID = "selectedTransportationOptionId";
+
+    @SerializedName(SERIALIZED_NAME_SELECTED_TRANSPORTATION_OPTION_ID)
+    private String selectedTransportationOptionId;
+
+    public static final String SERIALIZED_NAME_SELF_SHIP_APPOINTMENT_DETAILS = "selfShipAppointmentDetails";
+
+    @SerializedName(SERIALIZED_NAME_SELF_SHIP_APPOINTMENT_DETAILS)
+    private List<SelfShipAppointmentDetails> selfShipAppointmentDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_CONFIRMATION_ID = "shipmentConfirmationId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_CONFIRMATION_ID)
+    private String shipmentConfirmationId;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public static final String SERIALIZED_NAME_SOURCE = "source";
+
+    @SerializedName(SERIALIZED_NAME_SOURCE)
+    private ShipmentSource source;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public static final String SERIALIZED_NAME_TRACKING_DETAILS = "trackingDetails";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_DETAILS)
+    private TrackingDetails trackingDetails;
+
+    public Shipment() {}
 
     public Shipment amazonReferenceId(String amazonReferenceId) {
         this.amazonReferenceId = amazonReferenceId;
@@ -77,10 +124,7 @@ public class Shipment {
      *
      * @return amazonReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A unique identifier created by Amazon that identifies this Amazon-partnered, Less Than Truckload/Full Truckload (LTL/FTL) shipment.")
-    public String getAmazonReferenceId() {
+    @javax.annotation.Nullable public String getAmazonReferenceId() {
         return amazonReferenceId;
     }
 
@@ -98,8 +142,7 @@ public class Shipment {
      *
      * @return contactInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContactInformation getContactInformation() {
+    @javax.annotation.Nullable public ContactInformation getContactInformation() {
         return contactInformation;
     }
 
@@ -117,8 +160,7 @@ public class Shipment {
      *
      * @return dates
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dates getDates() {
+    @javax.annotation.Nullable public Dates getDates() {
         return dates;
     }
 
@@ -136,7 +178,7 @@ public class Shipment {
      *
      * @return destination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentDestination getDestination() {
         return destination;
     }
@@ -155,8 +197,7 @@ public class Shipment {
      *
      * @return freightInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FreightInformation getFreightInformation() {
+    @javax.annotation.Nullable public FreightInformation getFreightInformation() {
         return freightInformation;
     }
 
@@ -174,8 +215,7 @@ public class Shipment {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the shipment.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -193,10 +233,7 @@ public class Shipment {
      *
      * @return placementOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.")
+    @javax.annotation.Nonnull
     public String getPlacementOptionId() {
         return placementOptionId;
     }
@@ -215,8 +252,7 @@ public class Shipment {
      *
      * @return selectedDeliveryWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SelectedDeliveryWindow getSelectedDeliveryWindow() {
+    @javax.annotation.Nullable public SelectedDeliveryWindow getSelectedDeliveryWindow() {
         return selectedDeliveryWindow;
     }
 
@@ -234,10 +270,7 @@ public class Shipment {
      *
      * @return selectedTransportationOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Identifier of a transportation option. A transportation option represent one option for how to send a shipment.")
-    public String getSelectedTransportationOptionId() {
+    @javax.annotation.Nullable public String getSelectedTransportationOptionId() {
         return selectedTransportationOptionId;
     }
 
@@ -263,8 +296,7 @@ public class Shipment {
      *
      * @return selfShipAppointmentDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of self ship appointment details.")
-    public List<SelfShipAppointmentDetails> getSelfShipAppointmentDetails() {
+    @javax.annotation.Nullable public List<SelfShipAppointmentDetails> getSelfShipAppointmentDetails() {
         return selfShipAppointmentDetails;
     }
 
@@ -282,9 +314,7 @@ public class Shipment {
      *
      * @return shipmentConfirmationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`).")
-    public String getShipmentConfirmationId() {
+    @javax.annotation.Nullable public String getShipmentConfirmationId() {
         return shipmentConfirmationId;
     }
 
@@ -302,9 +332,7 @@ public class Shipment {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -323,7 +351,7 @@ public class Shipment {
      *
      * @return source
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentSource getSource() {
         return source;
     }
@@ -347,10 +375,7 @@ public class Shipment {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The status of a shipment. The state of the shipment will typically start as `UNCONFIRMED`, then transition to `WORKING` after a placement option has been confirmed, and then to `READY_TO_SHIP` once labels are generated.  Possible values: `ABANDONED`, `CANCELLED`, `CHECKED_IN`, `CLOSED`, `DELETED`, `DELIVERED`, `IN_TRANSIT`, `MIXED`, `READY_TO_SHIP`, `RECEIVING`, `SHIPPED`, `UNCONFIRMED`, `WORKING`")
-    public String getStatus() {
+    @javax.annotation.Nullable public String getStatus() {
         return status;
     }
 
@@ -368,8 +393,7 @@ public class Shipment {
      *
      * @return trackingDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingDetails getTrackingDetails() {
+    @javax.annotation.Nullable public TrackingDetails getTrackingDetails() {
         return trackingDetails;
     }
 
@@ -378,7 +402,7 @@ public class Shipment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -465,10 +489,214 @@ public class Shipment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amazonReferenceId");
+        openapiFields.add("contactInformation");
+        openapiFields.add("dates");
+        openapiFields.add("destination");
+        openapiFields.add("freightInformation");
+        openapiFields.add("name");
+        openapiFields.add("placementOptionId");
+        openapiFields.add("selectedDeliveryWindow");
+        openapiFields.add("selectedTransportationOptionId");
+        openapiFields.add("selfShipAppointmentDetails");
+        openapiFields.add("shipmentConfirmationId");
+        openapiFields.add("shipmentId");
+        openapiFields.add("source");
+        openapiFields.add("status");
+        openapiFields.add("trackingDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("destination");
+        openapiRequiredFields.add("placementOptionId");
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("source");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Shipment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Shipment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Shipment is not found in the empty JSON string",
+                        Shipment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Shipment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Shipment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Shipment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("amazonReferenceId") != null
+                        && !jsonObj.get("amazonReferenceId").isJsonNull())
+                && !jsonObj.get("amazonReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonReferenceId").toString()));
+        }
+        // validate the optional field `contactInformation`
+        if (jsonObj.get("contactInformation") != null
+                && !jsonObj.get("contactInformation").isJsonNull()) {
+            ContactInformation.validateJsonElement(jsonObj.get("contactInformation"));
+        }
+        // validate the optional field `dates`
+        if (jsonObj.get("dates") != null && !jsonObj.get("dates").isJsonNull()) {
+            Dates.validateJsonElement(jsonObj.get("dates"));
+        }
+        // validate the required field `destination`
+        ShipmentDestination.validateJsonElement(jsonObj.get("destination"));
+        // validate the optional field `freightInformation`
+        if (jsonObj.get("freightInformation") != null
+                && !jsonObj.get("freightInformation").isJsonNull()) {
+            FreightInformation.validateJsonElement(jsonObj.get("freightInformation"));
+        }
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if (!jsonObj.get("placementOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `placementOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("placementOptionId").toString()));
+        }
+        // validate the optional field `selectedDeliveryWindow`
+        if (jsonObj.get("selectedDeliveryWindow") != null
+                && !jsonObj.get("selectedDeliveryWindow").isJsonNull()) {
+            SelectedDeliveryWindow.validateJsonElement(jsonObj.get("selectedDeliveryWindow"));
+        }
+        if ((jsonObj.get("selectedTransportationOptionId") != null
+                        && !jsonObj.get("selectedTransportationOptionId").isJsonNull())
+                && !jsonObj.get("selectedTransportationOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `selectedTransportationOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("selectedTransportationOptionId").toString()));
+        }
+        if (jsonObj.get("selfShipAppointmentDetails") != null
+                && !jsonObj.get("selfShipAppointmentDetails").isJsonNull()) {
+            JsonArray jsonArrayselfShipAppointmentDetails = jsonObj.getAsJsonArray("selfShipAppointmentDetails");
+            if (jsonArrayselfShipAppointmentDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("selfShipAppointmentDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `selfShipAppointmentDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("selfShipAppointmentDetails").toString()));
+                }
+
+                // validate the optional field `selfShipAppointmentDetails` (array)
+                for (int i = 0; i < jsonArrayselfShipAppointmentDetails.size(); i++) {
+                    SelfShipAppointmentDetails.validateJsonElement(jsonArrayselfShipAppointmentDetails.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("shipmentConfirmationId") != null
+                        && !jsonObj.get("shipmentConfirmationId").isJsonNull())
+                && !jsonObj.get("shipmentConfirmationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentConfirmationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentConfirmationId").toString()));
+        }
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        // validate the required field `source`
+        ShipmentSource.validateJsonElement(jsonObj.get("source"));
+        if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
+                && !jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the optional field `trackingDetails`
+        if (jsonObj.get("trackingDetails") != null
+                && !jsonObj.get("trackingDetails").isJsonNull()) {
+            TrackingDetails.validateJsonElement(jsonObj.get("trackingDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Shipment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Shipment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Shipment> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Shipment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Shipment>() {
+                        @Override
+                        public void write(JsonWriter out, Shipment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Shipment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Shipment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Shipment
+     * @throws IOException if the JSON string is invalid with respect to Shipment
+     */
+    public static Shipment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Shipment.class);
+    }
+
+    /**
+     * Convert an instance of Shipment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

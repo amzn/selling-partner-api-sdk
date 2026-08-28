@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Vendor Details as part of Label response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Vendor Details as part of Label response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class VendorDetails {
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
 
-    @SerializedName("vendorShipmentIdentifier")
-    private String vendorShipmentIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_VENDOR_SHIPMENT_IDENTIFIER = "vendorShipmentIdentifier";
+
+    @SerializedName(SERIALIZED_NAME_VENDOR_SHIPMENT_IDENTIFIER)
+    private String vendorShipmentIdentifier;
+
+    public VendorDetails() {}
 
     public VendorDetails sellingParty(PartyIdentification sellingParty) {
         this.sellingParty = sellingParty;
@@ -34,8 +55,7 @@ public class VendorDetails {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getSellingParty() {
+    @javax.annotation.Nullable public PartyIdentification getSellingParty() {
         return sellingParty;
     }
 
@@ -53,9 +73,7 @@ public class VendorDetails {
      *
      * @return vendorShipmentIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Unique vendor shipment id which is not used in last 365 days")
-    public String getVendorShipmentIdentifier() {
+    @javax.annotation.Nullable public String getVendorShipmentIdentifier() {
         return vendorShipmentIdentifier;
     }
 
@@ -64,7 +82,7 @@ public class VendorDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,111 @@ public class VendorDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellingParty");
+        openapiFields.add("vendorShipmentIdentifier");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to VendorDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!VendorDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in VendorDetails is not found in the empty JSON string",
+                        VendorDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!VendorDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `VendorDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `sellingParty`
+        if (jsonObj.get("sellingParty") != null && !jsonObj.get("sellingParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        }
+        if ((jsonObj.get("vendorShipmentIdentifier") != null
+                        && !jsonObj.get("vendorShipmentIdentifier").isJsonNull())
+                && !jsonObj.get("vendorShipmentIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorShipmentIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorShipmentIdentifier").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!VendorDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VendorDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<VendorDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(VendorDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<VendorDetails>() {
+                        @Override
+                        public void write(JsonWriter out, VendorDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public VendorDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of VendorDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of VendorDetails
+     * @throws IOException if the JSON string is invalid with respect to VendorDetails
+     */
+    public static VendorDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, VendorDetails.class);
+    }
+
+    /**
+     * Convert an instance of VendorDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

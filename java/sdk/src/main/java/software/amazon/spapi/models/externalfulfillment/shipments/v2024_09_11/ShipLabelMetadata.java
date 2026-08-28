@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Metadata for a ship label document. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata for a ship label document.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipLabelMetadata {
-    @SerializedName("shippingOptionId")
-    private String shippingOptionId = null;
+    public static final String SERIALIZED_NAME_SHIPPING_OPTION_ID = "shippingOptionId";
 
-    @SerializedName("carrierName")
-    private String carrierName = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_OPTION_ID)
+    private String shippingOptionId;
 
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
 
-    @SerializedName("pickupWindow")
-    private TimeWindow pickupWindow = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
 
-    @SerializedName("timeSlot")
-    private TimeWindow timeSlot = null;
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
 
-    @SerializedName("handoverLocation")
-    private HandoverLocation handoverLocation = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
+
+    public static final String SERIALIZED_NAME_PICKUP_WINDOW = "pickupWindow";
+
+    @SerializedName(SERIALIZED_NAME_PICKUP_WINDOW)
+    private TimeWindow pickupWindow;
+
+    public static final String SERIALIZED_NAME_TIME_SLOT = "timeSlot";
+
+    @SerializedName(SERIALIZED_NAME_TIME_SLOT)
+    private TimeWindow timeSlot;
+
+    public static final String SERIALIZED_NAME_HANDOVER_LOCATION = "handoverLocation";
+
+    @SerializedName(SERIALIZED_NAME_HANDOVER_LOCATION)
+    private HandoverLocation handoverLocation;
+
+    public ShipLabelMetadata() {}
 
     public ShipLabelMetadata shippingOptionId(String shippingOptionId) {
         this.shippingOptionId = shippingOptionId;
@@ -46,8 +75,7 @@ public class ShipLabelMetadata {
      *
      * @return shippingOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The selected slot for the ship label.")
-    public String getShippingOptionId() {
+    @javax.annotation.Nullable public String getShippingOptionId() {
         return shippingOptionId;
     }
 
@@ -65,7 +93,7 @@ public class ShipLabelMetadata {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
+    @javax.annotation.Nonnull
     public String getCarrierName() {
         return carrierName;
     }
@@ -84,7 +112,7 @@ public class ShipLabelMetadata {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The tracking number of the package.")
+    @javax.annotation.Nonnull
     public String getTrackingId() {
         return trackingId;
     }
@@ -103,8 +131,7 @@ public class ShipLabelMetadata {
      *
      * @return pickupWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeWindow getPickupWindow() {
+    @javax.annotation.Nullable public TimeWindow getPickupWindow() {
         return pickupWindow;
     }
 
@@ -122,8 +149,7 @@ public class ShipLabelMetadata {
      *
      * @return timeSlot
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TimeWindow getTimeSlot() {
+    @javax.annotation.Nullable public TimeWindow getTimeSlot() {
         return timeSlot;
     }
 
@@ -141,8 +167,7 @@ public class ShipLabelMetadata {
      *
      * @return handoverLocation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public HandoverLocation getHandoverLocation() {
+    @javax.annotation.Nullable public HandoverLocation getHandoverLocation() {
         return handoverLocation;
     }
 
@@ -151,7 +176,7 @@ public class ShipLabelMetadata {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -191,10 +216,145 @@ public class ShipLabelMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shippingOptionId");
+        openapiFields.add("carrierName");
+        openapiFields.add("trackingId");
+        openapiFields.add("pickupWindow");
+        openapiFields.add("timeSlot");
+        openapiFields.add("handoverLocation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("carrierName");
+        openapiRequiredFields.add("trackingId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipLabelMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipLabelMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipLabelMetadata is not found in the empty JSON string",
+                        ShipLabelMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipLabelMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipLabelMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipLabelMetadata.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("shippingOptionId") != null
+                        && !jsonObj.get("shippingOptionId").isJsonNull())
+                && !jsonObj.get("shippingOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingOptionId").toString()));
+        }
+        if (!jsonObj.get("carrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierName").toString()));
+        }
+        if (!jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        // validate the optional field `pickupWindow`
+        if (jsonObj.get("pickupWindow") != null && !jsonObj.get("pickupWindow").isJsonNull()) {
+            TimeWindow.validateJsonElement(jsonObj.get("pickupWindow"));
+        }
+        // validate the optional field `timeSlot`
+        if (jsonObj.get("timeSlot") != null && !jsonObj.get("timeSlot").isJsonNull()) {
+            TimeWindow.validateJsonElement(jsonObj.get("timeSlot"));
+        }
+        // validate the optional field `handoverLocation`
+        if (jsonObj.get("handoverLocation") != null
+                && !jsonObj.get("handoverLocation").isJsonNull()) {
+            HandoverLocation.validateJsonElement(jsonObj.get("handoverLocation"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipLabelMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipLabelMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipLabelMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipLabelMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipLabelMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, ShipLabelMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipLabelMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipLabelMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipLabelMetadata
+     * @throws IOException if the JSON string is invalid with respect to ShipLabelMetadata
+     */
+    public static ShipLabelMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipLabelMetadata.class);
+    }
+
+    /**
+     * Convert an instance of ShipLabelMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

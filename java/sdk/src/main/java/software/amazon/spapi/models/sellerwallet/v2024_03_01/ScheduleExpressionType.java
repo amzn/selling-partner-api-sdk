@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The type of scheduled transfer expression. */
 @JsonAdapter(ScheduleExpressionType.Adapter.class)
 public enum ScheduleExpressionType {
-    @SerializedName("RECURRING")
     RECURRING("RECURRING"),
 
-    @SerializedName("ONE_TIME")
     ONE_TIME("ONE_TIME");
 
     private String value;
@@ -43,25 +41,30 @@ public enum ScheduleExpressionType {
         return String.valueOf(value);
     }
 
-    public static ScheduleExpressionType fromValue(String input) {
+    public static ScheduleExpressionType fromValue(String value) {
         for (ScheduleExpressionType b : ScheduleExpressionType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ScheduleExpressionType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ScheduleExpressionType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ScheduleExpressionType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ScheduleExpressionType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ScheduleExpressionType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ScheduleExpressionType.fromValue(value);
     }
 }

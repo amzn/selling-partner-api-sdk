@@ -12,46 +12,72 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Access point details */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Access point details")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AccessPoint {
-    @SerializedName("accessPointId")
-    private String accessPointId = null;
+    public static final String SERIALIZED_NAME_ACCESS_POINT_ID = "accessPointId";
 
-    @SerializedName("name")
-    private String name = null;
+    @SerializedName(SERIALIZED_NAME_ACCESS_POINT_ID)
+    private String accessPointId;
 
-    @SerializedName("timezone")
-    private String timezone = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("type")
-    private AccessPointType type = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("accessibilityAttributes")
-    private AccessibilityAttributes accessibilityAttributes = null;
+    public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
 
-    @SerializedName("address")
-    private Address address = null;
+    @SerializedName(SERIALIZED_NAME_TIMEZONE)
+    private String timezone;
 
-    @SerializedName("exceptionOperatingHours")
-    private List<ExceptionOperatingHours> exceptionOperatingHours = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
+
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private AccessPointType type;
+
+    public static final String SERIALIZED_NAME_ACCESSIBILITY_ATTRIBUTES = "accessibilityAttributes";
+
+    @SerializedName(SERIALIZED_NAME_ACCESSIBILITY_ATTRIBUTES)
+    private AccessibilityAttributes accessibilityAttributes;
+
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public static final String SERIALIZED_NAME_EXCEPTION_OPERATING_HOURS = "exceptionOperatingHours";
+
+    @SerializedName(SERIALIZED_NAME_EXCEPTION_OPERATING_HOURS)
+    private List<ExceptionOperatingHours> exceptionOperatingHours = new ArrayList<>();
 
     /** Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED */
     @JsonAdapter(AssistanceTypeEnum.Adapter.class)
     public enum AssistanceTypeEnum {
-        @SerializedName("STAFF_ASSISTED")
         STAFF_ASSISTED("STAFF_ASSISTED"),
-        @SerializedName("SELF_ASSISTED")
+
         SELF_ASSISTED("SELF_ASSISTED");
 
         private String value;
@@ -69,37 +95,50 @@ public class AccessPoint {
             return String.valueOf(value);
         }
 
-        public static AssistanceTypeEnum fromValue(String input) {
+        public static AssistanceTypeEnum fromValue(String value) {
             for (AssistanceTypeEnum b : AssistanceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<AssistanceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final AssistanceTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public AssistanceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return AssistanceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return AssistanceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            AssistanceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("assistanceType")
-    private AssistanceTypeEnum assistanceType = null;
+    public static final String SERIALIZED_NAME_ASSISTANCE_TYPE = "assistanceType";
 
-    @SerializedName("score")
-    private String score = null;
+    @SerializedName(SERIALIZED_NAME_ASSISTANCE_TYPE)
+    private AssistanceTypeEnum assistanceType;
 
-    @SerializedName("standardOperatingHours")
-    private DayOfWeekTimeMap standardOperatingHours = null;
+    public static final String SERIALIZED_NAME_SCORE = "score";
+
+    @SerializedName(SERIALIZED_NAME_SCORE)
+    private String score;
+
+    public static final String SERIALIZED_NAME_STANDARD_OPERATING_HOURS = "standardOperatingHours";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_OPERATING_HOURS)
+    private DayOfWeekTimeMap standardOperatingHours = new HashMap<>();
+
+    public AccessPoint() {}
 
     public AccessPoint accessPointId(String accessPointId) {
         this.accessPointId = accessPointId;
@@ -111,8 +150,7 @@ public class AccessPoint {
      *
      * @return accessPointId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Unique identifier for the access point")
-    public String getAccessPointId() {
+    @javax.annotation.Nullable public String getAccessPointId() {
         return accessPointId;
     }
 
@@ -130,9 +168,7 @@ public class AccessPoint {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Name of entity (store/hub etc) where this access point is located")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -150,8 +186,7 @@ public class AccessPoint {
      *
      * @return timezone
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Timezone of access point")
-    public String getTimezone() {
+    @javax.annotation.Nullable public String getTimezone() {
         return timezone;
     }
 
@@ -169,8 +204,7 @@ public class AccessPoint {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AccessPointType getType() {
+    @javax.annotation.Nullable public AccessPointType getType() {
         return type;
     }
 
@@ -188,8 +222,7 @@ public class AccessPoint {
      *
      * @return accessibilityAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AccessibilityAttributes getAccessibilityAttributes() {
+    @javax.annotation.Nullable public AccessibilityAttributes getAccessibilityAttributes() {
         return accessibilityAttributes;
     }
 
@@ -207,8 +240,7 @@ public class AccessPoint {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -234,8 +266,7 @@ public class AccessPoint {
      *
      * @return exceptionOperatingHours
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Exception operating hours for Access Point")
-    public List<ExceptionOperatingHours> getExceptionOperatingHours() {
+    @javax.annotation.Nullable public List<ExceptionOperatingHours> getExceptionOperatingHours() {
         return exceptionOperatingHours;
     }
 
@@ -253,9 +284,7 @@ public class AccessPoint {
      *
      * @return assistanceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED")
-    public AssistanceTypeEnum getAssistanceType() {
+    @javax.annotation.Nullable public AssistanceTypeEnum getAssistanceType() {
         return assistanceType;
     }
 
@@ -274,10 +303,7 @@ public class AccessPoint {
      *
      * @return score
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper's end.")
-    public String getScore() {
+    @javax.annotation.Nullable public String getScore() {
         return score;
     }
 
@@ -295,8 +321,7 @@ public class AccessPoint {
      *
      * @return standardOperatingHours
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DayOfWeekTimeMap getStandardOperatingHours() {
+    @javax.annotation.Nullable public DayOfWeekTimeMap getStandardOperatingHours() {
         return standardOperatingHours;
     }
 
@@ -305,7 +330,7 @@ public class AccessPoint {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -367,10 +392,176 @@ public class AccessPoint {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accessPointId");
+        openapiFields.add("name");
+        openapiFields.add("timezone");
+        openapiFields.add("type");
+        openapiFields.add("accessibilityAttributes");
+        openapiFields.add("address");
+        openapiFields.add("exceptionOperatingHours");
+        openapiFields.add("assistanceType");
+        openapiFields.add("score");
+        openapiFields.add("standardOperatingHours");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AccessPoint
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AccessPoint.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AccessPoint is not found in the empty JSON string",
+                        AccessPoint.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AccessPoint.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AccessPoint` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("accessPointId") != null
+                        && !jsonObj.get("accessPointId").isJsonNull())
+                && !jsonObj.get("accessPointId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accessPointId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accessPointId").toString()));
+        }
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull())
+                && !jsonObj.get("timezone").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `timezone` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("timezone").toString()));
+        }
+        // validate the optional field `type`
+        if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+            AccessPointType.validateJsonElement(jsonObj.get("type"));
+        }
+        // validate the optional field `accessibilityAttributes`
+        if (jsonObj.get("accessibilityAttributes") != null
+                && !jsonObj.get("accessibilityAttributes").isJsonNull()) {
+            AccessibilityAttributes.validateJsonElement(jsonObj.get("accessibilityAttributes"));
+        }
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+        if (jsonObj.get("exceptionOperatingHours") != null
+                && !jsonObj.get("exceptionOperatingHours").isJsonNull()) {
+            JsonArray jsonArrayexceptionOperatingHours = jsonObj.getAsJsonArray("exceptionOperatingHours");
+            if (jsonArrayexceptionOperatingHours != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("exceptionOperatingHours").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `exceptionOperatingHours` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("exceptionOperatingHours").toString()));
+                }
+
+                // validate the optional field `exceptionOperatingHours` (array)
+                for (int i = 0; i < jsonArrayexceptionOperatingHours.size(); i++) {
+                    ExceptionOperatingHours.validateJsonElement(jsonArrayexceptionOperatingHours.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("assistanceType") != null
+                        && !jsonObj.get("assistanceType").isJsonNull())
+                && !jsonObj.get("assistanceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `assistanceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("assistanceType").toString()));
+        }
+        // validate the optional field `assistanceType`
+        if (jsonObj.get("assistanceType") != null
+                && !jsonObj.get("assistanceType").isJsonNull()) {
+            AssistanceTypeEnum.validateJsonElement(jsonObj.get("assistanceType"));
+        }
+        if ((jsonObj.get("score") != null && !jsonObj.get("score").isJsonNull())
+                && !jsonObj.get("score").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `score` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("score").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AccessPoint.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AccessPoint' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AccessPoint> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AccessPoint.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AccessPoint>() {
+                        @Override
+                        public void write(JsonWriter out, AccessPoint value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AccessPoint read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AccessPoint given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AccessPoint
+     * @throws IOException if the JSON string is invalid with respect to AccessPoint
+     */
+    public static AccessPoint fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AccessPoint.class);
+    }
+
+    /**
+     * Convert an instance of AccessPoint to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

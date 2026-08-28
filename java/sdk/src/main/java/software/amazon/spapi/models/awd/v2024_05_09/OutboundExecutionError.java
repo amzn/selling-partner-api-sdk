@@ -12,24 +12,45 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Execution errors associated with the outbound order. This field will be populated if the order failed validation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Execution errors associated with the outbound order. This field will be populated if the order failed validation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OutboundExecutionError {
-    @SerializedName("failureCode")
-    private String failureCode = null;
+    public static final String SERIALIZED_NAME_FAILURE_CODE = "failureCode";
 
-    @SerializedName("failureReasons")
-    private List<String> failureReasons = null;
+    @SerializedName(SERIALIZED_NAME_FAILURE_CODE)
+    private String failureCode;
 
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_FAILURE_REASONS = "failureReasons";
+
+    @SerializedName(SERIALIZED_NAME_FAILURE_REASONS)
+    private List<String> failureReasons = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SKU = "sku";
+
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
+
+    public OutboundExecutionError() {}
 
     public OutboundExecutionError failureCode(String failureCode) {
         this.failureCode = failureCode;
@@ -41,7 +62,7 @@ public class OutboundExecutionError {
      *
      * @return failureCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure code details for the error.")
+    @javax.annotation.Nonnull
     public String getFailureCode() {
         return failureCode;
     }
@@ -68,7 +89,7 @@ public class OutboundExecutionError {
      *
      * @return failureReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure reasons for the error.")
+    @javax.annotation.Nonnull
     public List<String> getFailureReasons() {
         return failureReasons;
     }
@@ -87,8 +108,7 @@ public class OutboundExecutionError {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "MSKU associated with the error.")
-    public String getSku() {
+    @javax.annotation.Nullable public String getSku() {
         return sku;
     }
 
@@ -97,7 +117,7 @@ public class OutboundExecutionError {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -129,10 +149,133 @@ public class OutboundExecutionError {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("failureCode");
+        openapiFields.add("failureReasons");
+        openapiFields.add("sku");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("failureCode");
+        openapiRequiredFields.add("failureReasons");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OutboundExecutionError
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OutboundExecutionError.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OutboundExecutionError is not found in the empty JSON string",
+                        OutboundExecutionError.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OutboundExecutionError.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OutboundExecutionError` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OutboundExecutionError.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("failureCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `failureCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("failureCode").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("failureReasons") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("failureReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `failureReasons` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("failureReasons").toString()));
+        }
+        if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull())
+                && !jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OutboundExecutionError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OutboundExecutionError' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OutboundExecutionError> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OutboundExecutionError.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OutboundExecutionError>() {
+                        @Override
+                        public void write(JsonWriter out, OutboundExecutionError value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OutboundExecutionError read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OutboundExecutionError given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OutboundExecutionError
+     * @throws IOException if the JSON string is invalid with respect to OutboundExecutionError
+     */
+    public static OutboundExecutionError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OutboundExecutionError.class);
+    }
+
+    /**
+     * Convert an instance of OutboundExecutionError to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

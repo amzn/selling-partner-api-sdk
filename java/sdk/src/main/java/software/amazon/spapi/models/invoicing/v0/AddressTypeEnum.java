@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The shipping address type. */
 @JsonAdapter(AddressTypeEnum.Adapter.class)
 public enum AddressTypeEnum {
-    @SerializedName("Residential")
     RESIDENTIAL("Residential"),
 
-    @SerializedName("Commercial")
     COMMERCIAL("Commercial");
 
     private String value;
@@ -43,25 +41,30 @@ public enum AddressTypeEnum {
         return String.valueOf(value);
     }
 
-    public static AddressTypeEnum fromValue(String input) {
+    public static AddressTypeEnum fromValue(String value) {
         for (AddressTypeEnum b : AddressTypeEnum.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AddressTypeEnum> {
         @Override
         public void write(final JsonWriter jsonWriter, final AddressTypeEnum enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AddressTypeEnum read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AddressTypeEnum.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AddressTypeEnum.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AddressTypeEnum.fromValue(value);
     }
 }

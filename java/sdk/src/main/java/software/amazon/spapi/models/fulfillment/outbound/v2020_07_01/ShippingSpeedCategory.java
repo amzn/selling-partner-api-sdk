@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -29,16 +29,12 @@ import java.io.IOException;
  */
 @JsonAdapter(ShippingSpeedCategory.Adapter.class)
 public enum ShippingSpeedCategory {
-    @SerializedName("Standard")
     STANDARD("Standard"),
 
-    @SerializedName("Expedited")
     EXPEDITED("Expedited"),
 
-    @SerializedName("Priority")
     PRIORITY("Priority"),
 
-    @SerializedName("ScheduledDelivery")
     SCHEDULED_DELIVERY("ScheduledDelivery");
 
     private String value;
@@ -56,25 +52,30 @@ public enum ShippingSpeedCategory {
         return String.valueOf(value);
     }
 
-    public static ShippingSpeedCategory fromValue(String input) {
+    public static ShippingSpeedCategory fromValue(String value) {
         for (ShippingSpeedCategory b : ShippingSpeedCategory.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ShippingSpeedCategory> {
         @Override
         public void write(final JsonWriter jsonWriter, final ShippingSpeedCategory enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ShippingSpeedCategory read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ShippingSpeedCategory.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ShippingSpeedCategory.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ShippingSpeedCategory.fromValue(value);
     }
 }

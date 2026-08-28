@@ -12,35 +12,68 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information about a carrier. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about a carrier.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CarrierDetailsContext {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("address")
-    private String address = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("contextType")
-    private String contextType = null;
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
 
-    @SerializedName("federalTaxId")
-    private String federalTaxId = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private String address;
 
-    @SerializedName("regionCode")
-    private String regionCode = null;
+    public static final String SERIALIZED_NAME_CONTEXT_TYPE = "contextType";
 
-    @SerializedName("regionTaxId")
-    private String regionTaxId = null;
+    @SerializedName(SERIALIZED_NAME_CONTEXT_TYPE)
+    private String contextType;
 
-    @SerializedName("vehicleLicensePlate")
-    private String vehicleLicensePlate = null;
+    public static final String SERIALIZED_NAME_FEDERAL_TAX_ID = "federalTaxId";
 
-    @SerializedName("vehicleRegistrationRegionCode")
-    private String vehicleRegistrationRegionCode = null;
+    @SerializedName(SERIALIZED_NAME_FEDERAL_TAX_ID)
+    private String federalTaxId;
+
+    public static final String SERIALIZED_NAME_REGION_CODE = "regionCode";
+
+    @SerializedName(SERIALIZED_NAME_REGION_CODE)
+    private String regionCode;
+
+    public static final String SERIALIZED_NAME_REGION_TAX_ID = "regionTaxId";
+
+    @SerializedName(SERIALIZED_NAME_REGION_TAX_ID)
+    private String regionTaxId;
+
+    public static final String SERIALIZED_NAME_VEHICLE_LICENSE_PLATE = "vehicleLicensePlate";
+
+    @SerializedName(SERIALIZED_NAME_VEHICLE_LICENSE_PLATE)
+    private String vehicleLicensePlate;
+
+    public static final String SERIALIZED_NAME_VEHICLE_REGISTRATION_REGION_CODE = "vehicleRegistrationRegionCode";
+
+    @SerializedName(SERIALIZED_NAME_VEHICLE_REGISTRATION_REGION_CODE)
+    private String vehicleRegistrationRegionCode;
+
+    public CarrierDetailsContext() {}
 
     public CarrierDetailsContext name(String name) {
         this.name = name;
@@ -52,9 +85,7 @@ public class CarrierDetailsContext {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the carrier, as registered with state and federal tax authorities.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -72,9 +103,7 @@ public class CarrierDetailsContext {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The address of the carrier, as registered with state and federal tax authorities.")
-    public String getAddress() {
+    @javax.annotation.Nullable public String getAddress() {
         return address;
     }
 
@@ -92,8 +121,7 @@ public class CarrierDetailsContext {
      *
      * @return contextType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of additional information.")
-    public String getContextType() {
+    @javax.annotation.Nullable public String getContextType() {
         return contextType;
     }
 
@@ -111,8 +139,7 @@ public class CarrierDetailsContext {
      *
      * @return federalTaxId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax identification number of the carrier.")
-    public String getFederalTaxId() {
+    @javax.annotation.Nullable public String getFederalTaxId() {
         return federalTaxId;
     }
 
@@ -130,9 +157,7 @@ public class CarrierDetailsContext {
      *
      * @return regionCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The code of the federal subdivision in which the carrier is registered.")
-    public String getRegionCode() {
+    @javax.annotation.Nullable public String getRegionCode() {
         return regionCode;
     }
 
@@ -150,8 +175,7 @@ public class CarrierDetailsContext {
      *
      * @return regionTaxId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The regional tax registration number of the carrier.")
-    public String getRegionTaxId() {
+    @javax.annotation.Nullable public String getRegionTaxId() {
         return regionTaxId;
     }
 
@@ -169,9 +193,7 @@ public class CarrierDetailsContext {
      *
      * @return vehicleLicensePlate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier for the carrier vehicle, as printed on its registration plate.")
-    public String getVehicleLicensePlate() {
+    @javax.annotation.Nullable public String getVehicleLicensePlate() {
         return vehicleLicensePlate;
     }
 
@@ -189,9 +211,7 @@ public class CarrierDetailsContext {
      *
      * @return vehicleRegistrationRegionCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The code of the federal subdivision in which the carrier vehicle is registered.")
-    public String getVehicleRegistrationRegionCode() {
+    @javax.annotation.Nullable public String getVehicleRegistrationRegionCode() {
         return vehicleRegistrationRegionCode;
     }
 
@@ -200,7 +220,7 @@ public class CarrierDetailsContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -253,10 +273,157 @@ public class CarrierDetailsContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("address");
+        openapiFields.add("contextType");
+        openapiFields.add("federalTaxId");
+        openapiFields.add("regionCode");
+        openapiFields.add("regionTaxId");
+        openapiFields.add("vehicleLicensePlate");
+        openapiFields.add("vehicleRegistrationRegionCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CarrierDetailsContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CarrierDetailsContext.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CarrierDetailsContext is not found in the empty JSON string",
+                        CarrierDetailsContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CarrierDetailsContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CarrierDetailsContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull())
+                && !jsonObj.get("address").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `address` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("address").toString()));
+        }
+        if ((jsonObj.get("contextType") != null && !jsonObj.get("contextType").isJsonNull())
+                && !jsonObj.get("contextType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contextType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contextType").toString()));
+        }
+        if ((jsonObj.get("federalTaxId") != null && !jsonObj.get("federalTaxId").isJsonNull())
+                && !jsonObj.get("federalTaxId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `federalTaxId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("federalTaxId").toString()));
+        }
+        if ((jsonObj.get("regionCode") != null && !jsonObj.get("regionCode").isJsonNull())
+                && !jsonObj.get("regionCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `regionCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("regionCode").toString()));
+        }
+        if ((jsonObj.get("regionTaxId") != null && !jsonObj.get("regionTaxId").isJsonNull())
+                && !jsonObj.get("regionTaxId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `regionTaxId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("regionTaxId").toString()));
+        }
+        if ((jsonObj.get("vehicleLicensePlate") != null
+                        && !jsonObj.get("vehicleLicensePlate").isJsonNull())
+                && !jsonObj.get("vehicleLicensePlate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vehicleLicensePlate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vehicleLicensePlate").toString()));
+        }
+        if ((jsonObj.get("vehicleRegistrationRegionCode") != null
+                        && !jsonObj.get("vehicleRegistrationRegionCode").isJsonNull())
+                && !jsonObj.get("vehicleRegistrationRegionCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vehicleRegistrationRegionCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vehicleRegistrationRegionCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CarrierDetailsContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CarrierDetailsContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CarrierDetailsContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CarrierDetailsContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CarrierDetailsContext>() {
+                        @Override
+                        public void write(JsonWriter out, CarrierDetailsContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CarrierDetailsContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CarrierDetailsContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CarrierDetailsContext
+     * @throws IOException if the JSON string is invalid with respect to CarrierDetailsContext
+     */
+    public static CarrierDetailsContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CarrierDetailsContext.class);
+    }
+
+    /**
+     * Convert an instance of CarrierDetailsContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

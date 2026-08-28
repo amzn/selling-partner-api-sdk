@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The total estimated fees for an item and a list of details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The total estimated fees for an item and a list of details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeesEstimate {
-    @SerializedName("TimeOfFeesEstimation")
-    private OffsetDateTime timeOfFeesEstimation = null;
+    public static final String SERIALIZED_NAME_TIME_OF_FEES_ESTIMATION = "TimeOfFeesEstimation";
 
-    @SerializedName("TotalFeesEstimate")
-    private MoneyType totalFeesEstimate = null;
+    @SerializedName(SERIALIZED_NAME_TIME_OF_FEES_ESTIMATION)
+    private OffsetDateTime timeOfFeesEstimation;
 
-    @SerializedName("FeeDetailList")
-    private FeeDetailList feeDetailList = null;
+    public static final String SERIALIZED_NAME_TOTAL_FEES_ESTIMATE = "TotalFeesEstimate";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_FEES_ESTIMATE)
+    private MoneyType totalFeesEstimate;
+
+    public static final String SERIALIZED_NAME_FEE_DETAIL_LIST = "FeeDetailList";
+
+    @SerializedName(SERIALIZED_NAME_FEE_DETAIL_LIST)
+    private FeeDetailList feeDetailList = new ArrayList<>();
+
+    public FeesEstimate() {}
 
     public FeesEstimate timeOfFeesEstimation(OffsetDateTime timeOfFeesEstimation) {
         this.timeOfFeesEstimation = timeOfFeesEstimation;
@@ -38,9 +61,7 @@ public class FeesEstimate {
      *
      * @return timeOfFeesEstimation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The time at which the fees were estimated. This defaults to the time the request is made.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getTimeOfFeesEstimation() {
         return timeOfFeesEstimation;
     }
@@ -59,8 +80,7 @@ public class FeesEstimate {
      *
      * @return totalFeesEstimate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getTotalFeesEstimate() {
+    @javax.annotation.Nullable public MoneyType getTotalFeesEstimate() {
         return totalFeesEstimate;
     }
 
@@ -78,8 +98,7 @@ public class FeesEstimate {
      *
      * @return feeDetailList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeDetailList getFeeDetailList() {
+    @javax.annotation.Nullable public FeeDetailList getFeeDetailList() {
         return feeDetailList;
     }
 
@@ -88,7 +107,7 @@ public class FeesEstimate {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -122,10 +141,116 @@ public class FeesEstimate {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TimeOfFeesEstimation");
+        openapiFields.add("TotalFeesEstimate");
+        openapiFields.add("FeeDetailList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("TimeOfFeesEstimation");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeesEstimate
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeesEstimate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeesEstimate is not found in the empty JSON string",
+                        FeesEstimate.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeesEstimate.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeesEstimate` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeesEstimate.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `TotalFeesEstimate`
+        if (jsonObj.get("TotalFeesEstimate") != null
+                && !jsonObj.get("TotalFeesEstimate").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("TotalFeesEstimate"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeesEstimate.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeesEstimate' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeesEstimate> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeesEstimate.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeesEstimate>() {
+                        @Override
+                        public void write(JsonWriter out, FeesEstimate value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeesEstimate read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeesEstimate given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeesEstimate
+     * @throws IOException if the JSON string is invalid with respect to FeesEstimate
+     */
+    public static FeesEstimate fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeesEstimate.class);
+    }
+
+    /**
+     * Convert an instance of FeesEstimate to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

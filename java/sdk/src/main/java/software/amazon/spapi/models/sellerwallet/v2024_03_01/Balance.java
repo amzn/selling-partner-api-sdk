@@ -12,29 +12,55 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The balance amount in the Amazon Seller Wallet bank account. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The balance amount in the Amazon Seller Wallet bank account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Balance {
-    @SerializedName("accountId")
-    private String accountId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
 
-    @SerializedName("balanceType")
-    private BalanceType balanceType = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
 
-    @SerializedName("balanceAmount")
-    private BigDecimal balanceAmount = null;
+    public static final String SERIALIZED_NAME_BALANCE_TYPE = "balanceType";
 
-    @SerializedName("balanceCurrency")
-    private String balanceCurrency = null;
+    @SerializedName(SERIALIZED_NAME_BALANCE_TYPE)
+    private BalanceType balanceType;
 
-    @SerializedName("lastUpdateDate")
-    private OffsetDateTime lastUpdateDate = null;
+    public static final String SERIALIZED_NAME_BALANCE_AMOUNT = "balanceAmount";
+
+    @SerializedName(SERIALIZED_NAME_BALANCE_AMOUNT)
+    private BigDecimal balanceAmount;
+
+    public static final String SERIALIZED_NAME_BALANCE_CURRENCY = "balanceCurrency";
+
+    @SerializedName(SERIALIZED_NAME_BALANCE_CURRENCY)
+    private String balanceCurrency;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+    private OffsetDateTime lastUpdateDate;
+
+    public Balance() {}
 
     public Balance accountId(String accountId) {
         this.accountId = accountId;
@@ -46,9 +72,7 @@ public class Balance {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier provided by Amazon to identify the account.")
+    @javax.annotation.Nonnull
     public String getAccountId() {
         return accountId;
     }
@@ -67,8 +91,7 @@ public class Balance {
      *
      * @return balanceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BalanceType getBalanceType() {
+    @javax.annotation.Nullable public BalanceType getBalanceType() {
         return balanceType;
     }
 
@@ -86,9 +109,7 @@ public class Balance {
      *
      * @return balanceAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A decimal number, such as an amount or FX rate.")
+    @javax.annotation.Nonnull
     public BigDecimal getBalanceAmount() {
         return balanceAmount;
     }
@@ -107,9 +128,7 @@ public class Balance {
      *
      * @return balanceCurrency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The Amazon Seller Wallet bank account currency code in ISO 4217 format.")
+    @javax.annotation.Nonnull
     public String getBalanceCurrency() {
         return balanceCurrency;
     }
@@ -128,9 +147,7 @@ public class Balance {
      *
      * @return lastUpdateDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date of the most recent account balance update.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -140,7 +157,7 @@ public class Balance {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -178,10 +195,129 @@ public class Balance {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountId");
+        openapiFields.add("balanceType");
+        openapiFields.add("balanceAmount");
+        openapiFields.add("balanceCurrency");
+        openapiFields.add("lastUpdateDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("accountId");
+        openapiRequiredFields.add("balanceAmount");
+        openapiRequiredFields.add("balanceCurrency");
+        openapiRequiredFields.add("lastUpdateDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Balance
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Balance.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Balance is not found in the empty JSON string",
+                        Balance.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Balance.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Balance` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Balance.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+        // validate the optional field `balanceType`
+        if (jsonObj.get("balanceType") != null && !jsonObj.get("balanceType").isJsonNull()) {
+            BalanceType.validateJsonElement(jsonObj.get("balanceType"));
+        }
+        if (!jsonObj.get("balanceCurrency").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `balanceCurrency` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("balanceCurrency").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Balance.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Balance' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Balance> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Balance.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Balance>() {
+                        @Override
+                        public void write(JsonWriter out, Balance value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Balance read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Balance given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Balance
+     * @throws IOException if the JSON string is invalid with respect to Balance
+     */
+    public static Balance fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Balance.class);
+    }
+
+    /**
+     * Convert an instance of Balance to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

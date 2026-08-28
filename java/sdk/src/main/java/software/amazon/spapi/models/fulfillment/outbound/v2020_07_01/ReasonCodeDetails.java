@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A return reason code, a description, and an optional description translation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A return reason code, a description, and an optional description translation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReasonCodeDetails {
-    @SerializedName("returnReasonCode")
-    private String returnReasonCode = null;
+    public static final String SERIALIZED_NAME_RETURN_REASON_CODE = "returnReasonCode";
 
-    @SerializedName("description")
-    private String description = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_REASON_CODE)
+    private String returnReasonCode;
 
-    @SerializedName("translatedDescription")
-    private String translatedDescription = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
+    public static final String SERIALIZED_NAME_TRANSLATED_DESCRIPTION = "translatedDescription";
+
+    @SerializedName(SERIALIZED_NAME_TRANSLATED_DESCRIPTION)
+    private String translatedDescription;
+
+    public ReasonCodeDetails() {}
 
     public ReasonCodeDetails returnReasonCode(String returnReasonCode) {
         this.returnReasonCode = returnReasonCode;
@@ -38,9 +60,7 @@ public class ReasonCodeDetails {
      *
      * @return returnReasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A code that indicates a valid return reason.")
+    @javax.annotation.Nonnull
     public String getReturnReasonCode() {
         return returnReasonCode;
     }
@@ -59,9 +79,7 @@ public class ReasonCodeDetails {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A human readable description of the return reason code.")
+    @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
@@ -81,10 +99,7 @@ public class ReasonCodeDetails {
      *
      * @return translatedDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A translation of the description. The translation is in the language specified in the `language` request parameter.")
-    public String getTranslatedDescription() {
+    @javax.annotation.Nullable public String getTranslatedDescription() {
         return translatedDescription;
     }
 
@@ -93,7 +108,7 @@ public class ReasonCodeDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -127,10 +142,129 @@ public class ReasonCodeDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("returnReasonCode");
+        openapiFields.add("description");
+        openapiFields.add("translatedDescription");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("returnReasonCode");
+        openapiRequiredFields.add("description");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReasonCodeDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReasonCodeDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReasonCodeDetails is not found in the empty JSON string",
+                        ReasonCodeDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReasonCodeDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReasonCodeDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ReasonCodeDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("returnReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnReasonCode").toString()));
+        }
+        if (!jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+        if ((jsonObj.get("translatedDescription") != null
+                        && !jsonObj.get("translatedDescription").isJsonNull())
+                && !jsonObj.get("translatedDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `translatedDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("translatedDescription").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReasonCodeDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReasonCodeDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReasonCodeDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReasonCodeDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReasonCodeDetails>() {
+                        @Override
+                        public void write(JsonWriter out, ReasonCodeDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReasonCodeDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReasonCodeDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReasonCodeDetails
+     * @throws IOException if the JSON string is invalid with respect to ReasonCodeDetails
+     */
+    public static ReasonCodeDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReasonCodeDetails.class);
+    }
+
+    /**
+     * Convert an instance of ReasonCodeDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

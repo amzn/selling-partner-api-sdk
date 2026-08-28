@@ -12,35 +12,68 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Specific details to identify a place. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Specific details to identify a place.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Address {
-    @SerializedName("Name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "Name";
 
-    @SerializedName("AddressLine1")
-    private String addressLine1 = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("AddressLine2")
-    private String addressLine2 = null;
+    public static final String SERIALIZED_NAME_ADDRESS_LINE1 = "AddressLine1";
 
-    @SerializedName("DistrictOrCounty")
-    private String districtOrCounty = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS_LINE1)
+    private String addressLine1;
 
-    @SerializedName("City")
-    private String city = null;
+    public static final String SERIALIZED_NAME_ADDRESS_LINE2 = "AddressLine2";
 
-    @SerializedName("StateOrProvinceCode")
-    private String stateOrProvinceCode = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS_LINE2)
+    private String addressLine2;
 
-    @SerializedName("CountryCode")
-    private String countryCode = null;
+    public static final String SERIALIZED_NAME_DISTRICT_OR_COUNTY = "DistrictOrCounty";
 
-    @SerializedName("PostalCode")
-    private String postalCode = null;
+    @SerializedName(SERIALIZED_NAME_DISTRICT_OR_COUNTY)
+    private String districtOrCounty;
+
+    public static final String SERIALIZED_NAME_CITY = "City";
+
+    @SerializedName(SERIALIZED_NAME_CITY)
+    private String city;
+
+    public static final String SERIALIZED_NAME_STATE_OR_PROVINCE_CODE = "StateOrProvinceCode";
+
+    @SerializedName(SERIALIZED_NAME_STATE_OR_PROVINCE_CODE)
+    private String stateOrProvinceCode;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "CountryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_POSTAL_CODE = "PostalCode";
+
+    @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
+    private String postalCode;
+
+    public Address() {}
 
     public Address name(String name) {
         this.name = name;
@@ -52,7 +85,7 @@ public class Address {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Name of the individual or business.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -71,7 +104,7 @@ public class Address {
      *
      * @return addressLine1
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The street address information.")
+    @javax.annotation.Nonnull
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -90,8 +123,7 @@ public class Address {
      *
      * @return addressLine2
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional street address information, if required.")
-    public String getAddressLine2() {
+    @javax.annotation.Nullable public String getAddressLine2() {
         return addressLine2;
     }
 
@@ -109,8 +141,7 @@ public class Address {
      *
      * @return districtOrCounty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The district or county.")
-    public String getDistrictOrCounty() {
+    @javax.annotation.Nullable public String getDistrictOrCounty() {
         return districtOrCounty;
     }
 
@@ -128,7 +159,7 @@ public class Address {
      *
      * @return city
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The city.")
+    @javax.annotation.Nonnull
     public String getCity() {
         return city;
     }
@@ -149,10 +180,7 @@ public class Address {
      *
      * @return stateOrProvinceCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The state or province code.  If state or province codes are used in your marketplace, it is recommended that you include one with your request. This helps Amazon to select the most appropriate Amazon fulfillment center for your inbound shipment plan.")
+    @javax.annotation.Nonnull
     public String getStateOrProvinceCode() {
         return stateOrProvinceCode;
     }
@@ -171,9 +199,7 @@ public class Address {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The country code in two-character ISO 3166-1 alpha-2 format.")
+    @javax.annotation.Nonnull
     public String getCountryCode() {
         return countryCode;
     }
@@ -193,10 +219,7 @@ public class Address {
      *
      * @return postalCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The postal code.  If postal codes are used in your marketplace, we recommended that you include one with your request. This helps Amazon select the most appropriate Amazon fulfillment center for the inbound shipment plan.")
+    @javax.annotation.Nonnull
     public String getPostalCode() {
         return postalCode;
     }
@@ -206,7 +229,7 @@ public class Address {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -251,10 +274,163 @@ public class Address {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Name");
+        openapiFields.add("AddressLine1");
+        openapiFields.add("AddressLine2");
+        openapiFields.add("DistrictOrCounty");
+        openapiFields.add("City");
+        openapiFields.add("StateOrProvinceCode");
+        openapiFields.add("CountryCode");
+        openapiFields.add("PostalCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Name");
+        openapiRequiredFields.add("AddressLine1");
+        openapiRequiredFields.add("City");
+        openapiRequiredFields.add("StateOrProvinceCode");
+        openapiRequiredFields.add("CountryCode");
+        openapiRequiredFields.add("PostalCode");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Address
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Address.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Address is not found in the empty JSON string",
+                        Address.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Address.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Address` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Address.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("Name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Name").toString()));
+        }
+        if (!jsonObj.get("AddressLine1").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AddressLine1` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AddressLine1").toString()));
+        }
+        if ((jsonObj.get("AddressLine2") != null && !jsonObj.get("AddressLine2").isJsonNull())
+                && !jsonObj.get("AddressLine2").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AddressLine2` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AddressLine2").toString()));
+        }
+        if ((jsonObj.get("DistrictOrCounty") != null
+                        && !jsonObj.get("DistrictOrCounty").isJsonNull())
+                && !jsonObj.get("DistrictOrCounty").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DistrictOrCounty` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DistrictOrCounty").toString()));
+        }
+        if (!jsonObj.get("City").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `City` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("City").toString()));
+        }
+        if (!jsonObj.get("StateOrProvinceCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StateOrProvinceCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StateOrProvinceCode").toString()));
+        }
+        if (!jsonObj.get("CountryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CountryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CountryCode").toString()));
+        }
+        if (!jsonObj.get("PostalCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PostalCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PostalCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Address.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Address' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Address> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Address.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Address>() {
+                        @Override
+                        public void write(JsonWriter out, Address value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Address read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Address given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Address
+     * @throws IOException if the JSON string is invalid with respect to Address
+     */
+    public static Address fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Address.class);
+    }
+
+    /**
+     * Convert an instance of Address to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

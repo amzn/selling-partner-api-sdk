@@ -12,26 +12,50 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains all of the delivery instructions provided by the customer for the shipping address. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains all of the delivery instructions provided by the customer for the shipping address.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DeliveryPreferences {
-    @SerializedName("DropOffLocation")
-    private String dropOffLocation = null;
+    public static final String SERIALIZED_NAME_DROP_OFF_LOCATION = "DropOffLocation";
 
-    @SerializedName("PreferredDeliveryTime")
-    private PreferredDeliveryTime preferredDeliveryTime = null;
+    @SerializedName(SERIALIZED_NAME_DROP_OFF_LOCATION)
+    private String dropOffLocation;
 
-    @SerializedName("OtherAttributes")
-    private List<OtherDeliveryAttributes> otherAttributes = null;
+    public static final String SERIALIZED_NAME_PREFERRED_DELIVERY_TIME = "PreferredDeliveryTime";
 
-    @SerializedName("AddressInstructions")
-    private String addressInstructions = null;
+    @SerializedName(SERIALIZED_NAME_PREFERRED_DELIVERY_TIME)
+    private PreferredDeliveryTime preferredDeliveryTime;
+
+    public static final String SERIALIZED_NAME_OTHER_ATTRIBUTES = "OtherAttributes";
+
+    @SerializedName(SERIALIZED_NAME_OTHER_ATTRIBUTES)
+    private List<OtherDeliveryAttributes> otherAttributes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ADDRESS_INSTRUCTIONS = "AddressInstructions";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS_INSTRUCTIONS)
+    private String addressInstructions;
+
+    public DeliveryPreferences() {}
 
     public DeliveryPreferences dropOffLocation(String dropOffLocation) {
         this.dropOffLocation = dropOffLocation;
@@ -43,8 +67,7 @@ public class DeliveryPreferences {
      *
      * @return dropOffLocation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Drop-off location selected by the customer.")
-    public String getDropOffLocation() {
+    @javax.annotation.Nullable public String getDropOffLocation() {
         return dropOffLocation;
     }
 
@@ -62,8 +85,7 @@ public class DeliveryPreferences {
      *
      * @return preferredDeliveryTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PreferredDeliveryTime getPreferredDeliveryTime() {
+    @javax.annotation.Nullable public PreferredDeliveryTime getPreferredDeliveryTime() {
         return preferredDeliveryTime;
     }
 
@@ -89,9 +111,7 @@ public class DeliveryPreferences {
      *
      * @return otherAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Enumerated list of miscellaneous delivery attributes associated with the shipping address.")
-    public List<OtherDeliveryAttributes> getOtherAttributes() {
+    @javax.annotation.Nullable public List<OtherDeliveryAttributes> getOtherAttributes() {
         return otherAttributes;
     }
 
@@ -109,9 +129,7 @@ public class DeliveryPreferences {
      *
      * @return addressInstructions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Building instructions, nearby landmark or navigation instructions.")
-    public String getAddressInstructions() {
+    @javax.annotation.Nullable public String getAddressInstructions() {
         return addressInstructions;
     }
 
@@ -120,7 +138,7 @@ public class DeliveryPreferences {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -160,10 +178,129 @@ public class DeliveryPreferences {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DropOffLocation");
+        openapiFields.add("PreferredDeliveryTime");
+        openapiFields.add("OtherAttributes");
+        openapiFields.add("AddressInstructions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DeliveryPreferences
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DeliveryPreferences.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DeliveryPreferences is not found in the empty JSON string",
+                        DeliveryPreferences.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DeliveryPreferences.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DeliveryPreferences` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("DropOffLocation") != null
+                        && !jsonObj.get("DropOffLocation").isJsonNull())
+                && !jsonObj.get("DropOffLocation").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DropOffLocation` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DropOffLocation").toString()));
+        }
+        // validate the optional field `PreferredDeliveryTime`
+        if (jsonObj.get("PreferredDeliveryTime") != null
+                && !jsonObj.get("PreferredDeliveryTime").isJsonNull()) {
+            PreferredDeliveryTime.validateJsonElement(jsonObj.get("PreferredDeliveryTime"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("OtherAttributes") != null
+                && !jsonObj.get("OtherAttributes").isJsonNull()
+                && !jsonObj.get("OtherAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OtherAttributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("OtherAttributes").toString()));
+        }
+        if ((jsonObj.get("AddressInstructions") != null
+                        && !jsonObj.get("AddressInstructions").isJsonNull())
+                && !jsonObj.get("AddressInstructions").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AddressInstructions` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AddressInstructions").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeliveryPreferences.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeliveryPreferences' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeliveryPreferences> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeliveryPreferences.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeliveryPreferences>() {
+                        @Override
+                        public void write(JsonWriter out, DeliveryPreferences value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeliveryPreferences read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeliveryPreferences given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeliveryPreferences
+     * @throws IOException if the JSON string is invalid with respect to DeliveryPreferences
+     */
+    public static DeliveryPreferences fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeliveryPreferences.class);
+    }
+
+    /**
+     * Convert an instance of DeliveryPreferences to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

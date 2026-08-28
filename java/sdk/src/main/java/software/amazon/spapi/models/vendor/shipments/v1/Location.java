@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Location identifier. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Location identifier.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Location {
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("locationCode")
-    private String locationCode = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    public static final String SERIALIZED_NAME_LOCATION_CODE = "locationCode";
+
+    @SerializedName(SERIALIZED_NAME_LOCATION_CODE)
+    private String locationCode;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public Location() {}
 
     public Location type(String type) {
         this.type = type;
@@ -37,8 +60,7 @@ public class Location {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Type of location identification.")
-    public String getType() {
+    @javax.annotation.Nullable public String getType() {
         return type;
     }
 
@@ -56,8 +78,7 @@ public class Location {
      *
      * @return locationCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Location code.")
-    public String getLocationCode() {
+    @javax.annotation.Nullable public String getLocationCode() {
         return locationCode;
     }
 
@@ -75,9 +96,7 @@ public class Location {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The two digit country code. In ISO 3166-1 alpha-2 format.")
-    public String getCountryCode() {
+    @javax.annotation.Nullable public String getCountryCode() {
         return countryCode;
     }
 
@@ -86,7 +105,7 @@ public class Location {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +135,118 @@ public class Location {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("locationCode");
+        openapiFields.add("countryCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Location
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Location.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Location is not found in the empty JSON string",
+                        Location.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Location.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Location` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull())
+                && !jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        if ((jsonObj.get("locationCode") != null && !jsonObj.get("locationCode").isJsonNull())
+                && !jsonObj.get("locationCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `locationCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("locationCode").toString()));
+        }
+        if ((jsonObj.get("countryCode") != null && !jsonObj.get("countryCode").isJsonNull())
+                && !jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Location.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Location' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Location> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Location.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Location>() {
+                        @Override
+                        public void write(JsonWriter out, Location value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Location read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Location given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Location
+     * @throws IOException if the JSON string is invalid with respect to Location
+     */
+    public static Location fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Location.class);
+    }
+
+    /**
+     * Convert an instance of Location to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

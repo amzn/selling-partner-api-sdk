@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** Indicates the condition of the item. Possible values: New, Used, Collectible, Refurbished, Club. */
 @JsonAdapter(ConditionType.Adapter.class)
 public enum ConditionType {
-    @SerializedName("New")
     NEW("New"),
 
-    @SerializedName("Used")
     USED("Used"),
 
-    @SerializedName("Collectible")
     COLLECTIBLE("Collectible"),
 
-    @SerializedName("Refurbished")
     REFURBISHED("Refurbished"),
 
-    @SerializedName("Club")
     CLUB("Club");
 
     private String value;
@@ -52,25 +47,30 @@ public enum ConditionType {
         return String.valueOf(value);
     }
 
-    public static ConditionType fromValue(String input) {
+    public static ConditionType fromValue(String value) {
         for (ConditionType b : ConditionType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ConditionType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ConditionType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ConditionType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ConditionType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ConditionType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ConditionType.fromValue(value);
     }
 }

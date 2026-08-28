@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Product instance attribute that is not described at the SKU level in the catalog. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Product instance attribute that is not described at the SKU level in the catalog.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductAttribute {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("value")
-    private String value = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
+    public static final String SERIALIZED_NAME_VALUE = "value";
+
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
+
+    public ProductAttribute() {}
 
     public ProductAttribute name(String name) {
         this.name = name;
@@ -35,8 +55,7 @@ public class ProductAttribute {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Product attribute name.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -54,8 +73,7 @@ public class ProductAttribute {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Product attribute value.")
-    public String getValue() {
+    @javax.annotation.Nullable public String getValue() {
         return value;
     }
 
@@ -64,7 +82,7 @@ public class ProductAttribute {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +109,112 @@ public class ProductAttribute {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductAttribute
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductAttribute is not found in the empty JSON string",
+                        ProductAttribute.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductAttribute.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductAttribute` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull())
+                && !jsonObj.get("value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("value").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductAttribute.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductAttribute' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductAttribute> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductAttribute.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductAttribute>() {
+                        @Override
+                        public void write(JsonWriter out, ProductAttribute value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductAttribute read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductAttribute given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductAttribute
+     * @throws IOException if the JSON string is invalid with respect to ProductAttribute
+     */
+    public static ProductAttribute fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductAttribute.class);
+    }
+
+    /**
+     * Convert an instance of ProductAttribute to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

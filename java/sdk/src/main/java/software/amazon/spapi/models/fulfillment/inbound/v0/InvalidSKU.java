@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains detail about an invalid SKU */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Contains detail about an invalid SKU")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvalidSKU {
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("ErrorReason")
-    private ErrorReason errorReason = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public static final String SERIALIZED_NAME_ERROR_REASON = "ErrorReason";
+
+    @SerializedName(SERIALIZED_NAME_ERROR_REASON)
+    private ErrorReason errorReason;
+
+    public InvalidSKU() {}
 
     public InvalidSKU sellerSKU(String sellerSKU) {
         this.sellerSKU = sellerSKU;
@@ -34,8 +55,7 @@ public class InvalidSKU {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -53,8 +73,7 @@ public class InvalidSKU {
      *
      * @return errorReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorReason getErrorReason() {
+    @javax.annotation.Nullable public ErrorReason getErrorReason() {
         return errorReason;
     }
 
@@ -63,7 +82,7 @@ public class InvalidSKU {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +110,109 @@ public class InvalidSKU {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SellerSKU");
+        openapiFields.add("ErrorReason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvalidSKU
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvalidSKU.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvalidSKU is not found in the empty JSON string",
+                        InvalidSKU.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvalidSKU.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvalidSKU` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        // validate the optional field `ErrorReason`
+        if (jsonObj.get("ErrorReason") != null && !jsonObj.get("ErrorReason").isJsonNull()) {
+            ErrorReason.validateJsonElement(jsonObj.get("ErrorReason"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvalidSKU.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvalidSKU' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvalidSKU> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(InvalidSKU.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvalidSKU>() {
+                        @Override
+                        public void write(JsonWriter out, InvalidSKU value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvalidSKU read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvalidSKU given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvalidSKU
+     * @throws IOException if the JSON string is invalid with respect to InvalidSKU
+     */
+    public static InvalidSKU fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvalidSKU.class);
+    }
+
+    /**
+     * Convert an instance of InvalidSKU to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

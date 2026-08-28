@@ -12,24 +12,36 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Label details as part of the transport label response */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Label details as part of the transport label response")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LabelData {
-    @SerializedName("labelSequenceNumber")
-    private Integer labelSequenceNumber = null;
+    public static final String SERIALIZED_NAME_LABEL_SEQUENCE_NUMBER = "labelSequenceNumber";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_SEQUENCE_NUMBER)
+    private Integer labelSequenceNumber;
 
     /** The format of the label. */
     @JsonAdapter(LabelFormatEnum.Adapter.class)
     public enum LabelFormatEnum {
-        @SerializedName("PDF")
         PDF("PDF");
 
         private String value;
@@ -47,40 +59,55 @@ public class LabelData {
             return String.valueOf(value);
         }
 
-        public static LabelFormatEnum fromValue(String input) {
+        public static LabelFormatEnum fromValue(String value) {
             for (LabelFormatEnum b : LabelFormatEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LabelFormatEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final LabelFormatEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public LabelFormatEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return LabelFormatEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return LabelFormatEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LabelFormatEnum.fromValue(value);
         }
     }
 
-    @SerializedName("labelFormat")
-    private LabelFormatEnum labelFormat = null;
+    public static final String SERIALIZED_NAME_LABEL_FORMAT = "labelFormat";
 
-    @SerializedName("carrierCode")
-    private String carrierCode = null;
+    @SerializedName(SERIALIZED_NAME_LABEL_FORMAT)
+    private LabelFormatEnum labelFormat;
 
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_CARRIER_CODE = "carrierCode";
 
-    @SerializedName("label")
-    private String label = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_CODE)
+    private String carrierCode;
+
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
+
+    public static final String SERIALIZED_NAME_LABEL = "label";
+
+    @SerializedName(SERIALIZED_NAME_LABEL)
+    private String label;
+
+    public LabelData() {}
 
     public LabelData labelSequenceNumber(Integer labelSequenceNumber) {
         this.labelSequenceNumber = labelSequenceNumber;
@@ -92,9 +119,7 @@ public class LabelData {
      *
      * @return labelSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A sequential number assigned to each label within a shipment.")
-    public Integer getLabelSequenceNumber() {
+    @javax.annotation.Nullable public Integer getLabelSequenceNumber() {
         return labelSequenceNumber;
     }
 
@@ -112,8 +137,7 @@ public class LabelData {
      *
      * @return labelFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The format of the label.")
-    public LabelFormatEnum getLabelFormat() {
+    @javax.annotation.Nullable public LabelFormatEnum getLabelFormat() {
         return labelFormat;
     }
 
@@ -131,8 +155,7 @@ public class LabelData {
      *
      * @return carrierCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Unique identification of the carrier.")
-    public String getCarrierCode() {
+    @javax.annotation.Nullable public String getCarrierCode() {
         return carrierCode;
     }
 
@@ -150,8 +173,7 @@ public class LabelData {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Tracking Id for the transportation.")
-    public String getTrackingId() {
+    @javax.annotation.Nullable public String getTrackingId() {
         return trackingId;
     }
 
@@ -169,9 +191,7 @@ public class LabelData {
      *
      * @return label
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The base-64 encoded string that represents the shipment label.")
-    public String getLabel() {
+    @javax.annotation.Nullable public String getLabel() {
         return label;
     }
 
@@ -180,7 +200,7 @@ public class LabelData {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -216,10 +236,130 @@ public class LabelData {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("labelSequenceNumber");
+        openapiFields.add("labelFormat");
+        openapiFields.add("carrierCode");
+        openapiFields.add("trackingId");
+        openapiFields.add("label");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LabelData
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LabelData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LabelData is not found in the empty JSON string",
+                        LabelData.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LabelData.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LabelData` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("labelFormat") != null && !jsonObj.get("labelFormat").isJsonNull())
+                && !jsonObj.get("labelFormat").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `labelFormat` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("labelFormat").toString()));
+        }
+        // validate the optional field `labelFormat`
+        if (jsonObj.get("labelFormat") != null && !jsonObj.get("labelFormat").isJsonNull()) {
+            LabelFormatEnum.validateJsonElement(jsonObj.get("labelFormat"));
+        }
+        if ((jsonObj.get("carrierCode") != null && !jsonObj.get("carrierCode").isJsonNull())
+                && !jsonObj.get("carrierCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierCode").toString()));
+        }
+        if ((jsonObj.get("trackingId") != null && !jsonObj.get("trackingId").isJsonNull())
+                && !jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        if ((jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull())
+                && !jsonObj.get("label").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `label` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("label").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LabelData.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LabelData' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LabelData> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(LabelData.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LabelData>() {
+                        @Override
+                        public void write(JsonWriter out, LabelData value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LabelData read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LabelData given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LabelData
+     * @throws IOException if the JSON string is invalid with respect to LabelData
+     */
+    public static LabelData fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LabelData.class);
+    }
+
+    /**
+     * Convert an instance of LabelData to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

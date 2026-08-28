@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Identifies the method by which a seller will hand a package over to Amazon Logistics. */
 @JsonAdapter(HandoverMethod.Adapter.class)
 public enum HandoverMethod {
-    @SerializedName("PICKUP")
     PICKUP("PICKUP"),
 
-    @SerializedName("DROPOFF")
     DROPOFF("DROPOFF");
 
     private String value;
@@ -43,25 +41,30 @@ public enum HandoverMethod {
         return String.valueOf(value);
     }
 
-    public static HandoverMethod fromValue(String input) {
+    public static HandoverMethod fromValue(String value) {
         for (HandoverMethod b : HandoverMethod.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<HandoverMethod> {
         @Override
         public void write(final JsonWriter jsonWriter, final HandoverMethod enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public HandoverMethod read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return HandoverMethod.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return HandoverMethod.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        HandoverMethod.fromValue(value);
     }
 }

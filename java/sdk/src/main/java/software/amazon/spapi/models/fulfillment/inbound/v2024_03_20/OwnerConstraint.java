@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,13 +25,10 @@ import java.io.IOException;
  */
 @JsonAdapter(OwnerConstraint.Adapter.class)
 public enum OwnerConstraint {
-    @SerializedName("AMAZON_ONLY")
     AMAZON_ONLY("AMAZON_ONLY"),
 
-    @SerializedName("NONE_ONLY")
     NONE_ONLY("NONE_ONLY"),
 
-    @SerializedName("SELLER_ONLY")
     SELLER_ONLY("SELLER_ONLY");
 
     private String value;
@@ -49,25 +46,30 @@ public enum OwnerConstraint {
         return String.valueOf(value);
     }
 
-    public static OwnerConstraint fromValue(String input) {
+    public static OwnerConstraint fromValue(String value) {
         for (OwnerConstraint b : OwnerConstraint.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OwnerConstraint> {
         @Override
         public void write(final JsonWriter jsonWriter, final OwnerConstraint enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OwnerConstraint read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OwnerConstraint.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OwnerConstraint.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OwnerConstraint.fromValue(value);
     }
 }

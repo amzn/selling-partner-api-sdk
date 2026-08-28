@@ -12,57 +12,73 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Summary details for a listings item for an Amazon store. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Summary details for a listings item for an Amazon store.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemSummaryByMarketplace {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("asin")
-    private String asin = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("productType")
-    private String productType = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
+
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+    private String productType;
 
     /** Identifies the condition of the listings item. */
     @JsonAdapter(ConditionTypeEnum.Adapter.class)
     public enum ConditionTypeEnum {
-        @SerializedName("new_new")
         NEW_NEW("new_new"),
-        @SerializedName("new_open_box")
+
         NEW_OPEN_BOX("new_open_box"),
-        @SerializedName("new_oem")
+
         NEW_OEM("new_oem"),
-        @SerializedName("refurbished_refurbished")
+
         REFURBISHED_REFURBISHED("refurbished_refurbished"),
-        @SerializedName("used_like_new")
+
         USED_LIKE_NEW("used_like_new"),
-        @SerializedName("used_very_good")
+
         USED_VERY_GOOD("used_very_good"),
-        @SerializedName("used_good")
+
         USED_GOOD("used_good"),
-        @SerializedName("used_acceptable")
+
         USED_ACCEPTABLE("used_acceptable"),
-        @SerializedName("collectible_like_new")
+
         COLLECTIBLE_LIKE_NEW("collectible_like_new"),
-        @SerializedName("collectible_very_good")
+
         COLLECTIBLE_VERY_GOOD("collectible_very_good"),
-        @SerializedName("collectible_good")
+
         COLLECTIBLE_GOOD("collectible_good"),
-        @SerializedName("collectible_acceptable")
+
         COLLECTIBLE_ACCEPTABLE("collectible_acceptable"),
-        @SerializedName("club_club")
+
         CLUB_CLUB("club_club");
 
         private String value;
@@ -80,38 +96,44 @@ public class ItemSummaryByMarketplace {
             return String.valueOf(value);
         }
 
-        public static ConditionTypeEnum fromValue(String input) {
+        public static ConditionTypeEnum fromValue(String value) {
             for (ConditionTypeEnum b : ConditionTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ConditionTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ConditionTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ConditionTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ConditionTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ConditionTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ConditionTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("conditionType")
-    private ConditionTypeEnum conditionType = null;
+    public static final String SERIALIZED_NAME_CONDITION_TYPE = "conditionType";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_TYPE)
+    private ConditionTypeEnum conditionType;
 
     /** Gets or Sets status */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("BUYABLE")
         BUYABLE("BUYABLE"),
-        @SerializedName("DISCOVERABLE")
+
         DISCOVERABLE("DISCOVERABLE");
 
         private String value;
@@ -129,46 +151,65 @@ public class ItemSummaryByMarketplace {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private List<StatusEnum> status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("fnSku")
-    private String fnSku = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private List<StatusEnum> status = new ArrayList<>();
 
-    @SerializedName("itemName")
-    private String itemName = null;
+    public static final String SERIALIZED_NAME_FN_SKU = "fnSku";
 
-    @SerializedName("createdDate")
-    private OffsetDateTime createdDate = null;
+    @SerializedName(SERIALIZED_NAME_FN_SKU)
+    private String fnSku;
 
-    @SerializedName("lastUpdatedDate")
-    private OffsetDateTime lastUpdatedDate = null;
+    public static final String SERIALIZED_NAME_ITEM_NAME = "itemName";
 
-    @SerializedName("mainImage")
-    private ItemImage mainImage = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_NAME)
+    private String itemName;
+
+    public static final String SERIALIZED_NAME_CREATED_DATE = "createdDate";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_DATE)
+    private OffsetDateTime createdDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE = "lastUpdatedDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE)
+    private OffsetDateTime lastUpdatedDate;
+
+    public static final String SERIALIZED_NAME_MAIN_IMAGE = "mainImage";
+
+    @SerializedName(SERIALIZED_NAME_MAIN_IMAGE)
+    private ItemImage mainImage;
+
+    public ItemSummaryByMarketplace() {}
 
     public ItemSummaryByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -180,9 +221,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A marketplace identifier. Identifies the listings item's Amazon store.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -201,8 +240,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The ASIN of the listings item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -220,9 +258,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return productType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The listings item's Amazon product type.")
+    @javax.annotation.Nonnull
     public String getProductType() {
         return productType;
     }
@@ -241,8 +277,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return conditionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifies the condition of the listings item.")
-    public ConditionTypeEnum getConditionType() {
+    @javax.annotation.Nullable public ConditionTypeEnum getConditionType() {
         return conditionType;
     }
 
@@ -268,9 +303,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Statuses that apply to the listings item.")
+    @javax.annotation.Nonnull
     public List<StatusEnum> getStatus() {
         return status;
     }
@@ -290,10 +323,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return fnSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.")
-    public String getFnSku() {
+    @javax.annotation.Nullable public String getFnSku() {
         return fnSku;
     }
 
@@ -311,8 +341,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Name, or title, associated with an Amazon catalog item.")
-    public String getItemName() {
+    @javax.annotation.Nullable public String getItemName() {
         return itemName;
     }
 
@@ -330,9 +359,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return createdDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Date the listings item was created, in ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -351,9 +378,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return lastUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Date the listings item was last updated, in ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -372,8 +397,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return mainImage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemImage getMainImage() {
+    @javax.annotation.Nullable public ItemImage getMainImage() {
         return mainImage;
     }
 
@@ -382,7 +406,7 @@ public class ItemSummaryByMarketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -438,10 +462,176 @@ public class ItemSummaryByMarketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("asin");
+        openapiFields.add("productType");
+        openapiFields.add("conditionType");
+        openapiFields.add("status");
+        openapiFields.add("fnSku");
+        openapiFields.add("itemName");
+        openapiFields.add("createdDate");
+        openapiFields.add("lastUpdatedDate");
+        openapiFields.add("mainImage");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("productType");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("createdDate");
+        openapiRequiredFields.add("lastUpdatedDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemSummaryByMarketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemSummaryByMarketplace.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemSummaryByMarketplace is not found in the empty JSON string",
+                        ItemSummaryByMarketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemSummaryByMarketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemSummaryByMarketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemSummaryByMarketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if (!jsonObj.get("productType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productType").toString()));
+        }
+        if ((jsonObj.get("conditionType") != null
+                        && !jsonObj.get("conditionType").isJsonNull())
+                && !jsonObj.get("conditionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `conditionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("conditionType").toString()));
+        }
+        // validate the optional field `conditionType`
+        if (jsonObj.get("conditionType") != null
+                && !jsonObj.get("conditionType").isJsonNull()) {
+            ConditionTypeEnum.validateJsonElement(jsonObj.get("conditionType"));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("status") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("status").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        if ((jsonObj.get("fnSku") != null && !jsonObj.get("fnSku").isJsonNull())
+                && !jsonObj.get("fnSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fnSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fnSku").toString()));
+        }
+        if ((jsonObj.get("itemName") != null && !jsonObj.get("itemName").isJsonNull())
+                && !jsonObj.get("itemName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemName").toString()));
+        }
+        // validate the optional field `mainImage`
+        if (jsonObj.get("mainImage") != null && !jsonObj.get("mainImage").isJsonNull()) {
+            ItemImage.validateJsonElement(jsonObj.get("mainImage"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemSummaryByMarketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemSummaryByMarketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemSummaryByMarketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemSummaryByMarketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemSummaryByMarketplace>() {
+                        @Override
+                        public void write(JsonWriter out, ItemSummaryByMarketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemSummaryByMarketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemSummaryByMarketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemSummaryByMarketplace
+     * @throws IOException if the JSON string is invalid with respect to ItemSummaryByMarketplace
+     */
+    public static ItemSummaryByMarketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemSummaryByMarketplace.class);
+    }
+
+    /**
+     * Convert an instance of ItemSummaryByMarketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

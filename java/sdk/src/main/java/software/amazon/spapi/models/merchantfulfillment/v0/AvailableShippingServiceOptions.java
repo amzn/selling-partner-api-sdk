@@ -12,17 +12,40 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The available shipping service options. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The available shipping service options.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AvailableShippingServiceOptions {
-    @SerializedName("AvailableCarrierWillPickUpOptions")
-    private AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions = null;
+    public static final String SERIALIZED_NAME_AVAILABLE_CARRIER_WILL_PICK_UP_OPTIONS =
+            "AvailableCarrierWillPickUpOptions";
 
-    @SerializedName("AvailableDeliveryExperienceOptions")
-    private AvailableDeliveryExperienceOptionsList availableDeliveryExperienceOptions = null;
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_CARRIER_WILL_PICK_UP_OPTIONS)
+    private AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AVAILABLE_DELIVERY_EXPERIENCE_OPTIONS =
+            "AvailableDeliveryExperienceOptions";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_DELIVERY_EXPERIENCE_OPTIONS)
+    private AvailableDeliveryExperienceOptionsList availableDeliveryExperienceOptions = new ArrayList<>();
+
+    public AvailableShippingServiceOptions() {}
 
     public AvailableShippingServiceOptions availableCarrierWillPickUpOptions(
             AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions) {
@@ -35,7 +58,7 @@ public class AvailableShippingServiceOptions {
      *
      * @return availableCarrierWillPickUpOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public AvailableCarrierWillPickUpOptionsList getAvailableCarrierWillPickUpOptions() {
         return availableCarrierWillPickUpOptions;
     }
@@ -56,7 +79,7 @@ public class AvailableShippingServiceOptions {
      *
      * @return availableDeliveryExperienceOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public AvailableDeliveryExperienceOptionsList getAvailableDeliveryExperienceOptions() {
         return availableDeliveryExperienceOptions;
     }
@@ -67,7 +90,7 @@ public class AvailableShippingServiceOptions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -103,10 +126,112 @@ public class AvailableShippingServiceOptions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AvailableCarrierWillPickUpOptions");
+        openapiFields.add("AvailableDeliveryExperienceOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AvailableCarrierWillPickUpOptions");
+        openapiRequiredFields.add("AvailableDeliveryExperienceOptions");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AvailableShippingServiceOptions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AvailableShippingServiceOptions.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AvailableShippingServiceOptions is not found in the empty JSON string",
+                        AvailableShippingServiceOptions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AvailableShippingServiceOptions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AvailableShippingServiceOptions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AvailableShippingServiceOptions.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AvailableShippingServiceOptions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AvailableShippingServiceOptions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AvailableShippingServiceOptions> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AvailableShippingServiceOptions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AvailableShippingServiceOptions>() {
+                        @Override
+                        public void write(JsonWriter out, AvailableShippingServiceOptions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AvailableShippingServiceOptions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AvailableShippingServiceOptions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AvailableShippingServiceOptions
+     * @throws IOException if the JSON string is invalid with respect to AvailableShippingServiceOptions
+     */
+    public static AvailableShippingServiceOptions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AvailableShippingServiceOptions.class);
+    }
+
+    /**
+     * Convert an instance of AvailableShippingServiceOptions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

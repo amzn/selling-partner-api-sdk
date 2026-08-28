@@ -12,31 +12,45 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A shipment item&#39;s cancellation details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A shipment item's cancellation details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Cancellation {
-    @SerializedName("cancelledQuantity")
-    private Integer cancelledQuantity = null;
+    public static final String SERIALIZED_NAME_CANCELLED_QUANTITY = "cancelledQuantity";
 
-    @SerializedName("cancelledTimestamp")
-    private String cancelledTimestamp = null;
+    @SerializedName(SERIALIZED_NAME_CANCELLED_QUANTITY)
+    private Integer cancelledQuantity;
+
+    public static final String SERIALIZED_NAME_CANCELLED_TIMESTAMP = "cancelledTimestamp";
+
+    @SerializedName(SERIALIZED_NAME_CANCELLED_TIMESTAMP)
+    private String cancelledTimestamp;
 
     /** The type of cancellation of the item in the shipment. */
     @JsonAdapter(CancellationTypeEnum.Adapter.class)
     public enum CancellationTypeEnum {
-        @SerializedName("SELLER_REJECTED")
         SELLER_REJECTED("SELLER_REJECTED"),
-        @SerializedName("MARKETPLACE_CANCELLED")
+
         MARKETPLACE_CANCELLED("MARKETPLACE_CANCELLED"),
-        @SerializedName("SYSTEM_CANCELLED")
+
         SYSTEM_CANCELLED("SYSTEM_CANCELLED");
 
         private String value;
@@ -54,34 +68,45 @@ public class Cancellation {
             return String.valueOf(value);
         }
 
-        public static CancellationTypeEnum fromValue(String input) {
+        public static CancellationTypeEnum fromValue(String value) {
             for (CancellationTypeEnum b : CancellationTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<CancellationTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final CancellationTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public CancellationTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return CancellationTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return CancellationTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CancellationTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("cancellationType")
-    private CancellationTypeEnum cancellationType = null;
+    public static final String SERIALIZED_NAME_CANCELLATION_TYPE = "cancellationType";
 
-    @SerializedName("cancellationReason")
-    private String cancellationReason = null;
+    @SerializedName(SERIALIZED_NAME_CANCELLATION_TYPE)
+    private CancellationTypeEnum cancellationType;
+
+    public static final String SERIALIZED_NAME_CANCELLATION_REASON = "cancellationReason";
+
+    @SerializedName(SERIALIZED_NAME_CANCELLATION_REASON)
+    private String cancellationReason;
+
+    public Cancellation() {}
 
     public Cancellation cancelledQuantity(Integer cancelledQuantity) {
         this.cancelledQuantity = cancelledQuantity;
@@ -89,13 +114,11 @@ public class Cancellation {
     }
 
     /**
-     * The number of items of this particular item which have been cancelled.
+     * The number of items of this particular item which have been cancelled. minimum: 1
      *
      * @return cancelledQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of items of this particular item which have been cancelled.")
+    @javax.annotation.Nonnull
     public Integer getCancelledQuantity() {
         return cancelledQuantity;
     }
@@ -114,10 +137,7 @@ public class Cancellation {
      *
      * @return cancelledTimestamp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public String getCancelledTimestamp() {
         return cancelledTimestamp;
     }
@@ -136,9 +156,7 @@ public class Cancellation {
      *
      * @return cancellationType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The type of cancellation of the item in the shipment.")
+    @javax.annotation.Nonnull
     public CancellationTypeEnum getCancellationType() {
         return cancellationType;
     }
@@ -157,8 +175,7 @@ public class Cancellation {
      *
      * @return cancellationReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the cancellation of the shipment.")
-    public String getCancellationReason() {
+    @javax.annotation.Nullable public String getCancellationReason() {
         return cancellationReason;
     }
 
@@ -167,7 +184,7 @@ public class Cancellation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -207,10 +224,133 @@ public class Cancellation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("cancelledQuantity");
+        openapiFields.add("cancelledTimestamp");
+        openapiFields.add("cancellationType");
+        openapiFields.add("cancellationReason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("cancelledQuantity");
+        openapiRequiredFields.add("cancelledTimestamp");
+        openapiRequiredFields.add("cancellationType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Cancellation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Cancellation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Cancellation is not found in the empty JSON string",
+                        Cancellation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Cancellation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Cancellation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Cancellation.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("cancelledTimestamp").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `cancelledTimestamp` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("cancelledTimestamp").toString()));
+        }
+        if (!jsonObj.get("cancellationType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `cancellationType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("cancellationType").toString()));
+        }
+        // validate the required field `cancellationType`
+        CancellationTypeEnum.validateJsonElement(jsonObj.get("cancellationType"));
+        if ((jsonObj.get("cancellationReason") != null
+                        && !jsonObj.get("cancellationReason").isJsonNull())
+                && !jsonObj.get("cancellationReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `cancellationReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("cancellationReason").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Cancellation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Cancellation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Cancellation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Cancellation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Cancellation>() {
+                        @Override
+                        public void write(JsonWriter out, Cancellation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Cancellation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Cancellation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Cancellation
+     * @throws IOException if the JSON string is invalid with respect to Cancellation
+     */
+    public static Cancellation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Cancellation.class);
+    }
+
+    /**
+     * Convert an instance of Cancellation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

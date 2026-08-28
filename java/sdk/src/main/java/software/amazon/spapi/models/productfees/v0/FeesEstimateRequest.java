@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A product, marketplace, and proposed price used to request estimated fees. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A product, marketplace, and proposed price used to request estimated fees.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeesEstimateRequest {
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("IsAmazonFulfilled")
-    private Boolean isAmazonFulfilled = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("PriceToEstimateFees")
-    private PriceToEstimateFees priceToEstimateFees = null;
+    public static final String SERIALIZED_NAME_IS_AMAZON_FULFILLED = "IsAmazonFulfilled";
 
-    @SerializedName("Identifier")
-    private String identifier = null;
+    @SerializedName(SERIALIZED_NAME_IS_AMAZON_FULFILLED)
+    private Boolean isAmazonFulfilled;
 
-    @SerializedName("OptionalFulfillmentProgram")
-    private OptionalFulfillmentProgram optionalFulfillmentProgram = null;
+    public static final String SERIALIZED_NAME_PRICE_TO_ESTIMATE_FEES = "PriceToEstimateFees";
+
+    @SerializedName(SERIALIZED_NAME_PRICE_TO_ESTIMATE_FEES)
+    private PriceToEstimateFees priceToEstimateFees;
+
+    public static final String SERIALIZED_NAME_IDENTIFIER = "Identifier";
+
+    @SerializedName(SERIALIZED_NAME_IDENTIFIER)
+    private String identifier;
+
+    public static final String SERIALIZED_NAME_OPTIONAL_FULFILLMENT_PROGRAM = "OptionalFulfillmentProgram";
+
+    @SerializedName(SERIALIZED_NAME_OPTIONAL_FULFILLMENT_PROGRAM)
+    private OptionalFulfillmentProgram optionalFulfillmentProgram;
+
+    public FeesEstimateRequest() {}
 
     public FeesEstimateRequest marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -44,7 +70,7 @@ public class FeesEstimateRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -63,8 +89,7 @@ public class FeesEstimateRequest {
      *
      * @return isAmazonFulfilled
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the offer is fulfilled by Amazon.")
-    public Boolean getIsAmazonFulfilled() {
+    @javax.annotation.Nullable public Boolean getIsAmazonFulfilled() {
         return isAmazonFulfilled;
     }
 
@@ -82,7 +107,7 @@ public class FeesEstimateRequest {
      *
      * @return priceToEstimateFees
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PriceToEstimateFees getPriceToEstimateFees() {
         return priceToEstimateFees;
     }
@@ -101,9 +126,7 @@ public class FeesEstimateRequest {
      *
      * @return identifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A unique identifier provided by the caller to track this request.")
+    @javax.annotation.Nonnull
     public String getIdentifier() {
         return identifier;
     }
@@ -122,8 +145,7 @@ public class FeesEstimateRequest {
      *
      * @return optionalFulfillmentProgram
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OptionalFulfillmentProgram getOptionalFulfillmentProgram() {
+    @javax.annotation.Nullable public OptionalFulfillmentProgram getOptionalFulfillmentProgram() {
         return optionalFulfillmentProgram;
     }
 
@@ -132,7 +154,7 @@ public class FeesEstimateRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +195,132 @@ public class FeesEstimateRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("IsAmazonFulfilled");
+        openapiFields.add("PriceToEstimateFees");
+        openapiFields.add("Identifier");
+        openapiFields.add("OptionalFulfillmentProgram");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("MarketplaceId");
+        openapiRequiredFields.add("PriceToEstimateFees");
+        openapiRequiredFields.add("Identifier");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeesEstimateRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeesEstimateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeesEstimateRequest is not found in the empty JSON string",
+                        FeesEstimateRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeesEstimateRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeesEstimateRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeesEstimateRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        // validate the required field `PriceToEstimateFees`
+        PriceToEstimateFees.validateJsonElement(jsonObj.get("PriceToEstimateFees"));
+        if (!jsonObj.get("Identifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Identifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Identifier").toString()));
+        }
+        // validate the optional field `OptionalFulfillmentProgram`
+        if (jsonObj.get("OptionalFulfillmentProgram") != null
+                && !jsonObj.get("OptionalFulfillmentProgram").isJsonNull()) {
+            OptionalFulfillmentProgram.validateJsonElement(jsonObj.get("OptionalFulfillmentProgram"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeesEstimateRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeesEstimateRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeesEstimateRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeesEstimateRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeesEstimateRequest>() {
+                        @Override
+                        public void write(JsonWriter out, FeesEstimateRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeesEstimateRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeesEstimateRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeesEstimateRequest
+     * @throws IOException if the JSON string is invalid with respect to FeesEstimateRequest
+     */
+    public static FeesEstimateRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeesEstimateRequest.class);
+    }
+
+    /**
+     * Convert an instance of FeesEstimateRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

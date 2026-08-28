@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Enum to specify if returned shipment should include SKU quantity details */
 @JsonAdapter(SkuQuantitiesVisibility.Adapter.class)
 public enum SkuQuantitiesVisibility {
-    @SerializedName("SHOW")
     SHOW("SHOW"),
 
-    @SerializedName("HIDE")
     HIDE("HIDE");
 
     private String value;
@@ -43,25 +41,30 @@ public enum SkuQuantitiesVisibility {
         return String.valueOf(value);
     }
 
-    public static SkuQuantitiesVisibility fromValue(String input) {
+    public static SkuQuantitiesVisibility fromValue(String value) {
         for (SkuQuantitiesVisibility b : SkuQuantitiesVisibility.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SkuQuantitiesVisibility> {
         @Override
         public void write(final JsonWriter jsonWriter, final SkuQuantitiesVisibility enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public SkuQuantitiesVisibility read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return SkuQuantitiesVisibility.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return SkuQuantitiesVisibility.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        SkuQuantitiesVisibility.fromValue(value);
     }
 }

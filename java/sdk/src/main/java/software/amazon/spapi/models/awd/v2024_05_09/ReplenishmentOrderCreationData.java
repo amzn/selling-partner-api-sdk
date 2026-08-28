@@ -12,24 +12,44 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * This structure represents the payload for creating an AFN Replenishment Order. By default, all replenishment orders
  * created support Partial order preferences.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "This structure represents the payload for creating an AFN Replenishment Order. By default, all replenishment orders created support Partial order preferences.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReplenishmentOrderCreationData {
-    @SerializedName("preferences")
-    private ReplenishmentPreferences preferences = null;
+    public static final String SERIALIZED_NAME_PREFERENCES = "preferences";
 
-    @SerializedName("products")
-    private List<DistributionProduct> products = null;
+    @SerializedName(SERIALIZED_NAME_PREFERENCES)
+    private ReplenishmentPreferences preferences;
+
+    public static final String SERIALIZED_NAME_PRODUCTS = "products";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCTS)
+    private List<DistributionProduct> products = new ArrayList<>();
+
+    public ReplenishmentOrderCreationData() {}
 
     public ReplenishmentOrderCreationData preferences(ReplenishmentPreferences preferences) {
         this.preferences = preferences;
@@ -41,8 +61,7 @@ public class ReplenishmentOrderCreationData {
      *
      * @return preferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReplenishmentPreferences getPreferences() {
+    @javax.annotation.Nullable public ReplenishmentPreferences getPreferences() {
         return preferences;
     }
 
@@ -68,9 +87,7 @@ public class ReplenishmentOrderCreationData {
      *
      * @return products
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Requested amount of single product units to be replenished.")
-    public List<DistributionProduct> getProducts() {
+    @javax.annotation.Nullable public List<DistributionProduct> getProducts() {
         return products;
     }
 
@@ -79,7 +96,7 @@ public class ReplenishmentOrderCreationData {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -107,10 +124,122 @@ public class ReplenishmentOrderCreationData {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("preferences");
+        openapiFields.add("products");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReplenishmentOrderCreationData
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReplenishmentOrderCreationData.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReplenishmentOrderCreationData is not found in the empty JSON string",
+                        ReplenishmentOrderCreationData.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReplenishmentOrderCreationData.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReplenishmentOrderCreationData` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `preferences`
+        if (jsonObj.get("preferences") != null && !jsonObj.get("preferences").isJsonNull()) {
+            ReplenishmentPreferences.validateJsonElement(jsonObj.get("preferences"));
+        }
+        if (jsonObj.get("products") != null && !jsonObj.get("products").isJsonNull()) {
+            JsonArray jsonArrayproducts = jsonObj.getAsJsonArray("products");
+            if (jsonArrayproducts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("products").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `products` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("products").toString()));
+                }
+
+                // validate the optional field `products` (array)
+                for (int i = 0; i < jsonArrayproducts.size(); i++) {
+                    DistributionProduct.validateJsonElement(jsonArrayproducts.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReplenishmentOrderCreationData.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReplenishmentOrderCreationData' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReplenishmentOrderCreationData> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReplenishmentOrderCreationData.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReplenishmentOrderCreationData>() {
+                        @Override
+                        public void write(JsonWriter out, ReplenishmentOrderCreationData value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReplenishmentOrderCreationData read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReplenishmentOrderCreationData given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReplenishmentOrderCreationData
+     * @throws IOException if the JSON string is invalid with respect to ReplenishmentOrderCreationData
+     */
+    public static ReplenishmentOrderCreationData fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReplenishmentOrderCreationData.class);
+    }
+
+    /**
+     * Convert an instance of ReplenishmentOrderCreationData to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,34 +12,42 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * An object which contains the delivery condition and the quantity of upcoming deliveries associated with that
  * condition for an offer.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "An object which contains the delivery condition and the quantity of upcoming deliveries associated with that condition for an offer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DeliveriesCondition {
     /** The condition type of upcoming deliveries for the offer. */
     @JsonAdapter(ConditionEnum.Adapter.class)
     public enum ConditionEnum {
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING")
         NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE")
+
         NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY")
+
         NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK")
+
         NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK"),
-        @SerializedName("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES")
+
         NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES");
 
         private String value;
@@ -57,34 +65,45 @@ public class DeliveriesCondition {
             return String.valueOf(value);
         }
 
-        public static ConditionEnum fromValue(String input) {
+        public static ConditionEnum fromValue(String value) {
             for (ConditionEnum b : ConditionEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ConditionEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ConditionEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ConditionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ConditionEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ConditionEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ConditionEnum.fromValue(value);
         }
     }
 
-    @SerializedName("condition")
-    private ConditionEnum condition = null;
+    public static final String SERIALIZED_NAME_CONDITION = "condition";
 
-    @SerializedName("next30DaysDeliveries")
-    private Long next30DaysDeliveries = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION)
+    private ConditionEnum condition;
+
+    public static final String SERIALIZED_NAME_NEXT30_DAYS_DELIVERIES = "next30DaysDeliveries";
+
+    @SerializedName(SERIALIZED_NAME_NEXT30_DAYS_DELIVERIES)
+    private Long next30DaysDeliveries;
+
+    public DeliveriesCondition() {}
 
     public DeliveriesCondition condition(ConditionEnum condition) {
         this.condition = condition;
@@ -96,9 +115,7 @@ public class DeliveriesCondition {
      *
      * @return condition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The condition type of upcoming deliveries for the offer.")
-    public ConditionEnum getCondition() {
+    @javax.annotation.Nullable public ConditionEnum getCondition() {
         return condition;
     }
 
@@ -112,14 +129,11 @@ public class DeliveriesCondition {
     }
 
     /**
-     * The number of upcoming deliveries in the next 30 days associated with this delivery condition.
+     * The number of upcoming deliveries in the next 30 days associated with this delivery condition. minimum: 0
      *
      * @return next30DaysDeliveries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of upcoming deliveries in the next 30 days associated with this delivery condition.")
-    public Long getNext30DaysDeliveries() {
+    @javax.annotation.Nullable public Long getNext30DaysDeliveries() {
         return next30DaysDeliveries;
     }
 
@@ -128,7 +142,7 @@ public class DeliveriesCondition {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -158,10 +172,110 @@ public class DeliveriesCondition {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("condition");
+        openapiFields.add("next30DaysDeliveries");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DeliveriesCondition
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DeliveriesCondition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DeliveriesCondition is not found in the empty JSON string",
+                        DeliveriesCondition.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DeliveriesCondition.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DeliveriesCondition` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull())
+                && !jsonObj.get("condition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `condition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("condition").toString()));
+        }
+        // validate the optional field `condition`
+        if (jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) {
+            ConditionEnum.validateJsonElement(jsonObj.get("condition"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeliveriesCondition.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeliveriesCondition' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeliveriesCondition> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeliveriesCondition.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeliveriesCondition>() {
+                        @Override
+                        public void write(JsonWriter out, DeliveriesCondition value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeliveriesCondition read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeliveriesCondition given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeliveriesCondition
+     * @throws IOException if the JSON string is invalid with respect to DeliveriesCondition
+     */
+    public static DeliveriesCondition fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeliveriesCondition.class);
+    }
+
+    /**
+     * Convert an instance of DeliveriesCondition to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

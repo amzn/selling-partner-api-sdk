@@ -12,26 +12,51 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed selection information including items, rules, issues, and pagination. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Detailed selection information including items, rules, issues, and pagination.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SelectionDetails {
-    @SerializedName("rules")
-    private SelectionRules rules = null;
+    public static final String SERIALIZED_NAME_RULES = "rules";
 
-    @SerializedName("issues")
-    private List<ItemIssue> issues = null;
+    @SerializedName(SERIALIZED_NAME_RULES)
+    private SelectionRules rules;
 
-    @SerializedName("items")
-    private List<Item> items = null;
+    public static final String SERIALIZED_NAME_ISSUES = "issues";
 
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    @SerializedName(SERIALIZED_NAME_ISSUES)
+    private List<ItemIssue> issues = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<Item> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public SelectionDetails() {}
 
     public SelectionDetails rules(SelectionRules rules) {
         this.rules = rules;
@@ -43,8 +68,7 @@ public class SelectionDetails {
      *
      * @return rules
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SelectionRules getRules() {
+    @javax.annotation.Nullable public SelectionRules getRules() {
         return rules;
     }
 
@@ -71,10 +95,7 @@ public class SelectionDetails {
      *
      * @return issues
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Item-level validation issues for items in this selection. Only present when `ISSUES` is included in the `includedData` query parameter.")
-    public List<ItemIssue> getIssues() {
+    @javax.annotation.Nullable public List<ItemIssue> getIssues() {
         return issues;
     }
 
@@ -100,9 +121,7 @@ public class SelectionDetails {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "List of specific items to include. Only valid when `type` is `ITEMS` (maximum 100 items).")
-    public List<Item> getItems() {
+    @javax.annotation.Nullable public List<Item> getItems() {
         return items;
     }
 
@@ -120,8 +139,7 @@ public class SelectionDetails {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -130,7 +148,7 @@ public class SelectionDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -162,10 +180,144 @@ public class SelectionDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("rules");
+        openapiFields.add("issues");
+        openapiFields.add("items");
+        openapiFields.add("pagination");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SelectionDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SelectionDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SelectionDetails is not found in the empty JSON string",
+                        SelectionDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SelectionDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SelectionDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `rules`
+        if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonNull()) {
+            SelectionRules.validateJsonElement(jsonObj.get("rules"));
+        }
+        if (jsonObj.get("issues") != null && !jsonObj.get("issues").isJsonNull()) {
+            JsonArray jsonArrayissues = jsonObj.getAsJsonArray("issues");
+            if (jsonArrayissues != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("issues").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `issues` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("issues").toString()));
+                }
+
+                // validate the optional field `issues` (array)
+                for (int i = 0; i < jsonArrayissues.size(); i++) {
+                    ItemIssue.validateJsonElement(jsonArrayissues.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    Item.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SelectionDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SelectionDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SelectionDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SelectionDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SelectionDetails>() {
+                        @Override
+                        public void write(JsonWriter out, SelectionDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SelectionDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SelectionDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SelectionDetails
+     * @throws IOException if the JSON string is invalid with respect to SelectionDetails
+     */
+    public static SelectionDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SelectionDetails.class);
+    }
+
+    /**
+     * Convert an instance of SelectionDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Provide units going to the warehouse. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Provide units going to the warehouse.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CustomPlacementInput {
-    @SerializedName("items")
-    private List<ItemInput> items = null;
+    public static final String SERIALIZED_NAME_ITEMS = "items";
 
-    @SerializedName("warehouseId")
-    private String warehouseId = null;
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<ItemInput> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_WAREHOUSE_ID = "warehouseId";
+
+    @SerializedName(SERIALIZED_NAME_WAREHOUSE_ID)
+    private String warehouseId;
+
+    public CustomPlacementInput() {}
 
     public CustomPlacementInput items(List<ItemInput> items) {
         this.items = items;
@@ -44,9 +66,7 @@ public class CustomPlacementInput {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Items included while creating Inbound Plan.")
+    @javax.annotation.Nonnull
     public List<ItemInput> getItems() {
         return items;
     }
@@ -65,7 +85,7 @@ public class CustomPlacementInput {
      *
      * @return warehouseId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Warehouse Id.")
+    @javax.annotation.Nonnull
     public String getWarehouseId() {
         return warehouseId;
     }
@@ -75,7 +95,7 @@ public class CustomPlacementInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -103,10 +123,129 @@ public class CustomPlacementInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("items");
+        openapiFields.add("warehouseId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("items");
+        openapiRequiredFields.add("warehouseId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CustomPlacementInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CustomPlacementInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CustomPlacementInput is not found in the empty JSON string",
+                        CustomPlacementInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CustomPlacementInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CustomPlacementInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CustomPlacementInput.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            ItemInput.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+        if (!jsonObj.get("warehouseId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `warehouseId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("warehouseId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CustomPlacementInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CustomPlacementInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CustomPlacementInput> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CustomPlacementInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CustomPlacementInput>() {
+                        @Override
+                        public void write(JsonWriter out, CustomPlacementInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CustomPlacementInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CustomPlacementInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CustomPlacementInput
+     * @throws IOException if the JSON string is invalid with respect to CustomPlacementInput
+     */
+    public static CustomPlacementInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CustomPlacementInput.class);
+    }
+
+    /**
+     * Convert an instance of CustomPlacementInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

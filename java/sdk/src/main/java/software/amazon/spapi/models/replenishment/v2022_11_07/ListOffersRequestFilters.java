@@ -12,57 +12,78 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOffersRequestFilters {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("skus")
-    private Set<String> skus = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("asins")
-    private Set<String> asins = null;
+    public static final String SERIALIZED_NAME_SKUS = "skus";
 
-    @SerializedName("eligibilities")
-    private Set<EligibilityStatus> eligibilities = null;
+    @SerializedName(SERIALIZED_NAME_SKUS)
+    private Set<String> skus = new LinkedHashSet<>();
 
-    @SerializedName("preferences")
-    private Preference preferences = null;
+    public static final String SERIALIZED_NAME_ASINS = "asins";
 
-    @SerializedName("promotions")
-    private Promotion promotions = null;
+    @SerializedName(SERIALIZED_NAME_ASINS)
+    private Set<String> asins = new LinkedHashSet<>();
 
-    @SerializedName("programTypes")
-    private ProgramTypes programTypes = null;
+    public static final String SERIALIZED_NAME_ELIGIBILITIES = "eligibilities";
+
+    @SerializedName(SERIALIZED_NAME_ELIGIBILITIES)
+    private Set<EligibilityStatus> eligibilities = new LinkedHashSet<>();
+
+    public static final String SERIALIZED_NAME_PREFERENCES = "preferences";
+
+    @SerializedName(SERIALIZED_NAME_PREFERENCES)
+    private Preference preferences;
+
+    public static final String SERIALIZED_NAME_PROMOTIONS = "promotions";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTIONS)
+    private Promotion promotions;
+
+    public static final String SERIALIZED_NAME_PROGRAM_TYPES = "programTypes";
+
+    @SerializedName(SERIALIZED_NAME_PROGRAM_TYPES)
+    private ProgramTypes programTypes = new LinkedHashSet<>();
 
     /** Gets or Sets deliveriesConditions */
     @JsonAdapter(DeliveriesConditionsEnum.Adapter.class)
     public enum DeliveriesConditionsEnum {
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING")
         NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE")
+
         NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY")
+
         NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY"),
-        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK")
+
         NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK"),
-        @SerializedName("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES")
+
         NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES");
 
         private String value;
@@ -80,32 +101,41 @@ public class ListOffersRequestFilters {
             return String.valueOf(value);
         }
 
-        public static DeliveriesConditionsEnum fromValue(String input) {
+        public static DeliveriesConditionsEnum fromValue(String value) {
             for (DeliveriesConditionsEnum b : DeliveriesConditionsEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<DeliveriesConditionsEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final DeliveriesConditionsEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public DeliveriesConditionsEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return DeliveriesConditionsEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return DeliveriesConditionsEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            DeliveriesConditionsEnum.fromValue(value);
         }
     }
 
-    @SerializedName("deliveriesConditions")
-    private Set<DeliveriesConditionsEnum> deliveriesConditions = null;
+    public static final String SERIALIZED_NAME_DELIVERIES_CONDITIONS = "deliveriesConditions";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERIES_CONDITIONS)
+    private Set<DeliveriesConditionsEnum> deliveriesConditions = new LinkedHashSet<>();
+
+    public ListOffersRequestFilters() {}
 
     public ListOffersRequestFilters marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -119,10 +149,7 @@ public class ListOffersRequestFilters {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -149,9 +176,7 @@ public class ListOffersRequestFilters {
      *
      * @return skus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of SKUs to filter. This filter is only supported for sellers and not for vendors.")
-    public Set<String> getSkus() {
+    @javax.annotation.Nullable public Set<String> getSkus() {
         return skus;
     }
 
@@ -177,9 +202,7 @@ public class ListOffersRequestFilters {
      *
      * @return asins
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of Amazon Standard Identification Numbers (ASINs).")
-    public Set<String> getAsins() {
+    @javax.annotation.Nullable public Set<String> getAsins() {
         return asins;
     }
 
@@ -205,8 +228,7 @@ public class ListOffersRequestFilters {
      *
      * @return eligibilities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of eligibilities associated with an offer.")
-    public Set<EligibilityStatus> getEligibilities() {
+    @javax.annotation.Nullable public Set<EligibilityStatus> getEligibilities() {
         return eligibilities;
     }
 
@@ -224,8 +246,7 @@ public class ListOffersRequestFilters {
      *
      * @return preferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Preference getPreferences() {
+    @javax.annotation.Nullable public Preference getPreferences() {
         return preferences;
     }
 
@@ -243,8 +264,7 @@ public class ListOffersRequestFilters {
      *
      * @return promotions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Promotion getPromotions() {
+    @javax.annotation.Nullable public Promotion getPromotions() {
         return promotions;
     }
 
@@ -262,7 +282,7 @@ public class ListOffersRequestFilters {
      *
      * @return programTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ProgramTypes getProgramTypes() {
         return programTypes;
     }
@@ -290,10 +310,7 @@ public class ListOffersRequestFilters {
      *
      * @return deliveriesConditions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.")
-    public Set<DeliveriesConditionsEnum> getDeliveriesConditions() {
+    @javax.annotation.Nullable public Set<DeliveriesConditionsEnum> getDeliveriesConditions() {
         return deliveriesConditions;
     }
 
@@ -302,7 +319,7 @@ public class ListOffersRequestFilters {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -345,10 +362,163 @@ public class ListOffersRequestFilters {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("skus");
+        openapiFields.add("asins");
+        openapiFields.add("eligibilities");
+        openapiFields.add("preferences");
+        openapiFields.add("promotions");
+        openapiFields.add("programTypes");
+        openapiFields.add("deliveriesConditions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("programTypes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOffersRequestFilters
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOffersRequestFilters.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOffersRequestFilters is not found in the empty JSON string",
+                        ListOffersRequestFilters.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOffersRequestFilters.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOffersRequestFilters` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListOffersRequestFilters.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("skus") != null
+                && !jsonObj.get("skus").isJsonNull()
+                && !jsonObj.get("skus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `skus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("skus").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("asins") != null
+                && !jsonObj.get("asins").isJsonNull()
+                && !jsonObj.get("asins").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asins` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("asins").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("eligibilities") != null
+                && !jsonObj.get("eligibilities").isJsonNull()
+                && !jsonObj.get("eligibilities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eligibilities` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("eligibilities").toString()));
+        }
+        // validate the optional field `preferences`
+        if (jsonObj.get("preferences") != null && !jsonObj.get("preferences").isJsonNull()) {
+            Preference.validateJsonElement(jsonObj.get("preferences"));
+        }
+        // validate the optional field `promotions`
+        if (jsonObj.get("promotions") != null && !jsonObj.get("promotions").isJsonNull()) {
+            Promotion.validateJsonElement(jsonObj.get("promotions"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("deliveriesConditions") != null
+                && !jsonObj.get("deliveriesConditions").isJsonNull()
+                && !jsonObj.get("deliveriesConditions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `deliveriesConditions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("deliveriesConditions").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOffersRequestFilters.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOffersRequestFilters' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOffersRequestFilters> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOffersRequestFilters.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOffersRequestFilters>() {
+                        @Override
+                        public void write(JsonWriter out, ListOffersRequestFilters value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOffersRequestFilters read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOffersRequestFilters given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOffersRequestFilters
+     * @throws IOException if the JSON string is invalid with respect to ListOffersRequestFilters
+     */
+    public static ListOffersRequestFilters fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOffersRequestFilters.class);
+    }
+
+    /**
+     * Convert an instance of ListOffersRequestFilters to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

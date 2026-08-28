@@ -12,18 +12,39 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Invoice number and date. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Invoice number and date.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceData {
-    @SerializedName("invoiceNumber")
-    private String invoiceNumber = null;
+    public static final String SERIALIZED_NAME_INVOICE_NUMBER = "invoiceNumber";
 
-    @SerializedName("invoiceDate")
-    private OffsetDateTime invoiceDate = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_NUMBER)
+    private String invoiceNumber;
+
+    public static final String SERIALIZED_NAME_INVOICE_DATE = "invoiceDate";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_DATE)
+    private OffsetDateTime invoiceDate;
+
+    public InvoiceData() {}
 
     public InvoiceData invoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -35,7 +56,7 @@ public class InvoiceData {
      *
      * @return invoiceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
+    @javax.annotation.Nonnull
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -54,8 +75,7 @@ public class InvoiceData {
      *
      * @return invoiceDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A datetime value in ISO 8601 format.")
-    public OffsetDateTime getInvoiceDate() {
+    @javax.annotation.Nullable public OffsetDateTime getInvoiceDate() {
         return invoiceDate;
     }
 
@@ -64,7 +84,7 @@ public class InvoiceData {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -92,10 +112,115 @@ public class InvoiceData {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("invoiceNumber");
+        openapiFields.add("invoiceDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("invoiceNumber");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceData
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceData is not found in the empty JSON string",
+                        InvoiceData.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceData.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceData` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvoiceData.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("invoiceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceData.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceData' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceData> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceData.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceData>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceData value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceData read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceData given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceData
+     * @throws IOException if the JSON string is invalid with respect to InvoiceData
+     */
+    public static InvoiceData fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceData.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceData to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

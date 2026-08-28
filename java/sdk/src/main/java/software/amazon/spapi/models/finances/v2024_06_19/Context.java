@@ -12,22 +12,32 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information about the item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about the item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Context {
     /** The store name associated with the transaction. */
     @JsonAdapter(StoreNameEnum.Adapter.class)
     public enum StoreNameEnum {
-        @SerializedName("AMAZON_HAUL")
         AMAZON_HAUL("AMAZON_HAUL");
 
         private String value;
@@ -45,76 +55,115 @@ public class Context {
             return String.valueOf(value);
         }
 
-        public static StoreNameEnum fromValue(String input) {
+        public static StoreNameEnum fromValue(String value) {
             for (StoreNameEnum b : StoreNameEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StoreNameEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StoreNameEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StoreNameEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StoreNameEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StoreNameEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StoreNameEnum.fromValue(value);
         }
     }
 
-    @SerializedName("storeName")
-    private StoreNameEnum storeName = null;
+    public static final String SERIALIZED_NAME_STORE_NAME = "storeName";
 
-    @SerializedName("orderType")
-    private String orderType = null;
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private StoreNameEnum storeName;
 
-    @SerializedName("channel")
-    private String channel = null;
+    public static final String SERIALIZED_NAME_ORDER_TYPE = "orderType";
 
-    @SerializedName("asin")
-    private String asin = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_TYPE)
+    private String orderType;
 
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_CHANNEL = "channel";
 
-    @SerializedName("quantityShipped")
-    private Integer quantityShipped = null;
+    @SerializedName(SERIALIZED_NAME_CHANNEL)
+    private String channel;
 
-    @SerializedName("fulfillmentNetwork")
-    private String fulfillmentNetwork = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("paymentType")
-    private String paymentType = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("paymentMethod")
-    private String paymentMethod = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
 
-    @SerializedName("paymentReference")
-    private String paymentReference = null;
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
 
-    @SerializedName("paymentDate")
-    private OffsetDateTime paymentDate = null;
+    public static final String SERIALIZED_NAME_QUANTITY_SHIPPED = "quantityShipped";
 
-    @SerializedName("deferralReason")
-    private String deferralReason = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_SHIPPED)
+    private Integer quantityShipped;
 
-    @SerializedName("maturityDate")
-    private OffsetDateTime maturityDate = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_NETWORK = "fulfillmentNetwork";
 
-    @SerializedName("startTime")
-    private OffsetDateTime startTime = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_NETWORK)
+    private String fulfillmentNetwork;
 
-    @SerializedName("endTime")
-    private OffsetDateTime endTime = null;
+    public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
 
-    @SerializedName("contextType")
-    private String contextType = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_TYPE)
+    private String paymentType;
+
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
+    private String paymentMethod;
+
+    public static final String SERIALIZED_NAME_PAYMENT_REFERENCE = "paymentReference";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_REFERENCE)
+    private String paymentReference;
+
+    public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+    private OffsetDateTime paymentDate;
+
+    public static final String SERIALIZED_NAME_DEFERRAL_REASON = "deferralReason";
+
+    @SerializedName(SERIALIZED_NAME_DEFERRAL_REASON)
+    private String deferralReason;
+
+    public static final String SERIALIZED_NAME_MATURITY_DATE = "maturityDate";
+
+    @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
+    private OffsetDateTime maturityDate;
+
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
+
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private OffsetDateTime startTime;
+
+    public static final String SERIALIZED_NAME_END_TIME = "endTime";
+
+    @SerializedName(SERIALIZED_NAME_END_TIME)
+    private OffsetDateTime endTime;
+
+    public static final String SERIALIZED_NAME_CONTEXT_TYPE = "contextType";
+
+    @SerializedName(SERIALIZED_NAME_CONTEXT_TYPE)
+    private String contextType;
+
+    public Context() {}
 
     public Context storeName(StoreNameEnum storeName) {
         this.storeName = storeName;
@@ -126,8 +175,7 @@ public class Context {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name associated with the transaction.")
-    public StoreNameEnum getStoreName() {
+    @javax.annotation.Nullable public StoreNameEnum getStoreName() {
         return storeName;
     }
 
@@ -145,8 +193,7 @@ public class Context {
      *
      * @return orderType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The order type of the transaction.")
-    public String getOrderType() {
+    @javax.annotation.Nullable public String getOrderType() {
         return orderType;
     }
 
@@ -164,8 +211,7 @@ public class Context {
      *
      * @return channel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The channel of the transaction. For example: `MFN`.")
-    public String getChannel() {
+    @javax.annotation.Nullable public String getChannel() {
         return channel;
     }
 
@@ -183,9 +229,7 @@ public class Context {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -203,8 +247,7 @@ public class Context {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Stock Keeping Unit (SKU) of the item.")
-    public String getSku() {
+    @javax.annotation.Nullable public String getSku() {
         return sku;
     }
 
@@ -222,8 +265,7 @@ public class Context {
      *
      * @return quantityShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the item shipped.")
-    public Integer getQuantityShipped() {
+    @javax.annotation.Nullable public Integer getQuantityShipped() {
         return quantityShipped;
     }
 
@@ -241,8 +283,7 @@ public class Context {
      *
      * @return fulfillmentNetwork
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The fulfillment network of the item.")
-    public String getFulfillmentNetwork() {
+    @javax.annotation.Nullable public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }
 
@@ -260,8 +301,7 @@ public class Context {
      *
      * @return paymentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.")
-    public String getPaymentType() {
+    @javax.annotation.Nullable public String getPaymentType() {
         return paymentType;
     }
 
@@ -279,8 +319,7 @@ public class Context {
      *
      * @return paymentMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The method of payment.")
-    public String getPaymentMethod() {
+    @javax.annotation.Nullable public String getPaymentMethod() {
         return paymentMethod;
     }
 
@@ -298,8 +337,7 @@ public class Context {
      *
      * @return paymentReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reference number of the payment.")
-    public String getPaymentReference() {
+    @javax.annotation.Nullable public String getPaymentReference() {
         return paymentReference;
     }
 
@@ -317,10 +355,7 @@ public class Context {
      *
      * @return paymentDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPaymentDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPaymentDate() {
         return paymentDate;
     }
 
@@ -339,10 +374,7 @@ public class Context {
      *
      * @return deferralReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)")
-    public String getDeferralReason() {
+    @javax.annotation.Nullable public String getDeferralReason() {
         return deferralReason;
     }
 
@@ -360,10 +392,7 @@ public class Context {
      *
      * @return maturityDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getMaturityDate() {
+    @javax.annotation.Nullable public OffsetDateTime getMaturityDate() {
         return maturityDate;
     }
 
@@ -381,10 +410,7 @@ public class Context {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getStartTime() {
         return startTime;
     }
 
@@ -402,10 +428,7 @@ public class Context {
      *
      * @return endTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getEndTime() {
         return endTime;
     }
 
@@ -423,7 +446,7 @@ public class Context {
      *
      * @return contextType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of context.")
+    @javax.annotation.Nonnull
     public String getContextType() {
         return contextType;
     }
@@ -433,7 +456,7 @@ public class Context {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -513,10 +536,196 @@ public class Context {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("storeName");
+        openapiFields.add("orderType");
+        openapiFields.add("channel");
+        openapiFields.add("asin");
+        openapiFields.add("sku");
+        openapiFields.add("quantityShipped");
+        openapiFields.add("fulfillmentNetwork");
+        openapiFields.add("paymentType");
+        openapiFields.add("paymentMethod");
+        openapiFields.add("paymentReference");
+        openapiFields.add("paymentDate");
+        openapiFields.add("deferralReason");
+        openapiFields.add("maturityDate");
+        openapiFields.add("startTime");
+        openapiFields.add("endTime");
+        openapiFields.add("contextType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contextType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Context
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Context.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Context is not found in the empty JSON string",
+                        Context.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Context.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Context` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Context.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("storeName") != null && !jsonObj.get("storeName").isJsonNull())
+                && !jsonObj.get("storeName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `storeName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("storeName").toString()));
+        }
+        // validate the optional field `storeName`
+        if (jsonObj.get("storeName") != null && !jsonObj.get("storeName").isJsonNull()) {
+            StoreNameEnum.validateJsonElement(jsonObj.get("storeName"));
+        }
+        if ((jsonObj.get("orderType") != null && !jsonObj.get("orderType").isJsonNull())
+                && !jsonObj.get("orderType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderType").toString()));
+        }
+        if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull())
+                && !jsonObj.get("channel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `channel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("channel").toString()));
+        }
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull())
+                && !jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        if ((jsonObj.get("fulfillmentNetwork") != null
+                        && !jsonObj.get("fulfillmentNetwork").isJsonNull())
+                && !jsonObj.get("fulfillmentNetwork").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentNetwork` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentNetwork").toString()));
+        }
+        if ((jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonNull())
+                && !jsonObj.get("paymentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentType").toString()));
+        }
+        if ((jsonObj.get("paymentMethod") != null
+                        && !jsonObj.get("paymentMethod").isJsonNull())
+                && !jsonObj.get("paymentMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentMethod").toString()));
+        }
+        if ((jsonObj.get("paymentReference") != null
+                        && !jsonObj.get("paymentReference").isJsonNull())
+                && !jsonObj.get("paymentReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentReference").toString()));
+        }
+        if ((jsonObj.get("deferralReason") != null
+                        && !jsonObj.get("deferralReason").isJsonNull())
+                && !jsonObj.get("deferralReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `deferralReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("deferralReason").toString()));
+        }
+        if (!jsonObj.get("contextType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contextType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contextType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Context.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Context' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Context> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Context.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Context>() {
+                        @Override
+                        public void write(JsonWriter out, Context value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Context read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Context given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Context
+     * @throws IOException if the JSON string is invalid with respect to Context
+     */
+    public static Context fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Context.class);
+    }
+
+    /**
+     * Convert an instance of Context to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

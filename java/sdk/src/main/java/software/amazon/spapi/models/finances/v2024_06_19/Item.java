@@ -12,28 +12,56 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information about an item in a transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about an item in a transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("description")
-    private String description = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-    @SerializedName("relatedIdentifiers")
-    private ItemRelatedIdentifiers relatedIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
 
-    @SerializedName("totalAmount")
-    private Currency totalAmount = null;
+    public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
-    @SerializedName("breakdowns")
-    private List<Breakdown> breakdowns = null;
+    @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
+    private ItemRelatedIdentifiers relatedIdentifiers = new ArrayList<>();
 
-    @SerializedName("contexts")
-    private Contexts contexts = null;
+    public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "totalAmount";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
+    private Currency totalAmount;
+
+    public static final String SERIALIZED_NAME_BREAKDOWNS = "breakdowns";
+
+    @SerializedName(SERIALIZED_NAME_BREAKDOWNS)
+    private List<Breakdown> breakdowns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CONTEXTS = "contexts";
+
+    @SerializedName(SERIALIZED_NAME_CONTEXTS)
+    private Contexts contexts = new ArrayList<>();
+
+    public Item() {}
 
     public Item description(String description) {
         this.description = description;
@@ -45,8 +73,7 @@ public class Item {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the items in a transaction.")
-    public String getDescription() {
+    @javax.annotation.Nullable public String getDescription() {
         return description;
     }
 
@@ -64,8 +91,7 @@ public class Item {
      *
      * @return relatedIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemRelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public ItemRelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
@@ -83,8 +109,7 @@ public class Item {
      *
      * @return totalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTotalAmount() {
+    @javax.annotation.Nullable public Currency getTotalAmount() {
         return totalAmount;
     }
 
@@ -110,9 +135,7 @@ public class Item {
      *
      * @return breakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
-    public List<Breakdown> getBreakdowns() {
+    @javax.annotation.Nullable public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
 
@@ -130,8 +153,7 @@ public class Item {
      *
      * @return contexts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Contexts getContexts() {
+    @javax.annotation.Nullable public Contexts getContexts() {
         return contexts;
     }
 
@@ -140,7 +162,7 @@ public class Item {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -176,10 +198,129 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("description");
+        openapiFields.add("relatedIdentifiers");
+        openapiFields.add("totalAmount");
+        openapiFields.add("breakdowns");
+        openapiFields.add("contexts");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+        // validate the optional field `totalAmount`
+        if (jsonObj.get("totalAmount") != null && !jsonObj.get("totalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("totalAmount"));
+        }
+        if (jsonObj.get("breakdowns") != null && !jsonObj.get("breakdowns").isJsonNull()) {
+            JsonArray jsonArraybreakdowns = jsonObj.getAsJsonArray("breakdowns");
+            if (jsonArraybreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("breakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `breakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("breakdowns").toString()));
+                }
+
+                // validate the optional field `breakdowns` (array)
+                for (int i = 0; i < jsonArraybreakdowns.size(); i++) {
+                    Breakdown.validateJsonElement(jsonArraybreakdowns.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

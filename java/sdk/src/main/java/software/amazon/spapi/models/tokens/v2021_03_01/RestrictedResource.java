@@ -12,29 +12,39 @@
 
 package software.amazon.spapi.models.tokens.v2021_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Model of a restricted resource. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Model of a restricted resource.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RestrictedResource {
     /** The HTTP method in the restricted resource. */
     @JsonAdapter(MethodEnum.Adapter.class)
     public enum MethodEnum {
-        @SerializedName("GET")
         GET("GET"),
-        @SerializedName("PUT")
+
         PUT("PUT"),
-        @SerializedName("POST")
+
         POST("POST"),
-        @SerializedName("DELETE")
+
         DELETE("DELETE");
 
         private String value;
@@ -52,37 +62,50 @@ public class RestrictedResource {
             return String.valueOf(value);
         }
 
-        public static MethodEnum fromValue(String input) {
+        public static MethodEnum fromValue(String value) {
             for (MethodEnum b : MethodEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<MethodEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final MethodEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public MethodEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return MethodEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return MethodEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            MethodEnum.fromValue(value);
         }
     }
 
-    @SerializedName("method")
-    private MethodEnum method = null;
+    public static final String SERIALIZED_NAME_METHOD = "method";
 
-    @SerializedName("path")
-    private String path = null;
+    @SerializedName(SERIALIZED_NAME_METHOD)
+    private MethodEnum method;
 
-    @SerializedName("dataElements")
-    private List<String> dataElements = null;
+    public static final String SERIALIZED_NAME_PATH = "path";
+
+    @SerializedName(SERIALIZED_NAME_PATH)
+    private String path;
+
+    public static final String SERIALIZED_NAME_DATA_ELEMENTS = "dataElements";
+
+    @SerializedName(SERIALIZED_NAME_DATA_ELEMENTS)
+    private List<String> dataElements = new ArrayList<>();
+
+    public RestrictedResource() {}
 
     public RestrictedResource method(MethodEnum method) {
         this.method = method;
@@ -94,9 +117,7 @@ public class RestrictedResource {
      *
      * @return method
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The HTTP method in the restricted resource.")
+    @javax.annotation.Nonnull
     public MethodEnum getMethod() {
         return method;
     }
@@ -125,10 +146,7 @@ public class RestrictedResource {
      *
      * @return path
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The path in the restricted resource. Here are some path examples: - ```/orders/v0/orders```. For getting an RDT for the getOrders operation of the Orders API. For bulk orders. - ```/orders/v0/orders/123-1234567-1234567```. For getting an RDT for the getOrder operation of the Orders API. For a specific order. - ```/orders/v0/orders/123-1234567-1234567/orderItems```. For getting an RDT for the getOrderItems operation of the Orders API. For the order items in a specific order. - ```/mfn/v0/shipments/FBA1234ABC5D```. For getting an RDT for the getShipment operation of the Shipping API. For a specific shipment. - ```/mfn/v0/shipments/{shipmentId}```. For getting an RDT for the getShipment operation of the Shipping API. For any of a selling partner's shipments that you specify when you call the getShipment operation.")
+    @javax.annotation.Nonnull
     public String getPath() {
         return path;
     }
@@ -161,10 +179,7 @@ public class RestrictedResource {
      *
      * @return dataElements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates the type of Personally Identifiable Information requested. This parameter is required only when getting an RDT for use with the getOrder, getOrders, or getOrderItems operation of the Orders API. For more information, see the [Tokens API Use Case Guide](doc:tokens-api-use-case-guide). Possible values include: - **buyerInfo**. On the order level this includes general identifying information about the buyer and tax-related information. On the order item level this includes gift wrap information and custom order information, if available. - **shippingAddress**. This includes information for fulfilling orders. - **buyerTaxInformation**. This includes information for issuing tax invoices.")
-    public List<String> getDataElements() {
+    @javax.annotation.Nullable public List<String> getDataElements() {
         return dataElements;
     }
 
@@ -173,7 +188,7 @@ public class RestrictedResource {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -203,10 +218,132 @@ public class RestrictedResource {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("method");
+        openapiFields.add("path");
+        openapiFields.add("dataElements");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("method");
+        openapiRequiredFields.add("path");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RestrictedResource
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RestrictedResource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RestrictedResource is not found in the empty JSON string",
+                        RestrictedResource.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RestrictedResource.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RestrictedResource` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RestrictedResource.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("method").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `method` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("method").toString()));
+        }
+        // validate the required field `method`
+        MethodEnum.validateJsonElement(jsonObj.get("method"));
+        if (!jsonObj.get("path").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `path` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("path").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("dataElements") != null
+                && !jsonObj.get("dataElements").isJsonNull()
+                && !jsonObj.get("dataElements").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dataElements` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("dataElements").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RestrictedResource.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RestrictedResource' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RestrictedResource> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RestrictedResource.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RestrictedResource>() {
+                        @Override
+                        public void write(JsonWriter out, RestrictedResource value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RestrictedResource read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RestrictedResource given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RestrictedResource
+     * @throws IOException if the JSON string is invalid with respect to RestrictedResource
+     */
+    public static RestrictedResource fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RestrictedResource.class);
+    }
+
+    /**
+     * Convert an instance of RestrictedResource to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

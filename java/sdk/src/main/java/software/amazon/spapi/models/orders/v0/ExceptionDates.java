@@ -12,23 +12,46 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Dates when the business is closed or open with a different time window. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Dates when the business is closed or open with a different time window.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ExceptionDates {
-    @SerializedName("ExceptionDate")
-    private String exceptionDate = null;
+    public static final String SERIALIZED_NAME_EXCEPTION_DATE = "ExceptionDate";
 
-    @SerializedName("IsOpen")
-    private Boolean isOpen = null;
+    @SerializedName(SERIALIZED_NAME_EXCEPTION_DATE)
+    private String exceptionDate;
 
-    @SerializedName("OpenIntervals")
-    private List<OpenInterval> openIntervals = null;
+    public static final String SERIALIZED_NAME_IS_OPEN = "IsOpen";
+
+    @SerializedName(SERIALIZED_NAME_IS_OPEN)
+    private Boolean isOpen;
+
+    public static final String SERIALIZED_NAME_OPEN_INTERVALS = "OpenIntervals";
+
+    @SerializedName(SERIALIZED_NAME_OPEN_INTERVALS)
+    private List<OpenInterval> openIntervals = new ArrayList<>();
+
+    public ExceptionDates() {}
 
     public ExceptionDates exceptionDate(String exceptionDate) {
         this.exceptionDate = exceptionDate;
@@ -41,10 +64,7 @@ public class ExceptionDates {
      *
      * @return exceptionDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Date when the business is closed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date format.")
-    public String getExceptionDate() {
+    @javax.annotation.Nullable public String getExceptionDate() {
         return exceptionDate;
     }
 
@@ -62,9 +82,7 @@ public class ExceptionDates {
      *
      * @return isOpen
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Boolean indicating if the business is closed or open on that date.")
-    public Boolean getIsOpen() {
+    @javax.annotation.Nullable public Boolean getIsOpen() {
         return isOpen;
     }
 
@@ -90,8 +108,7 @@ public class ExceptionDates {
      *
      * @return openIntervals
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Time window during the day when the business is open.")
-    public List<OpenInterval> getOpenIntervals() {
+    @javax.annotation.Nullable public List<OpenInterval> getOpenIntervals() {
         return openIntervals;
     }
 
@@ -100,7 +117,7 @@ public class ExceptionDates {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -130,10 +147,126 @@ public class ExceptionDates {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ExceptionDate");
+        openapiFields.add("IsOpen");
+        openapiFields.add("OpenIntervals");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ExceptionDates
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ExceptionDates.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ExceptionDates is not found in the empty JSON string",
+                        ExceptionDates.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ExceptionDates.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ExceptionDates` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ExceptionDate") != null
+                        && !jsonObj.get("ExceptionDate").isJsonNull())
+                && !jsonObj.get("ExceptionDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ExceptionDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ExceptionDate").toString()));
+        }
+        if (jsonObj.get("OpenIntervals") != null
+                && !jsonObj.get("OpenIntervals").isJsonNull()) {
+            JsonArray jsonArrayopenIntervals = jsonObj.getAsJsonArray("OpenIntervals");
+            if (jsonArrayopenIntervals != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("OpenIntervals").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `OpenIntervals` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("OpenIntervals").toString()));
+                }
+
+                // validate the optional field `OpenIntervals` (array)
+                for (int i = 0; i < jsonArrayopenIntervals.size(); i++) {
+                    OpenInterval.validateJsonElement(jsonArrayopenIntervals.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ExceptionDates.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ExceptionDates' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ExceptionDates> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ExceptionDates.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ExceptionDates>() {
+                        @Override
+                        public void write(JsonWriter out, ExceptionDates value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ExceptionDates read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ExceptionDates given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ExceptionDates
+     * @throws IOException if the JSON string is invalid with respect to ExceptionDates
+     */
+    public static ExceptionDates fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ExceptionDates.class);
+    }
+
+    /**
+     * Convert an instance of ExceptionDates to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

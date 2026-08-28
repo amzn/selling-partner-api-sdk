@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item from a SAFE-T claim reimbursement. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item from a SAFE-T claim reimbursement.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SAFETReimbursementItem {
-    @SerializedName("itemChargeList")
-    private ChargeComponentList itemChargeList = null;
+    public static final String SERIALIZED_NAME_ITEM_CHARGE_LIST = "itemChargeList";
 
-    @SerializedName("productDescription")
-    private String productDescription = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_CHARGE_LIST)
+    private ChargeComponentList itemChargeList = new ArrayList<>();
 
-    @SerializedName("quantity")
-    private String quantity = null;
+    public static final String SERIALIZED_NAME_PRODUCT_DESCRIPTION = "productDescription";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_DESCRIPTION)
+    private String productDescription;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private String quantity;
+
+    public SAFETReimbursementItem() {}
 
     public SAFETReimbursementItem itemChargeList(ChargeComponentList itemChargeList) {
         this.itemChargeList = itemChargeList;
@@ -37,8 +60,7 @@ public class SAFETReimbursementItem {
      *
      * @return itemChargeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getItemChargeList() {
+    @javax.annotation.Nullable public ChargeComponentList getItemChargeList() {
         return itemChargeList;
     }
 
@@ -56,9 +78,7 @@ public class SAFETReimbursementItem {
      *
      * @return productDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The description of the item as shown on the product detail page on the retail website.")
-    public String getProductDescription() {
+    @javax.annotation.Nullable public String getProductDescription() {
         return productDescription;
     }
 
@@ -76,8 +96,7 @@ public class SAFETReimbursementItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units of the item being reimbursed.")
-    public String getQuantity() {
+    @javax.annotation.Nullable public String getQuantity() {
         return quantity;
     }
 
@@ -86,7 +105,7 @@ public class SAFETReimbursementItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -120,10 +139,115 @@ public class SAFETReimbursementItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemChargeList");
+        openapiFields.add("productDescription");
+        openapiFields.add("quantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SAFETReimbursementItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SAFETReimbursementItem.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SAFETReimbursementItem is not found in the empty JSON string",
+                        SAFETReimbursementItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SAFETReimbursementItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SAFETReimbursementItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("productDescription") != null
+                        && !jsonObj.get("productDescription").isJsonNull())
+                && !jsonObj.get("productDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productDescription").toString()));
+        }
+        if ((jsonObj.get("quantity") != null && !jsonObj.get("quantity").isJsonNull())
+                && !jsonObj.get("quantity").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `quantity` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("quantity").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SAFETReimbursementItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SAFETReimbursementItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SAFETReimbursementItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SAFETReimbursementItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SAFETReimbursementItem>() {
+                        @Override
+                        public void write(JsonWriter out, SAFETReimbursementItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SAFETReimbursementItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SAFETReimbursementItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SAFETReimbursementItem
+     * @throws IOException if the JSON string is invalid with respect to SAFETReimbursementItem
+     */
+    public static SAFETReimbursementItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SAFETReimbursementItem.class);
+    }
+
+    /**
+     * Convert an instance of SAFETReimbursementItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

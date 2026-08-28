@@ -12,43 +12,75 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A packing option contains a set of pack groups plus additional information about the packing option, such as any
  * discounts or fees if it&#39;s selected.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it's selected.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackingOption {
-    @SerializedName("discounts")
-    private List<Incentive> discounts = null;
+    public static final String SERIALIZED_NAME_DISCOUNTS = "discounts";
 
-    @SerializedName("expiration")
-    private OffsetDateTime expiration = null;
+    @SerializedName(SERIALIZED_NAME_DISCOUNTS)
+    private List<Incentive> discounts = new ArrayList<>();
 
-    @SerializedName("fees")
-    private List<Incentive> fees = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
 
-    @SerializedName("packingGroups")
-    private List<String> packingGroups = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private OffsetDateTime expiration;
 
-    @SerializedName("packingOptionId")
-    private String packingOptionId = null;
+    public static final String SERIALIZED_NAME_FEES = "fees";
 
-    @SerializedName("status")
-    private String status = null;
+    @SerializedName(SERIALIZED_NAME_FEES)
+    private List<Incentive> fees = new ArrayList<>();
 
-    @SerializedName("supportedConfigurations")
-    private List<PackingConfiguration> supportedConfigurations = null;
+    public static final String SERIALIZED_NAME_PACKING_GROUPS = "packingGroups";
 
-    @SerializedName("supportedShippingConfigurations")
-    private List<ShippingConfiguration> supportedShippingConfigurations = null;
+    @SerializedName(SERIALIZED_NAME_PACKING_GROUPS)
+    private List<String> packingGroups = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKING_OPTION_ID = "packingOptionId";
+
+    @SerializedName(SERIALIZED_NAME_PACKING_OPTION_ID)
+    private String packingOptionId;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public static final String SERIALIZED_NAME_SUPPORTED_CONFIGURATIONS = "supportedConfigurations";
+
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_CONFIGURATIONS)
+    private List<PackingConfiguration> supportedConfigurations = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUPPORTED_SHIPPING_CONFIGURATIONS = "supportedShippingConfigurations";
+
+    @SerializedName(SERIALIZED_NAME_SUPPORTED_SHIPPING_CONFIGURATIONS)
+    private List<ShippingConfiguration> supportedShippingConfigurations = new ArrayList<>();
+
+    public PackingOption() {}
 
     public PackingOption discounts(List<Incentive> discounts) {
         this.discounts = discounts;
@@ -68,7 +100,7 @@ public class PackingOption {
      *
      * @return discounts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Discount for the offered option.")
+    @javax.annotation.Nonnull
     public List<Incentive> getDiscounts() {
         return discounts;
     }
@@ -89,10 +121,7 @@ public class PackingOption {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The time at which this packing option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
-    public OffsetDateTime getExpiration() {
+    @javax.annotation.Nullable public OffsetDateTime getExpiration() {
         return expiration;
     }
 
@@ -118,7 +147,7 @@ public class PackingOption {
      *
      * @return fees
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Fee for the offered option.")
+    @javax.annotation.Nonnull
     public List<Incentive> getFees() {
         return fees;
     }
@@ -145,7 +174,7 @@ public class PackingOption {
      *
      * @return packingGroups
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Packing group IDs.")
+    @javax.annotation.Nonnull
     public List<String> getPackingGroups() {
         return packingGroups;
     }
@@ -164,7 +193,7 @@ public class PackingOption {
      *
      * @return packingOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of a packing option.")
+    @javax.annotation.Nonnull
     public String getPackingOptionId() {
         return packingOptionId;
     }
@@ -184,9 +213,7 @@ public class PackingOption {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The status of the packing option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.")
+    @javax.annotation.Nonnull
     public String getStatus() {
         return status;
     }
@@ -213,9 +240,7 @@ public class PackingOption {
      *
      * @return supportedConfigurations
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of possible configurations for this option.")
+    @javax.annotation.Nonnull
     public List<PackingConfiguration> getSupportedConfigurations() {
         return supportedConfigurations;
     }
@@ -244,10 +269,7 @@ public class PackingOption {
      *
      * @return supportedShippingConfigurations
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "**This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.")
+    @javax.annotation.Nonnull
     public List<ShippingConfiguration> getSupportedShippingConfigurations() {
         return supportedShippingConfigurations;
     }
@@ -257,7 +279,7 @@ public class PackingOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -311,10 +333,193 @@ public class PackingOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("discounts");
+        openapiFields.add("expiration");
+        openapiFields.add("fees");
+        openapiFields.add("packingGroups");
+        openapiFields.add("packingOptionId");
+        openapiFields.add("status");
+        openapiFields.add("supportedConfigurations");
+        openapiFields.add("supportedShippingConfigurations");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("discounts");
+        openapiRequiredFields.add("fees");
+        openapiRequiredFields.add("packingGroups");
+        openapiRequiredFields.add("packingOptionId");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("supportedConfigurations");
+        openapiRequiredFields.add("supportedShippingConfigurations");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackingOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackingOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackingOption is not found in the empty JSON string",
+                        PackingOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackingOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackingOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackingOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("discounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `discounts` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("discounts").toString()));
+        }
+
+        JsonArray jsonArraydiscounts = jsonObj.getAsJsonArray("discounts");
+        // validate the required field `discounts` (array)
+        for (int i = 0; i < jsonArraydiscounts.size(); i++) {
+            Incentive.validateJsonElement(jsonArraydiscounts.get(i));
+        }
+        ;
+        // ensure the json data is an array
+        if (!jsonObj.get("fees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fees` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fees").toString()));
+        }
+
+        JsonArray jsonArrayfees = jsonObj.getAsJsonArray("fees");
+        // validate the required field `fees` (array)
+        for (int i = 0; i < jsonArrayfees.size(); i++) {
+            Incentive.validateJsonElement(jsonArrayfees.get(i));
+        }
+        ;
+        // ensure the required json array is present
+        if (jsonObj.get("packingGroups") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("packingGroups").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packingGroups` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packingGroups").toString()));
+        }
+        if (!jsonObj.get("packingOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packingOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packingOptionId").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("supportedConfigurations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedConfigurations` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedConfigurations").toString()));
+        }
+
+        JsonArray jsonArraysupportedConfigurations = jsonObj.getAsJsonArray("supportedConfigurations");
+        // validate the required field `supportedConfigurations` (array)
+        for (int i = 0; i < jsonArraysupportedConfigurations.size(); i++) {
+            PackingConfiguration.validateJsonElement(jsonArraysupportedConfigurations.get(i));
+        }
+        ;
+        // ensure the json data is an array
+        if (!jsonObj.get("supportedShippingConfigurations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedShippingConfigurations` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedShippingConfigurations").toString()));
+        }
+
+        JsonArray jsonArraysupportedShippingConfigurations = jsonObj.getAsJsonArray("supportedShippingConfigurations");
+        // validate the required field `supportedShippingConfigurations` (array)
+        for (int i = 0; i < jsonArraysupportedShippingConfigurations.size(); i++) {
+            ShippingConfiguration.validateJsonElement(jsonArraysupportedShippingConfigurations.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackingOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackingOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackingOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackingOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackingOption>() {
+                        @Override
+                        public void write(JsonWriter out, PackingOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackingOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackingOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackingOption
+     * @throws IOException if the JSON string is invalid with respect to PackingOption
+     */
+    public static PackingOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackingOption.class);
+    }
+
+    /**
+     * Convert an instance of PackingOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

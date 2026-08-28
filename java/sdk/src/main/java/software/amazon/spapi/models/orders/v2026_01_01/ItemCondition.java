@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed information about the physical condition and quality state of the item being sold. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Detailed information about the physical condition and quality state of the item being sold.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemCondition {
-    @SerializedName("conditionType")
-    private String conditionType = null;
+    public static final String SERIALIZED_NAME_CONDITION_TYPE = "conditionType";
 
-    @SerializedName("conditionSubtype")
-    private String conditionSubtype = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION_TYPE)
+    private String conditionType;
 
-    @SerializedName("conditionNote")
-    private String conditionNote = null;
+    public static final String SERIALIZED_NAME_CONDITION_SUBTYPE = "conditionSubtype";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_SUBTYPE)
+    private String conditionSubtype;
+
+    public static final String SERIALIZED_NAME_CONDITION_NOTE = "conditionNote";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_NOTE)
+    private String conditionNote;
+
+    public ItemCondition() {}
 
     public ItemCondition conditionType(String conditionType) {
         this.conditionType = conditionType;
@@ -39,10 +61,7 @@ public class ItemCondition {
      *
      * @return conditionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The primary condition category that broadly describes the item's state.  **Possible values**: `NEW`, `USED`, `COLLECTIBLE`, `REFURBISHED`, `PREORDER`, `CLUB`.")
-    public String getConditionType() {
+    @javax.annotation.Nullable public String getConditionType() {
         return conditionType;
     }
 
@@ -64,10 +83,7 @@ public class ItemCondition {
      *
      * @return conditionSubtype
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A more specific condition classification that provides additional detail about the item's quality within the main condition type.  **Possible values**: `NEW`, `MINT`, `VERY_GOOD`, `GOOD`, `ACCEPTABLE`, `POOR`, `CLUB`, `OEM`, `WARRANTY`, `REFURBISHED_WARRANTY`, `REFURBISHED`, `OPEN_BOX`, `ANY`, `OTHER`.")
-    public String getConditionSubtype() {
+    @javax.annotation.Nullable public String getConditionSubtype() {
         return conditionSubtype;
     }
 
@@ -85,10 +101,7 @@ public class ItemCondition {
      *
      * @return conditionNote
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Additional details provided by the seller to describe the specific condition of this particular item.")
-    public String getConditionNote() {
+    @javax.annotation.Nullable public String getConditionNote() {
         return conditionNote;
     }
 
@@ -97,7 +110,7 @@ public class ItemCondition {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -129,10 +142,122 @@ public class ItemCondition {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("conditionType");
+        openapiFields.add("conditionSubtype");
+        openapiFields.add("conditionNote");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemCondition
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemCondition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemCondition is not found in the empty JSON string",
+                        ItemCondition.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemCondition.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemCondition` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("conditionType") != null
+                        && !jsonObj.get("conditionType").isJsonNull())
+                && !jsonObj.get("conditionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `conditionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("conditionType").toString()));
+        }
+        if ((jsonObj.get("conditionSubtype") != null
+                        && !jsonObj.get("conditionSubtype").isJsonNull())
+                && !jsonObj.get("conditionSubtype").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `conditionSubtype` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("conditionSubtype").toString()));
+        }
+        if ((jsonObj.get("conditionNote") != null
+                        && !jsonObj.get("conditionNote").isJsonNull())
+                && !jsonObj.get("conditionNote").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `conditionNote` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("conditionNote").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemCondition.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemCondition' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemCondition> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemCondition.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemCondition>() {
+                        @Override
+                        public void write(JsonWriter out, ItemCondition value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemCondition read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemCondition given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemCondition
+     * @throws IOException if the JSON string is invalid with respect to ItemCondition
+     */
+    public static ItemCondition fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemCondition.class);
+    }
+
+    /**
+     * Convert an instance of ItemCondition to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

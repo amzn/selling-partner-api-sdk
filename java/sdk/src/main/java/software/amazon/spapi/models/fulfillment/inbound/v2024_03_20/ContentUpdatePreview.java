@@ -12,25 +12,49 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Preview of the changes that will be applied to the shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Preview of the changes that will be applied to the shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContentUpdatePreview {
-    @SerializedName("contentUpdatePreviewId")
-    private String contentUpdatePreviewId = null;
+    public static final String SERIALIZED_NAME_CONTENT_UPDATE_PREVIEW_ID = "contentUpdatePreviewId";
 
-    @SerializedName("expiration")
-    private OffsetDateTime expiration = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_UPDATE_PREVIEW_ID)
+    private String contentUpdatePreviewId;
 
-    @SerializedName("requestedUpdates")
-    private RequestedUpdates requestedUpdates = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
 
-    @SerializedName("transportationOption")
-    private TransportationOption transportationOption = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private OffsetDateTime expiration;
+
+    public static final String SERIALIZED_NAME_REQUESTED_UPDATES = "requestedUpdates";
+
+    @SerializedName(SERIALIZED_NAME_REQUESTED_UPDATES)
+    private RequestedUpdates requestedUpdates;
+
+    public static final String SERIALIZED_NAME_TRANSPORTATION_OPTION = "transportationOption";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_OPTION)
+    private TransportationOption transportationOption;
+
+    public ContentUpdatePreview() {}
 
     public ContentUpdatePreview contentUpdatePreviewId(String contentUpdatePreviewId) {
         this.contentUpdatePreviewId = contentUpdatePreviewId;
@@ -42,9 +66,7 @@ public class ContentUpdatePreview {
      *
      * @return contentUpdatePreviewId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifier of a content update preview.")
+    @javax.annotation.Nonnull
     public String getContentUpdatePreviewId() {
         return contentUpdatePreviewId;
     }
@@ -65,10 +87,7 @@ public class ContentUpdatePreview {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which the content update expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getExpiration() {
         return expiration;
     }
@@ -87,7 +106,7 @@ public class ContentUpdatePreview {
      *
      * @return requestedUpdates
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public RequestedUpdates getRequestedUpdates() {
         return requestedUpdates;
     }
@@ -106,7 +125,7 @@ public class ContentUpdatePreview {
      *
      * @return transportationOption
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransportationOption getTransportationOption() {
         return transportationOption;
     }
@@ -116,7 +135,7 @@ public class ContentUpdatePreview {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -154,10 +173,124 @@ public class ContentUpdatePreview {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contentUpdatePreviewId");
+        openapiFields.add("expiration");
+        openapiFields.add("requestedUpdates");
+        openapiFields.add("transportationOption");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contentUpdatePreviewId");
+        openapiRequiredFields.add("expiration");
+        openapiRequiredFields.add("requestedUpdates");
+        openapiRequiredFields.add("transportationOption");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContentUpdatePreview
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContentUpdatePreview.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContentUpdatePreview is not found in the empty JSON string",
+                        ContentUpdatePreview.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContentUpdatePreview.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContentUpdatePreview` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContentUpdatePreview.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("contentUpdatePreviewId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentUpdatePreviewId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentUpdatePreviewId").toString()));
+        }
+        // validate the required field `requestedUpdates`
+        RequestedUpdates.validateJsonElement(jsonObj.get("requestedUpdates"));
+        // validate the required field `transportationOption`
+        TransportationOption.validateJsonElement(jsonObj.get("transportationOption"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContentUpdatePreview.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContentUpdatePreview' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContentUpdatePreview> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContentUpdatePreview.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContentUpdatePreview>() {
+                        @Override
+                        public void write(JsonWriter out, ContentUpdatePreview value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContentUpdatePreview read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContentUpdatePreview given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContentUpdatePreview
+     * @throws IOException if the JSON string is invalid with respect to ContentUpdatePreview
+     */
+    public static ContentUpdatePreview fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContentUpdatePreview.class);
+    }
+
+    /**
+     * Convert an instance of ContentUpdatePreview to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,52 +25,36 @@ import java.io.IOException;
  */
 @JsonAdapter(PrepInstruction.Adapter.class)
 public enum PrepInstruction {
-    @SerializedName("Polybagging")
     POLYBAGGING("Polybagging"),
 
-    @SerializedName("BubbleWrapping")
     BUBBLE_WRAPPING("BubbleWrapping"),
 
-    @SerializedName("Taping")
     TAPING("Taping"),
 
-    @SerializedName("BlackShrinkWrapping")
     BLACK_SHRINK_WRAPPING("BlackShrinkWrapping"),
 
-    @SerializedName("Labeling")
     LABELING("Labeling"),
 
-    @SerializedName("HangGarment")
     HANG_GARMENT("HangGarment"),
 
-    @SerializedName("SetCreation")
     SET_CREATION("SetCreation"),
 
-    @SerializedName("Boxing")
     BOXING("Boxing"),
 
-    @SerializedName("RemoveFromHanger")
     REMOVE_FROM_HANGER("RemoveFromHanger"),
 
-    @SerializedName("Debundle")
     DEBUNDLE("Debundle"),
 
-    @SerializedName("SuffocationStickering")
     SUFFOCATION_STICKERING("SuffocationStickering"),
 
-    @SerializedName("CapSealing")
     CAP_SEALING("CapSealing"),
 
-    @SerializedName("SetStickering")
     SET_STICKERING("SetStickering"),
 
-    @SerializedName("BlankStickering")
     BLANK_STICKERING("BlankStickering"),
 
-    @SerializedName("ShipsInProductPackaging")
     SHIPS_IN_PRODUCT_PACKAGING("ShipsInProductPackaging"),
 
-    @SerializedName("NoPrep")
     NO_PREP("NoPrep");
 
     private String value;
@@ -88,25 +72,30 @@ public enum PrepInstruction {
         return String.valueOf(value);
     }
 
-    public static PrepInstruction fromValue(String input) {
+    public static PrepInstruction fromValue(String value) {
         for (PrepInstruction b : PrepInstruction.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PrepInstruction> {
         @Override
         public void write(final JsonWriter jsonWriter, final PrepInstruction enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PrepInstruction read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PrepInstruction.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PrepInstruction.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PrepInstruction.fromValue(value);
     }
 }

@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Download URL for the bill of lading. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Download URL for the bill of lading.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BillOfLadingDownloadURL {
-    @SerializedName("DownloadURL")
-    private String downloadURL = null;
+    public static final String SERIALIZED_NAME_DOWNLOAD_U_R_L = "DownloadURL";
+
+    @SerializedName(SERIALIZED_NAME_DOWNLOAD_U_R_L)
+    private String downloadURL;
+
+    public BillOfLadingDownloadURL() {}
 
     public BillOfLadingDownloadURL downloadURL(String downloadURL) {
         this.downloadURL = downloadURL;
@@ -31,10 +50,7 @@ public class BillOfLadingDownloadURL {
      *
      * @return downloadURL
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "URL to download the bill of lading for the package. Note: The URL will only be valid for 15 seconds")
-    public String getDownloadURL() {
+    @javax.annotation.Nullable public String getDownloadURL() {
         return downloadURL;
     }
 
@@ -43,7 +59,7 @@ public class BillOfLadingDownloadURL {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -69,10 +85,106 @@ public class BillOfLadingDownloadURL {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DownloadURL");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BillOfLadingDownloadURL
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BillOfLadingDownloadURL.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BillOfLadingDownloadURL is not found in the empty JSON string",
+                        BillOfLadingDownloadURL.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BillOfLadingDownloadURL.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BillOfLadingDownloadURL` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("DownloadURL") != null && !jsonObj.get("DownloadURL").isJsonNull())
+                && !jsonObj.get("DownloadURL").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DownloadURL` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DownloadURL").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BillOfLadingDownloadURL.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BillOfLadingDownloadURL' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BillOfLadingDownloadURL> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BillOfLadingDownloadURL.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BillOfLadingDownloadURL>() {
+                        @Override
+                        public void write(JsonWriter out, BillOfLadingDownloadURL value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BillOfLadingDownloadURL read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BillOfLadingDownloadURL given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BillOfLadingDownloadURL
+     * @throws IOException if the JSON string is invalid with respect to BillOfLadingDownloadURL
+     */
+    public static BillOfLadingDownloadURL fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BillOfLadingDownloadURL.class);
+    }
+
+    /**
+     * Convert an instance of BillOfLadingDownloadURL to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

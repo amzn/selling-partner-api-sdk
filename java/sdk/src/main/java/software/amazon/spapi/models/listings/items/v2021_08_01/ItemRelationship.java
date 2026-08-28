@@ -12,34 +12,50 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The relationship details for a listing item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The relationship details for a listing item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemRelationship {
-    @SerializedName("childSkus")
-    private List<String> childSkus = null;
+    public static final String SERIALIZED_NAME_CHILD_SKUS = "childSkus";
 
-    @SerializedName("parentSkus")
-    private List<String> parentSkus = null;
+    @SerializedName(SERIALIZED_NAME_CHILD_SKUS)
+    private List<String> childSkus = new ArrayList<>();
 
-    @SerializedName("variationTheme")
-    private ItemVariationTheme variationTheme = null;
+    public static final String SERIALIZED_NAME_PARENT_SKUS = "parentSkus";
+
+    @SerializedName(SERIALIZED_NAME_PARENT_SKUS)
+    private List<String> parentSkus = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VARIATION_THEME = "variationTheme";
+
+    @SerializedName(SERIALIZED_NAME_VARIATION_THEME)
+    private ItemVariationTheme variationTheme;
 
     /** The type of relationship. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("VARIATION")
         VARIATION("VARIATION"),
-        @SerializedName("PACKAGE_HIERARCHY")
+
         PACKAGE_HIERARCHY("PACKAGE_HIERARCHY");
 
         private String value;
@@ -57,31 +73,40 @@ public class ItemRelationship {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
+
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
+
+    public ItemRelationship() {}
 
     public ItemRelationship childSkus(List<String> childSkus) {
         this.childSkus = childSkus;
@@ -101,9 +126,7 @@ public class ItemRelationship {
      *
      * @return childSkus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Identifiers (SKUs) of the related items that are children of this listing item.")
-    public List<String> getChildSkus() {
+    @javax.annotation.Nullable public List<String> getChildSkus() {
         return childSkus;
     }
 
@@ -129,9 +152,7 @@ public class ItemRelationship {
      *
      * @return parentSkus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Identifiers (SKUs) of the related items that are parents of this listing item.")
-    public List<String> getParentSkus() {
+    @javax.annotation.Nullable public List<String> getParentSkus() {
         return parentSkus;
     }
 
@@ -149,8 +170,7 @@ public class ItemRelationship {
      *
      * @return variationTheme
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemVariationTheme getVariationTheme() {
+    @javax.annotation.Nullable public ItemVariationTheme getVariationTheme() {
         return variationTheme;
     }
 
@@ -168,7 +188,7 @@ public class ItemRelationship {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of relationship.")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         return type;
     }
@@ -178,7 +198,7 @@ public class ItemRelationship {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -212,10 +232,140 @@ public class ItemRelationship {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("childSkus");
+        openapiFields.add("parentSkus");
+        openapiFields.add("variationTheme");
+        openapiFields.add("type");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemRelationship
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemRelationship.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemRelationship is not found in the empty JSON string",
+                        ItemRelationship.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemRelationship.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemRelationship` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemRelationship.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("childSkus") != null
+                && !jsonObj.get("childSkus").isJsonNull()
+                && !jsonObj.get("childSkus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `childSkus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("childSkus").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("parentSkus") != null
+                && !jsonObj.get("parentSkus").isJsonNull()
+                && !jsonObj.get("parentSkus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `parentSkus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("parentSkus").toString()));
+        }
+        // validate the optional field `variationTheme`
+        if (jsonObj.get("variationTheme") != null
+                && !jsonObj.get("variationTheme").isJsonNull()) {
+            ItemVariationTheme.validateJsonElement(jsonObj.get("variationTheme"));
+        }
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemRelationship.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemRelationship' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemRelationship> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemRelationship.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemRelationship>() {
+                        @Override
+                        public void write(JsonWriter out, ItemRelationship value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemRelationship read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemRelationship given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemRelationship
+     * @throws IOException if the JSON string is invalid with respect to ItemRelationship
+     */
+    public static ItemRelationship fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemRelationship.class);
+    }
+
+    /**
+     * Convert an instance of ItemRelationship to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,28 +12,50 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the
  * scheduled packtages, an optional list of orders we couldn&#39;t schedule with the reason, and a pre-signed URL for a
  * ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The response schema for the bulk scheduling API. It returns by the bulk scheduling API containing an array of the scheduled packtages, an optional list of orders we couldn't schedule with the reason, and a pre-signed URL for a ZIP file containing the associated shipping labels plus the documents enabled for your marketplace.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateScheduledPackagesResponse {
-    @SerializedName("scheduledPackages")
-    private List<ModelPackage> scheduledPackages = null;
+    public static final String SERIALIZED_NAME_SCHEDULED_PACKAGES = "scheduledPackages";
 
-    @SerializedName("rejectedOrders")
-    private List<RejectedOrder> rejectedOrders = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_PACKAGES)
+    private List<ModelPackage> scheduledPackages = new ArrayList<>();
 
-    @SerializedName("printableDocumentsUrl")
-    private String printableDocumentsUrl = null;
+    public static final String SERIALIZED_NAME_REJECTED_ORDERS = "rejectedOrders";
+
+    @SerializedName(SERIALIZED_NAME_REJECTED_ORDERS)
+    private List<RejectedOrder> rejectedOrders = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRINTABLE_DOCUMENTS_URL = "printableDocumentsUrl";
+
+    @SerializedName(SERIALIZED_NAME_PRINTABLE_DOCUMENTS_URL)
+    private String printableDocumentsUrl;
+
+    public CreateScheduledPackagesResponse() {}
 
     public CreateScheduledPackagesResponse scheduledPackages(List<ModelPackage> scheduledPackages) {
         this.scheduledPackages = scheduledPackages;
@@ -53,8 +75,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return scheduledPackages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of packages. Refer to the `Package` object.")
-    public List<ModelPackage> getScheduledPackages() {
+    @javax.annotation.Nullable public List<ModelPackage> getScheduledPackages() {
         return scheduledPackages;
     }
 
@@ -81,10 +102,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return rejectedOrders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.")
-    public List<RejectedOrder> getRejectedOrders() {
+    @javax.annotation.Nullable public List<RejectedOrder> getRejectedOrders() {
         return rejectedOrders;
     }
 
@@ -103,10 +121,7 @@ public class CreateScheduledPackagesResponse {
      *
      * @return printableDocumentsUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.")
-    public String getPrintableDocumentsUrl() {
+    @javax.annotation.Nullable public String getPrintableDocumentsUrl() {
         return printableDocumentsUrl;
     }
 
@@ -115,7 +130,7 @@ public class CreateScheduledPackagesResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -151,10 +166,145 @@ public class CreateScheduledPackagesResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("scheduledPackages");
+        openapiFields.add("rejectedOrders");
+        openapiFields.add("printableDocumentsUrl");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateScheduledPackagesResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateScheduledPackagesResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateScheduledPackagesResponse is not found in the empty JSON string",
+                        CreateScheduledPackagesResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateScheduledPackagesResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateScheduledPackagesResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("scheduledPackages") != null
+                && !jsonObj.get("scheduledPackages").isJsonNull()) {
+            JsonArray jsonArrayscheduledPackages = jsonObj.getAsJsonArray("scheduledPackages");
+            if (jsonArrayscheduledPackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("scheduledPackages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `scheduledPackages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("scheduledPackages").toString()));
+                }
+
+                // validate the optional field `scheduledPackages` (array)
+                for (int i = 0; i < jsonArrayscheduledPackages.size(); i++) {
+                    ModelPackage.validateJsonElement(jsonArrayscheduledPackages.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("rejectedOrders") != null
+                && !jsonObj.get("rejectedOrders").isJsonNull()) {
+            JsonArray jsonArrayrejectedOrders = jsonObj.getAsJsonArray("rejectedOrders");
+            if (jsonArrayrejectedOrders != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("rejectedOrders").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `rejectedOrders` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("rejectedOrders").toString()));
+                }
+
+                // validate the optional field `rejectedOrders` (array)
+                for (int i = 0; i < jsonArrayrejectedOrders.size(); i++) {
+                    RejectedOrder.validateJsonElement(jsonArrayrejectedOrders.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("printableDocumentsUrl") != null
+                        && !jsonObj.get("printableDocumentsUrl").isJsonNull())
+                && !jsonObj.get("printableDocumentsUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `printableDocumentsUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("printableDocumentsUrl").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateScheduledPackagesResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateScheduledPackagesResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateScheduledPackagesResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateScheduledPackagesResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateScheduledPackagesResponse>() {
+                        @Override
+                        public void write(JsonWriter out, CreateScheduledPackagesResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateScheduledPackagesResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateScheduledPackagesResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateScheduledPackagesResponse
+     * @throws IOException if the JSON string is invalid with respect to CreateScheduledPackagesResponse
+     */
+    public static CreateScheduledPackagesResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateScheduledPackagesResponse.class);
+    }
+
+    /**
+     * Convert an instance of CreateScheduledPackagesResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

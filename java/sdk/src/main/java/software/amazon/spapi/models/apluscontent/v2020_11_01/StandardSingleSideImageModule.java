@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A standard headline and body text with an image on the side. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A standard headline and body text with an image on the side.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardSingleSideImageModule {
-    @SerializedName("imagePositionType")
-    private PositionType imagePositionType = null;
+    public static final String SERIALIZED_NAME_IMAGE_POSITION_TYPE = "imagePositionType";
 
-    @SerializedName("block")
-    private StandardImageTextBlock block = null;
+    @SerializedName(SERIALIZED_NAME_IMAGE_POSITION_TYPE)
+    private PositionType imagePositionType;
+
+    public static final String SERIALIZED_NAME_BLOCK = "block";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK)
+    private StandardImageTextBlock block;
+
+    public StandardSingleSideImageModule() {}
 
     public StandardSingleSideImageModule imagePositionType(PositionType imagePositionType) {
         this.imagePositionType = imagePositionType;
@@ -35,7 +55,7 @@ public class StandardSingleSideImageModule {
      *
      * @return imagePositionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PositionType getImagePositionType() {
         return imagePositionType;
     }
@@ -54,8 +74,7 @@ public class StandardSingleSideImageModule {
      *
      * @return block
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getBlock() {
+    @javax.annotation.Nullable public StandardImageTextBlock getBlock() {
         return block;
     }
 
@@ -64,7 +83,7 @@ public class StandardSingleSideImageModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +113,117 @@ public class StandardSingleSideImageModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("imagePositionType");
+        openapiFields.add("block");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("imagePositionType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardSingleSideImageModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardSingleSideImageModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardSingleSideImageModule is not found in the empty JSON string",
+                        StandardSingleSideImageModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardSingleSideImageModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardSingleSideImageModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StandardSingleSideImageModule.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `imagePositionType`
+        PositionType.validateJsonElement(jsonObj.get("imagePositionType"));
+        // validate the optional field `block`
+        if (jsonObj.get("block") != null && !jsonObj.get("block").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("block"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardSingleSideImageModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardSingleSideImageModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardSingleSideImageModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardSingleSideImageModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardSingleSideImageModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardSingleSideImageModule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardSingleSideImageModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardSingleSideImageModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardSingleSideImageModule
+     * @throws IOException if the JSON string is invalid with respect to StandardSingleSideImageModule
+     */
+    public static StandardSingleSideImageModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardSingleSideImageModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardSingleSideImageModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

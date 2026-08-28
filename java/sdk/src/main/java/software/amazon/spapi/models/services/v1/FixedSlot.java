@@ -12,31 +12,56 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * In this slot format each slot only has the requested capacity types. This slot size is as specified by slot duration.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "In this slot format each slot only has the requested capacity types. This slot size is as specified by slot duration.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FixedSlot {
-    @SerializedName("startDateTime")
-    private OffsetDateTime startDateTime = null;
+    public static final String SERIALIZED_NAME_START_DATE_TIME = "startDateTime";
 
-    @SerializedName("scheduledCapacity")
-    private Integer scheduledCapacity = null;
+    @SerializedName(SERIALIZED_NAME_START_DATE_TIME)
+    private OffsetDateTime startDateTime;
 
-    @SerializedName("availableCapacity")
-    private Integer availableCapacity = null;
+    public static final String SERIALIZED_NAME_SCHEDULED_CAPACITY = "scheduledCapacity";
 
-    @SerializedName("encumberedCapacity")
-    private Integer encumberedCapacity = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_CAPACITY)
+    private Integer scheduledCapacity;
 
-    @SerializedName("reservedCapacity")
-    private Integer reservedCapacity = null;
+    public static final String SERIALIZED_NAME_AVAILABLE_CAPACITY = "availableCapacity";
+
+    @SerializedName(SERIALIZED_NAME_AVAILABLE_CAPACITY)
+    private Integer availableCapacity;
+
+    public static final String SERIALIZED_NAME_ENCUMBERED_CAPACITY = "encumberedCapacity";
+
+    @SerializedName(SERIALIZED_NAME_ENCUMBERED_CAPACITY)
+    private Integer encumberedCapacity;
+
+    public static final String SERIALIZED_NAME_RESERVED_CAPACITY = "reservedCapacity";
+
+    @SerializedName(SERIALIZED_NAME_RESERVED_CAPACITY)
+    private Integer reservedCapacity;
+
+    public FixedSlot() {}
 
     public FixedSlot startDateTime(OffsetDateTime startDateTime) {
         this.startDateTime = startDateTime;
@@ -48,9 +73,7 @@ public class FixedSlot {
      *
      * @return startDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Start date time of slot in ISO 8601 format with precision of seconds.")
-    public OffsetDateTime getStartDateTime() {
+    @javax.annotation.Nullable public OffsetDateTime getStartDateTime() {
         return startDateTime;
     }
 
@@ -69,10 +92,7 @@ public class FixedSlot {
      *
      * @return scheduledCapacity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Scheduled capacity corresponding to the slot. This capacity represents the originally allocated capacity as per resource schedule.")
-    public Integer getScheduledCapacity() {
+    @javax.annotation.Nullable public Integer getScheduledCapacity() {
         return scheduledCapacity;
     }
 
@@ -91,10 +111,7 @@ public class FixedSlot {
      *
      * @return availableCapacity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations.")
-    public Integer getAvailableCapacity() {
+    @javax.annotation.Nullable public Integer getAvailableCapacity() {
         return availableCapacity;
     }
 
@@ -113,10 +130,7 @@ public class FixedSlot {
      *
      * @return encumberedCapacity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders.")
-    public Integer getEncumberedCapacity() {
+    @javax.annotation.Nullable public Integer getEncumberedCapacity() {
         return encumberedCapacity;
     }
 
@@ -135,10 +149,7 @@ public class FixedSlot {
      *
      * @return reservedCapacity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch.")
-    public Integer getReservedCapacity() {
+    @javax.annotation.Nullable public Integer getReservedCapacity() {
         return reservedCapacity;
     }
 
@@ -147,7 +158,7 @@ public class FixedSlot {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,10 +200,102 @@ public class FixedSlot {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startDateTime");
+        openapiFields.add("scheduledCapacity");
+        openapiFields.add("availableCapacity");
+        openapiFields.add("encumberedCapacity");
+        openapiFields.add("reservedCapacity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FixedSlot
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FixedSlot.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FixedSlot is not found in the empty JSON string",
+                        FixedSlot.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FixedSlot.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FixedSlot` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FixedSlot.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FixedSlot' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FixedSlot> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(FixedSlot.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FixedSlot>() {
+                        @Override
+                        public void write(JsonWriter out, FixedSlot value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FixedSlot read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FixedSlot given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FixedSlot
+     * @throws IOException if the JSON string is invalid with respect to FixedSlot
+     */
+    public static FixedSlot fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FixedSlot.class);
+    }
+
+    /**
+     * Convert an instance of FixedSlot to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,28 +12,51 @@
 
 package software.amazon.spapi.models.messaging.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Describes a messaging action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL)
  * link to the JSON schema document that describes the expected input.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Describes a messaging action that can be taken for an order. Provides a JSON Hypertext Application Language (HAL) link to the JSON schema document that describes the expected input.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetMessagingActionResponse {
-    @SerializedName("_links")
-    private GetMessagingActionResponseLinks links = null;
+    public static final String SERIALIZED_NAME_LINKS = "_links";
 
-    @SerializedName("_embedded")
-    private GetMessagingActionResponseEmbedded embedded = null;
+    @SerializedName(SERIALIZED_NAME_LINKS)
+    private GetMessagingActionResponseLinks links;
 
-    @SerializedName("payload")
-    private MessagingAction payload = null;
+    public static final String SERIALIZED_NAME_EMBEDDED = "_embedded";
 
-    @SerializedName("errors")
-    private ErrorList errors = null;
+    @SerializedName(SERIALIZED_NAME_EMBEDDED)
+    private GetMessagingActionResponseEmbedded embedded;
+
+    public static final String SERIALIZED_NAME_PAYLOAD = "payload";
+
+    @SerializedName(SERIALIZED_NAME_PAYLOAD)
+    private MessagingAction payload;
+
+    public static final String SERIALIZED_NAME_ERRORS = "errors";
+
+    @SerializedName(SERIALIZED_NAME_ERRORS)
+    private ErrorList errors = new ArrayList<>();
+
+    public GetMessagingActionResponse() {}
 
     public GetMessagingActionResponse links(GetMessagingActionResponseLinks links) {
         this.links = links;
@@ -45,8 +68,7 @@ public class GetMessagingActionResponse {
      *
      * @return links
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetMessagingActionResponseLinks getLinks() {
+    @javax.annotation.Nullable public GetMessagingActionResponseLinks getLinks() {
         return links;
     }
 
@@ -64,8 +86,7 @@ public class GetMessagingActionResponse {
      *
      * @return embedded
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetMessagingActionResponseEmbedded getEmbedded() {
+    @javax.annotation.Nullable public GetMessagingActionResponseEmbedded getEmbedded() {
         return embedded;
     }
 
@@ -83,8 +104,7 @@ public class GetMessagingActionResponse {
      *
      * @return payload
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MessagingAction getPayload() {
+    @javax.annotation.Nullable public MessagingAction getPayload() {
         return payload;
     }
 
@@ -102,8 +122,7 @@ public class GetMessagingActionResponse {
      *
      * @return errors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ErrorList getErrors() {
+    @javax.annotation.Nullable public ErrorList getErrors() {
         return errors;
     }
 
@@ -112,7 +131,7 @@ public class GetMessagingActionResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,10 +163,115 @@ public class GetMessagingActionResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("_links");
+        openapiFields.add("_embedded");
+        openapiFields.add("payload");
+        openapiFields.add("errors");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetMessagingActionResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetMessagingActionResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetMessagingActionResponse is not found in the empty JSON string",
+                        GetMessagingActionResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetMessagingActionResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetMessagingActionResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `_links`
+        if (jsonObj.get("_links") != null && !jsonObj.get("_links").isJsonNull()) {
+            GetMessagingActionResponseLinks.validateJsonElement(jsonObj.get("_links"));
+        }
+        // validate the optional field `_embedded`
+        if (jsonObj.get("_embedded") != null && !jsonObj.get("_embedded").isJsonNull()) {
+            GetMessagingActionResponseEmbedded.validateJsonElement(jsonObj.get("_embedded"));
+        }
+        // validate the optional field `payload`
+        if (jsonObj.get("payload") != null && !jsonObj.get("payload").isJsonNull()) {
+            MessagingAction.validateJsonElement(jsonObj.get("payload"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetMessagingActionResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetMessagingActionResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetMessagingActionResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetMessagingActionResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetMessagingActionResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetMessagingActionResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetMessagingActionResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetMessagingActionResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetMessagingActionResponse
+     * @throws IOException if the JSON string is invalid with respect to GetMessagingActionResponse
+     */
+    public static GetMessagingActionResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetMessagingActionResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetMessagingActionResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

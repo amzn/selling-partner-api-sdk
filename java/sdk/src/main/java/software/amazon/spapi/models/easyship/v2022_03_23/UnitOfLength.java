@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** The unit of measurement used to measure the length. */
 @JsonAdapter(UnitOfLength.Adapter.class)
 public enum UnitOfLength {
-    @SerializedName("cm")
     CM("cm");
 
     private String value;
@@ -40,25 +39,30 @@ public enum UnitOfLength {
         return String.valueOf(value);
     }
 
-    public static UnitOfLength fromValue(String input) {
+    public static UnitOfLength fromValue(String value) {
         for (UnitOfLength b : UnitOfLength.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<UnitOfLength> {
         @Override
         public void write(final JsonWriter jsonWriter, final UnitOfLength enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public UnitOfLength read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return UnitOfLength.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return UnitOfLength.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        UnitOfLength.fromValue(value);
     }
 }

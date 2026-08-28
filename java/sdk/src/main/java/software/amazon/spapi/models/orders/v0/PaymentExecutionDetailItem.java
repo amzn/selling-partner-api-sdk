@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a sub-payment method used to pay for a COD order. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about a sub-payment method used to pay for a COD order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PaymentExecutionDetailItem {
-    @SerializedName("Payment")
-    private Money payment = null;
+    public static final String SERIALIZED_NAME_PAYMENT = "Payment";
 
-    @SerializedName("PaymentMethod")
-    private String paymentMethod = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT)
+    private Money payment;
 
-    @SerializedName("AcquirerId")
-    private String acquirerId = null;
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD = "PaymentMethod";
 
-    @SerializedName("CardBrand")
-    private String cardBrand = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
+    private String paymentMethod;
 
-    @SerializedName("AuthorizationCode")
-    private String authorizationCode = null;
+    public static final String SERIALIZED_NAME_ACQUIRER_ID = "AcquirerId";
+
+    @SerializedName(SERIALIZED_NAME_ACQUIRER_ID)
+    private String acquirerId;
+
+    public static final String SERIALIZED_NAME_CARD_BRAND = "CardBrand";
+
+    @SerializedName(SERIALIZED_NAME_CARD_BRAND)
+    private String cardBrand;
+
+    public static final String SERIALIZED_NAME_AUTHORIZATION_CODE = "AuthorizationCode";
+
+    @SerializedName(SERIALIZED_NAME_AUTHORIZATION_CODE)
+    private String authorizationCode;
+
+    public PaymentExecutionDetailItem() {}
 
     public PaymentExecutionDetailItem payment(Money payment) {
         this.payment = payment;
@@ -44,7 +70,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return payment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getPayment() {
         return payment;
     }
@@ -65,10 +91,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return paymentMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.")
+    @javax.annotation.Nonnull
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -89,10 +112,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return acquirerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
-    public String getAcquirerId() {
+    @javax.annotation.Nullable public String getAcquirerId() {
         return acquirerId;
     }
 
@@ -112,10 +132,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return cardBrand
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.")
-    public String getCardBrand() {
+    @javax.annotation.Nullable public String getCardBrand() {
         return cardBrand;
     }
 
@@ -134,10 +151,7 @@ public class PaymentExecutionDetailItem {
      *
      * @return authorizationCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
-    public String getAuthorizationCode() {
+    @javax.annotation.Nullable public String getAuthorizationCode() {
         return authorizationCode;
     }
 
@@ -146,7 +160,7 @@ public class PaymentExecutionDetailItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -182,10 +196,141 @@ public class PaymentExecutionDetailItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("Payment");
+        openapiFields.add("PaymentMethod");
+        openapiFields.add("AcquirerId");
+        openapiFields.add("CardBrand");
+        openapiFields.add("AuthorizationCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("Payment");
+        openapiRequiredFields.add("PaymentMethod");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PaymentExecutionDetailItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PaymentExecutionDetailItem.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PaymentExecutionDetailItem is not found in the empty JSON string",
+                        PaymentExecutionDetailItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PaymentExecutionDetailItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PaymentExecutionDetailItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PaymentExecutionDetailItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `Payment`
+        Money.validateJsonElement(jsonObj.get("Payment"));
+        if (!jsonObj.get("PaymentMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PaymentMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PaymentMethod").toString()));
+        }
+        if ((jsonObj.get("AcquirerId") != null && !jsonObj.get("AcquirerId").isJsonNull())
+                && !jsonObj.get("AcquirerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AcquirerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AcquirerId").toString()));
+        }
+        if ((jsonObj.get("CardBrand") != null && !jsonObj.get("CardBrand").isJsonNull())
+                && !jsonObj.get("CardBrand").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CardBrand` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CardBrand").toString()));
+        }
+        if ((jsonObj.get("AuthorizationCode") != null
+                        && !jsonObj.get("AuthorizationCode").isJsonNull())
+                && !jsonObj.get("AuthorizationCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AuthorizationCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AuthorizationCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PaymentExecutionDetailItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PaymentExecutionDetailItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PaymentExecutionDetailItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PaymentExecutionDetailItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PaymentExecutionDetailItem>() {
+                        @Override
+                        public void write(JsonWriter out, PaymentExecutionDetailItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PaymentExecutionDetailItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PaymentExecutionDetailItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PaymentExecutionDetailItem
+     * @throws IOException if the JSON string is invalid with respect to PaymentExecutionDetailItem
+     */
+    public static PaymentExecutionDetailItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PaymentExecutionDetailItem.class);
+    }
+
+    /**
+     * Convert an instance of PaymentExecutionDetailItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

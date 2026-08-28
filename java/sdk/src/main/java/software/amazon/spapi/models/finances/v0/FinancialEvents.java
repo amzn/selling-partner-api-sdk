@@ -12,113 +12,206 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** All the information that is related to a financial event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "All the information that is related to a financial event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FinancialEvents {
-    @SerializedName("ShipmentEventList")
-    private ShipmentEventList shipmentEventList = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_EVENT_LIST = "ShipmentEventList";
 
-    @SerializedName("ShipmentSettleEventList")
-    private ShipmentSettleEventList shipmentSettleEventList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_EVENT_LIST)
+    private ShipmentEventList shipmentEventList = new ArrayList<>();
 
-    @SerializedName("RefundEventList")
-    private ShipmentEventList refundEventList = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_SETTLE_EVENT_LIST = "ShipmentSettleEventList";
 
-    @SerializedName("GuaranteeClaimEventList")
-    private ShipmentEventList guaranteeClaimEventList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_SETTLE_EVENT_LIST)
+    private ShipmentSettleEventList shipmentSettleEventList = new ArrayList<>();
 
-    @SerializedName("EBTRefundReimbursementOnlyEventList")
-    private EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList = null;
+    public static final String SERIALIZED_NAME_REFUND_EVENT_LIST = "RefundEventList";
 
-    @SerializedName("ChargebackEventList")
-    private ShipmentEventList chargebackEventList = null;
+    @SerializedName(SERIALIZED_NAME_REFUND_EVENT_LIST)
+    private ShipmentEventList refundEventList = new ArrayList<>();
 
-    @SerializedName("PayWithAmazonEventList")
-    private PayWithAmazonEventList payWithAmazonEventList = null;
+    public static final String SERIALIZED_NAME_GUARANTEE_CLAIM_EVENT_LIST = "GuaranteeClaimEventList";
 
-    @SerializedName("ServiceProviderCreditEventList")
-    private SolutionProviderCreditEventList serviceProviderCreditEventList = null;
+    @SerializedName(SERIALIZED_NAME_GUARANTEE_CLAIM_EVENT_LIST)
+    private ShipmentEventList guaranteeClaimEventList = new ArrayList<>();
 
-    @SerializedName("RetrochargeEventList")
-    private RetrochargeEventList retrochargeEventList = null;
+    public static final String SERIALIZED_NAME_EB_T_REFUND_REIMBURSEMENT_ONLY_EVENT_LIST =
+            "EBTRefundReimbursementOnlyEventList";
 
-    @SerializedName("RentalTransactionEventList")
-    private RentalTransactionEventList rentalTransactionEventList = null;
+    @SerializedName(SERIALIZED_NAME_EB_T_REFUND_REIMBURSEMENT_ONLY_EVENT_LIST)
+    private EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList = new ArrayList<>();
 
-    @SerializedName("ProductAdsPaymentEventList")
-    private ProductAdsPaymentEventList productAdsPaymentEventList = null;
+    public static final String SERIALIZED_NAME_CHARGEBACK_EVENT_LIST = "ChargebackEventList";
 
-    @SerializedName("ServiceFeeEventList")
-    private ServiceFeeEventList serviceFeeEventList = null;
+    @SerializedName(SERIALIZED_NAME_CHARGEBACK_EVENT_LIST)
+    private ShipmentEventList chargebackEventList = new ArrayList<>();
 
-    @SerializedName("SellerDealPaymentEventList")
-    private SellerDealPaymentEventList sellerDealPaymentEventList = null;
+    public static final String SERIALIZED_NAME_PAY_WITH_AMAZON_EVENT_LIST = "PayWithAmazonEventList";
 
-    @SerializedName("DebtRecoveryEventList")
-    private DebtRecoveryEventList debtRecoveryEventList = null;
+    @SerializedName(SERIALIZED_NAME_PAY_WITH_AMAZON_EVENT_LIST)
+    private PayWithAmazonEventList payWithAmazonEventList = new ArrayList<>();
 
-    @SerializedName("LoanServicingEventList")
-    private LoanServicingEventList loanServicingEventList = null;
+    public static final String SERIALIZED_NAME_SERVICE_PROVIDER_CREDIT_EVENT_LIST = "ServiceProviderCreditEventList";
 
-    @SerializedName("AdjustmentEventList")
-    private AdjustmentEventList adjustmentEventList = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_PROVIDER_CREDIT_EVENT_LIST)
+    private SolutionProviderCreditEventList serviceProviderCreditEventList = new ArrayList<>();
 
-    @SerializedName("SAFETReimbursementEventList")
-    private SAFETReimbursementEventList saFETReimbursementEventList = null;
+    public static final String SERIALIZED_NAME_RETROCHARGE_EVENT_LIST = "RetrochargeEventList";
 
-    @SerializedName("SellerReviewEnrollmentPaymentEventList")
-    private SellerReviewEnrollmentPaymentEventList sellerReviewEnrollmentPaymentEventList = null;
+    @SerializedName(SERIALIZED_NAME_RETROCHARGE_EVENT_LIST)
+    private RetrochargeEventList retrochargeEventList = new ArrayList<>();
 
-    @SerializedName("FBALiquidationEventList")
-    private FBALiquidationEventList fbALiquidationEventList = null;
+    public static final String SERIALIZED_NAME_RENTAL_TRANSACTION_EVENT_LIST = "RentalTransactionEventList";
 
-    @SerializedName("CouponPaymentEventList")
-    private CouponPaymentEventList couponPaymentEventList = null;
+    @SerializedName(SERIALIZED_NAME_RENTAL_TRANSACTION_EVENT_LIST)
+    private RentalTransactionEventList rentalTransactionEventList = new ArrayList<>();
 
-    @SerializedName("ImagingServicesFeeEventList")
-    private ImagingServicesFeeEventList imagingServicesFeeEventList = null;
+    public static final String SERIALIZED_NAME_PRODUCT_ADS_PAYMENT_EVENT_LIST = "ProductAdsPaymentEventList";
 
-    @SerializedName("NetworkComminglingTransactionEventList")
-    private NetworkComminglingTransactionEventList networkComminglingTransactionEventList = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_ADS_PAYMENT_EVENT_LIST)
+    private ProductAdsPaymentEventList productAdsPaymentEventList = new ArrayList<>();
 
-    @SerializedName("AffordabilityExpenseEventList")
-    private AffordabilityExpenseEventList affordabilityExpenseEventList = null;
+    public static final String SERIALIZED_NAME_SERVICE_FEE_EVENT_LIST = "ServiceFeeEventList";
 
-    @SerializedName("AffordabilityExpenseReversalEventList")
-    private AffordabilityExpenseEventList affordabilityExpenseReversalEventList = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_FEE_EVENT_LIST)
+    private ServiceFeeEventList serviceFeeEventList = new ArrayList<>();
 
-    @SerializedName("RemovalShipmentEventList")
-    private RemovalShipmentEventList removalShipmentEventList = null;
+    public static final String SERIALIZED_NAME_SELLER_DEAL_PAYMENT_EVENT_LIST = "SellerDealPaymentEventList";
 
-    @SerializedName("RemovalShipmentAdjustmentEventList")
-    private RemovalShipmentAdjustmentEventList removalShipmentAdjustmentEventList = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_DEAL_PAYMENT_EVENT_LIST)
+    private SellerDealPaymentEventList sellerDealPaymentEventList = new ArrayList<>();
 
-    @SerializedName("TrialShipmentEventList")
-    private TrialShipmentEventList trialShipmentEventList = null;
+    public static final String SERIALIZED_NAME_DEBT_RECOVERY_EVENT_LIST = "DebtRecoveryEventList";
 
-    @SerializedName("TDSReimbursementEventList")
-    private TDSReimbursementEventList tdSReimbursementEventList = null;
+    @SerializedName(SERIALIZED_NAME_DEBT_RECOVERY_EVENT_LIST)
+    private DebtRecoveryEventList debtRecoveryEventList = new ArrayList<>();
 
-    @SerializedName("AdhocDisbursementEventList")
-    private AdhocDisbursementEventList adhocDisbursementEventList = null;
+    public static final String SERIALIZED_NAME_LOAN_SERVICING_EVENT_LIST = "LoanServicingEventList";
 
-    @SerializedName("TaxWithholdingEventList")
-    private TaxWithholdingEventList taxWithholdingEventList = null;
+    @SerializedName(SERIALIZED_NAME_LOAN_SERVICING_EVENT_LIST)
+    private LoanServicingEventList loanServicingEventList = new ArrayList<>();
 
-    @SerializedName("ChargeRefundEventList")
-    private ChargeRefundEventList chargeRefundEventList = null;
+    public static final String SERIALIZED_NAME_ADJUSTMENT_EVENT_LIST = "AdjustmentEventList";
 
-    @SerializedName("FailedAdhocDisbursementEventList")
-    private FailedAdhocDisbursementEventList failedAdhocDisbursementEventList = null;
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_EVENT_LIST)
+    private AdjustmentEventList adjustmentEventList = new ArrayList<>();
 
-    @SerializedName("ValueAddedServiceChargeEventList")
-    private ValueAddedServiceChargeEventList valueAddedServiceChargeEventList = null;
+    public static final String SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_EVENT_LIST = "SAFETReimbursementEventList";
 
-    @SerializedName("CapacityReservationBillingEventList")
-    private CapacityReservationBillingEventList capacityReservationBillingEventList = null;
+    @SerializedName(SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_EVENT_LIST)
+    private SAFETReimbursementEventList saFETReimbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SELLER_REVIEW_ENROLLMENT_PAYMENT_EVENT_LIST =
+            "SellerReviewEnrollmentPaymentEventList";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_REVIEW_ENROLLMENT_PAYMENT_EVENT_LIST)
+    private SellerReviewEnrollmentPaymentEventList sellerReviewEnrollmentPaymentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FB_A_LIQUIDATION_EVENT_LIST = "FBALiquidationEventList";
+
+    @SerializedName(SERIALIZED_NAME_FB_A_LIQUIDATION_EVENT_LIST)
+    private FBALiquidationEventList fbALiquidationEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_COUPON_PAYMENT_EVENT_LIST = "CouponPaymentEventList";
+
+    @SerializedName(SERIALIZED_NAME_COUPON_PAYMENT_EVENT_LIST)
+    private CouponPaymentEventList couponPaymentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_IMAGING_SERVICES_FEE_EVENT_LIST = "ImagingServicesFeeEventList";
+
+    @SerializedName(SERIALIZED_NAME_IMAGING_SERVICES_FEE_EVENT_LIST)
+    private ImagingServicesFeeEventList imagingServicesFeeEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NETWORK_COMMINGLING_TRANSACTION_EVENT_LIST =
+            "NetworkComminglingTransactionEventList";
+
+    @SerializedName(SERIALIZED_NAME_NETWORK_COMMINGLING_TRANSACTION_EVENT_LIST)
+    private NetworkComminglingTransactionEventList networkComminglingTransactionEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AFFORDABILITY_EXPENSE_EVENT_LIST = "AffordabilityExpenseEventList";
+
+    @SerializedName(SERIALIZED_NAME_AFFORDABILITY_EXPENSE_EVENT_LIST)
+    private AffordabilityExpenseEventList affordabilityExpenseEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AFFORDABILITY_EXPENSE_REVERSAL_EVENT_LIST =
+            "AffordabilityExpenseReversalEventList";
+
+    @SerializedName(SERIALIZED_NAME_AFFORDABILITY_EXPENSE_REVERSAL_EVENT_LIST)
+    private AffordabilityExpenseEventList affordabilityExpenseReversalEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_EVENT_LIST = "RemovalShipmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_EVENT_LIST)
+    private RemovalShipmentEventList removalShipmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_ADJUSTMENT_EVENT_LIST =
+            "RemovalShipmentAdjustmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_ADJUSTMENT_EVENT_LIST)
+    private RemovalShipmentAdjustmentEventList removalShipmentAdjustmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRIAL_SHIPMENT_EVENT_LIST = "TrialShipmentEventList";
+
+    @SerializedName(SERIALIZED_NAME_TRIAL_SHIPMENT_EVENT_LIST)
+    private TrialShipmentEventList trialShipmentEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TD_S_REIMBURSEMENT_EVENT_LIST = "TDSReimbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_TD_S_REIMBURSEMENT_EVENT_LIST)
+    private TDSReimbursementEventList tdSReimbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ADHOC_DISBURSEMENT_EVENT_LIST = "AdhocDisbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_ADHOC_DISBURSEMENT_EVENT_LIST)
+    private AdhocDisbursementEventList adhocDisbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TAX_WITHHOLDING_EVENT_LIST = "TaxWithholdingEventList";
+
+    @SerializedName(SERIALIZED_NAME_TAX_WITHHOLDING_EVENT_LIST)
+    private TaxWithholdingEventList taxWithholdingEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_REFUND_EVENT_LIST = "ChargeRefundEventList";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_REFUND_EVENT_LIST)
+    private ChargeRefundEventList chargeRefundEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FAILED_ADHOC_DISBURSEMENT_EVENT_LIST =
+            "FailedAdhocDisbursementEventList";
+
+    @SerializedName(SERIALIZED_NAME_FAILED_ADHOC_DISBURSEMENT_EVENT_LIST)
+    private FailedAdhocDisbursementEventList failedAdhocDisbursementEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICE_CHARGE_EVENT_LIST =
+            "ValueAddedServiceChargeEventList";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICE_CHARGE_EVENT_LIST)
+    private ValueAddedServiceChargeEventList valueAddedServiceChargeEventList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CAPACITY_RESERVATION_BILLING_EVENT_LIST =
+            "CapacityReservationBillingEventList";
+
+    @SerializedName(SERIALIZED_NAME_CAPACITY_RESERVATION_BILLING_EVENT_LIST)
+    private CapacityReservationBillingEventList capacityReservationBillingEventList = new ArrayList<>();
+
+    public FinancialEvents() {}
 
     public FinancialEvents shipmentEventList(ShipmentEventList shipmentEventList) {
         this.shipmentEventList = shipmentEventList;
@@ -130,8 +223,7 @@ public class FinancialEvents {
      *
      * @return shipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getShipmentEventList() {
+    @javax.annotation.Nullable public ShipmentEventList getShipmentEventList() {
         return shipmentEventList;
     }
 
@@ -149,8 +241,7 @@ public class FinancialEvents {
      *
      * @return shipmentSettleEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentSettleEventList getShipmentSettleEventList() {
+    @javax.annotation.Nullable public ShipmentSettleEventList getShipmentSettleEventList() {
         return shipmentSettleEventList;
     }
 
@@ -168,8 +259,7 @@ public class FinancialEvents {
      *
      * @return refundEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getRefundEventList() {
+    @javax.annotation.Nullable public ShipmentEventList getRefundEventList() {
         return refundEventList;
     }
 
@@ -187,8 +277,7 @@ public class FinancialEvents {
      *
      * @return guaranteeClaimEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getGuaranteeClaimEventList() {
+    @javax.annotation.Nullable public ShipmentEventList getGuaranteeClaimEventList() {
         return guaranteeClaimEventList;
     }
 
@@ -207,8 +296,7 @@ public class FinancialEvents {
      *
      * @return ebTRefundReimbursementOnlyEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EBTRefundReimbursementOnlyEventList getEbTRefundReimbursementOnlyEventList() {
+    @javax.annotation.Nullable public EBTRefundReimbursementOnlyEventList getEbTRefundReimbursementOnlyEventList() {
         return ebTRefundReimbursementOnlyEventList;
     }
 
@@ -227,8 +315,7 @@ public class FinancialEvents {
      *
      * @return chargebackEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentEventList getChargebackEventList() {
+    @javax.annotation.Nullable public ShipmentEventList getChargebackEventList() {
         return chargebackEventList;
     }
 
@@ -246,8 +333,7 @@ public class FinancialEvents {
      *
      * @return payWithAmazonEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PayWithAmazonEventList getPayWithAmazonEventList() {
+    @javax.annotation.Nullable public PayWithAmazonEventList getPayWithAmazonEventList() {
         return payWithAmazonEventList;
     }
 
@@ -266,8 +352,7 @@ public class FinancialEvents {
      *
      * @return serviceProviderCreditEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SolutionProviderCreditEventList getServiceProviderCreditEventList() {
+    @javax.annotation.Nullable public SolutionProviderCreditEventList getServiceProviderCreditEventList() {
         return serviceProviderCreditEventList;
     }
 
@@ -285,8 +370,7 @@ public class FinancialEvents {
      *
      * @return retrochargeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RetrochargeEventList getRetrochargeEventList() {
+    @javax.annotation.Nullable public RetrochargeEventList getRetrochargeEventList() {
         return retrochargeEventList;
     }
 
@@ -304,8 +388,7 @@ public class FinancialEvents {
      *
      * @return rentalTransactionEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RentalTransactionEventList getRentalTransactionEventList() {
+    @javax.annotation.Nullable public RentalTransactionEventList getRentalTransactionEventList() {
         return rentalTransactionEventList;
     }
 
@@ -323,8 +406,7 @@ public class FinancialEvents {
      *
      * @return productAdsPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ProductAdsPaymentEventList getProductAdsPaymentEventList() {
+    @javax.annotation.Nullable public ProductAdsPaymentEventList getProductAdsPaymentEventList() {
         return productAdsPaymentEventList;
     }
 
@@ -342,8 +424,7 @@ public class FinancialEvents {
      *
      * @return serviceFeeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ServiceFeeEventList getServiceFeeEventList() {
+    @javax.annotation.Nullable public ServiceFeeEventList getServiceFeeEventList() {
         return serviceFeeEventList;
     }
 
@@ -361,8 +442,7 @@ public class FinancialEvents {
      *
      * @return sellerDealPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellerDealPaymentEventList getSellerDealPaymentEventList() {
+    @javax.annotation.Nullable public SellerDealPaymentEventList getSellerDealPaymentEventList() {
         return sellerDealPaymentEventList;
     }
 
@@ -380,8 +460,7 @@ public class FinancialEvents {
      *
      * @return debtRecoveryEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DebtRecoveryEventList getDebtRecoveryEventList() {
+    @javax.annotation.Nullable public DebtRecoveryEventList getDebtRecoveryEventList() {
         return debtRecoveryEventList;
     }
 
@@ -399,8 +478,7 @@ public class FinancialEvents {
      *
      * @return loanServicingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LoanServicingEventList getLoanServicingEventList() {
+    @javax.annotation.Nullable public LoanServicingEventList getLoanServicingEventList() {
         return loanServicingEventList;
     }
 
@@ -418,8 +496,7 @@ public class FinancialEvents {
      *
      * @return adjustmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdjustmentEventList getAdjustmentEventList() {
+    @javax.annotation.Nullable public AdjustmentEventList getAdjustmentEventList() {
         return adjustmentEventList;
     }
 
@@ -437,8 +514,7 @@ public class FinancialEvents {
      *
      * @return saFETReimbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SAFETReimbursementEventList getSaFETReimbursementEventList() {
+    @javax.annotation.Nullable public SAFETReimbursementEventList getSaFETReimbursementEventList() {
         return saFETReimbursementEventList;
     }
 
@@ -457,8 +533,7 @@ public class FinancialEvents {
      *
      * @return sellerReviewEnrollmentPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellerReviewEnrollmentPaymentEventList getSellerReviewEnrollmentPaymentEventList() {
+    @javax.annotation.Nullable public SellerReviewEnrollmentPaymentEventList getSellerReviewEnrollmentPaymentEventList() {
         return sellerReviewEnrollmentPaymentEventList;
     }
 
@@ -477,8 +552,7 @@ public class FinancialEvents {
      *
      * @return fbALiquidationEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FBALiquidationEventList getFbALiquidationEventList() {
+    @javax.annotation.Nullable public FBALiquidationEventList getFbALiquidationEventList() {
         return fbALiquidationEventList;
     }
 
@@ -496,8 +570,7 @@ public class FinancialEvents {
      *
      * @return couponPaymentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CouponPaymentEventList getCouponPaymentEventList() {
+    @javax.annotation.Nullable public CouponPaymentEventList getCouponPaymentEventList() {
         return couponPaymentEventList;
     }
 
@@ -515,8 +588,7 @@ public class FinancialEvents {
      *
      * @return imagingServicesFeeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ImagingServicesFeeEventList getImagingServicesFeeEventList() {
+    @javax.annotation.Nullable public ImagingServicesFeeEventList getImagingServicesFeeEventList() {
         return imagingServicesFeeEventList;
     }
 
@@ -535,8 +607,7 @@ public class FinancialEvents {
      *
      * @return networkComminglingTransactionEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public NetworkComminglingTransactionEventList getNetworkComminglingTransactionEventList() {
+    @javax.annotation.Nullable public NetworkComminglingTransactionEventList getNetworkComminglingTransactionEventList() {
         return networkComminglingTransactionEventList;
     }
 
@@ -555,8 +626,7 @@ public class FinancialEvents {
      *
      * @return affordabilityExpenseEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AffordabilityExpenseEventList getAffordabilityExpenseEventList() {
+    @javax.annotation.Nullable public AffordabilityExpenseEventList getAffordabilityExpenseEventList() {
         return affordabilityExpenseEventList;
     }
 
@@ -575,8 +645,7 @@ public class FinancialEvents {
      *
      * @return affordabilityExpenseReversalEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AffordabilityExpenseEventList getAffordabilityExpenseReversalEventList() {
+    @javax.annotation.Nullable public AffordabilityExpenseEventList getAffordabilityExpenseReversalEventList() {
         return affordabilityExpenseReversalEventList;
     }
 
@@ -595,8 +664,7 @@ public class FinancialEvents {
      *
      * @return removalShipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RemovalShipmentEventList getRemovalShipmentEventList() {
+    @javax.annotation.Nullable public RemovalShipmentEventList getRemovalShipmentEventList() {
         return removalShipmentEventList;
     }
 
@@ -615,8 +683,7 @@ public class FinancialEvents {
      *
      * @return removalShipmentAdjustmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RemovalShipmentAdjustmentEventList getRemovalShipmentAdjustmentEventList() {
+    @javax.annotation.Nullable public RemovalShipmentAdjustmentEventList getRemovalShipmentAdjustmentEventList() {
         return removalShipmentAdjustmentEventList;
     }
 
@@ -635,8 +702,7 @@ public class FinancialEvents {
      *
      * @return trialShipmentEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrialShipmentEventList getTrialShipmentEventList() {
+    @javax.annotation.Nullable public TrialShipmentEventList getTrialShipmentEventList() {
         return trialShipmentEventList;
     }
 
@@ -654,8 +720,7 @@ public class FinancialEvents {
      *
      * @return tdSReimbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TDSReimbursementEventList getTdSReimbursementEventList() {
+    @javax.annotation.Nullable public TDSReimbursementEventList getTdSReimbursementEventList() {
         return tdSReimbursementEventList;
     }
 
@@ -673,8 +738,7 @@ public class FinancialEvents {
      *
      * @return adhocDisbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdhocDisbursementEventList getAdhocDisbursementEventList() {
+    @javax.annotation.Nullable public AdhocDisbursementEventList getAdhocDisbursementEventList() {
         return adhocDisbursementEventList;
     }
 
@@ -692,8 +756,7 @@ public class FinancialEvents {
      *
      * @return taxWithholdingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxWithholdingEventList getTaxWithholdingEventList() {
+    @javax.annotation.Nullable public TaxWithholdingEventList getTaxWithholdingEventList() {
         return taxWithholdingEventList;
     }
 
@@ -711,8 +774,7 @@ public class FinancialEvents {
      *
      * @return chargeRefundEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeRefundEventList getChargeRefundEventList() {
+    @javax.annotation.Nullable public ChargeRefundEventList getChargeRefundEventList() {
         return chargeRefundEventList;
     }
 
@@ -731,8 +793,7 @@ public class FinancialEvents {
      *
      * @return failedAdhocDisbursementEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FailedAdhocDisbursementEventList getFailedAdhocDisbursementEventList() {
+    @javax.annotation.Nullable public FailedAdhocDisbursementEventList getFailedAdhocDisbursementEventList() {
         return failedAdhocDisbursementEventList;
     }
 
@@ -751,8 +812,7 @@ public class FinancialEvents {
      *
      * @return valueAddedServiceChargeEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ValueAddedServiceChargeEventList getValueAddedServiceChargeEventList() {
+    @javax.annotation.Nullable public ValueAddedServiceChargeEventList getValueAddedServiceChargeEventList() {
         return valueAddedServiceChargeEventList;
     }
 
@@ -771,8 +831,7 @@ public class FinancialEvents {
      *
      * @return capacityReservationBillingEventList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CapacityReservationBillingEventList getCapacityReservationBillingEventList() {
+    @javax.annotation.Nullable public CapacityReservationBillingEventList getCapacityReservationBillingEventList() {
         return capacityReservationBillingEventList;
     }
 
@@ -782,7 +841,7 @@ public class FinancialEvents {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -987,10 +1046,132 @@ public class FinancialEvents {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentEventList");
+        openapiFields.add("ShipmentSettleEventList");
+        openapiFields.add("RefundEventList");
+        openapiFields.add("GuaranteeClaimEventList");
+        openapiFields.add("EBTRefundReimbursementOnlyEventList");
+        openapiFields.add("ChargebackEventList");
+        openapiFields.add("PayWithAmazonEventList");
+        openapiFields.add("ServiceProviderCreditEventList");
+        openapiFields.add("RetrochargeEventList");
+        openapiFields.add("RentalTransactionEventList");
+        openapiFields.add("ProductAdsPaymentEventList");
+        openapiFields.add("ServiceFeeEventList");
+        openapiFields.add("SellerDealPaymentEventList");
+        openapiFields.add("DebtRecoveryEventList");
+        openapiFields.add("LoanServicingEventList");
+        openapiFields.add("AdjustmentEventList");
+        openapiFields.add("SAFETReimbursementEventList");
+        openapiFields.add("SellerReviewEnrollmentPaymentEventList");
+        openapiFields.add("FBALiquidationEventList");
+        openapiFields.add("CouponPaymentEventList");
+        openapiFields.add("ImagingServicesFeeEventList");
+        openapiFields.add("NetworkComminglingTransactionEventList");
+        openapiFields.add("AffordabilityExpenseEventList");
+        openapiFields.add("AffordabilityExpenseReversalEventList");
+        openapiFields.add("RemovalShipmentEventList");
+        openapiFields.add("RemovalShipmentAdjustmentEventList");
+        openapiFields.add("TrialShipmentEventList");
+        openapiFields.add("TDSReimbursementEventList");
+        openapiFields.add("AdhocDisbursementEventList");
+        openapiFields.add("TaxWithholdingEventList");
+        openapiFields.add("ChargeRefundEventList");
+        openapiFields.add("FailedAdhocDisbursementEventList");
+        openapiFields.add("ValueAddedServiceChargeEventList");
+        openapiFields.add("CapacityReservationBillingEventList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FinancialEvents
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FinancialEvents.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FinancialEvents is not found in the empty JSON string",
+                        FinancialEvents.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FinancialEvents.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FinancialEvents` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FinancialEvents.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FinancialEvents' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FinancialEvents> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FinancialEvents.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FinancialEvents>() {
+                        @Override
+                        public void write(JsonWriter out, FinancialEvents value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FinancialEvents read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FinancialEvents given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FinancialEvents
+     * @throws IOException if the JSON string is invalid with respect to FinancialEvents
+     */
+    public static FinancialEvents fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FinancialEvents.class);
+    }
+
+    /**
+     * Convert an instance of FinancialEvents to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

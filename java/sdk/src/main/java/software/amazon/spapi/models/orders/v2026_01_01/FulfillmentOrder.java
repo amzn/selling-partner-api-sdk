@@ -12,19 +12,36 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of
  * fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentOrder {
-    @SerializedName("fulfillmentOrderId")
-    private String fulfillmentOrderId = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_ORDER_ID = "fulfillmentOrderId";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDER_ID)
+    private String fulfillmentOrderId;
+
+    public FulfillmentOrder() {}
 
     public FulfillmentOrder fulfillmentOrderId(String fulfillmentOrderId) {
         this.fulfillmentOrderId = fulfillmentOrderId;
@@ -37,10 +54,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The Fulfillment Order ID assigned by Amazon after fulfillment planning. This identifier is identical to the Shipment ID required by External Fulfillment APIs.")
+    @javax.annotation.Nonnull
     public String getFulfillmentOrderId() {
         return fulfillmentOrderId;
     }
@@ -50,7 +64,7 @@ public class FulfillmentOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -78,10 +92,114 @@ public class FulfillmentOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fulfillmentOrderId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("fulfillmentOrderId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentOrder is not found in the empty JSON string",
+                        FulfillmentOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FulfillmentOrder.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("fulfillmentOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentOrderId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentOrder>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentOrder
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentOrder
+     */
+    public static FulfillmentOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentOrder.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,20 +12,41 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the shipment and its line items, used to confirm or reject line items. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about the shipment and its line items, used to confirm or reject line items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentAcknowledgementRequest {
-    @SerializedName("referenceId")
-    private String referenceId = null;
+    public static final String SERIALIZED_NAME_REFERENCE_ID = "referenceId";
 
-    @SerializedName("lineItems")
-    private List<LineItemWithReason> lineItems = null;
+    @SerializedName(SERIALIZED_NAME_REFERENCE_ID)
+    private String referenceId;
+
+    public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
+
+    @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
+    private List<LineItemWithReason> lineItems = new ArrayList<>();
+
+    public ShipmentAcknowledgementRequest() {}
 
     public ShipmentAcknowledgementRequest referenceId(String referenceId) {
         this.referenceId = referenceId;
@@ -37,8 +58,7 @@ public class ShipmentAcknowledgementRequest {
      *
      * @return referenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for every shipment rejection.")
-    public String getReferenceId() {
+    @javax.annotation.Nullable public String getReferenceId() {
         return referenceId;
     }
 
@@ -64,10 +84,7 @@ public class ShipmentAcknowledgementRequest {
      *
      * @return lineItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Details about the line items from the shipment that are being confirmed or rejected by the seller.")
+    @javax.annotation.Nonnull
     public List<LineItemWithReason> getLineItems() {
         return lineItems;
     }
@@ -77,7 +94,7 @@ public class ShipmentAcknowledgementRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -105,10 +122,130 @@ public class ShipmentAcknowledgementRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("referenceId");
+        openapiFields.add("lineItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lineItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentAcknowledgementRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentAcknowledgementRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentAcknowledgementRequest is not found in the empty JSON string",
+                        ShipmentAcknowledgementRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentAcknowledgementRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentAcknowledgementRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipmentAcknowledgementRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("referenceId") != null && !jsonObj.get("referenceId").isJsonNull())
+                && !jsonObj.get("referenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `referenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("referenceId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("lineItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("lineItems").toString()));
+        }
+
+        JsonArray jsonArraylineItems = jsonObj.getAsJsonArray("lineItems");
+        // validate the required field `lineItems` (array)
+        for (int i = 0; i < jsonArraylineItems.size(); i++) {
+            LineItemWithReason.validateJsonElement(jsonArraylineItems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentAcknowledgementRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentAcknowledgementRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentAcknowledgementRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentAcknowledgementRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentAcknowledgementRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentAcknowledgementRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentAcknowledgementRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentAcknowledgementRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentAcknowledgementRequest
+     * @throws IOException if the JSON string is invalid with respect to ShipmentAcknowledgementRequest
+     */
+    public static ShipmentAcknowledgementRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentAcknowledgementRequest.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentAcknowledgementRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

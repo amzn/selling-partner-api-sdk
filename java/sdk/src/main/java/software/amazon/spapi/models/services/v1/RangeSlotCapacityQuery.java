@@ -12,28 +12,49 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Request schema for the &#x60;getRangeSlotCapacity&#x60; operation. This schema is used to define the time range and
  * capacity types that are being queried.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Request schema for the `getRangeSlotCapacity` operation. This schema is used to define the time range and capacity types that are being queried.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RangeSlotCapacityQuery {
-    @SerializedName("capacityTypes")
-    private List<CapacityType> capacityTypes = null;
+    public static final String SERIALIZED_NAME_CAPACITY_TYPES = "capacityTypes";
 
-    @SerializedName("startDateTime")
-    private OffsetDateTime startDateTime = null;
+    @SerializedName(SERIALIZED_NAME_CAPACITY_TYPES)
+    private List<CapacityType> capacityTypes = new ArrayList<>();
 
-    @SerializedName("endDateTime")
-    private OffsetDateTime endDateTime = null;
+    public static final String SERIALIZED_NAME_START_DATE_TIME = "startDateTime";
+
+    @SerializedName(SERIALIZED_NAME_START_DATE_TIME)
+    private OffsetDateTime startDateTime;
+
+    public static final String SERIALIZED_NAME_END_DATE_TIME = "endDateTime";
+
+    @SerializedName(SERIALIZED_NAME_END_DATE_TIME)
+    private OffsetDateTime endDateTime;
+
+    public RangeSlotCapacityQuery() {}
 
     public RangeSlotCapacityQuery capacityTypes(List<CapacityType> capacityTypes) {
         this.capacityTypes = capacityTypes;
@@ -53,10 +74,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return capacityTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.")
-    public List<CapacityType> getCapacityTypes() {
+    @javax.annotation.Nullable public List<CapacityType> getCapacityTypes() {
         return capacityTypes;
     }
 
@@ -74,9 +92,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return startDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Start date time from which the capacity slots are being requested in ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStartDateTime() {
         return startDateTime;
     }
@@ -95,9 +111,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return endDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "End date time up to which the capacity slots are being requested in ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEndDateTime() {
         return endDateTime;
     }
@@ -107,7 +121,7 @@ public class RangeSlotCapacityQuery {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -137,10 +151,121 @@ public class RangeSlotCapacityQuery {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("capacityTypes");
+        openapiFields.add("startDateTime");
+        openapiFields.add("endDateTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("startDateTime");
+        openapiRequiredFields.add("endDateTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RangeSlotCapacityQuery
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RangeSlotCapacityQuery.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RangeSlotCapacityQuery is not found in the empty JSON string",
+                        RangeSlotCapacityQuery.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RangeSlotCapacityQuery.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RangeSlotCapacityQuery` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RangeSlotCapacityQuery.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("capacityTypes") != null
+                && !jsonObj.get("capacityTypes").isJsonNull()
+                && !jsonObj.get("capacityTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `capacityTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("capacityTypes").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RangeSlotCapacityQuery.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RangeSlotCapacityQuery' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RangeSlotCapacityQuery> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RangeSlotCapacityQuery.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RangeSlotCapacityQuery>() {
+                        @Override
+                        public void write(JsonWriter out, RangeSlotCapacityQuery value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RangeSlotCapacityQuery read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RangeSlotCapacityQuery given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RangeSlotCapacityQuery
+     * @throws IOException if the JSON string is invalid with respect to RangeSlotCapacityQuery
+     */
+    public static RangeSlotCapacityQuery fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RangeSlotCapacityQuery.class);
+    }
+
+    /**
+     * Convert an instance of RangeSlotCapacityQuery to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

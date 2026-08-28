@@ -12,22 +12,46 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents eligibility of one SKU. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents eligibility of one SKU.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SkuEligibility {
-    @SerializedName("ineligibilityReasons")
-    private List<SkuIneligibilityReason> ineligibilityReasons = null;
+    public static final String SERIALIZED_NAME_INELIGIBILITY_REASONS = "ineligibilityReasons";
 
-    @SerializedName("packageQuantity")
-    private DistributionPackageQuantity packageQuantity = null;
+    @SerializedName(SERIALIZED_NAME_INELIGIBILITY_REASONS)
+    private List<SkuIneligibilityReason> ineligibilityReasons = new ArrayList<>();
 
-    @SerializedName("status")
-    private InboundEligibilityStatus status = null;
+    public static final String SERIALIZED_NAME_PACKAGE_QUANTITY = "packageQuantity";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_QUANTITY)
+    private DistributionPackageQuantity packageQuantity;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private InboundEligibilityStatus status;
+
+    public SkuEligibility() {}
 
     public SkuEligibility ineligibilityReasons(List<SkuIneligibilityReason> ineligibilityReasons) {
         this.ineligibilityReasons = ineligibilityReasons;
@@ -47,9 +71,7 @@ public class SkuEligibility {
      *
      * @return ineligibilityReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "If not eligible, these are list of error codes and descriptions.")
-    public List<SkuIneligibilityReason> getIneligibilityReasons() {
+    @javax.annotation.Nullable public List<SkuIneligibilityReason> getIneligibilityReasons() {
         return ineligibilityReasons;
     }
 
@@ -67,7 +89,7 @@ public class SkuEligibility {
      *
      * @return packageQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DistributionPackageQuantity getPackageQuantity() {
         return packageQuantity;
     }
@@ -86,7 +108,7 @@ public class SkuEligibility {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public InboundEligibilityStatus getStatus() {
         return status;
     }
@@ -96,7 +118,7 @@ public class SkuEligibility {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -130,10 +152,134 @@ public class SkuEligibility {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ineligibilityReasons");
+        openapiFields.add("packageQuantity");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageQuantity");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SkuEligibility
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SkuEligibility.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SkuEligibility is not found in the empty JSON string",
+                        SkuEligibility.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SkuEligibility.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SkuEligibility` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SkuEligibility.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("ineligibilityReasons") != null
+                && !jsonObj.get("ineligibilityReasons").isJsonNull()) {
+            JsonArray jsonArrayineligibilityReasons = jsonObj.getAsJsonArray("ineligibilityReasons");
+            if (jsonArrayineligibilityReasons != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ineligibilityReasons").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ineligibilityReasons` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ineligibilityReasons").toString()));
+                }
+
+                // validate the optional field `ineligibilityReasons` (array)
+                for (int i = 0; i < jsonArrayineligibilityReasons.size(); i++) {
+                    SkuIneligibilityReason.validateJsonElement(jsonArrayineligibilityReasons.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `packageQuantity`
+        DistributionPackageQuantity.validateJsonElement(jsonObj.get("packageQuantity"));
+        // validate the required field `status`
+        InboundEligibilityStatus.validateJsonElement(jsonObj.get("status"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SkuEligibility.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SkuEligibility' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SkuEligibility> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SkuEligibility.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SkuEligibility>() {
+                        @Override
+                        public void write(JsonWriter out, SkuEligibility value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SkuEligibility read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SkuEligibility given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SkuEligibility
+     * @throws IOException if the JSON string is invalid with respect to SkuEligibility
+     */
+    public static SkuEligibility fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SkuEligibility.class);
+    }
+
+    /**
+     * Convert an instance of SkuEligibility to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,49 +22,34 @@ import java.io.IOException;
 /** The type of A+ Content module. */
 @JsonAdapter(ContentModuleType.Adapter.class)
 public enum ContentModuleType {
-    @SerializedName("STANDARD_COMPANY_LOGO")
     COMPANY_LOGO("STANDARD_COMPANY_LOGO"),
 
-    @SerializedName("STANDARD_COMPARISON_TABLE")
     COMPARISON_TABLE("STANDARD_COMPARISON_TABLE"),
 
-    @SerializedName("STANDARD_FOUR_IMAGE_TEXT")
     FOUR_IMAGE_TEXT("STANDARD_FOUR_IMAGE_TEXT"),
 
-    @SerializedName("STANDARD_FOUR_IMAGE_TEXT_QUADRANT")
     FOUR_IMAGE_TEXT_QUADRANT("STANDARD_FOUR_IMAGE_TEXT_QUADRANT"),
 
-    @SerializedName("STANDARD_HEADER_IMAGE_TEXT")
     HEADER_IMAGE_TEXT("STANDARD_HEADER_IMAGE_TEXT"),
 
-    @SerializedName("STANDARD_IMAGE_SIDEBAR")
     IMAGE_SIDEBAR("STANDARD_IMAGE_SIDEBAR"),
 
-    @SerializedName("STANDARD_IMAGE_TEXT_OVERLAY")
     IMAGE_TEXT_OVERLAY("STANDARD_IMAGE_TEXT_OVERLAY"),
 
-    @SerializedName("STANDARD_MULTIPLE_IMAGE_TEXT")
     MULTIPLE_IMAGE_TEXT("STANDARD_MULTIPLE_IMAGE_TEXT"),
 
-    @SerializedName("STANDARD_PRODUCT_DESCRIPTION")
     PRODUCT_DESCRIPTION("STANDARD_PRODUCT_DESCRIPTION"),
 
-    @SerializedName("STANDARD_SINGLE_IMAGE_HIGHLIGHTS")
     SINGLE_IMAGE_HIGHLIGHTS("STANDARD_SINGLE_IMAGE_HIGHLIGHTS"),
 
-    @SerializedName("STANDARD_SINGLE_IMAGE_SPECS_DETAIL")
     SINGLE_IMAGE_SPECS_DETAIL("STANDARD_SINGLE_IMAGE_SPECS_DETAIL"),
 
-    @SerializedName("STANDARD_SINGLE_SIDE_IMAGE")
     SINGLE_SIDE_IMAGE("STANDARD_SINGLE_SIDE_IMAGE"),
 
-    @SerializedName("STANDARD_TECH_SPECS")
     TECH_SPECS("STANDARD_TECH_SPECS"),
 
-    @SerializedName("STANDARD_TEXT")
     TEXT("STANDARD_TEXT"),
 
-    @SerializedName("STANDARD_THREE_IMAGE_TEXT")
     THREE_IMAGE_TEXT("STANDARD_THREE_IMAGE_TEXT");
 
     private String value;
@@ -82,25 +67,30 @@ public enum ContentModuleType {
         return String.valueOf(value);
     }
 
-    public static ContentModuleType fromValue(String input) {
+    public static ContentModuleType fromValue(String value) {
         for (ContentModuleType b : ContentModuleType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ContentModuleType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ContentModuleType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ContentModuleType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ContentModuleType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ContentModuleType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ContentModuleType.fromValue(value);
     }
 }

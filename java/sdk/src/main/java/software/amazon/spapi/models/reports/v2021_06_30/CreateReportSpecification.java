@@ -12,29 +12,57 @@
 
 package software.amazon.spapi.models.reports.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required to create the report. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the report.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateReportSpecification {
-    @SerializedName("reportOptions")
-    private ReportOptions reportOptions = null;
+    public static final String SERIALIZED_NAME_REPORT_OPTIONS = "reportOptions";
 
-    @SerializedName("reportType")
-    private String reportType = null;
+    @SerializedName(SERIALIZED_NAME_REPORT_OPTIONS)
+    private ReportOptions reportOptions = new HashMap<>();
 
-    @SerializedName("dataStartTime")
-    private OffsetDateTime dataStartTime = null;
+    public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
 
-    @SerializedName("dataEndTime")
-    private OffsetDateTime dataEndTime = null;
+    @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+    private String reportType;
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    public static final String SERIALIZED_NAME_DATA_START_TIME = "dataStartTime";
+
+    @SerializedName(SERIALIZED_NAME_DATA_START_TIME)
+    private OffsetDateTime dataStartTime;
+
+    public static final String SERIALIZED_NAME_DATA_END_TIME = "dataEndTime";
+
+    @SerializedName(SERIALIZED_NAME_DATA_END_TIME)
+    private OffsetDateTime dataEndTime;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public CreateReportSpecification() {}
 
     public CreateReportSpecification reportOptions(ReportOptions reportOptions) {
         this.reportOptions = reportOptions;
@@ -46,8 +74,7 @@ public class CreateReportSpecification {
      *
      * @return reportOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReportOptions getReportOptions() {
+    @javax.annotation.Nullable public ReportOptions getReportOptions() {
         return reportOptions;
     }
 
@@ -66,10 +93,7 @@ public class CreateReportSpecification {
      *
      * @return reportType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
+    @javax.annotation.Nonnull
     public String getReportType() {
         return reportType;
     }
@@ -91,10 +115,7 @@ public class CreateReportSpecification {
      *
      * @return dataStartTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The start of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.")
-    public OffsetDateTime getDataStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getDataStartTime() {
         return dataStartTime;
     }
 
@@ -115,10 +136,7 @@ public class CreateReportSpecification {
      *
      * @return dataEndTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The end of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.")
-    public OffsetDateTime getDataEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getDataEndTime() {
         return dataEndTime;
     }
 
@@ -145,10 +163,7 @@ public class CreateReportSpecification {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -158,7 +173,7 @@ public class CreateReportSpecification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -194,10 +209,129 @@ public class CreateReportSpecification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("reportOptions");
+        openapiFields.add("reportType");
+        openapiFields.add("dataStartTime");
+        openapiFields.add("dataEndTime");
+        openapiFields.add("marketplaceIds");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("reportType");
+        openapiRequiredFields.add("marketplaceIds");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateReportSpecification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateReportSpecification.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateReportSpecification is not found in the empty JSON string",
+                        CreateReportSpecification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateReportSpecification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateReportSpecification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateReportSpecification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("reportType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportType").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateReportSpecification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateReportSpecification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateReportSpecification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateReportSpecification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateReportSpecification>() {
+                        @Override
+                        public void write(JsonWriter out, CreateReportSpecification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateReportSpecification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateReportSpecification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateReportSpecification
+     * @throws IOException if the JSON string is invalid with respect to CreateReportSpecification
+     */
+    public static CreateReportSpecification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateReportSpecification.class);
+    }
+
+    /**
+     * Convert an instance of CreateReportSpecification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

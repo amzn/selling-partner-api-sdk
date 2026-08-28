@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A content document with additional information for content management. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A content document with additional information for content management.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContentRecord {
-    @SerializedName("contentReferenceKey")
-    private String contentReferenceKey = null;
+    public static final String SERIALIZED_NAME_CONTENT_REFERENCE_KEY = "contentReferenceKey";
 
-    @SerializedName("contentMetadata")
-    private ContentMetadata contentMetadata = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_REFERENCE_KEY)
+    private String contentReferenceKey;
 
-    @SerializedName("contentDocument")
-    private ContentDocument contentDocument = null;
+    public static final String SERIALIZED_NAME_CONTENT_METADATA = "contentMetadata";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_METADATA)
+    private ContentMetadata contentMetadata;
+
+    public static final String SERIALIZED_NAME_CONTENT_DOCUMENT = "contentDocument";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_DOCUMENT)
+    private ContentDocument contentDocument;
+
+    public ContentRecord() {}
 
     public ContentRecord contentReferenceKey(String contentReferenceKey) {
         this.contentReferenceKey = contentReferenceKey;
@@ -39,10 +61,7 @@ public class ContentRecord {
      *
      * @return contentReferenceKey
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.")
+    @javax.annotation.Nonnull
     public String getContentReferenceKey() {
         return contentReferenceKey;
     }
@@ -61,8 +80,7 @@ public class ContentRecord {
      *
      * @return contentMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContentMetadata getContentMetadata() {
+    @javax.annotation.Nullable public ContentMetadata getContentMetadata() {
         return contentMetadata;
     }
 
@@ -80,8 +98,7 @@ public class ContentRecord {
      *
      * @return contentDocument
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContentDocument getContentDocument() {
+    @javax.annotation.Nullable public ContentDocument getContentDocument() {
         return contentDocument;
     }
 
@@ -90,7 +107,7 @@ public class ContentRecord {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -126,10 +143,126 @@ public class ContentRecord {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contentReferenceKey");
+        openapiFields.add("contentMetadata");
+        openapiFields.add("contentDocument");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contentReferenceKey");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContentRecord
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContentRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContentRecord is not found in the empty JSON string",
+                        ContentRecord.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContentRecord.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContentRecord` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContentRecord.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("contentReferenceKey").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentReferenceKey` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentReferenceKey").toString()));
+        }
+        // validate the optional field `contentMetadata`
+        if (jsonObj.get("contentMetadata") != null
+                && !jsonObj.get("contentMetadata").isJsonNull()) {
+            ContentMetadata.validateJsonElement(jsonObj.get("contentMetadata"));
+        }
+        // validate the optional field `contentDocument`
+        if (jsonObj.get("contentDocument") != null
+                && !jsonObj.get("contentDocument").isJsonNull()) {
+            ContentDocument.validateJsonElement(jsonObj.get("contentDocument"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContentRecord.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContentRecord' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContentRecord> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContentRecord.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContentRecord>() {
+                        @Override
+                        public void write(JsonWriter out, ContentRecord value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContentRecord read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContentRecord given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContentRecord
+     * @throws IOException if the JSON string is invalid with respect to ContentRecord
+     */
+    public static ContentRecord fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContentRecord.class);
+    }
+
+    /**
+     * Convert an instance of ContentRecord to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

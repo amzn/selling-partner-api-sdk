@@ -12,39 +12,74 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An expense related to an affordability promotion. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An expense related to an affordability promotion.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AffordabilityExpenseEvent {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("TransactionType")
-    private String transactionType = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("BaseExpense")
-    private Currency baseExpense = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("TaxTypeCGST")
-    private Currency taxTypeCGST = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("TaxTypeSGST")
-    private Currency taxTypeSGST = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "TransactionType";
 
-    @SerializedName("TaxTypeIGST")
-    private Currency taxTypeIGST = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("TotalExpense")
-    private Currency totalExpense = null;
+    public static final String SERIALIZED_NAME_BASE_EXPENSE = "BaseExpense";
+
+    @SerializedName(SERIALIZED_NAME_BASE_EXPENSE)
+    private Currency baseExpense;
+
+    public static final String SERIALIZED_NAME_TAX_TYPE_C_G_S_T = "TaxTypeCGST";
+
+    @SerializedName(SERIALIZED_NAME_TAX_TYPE_C_G_S_T)
+    private Currency taxTypeCGST;
+
+    public static final String SERIALIZED_NAME_TAX_TYPE_S_G_S_T = "TaxTypeSGST";
+
+    @SerializedName(SERIALIZED_NAME_TAX_TYPE_S_G_S_T)
+    private Currency taxTypeSGST;
+
+    public static final String SERIALIZED_NAME_TAX_TYPE_I_G_S_T = "TaxTypeIGST";
+
+    @SerializedName(SERIALIZED_NAME_TAX_TYPE_I_G_S_T)
+    private Currency taxTypeIGST;
+
+    public static final String SERIALIZED_NAME_TOTAL_EXPENSE = "TotalExpense";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_EXPENSE)
+    private Currency totalExpense;
+
+    public AffordabilityExpenseEvent() {}
 
     public AffordabilityExpenseEvent amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -56,8 +91,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
-    public String getAmazonOrderId() {
+    @javax.annotation.Nullable public String getAmazonOrderId() {
         return amazonOrderId;
     }
 
@@ -75,10 +109,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -96,8 +127,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined marketplace identifier.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -116,10 +146,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The type of transaction.   Possible values:  * `Charge`: an affordability promotion expense. * `Refund`: an affordability promotion expense reversal.")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -137,8 +164,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return baseExpense
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getBaseExpense() {
+    @javax.annotation.Nullable public Currency getBaseExpense() {
         return baseExpense;
     }
 
@@ -156,7 +182,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeCGST
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTaxTypeCGST() {
         return taxTypeCGST;
     }
@@ -175,7 +201,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeSGST
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTaxTypeSGST() {
         return taxTypeSGST;
     }
@@ -194,7 +220,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeIGST
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTaxTypeIGST() {
         return taxTypeIGST;
     }
@@ -213,8 +239,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return totalExpense
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTotalExpense() {
+    @javax.annotation.Nullable public Currency getTotalExpense() {
         return totalExpense;
     }
 
@@ -223,7 +248,7 @@ public class AffordabilityExpenseEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -276,10 +301,155 @@ public class AffordabilityExpenseEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("PostedDate");
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("TransactionType");
+        openapiFields.add("BaseExpense");
+        openapiFields.add("TaxTypeCGST");
+        openapiFields.add("TaxTypeSGST");
+        openapiFields.add("TaxTypeIGST");
+        openapiFields.add("TotalExpense");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("TaxTypeCGST");
+        openapiRequiredFields.add("TaxTypeSGST");
+        openapiRequiredFields.add("TaxTypeIGST");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AffordabilityExpenseEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AffordabilityExpenseEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AffordabilityExpenseEvent is not found in the empty JSON string",
+                        AffordabilityExpenseEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AffordabilityExpenseEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AffordabilityExpenseEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AffordabilityExpenseEvent.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AmazonOrderId") != null
+                        && !jsonObj.get("AmazonOrderId").isJsonNull())
+                && !jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("MarketplaceId") != null
+                        && !jsonObj.get("MarketplaceId").isJsonNull())
+                && !jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        if ((jsonObj.get("TransactionType") != null
+                        && !jsonObj.get("TransactionType").isJsonNull())
+                && !jsonObj.get("TransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionType").toString()));
+        }
+        // validate the optional field `BaseExpense`
+        if (jsonObj.get("BaseExpense") != null && !jsonObj.get("BaseExpense").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("BaseExpense"));
+        }
+        // validate the required field `TaxTypeCGST`
+        Currency.validateJsonElement(jsonObj.get("TaxTypeCGST"));
+        // validate the required field `TaxTypeSGST`
+        Currency.validateJsonElement(jsonObj.get("TaxTypeSGST"));
+        // validate the required field `TaxTypeIGST`
+        Currency.validateJsonElement(jsonObj.get("TaxTypeIGST"));
+        // validate the optional field `TotalExpense`
+        if (jsonObj.get("TotalExpense") != null && !jsonObj.get("TotalExpense").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TotalExpense"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AffordabilityExpenseEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AffordabilityExpenseEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AffordabilityExpenseEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AffordabilityExpenseEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AffordabilityExpenseEvent>() {
+                        @Override
+                        public void write(JsonWriter out, AffordabilityExpenseEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AffordabilityExpenseEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AffordabilityExpenseEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AffordabilityExpenseEvent
+     * @throws IOException if the JSON string is invalid with respect to AffordabilityExpenseEvent
+     */
+    public static AffordabilityExpenseEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AffordabilityExpenseEvent.class);
+    }
+
+    /**
+     * Convert an instance of AffordabilityExpenseEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

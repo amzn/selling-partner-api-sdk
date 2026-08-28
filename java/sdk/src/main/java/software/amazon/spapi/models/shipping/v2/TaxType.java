@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** Indicates the type of tax. */
 @JsonAdapter(TaxType.Adapter.class)
 public enum TaxType {
-    @SerializedName("GST")
     GST("GST");
 
     private String value;
@@ -40,25 +39,30 @@ public enum TaxType {
         return String.valueOf(value);
     }
 
-    public static TaxType fromValue(String input) {
+    public static TaxType fromValue(String value) {
         for (TaxType b : TaxType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TaxType> {
         @Override
         public void write(final JsonWriter jsonWriter, final TaxType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public TaxType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return TaxType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return TaxType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        TaxType.fromValue(value);
     }
 }

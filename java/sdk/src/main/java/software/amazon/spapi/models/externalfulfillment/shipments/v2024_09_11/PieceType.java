@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Whether the item is a single piece or multiple pieces. */
 @JsonAdapter(PieceType.Adapter.class)
 public enum PieceType {
-    @SerializedName("SINGLE")
     SINGLE("SINGLE"),
 
-    @SerializedName("MULTIPLE")
     MULTIPLE("MULTIPLE");
 
     private String value;
@@ -43,25 +41,30 @@ public enum PieceType {
         return String.valueOf(value);
     }
 
-    public static PieceType fromValue(String input) {
+    public static PieceType fromValue(String value) {
         for (PieceType b : PieceType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PieceType> {
         @Override
         public void write(final JsonWriter jsonWriter, final PieceType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PieceType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PieceType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PieceType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PieceType.fromValue(value);
     }
 }

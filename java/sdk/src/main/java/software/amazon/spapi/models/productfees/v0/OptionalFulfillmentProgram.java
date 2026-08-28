@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,13 +25,10 @@ import java.io.IOException;
  */
 @JsonAdapter(OptionalFulfillmentProgram.Adapter.class)
 public enum OptionalFulfillmentProgram {
-    @SerializedName("FBA_CORE")
     CORE("FBA_CORE"),
 
-    @SerializedName("FBA_SNL")
     SNL("FBA_SNL"),
 
-    @SerializedName("FBA_EFN")
     EFN("FBA_EFN");
 
     private String value;
@@ -49,26 +46,31 @@ public enum OptionalFulfillmentProgram {
         return String.valueOf(value);
     }
 
-    public static OptionalFulfillmentProgram fromValue(String input) {
+    public static OptionalFulfillmentProgram fromValue(String value) {
         for (OptionalFulfillmentProgram b : OptionalFulfillmentProgram.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OptionalFulfillmentProgram> {
         @Override
         public void write(final JsonWriter jsonWriter, final OptionalFulfillmentProgram enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OptionalFulfillmentProgram read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OptionalFulfillmentProgram.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OptionalFulfillmentProgram.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OptionalFulfillmentProgram.fromValue(value);
     }
 }

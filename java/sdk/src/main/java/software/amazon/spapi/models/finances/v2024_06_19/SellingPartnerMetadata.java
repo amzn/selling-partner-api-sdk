@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Metadata that describes the seller. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata that describes the seller.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SellingPartnerMetadata {
-    @SerializedName("sellingPartnerId")
-    private String sellingPartnerId = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTNER_ID = "sellingPartnerId";
 
-    @SerializedName("accountType")
-    private String accountType = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTNER_ID)
+    private String sellingPartnerId;
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_TYPE = "accountType";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_TYPE)
+    private String accountType;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public SellingPartnerMetadata() {}
 
     public SellingPartnerMetadata sellingPartnerId(String sellingPartnerId) {
         this.sellingPartnerId = sellingPartnerId;
@@ -37,8 +60,7 @@ public class SellingPartnerMetadata {
      *
      * @return sellingPartnerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique seller identifier.")
-    public String getSellingPartnerId() {
+    @javax.annotation.Nullable public String getSellingPartnerId() {
         return sellingPartnerId;
     }
 
@@ -56,8 +78,7 @@ public class SellingPartnerMetadata {
      *
      * @return accountType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of account in the transaction.")
-    public String getAccountType() {
+    @javax.annotation.Nullable public String getAccountType() {
         return accountType;
     }
 
@@ -77,10 +98,7 @@ public class SellingPartnerMetadata {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -89,7 +107,7 @@ public class SellingPartnerMetadata {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +139,122 @@ public class SellingPartnerMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellingPartnerId");
+        openapiFields.add("accountType");
+        openapiFields.add("marketplaceId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SellingPartnerMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SellingPartnerMetadata.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SellingPartnerMetadata is not found in the empty JSON string",
+                        SellingPartnerMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SellingPartnerMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SellingPartnerMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("sellingPartnerId") != null
+                        && !jsonObj.get("sellingPartnerId").isJsonNull())
+                && !jsonObj.get("sellingPartnerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellingPartnerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellingPartnerId").toString()));
+        }
+        if ((jsonObj.get("accountType") != null && !jsonObj.get("accountType").isJsonNull())
+                && !jsonObj.get("accountType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountType").toString()));
+        }
+        if ((jsonObj.get("marketplaceId") != null
+                        && !jsonObj.get("marketplaceId").isJsonNull())
+                && !jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SellingPartnerMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SellingPartnerMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SellingPartnerMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SellingPartnerMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SellingPartnerMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, SellingPartnerMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SellingPartnerMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SellingPartnerMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SellingPartnerMetadata
+     * @throws IOException if the JSON string is invalid with respect to SellingPartnerMetadata
+     */
+    public static SellingPartnerMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SellingPartnerMetadata.class);
+    }
+
+    /**
+     * Convert an instance of SellingPartnerMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

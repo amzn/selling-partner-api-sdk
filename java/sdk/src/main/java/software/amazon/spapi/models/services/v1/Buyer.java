@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the buyer. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the buyer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Buyer {
-    @SerializedName("buyerId")
-    private String buyerId = null;
+    public static final String SERIALIZED_NAME_BUYER_ID = "buyerId";
 
-    @SerializedName("name")
-    private String name = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_ID)
+    private String buyerId;
 
-    @SerializedName("phone")
-    private String phone = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("isPrimeMember")
-    private Boolean isPrimeMember = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
+    public static final String SERIALIZED_NAME_PHONE = "phone";
+
+    @SerializedName(SERIALIZED_NAME_PHONE)
+    private String phone;
+
+    public static final String SERIALIZED_NAME_IS_PRIME_MEMBER = "isPrimeMember";
+
+    @SerializedName(SERIALIZED_NAME_IS_PRIME_MEMBER)
+    private Boolean isPrimeMember;
+
+    public Buyer() {}
 
     public Buyer buyerId(String buyerId) {
         this.buyerId = buyerId;
@@ -40,8 +65,7 @@ public class Buyer {
      *
      * @return buyerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the buyer.")
-    public String getBuyerId() {
+    @javax.annotation.Nullable public String getBuyerId() {
         return buyerId;
     }
 
@@ -59,8 +83,7 @@ public class Buyer {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the buyer.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -78,8 +101,7 @@ public class Buyer {
      *
      * @return phone
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The phone number of the buyer.")
-    public String getPhone() {
+    @javax.annotation.Nullable public String getPhone() {
         return phone;
     }
 
@@ -97,8 +119,7 @@ public class Buyer {
      *
      * @return isPrimeMember
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the service is for an Amazon Prime buyer.")
-    public Boolean getIsPrimeMember() {
+    @javax.annotation.Nullable public Boolean getIsPrimeMember() {
         return isPrimeMember;
     }
 
@@ -107,7 +128,7 @@ public class Buyer {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -139,10 +160,119 @@ public class Buyer {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("buyerId");
+        openapiFields.add("name");
+        openapiFields.add("phone");
+        openapiFields.add("isPrimeMember");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Buyer
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Buyer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Buyer is not found in the empty JSON string",
+                        Buyer.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Buyer.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Buyer` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("buyerId") != null && !jsonObj.get("buyerId").isJsonNull())
+                && !jsonObj.get("buyerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyerId").toString()));
+        }
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull())
+                && !jsonObj.get("phone").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `phone` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("phone").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Buyer.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Buyer' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Buyer> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Buyer.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Buyer>() {
+                        @Override
+                        public void write(JsonWriter out, Buyer value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Buyer read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Buyer given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Buyer
+     * @throws IOException if the JSON string is invalid with respect to Buyer
+     */
+    public static Buyer fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Buyer.class);
+    }
+
+    /**
+     * Convert an instance of Buyer to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

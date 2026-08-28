@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,46 +22,32 @@ import java.io.IOException;
 /** The preparation category for shipping an item to Amazon&#39;s fulfillment network. */
 @JsonAdapter(PrepCategory.Adapter.class)
 public enum PrepCategory {
-    @SerializedName("ADULT")
     ADULT("ADULT"),
 
-    @SerializedName("BABY")
     BABY("BABY"),
 
-    @SerializedName("FC_PROVIDED")
     FC_PROVIDED("FC_PROVIDED"),
 
-    @SerializedName("FRAGILE")
     FRAGILE("FRAGILE"),
 
-    @SerializedName("GRANULAR")
     GRANULAR("GRANULAR"),
 
-    @SerializedName("HANGER")
     HANGER("HANGER"),
 
-    @SerializedName("LIQUID")
     LIQUID("LIQUID"),
 
-    @SerializedName("PERFORATED")
     PERFORATED("PERFORATED"),
 
-    @SerializedName("SET")
     SET("SET"),
 
-    @SerializedName("SHARP")
     SHARP("SHARP"),
 
-    @SerializedName("SMALL")
     SMALL("SMALL"),
 
-    @SerializedName("TEXTILE")
     TEXTILE("TEXTILE"),
 
-    @SerializedName("NO_PREP")
     NO_PREP("NO_PREP"),
 
-    @SerializedName("UNKNOWN")
     UNKNOWN("UNKNOWN");
 
     private String value;
@@ -79,25 +65,30 @@ public enum PrepCategory {
         return String.valueOf(value);
     }
 
-    public static PrepCategory fromValue(String input) {
+    public static PrepCategory fromValue(String value) {
         for (PrepCategory b : PrepCategory.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PrepCategory> {
         @Override
         public void write(final JsonWriter jsonWriter, final PrepCategory enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PrepCategory read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PrepCategory.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PrepCategory.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PrepCategory.fromValue(value);
     }
 }

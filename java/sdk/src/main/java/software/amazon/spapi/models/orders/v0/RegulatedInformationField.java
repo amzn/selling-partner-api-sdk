@@ -12,29 +12,43 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A field collected from the regulatory form. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A field collected from the regulatory form.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RegulatedInformationField {
-    @SerializedName("FieldId")
-    private String fieldId = null;
+    public static final String SERIALIZED_NAME_FIELD_ID = "FieldId";
 
-    @SerializedName("FieldLabel")
-    private String fieldLabel = null;
+    @SerializedName(SERIALIZED_NAME_FIELD_ID)
+    private String fieldId;
+
+    public static final String SERIALIZED_NAME_FIELD_LABEL = "FieldLabel";
+
+    @SerializedName(SERIALIZED_NAME_FIELD_LABEL)
+    private String fieldLabel;
 
     /** The type of field. */
     @JsonAdapter(FieldTypeEnum.Adapter.class)
     public enum FieldTypeEnum {
-        @SerializedName("Text")
         TEXT("Text"),
-        @SerializedName("FileAttachment")
+
         FILE_ATTACHMENT("FileAttachment");
 
         private String value;
@@ -52,34 +66,45 @@ public class RegulatedInformationField {
             return String.valueOf(value);
         }
 
-        public static FieldTypeEnum fromValue(String input) {
+        public static FieldTypeEnum fromValue(String value) {
             for (FieldTypeEnum b : FieldTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FieldTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final FieldTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public FieldTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return FieldTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return FieldTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FieldTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("FieldType")
-    private FieldTypeEnum fieldType = null;
+    public static final String SERIALIZED_NAME_FIELD_TYPE = "FieldType";
 
-    @SerializedName("FieldValue")
-    private String fieldValue = null;
+    @SerializedName(SERIALIZED_NAME_FIELD_TYPE)
+    private FieldTypeEnum fieldType;
+
+    public static final String SERIALIZED_NAME_FIELD_VALUE = "FieldValue";
+
+    @SerializedName(SERIALIZED_NAME_FIELD_VALUE)
+    private String fieldValue;
+
+    public RegulatedInformationField() {}
 
     public RegulatedInformationField fieldId(String fieldId) {
         this.fieldId = fieldId;
@@ -91,7 +116,7 @@ public class RegulatedInformationField {
      *
      * @return fieldId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unique identifier of the field.")
+    @javax.annotation.Nonnull
     public String getFieldId() {
         return fieldId;
     }
@@ -110,7 +135,7 @@ public class RegulatedInformationField {
      *
      * @return fieldLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the field.")
+    @javax.annotation.Nonnull
     public String getFieldLabel() {
         return fieldLabel;
     }
@@ -129,7 +154,7 @@ public class RegulatedInformationField {
      *
      * @return fieldType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of field.")
+    @javax.annotation.Nonnull
     public FieldTypeEnum getFieldType() {
         return fieldType;
     }
@@ -149,10 +174,7 @@ public class RegulatedInformationField {
      *
      * @return fieldValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The content of the field as collected in regulatory form. Note that `FileAttachment` type fields contain a URL where you can download the attachment.")
+    @javax.annotation.Nonnull
     public String getFieldValue() {
         return fieldValue;
     }
@@ -162,7 +184,7 @@ public class RegulatedInformationField {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -194,10 +216,138 @@ public class RegulatedInformationField {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("FieldId");
+        openapiFields.add("FieldLabel");
+        openapiFields.add("FieldType");
+        openapiFields.add("FieldValue");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("FieldId");
+        openapiRequiredFields.add("FieldLabel");
+        openapiRequiredFields.add("FieldType");
+        openapiRequiredFields.add("FieldValue");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RegulatedInformationField
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RegulatedInformationField.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RegulatedInformationField is not found in the empty JSON string",
+                        RegulatedInformationField.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RegulatedInformationField.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RegulatedInformationField` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RegulatedInformationField.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("FieldId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FieldId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FieldId").toString()));
+        }
+        if (!jsonObj.get("FieldLabel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FieldLabel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FieldLabel").toString()));
+        }
+        if (!jsonObj.get("FieldType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FieldType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FieldType").toString()));
+        }
+        // validate the required field `FieldType`
+        FieldTypeEnum.validateJsonElement(jsonObj.get("FieldType"));
+        if (!jsonObj.get("FieldValue").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FieldValue` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FieldValue").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RegulatedInformationField.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RegulatedInformationField' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RegulatedInformationField> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RegulatedInformationField.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RegulatedInformationField>() {
+                        @Override
+                        public void write(JsonWriter out, RegulatedInformationField value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RegulatedInformationField read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RegulatedInformationField given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RegulatedInformationField
+     * @throws IOException if the JSON string is invalid with respect to RegulatedInformationField
+     */
+    public static RegulatedInformationField fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RegulatedInformationField.class);
+    }
+
+    /**
+     * Convert an instance of RegulatedInformationField to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

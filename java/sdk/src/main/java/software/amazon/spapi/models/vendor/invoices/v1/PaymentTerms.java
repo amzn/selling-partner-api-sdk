@@ -12,33 +12,42 @@
 
 package software.amazon.spapi.models.vendor.invoices.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Terms of the payment for the invoice. The basis of the payment terms is the invoice date. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Terms of the payment for the invoice. The basis of the payment terms is the invoice date.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PaymentTerms {
     /** The payment term type for the invoice. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("Basic")
         BASIC("Basic"),
-        @SerializedName("EndOfMonth")
+
         END_OF_MONTH("EndOfMonth"),
-        @SerializedName("FixedDate")
+
         FIXED_DATE("FixedDate"),
-        @SerializedName("Proximo")
+
         PROXIMO("Proximo"),
-        @SerializedName("PaymentDueUponReceiptOfInvoice")
+
         PAYMENT_DUE_UPON_RECEIPT_OF_INVOICE("PaymentDueUponReceiptOfInvoice"),
-        @SerializedName("LetterofCredit")
+
         LETTEROF_CREDIT("LetterofCredit");
 
         private String value;
@@ -56,40 +65,55 @@ public class PaymentTerms {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("discountPercent")
-    private String discountPercent = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
 
-    @SerializedName("discountDueDays")
-    private BigDecimal discountDueDays = null;
+    public static final String SERIALIZED_NAME_DISCOUNT_PERCENT = "discountPercent";
 
-    @SerializedName("netDueDays")
-    private BigDecimal netDueDays = null;
+    @SerializedName(SERIALIZED_NAME_DISCOUNT_PERCENT)
+    private String discountPercent;
+
+    public static final String SERIALIZED_NAME_DISCOUNT_DUE_DAYS = "discountDueDays";
+
+    @SerializedName(SERIALIZED_NAME_DISCOUNT_DUE_DAYS)
+    private BigDecimal discountDueDays;
+
+    public static final String SERIALIZED_NAME_NET_DUE_DAYS = "netDueDays";
+
+    @SerializedName(SERIALIZED_NAME_NET_DUE_DAYS)
+    private BigDecimal netDueDays;
+
+    public PaymentTerms() {}
 
     public PaymentTerms type(TypeEnum type) {
         this.type = type;
@@ -101,8 +125,7 @@ public class PaymentTerms {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment term type for the invoice.")
-    public TypeEnum getType() {
+    @javax.annotation.Nullable public TypeEnum getType() {
         return type;
     }
 
@@ -122,10 +145,7 @@ public class PaymentTerms {
      *
      * @return discountPercent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
-    public String getDiscountPercent() {
+    @javax.annotation.Nullable public String getDiscountPercent() {
         return discountPercent;
     }
 
@@ -143,10 +163,7 @@ public class PaymentTerms {
      *
      * @return discountDueDays
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of calendar days from the Base date (Invoice date) until the discount is no longer valid.")
-    public BigDecimal getDiscountDueDays() {
+    @javax.annotation.Nullable public BigDecimal getDiscountDueDays() {
         return discountDueDays;
     }
 
@@ -164,10 +181,7 @@ public class PaymentTerms {
      *
      * @return netDueDays
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of calendar days from the base date (invoice date) until the total amount on the invoice is due.")
-    public BigDecimal getNetDueDays() {
+    @javax.annotation.Nullable public BigDecimal getNetDueDays() {
         return netDueDays;
     }
 
@@ -176,7 +190,7 @@ public class PaymentTerms {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -212,10 +226,119 @@ public class PaymentTerms {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("discountPercent");
+        openapiFields.add("discountDueDays");
+        openapiFields.add("netDueDays");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PaymentTerms
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PaymentTerms.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PaymentTerms is not found in the empty JSON string",
+                        PaymentTerms.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PaymentTerms.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PaymentTerms` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull())
+                && !jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the optional field `type`
+        if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+            TypeEnum.validateJsonElement(jsonObj.get("type"));
+        }
+        if ((jsonObj.get("discountPercent") != null
+                        && !jsonObj.get("discountPercent").isJsonNull())
+                && !jsonObj.get("discountPercent").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `discountPercent` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("discountPercent").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PaymentTerms.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PaymentTerms' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PaymentTerms> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PaymentTerms.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PaymentTerms>() {
+                        @Override
+                        public void write(JsonWriter out, PaymentTerms value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PaymentTerms read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PaymentTerms given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PaymentTerms
+     * @throws IOException if the JSON string is invalid with respect to PaymentTerms
+     */
+    public static PaymentTerms fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PaymentTerms.class);
+    }
+
+    /**
+     * Convert an instance of PaymentTerms to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

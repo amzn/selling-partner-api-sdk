@@ -12,44 +12,79 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about the seller's inbound shipments. Returned by the listInboundShipments operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundShipmentInfo {
-    @SerializedName("ShipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "ShipmentId";
 
-    @SerializedName("ShipmentName")
-    private String shipmentName = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
 
-    @SerializedName("ShipFromAddress")
-    private Address shipFromAddress = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_NAME = "ShipmentName";
 
-    @SerializedName("DestinationFulfillmentCenterId")
-    private String destinationFulfillmentCenterId = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_NAME)
+    private String shipmentName;
 
-    @SerializedName("ShipmentStatus")
-    private ShipmentStatus shipmentStatus = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "ShipFromAddress";
 
-    @SerializedName("LabelPrepType")
-    private LabelPrepType labelPrepType = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_ADDRESS)
+    private Address shipFromAddress;
 
-    @SerializedName("AreCasesRequired")
-    private Boolean areCasesRequired = null;
+    public static final String SERIALIZED_NAME_DESTINATION_FULFILLMENT_CENTER_ID = "DestinationFulfillmentCenterId";
 
-    @SerializedName("ConfirmedNeedByDate")
-    private LocalDate confirmedNeedByDate = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_FULFILLMENT_CENTER_ID)
+    private String destinationFulfillmentCenterId;
 
-    @SerializedName("BoxContentsSource")
-    private BoxContentsSource boxContentsSource = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_STATUS = "ShipmentStatus";
 
-    @SerializedName("EstimatedBoxContentsFee")
-    private BoxContentsFeeDetails estimatedBoxContentsFee = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_STATUS)
+    private ShipmentStatus shipmentStatus;
+
+    public static final String SERIALIZED_NAME_LABEL_PREP_TYPE = "LabelPrepType";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_PREP_TYPE)
+    private LabelPrepType labelPrepType;
+
+    public static final String SERIALIZED_NAME_ARE_CASES_REQUIRED = "AreCasesRequired";
+
+    @SerializedName(SERIALIZED_NAME_ARE_CASES_REQUIRED)
+    private Boolean areCasesRequired;
+
+    public static final String SERIALIZED_NAME_CONFIRMED_NEED_BY_DATE = "ConfirmedNeedByDate";
+
+    @SerializedName(SERIALIZED_NAME_CONFIRMED_NEED_BY_DATE)
+    private LocalDate confirmedNeedByDate;
+
+    public static final String SERIALIZED_NAME_BOX_CONTENTS_SOURCE = "BoxContentsSource";
+
+    @SerializedName(SERIALIZED_NAME_BOX_CONTENTS_SOURCE)
+    private BoxContentsSource boxContentsSource;
+
+    public static final String SERIALIZED_NAME_ESTIMATED_BOX_CONTENTS_FEE = "EstimatedBoxContentsFee";
+
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_BOX_CONTENTS_FEE)
+    private BoxContentsFeeDetails estimatedBoxContentsFee;
+
+    public InboundShipmentInfo() {}
 
     public InboundShipmentInfo shipmentId(String shipmentId) {
         this.shipmentId = shipmentId;
@@ -61,8 +96,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The shipment identifier submitted in the request.")
-    public String getShipmentId() {
+    @javax.annotation.Nullable public String getShipmentId() {
         return shipmentId;
     }
 
@@ -80,8 +114,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name for the inbound shipment.")
-    public String getShipmentName() {
+    @javax.annotation.Nullable public String getShipmentName() {
         return shipmentName;
     }
 
@@ -99,7 +132,7 @@ public class InboundShipmentInfo {
      *
      * @return shipFromAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -118,9 +151,7 @@ public class InboundShipmentInfo {
      *
      * @return destinationFulfillmentCenterId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "An Amazon fulfillment center identifier created by Amazon.")
-    public String getDestinationFulfillmentCenterId() {
+    @javax.annotation.Nullable public String getDestinationFulfillmentCenterId() {
         return destinationFulfillmentCenterId;
     }
 
@@ -138,8 +169,7 @@ public class InboundShipmentInfo {
      *
      * @return shipmentStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentStatus getShipmentStatus() {
+    @javax.annotation.Nullable public ShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
 
@@ -157,8 +187,7 @@ public class InboundShipmentInfo {
      *
      * @return labelPrepType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelPrepType getLabelPrepType() {
+    @javax.annotation.Nullable public LabelPrepType getLabelPrepType() {
         return labelPrepType;
     }
 
@@ -177,10 +206,7 @@ public class InboundShipmentInfo {
      *
      * @return areCasesRequired
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired = true for an inbound shipment, all items in the inbound shipment must be case packed.")
+    @javax.annotation.Nonnull
     public Boolean getAreCasesRequired() {
         return areCasesRequired;
     }
@@ -199,8 +225,7 @@ public class InboundShipmentInfo {
      *
      * @return confirmedNeedByDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Type containing date in string format")
-    public LocalDate getConfirmedNeedByDate() {
+    @javax.annotation.Nullable public LocalDate getConfirmedNeedByDate() {
         return confirmedNeedByDate;
     }
 
@@ -218,8 +243,7 @@ public class InboundShipmentInfo {
      *
      * @return boxContentsSource
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BoxContentsSource getBoxContentsSource() {
+    @javax.annotation.Nullable public BoxContentsSource getBoxContentsSource() {
         return boxContentsSource;
     }
 
@@ -237,8 +261,7 @@ public class InboundShipmentInfo {
      *
      * @return estimatedBoxContentsFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BoxContentsFeeDetails getEstimatedBoxContentsFee() {
+    @javax.annotation.Nullable public BoxContentsFeeDetails getEstimatedBoxContentsFee() {
         return estimatedBoxContentsFee;
     }
 
@@ -247,7 +270,7 @@ public class InboundShipmentInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -316,10 +339,160 @@ public class InboundShipmentInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentId");
+        openapiFields.add("ShipmentName");
+        openapiFields.add("ShipFromAddress");
+        openapiFields.add("DestinationFulfillmentCenterId");
+        openapiFields.add("ShipmentStatus");
+        openapiFields.add("LabelPrepType");
+        openapiFields.add("AreCasesRequired");
+        openapiFields.add("ConfirmedNeedByDate");
+        openapiFields.add("BoxContentsSource");
+        openapiFields.add("EstimatedBoxContentsFee");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShipFromAddress");
+        openapiRequiredFields.add("AreCasesRequired");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundShipmentInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundShipmentInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundShipmentInfo is not found in the empty JSON string",
+                        InboundShipmentInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundShipmentInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundShipmentInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundShipmentInfo.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ShipmentId") != null && !jsonObj.get("ShipmentId").isJsonNull())
+                && !jsonObj.get("ShipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipmentId").toString()));
+        }
+        if ((jsonObj.get("ShipmentName") != null && !jsonObj.get("ShipmentName").isJsonNull())
+                && !jsonObj.get("ShipmentName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipmentName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipmentName").toString()));
+        }
+        // validate the required field `ShipFromAddress`
+        Address.validateJsonElement(jsonObj.get("ShipFromAddress"));
+        if ((jsonObj.get("DestinationFulfillmentCenterId") != null
+                        && !jsonObj.get("DestinationFulfillmentCenterId").isJsonNull())
+                && !jsonObj.get("DestinationFulfillmentCenterId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DestinationFulfillmentCenterId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DestinationFulfillmentCenterId").toString()));
+        }
+        // validate the optional field `ShipmentStatus`
+        if (jsonObj.get("ShipmentStatus") != null
+                && !jsonObj.get("ShipmentStatus").isJsonNull()) {
+            ShipmentStatus.validateJsonElement(jsonObj.get("ShipmentStatus"));
+        }
+        // validate the optional field `LabelPrepType`
+        if (jsonObj.get("LabelPrepType") != null
+                && !jsonObj.get("LabelPrepType").isJsonNull()) {
+            LabelPrepType.validateJsonElement(jsonObj.get("LabelPrepType"));
+        }
+        // validate the optional field `BoxContentsSource`
+        if (jsonObj.get("BoxContentsSource") != null
+                && !jsonObj.get("BoxContentsSource").isJsonNull()) {
+            BoxContentsSource.validateJsonElement(jsonObj.get("BoxContentsSource"));
+        }
+        // validate the optional field `EstimatedBoxContentsFee`
+        if (jsonObj.get("EstimatedBoxContentsFee") != null
+                && !jsonObj.get("EstimatedBoxContentsFee").isJsonNull()) {
+            BoxContentsFeeDetails.validateJsonElement(jsonObj.get("EstimatedBoxContentsFee"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundShipmentInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundShipmentInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundShipmentInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundShipmentInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundShipmentInfo>() {
+                        @Override
+                        public void write(JsonWriter out, InboundShipmentInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundShipmentInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundShipmentInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundShipmentInfo
+     * @throws IOException if the JSON string is invalid with respect to InboundShipmentInfo
+     */
+    public static InboundShipmentInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundShipmentInfo.class);
+    }
+
+    /**
+     * Convert an instance of InboundShipmentInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about the shipping of the return packages. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the shipping of the return packages.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReturnShippingInfo {
-    @SerializedName("deliveryDateTime")
-    private String deliveryDateTime = null;
+    public static final String SERIALIZED_NAME_DELIVERY_DATE_TIME = "deliveryDateTime";
 
-    @SerializedName("pickupDateTime")
-    private String pickupDateTime = null;
+    @SerializedName(SERIALIZED_NAME_DELIVERY_DATE_TIME)
+    private String deliveryDateTime;
 
-    @SerializedName("forwardTrackingInfo")
-    private TrackingInfo forwardTrackingInfo = null;
+    public static final String SERIALIZED_NAME_PICKUP_DATE_TIME = "pickupDateTime";
 
-    @SerializedName("reverseTrackingInfo")
-    private TrackingInfo reverseTrackingInfo = null;
+    @SerializedName(SERIALIZED_NAME_PICKUP_DATE_TIME)
+    private String pickupDateTime;
+
+    public static final String SERIALIZED_NAME_FORWARD_TRACKING_INFO = "forwardTrackingInfo";
+
+    @SerializedName(SERIALIZED_NAME_FORWARD_TRACKING_INFO)
+    private TrackingInfo forwardTrackingInfo;
+
+    public static final String SERIALIZED_NAME_REVERSE_TRACKING_INFO = "reverseTrackingInfo";
+
+    @SerializedName(SERIALIZED_NAME_REVERSE_TRACKING_INFO)
+    private TrackingInfo reverseTrackingInfo;
+
+    public ReturnShippingInfo() {}
 
     public ReturnShippingInfo deliveryDateTime(String deliveryDateTime) {
         this.deliveryDateTime = deliveryDateTime;
@@ -40,10 +65,7 @@ public class ReturnShippingInfo {
      *
      * @return deliveryDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getDeliveryDateTime() {
+    @javax.annotation.Nullable public String getDeliveryDateTime() {
         return deliveryDateTime;
     }
 
@@ -61,10 +83,7 @@ public class ReturnShippingInfo {
      *
      * @return pickupDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
-    public String getPickupDateTime() {
+    @javax.annotation.Nullable public String getPickupDateTime() {
         return pickupDateTime;
     }
 
@@ -82,8 +101,7 @@ public class ReturnShippingInfo {
      *
      * @return forwardTrackingInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingInfo getForwardTrackingInfo() {
+    @javax.annotation.Nullable public TrackingInfo getForwardTrackingInfo() {
         return forwardTrackingInfo;
     }
 
@@ -101,8 +119,7 @@ public class ReturnShippingInfo {
      *
      * @return reverseTrackingInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingInfo getReverseTrackingInfo() {
+    @javax.annotation.Nullable public TrackingInfo getReverseTrackingInfo() {
         return reverseTrackingInfo;
     }
 
@@ -111,7 +128,7 @@ public class ReturnShippingInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -151,10 +168,126 @@ public class ReturnShippingInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("deliveryDateTime");
+        openapiFields.add("pickupDateTime");
+        openapiFields.add("forwardTrackingInfo");
+        openapiFields.add("reverseTrackingInfo");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReturnShippingInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReturnShippingInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReturnShippingInfo is not found in the empty JSON string",
+                        ReturnShippingInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReturnShippingInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReturnShippingInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("deliveryDateTime") != null
+                        && !jsonObj.get("deliveryDateTime").isJsonNull())
+                && !jsonObj.get("deliveryDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `deliveryDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("deliveryDateTime").toString()));
+        }
+        if ((jsonObj.get("pickupDateTime") != null
+                        && !jsonObj.get("pickupDateTime").isJsonNull())
+                && !jsonObj.get("pickupDateTime").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `pickupDateTime` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("pickupDateTime").toString()));
+        }
+        // validate the optional field `forwardTrackingInfo`
+        if (jsonObj.get("forwardTrackingInfo") != null
+                && !jsonObj.get("forwardTrackingInfo").isJsonNull()) {
+            TrackingInfo.validateJsonElement(jsonObj.get("forwardTrackingInfo"));
+        }
+        // validate the optional field `reverseTrackingInfo`
+        if (jsonObj.get("reverseTrackingInfo") != null
+                && !jsonObj.get("reverseTrackingInfo").isJsonNull()) {
+            TrackingInfo.validateJsonElement(jsonObj.get("reverseTrackingInfo"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReturnShippingInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReturnShippingInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReturnShippingInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReturnShippingInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReturnShippingInfo>() {
+                        @Override
+                        public void write(JsonWriter out, ReturnShippingInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReturnShippingInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReturnShippingInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReturnShippingInfo
+     * @throws IOException if the JSON string is invalid with respect to ReturnShippingInfo
+     */
+    public static ReturnShippingInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReturnShippingInfo.class);
+    }
+
+    /**
+     * Convert an instance of ReturnShippingInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

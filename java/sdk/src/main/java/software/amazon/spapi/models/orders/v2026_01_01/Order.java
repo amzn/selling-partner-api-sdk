@@ -12,62 +12,112 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Comprehensive information about a customer order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Comprehensive information about a customer order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Order {
-    @SerializedName("orderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("orderAliases")
-    private List<Alias> orderAliases = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
-    @SerializedName("createdTime")
-    private OffsetDateTime createdTime = null;
+    public static final String SERIALIZED_NAME_ORDER_ALIASES = "orderAliases";
 
-    @SerializedName("lastUpdatedTime")
-    private OffsetDateTime lastUpdatedTime = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ALIASES)
+    private List<Alias> orderAliases = new ArrayList<>();
 
-    @SerializedName("programs")
-    private List<String> programs = null;
+    public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
 
-    @SerializedName("associatedOrders")
-    private List<AssociatedOrder> associatedOrders = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+    private OffsetDateTime createdTime;
 
-    @SerializedName("salesChannel")
-    private SalesChannel salesChannel = null;
+    public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "lastUpdatedTime";
 
-    @SerializedName("buyer")
-    private Buyer buyer = null;
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+    private OffsetDateTime lastUpdatedTime;
 
-    @SerializedName("recipient")
-    private Recipient recipient = null;
+    public static final String SERIALIZED_NAME_PROGRAMS = "programs";
 
-    @SerializedName("proceeds")
-    private OrderProceeds proceeds = null;
+    @SerializedName(SERIALIZED_NAME_PROGRAMS)
+    private List<String> programs = new ArrayList<>();
 
-    @SerializedName("payment")
-    private OrderPayment payment = null;
+    public static final String SERIALIZED_NAME_ASSOCIATED_ORDERS = "associatedOrders";
 
-    @SerializedName("tax")
-    private OrderTax tax = null;
+    @SerializedName(SERIALIZED_NAME_ASSOCIATED_ORDERS)
+    private List<AssociatedOrder> associatedOrders = new ArrayList<>();
 
-    @SerializedName("fulfillment")
-    private OrderFulfillment fulfillment = null;
+    public static final String SERIALIZED_NAME_SALES_CHANNEL = "salesChannel";
 
-    @SerializedName("orderItems")
-    private List<OrderItem> orderItems = null;
+    @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
+    private SalesChannel salesChannel;
 
-    @SerializedName("packages")
-    private List<OrderPackage> packages = null;
+    public static final String SERIALIZED_NAME_BUYER = "buyer";
 
-    @SerializedName("fulfillmentOrders")
-    private List<FulfillmentOrder> fulfillmentOrders = null;
+    @SerializedName(SERIALIZED_NAME_BUYER)
+    private Buyer buyer;
+
+    public static final String SERIALIZED_NAME_RECIPIENT = "recipient";
+
+    @SerializedName(SERIALIZED_NAME_RECIPIENT)
+    private Recipient recipient;
+
+    public static final String SERIALIZED_NAME_PROCEEDS = "proceeds";
+
+    @SerializedName(SERIALIZED_NAME_PROCEEDS)
+    private OrderProceeds proceeds;
+
+    public static final String SERIALIZED_NAME_PAYMENT = "payment";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT)
+    private OrderPayment payment;
+
+    public static final String SERIALIZED_NAME_TAX = "tax";
+
+    @SerializedName(SERIALIZED_NAME_TAX)
+    private OrderTax tax;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT = "fulfillment";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT)
+    private OrderFulfillment fulfillment;
+
+    public static final String SERIALIZED_NAME_ORDER_ITEMS = "orderItems";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKAGES = "packages";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGES)
+    private List<OrderPackage> packages = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_ORDERS = "fulfillmentOrders";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDERS)
+    private List<FulfillmentOrder> fulfillmentOrders = new ArrayList<>();
+
+    public Order() {}
 
     public Order orderId(String orderId) {
         this.orderId = orderId;
@@ -79,7 +129,7 @@ public class Order {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "An Amazon-defined order identifier.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -106,10 +156,7 @@ public class Order {
      *
      * @return orderAliases
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.")
-    public List<Alias> getOrderAliases() {
+    @javax.annotation.Nullable public List<Alias> getOrderAliases() {
         return orderAliases;
     }
 
@@ -128,10 +175,7 @@ public class Order {
      *
      * @return createdTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time when the customer placed the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -151,10 +195,7 @@ public class Order {
      *
      * @return lastUpdatedTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The most recent time when any aspect of this order was modified by Amazon or the seller. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdatedTime() {
         return lastUpdatedTime;
     }
@@ -185,10 +226,7 @@ public class Order {
      *
      * @return programs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`")
-    public List<String> getPrograms() {
+    @javax.annotation.Nullable public List<String> getPrograms() {
         return programs;
     }
 
@@ -214,10 +252,7 @@ public class Order {
      *
      * @return associatedOrders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Other orders that have a direct relationship to this order, such as replacement or exchange orders.")
-    public List<AssociatedOrder> getAssociatedOrders() {
+    @javax.annotation.Nullable public List<AssociatedOrder> getAssociatedOrders() {
         return associatedOrders;
     }
 
@@ -235,7 +270,7 @@ public class Order {
      *
      * @return salesChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public SalesChannel getSalesChannel() {
         return salesChannel;
     }
@@ -254,8 +289,7 @@ public class Order {
      *
      * @return buyer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Buyer getBuyer() {
+    @javax.annotation.Nullable public Buyer getBuyer() {
         return buyer;
     }
 
@@ -273,8 +307,7 @@ public class Order {
      *
      * @return recipient
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Recipient getRecipient() {
+    @javax.annotation.Nullable public Recipient getRecipient() {
         return recipient;
     }
 
@@ -292,8 +325,7 @@ public class Order {
      *
      * @return proceeds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderProceeds getProceeds() {
+    @javax.annotation.Nullable public OrderProceeds getProceeds() {
         return proceeds;
     }
 
@@ -311,8 +343,7 @@ public class Order {
      *
      * @return payment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderPayment getPayment() {
+    @javax.annotation.Nullable public OrderPayment getPayment() {
         return payment;
     }
 
@@ -330,8 +361,7 @@ public class Order {
      *
      * @return tax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderTax getTax() {
+    @javax.annotation.Nullable public OrderTax getTax() {
         return tax;
     }
 
@@ -349,8 +379,7 @@ public class Order {
      *
      * @return fulfillment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderFulfillment getFulfillment() {
+    @javax.annotation.Nullable public OrderFulfillment getFulfillment() {
         return fulfillment;
     }
 
@@ -376,9 +405,7 @@ public class Order {
      *
      * @return orderItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The list of all order items included in this order.")
+    @javax.annotation.Nonnull
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -406,10 +433,7 @@ public class Order {
      *
      * @return packages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.")
-    public List<OrderPackage> getPackages() {
+    @javax.annotation.Nullable public List<OrderPackage> getPackages() {
         return packages;
     }
 
@@ -436,10 +460,7 @@ public class Order {
      *
      * @return fulfillmentOrders
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.")
-    public List<FulfillmentOrder> getFulfillmentOrders() {
+    @javax.annotation.Nullable public List<FulfillmentOrder> getFulfillmentOrders() {
         return fulfillmentOrders;
     }
 
@@ -448,7 +469,7 @@ public class Order {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -526,10 +547,249 @@ public class Order {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("orderId");
+        openapiFields.add("orderAliases");
+        openapiFields.add("createdTime");
+        openapiFields.add("lastUpdatedTime");
+        openapiFields.add("programs");
+        openapiFields.add("associatedOrders");
+        openapiFields.add("salesChannel");
+        openapiFields.add("buyer");
+        openapiFields.add("recipient");
+        openapiFields.add("proceeds");
+        openapiFields.add("payment");
+        openapiFields.add("tax");
+        openapiFields.add("fulfillment");
+        openapiFields.add("orderItems");
+        openapiFields.add("packages");
+        openapiFields.add("fulfillmentOrders");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("orderId");
+        openapiRequiredFields.add("createdTime");
+        openapiRequiredFields.add("lastUpdatedTime");
+        openapiRequiredFields.add("salesChannel");
+        openapiRequiredFields.add("orderItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Order
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Order.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Order is not found in the empty JSON string",
+                        Order.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Order.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Order` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Order.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        if (jsonObj.get("orderAliases") != null && !jsonObj.get("orderAliases").isJsonNull()) {
+            JsonArray jsonArrayorderAliases = jsonObj.getAsJsonArray("orderAliases");
+            if (jsonArrayorderAliases != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("orderAliases").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `orderAliases` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("orderAliases").toString()));
+                }
+
+                // validate the optional field `orderAliases` (array)
+                for (int i = 0; i < jsonArrayorderAliases.size(); i++) {
+                    Alias.validateJsonElement(jsonArrayorderAliases.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("programs") != null
+                && !jsonObj.get("programs").isJsonNull()
+                && !jsonObj.get("programs").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `programs` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("programs").toString()));
+        }
+        if (jsonObj.get("associatedOrders") != null
+                && !jsonObj.get("associatedOrders").isJsonNull()) {
+            JsonArray jsonArrayassociatedOrders = jsonObj.getAsJsonArray("associatedOrders");
+            if (jsonArrayassociatedOrders != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("associatedOrders").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `associatedOrders` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("associatedOrders").toString()));
+                }
+
+                // validate the optional field `associatedOrders` (array)
+                for (int i = 0; i < jsonArrayassociatedOrders.size(); i++) {
+                    AssociatedOrder.validateJsonElement(jsonArrayassociatedOrders.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `salesChannel`
+        SalesChannel.validateJsonElement(jsonObj.get("salesChannel"));
+        // validate the optional field `buyer`
+        if (jsonObj.get("buyer") != null && !jsonObj.get("buyer").isJsonNull()) {
+            Buyer.validateJsonElement(jsonObj.get("buyer"));
+        }
+        // validate the optional field `recipient`
+        if (jsonObj.get("recipient") != null && !jsonObj.get("recipient").isJsonNull()) {
+            Recipient.validateJsonElement(jsonObj.get("recipient"));
+        }
+        // validate the optional field `proceeds`
+        if (jsonObj.get("proceeds") != null && !jsonObj.get("proceeds").isJsonNull()) {
+            OrderProceeds.validateJsonElement(jsonObj.get("proceeds"));
+        }
+        // validate the optional field `payment`
+        if (jsonObj.get("payment") != null && !jsonObj.get("payment").isJsonNull()) {
+            OrderPayment.validateJsonElement(jsonObj.get("payment"));
+        }
+        // validate the optional field `tax`
+        if (jsonObj.get("tax") != null && !jsonObj.get("tax").isJsonNull()) {
+            OrderTax.validateJsonElement(jsonObj.get("tax"));
+        }
+        // validate the optional field `fulfillment`
+        if (jsonObj.get("fulfillment") != null && !jsonObj.get("fulfillment").isJsonNull()) {
+            OrderFulfillment.validateJsonElement(jsonObj.get("fulfillment"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("orderItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderItems").toString()));
+        }
+
+        JsonArray jsonArrayorderItems = jsonObj.getAsJsonArray("orderItems");
+        // validate the required field `orderItems` (array)
+        for (int i = 0; i < jsonArrayorderItems.size(); i++) {
+            OrderItem.validateJsonElement(jsonArrayorderItems.get(i));
+        }
+        ;
+        if (jsonObj.get("packages") != null && !jsonObj.get("packages").isJsonNull()) {
+            JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+            if (jsonArraypackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packages").toString()));
+                }
+
+                // validate the optional field `packages` (array)
+                for (int i = 0; i < jsonArraypackages.size(); i++) {
+                    OrderPackage.validateJsonElement(jsonArraypackages.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("fulfillmentOrders") != null
+                && !jsonObj.get("fulfillmentOrders").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentOrders = jsonObj.getAsJsonArray("fulfillmentOrders");
+            if (jsonArrayfulfillmentOrders != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentOrders").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentOrders` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentOrders").toString()));
+                }
+
+                // validate the optional field `fulfillmentOrders` (array)
+                for (int i = 0; i < jsonArrayfulfillmentOrders.size(); i++) {
+                    FulfillmentOrder.validateJsonElement(jsonArrayfulfillmentOrders.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Order.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Order' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Order> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Order.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Order>() {
+                        @Override
+                        public void write(JsonWriter out, Order value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Order read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Order given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Order
+     * @throws IOException if the JSON string is invalid with respect to Order
+     */
+    public static Order fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Order.class);
+    }
+
+    /**
+     * Convert an instance of Order to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

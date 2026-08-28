@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request schema for the GetShipmentLabels operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the GetShipmentLabels operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationLabels {
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
 
-    @SerializedName("transportLabels")
-    private List<TransportLabel> transportLabels = null;
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public static final String SERIALIZED_NAME_TRANSPORT_LABELS = "transportLabels";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORT_LABELS)
+    private List<TransportLabel> transportLabels = new ArrayList<>();
+
+    public TransportationLabels() {}
 
     public TransportationLabels pagination(Pagination pagination) {
         this.pagination = pagination;
@@ -36,8 +58,7 @@ public class TransportationLabels {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -63,8 +84,7 @@ public class TransportationLabels {
      *
      * @return transportLabels
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of one or more ShipmentLabels.")
-    public List<TransportLabel> getTransportLabels() {
+    @javax.annotation.Nullable public List<TransportLabel> getTransportLabels() {
         return transportLabels;
     }
 
@@ -73,7 +93,7 @@ public class TransportationLabels {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -103,10 +123,122 @@ public class TransportationLabels {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("pagination");
+        openapiFields.add("transportLabels");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationLabels
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationLabels.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationLabels is not found in the empty JSON string",
+                        TransportationLabels.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationLabels.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationLabels` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+        if (jsonObj.get("transportLabels") != null
+                && !jsonObj.get("transportLabels").isJsonNull()) {
+            JsonArray jsonArraytransportLabels = jsonObj.getAsJsonArray("transportLabels");
+            if (jsonArraytransportLabels != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transportLabels").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transportLabels` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transportLabels").toString()));
+                }
+
+                // validate the optional field `transportLabels` (array)
+                for (int i = 0; i < jsonArraytransportLabels.size(); i++) {
+                    TransportLabel.validateJsonElement(jsonArraytransportLabels.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationLabels.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationLabels' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationLabels> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationLabels.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationLabels>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationLabels value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationLabels read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationLabels given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationLabels
+     * @throws IOException if the JSON string is invalid with respect to TransportationLabels
+     */
+    public static TransportationLabels fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationLabels.class);
+    }
+
+    /**
+     * Convert an instance of TransportationLabels to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

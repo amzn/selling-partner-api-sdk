@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The parking configuration with the address. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The parking configuration with the address.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ParkingWithAddressConfiguration {
-    @SerializedName("parkingCostType")
-    private ParkingCostType parkingCostType = null;
+    public static final String SERIALIZED_NAME_PARKING_COST_TYPE = "parkingCostType";
 
-    @SerializedName("parkingSpotIdentificationType")
-    private ParkingSpotIdentificationType parkingSpotIdentificationType = null;
+    @SerializedName(SERIALIZED_NAME_PARKING_COST_TYPE)
+    private ParkingCostType parkingCostType;
 
-    @SerializedName("numberOfParkingSpots")
-    private Integer numberOfParkingSpots = null;
+    public static final String SERIALIZED_NAME_PARKING_SPOT_IDENTIFICATION_TYPE = "parkingSpotIdentificationType";
 
-    @SerializedName("address")
-    private Address address = null;
+    @SerializedName(SERIALIZED_NAME_PARKING_SPOT_IDENTIFICATION_TYPE)
+    private ParkingSpotIdentificationType parkingSpotIdentificationType;
+
+    public static final String SERIALIZED_NAME_NUMBER_OF_PARKING_SPOTS = "numberOfParkingSpots";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_PARKING_SPOTS)
+    private Integer numberOfParkingSpots;
+
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public ParkingWithAddressConfiguration() {}
 
     public ParkingWithAddressConfiguration parkingCostType(ParkingCostType parkingCostType) {
         this.parkingCostType = parkingCostType;
@@ -40,8 +65,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return parkingCostType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ParkingCostType getParkingCostType() {
+    @javax.annotation.Nullable public ParkingCostType getParkingCostType() {
         return parkingCostType;
     }
 
@@ -60,8 +84,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return parkingSpotIdentificationType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ParkingSpotIdentificationType getParkingSpotIdentificationType() {
+    @javax.annotation.Nullable public ParkingSpotIdentificationType getParkingSpotIdentificationType() {
         return parkingSpotIdentificationType;
     }
 
@@ -75,12 +98,11 @@ public class ParkingWithAddressConfiguration {
     }
 
     /**
-     * An unsigned integer that can be only positive or zero.
+     * An unsigned integer that can be only positive or zero. minimum: 0
      *
      * @return numberOfParkingSpots
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An unsigned integer that can be only positive or zero.")
-    public Integer getNumberOfParkingSpots() {
+    @javax.annotation.Nullable public Integer getNumberOfParkingSpots() {
         return numberOfParkingSpots;
     }
 
@@ -98,8 +120,7 @@ public class ParkingWithAddressConfiguration {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -108,7 +129,7 @@ public class ParkingWithAddressConfiguration {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +169,117 @@ public class ParkingWithAddressConfiguration {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("parkingCostType");
+        openapiFields.add("parkingSpotIdentificationType");
+        openapiFields.add("numberOfParkingSpots");
+        openapiFields.add("address");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ParkingWithAddressConfiguration
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ParkingWithAddressConfiguration.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ParkingWithAddressConfiguration is not found in the empty JSON string",
+                        ParkingWithAddressConfiguration.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ParkingWithAddressConfiguration.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ParkingWithAddressConfiguration` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `parkingCostType`
+        if (jsonObj.get("parkingCostType") != null
+                && !jsonObj.get("parkingCostType").isJsonNull()) {
+            ParkingCostType.validateJsonElement(jsonObj.get("parkingCostType"));
+        }
+        // validate the optional field `parkingSpotIdentificationType`
+        if (jsonObj.get("parkingSpotIdentificationType") != null
+                && !jsonObj.get("parkingSpotIdentificationType").isJsonNull()) {
+            ParkingSpotIdentificationType.validateJsonElement(jsonObj.get("parkingSpotIdentificationType"));
+        }
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ParkingWithAddressConfiguration.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ParkingWithAddressConfiguration' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ParkingWithAddressConfiguration> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ParkingWithAddressConfiguration.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ParkingWithAddressConfiguration>() {
+                        @Override
+                        public void write(JsonWriter out, ParkingWithAddressConfiguration value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ParkingWithAddressConfiguration read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ParkingWithAddressConfiguration given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ParkingWithAddressConfiguration
+     * @throws IOException if the JSON string is invalid with respect to ParkingWithAddressConfiguration
+     */
+    public static ParkingWithAddressConfiguration fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ParkingWithAddressConfiguration.class);
+    }
+
+    /**
+     * Convert an instance of ParkingWithAddressConfiguration to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

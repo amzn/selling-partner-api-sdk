@@ -12,49 +12,90 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item in a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item in a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("itemValue")
-    private Currency itemValue = null;
+    public static final String SERIALIZED_NAME_ITEM_VALUE = "itemValue";
 
-    @SerializedName("description")
-    private String description = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_VALUE)
+    private Currency itemValue;
 
-    @SerializedName("itemIdentifier")
-    private String itemIdentifier = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    public static final String SERIALIZED_NAME_ITEM_IDENTIFIER = "itemIdentifier";
 
-    @SerializedName("liquidVolume")
-    private LiquidVolume liquidVolume = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_IDENTIFIER)
+    private String itemIdentifier;
 
-    @SerializedName("isHazmat")
-    private Boolean isHazmat = null;
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
 
-    @SerializedName("dangerousGoodsDetails")
-    private DangerousGoodsDetails dangerousGoodsDetails = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
 
-    @SerializedName("productType")
-    private String productType = null;
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
 
-    @SerializedName("invoiceDetails")
-    private InvoiceDetails invoiceDetails = null;
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
 
-    @SerializedName("serialNumbers")
-    private List<String> serialNumbers = null;
+    public static final String SERIALIZED_NAME_LIQUID_VOLUME = "liquidVolume";
 
-    @SerializedName("directFulfillmentItemIdentifiers")
-    private DirectFulfillmentItemIdentifiers directFulfillmentItemIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_LIQUID_VOLUME)
+    private LiquidVolume liquidVolume;
+
+    public static final String SERIALIZED_NAME_IS_HAZMAT = "isHazmat";
+
+    @SerializedName(SERIALIZED_NAME_IS_HAZMAT)
+    private Boolean isHazmat;
+
+    public static final String SERIALIZED_NAME_DANGEROUS_GOODS_DETAILS = "dangerousGoodsDetails";
+
+    @SerializedName(SERIALIZED_NAME_DANGEROUS_GOODS_DETAILS)
+    private DangerousGoodsDetails dangerousGoodsDetails;
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+    private String productType;
+
+    public static final String SERIALIZED_NAME_INVOICE_DETAILS = "invoiceDetails";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_DETAILS)
+    private InvoiceDetails invoiceDetails;
+
+    public static final String SERIALIZED_NAME_SERIAL_NUMBERS = "serialNumbers";
+
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBERS)
+    private List<String> serialNumbers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_DIRECT_FULFILLMENT_ITEM_IDENTIFIERS = "directFulfillmentItemIdentifiers";
+
+    @SerializedName(SERIALIZED_NAME_DIRECT_FULFILLMENT_ITEM_IDENTIFIERS)
+    private DirectFulfillmentItemIdentifiers directFulfillmentItemIdentifiers;
+
+    public Item() {}
 
     public Item itemValue(Currency itemValue) {
         this.itemValue = itemValue;
@@ -66,8 +107,7 @@ public class Item {
      *
      * @return itemValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getItemValue() {
+    @javax.annotation.Nullable public Currency getItemValue() {
         return itemValue;
     }
 
@@ -85,8 +125,7 @@ public class Item {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The product description of the item.")
-    public String getDescription() {
+    @javax.annotation.Nullable public String getDescription() {
         return description;
     }
 
@@ -104,8 +143,7 @@ public class Item {
      *
      * @return itemIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for an item provided by the client.")
-    public String getItemIdentifier() {
+    @javax.annotation.Nullable public String getItemIdentifier() {
         return itemIdentifier;
     }
 
@@ -123,9 +161,7 @@ public class Item {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of units. This value is required.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -144,8 +180,7 @@ public class Item {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getWeight() {
+    @javax.annotation.Nullable public Weight getWeight() {
         return weight;
     }
 
@@ -163,8 +198,7 @@ public class Item {
      *
      * @return liquidVolume
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LiquidVolume getLiquidVolume() {
+    @javax.annotation.Nullable public LiquidVolume getLiquidVolume() {
         return liquidVolume;
     }
 
@@ -182,9 +216,7 @@ public class Item {
      *
      * @return isHazmat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, the item qualifies as hazardous materials (hazmat). Defaults to false.")
-    public Boolean getIsHazmat() {
+    @javax.annotation.Nullable public Boolean getIsHazmat() {
         return isHazmat;
     }
 
@@ -202,8 +234,7 @@ public class Item {
      *
      * @return dangerousGoodsDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DangerousGoodsDetails getDangerousGoodsDetails() {
+    @javax.annotation.Nullable public DangerousGoodsDetails getDangerousGoodsDetails() {
         return dangerousGoodsDetails;
     }
 
@@ -221,8 +252,7 @@ public class Item {
      *
      * @return productType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The product type of the item.")
-    public String getProductType() {
+    @javax.annotation.Nullable public String getProductType() {
         return productType;
     }
 
@@ -240,8 +270,7 @@ public class Item {
      *
      * @return invoiceDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InvoiceDetails getInvoiceDetails() {
+    @javax.annotation.Nullable public InvoiceDetails getInvoiceDetails() {
         return invoiceDetails;
     }
 
@@ -269,10 +298,7 @@ public class Item {
      *
      * @return serialNumbers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.")
-    public List<String> getSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
@@ -290,8 +316,7 @@ public class Item {
      *
      * @return directFulfillmentItemIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DirectFulfillmentItemIdentifiers getDirectFulfillmentItemIdentifiers() {
+    @javax.annotation.Nullable public DirectFulfillmentItemIdentifiers getDirectFulfillmentItemIdentifiers() {
         return directFulfillmentItemIdentifiers;
     }
 
@@ -300,7 +325,7 @@ public class Item {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -368,10 +393,173 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemValue");
+        openapiFields.add("description");
+        openapiFields.add("itemIdentifier");
+        openapiFields.add("quantity");
+        openapiFields.add("weight");
+        openapiFields.add("liquidVolume");
+        openapiFields.add("isHazmat");
+        openapiFields.add("dangerousGoodsDetails");
+        openapiFields.add("productType");
+        openapiFields.add("invoiceDetails");
+        openapiFields.add("serialNumbers");
+        openapiFields.add("directFulfillmentItemIdentifiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("quantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Item.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `itemValue`
+        if (jsonObj.get("itemValue") != null && !jsonObj.get("itemValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("itemValue"));
+        }
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+        if ((jsonObj.get("itemIdentifier") != null
+                        && !jsonObj.get("itemIdentifier").isJsonNull())
+                && !jsonObj.get("itemIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemIdentifier").toString()));
+        }
+        // validate the optional field `weight`
+        if (jsonObj.get("weight") != null && !jsonObj.get("weight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("weight"));
+        }
+        // validate the optional field `liquidVolume`
+        if (jsonObj.get("liquidVolume") != null && !jsonObj.get("liquidVolume").isJsonNull()) {
+            LiquidVolume.validateJsonElement(jsonObj.get("liquidVolume"));
+        }
+        // validate the optional field `dangerousGoodsDetails`
+        if (jsonObj.get("dangerousGoodsDetails") != null
+                && !jsonObj.get("dangerousGoodsDetails").isJsonNull()) {
+            DangerousGoodsDetails.validateJsonElement(jsonObj.get("dangerousGoodsDetails"));
+        }
+        if ((jsonObj.get("productType") != null && !jsonObj.get("productType").isJsonNull())
+                && !jsonObj.get("productType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productType").toString()));
+        }
+        // validate the optional field `invoiceDetails`
+        if (jsonObj.get("invoiceDetails") != null
+                && !jsonObj.get("invoiceDetails").isJsonNull()) {
+            InvoiceDetails.validateJsonElement(jsonObj.get("invoiceDetails"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("serialNumbers") != null
+                && !jsonObj.get("serialNumbers").isJsonNull()
+                && !jsonObj.get("serialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("serialNumbers").toString()));
+        }
+        // validate the optional field `directFulfillmentItemIdentifiers`
+        if (jsonObj.get("directFulfillmentItemIdentifiers") != null
+                && !jsonObj.get("directFulfillmentItemIdentifiers").isJsonNull()) {
+            DirectFulfillmentItemIdentifiers.validateJsonElement(jsonObj.get("directFulfillmentItemIdentifiers"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

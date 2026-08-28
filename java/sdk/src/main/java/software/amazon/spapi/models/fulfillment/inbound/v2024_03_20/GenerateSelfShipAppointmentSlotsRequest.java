@@ -12,18 +12,39 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;generateSelfShipAppointmentSlots&#x60; request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `generateSelfShipAppointmentSlots` request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GenerateSelfShipAppointmentSlotsRequest {
-    @SerializedName("desiredEndDate")
-    private OffsetDateTime desiredEndDate = null;
+    public static final String SERIALIZED_NAME_DESIRED_END_DATE = "desiredEndDate";
 
-    @SerializedName("desiredStartDate")
-    private OffsetDateTime desiredStartDate = null;
+    @SerializedName(SERIALIZED_NAME_DESIRED_END_DATE)
+    private OffsetDateTime desiredEndDate;
+
+    public static final String SERIALIZED_NAME_DESIRED_START_DATE = "desiredStartDate";
+
+    @SerializedName(SERIALIZED_NAME_DESIRED_START_DATE)
+    private OffsetDateTime desiredStartDate;
+
+    public GenerateSelfShipAppointmentSlotsRequest() {}
 
     public GenerateSelfShipAppointmentSlotsRequest desiredEndDate(OffsetDateTime desiredEndDate) {
         this.desiredEndDate = desiredEndDate;
@@ -35,10 +56,7 @@ public class GenerateSelfShipAppointmentSlotsRequest {
      *
      * @return desiredEndDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.")
-    public OffsetDateTime getDesiredEndDate() {
+    @javax.annotation.Nullable public OffsetDateTime getDesiredEndDate() {
         return desiredEndDate;
     }
 
@@ -56,10 +74,7 @@ public class GenerateSelfShipAppointmentSlotsRequest {
      *
      * @return desiredStartDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.")
-    public OffsetDateTime getDesiredStartDate() {
+    @javax.annotation.Nullable public OffsetDateTime getDesiredStartDate() {
         return desiredStartDate;
     }
 
@@ -68,7 +83,7 @@ public class GenerateSelfShipAppointmentSlotsRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +116,102 @@ public class GenerateSelfShipAppointmentSlotsRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("desiredEndDate");
+        openapiFields.add("desiredStartDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GenerateSelfShipAppointmentSlotsRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GenerateSelfShipAppointmentSlotsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GenerateSelfShipAppointmentSlotsRequest is not found in the empty JSON string",
+                        GenerateSelfShipAppointmentSlotsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GenerateSelfShipAppointmentSlotsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GenerateSelfShipAppointmentSlotsRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GenerateSelfShipAppointmentSlotsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GenerateSelfShipAppointmentSlotsRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GenerateSelfShipAppointmentSlotsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GenerateSelfShipAppointmentSlotsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GenerateSelfShipAppointmentSlotsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GenerateSelfShipAppointmentSlotsRequest value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GenerateSelfShipAppointmentSlotsRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GenerateSelfShipAppointmentSlotsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GenerateSelfShipAppointmentSlotsRequest
+     * @throws IOException if the JSON string is invalid with respect to GenerateSelfShipAppointmentSlotsRequest
+     */
+    public static GenerateSelfShipAppointmentSlotsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GenerateSelfShipAppointmentSlotsRequest.class);
+    }
+
+    /**
+     * Convert an instance of GenerateSelfShipAppointmentSlotsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

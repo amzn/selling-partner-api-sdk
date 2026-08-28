@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,25 +22,18 @@ import java.io.IOException;
 /** The day of the week. */
 @JsonAdapter(DayOfWeek.Adapter.class)
 public enum DayOfWeek {
-    @SerializedName("MONDAY")
     MONDAY("MONDAY"),
 
-    @SerializedName("TUESDAY")
     TUESDAY("TUESDAY"),
 
-    @SerializedName("WEDNESDAY")
     WEDNESDAY("WEDNESDAY"),
 
-    @SerializedName("THURSDAY")
     THURSDAY("THURSDAY"),
 
-    @SerializedName("FRIDAY")
     FRIDAY("FRIDAY"),
 
-    @SerializedName("SATURDAY")
     SATURDAY("SATURDAY"),
 
-    @SerializedName("SUNDAY")
     SUNDAY("SUNDAY");
 
     private String value;
@@ -58,25 +51,30 @@ public enum DayOfWeek {
         return String.valueOf(value);
     }
 
-    public static DayOfWeek fromValue(String input) {
+    public static DayOfWeek fromValue(String value) {
         for (DayOfWeek b : DayOfWeek.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DayOfWeek> {
         @Override
         public void write(final JsonWriter jsonWriter, final DayOfWeek enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DayOfWeek read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DayOfWeek.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DayOfWeek.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DayOfWeek.fromValue(value);
     }
 }

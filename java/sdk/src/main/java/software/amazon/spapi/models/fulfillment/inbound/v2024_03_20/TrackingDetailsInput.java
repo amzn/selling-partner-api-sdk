@@ -12,19 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tracking information input for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Tracking information input for Less-Than-Truckload (LTL) and Small Parcel Delivery (SPD) shipments.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingDetailsInput {
-    @SerializedName("ltlTrackingDetail")
-    private LtlTrackingDetailInput ltlTrackingDetail = null;
+    public static final String SERIALIZED_NAME_LTL_TRACKING_DETAIL = "ltlTrackingDetail";
 
-    @SerializedName("spdTrackingDetail")
-    private SpdTrackingDetailInput spdTrackingDetail = null;
+    @SerializedName(SERIALIZED_NAME_LTL_TRACKING_DETAIL)
+    private LtlTrackingDetailInput ltlTrackingDetail;
+
+    public static final String SERIALIZED_NAME_SPD_TRACKING_DETAIL = "spdTrackingDetail";
+
+    @SerializedName(SERIALIZED_NAME_SPD_TRACKING_DETAIL)
+    private SpdTrackingDetailInput spdTrackingDetail;
+
+    public TrackingDetailsInput() {}
 
     public TrackingDetailsInput ltlTrackingDetail(LtlTrackingDetailInput ltlTrackingDetail) {
         this.ltlTrackingDetail = ltlTrackingDetail;
@@ -36,8 +55,7 @@ public class TrackingDetailsInput {
      *
      * @return ltlTrackingDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LtlTrackingDetailInput getLtlTrackingDetail() {
+    @javax.annotation.Nullable public LtlTrackingDetailInput getLtlTrackingDetail() {
         return ltlTrackingDetail;
     }
 
@@ -55,8 +73,7 @@ public class TrackingDetailsInput {
      *
      * @return spdTrackingDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SpdTrackingDetailInput getSpdTrackingDetail() {
+    @javax.annotation.Nullable public SpdTrackingDetailInput getSpdTrackingDetail() {
         return spdTrackingDetail;
     }
 
@@ -65,7 +82,7 @@ public class TrackingDetailsInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -97,10 +114,110 @@ public class TrackingDetailsInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ltlTrackingDetail");
+        openapiFields.add("spdTrackingDetail");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingDetailsInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingDetailsInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingDetailsInput is not found in the empty JSON string",
+                        TrackingDetailsInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingDetailsInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingDetailsInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `ltlTrackingDetail`
+        if (jsonObj.get("ltlTrackingDetail") != null
+                && !jsonObj.get("ltlTrackingDetail").isJsonNull()) {
+            LtlTrackingDetailInput.validateJsonElement(jsonObj.get("ltlTrackingDetail"));
+        }
+        // validate the optional field `spdTrackingDetail`
+        if (jsonObj.get("spdTrackingDetail") != null
+                && !jsonObj.get("spdTrackingDetail").isJsonNull()) {
+            SpdTrackingDetailInput.validateJsonElement(jsonObj.get("spdTrackingDetail"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingDetailsInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingDetailsInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingDetailsInput> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingDetailsInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingDetailsInput>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingDetailsInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingDetailsInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingDetailsInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingDetailsInput
+     * @throws IOException if the JSON string is invalid with respect to TrackingDetailsInput
+     */
+    public static TrackingDetailsInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingDetailsInput.class);
+    }
+
+    /**
+     * Convert an instance of TrackingDetailsInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

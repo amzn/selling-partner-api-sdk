@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;createInboundPlan&#x60; request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `createInboundPlan` request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateInboundPlanRequest {
-    @SerializedName("destinationMarketplaces")
-    private List<String> destinationMarketplaces = null;
+    public static final String SERIALIZED_NAME_DESTINATION_MARKETPLACES = "destinationMarketplaces";
 
-    @SerializedName("items")
-    private List<ItemInput> items = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_MARKETPLACES)
+    private List<String> destinationMarketplaces = new ArrayList<>();
 
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_ITEMS = "items";
 
-    @SerializedName("sourceAddress")
-    private AddressInput sourceAddress = null;
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<ItemInput> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NAME = "name";
+
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
+    public static final String SERIALIZED_NAME_SOURCE_ADDRESS = "sourceAddress";
+
+    @SerializedName(SERIALIZED_NAME_SOURCE_ADDRESS)
+    private AddressInput sourceAddress;
+
+    public CreateInboundPlanRequest() {}
 
     public CreateInboundPlanRequest destinationMarketplaces(List<String> destinationMarketplaces) {
         this.destinationMarketplaces = destinationMarketplaces;
@@ -51,10 +77,7 @@ public class CreateInboundPlanRequest {
      *
      * @return destinationMarketplaces
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.")
+    @javax.annotation.Nonnull
     public List<String> getDestinationMarketplaces() {
         return destinationMarketplaces;
     }
@@ -81,7 +104,7 @@ public class CreateInboundPlanRequest {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Items included in this plan.")
+    @javax.annotation.Nonnull
     public List<ItemInput> getItems() {
         return items;
     }
@@ -100,9 +123,7 @@ public class CreateInboundPlanRequest {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Name for the Inbound Plan. If one isn't provided, a default name will be provided.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -120,7 +141,7 @@ public class CreateInboundPlanRequest {
      *
      * @return sourceAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public AddressInput getSourceAddress() {
         return sourceAddress;
     }
@@ -130,7 +151,7 @@ public class CreateInboundPlanRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -164,10 +185,145 @@ public class CreateInboundPlanRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("destinationMarketplaces");
+        openapiFields.add("items");
+        openapiFields.add("name");
+        openapiFields.add("sourceAddress");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("destinationMarketplaces");
+        openapiRequiredFields.add("items");
+        openapiRequiredFields.add("sourceAddress");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateInboundPlanRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateInboundPlanRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateInboundPlanRequest is not found in the empty JSON string",
+                        CreateInboundPlanRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateInboundPlanRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateInboundPlanRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateInboundPlanRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("destinationMarketplaces") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("destinationMarketplaces").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `destinationMarketplaces` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("destinationMarketplaces").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            ItemInput.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `sourceAddress`
+        AddressInput.validateJsonElement(jsonObj.get("sourceAddress"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateInboundPlanRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateInboundPlanRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateInboundPlanRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateInboundPlanRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateInboundPlanRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateInboundPlanRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateInboundPlanRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateInboundPlanRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateInboundPlanRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateInboundPlanRequest
+     */
+    public static CreateInboundPlanRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateInboundPlanRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateInboundPlanRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

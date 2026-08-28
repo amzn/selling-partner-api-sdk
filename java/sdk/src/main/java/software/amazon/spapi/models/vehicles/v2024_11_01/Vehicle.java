@@ -12,50 +12,91 @@
 
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Combinations of attributes and unique identifier that represents a vehicle in vehicle list. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Combinations of attributes and unique identifier that represents a vehicle in vehicle list.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Vehicle {
-    @SerializedName("make")
-    private String make = null;
+    public static final String SERIALIZED_NAME_MAKE = "make";
 
-    @SerializedName("model")
-    private String model = null;
+    @SerializedName(SERIALIZED_NAME_MAKE)
+    private String make;
 
-    @SerializedName("variantName")
-    private String variantName = null;
+    public static final String SERIALIZED_NAME_MODEL = "model";
 
-    @SerializedName("bodyStyle")
-    private String bodyStyle = null;
+    @SerializedName(SERIALIZED_NAME_MODEL)
+    private String model;
 
-    @SerializedName("driveType")
-    private String driveType = null;
+    public static final String SERIALIZED_NAME_VARIANT_NAME = "variantName";
 
-    @SerializedName("energy")
-    private String energy = null;
+    @SerializedName(SERIALIZED_NAME_VARIANT_NAME)
+    private String variantName;
 
-    @SerializedName("engineOutput")
-    private List<EngineOutput> engineOutput = null;
+    public static final String SERIALIZED_NAME_BODY_STYLE = "bodyStyle";
 
-    @SerializedName("manufacturingStartDate")
-    private MonthAndYear manufacturingStartDate = null;
+    @SerializedName(SERIALIZED_NAME_BODY_STYLE)
+    private String bodyStyle;
 
-    @SerializedName("manufacturingStopDate")
-    private MonthAndYear manufacturingStopDate = null;
+    public static final String SERIALIZED_NAME_DRIVE_TYPE = "driveType";
 
-    @SerializedName("lastProcessedDate")
-    private String lastProcessedDate = null;
+    @SerializedName(SERIALIZED_NAME_DRIVE_TYPE)
+    private String driveType;
 
-    @SerializedName("status")
-    private VehicleStatusInCatalog status = null;
+    public static final String SERIALIZED_NAME_ENERGY = "energy";
 
-    @SerializedName("identifiers")
-    private List<VehicleIdentifiers> identifiers = null;
+    @SerializedName(SERIALIZED_NAME_ENERGY)
+    private String energy;
+
+    public static final String SERIALIZED_NAME_ENGINE_OUTPUT = "engineOutput";
+
+    @SerializedName(SERIALIZED_NAME_ENGINE_OUTPUT)
+    private List<EngineOutput> engineOutput = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_MANUFACTURING_START_DATE = "manufacturingStartDate";
+
+    @SerializedName(SERIALIZED_NAME_MANUFACTURING_START_DATE)
+    private MonthAndYear manufacturingStartDate;
+
+    public static final String SERIALIZED_NAME_MANUFACTURING_STOP_DATE = "manufacturingStopDate";
+
+    @SerializedName(SERIALIZED_NAME_MANUFACTURING_STOP_DATE)
+    private MonthAndYear manufacturingStopDate;
+
+    public static final String SERIALIZED_NAME_LAST_PROCESSED_DATE = "lastProcessedDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_PROCESSED_DATE)
+    private String lastProcessedDate;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private VehicleStatusInCatalog status;
+
+    public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+
+    @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+    private List<VehicleIdentifiers> identifiers = new ArrayList<>();
+
+    public Vehicle() {}
 
     public Vehicle make(String make) {
         this.make = make;
@@ -67,7 +108,7 @@ public class Vehicle {
      *
      * @return make
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Vehicle Brand.")
+    @javax.annotation.Nonnull
     public String getMake() {
         return make;
     }
@@ -86,7 +127,7 @@ public class Vehicle {
      *
      * @return model
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Specific model of a vehicle.")
+    @javax.annotation.Nonnull
     public String getModel() {
         return model;
     }
@@ -105,8 +146,7 @@ public class Vehicle {
      *
      * @return variantName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Name of the vehicle variant.")
-    public String getVariantName() {
+    @javax.annotation.Nullable public String getVariantName() {
         return variantName;
     }
 
@@ -124,8 +164,7 @@ public class Vehicle {
      *
      * @return bodyStyle
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Body style of vehicle (example: Hatchback, Cabriolet).")
-    public String getBodyStyle() {
+    @javax.annotation.Nullable public String getBodyStyle() {
         return bodyStyle;
     }
 
@@ -143,8 +182,7 @@ public class Vehicle {
      *
      * @return driveType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Drive type of vehicle(example: Rear wheel drive).")
-    public String getDriveType() {
+    @javax.annotation.Nullable public String getDriveType() {
         return driveType;
     }
 
@@ -162,8 +200,7 @@ public class Vehicle {
      *
      * @return energy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Energy Source for the vehicle(example: Petrol)")
-    public String getEnergy() {
+    @javax.annotation.Nullable public String getEnergy() {
         return energy;
     }
 
@@ -189,8 +226,7 @@ public class Vehicle {
      *
      * @return engineOutput
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Engine output of vehicle.")
-    public List<EngineOutput> getEngineOutput() {
+    @javax.annotation.Nullable public List<EngineOutput> getEngineOutput() {
         return engineOutput;
     }
 
@@ -208,8 +244,7 @@ public class Vehicle {
      *
      * @return manufacturingStartDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MonthAndYear getManufacturingStartDate() {
+    @javax.annotation.Nullable public MonthAndYear getManufacturingStartDate() {
         return manufacturingStartDate;
     }
 
@@ -227,8 +262,7 @@ public class Vehicle {
      *
      * @return manufacturingStopDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MonthAndYear getManufacturingStopDate() {
+    @javax.annotation.Nullable public MonthAndYear getManufacturingStopDate() {
         return manufacturingStopDate;
     }
 
@@ -246,9 +280,7 @@ public class Vehicle {
      *
      * @return lastProcessedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date on which the vehicle was last updated, in ISO-8601 date/time format.")
-    public String getLastProcessedDate() {
+    @javax.annotation.Nullable public String getLastProcessedDate() {
         return lastProcessedDate;
     }
 
@@ -266,8 +298,7 @@ public class Vehicle {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public VehicleStatusInCatalog getStatus() {
+    @javax.annotation.Nullable public VehicleStatusInCatalog getStatus() {
         return status;
     }
 
@@ -293,9 +324,7 @@ public class Vehicle {
      *
      * @return identifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifiers that can be used to identify the vehicle uniquely")
+    @javax.annotation.Nonnull
     public List<VehicleIdentifiers> getIdentifiers() {
         return identifiers;
     }
@@ -305,7 +334,7 @@ public class Vehicle {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -371,10 +400,206 @@ public class Vehicle {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("make");
+        openapiFields.add("model");
+        openapiFields.add("variantName");
+        openapiFields.add("bodyStyle");
+        openapiFields.add("driveType");
+        openapiFields.add("energy");
+        openapiFields.add("engineOutput");
+        openapiFields.add("manufacturingStartDate");
+        openapiFields.add("manufacturingStopDate");
+        openapiFields.add("lastProcessedDate");
+        openapiFields.add("status");
+        openapiFields.add("identifiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("make");
+        openapiRequiredFields.add("model");
+        openapiRequiredFields.add("identifiers");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Vehicle
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Vehicle.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Vehicle is not found in the empty JSON string",
+                        Vehicle.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Vehicle.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Vehicle` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Vehicle.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("make").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `make` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("make").toString()));
+        }
+        if (!jsonObj.get("model").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `model` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("model").toString()));
+        }
+        if ((jsonObj.get("variantName") != null && !jsonObj.get("variantName").isJsonNull())
+                && !jsonObj.get("variantName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `variantName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("variantName").toString()));
+        }
+        if ((jsonObj.get("bodyStyle") != null && !jsonObj.get("bodyStyle").isJsonNull())
+                && !jsonObj.get("bodyStyle").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bodyStyle` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bodyStyle").toString()));
+        }
+        if ((jsonObj.get("driveType") != null && !jsonObj.get("driveType").isJsonNull())
+                && !jsonObj.get("driveType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `driveType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("driveType").toString()));
+        }
+        if ((jsonObj.get("energy") != null && !jsonObj.get("energy").isJsonNull())
+                && !jsonObj.get("energy").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `energy` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("energy").toString()));
+        }
+        if (jsonObj.get("engineOutput") != null && !jsonObj.get("engineOutput").isJsonNull()) {
+            JsonArray jsonArrayengineOutput = jsonObj.getAsJsonArray("engineOutput");
+            if (jsonArrayengineOutput != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("engineOutput").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `engineOutput` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("engineOutput").toString()));
+                }
+
+                // validate the optional field `engineOutput` (array)
+                for (int i = 0; i < jsonArrayengineOutput.size(); i++) {
+                    EngineOutput.validateJsonElement(jsonArrayengineOutput.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `manufacturingStartDate`
+        if (jsonObj.get("manufacturingStartDate") != null
+                && !jsonObj.get("manufacturingStartDate").isJsonNull()) {
+            MonthAndYear.validateJsonElement(jsonObj.get("manufacturingStartDate"));
+        }
+        // validate the optional field `manufacturingStopDate`
+        if (jsonObj.get("manufacturingStopDate") != null
+                && !jsonObj.get("manufacturingStopDate").isJsonNull()) {
+            MonthAndYear.validateJsonElement(jsonObj.get("manufacturingStopDate"));
+        }
+        if ((jsonObj.get("lastProcessedDate") != null
+                        && !jsonObj.get("lastProcessedDate").isJsonNull())
+                && !jsonObj.get("lastProcessedDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lastProcessedDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lastProcessedDate").toString()));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            VehicleStatusInCatalog.validateJsonElement(jsonObj.get("status"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("identifiers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `identifiers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("identifiers").toString()));
+        }
+
+        JsonArray jsonArrayidentifiers = jsonObj.getAsJsonArray("identifiers");
+        // validate the required field `identifiers` (array)
+        for (int i = 0; i < jsonArrayidentifiers.size(); i++) {
+            VehicleIdentifiers.validateJsonElement(jsonArrayidentifiers.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Vehicle.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Vehicle' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Vehicle> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Vehicle.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Vehicle>() {
+                        @Override
+                        public void write(JsonWriter out, Vehicle value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Vehicle read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Vehicle given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Vehicle
+     * @throws IOException if the JSON string is invalid with respect to Vehicle
+     */
+    public static Vehicle fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Vehicle.class);
+    }
+
+    /**
+     * Convert an instance of Vehicle to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

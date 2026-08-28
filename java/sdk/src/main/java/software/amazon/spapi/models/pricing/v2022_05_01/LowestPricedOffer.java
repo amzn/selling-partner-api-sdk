@@ -12,20 +12,41 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Describes the lowest priced offers for the specified item condition and offer type. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Describes the lowest priced offers for the specified item condition and offer type.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LowestPricedOffer {
-    @SerializedName("lowestPricedOffersInput")
-    private LowestPricedOffersInput lowestPricedOffersInput = null;
+    public static final String SERIALIZED_NAME_LOWEST_PRICED_OFFERS_INPUT = "lowestPricedOffersInput";
 
-    @SerializedName("offers")
-    private List<Offer> offers = null;
+    @SerializedName(SERIALIZED_NAME_LOWEST_PRICED_OFFERS_INPUT)
+    private LowestPricedOffersInput lowestPricedOffersInput;
+
+    public static final String SERIALIZED_NAME_OFFERS = "offers";
+
+    @SerializedName(SERIALIZED_NAME_OFFERS)
+    private List<Offer> offers = new ArrayList<>();
+
+    public LowestPricedOffer() {}
 
     public LowestPricedOffer lowestPricedOffersInput(LowestPricedOffersInput lowestPricedOffersInput) {
         this.lowestPricedOffersInput = lowestPricedOffersInput;
@@ -37,7 +58,7 @@ public class LowestPricedOffer {
      *
      * @return lowestPricedOffersInput
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public LowestPricedOffersInput getLowestPricedOffersInput() {
         return lowestPricedOffersInput;
     }
@@ -64,10 +85,7 @@ public class LowestPricedOffer {
      *
      * @return offers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.")
+    @javax.annotation.Nonnull
     public List<Offer> getOffers() {
         return offers;
     }
@@ -77,7 +95,7 @@ public class LowestPricedOffer {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -107,10 +125,126 @@ public class LowestPricedOffer {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("lowestPricedOffersInput");
+        openapiFields.add("offers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lowestPricedOffersInput");
+        openapiRequiredFields.add("offers");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LowestPricedOffer
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LowestPricedOffer.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LowestPricedOffer is not found in the empty JSON string",
+                        LowestPricedOffer.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LowestPricedOffer.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LowestPricedOffer` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LowestPricedOffer.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `lowestPricedOffersInput`
+        LowestPricedOffersInput.validateJsonElement(jsonObj.get("lowestPricedOffersInput"));
+        // ensure the json data is an array
+        if (!jsonObj.get("offers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `offers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("offers").toString()));
+        }
+
+        JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("offers");
+        // validate the required field `offers` (array)
+        for (int i = 0; i < jsonArrayoffers.size(); i++) {
+            Offer.validateJsonElement(jsonArrayoffers.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LowestPricedOffer.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LowestPricedOffer' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LowestPricedOffer> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LowestPricedOffer.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LowestPricedOffer>() {
+                        @Override
+                        public void write(JsonWriter out, LowestPricedOffer value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LowestPricedOffer read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LowestPricedOffer given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LowestPricedOffer
+     * @throws IOException if the JSON string is invalid with respect to LowestPricedOffer
+     */
+    public static LowestPricedOffer fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LowestPricedOffer.class);
+    }
+
+    /**
+     * Convert an instance of LowestPricedOffer to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

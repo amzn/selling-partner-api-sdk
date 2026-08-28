@@ -12,20 +12,41 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body schema for the &#x60;patchListingsItem&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The request body schema for the `patchListingsItem` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListingsItemPatchRequest {
-    @SerializedName("productType")
-    private String productType = null;
+    public static final String SERIALIZED_NAME_PRODUCT_TYPE = "productType";
 
-    @SerializedName("patches")
-    private List<PatchOperation> patches = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPE)
+    private String productType;
+
+    public static final String SERIALIZED_NAME_PATCHES = "patches";
+
+    @SerializedName(SERIALIZED_NAME_PATCHES)
+    private List<PatchOperation> patches = new ArrayList<>();
+
+    public ListingsItemPatchRequest() {}
 
     public ListingsItemPatchRequest productType(String productType) {
         this.productType = productType;
@@ -37,9 +58,7 @@ public class ListingsItemPatchRequest {
      *
      * @return productType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The Amazon product type of the listings item.")
+    @javax.annotation.Nonnull
     public String getProductType() {
         return productType;
     }
@@ -66,9 +85,7 @@ public class ListingsItemPatchRequest {
      *
      * @return patches
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "One or more JSON Patch operations to perform on the listings item.")
+    @javax.annotation.Nonnull
     public List<PatchOperation> getPatches() {
         return patches;
     }
@@ -78,7 +95,7 @@ public class ListingsItemPatchRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -106,10 +123,130 @@ public class ListingsItemPatchRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("productType");
+        openapiFields.add("patches");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("productType");
+        openapiRequiredFields.add("patches");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListingsItemPatchRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListingsItemPatchRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListingsItemPatchRequest is not found in the empty JSON string",
+                        ListingsItemPatchRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListingsItemPatchRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListingsItemPatchRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListingsItemPatchRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("productType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `productType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("productType").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("patches").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `patches` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("patches").toString()));
+        }
+
+        JsonArray jsonArraypatches = jsonObj.getAsJsonArray("patches");
+        // validate the required field `patches` (array)
+        for (int i = 0; i < jsonArraypatches.size(); i++) {
+            PatchOperation.validateJsonElement(jsonArraypatches.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListingsItemPatchRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListingsItemPatchRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListingsItemPatchRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListingsItemPatchRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListingsItemPatchRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ListingsItemPatchRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListingsItemPatchRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListingsItemPatchRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListingsItemPatchRequest
+     * @throws IOException if the JSON string is invalid with respect to ListingsItemPatchRequest
+     */
+    public static ListingsItemPatchRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListingsItemPatchRequest.class);
+    }
+
+    /**
+     * Convert an instance of ListingsItemPatchRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

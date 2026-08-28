@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request body schema for &#x60;getOffers&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request body schema for `getOffers`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetOffersRequest {
-    @SerializedName("fulfillmentConfiguration")
-    private OfferFulfillmentConfiguration fulfillmentConfiguration = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_CONFIGURATION = "fulfillmentConfiguration";
 
-    @SerializedName("origin")
-    private OrderOrigin origin = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CONFIGURATION)
+    private OfferFulfillmentConfiguration fulfillmentConfiguration;
 
-    @SerializedName("destination")
-    private OfferDestination destination = null;
+    public static final String SERIALIZED_NAME_ORIGIN = "origin";
 
-    @SerializedName("items")
-    private List<OfferItem> items = null;
+    @SerializedName(SERIALIZED_NAME_ORIGIN)
+    private OrderOrigin origin;
+
+    public static final String SERIALIZED_NAME_DESTINATION = "destination";
+
+    @SerializedName(SERIALIZED_NAME_DESTINATION)
+    private OfferDestination destination;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<OfferItem> items = new ArrayList<>();
+
+    public GetOffersRequest() {}
 
     public GetOffersRequest fulfillmentConfiguration(OfferFulfillmentConfiguration fulfillmentConfiguration) {
         this.fulfillmentConfiguration = fulfillmentConfiguration;
@@ -42,8 +68,7 @@ public class GetOffersRequest {
      *
      * @return fulfillmentConfiguration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OfferFulfillmentConfiguration getFulfillmentConfiguration() {
+    @javax.annotation.Nullable public OfferFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }
 
@@ -61,7 +86,7 @@ public class GetOffersRequest {
      *
      * @return origin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public OrderOrigin getOrigin() {
         return origin;
     }
@@ -80,8 +105,7 @@ public class GetOffersRequest {
      *
      * @return destination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OfferDestination getDestination() {
+    @javax.annotation.Nullable public OfferDestination getDestination() {
         return destination;
     }
 
@@ -107,9 +131,7 @@ public class GetOffersRequest {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of items for which to get offers.")
+    @javax.annotation.Nonnull
     public List<OfferItem> getItems() {
         return items;
     }
@@ -119,7 +141,7 @@ public class GetOffersRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -153,10 +175,137 @@ public class GetOffersRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fulfillmentConfiguration");
+        openapiFields.add("origin");
+        openapiFields.add("destination");
+        openapiFields.add("items");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("origin");
+        openapiRequiredFields.add("items");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetOffersRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetOffersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetOffersRequest is not found in the empty JSON string",
+                        GetOffersRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetOffersRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetOffersRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetOffersRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `fulfillmentConfiguration`
+        if (jsonObj.get("fulfillmentConfiguration") != null
+                && !jsonObj.get("fulfillmentConfiguration").isJsonNull()) {
+            OfferFulfillmentConfiguration.validateJsonElement(jsonObj.get("fulfillmentConfiguration"));
+        }
+        // validate the required field `origin`
+        OrderOrigin.validateJsonElement(jsonObj.get("origin"));
+        // validate the optional field `destination`
+        if (jsonObj.get("destination") != null && !jsonObj.get("destination").isJsonNull()) {
+            OfferDestination.validateJsonElement(jsonObj.get("destination"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            OfferItem.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetOffersRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetOffersRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetOffersRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetOffersRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetOffersRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetOffersRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetOffersRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetOffersRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetOffersRequest
+     * @throws IOException if the JSON string is invalid with respect to GetOffersRequest
+     */
+    public static GetOffersRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetOffersRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetOffersRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

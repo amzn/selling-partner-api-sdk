@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A link to metadata schema. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A link to metadata schema.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SchemaLink {
-    @SerializedName("link")
-    private SchemaLinkLink link = null;
+    public static final String SERIALIZED_NAME_LINK = "link";
 
-    @SerializedName("checksum")
-    private String checksum = null;
+    @SerializedName(SERIALIZED_NAME_LINK)
+    private SchemaLinkLink link;
+
+    public static final String SERIALIZED_NAME_CHECKSUM = "checksum";
+
+    @SerializedName(SERIALIZED_NAME_CHECKSUM)
+    private String checksum;
+
+    public SchemaLink() {}
 
     public SchemaLink link(SchemaLinkLink link) {
         this.link = link;
@@ -34,7 +55,7 @@ public class SchemaLink {
      *
      * @return link
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public SchemaLinkLink getLink() {
         return link;
     }
@@ -54,10 +75,7 @@ public class SchemaLink {
      *
      * @return checksum
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.")
+    @javax.annotation.Nonnull
     public String getChecksum() {
         return checksum;
     }
@@ -67,7 +85,7 @@ public class SchemaLink {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,117 @@ public class SchemaLink {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("link");
+        openapiFields.add("checksum");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("link");
+        openapiRequiredFields.add("checksum");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SchemaLink
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SchemaLink.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SchemaLink is not found in the empty JSON string",
+                        SchemaLink.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SchemaLink.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SchemaLink` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SchemaLink.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `link`
+        SchemaLinkLink.validateJsonElement(jsonObj.get("link"));
+        if (!jsonObj.get("checksum").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `checksum` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("checksum").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SchemaLink.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SchemaLink' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SchemaLink> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(SchemaLink.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SchemaLink>() {
+                        @Override
+                        public void write(JsonWriter out, SchemaLink value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SchemaLink read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SchemaLink given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SchemaLink
+     * @throws IOException if the JSON string is invalid with respect to SchemaLink
+     */
+    public static SchemaLink fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SchemaLink.class);
+    }
+
+    /**
+     * Convert an instance of SchemaLink to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

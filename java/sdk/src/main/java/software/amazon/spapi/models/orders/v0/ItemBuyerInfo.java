@@ -12,26 +12,53 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A single item&#39;s buyer information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A single item's buyer information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemBuyerInfo {
-    @SerializedName("BuyerCustomizedInfo")
-    private BuyerCustomizedInfoDetail buyerCustomizedInfo = null;
+    public static final String SERIALIZED_NAME_BUYER_CUSTOMIZED_INFO = "BuyerCustomizedInfo";
 
-    @SerializedName("GiftWrapPrice")
-    private Money giftWrapPrice = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_CUSTOMIZED_INFO)
+    private BuyerCustomizedInfoDetail buyerCustomizedInfo;
 
-    @SerializedName("GiftWrapTax")
-    private Money giftWrapTax = null;
+    public static final String SERIALIZED_NAME_GIFT_WRAP_PRICE = "GiftWrapPrice";
 
-    @SerializedName("GiftMessageText")
-    private String giftMessageText = null;
+    @SerializedName(SERIALIZED_NAME_GIFT_WRAP_PRICE)
+    private Money giftWrapPrice;
 
-    @SerializedName("GiftWrapLevel")
-    private String giftWrapLevel = null;
+    public static final String SERIALIZED_NAME_GIFT_WRAP_TAX = "GiftWrapTax";
+
+    @SerializedName(SERIALIZED_NAME_GIFT_WRAP_TAX)
+    private Money giftWrapTax;
+
+    public static final String SERIALIZED_NAME_GIFT_MESSAGE_TEXT = "GiftMessageText";
+
+    @SerializedName(SERIALIZED_NAME_GIFT_MESSAGE_TEXT)
+    private String giftMessageText;
+
+    public static final String SERIALIZED_NAME_GIFT_WRAP_LEVEL = "GiftWrapLevel";
+
+    @SerializedName(SERIALIZED_NAME_GIFT_WRAP_LEVEL)
+    private String giftWrapLevel;
+
+    public ItemBuyerInfo() {}
 
     public ItemBuyerInfo buyerCustomizedInfo(BuyerCustomizedInfoDetail buyerCustomizedInfo) {
         this.buyerCustomizedInfo = buyerCustomizedInfo;
@@ -43,8 +70,7 @@ public class ItemBuyerInfo {
      *
      * @return buyerCustomizedInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyerCustomizedInfoDetail getBuyerCustomizedInfo() {
+    @javax.annotation.Nullable public BuyerCustomizedInfoDetail getBuyerCustomizedInfo() {
         return buyerCustomizedInfo;
     }
 
@@ -62,8 +88,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getGiftWrapPrice() {
+    @javax.annotation.Nullable public Money getGiftWrapPrice() {
         return giftWrapPrice;
     }
 
@@ -81,8 +106,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getGiftWrapTax() {
+    @javax.annotation.Nullable public Money getGiftWrapTax() {
         return giftWrapTax;
     }
 
@@ -101,10 +125,7 @@ public class ItemBuyerInfo {
      *
      * @return giftMessageText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.")
-    public String getGiftMessageText() {
+    @javax.annotation.Nullable public String getGiftMessageText() {
         return giftMessageText;
     }
 
@@ -122,8 +143,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapLevel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The gift wrap level specified by the buyer.")
-    public String getGiftWrapLevel() {
+    @javax.annotation.Nullable public String getGiftWrapLevel() {
         return giftWrapLevel;
     }
 
@@ -132,7 +152,7 @@ public class ItemBuyerInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +190,131 @@ public class ItemBuyerInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("BuyerCustomizedInfo");
+        openapiFields.add("GiftWrapPrice");
+        openapiFields.add("GiftWrapTax");
+        openapiFields.add("GiftMessageText");
+        openapiFields.add("GiftWrapLevel");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemBuyerInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemBuyerInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemBuyerInfo is not found in the empty JSON string",
+                        ItemBuyerInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemBuyerInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemBuyerInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `BuyerCustomizedInfo`
+        if (jsonObj.get("BuyerCustomizedInfo") != null
+                && !jsonObj.get("BuyerCustomizedInfo").isJsonNull()) {
+            BuyerCustomizedInfoDetail.validateJsonElement(jsonObj.get("BuyerCustomizedInfo"));
+        }
+        // validate the optional field `GiftWrapPrice`
+        if (jsonObj.get("GiftWrapPrice") != null
+                && !jsonObj.get("GiftWrapPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("GiftWrapPrice"));
+        }
+        // validate the optional field `GiftWrapTax`
+        if (jsonObj.get("GiftWrapTax") != null && !jsonObj.get("GiftWrapTax").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("GiftWrapTax"));
+        }
+        if ((jsonObj.get("GiftMessageText") != null
+                        && !jsonObj.get("GiftMessageText").isJsonNull())
+                && !jsonObj.get("GiftMessageText").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `GiftMessageText` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("GiftMessageText").toString()));
+        }
+        if ((jsonObj.get("GiftWrapLevel") != null
+                        && !jsonObj.get("GiftWrapLevel").isJsonNull())
+                && !jsonObj.get("GiftWrapLevel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `GiftWrapLevel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("GiftWrapLevel").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemBuyerInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemBuyerInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemBuyerInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemBuyerInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemBuyerInfo>() {
+                        @Override
+                        public void write(JsonWriter out, ItemBuyerInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemBuyerInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemBuyerInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemBuyerInfo
+     * @throws IOException if the JSON string is invalid with respect to ItemBuyerInfo
+     */
+    public static ItemBuyerInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemBuyerInfo.class);
+    }
+
+    /**
+     * Convert an instance of ItemBuyerInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

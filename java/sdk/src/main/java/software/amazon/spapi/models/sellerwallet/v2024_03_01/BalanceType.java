@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The type of bank account balance. */
 @JsonAdapter(BalanceType.Adapter.class)
 public enum BalanceType {
-    @SerializedName("AVAILABLE")
     AVAILABLE("AVAILABLE"),
 
-    @SerializedName("LOCKED_IN")
     LOCKED_IN("LOCKED_IN"),
 
-    @SerializedName("LOCKED_OUT")
     LOCKED_OUT("LOCKED_OUT"),
 
-    @SerializedName("TOTAL")
     TOTAL("TOTAL");
 
     private String value;
@@ -49,25 +45,30 @@ public enum BalanceType {
         return String.valueOf(value);
     }
 
-    public static BalanceType fromValue(String input) {
+    public static BalanceType fromValue(String value) {
         for (BalanceType b : BalanceType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BalanceType> {
         @Override
         public void write(final JsonWriter jsonWriter, final BalanceType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BalanceType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BalanceType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BalanceType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BalanceType.fromValue(value);
     }
 }

@@ -12,22 +12,46 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response to the &#x60;getInvoice&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `getInvoice` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetInvoiceResponse {
-    @SerializedName("invoiceHeader")
-    private InvoiceHeader invoiceHeader = null;
+    public static final String SERIALIZED_NAME_INVOICE_HEADER = "invoiceHeader";
 
-    @SerializedName("invoiceItems")
-    private List<InvoiceItem> invoiceItems = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_HEADER)
+    private InvoiceHeader invoiceHeader;
 
-    @SerializedName("nextTokenForLineItems")
-    private String nextTokenForLineItems = null;
+    public static final String SERIALIZED_NAME_INVOICE_ITEMS = "invoiceItems";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_ITEMS)
+    private List<InvoiceItem> invoiceItems = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN_FOR_LINE_ITEMS = "nextTokenForLineItems";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN_FOR_LINE_ITEMS)
+    private String nextTokenForLineItems;
+
+    public GetInvoiceResponse() {}
 
     public GetInvoiceResponse invoiceHeader(InvoiceHeader invoiceHeader) {
         this.invoiceHeader = invoiceHeader;
@@ -39,8 +63,7 @@ public class GetInvoiceResponse {
      *
      * @return invoiceHeader
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InvoiceHeader getInvoiceHeader() {
+    @javax.annotation.Nullable public InvoiceHeader getInvoiceHeader() {
         return invoiceHeader;
     }
 
@@ -66,8 +89,7 @@ public class GetInvoiceResponse {
      *
      * @return invoiceItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of invoice line items.")
-    public List<InvoiceItem> getInvoiceItems() {
+    @javax.annotation.Nullable public List<InvoiceItem> getInvoiceItems() {
         return invoiceItems;
     }
 
@@ -85,9 +107,7 @@ public class GetInvoiceResponse {
      *
      * @return nextTokenForLineItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A token you can use to retrieve the next page of line items.")
-    public String getNextTokenForLineItems() {
+    @javax.annotation.Nullable public String getNextTokenForLineItems() {
         return nextTokenForLineItems;
     }
 
@@ -96,7 +116,7 @@ public class GetInvoiceResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -128,10 +148,130 @@ public class GetInvoiceResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("invoiceHeader");
+        openapiFields.add("invoiceItems");
+        openapiFields.add("nextTokenForLineItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetInvoiceResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetInvoiceResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetInvoiceResponse is not found in the empty JSON string",
+                        GetInvoiceResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetInvoiceResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetInvoiceResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `invoiceHeader`
+        if (jsonObj.get("invoiceHeader") != null
+                && !jsonObj.get("invoiceHeader").isJsonNull()) {
+            InvoiceHeader.validateJsonElement(jsonObj.get("invoiceHeader"));
+        }
+        if (jsonObj.get("invoiceItems") != null && !jsonObj.get("invoiceItems").isJsonNull()) {
+            JsonArray jsonArrayinvoiceItems = jsonObj.getAsJsonArray("invoiceItems");
+            if (jsonArrayinvoiceItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invoiceItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invoiceItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invoiceItems").toString()));
+                }
+
+                // validate the optional field `invoiceItems` (array)
+                for (int i = 0; i < jsonArrayinvoiceItems.size(); i++) {
+                    InvoiceItem.validateJsonElement(jsonArrayinvoiceItems.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("nextTokenForLineItems") != null
+                        && !jsonObj.get("nextTokenForLineItems").isJsonNull())
+                && !jsonObj.get("nextTokenForLineItems").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextTokenForLineItems` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextTokenForLineItems").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetInvoiceResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetInvoiceResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetInvoiceResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetInvoiceResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetInvoiceResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetInvoiceResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetInvoiceResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetInvoiceResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetInvoiceResponse
+     * @throws IOException if the JSON string is invalid with respect to GetInvoiceResponse
+     */
+    public static GetInvoiceResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetInvoiceResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetInvoiceResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

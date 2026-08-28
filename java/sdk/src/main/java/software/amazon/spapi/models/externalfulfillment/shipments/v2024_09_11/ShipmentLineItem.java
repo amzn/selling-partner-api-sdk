@@ -12,61 +12,111 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a line item in a shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a line item in a shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentLineItem {
-    @SerializedName("shipmentLineItemId")
-    private String shipmentLineItemId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_LINE_ITEM_ID = "shipmentLineItemId";
 
-    @SerializedName("merchantSku")
-    private String merchantSku = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_LINE_ITEM_ID)
+    private String shipmentLineItemId;
 
-    @SerializedName("numberOfUnits")
-    private Integer numberOfUnits = null;
+    public static final String SERIALIZED_NAME_MERCHANT_SKU = "merchantSku";
 
-    @SerializedName("serialNumbers")
-    private List<String> serialNumbers = null;
+    @SerializedName(SERIALIZED_NAME_MERCHANT_SKU)
+    private String merchantSku;
 
-    @SerializedName("pieceType")
-    private PieceType pieceType = null;
+    public static final String SERIALIZED_NAME_NUMBER_OF_UNITS = "numberOfUnits";
 
-    @SerializedName("hazmatLabels")
-    private List<String> hazmatLabels = null;
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_UNITS)
+    private Integer numberOfUnits;
 
-    @SerializedName("giftAttributes")
-    private GiftAttributes giftAttributes = null;
+    public static final String SERIALIZED_NAME_SERIAL_NUMBERS = "serialNumbers";
 
-    @SerializedName("charges")
-    private Charges charges = null;
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBERS)
+    private List<String> serialNumbers = new ArrayList<>();
 
-    @SerializedName("cancellations")
-    private Cancellations cancellations = null;
+    public static final String SERIALIZED_NAME_PIECE_TYPE = "pieceType";
 
-    @SerializedName("hsnCode")
-    private String hsnCode = null;
+    @SerializedName(SERIALIZED_NAME_PIECE_TYPE)
+    private PieceType pieceType;
 
-    @SerializedName("recommendedCountryOfOrigin")
-    private String recommendedCountryOfOrigin = null;
+    public static final String SERIALIZED_NAME_HAZMAT_LABELS = "hazmatLabels";
 
-    @SerializedName("countryOfOrigin")
-    private String countryOfOrigin = null;
+    @SerializedName(SERIALIZED_NAME_HAZMAT_LABELS)
+    private List<String> hazmatLabels = new ArrayList<>();
 
-    @SerializedName("recommendedCurrencyCode")
-    private String recommendedCurrencyCode = null;
+    public static final String SERIALIZED_NAME_GIFT_ATTRIBUTES = "giftAttributes";
 
-    @SerializedName("itemValue")
-    private Amount itemValue = null;
+    @SerializedName(SERIALIZED_NAME_GIFT_ATTRIBUTES)
+    private GiftAttributes giftAttributes;
 
-    @SerializedName("complianceAttributes")
-    private ComplianceAttributes complianceAttributes = null;
+    public static final String SERIALIZED_NAME_CHARGES = "charges";
 
-    @SerializedName("customAttributes")
-    private List<CustomAttribute> customAttributes = null;
+    @SerializedName(SERIALIZED_NAME_CHARGES)
+    private Charges charges = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CANCELLATIONS = "cancellations";
+
+    @SerializedName(SERIALIZED_NAME_CANCELLATIONS)
+    private Cancellations cancellations = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_HSN_CODE = "hsnCode";
+
+    @SerializedName(SERIALIZED_NAME_HSN_CODE)
+    private String hsnCode;
+
+    public static final String SERIALIZED_NAME_RECOMMENDED_COUNTRY_OF_ORIGIN = "recommendedCountryOfOrigin";
+
+    @SerializedName(SERIALIZED_NAME_RECOMMENDED_COUNTRY_OF_ORIGIN)
+    private String recommendedCountryOfOrigin;
+
+    public static final String SERIALIZED_NAME_COUNTRY_OF_ORIGIN = "countryOfOrigin";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_OF_ORIGIN)
+    private String countryOfOrigin;
+
+    public static final String SERIALIZED_NAME_RECOMMENDED_CURRENCY_CODE = "recommendedCurrencyCode";
+
+    @SerializedName(SERIALIZED_NAME_RECOMMENDED_CURRENCY_CODE)
+    private String recommendedCurrencyCode;
+
+    public static final String SERIALIZED_NAME_ITEM_VALUE = "itemValue";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_VALUE)
+    private Amount itemValue;
+
+    public static final String SERIALIZED_NAME_COMPLIANCE_ATTRIBUTES = "complianceAttributes";
+
+    @SerializedName(SERIALIZED_NAME_COMPLIANCE_ATTRIBUTES)
+    private ComplianceAttributes complianceAttributes;
+
+    public static final String SERIALIZED_NAME_CUSTOM_ATTRIBUTES = "customAttributes";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOM_ATTRIBUTES)
+    private List<CustomAttribute> customAttributes = new ArrayList<>();
+
+    public ShipmentLineItem() {}
 
     public ShipmentLineItem shipmentLineItemId(String shipmentLineItemId) {
         this.shipmentLineItemId = shipmentLineItemId;
@@ -79,10 +129,7 @@ public class ShipmentLineItem {
      *
      * @return shipmentLineItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "An identifier for a shipment's line item. This identifier is guaranteed to be unique within the scope of its containing shipment.")
+    @javax.annotation.Nonnull
     public String getShipmentLineItemId() {
         return shipmentLineItemId;
     }
@@ -101,10 +148,7 @@ public class ShipmentLineItem {
      *
      * @return merchantSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The seller SKU of a product (catalog item). A unique number assigned by the seller when listing an item.")
+    @javax.annotation.Nonnull
     public String getMerchantSku() {
         return merchantSku;
     }
@@ -119,13 +163,11 @@ public class ShipmentLineItem {
     }
 
     /**
-     * The number of items of the SKU in this line item.
+     * The number of items of the SKU in this line item. minimum: 1
      *
      * @return numberOfUnits
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of items of the SKU in this line item.")
+    @javax.annotation.Nonnull
     public Integer getNumberOfUnits() {
         return numberOfUnits;
     }
@@ -152,8 +194,7 @@ public class ShipmentLineItem {
      *
      * @return serialNumbers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The serial numbers for each item in this line item.")
-    public List<String> getSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
@@ -171,8 +212,7 @@ public class ShipmentLineItem {
      *
      * @return pieceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PieceType getPieceType() {
+    @javax.annotation.Nullable public PieceType getPieceType() {
         return pieceType;
     }
 
@@ -198,9 +238,7 @@ public class ShipmentLineItem {
      *
      * @return hazmatLabels
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of HAZMAT label identifiers that must be applied to the packages for this line item.")
-    public List<String> getHazmatLabels() {
+    @javax.annotation.Nullable public List<String> getHazmatLabels() {
         return hazmatLabels;
     }
 
@@ -218,8 +256,7 @@ public class ShipmentLineItem {
      *
      * @return giftAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GiftAttributes getGiftAttributes() {
+    @javax.annotation.Nullable public GiftAttributes getGiftAttributes() {
         return giftAttributes;
     }
 
@@ -237,7 +274,7 @@ public class ShipmentLineItem {
      *
      * @return charges
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Charges getCharges() {
         return charges;
     }
@@ -256,8 +293,7 @@ public class ShipmentLineItem {
      *
      * @return cancellations
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Cancellations getCancellations() {
+    @javax.annotation.Nullable public Cancellations getCancellations() {
         return cancellations;
     }
 
@@ -275,8 +311,7 @@ public class ShipmentLineItem {
      *
      * @return hsnCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The HSN code of SKU in this line item.")
-    public String getHsnCode() {
+    @javax.annotation.Nullable public String getHsnCode() {
         return hsnCode;
     }
 
@@ -294,9 +329,7 @@ public class ShipmentLineItem {
      *
      * @return recommendedCountryOfOrigin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
-    public String getRecommendedCountryOfOrigin() {
+    @javax.annotation.Nullable public String getRecommendedCountryOfOrigin() {
         return recommendedCountryOfOrigin;
     }
 
@@ -314,9 +347,7 @@ public class ShipmentLineItem {
      *
      * @return countryOfOrigin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
-    public String getCountryOfOrigin() {
+    @javax.annotation.Nullable public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
 
@@ -334,10 +365,7 @@ public class ShipmentLineItem {
      *
      * @return recommendedCurrencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The three digit currency code of the currency recommended by the marketplace, in ISO 4217 format.")
-    public String getRecommendedCurrencyCode() {
+    @javax.annotation.Nullable public String getRecommendedCurrencyCode() {
         return recommendedCurrencyCode;
     }
 
@@ -355,8 +383,7 @@ public class ShipmentLineItem {
      *
      * @return itemValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Amount getItemValue() {
+    @javax.annotation.Nullable public Amount getItemValue() {
         return itemValue;
     }
 
@@ -374,7 +401,7 @@ public class ShipmentLineItem {
      *
      * @return complianceAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ComplianceAttributes getComplianceAttributes() {
         return complianceAttributes;
     }
@@ -402,10 +429,7 @@ public class ShipmentLineItem {
      *
      * @return customAttributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.")
-    public List<CustomAttribute> getCustomAttributes() {
+    @javax.annotation.Nullable public List<CustomAttribute> getCustomAttributes() {
         return customAttributes;
     }
 
@@ -414,7 +438,7 @@ public class ShipmentLineItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -500,10 +524,214 @@ public class ShipmentLineItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipmentLineItemId");
+        openapiFields.add("merchantSku");
+        openapiFields.add("numberOfUnits");
+        openapiFields.add("serialNumbers");
+        openapiFields.add("pieceType");
+        openapiFields.add("hazmatLabels");
+        openapiFields.add("giftAttributes");
+        openapiFields.add("charges");
+        openapiFields.add("cancellations");
+        openapiFields.add("hsnCode");
+        openapiFields.add("recommendedCountryOfOrigin");
+        openapiFields.add("countryOfOrigin");
+        openapiFields.add("recommendedCurrencyCode");
+        openapiFields.add("itemValue");
+        openapiFields.add("complianceAttributes");
+        openapiFields.add("customAttributes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shipmentLineItemId");
+        openapiRequiredFields.add("merchantSku");
+        openapiRequiredFields.add("numberOfUnits");
+        openapiRequiredFields.add("charges");
+        openapiRequiredFields.add("complianceAttributes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentLineItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentLineItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentLineItem is not found in the empty JSON string",
+                        ShipmentLineItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentLineItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentLineItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipmentLineItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("shipmentLineItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentLineItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentLineItemId").toString()));
+        }
+        if (!jsonObj.get("merchantSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `merchantSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("merchantSku").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("serialNumbers") != null
+                && !jsonObj.get("serialNumbers").isJsonNull()
+                && !jsonObj.get("serialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("serialNumbers").toString()));
+        }
+        // validate the optional field `pieceType`
+        if (jsonObj.get("pieceType") != null && !jsonObj.get("pieceType").isJsonNull()) {
+            PieceType.validateJsonElement(jsonObj.get("pieceType"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("hazmatLabels") != null
+                && !jsonObj.get("hazmatLabels").isJsonNull()
+                && !jsonObj.get("hazmatLabels").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `hazmatLabels` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("hazmatLabels").toString()));
+        }
+        // validate the optional field `giftAttributes`
+        if (jsonObj.get("giftAttributes") != null
+                && !jsonObj.get("giftAttributes").isJsonNull()) {
+            GiftAttributes.validateJsonElement(jsonObj.get("giftAttributes"));
+        }
+        if ((jsonObj.get("hsnCode") != null && !jsonObj.get("hsnCode").isJsonNull())
+                && !jsonObj.get("hsnCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `hsnCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("hsnCode").toString()));
+        }
+        if ((jsonObj.get("recommendedCountryOfOrigin") != null
+                        && !jsonObj.get("recommendedCountryOfOrigin").isJsonNull())
+                && !jsonObj.get("recommendedCountryOfOrigin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `recommendedCountryOfOrigin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("recommendedCountryOfOrigin").toString()));
+        }
+        if ((jsonObj.get("countryOfOrigin") != null
+                        && !jsonObj.get("countryOfOrigin").isJsonNull())
+                && !jsonObj.get("countryOfOrigin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryOfOrigin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryOfOrigin").toString()));
+        }
+        if ((jsonObj.get("recommendedCurrencyCode") != null
+                        && !jsonObj.get("recommendedCurrencyCode").isJsonNull())
+                && !jsonObj.get("recommendedCurrencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `recommendedCurrencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("recommendedCurrencyCode").toString()));
+        }
+        // validate the optional field `itemValue`
+        if (jsonObj.get("itemValue") != null && !jsonObj.get("itemValue").isJsonNull()) {
+            Amount.validateJsonElement(jsonObj.get("itemValue"));
+        }
+        // validate the required field `complianceAttributes`
+        ComplianceAttributes.validateJsonElement(jsonObj.get("complianceAttributes"));
+        if (jsonObj.get("customAttributes") != null
+                && !jsonObj.get("customAttributes").isJsonNull()) {
+            JsonArray jsonArraycustomAttributes = jsonObj.getAsJsonArray("customAttributes");
+            if (jsonArraycustomAttributes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("customAttributes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `customAttributes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("customAttributes").toString()));
+                }
+
+                // validate the optional field `customAttributes` (array)
+                for (int i = 0; i < jsonArraycustomAttributes.size(); i++) {
+                    CustomAttribute.validateJsonElement(jsonArraycustomAttributes.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentLineItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentLineItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentLineItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentLineItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentLineItem>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentLineItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentLineItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentLineItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentLineItem
+     * @throws IOException if the JSON string is invalid with respect to ShipmentLineItem
+     */
+    public static ShipmentLineItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentLineItem.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentLineItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

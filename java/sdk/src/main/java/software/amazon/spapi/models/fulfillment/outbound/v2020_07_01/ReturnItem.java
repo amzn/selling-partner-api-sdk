@@ -12,45 +12,84 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item that Amazon accepted for return. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item that Amazon accepted for return.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReturnItem {
-    @SerializedName("sellerReturnItemId")
-    private String sellerReturnItemId = null;
+    public static final String SERIALIZED_NAME_SELLER_RETURN_ITEM_ID = "sellerReturnItemId";
 
-    @SerializedName("sellerFulfillmentOrderItemId")
-    private String sellerFulfillmentOrderItemId = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_RETURN_ITEM_ID)
+    private String sellerReturnItemId;
 
-    @SerializedName("amazonShipmentId")
-    private String amazonShipmentId = null;
+    public static final String SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID = "sellerFulfillmentOrderItemId";
 
-    @SerializedName("sellerReturnReasonCode")
-    private String sellerReturnReasonCode = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID)
+    private String sellerFulfillmentOrderItemId;
 
-    @SerializedName("returnComment")
-    private String returnComment = null;
+    public static final String SERIALIZED_NAME_AMAZON_SHIPMENT_ID = "amazonShipmentId";
 
-    @SerializedName("amazonReturnReasonCode")
-    private String amazonReturnReasonCode = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_SHIPMENT_ID)
+    private String amazonShipmentId;
 
-    @SerializedName("status")
-    private FulfillmentReturnItemStatus status = null;
+    public static final String SERIALIZED_NAME_SELLER_RETURN_REASON_CODE = "sellerReturnReasonCode";
 
-    @SerializedName("statusChangedDate")
-    private OffsetDateTime statusChangedDate = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_RETURN_REASON_CODE)
+    private String sellerReturnReasonCode;
 
-    @SerializedName("returnAuthorizationId")
-    private String returnAuthorizationId = null;
+    public static final String SERIALIZED_NAME_RETURN_COMMENT = "returnComment";
 
-    @SerializedName("returnReceivedCondition")
-    private ReturnItemDisposition returnReceivedCondition = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_COMMENT)
+    private String returnComment;
 
-    @SerializedName("fulfillmentCenterId")
-    private String fulfillmentCenterId = null;
+    public static final String SERIALIZED_NAME_AMAZON_RETURN_REASON_CODE = "amazonReturnReasonCode";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_RETURN_REASON_CODE)
+    private String amazonReturnReasonCode;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private FulfillmentReturnItemStatus status;
+
+    public static final String SERIALIZED_NAME_STATUS_CHANGED_DATE = "statusChangedDate";
+
+    @SerializedName(SERIALIZED_NAME_STATUS_CHANGED_DATE)
+    private OffsetDateTime statusChangedDate;
+
+    public static final String SERIALIZED_NAME_RETURN_AUTHORIZATION_ID = "returnAuthorizationId";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_AUTHORIZATION_ID)
+    private String returnAuthorizationId;
+
+    public static final String SERIALIZED_NAME_RETURN_RECEIVED_CONDITION = "returnReceivedCondition";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_RECEIVED_CONDITION)
+    private ReturnItemDisposition returnReceivedCondition;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CENTER_ID = "fulfillmentCenterId";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CENTER_ID)
+    private String fulfillmentCenterId;
+
+    public ReturnItem() {}
 
     public ReturnItem sellerReturnItemId(String sellerReturnItemId) {
         this.sellerReturnItemId = sellerReturnItemId;
@@ -62,9 +101,7 @@ public class ReturnItem {
      *
      * @return sellerReturnItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier the seller assigns to the return item.")
+    @javax.annotation.Nonnull
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }
@@ -83,9 +120,7 @@ public class ReturnItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier assigned to the item by the seller when the fulfillment order was created.")
+    @javax.annotation.Nonnull
     public String getSellerFulfillmentOrderItemId() {
         return sellerFulfillmentOrderItemId;
     }
@@ -104,9 +139,7 @@ public class ReturnItem {
      *
      * @return amazonShipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier for the shipment that is associated with the return item.")
+    @javax.annotation.Nonnull
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -125,9 +158,7 @@ public class ReturnItem {
      *
      * @return sellerReturnReasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The return reason code assigned to the return item by the seller.")
+    @javax.annotation.Nonnull
     public String getSellerReturnReasonCode() {
         return sellerReturnReasonCode;
     }
@@ -146,8 +177,7 @@ public class ReturnItem {
      *
      * @return returnComment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An optional comment about the return item.")
-    public String getReturnComment() {
+    @javax.annotation.Nullable public String getReturnComment() {
         return returnComment;
     }
 
@@ -165,9 +195,7 @@ public class ReturnItem {
      *
      * @return amazonReturnReasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The return reason code that the Amazon fulfillment center assigned to the return item.")
-    public String getAmazonReturnReasonCode() {
+    @javax.annotation.Nullable public String getAmazonReturnReasonCode() {
         return amazonReturnReasonCode;
     }
 
@@ -185,7 +213,7 @@ public class ReturnItem {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentReturnItemStatus getStatus() {
         return status;
     }
@@ -204,7 +232,7 @@ public class ReturnItem {
      *
      * @return statusChangedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStatusChangedDate() {
         return statusChangedDate;
     }
@@ -223,10 +251,7 @@ public class ReturnItem {
      *
      * @return returnAuthorizationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.")
-    public String getReturnAuthorizationId() {
+    @javax.annotation.Nullable public String getReturnAuthorizationId() {
         return returnAuthorizationId;
     }
 
@@ -244,8 +269,7 @@ public class ReturnItem {
      *
      * @return returnReceivedCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReturnItemDisposition getReturnReceivedCondition() {
+    @javax.annotation.Nullable public ReturnItemDisposition getReturnReceivedCondition() {
         return returnReceivedCondition;
     }
 
@@ -263,9 +287,7 @@ public class ReturnItem {
      *
      * @return fulfillmentCenterId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier for the Amazon fulfillment center that processed the return item.")
-    public String getFulfillmentCenterId() {
+    @javax.annotation.Nullable public String getFulfillmentCenterId() {
         return fulfillmentCenterId;
     }
 
@@ -274,7 +296,7 @@ public class ReturnItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -349,10 +371,178 @@ public class ReturnItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerReturnItemId");
+        openapiFields.add("sellerFulfillmentOrderItemId");
+        openapiFields.add("amazonShipmentId");
+        openapiFields.add("sellerReturnReasonCode");
+        openapiFields.add("returnComment");
+        openapiFields.add("amazonReturnReasonCode");
+        openapiFields.add("status");
+        openapiFields.add("statusChangedDate");
+        openapiFields.add("returnAuthorizationId");
+        openapiFields.add("returnReceivedCondition");
+        openapiFields.add("fulfillmentCenterId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellerReturnItemId");
+        openapiRequiredFields.add("sellerFulfillmentOrderItemId");
+        openapiRequiredFields.add("amazonShipmentId");
+        openapiRequiredFields.add("sellerReturnReasonCode");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("statusChangedDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReturnItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReturnItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReturnItem is not found in the empty JSON string",
+                        ReturnItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReturnItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReturnItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ReturnItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sellerReturnItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerReturnItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerReturnItemId").toString()));
+        }
+        if (!jsonObj.get("sellerFulfillmentOrderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerFulfillmentOrderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerFulfillmentOrderItemId").toString()));
+        }
+        if (!jsonObj.get("amazonShipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonShipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonShipmentId").toString()));
+        }
+        if (!jsonObj.get("sellerReturnReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerReturnReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerReturnReasonCode").toString()));
+        }
+        if ((jsonObj.get("returnComment") != null
+                        && !jsonObj.get("returnComment").isJsonNull())
+                && !jsonObj.get("returnComment").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnComment` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnComment").toString()));
+        }
+        if ((jsonObj.get("amazonReturnReasonCode") != null
+                        && !jsonObj.get("amazonReturnReasonCode").isJsonNull())
+                && !jsonObj.get("amazonReturnReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonReturnReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonReturnReasonCode").toString()));
+        }
+        // validate the required field `status`
+        FulfillmentReturnItemStatus.validateJsonElement(jsonObj.get("status"));
+        if ((jsonObj.get("returnAuthorizationId") != null
+                        && !jsonObj.get("returnAuthorizationId").isJsonNull())
+                && !jsonObj.get("returnAuthorizationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnAuthorizationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnAuthorizationId").toString()));
+        }
+        // validate the optional field `returnReceivedCondition`
+        if (jsonObj.get("returnReceivedCondition") != null
+                && !jsonObj.get("returnReceivedCondition").isJsonNull()) {
+            ReturnItemDisposition.validateJsonElement(jsonObj.get("returnReceivedCondition"));
+        }
+        if ((jsonObj.get("fulfillmentCenterId") != null
+                        && !jsonObj.get("fulfillmentCenterId").isJsonNull())
+                && !jsonObj.get("fulfillmentCenterId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentCenterId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentCenterId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReturnItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReturnItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReturnItem> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ReturnItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReturnItem>() {
+                        @Override
+                        public void write(JsonWriter out, ReturnItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReturnItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReturnItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReturnItem
+     * @throws IOException if the JSON string is invalid with respect to ReturnItem
+     */
+    public static ReturnItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReturnItem.class);
+    }
+
+    /**
+     * Convert an instance of ReturnItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

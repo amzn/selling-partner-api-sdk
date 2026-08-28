@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Delivery constraints applicable to this order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Delivery constraints applicable to this order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingConstraints {
-    @SerializedName("PalletDelivery")
-    private ConstraintType palletDelivery = null;
+    public static final String SERIALIZED_NAME_PALLET_DELIVERY = "PalletDelivery";
 
-    @SerializedName("SignatureConfirmation")
-    private ConstraintType signatureConfirmation = null;
+    @SerializedName(SERIALIZED_NAME_PALLET_DELIVERY)
+    private ConstraintType palletDelivery;
 
-    @SerializedName("RecipientIdentityVerification")
-    private ConstraintType recipientIdentityVerification = null;
+    public static final String SERIALIZED_NAME_SIGNATURE_CONFIRMATION = "SignatureConfirmation";
 
-    @SerializedName("RecipientAgeVerification")
-    private ConstraintType recipientAgeVerification = null;
+    @SerializedName(SERIALIZED_NAME_SIGNATURE_CONFIRMATION)
+    private ConstraintType signatureConfirmation;
+
+    public static final String SERIALIZED_NAME_RECIPIENT_IDENTITY_VERIFICATION = "RecipientIdentityVerification";
+
+    @SerializedName(SERIALIZED_NAME_RECIPIENT_IDENTITY_VERIFICATION)
+    private ConstraintType recipientIdentityVerification;
+
+    public static final String SERIALIZED_NAME_RECIPIENT_AGE_VERIFICATION = "RecipientAgeVerification";
+
+    @SerializedName(SERIALIZED_NAME_RECIPIENT_AGE_VERIFICATION)
+    private ConstraintType recipientAgeVerification;
+
+    public ShippingConstraints() {}
 
     public ShippingConstraints palletDelivery(ConstraintType palletDelivery) {
         this.palletDelivery = palletDelivery;
@@ -40,8 +65,7 @@ public class ShippingConstraints {
      *
      * @return palletDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ConstraintType getPalletDelivery() {
+    @javax.annotation.Nullable public ConstraintType getPalletDelivery() {
         return palletDelivery;
     }
 
@@ -59,8 +83,7 @@ public class ShippingConstraints {
      *
      * @return signatureConfirmation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ConstraintType getSignatureConfirmation() {
+    @javax.annotation.Nullable public ConstraintType getSignatureConfirmation() {
         return signatureConfirmation;
     }
 
@@ -78,8 +101,7 @@ public class ShippingConstraints {
      *
      * @return recipientIdentityVerification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ConstraintType getRecipientIdentityVerification() {
+    @javax.annotation.Nullable public ConstraintType getRecipientIdentityVerification() {
         return recipientIdentityVerification;
     }
 
@@ -97,8 +119,7 @@ public class ShippingConstraints {
      *
      * @return recipientAgeVerification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ConstraintType getRecipientAgeVerification() {
+    @javax.annotation.Nullable public ConstraintType getRecipientAgeVerification() {
         return recipientAgeVerification;
     }
 
@@ -107,7 +128,7 @@ public class ShippingConstraints {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +169,122 @@ public class ShippingConstraints {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PalletDelivery");
+        openapiFields.add("SignatureConfirmation");
+        openapiFields.add("RecipientIdentityVerification");
+        openapiFields.add("RecipientAgeVerification");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingConstraints
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingConstraints.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingConstraints is not found in the empty JSON string",
+                        ShippingConstraints.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingConstraints.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingConstraints` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `PalletDelivery`
+        if (jsonObj.get("PalletDelivery") != null
+                && !jsonObj.get("PalletDelivery").isJsonNull()) {
+            ConstraintType.validateJsonElement(jsonObj.get("PalletDelivery"));
+        }
+        // validate the optional field `SignatureConfirmation`
+        if (jsonObj.get("SignatureConfirmation") != null
+                && !jsonObj.get("SignatureConfirmation").isJsonNull()) {
+            ConstraintType.validateJsonElement(jsonObj.get("SignatureConfirmation"));
+        }
+        // validate the optional field `RecipientIdentityVerification`
+        if (jsonObj.get("RecipientIdentityVerification") != null
+                && !jsonObj.get("RecipientIdentityVerification").isJsonNull()) {
+            ConstraintType.validateJsonElement(jsonObj.get("RecipientIdentityVerification"));
+        }
+        // validate the optional field `RecipientAgeVerification`
+        if (jsonObj.get("RecipientAgeVerification") != null
+                && !jsonObj.get("RecipientAgeVerification").isJsonNull()) {
+            ConstraintType.validateJsonElement(jsonObj.get("RecipientAgeVerification"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingConstraints.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingConstraints' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingConstraints> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingConstraints.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingConstraints>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingConstraints value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingConstraints read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingConstraints given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingConstraints
+     * @throws IOException if the JSON string is invalid with respect to ShippingConstraints
+     */
+    public static ShippingConstraints fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingConstraints.class);
+    }
+
+    /**
+     * Convert an instance of ShippingConstraints to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

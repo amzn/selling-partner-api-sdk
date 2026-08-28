@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,82 +22,56 @@ import java.io.IOException;
 /** Additional location information. */
 @JsonAdapter(AdditionalLocationInfo.Adapter.class)
 public enum AdditionalLocationInfo {
-    @SerializedName("AS_INSTRUCTED")
     AS_INSTRUCTED("AS_INSTRUCTED"),
 
-    @SerializedName("CARPORT")
     CARPORT("CARPORT"),
 
-    @SerializedName("CUSTOMER_PICKUP")
     CUSTOMER_PICKUP("CUSTOMER_PICKUP"),
 
-    @SerializedName("DECK")
     DECK("DECK"),
 
-    @SerializedName("DOOR_PERSON")
     DOOR_PERSON("DOOR_PERSON"),
 
-    @SerializedName("FRONT_DESK")
     FRONT_DESK("FRONT_DESK"),
 
-    @SerializedName("FRONT_DOOR")
     FRONT_DOOR("FRONT_DOOR"),
 
-    @SerializedName("GARAGE")
     GARAGE("GARAGE"),
 
-    @SerializedName("GUARD")
     GUARD("GUARD"),
 
-    @SerializedName("MAIL_ROOM")
     MAIL_ROOM("MAIL_ROOM"),
 
-    @SerializedName("MAIL_SLOT")
     MAIL_SLOT("MAIL_SLOT"),
 
-    @SerializedName("MAILBOX")
     MAILBOX("MAILBOX"),
 
-    @SerializedName("MC_BOY")
     MC_BOY("MC_BOY"),
 
-    @SerializedName("MC_GIRL")
     MC_GIRL("MC_GIRL"),
 
-    @SerializedName("MC_MAN")
     MC_MAN("MC_MAN"),
 
-    @SerializedName("MC_WOMAN")
     MC_WOMAN("MC_WOMAN"),
 
-    @SerializedName("NEIGHBOR")
     NEIGHBOR("NEIGHBOR"),
 
-    @SerializedName("OFFICE")
     OFFICE("OFFICE"),
 
-    @SerializedName("OUTBUILDING")
     OUTBUILDING("OUTBUILDING"),
 
-    @SerializedName("PATIO")
     PATIO("PATIO"),
 
-    @SerializedName("PORCH")
     PORCH("PORCH"),
 
-    @SerializedName("REAR_DOOR")
     REAR_DOOR("REAR_DOOR"),
 
-    @SerializedName("RECEPTIONIST")
     RECEPTIONIST("RECEPTIONIST"),
 
-    @SerializedName("RECEIVER")
     RECEIVER("RECEIVER"),
 
-    @SerializedName("SECURE_LOCATION")
     SECURE_LOCATION("SECURE_LOCATION"),
 
-    @SerializedName("SIDE_DOOR")
     SIDE_DOOR("SIDE_DOOR");
 
     private String value;
@@ -115,25 +89,30 @@ public enum AdditionalLocationInfo {
         return String.valueOf(value);
     }
 
-    public static AdditionalLocationInfo fromValue(String input) {
+    public static AdditionalLocationInfo fromValue(String value) {
         for (AdditionalLocationInfo b : AdditionalLocationInfo.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AdditionalLocationInfo> {
         @Override
         public void write(final JsonWriter jsonWriter, final AdditionalLocationInfo enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AdditionalLocationInfo read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AdditionalLocationInfo.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AdditionalLocationInfo.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AdditionalLocationInfo.fromValue(value);
     }
 }

@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A package status summary. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A package status summary.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingSummary {
-    @SerializedName("status")
-    private Status status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("trackingDetailCodes")
-    private TrackingDetailCodes trackingDetailCodes = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private Status status;
+
+    public static final String SERIALIZED_NAME_TRACKING_DETAIL_CODES = "trackingDetailCodes";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_DETAIL_CODES)
+    private TrackingDetailCodes trackingDetailCodes;
+
+    public TrackingSummary() {}
 
     public TrackingSummary status(Status status) {
         this.status = status;
@@ -34,8 +55,7 @@ public class TrackingSummary {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Status getStatus() {
+    @javax.annotation.Nullable public Status getStatus() {
         return status;
     }
 
@@ -53,8 +73,7 @@ public class TrackingSummary {
      *
      * @return trackingDetailCodes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TrackingDetailCodes getTrackingDetailCodes() {
+    @javax.annotation.Nullable public TrackingDetailCodes getTrackingDetailCodes() {
         return trackingDetailCodes;
     }
 
@@ -63,7 +82,7 @@ public class TrackingSummary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +112,109 @@ public class TrackingSummary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("status");
+        openapiFields.add("trackingDetailCodes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingSummary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingSummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingSummary is not found in the empty JSON string",
+                        TrackingSummary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingSummary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingSummary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            Status.validateJsonElement(jsonObj.get("status"));
+        }
+        // validate the optional field `trackingDetailCodes`
+        if (jsonObj.get("trackingDetailCodes") != null
+                && !jsonObj.get("trackingDetailCodes").isJsonNull()) {
+            TrackingDetailCodes.validateJsonElement(jsonObj.get("trackingDetailCodes"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingSummary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingSummary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingSummary> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingSummary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingSummary>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingSummary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingSummary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingSummary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingSummary
+     * @throws IOException if the JSON string is invalid with respect to TrackingSummary
+     */
+    public static TrackingSummary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingSummary.class);
+    }
+
+    /**
+     * Convert an instance of TrackingSummary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

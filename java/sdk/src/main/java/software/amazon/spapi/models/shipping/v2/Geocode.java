@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Defines the latitude and longitude of the access point. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Defines the latitude and longitude of the access point.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Geocode {
-    @SerializedName("latitude")
-    private String latitude = null;
+    public static final String SERIALIZED_NAME_LATITUDE = "latitude";
 
-    @SerializedName("longitude")
-    private String longitude = null;
+    @SerializedName(SERIALIZED_NAME_LATITUDE)
+    private String latitude;
+
+    public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
+
+    @SerializedName(SERIALIZED_NAME_LONGITUDE)
+    private String longitude;
+
+    public Geocode() {}
 
     public Geocode latitude(String latitude) {
         this.latitude = latitude;
@@ -34,8 +55,7 @@ public class Geocode {
      *
      * @return latitude
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The latitude of access point.")
-    public String getLatitude() {
+    @javax.annotation.Nullable public String getLatitude() {
         return latitude;
     }
 
@@ -53,8 +73,7 @@ public class Geocode {
      *
      * @return longitude
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The longitude of access point.")
-    public String getLongitude() {
+    @javax.annotation.Nullable public String getLongitude() {
         return longitude;
     }
 
@@ -63,7 +82,7 @@ public class Geocode {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -90,10 +109,111 @@ public class Geocode {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("latitude");
+        openapiFields.add("longitude");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Geocode
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Geocode.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Geocode is not found in the empty JSON string",
+                        Geocode.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Geocode.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Geocode` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("latitude") != null && !jsonObj.get("latitude").isJsonNull())
+                && !jsonObj.get("latitude").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `latitude` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("latitude").toString()));
+        }
+        if ((jsonObj.get("longitude") != null && !jsonObj.get("longitude").isJsonNull())
+                && !jsonObj.get("longitude").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `longitude` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("longitude").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Geocode.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Geocode' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Geocode> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Geocode.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Geocode>() {
+                        @Override
+                        public void write(JsonWriter out, Geocode value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Geocode read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Geocode given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Geocode
+     * @throws IOException if the JSON string is invalid with respect to Geocode
+     */
+    public static Geocode fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Geocode.class);
+    }
+
+    /**
+     * Convert an instance of Geocode to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

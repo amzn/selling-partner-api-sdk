@@ -12,56 +12,102 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents an AWD outbound order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD outbound order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OutboundOrder {
-    @SerializedName("confirmedOn")
-    private OffsetDateTime confirmedOn = null;
+    public static final String SERIALIZED_NAME_CONFIRMED_ON = "confirmedOn";
 
-    @SerializedName("createdAt")
-    private OffsetDateTime createdAt = null;
+    @SerializedName(SERIALIZED_NAME_CONFIRMED_ON)
+    private OffsetDateTime confirmedOn;
 
-    @SerializedName("eligiblePackagesToOutbound")
-    private List<DistributionPackageQuantity> eligiblePackagesToOutbound = null;
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
 
-    @SerializedName("eligibleProductsToOutbound")
-    private List<ProductQuantity> eligibleProductsToOutbound = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
-    @SerializedName("executionErrors")
-    private List<OutboundExecutionError> executionErrors = null;
+    public static final String SERIALIZED_NAME_ELIGIBLE_PACKAGES_TO_OUTBOUND = "eligiblePackagesToOutbound";
 
-    @SerializedName("orderId")
-    private String orderId = null;
+    @SerializedName(SERIALIZED_NAME_ELIGIBLE_PACKAGES_TO_OUTBOUND)
+    private List<DistributionPackageQuantity> eligiblePackagesToOutbound = new ArrayList<>();
 
-    @SerializedName("orderPreferences")
-    private List<OrderAttribute> orderPreferences = null;
+    public static final String SERIALIZED_NAME_ELIGIBLE_PRODUCTS_TO_OUTBOUND = "eligibleProductsToOutbound";
 
-    @SerializedName("orderStatus")
-    private OutboundStatus orderStatus = null;
+    @SerializedName(SERIALIZED_NAME_ELIGIBLE_PRODUCTS_TO_OUTBOUND)
+    private List<ProductQuantity> eligibleProductsToOutbound = new ArrayList<>();
 
-    @SerializedName("outboundShipments")
-    private List<OutboundShipment> outboundShipments = null;
+    public static final String SERIALIZED_NAME_EXECUTION_ERRORS = "executionErrors";
 
-    @SerializedName("packagesToOutbound")
-    private List<DistributionPackageQuantity> packagesToOutbound = null;
+    @SerializedName(SERIALIZED_NAME_EXECUTION_ERRORS)
+    private List<OutboundExecutionError> executionErrors = new ArrayList<>();
 
-    @SerializedName("productsToOutbound")
-    private List<ProductQuantity> productsToOutbound = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("shippedOutboundPackages")
-    private List<DistributionPackageQuantity> shippedOutboundPackages = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
-    @SerializedName("shippedOutboundProducts")
-    private List<ProductQuantity> shippedOutboundProducts = null;
+    public static final String SERIALIZED_NAME_ORDER_PREFERENCES = "orderPreferences";
 
-    @SerializedName("updatedAt")
-    private OffsetDateTime updatedAt = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_PREFERENCES)
+    private List<OrderAttribute> orderPreferences = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ORDER_STATUS = "orderStatus";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_STATUS)
+    private OutboundStatus orderStatus;
+
+    public static final String SERIALIZED_NAME_OUTBOUND_SHIPMENTS = "outboundShipments";
+
+    @SerializedName(SERIALIZED_NAME_OUTBOUND_SHIPMENTS)
+    private List<OutboundShipment> outboundShipments = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKAGES_TO_OUTBOUND = "packagesToOutbound";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGES_TO_OUTBOUND)
+    private List<DistributionPackageQuantity> packagesToOutbound = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCTS_TO_OUTBOUND = "productsToOutbound";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCTS_TO_OUTBOUND)
+    private List<ProductQuantity> productsToOutbound = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPPED_OUTBOUND_PACKAGES = "shippedOutboundPackages";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPED_OUTBOUND_PACKAGES)
+    private List<DistributionPackageQuantity> shippedOutboundPackages = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPPED_OUTBOUND_PRODUCTS = "shippedOutboundProducts";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPED_OUTBOUND_PRODUCTS)
+    private List<ProductQuantity> shippedOutboundProducts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
+
+    public OutboundOrder() {}
 
     public OutboundOrder confirmedOn(OffsetDateTime confirmedOn) {
         this.confirmedOn = confirmedOn;
@@ -73,8 +119,7 @@ public class OutboundOrder {
      *
      * @return confirmedOn
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was confirmed.")
-    public OffsetDateTime getConfirmedOn() {
+    @javax.annotation.Nullable public OffsetDateTime getConfirmedOn() {
         return confirmedOn;
     }
 
@@ -92,8 +137,7 @@ public class OutboundOrder {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was created.")
-    public OffsetDateTime getCreatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
@@ -119,8 +163,7 @@ public class OutboundOrder {
      *
      * @return eligiblePackagesToOutbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of packages that are eligible for outbound.")
-    public List<DistributionPackageQuantity> getEligiblePackagesToOutbound() {
+    @javax.annotation.Nullable public List<DistributionPackageQuantity> getEligiblePackagesToOutbound() {
         return eligiblePackagesToOutbound;
     }
 
@@ -146,8 +189,7 @@ public class OutboundOrder {
      *
      * @return eligibleProductsToOutbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of product units that are eligible for outbound.")
-    public List<ProductQuantity> getEligibleProductsToOutbound() {
+    @javax.annotation.Nullable public List<ProductQuantity> getEligibleProductsToOutbound() {
         return eligibleProductsToOutbound;
     }
 
@@ -173,10 +215,7 @@ public class OutboundOrder {
      *
      * @return executionErrors
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Execution errors associated with the outbound order. This field will be populated if the order failed validation.")
-    public List<OutboundExecutionError> getExecutionErrors() {
+    @javax.annotation.Nullable public List<OutboundExecutionError> getExecutionErrors() {
         return executionErrors;
     }
 
@@ -194,7 +233,7 @@ public class OutboundOrder {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Order ID for the outbound order.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -221,8 +260,7 @@ public class OutboundOrder {
      *
      * @return orderPreferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Order preferences for this outbound order.")
-    public List<OrderAttribute> getOrderPreferences() {
+    @javax.annotation.Nullable public List<OrderAttribute> getOrderPreferences() {
         return orderPreferences;
     }
 
@@ -240,7 +278,7 @@ public class OutboundOrder {
      *
      * @return orderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public OutboundStatus getOrderStatus() {
         return orderStatus;
     }
@@ -267,9 +305,7 @@ public class OutboundOrder {
      *
      * @return outboundShipments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "List of outbound shipments that are part of this order.")
+    @javax.annotation.Nonnull
     public List<OutboundShipment> getOutboundShipments() {
         return outboundShipments;
     }
@@ -296,8 +332,7 @@ public class OutboundOrder {
      *
      * @return packagesToOutbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of packages to be outbound.")
-    public List<DistributionPackageQuantity> getPackagesToOutbound() {
+    @javax.annotation.Nullable public List<DistributionPackageQuantity> getPackagesToOutbound() {
         return packagesToOutbound;
     }
 
@@ -323,8 +358,7 @@ public class OutboundOrder {
      *
      * @return productsToOutbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of product units to be outbound.")
-    public List<ProductQuantity> getProductsToOutbound() {
+    @javax.annotation.Nullable public List<ProductQuantity> getProductsToOutbound() {
         return productsToOutbound;
     }
 
@@ -350,9 +384,7 @@ public class OutboundOrder {
      *
      * @return shippedOutboundPackages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Outbound packages that are shipped after the execution has completed post confirmation.")
-    public List<DistributionPackageQuantity> getShippedOutboundPackages() {
+    @javax.annotation.Nullable public List<DistributionPackageQuantity> getShippedOutboundPackages() {
         return shippedOutboundPackages;
     }
 
@@ -378,10 +410,7 @@ public class OutboundOrder {
      *
      * @return shippedOutboundProducts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Outbound product units that are shipped after the execution has completed post confirmation.")
-    public List<ProductQuantity> getShippedOutboundProducts() {
+    @javax.annotation.Nullable public List<ProductQuantity> getShippedOutboundProducts() {
         return shippedOutboundProducts;
     }
 
@@ -399,8 +428,7 @@ public class OutboundOrder {
      *
      * @return updatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was last updated.")
-    public OffsetDateTime getUpdatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
@@ -409,7 +437,7 @@ public class OutboundOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -493,10 +521,288 @@ public class OutboundOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("confirmedOn");
+        openapiFields.add("createdAt");
+        openapiFields.add("eligiblePackagesToOutbound");
+        openapiFields.add("eligibleProductsToOutbound");
+        openapiFields.add("executionErrors");
+        openapiFields.add("orderId");
+        openapiFields.add("orderPreferences");
+        openapiFields.add("orderStatus");
+        openapiFields.add("outboundShipments");
+        openapiFields.add("packagesToOutbound");
+        openapiFields.add("productsToOutbound");
+        openapiFields.add("shippedOutboundPackages");
+        openapiFields.add("shippedOutboundProducts");
+        openapiFields.add("updatedAt");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("orderId");
+        openapiRequiredFields.add("orderStatus");
+        openapiRequiredFields.add("outboundShipments");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OutboundOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OutboundOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OutboundOrder is not found in the empty JSON string",
+                        OutboundOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OutboundOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OutboundOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OutboundOrder.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("eligiblePackagesToOutbound") != null
+                && !jsonObj.get("eligiblePackagesToOutbound").isJsonNull()) {
+            JsonArray jsonArrayeligiblePackagesToOutbound = jsonObj.getAsJsonArray("eligiblePackagesToOutbound");
+            if (jsonArrayeligiblePackagesToOutbound != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("eligiblePackagesToOutbound").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `eligiblePackagesToOutbound` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("eligiblePackagesToOutbound").toString()));
+                }
+
+                // validate the optional field `eligiblePackagesToOutbound` (array)
+                for (int i = 0; i < jsonArrayeligiblePackagesToOutbound.size(); i++) {
+                    DistributionPackageQuantity.validateJsonElement(jsonArrayeligiblePackagesToOutbound.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("eligibleProductsToOutbound") != null
+                && !jsonObj.get("eligibleProductsToOutbound").isJsonNull()) {
+            JsonArray jsonArrayeligibleProductsToOutbound = jsonObj.getAsJsonArray("eligibleProductsToOutbound");
+            if (jsonArrayeligibleProductsToOutbound != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("eligibleProductsToOutbound").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `eligibleProductsToOutbound` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("eligibleProductsToOutbound").toString()));
+                }
+
+                // validate the optional field `eligibleProductsToOutbound` (array)
+                for (int i = 0; i < jsonArrayeligibleProductsToOutbound.size(); i++) {
+                    ProductQuantity.validateJsonElement(jsonArrayeligibleProductsToOutbound.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("executionErrors") != null
+                && !jsonObj.get("executionErrors").isJsonNull()) {
+            JsonArray jsonArrayexecutionErrors = jsonObj.getAsJsonArray("executionErrors");
+            if (jsonArrayexecutionErrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("executionErrors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `executionErrors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("executionErrors").toString()));
+                }
+
+                // validate the optional field `executionErrors` (array)
+                for (int i = 0; i < jsonArrayexecutionErrors.size(); i++) {
+                    OutboundExecutionError.validateJsonElement(jsonArrayexecutionErrors.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        if (jsonObj.get("orderPreferences") != null
+                && !jsonObj.get("orderPreferences").isJsonNull()) {
+            JsonArray jsonArrayorderPreferences = jsonObj.getAsJsonArray("orderPreferences");
+            if (jsonArrayorderPreferences != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("orderPreferences").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `orderPreferences` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("orderPreferences").toString()));
+                }
+
+                // validate the optional field `orderPreferences` (array)
+                for (int i = 0; i < jsonArrayorderPreferences.size(); i++) {
+                    OrderAttribute.validateJsonElement(jsonArrayorderPreferences.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `orderStatus`
+        OutboundStatus.validateJsonElement(jsonObj.get("orderStatus"));
+        // ensure the json data is an array
+        if (!jsonObj.get("outboundShipments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `outboundShipments` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("outboundShipments").toString()));
+        }
+
+        JsonArray jsonArrayoutboundShipments = jsonObj.getAsJsonArray("outboundShipments");
+        // validate the required field `outboundShipments` (array)
+        for (int i = 0; i < jsonArrayoutboundShipments.size(); i++) {
+            OutboundShipment.validateJsonElement(jsonArrayoutboundShipments.get(i));
+        }
+        ;
+        if (jsonObj.get("packagesToOutbound") != null
+                && !jsonObj.get("packagesToOutbound").isJsonNull()) {
+            JsonArray jsonArraypackagesToOutbound = jsonObj.getAsJsonArray("packagesToOutbound");
+            if (jsonArraypackagesToOutbound != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("packagesToOutbound").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `packagesToOutbound` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("packagesToOutbound").toString()));
+                }
+
+                // validate the optional field `packagesToOutbound` (array)
+                for (int i = 0; i < jsonArraypackagesToOutbound.size(); i++) {
+                    DistributionPackageQuantity.validateJsonElement(jsonArraypackagesToOutbound.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("productsToOutbound") != null
+                && !jsonObj.get("productsToOutbound").isJsonNull()) {
+            JsonArray jsonArrayproductsToOutbound = jsonObj.getAsJsonArray("productsToOutbound");
+            if (jsonArrayproductsToOutbound != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("productsToOutbound").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `productsToOutbound` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("productsToOutbound").toString()));
+                }
+
+                // validate the optional field `productsToOutbound` (array)
+                for (int i = 0; i < jsonArrayproductsToOutbound.size(); i++) {
+                    ProductQuantity.validateJsonElement(jsonArrayproductsToOutbound.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("shippedOutboundPackages") != null
+                && !jsonObj.get("shippedOutboundPackages").isJsonNull()) {
+            JsonArray jsonArrayshippedOutboundPackages = jsonObj.getAsJsonArray("shippedOutboundPackages");
+            if (jsonArrayshippedOutboundPackages != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippedOutboundPackages").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippedOutboundPackages` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippedOutboundPackages").toString()));
+                }
+
+                // validate the optional field `shippedOutboundPackages` (array)
+                for (int i = 0; i < jsonArrayshippedOutboundPackages.size(); i++) {
+                    DistributionPackageQuantity.validateJsonElement(jsonArrayshippedOutboundPackages.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("shippedOutboundProducts") != null
+                && !jsonObj.get("shippedOutboundProducts").isJsonNull()) {
+            JsonArray jsonArrayshippedOutboundProducts = jsonObj.getAsJsonArray("shippedOutboundProducts");
+            if (jsonArrayshippedOutboundProducts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippedOutboundProducts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippedOutboundProducts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippedOutboundProducts").toString()));
+                }
+
+                // validate the optional field `shippedOutboundProducts` (array)
+                for (int i = 0; i < jsonArrayshippedOutboundProducts.size(); i++) {
+                    ProductQuantity.validateJsonElement(jsonArrayshippedOutboundProducts.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OutboundOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OutboundOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OutboundOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OutboundOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OutboundOrder>() {
+                        @Override
+                        public void write(JsonWriter out, OutboundOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OutboundOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OutboundOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OutboundOrder
+     * @throws IOException if the JSON string is invalid with respect to OutboundOrder
+     */
+    public static OutboundOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OutboundOrder.class);
+    }
+
+    /**
+     * Convert an instance of OutboundOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

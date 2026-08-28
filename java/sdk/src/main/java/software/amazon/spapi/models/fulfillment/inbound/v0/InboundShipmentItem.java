@@ -12,41 +12,72 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment
  * operation.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundShipmentItem {
-    @SerializedName("ShipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "ShipmentId";
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
 
-    @SerializedName("FulfillmentNetworkSKU")
-    private String fulfillmentNetworkSKU = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("QuantityShipped")
-    private Integer quantityShipped = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
 
-    @SerializedName("QuantityReceived")
-    private Integer quantityReceived = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_NETWORK_S_K_U = "FulfillmentNetworkSKU";
 
-    @SerializedName("QuantityInCase")
-    private Integer quantityInCase = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_NETWORK_S_K_U)
+    private String fulfillmentNetworkSKU;
 
-    @SerializedName("ReleaseDate")
-    private LocalDate releaseDate = null;
+    public static final String SERIALIZED_NAME_QUANTITY_SHIPPED = "QuantityShipped";
 
-    @SerializedName("PrepDetailsList")
-    private PrepDetailsList prepDetailsList = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_SHIPPED)
+    private Integer quantityShipped;
+
+    public static final String SERIALIZED_NAME_QUANTITY_RECEIVED = "QuantityReceived";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY_RECEIVED)
+    private Integer quantityReceived;
+
+    public static final String SERIALIZED_NAME_QUANTITY_IN_CASE = "QuantityInCase";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY_IN_CASE)
+    private Integer quantityInCase;
+
+    public static final String SERIALIZED_NAME_RELEASE_DATE = "ReleaseDate";
+
+    @SerializedName(SERIALIZED_NAME_RELEASE_DATE)
+    private LocalDate releaseDate;
+
+    public static final String SERIALIZED_NAME_PREP_DETAILS_LIST = "PrepDetailsList";
+
+    @SerializedName(SERIALIZED_NAME_PREP_DETAILS_LIST)
+    private PrepDetailsList prepDetailsList = new ArrayList<>();
+
+    public InboundShipmentItem() {}
 
     public InboundShipmentItem shipmentId(String shipmentId) {
         this.shipmentId = shipmentId;
@@ -58,9 +89,7 @@ public class InboundShipmentItem {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A shipment identifier originally returned by the createInboundShipmentPlan operation.")
-    public String getShipmentId() {
+    @javax.annotation.Nullable public String getShipmentId() {
         return shipmentId;
     }
 
@@ -78,7 +107,7 @@ public class InboundShipmentItem {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
+    @javax.annotation.Nonnull
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -97,8 +126,7 @@ public class InboundShipmentItem {
      *
      * @return fulfillmentNetworkSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU of the item.")
-    public String getFulfillmentNetworkSKU() {
+    @javax.annotation.Nullable public String getFulfillmentNetworkSKU() {
         return fulfillmentNetworkSKU;
     }
 
@@ -116,7 +144,7 @@ public class InboundShipmentItem {
      *
      * @return quantityShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
+    @javax.annotation.Nonnull
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -135,8 +163,7 @@ public class InboundShipmentItem {
      *
      * @return quantityReceived
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
-    public Integer getQuantityReceived() {
+    @javax.annotation.Nullable public Integer getQuantityReceived() {
         return quantityReceived;
     }
 
@@ -154,8 +181,7 @@ public class InboundShipmentItem {
      *
      * @return quantityInCase
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
-    public Integer getQuantityInCase() {
+    @javax.annotation.Nullable public Integer getQuantityInCase() {
         return quantityInCase;
     }
 
@@ -173,8 +199,7 @@ public class InboundShipmentItem {
      *
      * @return releaseDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Type containing date in string format")
-    public LocalDate getReleaseDate() {
+    @javax.annotation.Nullable public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
@@ -192,8 +217,7 @@ public class InboundShipmentItem {
      *
      * @return prepDetailsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrepDetailsList getPrepDetailsList() {
+    @javax.annotation.Nullable public PrepDetailsList getPrepDetailsList() {
         return prepDetailsList;
     }
 
@@ -202,7 +226,7 @@ public class InboundShipmentItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -260,10 +284,135 @@ public class InboundShipmentItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentId");
+        openapiFields.add("SellerSKU");
+        openapiFields.add("FulfillmentNetworkSKU");
+        openapiFields.add("QuantityShipped");
+        openapiFields.add("QuantityReceived");
+        openapiFields.add("QuantityInCase");
+        openapiFields.add("ReleaseDate");
+        openapiFields.add("PrepDetailsList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("SellerSKU");
+        openapiRequiredFields.add("QuantityShipped");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundShipmentItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundShipmentItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundShipmentItem is not found in the empty JSON string",
+                        InboundShipmentItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundShipmentItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundShipmentItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundShipmentItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ShipmentId") != null && !jsonObj.get("ShipmentId").isJsonNull())
+                && !jsonObj.get("ShipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipmentId").toString()));
+        }
+        if (!jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if ((jsonObj.get("FulfillmentNetworkSKU") != null
+                        && !jsonObj.get("FulfillmentNetworkSKU").isJsonNull())
+                && !jsonObj.get("FulfillmentNetworkSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FulfillmentNetworkSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FulfillmentNetworkSKU").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundShipmentItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundShipmentItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundShipmentItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundShipmentItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundShipmentItem>() {
+                        @Override
+                        public void write(JsonWriter out, InboundShipmentItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundShipmentItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundShipmentItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundShipmentItem
+     * @throws IOException if the JSON string is invalid with respect to InboundShipmentItem
+     */
+    public static InboundShipmentItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundShipmentItem.class);
+    }
+
+    /**
+     * Convert an instance of InboundShipmentItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required to create the feed. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the feed.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateFeedSpecification {
-    @SerializedName("feedType")
-    private String feedType = null;
+    public static final String SERIALIZED_NAME_FEED_TYPE = "feedType";
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    @SerializedName(SERIALIZED_NAME_FEED_TYPE)
+    private String feedType;
 
-    @SerializedName("inputFeedDocumentId")
-    private String inputFeedDocumentId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
 
-    @SerializedName("feedOptions")
-    private FeedOptions feedOptions = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_INPUT_FEED_DOCUMENT_ID = "inputFeedDocumentId";
+
+    @SerializedName(SERIALIZED_NAME_INPUT_FEED_DOCUMENT_ID)
+    private String inputFeedDocumentId;
+
+    public static final String SERIALIZED_NAME_FEED_OPTIONS = "feedOptions";
+
+    @SerializedName(SERIALIZED_NAME_FEED_OPTIONS)
+    private FeedOptions feedOptions = new HashMap<>();
+
+    public CreateFeedSpecification() {}
 
     public CreateFeedSpecification feedType(String feedType) {
         this.feedType = feedType;
@@ -42,7 +68,7 @@ public class CreateFeedSpecification {
      *
      * @return feedType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feed type.")
+    @javax.annotation.Nonnull
     public String getFeedType() {
         return feedType;
     }
@@ -69,9 +95,7 @@ public class CreateFeedSpecification {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of identifiers for marketplaces that you want the feed to be applied to.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -91,10 +115,7 @@ public class CreateFeedSpecification {
      *
      * @return inputFeedDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.")
+    @javax.annotation.Nonnull
     public String getInputFeedDocumentId() {
         return inputFeedDocumentId;
     }
@@ -113,8 +134,7 @@ public class CreateFeedSpecification {
      *
      * @return feedOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeedOptions getFeedOptions() {
+    @javax.annotation.Nullable public FeedOptions getFeedOptions() {
         return feedOptions;
     }
 
@@ -123,7 +143,7 @@ public class CreateFeedSpecification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -159,10 +179,134 @@ public class CreateFeedSpecification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("feedType");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("inputFeedDocumentId");
+        openapiFields.add("feedOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("feedType");
+        openapiRequiredFields.add("marketplaceIds");
+        openapiRequiredFields.add("inputFeedDocumentId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateFeedSpecification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateFeedSpecification.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateFeedSpecification is not found in the empty JSON string",
+                        CreateFeedSpecification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateFeedSpecification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateFeedSpecification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateFeedSpecification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("feedType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `feedType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("feedType").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("inputFeedDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `inputFeedDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("inputFeedDocumentId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateFeedSpecification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateFeedSpecification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateFeedSpecification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateFeedSpecification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateFeedSpecification>() {
+                        @Override
+                        public void write(JsonWriter out, CreateFeedSpecification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateFeedSpecification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateFeedSpecification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateFeedSpecification
+     * @throws IOException if the JSON string is invalid with respect to CreateFeedSpecification
+     */
+    public static CreateFeedSpecification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateFeedSpecification.class);
+    }
+
+    /**
+     * Convert an instance of CreateFeedSpecification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

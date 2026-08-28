@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Item information for a fulfillment preview. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a fulfillment preview.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PreviewPlannedShipmentItem {
-    @SerializedName("productIdentifier")
-    private ProductIdentifier productIdentifier = null;
+    public static final String SERIALIZED_NAME_PRODUCT_IDENTIFIER = "productIdentifier";
 
-    @SerializedName("amount")
-    private Amount amount = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_IDENTIFIER)
+    private ProductIdentifier productIdentifier;
+
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Amount amount;
+
+    public PreviewPlannedShipmentItem() {}
 
     public PreviewPlannedShipmentItem productIdentifier(ProductIdentifier productIdentifier) {
         this.productIdentifier = productIdentifier;
@@ -34,7 +55,7 @@ public class PreviewPlannedShipmentItem {
      *
      * @return productIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ProductIdentifier getProductIdentifier() {
         return productIdentifier;
     }
@@ -53,7 +74,7 @@ public class PreviewPlannedShipmentItem {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Amount getAmount() {
         return amount;
     }
@@ -63,7 +84,7 @@ public class PreviewPlannedShipmentItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +114,116 @@ public class PreviewPlannedShipmentItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("productIdentifier");
+        openapiFields.add("amount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("productIdentifier");
+        openapiRequiredFields.add("amount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PreviewPlannedShipmentItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PreviewPlannedShipmentItem.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PreviewPlannedShipmentItem is not found in the empty JSON string",
+                        PreviewPlannedShipmentItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PreviewPlannedShipmentItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PreviewPlannedShipmentItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PreviewPlannedShipmentItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `productIdentifier`
+        ProductIdentifier.validateJsonElement(jsonObj.get("productIdentifier"));
+        // validate the required field `amount`
+        Amount.validateJsonElement(jsonObj.get("amount"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PreviewPlannedShipmentItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PreviewPlannedShipmentItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PreviewPlannedShipmentItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PreviewPlannedShipmentItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PreviewPlannedShipmentItem>() {
+                        @Override
+                        public void write(JsonWriter out, PreviewPlannedShipmentItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PreviewPlannedShipmentItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PreviewPlannedShipmentItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PreviewPlannedShipmentItem
+     * @throws IOException if the JSON string is invalid with respect to PreviewPlannedShipmentItem
+     */
+    public static PreviewPlannedShipmentItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PreviewPlannedShipmentItem.class);
+    }
+
+    /**
+     * Convert an instance of PreviewPlannedShipmentItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

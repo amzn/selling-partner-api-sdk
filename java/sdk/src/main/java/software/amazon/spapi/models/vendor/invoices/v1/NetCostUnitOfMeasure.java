@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.vendor.invoices.v1;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** This field represents weight unit of measure of items that are ordered by cases and supporting priced by weight. */
 @JsonAdapter(NetCostUnitOfMeasure.Adapter.class)
 public enum NetCostUnitOfMeasure {
-    @SerializedName("POUNDS")
     POUNDS("POUNDS"),
 
-    @SerializedName("OUNCES")
     OUNCES("OUNCES"),
 
-    @SerializedName("GRAMS")
     GRAMS("GRAMS"),
 
-    @SerializedName("KILOGRAMS")
     KILOGRAMS("KILOGRAMS");
 
     private String value;
@@ -49,25 +45,30 @@ public enum NetCostUnitOfMeasure {
         return String.valueOf(value);
     }
 
-    public static NetCostUnitOfMeasure fromValue(String input) {
+    public static NetCostUnitOfMeasure fromValue(String value) {
         for (NetCostUnitOfMeasure b : NetCostUnitOfMeasure.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<NetCostUnitOfMeasure> {
         @Override
         public void write(final JsonWriter jsonWriter, final NetCostUnitOfMeasure enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public NetCostUnitOfMeasure read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return NetCostUnitOfMeasure.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return NetCostUnitOfMeasure.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        NetCostUnitOfMeasure.fromValue(value);
     }
 }

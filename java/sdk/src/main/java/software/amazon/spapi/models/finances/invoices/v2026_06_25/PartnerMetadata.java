@@ -12,31 +12,42 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Metadata about a partner (payer or payee) associated with the invoice. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Metadata about a partner (payer or payee) associated with the invoice.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PartnerMetadata {
-    @SerializedName("partnerId")
-    private String partnerId = null;
+    public static final String SERIALIZED_NAME_PARTNER_ID = "partnerId";
+
+    @SerializedName(SERIALIZED_NAME_PARTNER_ID)
+    private String partnerId;
 
     /** The type of partner. */
     @JsonAdapter(PartnerTypeEnum.Adapter.class)
     public enum PartnerTypeEnum {
-        @SerializedName("SELLER")
         SELLER("SELLER"),
-        @SerializedName("VENDOR")
+
         VENDOR("VENDOR"),
-        @SerializedName("AMAZON")
+
         AMAZON("AMAZON");
 
         private String value;
@@ -54,43 +65,60 @@ public class PartnerMetadata {
             return String.valueOf(value);
         }
 
-        public static PartnerTypeEnum fromValue(String input) {
+        public static PartnerTypeEnum fromValue(String value) {
             for (PartnerTypeEnum b : PartnerTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PartnerTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PartnerTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PartnerTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PartnerTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PartnerTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PartnerTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("partnerType")
-    private PartnerTypeEnum partnerType = null;
+    public static final String SERIALIZED_NAME_PARTNER_TYPE = "partnerType";
 
-    @SerializedName("partnerEntities")
-    private List<String> partnerEntities = null;
+    @SerializedName(SERIALIZED_NAME_PARTNER_TYPE)
+    private PartnerTypeEnum partnerType;
 
-    @SerializedName("partnerName")
-    private String partnerName = null;
+    public static final String SERIALIZED_NAME_PARTNER_ENTITIES = "partnerEntities";
 
-    @SerializedName("partnerAddress")
-    private String partnerAddress = null;
+    @SerializedName(SERIALIZED_NAME_PARTNER_ENTITIES)
+    private List<String> partnerEntities = new ArrayList<>();
 
-    @SerializedName("taxRegistrationNumber")
-    private String taxRegistrationNumber = null;
+    public static final String SERIALIZED_NAME_PARTNER_NAME = "partnerName";
+
+    @SerializedName(SERIALIZED_NAME_PARTNER_NAME)
+    private String partnerName;
+
+    public static final String SERIALIZED_NAME_PARTNER_ADDRESS = "partnerAddress";
+
+    @SerializedName(SERIALIZED_NAME_PARTNER_ADDRESS)
+    private String partnerAddress;
+
+    public static final String SERIALIZED_NAME_TAX_REGISTRATION_NUMBER = "taxRegistrationNumber";
+
+    @SerializedName(SERIALIZED_NAME_TAX_REGISTRATION_NUMBER)
+    private String taxRegistrationNumber;
+
+    public PartnerMetadata() {}
 
     public PartnerMetadata partnerId(String partnerId) {
         this.partnerId = partnerId;
@@ -103,10 +131,7 @@ public class PartnerMetadata {
      *
      * @return partnerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier for the partner. If the partner is a vendor, then this value is the `vendorGroupID`.")
+    @javax.annotation.Nonnull
     public String getPartnerId() {
         return partnerId;
     }
@@ -125,7 +150,7 @@ public class PartnerMetadata {
      *
      * @return partnerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of partner.")
+    @javax.annotation.Nonnull
     public PartnerTypeEnum getPartnerType() {
         return partnerType;
     }
@@ -152,8 +177,7 @@ public class PartnerMetadata {
      *
      * @return partnerEntities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of entities associated with a partner.")
-    public List<String> getPartnerEntities() {
+    @javax.annotation.Nullable public List<String> getPartnerEntities() {
         return partnerEntities;
     }
 
@@ -171,8 +195,7 @@ public class PartnerMetadata {
      *
      * @return partnerName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the partner.")
-    public String getPartnerName() {
+    @javax.annotation.Nullable public String getPartnerName() {
         return partnerName;
     }
 
@@ -190,8 +213,7 @@ public class PartnerMetadata {
      *
      * @return partnerAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The address of the partner.")
-    public String getPartnerAddress() {
+    @javax.annotation.Nullable public String getPartnerAddress() {
         return partnerAddress;
     }
 
@@ -209,8 +231,7 @@ public class PartnerMetadata {
      *
      * @return taxRegistrationNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax registration number of the partner.")
-    public String getTaxRegistrationNumber() {
+    @javax.annotation.Nullable public String getTaxRegistrationNumber() {
         return taxRegistrationNumber;
     }
 
@@ -219,7 +240,7 @@ public class PartnerMetadata {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -262,10 +283,155 @@ public class PartnerMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partnerId");
+        openapiFields.add("partnerType");
+        openapiFields.add("partnerEntities");
+        openapiFields.add("partnerName");
+        openapiFields.add("partnerAddress");
+        openapiFields.add("taxRegistrationNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("partnerId");
+        openapiRequiredFields.add("partnerType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PartnerMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PartnerMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PartnerMetadata is not found in the empty JSON string",
+                        PartnerMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PartnerMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PartnerMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PartnerMetadata.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("partnerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partnerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partnerId").toString()));
+        }
+        if (!jsonObj.get("partnerType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partnerType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partnerType").toString()));
+        }
+        // validate the required field `partnerType`
+        PartnerTypeEnum.validateJsonElement(jsonObj.get("partnerType"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("partnerEntities") != null
+                && !jsonObj.get("partnerEntities").isJsonNull()
+                && !jsonObj.get("partnerEntities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partnerEntities` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("partnerEntities").toString()));
+        }
+        if ((jsonObj.get("partnerName") != null && !jsonObj.get("partnerName").isJsonNull())
+                && !jsonObj.get("partnerName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partnerName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partnerName").toString()));
+        }
+        if ((jsonObj.get("partnerAddress") != null
+                        && !jsonObj.get("partnerAddress").isJsonNull())
+                && !jsonObj.get("partnerAddress").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partnerAddress` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partnerAddress").toString()));
+        }
+        if ((jsonObj.get("taxRegistrationNumber") != null
+                        && !jsonObj.get("taxRegistrationNumber").isJsonNull())
+                && !jsonObj.get("taxRegistrationNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `taxRegistrationNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("taxRegistrationNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PartnerMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PartnerMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PartnerMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PartnerMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PartnerMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, PartnerMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PartnerMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PartnerMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PartnerMetadata
+     * @throws IOException if the JSON string is invalid with respect to PartnerMetadata
+     */
+    public static PartnerMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PartnerMetadata.class);
+    }
+
+    /**
+     * Convert an instance of PartnerMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

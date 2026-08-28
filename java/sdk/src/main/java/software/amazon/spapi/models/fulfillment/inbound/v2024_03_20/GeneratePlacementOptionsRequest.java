@@ -12,16 +12,36 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;generatePlacementOptions&#x60; request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `generatePlacementOptions` request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GeneratePlacementOptionsRequest {
-    @SerializedName("customPlacement")
-    private List<CustomPlacementInput> customPlacement = null;
+    public static final String SERIALIZED_NAME_CUSTOM_PLACEMENT = "customPlacement";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOM_PLACEMENT)
+    private List<CustomPlacementInput> customPlacement = new ArrayList<>();
+
+    public GeneratePlacementOptionsRequest() {}
 
     public GeneratePlacementOptionsRequest customPlacement(List<CustomPlacementInput> customPlacement) {
         this.customPlacement = customPlacement;
@@ -42,10 +62,7 @@ public class GeneratePlacementOptionsRequest {
      *
      * @return customPlacement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.")
-    public List<CustomPlacementInput> getCustomPlacement() {
+    @javax.annotation.Nullable public List<CustomPlacementInput> getCustomPlacement() {
         return customPlacement;
     }
 
@@ -54,7 +71,7 @@ public class GeneratePlacementOptionsRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -82,10 +99,118 @@ public class GeneratePlacementOptionsRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("customPlacement");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GeneratePlacementOptionsRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GeneratePlacementOptionsRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GeneratePlacementOptionsRequest is not found in the empty JSON string",
+                        GeneratePlacementOptionsRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GeneratePlacementOptionsRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GeneratePlacementOptionsRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("customPlacement") != null
+                && !jsonObj.get("customPlacement").isJsonNull()) {
+            JsonArray jsonArraycustomPlacement = jsonObj.getAsJsonArray("customPlacement");
+            if (jsonArraycustomPlacement != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("customPlacement").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `customPlacement` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("customPlacement").toString()));
+                }
+
+                // validate the optional field `customPlacement` (array)
+                for (int i = 0; i < jsonArraycustomPlacement.size(); i++) {
+                    CustomPlacementInput.validateJsonElement(jsonArraycustomPlacement.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GeneratePlacementOptionsRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GeneratePlacementOptionsRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GeneratePlacementOptionsRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GeneratePlacementOptionsRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GeneratePlacementOptionsRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GeneratePlacementOptionsRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GeneratePlacementOptionsRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GeneratePlacementOptionsRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GeneratePlacementOptionsRequest
+     * @throws IOException if the JSON string is invalid with respect to GeneratePlacementOptionsRequest
+     */
+    public static GeneratePlacementOptionsRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GeneratePlacementOptionsRequest.class);
+    }
+
+    /**
+     * Convert an instance of GeneratePlacementOptionsRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

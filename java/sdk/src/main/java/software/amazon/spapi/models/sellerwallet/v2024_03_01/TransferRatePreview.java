@@ -12,10 +12,24 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The fees and foreign exchange rates that apply to the transaction. If the fees are in terms of the
@@ -25,21 +39,31 @@ import java.util.Objects;
  * &#x60;baseAmount&#x60;)**. In the preceding expressions, **fees** is equal to the sum of all
  * &#x60;feeAmount.currencyAmount&#x60; values in the &#x60;fees&#x60; array.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The fees and foreign exchange rates that apply to the transaction.  If the fees are in terms of the `baseAmount` (source account) currency, then the effective rate is equal to **1 - (fees * `baseRate` / `baseAmount`)**.  If the fees are in terms of the `transferAmount` (destination account) currency, then the effective rate is equal to **`baseRate` - (fees / `baseAmount`)**.  In the preceding expressions, **fees** is equal to the sum of all `feeAmount.currencyAmount` values in the `fees` array.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransferRatePreview {
-    @SerializedName("baseAmount")
-    private Currency baseAmount = null;
+    public static final String SERIALIZED_NAME_BASE_AMOUNT = "baseAmount";
 
-    @SerializedName("fxRateDetails")
-    private FxRateDetails fxRateDetails = null;
+    @SerializedName(SERIALIZED_NAME_BASE_AMOUNT)
+    private Currency baseAmount;
 
-    @SerializedName("transferAmount")
-    private Currency transferAmount = null;
+    public static final String SERIALIZED_NAME_FX_RATE_DETAILS = "fxRateDetails";
 
-    @SerializedName("fees")
-    private List<Fee> fees = null;
+    @SerializedName(SERIALIZED_NAME_FX_RATE_DETAILS)
+    private FxRateDetails fxRateDetails;
+
+    public static final String SERIALIZED_NAME_TRANSFER_AMOUNT = "transferAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSFER_AMOUNT)
+    private Currency transferAmount;
+
+    public static final String SERIALIZED_NAME_FEES = "fees";
+
+    @SerializedName(SERIALIZED_NAME_FEES)
+    private List<Fee> fees = new ArrayList<>();
+
+    public TransferRatePreview() {}
 
     public TransferRatePreview baseAmount(Currency baseAmount) {
         this.baseAmount = baseAmount;
@@ -51,7 +75,7 @@ public class TransferRatePreview {
      *
      * @return baseAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getBaseAmount() {
         return baseAmount;
     }
@@ -70,7 +94,7 @@ public class TransferRatePreview {
      *
      * @return fxRateDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FxRateDetails getFxRateDetails() {
         return fxRateDetails;
     }
@@ -89,7 +113,7 @@ public class TransferRatePreview {
      *
      * @return transferAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTransferAmount() {
         return transferAmount;
     }
@@ -116,7 +140,7 @@ public class TransferRatePreview {
      *
      * @return fees
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of fees.")
+    @javax.annotation.Nonnull
     public List<Fee> getFees() {
         return fees;
     }
@@ -126,7 +150,7 @@ public class TransferRatePreview {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -160,10 +184,134 @@ public class TransferRatePreview {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("baseAmount");
+        openapiFields.add("fxRateDetails");
+        openapiFields.add("transferAmount");
+        openapiFields.add("fees");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("baseAmount");
+        openapiRequiredFields.add("fxRateDetails");
+        openapiRequiredFields.add("transferAmount");
+        openapiRequiredFields.add("fees");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransferRatePreview
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransferRatePreview.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransferRatePreview is not found in the empty JSON string",
+                        TransferRatePreview.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransferRatePreview.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransferRatePreview` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransferRatePreview.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `baseAmount`
+        Currency.validateJsonElement(jsonObj.get("baseAmount"));
+        // validate the required field `fxRateDetails`
+        FxRateDetails.validateJsonElement(jsonObj.get("fxRateDetails"));
+        // validate the required field `transferAmount`
+        Currency.validateJsonElement(jsonObj.get("transferAmount"));
+        // ensure the json data is an array
+        if (!jsonObj.get("fees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fees` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fees").toString()));
+        }
+
+        JsonArray jsonArrayfees = jsonObj.getAsJsonArray("fees");
+        // validate the required field `fees` (array)
+        for (int i = 0; i < jsonArrayfees.size(); i++) {
+            Fee.validateJsonElement(jsonArrayfees.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransferRatePreview.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransferRatePreview' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransferRatePreview> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransferRatePreview.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransferRatePreview>() {
+                        @Override
+                        public void write(JsonWriter out, TransferRatePreview value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransferRatePreview read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransferRatePreview given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransferRatePreview
+     * @throws IOException if the JSON string is invalid with respect to TransferRatePreview
+     */
+    public static TransferRatePreview fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransferRatePreview.class);
+    }
+
+    /**
+     * Convert an instance of TransferRatePreview to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

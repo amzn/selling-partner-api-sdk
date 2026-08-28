@@ -12,22 +12,44 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A promotion&#39;s start and end dates with optional event association. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A promotion's start and end dates with optional event association.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Schedule {
-    @SerializedName("startDate")
-    private OffsetDateTime startDate = null;
+    public static final String SERIALIZED_NAME_START_DATE = "startDate";
 
-    @SerializedName("endDate")
-    private OffsetDateTime endDate = null;
+    @SerializedName(SERIALIZED_NAME_START_DATE)
+    private OffsetDateTime startDate;
 
-    @SerializedName("eventId")
-    private String eventId = null;
+    public static final String SERIALIZED_NAME_END_DATE = "endDate";
+
+    @SerializedName(SERIALIZED_NAME_END_DATE)
+    private OffsetDateTime endDate;
+
+    public static final String SERIALIZED_NAME_EVENT_ID = "eventId";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_ID)
+    private String eventId;
+
+    public Schedule() {}
 
     public Schedule startDate(OffsetDateTime startDate) {
         this.startDate = startDate;
@@ -40,10 +62,7 @@ public class Schedule {
      *
      * @return startDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The promotion's start date and time. Formatted in ISO 8601 format, including the timezone. For example: `1970-01-01T00:00:00-07:00`.")
-    public OffsetDateTime getStartDate() {
+    @javax.annotation.Nullable public OffsetDateTime getStartDate() {
         return startDate;
     }
 
@@ -62,10 +81,7 @@ public class Schedule {
      *
      * @return endDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The promotion's end date and time. Formatted in ISO 8601 format, including the timezone. For example: `1970-01-01T00:00:00-07:00`.")
-    public OffsetDateTime getEndDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEndDate() {
         return endDate;
     }
 
@@ -85,10 +101,7 @@ public class Schedule {
      *
      * @return eventId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An event identifier that associates the promotion with a specific event. For event promotions, this field contains the event name when available (for example, `Prime Day`). For historic event promotions, this field may contain `EVENT` as a placeholder.")
-    public String getEventId() {
+    @javax.annotation.Nullable public String getEventId() {
         return eventId;
     }
 
@@ -97,7 +110,7 @@ public class Schedule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -127,10 +140,106 @@ public class Schedule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startDate");
+        openapiFields.add("endDate");
+        openapiFields.add("eventId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Schedule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Schedule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Schedule is not found in the empty JSON string",
+                        Schedule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Schedule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Schedule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("eventId") != null && !jsonObj.get("eventId").isJsonNull())
+                && !jsonObj.get("eventId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eventId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("eventId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Schedule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Schedule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Schedule> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Schedule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Schedule>() {
+                        @Override
+                        public void write(JsonWriter out, Schedule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Schedule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Schedule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Schedule
+     * @throws IOException if the JSON string is invalid with respect to Schedule
+     */
+    public static Schedule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Schedule.class);
+    }
+
+    /**
+     * Convert an instance of Schedule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

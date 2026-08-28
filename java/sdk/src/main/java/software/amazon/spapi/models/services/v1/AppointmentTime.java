@@ -12,18 +12,39 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The time of the appointment window. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The time of the appointment window.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AppointmentTime {
-    @SerializedName("startTime")
-    private OffsetDateTime startTime = null;
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
 
-    @SerializedName("durationInMinutes")
-    private Integer durationInMinutes = null;
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private OffsetDateTime startTime;
+
+    public static final String SERIALIZED_NAME_DURATION_IN_MINUTES = "durationInMinutes";
+
+    @SerializedName(SERIALIZED_NAME_DURATION_IN_MINUTES)
+    private Integer durationInMinutes;
+
+    public AppointmentTime() {}
 
     public AppointmentTime startTime(OffsetDateTime startTime) {
         this.startTime = startTime;
@@ -35,9 +56,7 @@ public class AppointmentTime {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time of the start of the appointment window in ISO 8601 format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -52,13 +71,11 @@ public class AppointmentTime {
     }
 
     /**
-     * The duration of the appointment window, in minutes.
+     * The duration of the appointment window, in minutes. minimum: 1
      *
      * @return durationInMinutes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The duration of the appointment window, in minutes.")
+    @javax.annotation.Nonnull
     public Integer getDurationInMinutes() {
         return durationInMinutes;
     }
@@ -68,7 +85,7 @@ public class AppointmentTime {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +115,111 @@ public class AppointmentTime {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startTime");
+        openapiFields.add("durationInMinutes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("startTime");
+        openapiRequiredFields.add("durationInMinutes");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AppointmentTime
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AppointmentTime.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AppointmentTime is not found in the empty JSON string",
+                        AppointmentTime.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AppointmentTime.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AppointmentTime` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AppointmentTime.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AppointmentTime.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AppointmentTime' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AppointmentTime> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AppointmentTime.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AppointmentTime>() {
+                        @Override
+                        public void write(JsonWriter out, AppointmentTime value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AppointmentTime read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AppointmentTime given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AppointmentTime
+     * @throws IOException if the JSON string is invalid with respect to AppointmentTime
+     */
+    public static AppointmentTime fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AppointmentTime.class);
+    }
+
+    /**
+     * Convert an instance of AppointmentTime to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

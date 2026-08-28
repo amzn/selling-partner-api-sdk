@@ -12,31 +12,39 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The type and underlying defect classifications explaining discrepancies between expected and actual invoice values.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The type and underlying defect classifications explaining discrepancies between expected and actual invoice values.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class VarianceReason {
     /** The type of variance. */
     @JsonAdapter(VarianceTypeEnum.Adapter.class)
     public enum VarianceTypeEnum {
-        @SerializedName("PQV")
         PQV("PQV"),
-        @SerializedName("PPV")
+
         PPV("PPV"),
-        @SerializedName("OTHER")
+
         OTHER("OTHER");
 
         private String value;
@@ -54,34 +62,45 @@ public class VarianceReason {
             return String.valueOf(value);
         }
 
-        public static VarianceTypeEnum fromValue(String input) {
+        public static VarianceTypeEnum fromValue(String value) {
             for (VarianceTypeEnum b : VarianceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<VarianceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final VarianceTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public VarianceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return VarianceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return VarianceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            VarianceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("varianceType")
-    private VarianceTypeEnum varianceType = null;
+    public static final String SERIALIZED_NAME_VARIANCE_TYPE = "varianceType";
 
-    @SerializedName("defectTypes")
-    private List<String> defectTypes = null;
+    @SerializedName(SERIALIZED_NAME_VARIANCE_TYPE)
+    private VarianceTypeEnum varianceType;
+
+    public static final String SERIALIZED_NAME_DEFECT_TYPES = "defectTypes";
+
+    @SerializedName(SERIALIZED_NAME_DEFECT_TYPES)
+    private List<String> defectTypes = new ArrayList<>();
+
+    public VarianceReason() {}
 
     public VarianceReason varianceType(VarianceTypeEnum varianceType) {
         this.varianceType = varianceType;
@@ -93,7 +112,7 @@ public class VarianceReason {
      *
      * @return varianceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of variance.")
+    @javax.annotation.Nonnull
     public VarianceTypeEnum getVarianceType() {
         return varianceType;
     }
@@ -149,10 +168,7 @@ public class VarianceReason {
      *
      * @return defectTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "List of defect types associated with the variance. These represent root cause classifications for the variance.  **Possible values for PPV (Purchase Price Variance):**  * `DEALBUY`: Amazon raised discounted POs at vendor-accepted discount costs, but the vendor invoiced at regular costs. * `PRODUCT_COST_NOT_ACTIVE`: Vendor is using a cost that is not currently active; it may be pending approval or is a historical cost. * `PRODUCT_COST_NOT_REGISTERED`: Vendor is using a cost that is not registered in Amazon's system, often due to offline negotiations not yet updated. * `VENDOR_LOWERING_COST_AT_PO_CONFIRMATION`: Vendor confirmed the PO at a lower cost but invoiced at a different (higher) amount. * `CCOGS_PRICE_PROTECTION_AGREEMENT_PPA`: A Price Protection clause in the vendor's Terms and Conditions agreement applies to this ASIN. * `FALSE_CCOGS_PPA`: Invoiced cost exceeded the confirmed PO cost due to a cost price adjustment by Amazon, likely from a previous cost decrease within the same period. * `AMAZON_POC_LOWERING_COST_ON_PO`: Amazon's systems reduced the cost price for this ASIN post PO confirmation, most likely due to a previous cost price decrease or on request. * `REJECTED_PRICE_INCREASE_ON_PO`: Vendor submitted a cost price increase that was denied, but still invoiced at the increased cost. * `LIST_PRICE_DISCOUNT_ISSUES`: The List Price on the PO and invoice do not match, or the Discount code on the PO does not match the invoice. * `ROUNDING_ISSUES`: Price variance caused by foreign exchange currency conversion or decimal place rounding differences. * `OTHER`: Defect type not belonging to a predefined category.  **Possible values for PQV (Purchase Quantity Variance):**  * `UNRECOGNISED_ASIN`: The ASIN on the invoice is not recognized or does not match Amazon's records. * `OVERBILLING`: The invoiced quantity exceeds the quantity received or expected by Amazon. * `DUPLICATE_INVOICE_DEFECT`: The invoice is a duplicate of a previously submitted invoice. * `DELETED_APPOINTMENT`: The delivery appointment associated with this shipment was deleted. * `NO_APPOINTMENT`: No delivery appointment was found for this shipment. * `SHORTAGES_IN_TRANSIT`: Quantity shortages detected during transit — fewer units arrived than were shipped. * `ASIN_MISMATCH`: Amazon's systems received an ASIN with a different cost than the one ordered on the PO, possibly due to incorrect smart-matching or cross-matching. * `FEED_DEFECTS`: Vendor's price feed contains defects such as unrecognized UPC/EAN codes or incorrect supplier IDs for multi-supplier updates. * `REJECTED_LINE_ITEM_ON_PO`: Vendor confirmed this PO line item as Rejected or On-hold but still shipped the products. * `FAILED_PO_CONFIRMATION`: Vendor's latest PO confirmation message for this line item failed processing and was not translated correctly. * `OTHER`: Defect type not belonging to a predefined category.")
-    public List<String> getDefectTypes() {
+    @javax.annotation.Nullable public List<String> getDefectTypes() {
         return defectTypes;
     }
 
@@ -161,7 +177,7 @@ public class VarianceReason {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -189,10 +205,125 @@ public class VarianceReason {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("varianceType");
+        openapiFields.add("defectTypes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("varianceType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to VarianceReason
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!VarianceReason.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in VarianceReason is not found in the empty JSON string",
+                        VarianceReason.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!VarianceReason.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `VarianceReason` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : VarianceReason.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("varianceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `varianceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("varianceType").toString()));
+        }
+        // validate the required field `varianceType`
+        VarianceTypeEnum.validateJsonElement(jsonObj.get("varianceType"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("defectTypes") != null
+                && !jsonObj.get("defectTypes").isJsonNull()
+                && !jsonObj.get("defectTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `defectTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("defectTypes").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!VarianceReason.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'VarianceReason' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<VarianceReason> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(VarianceReason.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<VarianceReason>() {
+                        @Override
+                        public void write(JsonWriter out, VarianceReason value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public VarianceReason read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of VarianceReason given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of VarianceReason
+     * @throws IOException if the JSON string is invalid with respect to VarianceReason
+     */
+    public static VarianceReason fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, VarianceReason.class);
+    }
+
+    /**
+     * Convert an instance of VarianceReason to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,40 +22,28 @@ import java.io.IOException;
 /** The status of the package. */
 @JsonAdapter(PackageStatus.Adapter.class)
 public enum PackageStatus {
-    @SerializedName("ReadyForPickup")
     READY_FOR_PICKUP("ReadyForPickup"),
 
-    @SerializedName("PickedUp")
     PICKED_UP("PickedUp"),
 
-    @SerializedName("AtOriginFC")
     AT_ORIGIN_FC("AtOriginFC"),
 
-    @SerializedName("AtDestinationFC")
     AT_DESTINATION_FC("AtDestinationFC"),
 
-    @SerializedName("Delivered")
     DELIVERED("Delivered"),
 
-    @SerializedName("Rejected")
     REJECTED("Rejected"),
 
-    @SerializedName("Undeliverable")
     UNDELIVERABLE("Undeliverable"),
 
-    @SerializedName("ReturnedToSeller")
     RETURNED_TO_SELLER("ReturnedToSeller"),
 
-    @SerializedName("LostInTransit")
     LOST_IN_TRANSIT("LostInTransit"),
 
-    @SerializedName("LabelCanceled")
     LABEL_CANCELED("LabelCanceled"),
 
-    @SerializedName("DamagedInTransit")
     DAMAGED_IN_TRANSIT("DamagedInTransit"),
 
-    @SerializedName("OutForDelivery")
     OUT_FOR_DELIVERY("OutForDelivery");
 
     private String value;
@@ -73,25 +61,30 @@ public enum PackageStatus {
         return String.valueOf(value);
     }
 
-    public static PackageStatus fromValue(String input) {
+    public static PackageStatus fromValue(String value) {
         for (PackageStatus b : PackageStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PackageStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final PackageStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PackageStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PackageStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PackageStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PackageStatus.fromValue(value);
     }
 }

@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The label format details and whether to include a packing slip. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The label format details and whether to include a packing slip.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LabelFormatOption {
-    @SerializedName("IncludePackingSlipWithLabel")
-    private Boolean includePackingSlipWithLabel = null;
+    public static final String SERIALIZED_NAME_INCLUDE_PACKING_SLIP_WITH_LABEL = "IncludePackingSlipWithLabel";
 
-    @SerializedName("LabelFormat")
-    private LabelFormat labelFormat = null;
+    @SerializedName(SERIALIZED_NAME_INCLUDE_PACKING_SLIP_WITH_LABEL)
+    private Boolean includePackingSlipWithLabel;
+
+    public static final String SERIALIZED_NAME_LABEL_FORMAT = "LabelFormat";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_FORMAT)
+    private LabelFormat labelFormat;
+
+    public LabelFormatOption() {}
 
     public LabelFormatOption includePackingSlipWithLabel(Boolean includePackingSlipWithLabel) {
         this.includePackingSlipWithLabel = includePackingSlipWithLabel;
@@ -35,8 +55,7 @@ public class LabelFormatOption {
      *
      * @return includePackingSlipWithLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include a packing slip with the label.")
-    public Boolean getIncludePackingSlipWithLabel() {
+    @javax.annotation.Nullable public Boolean getIncludePackingSlipWithLabel() {
         return includePackingSlipWithLabel;
     }
 
@@ -54,8 +73,7 @@ public class LabelFormatOption {
      *
      * @return labelFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LabelFormat getLabelFormat() {
+    @javax.annotation.Nullable public LabelFormat getLabelFormat() {
         return labelFormat;
     }
 
@@ -64,7 +82,7 @@ public class LabelFormatOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,104 @@ public class LabelFormatOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("IncludePackingSlipWithLabel");
+        openapiFields.add("LabelFormat");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LabelFormatOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LabelFormatOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LabelFormatOption is not found in the empty JSON string",
+                        LabelFormatOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LabelFormatOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LabelFormatOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `LabelFormat`
+        if (jsonObj.get("LabelFormat") != null && !jsonObj.get("LabelFormat").isJsonNull()) {
+            LabelFormat.validateJsonElement(jsonObj.get("LabelFormat"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LabelFormatOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LabelFormatOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LabelFormatOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LabelFormatOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LabelFormatOption>() {
+                        @Override
+                        public void write(JsonWriter out, LabelFormatOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LabelFormatOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LabelFormatOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LabelFormatOption
+     * @throws IOException if the JSON string is invalid with respect to LabelFormatOption
+     */
+    public static LabelFormatOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LabelFormatOption.class);
+    }
+
+    /**
+     * Convert an instance of LabelFormatOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

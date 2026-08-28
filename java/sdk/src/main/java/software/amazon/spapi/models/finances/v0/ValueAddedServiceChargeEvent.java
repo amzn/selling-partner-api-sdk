@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to a value added service charge. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to a value added service charge.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ValueAddedServiceChargeEvent {
-    @SerializedName("TransactionType")
-    private String transactionType = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "TransactionType";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
 
-    @SerializedName("Description")
-    private String description = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("TransactionAmount")
-    private Currency transactionAmount = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION = "Description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_AMOUNT = "TransactionAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_AMOUNT)
+    private Currency transactionAmount;
+
+    public ValueAddedServiceChargeEvent() {}
 
     public ValueAddedServiceChargeEvent transactionType(String transactionType) {
         this.transactionType = transactionType;
@@ -41,9 +66,7 @@ public class ValueAddedServiceChargeEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The transaction type. For example, 'Other Support Service fees'")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -61,10 +84,7 @@ public class ValueAddedServiceChargeEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -82,8 +102,7 @@ public class ValueAddedServiceChargeEvent {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of the service charge event.")
-    public String getDescription() {
+    @javax.annotation.Nullable public String getDescription() {
         return description;
     }
 
@@ -101,8 +120,7 @@ public class ValueAddedServiceChargeEvent {
      *
      * @return transactionAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTransactionAmount() {
+    @javax.annotation.Nullable public Currency getTransactionAmount() {
         return transactionAmount;
     }
 
@@ -111,7 +129,7 @@ public class ValueAddedServiceChargeEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +165,121 @@ public class ValueAddedServiceChargeEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("TransactionType");
+        openapiFields.add("PostedDate");
+        openapiFields.add("Description");
+        openapiFields.add("TransactionAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ValueAddedServiceChargeEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ValueAddedServiceChargeEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ValueAddedServiceChargeEvent is not found in the empty JSON string",
+                        ValueAddedServiceChargeEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ValueAddedServiceChargeEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ValueAddedServiceChargeEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("TransactionType") != null
+                        && !jsonObj.get("TransactionType").isJsonNull())
+                && !jsonObj.get("TransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionType").toString()));
+        }
+        if ((jsonObj.get("Description") != null && !jsonObj.get("Description").isJsonNull())
+                && !jsonObj.get("Description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Description").toString()));
+        }
+        // validate the optional field `TransactionAmount`
+        if (jsonObj.get("TransactionAmount") != null
+                && !jsonObj.get("TransactionAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TransactionAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ValueAddedServiceChargeEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ValueAddedServiceChargeEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ValueAddedServiceChargeEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ValueAddedServiceChargeEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ValueAddedServiceChargeEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ValueAddedServiceChargeEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ValueAddedServiceChargeEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ValueAddedServiceChargeEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ValueAddedServiceChargeEvent
+     * @throws IOException if the JSON string is invalid with respect to ValueAddedServiceChargeEvent
+     */
+    public static ValueAddedServiceChargeEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ValueAddedServiceChargeEvent.class);
+    }
+
+    /**
+     * Convert an instance of ValueAddedServiceChargeEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

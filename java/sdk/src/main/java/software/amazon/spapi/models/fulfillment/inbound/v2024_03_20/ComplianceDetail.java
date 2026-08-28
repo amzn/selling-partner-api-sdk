@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains item identifiers and related tax information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Contains item identifiers and related tax information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ComplianceDetail {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("fnsku")
-    private String fnsku = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("msku")
-    private String msku = null;
+    public static final String SERIALIZED_NAME_FNSKU = "fnsku";
 
-    @SerializedName("taxDetails")
-    private TaxDetails taxDetails = null;
+    @SerializedName(SERIALIZED_NAME_FNSKU)
+    private String fnsku;
+
+    public static final String SERIALIZED_NAME_MSKU = "msku";
+
+    @SerializedName(SERIALIZED_NAME_MSKU)
+    private String msku;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private TaxDetails taxDetails;
+
+    public ComplianceDetail() {}
 
     public ComplianceDetail asin(String asin) {
         this.asin = asin;
@@ -40,9 +65,7 @@ public class ComplianceDetail {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number, which identifies the detail page identifier.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -60,10 +83,7 @@ public class ComplianceDetail {
      *
      * @return fnsku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition.")
-    public String getFnsku() {
+    @javax.annotation.Nullable public String getFnsku() {
         return fnsku;
     }
 
@@ -81,9 +101,7 @@ public class ComplianceDetail {
      *
      * @return msku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
-    public String getMsku() {
+    @javax.annotation.Nullable public String getMsku() {
         return msku;
     }
 
@@ -101,8 +119,7 @@ public class ComplianceDetail {
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxDetails getTaxDetails() {
+    @javax.annotation.Nullable public TaxDetails getTaxDetails() {
         return taxDetails;
     }
 
@@ -111,7 +128,7 @@ public class ComplianceDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +160,124 @@ public class ComplianceDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("fnsku");
+        openapiFields.add("msku");
+        openapiFields.add("taxDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ComplianceDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ComplianceDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ComplianceDetail is not found in the empty JSON string",
+                        ComplianceDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ComplianceDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ComplianceDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("fnsku") != null && !jsonObj.get("fnsku").isJsonNull())
+                && !jsonObj.get("fnsku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fnsku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fnsku").toString()));
+        }
+        if ((jsonObj.get("msku") != null && !jsonObj.get("msku").isJsonNull())
+                && !jsonObj.get("msku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `msku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("msku").toString()));
+        }
+        // validate the optional field `taxDetails`
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            TaxDetails.validateJsonElement(jsonObj.get("taxDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ComplianceDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ComplianceDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ComplianceDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ComplianceDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ComplianceDetail>() {
+                        @Override
+                        public void write(JsonWriter out, ComplianceDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ComplianceDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ComplianceDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ComplianceDetail
+     * @throws IOException if the JSON string is invalid with respect to ComplianceDetail
+     */
+    public static ComplianceDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ComplianceDetail.class);
+    }
+
+    /**
+     * Convert an instance of ComplianceDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

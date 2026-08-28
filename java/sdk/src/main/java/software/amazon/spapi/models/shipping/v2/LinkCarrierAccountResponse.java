@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The Response for the LinkCarrierAccount operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The Response  for the LinkCarrierAccount operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LinkCarrierAccountResponse {
-    @SerializedName("registrationStatus")
-    private AccountStatus registrationStatus = null;
+    public static final String SERIALIZED_NAME_REGISTRATION_STATUS = "registrationStatus";
 
-    @SerializedName("accountId")
-    private String accountId = null;
+    @SerializedName(SERIALIZED_NAME_REGISTRATION_STATUS)
+    private AccountStatus registrationStatus;
+
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
+
+    public LinkCarrierAccountResponse() {}
 
     public LinkCarrierAccountResponse registrationStatus(AccountStatus registrationStatus) {
         this.registrationStatus = registrationStatus;
@@ -34,8 +55,7 @@ public class LinkCarrierAccountResponse {
      *
      * @return registrationStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AccountStatus getRegistrationStatus() {
+    @javax.annotation.Nullable public AccountStatus getRegistrationStatus() {
         return registrationStatus;
     }
 
@@ -53,8 +73,7 @@ public class LinkCarrierAccountResponse {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for the seller's carrier account.")
-    public String getAccountId() {
+    @javax.annotation.Nullable public String getAccountId() {
         return accountId;
     }
 
@@ -63,7 +82,7 @@ public class LinkCarrierAccountResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +112,112 @@ public class LinkCarrierAccountResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("registrationStatus");
+        openapiFields.add("accountId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LinkCarrierAccountResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LinkCarrierAccountResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LinkCarrierAccountResponse is not found in the empty JSON string",
+                        LinkCarrierAccountResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LinkCarrierAccountResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LinkCarrierAccountResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `registrationStatus`
+        if (jsonObj.get("registrationStatus") != null
+                && !jsonObj.get("registrationStatus").isJsonNull()) {
+            AccountStatus.validateJsonElement(jsonObj.get("registrationStatus"));
+        }
+        if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull())
+                && !jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LinkCarrierAccountResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LinkCarrierAccountResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LinkCarrierAccountResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LinkCarrierAccountResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LinkCarrierAccountResponse>() {
+                        @Override
+                        public void write(JsonWriter out, LinkCarrierAccountResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LinkCarrierAccountResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LinkCarrierAccountResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LinkCarrierAccountResponse
+     * @throws IOException if the JSON string is invalid with respect to LinkCarrierAccountResponse
+     */
+    public static LinkCarrierAccountResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LinkCarrierAccountResponse.class);
+    }
+
+    /**
+     * Convert an instance of LinkCarrierAccountResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

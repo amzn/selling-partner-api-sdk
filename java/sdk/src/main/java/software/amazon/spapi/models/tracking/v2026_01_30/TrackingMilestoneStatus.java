@@ -12,16 +12,27 @@
 
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The status codes and description of the milestone event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The status codes and description of the milestone event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingMilestoneStatus {
     /**
      * A status code that identifies the milestone event (for example, &#x60;DELIVERED&#x60;,
@@ -29,153 +40,152 @@ public class TrackingMilestoneStatus {
      */
     @JsonAdapter(CodeEnum.Adapter.class)
     public enum CodeEnum {
-        @SerializedName("BOOKING_RECEIVED")
         BOOKING_RECEIVED("BOOKING_RECEIVED"),
-        @SerializedName("BOOKING_ACCEPTED")
+
         BOOKING_ACCEPTED("BOOKING_ACCEPTED"),
-        @SerializedName("ARRIVED_IN_DESTINATION_COUNTRY")
+
         ARRIVED_IN_DESTINATION_COUNTRY("ARRIVED_IN_DESTINATION_COUNTRY"),
-        @SerializedName("CARRIER_RECEIVED_SHIPMENT")
+
         CARRIER_RECEIVED_SHIPMENT("CARRIER_RECEIVED_SHIPMENT"),
-        @SerializedName("CARRIER_HOLD")
+
         CARRIER_HOLD("CARRIER_HOLD"),
-        @SerializedName("CUSTOMER_CONTACTED")
+
         CUSTOMER_CONTACTED("CUSTOMER_CONTACTED"),
-        @SerializedName("CUSTOMER_MOVED")
+
         CUSTOMER_MOVED("CUSTOMER_MOVED"),
-        @SerializedName("RECIPIENT_REFUSED_DELIVERY")
+
         RECIPIENT_REFUSED_DELIVERY("RECIPIENT_REFUSED_DELIVERY"),
-        @SerializedName("ORDER_PREPARING")
+
         ORDER_PREPARING("ORDER_PREPARING"),
-        @SerializedName("CARRIER_ASSIGNED")
+
         CARRIER_ASSIGNED("CARRIER_ASSIGNED"),
-        @SerializedName("CUSTOMS_DELAY")
+
         CUSTOMS_DELAY("CUSTOMS_DELAY"),
-        @SerializedName("CONTAINERIZED")
+
         CONTAINERIZED("CONTAINERIZED"),
-        @SerializedName("DAMAGED")
+
         DAMAGED("DAMAGED"),
-        @SerializedName("DELAYED")
+
         DELAYED("DELAYED"),
-        @SerializedName("DELIVERY_APPOINTMENT_CONFIRMED")
+
         DELIVERY_APPOINTMENT_CONFIRMED("DELIVERY_APPOINTMENT_CONFIRMED"),
-        @SerializedName("DELIVERY_ATTEMPTED")
+
         DELIVERY_ATTEMPTED("DELIVERY_ATTEMPTED"),
-        @SerializedName("INCORRECT_ADDRESS")
+
         INCORRECT_ADDRESS("INCORRECT_ADDRESS"),
-        @SerializedName("IN_TRANSIT_TO_PICKUP")
+
         IN_TRANSIT_TO_PICKUP("IN_TRANSIT_TO_PICKUP"),
-        @SerializedName("LOST")
+
         LOST("LOST"),
-        @SerializedName("MANIFESTED_NOT_RECEIVED")
+
         MANIFESTED_NOT_RECEIVED("MANIFESTED_NOT_RECEIVED"),
-        @SerializedName("MISSING_MANIFEST")
+
         MISSING_MANIFEST("MISSING_MANIFEST"),
-        @SerializedName("MISSORTED")
+
         MISSORTED("MISSORTED"),
-        @SerializedName("OUT_FOR_DELIVERY")
+
         OUT_FOR_DELIVERY("OUT_FOR_DELIVERY"),
-        @SerializedName("RECEIVED_FROM_CARRIER")
+
         RECEIVED_FROM_CARRIER("RECEIVED_FROM_CARRIER"),
-        @SerializedName("RETURNED")
+
         RETURNED("RETURNED"),
-        @SerializedName("SHIPPED")
+
         SHIPPED("SHIPPED"),
-        @SerializedName("UNDELIVERABLE")
+
         UNDELIVERABLE("UNDELIVERABLE"),
-        @SerializedName("UNDELIVERABLE_DESTROY_IN_FIELD")
+
         UNDELIVERABLE_DESTROY_IN_FIELD("UNDELIVERABLE_DESTROY_IN_FIELD"),
-        @SerializedName("BOOKING_CONFIRMED")
+
         BOOKING_CONFIRMED("BOOKING_CONFIRMED"),
-        @SerializedName("BOOKING_CANCELLED")
+
         BOOKING_CANCELLED("BOOKING_CANCELLED"),
-        @SerializedName("PICKED_UP")
+
         PICKED_UP("PICKED_UP"),
-        @SerializedName("ARRIVED")
+
         ARRIVED("ARRIVED"),
-        @SerializedName("DOCUMENTS_RECEIVED_EMBARK_PORT")
+
         DOCUMENTS_RECEIVED_EMBARK_PORT("DOCUMENTS_RECEIVED_EMBARK_PORT"),
-        @SerializedName("DRAY_STOP_OFF")
+
         DRAY_STOP_OFF("DRAY_STOP_OFF"),
-        @SerializedName("ARRIVED_AT_TERMINAL")
+
         ARRIVED_AT_TERMINAL("ARRIVED_AT_TERMINAL"),
-        @SerializedName("CUSTOMS_IMPORT_SECURITY_FILED")
+
         CUSTOMS_IMPORT_SECURITY_FILED("CUSTOMS_IMPORT_SECURITY_FILED"),
-        @SerializedName("CUSTOMS_IMPORT_SECURITY_FILING_ACCEPTED")
+
         CUSTOMS_IMPORT_SECURITY_FILING_ACCEPTED("CUSTOMS_IMPORT_SECURITY_FILING_ACCEPTED"),
-        @SerializedName("CUSTOMS_DECLARATION_EMBARK_PORT")
+
         CUSTOMS_DECLARATION_EMBARK_PORT("CUSTOMS_DECLARATION_EMBARK_PORT"),
-        @SerializedName("CUSTOMS_PROCESSING")
+
         CUSTOMS_PROCESSING("CUSTOMS_PROCESSING"),
-        @SerializedName("CUSTOMS_HOLD")
+
         CUSTOMS_HOLD("CUSTOMS_HOLD"),
-        @SerializedName("CUSTOMS_CLEARED")
+
         CUSTOMS_CLEARED("CUSTOMS_CLEARED"),
-        @SerializedName("LOADED")
+
         LOADED("LOADED"),
-        @SerializedName("DEPARTED")
+
         DEPARTED("DEPARTED"),
-        @SerializedName("RECEIVED_AT_ORIGIN")
+
         RECEIVED_AT_ORIGIN("RECEIVED_AT_ORIGIN"),
-        @SerializedName("UNLOADED")
+
         UNLOADED("UNLOADED"),
-        @SerializedName("DOCUMENTS_RECEIVED_DISCHARGE_PORT")
+
         DOCUMENTS_RECEIVED_DISCHARGE_PORT("DOCUMENTS_RECEIVED_DISCHARGE_PORT"),
-        @SerializedName("CUSTOMS_DECLARATION_DISCHARGE_PORT")
+
         CUSTOMS_DECLARATION_DISCHARGE_PORT("CUSTOMS_DECLARATION_DISCHARGE_PORT"),
-        @SerializedName("CUSTOMS_HOLD_DISCHARGE_PORT")
+
         CUSTOMS_HOLD_DISCHARGE_PORT("CUSTOMS_HOLD_DISCHARGE_PORT"),
-        @SerializedName("CUSTOMS_PAYMENT_REQUIRED")
+
         CUSTOMS_PAYMENT_REQUIRED("CUSTOMS_PAYMENT_REQUIRED"),
-        @SerializedName("READY_FOR_CUSTOMER_PICKUP")
+
         READY_FOR_CUSTOMER_PICKUP("READY_FOR_CUSTOMER_PICKUP"),
-        @SerializedName("DEPARTED_TERMINAL")
+
         DEPARTED_TERMINAL("DEPARTED_TERMINAL"),
-        @SerializedName("LOADED_TRAIN")
+
         LOADED_TRAIN("LOADED_TRAIN"),
-        @SerializedName("UNLOADED_TRAIN")
+
         UNLOADED_TRAIN("UNLOADED_TRAIN"),
-        @SerializedName("ARRIVED_AT_DESTINATION_YARD")
+
         ARRIVED_AT_DESTINATION_YARD("ARRIVED_AT_DESTINATION_YARD"),
-        @SerializedName("TRAILER_UNLOADING")
+
         TRAILER_UNLOADING("TRAILER_UNLOADING"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED"),
-        @SerializedName("EMPTY_RETURN")
+
         EMPTY_RETURN("EMPTY_RETURN"),
-        @SerializedName("ORDER_CANCELLED")
+
         ORDER_CANCELLED("ORDER_CANCELLED"),
-        @SerializedName("ARRIVED_AT_RAIL_TERMINAL")
+
         ARRIVED_AT_RAIL_TERMINAL("ARRIVED_AT_RAIL_TERMINAL"),
-        @SerializedName("CARRIER_TRANSFER")
+
         CARRIER_TRANSFER("CARRIER_TRANSFER"),
-        @SerializedName("CUSTOMER_PICKUP_COMPLETED")
+
         CUSTOMER_PICKUP_COMPLETED("CUSTOMER_PICKUP_COMPLETED"),
-        @SerializedName("CUSTOMS_EXCEPTION")
+
         CUSTOMS_EXCEPTION("CUSTOMS_EXCEPTION"),
-        @SerializedName("DELIVERY_ADDRESS_UPDATED")
+
         DELIVERY_ADDRESS_UPDATED("DELIVERY_ADDRESS_UPDATED"),
-        @SerializedName("DELIVERY_CHANGE_REQUESTED")
+
         DELIVERY_CHANGE_REQUESTED("DELIVERY_CHANGE_REQUESTED"),
-        @SerializedName("DELIVERY_ESTIMATE_UPDATED")
+
         DELIVERY_ESTIMATE_UPDATED("DELIVERY_ESTIMATE_UPDATED"),
-        @SerializedName("DEPARTED_RAIL_TERMINAL")
+
         DEPARTED_RAIL_TERMINAL("DEPARTED_RAIL_TERMINAL"),
-        @SerializedName("PICKUP_FAILED")
+
         PICKUP_FAILED("PICKUP_FAILED"),
-        @SerializedName("READY_FOR_DELIVERY")
+
         READY_FOR_DELIVERY("READY_FOR_DELIVERY"),
-        @SerializedName("RETURN_DROPPED_OFF")
+
         RETURN_DROPPED_OFF("RETURN_DROPPED_OFF"),
-        @SerializedName("RETURN_IN_TRANSIT")
+
         RETURN_IN_TRANSIT("RETURN_IN_TRANSIT"),
-        @SerializedName("RETURN_PICKED_UP")
+
         RETURN_PICKED_UP("RETURN_PICKED_UP"),
-        @SerializedName("RETURN_RECEIVED")
+
         RETURN_RECEIVED("RETURN_RECEIVED"),
-        @SerializedName("SORTED")
+
         SORTED("SORTED"),
-        @SerializedName("TRAILER_UNLOADED")
+
         TRAILER_UNLOADED("TRAILER_UNLOADED");
 
         private String value;
@@ -193,31 +203,38 @@ public class TrackingMilestoneStatus {
             return String.valueOf(value);
         }
 
-        public static CodeEnum fromValue(String input) {
+        public static CodeEnum fromValue(String value) {
             for (CodeEnum b : CodeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<CodeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final CodeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public CodeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return CodeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return CodeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            CodeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("code")
-    private CodeEnum code = null;
+    public static final String SERIALIZED_NAME_CODE = "code";
+
+    @SerializedName(SERIALIZED_NAME_CODE)
+    private CodeEnum code;
 
     /**
      * Status subcode that provides additional details about the milestone status. Valid values vary by milestone (for
@@ -225,487 +242,486 @@ public class TrackingMilestoneStatus {
      */
     @JsonAdapter(SubCodeEnum.Adapter.class)
     public enum SubCodeEnum {
-        @SerializedName("ACCIDENT")
         ACCIDENT("ACCIDENT"),
-        @SerializedName("ADDRESS_CHANGE")
+
         ADDRESS_CHANGE("ADDRESS_CHANGE"),
-        @SerializedName("ADDRESS_ISSUE")
+
         ADDRESS_ISSUE("ADDRESS_ISSUE"),
-        @SerializedName("ADDRESS_NON_SERVICED")
+
         ADDRESS_NON_SERVICED("ADDRESS_NON_SERVICED"),
-        @SerializedName("ADULT_SIGNATURE_REQUIRED")
+
         ADULT_SIGNATURE_REQUIRED("ADULT_SIGNATURE_REQUIRED"),
-        @SerializedName("AIRPLANE_LATE")
+
         AIRPLANE_LATE("AIRPLANE_LATE"),
-        @SerializedName("AIR_HUB")
+
         AIR_HUB("AIR_HUB"),
-        @SerializedName("ANIMAL_HAZARD")
+
         ANIMAL_HAZARD("ANIMAL_HAZARD"),
-        @SerializedName("APARTMENT")
+
         APARTMENT("APARTMENT"),
-        @SerializedName("APPOINTMENT")
+
         APPOINTMENT("APPOINTMENT"),
-        @SerializedName("APPOINTMENT_REQUIRED")
+
         APPOINTMENT_REQUIRED("APPOINTMENT_REQUIRED"),
-        @SerializedName("ARMED_FORCES_POST_OFFICE")
+
         ARMED_FORCES_POST_OFFICE("ARMED_FORCES_POST_OFFICE"),
-        @SerializedName("BAG")
+
         BAG("BAG"),
-        @SerializedName("BAG_ID_MISMATCH")
+
         BAG_ID_MISMATCH("BAG_ID_MISMATCH"),
-        @SerializedName("BATCH")
+
         BATCH("BATCH"),
-        @SerializedName("BEHIND_WHEELIE_BIN")
+
         BEHIND_WHEELIE_BIN("BEHIND_WHEELIE_BIN"),
-        @SerializedName("BUILDING_LOCKER")
+
         BUILDING_LOCKER("BUILDING_LOCKER"),
-        @SerializedName("BUSINESS_CLOSED")
+
         BUSINESS_CLOSED("BUSINESS_CLOSED"),
-        @SerializedName("BUSINESS_CLOSED_HOLIDAY")
+
         BUSINESS_CLOSED_HOLIDAY("BUSINESS_CLOSED_HOLIDAY"),
-        @SerializedName("BUYBACK")
+
         BUYBACK("BUYBACK"),
-        @SerializedName("CARRIER_HUB")
+
         CARRIER_HUB("CARRIER_HUB"),
-        @SerializedName("CARRIER_HUB_DELAY")
+
         CARRIER_HUB_DELAY("CARRIER_HUB_DELAY"),
-        @SerializedName("CARRIER_NO_ACCESS")
+
         CARRIER_NO_ACCESS("CARRIER_NO_ACCESS"),
-        @SerializedName("CARRIER_NO_CAPACITY")
+
         CARRIER_NO_CAPACITY("CARRIER_NO_CAPACITY"),
-        @SerializedName("CARRIER_REFUSAL")
+
         CARRIER_REFUSAL("CARRIER_REFUSAL"),
-        @SerializedName("CITY_TOWN_STATE")
+
         CITY_TOWN_STATE("CITY_TOWN_STATE"),
-        @SerializedName("CN_BUYER_PAYER_RECIPIENT_MISMATCH")
+
         CN_BUYER_PAYER_RECIPIENT_MISMATCH("CN_BUYER_PAYER_RECIPIENT_MISMATCH"),
-        @SerializedName("CN_CUSTOMS_ALIPAY_WECHAT_NAME_FAILED")
+
         CN_CUSTOMS_ALIPAY_WECHAT_NAME_FAILED("CN_CUSTOMS_ALIPAY_WECHAT_NAME_FAILED"),
-        @SerializedName("CN_CUSTOMS_CAN_GATEWAY_ID_VERIFICATION")
+
         CN_CUSTOMS_CAN_GATEWAY_ID_VERIFICATION("CN_CUSTOMS_CAN_GATEWAY_ID_VERIFICATION"),
-        @SerializedName("CN_CUSTOMS_CLEARANCE_DATA_ISSUE")
+
         CN_CUSTOMS_CLEARANCE_DATA_ISSUE("CN_CUSTOMS_CLEARANCE_DATA_ISSUE"),
-        @SerializedName("CN_CUSTOMS_CONVERT_TO_PERSONAL_REVIEW")
+
         CN_CUSTOMS_CONVERT_TO_PERSONAL_REVIEW("CN_CUSTOMS_CONVERT_TO_PERSONAL_REVIEW"),
-        @SerializedName("CN_CUSTOMS_DATA_TRANSMISSION_DELAY")
+
         CN_CUSTOMS_DATA_TRANSMISSION_DELAY("CN_CUSTOMS_DATA_TRANSMISSION_DELAY"),
-        @SerializedName("CN_CUSTOMS_PACKAGE_INFO_MISMATCH")
+
         CN_CUSTOMS_PACKAGE_INFO_MISMATCH("CN_CUSTOMS_PACKAGE_INFO_MISMATCH"),
-        @SerializedName("CN_CUSTOMS_PERSONAL_REVIEW_DELAY")
+
         CN_CUSTOMS_PERSONAL_REVIEW_DELAY("CN_CUSTOMS_PERSONAL_REVIEW_DELAY"),
-        @SerializedName("CN_CUSTOMS_PERSONAL_REVIEW_QUOTA_EXCEEDED")
+
         CN_CUSTOMS_PERSONAL_REVIEW_QUOTA_EXCEEDED("CN_CUSTOMS_PERSONAL_REVIEW_QUOTA_EXCEEDED"),
-        @SerializedName("CN_CUSTOMS_PROHIBITED_WORDING")
+
         CN_CUSTOMS_PROHIBITED_WORDING("CN_CUSTOMS_PROHIBITED_WORDING"),
-        @SerializedName("CN_CUSTOMS_SYSTEM_UPGRADE")
+
         CN_CUSTOMS_SYSTEM_UPGRADE("CN_CUSTOMS_SYSTEM_UPGRADE"),
-        @SerializedName("CONSERVATORY")
+
         CONSERVATORY("CONSERVATORY"),
-        @SerializedName("CONTAINER_FREIGHT_STATION")
+
         CONTAINER_FREIGHT_STATION("CONTAINER_FREIGHT_STATION"),
-        @SerializedName("CONTENT_SPILL_OUT")
+
         CONTENT_SPILL_OUT("CONTENT_SPILL_OUT"),
-        @SerializedName("COUNTER")
+
         COUNTER("COUNTER"),
-        @SerializedName("COVERAGE_AREA_ISSUE")
+
         COVERAGE_AREA_ISSUE("COVERAGE_AREA_ISSUE"),
-        @SerializedName("CUSTOMER")
+
         CUSTOMER("CUSTOMER"),
-        @SerializedName("CUSTOMER_CANCELLED")
+
         CUSTOMER_CANCELLED("CUSTOMER_CANCELLED"),
-        @SerializedName("CUSTOMER_MOVED")
+
         CUSTOMER_MOVED("CUSTOMER_MOVED"),
-        @SerializedName("CUSTOMER_PICK_UP_FAILURE")
+
         CUSTOMER_PICK_UP_FAILURE("CUSTOMER_PICK_UP_FAILURE"),
-        @SerializedName("CUSTOMER_REFUSAL")
+
         CUSTOMER_REFUSAL("CUSTOMER_REFUSAL"),
-        @SerializedName("CUSTOMER_REQUEST")
+
         CUSTOMER_REQUEST("CUSTOMER_REQUEST"),
-        @SerializedName("CUSTOMS")
+
         CUSTOMS("CUSTOMS"),
-        @SerializedName("CUSTOMS_FEES")
+
         CUSTOMS_FEES("CUSTOMS_FEES"),
-        @SerializedName("CUSTOMS_HUB")
+
         CUSTOMS_HUB("CUSTOMS_HUB"),
-        @SerializedName("CUSTOMS_ISSUE")
+
         CUSTOMS_ISSUE("CUSTOMS_ISSUE"),
-        @SerializedName("DAMAGE")
+
         DAMAGE("DAMAGE"),
-        @SerializedName("DATE_CHANGE")
+
         DATE_CHANGE("DATE_CHANGE"),
-        @SerializedName("DELAY")
+
         DELAY("DELAY"),
-        @SerializedName("DELIVERY_AGENT_ASSIGNED")
+
         DELIVERY_AGENT_ASSIGNED("DELIVERY_AGENT_ASSIGNED"),
-        @SerializedName("DELIVERY_ATTEMPTED")
+
         DELIVERY_ATTEMPTED("DELIVERY_ATTEMPTED"),
-        @SerializedName("DELIVERY_DATE_MISMATCH")
+
         DELIVERY_DATE_MISMATCH("DELIVERY_DATE_MISMATCH"),
-        @SerializedName("DELIVERY_DEPOT")
+
         DELIVERY_DEPOT("DELIVERY_DEPOT"),
-        @SerializedName("DELIVERY_DEPOT_DELAY")
+
         DELIVERY_DEPOT_DELAY("DELIVERY_DEPOT_DELAY"),
-        @SerializedName("DELIVERY_NOT_ATTEMPTED")
+
         DELIVERY_NOT_ATTEMPTED("DELIVERY_NOT_ATTEMPTED"),
-        @SerializedName("DESTINATION")
+
         DESTINATION("DESTINATION"),
-        @SerializedName("DIRECTIONS_REQUIRED")
+
         DIRECTIONS_REQUIRED("DIRECTIONS_REQUIRED"),
-        @SerializedName("DRIVER_EMERGENCY")
+
         DRIVER_EMERGENCY("DRIVER_EMERGENCY"),
-        @SerializedName("DRIVER_HELD")
+
         DRIVER_HELD("DRIVER_HELD"),
-        @SerializedName("DRIVER_LATE")
+
         DRIVER_LATE("DRIVER_LATE"),
-        @SerializedName("DRONE")
+
         DRONE("DRONE"),
-        @SerializedName("DRONE_REPLAN")
+
         DRONE_REPLAN("DRONE_REPLAN"),
-        @SerializedName("DUPLICATE")
+
         DUPLICATE("DUPLICATE"),
-        @SerializedName("DUTIES_TAX_PENDING")
+
         DUTIES_TAX_PENDING("DUTIES_TAX_PENDING"),
-        @SerializedName("EMERGENCY")
+
         EMERGENCY("EMERGENCY"),
-        @SerializedName("EXCEEDS_20000_RMB_CLEARANCE_QUOTA")
+
         EXCEEDS_20000_RMB_CLEARANCE_QUOTA("EXCEEDS_20000_RMB_CLEARANCE_QUOTA"),
-        @SerializedName("EXCEEDS_PERSONAL_QUANTITIES_QUOTA")
+
         EXCEEDS_PERSONAL_QUANTITIES_QUOTA("EXCEEDS_PERSONAL_QUANTITIES_QUOTA"),
-        @SerializedName("EXPORT_CARRIER")
+
         EXPORT_CARRIER("EXPORT_CARRIER"),
-        @SerializedName("FACILITY_BREAKDOWN")
+
         FACILITY_BREAKDOWN("FACILITY_BREAKDOWN"),
-        @SerializedName("FACILITY_CLOSURE")
+
         FACILITY_CLOSURE("FACILITY_CLOSURE"),
-        @SerializedName("FAILED_ADULT_VERIFICATION")
+
         FAILED_ADULT_VERIFICATION("FAILED_ADULT_VERIFICATION"),
-        @SerializedName("FAILED_MAX_ATTEMPTS")
+
         FAILED_MAX_ATTEMPTS("FAILED_MAX_ATTEMPTS"),
-        @SerializedName("FINAL_ATTEMPT_FAILED")
+
         FINAL_ATTEMPT_FAILED("FINAL_ATTEMPT_FAILED"),
-        @SerializedName("FORCE_MAJEURE")
+
         FORCE_MAJEURE("FORCE_MAJEURE"),
-        @SerializedName("FRAUDULENT_ACTIVITY")
+
         FRAUDULENT_ACTIVITY("FRAUDULENT_ACTIVITY"),
-        @SerializedName("FREIGHT_FORWARDER")
+
         FREIGHT_FORWARDER("FREIGHT_FORWARDER"),
-        @SerializedName("FRONT_PORCH")
+
         FRONT_PORCH("FRONT_PORCH"),
-        @SerializedName("FRONT_PORCH_OR_FRONT_DOOR")
+
         FRONT_PORCH_OR_FRONT_DOOR("FRONT_PORCH_OR_FRONT_DOOR"),
-        @SerializedName("FULFILLMENT_FACILITY")
+
         FULFILLMENT_FACILITY("FULFILLMENT_FACILITY"),
-        @SerializedName("FULFILLMENT_ISSUE")
+
         FULFILLMENT_ISSUE("FULFILLMENT_ISSUE"),
-        @SerializedName("FULFILLMENT_PROVIDER_MISSORT")
+
         FULFILLMENT_PROVIDER_MISSORT("FULFILLMENT_PROVIDER_MISSORT"),
-        @SerializedName("FULFILLMENT_PROVIDER_RETURN_REQUEST")
+
         FULFILLMENT_PROVIDER_RETURN_REQUEST("FULFILLMENT_PROVIDER_RETURN_REQUEST"),
-        @SerializedName("GARAGE")
+
         GARAGE("GARAGE"),
-        @SerializedName("GARDEN")
+
         GARDEN("GARDEN"),
-        @SerializedName("GOVERNMENT_AGENCY_INSPECTION_REQUIRED")
+
         GOVERNMENT_AGENCY_INSPECTION_REQUIRED("GOVERNMENT_AGENCY_INSPECTION_REQUIRED"),
-        @SerializedName("GREENHOUSE")
+
         GREENHOUSE("GREENHOUSE"),
-        @SerializedName("HANDED_OVER_FOR_FINAL_DELIVERY")
+
         HANDED_OVER_FOR_FINAL_DELIVERY("HANDED_OVER_FOR_FINAL_DELIVERY"),
-        @SerializedName("HAZMAT")
+
         HAZMAT("HAZMAT"),
-        @SerializedName("HEAVY_BULKY_CARRIER")
+
         HEAVY_BULKY_CARRIER("HEAVY_BULKY_CARRIER"),
-        @SerializedName("HELD_FOR_PAYMENT")
+
         HELD_FOR_PAYMENT("HELD_FOR_PAYMENT"),
-        @SerializedName("HELD_IN_TRAILER")
+
         HELD_IN_TRAILER("HELD_IN_TRAILER"),
-        @SerializedName("HOLD_FOR_PICK_UP")
+
         HOLD_FOR_PICK_UP("HOLD_FOR_PICK_UP"),
-        @SerializedName("HS_CODE_ISSUES")
+
         HS_CODE_ISSUES("HS_CODE_ISSUES"),
-        @SerializedName("IMPORT_BLOCKED")
+
         IMPORT_BLOCKED("IMPORT_BLOCKED"),
-        @SerializedName("IMPORT_DOCUMENTATION_REQUIRED")
+
         IMPORT_DOCUMENTATION_REQUIRED("IMPORT_DOCUMENTATION_REQUIRED"),
-        @SerializedName("IMPORT_ELIGIBILITY_ISSUE")
+
         IMPORT_ELIGIBILITY_ISSUE("IMPORT_ELIGIBILITY_ISSUE"),
-        @SerializedName("INCORRECT_ITEM")
+
         INCORRECT_ITEM("INCORRECT_ITEM"),
-        @SerializedName("INCOTERMS_ISSUE")
+
         INCOTERMS_ISSUE("INCOTERMS_ISSUE"),
-        @SerializedName("INSIDE_BOX")
+
         INSIDE_BOX("INSIDE_BOX"),
-        @SerializedName("INSIDE_HOME")
+
         INSIDE_HOME("INSIDE_HOME"),
-        @SerializedName("INSIDE_VEHICLE")
+
         INSIDE_VEHICLE("INSIDE_VEHICLE"),
-        @SerializedName("INSUFFICIENT_PAPERWORK")
+
         INSUFFICIENT_PAPERWORK("INSUFFICIENT_PAPERWORK"),
-        @SerializedName("INTERNATIONAL_TRANSIT_DELAY")
+
         INTERNATIONAL_TRANSIT_DELAY("INTERNATIONAL_TRANSIT_DELAY"),
-        @SerializedName("INVALID_ADDRESS")
+
         INVALID_ADDRESS("INVALID_ADDRESS"),
-        @SerializedName("INVALID_CITY_TOWN_STATE_ADDRESS")
+
         INVALID_CITY_TOWN_STATE_ADDRESS("INVALID_CITY_TOWN_STATE_ADDRESS"),
-        @SerializedName("INVALID_POSTAL_CODE")
+
         INVALID_POSTAL_CODE("INVALID_POSTAL_CODE"),
-        @SerializedName("INVALID_RECIPIENT_NAME")
+
         INVALID_RECIPIENT_NAME("INVALID_RECIPIENT_NAME"),
-        @SerializedName("INVALID_STREET_ADDRESS")
+
         INVALID_STREET_ADDRESS("INVALID_STREET_ADDRESS"),
-        @SerializedName("LABEL_ISSUE")
+
         LABEL_ISSUE("LABEL_ISSUE"),
-        @SerializedName("LARGE_ITEM")
+
         LARGE_ITEM("LARGE_ITEM"),
-        @SerializedName("LATE_DELIVERY")
+
         LATE_DELIVERY("LATE_DELIVERY"),
-        @SerializedName("LEAVE_TO_NEIGHBOR")
+
         LEAVE_TO_NEIGHBOR("LEAVE_TO_NEIGHBOR"),
-        @SerializedName("LETTERBOX")
+
         LETTERBOX("LETTERBOX"),
-        @SerializedName("LOCKER")
+
         LOCKER("LOCKER"),
-        @SerializedName("LOOSE")
+
         LOOSE("LOOSE"),
-        @SerializedName("MAIL_BOX_FULL")
+
         MAIL_BOX_FULL("MAIL_BOX_FULL"),
-        @SerializedName("MAIL_ROOM")
+
         MAIL_ROOM("MAIL_ROOM"),
-        @SerializedName("MANUAL_CLEARANCE")
+
         MANUAL_CLEARANCE("MANUAL_CLEARANCE"),
-        @SerializedName("MANUAL_SCAN_UPLOAD")
+
         MANUAL_SCAN_UPLOAD("MANUAL_SCAN_UPLOAD"),
-        @SerializedName("MISSING_APARTMENT_ADDRESS")
+
         MISSING_APARTMENT_ADDRESS("MISSING_APARTMENT_ADDRESS"),
-        @SerializedName("MISSING_COMMERCIAL_DOCS")
+
         MISSING_COMMERCIAL_DOCS("MISSING_COMMERCIAL_DOCS"),
-        @SerializedName("MISSING_OR_INCOMPLETE_NAME")
+
         MISSING_OR_INCOMPLETE_NAME("MISSING_OR_INCOMPLETE_NAME"),
-        @SerializedName("MISSING_RECIPIENT_PERSONAL_DATA")
+
         MISSING_RECIPIENT_PERSONAL_DATA("MISSING_RECIPIENT_PERSONAL_DATA"),
-        @SerializedName("MISSORT")
+
         MISSORT("MISSORT"),
-        @SerializedName("NAME_AUTHENTICATION_FAILED")
+
         NAME_AUTHENTICATION_FAILED("NAME_AUTHENTICATION_FAILED"),
-        @SerializedName("NEARBY_STORE")
+
         NEARBY_STORE("NEARBY_STORE"),
-        @SerializedName("NEIGHBOR")
+
         NEIGHBOR("NEIGHBOR"),
-        @SerializedName("NEIGHBOR_SIGNED")
+
         NEIGHBOR_SIGNED("NEIGHBOR_SIGNED"),
-        @SerializedName("NON_PERSONAL_BELONGINGS")
+
         NON_PERSONAL_BELONGINGS("NON_PERSONAL_BELONGINGS"),
-        @SerializedName("NON_POSTAL_CARRIER")
+
         NON_POSTAL_CARRIER("NON_POSTAL_CARRIER"),
-        @SerializedName("NOT_ORDERED")
+
         NOT_ORDERED("NOT_ORDERED"),
-        @SerializedName("NOT_WANTED")
+
         NOT_WANTED("NOT_WANTED"),
-        @SerializedName("NO_ACCESS")
+
         NO_ACCESS("NO_ACCESS"),
-        @SerializedName("NO_CONTACT_INFORMATION")
+
         NO_CONTACT_INFORMATION("NO_CONTACT_INFORMATION"),
-        @SerializedName("NO_RESPONSE")
+
         NO_RESPONSE("NO_RESPONSE"),
-        @SerializedName("NO_SECURITY_ACCESS")
+
         NO_SECURITY_ACCESS("NO_SECURITY_ACCESS"),
-        @SerializedName("OFF_AMAZON_CUSTOMER")
+
         OFF_AMAZON_CUSTOMER("OFF_AMAZON_CUSTOMER"),
-        @SerializedName("ON_HOLD")
+
         ON_HOLD("ON_HOLD"),
-        @SerializedName("ORIGIN")
+
         ORIGIN("ORIGIN"),
-        @SerializedName("OUTBUILDING")
+
         OUTBUILDING("OUTBUILDING"),
-        @SerializedName("OVER_FORECAST")
+
         OVER_FORECAST("OVER_FORECAST"),
-        @SerializedName("PACKAGE_OPEN")
+
         PACKAGE_OPEN("PACKAGE_OPEN"),
-        @SerializedName("PACKAGE_OVERSIZED")
+
         PACKAGE_OVERSIZED("PACKAGE_OVERSIZED"),
-        @SerializedName("PARCEL_HUB")
+
         PARCEL_HUB("PARCEL_HUB"),
-        @SerializedName("PARTIAL")
+
         PARTIAL("PARTIAL"),
-        @SerializedName("PAYMENT_REFUSED")
+
         PAYMENT_REFUSED("PAYMENT_REFUSED"),
-        @SerializedName("PENDING_INSPECTION")
+
         PENDING_INSPECTION("PENDING_INSPECTION"),
-        @SerializedName("PGA_HOLD")
+
         PGA_HOLD("PGA_HOLD"),
-        @SerializedName("PICKUP_FAILURE")
+
         PICKUP_FAILURE("PICKUP_FAILURE"),
-        @SerializedName("PICKUP_POINT")
+
         PICKUP_POINT("PICKUP_POINT"),
-        @SerializedName("PICKUP_POINT_CLOSED")
+
         PICKUP_POINT_CLOSED("PICKUP_POINT_CLOSED"),
-        @SerializedName("PKG_DIMENSION_EXCEEDS")
+
         PKG_DIMENSION_EXCEEDS("PKG_DIMENSION_EXCEEDS"),
-        @SerializedName("POI_DELIVERY_ADDRESS_MISMATCH")
+
         POI_DELIVERY_ADDRESS_MISMATCH("POI_DELIVERY_ADDRESS_MISMATCH"),
-        @SerializedName("POI_INVALID")
+
         POI_INVALID("POI_INVALID"),
-        @SerializedName("POI_RECIPIENT_NAME_MISMATCH")
+
         POI_RECIPIENT_NAME_MISMATCH("POI_RECIPIENT_NAME_MISMATCH"),
-        @SerializedName("PORCH")
+
         PORCH("PORCH"),
-        @SerializedName("POSTAL_CARRIER")
+
         POSTAL_CARRIER("POSTAL_CARRIER"),
-        @SerializedName("POST_OFFICE")
+
         POST_OFFICE("POST_OFFICE"),
-        @SerializedName("POWER_OF_ATTORNEY_REQUIRED")
+
         POWER_OF_ATTORNEY_REQUIRED("POWER_OF_ATTORNEY_REQUIRED"),
-        @SerializedName("PO_BOX")
+
         PO_BOX("PO_BOX"),
-        @SerializedName("PO_BOX_QUERY")
+
         PO_BOX_QUERY("PO_BOX_QUERY"),
-        @SerializedName("PREDICTED")
+
         PREDICTED("PREDICTED"),
-        @SerializedName("PROCESSING_DELAY")
+
         PROCESSING_DELAY("PROCESSING_DELAY"),
-        @SerializedName("PROCESSING_HUB")
+
         PROCESSING_HUB("PROCESSING_HUB"),
-        @SerializedName("PRODUCT_DAMAGED")
+
         PRODUCT_DAMAGED("PRODUCT_DAMAGED"),
-        @SerializedName("PRODUCT_DEFECTIVE")
+
         PRODUCT_DEFECTIVE("PRODUCT_DEFECTIVE"),
-        @SerializedName("PRODUCT_MISSING")
+
         PRODUCT_MISSING("PRODUCT_MISSING"),
-        @SerializedName("PRODUCT_NOT_FUNCTIONAL")
+
         PRODUCT_NOT_FUNCTIONAL("PRODUCT_NOT_FUNCTIONAL"),
-        @SerializedName("PRODUCT_PRICE_EXCEEDS_2000_RMB")
+
         PRODUCT_PRICE_EXCEEDS_2000_RMB("PRODUCT_PRICE_EXCEEDS_2000_RMB"),
-        @SerializedName("PROHIBITED_ITEM")
+
         PROHIBITED_ITEM("PROHIBITED_ITEM"),
-        @SerializedName("READY_FOR_PICKUP")
+
         READY_FOR_PICKUP("READY_FOR_PICKUP"),
-        @SerializedName("REAR_PORCH")
+
         REAR_PORCH("REAR_PORCH"),
-        @SerializedName("REAR_PORCH_OR_REAR_DOOR")
+
         REAR_PORCH_OR_REAR_DOOR("REAR_PORCH_OR_REAR_DOOR"),
-        @SerializedName("RECEPTION")
+
         RECEPTION("RECEPTION"),
-        @SerializedName("RECIPIENT_CANCELLED")
+
         RECIPIENT_CANCELLED("RECIPIENT_CANCELLED"),
-        @SerializedName("RECIPIENT_HOLIDAY")
+
         RECIPIENT_HOLIDAY("RECIPIENT_HOLIDAY"),
-        @SerializedName("RECIPIENT_ID_IMAGE_QUALITY")
+
         RECIPIENT_ID_IMAGE_QUALITY("RECIPIENT_ID_IMAGE_QUALITY"),
-        @SerializedName("RECIPIENT_ID_INVALID")
+
         RECIPIENT_ID_INVALID("RECIPIENT_ID_INVALID"),
-        @SerializedName("RECIPIENT_ID_MISSING")
+
         RECIPIENT_ID_MISSING("RECIPIENT_ID_MISSING"),
-        @SerializedName("RECIPIENT_ID_NOT_RECEIVED")
+
         RECIPIENT_ID_NOT_RECEIVED("RECIPIENT_ID_NOT_RECEIVED"),
-        @SerializedName("RECIPIENT_ID_RECEIVED")
+
         RECIPIENT_ID_RECEIVED("RECIPIENT_ID_RECEIVED"),
-        @SerializedName("RECIPIENT_PIN_NOT_AVAILABLE")
+
         RECIPIENT_PIN_NOT_AVAILABLE("RECIPIENT_PIN_NOT_AVAILABLE"),
-        @SerializedName("RECIPIENT_UNIQUE_CODE_MISSING")
+
         RECIPIENT_UNIQUE_CODE_MISSING("RECIPIENT_UNIQUE_CODE_MISSING"),
-        @SerializedName("RECIPIENT_UNKNOWN_ENTITY")
+
         RECIPIENT_UNKNOWN_ENTITY("RECIPIENT_UNKNOWN_ENTITY"),
-        @SerializedName("REDIRECTED_SHIPMENT")
+
         REDIRECTED_SHIPMENT("REDIRECTED_SHIPMENT"),
-        @SerializedName("REDIRECT_FAILED")
+
         REDIRECT_FAILED("REDIRECT_FAILED"),
-        @SerializedName("REMOTE_AREA")
+
         REMOTE_AREA("REMOTE_AREA"),
-        @SerializedName("REROUTED_TO_LOCKER")
+
         REROUTED_TO_LOCKER("REROUTED_TO_LOCKER"),
-        @SerializedName("REROUTED_TO_STORE")
+
         REROUTED_TO_STORE("REROUTED_TO_STORE"),
-        @SerializedName("RETURN_TO_SELLER")
+
         RETURN_TO_SELLER("RETURN_TO_SELLER"),
-        @SerializedName("REVERTED")
+
         REVERTED("REVERTED"),
-        @SerializedName("ROAD_ISSUE")
+
         ROAD_ISSUE("ROAD_ISSUE"),
-        @SerializedName("SAFE_PLACE")
+
         SAFE_PLACE("SAFE_PLACE"),
-        @SerializedName("SCHEDULE_ADJUSTMENT")
+
         SCHEDULE_ADJUSTMENT("SCHEDULE_ADJUSTMENT"),
-        @SerializedName("SECURITY_ACCESS")
+
         SECURITY_ACCESS("SECURITY_ACCESS"),
-        @SerializedName("SECURITY_CHECKS_REQUIRED")
+
         SECURITY_CHECKS_REQUIRED("SECURITY_CHECKS_REQUIRED"),
-        @SerializedName("SECURITY_DESK")
+
         SECURITY_DESK("SECURITY_DESK"),
-        @SerializedName("SELLER_ISSUE")
+
         SELLER_ISSUE("SELLER_ISSUE"),
-        @SerializedName("SELLER_MOVED")
+
         SELLER_MOVED("SELLER_MOVED"),
-        @SerializedName("SELLER_REJECTION")
+
         SELLER_REJECTION("SELLER_REJECTION"),
-        @SerializedName("SELLER_REQUEST")
+
         SELLER_REQUEST("SELLER_REQUEST"),
-        @SerializedName("SHED")
+
         SHED("SHED"),
-        @SerializedName("SHIPMENT_DAMAGED")
+
         SHIPMENT_DAMAGED("SHIPMENT_DAMAGED"),
-        @SerializedName("SHIPMENT_FEES")
+
         SHIPMENT_FEES("SHIPMENT_FEES"),
-        @SerializedName("SHIPMENT_HIJACKED")
+
         SHIPMENT_HIJACKED("SHIPMENT_HIJACKED"),
-        @SerializedName("SHIPMENT_MISSING")
+
         SHIPMENT_MISSING("SHIPMENT_MISSING"),
-        @SerializedName("SHIPMENT_NOT_RECEIVED")
+
         SHIPMENT_NOT_RECEIVED("SHIPMENT_NOT_RECEIVED"),
-        @SerializedName("SHIPMENT_OVERDUE_14_DAYS")
+
         SHIPMENT_OVERDUE_14_DAYS("SHIPMENT_OVERDUE_14_DAYS"),
-        @SerializedName("SHIPPER_RELATED")
+
         SHIPPER_RELATED("SHIPPER_RELATED"),
-        @SerializedName("SHIPPER_REQUEST")
+
         SHIPPER_REQUEST("SHIPPER_REQUEST"),
-        @SerializedName("SIDE_PORCH")
+
         SIDE_PORCH("SIDE_PORCH"),
-        @SerializedName("SIGNATURE_REQUIRED")
+
         SIGNATURE_REQUIRED("SIGNATURE_REQUIRED"),
-        @SerializedName("SIGNATURE_WAIVED")
+
         SIGNATURE_WAIVED("SIGNATURE_WAIVED"),
-        @SerializedName("SIGNED")
+
         SIGNED("SIGNED"),
-        @SerializedName("STORE")
+
         STORE("STORE"),
-        @SerializedName("STREET")
+
         STREET("STREET"),
-        @SerializedName("TERRACE")
+
         TERRACE("TERRACE"),
-        @SerializedName("THEFT")
+
         THEFT("THEFT"),
-        @SerializedName("THIRD_PARTY_CARRIER_DELAY")
+
         THIRD_PARTY_CARRIER_DELAY("THIRD_PARTY_CARRIER_DELAY"),
-        @SerializedName("TRAILER_LATE")
+
         TRAILER_LATE("TRAILER_LATE"),
-        @SerializedName("TRAIN_LATE")
+
         TRAIN_LATE("TRAIN_LATE"),
-        @SerializedName("TRANSPORTATION_CAPACITY_SHORTAGE")
+
         TRANSPORTATION_CAPACITY_SHORTAGE("TRANSPORTATION_CAPACITY_SHORTAGE"),
-        @SerializedName("TRUCK")
+
         TRUCK("TRUCK"),
-        @SerializedName("UNIT_LOAD_DEVICE")
+
         UNIT_LOAD_DEVICE("UNIT_LOAD_DEVICE"),
-        @SerializedName("UNKNOWN_ENTITY")
+
         UNKNOWN_ENTITY("UNKNOWN_ENTITY"),
-        @SerializedName("UNREADABLE_BARCODE")
+
         UNREADABLE_BARCODE("UNREADABLE_BARCODE"),
-        @SerializedName("UNSUCCESSFUL_CUSTOMER_CONTACT")
+
         UNSUCCESSFUL_CUSTOMER_CONTACT("UNSUCCESSFUL_CUSTOMER_CONTACT"),
-        @SerializedName("UNVERIFIED_ADDRESS")
+
         UNVERIFIED_ADDRESS("UNVERIFIED_ADDRESS"),
-        @SerializedName("VAN")
+
         VAN("VAN"),
-        @SerializedName("VAN_REPLAN")
+
         VAN_REPLAN("VAN_REPLAN"),
-        @SerializedName("VEHICLE_BREAKDOWN")
+
         VEHICLE_BREAKDOWN("VEHICLE_BREAKDOWN"),
-        @SerializedName("WEATHER")
+
         WEATHER("WEATHER"),
-        @SerializedName("WRONG_DELIVERY_ROUTE")
+
         WRONG_DELIVERY_ROUTE("WRONG_DELIVERY_ROUTE"),
-        @SerializedName("WRONG_PHONE_NUMBER")
+
         WRONG_PHONE_NUMBER("WRONG_PHONE_NUMBER"),
-        @SerializedName("POSTAL_CODE")
+
         POSTAL_CODE("POSTAL_CODE");
 
         private String value;
@@ -723,34 +739,45 @@ public class TrackingMilestoneStatus {
             return String.valueOf(value);
         }
 
-        public static SubCodeEnum fromValue(String input) {
+        public static SubCodeEnum fromValue(String value) {
             for (SubCodeEnum b : SubCodeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SubCodeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SubCodeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SubCodeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SubCodeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SubCodeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SubCodeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("subCode")
-    private SubCodeEnum subCode = null;
+    public static final String SERIALIZED_NAME_SUB_CODE = "subCode";
 
-    @SerializedName("description")
-    private String description = null;
+    @SerializedName(SERIALIZED_NAME_SUB_CODE)
+    private SubCodeEnum subCode;
+
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
+    public TrackingMilestoneStatus() {}
 
     public TrackingMilestoneStatus code(CodeEnum code) {
         this.code = code;
@@ -763,10 +790,7 @@ public class TrackingMilestoneStatus {
      *
      * @return code
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A status code that identifies the milestone event (for example, `DELIVERED`, `CUSTOMS_CLEARED`, `DEPARTED`).")
+    @javax.annotation.Nonnull
     public CodeEnum getCode() {
         return code;
     }
@@ -786,10 +810,7 @@ public class TrackingMilestoneStatus {
      *
      * @return subCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Status subcode that provides additional details about the milestone status. Valid values vary by milestone (for example, a `DELIVERED` milestone might include a `subCode` for the delivery location).")
-    public SubCodeEnum getSubCode() {
+    @javax.annotation.Nullable public SubCodeEnum getSubCode() {
         return subCode;
     }
 
@@ -807,9 +828,7 @@ public class TrackingMilestoneStatus {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A human-readable explanation of the milestone event.")
+    @javax.annotation.Nonnull
     public String getDescription() {
         return description;
     }
@@ -819,7 +838,7 @@ public class TrackingMilestoneStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -849,10 +868,135 @@ public class TrackingMilestoneStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("code");
+        openapiFields.add("subCode");
+        openapiFields.add("description");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("code");
+        openapiRequiredFields.add("description");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingMilestoneStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingMilestoneStatus.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingMilestoneStatus is not found in the empty JSON string",
+                        TrackingMilestoneStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingMilestoneStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingMilestoneStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TrackingMilestoneStatus.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("code").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `code` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("code").toString()));
+        }
+        // validate the required field `code`
+        CodeEnum.validateJsonElement(jsonObj.get("code"));
+        if ((jsonObj.get("subCode") != null && !jsonObj.get("subCode").isJsonNull())
+                && !jsonObj.get("subCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `subCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("subCode").toString()));
+        }
+        // validate the optional field `subCode`
+        if (jsonObj.get("subCode") != null && !jsonObj.get("subCode").isJsonNull()) {
+            SubCodeEnum.validateJsonElement(jsonObj.get("subCode"));
+        }
+        if (!jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingMilestoneStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingMilestoneStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingMilestoneStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingMilestoneStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingMilestoneStatus>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingMilestoneStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingMilestoneStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingMilestoneStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingMilestoneStatus
+     * @throws IOException if the JSON string is invalid with respect to TrackingMilestoneStatus
+     */
+    public static TrackingMilestoneStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingMilestoneStatus.class);
+    }
+
+    /**
+     * Convert an instance of TrackingMilestoneStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

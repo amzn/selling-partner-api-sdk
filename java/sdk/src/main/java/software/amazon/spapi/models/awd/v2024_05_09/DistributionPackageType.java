@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Type of distribution packages. */
 @JsonAdapter(DistributionPackageType.Adapter.class)
 public enum DistributionPackageType {
-    @SerializedName("CASE")
     CASE("CASE"),
 
-    @SerializedName("PALLET")
     PALLET("PALLET");
 
     private String value;
@@ -43,25 +41,30 @@ public enum DistributionPackageType {
         return String.valueOf(value);
     }
 
-    public static DistributionPackageType fromValue(String input) {
+    public static DistributionPackageType fromValue(String value) {
         for (DistributionPackageType b : DistributionPackageType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DistributionPackageType> {
         @Override
         public void write(final JsonWriter jsonWriter, final DistributionPackageType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DistributionPackageType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DistributionPackageType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DistributionPackageType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DistributionPackageType.fromValue(value);
     }
 }

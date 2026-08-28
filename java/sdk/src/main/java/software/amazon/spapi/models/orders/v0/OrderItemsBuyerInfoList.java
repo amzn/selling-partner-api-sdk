@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A single order item&#39;s buyer information list with the order ID. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A single order item's buyer information list with the order ID.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItemsBuyerInfoList {
-    @SerializedName("OrderItems")
-    private OrderItemBuyerInfoList orderItems = null;
+    public static final String SERIALIZED_NAME_ORDER_ITEMS = "OrderItems";
 
-    @SerializedName("NextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
+    private OrderItemBuyerInfoList orderItems = new ArrayList<>();
 
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
+
+    public OrderItemsBuyerInfoList() {}
 
     public OrderItemsBuyerInfoList orderItems(OrderItemBuyerInfoList orderItems) {
         this.orderItems = orderItems;
@@ -38,7 +60,7 @@ public class OrderItemsBuyerInfoList {
      *
      * @return orderItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public OrderItemBuyerInfoList getOrderItems() {
         return orderItems;
     }
@@ -57,10 +79,7 @@ public class OrderItemsBuyerInfoList {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When present and not empty, pass this string token in the next request to return the next response page.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -78,9 +97,7 @@ public class OrderItemsBuyerInfoList {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -90,7 +107,7 @@ public class OrderItemsBuyerInfoList {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -120,10 +137,124 @@ public class OrderItemsBuyerInfoList {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("OrderItems");
+        openapiFields.add("NextToken");
+        openapiFields.add("AmazonOrderId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("OrderItems");
+        openapiRequiredFields.add("AmazonOrderId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItemsBuyerInfoList
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItemsBuyerInfoList.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItemsBuyerInfoList is not found in the empty JSON string",
+                        OrderItemsBuyerInfoList.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItemsBuyerInfoList.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItemsBuyerInfoList` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderItemsBuyerInfoList.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
+                && !jsonObj.get("NextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("NextToken").toString()));
+        }
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItemsBuyerInfoList.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItemsBuyerInfoList' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItemsBuyerInfoList> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderItemsBuyerInfoList.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItemsBuyerInfoList>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItemsBuyerInfoList value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItemsBuyerInfoList read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItemsBuyerInfoList given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItemsBuyerInfoList
+     * @throws IOException if the JSON string is invalid with respect to OrderItemsBuyerInfoList
+     */
+    public static OrderItemsBuyerInfoList fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItemsBuyerInfoList.class);
+    }
+
+    /**
+     * Convert an instance of OrderItemsBuyerInfoList to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

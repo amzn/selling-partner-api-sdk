@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Unit of measurement for package dimensions. */
 @JsonAdapter(DimensionUnitOfMeasurement.Adapter.class)
 public enum DimensionUnitOfMeasurement {
-    @SerializedName("INCHES")
     INCHES("INCHES"),
 
-    @SerializedName("CENTIMETERS")
     CENTIMETERS("CENTIMETERS");
 
     private String value;
@@ -43,26 +41,31 @@ public enum DimensionUnitOfMeasurement {
         return String.valueOf(value);
     }
 
-    public static DimensionUnitOfMeasurement fromValue(String input) {
+    public static DimensionUnitOfMeasurement fromValue(String value) {
         for (DimensionUnitOfMeasurement b : DimensionUnitOfMeasurement.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<DimensionUnitOfMeasurement> {
         @Override
         public void write(final JsonWriter jsonWriter, final DimensionUnitOfMeasurement enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public DimensionUnitOfMeasurement read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return DimensionUnitOfMeasurement.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return DimensionUnitOfMeasurement.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        DimensionUnitOfMeasurement.fromValue(value);
     }
 }

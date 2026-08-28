@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** Shipper Account Type. */
 @JsonAdapter(AccountType.Adapter.class)
 public enum AccountType {
-    @SerializedName("SHIPPER_ACCOUNT")
     SHIPPER_ACCOUNT("SHIPPER_ACCOUNT"),
 
-    @SerializedName("SHIPPER_ACCOUNT_WITH_INVOICE")
     SHIPPER_ACCOUNT_WITH_INVOICE("SHIPPER_ACCOUNT_WITH_INVOICE"),
 
-    @SerializedName("AMAZON_ACCOUNT")
     AMAZON_ACCOUNT("AMAZON_ACCOUNT");
 
     private String value;
@@ -46,25 +43,30 @@ public enum AccountType {
         return String.valueOf(value);
     }
 
-    public static AccountType fromValue(String input) {
+    public static AccountType fromValue(String value) {
         for (AccountType b : AccountType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AccountType> {
         @Override
         public void write(final JsonWriter jsonWriter, final AccountType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AccountType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AccountType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AccountType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AccountType.fromValue(value);
     }
 }

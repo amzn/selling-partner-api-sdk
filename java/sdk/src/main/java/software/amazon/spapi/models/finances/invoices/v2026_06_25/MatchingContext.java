@@ -12,39 +12,69 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * How an invoice line item&#39;s quantity and price were matched against expected values, including any variances and
  * their underlying reasons.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "How an invoice line item's quantity and price were matched against expected values, including any variances and their underlying reasons.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MatchingContext {
-    @SerializedName("matchedQuantity")
-    private Integer matchedQuantity = null;
+    public static final String SERIALIZED_NAME_MATCHED_QUANTITY = "matchedQuantity";
 
-    @SerializedName("matchedAmount")
-    private Currency matchedAmount = null;
+    @SerializedName(SERIALIZED_NAME_MATCHED_QUANTITY)
+    private Integer matchedQuantity;
 
-    @SerializedName("quantityVariance")
-    private Integer quantityVariance = null;
+    public static final String SERIALIZED_NAME_MATCHED_AMOUNT = "matchedAmount";
 
-    @SerializedName("priceVariance")
-    private Currency priceVariance = null;
+    @SerializedName(SERIALIZED_NAME_MATCHED_AMOUNT)
+    private Currency matchedAmount;
 
-    @SerializedName("paidQuantity")
-    private Integer paidQuantity = null;
+    public static final String SERIALIZED_NAME_QUANTITY_VARIANCE = "quantityVariance";
 
-    @SerializedName("paidAmount")
-    private Currency paidAmount = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_VARIANCE)
+    private Integer quantityVariance;
 
-    @SerializedName("varianceReasons")
-    private List<VarianceReason> varianceReasons = null;
+    public static final String SERIALIZED_NAME_PRICE_VARIANCE = "priceVariance";
+
+    @SerializedName(SERIALIZED_NAME_PRICE_VARIANCE)
+    private Currency priceVariance;
+
+    public static final String SERIALIZED_NAME_PAID_QUANTITY = "paidQuantity";
+
+    @SerializedName(SERIALIZED_NAME_PAID_QUANTITY)
+    private Integer paidQuantity;
+
+    public static final String SERIALIZED_NAME_PAID_AMOUNT = "paidAmount";
+
+    @SerializedName(SERIALIZED_NAME_PAID_AMOUNT)
+    private Currency paidAmount;
+
+    public static final String SERIALIZED_NAME_VARIANCE_REASONS = "varianceReasons";
+
+    @SerializedName(SERIALIZED_NAME_VARIANCE_REASONS)
+    private List<VarianceReason> varianceReasons = new ArrayList<>();
+
+    public MatchingContext() {}
 
     public MatchingContext matchedQuantity(Integer matchedQuantity) {
         this.matchedQuantity = matchedQuantity;
@@ -56,7 +86,7 @@ public class MatchingContext {
      *
      * @return matchedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The quantity that was matched.")
+    @javax.annotation.Nonnull
     public Integer getMatchedQuantity() {
         return matchedQuantity;
     }
@@ -75,7 +105,7 @@ public class MatchingContext {
      *
      * @return matchedAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getMatchedAmount() {
         return matchedAmount;
     }
@@ -94,8 +124,7 @@ public class MatchingContext {
      *
      * @return quantityVariance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The difference between expected and actual quantity.")
-    public Integer getQuantityVariance() {
+    @javax.annotation.Nullable public Integer getQuantityVariance() {
         return quantityVariance;
     }
 
@@ -113,8 +142,7 @@ public class MatchingContext {
      *
      * @return priceVariance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getPriceVariance() {
+    @javax.annotation.Nullable public Currency getPriceVariance() {
         return priceVariance;
     }
 
@@ -132,8 +160,7 @@ public class MatchingContext {
      *
      * @return paidQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity that has been paid for.")
-    public Integer getPaidQuantity() {
+    @javax.annotation.Nullable public Integer getPaidQuantity() {
         return paidQuantity;
     }
 
@@ -151,8 +178,7 @@ public class MatchingContext {
      *
      * @return paidAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getPaidAmount() {
+    @javax.annotation.Nullable public Currency getPaidAmount() {
         return paidAmount;
     }
 
@@ -178,8 +204,7 @@ public class MatchingContext {
      *
      * @return varianceReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Reasons for the variance.")
-    public List<VarianceReason> getVarianceReasons() {
+    @javax.annotation.Nullable public List<VarianceReason> getVarianceReasons() {
         return varianceReasons;
     }
 
@@ -188,7 +213,7 @@ public class MatchingContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -239,10 +264,145 @@ public class MatchingContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("matchedQuantity");
+        openapiFields.add("matchedAmount");
+        openapiFields.add("quantityVariance");
+        openapiFields.add("priceVariance");
+        openapiFields.add("paidQuantity");
+        openapiFields.add("paidAmount");
+        openapiFields.add("varianceReasons");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("matchedQuantity");
+        openapiRequiredFields.add("matchedAmount");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MatchingContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MatchingContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MatchingContext is not found in the empty JSON string",
+                        MatchingContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MatchingContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MatchingContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : MatchingContext.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `matchedAmount`
+        Currency.validateJsonElement(jsonObj.get("matchedAmount"));
+        // validate the optional field `priceVariance`
+        if (jsonObj.get("priceVariance") != null
+                && !jsonObj.get("priceVariance").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("priceVariance"));
+        }
+        // validate the optional field `paidAmount`
+        if (jsonObj.get("paidAmount") != null && !jsonObj.get("paidAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("paidAmount"));
+        }
+        if (jsonObj.get("varianceReasons") != null
+                && !jsonObj.get("varianceReasons").isJsonNull()) {
+            JsonArray jsonArrayvarianceReasons = jsonObj.getAsJsonArray("varianceReasons");
+            if (jsonArrayvarianceReasons != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("varianceReasons").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `varianceReasons` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("varianceReasons").toString()));
+                }
+
+                // validate the optional field `varianceReasons` (array)
+                for (int i = 0; i < jsonArrayvarianceReasons.size(); i++) {
+                    VarianceReason.validateJsonElement(jsonArrayvarianceReasons.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MatchingContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MatchingContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MatchingContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MatchingContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MatchingContext>() {
+                        @Override
+                        public void write(JsonWriter out, MatchingContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MatchingContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MatchingContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MatchingContext
+     * @throws IOException if the JSON string is invalid with respect to MatchingContext
+     */
+    public static MatchingContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MatchingContext.class);
+    }
+
+    /**
+     * Convert an instance of MatchingContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

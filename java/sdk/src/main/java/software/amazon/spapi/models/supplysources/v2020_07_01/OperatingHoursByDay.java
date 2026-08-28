@@ -12,32 +12,63 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The operating hours per day */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The operating hours per day")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OperatingHoursByDay {
-    @SerializedName("monday")
-    private OperatingHours monday = null;
+    public static final String SERIALIZED_NAME_MONDAY = "monday";
 
-    @SerializedName("tuesday")
-    private OperatingHours tuesday = null;
+    @SerializedName(SERIALIZED_NAME_MONDAY)
+    private OperatingHours monday = new ArrayList<>();
 
-    @SerializedName("wednesday")
-    private OperatingHours wednesday = null;
+    public static final String SERIALIZED_NAME_TUESDAY = "tuesday";
 
-    @SerializedName("thursday")
-    private OperatingHours thursday = null;
+    @SerializedName(SERIALIZED_NAME_TUESDAY)
+    private OperatingHours tuesday = new ArrayList<>();
 
-    @SerializedName("friday")
-    private OperatingHours friday = null;
+    public static final String SERIALIZED_NAME_WEDNESDAY = "wednesday";
 
-    @SerializedName("saturday")
-    private OperatingHours saturday = null;
+    @SerializedName(SERIALIZED_NAME_WEDNESDAY)
+    private OperatingHours wednesday = new ArrayList<>();
 
-    @SerializedName("sunday")
-    private OperatingHours sunday = null;
+    public static final String SERIALIZED_NAME_THURSDAY = "thursday";
+
+    @SerializedName(SERIALIZED_NAME_THURSDAY)
+    private OperatingHours thursday = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FRIDAY = "friday";
+
+    @SerializedName(SERIALIZED_NAME_FRIDAY)
+    private OperatingHours friday = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SATURDAY = "saturday";
+
+    @SerializedName(SERIALIZED_NAME_SATURDAY)
+    private OperatingHours saturday = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUNDAY = "sunday";
+
+    @SerializedName(SERIALIZED_NAME_SUNDAY)
+    private OperatingHours sunday = new ArrayList<>();
+
+    public OperatingHoursByDay() {}
 
     public OperatingHoursByDay monday(OperatingHours monday) {
         this.monday = monday;
@@ -49,8 +80,7 @@ public class OperatingHoursByDay {
      *
      * @return monday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getMonday() {
+    @javax.annotation.Nullable public OperatingHours getMonday() {
         return monday;
     }
 
@@ -68,8 +98,7 @@ public class OperatingHoursByDay {
      *
      * @return tuesday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getTuesday() {
+    @javax.annotation.Nullable public OperatingHours getTuesday() {
         return tuesday;
     }
 
@@ -87,8 +116,7 @@ public class OperatingHoursByDay {
      *
      * @return wednesday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getWednesday() {
+    @javax.annotation.Nullable public OperatingHours getWednesday() {
         return wednesday;
     }
 
@@ -106,8 +134,7 @@ public class OperatingHoursByDay {
      *
      * @return thursday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getThursday() {
+    @javax.annotation.Nullable public OperatingHours getThursday() {
         return thursday;
     }
 
@@ -125,8 +152,7 @@ public class OperatingHoursByDay {
      *
      * @return friday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getFriday() {
+    @javax.annotation.Nullable public OperatingHours getFriday() {
         return friday;
     }
 
@@ -144,8 +170,7 @@ public class OperatingHoursByDay {
      *
      * @return saturday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getSaturday() {
+    @javax.annotation.Nullable public OperatingHours getSaturday() {
         return saturday;
     }
 
@@ -163,8 +188,7 @@ public class OperatingHoursByDay {
      *
      * @return sunday
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHours getSunday() {
+    @javax.annotation.Nullable public OperatingHours getSunday() {
         return sunday;
     }
 
@@ -173,7 +197,7 @@ public class OperatingHoursByDay {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -211,10 +235,105 @@ public class OperatingHoursByDay {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("monday");
+        openapiFields.add("tuesday");
+        openapiFields.add("wednesday");
+        openapiFields.add("thursday");
+        openapiFields.add("friday");
+        openapiFields.add("saturday");
+        openapiFields.add("sunday");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OperatingHoursByDay
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OperatingHoursByDay.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OperatingHoursByDay is not found in the empty JSON string",
+                        OperatingHoursByDay.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OperatingHoursByDay.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OperatingHoursByDay` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OperatingHoursByDay.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OperatingHoursByDay' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OperatingHoursByDay> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OperatingHoursByDay.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OperatingHoursByDay>() {
+                        @Override
+                        public void write(JsonWriter out, OperatingHoursByDay value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OperatingHoursByDay read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OperatingHoursByDay given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OperatingHoursByDay
+     * @throws IOException if the JSON string is invalid with respect to OperatingHoursByDay
+     */
+    public static OperatingHoursByDay fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OperatingHoursByDay.class);
+    }
+
+    /**
+     * Convert an instance of OperatingHoursByDay to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

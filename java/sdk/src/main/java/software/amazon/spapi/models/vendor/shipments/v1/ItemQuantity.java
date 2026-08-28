@@ -12,26 +12,38 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of item quantity. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemQuantity {
-    @SerializedName("amount")
-    private Integer amount = null;
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Integer amount;
 
     /** Unit of measure for the shipped quantity. */
     @JsonAdapter(UnitOfMeasureEnum.Adapter.class)
     public enum UnitOfMeasureEnum {
-        @SerializedName("Cases")
         CASES("Cases"),
-        @SerializedName("Eaches")
+
         EACHES("Eaches");
 
         private String value;
@@ -49,37 +61,50 @@ public class ItemQuantity {
             return String.valueOf(value);
         }
 
-        public static UnitOfMeasureEnum fromValue(String input) {
+        public static UnitOfMeasureEnum fromValue(String value) {
             for (UnitOfMeasureEnum b : UnitOfMeasureEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<UnitOfMeasureEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final UnitOfMeasureEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public UnitOfMeasureEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return UnitOfMeasureEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return UnitOfMeasureEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            UnitOfMeasureEnum.fromValue(value);
         }
     }
 
-    @SerializedName("unitOfMeasure")
-    private UnitOfMeasureEnum unitOfMeasure = null;
+    public static final String SERIALIZED_NAME_UNIT_OF_MEASURE = "unitOfMeasure";
 
-    @SerializedName("unitSize")
-    private Integer unitSize = null;
+    @SerializedName(SERIALIZED_NAME_UNIT_OF_MEASURE)
+    private UnitOfMeasureEnum unitOfMeasure;
 
-    @SerializedName("totalWeight")
-    private TotalWeight totalWeight = null;
+    public static final String SERIALIZED_NAME_UNIT_SIZE = "unitSize";
+
+    @SerializedName(SERIALIZED_NAME_UNIT_SIZE)
+    private Integer unitSize;
+
+    public static final String SERIALIZED_NAME_TOTAL_WEIGHT = "totalWeight";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_WEIGHT)
+    private TotalWeight totalWeight;
+
+    public ItemQuantity() {}
 
     public ItemQuantity amount(Integer amount) {
         this.amount = amount;
@@ -92,10 +117,7 @@ public class ItemQuantity {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Amount of units shipped for a specific item at a shipment level. If the item is present only in certain cartons or pallets within the shipment, please provide this at the appropriate carton or pallet level.")
+    @javax.annotation.Nonnull
     public Integer getAmount() {
         return amount;
     }
@@ -114,9 +136,7 @@ public class ItemQuantity {
      *
      * @return unitOfMeasure
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Unit of measure for the shipped quantity.")
+    @javax.annotation.Nonnull
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -135,9 +155,7 @@ public class ItemQuantity {
      *
      * @return unitSize
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The case size, in the event that we ordered using cases. Otherwise, 1.")
-    public Integer getUnitSize() {
+    @javax.annotation.Nullable public Integer getUnitSize() {
         return unitSize;
     }
 
@@ -155,8 +173,7 @@ public class ItemQuantity {
      *
      * @return totalWeight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TotalWeight getTotalWeight() {
+    @javax.annotation.Nullable public TotalWeight getTotalWeight() {
         return totalWeight;
     }
 
@@ -165,7 +182,7 @@ public class ItemQuantity {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,10 +214,124 @@ public class ItemQuantity {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("amount");
+        openapiFields.add("unitOfMeasure");
+        openapiFields.add("unitSize");
+        openapiFields.add("totalWeight");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("amount");
+        openapiRequiredFields.add("unitOfMeasure");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemQuantity
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemQuantity.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemQuantity is not found in the empty JSON string",
+                        ItemQuantity.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemQuantity.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemQuantity` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemQuantity.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("unitOfMeasure").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `unitOfMeasure` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("unitOfMeasure").toString()));
+        }
+        // validate the required field `unitOfMeasure`
+        UnitOfMeasureEnum.validateJsonElement(jsonObj.get("unitOfMeasure"));
+        // validate the optional field `totalWeight`
+        if (jsonObj.get("totalWeight") != null && !jsonObj.get("totalWeight").isJsonNull()) {
+            TotalWeight.validateJsonElement(jsonObj.get("totalWeight"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemQuantity.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemQuantity' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemQuantity> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemQuantity.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemQuantity>() {
+                        @Override
+                        public void write(JsonWriter out, ItemQuantity value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemQuantity read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemQuantity given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemQuantity
+     * @throws IOException if the JSON string is invalid with respect to ItemQuantity
+     */
+    public static ItemQuantity fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemQuantity.class);
+    }
+
+    /**
+     * Convert an instance of ItemQuantity to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

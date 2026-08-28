@@ -12,39 +12,74 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information required to purchase shipping. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information required to purchase shipping.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AdditionalSellerInput {
-    @SerializedName("DataType")
-    private String dataType = null;
+    public static final String SERIALIZED_NAME_DATA_TYPE = "DataType";
 
-    @SerializedName("ValueAsString")
-    private String valueAsString = null;
+    @SerializedName(SERIALIZED_NAME_DATA_TYPE)
+    private String dataType;
 
-    @SerializedName("ValueAsBoolean")
-    private Boolean valueAsBoolean = null;
+    public static final String SERIALIZED_NAME_VALUE_AS_STRING = "ValueAsString";
 
-    @SerializedName("ValueAsInteger")
-    private Integer valueAsInteger = null;
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_STRING)
+    private String valueAsString;
 
-    @SerializedName("ValueAsTimestamp")
-    private OffsetDateTime valueAsTimestamp = null;
+    public static final String SERIALIZED_NAME_VALUE_AS_BOOLEAN = "ValueAsBoolean";
 
-    @SerializedName("ValueAsAddress")
-    private Address valueAsAddress = null;
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_BOOLEAN)
+    private Boolean valueAsBoolean;
 
-    @SerializedName("ValueAsWeight")
-    private Weight valueAsWeight = null;
+    public static final String SERIALIZED_NAME_VALUE_AS_INTEGER = "ValueAsInteger";
 
-    @SerializedName("ValueAsDimension")
-    private Length valueAsDimension = null;
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_INTEGER)
+    private Integer valueAsInteger;
 
-    @SerializedName("ValueAsCurrency")
-    private CurrencyAmount valueAsCurrency = null;
+    public static final String SERIALIZED_NAME_VALUE_AS_TIMESTAMP = "ValueAsTimestamp";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_TIMESTAMP)
+    private OffsetDateTime valueAsTimestamp;
+
+    public static final String SERIALIZED_NAME_VALUE_AS_ADDRESS = "ValueAsAddress";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_ADDRESS)
+    private Address valueAsAddress;
+
+    public static final String SERIALIZED_NAME_VALUE_AS_WEIGHT = "ValueAsWeight";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_WEIGHT)
+    private Weight valueAsWeight;
+
+    public static final String SERIALIZED_NAME_VALUE_AS_DIMENSION = "ValueAsDimension";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_DIMENSION)
+    private Length valueAsDimension;
+
+    public static final String SERIALIZED_NAME_VALUE_AS_CURRENCY = "ValueAsCurrency";
+
+    @SerializedName(SERIALIZED_NAME_VALUE_AS_CURRENCY)
+    private CurrencyAmount valueAsCurrency;
+
+    public AdditionalSellerInput() {}
 
     public AdditionalSellerInput dataType(String dataType) {
         this.dataType = dataType;
@@ -56,8 +91,7 @@ public class AdditionalSellerInput {
      *
      * @return dataType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The data type of the additional information.")
-    public String getDataType() {
+    @javax.annotation.Nullable public String getDataType() {
         return dataType;
     }
 
@@ -75,8 +109,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsString
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is string.")
-    public String getValueAsString() {
+    @javax.annotation.Nullable public String getValueAsString() {
         return valueAsString;
     }
 
@@ -94,8 +127,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsBoolean
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is boolean.")
-    public Boolean getValueAsBoolean() {
+    @javax.annotation.Nullable public Boolean getValueAsBoolean() {
         return valueAsBoolean;
     }
 
@@ -113,8 +145,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsInteger
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is integer.")
-    public Integer getValueAsInteger() {
+    @javax.annotation.Nullable public Integer getValueAsInteger() {
         return valueAsInteger;
     }
 
@@ -132,8 +163,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsTimestamp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getValueAsTimestamp() {
+    @javax.annotation.Nullable public OffsetDateTime getValueAsTimestamp() {
         return valueAsTimestamp;
     }
 
@@ -151,8 +181,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getValueAsAddress() {
+    @javax.annotation.Nullable public Address getValueAsAddress() {
         return valueAsAddress;
     }
 
@@ -170,8 +199,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsWeight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getValueAsWeight() {
+    @javax.annotation.Nullable public Weight getValueAsWeight() {
         return valueAsWeight;
     }
 
@@ -189,8 +217,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsDimension
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Length getValueAsDimension() {
+    @javax.annotation.Nullable public Length getValueAsDimension() {
         return valueAsDimension;
     }
 
@@ -208,8 +235,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsCurrency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CurrencyAmount getValueAsCurrency() {
+    @javax.annotation.Nullable public CurrencyAmount getValueAsCurrency() {
         return valueAsCurrency;
     }
 
@@ -218,7 +244,7 @@ public class AdditionalSellerInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -281,10 +307,141 @@ public class AdditionalSellerInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("DataType");
+        openapiFields.add("ValueAsString");
+        openapiFields.add("ValueAsBoolean");
+        openapiFields.add("ValueAsInteger");
+        openapiFields.add("ValueAsTimestamp");
+        openapiFields.add("ValueAsAddress");
+        openapiFields.add("ValueAsWeight");
+        openapiFields.add("ValueAsDimension");
+        openapiFields.add("ValueAsCurrency");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AdditionalSellerInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AdditionalSellerInput.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AdditionalSellerInput is not found in the empty JSON string",
+                        AdditionalSellerInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AdditionalSellerInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AdditionalSellerInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("DataType") != null && !jsonObj.get("DataType").isJsonNull())
+                && !jsonObj.get("DataType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DataType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DataType").toString()));
+        }
+        if ((jsonObj.get("ValueAsString") != null
+                        && !jsonObj.get("ValueAsString").isJsonNull())
+                && !jsonObj.get("ValueAsString").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ValueAsString` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ValueAsString").toString()));
+        }
+        // validate the optional field `ValueAsAddress`
+        if (jsonObj.get("ValueAsAddress") != null
+                && !jsonObj.get("ValueAsAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("ValueAsAddress"));
+        }
+        // validate the optional field `ValueAsWeight`
+        if (jsonObj.get("ValueAsWeight") != null
+                && !jsonObj.get("ValueAsWeight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("ValueAsWeight"));
+        }
+        // validate the optional field `ValueAsDimension`
+        if (jsonObj.get("ValueAsDimension") != null
+                && !jsonObj.get("ValueAsDimension").isJsonNull()) {
+            Length.validateJsonElement(jsonObj.get("ValueAsDimension"));
+        }
+        // validate the optional field `ValueAsCurrency`
+        if (jsonObj.get("ValueAsCurrency") != null
+                && !jsonObj.get("ValueAsCurrency").isJsonNull()) {
+            CurrencyAmount.validateJsonElement(jsonObj.get("ValueAsCurrency"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AdditionalSellerInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AdditionalSellerInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AdditionalSellerInput> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AdditionalSellerInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AdditionalSellerInput>() {
+                        @Override
+                        public void write(JsonWriter out, AdditionalSellerInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AdditionalSellerInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AdditionalSellerInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AdditionalSellerInput
+     * @throws IOException if the JSON string is invalid with respect to AdditionalSellerInput
+     */
+    public static AdditionalSellerInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AdditionalSellerInput.class);
+    }
+
+    /**
+     * Convert an instance of AdditionalSellerInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

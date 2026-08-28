@@ -12,37 +12,68 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents the current status of an order item, including acknowledgement and receiving details. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents the current status of an order item, including acknowledgement and receiving details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItemStatus {
-    @SerializedName("itemSequenceNumber")
-    private String itemSequenceNumber = null;
+    public static final String SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER = "itemSequenceNumber";
 
-    @SerializedName("buyerProductIdentifier")
-    private String buyerProductIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER)
+    private String itemSequenceNumber;
 
-    @SerializedName("vendorProductIdentifier")
-    private String vendorProductIdentifier = null;
+    public static final String SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER = "buyerProductIdentifier";
 
-    @SerializedName("netCost")
-    private Money netCost = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER)
+    private String buyerProductIdentifier;
 
-    @SerializedName("listPrice")
-    private Money listPrice = null;
+    public static final String SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER = "vendorProductIdentifier";
 
-    @SerializedName("orderedQuantity")
-    private OrderItemStatusOrderedQuantity orderedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER)
+    private String vendorProductIdentifier;
 
-    @SerializedName("acknowledgementStatus")
-    private OrderItemStatusAcknowledgementStatus acknowledgementStatus = null;
+    public static final String SERIALIZED_NAME_NET_COST = "netCost";
 
-    @SerializedName("receivingStatus")
-    private OrderItemStatusReceivingStatus receivingStatus = null;
+    @SerializedName(SERIALIZED_NAME_NET_COST)
+    private Money netCost;
+
+    public static final String SERIALIZED_NAME_LIST_PRICE = "listPrice";
+
+    @SerializedName(SERIALIZED_NAME_LIST_PRICE)
+    private Money listPrice;
+
+    public static final String SERIALIZED_NAME_ORDERED_QUANTITY = "orderedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_ORDERED_QUANTITY)
+    private OrderItemStatusOrderedQuantity orderedQuantity;
+
+    public static final String SERIALIZED_NAME_ACKNOWLEDGEMENT_STATUS = "acknowledgementStatus";
+
+    @SerializedName(SERIALIZED_NAME_ACKNOWLEDGEMENT_STATUS)
+    private OrderItemStatusAcknowledgementStatus acknowledgementStatus;
+
+    public static final String SERIALIZED_NAME_RECEIVING_STATUS = "receivingStatus";
+
+    @SerializedName(SERIALIZED_NAME_RECEIVING_STATUS)
+    private OrderItemStatusReceivingStatus receivingStatus;
+
+    public OrderItemStatus() {}
 
     public OrderItemStatus itemSequenceNumber(String itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;
@@ -54,10 +85,7 @@ public class OrderItemStatus {
      *
      * @return itemSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
+    @javax.annotation.Nonnull
     public String getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -76,9 +104,7 @@ public class OrderItemStatus {
      *
      * @return buyerProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Buyer's Standard Identification Number (ASIN) of an item.")
-    public String getBuyerProductIdentifier() {
+    @javax.annotation.Nullable public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
 
@@ -96,8 +122,7 @@ public class OrderItemStatus {
      *
      * @return vendorProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
-    public String getVendorProductIdentifier() {
+    @javax.annotation.Nullable public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
 
@@ -115,8 +140,7 @@ public class OrderItemStatus {
      *
      * @return netCost
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getNetCost() {
+    @javax.annotation.Nullable public Money getNetCost() {
         return netCost;
     }
 
@@ -134,8 +158,7 @@ public class OrderItemStatus {
      *
      * @return listPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getListPrice() {
+    @javax.annotation.Nullable public Money getListPrice() {
         return listPrice;
     }
 
@@ -153,8 +176,7 @@ public class OrderItemStatus {
      *
      * @return orderedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderItemStatusOrderedQuantity getOrderedQuantity() {
+    @javax.annotation.Nullable public OrderItemStatusOrderedQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
 
@@ -172,8 +194,7 @@ public class OrderItemStatus {
      *
      * @return acknowledgementStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderItemStatusAcknowledgementStatus getAcknowledgementStatus() {
+    @javax.annotation.Nullable public OrderItemStatusAcknowledgementStatus getAcknowledgementStatus() {
         return acknowledgementStatus;
     }
 
@@ -191,8 +212,7 @@ public class OrderItemStatus {
      *
      * @return receivingStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderItemStatusReceivingStatus getReceivingStatus() {
+    @javax.annotation.Nullable public OrderItemStatusReceivingStatus getReceivingStatus() {
         return receivingStatus;
     }
 
@@ -201,7 +221,7 @@ public class OrderItemStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -261,10 +281,158 @@ public class OrderItemStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemSequenceNumber");
+        openapiFields.add("buyerProductIdentifier");
+        openapiFields.add("vendorProductIdentifier");
+        openapiFields.add("netCost");
+        openapiFields.add("listPrice");
+        openapiFields.add("orderedQuantity");
+        openapiFields.add("acknowledgementStatus");
+        openapiFields.add("receivingStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("itemSequenceNumber");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItemStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItemStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItemStatus is not found in the empty JSON string",
+                        OrderItemStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItemStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItemStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderItemStatus.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("itemSequenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemSequenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemSequenceNumber").toString()));
+        }
+        if ((jsonObj.get("buyerProductIdentifier") != null
+                        && !jsonObj.get("buyerProductIdentifier").isJsonNull())
+                && !jsonObj.get("buyerProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyerProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyerProductIdentifier").toString()));
+        }
+        if ((jsonObj.get("vendorProductIdentifier") != null
+                        && !jsonObj.get("vendorProductIdentifier").isJsonNull())
+                && !jsonObj.get("vendorProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorProductIdentifier").toString()));
+        }
+        // validate the optional field `netCost`
+        if (jsonObj.get("netCost") != null && !jsonObj.get("netCost").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("netCost"));
+        }
+        // validate the optional field `listPrice`
+        if (jsonObj.get("listPrice") != null && !jsonObj.get("listPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("listPrice"));
+        }
+        // validate the optional field `orderedQuantity`
+        if (jsonObj.get("orderedQuantity") != null
+                && !jsonObj.get("orderedQuantity").isJsonNull()) {
+            OrderItemStatusOrderedQuantity.validateJsonElement(jsonObj.get("orderedQuantity"));
+        }
+        // validate the optional field `acknowledgementStatus`
+        if (jsonObj.get("acknowledgementStatus") != null
+                && !jsonObj.get("acknowledgementStatus").isJsonNull()) {
+            OrderItemStatusAcknowledgementStatus.validateJsonElement(jsonObj.get("acknowledgementStatus"));
+        }
+        // validate the optional field `receivingStatus`
+        if (jsonObj.get("receivingStatus") != null
+                && !jsonObj.get("receivingStatus").isJsonNull()) {
+            OrderItemStatusReceivingStatus.validateJsonElement(jsonObj.get("receivingStatus"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItemStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItemStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItemStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderItemStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItemStatus>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItemStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItemStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItemStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItemStatus
+     * @throws IOException if the JSON string is invalid with respect to OrderItemStatus
+     */
+    public static OrderItemStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItemStatus.class);
+    }
+
+    /**
+     * Convert an instance of OrderItemStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

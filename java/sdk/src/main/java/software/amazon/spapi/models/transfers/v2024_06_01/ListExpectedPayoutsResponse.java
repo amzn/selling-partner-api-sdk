@@ -12,20 +12,41 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;listExpectedPayouts&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The response schema for the `listExpectedPayouts` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListExpectedPayoutsResponse {
-    @SerializedName("expectedPayouts")
-    private List<ExpectedPayout> expectedPayouts = null;
+    public static final String SERIALIZED_NAME_EXPECTED_PAYOUTS = "expectedPayouts";
 
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_EXPECTED_PAYOUTS)
+    private List<ExpectedPayout> expectedPayouts = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public ListExpectedPayoutsResponse() {}
 
     public ListExpectedPayoutsResponse expectedPayouts(List<ExpectedPayout> expectedPayouts) {
         this.expectedPayouts = expectedPayouts;
@@ -45,9 +66,7 @@ public class ListExpectedPayoutsResponse {
      *
      * @return expectedPayouts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of expected payouts for all of the selling partner's accounts matching the filters.")
-    public List<ExpectedPayout> getExpectedPayouts() {
+    @javax.annotation.Nullable public List<ExpectedPayout> getExpectedPayouts() {
         return expectedPayouts;
     }
 
@@ -68,10 +87,7 @@ public class ListExpectedPayoutsResponse {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -80,7 +96,7 @@ public class ListExpectedPayoutsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -110,10 +126,125 @@ public class ListExpectedPayoutsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("expectedPayouts");
+        openapiFields.add("nextToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListExpectedPayoutsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListExpectedPayoutsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListExpectedPayoutsResponse is not found in the empty JSON string",
+                        ListExpectedPayoutsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListExpectedPayoutsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListExpectedPayoutsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("expectedPayouts") != null
+                && !jsonObj.get("expectedPayouts").isJsonNull()) {
+            JsonArray jsonArrayexpectedPayouts = jsonObj.getAsJsonArray("expectedPayouts");
+            if (jsonArrayexpectedPayouts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("expectedPayouts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `expectedPayouts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("expectedPayouts").toString()));
+                }
+
+                // validate the optional field `expectedPayouts` (array)
+                for (int i = 0; i < jsonArrayexpectedPayouts.size(); i++) {
+                    ExpectedPayout.validateJsonElement(jsonArrayexpectedPayouts.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListExpectedPayoutsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListExpectedPayoutsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListExpectedPayoutsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListExpectedPayoutsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListExpectedPayoutsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListExpectedPayoutsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListExpectedPayoutsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListExpectedPayoutsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListExpectedPayoutsResponse
+     * @throws IOException if the JSON string is invalid with respect to ListExpectedPayoutsResponse
+     */
+    public static ListExpectedPayoutsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListExpectedPayoutsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListExpectedPayoutsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

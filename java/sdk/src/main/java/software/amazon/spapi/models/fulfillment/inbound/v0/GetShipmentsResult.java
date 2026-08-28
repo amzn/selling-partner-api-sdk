@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Result for the get shipments operation */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Result for the get shipments operation")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetShipmentsResult {
-    @SerializedName("ShipmentData")
-    private InboundShipmentList shipmentData = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_DATA = "ShipmentData";
 
-    @SerializedName("NextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_DATA)
+    private InboundShipmentList shipmentData = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public GetShipmentsResult() {}
 
     public GetShipmentsResult shipmentData(InboundShipmentList shipmentData) {
         this.shipmentData = shipmentData;
@@ -34,8 +55,7 @@ public class GetShipmentsResult {
      *
      * @return shipmentData
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InboundShipmentList getShipmentData() {
+    @javax.annotation.Nullable public InboundShipmentList getShipmentData() {
         return shipmentData;
     }
 
@@ -53,10 +73,7 @@ public class GetShipmentsResult {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When present and not empty, pass this string token in the next request to return the next response page.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -65,7 +82,7 @@ public class GetShipmentsResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +110,106 @@ public class GetShipmentsResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentData");
+        openapiFields.add("NextToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetShipmentsResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetShipmentsResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetShipmentsResult is not found in the empty JSON string",
+                        GetShipmentsResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetShipmentsResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetShipmentsResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
+                && !jsonObj.get("NextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `NextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("NextToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetShipmentsResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetShipmentsResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetShipmentsResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetShipmentsResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetShipmentsResult>() {
+                        @Override
+                        public void write(JsonWriter out, GetShipmentsResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetShipmentsResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetShipmentsResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetShipmentsResult
+     * @throws IOException if the JSON string is invalid with respect to GetShipmentsResult
+     */
+    public static GetShipmentsResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetShipmentsResult.class);
+    }
+
+    /**
+     * Convert an instance of GetShipmentsResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

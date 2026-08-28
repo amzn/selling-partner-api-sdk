@@ -12,31 +12,42 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Party identification details for the shipment, applicable to direct fulfillment shipments. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Party identification details for the shipment, applicable to direct fulfillment shipments.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PartyIdentificationInfo {
-    @SerializedName("partyId")
-    private String partyId = null;
+    public static final String SERIALIZED_NAME_PARTY_ID = "partyId";
+
+    @SerializedName(SERIALIZED_NAME_PARTY_ID)
+    private String partyId;
 
     /** Assigned identification for the party. For example, a warehouse code or vendor code. */
     @JsonAdapter(PartyTypeEnum.Adapter.class)
     public enum PartyTypeEnum {
-        @SerializedName("BILL_TO_PARTY")
         BILL_TO_PARTY("BILL_TO_PARTY"),
-        @SerializedName("SHIP_TO_PARTY")
+
         SHIP_TO_PARTY("SHIP_TO_PARTY"),
-        @SerializedName("SHIP_FROM_PARTY")
+
         SHIP_FROM_PARTY("SHIP_FROM_PARTY"),
-        @SerializedName("SELLING_PARTY")
+
         SELLING_PARTY("SELLING_PARTY");
 
         private String value;
@@ -54,37 +65,50 @@ public class PartyIdentificationInfo {
             return String.valueOf(value);
         }
 
-        public static PartyTypeEnum fromValue(String input) {
+        public static PartyTypeEnum fromValue(String value) {
             for (PartyTypeEnum b : PartyTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PartyTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PartyTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PartyTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PartyTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PartyTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PartyTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("partyType")
-    private PartyTypeEnum partyType = null;
+    public static final String SERIALIZED_NAME_PARTY_TYPE = "partyType";
 
-    @SerializedName("address")
-    private Address address = null;
+    @SerializedName(SERIALIZED_NAME_PARTY_TYPE)
+    private PartyTypeEnum partyType;
 
-    @SerializedName("taxInfo")
-    private TaxRegistrationInfo taxInfo = null;
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public static final String SERIALIZED_NAME_TAX_INFO = "taxInfo";
+
+    @SerializedName(SERIALIZED_NAME_TAX_INFO)
+    private TaxRegistrationInfo taxInfo;
+
+    public PartyIdentificationInfo() {}
 
     public PartyIdentificationInfo partyId(String partyId) {
         this.partyId = partyId;
@@ -96,9 +120,7 @@ public class PartyIdentificationInfo {
      *
      * @return partyId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Assigned identification for the party. For example, a warehouse code or vendor code.")
+    @javax.annotation.Nonnull
     public String getPartyId() {
         return partyId;
     }
@@ -117,9 +139,7 @@ public class PartyIdentificationInfo {
      *
      * @return partyType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Assigned identification for the party. For example, a warehouse code or vendor code.")
+    @javax.annotation.Nonnull
     public PartyTypeEnum getPartyType() {
         return partyType;
     }
@@ -138,8 +158,7 @@ public class PartyIdentificationInfo {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getAddress() {
+    @javax.annotation.Nullable public Address getAddress() {
         return address;
     }
 
@@ -157,8 +176,7 @@ public class PartyIdentificationInfo {
      *
      * @return taxInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxRegistrationInfo getTaxInfo() {
+    @javax.annotation.Nullable public TaxRegistrationInfo getTaxInfo() {
         return taxInfo;
     }
 
@@ -167,7 +185,7 @@ public class PartyIdentificationInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -199,10 +217,134 @@ public class PartyIdentificationInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partyId");
+        openapiFields.add("partyType");
+        openapiFields.add("address");
+        openapiFields.add("taxInfo");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("partyId");
+        openapiRequiredFields.add("partyType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PartyIdentificationInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PartyIdentificationInfo.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PartyIdentificationInfo is not found in the empty JSON string",
+                        PartyIdentificationInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PartyIdentificationInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PartyIdentificationInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PartyIdentificationInfo.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("partyId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partyId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partyId").toString()));
+        }
+        if (!jsonObj.get("partyType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `partyType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("partyType").toString()));
+        }
+        // validate the required field `partyType`
+        PartyTypeEnum.validateJsonElement(jsonObj.get("partyType"));
+        // validate the optional field `address`
+        if (jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("address"));
+        }
+        // validate the optional field `taxInfo`
+        if (jsonObj.get("taxInfo") != null && !jsonObj.get("taxInfo").isJsonNull()) {
+            TaxRegistrationInfo.validateJsonElement(jsonObj.get("taxInfo"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PartyIdentificationInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PartyIdentificationInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PartyIdentificationInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PartyIdentificationInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PartyIdentificationInfo>() {
+                        @Override
+                        public void write(JsonWriter out, PartyIdentificationInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PartyIdentificationInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PartyIdentificationInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PartyIdentificationInfo
+     * @throws IOException if the JSON string is invalid with respect to PartyIdentificationInfo
+     */
+    public static PartyIdentificationInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PartyIdentificationInfo.class);
+    }
+
+    /**
+     * Convert an instance of PartyIdentificationInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

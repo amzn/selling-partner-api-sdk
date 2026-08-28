@@ -12,15 +12,25 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Promotion-level benefit configuration. Applicable to &#x60;COUPON&#x60; and &#x60;BASKET_BUILDING&#x60; promotion
@@ -28,25 +38,30 @@ import java.util.Objects;
  * &#x60;PRICE_DISCOUNT&#x60; promotion types, benefits are configured at the item level within each item in the
  * selection.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Promotion-level benefit configuration. Applicable to `COUPON` and `BASKET_BUILDING` promotion types, where the benefit applies uniformly across all items in the promotion. For `DEAL` and `PRICE_DISCOUNT` promotion types, benefits are configured at the item level within each item in the selection.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PromotionBenefit {
-    @SerializedName("discount")
-    private Discount discount = null;
+    public static final String SERIALIZED_NAME_DISCOUNT = "discount";
 
-    @SerializedName("benefitQuantity")
-    private Integer benefitQuantity = null;
+    @SerializedName(SERIALIZED_NAME_DISCOUNT)
+    private Discount discount;
 
-    @SerializedName("perCustomerUses")
-    private Integer perCustomerUses = null;
+    public static final String SERIALIZED_NAME_BENEFIT_QUANTITY = "benefitQuantity";
+
+    @SerializedName(SERIALIZED_NAME_BENEFIT_QUANTITY)
+    private Integer benefitQuantity;
+
+    public static final String SERIALIZED_NAME_PER_CUSTOMER_USES = "perCustomerUses";
+
+    @SerializedName(SERIALIZED_NAME_PER_CUSTOMER_USES)
+    private Integer perCustomerUses;
 
     /** Whether this benefit can be stacked with other promotions. */
     @JsonAdapter(StackingEnum.Adapter.class)
     public enum StackingEnum {
-        @SerializedName("ALLOWED")
         ALLOWED("ALLOWED"),
-        @SerializedName("NOT_ALLOWED")
+
         NOT_ALLOWED("NOT_ALLOWED");
 
         private String value;
@@ -64,34 +79,45 @@ public class PromotionBenefit {
             return String.valueOf(value);
         }
 
-        public static StackingEnum fromValue(String input) {
+        public static StackingEnum fromValue(String value) {
             for (StackingEnum b : StackingEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StackingEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StackingEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StackingEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StackingEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StackingEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StackingEnum.fromValue(value);
         }
     }
 
-    @SerializedName("stacking")
-    private StackingEnum stacking = null;
+    public static final String SERIALIZED_NAME_STACKING = "stacking";
 
-    @SerializedName("additionalTiers")
-    private List<BenefitTier> additionalTiers = null;
+    @SerializedName(SERIALIZED_NAME_STACKING)
+    private StackingEnum stacking;
+
+    public static final String SERIALIZED_NAME_ADDITIONAL_TIERS = "additionalTiers";
+
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_TIERS)
+    private List<BenefitTier> additionalTiers = new ArrayList<>();
+
+    public PromotionBenefit() {}
 
     public PromotionBenefit discount(Discount discount) {
         this.discount = discount;
@@ -103,8 +129,7 @@ public class PromotionBenefit {
      *
      * @return discount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Discount getDiscount() {
+    @javax.annotation.Nullable public Discount getDiscount() {
         return discount;
     }
 
@@ -123,10 +148,7 @@ public class PromotionBenefit {
      *
      * @return benefitQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The quantity of items from the benefit selection that receive the discount after the customer satisfies purchase conditions. This property is specific to `BASKET_BUILDING` promotions.")
-    public Integer getBenefitQuantity() {
+    @javax.annotation.Nullable public Integer getBenefitQuantity() {
         return benefitQuantity;
     }
 
@@ -140,13 +162,11 @@ public class PromotionBenefit {
     }
 
     /**
-     * The maximum number of uses per customer for this promotion.
+     * The maximum number of uses per customer for this promotion. minimum: 1
      *
      * @return perCustomerUses
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The maximum number of uses per customer for this promotion.")
-    public Integer getPerCustomerUses() {
+    @javax.annotation.Nullable public Integer getPerCustomerUses() {
         return perCustomerUses;
     }
 
@@ -164,9 +184,7 @@ public class PromotionBenefit {
      *
      * @return stacking
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Whether this benefit can be stacked with other promotions.")
-    public StackingEnum getStacking() {
+    @javax.annotation.Nullable public StackingEnum getStacking() {
         return stacking;
     }
 
@@ -195,10 +213,7 @@ public class PromotionBenefit {
      *
      * @return additionalTiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Progressive discount tiers offering increased benefits as customers purchase more. For example: buy 2 get 10% off, buy 3 get 15% off. For multi-tier `BASKET_BUILDING` promotions, each tier specifies additional purchase conditions and corresponding discounts beyond the first tier (defined in `benefit.discount` and `purchaseRequirements.condition`).")
-    public List<BenefitTier> getAdditionalTiers() {
+    @javax.annotation.Nullable public List<BenefitTier> getAdditionalTiers() {
         return additionalTiers;
     }
 
@@ -207,7 +222,7 @@ public class PromotionBenefit {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -247,10 +262,135 @@ public class PromotionBenefit {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("discount");
+        openapiFields.add("benefitQuantity");
+        openapiFields.add("perCustomerUses");
+        openapiFields.add("stacking");
+        openapiFields.add("additionalTiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PromotionBenefit
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PromotionBenefit.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PromotionBenefit is not found in the empty JSON string",
+                        PromotionBenefit.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PromotionBenefit.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PromotionBenefit` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `discount`
+        if (jsonObj.get("discount") != null && !jsonObj.get("discount").isJsonNull()) {
+            Discount.validateJsonElement(jsonObj.get("discount"));
+        }
+        if ((jsonObj.get("stacking") != null && !jsonObj.get("stacking").isJsonNull())
+                && !jsonObj.get("stacking").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `stacking` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("stacking").toString()));
+        }
+        // validate the optional field `stacking`
+        if (jsonObj.get("stacking") != null && !jsonObj.get("stacking").isJsonNull()) {
+            StackingEnum.validateJsonElement(jsonObj.get("stacking"));
+        }
+        if (jsonObj.get("additionalTiers") != null
+                && !jsonObj.get("additionalTiers").isJsonNull()) {
+            JsonArray jsonArrayadditionalTiers = jsonObj.getAsJsonArray("additionalTiers");
+            if (jsonArrayadditionalTiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("additionalTiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `additionalTiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("additionalTiers").toString()));
+                }
+
+                // validate the optional field `additionalTiers` (array)
+                for (int i = 0; i < jsonArrayadditionalTiers.size(); i++) {
+                    BenefitTier.validateJsonElement(jsonArrayadditionalTiers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PromotionBenefit.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PromotionBenefit' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PromotionBenefit> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PromotionBenefit.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PromotionBenefit>() {
+                        @Override
+                        public void write(JsonWriter out, PromotionBenefit value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PromotionBenefit read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PromotionBenefit given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PromotionBenefit
+     * @throws IOException if the JSON string is invalid with respect to PromotionBenefit
+     */
+    public static PromotionBenefit fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PromotionBenefit.class);
+    }
+
+    /**
+     * Convert an instance of PromotionBenefit to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,32 +12,63 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Specifies characteristics that apply to a seller input. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Specifies characteristics that apply to a seller input.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SellerInputDefinition {
-    @SerializedName("IsRequired")
-    private Boolean isRequired = null;
+    public static final String SERIALIZED_NAME_IS_REQUIRED = "IsRequired";
 
-    @SerializedName("DataType")
-    private String dataType = null;
+    @SerializedName(SERIALIZED_NAME_IS_REQUIRED)
+    private Boolean isRequired;
 
-    @SerializedName("Constraints")
-    private Constraints constraints = null;
+    public static final String SERIALIZED_NAME_DATA_TYPE = "DataType";
 
-    @SerializedName("InputDisplayText")
-    private String inputDisplayText = null;
+    @SerializedName(SERIALIZED_NAME_DATA_TYPE)
+    private String dataType;
 
-    @SerializedName("InputTarget")
-    private InputTargetType inputTarget = null;
+    public static final String SERIALIZED_NAME_CONSTRAINTS = "Constraints";
 
-    @SerializedName("StoredValue")
-    private AdditionalSellerInput storedValue = null;
+    @SerializedName(SERIALIZED_NAME_CONSTRAINTS)
+    private Constraints constraints = new ArrayList<>();
 
-    @SerializedName("RestrictedSetValues")
-    private RestrictedSetValues restrictedSetValues = null;
+    public static final String SERIALIZED_NAME_INPUT_DISPLAY_TEXT = "InputDisplayText";
+
+    @SerializedName(SERIALIZED_NAME_INPUT_DISPLAY_TEXT)
+    private String inputDisplayText;
+
+    public static final String SERIALIZED_NAME_INPUT_TARGET = "InputTarget";
+
+    @SerializedName(SERIALIZED_NAME_INPUT_TARGET)
+    private InputTargetType inputTarget;
+
+    public static final String SERIALIZED_NAME_STORED_VALUE = "StoredValue";
+
+    @SerializedName(SERIALIZED_NAME_STORED_VALUE)
+    private AdditionalSellerInput storedValue;
+
+    public static final String SERIALIZED_NAME_RESTRICTED_SET_VALUES = "RestrictedSetValues";
+
+    @SerializedName(SERIALIZED_NAME_RESTRICTED_SET_VALUES)
+    private RestrictedSetValues restrictedSetValues = new ArrayList<>();
+
+    public SellerInputDefinition() {}
 
     public SellerInputDefinition isRequired(Boolean isRequired) {
         this.isRequired = isRequired;
@@ -49,9 +80,7 @@ public class SellerInputDefinition {
      *
      * @return isRequired
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, the additional input field is required.")
+    @javax.annotation.Nonnull
     public Boolean getIsRequired() {
         return isRequired;
     }
@@ -70,9 +99,7 @@ public class SellerInputDefinition {
      *
      * @return dataType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The data type of the additional input field.")
+    @javax.annotation.Nonnull
     public String getDataType() {
         return dataType;
     }
@@ -91,7 +118,7 @@ public class SellerInputDefinition {
      *
      * @return constraints
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Constraints getConstraints() {
         return constraints;
     }
@@ -110,9 +137,7 @@ public class SellerInputDefinition {
      *
      * @return inputDisplayText
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The display text for the additional input field.")
+    @javax.annotation.Nonnull
     public String getInputDisplayText() {
         return inputDisplayText;
     }
@@ -131,8 +156,7 @@ public class SellerInputDefinition {
      *
      * @return inputTarget
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InputTargetType getInputTarget() {
+    @javax.annotation.Nullable public InputTargetType getInputTarget() {
         return inputTarget;
     }
 
@@ -150,7 +174,7 @@ public class SellerInputDefinition {
      *
      * @return storedValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public AdditionalSellerInput getStoredValue() {
         return storedValue;
     }
@@ -169,8 +193,7 @@ public class SellerInputDefinition {
      *
      * @return restrictedSetValues
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RestrictedSetValues getRestrictedSetValues() {
+    @javax.annotation.Nullable public RestrictedSetValues getRestrictedSetValues() {
         return restrictedSetValues;
     }
 
@@ -179,7 +202,7 @@ public class SellerInputDefinition {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -222,10 +245,136 @@ public class SellerInputDefinition {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("IsRequired");
+        openapiFields.add("DataType");
+        openapiFields.add("Constraints");
+        openapiFields.add("InputDisplayText");
+        openapiFields.add("InputTarget");
+        openapiFields.add("StoredValue");
+        openapiFields.add("RestrictedSetValues");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("IsRequired");
+        openapiRequiredFields.add("DataType");
+        openapiRequiredFields.add("Constraints");
+        openapiRequiredFields.add("InputDisplayText");
+        openapiRequiredFields.add("StoredValue");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SellerInputDefinition
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SellerInputDefinition.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SellerInputDefinition is not found in the empty JSON string",
+                        SellerInputDefinition.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SellerInputDefinition.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SellerInputDefinition` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SellerInputDefinition.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("DataType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DataType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DataType").toString()));
+        }
+        if (!jsonObj.get("InputDisplayText").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `InputDisplayText` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("InputDisplayText").toString()));
+        }
+        // validate the optional field `InputTarget`
+        if (jsonObj.get("InputTarget") != null && !jsonObj.get("InputTarget").isJsonNull()) {
+            InputTargetType.validateJsonElement(jsonObj.get("InputTarget"));
+        }
+        // validate the required field `StoredValue`
+        AdditionalSellerInput.validateJsonElement(jsonObj.get("StoredValue"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SellerInputDefinition.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SellerInputDefinition' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SellerInputDefinition> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SellerInputDefinition.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SellerInputDefinition>() {
+                        @Override
+                        public void write(JsonWriter out, SellerInputDefinition value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SellerInputDefinition read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SellerInputDefinition given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SellerInputDefinition
+     * @throws IOException if the JSON string is invalid with respect to SellerInputDefinition
+     */
+    public static SellerInputDefinition fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SellerInputDefinition.class);
+    }
+
+    /**
+     * Convert an instance of SellerInputDefinition to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

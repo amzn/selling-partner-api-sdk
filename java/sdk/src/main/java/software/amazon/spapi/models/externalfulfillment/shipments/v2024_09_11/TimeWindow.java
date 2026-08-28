@@ -12,30 +12,43 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Time duration used to specify the interval of an event, such as pick up and delivery. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Time duration used to specify the interval of an event, such as pick up and delivery.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TimeWindow {
-    @SerializedName("startTime")
-    private Long startTime = null;
+    public static final String SERIALIZED_NAME_START_TIME = "startTime";
 
-    @SerializedName("endTime")
-    private Long endTime = null;
+    @SerializedName(SERIALIZED_NAME_START_TIME)
+    private Long startTime;
+
+    public static final String SERIALIZED_NAME_END_TIME = "endTime";
+
+    @SerializedName(SERIALIZED_NAME_END_TIME)
+    private Long endTime;
 
     /** Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics. */
     @JsonAdapter(HandoverMethodEnum.Adapter.class)
     public enum HandoverMethodEnum {
-        @SerializedName("PICKUP")
         PICKUP("PICKUP"),
-        @SerializedName("DROPOFF")
+
         DROPOFF("DROPOFF");
 
         private String value;
@@ -53,31 +66,40 @@ public class TimeWindow {
             return String.valueOf(value);
         }
 
-        public static HandoverMethodEnum fromValue(String input) {
+        public static HandoverMethodEnum fromValue(String value) {
             for (HandoverMethodEnum b : HandoverMethodEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<HandoverMethodEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final HandoverMethodEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public HandoverMethodEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return HandoverMethodEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return HandoverMethodEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            HandoverMethodEnum.fromValue(value);
         }
     }
 
-    @SerializedName("handoverMethod")
-    private HandoverMethodEnum handoverMethod = null;
+    public static final String SERIALIZED_NAME_HANDOVER_METHOD = "handoverMethod";
+
+    @SerializedName(SERIALIZED_NAME_HANDOVER_METHOD)
+    private HandoverMethodEnum handoverMethod;
+
+    public TimeWindow() {}
 
     public TimeWindow startTime(Long startTime) {
         this.startTime = startTime;
@@ -89,7 +111,7 @@ public class TimeWindow {
      *
      * @return startTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The start time of the window.")
+    @javax.annotation.Nonnull
     public Long getStartTime() {
         return startTime;
     }
@@ -108,7 +130,7 @@ public class TimeWindow {
      *
      * @return endTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The end time of the window.")
+    @javax.annotation.Nonnull
     public Long getEndTime() {
         return endTime;
     }
@@ -127,9 +149,7 @@ public class TimeWindow {
      *
      * @return handoverMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics.")
-    public HandoverMethodEnum getHandoverMethod() {
+    @javax.annotation.Nullable public HandoverMethodEnum getHandoverMethod() {
         return handoverMethod;
     }
 
@@ -138,7 +158,7 @@ public class TimeWindow {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +190,123 @@ public class TimeWindow {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("startTime");
+        openapiFields.add("endTime");
+        openapiFields.add("handoverMethod");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("startTime");
+        openapiRequiredFields.add("endTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TimeWindow
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TimeWindow.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TimeWindow is not found in the empty JSON string",
+                        TimeWindow.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TimeWindow.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TimeWindow` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TimeWindow.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("handoverMethod") != null
+                        && !jsonObj.get("handoverMethod").isJsonNull())
+                && !jsonObj.get("handoverMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `handoverMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("handoverMethod").toString()));
+        }
+        // validate the optional field `handoverMethod`
+        if (jsonObj.get("handoverMethod") != null
+                && !jsonObj.get("handoverMethod").isJsonNull()) {
+            HandoverMethodEnum.validateJsonElement(jsonObj.get("handoverMethod"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TimeWindow.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TimeWindow' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TimeWindow> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(TimeWindow.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TimeWindow>() {
+                        @Override
+                        public void write(JsonWriter out, TimeWindow value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TimeWindow read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TimeWindow given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TimeWindow
+     * @throws IOException if the JSON string is invalid with respect to TimeWindow
+     */
+    public static TimeWindow fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TimeWindow.class);
+    }
+
+    /**
+     * Convert an instance of TimeWindow to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

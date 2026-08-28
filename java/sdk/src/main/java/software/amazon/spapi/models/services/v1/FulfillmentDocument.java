@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Document that captured during service appointment fulfillment that portrays proof of completion */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Document that captured during service appointment fulfillment that portrays proof of completion")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentDocument {
-    @SerializedName("uploadDestinationId")
-    private String uploadDestinationId = null;
+    public static final String SERIALIZED_NAME_UPLOAD_DESTINATION_ID = "uploadDestinationId";
 
-    @SerializedName("contentSha256")
-    private String contentSha256 = null;
+    @SerializedName(SERIALIZED_NAME_UPLOAD_DESTINATION_ID)
+    private String uploadDestinationId;
+
+    public static final String SERIALIZED_NAME_CONTENT_SHA256 = "contentSha256";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_SHA256)
+    private String contentSha256;
+
+    public FulfillmentDocument() {}
 
     public FulfillmentDocument uploadDestinationId(String uploadDestinationId) {
         this.uploadDestinationId = uploadDestinationId;
@@ -36,10 +56,7 @@ public class FulfillmentDocument {
      *
      * @return uploadDestinationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier of the upload destination. Get this value by calling the `createServiceDocumentUploadDestination` operation of the Services API.")
-    public String getUploadDestinationId() {
+    @javax.annotation.Nullable public String getUploadDestinationId() {
         return uploadDestinationId;
     }
 
@@ -58,10 +75,7 @@ public class FulfillmentDocument {
      *
      * @return contentSha256
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.")
-    public String getContentSha256() {
+    @javax.annotation.Nullable public String getContentSha256() {
         return contentSha256;
     }
 
@@ -70,7 +84,7 @@ public class FulfillmentDocument {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -100,10 +114,114 @@ public class FulfillmentDocument {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("uploadDestinationId");
+        openapiFields.add("contentSha256");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentDocument
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentDocument is not found in the empty JSON string",
+                        FulfillmentDocument.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentDocument.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentDocument` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("uploadDestinationId") != null
+                        && !jsonObj.get("uploadDestinationId").isJsonNull())
+                && !jsonObj.get("uploadDestinationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uploadDestinationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uploadDestinationId").toString()));
+        }
+        if ((jsonObj.get("contentSha256") != null
+                        && !jsonObj.get("contentSha256").isJsonNull())
+                && !jsonObj.get("contentSha256").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentSha256` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentSha256").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentDocument.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentDocument' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentDocument> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentDocument.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentDocument>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentDocument value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentDocument read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentDocument given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentDocument
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentDocument
+     */
+    public static FulfillmentDocument fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentDocument.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentDocument to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

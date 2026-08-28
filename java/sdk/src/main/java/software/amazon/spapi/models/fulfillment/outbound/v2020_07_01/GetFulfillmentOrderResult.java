@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request for the &#x60;getFulfillmentOrder&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `getFulfillmentOrder` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetFulfillmentOrderResult {
-    @SerializedName("fulfillmentOrder")
-    private FulfillmentOrder fulfillmentOrder = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_ORDER = "fulfillmentOrder";
 
-    @SerializedName("fulfillmentOrderItems")
-    private FulfillmentOrderItemList fulfillmentOrderItems = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDER)
+    private FulfillmentOrder fulfillmentOrder;
 
-    @SerializedName("fulfillmentShipments")
-    private FulfillmentShipmentList fulfillmentShipments = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_ORDER_ITEMS = "fulfillmentOrderItems";
 
-    @SerializedName("returnItems")
-    private ReturnItemList returnItems = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDER_ITEMS)
+    private FulfillmentOrderItemList fulfillmentOrderItems = new ArrayList<>();
 
-    @SerializedName("returnAuthorizations")
-    private ReturnAuthorizationList returnAuthorizations = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_SHIPMENTS = "fulfillmentShipments";
 
-    @SerializedName("paymentInformation")
-    private PaymentInformationList paymentInformation = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_SHIPMENTS)
+    private FulfillmentShipmentList fulfillmentShipments = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RETURN_ITEMS = "returnItems";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_ITEMS)
+    private ReturnItemList returnItems = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RETURN_AUTHORIZATIONS = "returnAuthorizations";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_AUTHORIZATIONS)
+    private ReturnAuthorizationList returnAuthorizations = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAYMENT_INFORMATION = "paymentInformation";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_INFORMATION)
+    private PaymentInformationList paymentInformation = new ArrayList<>();
+
+    public GetFulfillmentOrderResult() {}
 
     public GetFulfillmentOrderResult fulfillmentOrder(FulfillmentOrder fulfillmentOrder) {
         this.fulfillmentOrder = fulfillmentOrder;
@@ -46,7 +75,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentOrder
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentOrder getFulfillmentOrder() {
         return fulfillmentOrder;
     }
@@ -65,7 +94,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentOrderItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentOrderItemList getFulfillmentOrderItems() {
         return fulfillmentOrderItems;
     }
@@ -84,8 +113,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return fulfillmentShipments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentShipmentList getFulfillmentShipments() {
+    @javax.annotation.Nullable public FulfillmentShipmentList getFulfillmentShipments() {
         return fulfillmentShipments;
     }
 
@@ -103,7 +131,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return returnItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReturnItemList getReturnItems() {
         return returnItems;
     }
@@ -122,7 +150,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return returnAuthorizations
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ReturnAuthorizationList getReturnAuthorizations() {
         return returnAuthorizations;
     }
@@ -141,8 +169,7 @@ public class GetFulfillmentOrderResult {
      *
      * @return paymentInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentInformationList getPaymentInformation() {
+    @javax.annotation.Nullable public PaymentInformationList getPaymentInformation() {
         return paymentInformation;
     }
 
@@ -151,7 +178,7 @@ public class GetFulfillmentOrderResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -203,10 +230,120 @@ public class GetFulfillmentOrderResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("fulfillmentOrder");
+        openapiFields.add("fulfillmentOrderItems");
+        openapiFields.add("fulfillmentShipments");
+        openapiFields.add("returnItems");
+        openapiFields.add("returnAuthorizations");
+        openapiFields.add("paymentInformation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("fulfillmentOrder");
+        openapiRequiredFields.add("fulfillmentOrderItems");
+        openapiRequiredFields.add("returnItems");
+        openapiRequiredFields.add("returnAuthorizations");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetFulfillmentOrderResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetFulfillmentOrderResult.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetFulfillmentOrderResult is not found in the empty JSON string",
+                        GetFulfillmentOrderResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetFulfillmentOrderResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetFulfillmentOrderResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetFulfillmentOrderResult.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `fulfillmentOrder`
+        FulfillmentOrder.validateJsonElement(jsonObj.get("fulfillmentOrder"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetFulfillmentOrderResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetFulfillmentOrderResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetFulfillmentOrderResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetFulfillmentOrderResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetFulfillmentOrderResult>() {
+                        @Override
+                        public void write(JsonWriter out, GetFulfillmentOrderResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetFulfillmentOrderResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetFulfillmentOrderResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetFulfillmentOrderResult
+     * @throws IOException if the JSON string is invalid with respect to GetFulfillmentOrderResult
+     */
+    public static GetFulfillmentOrderResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetFulfillmentOrderResult.class);
+    }
+
+    /**
+     * Convert an instance of GetFulfillmentOrderResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

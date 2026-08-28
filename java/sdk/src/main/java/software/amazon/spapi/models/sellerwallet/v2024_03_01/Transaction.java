@@ -12,64 +12,114 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The current transaction status and related historical details. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The current transaction status and related historical details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Transaction {
-    @SerializedName("accountId")
-    private String accountId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
 
-    @SerializedName("transactionId")
-    private String transactionId = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
 
-    @SerializedName("transactionType")
-    private TransactionType transactionType = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
 
-    @SerializedName("transactionStatus")
-    private TransactionStatus transactionStatus = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
+    private String transactionId;
 
-    @SerializedName("transactionRequestDate")
-    private OffsetDateTime transactionRequestDate = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
 
-    @SerializedName("expectedCompletionDate")
-    private OffsetDateTime expectedCompletionDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private TransactionType transactionType;
 
-    @SerializedName("transactionActualCompletionDate")
-    private OffsetDateTime transactionActualCompletionDate = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_STATUS = "transactionStatus";
 
-    @SerializedName("lastUpdateDate")
-    private OffsetDateTime lastUpdateDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_STATUS)
+    private TransactionStatus transactionStatus;
 
-    @SerializedName("requesterName")
-    private String requesterName = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_REQUEST_DATE = "transactionRequestDate";
 
-    @SerializedName("transactionRequesterSource")
-    private String transactionRequesterSource = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_REQUEST_DATE)
+    private OffsetDateTime transactionRequestDate;
 
-    @SerializedName("transactionDescription")
-    private String transactionDescription = null;
+    public static final String SERIALIZED_NAME_EXPECTED_COMPLETION_DATE = "expectedCompletionDate";
 
-    @SerializedName("transactionSourceAccount")
-    private TransactionAccount transactionSourceAccount = null;
+    @SerializedName(SERIALIZED_NAME_EXPECTED_COMPLETION_DATE)
+    private OffsetDateTime expectedCompletionDate;
 
-    @SerializedName("transactionDestinationAccount")
-    private TransactionAccount transactionDestinationAccount = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_ACTUAL_COMPLETION_DATE = "transactionActualCompletionDate";
 
-    @SerializedName("transactionRequestAmount")
-    private Currency transactionRequestAmount = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_ACTUAL_COMPLETION_DATE)
+    private OffsetDateTime transactionActualCompletionDate;
 
-    @SerializedName("transferRateDetails")
-    private TransferRatePreview transferRateDetails = null;
+    public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "lastUpdateDate";
 
-    @SerializedName("transactionFinalAmount")
-    private Currency transactionFinalAmount = null;
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+    private OffsetDateTime lastUpdateDate;
 
-    @SerializedName("transactionFailureReason")
-    private String transactionFailureReason = null;
+    public static final String SERIALIZED_NAME_REQUESTER_NAME = "requesterName";
+
+    @SerializedName(SERIALIZED_NAME_REQUESTER_NAME)
+    private String requesterName;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_REQUESTER_SOURCE = "transactionRequesterSource";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_REQUESTER_SOURCE)
+    private String transactionRequesterSource;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_DESCRIPTION = "transactionDescription";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_DESCRIPTION)
+    private String transactionDescription;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_SOURCE_ACCOUNT = "transactionSourceAccount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_SOURCE_ACCOUNT)
+    private TransactionAccount transactionSourceAccount;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_DESTINATION_ACCOUNT = "transactionDestinationAccount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_DESTINATION_ACCOUNT)
+    private TransactionAccount transactionDestinationAccount;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_REQUEST_AMOUNT = "transactionRequestAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_REQUEST_AMOUNT)
+    private Currency transactionRequestAmount;
+
+    public static final String SERIALIZED_NAME_TRANSFER_RATE_DETAILS = "transferRateDetails";
+
+    @SerializedName(SERIALIZED_NAME_TRANSFER_RATE_DETAILS)
+    private TransferRatePreview transferRateDetails;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_FINAL_AMOUNT = "transactionFinalAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_FINAL_AMOUNT)
+    private Currency transactionFinalAmount;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_FAILURE_REASON = "transactionFailureReason";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_FAILURE_REASON)
+    private String transactionFailureReason;
+
+    public Transaction() {}
 
     public Transaction accountId(String accountId) {
         this.accountId = accountId;
@@ -81,10 +131,7 @@ public class Transaction {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.")
+    @javax.annotation.Nonnull
     public String getAccountId() {
         return accountId;
     }
@@ -103,9 +150,7 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier provided by Amazon to the transaction.")
+    @javax.annotation.Nonnull
     public String getTransactionId() {
         return transactionId;
     }
@@ -124,7 +169,7 @@ public class Transaction {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -143,7 +188,7 @@ public class Transaction {
      *
      * @return transactionStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionStatus getTransactionStatus() {
         return transactionStatus;
     }
@@ -162,9 +207,7 @@ public class Transaction {
      *
      * @return transactionRequestDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date when the transaction was initiated.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getTransactionRequestDate() {
         return transactionRequestDate;
     }
@@ -183,8 +226,7 @@ public class Transaction {
      *
      * @return expectedCompletionDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The expected completion date of the transaction.")
-    public OffsetDateTime getExpectedCompletionDate() {
+    @javax.annotation.Nullable public OffsetDateTime getExpectedCompletionDate() {
         return expectedCompletionDate;
     }
 
@@ -202,8 +244,7 @@ public class Transaction {
      *
      * @return transactionActualCompletionDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction's completion date.")
-    public OffsetDateTime getTransactionActualCompletionDate() {
+    @javax.annotation.Nullable public OffsetDateTime getTransactionActualCompletionDate() {
         return transactionActualCompletionDate;
     }
 
@@ -221,9 +262,7 @@ public class Transaction {
      *
      * @return lastUpdateDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date of the most recent account balance update.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -242,9 +281,7 @@ public class Transaction {
      *
      * @return requesterName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Seller Wallet customer who requested the transaction.")
-    public String getRequesterName() {
+    @javax.annotation.Nullable public String getRequesterName() {
         return requesterName;
     }
 
@@ -263,10 +300,7 @@ public class Transaction {
      *
      * @return transactionRequesterSource
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.")
+    @javax.annotation.Nonnull
     public String getTransactionRequesterSource() {
         return transactionRequesterSource;
     }
@@ -285,10 +319,7 @@ public class Transaction {
      *
      * @return transactionDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A description of the transaction that the requester provides when they initiate the transaction.")
+    @javax.annotation.Nonnull
     public String getTransactionDescription() {
         return transactionDescription;
     }
@@ -307,8 +338,7 @@ public class Transaction {
      *
      * @return transactionSourceAccount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TransactionAccount getTransactionSourceAccount() {
+    @javax.annotation.Nullable public TransactionAccount getTransactionSourceAccount() {
         return transactionSourceAccount;
     }
 
@@ -326,7 +356,7 @@ public class Transaction {
      *
      * @return transactionDestinationAccount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionAccount getTransactionDestinationAccount() {
         return transactionDestinationAccount;
     }
@@ -345,7 +375,7 @@ public class Transaction {
      *
      * @return transactionRequestAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTransactionRequestAmount() {
         return transactionRequestAmount;
     }
@@ -364,7 +394,7 @@ public class Transaction {
      *
      * @return transferRateDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransferRatePreview getTransferRateDetails() {
         return transferRateDetails;
     }
@@ -383,8 +413,7 @@ public class Transaction {
      *
      * @return transactionFinalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTransactionFinalAmount() {
+    @javax.annotation.Nullable public Currency getTransactionFinalAmount() {
         return transactionFinalAmount;
     }
 
@@ -402,8 +431,7 @@ public class Transaction {
      *
      * @return transactionFailureReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason the transaction failed, if applicable.")
-    public String getTransactionFailureReason() {
+    @javax.annotation.Nullable public String getTransactionFailureReason() {
         return transactionFailureReason;
     }
 
@@ -412,7 +440,7 @@ public class Transaction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -515,10 +543,189 @@ public class Transaction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountId");
+        openapiFields.add("transactionId");
+        openapiFields.add("transactionType");
+        openapiFields.add("transactionStatus");
+        openapiFields.add("transactionRequestDate");
+        openapiFields.add("expectedCompletionDate");
+        openapiFields.add("transactionActualCompletionDate");
+        openapiFields.add("lastUpdateDate");
+        openapiFields.add("requesterName");
+        openapiFields.add("transactionRequesterSource");
+        openapiFields.add("transactionDescription");
+        openapiFields.add("transactionSourceAccount");
+        openapiFields.add("transactionDestinationAccount");
+        openapiFields.add("transactionRequestAmount");
+        openapiFields.add("transferRateDetails");
+        openapiFields.add("transactionFinalAmount");
+        openapiFields.add("transactionFailureReason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("accountId");
+        openapiRequiredFields.add("transactionId");
+        openapiRequiredFields.add("transactionType");
+        openapiRequiredFields.add("transactionStatus");
+        openapiRequiredFields.add("transactionRequestDate");
+        openapiRequiredFields.add("lastUpdateDate");
+        openapiRequiredFields.add("transactionRequesterSource");
+        openapiRequiredFields.add("transactionDescription");
+        openapiRequiredFields.add("transactionDestinationAccount");
+        openapiRequiredFields.add("transactionRequestAmount");
+        openapiRequiredFields.add("transferRateDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Transaction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Transaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Transaction is not found in the empty JSON string",
+                        Transaction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Transaction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Transaction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Transaction.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+        if (!jsonObj.get("transactionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionId").toString()));
+        }
+        // validate the required field `transactionType`
+        TransactionType.validateJsonElement(jsonObj.get("transactionType"));
+        // validate the required field `transactionStatus`
+        TransactionStatus.validateJsonElement(jsonObj.get("transactionStatus"));
+        if ((jsonObj.get("requesterName") != null
+                        && !jsonObj.get("requesterName").isJsonNull())
+                && !jsonObj.get("requesterName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requesterName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requesterName").toString()));
+        }
+        if (!jsonObj.get("transactionRequesterSource").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionRequesterSource` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionRequesterSource").toString()));
+        }
+        if (!jsonObj.get("transactionDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionDescription").toString()));
+        }
+        // validate the optional field `transactionSourceAccount`
+        if (jsonObj.get("transactionSourceAccount") != null
+                && !jsonObj.get("transactionSourceAccount").isJsonNull()) {
+            TransactionAccount.validateJsonElement(jsonObj.get("transactionSourceAccount"));
+        }
+        // validate the required field `transactionDestinationAccount`
+        TransactionAccount.validateJsonElement(jsonObj.get("transactionDestinationAccount"));
+        // validate the required field `transactionRequestAmount`
+        Currency.validateJsonElement(jsonObj.get("transactionRequestAmount"));
+        // validate the required field `transferRateDetails`
+        TransferRatePreview.validateJsonElement(jsonObj.get("transferRateDetails"));
+        // validate the optional field `transactionFinalAmount`
+        if (jsonObj.get("transactionFinalAmount") != null
+                && !jsonObj.get("transactionFinalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("transactionFinalAmount"));
+        }
+        if ((jsonObj.get("transactionFailureReason") != null
+                        && !jsonObj.get("transactionFailureReason").isJsonNull())
+                && !jsonObj.get("transactionFailureReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionFailureReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionFailureReason").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Transaction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Transaction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Transaction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Transaction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Transaction>() {
+                        @Override
+                        public void write(JsonWriter out, Transaction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Transaction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Transaction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Transaction
+     * @throws IOException if the JSON string is invalid with respect to Transaction
+     */
+    public static Transaction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Transaction.class);
+    }
+
+    /**
+     * Convert an instance of Transaction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

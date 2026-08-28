@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Package weight and dimension. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Package weight and dimension.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MeasurementData {
-    @SerializedName("dimensions")
-    private PackageDimensions dimensions = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("volume")
-    private PackageVolume volume = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private PackageDimensions dimensions;
 
-    @SerializedName("weight")
-    private PackageWeight weight = null;
+    public static final String SERIALIZED_NAME_VOLUME = "volume";
+
+    @SerializedName(SERIALIZED_NAME_VOLUME)
+    private PackageVolume volume;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private PackageWeight weight;
+
+    public MeasurementData() {}
 
     public MeasurementData dimensions(PackageDimensions dimensions) {
         this.dimensions = dimensions;
@@ -37,8 +60,7 @@ public class MeasurementData {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PackageDimensions getDimensions() {
+    @javax.annotation.Nullable public PackageDimensions getDimensions() {
         return dimensions;
     }
 
@@ -56,8 +78,7 @@ public class MeasurementData {
      *
      * @return volume
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PackageVolume getVolume() {
+    @javax.annotation.Nullable public PackageVolume getVolume() {
         return volume;
     }
 
@@ -75,7 +96,7 @@ public class MeasurementData {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageWeight getWeight() {
         return weight;
     }
@@ -85,7 +106,7 @@ public class MeasurementData {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -115,10 +136,121 @@ public class MeasurementData {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("dimensions");
+        openapiFields.add("volume");
+        openapiFields.add("weight");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("weight");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MeasurementData
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MeasurementData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MeasurementData is not found in the empty JSON string",
+                        MeasurementData.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MeasurementData.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MeasurementData` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : MeasurementData.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `dimensions`
+        if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull()) {
+            PackageDimensions.validateJsonElement(jsonObj.get("dimensions"));
+        }
+        // validate the optional field `volume`
+        if (jsonObj.get("volume") != null && !jsonObj.get("volume").isJsonNull()) {
+            PackageVolume.validateJsonElement(jsonObj.get("volume"));
+        }
+        // validate the required field `weight`
+        PackageWeight.validateJsonElement(jsonObj.get("weight"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MeasurementData.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MeasurementData' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MeasurementData> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MeasurementData.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MeasurementData>() {
+                        @Override
+                        public void write(JsonWriter out, MeasurementData value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MeasurementData read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MeasurementData given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MeasurementData
+     * @throws IOException if the JSON string is invalid with respect to MeasurementData
+     */
+    public static MeasurementData fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MeasurementData.class);
+    }
+
+    /**
+     * Convert an instance of MeasurementData to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

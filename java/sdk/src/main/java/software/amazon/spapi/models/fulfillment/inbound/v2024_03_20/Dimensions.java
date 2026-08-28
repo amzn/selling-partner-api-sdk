@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Measurement of a package&#39;s dimensions. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Measurement of a package's dimensions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Dimensions {
-    @SerializedName("height")
-    private BigDecimal height = null;
+    public static final String SERIALIZED_NAME_HEIGHT = "height";
 
-    @SerializedName("length")
-    private BigDecimal length = null;
+    @SerializedName(SERIALIZED_NAME_HEIGHT)
+    private BigDecimal height;
 
-    @SerializedName("unitOfMeasurement")
-    private UnitOfMeasurement unitOfMeasurement = null;
+    public static final String SERIALIZED_NAME_LENGTH = "length";
 
-    @SerializedName("width")
-    private BigDecimal width = null;
+    @SerializedName(SERIALIZED_NAME_LENGTH)
+    private BigDecimal length;
+
+    public static final String SERIALIZED_NAME_UNIT_OF_MEASUREMENT = "unitOfMeasurement";
+
+    @SerializedName(SERIALIZED_NAME_UNIT_OF_MEASUREMENT)
+    private UnitOfMeasurement unitOfMeasurement;
+
+    public static final String SERIALIZED_NAME_WIDTH = "width";
+
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private BigDecimal width;
+
+    public Dimensions() {}
 
     public Dimensions height(BigDecimal height) {
         this.height = height;
@@ -37,11 +62,11 @@ public class Dimensions {
     }
 
     /**
-     * The height of a package.
+     * The height of a package. minimum: 0 maximum: 1E+5
      *
      * @return height
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The height of a package.")
+    @javax.annotation.Nonnull
     public BigDecimal getHeight() {
         return height;
     }
@@ -56,11 +81,11 @@ public class Dimensions {
     }
 
     /**
-     * The length of a package.
+     * The length of a package. minimum: 0 maximum: 1E+5
      *
      * @return length
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The length of a package.")
+    @javax.annotation.Nonnull
     public BigDecimal getLength() {
         return length;
     }
@@ -79,7 +104,7 @@ public class Dimensions {
      *
      * @return unitOfMeasurement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public UnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
@@ -94,11 +119,11 @@ public class Dimensions {
     }
 
     /**
-     * The width of a package.
+     * The width of a package. minimum: 0 maximum: 1E+5
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The width of a package.")
+    @javax.annotation.Nonnull
     public BigDecimal getWidth() {
         return width;
     }
@@ -108,7 +133,7 @@ public class Dimensions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -142,10 +167,116 @@ public class Dimensions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("height");
+        openapiFields.add("length");
+        openapiFields.add("unitOfMeasurement");
+        openapiFields.add("width");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("height");
+        openapiRequiredFields.add("length");
+        openapiRequiredFields.add("unitOfMeasurement");
+        openapiRequiredFields.add("width");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Dimensions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Dimensions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Dimensions is not found in the empty JSON string",
+                        Dimensions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Dimensions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Dimensions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Dimensions.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `unitOfMeasurement`
+        UnitOfMeasurement.validateJsonElement(jsonObj.get("unitOfMeasurement"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Dimensions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Dimensions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Dimensions> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Dimensions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Dimensions>() {
+                        @Override
+                        public void write(JsonWriter out, Dimensions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Dimensions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Dimensions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Dimensions
+     * @throws IOException if the JSON string is invalid with respect to Dimensions
+     */
+    public static Dimensions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Dimensions.class);
+    }
+
+    /**
+     * Convert an instance of Dimensions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

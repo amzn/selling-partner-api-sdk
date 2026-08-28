@@ -12,32 +12,45 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details related to any dangerous goods/items that are being shipped. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Details related to any dangerous goods/items that are being shipped.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DangerousGoodsDetails {
-    @SerializedName("unitedNationsRegulatoryId")
-    private String unitedNationsRegulatoryId = null;
+    public static final String SERIALIZED_NAME_UNITED_NATIONS_REGULATORY_ID = "unitedNationsRegulatoryId";
 
-    @SerializedName("transportationRegulatoryClass")
-    private String transportationRegulatoryClass = null;
+    @SerializedName(SERIALIZED_NAME_UNITED_NATIONS_REGULATORY_ID)
+    private String unitedNationsRegulatoryId;
+
+    public static final String SERIALIZED_NAME_TRANSPORTATION_REGULATORY_CLASS = "transportationRegulatoryClass";
+
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_REGULATORY_CLASS)
+    private String transportationRegulatoryClass;
 
     /** The specific packaging group of the item being shipped. */
     @JsonAdapter(PackingGroupEnum.Adapter.class)
     public enum PackingGroupEnum {
-        @SerializedName("I")
         I("I"),
-        @SerializedName("II")
+
         II("II"),
-        @SerializedName("III")
+
         III("III");
 
         private String value;
@@ -55,60 +68,66 @@ public class DangerousGoodsDetails {
             return String.valueOf(value);
         }
 
-        public static PackingGroupEnum fromValue(String input) {
+        public static PackingGroupEnum fromValue(String value) {
             for (PackingGroupEnum b : PackingGroupEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PackingGroupEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PackingGroupEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PackingGroupEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PackingGroupEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PackingGroupEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PackingGroupEnum.fromValue(value);
         }
     }
 
-    @SerializedName("packingGroup")
-    private PackingGroupEnum packingGroup = null;
+    public static final String SERIALIZED_NAME_PACKING_GROUP = "packingGroup";
+
+    @SerializedName(SERIALIZED_NAME_PACKING_GROUP)
+    private PackingGroupEnum packingGroup;
 
     /** The specific packing instruction of the item being shipped. */
     @JsonAdapter(PackingInstructionEnum.Adapter.class)
     public enum PackingInstructionEnum {
-        @SerializedName("PI965_SECTION_IA")
         PI965_SECTION_IA("PI965_SECTION_IA"),
-        @SerializedName("PI965_SECTION_IB")
+
         PI965_SECTION_IB("PI965_SECTION_IB"),
-        @SerializedName("PI965_SECTION_II")
+
         PI965_SECTION_II("PI965_SECTION_II"),
-        @SerializedName("PI966_SECTION_I")
+
         PI966_SECTION_I("PI966_SECTION_I"),
-        @SerializedName("PI966_SECTION_II")
+
         PI966_SECTION_II("PI966_SECTION_II"),
-        @SerializedName("PI967_SECTION_I")
+
         PI967_SECTION_I("PI967_SECTION_I"),
-        @SerializedName("PI967_SECTION_II")
+
         PI967_SECTION_II("PI967_SECTION_II"),
-        @SerializedName("PI968_SECTION_IA")
+
         PI968_SECTION_IA("PI968_SECTION_IA"),
-        @SerializedName("PI968_SECTION_IB")
+
         PI968_SECTION_IB("PI968_SECTION_IB"),
-        @SerializedName("PI969_SECTION_I")
+
         PI969_SECTION_I("PI969_SECTION_I"),
-        @SerializedName("PI969_SECTION_II")
+
         PI969_SECTION_II("PI969_SECTION_II"),
-        @SerializedName("PI970_SECTION_I")
+
         PI970_SECTION_I("PI970_SECTION_I"),
-        @SerializedName("PI970_SECTION_II")
+
         PI970_SECTION_II("PI970_SECTION_II");
 
         private String value;
@@ -126,32 +145,41 @@ public class DangerousGoodsDetails {
             return String.valueOf(value);
         }
 
-        public static PackingInstructionEnum fromValue(String input) {
+        public static PackingInstructionEnum fromValue(String value) {
             for (PackingInstructionEnum b : PackingInstructionEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PackingInstructionEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PackingInstructionEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PackingInstructionEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PackingInstructionEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PackingInstructionEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PackingInstructionEnum.fromValue(value);
         }
     }
 
-    @SerializedName("packingInstruction")
-    private PackingInstructionEnum packingInstruction = null;
+    public static final String SERIALIZED_NAME_PACKING_INSTRUCTION = "packingInstruction";
+
+    @SerializedName(SERIALIZED_NAME_PACKING_INSTRUCTION)
+    private PackingInstructionEnum packingInstruction;
+
+    public DangerousGoodsDetails() {}
 
     public DangerousGoodsDetails unitedNationsRegulatoryId(String unitedNationsRegulatoryId) {
         this.unitedNationsRegulatoryId = unitedNationsRegulatoryId;
@@ -163,8 +191,7 @@ public class DangerousGoodsDetails {
      *
      * @return unitedNationsRegulatoryId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The specific UNID of the item being shipped.")
-    public String getUnitedNationsRegulatoryId() {
+    @javax.annotation.Nullable public String getUnitedNationsRegulatoryId() {
         return unitedNationsRegulatoryId;
     }
 
@@ -182,9 +209,7 @@ public class DangerousGoodsDetails {
      *
      * @return transportationRegulatoryClass
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The specific regulatory class  of the item being shipped.")
-    public String getTransportationRegulatoryClass() {
+    @javax.annotation.Nullable public String getTransportationRegulatoryClass() {
         return transportationRegulatoryClass;
     }
 
@@ -202,8 +227,7 @@ public class DangerousGoodsDetails {
      *
      * @return packingGroup
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The specific packaging group of the item being shipped.")
-    public PackingGroupEnum getPackingGroup() {
+    @javax.annotation.Nullable public PackingGroupEnum getPackingGroup() {
         return packingGroup;
     }
 
@@ -221,9 +245,7 @@ public class DangerousGoodsDetails {
      *
      * @return packingInstruction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The specific packing instruction of the item being shipped.")
-    public PackingInstructionEnum getPackingInstruction() {
+    @javax.annotation.Nullable public PackingInstructionEnum getPackingInstruction() {
         return packingInstruction;
     }
 
@@ -232,7 +254,7 @@ public class DangerousGoodsDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -271,10 +293,139 @@ public class DangerousGoodsDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("unitedNationsRegulatoryId");
+        openapiFields.add("transportationRegulatoryClass");
+        openapiFields.add("packingGroup");
+        openapiFields.add("packingInstruction");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DangerousGoodsDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DangerousGoodsDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DangerousGoodsDetails is not found in the empty JSON string",
+                        DangerousGoodsDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DangerousGoodsDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DangerousGoodsDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("unitedNationsRegulatoryId") != null
+                        && !jsonObj.get("unitedNationsRegulatoryId").isJsonNull())
+                && !jsonObj.get("unitedNationsRegulatoryId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `unitedNationsRegulatoryId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("unitedNationsRegulatoryId").toString()));
+        }
+        if ((jsonObj.get("transportationRegulatoryClass") != null
+                        && !jsonObj.get("transportationRegulatoryClass").isJsonNull())
+                && !jsonObj.get("transportationRegulatoryClass").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationRegulatoryClass` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transportationRegulatoryClass").toString()));
+        }
+        if ((jsonObj.get("packingGroup") != null && !jsonObj.get("packingGroup").isJsonNull())
+                && !jsonObj.get("packingGroup").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packingGroup` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packingGroup").toString()));
+        }
+        // validate the optional field `packingGroup`
+        if (jsonObj.get("packingGroup") != null && !jsonObj.get("packingGroup").isJsonNull()) {
+            PackingGroupEnum.validateJsonElement(jsonObj.get("packingGroup"));
+        }
+        if ((jsonObj.get("packingInstruction") != null
+                        && !jsonObj.get("packingInstruction").isJsonNull())
+                && !jsonObj.get("packingInstruction").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packingInstruction` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packingInstruction").toString()));
+        }
+        // validate the optional field `packingInstruction`
+        if (jsonObj.get("packingInstruction") != null
+                && !jsonObj.get("packingInstruction").isJsonNull()) {
+            PackingInstructionEnum.validateJsonElement(jsonObj.get("packingInstruction"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DangerousGoodsDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DangerousGoodsDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DangerousGoodsDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DangerousGoodsDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DangerousGoodsDetails>() {
+                        @Override
+                        public void write(JsonWriter out, DangerousGoodsDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DangerousGoodsDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DangerousGoodsDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DangerousGoodsDetails
+     * @throws IOException if the JSON string is invalid with respect to DangerousGoodsDetails
+     */
+    public static DangerousGoodsDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DangerousGoodsDetails.class);
+    }
+
+    /**
+     * Convert an instance of DangerousGoodsDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

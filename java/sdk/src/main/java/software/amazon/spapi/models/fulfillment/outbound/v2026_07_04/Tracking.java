@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tracking information for a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking information for a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Tracking {
-    @SerializedName("carrier")
-    private CarrierTracking carrier = null;
+    public static final String SERIALIZED_NAME_CARRIER = "carrier";
 
-    @SerializedName("amazon")
-    private AmazonTracking amazon = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER)
+    private CarrierTracking carrier;
 
-    @SerializedName("dropOffLocation")
-    private OrderDropOffLocation dropOffLocation = null;
+    public static final String SERIALIZED_NAME_AMAZON = "amazon";
 
-    @SerializedName("proofOfDelivery")
-    private ProofOfDelivery proofOfDelivery = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON)
+    private AmazonTracking amazon;
+
+    public static final String SERIALIZED_NAME_DROP_OFF_LOCATION = "dropOffLocation";
+
+    @SerializedName(SERIALIZED_NAME_DROP_OFF_LOCATION)
+    private OrderDropOffLocation dropOffLocation;
+
+    public static final String SERIALIZED_NAME_PROOF_OF_DELIVERY = "proofOfDelivery";
+
+    @SerializedName(SERIALIZED_NAME_PROOF_OF_DELIVERY)
+    private ProofOfDelivery proofOfDelivery;
+
+    public Tracking() {}
 
     public Tracking carrier(CarrierTracking carrier) {
         this.carrier = carrier;
@@ -40,8 +65,7 @@ public class Tracking {
      *
      * @return carrier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierTracking getCarrier() {
+    @javax.annotation.Nullable public CarrierTracking getCarrier() {
         return carrier;
     }
 
@@ -59,8 +83,7 @@ public class Tracking {
      *
      * @return amazon
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AmazonTracking getAmazon() {
+    @javax.annotation.Nullable public AmazonTracking getAmazon() {
         return amazon;
     }
 
@@ -78,8 +101,7 @@ public class Tracking {
      *
      * @return dropOffLocation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OrderDropOffLocation getDropOffLocation() {
+    @javax.annotation.Nullable public OrderDropOffLocation getDropOffLocation() {
         return dropOffLocation;
     }
 
@@ -97,8 +119,7 @@ public class Tracking {
      *
      * @return proofOfDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ProofOfDelivery getProofOfDelivery() {
+    @javax.annotation.Nullable public ProofOfDelivery getProofOfDelivery() {
         return proofOfDelivery;
     }
 
@@ -107,7 +128,7 @@ public class Tracking {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -143,10 +164,119 @@ public class Tracking {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrier");
+        openapiFields.add("amazon");
+        openapiFields.add("dropOffLocation");
+        openapiFields.add("proofOfDelivery");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Tracking
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Tracking.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Tracking is not found in the empty JSON string",
+                        Tracking.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Tracking.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Tracking` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `carrier`
+        if (jsonObj.get("carrier") != null && !jsonObj.get("carrier").isJsonNull()) {
+            CarrierTracking.validateJsonElement(jsonObj.get("carrier"));
+        }
+        // validate the optional field `amazon`
+        if (jsonObj.get("amazon") != null && !jsonObj.get("amazon").isJsonNull()) {
+            AmazonTracking.validateJsonElement(jsonObj.get("amazon"));
+        }
+        // validate the optional field `dropOffLocation`
+        if (jsonObj.get("dropOffLocation") != null
+                && !jsonObj.get("dropOffLocation").isJsonNull()) {
+            OrderDropOffLocation.validateJsonElement(jsonObj.get("dropOffLocation"));
+        }
+        // validate the optional field `proofOfDelivery`
+        if (jsonObj.get("proofOfDelivery") != null
+                && !jsonObj.get("proofOfDelivery").isJsonNull()) {
+            ProofOfDelivery.validateJsonElement(jsonObj.get("proofOfDelivery"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Tracking.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Tracking' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Tracking> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Tracking.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Tracking>() {
+                        @Override
+                        public void write(JsonWriter out, Tracking value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Tracking read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Tracking given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Tracking
+     * @throws IOException if the JSON string is invalid with respect to Tracking
+     */
+    public static Tracking fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Tracking.class);
+    }
+
+    /**
+     * Convert an instance of Tracking to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,22 +22,16 @@ import java.io.IOException;
 /** The current status of the transaction. */
 @JsonAdapter(TransactionStatus.Adapter.class)
 public enum TransactionStatus {
-    @SerializedName("EXPIRED")
     EXPIRED("EXPIRED"),
 
-    @SerializedName("FAILED")
     FAILED("FAILED"),
 
-    @SerializedName("FAILED_CREDITS_APPLIED")
     FAILED_CREDITS_APPLIED("FAILED_CREDITS_APPLIED"),
 
-    @SerializedName("IN_PROGRESS")
     IN_PROGRESS("IN_PROGRESS"),
 
-    @SerializedName("PENDING_USER_APPROVAL")
     PENDING_USER_APPROVAL("PENDING_USER_APPROVAL"),
 
-    @SerializedName("SUCCESSFUL")
     SUCCESSFUL("SUCCESSFUL");
 
     private String value;
@@ -55,25 +49,30 @@ public enum TransactionStatus {
         return String.valueOf(value);
     }
 
-    public static TransactionStatus fromValue(String input) {
+    public static TransactionStatus fromValue(String value) {
         for (TransactionStatus b : TransactionStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<TransactionStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final TransactionStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public TransactionStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return TransactionStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return TransactionStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        TransactionStatus.fromValue(value);
     }
 }

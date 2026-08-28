@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response for the &#x60;getItemReviewTopics&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getItemReviewTopics` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemReviewTopicsResponse {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("itemName")
-    private String itemName = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_ITEM_NAME = "itemName";
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_NAME)
+    private String itemName;
 
-    @SerializedName("dateRange")
-    private DateRange dateRange = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("topics")
-    private ItemReviewTopics topics = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_DATE_RANGE = "dateRange";
+
+    @SerializedName(SERIALIZED_NAME_DATE_RANGE)
+    private DateRange dateRange;
+
+    public static final String SERIALIZED_NAME_TOPICS = "topics";
+
+    @SerializedName(SERIALIZED_NAME_TOPICS)
+    private ItemReviewTopics topics;
+
+    public ItemReviewTopicsResponse() {}
 
     public ItemReviewTopicsResponse asin(String asin) {
         this.asin = asin;
@@ -47,10 +76,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The requested ASIN. The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -69,9 +95,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return itemName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The product title of the requested ASIN.")
+    @javax.annotation.Nonnull
     public String getItemName() {
         return itemName;
     }
@@ -90,7 +114,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace id.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -109,9 +133,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The two digit country code of the requested marketplace id, in ISO 3166-1 alpha-2 format.")
+    @javax.annotation.Nonnull
     public String getCountryCode() {
         return countryCode;
     }
@@ -130,7 +152,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return dateRange
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -149,7 +171,7 @@ public class ItemReviewTopicsResponse {
      *
      * @return topics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemReviewTopics getTopics() {
         return topics;
     }
@@ -159,7 +181,7 @@ public class ItemReviewTopicsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -195,10 +217,144 @@ public class ItemReviewTopicsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("itemName");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("countryCode");
+        openapiFields.add("dateRange");
+        openapiFields.add("topics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+        openapiRequiredFields.add("itemName");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("countryCode");
+        openapiRequiredFields.add("dateRange");
+        openapiRequiredFields.add("topics");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemReviewTopicsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemReviewTopicsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemReviewTopicsResponse is not found in the empty JSON string",
+                        ItemReviewTopicsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemReviewTopicsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemReviewTopicsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemReviewTopicsResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if (!jsonObj.get("itemName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemName").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+        // validate the required field `dateRange`
+        DateRange.validateJsonElement(jsonObj.get("dateRange"));
+        // validate the required field `topics`
+        ItemReviewTopics.validateJsonElement(jsonObj.get("topics"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemReviewTopicsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemReviewTopicsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemReviewTopicsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemReviewTopicsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemReviewTopicsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ItemReviewTopicsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemReviewTopicsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemReviewTopicsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemReviewTopicsResponse
+     * @throws IOException if the JSON string is invalid with respect to ItemReviewTopicsResponse
+     */
+    public static ItemReviewTopicsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemReviewTopicsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ItemReviewTopicsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

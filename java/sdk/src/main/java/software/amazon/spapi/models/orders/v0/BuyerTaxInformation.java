@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains the business invoice tax information. Available only in the TR marketplace. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains the business invoice tax information. Available only in the TR marketplace.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BuyerTaxInformation {
-    @SerializedName("BuyerLegalCompanyName")
-    private String buyerLegalCompanyName = null;
+    public static final String SERIALIZED_NAME_BUYER_LEGAL_COMPANY_NAME = "BuyerLegalCompanyName";
 
-    @SerializedName("BuyerBusinessAddress")
-    private String buyerBusinessAddress = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_LEGAL_COMPANY_NAME)
+    private String buyerLegalCompanyName;
 
-    @SerializedName("BuyerTaxRegistrationId")
-    private String buyerTaxRegistrationId = null;
+    public static final String SERIALIZED_NAME_BUYER_BUSINESS_ADDRESS = "BuyerBusinessAddress";
 
-    @SerializedName("BuyerTaxOffice")
-    private String buyerTaxOffice = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_BUSINESS_ADDRESS)
+    private String buyerBusinessAddress;
+
+    public static final String SERIALIZED_NAME_BUYER_TAX_REGISTRATION_ID = "BuyerTaxRegistrationId";
+
+    @SerializedName(SERIALIZED_NAME_BUYER_TAX_REGISTRATION_ID)
+    private String buyerTaxRegistrationId;
+
+    public static final String SERIALIZED_NAME_BUYER_TAX_OFFICE = "BuyerTaxOffice";
+
+    @SerializedName(SERIALIZED_NAME_BUYER_TAX_OFFICE)
+    private String buyerTaxOffice;
+
+    public BuyerTaxInformation() {}
 
     public BuyerTaxInformation buyerLegalCompanyName(String buyerLegalCompanyName) {
         this.buyerLegalCompanyName = buyerLegalCompanyName;
@@ -41,8 +65,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerLegalCompanyName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's company legal name.")
-    public String getBuyerLegalCompanyName() {
+    @javax.annotation.Nullable public String getBuyerLegalCompanyName() {
         return buyerLegalCompanyName;
     }
 
@@ -60,8 +83,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerBusinessAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's address.")
-    public String getBuyerBusinessAddress() {
+    @javax.annotation.Nullable public String getBuyerBusinessAddress() {
         return buyerBusinessAddress;
     }
 
@@ -79,8 +101,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerTaxRegistrationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's tax registration ID.")
-    public String getBuyerTaxRegistrationId() {
+    @javax.annotation.Nullable public String getBuyerTaxRegistrationId() {
         return buyerTaxRegistrationId;
     }
 
@@ -98,8 +119,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerTaxOffice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's tax office.")
-    public String getBuyerTaxOffice() {
+    @javax.annotation.Nullable public String getBuyerTaxOffice() {
         return buyerTaxOffice;
     }
 
@@ -108,7 +128,7 @@ public class BuyerTaxInformation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -148,10 +168,130 @@ public class BuyerTaxInformation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("BuyerLegalCompanyName");
+        openapiFields.add("BuyerBusinessAddress");
+        openapiFields.add("BuyerTaxRegistrationId");
+        openapiFields.add("BuyerTaxOffice");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BuyerTaxInformation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BuyerTaxInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BuyerTaxInformation is not found in the empty JSON string",
+                        BuyerTaxInformation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BuyerTaxInformation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BuyerTaxInformation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("BuyerLegalCompanyName") != null
+                        && !jsonObj.get("BuyerLegalCompanyName").isJsonNull())
+                && !jsonObj.get("BuyerLegalCompanyName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerLegalCompanyName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerLegalCompanyName").toString()));
+        }
+        if ((jsonObj.get("BuyerBusinessAddress") != null
+                        && !jsonObj.get("BuyerBusinessAddress").isJsonNull())
+                && !jsonObj.get("BuyerBusinessAddress").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerBusinessAddress` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerBusinessAddress").toString()));
+        }
+        if ((jsonObj.get("BuyerTaxRegistrationId") != null
+                        && !jsonObj.get("BuyerTaxRegistrationId").isJsonNull())
+                && !jsonObj.get("BuyerTaxRegistrationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerTaxRegistrationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerTaxRegistrationId").toString()));
+        }
+        if ((jsonObj.get("BuyerTaxOffice") != null
+                        && !jsonObj.get("BuyerTaxOffice").isJsonNull())
+                && !jsonObj.get("BuyerTaxOffice").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerTaxOffice` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerTaxOffice").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BuyerTaxInformation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BuyerTaxInformation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BuyerTaxInformation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BuyerTaxInformation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BuyerTaxInformation>() {
+                        @Override
+                        public void write(JsonWriter out, BuyerTaxInformation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BuyerTaxInformation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BuyerTaxInformation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BuyerTaxInformation
+     * @throws IOException if the JSON string is invalid with respect to BuyerTaxInformation
+     */
+    public static BuyerTaxInformation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BuyerTaxInformation.class);
+    }
+
+    /**
+     * Convert an instance of BuyerTaxInformation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

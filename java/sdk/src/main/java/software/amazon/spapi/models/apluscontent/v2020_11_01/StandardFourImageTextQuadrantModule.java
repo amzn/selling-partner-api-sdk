@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Four standard images with text, presented on a grid of four quadrants. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Four standard images with text, presented on a grid of four quadrants.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardFourImageTextQuadrantModule {
-    @SerializedName("block1")
-    private StandardImageTextBlock block1 = null;
+    public static final String SERIALIZED_NAME_BLOCK1 = "block1";
 
-    @SerializedName("block2")
-    private StandardImageTextBlock block2 = null;
+    @SerializedName(SERIALIZED_NAME_BLOCK1)
+    private StandardImageTextBlock block1;
 
-    @SerializedName("block3")
-    private StandardImageTextBlock block3 = null;
+    public static final String SERIALIZED_NAME_BLOCK2 = "block2";
 
-    @SerializedName("block4")
-    private StandardImageTextBlock block4 = null;
+    @SerializedName(SERIALIZED_NAME_BLOCK2)
+    private StandardImageTextBlock block2;
+
+    public static final String SERIALIZED_NAME_BLOCK3 = "block3";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK3)
+    private StandardImageTextBlock block3;
+
+    public static final String SERIALIZED_NAME_BLOCK4 = "block4";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK4)
+    private StandardImageTextBlock block4;
+
+    public StandardFourImageTextQuadrantModule() {}
 
     public StandardFourImageTextQuadrantModule block1(StandardImageTextBlock block1) {
         this.block1 = block1;
@@ -41,7 +65,7 @@ public class StandardFourImageTextQuadrantModule {
      *
      * @return block1
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public StandardImageTextBlock getBlock1() {
         return block1;
     }
@@ -60,7 +84,7 @@ public class StandardFourImageTextQuadrantModule {
      *
      * @return block2
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public StandardImageTextBlock getBlock2() {
         return block2;
     }
@@ -79,7 +103,7 @@ public class StandardFourImageTextQuadrantModule {
      *
      * @return block3
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public StandardImageTextBlock getBlock3() {
         return block3;
     }
@@ -98,7 +122,7 @@ public class StandardFourImageTextQuadrantModule {
      *
      * @return block4
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public StandardImageTextBlock getBlock4() {
         return block4;
     }
@@ -108,7 +132,7 @@ public class StandardFourImageTextQuadrantModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -141,10 +165,125 @@ public class StandardFourImageTextQuadrantModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("block1");
+        openapiFields.add("block2");
+        openapiFields.add("block3");
+        openapiFields.add("block4");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("block1");
+        openapiRequiredFields.add("block2");
+        openapiRequiredFields.add("block3");
+        openapiRequiredFields.add("block4");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardFourImageTextQuadrantModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardFourImageTextQuadrantModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardFourImageTextQuadrantModule is not found in the empty JSON string",
+                        StandardFourImageTextQuadrantModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardFourImageTextQuadrantModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardFourImageTextQuadrantModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StandardFourImageTextQuadrantModule.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `block1`
+        StandardImageTextBlock.validateJsonElement(jsonObj.get("block1"));
+        // validate the required field `block2`
+        StandardImageTextBlock.validateJsonElement(jsonObj.get("block2"));
+        // validate the required field `block3`
+        StandardImageTextBlock.validateJsonElement(jsonObj.get("block3"));
+        // validate the required field `block4`
+        StandardImageTextBlock.validateJsonElement(jsonObj.get("block4"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardFourImageTextQuadrantModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardFourImageTextQuadrantModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardFourImageTextQuadrantModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardFourImageTextQuadrantModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardFourImageTextQuadrantModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardFourImageTextQuadrantModule value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardFourImageTextQuadrantModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardFourImageTextQuadrantModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardFourImageTextQuadrantModule
+     * @throws IOException if the JSON string is invalid with respect to StandardFourImageTextQuadrantModule
+     */
+    public static StandardFourImageTextQuadrantModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardFourImageTextQuadrantModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardFourImageTextQuadrantModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

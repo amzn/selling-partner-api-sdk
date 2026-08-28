@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** Indication of how box content is meant to be provided. */
 @JsonAdapter(BoxContentInformationSource.Adapter.class)
 public enum BoxContentInformationSource {
-    @SerializedName("BOX_CONTENT_PROVIDED")
     BOX_CONTENT_PROVIDED("BOX_CONTENT_PROVIDED"),
 
-    @SerializedName("MANUAL_PROCESS")
     MANUAL_PROCESS("MANUAL_PROCESS"),
 
-    @SerializedName("BARCODE_2D")
     BARCODE_2_D("BARCODE_2D");
 
     private String value;
@@ -46,26 +43,31 @@ public enum BoxContentInformationSource {
         return String.valueOf(value);
     }
 
-    public static BoxContentInformationSource fromValue(String input) {
+    public static BoxContentInformationSource fromValue(String value) {
         for (BoxContentInformationSource b : BoxContentInformationSource.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<BoxContentInformationSource> {
         @Override
         public void write(final JsonWriter jsonWriter, final BoxContentInformationSource enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public BoxContentInformationSource read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return BoxContentInformationSource.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return BoxContentInformationSource.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        BoxContentInformationSource.fromValue(value);
     }
 }

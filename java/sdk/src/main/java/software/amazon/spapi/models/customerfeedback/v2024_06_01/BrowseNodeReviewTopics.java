@@ -12,20 +12,41 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The 10 most positive and most negative review topics for all items in a browse node. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The 10 most positive and most negative review topics for all items in a browse node.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BrowseNodeReviewTopics {
-    @SerializedName("positiveTopics")
-    private List<BrowseNodeReviewTopic> positiveTopics = null;
+    public static final String SERIALIZED_NAME_POSITIVE_TOPICS = "positiveTopics";
 
-    @SerializedName("negativeTopics")
-    private List<BrowseNodeReviewTopic> negativeTopics = null;
+    @SerializedName(SERIALIZED_NAME_POSITIVE_TOPICS)
+    private List<BrowseNodeReviewTopic> positiveTopics = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEGATIVE_TOPICS = "negativeTopics";
+
+    @SerializedName(SERIALIZED_NAME_NEGATIVE_TOPICS)
+    private List<BrowseNodeReviewTopic> negativeTopics = new ArrayList<>();
+
+    public BrowseNodeReviewTopics() {}
 
     public BrowseNodeReviewTopics positiveTopics(List<BrowseNodeReviewTopic> positiveTopics) {
         this.positiveTopics = positiveTopics;
@@ -50,10 +71,7 @@ public class BrowseNodeReviewTopics {
      *
      * @return positiveTopics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews of items within the requested browse node that mention the topic determine the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of items within the requested browse node determine placement in the list. This value is `null` if there are not enough positive reviews for the requested browse node.  **Max length:** 10")
-    public List<BrowseNodeReviewTopic> getPositiveTopics() {
+    @javax.annotation.Nullable public List<BrowseNodeReviewTopic> getPositiveTopics() {
         return positiveTopics;
     }
 
@@ -84,10 +102,7 @@ public class BrowseNodeReviewTopics {
      *
      * @return negativeTopics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of the most negative review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews of items within the requested browse node that mention the topic determine the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of items within the requested browse node determine placement in the list. This value is `null` if there are not enough negative reviews for the requested browse node.  **Max length:** 10")
-    public List<BrowseNodeReviewTopic> getNegativeTopics() {
+    @javax.annotation.Nullable public List<BrowseNodeReviewTopic> getNegativeTopics() {
         return negativeTopics;
     }
 
@@ -96,7 +111,7 @@ public class BrowseNodeReviewTopics {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -128,10 +143,137 @@ public class BrowseNodeReviewTopics {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("positiveTopics");
+        openapiFields.add("negativeTopics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BrowseNodeReviewTopics
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BrowseNodeReviewTopics.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BrowseNodeReviewTopics is not found in the empty JSON string",
+                        BrowseNodeReviewTopics.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BrowseNodeReviewTopics.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BrowseNodeReviewTopics` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("positiveTopics") != null
+                && !jsonObj.get("positiveTopics").isJsonNull()) {
+            JsonArray jsonArraypositiveTopics = jsonObj.getAsJsonArray("positiveTopics");
+            if (jsonArraypositiveTopics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("positiveTopics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `positiveTopics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("positiveTopics").toString()));
+                }
+
+                // validate the optional field `positiveTopics` (array)
+                for (int i = 0; i < jsonArraypositiveTopics.size(); i++) {
+                    BrowseNodeReviewTopic.validateJsonElement(jsonArraypositiveTopics.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("negativeTopics") != null
+                && !jsonObj.get("negativeTopics").isJsonNull()) {
+            JsonArray jsonArraynegativeTopics = jsonObj.getAsJsonArray("negativeTopics");
+            if (jsonArraynegativeTopics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("negativeTopics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `negativeTopics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("negativeTopics").toString()));
+                }
+
+                // validate the optional field `negativeTopics` (array)
+                for (int i = 0; i < jsonArraynegativeTopics.size(); i++) {
+                    BrowseNodeReviewTopic.validateJsonElement(jsonArraynegativeTopics.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BrowseNodeReviewTopics.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BrowseNodeReviewTopics' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BrowseNodeReviewTopics> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BrowseNodeReviewTopics.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BrowseNodeReviewTopics>() {
+                        @Override
+                        public void write(JsonWriter out, BrowseNodeReviewTopics value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BrowseNodeReviewTopics read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BrowseNodeReviewTopics given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BrowseNodeReviewTopics
+     * @throws IOException if the JSON string is invalid with respect to BrowseNodeReviewTopics
+     */
+    public static BrowseNodeReviewTopics fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BrowseNodeReviewTopics.class);
+    }
+
+    /**
+     * Convert an instance of BrowseNodeReviewTopics to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

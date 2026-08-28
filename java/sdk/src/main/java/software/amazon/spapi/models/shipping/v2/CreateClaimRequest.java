@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The request schema for the CreateClaim operation */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the CreateClaim operation")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateClaimRequest {
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
 
-    @SerializedName("declaredValue")
-    private Currency declaredValue = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
 
-    @SerializedName("claimReason")
-    private ClaimReason claimReason = null;
+    public static final String SERIALIZED_NAME_DECLARED_VALUE = "declaredValue";
 
-    @SerializedName("isReplacementPackageSent")
-    private Boolean isReplacementPackageSent = null;
+    @SerializedName(SERIALIZED_NAME_DECLARED_VALUE)
+    private Currency declaredValue;
 
-    @SerializedName("proofs")
-    private ClaimProofURLs proofs = null;
+    public static final String SERIALIZED_NAME_CLAIM_REASON = "claimReason";
 
-    @SerializedName("settlementType")
-    private SettlementType settlementType = null;
+    @SerializedName(SERIALIZED_NAME_CLAIM_REASON)
+    private ClaimReason claimReason;
+
+    public static final String SERIALIZED_NAME_IS_REPLACEMENT_PACKAGE_SENT = "isReplacementPackageSent";
+
+    @SerializedName(SERIALIZED_NAME_IS_REPLACEMENT_PACKAGE_SENT)
+    private Boolean isReplacementPackageSent;
+
+    public static final String SERIALIZED_NAME_PROOFS = "proofs";
+
+    @SerializedName(SERIALIZED_NAME_PROOFS)
+    private ClaimProofURLs proofs = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SETTLEMENT_TYPE = "settlementType";
+
+    @SerializedName(SERIALIZED_NAME_SETTLEMENT_TYPE)
+    private SettlementType settlementType = SettlementType.REFUND;
+
+    public CreateClaimRequest() {}
 
     public CreateClaimRequest trackingId(String trackingId) {
         this.trackingId = trackingId;
@@ -46,9 +75,7 @@ public class CreateClaimRequest {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The carrier generated identifier for a package in a purchased shipment.")
+    @javax.annotation.Nonnull
     public String getTrackingId() {
         return trackingId;
     }
@@ -67,8 +94,7 @@ public class CreateClaimRequest {
      *
      * @return declaredValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getDeclaredValue() {
+    @javax.annotation.Nullable public Currency getDeclaredValue() {
         return declaredValue;
     }
 
@@ -86,7 +112,7 @@ public class CreateClaimRequest {
      *
      * @return claimReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ClaimReason getClaimReason() {
         return claimReason;
     }
@@ -105,9 +131,7 @@ public class CreateClaimRequest {
      *
      * @return isReplacementPackageSent
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Applicable for only On Amazon shipments to identify if replacement was sent")
-    public Boolean getIsReplacementPackageSent() {
+    @javax.annotation.Nullable public Boolean getIsReplacementPackageSent() {
         return isReplacementPackageSent;
     }
 
@@ -125,8 +149,7 @@ public class CreateClaimRequest {
      *
      * @return proofs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ClaimProofURLs getProofs() {
+    @javax.annotation.Nullable public ClaimProofURLs getProofs() {
         return proofs;
     }
 
@@ -144,7 +167,7 @@ public class CreateClaimRequest {
      *
      * @return settlementType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public SettlementType getSettlementType() {
         return settlementType;
     }
@@ -154,7 +177,7 @@ public class CreateClaimRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -194,10 +217,130 @@ public class CreateClaimRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("trackingId");
+        openapiFields.add("declaredValue");
+        openapiFields.add("claimReason");
+        openapiFields.add("isReplacementPackageSent");
+        openapiFields.add("proofs");
+        openapiFields.add("settlementType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("trackingId");
+        openapiRequiredFields.add("claimReason");
+        openapiRequiredFields.add("settlementType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateClaimRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateClaimRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateClaimRequest is not found in the empty JSON string",
+                        CreateClaimRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateClaimRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateClaimRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateClaimRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        // validate the optional field `declaredValue`
+        if (jsonObj.get("declaredValue") != null
+                && !jsonObj.get("declaredValue").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("declaredValue"));
+        }
+        // validate the required field `claimReason`
+        ClaimReason.validateJsonElement(jsonObj.get("claimReason"));
+        // validate the required field `settlementType`
+        SettlementType.validateJsonElement(jsonObj.get("settlementType"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateClaimRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateClaimRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateClaimRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateClaimRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateClaimRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateClaimRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateClaimRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateClaimRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateClaimRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateClaimRequest
+     */
+    public static CreateClaimRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateClaimRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateClaimRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

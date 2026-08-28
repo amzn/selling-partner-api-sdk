@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tax collection information for an order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tax collection information for an order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemTaxCollection {
-    @SerializedName("model")
-    private String model = null;
+    public static final String SERIALIZED_NAME_MODEL = "model";
 
-    @SerializedName("responsibleParty")
-    private String responsibleParty = null;
+    @SerializedName(SERIALIZED_NAME_MODEL)
+    private String model;
+
+    public static final String SERIALIZED_NAME_RESPONSIBLE_PARTY = "responsibleParty";
+
+    @SerializedName(SERIALIZED_NAME_RESPONSIBLE_PARTY)
+    private String responsibleParty;
+
+    public ItemTaxCollection() {}
 
     public ItemTaxCollection model(String model) {
         this.model = model;
@@ -35,10 +56,7 @@ public class ItemTaxCollection {
      *
      * @return model
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The tax collection model applied to the item.  **Possible values**: - `MARKETPLACE_FACILITATOR` (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller)")
-    public String getModel() {
+    @javax.annotation.Nullable public String getModel() {
         return model;
     }
 
@@ -56,9 +74,7 @@ public class ItemTaxCollection {
      *
      * @return responsibleParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The party responsible for withholding the taxes and remitting them to the taxing authority.")
-    public String getResponsibleParty() {
+    @javax.annotation.Nullable public String getResponsibleParty() {
         return responsibleParty;
     }
 
@@ -67,7 +83,7 @@ public class ItemTaxCollection {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -97,10 +113,113 @@ public class ItemTaxCollection {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("model");
+        openapiFields.add("responsibleParty");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemTaxCollection
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemTaxCollection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemTaxCollection is not found in the empty JSON string",
+                        ItemTaxCollection.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemTaxCollection.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemTaxCollection` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("model") != null && !jsonObj.get("model").isJsonNull())
+                && !jsonObj.get("model").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `model` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("model").toString()));
+        }
+        if ((jsonObj.get("responsibleParty") != null
+                        && !jsonObj.get("responsibleParty").isJsonNull())
+                && !jsonObj.get("responsibleParty").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `responsibleParty` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("responsibleParty").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemTaxCollection.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemTaxCollection' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemTaxCollection> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemTaxCollection.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemTaxCollection>() {
+                        @Override
+                        public void write(JsonWriter out, ItemTaxCollection value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemTaxCollection read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemTaxCollection given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemTaxCollection
+     * @throws IOException if the JSON string is invalid with respect to ItemTaxCollection
+     */
+    public static ItemTaxCollection fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemTaxCollection.class);
+    }
+
+    /**
+     * Convert an instance of ItemTaxCollection to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

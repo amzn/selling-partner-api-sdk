@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The state and country from where the item is shipped. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The state and country from where the item is shipped.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipsFromType {
-    @SerializedName("State")
-    private String state = null;
+    public static final String SERIALIZED_NAME_STATE = "State";
 
-    @SerializedName("Country")
-    private String country = null;
+    @SerializedName(SERIALIZED_NAME_STATE)
+    private String state;
+
+    public static final String SERIALIZED_NAME_COUNTRY = "Country";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY)
+    private String country;
+
+    public ShipsFromType() {}
 
     public ShipsFromType state(String state) {
         this.state = state;
@@ -34,8 +55,7 @@ public class ShipsFromType {
      *
      * @return state
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The state from where the item is shipped.")
-    public String getState() {
+    @javax.annotation.Nullable public String getState() {
         return state;
     }
 
@@ -53,8 +73,7 @@ public class ShipsFromType {
      *
      * @return country
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The country from where the item is shipped.")
-    public String getCountry() {
+    @javax.annotation.Nullable public String getCountry() {
         return country;
     }
 
@@ -63,7 +82,7 @@ public class ShipsFromType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -90,10 +109,112 @@ public class ShipsFromType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("State");
+        openapiFields.add("Country");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipsFromType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipsFromType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipsFromType is not found in the empty JSON string",
+                        ShipsFromType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipsFromType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipsFromType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("State") != null && !jsonObj.get("State").isJsonNull())
+                && !jsonObj.get("State").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `State` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("State").toString()));
+        }
+        if ((jsonObj.get("Country") != null && !jsonObj.get("Country").isJsonNull())
+                && !jsonObj.get("Country").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Country` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Country").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipsFromType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipsFromType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipsFromType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipsFromType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipsFromType>() {
+                        @Override
+                        public void write(JsonWriter out, ShipsFromType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipsFromType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipsFromType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipsFromType
+     * @throws IOException if the JSON string is invalid with respect to ShipsFromType
+     */
+    public static ShipsFromType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipsFromType.class);
+    }
+
+    /**
+     * Convert an instance of ShipsFromType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

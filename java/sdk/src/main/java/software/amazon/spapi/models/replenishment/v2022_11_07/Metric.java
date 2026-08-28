@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,49 +22,34 @@ import java.io.IOException;
 /** The metric name and description. */
 @JsonAdapter(Metric.Adapter.class)
 public enum Metric {
-    @SerializedName("SHIPPED_SUBSCRIPTION_UNITS")
     SHIPPED_SUBSCRIPTION_UNITS("SHIPPED_SUBSCRIPTION_UNITS"),
 
-    @SerializedName("TOTAL_SUBSCRIPTIONS_REVENUE")
     TOTAL_SUBSCRIPTIONS_REVENUE("TOTAL_SUBSCRIPTIONS_REVENUE"),
 
-    @SerializedName("ACTIVE_SUBSCRIPTIONS")
     ACTIVE_SUBSCRIPTIONS("ACTIVE_SUBSCRIPTIONS"),
 
-    @SerializedName("NOT_DELIVERED_DUE_TO_OOS")
     NOT_DELIVERED_DUE_TO_OOS("NOT_DELIVERED_DUE_TO_OOS"),
 
-    @SerializedName("SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE")
     SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE("SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REVENUE"),
 
-    @SerializedName("LOST_REVENUE_DUE_TO_OOS")
     LOST_REVENUE_DUE_TO_OOS("LOST_REVENUE_DUE_TO_OOS"),
 
-    @SerializedName("SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS")
     SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS("SUBSCRIBER_NON_SUBSCRIBER_AVERAGE_REORDERS"),
 
-    @SerializedName("COUPONS_REVENUE_PENETRATION")
     COUPONS_REVENUE_PENETRATION("COUPONS_REVENUE_PENETRATION"),
 
-    @SerializedName("REVENUE_BY_DELIVERIES")
     REVENUE_BY_DELIVERIES("REVENUE_BY_DELIVERIES"),
 
-    @SerializedName("SUBSCRIBER_RETENTION")
     SUBSCRIBER_RETENTION("SUBSCRIBER_RETENTION"),
 
-    @SerializedName("REVENUE_PENETRATION_BY_SELLER_FUNDING")
     REVENUE_PENETRATION_BY_SELLER_FUNDING("REVENUE_PENETRATION_BY_SELLER_FUNDING"),
 
-    @SerializedName("SHARE_OF_COUPON_SUBSCRIPTIONS")
     SHARE_OF_COUPON_SUBSCRIPTIONS("SHARE_OF_COUPON_SUBSCRIPTIONS"),
 
-    @SerializedName("SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT")
     SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT("SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT"),
 
-    @SerializedName("SIGNUP_CONVERSION_BY_SELLER_FUNDING")
     SIGNUP_CONVERSION_BY_SELLER_FUNDING("SIGNUP_CONVERSION_BY_SELLER_FUNDING"),
 
-    @SerializedName("REVENUE_PENETRATION")
     REVENUE_PENETRATION("REVENUE_PENETRATION");
 
     private String value;
@@ -82,25 +67,30 @@ public enum Metric {
         return String.valueOf(value);
     }
 
-    public static Metric fromValue(String input) {
+    public static Metric fromValue(String value) {
         for (Metric b : Metric.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<Metric> {
         @Override
         public void write(final JsonWriter jsonWriter, final Metric enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public Metric read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return Metric.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return Metric.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        Metric.fromValue(value);
     }
 }

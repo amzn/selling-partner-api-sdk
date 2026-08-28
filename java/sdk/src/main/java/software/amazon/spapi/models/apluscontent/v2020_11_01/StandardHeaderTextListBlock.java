@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ standard fixed-length list of text and a related headline. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The A+ standard fixed-length list of text and a related headline.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardHeaderTextListBlock {
-    @SerializedName("headline")
-    private TextComponent headline = null;
+    public static final String SERIALIZED_NAME_HEADLINE = "headline";
 
-    @SerializedName("block")
-    private StandardTextListBlock block = null;
+    @SerializedName(SERIALIZED_NAME_HEADLINE)
+    private TextComponent headline;
+
+    public static final String SERIALIZED_NAME_BLOCK = "block";
+
+    @SerializedName(SERIALIZED_NAME_BLOCK)
+    private StandardTextListBlock block;
+
+    public StandardHeaderTextListBlock() {}
 
     public StandardHeaderTextListBlock headline(TextComponent headline) {
         this.headline = headline;
@@ -35,8 +55,7 @@ public class StandardHeaderTextListBlock {
      *
      * @return headline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getHeadline() {
+    @javax.annotation.Nullable public TextComponent getHeadline() {
         return headline;
     }
 
@@ -54,8 +73,7 @@ public class StandardHeaderTextListBlock {
      *
      * @return block
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardTextListBlock getBlock() {
+    @javax.annotation.Nullable public StandardTextListBlock getBlock() {
         return block;
     }
 
@@ -64,7 +82,7 @@ public class StandardHeaderTextListBlock {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -92,10 +110,109 @@ public class StandardHeaderTextListBlock {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headline");
+        openapiFields.add("block");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardHeaderTextListBlock
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardHeaderTextListBlock.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardHeaderTextListBlock is not found in the empty JSON string",
+                        StandardHeaderTextListBlock.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardHeaderTextListBlock.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardHeaderTextListBlock` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `headline`
+        if (jsonObj.get("headline") != null && !jsonObj.get("headline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("headline"));
+        }
+        // validate the optional field `block`
+        if (jsonObj.get("block") != null && !jsonObj.get("block").isJsonNull()) {
+            StandardTextListBlock.validateJsonElement(jsonObj.get("block"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardHeaderTextListBlock.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardHeaderTextListBlock' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardHeaderTextListBlock> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardHeaderTextListBlock.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardHeaderTextListBlock>() {
+                        @Override
+                        public void write(JsonWriter out, StandardHeaderTextListBlock value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardHeaderTextListBlock read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardHeaderTextListBlock given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardHeaderTextListBlock
+     * @throws IOException if the JSON string is invalid with respect to StandardHeaderTextListBlock
+     */
+    public static StandardHeaderTextListBlock fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardHeaderTextListBlock.class);
+    }
+
+    /**
+     * Convert an instance of StandardHeaderTextListBlock to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

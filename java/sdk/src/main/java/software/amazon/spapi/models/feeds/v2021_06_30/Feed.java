@@ -12,44 +12,62 @@
 
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed information about the feed. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the feed.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Feed {
-    @SerializedName("feedId")
-    private String feedId = null;
+    public static final String SERIALIZED_NAME_FEED_ID = "feedId";
 
-    @SerializedName("feedType")
-    private String feedType = null;
+    @SerializedName(SERIALIZED_NAME_FEED_ID)
+    private String feedId;
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    public static final String SERIALIZED_NAME_FEED_TYPE = "feedType";
 
-    @SerializedName("createdTime")
-    private OffsetDateTime createdTime = null;
+    @SerializedName(SERIALIZED_NAME_FEED_TYPE)
+    private String feedType;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_TIME)
+    private OffsetDateTime createdTime;
 
     /** The processing status of the feed. */
     @JsonAdapter(ProcessingStatusEnum.Adapter.class)
     public enum ProcessingStatusEnum {
-        @SerializedName("CANCELLED")
         CANCELLED("CANCELLED"),
-        @SerializedName("DONE")
+
         DONE("DONE"),
-        @SerializedName("FATAL")
+
         FATAL("FATAL"),
-        @SerializedName("IN_PROGRESS")
+
         IN_PROGRESS("IN_PROGRESS"),
-        @SerializedName("IN_QUEUE")
+
         IN_QUEUE("IN_QUEUE");
 
         private String value;
@@ -67,40 +85,55 @@ public class Feed {
             return String.valueOf(value);
         }
 
-        public static ProcessingStatusEnum fromValue(String input) {
+        public static ProcessingStatusEnum fromValue(String value) {
             for (ProcessingStatusEnum b : ProcessingStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ProcessingStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ProcessingStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ProcessingStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ProcessingStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ProcessingStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ProcessingStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("processingStatus")
-    private ProcessingStatusEnum processingStatus = null;
+    public static final String SERIALIZED_NAME_PROCESSING_STATUS = "processingStatus";
 
-    @SerializedName("processingStartTime")
-    private OffsetDateTime processingStartTime = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_STATUS)
+    private ProcessingStatusEnum processingStatus;
 
-    @SerializedName("processingEndTime")
-    private OffsetDateTime processingEndTime = null;
+    public static final String SERIALIZED_NAME_PROCESSING_START_TIME = "processingStartTime";
 
-    @SerializedName("resultFeedDocumentId")
-    private String resultFeedDocumentId = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_START_TIME)
+    private OffsetDateTime processingStartTime;
+
+    public static final String SERIALIZED_NAME_PROCESSING_END_TIME = "processingEndTime";
+
+    @SerializedName(SERIALIZED_NAME_PROCESSING_END_TIME)
+    private OffsetDateTime processingEndTime;
+
+    public static final String SERIALIZED_NAME_RESULT_FEED_DOCUMENT_ID = "resultFeedDocumentId";
+
+    @SerializedName(SERIALIZED_NAME_RESULT_FEED_DOCUMENT_ID)
+    private String resultFeedDocumentId;
+
+    public Feed() {}
 
     public Feed feedId(String feedId) {
         this.feedId = feedId;
@@ -112,10 +145,7 @@ public class Feed {
      *
      * @return feedId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the feed. This identifier is unique only in combination with a seller ID.")
+    @javax.annotation.Nonnull
     public String getFeedId() {
         return feedId;
     }
@@ -134,7 +164,7 @@ public class Feed {
      *
      * @return feedType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feed type.")
+    @javax.annotation.Nonnull
     public String getFeedType() {
         return feedType;
     }
@@ -161,9 +191,7 @@ public class Feed {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of identifiers for the marketplaces that the feed is applied to.")
-    public List<String> getMarketplaceIds() {
+    @javax.annotation.Nullable public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
 
@@ -181,9 +209,7 @@ public class Feed {
      *
      * @return createdTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time when the feed was created, in ISO 8601 date time format.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -202,7 +228,7 @@ public class Feed {
      *
      * @return processingStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the feed.")
+    @javax.annotation.Nonnull
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -221,9 +247,7 @@ public class Feed {
      *
      * @return processingStartTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time when feed processing started, in ISO 8601 date time format.")
-    public OffsetDateTime getProcessingStartTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingStartTime() {
         return processingStartTime;
     }
 
@@ -241,9 +265,7 @@ public class Feed {
      *
      * @return processingEndTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time when feed processing completed, in ISO 8601 date time format.")
-    public OffsetDateTime getProcessingEndTime() {
+    @javax.annotation.Nullable public OffsetDateTime getProcessingEndTime() {
         return processingEndTime;
     }
 
@@ -261,10 +283,7 @@ public class Feed {
      *
      * @return resultFeedDocumentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier for the feed document. This identifier is unique only in combination with a seller ID.")
-    public String getResultFeedDocumentId() {
+    @javax.annotation.Nullable public String getResultFeedDocumentId() {
         return resultFeedDocumentId;
     }
 
@@ -273,7 +292,7 @@ public class Feed {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -331,10 +350,150 @@ public class Feed {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("feedId");
+        openapiFields.add("feedType");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("createdTime");
+        openapiFields.add("processingStatus");
+        openapiFields.add("processingStartTime");
+        openapiFields.add("processingEndTime");
+        openapiFields.add("resultFeedDocumentId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("feedId");
+        openapiRequiredFields.add("feedType");
+        openapiRequiredFields.add("createdTime");
+        openapiRequiredFields.add("processingStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Feed
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Feed.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Feed is not found in the empty JSON string",
+                        Feed.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Feed.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Feed` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Feed.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("feedId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `feedId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("feedId").toString()));
+        }
+        if (!jsonObj.get("feedType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `feedType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("feedType").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("marketplaceIds") != null
+                && !jsonObj.get("marketplaceIds").isJsonNull()
+                && !jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("processingStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `processingStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("processingStatus").toString()));
+        }
+        // validate the required field `processingStatus`
+        ProcessingStatusEnum.validateJsonElement(jsonObj.get("processingStatus"));
+        if ((jsonObj.get("resultFeedDocumentId") != null
+                        && !jsonObj.get("resultFeedDocumentId").isJsonNull())
+                && !jsonObj.get("resultFeedDocumentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resultFeedDocumentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("resultFeedDocumentId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Feed.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Feed' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Feed> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Feed.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Feed>() {
+                        @Override
+                        public void write(JsonWriter out, Feed value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Feed read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Feed given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Feed
+     * @throws IOException if the JSON string is invalid with respect to Feed
+     */
+    public static Feed fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Feed.class);
+    }
+
+    /**
+     * Convert an instance of Feed to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

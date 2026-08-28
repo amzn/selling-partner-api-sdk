@@ -12,57 +12,104 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The details of a shipment. Includes the shipment status. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a shipment. Includes the shipment status.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Shipment {
-    @SerializedName("ShipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "ShipmentId";
 
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
 
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("ItemList")
-    private ItemList itemList = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("ShipFromAddress")
-    private Address shipFromAddress = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("ShipToAddress")
-    private Address shipToAddress = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
 
-    @SerializedName("PackageDimensions")
-    private PackageDimensions packageDimensions = null;
+    public static final String SERIALIZED_NAME_ITEM_LIST = "ItemList";
 
-    @SerializedName("Weight")
-    private Weight weight = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_LIST)
+    private ItemList itemList = new ArrayList<>();
 
-    @SerializedName("Insurance")
-    private CurrencyAmount insurance = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "ShipFromAddress";
 
-    @SerializedName("ShippingService")
-    private ShippingService shippingService = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_ADDRESS)
+    private Address shipFromAddress;
 
-    @SerializedName("Label")
-    private Label label = null;
+    public static final String SERIALIZED_NAME_SHIP_TO_ADDRESS = "ShipToAddress";
 
-    @SerializedName("Status")
-    private ShipmentStatus status = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO_ADDRESS)
+    private Address shipToAddress;
 
-    @SerializedName("TrackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_PACKAGE_DIMENSIONS = "PackageDimensions";
 
-    @SerializedName("CreatedDate")
-    private OffsetDateTime createdDate = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_DIMENSIONS)
+    private PackageDimensions packageDimensions;
 
-    @SerializedName("LastUpdatedDate")
-    private OffsetDateTime lastUpdatedDate = null;
+    public static final String SERIALIZED_NAME_WEIGHT = "Weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public static final String SERIALIZED_NAME_INSURANCE = "Insurance";
+
+    @SerializedName(SERIALIZED_NAME_INSURANCE)
+    private CurrencyAmount insurance;
+
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE = "ShippingService";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE)
+    private ShippingService shippingService;
+
+    public static final String SERIALIZED_NAME_LABEL = "Label";
+
+    @SerializedName(SERIALIZED_NAME_LABEL)
+    private Label label;
+
+    public static final String SERIALIZED_NAME_STATUS = "Status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private ShipmentStatus status;
+
+    public static final String SERIALIZED_NAME_TRACKING_ID = "TrackingId";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
+
+    public static final String SERIALIZED_NAME_CREATED_DATE = "CreatedDate";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_DATE)
+    private OffsetDateTime createdDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE = "LastUpdatedDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE)
+    private OffsetDateTime lastUpdatedDate;
+
+    public Shipment() {}
 
     public Shipment shipmentId(String shipmentId) {
         this.shipmentId = shipmentId;
@@ -74,7 +121,7 @@ public class Shipment {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "An Amazon-defined shipment identifier.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -93,9 +140,7 @@ public class Shipment {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -114,8 +159,7 @@ public class Shipment {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined order identifier.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -133,7 +177,7 @@ public class Shipment {
      *
      * @return itemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemList getItemList() {
         return itemList;
     }
@@ -152,7 +196,7 @@ public class Shipment {
      *
      * @return shipFromAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipFromAddress() {
         return shipFromAddress;
     }
@@ -171,7 +215,7 @@ public class Shipment {
      *
      * @return shipToAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getShipToAddress() {
         return shipToAddress;
     }
@@ -190,7 +234,7 @@ public class Shipment {
      *
      * @return packageDimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageDimensions getPackageDimensions() {
         return packageDimensions;
     }
@@ -209,7 +253,7 @@ public class Shipment {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Weight getWeight() {
         return weight;
     }
@@ -228,7 +272,7 @@ public class Shipment {
      *
      * @return insurance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public CurrencyAmount getInsurance() {
         return insurance;
     }
@@ -247,7 +291,7 @@ public class Shipment {
      *
      * @return shippingService
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingService getShippingService() {
         return shippingService;
     }
@@ -266,7 +310,7 @@ public class Shipment {
      *
      * @return label
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Label getLabel() {
         return label;
     }
@@ -285,7 +329,7 @@ public class Shipment {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentStatus getStatus() {
         return status;
     }
@@ -304,9 +348,7 @@ public class Shipment {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The shipment tracking identifier provided by the carrier.")
-    public String getTrackingId() {
+    @javax.annotation.Nullable public String getTrackingId() {
         return trackingId;
     }
 
@@ -324,7 +366,7 @@ public class Shipment {
      *
      * @return createdDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date-time formatted timestamp.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -343,8 +385,7 @@ public class Shipment {
      *
      * @return lastUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
-    public OffsetDateTime getLastUpdatedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
 
@@ -353,7 +394,7 @@ public class Shipment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -430,10 +471,172 @@ public class Shipment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentId");
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("ItemList");
+        openapiFields.add("ShipFromAddress");
+        openapiFields.add("ShipToAddress");
+        openapiFields.add("PackageDimensions");
+        openapiFields.add("Weight");
+        openapiFields.add("Insurance");
+        openapiFields.add("ShippingService");
+        openapiFields.add("Label");
+        openapiFields.add("Status");
+        openapiFields.add("TrackingId");
+        openapiFields.add("CreatedDate");
+        openapiFields.add("LastUpdatedDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShipmentId");
+        openapiRequiredFields.add("AmazonOrderId");
+        openapiRequiredFields.add("ItemList");
+        openapiRequiredFields.add("ShipFromAddress");
+        openapiRequiredFields.add("ShipToAddress");
+        openapiRequiredFields.add("PackageDimensions");
+        openapiRequiredFields.add("Weight");
+        openapiRequiredFields.add("Insurance");
+        openapiRequiredFields.add("ShippingService");
+        openapiRequiredFields.add("Label");
+        openapiRequiredFields.add("Status");
+        openapiRequiredFields.add("CreatedDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Shipment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Shipment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Shipment is not found in the empty JSON string",
+                        Shipment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Shipment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Shipment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Shipment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("ShipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipmentId").toString()));
+        }
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        // validate the required field `ShipFromAddress`
+        Address.validateJsonElement(jsonObj.get("ShipFromAddress"));
+        // validate the required field `ShipToAddress`
+        Address.validateJsonElement(jsonObj.get("ShipToAddress"));
+        // validate the required field `PackageDimensions`
+        PackageDimensions.validateJsonElement(jsonObj.get("PackageDimensions"));
+        // validate the required field `Weight`
+        Weight.validateJsonElement(jsonObj.get("Weight"));
+        // validate the required field `Insurance`
+        CurrencyAmount.validateJsonElement(jsonObj.get("Insurance"));
+        // validate the required field `ShippingService`
+        ShippingService.validateJsonElement(jsonObj.get("ShippingService"));
+        // validate the required field `Label`
+        Label.validateJsonElement(jsonObj.get("Label"));
+        // validate the required field `Status`
+        ShipmentStatus.validateJsonElement(jsonObj.get("Status"));
+        if ((jsonObj.get("TrackingId") != null && !jsonObj.get("TrackingId").isJsonNull())
+                && !jsonObj.get("TrackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TrackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TrackingId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Shipment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Shipment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Shipment> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Shipment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Shipment>() {
+                        @Override
+                        public void write(JsonWriter out, Shipment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Shipment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Shipment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Shipment
+     * @throws IOException if the JSON string is invalid with respect to Shipment
+     */
+    public static Shipment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Shipment.class);
+    }
+
+    /**
+     * Convert an instance of Shipment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,36 +12,52 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Physical dimensional measurements of a container. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Physical dimensional measurements of a container.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Dimensions {
-    @SerializedName("length")
-    private String length = null;
+    public static final String SERIALIZED_NAME_LENGTH = "length";
 
-    @SerializedName("width")
-    private String width = null;
+    @SerializedName(SERIALIZED_NAME_LENGTH)
+    private String length;
 
-    @SerializedName("height")
-    private String height = null;
+    public static final String SERIALIZED_NAME_WIDTH = "width";
+
+    @SerializedName(SERIALIZED_NAME_WIDTH)
+    private String width;
+
+    public static final String SERIALIZED_NAME_HEIGHT = "height";
+
+    @SerializedName(SERIALIZED_NAME_HEIGHT)
+    private String height;
 
     /** The unit of measure for dimensions. */
     @JsonAdapter(UnitOfMeasureEnum.Adapter.class)
     public enum UnitOfMeasureEnum {
-        @SerializedName("In")
         IN("In"),
-        @SerializedName("Ft")
+
         FT("Ft"),
-        @SerializedName("Meter")
+
         METER("Meter"),
-        @SerializedName("Yard")
+
         YARD("Yard");
 
         private String value;
@@ -59,31 +75,40 @@ public class Dimensions {
             return String.valueOf(value);
         }
 
-        public static UnitOfMeasureEnum fromValue(String input) {
+        public static UnitOfMeasureEnum fromValue(String value) {
             for (UnitOfMeasureEnum b : UnitOfMeasureEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<UnitOfMeasureEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final UnitOfMeasureEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public UnitOfMeasureEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return UnitOfMeasureEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return UnitOfMeasureEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            UnitOfMeasureEnum.fromValue(value);
         }
     }
 
-    @SerializedName("unitOfMeasure")
-    private UnitOfMeasureEnum unitOfMeasure = null;
+    public static final String SERIALIZED_NAME_UNIT_OF_MEASURE = "unitOfMeasure";
+
+    @SerializedName(SERIALIZED_NAME_UNIT_OF_MEASURE)
+    private UnitOfMeasureEnum unitOfMeasure;
+
+    public Dimensions() {}
 
     public Dimensions length(String length) {
         this.length = length;
@@ -97,10 +122,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
+    @javax.annotation.Nonnull
     public String getLength() {
         return length;
     }
@@ -121,10 +143,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
+    @javax.annotation.Nonnull
     public String getWidth() {
         return width;
     }
@@ -145,10 +164,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
+    @javax.annotation.Nonnull
     public String getHeight() {
         return height;
     }
@@ -167,7 +183,7 @@ public class Dimensions {
      *
      * @return unitOfMeasure
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measure for dimensions.")
+    @javax.annotation.Nonnull
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -177,7 +193,7 @@ public class Dimensions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -209,10 +225,136 @@ public class Dimensions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("length");
+        openapiFields.add("width");
+        openapiFields.add("height");
+        openapiFields.add("unitOfMeasure");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("length");
+        openapiRequiredFields.add("width");
+        openapiRequiredFields.add("height");
+        openapiRequiredFields.add("unitOfMeasure");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Dimensions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Dimensions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Dimensions is not found in the empty JSON string",
+                        Dimensions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Dimensions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Dimensions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Dimensions.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("length").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `length` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("length").toString()));
+        }
+        if (!jsonObj.get("width").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `width` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("width").toString()));
+        }
+        if (!jsonObj.get("height").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `height` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("height").toString()));
+        }
+        if (!jsonObj.get("unitOfMeasure").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `unitOfMeasure` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("unitOfMeasure").toString()));
+        }
+        // validate the required field `unitOfMeasure`
+        UnitOfMeasureEnum.validateJsonElement(jsonObj.get("unitOfMeasure"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Dimensions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Dimensions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Dimensions> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Dimensions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Dimensions>() {
+                        @Override
+                        public void write(JsonWriter out, Dimensions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Dimensions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Dimensions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Dimensions
+     * @throws IOException if the JSON string is invalid with respect to Dimensions
+     */
+    public static Dimensions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Dimensions.class);
+    }
+
+    /**
+     * Convert an instance of Dimensions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

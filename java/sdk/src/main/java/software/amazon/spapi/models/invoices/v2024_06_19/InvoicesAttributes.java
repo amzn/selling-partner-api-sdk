@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An object that contains the invoice attributes definition. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An object that contains the invoice attributes definition.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoicesAttributes {
-    @SerializedName("invoiceStatusOptions")
-    private List<AttributeOption> invoiceStatusOptions = null;
+    public static final String SERIALIZED_NAME_INVOICE_STATUS_OPTIONS = "invoiceStatusOptions";
 
-    @SerializedName("invoiceTypeOptions")
-    private List<AttributeOption> invoiceTypeOptions = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_STATUS_OPTIONS)
+    private List<AttributeOption> invoiceStatusOptions = new ArrayList<>();
 
-    @SerializedName("transactionIdentifierNameOptions")
-    private List<AttributeOption> transactionIdentifierNameOptions = null;
+    public static final String SERIALIZED_NAME_INVOICE_TYPE_OPTIONS = "invoiceTypeOptions";
 
-    @SerializedName("transactionTypeOptions")
-    private List<AttributeOption> transactionTypeOptions = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE_OPTIONS)
+    private List<AttributeOption> invoiceTypeOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRANSACTION_IDENTIFIER_NAME_OPTIONS = "transactionIdentifierNameOptions";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_IDENTIFIER_NAME_OPTIONS)
+    private List<AttributeOption> transactionIdentifierNameOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE_OPTIONS = "transactionTypeOptions";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE_OPTIONS)
+    private List<AttributeOption> transactionTypeOptions = new ArrayList<>();
+
+    public InvoicesAttributes() {}
 
     public InvoicesAttributes invoiceStatusOptions(List<AttributeOption> invoiceStatusOptions) {
         this.invoiceStatusOptions = invoiceStatusOptions;
@@ -50,9 +76,7 @@ public class InvoicesAttributes {
      *
      * @return invoiceStatusOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of all the options that are available for the invoice status attribute.")
-    public List<AttributeOption> getInvoiceStatusOptions() {
+    @javax.annotation.Nullable public List<AttributeOption> getInvoiceStatusOptions() {
         return invoiceStatusOptions;
     }
 
@@ -78,9 +102,7 @@ public class InvoicesAttributes {
      *
      * @return invoiceTypeOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of all the options that are available for the invoice type attribute.")
-    public List<AttributeOption> getInvoiceTypeOptions() {
+    @javax.annotation.Nullable public List<AttributeOption> getInvoiceTypeOptions() {
         return invoiceTypeOptions;
     }
 
@@ -107,9 +129,7 @@ public class InvoicesAttributes {
      *
      * @return transactionIdentifierNameOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of all the options that are available for the transaction identifier name attribute.")
-    public List<AttributeOption> getTransactionIdentifierNameOptions() {
+    @javax.annotation.Nullable public List<AttributeOption> getTransactionIdentifierNameOptions() {
         return transactionIdentifierNameOptions;
     }
 
@@ -135,9 +155,7 @@ public class InvoicesAttributes {
      *
      * @return transactionTypeOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of all the options that are available for the transaction type attribute.")
-    public List<AttributeOption> getTransactionTypeOptions() {
+    @javax.annotation.Nullable public List<AttributeOption> getTransactionTypeOptions() {
         return transactionTypeOptions;
     }
 
@@ -146,7 +164,7 @@ public class InvoicesAttributes {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -188,10 +206,175 @@ public class InvoicesAttributes {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("invoiceStatusOptions");
+        openapiFields.add("invoiceTypeOptions");
+        openapiFields.add("transactionIdentifierNameOptions");
+        openapiFields.add("transactionTypeOptions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoicesAttributes
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoicesAttributes.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoicesAttributes is not found in the empty JSON string",
+                        InvoicesAttributes.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoicesAttributes.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoicesAttributes` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("invoiceStatusOptions") != null
+                && !jsonObj.get("invoiceStatusOptions").isJsonNull()) {
+            JsonArray jsonArrayinvoiceStatusOptions = jsonObj.getAsJsonArray("invoiceStatusOptions");
+            if (jsonArrayinvoiceStatusOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invoiceStatusOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invoiceStatusOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invoiceStatusOptions").toString()));
+                }
+
+                // validate the optional field `invoiceStatusOptions` (array)
+                for (int i = 0; i < jsonArrayinvoiceStatusOptions.size(); i++) {
+                    AttributeOption.validateJsonElement(jsonArrayinvoiceStatusOptions.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("invoiceTypeOptions") != null
+                && !jsonObj.get("invoiceTypeOptions").isJsonNull()) {
+            JsonArray jsonArrayinvoiceTypeOptions = jsonObj.getAsJsonArray("invoiceTypeOptions");
+            if (jsonArrayinvoiceTypeOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("invoiceTypeOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `invoiceTypeOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("invoiceTypeOptions").toString()));
+                }
+
+                // validate the optional field `invoiceTypeOptions` (array)
+                for (int i = 0; i < jsonArrayinvoiceTypeOptions.size(); i++) {
+                    AttributeOption.validateJsonElement(jsonArrayinvoiceTypeOptions.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("transactionIdentifierNameOptions") != null
+                && !jsonObj.get("transactionIdentifierNameOptions").isJsonNull()) {
+            JsonArray jsonArraytransactionIdentifierNameOptions =
+                    jsonObj.getAsJsonArray("transactionIdentifierNameOptions");
+            if (jsonArraytransactionIdentifierNameOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transactionIdentifierNameOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transactionIdentifierNameOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transactionIdentifierNameOptions").toString()));
+                }
+
+                // validate the optional field `transactionIdentifierNameOptions` (array)
+                for (int i = 0; i < jsonArraytransactionIdentifierNameOptions.size(); i++) {
+                    AttributeOption.validateJsonElement(jsonArraytransactionIdentifierNameOptions.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("transactionTypeOptions") != null
+                && !jsonObj.get("transactionTypeOptions").isJsonNull()) {
+            JsonArray jsonArraytransactionTypeOptions = jsonObj.getAsJsonArray("transactionTypeOptions");
+            if (jsonArraytransactionTypeOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transactionTypeOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transactionTypeOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transactionTypeOptions").toString()));
+                }
+
+                // validate the optional field `transactionTypeOptions` (array)
+                for (int i = 0; i < jsonArraytransactionTypeOptions.size(); i++) {
+                    AttributeOption.validateJsonElement(jsonArraytransactionTypeOptions.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoicesAttributes.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoicesAttributes' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoicesAttributes> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoicesAttributes.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoicesAttributes>() {
+                        @Override
+                        public void write(JsonWriter out, InvoicesAttributes value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoicesAttributes read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoicesAttributes given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoicesAttributes
+     * @throws IOException if the JSON string is invalid with respect to InvoicesAttributes
+     */
+    public static InvoicesAttributes fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoicesAttributes.class);
+    }
+
+    /**
+     * Convert an instance of InvoicesAttributes to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }
