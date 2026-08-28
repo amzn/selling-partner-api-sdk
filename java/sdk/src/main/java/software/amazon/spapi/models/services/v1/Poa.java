@@ -12,42 +12,61 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Proof of Appointment (POA) details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Proof of Appointment (POA) details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Poa {
-    @SerializedName("appointmentTime")
-    private AppointmentTime appointmentTime = null;
+    public static final String SERIALIZED_NAME_APPOINTMENT_TIME = "appointmentTime";
 
-    @SerializedName("technicians")
-    private List<Technician> technicians = null;
+    @SerializedName(SERIALIZED_NAME_APPOINTMENT_TIME)
+    private AppointmentTime appointmentTime;
 
-    @SerializedName("uploadingTechnician")
-    private String uploadingTechnician = null;
+    public static final String SERIALIZED_NAME_TECHNICIANS = "technicians";
 
-    @SerializedName("uploadTime")
-    private OffsetDateTime uploadTime = null;
+    @SerializedName(SERIALIZED_NAME_TECHNICIANS)
+    private List<Technician> technicians = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_UPLOADING_TECHNICIAN = "uploadingTechnician";
+
+    @SerializedName(SERIALIZED_NAME_UPLOADING_TECHNICIAN)
+    private String uploadingTechnician;
+
+    public static final String SERIALIZED_NAME_UPLOAD_TIME = "uploadTime";
+
+    @SerializedName(SERIALIZED_NAME_UPLOAD_TIME)
+    private OffsetDateTime uploadTime;
 
     /** The type of POA uploaded. */
     @JsonAdapter(PoaTypeEnum.Adapter.class)
     public enum PoaTypeEnum {
-        @SerializedName("NO_SIGNATURE_DUMMY_POS")
         NO_SIGNATURE_DUMMY_POS("NO_SIGNATURE_DUMMY_POS"),
-        @SerializedName("CUSTOMER_SIGNATURE")
+
         CUSTOMER_SIGNATURE("CUSTOMER_SIGNATURE"),
-        @SerializedName("DUMMY_RECEIPT")
+
         DUMMY_RECEIPT("DUMMY_RECEIPT"),
-        @SerializedName("POA_RECEIPT")
+
         POA_RECEIPT("POA_RECEIPT");
 
         private String value;
@@ -65,31 +84,40 @@ public class Poa {
             return String.valueOf(value);
         }
 
-        public static PoaTypeEnum fromValue(String input) {
+        public static PoaTypeEnum fromValue(String value) {
             for (PoaTypeEnum b : PoaTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PoaTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PoaTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PoaTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PoaTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PoaTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PoaTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("poaType")
-    private PoaTypeEnum poaType = null;
+    public static final String SERIALIZED_NAME_POA_TYPE = "poaType";
+
+    @SerializedName(SERIALIZED_NAME_POA_TYPE)
+    private PoaTypeEnum poaType;
+
+    public Poa() {}
 
     public Poa appointmentTime(AppointmentTime appointmentTime) {
         this.appointmentTime = appointmentTime;
@@ -101,8 +129,7 @@ public class Poa {
      *
      * @return appointmentTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AppointmentTime getAppointmentTime() {
+    @javax.annotation.Nullable public AppointmentTime getAppointmentTime() {
         return appointmentTime;
     }
 
@@ -128,8 +155,7 @@ public class Poa {
      *
      * @return technicians
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of technicians.")
-    public List<Technician> getTechnicians() {
+    @javax.annotation.Nullable public List<Technician> getTechnicians() {
         return technicians;
     }
 
@@ -147,8 +173,7 @@ public class Poa {
      *
      * @return uploadingTechnician
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the technician who uploaded the POA.")
-    public String getUploadingTechnician() {
+    @javax.annotation.Nullable public String getUploadingTechnician() {
         return uploadingTechnician;
     }
 
@@ -166,9 +191,7 @@ public class Poa {
      *
      * @return uploadTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date and time when the POA was uploaded in ISO 8601 format.")
-    public OffsetDateTime getUploadTime() {
+    @javax.annotation.Nullable public OffsetDateTime getUploadTime() {
         return uploadTime;
     }
 
@@ -186,8 +209,7 @@ public class Poa {
      *
      * @return poaType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of POA uploaded.")
-    public PoaTypeEnum getPoaType() {
+    @javax.annotation.Nullable public PoaTypeEnum getPoaType() {
         return poaType;
     }
 
@@ -196,7 +218,7 @@ public class Poa {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -234,10 +256,141 @@ public class Poa {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("appointmentTime");
+        openapiFields.add("technicians");
+        openapiFields.add("uploadingTechnician");
+        openapiFields.add("uploadTime");
+        openapiFields.add("poaType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Poa
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Poa.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Poa is not found in the empty JSON string",
+                        Poa.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Poa.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Poa` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `appointmentTime`
+        if (jsonObj.get("appointmentTime") != null
+                && !jsonObj.get("appointmentTime").isJsonNull()) {
+            AppointmentTime.validateJsonElement(jsonObj.get("appointmentTime"));
+        }
+        if (jsonObj.get("technicians") != null && !jsonObj.get("technicians").isJsonNull()) {
+            JsonArray jsonArraytechnicians = jsonObj.getAsJsonArray("technicians");
+            if (jsonArraytechnicians != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("technicians").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `technicians` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("technicians").toString()));
+                }
+
+                // validate the optional field `technicians` (array)
+                for (int i = 0; i < jsonArraytechnicians.size(); i++) {
+                    Technician.validateJsonElement(jsonArraytechnicians.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("uploadingTechnician") != null
+                        && !jsonObj.get("uploadingTechnician").isJsonNull())
+                && !jsonObj.get("uploadingTechnician").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uploadingTechnician` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uploadingTechnician").toString()));
+        }
+        if ((jsonObj.get("poaType") != null && !jsonObj.get("poaType").isJsonNull())
+                && !jsonObj.get("poaType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `poaType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("poaType").toString()));
+        }
+        // validate the optional field `poaType`
+        if (jsonObj.get("poaType") != null && !jsonObj.get("poaType").isJsonNull()) {
+            PoaTypeEnum.validateJsonElement(jsonObj.get("poaType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Poa.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Poa' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Poa> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Poa.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Poa>() {
+                        @Override
+                        public void write(JsonWriter out, Poa value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Poa read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Poa given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Poa
+     * @throws IOException if the JSON string is invalid with respect to Poa
+     */
+    public static Poa fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Poa.class);
+    }
+
+    /**
+     * Convert an instance of Poa to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

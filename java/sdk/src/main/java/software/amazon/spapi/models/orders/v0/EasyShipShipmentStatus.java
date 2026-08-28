@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,52 +22,36 @@ import java.io.IOException;
 /** The status of the Amazon Easy Ship order. This property is only included for Amazon Easy Ship orders. */
 @JsonAdapter(EasyShipShipmentStatus.Adapter.class)
 public enum EasyShipShipmentStatus {
-    @SerializedName("PendingSchedule")
     PENDING_SCHEDULE("PendingSchedule"),
 
-    @SerializedName("PendingPickUp")
     PENDING_PICK_UP("PendingPickUp"),
 
-    @SerializedName("PendingDropOff")
     PENDING_DROP_OFF("PendingDropOff"),
 
-    @SerializedName("LabelCanceled")
     LABEL_CANCELED("LabelCanceled"),
 
-    @SerializedName("PickedUp")
     PICKED_UP("PickedUp"),
 
-    @SerializedName("DroppedOff")
     DROPPED_OFF("DroppedOff"),
 
-    @SerializedName("AtOriginFC")
     AT_ORIGIN_FC("AtOriginFC"),
 
-    @SerializedName("AtDestinationFC")
     AT_DESTINATION_FC("AtDestinationFC"),
 
-    @SerializedName("Delivered")
     DELIVERED("Delivered"),
 
-    @SerializedName("RejectedByBuyer")
     REJECTED_BY_BUYER("RejectedByBuyer"),
 
-    @SerializedName("Undeliverable")
     UNDELIVERABLE("Undeliverable"),
 
-    @SerializedName("ReturningToSeller")
     RETURNING_TO_SELLER("ReturningToSeller"),
 
-    @SerializedName("ReturnedToSeller")
     RETURNED_TO_SELLER("ReturnedToSeller"),
 
-    @SerializedName("Lost")
     LOST("Lost"),
 
-    @SerializedName("OutForDelivery")
     OUT_FOR_DELIVERY("OutForDelivery"),
 
-    @SerializedName("Damaged")
     DAMAGED("Damaged");
 
     private String value;
@@ -85,25 +69,30 @@ public enum EasyShipShipmentStatus {
         return String.valueOf(value);
     }
 
-    public static EasyShipShipmentStatus fromValue(String input) {
+    public static EasyShipShipmentStatus fromValue(String value) {
         for (EasyShipShipmentStatus b : EasyShipShipmentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<EasyShipShipmentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final EasyShipShipmentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public EasyShipShipmentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return EasyShipShipmentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return EasyShipShipmentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        EasyShipShipmentStatus.fromValue(value);
     }
 }

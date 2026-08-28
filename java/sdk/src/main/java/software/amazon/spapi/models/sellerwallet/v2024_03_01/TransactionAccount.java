@@ -12,32 +12,63 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of the bank account involved in the transaction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the bank account involved in the transaction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransactionAccount {
-    @SerializedName("accountId")
-    private String accountId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
 
-    @SerializedName("bankAccountHolderName")
-    private String bankAccountHolderName = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
 
-    @SerializedName("bankName")
-    private String bankName = null;
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_HOLDER_NAME = "bankAccountHolderName";
 
-    @SerializedName("bankAccountNumberFormat")
-    private BankAccountNumberFormat bankAccountNumberFormat = null;
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_HOLDER_NAME)
+    private String bankAccountHolderName;
 
-    @SerializedName("bankAccountNumberTail")
-    private String bankAccountNumberTail = null;
+    public static final String SERIALIZED_NAME_BANK_NAME = "bankName";
 
-    @SerializedName("bankAccountCountryCode")
-    private String bankAccountCountryCode = null;
+    @SerializedName(SERIALIZED_NAME_BANK_NAME)
+    private String bankName;
 
-    @SerializedName("bankAccountCurrency")
-    private String bankAccountCurrency = null;
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_FORMAT = "bankAccountNumberFormat";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_FORMAT)
+    private BankAccountNumberFormat bankAccountNumberFormat;
+
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_TAIL = "bankAccountNumberTail";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_TAIL)
+    private String bankAccountNumberTail;
+
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_COUNTRY_CODE = "bankAccountCountryCode";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_COUNTRY_CODE)
+    private String bankAccountCountryCode;
+
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_CURRENCY = "bankAccountCurrency";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_CURRENCY)
+    private String bankAccountCurrency;
+
+    public TransactionAccount() {}
 
     public TransactionAccount accountId(String accountId) {
         this.accountId = accountId;
@@ -49,9 +80,7 @@ public class TransactionAccount {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The unique identifier provided by Amazon to identify the account.")
-    public String getAccountId() {
+    @javax.annotation.Nullable public String getAccountId() {
         return accountId;
     }
 
@@ -69,8 +98,7 @@ public class TransactionAccount {
      *
      * @return bankAccountHolderName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The account holder's name.")
-    public String getBankAccountHolderName() {
+    @javax.annotation.Nullable public String getBankAccountHolderName() {
         return bankAccountHolderName;
     }
 
@@ -88,7 +116,7 @@ public class TransactionAccount {
      *
      * @return bankName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the bank.")
+    @javax.annotation.Nonnull
     public String getBankName() {
         return bankName;
     }
@@ -107,7 +135,7 @@ public class TransactionAccount {
      *
      * @return bankAccountNumberFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public BankAccountNumberFormat getBankAccountNumberFormat() {
         return bankAccountNumberFormat;
     }
@@ -126,8 +154,7 @@ public class TransactionAccount {
      *
      * @return bankAccountNumberTail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The last three digits of the bank account number.")
-    public String getBankAccountNumberTail() {
+    @javax.annotation.Nullable public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }
 
@@ -146,10 +173,7 @@ public class TransactionAccount {
      *
      * @return bankAccountCountryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.")
-    public String getBankAccountCountryCode() {
+    @javax.annotation.Nullable public String getBankAccountCountryCode() {
         return bankAccountCountryCode;
     }
 
@@ -167,7 +191,7 @@ public class TransactionAccount {
      *
      * @return bankAccountCurrency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The currency code in ISO 4217 format.")
+    @javax.annotation.Nonnull
     public String getBankAccountCurrency() {
         return bankAccountCurrency;
     }
@@ -177,7 +201,7 @@ public class TransactionAccount {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -232,10 +256,156 @@ public class TransactionAccount {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountId");
+        openapiFields.add("bankAccountHolderName");
+        openapiFields.add("bankName");
+        openapiFields.add("bankAccountNumberFormat");
+        openapiFields.add("bankAccountNumberTail");
+        openapiFields.add("bankAccountCountryCode");
+        openapiFields.add("bankAccountCurrency");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("bankName");
+        openapiRequiredFields.add("bankAccountNumberFormat");
+        openapiRequiredFields.add("bankAccountCurrency");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransactionAccount
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransactionAccount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransactionAccount is not found in the empty JSON string",
+                        TransactionAccount.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransactionAccount.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransactionAccount` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransactionAccount.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull())
+                && !jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+        if ((jsonObj.get("bankAccountHolderName") != null
+                        && !jsonObj.get("bankAccountHolderName").isJsonNull())
+                && !jsonObj.get("bankAccountHolderName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankAccountHolderName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankAccountHolderName").toString()));
+        }
+        if (!jsonObj.get("bankName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankName").toString()));
+        }
+        // validate the required field `bankAccountNumberFormat`
+        BankAccountNumberFormat.validateJsonElement(jsonObj.get("bankAccountNumberFormat"));
+        if ((jsonObj.get("bankAccountNumberTail") != null
+                        && !jsonObj.get("bankAccountNumberTail").isJsonNull())
+                && !jsonObj.get("bankAccountNumberTail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankAccountNumberTail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankAccountNumberTail").toString()));
+        }
+        if ((jsonObj.get("bankAccountCountryCode") != null
+                        && !jsonObj.get("bankAccountCountryCode").isJsonNull())
+                && !jsonObj.get("bankAccountCountryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankAccountCountryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankAccountCountryCode").toString()));
+        }
+        if (!jsonObj.get("bankAccountCurrency").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankAccountCurrency` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankAccountCurrency").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransactionAccount.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransactionAccount' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransactionAccount> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransactionAccount.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransactionAccount>() {
+                        @Override
+                        public void write(JsonWriter out, TransactionAccount value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransactionAccount read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransactionAccount given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransactionAccount
+     * @throws IOException if the JSON string is invalid with respect to TransactionAccount
+     */
+    public static TransactionAccount fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransactionAccount.class);
+    }
+
+    /**
+     * Convert an instance of TransactionAccount to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

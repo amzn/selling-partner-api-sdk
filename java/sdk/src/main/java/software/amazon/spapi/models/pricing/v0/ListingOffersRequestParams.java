@@ -12,24 +12,48 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** List of request parameters that can be accepted by &#x60;ListingOffersRequest&#x60; */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "List of request parameters that can be accepted by `ListingOffersRequest`")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListingOffersRequestParams {
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("ItemCondition")
-    private ItemCondition itemCondition = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("CustomerType")
-    private CustomerType customerType = null;
+    public static final String SERIALIZED_NAME_ITEM_CONDITION = "ItemCondition";
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_CONDITION)
+    private ItemCondition itemCondition;
+
+    public static final String SERIALIZED_NAME_CUSTOMER_TYPE = "CustomerType";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_TYPE)
+    private CustomerType customerType;
+
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public ListingOffersRequestParams() {}
 
     public ListingOffersRequestParams marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -41,9 +65,7 @@ public class ListingOffersRequestParams {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -62,7 +84,7 @@ public class ListingOffersRequestParams {
      *
      * @return itemCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -81,8 +103,7 @@ public class ListingOffersRequestParams {
      *
      * @return customerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CustomerType getCustomerType() {
+    @javax.annotation.Nullable public CustomerType getCustomerType() {
         return customerType;
     }
 
@@ -100,10 +121,7 @@ public class ListingOffersRequestParams {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The seller stock keeping unit (SKU) of the item. This is the same SKU passed as a path parameter.")
+    @javax.annotation.Nonnull
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -113,7 +131,7 @@ public class ListingOffersRequestParams {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +163,131 @@ public class ListingOffersRequestParams {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("ItemCondition");
+        openapiFields.add("CustomerType");
+        openapiFields.add("SellerSKU");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("MarketplaceId");
+        openapiRequiredFields.add("ItemCondition");
+        openapiRequiredFields.add("SellerSKU");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListingOffersRequestParams
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListingOffersRequestParams.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListingOffersRequestParams is not found in the empty JSON string",
+                        ListingOffersRequestParams.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListingOffersRequestParams.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListingOffersRequestParams` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListingOffersRequestParams.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        // validate the required field `ItemCondition`
+        ItemCondition.validateJsonElement(jsonObj.get("ItemCondition"));
+        // validate the optional field `CustomerType`
+        if (jsonObj.get("CustomerType") != null && !jsonObj.get("CustomerType").isJsonNull()) {
+            CustomerType.validateJsonElement(jsonObj.get("CustomerType"));
+        }
+        if (!jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListingOffersRequestParams.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListingOffersRequestParams' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListingOffersRequestParams> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListingOffersRequestParams.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListingOffersRequestParams>() {
+                        @Override
+                        public void write(JsonWriter out, ListingOffersRequestParams value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListingOffersRequestParams read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListingOffersRequestParams given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListingOffersRequestParams
+     * @throws IOException if the JSON string is invalid with respect to ListingOffersRequestParams
+     */
+    public static ListingOffersRequestParams fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListingOffersRequestParams.class);
+    }
+
+    /**
+     * Convert an instance of ListingOffersRequestParams to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

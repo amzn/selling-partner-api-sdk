@@ -12,34 +12,61 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon&#39;s
  * fulfillment network.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon's fulfillment network.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SKUPrepInstructions {
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
 
-    @SerializedName("BarcodeInstruction")
-    private BarcodeInstruction barcodeInstruction = null;
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
 
-    @SerializedName("PrepGuidance")
-    private PrepGuidance prepGuidance = null;
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
 
-    @SerializedName("PrepInstructionList")
-    private PrepInstructionList prepInstructionList = null;
+    public static final String SERIALIZED_NAME_BARCODE_INSTRUCTION = "BarcodeInstruction";
 
-    @SerializedName("AmazonPrepFeesDetailsList")
-    private AmazonPrepFeesDetailsList amazonPrepFeesDetailsList = null;
+    @SerializedName(SERIALIZED_NAME_BARCODE_INSTRUCTION)
+    private BarcodeInstruction barcodeInstruction;
+
+    public static final String SERIALIZED_NAME_PREP_GUIDANCE = "PrepGuidance";
+
+    @SerializedName(SERIALIZED_NAME_PREP_GUIDANCE)
+    private PrepGuidance prepGuidance;
+
+    public static final String SERIALIZED_NAME_PREP_INSTRUCTION_LIST = "PrepInstructionList";
+
+    @SerializedName(SERIALIZED_NAME_PREP_INSTRUCTION_LIST)
+    private PrepInstructionList prepInstructionList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AMAZON_PREP_FEES_DETAILS_LIST = "AmazonPrepFeesDetailsList";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_PREP_FEES_DETAILS_LIST)
+    private AmazonPrepFeesDetailsList amazonPrepFeesDetailsList = new ArrayList<>();
+
+    public SKUPrepInstructions() {}
 
     public SKUPrepInstructions sellerSKU(String sellerSKU) {
         this.sellerSKU = sellerSKU;
@@ -51,8 +78,7 @@ public class SKUPrepInstructions {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -70,9 +96,7 @@ public class SKUPrepInstructions {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getASIN() {
+    @javax.annotation.Nullable public String getASIN() {
         return ASIN;
     }
 
@@ -90,8 +114,7 @@ public class SKUPrepInstructions {
      *
      * @return barcodeInstruction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BarcodeInstruction getBarcodeInstruction() {
+    @javax.annotation.Nullable public BarcodeInstruction getBarcodeInstruction() {
         return barcodeInstruction;
     }
 
@@ -109,8 +132,7 @@ public class SKUPrepInstructions {
      *
      * @return prepGuidance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrepGuidance getPrepGuidance() {
+    @javax.annotation.Nullable public PrepGuidance getPrepGuidance() {
         return prepGuidance;
     }
 
@@ -128,8 +150,7 @@ public class SKUPrepInstructions {
      *
      * @return prepInstructionList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrepInstructionList getPrepInstructionList() {
+    @javax.annotation.Nullable public PrepInstructionList getPrepInstructionList() {
         return prepInstructionList;
     }
 
@@ -147,8 +168,7 @@ public class SKUPrepInstructions {
      *
      * @return amazonPrepFeesDetailsList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AmazonPrepFeesDetailsList getAmazonPrepFeesDetailsList() {
+    @javax.annotation.Nullable public AmazonPrepFeesDetailsList getAmazonPrepFeesDetailsList() {
         return amazonPrepFeesDetailsList;
     }
 
@@ -157,7 +177,7 @@ public class SKUPrepInstructions {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -200,10 +220,125 @@ public class SKUPrepInstructions {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SellerSKU");
+        openapiFields.add("ASIN");
+        openapiFields.add("BarcodeInstruction");
+        openapiFields.add("PrepGuidance");
+        openapiFields.add("PrepInstructionList");
+        openapiFields.add("AmazonPrepFeesDetailsList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SKUPrepInstructions
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SKUPrepInstructions.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SKUPrepInstructions is not found in the empty JSON string",
+                        SKUPrepInstructions.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SKUPrepInstructions.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SKUPrepInstructions` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if ((jsonObj.get("ASIN") != null && !jsonObj.get("ASIN").isJsonNull())
+                && !jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        // validate the optional field `BarcodeInstruction`
+        if (jsonObj.get("BarcodeInstruction") != null
+                && !jsonObj.get("BarcodeInstruction").isJsonNull()) {
+            BarcodeInstruction.validateJsonElement(jsonObj.get("BarcodeInstruction"));
+        }
+        // validate the optional field `PrepGuidance`
+        if (jsonObj.get("PrepGuidance") != null && !jsonObj.get("PrepGuidance").isJsonNull()) {
+            PrepGuidance.validateJsonElement(jsonObj.get("PrepGuidance"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SKUPrepInstructions.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SKUPrepInstructions' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SKUPrepInstructions> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SKUPrepInstructions.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SKUPrepInstructions>() {
+                        @Override
+                        public void write(JsonWriter out, SKUPrepInstructions value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SKUPrepInstructions read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SKUPrepInstructions given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SKUPrepInstructions
+     * @throws IOException if the JSON string is invalid with respect to SKUPrepInstructions
+     */
+    public static SKUPrepInstructions fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SKUPrepInstructions.class);
+    }
+
+    /**
+     * Convert an instance of SKUPrepInstructions to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

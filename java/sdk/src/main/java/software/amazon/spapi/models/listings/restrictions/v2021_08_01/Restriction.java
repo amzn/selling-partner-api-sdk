@@ -12,52 +12,63 @@
 
 package software.amazon.spapi.models.listings.restrictions.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Restriction {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
     /** The condition that applies to the restriction. */
     @JsonAdapter(ConditionTypeEnum.Adapter.class)
     public enum ConditionTypeEnum {
-        @SerializedName("new_new")
         NEW_NEW("new_new"),
-        @SerializedName("new_open_box")
+
         NEW_OPEN_BOX("new_open_box"),
-        @SerializedName("new_oem")
+
         NEW_OEM("new_oem"),
-        @SerializedName("refurbished_refurbished")
+
         REFURBISHED_REFURBISHED("refurbished_refurbished"),
-        @SerializedName("used_like_new")
+
         USED_LIKE_NEW("used_like_new"),
-        @SerializedName("used_very_good")
+
         USED_VERY_GOOD("used_very_good"),
-        @SerializedName("used_good")
+
         USED_GOOD("used_good"),
-        @SerializedName("used_acceptable")
+
         USED_ACCEPTABLE("used_acceptable"),
-        @SerializedName("collectible_like_new")
+
         COLLECTIBLE_LIKE_NEW("collectible_like_new"),
-        @SerializedName("collectible_very_good")
+
         COLLECTIBLE_VERY_GOOD("collectible_very_good"),
-        @SerializedName("collectible_good")
+
         COLLECTIBLE_GOOD("collectible_good"),
-        @SerializedName("collectible_acceptable")
+
         COLLECTIBLE_ACCEPTABLE("collectible_acceptable"),
-        @SerializedName("club_club")
+
         CLUB_CLUB("club_club");
 
         private String value;
@@ -75,34 +86,45 @@ public class Restriction {
             return String.valueOf(value);
         }
 
-        public static ConditionTypeEnum fromValue(String input) {
+        public static ConditionTypeEnum fromValue(String value) {
             for (ConditionTypeEnum b : ConditionTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ConditionTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ConditionTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ConditionTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ConditionTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ConditionTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ConditionTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("conditionType")
-    private ConditionTypeEnum conditionType = null;
+    public static final String SERIALIZED_NAME_CONDITION_TYPE = "conditionType";
 
-    @SerializedName("reasons")
-    private List<Reason> reasons = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION_TYPE)
+    private ConditionTypeEnum conditionType;
+
+    public static final String SERIALIZED_NAME_REASONS = "reasons";
+
+    @SerializedName(SERIALIZED_NAME_REASONS)
+    private List<Reason> reasons = new ArrayList<>();
+
+    public Restriction() {}
 
     public Restriction marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -114,10 +136,7 @@ public class Restriction {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A marketplace identifier. Identifies the Amazon marketplace where the restriction is enforced.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -136,8 +155,7 @@ public class Restriction {
      *
      * @return conditionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The condition that applies to the restriction.")
-    public ConditionTypeEnum getConditionType() {
+    @javax.annotation.Nullable public ConditionTypeEnum getConditionType() {
         return conditionType;
     }
 
@@ -163,8 +181,7 @@ public class Restriction {
      *
      * @return reasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of reasons for the restriction.")
-    public List<Reason> getReasons() {
+    @javax.annotation.Nullable public List<Reason> getReasons() {
         return reasons;
     }
 
@@ -173,7 +190,7 @@ public class Restriction {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -203,10 +220,145 @@ public class Restriction {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("conditionType");
+        openapiFields.add("reasons");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Restriction
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Restriction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Restriction is not found in the empty JSON string",
+                        Restriction.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Restriction.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Restriction` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Restriction.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("conditionType") != null
+                        && !jsonObj.get("conditionType").isJsonNull())
+                && !jsonObj.get("conditionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `conditionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("conditionType").toString()));
+        }
+        // validate the optional field `conditionType`
+        if (jsonObj.get("conditionType") != null
+                && !jsonObj.get("conditionType").isJsonNull()) {
+            ConditionTypeEnum.validateJsonElement(jsonObj.get("conditionType"));
+        }
+        if (jsonObj.get("reasons") != null && !jsonObj.get("reasons").isJsonNull()) {
+            JsonArray jsonArrayreasons = jsonObj.getAsJsonArray("reasons");
+            if (jsonArrayreasons != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("reasons").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `reasons` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("reasons").toString()));
+                }
+
+                // validate the optional field `reasons` (array)
+                for (int i = 0; i < jsonArrayreasons.size(); i++) {
+                    Reason.validateJsonElement(jsonArrayreasons.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Restriction.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Restriction' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Restriction> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(Restriction.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Restriction>() {
+                        @Override
+                        public void write(JsonWriter out, Restriction value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Restriction read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Restriction given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Restriction
+     * @throws IOException if the JSON string is invalid with respect to Restriction
+     */
+    public static Restriction fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Restriction.class);
+    }
+
+    /**
+     * Convert an instance of Restriction to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

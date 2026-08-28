@@ -12,22 +12,43 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Dimensions that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Dimensions that are associated with the item in the Amazon catalog for the indicated `marketplaceId`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemDimensionsByMarketplace {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("item")
-    private Dimensions item = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("package")
-    private Dimensions _package = null;
+    public static final String SERIALIZED_NAME_ITEM = "item";
+
+    @SerializedName(SERIALIZED_NAME_ITEM)
+    private Dimensions item;
+
+    public static final String SERIALIZED_NAME_PACKAGE = "package";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE)
+    private Dimensions _package;
+
+    public ItemDimensionsByMarketplace() {}
 
     public ItemDimensionsByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -40,10 +61,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -62,8 +80,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return item
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dimensions getItem() {
+    @javax.annotation.Nullable public Dimensions getItem() {
         return item;
     }
 
@@ -81,8 +98,7 @@ public class ItemDimensionsByMarketplace {
      *
      * @return _package
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dimensions getPackage() {
+    @javax.annotation.Nullable public Dimensions getPackage() {
         return _package;
     }
 
@@ -91,7 +107,7 @@ public class ItemDimensionsByMarketplace {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +137,125 @@ public class ItemDimensionsByMarketplace {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("item");
+        openapiFields.add("package");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemDimensionsByMarketplace
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemDimensionsByMarketplace.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemDimensionsByMarketplace is not found in the empty JSON string",
+                        ItemDimensionsByMarketplace.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemDimensionsByMarketplace.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemDimensionsByMarketplace` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemDimensionsByMarketplace.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // validate the optional field `item`
+        if (jsonObj.get("item") != null && !jsonObj.get("item").isJsonNull()) {
+            Dimensions.validateJsonElement(jsonObj.get("item"));
+        }
+        // validate the optional field `package`
+        if (jsonObj.get("package") != null && !jsonObj.get("package").isJsonNull()) {
+            Dimensions.validateJsonElement(jsonObj.get("package"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemDimensionsByMarketplace.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemDimensionsByMarketplace' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemDimensionsByMarketplace> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemDimensionsByMarketplace.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemDimensionsByMarketplace>() {
+                        @Override
+                        public void write(JsonWriter out, ItemDimensionsByMarketplace value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemDimensionsByMarketplace read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemDimensionsByMarketplace given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemDimensionsByMarketplace
+     * @throws IOException if the JSON string is invalid with respect to ItemDimensionsByMarketplace
+     */
+    public static ItemDimensionsByMarketplace fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemDimensionsByMarketplace.class);
+    }
+
+    /**
+     * Convert an instance of ItemDimensionsByMarketplace to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

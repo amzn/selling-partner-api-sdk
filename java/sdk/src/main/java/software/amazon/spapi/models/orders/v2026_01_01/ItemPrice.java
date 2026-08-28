@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Pricing information for the order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Pricing information for the order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemPrice {
-    @SerializedName("unitPrice")
-    private Money unitPrice = null;
+    public static final String SERIALIZED_NAME_UNIT_PRICE = "unitPrice";
 
-    @SerializedName("priceDesignation")
-    private String priceDesignation = null;
+    @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
+    private Money unitPrice;
+
+    public static final String SERIALIZED_NAME_PRICE_DESIGNATION = "priceDesignation";
+
+    @SerializedName(SERIALIZED_NAME_PRICE_DESIGNATION)
+    private String priceDesignation;
+
+    public ItemPrice() {}
 
     public ItemPrice unitPrice(Money unitPrice) {
         this.unitPrice = unitPrice;
@@ -34,8 +55,7 @@ public class ItemPrice {
      *
      * @return unitPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getUnitPrice() {
+    @javax.annotation.Nullable public Money getUnitPrice() {
         return unitPrice;
     }
 
@@ -55,10 +75,7 @@ public class ItemPrice {
      *
      * @return priceDesignation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).  **Possible value**: `BUSINESS_PRICE`")
-    public String getPriceDesignation() {
+    @javax.annotation.Nullable public String getPriceDesignation() {
         return priceDesignation;
     }
 
@@ -67,7 +84,7 @@ public class ItemPrice {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -97,10 +114,110 @@ public class ItemPrice {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("unitPrice");
+        openapiFields.add("priceDesignation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemPrice
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemPrice is not found in the empty JSON string",
+                        ItemPrice.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemPrice.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemPrice` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `unitPrice`
+        if (jsonObj.get("unitPrice") != null && !jsonObj.get("unitPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("unitPrice"));
+        }
+        if ((jsonObj.get("priceDesignation") != null
+                        && !jsonObj.get("priceDesignation").isJsonNull())
+                && !jsonObj.get("priceDesignation").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `priceDesignation` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("priceDesignation").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemPrice.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemPrice' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemPrice> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ItemPrice.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemPrice>() {
+                        @Override
+                        public void write(JsonWriter out, ItemPrice value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemPrice read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemPrice given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemPrice
+     * @throws IOException if the JSON string is invalid with respect to ItemPrice
+     */
+    public static ItemPrice fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemPrice.class);
+    }
+
+    /**
+     * Convert an instance of ItemPrice to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,44 +12,84 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item in the Amazon catalog. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item in the Amazon catalog.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Item {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("attributes")
-    private ItemAttributes attributes = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("classifications")
-    private ItemBrowseClassifications classifications = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
 
-    @SerializedName("dimensions")
-    private ItemDimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private ItemAttributes attributes = new HashMap<>();
 
-    @SerializedName("identifiers")
-    private ItemIdentifiers identifiers = null;
+    public static final String SERIALIZED_NAME_CLASSIFICATIONS = "classifications";
 
-    @SerializedName("images")
-    private ItemImages images = null;
+    @SerializedName(SERIALIZED_NAME_CLASSIFICATIONS)
+    private ItemBrowseClassifications classifications = new ArrayList<>();
 
-    @SerializedName("productTypes")
-    private ItemProductTypes productTypes = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("relationships")
-    private ItemRelationships relationships = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private ItemDimensions dimensions = new ArrayList<>();
 
-    @SerializedName("salesRanks")
-    private ItemSalesRanks salesRanks = null;
+    public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
 
-    @SerializedName("summaries")
-    private ItemSummaries summaries = null;
+    @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+    private ItemIdentifiers identifiers = new ArrayList<>();
 
-    @SerializedName("vendorDetails")
-    private ItemVendorDetails vendorDetails = null;
+    public static final String SERIALIZED_NAME_IMAGES = "images";
+
+    @SerializedName(SERIALIZED_NAME_IMAGES)
+    private ItemImages images = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PRODUCT_TYPES = "productTypes";
+
+    @SerializedName(SERIALIZED_NAME_PRODUCT_TYPES)
+    private ItemProductTypes productTypes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
+
+    @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
+    private ItemRelationships relationships = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SALES_RANKS = "salesRanks";
+
+    @SerializedName(SERIALIZED_NAME_SALES_RANKS)
+    private ItemSalesRanks salesRanks = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUMMARIES = "summaries";
+
+    @SerializedName(SERIALIZED_NAME_SUMMARIES)
+    private ItemSummaries summaries = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_VENDOR_DETAILS = "vendorDetails";
+
+    @SerializedName(SERIALIZED_NAME_VENDOR_DETAILS)
+    private ItemVendorDetails vendorDetails = new ArrayList<>();
+
+    public Item() {}
 
     public Item asin(String asin) {
         this.asin = asin;
@@ -61,9 +101,7 @@ public class Item {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier of an item in the Amazon catalog.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -82,8 +120,7 @@ public class Item {
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemAttributes getAttributes() {
+    @javax.annotation.Nullable public ItemAttributes getAttributes() {
         return attributes;
     }
 
@@ -101,8 +138,7 @@ public class Item {
      *
      * @return classifications
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemBrowseClassifications getClassifications() {
+    @javax.annotation.Nullable public ItemBrowseClassifications getClassifications() {
         return classifications;
     }
 
@@ -120,8 +156,7 @@ public class Item {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemDimensions getDimensions() {
+    @javax.annotation.Nullable public ItemDimensions getDimensions() {
         return dimensions;
     }
 
@@ -139,8 +174,7 @@ public class Item {
      *
      * @return identifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemIdentifiers getIdentifiers() {
+    @javax.annotation.Nullable public ItemIdentifiers getIdentifiers() {
         return identifiers;
     }
 
@@ -158,8 +192,7 @@ public class Item {
      *
      * @return images
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemImages getImages() {
+    @javax.annotation.Nullable public ItemImages getImages() {
         return images;
     }
 
@@ -177,8 +210,7 @@ public class Item {
      *
      * @return productTypes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemProductTypes getProductTypes() {
+    @javax.annotation.Nullable public ItemProductTypes getProductTypes() {
         return productTypes;
     }
 
@@ -196,8 +228,7 @@ public class Item {
      *
      * @return relationships
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemRelationships getRelationships() {
+    @javax.annotation.Nullable public ItemRelationships getRelationships() {
         return relationships;
     }
 
@@ -215,8 +246,7 @@ public class Item {
      *
      * @return salesRanks
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemSalesRanks getSalesRanks() {
+    @javax.annotation.Nullable public ItemSalesRanks getSalesRanks() {
         return salesRanks;
     }
 
@@ -234,8 +264,7 @@ public class Item {
      *
      * @return summaries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemSummaries getSummaries() {
+    @javax.annotation.Nullable public ItemSummaries getSummaries() {
         return summaries;
     }
 
@@ -253,8 +282,7 @@ public class Item {
      *
      * @return vendorDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemVendorDetails getVendorDetails() {
+    @javax.annotation.Nullable public ItemVendorDetails getVendorDetails() {
         return vendorDetails;
     }
 
@@ -263,7 +291,7 @@ public class Item {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -322,10 +350,123 @@ public class Item {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("attributes");
+        openapiFields.add("classifications");
+        openapiFields.add("dimensions");
+        openapiFields.add("identifiers");
+        openapiFields.add("images");
+        openapiFields.add("productTypes");
+        openapiFields.add("relationships");
+        openapiFields.add("salesRanks");
+        openapiFields.add("summaries");
+        openapiFields.add("vendorDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Item
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Item.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Item is not found in the empty JSON string",
+                        Item.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Item.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Item` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Item.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Item.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Item' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Item> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Item.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Item>() {
+                        @Override
+                        public void write(JsonWriter out, Item value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Item read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Item given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Item
+     * @throws IOException if the JSON string is invalid with respect to Item
+     */
+    public static Item fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Item.class);
+    }
+
+    /**
+     * Convert an instance of Item to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

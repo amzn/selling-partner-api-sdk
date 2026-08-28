@@ -12,25 +12,33 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Whether the invoice document is required to be attached to the shipment and its corresponding status. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Whether the invoice document is required to be attached to the shipment and its corresponding status.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceRequirement {
     /** Whether the invoice document is required to be attached to the shipment. */
     @JsonAdapter(RequirementEnum.Adapter.class)
     public enum RequirementEnum {
-        @SerializedName("REQUIRED")
         REQUIRED("REQUIRED"),
-        @SerializedName("NOT_REQUIRED")
+
         NOT_REQUIRED("NOT_REQUIRED");
 
         private String value;
@@ -48,40 +56,46 @@ public class InvoiceRequirement {
             return String.valueOf(value);
         }
 
-        public static RequirementEnum fromValue(String input) {
+        public static RequirementEnum fromValue(String value) {
             for (RequirementEnum b : RequirementEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RequirementEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RequirementEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RequirementEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RequirementEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RequirementEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RequirementEnum.fromValue(value);
         }
     }
 
-    @SerializedName("requirement")
-    private RequirementEnum requirement = null;
+    public static final String SERIALIZED_NAME_REQUIREMENT = "requirement";
+
+    @SerializedName(SERIALIZED_NAME_REQUIREMENT)
+    private RequirementEnum requirement;
 
     /** The status of the of the invoice document that is attached to the shipment. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("PENDING")
         PENDING("PENDING"),
-        @SerializedName("AVAILABLE")
+
         AVAILABLE("AVAILABLE"),
-        @SerializedName("NOT_AVAILABLE")
+
         NOT_AVAILABLE("NOT_AVAILABLE");
 
         private String value;
@@ -99,31 +113,40 @@ public class InvoiceRequirement {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
+
+    public InvoiceRequirement() {}
 
     public InvoiceRequirement requirement(RequirementEnum requirement) {
         this.requirement = requirement;
@@ -135,9 +158,7 @@ public class InvoiceRequirement {
      *
      * @return requirement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Whether the invoice document is required to be attached to the shipment.")
-    public RequirementEnum getRequirement() {
+    @javax.annotation.Nullable public RequirementEnum getRequirement() {
         return requirement;
     }
 
@@ -155,9 +176,7 @@ public class InvoiceRequirement {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The status of the of the invoice document that is attached to the shipment.")
-    public StatusEnum getStatus() {
+    @javax.annotation.Nullable public StatusEnum getStatus() {
         return status;
     }
 
@@ -166,7 +185,7 @@ public class InvoiceRequirement {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -194,10 +213,120 @@ public class InvoiceRequirement {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("requirement");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceRequirement
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceRequirement.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceRequirement is not found in the empty JSON string",
+                        InvoiceRequirement.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceRequirement.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceRequirement` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("requirement") != null && !jsonObj.get("requirement").isJsonNull())
+                && !jsonObj.get("requirement").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `requirement` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("requirement").toString()));
+        }
+        // validate the optional field `requirement`
+        if (jsonObj.get("requirement") != null && !jsonObj.get("requirement").isJsonNull()) {
+            RequirementEnum.validateJsonElement(jsonObj.get("requirement"));
+        }
+        if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
+                && !jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            StatusEnum.validateJsonElement(jsonObj.get("status"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceRequirement.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceRequirement' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceRequirement> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceRequirement.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceRequirement>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceRequirement value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceRequirement read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceRequirement given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceRequirement
+     * @throws IOException if the JSON string is invalid with respect to InvoiceRequirement
+     */
+    public static InvoiceRequirement fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceRequirement.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceRequirement to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

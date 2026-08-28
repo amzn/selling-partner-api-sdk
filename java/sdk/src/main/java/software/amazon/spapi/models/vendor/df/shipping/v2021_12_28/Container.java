@@ -12,25 +12,36 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A container used for shipping and packing items. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A container used for shipping and packing items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Container {
     /** The type of container. */
     @JsonAdapter(ContainerTypeEnum.Adapter.class)
     public enum ContainerTypeEnum {
-        @SerializedName("Carton")
         CARTON("Carton"),
-        @SerializedName("Pallet")
+
         PALLET("Pallet");
 
         private String value;
@@ -48,64 +59,95 @@ public class Container {
             return String.valueOf(value);
         }
 
-        public static ContainerTypeEnum fromValue(String input) {
+        public static ContainerTypeEnum fromValue(String value) {
             for (ContainerTypeEnum b : ContainerTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContainerTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ContainerTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ContainerTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ContainerTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ContainerTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContainerTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("containerType")
-    private ContainerTypeEnum containerType = null;
+    public static final String SERIALIZED_NAME_CONTAINER_TYPE = "containerType";
 
-    @SerializedName("containerIdentifier")
-    private String containerIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_CONTAINER_TYPE)
+    private ContainerTypeEnum containerType;
 
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    public static final String SERIALIZED_NAME_CONTAINER_IDENTIFIER = "containerIdentifier";
 
-    @SerializedName("manifestId")
-    private String manifestId = null;
+    @SerializedName(SERIALIZED_NAME_CONTAINER_IDENTIFIER)
+    private String containerIdentifier;
 
-    @SerializedName("manifestDate")
-    private String manifestDate = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("shipMethod")
-    private String shipMethod = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("scacCode")
-    private String scacCode = null;
+    public static final String SERIALIZED_NAME_MANIFEST_ID = "manifestId";
 
-    @SerializedName("carrier")
-    private String carrier = null;
+    @SerializedName(SERIALIZED_NAME_MANIFEST_ID)
+    private String manifestId;
 
-    @SerializedName("containerSequenceNumber")
-    private Integer containerSequenceNumber = null;
+    public static final String SERIALIZED_NAME_MANIFEST_DATE = "manifestDate";
 
-    @SerializedName("dimensions")
-    private Dimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_MANIFEST_DATE)
+    private String manifestDate;
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    public static final String SERIALIZED_NAME_SHIP_METHOD = "shipMethod";
 
-    @SerializedName("packedItems")
-    private List<PackedItem> packedItems = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_METHOD)
+    private String shipMethod;
+
+    public static final String SERIALIZED_NAME_SCAC_CODE = "scacCode";
+
+    @SerializedName(SERIALIZED_NAME_SCAC_CODE)
+    private String scacCode;
+
+    public static final String SERIALIZED_NAME_CARRIER = "carrier";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER)
+    private String carrier;
+
+    public static final String SERIALIZED_NAME_CONTAINER_SEQUENCE_NUMBER = "containerSequenceNumber";
+
+    @SerializedName(SERIALIZED_NAME_CONTAINER_SEQUENCE_NUMBER)
+    private Integer containerSequenceNumber;
+
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
+
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private Dimensions dimensions;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public static final String SERIALIZED_NAME_PACKED_ITEMS = "packedItems";
+
+    @SerializedName(SERIALIZED_NAME_PACKED_ITEMS)
+    private List<PackedItem> packedItems = new ArrayList<>();
+
+    public Container() {}
 
     public Container containerType(ContainerTypeEnum containerType) {
         this.containerType = containerType;
@@ -117,7 +159,7 @@ public class Container {
      *
      * @return containerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of container.")
+    @javax.annotation.Nonnull
     public ContainerTypeEnum getContainerType() {
         return containerType;
     }
@@ -136,7 +178,7 @@ public class Container {
      *
      * @return containerIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The container identifier.")
+    @javax.annotation.Nonnull
     public String getContainerIdentifier() {
         return containerIdentifier;
     }
@@ -155,8 +197,7 @@ public class Container {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -174,8 +215,7 @@ public class Container {
      *
      * @return manifestId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The manifest identifier.")
-    public String getManifestId() {
+    @javax.annotation.Nullable public String getManifestId() {
         return manifestId;
     }
 
@@ -193,8 +233,7 @@ public class Container {
      *
      * @return manifestDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The date of the manifest.")
-    public String getManifestDate() {
+    @javax.annotation.Nullable public String getManifestDate() {
         return manifestDate;
     }
 
@@ -213,10 +252,7 @@ public class Container {
      *
      * @return shipMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The shipment method. This property is required when calling the `submitShipmentConfirmations` operation, and optional otherwise.")
-    public String getShipMethod() {
+    @javax.annotation.Nullable public String getShipMethod() {
         return shipMethod;
     }
 
@@ -234,8 +270,7 @@ public class Container {
      *
      * @return scacCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "SCAC code required for NA VOC vendors only.")
-    public String getScacCode() {
+    @javax.annotation.Nullable public String getScacCode() {
         return scacCode;
     }
 
@@ -253,8 +288,7 @@ public class Container {
      *
      * @return carrier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Carrier required for EU VOC vendors only.")
-    public String getCarrier() {
+    @javax.annotation.Nullable public String getCarrier() {
         return carrier;
     }
 
@@ -272,10 +306,7 @@ public class Container {
      *
      * @return containerSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.")
-    public Integer getContainerSequenceNumber() {
+    @javax.annotation.Nullable public Integer getContainerSequenceNumber() {
         return containerSequenceNumber;
     }
 
@@ -293,8 +324,7 @@ public class Container {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Dimensions getDimensions() {
+    @javax.annotation.Nullable public Dimensions getDimensions() {
         return dimensions;
     }
 
@@ -312,7 +342,7 @@ public class Container {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Weight getWeight() {
         return weight;
     }
@@ -339,7 +369,7 @@ public class Container {
      *
      * @return packedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of packed items.")
+    @javax.annotation.Nonnull
     public List<PackedItem> getPackedItems() {
         return packedItems;
     }
@@ -349,7 +379,7 @@ public class Container {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -415,10 +445,190 @@ public class Container {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("containerType");
+        openapiFields.add("containerIdentifier");
+        openapiFields.add("trackingNumber");
+        openapiFields.add("manifestId");
+        openapiFields.add("manifestDate");
+        openapiFields.add("shipMethod");
+        openapiFields.add("scacCode");
+        openapiFields.add("carrier");
+        openapiFields.add("containerSequenceNumber");
+        openapiFields.add("dimensions");
+        openapiFields.add("weight");
+        openapiFields.add("packedItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("containerType");
+        openapiRequiredFields.add("containerIdentifier");
+        openapiRequiredFields.add("weight");
+        openapiRequiredFields.add("packedItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Container
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Container.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Container is not found in the empty JSON string",
+                        Container.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Container.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Container` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Container.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("containerType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("containerType").toString()));
+        }
+        // validate the required field `containerType`
+        ContainerTypeEnum.validateJsonElement(jsonObj.get("containerType"));
+        if (!jsonObj.get("containerIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `containerIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("containerIdentifier").toString()));
+        }
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if ((jsonObj.get("manifestId") != null && !jsonObj.get("manifestId").isJsonNull())
+                && !jsonObj.get("manifestId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manifestId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manifestId").toString()));
+        }
+        if ((jsonObj.get("manifestDate") != null && !jsonObj.get("manifestDate").isJsonNull())
+                && !jsonObj.get("manifestDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `manifestDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("manifestDate").toString()));
+        }
+        if ((jsonObj.get("shipMethod") != null && !jsonObj.get("shipMethod").isJsonNull())
+                && !jsonObj.get("shipMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipMethod").toString()));
+        }
+        if ((jsonObj.get("scacCode") != null && !jsonObj.get("scacCode").isJsonNull())
+                && !jsonObj.get("scacCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `scacCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("scacCode").toString()));
+        }
+        if ((jsonObj.get("carrier") != null && !jsonObj.get("carrier").isJsonNull())
+                && !jsonObj.get("carrier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrier").toString()));
+        }
+        // validate the optional field `dimensions`
+        if (jsonObj.get("dimensions") != null && !jsonObj.get("dimensions").isJsonNull()) {
+            Dimensions.validateJsonElement(jsonObj.get("dimensions"));
+        }
+        // validate the required field `weight`
+        Weight.validateJsonElement(jsonObj.get("weight"));
+        // ensure the json data is an array
+        if (!jsonObj.get("packedItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packedItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packedItems").toString()));
+        }
+
+        JsonArray jsonArraypackedItems = jsonObj.getAsJsonArray("packedItems");
+        // validate the required field `packedItems` (array)
+        for (int i = 0; i < jsonArraypackedItems.size(); i++) {
+            PackedItem.validateJsonElement(jsonArraypackedItems.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Container.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Container' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Container> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Container.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Container>() {
+                        @Override
+                        public void write(JsonWriter out, Container value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Container read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Container given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Container
+     * @throws IOException if the JSON string is invalid with respect to Container
+     */
+    public static Container fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Container.class);
+    }
+
+    /**
+     * Convert an instance of Container to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

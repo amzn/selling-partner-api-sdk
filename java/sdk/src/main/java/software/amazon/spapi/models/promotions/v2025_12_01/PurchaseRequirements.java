@@ -12,26 +12,47 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Purchase requirements that customers must meet to qualify for a basket building promotion. Contains eligibility
  * selection (what to buy), purchase condition (how much to buy), and an optional claim code. This is the &#39;Buy
  * X&#39; portion of &#39;Buy X Get Y&#39; promotions.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Purchase requirements that customers must meet to qualify for a basket building promotion. Contains eligibility selection (what to buy), purchase condition (how much to buy), and an optional claim code. This is the 'Buy X' portion of 'Buy X Get Y' promotions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PurchaseRequirements {
-    @SerializedName("selection")
-    private Selection selection = null;
+    public static final String SERIALIZED_NAME_SELECTION = "selection";
 
-    @SerializedName("condition")
-    private PurchaseCondition condition = null;
+    @SerializedName(SERIALIZED_NAME_SELECTION)
+    private Selection selection;
 
-    @SerializedName("claimCode")
-    private ClaimCode claimCode = null;
+    public static final String SERIALIZED_NAME_CONDITION = "condition";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION)
+    private PurchaseCondition condition;
+
+    public static final String SERIALIZED_NAME_CLAIM_CODE = "claimCode";
+
+    @SerializedName(SERIALIZED_NAME_CLAIM_CODE)
+    private ClaimCode claimCode;
+
+    public PurchaseRequirements() {}
 
     public PurchaseRequirements selection(Selection selection) {
         this.selection = selection;
@@ -43,7 +64,7 @@ public class PurchaseRequirements {
      *
      * @return selection
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Selection getSelection() {
         return selection;
     }
@@ -62,7 +83,7 @@ public class PurchaseRequirements {
      *
      * @return condition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PurchaseCondition getCondition() {
         return condition;
     }
@@ -81,8 +102,7 @@ public class PurchaseRequirements {
      *
      * @return claimCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ClaimCode getClaimCode() {
+    @javax.annotation.Nullable public ClaimCode getClaimCode() {
         return claimCode;
     }
 
@@ -91,7 +111,7 @@ public class PurchaseRequirements {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +141,120 @@ public class PurchaseRequirements {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("selection");
+        openapiFields.add("condition");
+        openapiFields.add("claimCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("selection");
+        openapiRequiredFields.add("condition");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PurchaseRequirements
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PurchaseRequirements.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PurchaseRequirements is not found in the empty JSON string",
+                        PurchaseRequirements.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PurchaseRequirements.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PurchaseRequirements` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PurchaseRequirements.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `selection`
+        Selection.validateJsonElement(jsonObj.get("selection"));
+        // validate the required field `condition`
+        PurchaseCondition.validateJsonElement(jsonObj.get("condition"));
+        // validate the optional field `claimCode`
+        if (jsonObj.get("claimCode") != null && !jsonObj.get("claimCode").isJsonNull()) {
+            ClaimCode.validateJsonElement(jsonObj.get("claimCode"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PurchaseRequirements.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PurchaseRequirements' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PurchaseRequirements> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PurchaseRequirements.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PurchaseRequirements>() {
+                        @Override
+                        public void write(JsonWriter out, PurchaseRequirements value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PurchaseRequirements read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PurchaseRequirements given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PurchaseRequirements
+     * @throws IOException if the JSON string is invalid with respect to PurchaseRequirements
+     */
+    public static PurchaseRequirements fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PurchaseRequirements.class);
+    }
+
+    /**
+     * Convert an instance of PurchaseRequirements to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,41 +12,77 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents an AWD inbound order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD inbound order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundOrder {
-    @SerializedName("createdAt")
-    private OffsetDateTime createdAt = null;
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
 
-    @SerializedName("destinationDetails")
-    private DestinationDetails destinationDetails = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
-    @SerializedName("externalReferenceId")
-    private String externalReferenceId = null;
+    public static final String SERIALIZED_NAME_DESTINATION_DETAILS = "destinationDetails";
 
-    @SerializedName("orderId")
-    private String orderId = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_DETAILS)
+    private DestinationDetails destinationDetails;
 
-    @SerializedName("orderStatus")
-    private InboundStatus orderStatus = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_REFERENCE_ID = "externalReferenceId";
 
-    @SerializedName("originAddress")
-    private Address originAddress = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_REFERENCE_ID)
+    private String externalReferenceId;
 
-    @SerializedName("packagesToInbound")
-    private List<DistributionPackageQuantity> packagesToInbound = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("preferences")
-    private InboundPreferences preferences = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
-    @SerializedName("updatedAt")
-    private OffsetDateTime updatedAt = null;
+    public static final String SERIALIZED_NAME_ORDER_STATUS = "orderStatus";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_STATUS)
+    private InboundStatus orderStatus;
+
+    public static final String SERIALIZED_NAME_ORIGIN_ADDRESS = "originAddress";
+
+    @SerializedName(SERIALIZED_NAME_ORIGIN_ADDRESS)
+    private Address originAddress;
+
+    public static final String SERIALIZED_NAME_PACKAGES_TO_INBOUND = "packagesToInbound";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGES_TO_INBOUND)
+    private List<DistributionPackageQuantity> packagesToInbound = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PREFERENCES = "preferences";
+
+    @SerializedName(SERIALIZED_NAME_PREFERENCES)
+    private InboundPreferences preferences;
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
+
+    public InboundOrder() {}
 
     public InboundOrder createdAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
@@ -58,7 +94,7 @@ public class InboundOrder {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date when this order was created.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -77,8 +113,7 @@ public class InboundOrder {
      *
      * @return destinationDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DestinationDetails getDestinationDetails() {
+    @javax.annotation.Nullable public DestinationDetails getDestinationDetails() {
         return destinationDetails;
     }
 
@@ -96,9 +131,7 @@ public class InboundOrder {
      *
      * @return externalReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Reference ID that can be used to correlate the order with partner resources.")
-    public String getExternalReferenceId() {
+    @javax.annotation.Nullable public String getExternalReferenceId() {
         return externalReferenceId;
     }
 
@@ -116,7 +149,7 @@ public class InboundOrder {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Inbound order ID.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -135,7 +168,7 @@ public class InboundOrder {
      *
      * @return orderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public InboundStatus getOrderStatus() {
         return orderStatus;
     }
@@ -154,7 +187,7 @@ public class InboundOrder {
      *
      * @return originAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getOriginAddress() {
         return originAddress;
     }
@@ -181,7 +214,7 @@ public class InboundOrder {
      *
      * @return packagesToInbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "List of packages to be inbounded.")
+    @javax.annotation.Nonnull
     public List<DistributionPackageQuantity> getPackagesToInbound() {
         return packagesToInbound;
     }
@@ -200,8 +233,7 @@ public class InboundOrder {
      *
      * @return preferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public InboundPreferences getPreferences() {
+    @javax.annotation.Nullable public InboundPreferences getPreferences() {
         return preferences;
     }
 
@@ -219,8 +251,7 @@ public class InboundOrder {
      *
      * @return updatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date when this order was last updated.")
-    public OffsetDateTime getUpdatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
@@ -229,7 +260,7 @@ public class InboundOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -286,10 +317,159 @@ public class InboundOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("createdAt");
+        openapiFields.add("destinationDetails");
+        openapiFields.add("externalReferenceId");
+        openapiFields.add("orderId");
+        openapiFields.add("orderStatus");
+        openapiFields.add("originAddress");
+        openapiFields.add("packagesToInbound");
+        openapiFields.add("preferences");
+        openapiFields.add("updatedAt");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("createdAt");
+        openapiRequiredFields.add("orderId");
+        openapiRequiredFields.add("orderStatus");
+        openapiRequiredFields.add("originAddress");
+        openapiRequiredFields.add("packagesToInbound");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundOrder is not found in the empty JSON string",
+                        InboundOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundOrder.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `destinationDetails`
+        if (jsonObj.get("destinationDetails") != null
+                && !jsonObj.get("destinationDetails").isJsonNull()) {
+            DestinationDetails.validateJsonElement(jsonObj.get("destinationDetails"));
+        }
+        if ((jsonObj.get("externalReferenceId") != null
+                        && !jsonObj.get("externalReferenceId").isJsonNull())
+                && !jsonObj.get("externalReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalReferenceId").toString()));
+        }
+        if (!jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        // validate the required field `orderStatus`
+        InboundStatus.validateJsonElement(jsonObj.get("orderStatus"));
+        // validate the required field `originAddress`
+        Address.validateJsonElement(jsonObj.get("originAddress"));
+        // ensure the json data is an array
+        if (!jsonObj.get("packagesToInbound").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packagesToInbound` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packagesToInbound").toString()));
+        }
+
+        JsonArray jsonArraypackagesToInbound = jsonObj.getAsJsonArray("packagesToInbound");
+        // validate the required field `packagesToInbound` (array)
+        for (int i = 0; i < jsonArraypackagesToInbound.size(); i++) {
+            DistributionPackageQuantity.validateJsonElement(jsonArraypackagesToInbound.get(i));
+        }
+        ;
+        // validate the optional field `preferences`
+        if (jsonObj.get("preferences") != null && !jsonObj.get("preferences").isJsonNull()) {
+            InboundPreferences.validateJsonElement(jsonObj.get("preferences"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundOrder>() {
+                        @Override
+                        public void write(JsonWriter out, InboundOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundOrder
+     * @throws IOException if the JSON string is invalid with respect to InboundOrder
+     */
+    public static InboundOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundOrder.class);
+    }
+
+    /**
+     * Convert an instance of InboundOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

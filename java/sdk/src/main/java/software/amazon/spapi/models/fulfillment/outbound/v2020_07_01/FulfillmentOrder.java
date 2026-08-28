@@ -12,63 +12,112 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** General information about a fulfillment order, including its status. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "General information about a fulfillment order, including its status.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentOrder {
-    @SerializedName("sellerFulfillmentOrderId")
-    private String sellerFulfillmentOrderId = null;
+    public static final String SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ID = "sellerFulfillmentOrderId";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ID)
+    private String sellerFulfillmentOrderId;
 
-    @SerializedName("displayableOrderId")
-    private String displayableOrderId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("displayableOrderDate")
-    private OffsetDateTime displayableOrderDate = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("displayableOrderComment")
-    private String displayableOrderComment = null;
+    public static final String SERIALIZED_NAME_DISPLAYABLE_ORDER_ID = "displayableOrderId";
 
-    @SerializedName("shippingSpeedCategory")
-    private ShippingSpeedCategory shippingSpeedCategory = null;
+    @SerializedName(SERIALIZED_NAME_DISPLAYABLE_ORDER_ID)
+    private String displayableOrderId;
 
-    @SerializedName("deliveryWindow")
-    private DeliveryWindow deliveryWindow = null;
+    public static final String SERIALIZED_NAME_DISPLAYABLE_ORDER_DATE = "displayableOrderDate";
 
-    @SerializedName("destinationAddress")
-    private Address destinationAddress = null;
+    @SerializedName(SERIALIZED_NAME_DISPLAYABLE_ORDER_DATE)
+    private OffsetDateTime displayableOrderDate;
 
-    @SerializedName("fulfillmentAction")
-    private FulfillmentAction fulfillmentAction = null;
+    public static final String SERIALIZED_NAME_DISPLAYABLE_ORDER_COMMENT = "displayableOrderComment";
 
-    @SerializedName("fulfillmentPolicy")
-    private FulfillmentPolicy fulfillmentPolicy = null;
+    @SerializedName(SERIALIZED_NAME_DISPLAYABLE_ORDER_COMMENT)
+    private String displayableOrderComment;
 
-    @SerializedName("codSettings")
-    private CODSettings codSettings = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SPEED_CATEGORY = "shippingSpeedCategory";
 
-    @SerializedName("receivedDate")
-    private OffsetDateTime receivedDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SPEED_CATEGORY)
+    private ShippingSpeedCategory shippingSpeedCategory;
 
-    @SerializedName("fulfillmentOrderStatus")
-    private FulfillmentOrderStatus fulfillmentOrderStatus = null;
+    public static final String SERIALIZED_NAME_DELIVERY_WINDOW = "deliveryWindow";
 
-    @SerializedName("statusUpdatedDate")
-    private OffsetDateTime statusUpdatedDate = null;
+    @SerializedName(SERIALIZED_NAME_DELIVERY_WINDOW)
+    private DeliveryWindow deliveryWindow;
 
-    @SerializedName("notificationEmails")
-    private NotificationEmailList notificationEmails = null;
+    public static final String SERIALIZED_NAME_DESTINATION_ADDRESS = "destinationAddress";
 
-    @SerializedName("featureConstraints")
-    private List<FeatureSettings> featureConstraints = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ADDRESS)
+    private Address destinationAddress;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_ACTION = "fulfillmentAction";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ACTION)
+    private FulfillmentAction fulfillmentAction;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_POLICY = "fulfillmentPolicy";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_POLICY)
+    private FulfillmentPolicy fulfillmentPolicy;
+
+    public static final String SERIALIZED_NAME_COD_SETTINGS = "codSettings";
+
+    @SerializedName(SERIALIZED_NAME_COD_SETTINGS)
+    private CODSettings codSettings;
+
+    public static final String SERIALIZED_NAME_RECEIVED_DATE = "receivedDate";
+
+    @SerializedName(SERIALIZED_NAME_RECEIVED_DATE)
+    private OffsetDateTime receivedDate;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_ORDER_STATUS = "fulfillmentOrderStatus";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_ORDER_STATUS)
+    private FulfillmentOrderStatus fulfillmentOrderStatus;
+
+    public static final String SERIALIZED_NAME_STATUS_UPDATED_DATE = "statusUpdatedDate";
+
+    @SerializedName(SERIALIZED_NAME_STATUS_UPDATED_DATE)
+    private OffsetDateTime statusUpdatedDate;
+
+    public static final String SERIALIZED_NAME_NOTIFICATION_EMAILS = "notificationEmails";
+
+    @SerializedName(SERIALIZED_NAME_NOTIFICATION_EMAILS)
+    private NotificationEmailList notificationEmails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FEATURE_CONSTRAINTS = "featureConstraints";
+
+    @SerializedName(SERIALIZED_NAME_FEATURE_CONSTRAINTS)
+    private List<FeatureSettings> featureConstraints = new ArrayList<>();
+
+    public FulfillmentOrder() {}
 
     public FulfillmentOrder sellerFulfillmentOrderId(String sellerFulfillmentOrderId) {
         this.sellerFulfillmentOrderId = sellerFulfillmentOrderId;
@@ -80,9 +129,7 @@ public class FulfillmentOrder {
      *
      * @return sellerFulfillmentOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The fulfillment order identifier submitted with the `createFulfillmentOrder` operation.")
+    @javax.annotation.Nonnull
     public String getSellerFulfillmentOrderId() {
         return sellerFulfillmentOrderId;
     }
@@ -101,9 +148,7 @@ public class FulfillmentOrder {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier for the marketplace the fulfillment order is placed against.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -123,10 +168,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A fulfillment order identifier submitted with the `createFulfillmentOrder` operation. Displays as the order identifier in recipient-facing materials such as the packing slip.")
+    @javax.annotation.Nonnull
     public String getDisplayableOrderId() {
         return displayableOrderId;
     }
@@ -145,7 +187,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
+    @javax.annotation.Nonnull
     public OffsetDateTime getDisplayableOrderDate() {
         return displayableOrderDate;
     }
@@ -165,10 +207,7 @@ public class FulfillmentOrder {
      *
      * @return displayableOrderComment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A text block submitted with the `createFulfillmentOrder` operation. Displays in recipient-facing materials such as the packing slip.")
+    @javax.annotation.Nonnull
     public String getDisplayableOrderComment() {
         return displayableOrderComment;
     }
@@ -187,7 +226,7 @@ public class FulfillmentOrder {
      *
      * @return shippingSpeedCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShippingSpeedCategory getShippingSpeedCategory() {
         return shippingSpeedCategory;
     }
@@ -206,8 +245,7 @@ public class FulfillmentOrder {
      *
      * @return deliveryWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DeliveryWindow getDeliveryWindow() {
+    @javax.annotation.Nullable public DeliveryWindow getDeliveryWindow() {
         return deliveryWindow;
     }
 
@@ -225,7 +263,7 @@ public class FulfillmentOrder {
      *
      * @return destinationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -244,8 +282,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentAction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentAction getFulfillmentAction() {
+    @javax.annotation.Nullable public FulfillmentAction getFulfillmentAction() {
         return fulfillmentAction;
     }
 
@@ -263,8 +300,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentPolicy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentPolicy getFulfillmentPolicy() {
+    @javax.annotation.Nullable public FulfillmentPolicy getFulfillmentPolicy() {
         return fulfillmentPolicy;
     }
 
@@ -282,8 +318,7 @@ public class FulfillmentOrder {
      *
      * @return codSettings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CODSettings getCodSettings() {
+    @javax.annotation.Nullable public CODSettings getCodSettings() {
         return codSettings;
     }
 
@@ -301,7 +336,7 @@ public class FulfillmentOrder {
      *
      * @return receivedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
+    @javax.annotation.Nonnull
     public OffsetDateTime getReceivedDate() {
         return receivedDate;
     }
@@ -320,7 +355,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentOrderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentOrderStatus getFulfillmentOrderStatus() {
         return fulfillmentOrderStatus;
     }
@@ -339,7 +374,7 @@ public class FulfillmentOrder {
      *
      * @return statusUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
+    @javax.annotation.Nonnull
     public OffsetDateTime getStatusUpdatedDate() {
         return statusUpdatedDate;
     }
@@ -358,8 +393,7 @@ public class FulfillmentOrder {
      *
      * @return notificationEmails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public NotificationEmailList getNotificationEmails() {
+    @javax.annotation.Nullable public NotificationEmailList getNotificationEmails() {
         return notificationEmails;
     }
 
@@ -385,9 +419,7 @@ public class FulfillmentOrder {
      *
      * @return featureConstraints
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of features and their fulfillment policies to apply to the order.")
-    public List<FeatureSettings> getFeatureConstraints() {
+    @javax.annotation.Nullable public List<FeatureSettings> getFeatureConstraints() {
         return featureConstraints;
     }
 
@@ -396,7 +428,7 @@ public class FulfillmentOrder {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -494,10 +526,196 @@ public class FulfillmentOrder {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerFulfillmentOrderId");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("displayableOrderId");
+        openapiFields.add("displayableOrderDate");
+        openapiFields.add("displayableOrderComment");
+        openapiFields.add("shippingSpeedCategory");
+        openapiFields.add("deliveryWindow");
+        openapiFields.add("destinationAddress");
+        openapiFields.add("fulfillmentAction");
+        openapiFields.add("fulfillmentPolicy");
+        openapiFields.add("codSettings");
+        openapiFields.add("receivedDate");
+        openapiFields.add("fulfillmentOrderStatus");
+        openapiFields.add("statusUpdatedDate");
+        openapiFields.add("notificationEmails");
+        openapiFields.add("featureConstraints");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellerFulfillmentOrderId");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("displayableOrderId");
+        openapiRequiredFields.add("displayableOrderDate");
+        openapiRequiredFields.add("displayableOrderComment");
+        openapiRequiredFields.add("shippingSpeedCategory");
+        openapiRequiredFields.add("destinationAddress");
+        openapiRequiredFields.add("receivedDate");
+        openapiRequiredFields.add("fulfillmentOrderStatus");
+        openapiRequiredFields.add("statusUpdatedDate");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentOrder
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentOrder.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentOrder is not found in the empty JSON string",
+                        FulfillmentOrder.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentOrder.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentOrder` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FulfillmentOrder.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sellerFulfillmentOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerFulfillmentOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerFulfillmentOrderId").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("displayableOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayableOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayableOrderId").toString()));
+        }
+        if (!jsonObj.get("displayableOrderComment").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayableOrderComment` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayableOrderComment").toString()));
+        }
+        // validate the required field `shippingSpeedCategory`
+        ShippingSpeedCategory.validateJsonElement(jsonObj.get("shippingSpeedCategory"));
+        // validate the optional field `deliveryWindow`
+        if (jsonObj.get("deliveryWindow") != null
+                && !jsonObj.get("deliveryWindow").isJsonNull()) {
+            DeliveryWindow.validateJsonElement(jsonObj.get("deliveryWindow"));
+        }
+        // validate the required field `destinationAddress`
+        Address.validateJsonElement(jsonObj.get("destinationAddress"));
+        // validate the optional field `fulfillmentAction`
+        if (jsonObj.get("fulfillmentAction") != null
+                && !jsonObj.get("fulfillmentAction").isJsonNull()) {
+            FulfillmentAction.validateJsonElement(jsonObj.get("fulfillmentAction"));
+        }
+        // validate the optional field `fulfillmentPolicy`
+        if (jsonObj.get("fulfillmentPolicy") != null
+                && !jsonObj.get("fulfillmentPolicy").isJsonNull()) {
+            FulfillmentPolicy.validateJsonElement(jsonObj.get("fulfillmentPolicy"));
+        }
+        // validate the optional field `codSettings`
+        if (jsonObj.get("codSettings") != null && !jsonObj.get("codSettings").isJsonNull()) {
+            CODSettings.validateJsonElement(jsonObj.get("codSettings"));
+        }
+        // validate the required field `fulfillmentOrderStatus`
+        FulfillmentOrderStatus.validateJsonElement(jsonObj.get("fulfillmentOrderStatus"));
+        if (jsonObj.get("featureConstraints") != null
+                && !jsonObj.get("featureConstraints").isJsonNull()) {
+            JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");
+            if (jsonArrayfeatureConstraints != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("featureConstraints").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `featureConstraints` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("featureConstraints").toString()));
+                }
+
+                // validate the optional field `featureConstraints` (array)
+                for (int i = 0; i < jsonArrayfeatureConstraints.size(); i++) {
+                    FeatureSettings.validateJsonElement(jsonArrayfeatureConstraints.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentOrder.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentOrder' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentOrder> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentOrder.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentOrder>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentOrder value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentOrder read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentOrder given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentOrder
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentOrder
+     */
+    public static FulfillmentOrder fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentOrder.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentOrder to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

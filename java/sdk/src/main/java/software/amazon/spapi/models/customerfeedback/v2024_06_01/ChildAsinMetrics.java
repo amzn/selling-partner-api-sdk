@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The review topic metrics for other child ASINs that have the same parent ASIN. This value is &#x60;null&#x60; if
  * there isn&#39;t any child ASIN metric data.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The review topic metrics for other child ASINs that have the same parent ASIN. This value is `null` if there isn't any child ASIN metric data.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChildAsinMetrics {
-    @SerializedName("mostMentions")
-    private ChildAsinMentionMetrics mostMentions = null;
+    public static final String SERIALIZED_NAME_MOST_MENTIONS = "mostMentions";
 
-    @SerializedName("leastMentions")
-    private ChildAsinMentionMetrics leastMentions = null;
+    @SerializedName(SERIALIZED_NAME_MOST_MENTIONS)
+    private ChildAsinMentionMetrics mostMentions;
+
+    public static final String SERIALIZED_NAME_LEAST_MENTIONS = "leastMentions";
+
+    @SerializedName(SERIALIZED_NAME_LEAST_MENTIONS)
+    private ChildAsinMentionMetrics leastMentions;
+
+    public ChildAsinMetrics() {}
 
     public ChildAsinMetrics mostMentions(ChildAsinMentionMetrics mostMentions) {
         this.mostMentions = mostMentions;
@@ -39,8 +58,7 @@ public class ChildAsinMetrics {
      *
      * @return mostMentions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChildAsinMentionMetrics getMostMentions() {
+    @javax.annotation.Nullable public ChildAsinMentionMetrics getMostMentions() {
         return mostMentions;
     }
 
@@ -58,8 +76,7 @@ public class ChildAsinMetrics {
      *
      * @return leastMentions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChildAsinMentionMetrics getLeastMentions() {
+    @javax.annotation.Nullable public ChildAsinMentionMetrics getLeastMentions() {
         return leastMentions;
     }
 
@@ -68,7 +85,7 @@ public class ChildAsinMetrics {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +113,109 @@ public class ChildAsinMetrics {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("mostMentions");
+        openapiFields.add("leastMentions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChildAsinMetrics
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChildAsinMetrics.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChildAsinMetrics is not found in the empty JSON string",
+                        ChildAsinMetrics.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChildAsinMetrics.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChildAsinMetrics` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `mostMentions`
+        if (jsonObj.get("mostMentions") != null && !jsonObj.get("mostMentions").isJsonNull()) {
+            ChildAsinMentionMetrics.validateJsonElement(jsonObj.get("mostMentions"));
+        }
+        // validate the optional field `leastMentions`
+        if (jsonObj.get("leastMentions") != null
+                && !jsonObj.get("leastMentions").isJsonNull()) {
+            ChildAsinMentionMetrics.validateJsonElement(jsonObj.get("leastMentions"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChildAsinMetrics.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChildAsinMetrics' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChildAsinMetrics> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChildAsinMetrics.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChildAsinMetrics>() {
+                        @Override
+                        public void write(JsonWriter out, ChildAsinMetrics value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChildAsinMetrics read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChildAsinMetrics given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChildAsinMetrics
+     * @throws IOException if the JSON string is invalid with respect to ChildAsinMetrics
+     */
+    public static ChildAsinMetrics fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChildAsinMetrics.class);
+    }
+
+    /**
+     * Convert an instance of ChildAsinMetrics to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

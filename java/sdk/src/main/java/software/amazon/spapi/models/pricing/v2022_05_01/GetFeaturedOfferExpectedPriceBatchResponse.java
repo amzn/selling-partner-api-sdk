@@ -12,15 +12,33 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;getFeaturedOfferExpectedPriceBatch&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The response schema for the `getFeaturedOfferExpectedPriceBatch` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetFeaturedOfferExpectedPriceBatchResponse {
-    @SerializedName("responses")
-    private FeaturedOfferExpectedPriceResponseList responses = null;
+    public static final String SERIALIZED_NAME_RESPONSES = "responses";
+
+    @SerializedName(SERIALIZED_NAME_RESPONSES)
+    private FeaturedOfferExpectedPriceResponseList responses = new ArrayList<>();
+
+    public GetFeaturedOfferExpectedPriceBatchResponse() {}
 
     public GetFeaturedOfferExpectedPriceBatchResponse responses(FeaturedOfferExpectedPriceResponseList responses) {
         this.responses = responses;
@@ -32,8 +50,7 @@ public class GetFeaturedOfferExpectedPriceBatchResponse {
      *
      * @return responses
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOfferExpectedPriceResponseList getResponses() {
+    @javax.annotation.Nullable public FeaturedOfferExpectedPriceResponseList getResponses() {
         return responses;
     }
 
@@ -42,7 +59,7 @@ public class GetFeaturedOfferExpectedPriceBatchResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -69,10 +86,101 @@ public class GetFeaturedOfferExpectedPriceBatchResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("responses");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetFeaturedOfferExpectedPriceBatchResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetFeaturedOfferExpectedPriceBatchResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetFeaturedOfferExpectedPriceBatchResponse is not found in the empty JSON string",
+                        GetFeaturedOfferExpectedPriceBatchResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetFeaturedOfferExpectedPriceBatchResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetFeaturedOfferExpectedPriceBatchResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetFeaturedOfferExpectedPriceBatchResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetFeaturedOfferExpectedPriceBatchResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetFeaturedOfferExpectedPriceBatchResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetFeaturedOfferExpectedPriceBatchResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetFeaturedOfferExpectedPriceBatchResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetFeaturedOfferExpectedPriceBatchResponse value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetFeaturedOfferExpectedPriceBatchResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetFeaturedOfferExpectedPriceBatchResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetFeaturedOfferExpectedPriceBatchResponse
+     * @throws IOException if the JSON string is invalid with respect to GetFeaturedOfferExpectedPriceBatchResponse
+     */
+    public static GetFeaturedOfferExpectedPriceBatchResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetFeaturedOfferExpectedPriceBatchResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetFeaturedOfferExpectedPriceBatchResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,35 +12,66 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A light-weight inbound plan. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A light-weight inbound plan.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundPlanSummary {
-    @SerializedName("createdAt")
-    private OffsetDateTime createdAt = null;
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
 
-    @SerializedName("inboundPlanId")
-    private String inboundPlanId = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
-    @SerializedName("lastUpdatedAt")
-    private OffsetDateTime lastUpdatedAt = null;
+    public static final String SERIALIZED_NAME_INBOUND_PLAN_ID = "inboundPlanId";
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    @SerializedName(SERIALIZED_NAME_INBOUND_PLAN_ID)
+    private String inboundPlanId;
 
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_LAST_UPDATED_AT = "lastUpdatedAt";
 
-    @SerializedName("sourceAddress")
-    private Address sourceAddress = null;
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
+    private OffsetDateTime lastUpdatedAt;
 
-    @SerializedName("status")
-    private String status = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NAME = "name";
+
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
+    public static final String SERIALIZED_NAME_SOURCE_ADDRESS = "sourceAddress";
+
+    @SerializedName(SERIALIZED_NAME_SOURCE_ADDRESS)
+    private Address sourceAddress;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public InboundPlanSummary() {}
 
     public InboundPlanSummary createdAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
@@ -54,10 +85,7 @@ public class InboundPlanSummary {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -76,7 +104,7 @@ public class InboundPlanSummary {
      *
      * @return inboundPlanId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of an inbound plan.")
+    @javax.annotation.Nonnull
     public String getInboundPlanId() {
         return inboundPlanId;
     }
@@ -97,10 +125,7 @@ public class InboundPlanSummary {
      *
      * @return lastUpdatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdatedAt() {
         return lastUpdatedAt;
     }
@@ -127,7 +152,7 @@ public class InboundPlanSummary {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of marketplace IDs.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -146,9 +171,7 @@ public class InboundPlanSummary {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Human-readable name of the inbound plan.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -167,7 +190,7 @@ public class InboundPlanSummary {
      *
      * @return sourceAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getSourceAddress() {
         return sourceAddress;
     }
@@ -187,10 +210,7 @@ public class InboundPlanSummary {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.")
+    @javax.annotation.Nonnull
     public String getStatus() {
         return status;
     }
@@ -200,7 +220,7 @@ public class InboundPlanSummary {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -240,10 +260,147 @@ public class InboundPlanSummary {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("createdAt");
+        openapiFields.add("inboundPlanId");
+        openapiFields.add("lastUpdatedAt");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("name");
+        openapiFields.add("sourceAddress");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("createdAt");
+        openapiRequiredFields.add("inboundPlanId");
+        openapiRequiredFields.add("lastUpdatedAt");
+        openapiRequiredFields.add("marketplaceIds");
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("sourceAddress");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundPlanSummary
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundPlanSummary.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundPlanSummary is not found in the empty JSON string",
+                        InboundPlanSummary.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundPlanSummary.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundPlanSummary` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundPlanSummary.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("inboundPlanId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `inboundPlanId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("inboundPlanId").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `sourceAddress`
+        Address.validateJsonElement(jsonObj.get("sourceAddress"));
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundPlanSummary.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundPlanSummary' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundPlanSummary> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundPlanSummary.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundPlanSummary>() {
+                        @Override
+                        public void write(JsonWriter out, InboundPlanSummary value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundPlanSummary read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundPlanSummary given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundPlanSummary
+     * @throws IOException if the JSON string is invalid with respect to InboundPlanSummary
+     */
+    public static InboundPlanSummary fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundPlanSummary.class);
+    }
+
+    /**
+     * Convert an instance of InboundPlanSummary to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

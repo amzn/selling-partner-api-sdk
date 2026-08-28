@@ -12,43 +12,76 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransactionInitiationRequest {
-    @SerializedName("sourceAccountId")
-    private String sourceAccountId = null;
+    public static final String SERIALIZED_NAME_SOURCE_ACCOUNT_ID = "sourceAccountId";
 
-    @SerializedName("destinationAccountId")
-    private String destinationAccountId = null;
+    @SerializedName(SERIALIZED_NAME_SOURCE_ACCOUNT_ID)
+    private String sourceAccountId;
 
-    @SerializedName("destinationTransactionInstrument")
-    private TransactionInstrumentDetails destinationTransactionInstrument = null;
+    public static final String SERIALIZED_NAME_DESTINATION_ACCOUNT_ID = "destinationAccountId";
 
-    @SerializedName("transactionDescription")
-    private String transactionDescription = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ACCOUNT_ID)
+    private String destinationAccountId;
 
-    @SerializedName("customerPaymentReference")
-    private String customerPaymentReference = null;
+    public static final String SERIALIZED_NAME_DESTINATION_TRANSACTION_INSTRUMENT = "destinationTransactionInstrument";
 
-    @SerializedName("payeeContactInformation")
-    private PayeeContactInformation payeeContactInformation = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_TRANSACTION_INSTRUMENT)
+    private TransactionInstrumentDetails destinationTransactionInstrument;
 
-    @SerializedName("sourceAmount")
-    private Currency sourceAmount = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_DESCRIPTION = "transactionDescription";
 
-    @SerializedName("transferRateDetails")
-    private TransferRatePreview transferRateDetails = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_DESCRIPTION)
+    private String transactionDescription;
 
-    @SerializedName("requestTime")
-    private OffsetDateTime requestTime = null;
+    public static final String SERIALIZED_NAME_CUSTOMER_PAYMENT_REFERENCE = "customerPaymentReference";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_PAYMENT_REFERENCE)
+    private String customerPaymentReference;
+
+    public static final String SERIALIZED_NAME_PAYEE_CONTACT_INFORMATION = "payeeContactInformation";
+
+    @SerializedName(SERIALIZED_NAME_PAYEE_CONTACT_INFORMATION)
+    private PayeeContactInformation payeeContactInformation;
+
+    public static final String SERIALIZED_NAME_SOURCE_AMOUNT = "sourceAmount";
+
+    @SerializedName(SERIALIZED_NAME_SOURCE_AMOUNT)
+    private Currency sourceAmount;
+
+    public static final String SERIALIZED_NAME_TRANSFER_RATE_DETAILS = "transferRateDetails";
+
+    @SerializedName(SERIALIZED_NAME_TRANSFER_RATE_DETAILS)
+    private TransferRatePreview transferRateDetails;
+
+    public static final String SERIALIZED_NAME_REQUEST_TIME = "requestTime";
+
+    @SerializedName(SERIALIZED_NAME_REQUEST_TIME)
+    private OffsetDateTime requestTime;
+
+    public TransactionInitiationRequest() {}
 
     public TransactionInitiationRequest sourceAccountId(String sourceAccountId) {
         this.sourceAccountId = sourceAccountId;
@@ -60,10 +93,7 @@ public class TransactionInitiationRequest {
      *
      * @return sourceAccountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.")
+    @javax.annotation.Nonnull
     public String getSourceAccountId() {
         return sourceAccountId;
     }
@@ -82,9 +112,7 @@ public class TransactionInitiationRequest {
      *
      * @return destinationAccountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The unique identifier of the destination bank account where the money is deposited.")
-    public String getDestinationAccountId() {
+    @javax.annotation.Nullable public String getDestinationAccountId() {
         return destinationAccountId;
     }
 
@@ -103,7 +131,7 @@ public class TransactionInitiationRequest {
      *
      * @return destinationTransactionInstrument
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionInstrumentDetails getDestinationTransactionInstrument() {
         return destinationTransactionInstrument;
     }
@@ -122,8 +150,7 @@ public class TransactionInitiationRequest {
      *
      * @return transactionDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the transaction.")
-    public String getTransactionDescription() {
+    @javax.annotation.Nullable public String getTransactionDescription() {
         return transactionDescription;
     }
 
@@ -143,10 +170,7 @@ public class TransactionInitiationRequest {
      *
      * @return customerPaymentReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.")
-    public String getCustomerPaymentReference() {
+    @javax.annotation.Nullable public String getCustomerPaymentReference() {
         return customerPaymentReference;
     }
 
@@ -164,8 +188,7 @@ public class TransactionInitiationRequest {
      *
      * @return payeeContactInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PayeeContactInformation getPayeeContactInformation() {
+    @javax.annotation.Nullable public PayeeContactInformation getPayeeContactInformation() {
         return payeeContactInformation;
     }
 
@@ -183,7 +206,7 @@ public class TransactionInitiationRequest {
      *
      * @return sourceAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getSourceAmount() {
         return sourceAmount;
     }
@@ -202,8 +225,7 @@ public class TransactionInitiationRequest {
      *
      * @return transferRateDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TransferRatePreview getTransferRateDetails() {
+    @javax.annotation.Nullable public TransferRatePreview getTransferRateDetails() {
         return transferRateDetails;
     }
 
@@ -222,10 +244,7 @@ public class TransactionInitiationRequest {
      *
      * @return requestTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).")
+    @javax.annotation.Nonnull
     public OffsetDateTime getRequestTime() {
         return requestTime;
     }
@@ -235,7 +254,7 @@ public class TransactionInitiationRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -302,10 +321,161 @@ public class TransactionInitiationRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sourceAccountId");
+        openapiFields.add("destinationAccountId");
+        openapiFields.add("destinationTransactionInstrument");
+        openapiFields.add("transactionDescription");
+        openapiFields.add("customerPaymentReference");
+        openapiFields.add("payeeContactInformation");
+        openapiFields.add("sourceAmount");
+        openapiFields.add("transferRateDetails");
+        openapiFields.add("requestTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sourceAccountId");
+        openapiRequiredFields.add("destinationTransactionInstrument");
+        openapiRequiredFields.add("sourceAmount");
+        openapiRequiredFields.add("requestTime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransactionInitiationRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransactionInitiationRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransactionInitiationRequest is not found in the empty JSON string",
+                        TransactionInitiationRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransactionInitiationRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransactionInitiationRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransactionInitiationRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sourceAccountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sourceAccountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sourceAccountId").toString()));
+        }
+        if ((jsonObj.get("destinationAccountId") != null
+                        && !jsonObj.get("destinationAccountId").isJsonNull())
+                && !jsonObj.get("destinationAccountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `destinationAccountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("destinationAccountId").toString()));
+        }
+        // validate the required field `destinationTransactionInstrument`
+        TransactionInstrumentDetails.validateJsonElement(jsonObj.get("destinationTransactionInstrument"));
+        if ((jsonObj.get("transactionDescription") != null
+                        && !jsonObj.get("transactionDescription").isJsonNull())
+                && !jsonObj.get("transactionDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionDescription").toString()));
+        }
+        if ((jsonObj.get("customerPaymentReference") != null
+                        && !jsonObj.get("customerPaymentReference").isJsonNull())
+                && !jsonObj.get("customerPaymentReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `customerPaymentReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("customerPaymentReference").toString()));
+        }
+        // validate the optional field `payeeContactInformation`
+        if (jsonObj.get("payeeContactInformation") != null
+                && !jsonObj.get("payeeContactInformation").isJsonNull()) {
+            PayeeContactInformation.validateJsonElement(jsonObj.get("payeeContactInformation"));
+        }
+        // validate the required field `sourceAmount`
+        Currency.validateJsonElement(jsonObj.get("sourceAmount"));
+        // validate the optional field `transferRateDetails`
+        if (jsonObj.get("transferRateDetails") != null
+                && !jsonObj.get("transferRateDetails").isJsonNull()) {
+            TransferRatePreview.validateJsonElement(jsonObj.get("transferRateDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransactionInitiationRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransactionInitiationRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransactionInitiationRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransactionInitiationRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransactionInitiationRequest>() {
+                        @Override
+                        public void write(JsonWriter out, TransactionInitiationRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransactionInitiationRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransactionInitiationRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransactionInitiationRequest
+     * @throws IOException if the JSON string is invalid with respect to TransactionInitiationRequest
+     */
+    public static TransactionInitiationRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransactionInitiationRequest.class);
+    }
+
+    /**
+     * Convert an instance of TransactionInitiationRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

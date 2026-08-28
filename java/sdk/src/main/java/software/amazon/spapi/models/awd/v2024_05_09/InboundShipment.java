@@ -12,62 +12,112 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents an AWD inbound shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD inbound shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundShipment {
-    @SerializedName("carrierCode")
-    private CarrierCode carrierCode = null;
+    public static final String SERIALIZED_NAME_CARRIER_CODE = "carrierCode";
 
-    @SerializedName("createdAt")
-    private OffsetDateTime createdAt = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_CODE)
+    private CarrierCode carrierCode;
 
-    @SerializedName("destinationAddress")
-    private Address destinationAddress = null;
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
 
-    @SerializedName("externalReferenceId")
-    private String externalReferenceId = null;
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
 
-    @SerializedName("orderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_DESTINATION_ADDRESS = "destinationAddress";
 
-    @SerializedName("originAddress")
-    private Address originAddress = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ADDRESS)
+    private Address destinationAddress;
 
-    @SerializedName("receivedQuantity")
-    private List<InventoryQuantity> receivedQuantity = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_REFERENCE_ID = "externalReferenceId";
 
-    @SerializedName("shipBy")
-    private OffsetDateTime shipBy = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_REFERENCE_ID)
+    private String externalReferenceId;
 
-    @SerializedName("shipmentContainerQuantities")
-    private List<DistributionPackageQuantity> shipmentContainerQuantities = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
-    @SerializedName("shipmentSkuQuantities")
-    private List<SkuQuantity> shipmentSkuQuantities = null;
+    public static final String SERIALIZED_NAME_ORIGIN_ADDRESS = "originAddress";
 
-    @SerializedName("destinationRegion")
-    private String destinationRegion = null;
+    @SerializedName(SERIALIZED_NAME_ORIGIN_ADDRESS)
+    private Address originAddress;
 
-    @SerializedName("shipmentStatus")
-    private InboundShipmentStatus shipmentStatus = null;
+    public static final String SERIALIZED_NAME_RECEIVED_QUANTITY = "receivedQuantity";
 
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    @SerializedName(SERIALIZED_NAME_RECEIVED_QUANTITY)
+    private List<InventoryQuantity> receivedQuantity = new ArrayList<>();
 
-    @SerializedName("updatedAt")
-    private OffsetDateTime updatedAt = null;
+    public static final String SERIALIZED_NAME_SHIP_BY = "shipBy";
 
-    @SerializedName("warehouseReferenceId")
-    private String warehouseReferenceId = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_BY)
+    private OffsetDateTime shipBy;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_CONTAINER_QUANTITIES = "shipmentContainerQuantities";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_CONTAINER_QUANTITIES)
+    private List<DistributionPackageQuantity> shipmentContainerQuantities = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_SKU_QUANTITIES = "shipmentSkuQuantities";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_SKU_QUANTITIES)
+    private List<SkuQuantity> shipmentSkuQuantities = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_DESTINATION_REGION = "destinationRegion";
+
+    @SerializedName(SERIALIZED_NAME_DESTINATION_REGION)
+    private String destinationRegion;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_STATUS = "shipmentStatus";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_STATUS)
+    private InboundShipmentStatus shipmentStatus;
+
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
+
+    public static final String SERIALIZED_NAME_WAREHOUSE_REFERENCE_ID = "warehouseReferenceId";
+
+    @SerializedName(SERIALIZED_NAME_WAREHOUSE_REFERENCE_ID)
+    private String warehouseReferenceId;
+
+    public InboundShipment() {}
 
     public InboundShipment carrierCode(CarrierCode carrierCode) {
         this.carrierCode = carrierCode;
@@ -79,8 +129,7 @@ public class InboundShipment {
      *
      * @return carrierCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierCode getCarrierCode() {
+    @javax.annotation.Nullable public CarrierCode getCarrierCode() {
         return carrierCode;
     }
 
@@ -99,10 +148,7 @@ public class InboundShipment {
      *
      * @return createdAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Timestamp when the shipment was created. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
-    public OffsetDateTime getCreatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
@@ -120,7 +166,7 @@ public class InboundShipment {
      *
      * @return destinationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -140,10 +186,7 @@ public class InboundShipment {
      *
      * @return externalReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Client-provided reference ID that can correlate this shipment to client resources. For example, to map this shipment to an internal bookkeeping order record.")
-    public String getExternalReferenceId() {
+    @javax.annotation.Nullable public String getExternalReferenceId() {
         return externalReferenceId;
     }
 
@@ -161,9 +204,7 @@ public class InboundShipment {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The AWD inbound order ID that this inbound shipment belongs to.")
+    @javax.annotation.Nonnull
     public String getOrderId() {
         return orderId;
     }
@@ -182,7 +223,7 @@ public class InboundShipment {
      *
      * @return originAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getOriginAddress() {
         return originAddress;
     }
@@ -209,9 +250,7 @@ public class InboundShipment {
      *
      * @return receivedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Quantity received (at the receiving end) as part of this shipment.")
-    public List<InventoryQuantity> getReceivedQuantity() {
+    @javax.annotation.Nullable public List<InventoryQuantity> getReceivedQuantity() {
         return receivedQuantity;
     }
 
@@ -229,8 +268,7 @@ public class InboundShipment {
      *
      * @return shipBy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment will be shipped.")
-    public OffsetDateTime getShipBy() {
+    @javax.annotation.Nullable public OffsetDateTime getShipBy() {
         return shipBy;
     }
 
@@ -257,9 +295,7 @@ public class InboundShipment {
      *
      * @return shipmentContainerQuantities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Packages that are part of this shipment.")
+    @javax.annotation.Nonnull
     public List<DistributionPackageQuantity> getShipmentContainerQuantities() {
         return shipmentContainerQuantities;
     }
@@ -278,7 +314,7 @@ public class InboundShipment {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Unique shipment ID.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -306,10 +342,7 @@ public class InboundShipment {
      *
      * @return shipmentSkuQuantities
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.")
-    public List<SkuQuantity> getShipmentSkuQuantities() {
+    @javax.annotation.Nullable public List<SkuQuantity> getShipmentSkuQuantities() {
         return shipmentSkuQuantities;
     }
 
@@ -328,10 +361,7 @@ public class InboundShipment {
      *
      * @return destinationRegion
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]")
-    public String getDestinationRegion() {
+    @javax.annotation.Nullable public String getDestinationRegion() {
         return destinationRegion;
     }
 
@@ -349,7 +379,7 @@ public class InboundShipment {
      *
      * @return shipmentStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public InboundShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -368,8 +398,7 @@ public class InboundShipment {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Carrier-unique tracking ID for this shipment.")
-    public String getTrackingId() {
+    @javax.annotation.Nullable public String getTrackingId() {
         return trackingId;
     }
 
@@ -388,10 +417,7 @@ public class InboundShipment {
      *
      * @return updatedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Timestamp when the shipment was updated. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
-    public OffsetDateTime getUpdatedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
@@ -410,10 +436,7 @@ public class InboundShipment {
      *
      * @return warehouseReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An AWD-provided reference ID that you can use to interact with the warehouse. For example, a carrier appointment booking.")
-    public String getWarehouseReferenceId() {
+    @javax.annotation.Nullable public String getWarehouseReferenceId() {
         return warehouseReferenceId;
     }
 
@@ -422,7 +445,7 @@ public class InboundShipment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -510,10 +533,225 @@ public class InboundShipment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrierCode");
+        openapiFields.add("createdAt");
+        openapiFields.add("destinationAddress");
+        openapiFields.add("externalReferenceId");
+        openapiFields.add("orderId");
+        openapiFields.add("originAddress");
+        openapiFields.add("receivedQuantity");
+        openapiFields.add("shipBy");
+        openapiFields.add("shipmentContainerQuantities");
+        openapiFields.add("shipmentId");
+        openapiFields.add("shipmentSkuQuantities");
+        openapiFields.add("destinationRegion");
+        openapiFields.add("shipmentStatus");
+        openapiFields.add("trackingId");
+        openapiFields.add("updatedAt");
+        openapiFields.add("warehouseReferenceId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("destinationAddress");
+        openapiRequiredFields.add("orderId");
+        openapiRequiredFields.add("originAddress");
+        openapiRequiredFields.add("shipmentContainerQuantities");
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("shipmentStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundShipment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundShipment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundShipment is not found in the empty JSON string",
+                        InboundShipment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundShipment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundShipment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundShipment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `carrierCode`
+        if (jsonObj.get("carrierCode") != null && !jsonObj.get("carrierCode").isJsonNull()) {
+            CarrierCode.validateJsonElement(jsonObj.get("carrierCode"));
+        }
+        // validate the required field `destinationAddress`
+        Address.validateJsonElement(jsonObj.get("destinationAddress"));
+        if ((jsonObj.get("externalReferenceId") != null
+                        && !jsonObj.get("externalReferenceId").isJsonNull())
+                && !jsonObj.get("externalReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalReferenceId").toString()));
+        }
+        if (!jsonObj.get("orderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderId").toString()));
+        }
+        // validate the required field `originAddress`
+        Address.validateJsonElement(jsonObj.get("originAddress"));
+        if (jsonObj.get("receivedQuantity") != null
+                && !jsonObj.get("receivedQuantity").isJsonNull()) {
+            JsonArray jsonArrayreceivedQuantity = jsonObj.getAsJsonArray("receivedQuantity");
+            if (jsonArrayreceivedQuantity != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("receivedQuantity").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `receivedQuantity` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("receivedQuantity").toString()));
+                }
+
+                // validate the optional field `receivedQuantity` (array)
+                for (int i = 0; i < jsonArrayreceivedQuantity.size(); i++) {
+                    InventoryQuantity.validateJsonElement(jsonArrayreceivedQuantity.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("shipmentContainerQuantities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentContainerQuantities` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("shipmentContainerQuantities").toString()));
+        }
+
+        JsonArray jsonArrayshipmentContainerQuantities = jsonObj.getAsJsonArray("shipmentContainerQuantities");
+        // validate the required field `shipmentContainerQuantities` (array)
+        for (int i = 0; i < jsonArrayshipmentContainerQuantities.size(); i++) {
+            DistributionPackageQuantity.validateJsonElement(jsonArrayshipmentContainerQuantities.get(i));
+        }
+        ;
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        if (jsonObj.get("shipmentSkuQuantities") != null
+                && !jsonObj.get("shipmentSkuQuantities").isJsonNull()) {
+            JsonArray jsonArrayshipmentSkuQuantities = jsonObj.getAsJsonArray("shipmentSkuQuantities");
+            if (jsonArrayshipmentSkuQuantities != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shipmentSkuQuantities").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shipmentSkuQuantities` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shipmentSkuQuantities").toString()));
+                }
+
+                // validate the optional field `shipmentSkuQuantities` (array)
+                for (int i = 0; i < jsonArrayshipmentSkuQuantities.size(); i++) {
+                    SkuQuantity.validateJsonElement(jsonArrayshipmentSkuQuantities.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("destinationRegion") != null
+                        && !jsonObj.get("destinationRegion").isJsonNull())
+                && !jsonObj.get("destinationRegion").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `destinationRegion` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("destinationRegion").toString()));
+        }
+        // validate the required field `shipmentStatus`
+        InboundShipmentStatus.validateJsonElement(jsonObj.get("shipmentStatus"));
+        if ((jsonObj.get("trackingId") != null && !jsonObj.get("trackingId").isJsonNull())
+                && !jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        if ((jsonObj.get("warehouseReferenceId") != null
+                        && !jsonObj.get("warehouseReferenceId").isJsonNull())
+                && !jsonObj.get("warehouseReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `warehouseReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("warehouseReferenceId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundShipment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundShipment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundShipment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundShipment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundShipment>() {
+                        @Override
+                        public void write(JsonWriter out, InboundShipment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundShipment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundShipment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundShipment
+     * @throws IOException if the JSON string is invalid with respect to InboundShipment
+     */
+    public static InboundShipment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundShipment.class);
+    }
+
+    /**
+     * Convert an instance of InboundShipment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

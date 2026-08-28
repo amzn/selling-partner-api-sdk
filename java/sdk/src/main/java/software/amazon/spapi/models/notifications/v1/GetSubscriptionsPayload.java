@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the &#x60;getSubscriptions&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getSubscriptions` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetSubscriptionsPayload {
-    @SerializedName("subscriptions")
-    private Subscriptions subscriptions = null;
+    public static final String SERIALIZED_NAME_SUBSCRIPTIONS = "subscriptions";
 
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_SUBSCRIPTIONS)
+    private Subscriptions subscriptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public GetSubscriptionsPayload() {}
 
     public GetSubscriptionsPayload subscriptions(Subscriptions subscriptions) {
         this.subscriptions = subscriptions;
@@ -34,8 +55,7 @@ public class GetSubscriptionsPayload {
      *
      * @return subscriptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Subscriptions getSubscriptions() {
+    @javax.annotation.Nullable public Subscriptions getSubscriptions() {
         return subscriptions;
     }
 
@@ -54,10 +74,7 @@ public class GetSubscriptionsPayload {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A token that you can use to retrieve the next page of results. When this field is not empty, pass its value in the `nextToken` query parameter of the next request.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -66,7 +83,7 @@ public class GetSubscriptionsPayload {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +111,107 @@ public class GetSubscriptionsPayload {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("subscriptions");
+        openapiFields.add("nextToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetSubscriptionsPayload
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetSubscriptionsPayload.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetSubscriptionsPayload is not found in the empty JSON string",
+                        GetSubscriptionsPayload.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetSubscriptionsPayload.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetSubscriptionsPayload` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetSubscriptionsPayload.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetSubscriptionsPayload' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetSubscriptionsPayload> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetSubscriptionsPayload.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetSubscriptionsPayload>() {
+                        @Override
+                        public void write(JsonWriter out, GetSubscriptionsPayload value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetSubscriptionsPayload read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetSubscriptionsPayload given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetSubscriptionsPayload
+     * @throws IOException if the JSON string is invalid with respect to GetSubscriptionsPayload
+     */
+    public static GetSubscriptionsPayload fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetSubscriptionsPayload.class);
+    }
+
+    /**
+     * Convert an instance of GetSubscriptionsPayload to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

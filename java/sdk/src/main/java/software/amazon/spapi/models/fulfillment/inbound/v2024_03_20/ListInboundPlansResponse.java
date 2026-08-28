@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The &#x60;listInboundPlans&#x60; response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The `listInboundPlans` response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListInboundPlansResponse {
-    @SerializedName("inboundPlans")
-    private List<InboundPlanSummary> inboundPlans = null;
+    public static final String SERIALIZED_NAME_INBOUND_PLANS = "inboundPlans";
 
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    @SerializedName(SERIALIZED_NAME_INBOUND_PLANS)
+    private List<InboundPlanSummary> inboundPlans = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public ListInboundPlansResponse() {}
 
     public ListInboundPlansResponse inboundPlans(List<InboundPlanSummary> inboundPlans) {
         this.inboundPlans = inboundPlans;
@@ -44,8 +66,7 @@ public class ListInboundPlansResponse {
      *
      * @return inboundPlans
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of inbound plans with minimal information.")
-    public List<InboundPlanSummary> getInboundPlans() {
+    @javax.annotation.Nullable public List<InboundPlanSummary> getInboundPlans() {
         return inboundPlans;
     }
 
@@ -63,8 +84,7 @@ public class ListInboundPlansResponse {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -73,7 +93,7 @@ public class ListInboundPlansResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +121,122 @@ public class ListInboundPlansResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("inboundPlans");
+        openapiFields.add("pagination");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListInboundPlansResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListInboundPlansResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListInboundPlansResponse is not found in the empty JSON string",
+                        ListInboundPlansResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListInboundPlansResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListInboundPlansResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("inboundPlans") != null && !jsonObj.get("inboundPlans").isJsonNull()) {
+            JsonArray jsonArrayinboundPlans = jsonObj.getAsJsonArray("inboundPlans");
+            if (jsonArrayinboundPlans != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("inboundPlans").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `inboundPlans` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("inboundPlans").toString()));
+                }
+
+                // validate the optional field `inboundPlans` (array)
+                for (int i = 0; i < jsonArrayinboundPlans.size(); i++) {
+                    InboundPlanSummary.validateJsonElement(jsonArrayinboundPlans.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListInboundPlansResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListInboundPlansResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListInboundPlansResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListInboundPlansResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListInboundPlansResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListInboundPlansResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListInboundPlansResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListInboundPlansResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListInboundPlansResponse
+     * @throws IOException if the JSON string is invalid with respect to ListInboundPlansResponse
+     */
+    public static ListInboundPlansResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListInboundPlansResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListInboundPlansResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

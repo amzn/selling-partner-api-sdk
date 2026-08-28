@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The configuration of the schedule. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The configuration of the schedule.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ScheduleExpression {
-    @SerializedName("scheduleExpressionType")
-    private ScheduleExpressionType scheduleExpressionType = null;
+    public static final String SERIALIZED_NAME_SCHEDULE_EXPRESSION_TYPE = "scheduleExpressionType";
 
-    @SerializedName("recurringFrequency")
-    private RecurringFrequency recurringFrequency = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULE_EXPRESSION_TYPE)
+    private ScheduleExpressionType scheduleExpressionType;
+
+    public static final String SERIALIZED_NAME_RECURRING_FREQUENCY = "recurringFrequency";
+
+    @SerializedName(SERIALIZED_NAME_RECURRING_FREQUENCY)
+    private RecurringFrequency recurringFrequency;
+
+    public ScheduleExpression() {}
 
     public ScheduleExpression scheduleExpressionType(ScheduleExpressionType scheduleExpressionType) {
         this.scheduleExpressionType = scheduleExpressionType;
@@ -34,7 +55,7 @@ public class ScheduleExpression {
      *
      * @return scheduleExpressionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ScheduleExpressionType getScheduleExpressionType() {
         return scheduleExpressionType;
     }
@@ -53,8 +74,7 @@ public class ScheduleExpression {
      *
      * @return recurringFrequency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RecurringFrequency getRecurringFrequency() {
+    @javax.annotation.Nullable public RecurringFrequency getRecurringFrequency() {
         return recurringFrequency;
     }
 
@@ -63,7 +83,7 @@ public class ScheduleExpression {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +115,117 @@ public class ScheduleExpression {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("scheduleExpressionType");
+        openapiFields.add("recurringFrequency");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("scheduleExpressionType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ScheduleExpression
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ScheduleExpression.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ScheduleExpression is not found in the empty JSON string",
+                        ScheduleExpression.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ScheduleExpression.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ScheduleExpression` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ScheduleExpression.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `scheduleExpressionType`
+        ScheduleExpressionType.validateJsonElement(jsonObj.get("scheduleExpressionType"));
+        // validate the optional field `recurringFrequency`
+        if (jsonObj.get("recurringFrequency") != null
+                && !jsonObj.get("recurringFrequency").isJsonNull()) {
+            RecurringFrequency.validateJsonElement(jsonObj.get("recurringFrequency"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ScheduleExpression.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ScheduleExpression' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ScheduleExpression> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ScheduleExpression.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ScheduleExpression>() {
+                        @Override
+                        public void write(JsonWriter out, ScheduleExpression value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ScheduleExpression read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ScheduleExpression given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ScheduleExpression
+     * @throws IOException if the JSON string is invalid with respect to ScheduleExpression
+     */
+    public static ScheduleExpression fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ScheduleExpression.class);
+    }
+
+    /**
+     * Convert an instance of ScheduleExpression to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

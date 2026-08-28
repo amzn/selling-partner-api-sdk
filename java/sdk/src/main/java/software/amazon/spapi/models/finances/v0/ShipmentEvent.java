@@ -12,54 +12,99 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A shipment, refund, guarantee claim, or chargeback. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A shipment, refund, guarantee claim, or chargeback.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentEvent {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("MarketplaceName")
-    private String marketplaceName = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("StoreName")
-    private String storeName = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
 
-    @SerializedName("OrderChargeList")
-    private ChargeComponentList orderChargeList = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_NAME = "MarketplaceName";
 
-    @SerializedName("OrderChargeAdjustmentList")
-    private ChargeComponentList orderChargeAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_NAME)
+    private String marketplaceName;
 
-    @SerializedName("ShipmentFeeList")
-    private FeeComponentList shipmentFeeList = null;
+    public static final String SERIALIZED_NAME_STORE_NAME = "StoreName";
 
-    @SerializedName("ShipmentFeeAdjustmentList")
-    private FeeComponentList shipmentFeeAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private String storeName;
 
-    @SerializedName("OrderFeeList")
-    private FeeComponentList orderFeeList = null;
+    public static final String SERIALIZED_NAME_ORDER_CHARGE_LIST = "OrderChargeList";
 
-    @SerializedName("OrderFeeAdjustmentList")
-    private FeeComponentList orderFeeAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_CHARGE_LIST)
+    private ChargeComponentList orderChargeList = new ArrayList<>();
 
-    @SerializedName("DirectPaymentList")
-    private DirectPaymentList directPaymentList = null;
+    public static final String SERIALIZED_NAME_ORDER_CHARGE_ADJUSTMENT_LIST = "OrderChargeAdjustmentList";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_CHARGE_ADJUSTMENT_LIST)
+    private ChargeComponentList orderChargeAdjustmentList = new ArrayList<>();
 
-    @SerializedName("ShipmentItemList")
-    private ShipmentItemList shipmentItemList = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_FEE_LIST = "ShipmentFeeList";
 
-    @SerializedName("ShipmentItemAdjustmentList")
-    private ShipmentItemList shipmentItemAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_FEE_LIST)
+    private FeeComponentList shipmentFeeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_FEE_ADJUSTMENT_LIST = "ShipmentFeeAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_FEE_ADJUSTMENT_LIST)
+    private FeeComponentList shipmentFeeAdjustmentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ORDER_FEE_LIST = "OrderFeeList";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_FEE_LIST)
+    private FeeComponentList orderFeeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ORDER_FEE_ADJUSTMENT_LIST = "OrderFeeAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_FEE_ADJUSTMENT_LIST)
+    private FeeComponentList orderFeeAdjustmentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_DIRECT_PAYMENT_LIST = "DirectPaymentList";
+
+    @SerializedName(SERIALIZED_NAME_DIRECT_PAYMENT_LIST)
+    private DirectPaymentList directPaymentList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
+
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ITEM_LIST = "ShipmentItemList";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ITEM_LIST)
+    private ShipmentItemList shipmentItemList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SHIPMENT_ITEM_ADJUSTMENT_LIST = "ShipmentItemAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ITEM_ADJUSTMENT_LIST)
+    private ShipmentItemList shipmentItemAdjustmentList = new ArrayList<>();
+
+    public ShipmentEvent() {}
 
     public ShipmentEvent amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -71,8 +116,7 @@ public class ShipmentEvent {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
-    public String getAmazonOrderId() {
+    @javax.annotation.Nullable public String getAmazonOrderId() {
         return amazonOrderId;
     }
 
@@ -90,8 +134,7 @@ public class ShipmentEvent {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined identifier for an order.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -109,8 +152,7 @@ public class ShipmentEvent {
      *
      * @return marketplaceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the marketplace where the event occurred.")
-    public String getMarketplaceName() {
+    @javax.annotation.Nullable public String getMarketplaceName() {
         return marketplaceName;
     }
 
@@ -128,8 +170,7 @@ public class ShipmentEvent {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
-    public String getStoreName() {
+    @javax.annotation.Nullable public String getStoreName() {
         return storeName;
     }
 
@@ -147,8 +188,7 @@ public class ShipmentEvent {
      *
      * @return orderChargeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getOrderChargeList() {
+    @javax.annotation.Nullable public ChargeComponentList getOrderChargeList() {
         return orderChargeList;
     }
 
@@ -166,8 +206,7 @@ public class ShipmentEvent {
      *
      * @return orderChargeAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponentList getOrderChargeAdjustmentList() {
+    @javax.annotation.Nullable public ChargeComponentList getOrderChargeAdjustmentList() {
         return orderChargeAdjustmentList;
     }
 
@@ -185,8 +224,7 @@ public class ShipmentEvent {
      *
      * @return shipmentFeeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getShipmentFeeList() {
+    @javax.annotation.Nullable public FeeComponentList getShipmentFeeList() {
         return shipmentFeeList;
     }
 
@@ -204,8 +242,7 @@ public class ShipmentEvent {
      *
      * @return shipmentFeeAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getShipmentFeeAdjustmentList() {
+    @javax.annotation.Nullable public FeeComponentList getShipmentFeeAdjustmentList() {
         return shipmentFeeAdjustmentList;
     }
 
@@ -223,8 +260,7 @@ public class ShipmentEvent {
      *
      * @return orderFeeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getOrderFeeList() {
+    @javax.annotation.Nullable public FeeComponentList getOrderFeeList() {
         return orderFeeList;
     }
 
@@ -242,8 +278,7 @@ public class ShipmentEvent {
      *
      * @return orderFeeAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getOrderFeeAdjustmentList() {
+    @javax.annotation.Nullable public FeeComponentList getOrderFeeAdjustmentList() {
         return orderFeeAdjustmentList;
     }
 
@@ -261,8 +296,7 @@ public class ShipmentEvent {
      *
      * @return directPaymentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DirectPaymentList getDirectPaymentList() {
+    @javax.annotation.Nullable public DirectPaymentList getDirectPaymentList() {
         return directPaymentList;
     }
 
@@ -280,10 +314,7 @@ public class ShipmentEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -301,8 +332,7 @@ public class ShipmentEvent {
      *
      * @return shipmentItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentItemList getShipmentItemList() {
+    @javax.annotation.Nullable public ShipmentItemList getShipmentItemList() {
         return shipmentItemList;
     }
 
@@ -320,8 +350,7 @@ public class ShipmentEvent {
      *
      * @return shipmentItemAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipmentItemList getShipmentItemAdjustmentList() {
+    @javax.annotation.Nullable public ShipmentItemList getShipmentItemAdjustmentList() {
         return shipmentItemAdjustmentList;
     }
 
@@ -330,7 +359,7 @@ public class ShipmentEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -414,10 +443,139 @@ public class ShipmentEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("MarketplaceName");
+        openapiFields.add("StoreName");
+        openapiFields.add("OrderChargeList");
+        openapiFields.add("OrderChargeAdjustmentList");
+        openapiFields.add("ShipmentFeeList");
+        openapiFields.add("ShipmentFeeAdjustmentList");
+        openapiFields.add("OrderFeeList");
+        openapiFields.add("OrderFeeAdjustmentList");
+        openapiFields.add("DirectPaymentList");
+        openapiFields.add("PostedDate");
+        openapiFields.add("ShipmentItemList");
+        openapiFields.add("ShipmentItemAdjustmentList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentEvent is not found in the empty JSON string",
+                        ShipmentEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AmazonOrderId") != null
+                        && !jsonObj.get("AmazonOrderId").isJsonNull())
+                && !jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        if ((jsonObj.get("MarketplaceName") != null
+                        && !jsonObj.get("MarketplaceName").isJsonNull())
+                && !jsonObj.get("MarketplaceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceName").toString()));
+        }
+        if ((jsonObj.get("StoreName") != null && !jsonObj.get("StoreName").isJsonNull())
+                && !jsonObj.get("StoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StoreName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentEvent>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentEvent
+     * @throws IOException if the JSON string is invalid with respect to ShipmentEvent
+     */
+    public static ShipmentEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentEvent.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

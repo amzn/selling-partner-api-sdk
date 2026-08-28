@@ -12,32 +12,61 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An individual &#x60;competitiveSummary&#x60; request for an ASIN and &#x60;marketplaceId&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An individual `competitiveSummary` request for an ASIN and `marketplaceId`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CompetitiveSummaryRequest {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("includedData")
-    private List<CompetitiveSummaryIncludedData> includedData = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("lowestPricedOffersInputs")
-    private List<LowestPricedOffersInput> lowestPricedOffersInputs = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("method")
-    private HttpMethod method = null;
+    public static final String SERIALIZED_NAME_INCLUDED_DATA = "includedData";
 
-    @SerializedName("uri")
-    private String uri = null;
+    @SerializedName(SERIALIZED_NAME_INCLUDED_DATA)
+    private List<CompetitiveSummaryIncludedData> includedData = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_LOWEST_PRICED_OFFERS_INPUTS = "lowestPricedOffersInputs";
+
+    @SerializedName(SERIALIZED_NAME_LOWEST_PRICED_OFFERS_INPUTS)
+    private List<LowestPricedOffersInput> lowestPricedOffersInputs = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_METHOD = "method";
+
+    @SerializedName(SERIALIZED_NAME_METHOD)
+    private HttpMethod method;
+
+    public static final String SERIALIZED_NAME_URI = "uri";
+
+    @SerializedName(SERIALIZED_NAME_URI)
+    private String uri;
+
+    public CompetitiveSummaryRequest() {}
 
     public CompetitiveSummaryRequest asin(String asin) {
         this.asin = asin;
@@ -49,7 +78,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -69,10 +98,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -99,9 +125,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return includedData
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The list of requested competitive pricing data for the product.")
+    @javax.annotation.Nonnull
     public List<CompetitiveSummaryIncludedData> getIncludedData() {
         return includedData;
     }
@@ -131,10 +155,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return lowestPricedOffersInputs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`")
-    public List<LowestPricedOffersInput> getLowestPricedOffersInputs() {
+    @javax.annotation.Nullable public List<LowestPricedOffersInput> getLowestPricedOffersInputs() {
         return lowestPricedOffersInputs;
     }
 
@@ -152,7 +173,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return method
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public HttpMethod getMethod() {
         return method;
     }
@@ -171,9 +192,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return uri
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The URI associated with the individual APIs that are called as part of the batch request.")
+    @javax.annotation.Nonnull
     public String getUri() {
         return uri;
     }
@@ -183,7 +202,7 @@ public class CompetitiveSummaryRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -221,10 +240,163 @@ public class CompetitiveSummaryRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("includedData");
+        openapiFields.add("lowestPricedOffersInputs");
+        openapiFields.add("method");
+        openapiFields.add("uri");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("asin");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("includedData");
+        openapiRequiredFields.add("method");
+        openapiRequiredFields.add("uri");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CompetitiveSummaryRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CompetitiveSummaryRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CompetitiveSummaryRequest is not found in the empty JSON string",
+                        CompetitiveSummaryRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CompetitiveSummaryRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CompetitiveSummaryRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CompetitiveSummaryRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("includedData") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("includedData").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `includedData` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("includedData").toString()));
+        }
+        if (jsonObj.get("lowestPricedOffersInputs") != null
+                && !jsonObj.get("lowestPricedOffersInputs").isJsonNull()) {
+            JsonArray jsonArraylowestPricedOffersInputs = jsonObj.getAsJsonArray("lowestPricedOffersInputs");
+            if (jsonArraylowestPricedOffersInputs != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("lowestPricedOffersInputs").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `lowestPricedOffersInputs` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("lowestPricedOffersInputs").toString()));
+                }
+
+                // validate the optional field `lowestPricedOffersInputs` (array)
+                for (int i = 0; i < jsonArraylowestPricedOffersInputs.size(); i++) {
+                    LowestPricedOffersInput.validateJsonElement(jsonArraylowestPricedOffersInputs.get(i));
+                }
+                ;
+            }
+        }
+        // validate the required field `method`
+        HttpMethod.validateJsonElement(jsonObj.get("method"));
+        if (!jsonObj.get("uri").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uri` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uri").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CompetitiveSummaryRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CompetitiveSummaryRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CompetitiveSummaryRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CompetitiveSummaryRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CompetitiveSummaryRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CompetitiveSummaryRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CompetitiveSummaryRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CompetitiveSummaryRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CompetitiveSummaryRequest
+     * @throws IOException if the JSON string is invalid with respect to CompetitiveSummaryRequest
+     */
+    public static CompetitiveSummaryRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CompetitiveSummaryRequest.class);
+    }
+
+    /**
+     * Convert an instance of CompetitiveSummaryRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

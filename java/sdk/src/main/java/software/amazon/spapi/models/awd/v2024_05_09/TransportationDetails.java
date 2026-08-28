@@ -12,16 +12,36 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Transportation details for the shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for the shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationDetails {
-    @SerializedName("trackingDetails")
-    private List<TrackingDetails> trackingDetails = null;
+    public static final String SERIALIZED_NAME_TRACKING_DETAILS = "trackingDetails";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_DETAILS)
+    private List<TrackingDetails> trackingDetails = new ArrayList<>();
+
+    public TransportationDetails() {}
 
     public TransportationDetails trackingDetails(List<TrackingDetails> trackingDetails) {
         this.trackingDetails = trackingDetails;
@@ -42,10 +62,7 @@ public class TransportationDetails {
      *
      * @return trackingDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.")
+    @javax.annotation.Nonnull
     public List<TrackingDetails> getTrackingDetails() {
         return trackingDetails;
     }
@@ -55,7 +72,7 @@ public class TransportationDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -83,10 +100,123 @@ public class TransportationDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("trackingDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("trackingDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationDetails is not found in the empty JSON string",
+                        TransportationDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransportationDetails.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("trackingDetails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingDetails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("trackingDetails").toString()));
+        }
+
+        JsonArray jsonArraytrackingDetails = jsonObj.getAsJsonArray("trackingDetails");
+        // validate the required field `trackingDetails` (array)
+        for (int i = 0; i < jsonArraytrackingDetails.size(); i++) {
+            TrackingDetails.validateJsonElement(jsonArraytrackingDetails.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationDetails>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationDetails
+     * @throws IOException if the JSON string is invalid with respect to TransportationDetails
+     */
+    public static TransportationDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationDetails.class);
+    }
+
+    /**
+     * Convert an instance of TransportationDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

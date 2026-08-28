@@ -12,31 +12,39 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged
  * quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItemAcknowledgement {
     /** This indicates the acknowledgement code. */
     @JsonAdapter(AcknowledgementCodeEnum.Adapter.class)
     public enum AcknowledgementCodeEnum {
-        @SerializedName("Accepted")
         ACCEPTED("Accepted"),
-        @SerializedName("Backordered")
+
         BACKORDERED("Backordered"),
-        @SerializedName("Rejected")
+
         REJECTED("Rejected");
 
         private String value;
@@ -54,50 +62,62 @@ public class OrderItemAcknowledgement {
             return String.valueOf(value);
         }
 
-        public static AcknowledgementCodeEnum fromValue(String input) {
+        public static AcknowledgementCodeEnum fromValue(String value) {
             for (AcknowledgementCodeEnum b : AcknowledgementCodeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<AcknowledgementCodeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final AcknowledgementCodeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public AcknowledgementCodeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return AcknowledgementCodeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return AcknowledgementCodeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            AcknowledgementCodeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("acknowledgementCode")
-    private AcknowledgementCodeEnum acknowledgementCode = null;
+    public static final String SERIALIZED_NAME_ACKNOWLEDGEMENT_CODE = "acknowledgementCode";
 
-    @SerializedName("acknowledgedQuantity")
-    private ItemQuantity acknowledgedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_ACKNOWLEDGEMENT_CODE)
+    private AcknowledgementCodeEnum acknowledgementCode;
 
-    @SerializedName("scheduledShipDate")
-    private OffsetDateTime scheduledShipDate = null;
+    public static final String SERIALIZED_NAME_ACKNOWLEDGED_QUANTITY = "acknowledgedQuantity";
 
-    @SerializedName("scheduledDeliveryDate")
-    private OffsetDateTime scheduledDeliveryDate = null;
+    @SerializedName(SERIALIZED_NAME_ACKNOWLEDGED_QUANTITY)
+    private ItemQuantity acknowledgedQuantity;
+
+    public static final String SERIALIZED_NAME_SCHEDULED_SHIP_DATE = "scheduledShipDate";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_SHIP_DATE)
+    private OffsetDateTime scheduledShipDate;
+
+    public static final String SERIALIZED_NAME_SCHEDULED_DELIVERY_DATE = "scheduledDeliveryDate";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DELIVERY_DATE)
+    private OffsetDateTime scheduledDeliveryDate;
 
     /** Indicates the reason for rejection. */
     @JsonAdapter(RejectionReasonEnum.Adapter.class)
     public enum RejectionReasonEnum {
-        @SerializedName("TemporarilyUnavailable")
         TEMPORARILY_UNAVAILABLE("TemporarilyUnavailable"),
-        @SerializedName("InvalidProductIdentifier")
+
         INVALID_PRODUCT_IDENTIFIER("InvalidProductIdentifier"),
-        @SerializedName("ObsoleteProduct")
+
         OBSOLETE_PRODUCT("ObsoleteProduct");
 
         private String value;
@@ -115,31 +135,40 @@ public class OrderItemAcknowledgement {
             return String.valueOf(value);
         }
 
-        public static RejectionReasonEnum fromValue(String input) {
+        public static RejectionReasonEnum fromValue(String value) {
             for (RejectionReasonEnum b : RejectionReasonEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RejectionReasonEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RejectionReasonEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RejectionReasonEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RejectionReasonEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RejectionReasonEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RejectionReasonEnum.fromValue(value);
         }
     }
 
-    @SerializedName("rejectionReason")
-    private RejectionReasonEnum rejectionReason = null;
+    public static final String SERIALIZED_NAME_REJECTION_REASON = "rejectionReason";
+
+    @SerializedName(SERIALIZED_NAME_REJECTION_REASON)
+    private RejectionReasonEnum rejectionReason;
+
+    public OrderItemAcknowledgement() {}
 
     public OrderItemAcknowledgement acknowledgementCode(AcknowledgementCodeEnum acknowledgementCode) {
         this.acknowledgementCode = acknowledgementCode;
@@ -151,9 +180,7 @@ public class OrderItemAcknowledgement {
      *
      * @return acknowledgementCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "This indicates the acknowledgement code.")
+    @javax.annotation.Nonnull
     public AcknowledgementCodeEnum getAcknowledgementCode() {
         return acknowledgementCode;
     }
@@ -172,7 +199,7 @@ public class OrderItemAcknowledgement {
      *
      * @return acknowledgedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemQuantity getAcknowledgedQuantity() {
         return acknowledgedQuantity;
     }
@@ -191,9 +218,7 @@ public class OrderItemAcknowledgement {
      *
      * @return scheduledShipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Estimated ship date per line item. Must be in ISO-8601 date/time format.")
-    public OffsetDateTime getScheduledShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getScheduledShipDate() {
         return scheduledShipDate;
     }
 
@@ -211,9 +236,7 @@ public class OrderItemAcknowledgement {
      *
      * @return scheduledDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Estimated delivery date per line item. Must be in ISO-8601 date/time format.")
-    public OffsetDateTime getScheduledDeliveryDate() {
+    @javax.annotation.Nullable public OffsetDateTime getScheduledDeliveryDate() {
         return scheduledDeliveryDate;
     }
 
@@ -231,8 +254,7 @@ public class OrderItemAcknowledgement {
      *
      * @return rejectionReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates the reason for rejection.")
-    public RejectionReasonEnum getRejectionReason() {
+    @javax.annotation.Nullable public RejectionReasonEnum getRejectionReason() {
         return rejectionReason;
     }
 
@@ -241,7 +263,7 @@ public class OrderItemAcknowledgement {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -286,10 +308,136 @@ public class OrderItemAcknowledgement {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("acknowledgementCode");
+        openapiFields.add("acknowledgedQuantity");
+        openapiFields.add("scheduledShipDate");
+        openapiFields.add("scheduledDeliveryDate");
+        openapiFields.add("rejectionReason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("acknowledgementCode");
+        openapiRequiredFields.add("acknowledgedQuantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItemAcknowledgement
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItemAcknowledgement.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItemAcknowledgement is not found in the empty JSON string",
+                        OrderItemAcknowledgement.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItemAcknowledgement.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItemAcknowledgement` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderItemAcknowledgement.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("acknowledgementCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `acknowledgementCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("acknowledgementCode").toString()));
+        }
+        // validate the required field `acknowledgementCode`
+        AcknowledgementCodeEnum.validateJsonElement(jsonObj.get("acknowledgementCode"));
+        // validate the required field `acknowledgedQuantity`
+        ItemQuantity.validateJsonElement(jsonObj.get("acknowledgedQuantity"));
+        if ((jsonObj.get("rejectionReason") != null
+                        && !jsonObj.get("rejectionReason").isJsonNull())
+                && !jsonObj.get("rejectionReason").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rejectionReason` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rejectionReason").toString()));
+        }
+        // validate the optional field `rejectionReason`
+        if (jsonObj.get("rejectionReason") != null
+                && !jsonObj.get("rejectionReason").isJsonNull()) {
+            RejectionReasonEnum.validateJsonElement(jsonObj.get("rejectionReason"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItemAcknowledgement.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItemAcknowledgement' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItemAcknowledgement> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderItemAcknowledgement.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItemAcknowledgement>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItemAcknowledgement value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItemAcknowledgement read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItemAcknowledgement given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItemAcknowledgement
+     * @throws IOException if the JSON string is invalid with respect to OrderItemAcknowledgement
+     */
+    public static OrderItemAcknowledgement fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItemAcknowledgement.class);
+    }
+
+    /**
+     * Convert an instance of OrderItemAcknowledgement to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

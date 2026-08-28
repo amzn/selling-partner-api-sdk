@@ -12,40 +12,71 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank
  * account.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransferScheduleRequest {
-    @SerializedName("sourceAccountId")
-    private String sourceAccountId = null;
+    public static final String SERIALIZED_NAME_SOURCE_ACCOUNT_ID = "sourceAccountId";
 
-    @SerializedName("sourceCurrencyCode")
-    private String sourceCurrencyCode = null;
+    @SerializedName(SERIALIZED_NAME_SOURCE_ACCOUNT_ID)
+    private String sourceAccountId;
 
-    @SerializedName("destinationAccountId")
-    private String destinationAccountId = null;
+    public static final String SERIALIZED_NAME_SOURCE_CURRENCY_CODE = "sourceCurrencyCode";
 
-    @SerializedName("destinationTransactionInstrument")
-    private TransactionInstrumentDetails destinationTransactionInstrument = null;
+    @SerializedName(SERIALIZED_NAME_SOURCE_CURRENCY_CODE)
+    private String sourceCurrencyCode;
 
-    @SerializedName("transactionType")
-    private TransactionType transactionType = null;
+    public static final String SERIALIZED_NAME_DESTINATION_ACCOUNT_ID = "destinationAccountId";
 
-    @SerializedName("transferScheduleInformation")
-    private TransferScheduleInformation transferScheduleInformation = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_ACCOUNT_ID)
+    private String destinationAccountId;
 
-    @SerializedName("paymentPreference")
-    private PaymentPreference paymentPreference = null;
+    public static final String SERIALIZED_NAME_DESTINATION_TRANSACTION_INSTRUMENT = "destinationTransactionInstrument";
 
-    @SerializedName("transferScheduleStatus")
-    private TransferScheduleStatus transferScheduleStatus = null;
+    @SerializedName(SERIALIZED_NAME_DESTINATION_TRANSACTION_INSTRUMENT)
+    private TransactionInstrumentDetails destinationTransactionInstrument;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private TransactionType transactionType;
+
+    public static final String SERIALIZED_NAME_TRANSFER_SCHEDULE_INFORMATION = "transferScheduleInformation";
+
+    @SerializedName(SERIALIZED_NAME_TRANSFER_SCHEDULE_INFORMATION)
+    private TransferScheduleInformation transferScheduleInformation;
+
+    public static final String SERIALIZED_NAME_PAYMENT_PREFERENCE = "paymentPreference";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_PREFERENCE)
+    private PaymentPreference paymentPreference;
+
+    public static final String SERIALIZED_NAME_TRANSFER_SCHEDULE_STATUS = "transferScheduleStatus";
+
+    @SerializedName(SERIALIZED_NAME_TRANSFER_SCHEDULE_STATUS)
+    private TransferScheduleStatus transferScheduleStatus;
+
+    public TransferScheduleRequest() {}
 
     public TransferScheduleRequest sourceAccountId(String sourceAccountId) {
         this.sourceAccountId = sourceAccountId;
@@ -57,10 +88,7 @@ public class TransferScheduleRequest {
      *
      * @return sourceAccountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.")
+    @javax.annotation.Nonnull
     public String getSourceAccountId() {
         return sourceAccountId;
     }
@@ -79,9 +107,7 @@ public class TransferScheduleRequest {
      *
      * @return sourceCurrencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The three-letter currency code of the source payment method country, in ISO 4217 format.")
+    @javax.annotation.Nonnull
     public String getSourceCurrencyCode() {
         return sourceCurrencyCode;
     }
@@ -100,9 +126,7 @@ public class TransferScheduleRequest {
      *
      * @return destinationAccountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique identifier of the destination bank account where the money is deposited.")
+    @javax.annotation.Nonnull
     public String getDestinationAccountId() {
         return destinationAccountId;
     }
@@ -122,7 +146,7 @@ public class TransferScheduleRequest {
      *
      * @return destinationTransactionInstrument
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionInstrumentDetails getDestinationTransactionInstrument() {
         return destinationTransactionInstrument;
     }
@@ -141,7 +165,7 @@ public class TransferScheduleRequest {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -161,7 +185,7 @@ public class TransferScheduleRequest {
      *
      * @return transferScheduleInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TransferScheduleInformation getTransferScheduleInformation() {
         return transferScheduleInformation;
     }
@@ -180,7 +204,7 @@ public class TransferScheduleRequest {
      *
      * @return paymentPreference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PaymentPreference getPaymentPreference() {
         return paymentPreference;
     }
@@ -199,8 +223,7 @@ public class TransferScheduleRequest {
      *
      * @return transferScheduleStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TransferScheduleStatus getTransferScheduleStatus() {
+    @javax.annotation.Nullable public TransferScheduleStatus getTransferScheduleStatus() {
         return transferScheduleStatus;
     }
 
@@ -209,7 +232,7 @@ public class TransferScheduleRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -274,10 +297,151 @@ public class TransferScheduleRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sourceAccountId");
+        openapiFields.add("sourceCurrencyCode");
+        openapiFields.add("destinationAccountId");
+        openapiFields.add("destinationTransactionInstrument");
+        openapiFields.add("transactionType");
+        openapiFields.add("transferScheduleInformation");
+        openapiFields.add("paymentPreference");
+        openapiFields.add("transferScheduleStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sourceAccountId");
+        openapiRequiredFields.add("sourceCurrencyCode");
+        openapiRequiredFields.add("destinationAccountId");
+        openapiRequiredFields.add("destinationTransactionInstrument");
+        openapiRequiredFields.add("transactionType");
+        openapiRequiredFields.add("transferScheduleInformation");
+        openapiRequiredFields.add("paymentPreference");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransferScheduleRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransferScheduleRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransferScheduleRequest is not found in the empty JSON string",
+                        TransferScheduleRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransferScheduleRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransferScheduleRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TransferScheduleRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sourceAccountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sourceAccountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sourceAccountId").toString()));
+        }
+        if (!jsonObj.get("sourceCurrencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sourceCurrencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sourceCurrencyCode").toString()));
+        }
+        if (!jsonObj.get("destinationAccountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `destinationAccountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("destinationAccountId").toString()));
+        }
+        // validate the required field `destinationTransactionInstrument`
+        TransactionInstrumentDetails.validateJsonElement(jsonObj.get("destinationTransactionInstrument"));
+        // validate the required field `transactionType`
+        TransactionType.validateJsonElement(jsonObj.get("transactionType"));
+        // validate the required field `transferScheduleInformation`
+        TransferScheduleInformation.validateJsonElement(jsonObj.get("transferScheduleInformation"));
+        // validate the required field `paymentPreference`
+        PaymentPreference.validateJsonElement(jsonObj.get("paymentPreference"));
+        // validate the optional field `transferScheduleStatus`
+        if (jsonObj.get("transferScheduleStatus") != null
+                && !jsonObj.get("transferScheduleStatus").isJsonNull()) {
+            TransferScheduleStatus.validateJsonElement(jsonObj.get("transferScheduleStatus"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransferScheduleRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransferScheduleRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransferScheduleRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransferScheduleRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransferScheduleRequest>() {
+                        @Override
+                        public void write(JsonWriter out, TransferScheduleRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransferScheduleRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransferScheduleRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransferScheduleRequest
+     * @throws IOException if the JSON string is invalid with respect to TransferScheduleRequest
+     */
+    public static TransferScheduleRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransferScheduleRequest.class);
+    }
+
+    /**
+     * Convert an instance of TransferScheduleRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

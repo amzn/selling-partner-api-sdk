@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** Carrier will pick up option. */
 @JsonAdapter(CarrierWillPickUpOption.Adapter.class)
 public enum CarrierWillPickUpOption {
-    @SerializedName("CarrierWillPickUp")
     CARRIER_WILL_PICK_UP("CarrierWillPickUp"),
 
-    @SerializedName("ShipperWillDropOff")
     SHIPPER_WILL_DROP_OFF("ShipperWillDropOff"),
 
-    @SerializedName("NoPreference")
     NO_PREFERENCE("NoPreference");
 
     private String value;
@@ -46,25 +43,30 @@ public enum CarrierWillPickUpOption {
         return String.valueOf(value);
     }
 
-    public static CarrierWillPickUpOption fromValue(String input) {
+    public static CarrierWillPickUpOption fromValue(String value) {
         for (CarrierWillPickUpOption b : CarrierWillPickUpOption.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CarrierWillPickUpOption> {
         @Override
         public void write(final JsonWriter jsonWriter, final CarrierWillPickUpOption enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public CarrierWillPickUpOption read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return CarrierWillPickUpOption.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return CarrierWillPickUpOption.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        CarrierWillPickUpOption.fromValue(value);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The sub-status of a package. */
 @JsonAdapter(PackageSubStatus.Adapter.class)
 public enum PackageSubStatus {
-    @SerializedName("OUT_FOR_DELIVERY")
     OUT_FOR_DELIVERY("OUT_FOR_DELIVERY"),
 
-    @SerializedName("DELIVERED")
     DELIVERED("DELIVERED"),
 
-    @SerializedName("NOT_DELIVERED")
     NOT_DELIVERED("NOT_DELIVERED"),
 
-    @SerializedName("UNDELIVERABLE")
     UNDELIVERABLE("UNDELIVERABLE");
 
     private String value;
@@ -49,25 +45,30 @@ public enum PackageSubStatus {
         return String.valueOf(value);
     }
 
-    public static PackageSubStatus fromValue(String input) {
+    public static PackageSubStatus fromValue(String value) {
         for (PackageSubStatus b : PackageSubStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PackageSubStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final PackageSubStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PackageSubStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PackageSubStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PackageSubStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PackageSubStatus.fromValue(value);
     }
 }

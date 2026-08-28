@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Item information for a fulfillment order preview. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a fulfillment order preview.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetFulfillmentPreviewItem {
-    @SerializedName("sellerSku")
-    private String sellerSku = null;
+    public static final String SERIALIZED_NAME_SELLER_SKU = "sellerSku";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_SKU)
+    private String sellerSku;
 
-    @SerializedName("perUnitDeclaredValue")
-    private Money perUnitDeclaredValue = null;
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
 
-    @SerializedName("sellerFulfillmentOrderItemId")
-    private String sellerFulfillmentOrderItemId = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_PER_UNIT_DECLARED_VALUE = "perUnitDeclaredValue";
+
+    @SerializedName(SERIALIZED_NAME_PER_UNIT_DECLARED_VALUE)
+    private Money perUnitDeclaredValue;
+
+    public static final String SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID = "sellerFulfillmentOrderItemId";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID)
+    private String sellerFulfillmentOrderItemId;
+
+    public GetFulfillmentPreviewItem() {}
 
     public GetFulfillmentPreviewItem sellerSku(String sellerSku) {
         this.sellerSku = sellerSku;
@@ -40,7 +65,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return sellerSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
+    @javax.annotation.Nonnull
     public String getSellerSku() {
         return sellerSku;
     }
@@ -59,7 +84,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -78,8 +103,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return perUnitDeclaredValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getPerUnitDeclaredValue() {
+    @javax.annotation.Nullable public Money getPerUnitDeclaredValue() {
         return perUnitDeclaredValue;
     }
 
@@ -97,10 +121,7 @@ public class GetFulfillmentPreviewItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A fulfillment order item identifier that the seller creates to track items in the fulfillment preview.")
+    @javax.annotation.Nonnull
     public String getSellerFulfillmentOrderItemId() {
         return sellerFulfillmentOrderItemId;
     }
@@ -110,7 +131,7 @@ public class GetFulfillmentPreviewItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +168,130 @@ public class GetFulfillmentPreviewItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerSku");
+        openapiFields.add("quantity");
+        openapiFields.add("perUnitDeclaredValue");
+        openapiFields.add("sellerFulfillmentOrderItemId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellerSku");
+        openapiRequiredFields.add("quantity");
+        openapiRequiredFields.add("sellerFulfillmentOrderItemId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetFulfillmentPreviewItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetFulfillmentPreviewItem.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetFulfillmentPreviewItem is not found in the empty JSON string",
+                        GetFulfillmentPreviewItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetFulfillmentPreviewItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetFulfillmentPreviewItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetFulfillmentPreviewItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sellerSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerSku").toString()));
+        }
+        // validate the optional field `perUnitDeclaredValue`
+        if (jsonObj.get("perUnitDeclaredValue") != null
+                && !jsonObj.get("perUnitDeclaredValue").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("perUnitDeclaredValue"));
+        }
+        if (!jsonObj.get("sellerFulfillmentOrderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerFulfillmentOrderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerFulfillmentOrderItemId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetFulfillmentPreviewItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetFulfillmentPreviewItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetFulfillmentPreviewItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetFulfillmentPreviewItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetFulfillmentPreviewItem>() {
+                        @Override
+                        public void write(JsonWriter out, GetFulfillmentPreviewItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetFulfillmentPreviewItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetFulfillmentPreviewItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetFulfillmentPreviewItem
+     * @throws IOException if the JSON string is invalid with respect to GetFulfillmentPreviewItem
+     */
+    public static GetFulfillmentPreviewItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetFulfillmentPreviewItem.class);
+    }
+
+    /**
+     * Convert an instance of GetFulfillmentPreviewItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

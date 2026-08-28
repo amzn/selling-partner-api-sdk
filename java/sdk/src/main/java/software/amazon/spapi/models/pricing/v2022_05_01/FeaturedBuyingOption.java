@@ -12,23 +12,33 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Describes a featured buying option, which includes a list of segmented featured offers for a particular item
  * condition.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Describes a featured buying option, which includes a list of segmented featured offers for a particular item condition.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeaturedBuyingOption {
     /**
      * The buying option type for the featured offer. &#x60;buyingOptionType&#x60; represents the buying options that a
@@ -37,7 +47,6 @@ public class FeaturedBuyingOption {
      */
     @JsonAdapter(BuyingOptionTypeEnum.Adapter.class)
     public enum BuyingOptionTypeEnum {
-        @SerializedName("New")
         NEW("New");
 
         private String value;
@@ -55,34 +64,45 @@ public class FeaturedBuyingOption {
             return String.valueOf(value);
         }
 
-        public static BuyingOptionTypeEnum fromValue(String input) {
+        public static BuyingOptionTypeEnum fromValue(String value) {
             for (BuyingOptionTypeEnum b : BuyingOptionTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<BuyingOptionTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final BuyingOptionTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public BuyingOptionTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return BuyingOptionTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return BuyingOptionTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            BuyingOptionTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("buyingOptionType")
-    private BuyingOptionTypeEnum buyingOptionType = null;
+    public static final String SERIALIZED_NAME_BUYING_OPTION_TYPE = "buyingOptionType";
 
-    @SerializedName("segmentedFeaturedOffers")
-    private List<SegmentedFeaturedOffer> segmentedFeaturedOffers = null;
+    @SerializedName(SERIALIZED_NAME_BUYING_OPTION_TYPE)
+    private BuyingOptionTypeEnum buyingOptionType;
+
+    public static final String SERIALIZED_NAME_SEGMENTED_FEATURED_OFFERS = "segmentedFeaturedOffers";
+
+    @SerializedName(SERIALIZED_NAME_SEGMENTED_FEATURED_OFFERS)
+    private List<SegmentedFeaturedOffer> segmentedFeaturedOffers = new ArrayList<>();
+
+    public FeaturedBuyingOption() {}
 
     public FeaturedBuyingOption buyingOptionType(BuyingOptionTypeEnum buyingOptionType) {
         this.buyingOptionType = buyingOptionType;
@@ -96,10 +116,7 @@ public class FeaturedBuyingOption {
      *
      * @return buyingOptionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The buying option type for the featured offer. `buyingOptionType` represents the buying options that a customer receives on the detail page, such as `B2B`, `Fresh`, and `Subscribe n Save`. `buyingOptionType` currently supports `NEW` as a value.")
+    @javax.annotation.Nonnull
     public BuyingOptionTypeEnum getBuyingOptionType() {
         return buyingOptionType;
     }
@@ -128,10 +145,7 @@ public class FeaturedBuyingOption {
      *
      * @return segmentedFeaturedOffers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.")
+    @javax.annotation.Nonnull
     public List<SegmentedFeaturedOffer> getSegmentedFeaturedOffers() {
         return segmentedFeaturedOffers;
     }
@@ -141,7 +155,7 @@ public class FeaturedBuyingOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +187,131 @@ public class FeaturedBuyingOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("buyingOptionType");
+        openapiFields.add("segmentedFeaturedOffers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("buyingOptionType");
+        openapiRequiredFields.add("segmentedFeaturedOffers");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeaturedBuyingOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeaturedBuyingOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeaturedBuyingOption is not found in the empty JSON string",
+                        FeaturedBuyingOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeaturedBuyingOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeaturedBuyingOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeaturedBuyingOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("buyingOptionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyingOptionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyingOptionType").toString()));
+        }
+        // validate the required field `buyingOptionType`
+        BuyingOptionTypeEnum.validateJsonElement(jsonObj.get("buyingOptionType"));
+        // ensure the json data is an array
+        if (!jsonObj.get("segmentedFeaturedOffers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `segmentedFeaturedOffers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("segmentedFeaturedOffers").toString()));
+        }
+
+        JsonArray jsonArraysegmentedFeaturedOffers = jsonObj.getAsJsonArray("segmentedFeaturedOffers");
+        // validate the required field `segmentedFeaturedOffers` (array)
+        for (int i = 0; i < jsonArraysegmentedFeaturedOffers.size(); i++) {
+            SegmentedFeaturedOffer.validateJsonElement(jsonArraysegmentedFeaturedOffers.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeaturedBuyingOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeaturedBuyingOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeaturedBuyingOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeaturedBuyingOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeaturedBuyingOption>() {
+                        @Override
+                        public void write(JsonWriter out, FeaturedBuyingOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeaturedBuyingOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeaturedBuyingOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeaturedBuyingOption
+     * @throws IOException if the JSON string is invalid with respect to FeaturedBuyingOption
+     */
+    public static FeaturedBuyingOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeaturedBuyingOption.class);
+    }
+
+    /**
+     * Convert an instance of FeaturedBuyingOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

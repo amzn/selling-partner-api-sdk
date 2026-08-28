@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** A code for why the item is invalid for return. */
 @JsonAdapter(InvalidItemReasonCode.Adapter.class)
 public enum InvalidItemReasonCode {
-    @SerializedName("InvalidValues")
     INVALID_VALUES("InvalidValues"),
 
-    @SerializedName("DuplicateRequest")
     DUPLICATE_REQUEST("DuplicateRequest"),
 
-    @SerializedName("NoCompletedShipItems")
     NO_COMPLETED_SHIP_ITEMS("NoCompletedShipItems"),
 
-    @SerializedName("NoReturnableQuantity")
     NO_RETURNABLE_QUANTITY("NoReturnableQuantity");
 
     private String value;
@@ -49,25 +45,30 @@ public enum InvalidItemReasonCode {
         return String.valueOf(value);
     }
 
-    public static InvalidItemReasonCode fromValue(String input) {
+    public static InvalidItemReasonCode fromValue(String value) {
         for (InvalidItemReasonCode b : InvalidItemReasonCode.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InvalidItemReasonCode> {
         @Override
         public void write(final JsonWriter jsonWriter, final InvalidItemReasonCode enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InvalidItemReasonCode read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InvalidItemReasonCode.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InvalidItemReasonCode.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InvalidItemReasonCode.fromValue(value);
     }
 }

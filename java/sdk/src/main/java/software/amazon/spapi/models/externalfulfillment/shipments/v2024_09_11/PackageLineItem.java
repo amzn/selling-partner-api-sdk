@@ -12,31 +12,60 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A line item in a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A line item in a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageLineItem {
-    @SerializedName("packageLineItemId")
-    private String packageLineItemId = null;
+    public static final String SERIALIZED_NAME_PACKAGE_LINE_ITEM_ID = "packageLineItemId";
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_LINE_ITEM_ID)
+    private String packageLineItemId;
 
-    @SerializedName("serialNumbers")
-    private List<String> serialNumbers = null;
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
 
-    @SerializedName("pieces")
-    private Integer pieces = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
 
-    @SerializedName("countryOfOrigin")
-    private String countryOfOrigin = null;
+    public static final String SERIALIZED_NAME_SERIAL_NUMBERS = "serialNumbers";
 
-    @SerializedName("itemValue")
-    private Amount itemValue = null;
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBERS)
+    private List<String> serialNumbers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PIECES = "pieces";
+
+    @SerializedName(SERIALIZED_NAME_PIECES)
+    private Integer pieces;
+
+    public static final String SERIALIZED_NAME_COUNTRY_OF_ORIGIN = "countryOfOrigin";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_OF_ORIGIN)
+    private String countryOfOrigin;
+
+    public static final String SERIALIZED_NAME_ITEM_VALUE = "itemValue";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_VALUE)
+    private Amount itemValue;
+
+    public PackageLineItem() {}
 
     public PackageLineItem packageLineItemId(String packageLineItemId) {
         this.packageLineItemId = packageLineItemId;
@@ -48,7 +77,7 @@ public class PackageLineItem {
      *
      * @return packageLineItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The line item ID.")
+    @javax.annotation.Nonnull
     public String getPackageLineItemId() {
         return packageLineItemId;
     }
@@ -67,10 +96,7 @@ public class PackageLineItem {
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The number of items of a particular line item of a shipment that are packed into the package.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -97,9 +123,7 @@ public class PackageLineItem {
      *
      * @return serialNumbers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The list of serial numbers of items in the package, if required to be provided.")
-    public List<String> getSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
@@ -114,14 +138,11 @@ public class PackageLineItem {
 
     /**
      * The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are
-     * shipped in multiple pieces.
+     * shipped in multiple pieces. minimum: 1
      *
      * @return pieces
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces.")
-    public Integer getPieces() {
+    @javax.annotation.Nullable public Integer getPieces() {
         return pieces;
     }
 
@@ -139,9 +160,7 @@ public class PackageLineItem {
      *
      * @return countryOfOrigin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
-    public String getCountryOfOrigin() {
+    @javax.annotation.Nullable public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
 
@@ -159,8 +178,7 @@ public class PackageLineItem {
      *
      * @return itemValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Amount getItemValue() {
+    @javax.annotation.Nullable public Amount getItemValue() {
         return itemValue;
     }
 
@@ -169,7 +187,7 @@ public class PackageLineItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -209,10 +227,139 @@ public class PackageLineItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageLineItemId");
+        openapiFields.add("quantity");
+        openapiFields.add("serialNumbers");
+        openapiFields.add("pieces");
+        openapiFields.add("countryOfOrigin");
+        openapiFields.add("itemValue");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageLineItemId");
+        openapiRequiredFields.add("quantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageLineItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageLineItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageLineItem is not found in the empty JSON string",
+                        PackageLineItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageLineItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageLineItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackageLineItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("packageLineItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageLineItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageLineItemId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("serialNumbers") != null
+                && !jsonObj.get("serialNumbers").isJsonNull()
+                && !jsonObj.get("serialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("serialNumbers").toString()));
+        }
+        if ((jsonObj.get("countryOfOrigin") != null
+                        && !jsonObj.get("countryOfOrigin").isJsonNull())
+                && !jsonObj.get("countryOfOrigin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryOfOrigin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryOfOrigin").toString()));
+        }
+        // validate the optional field `itemValue`
+        if (jsonObj.get("itemValue") != null && !jsonObj.get("itemValue").isJsonNull()) {
+            Amount.validateJsonElement(jsonObj.get("itemValue"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageLineItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageLineItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageLineItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageLineItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageLineItem>() {
+                        @Override
+                        public void write(JsonWriter out, PackageLineItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageLineItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageLineItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageLineItem
+     * @throws IOException if the JSON string is invalid with respect to PackageLineItem
+     */
+    public static PackageLineItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageLineItem.class);
+    }
+
+    /**
+     * Convert an instance of PackageLineItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

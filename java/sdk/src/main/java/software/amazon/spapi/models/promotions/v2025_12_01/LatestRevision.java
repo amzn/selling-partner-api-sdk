@@ -12,82 +12,125 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The latest revision data, when it diverges from the published revision. Present only when an edit is still processing
  * or was rejected. Mirrors the top-level promotion object structure.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The latest revision data, when it diverges from the published revision. Present only when an edit is still processing or was rejected. Mirrors the top-level promotion object structure.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LatestRevision {
-    @SerializedName("issues")
-    private List<PromotionIssue> issues = null;
+    public static final String SERIALIZED_NAME_ISSUES = "issues";
 
-    @SerializedName("promotionTitle")
-    private String promotionTitle = null;
+    @SerializedName(SERIALIZED_NAME_ISSUES)
+    private List<PromotionIssue> issues = new ArrayList<>();
 
-    @SerializedName("selection")
-    private Selection selection = null;
+    public static final String SERIALIZED_NAME_PROMOTION_TITLE = "promotionTitle";
 
-    @SerializedName("purchaseRequirements")
-    private PurchaseRequirements purchaseRequirements = null;
+    @SerializedName(SERIALIZED_NAME_PROMOTION_TITLE)
+    private String promotionTitle;
 
-    @SerializedName("schedule")
-    private Schedule schedule = null;
+    public static final String SERIALIZED_NAME_SELECTION = "selection";
 
-    @SerializedName("budget")
-    private Budget budget = null;
+    @SerializedName(SERIALIZED_NAME_SELECTION)
+    private Selection selection;
 
-    @SerializedName("customerSegments")
-    private List<CustomerSegment> customerSegments = null;
+    public static final String SERIALIZED_NAME_PURCHASE_REQUIREMENTS = "purchaseRequirements";
 
-    @SerializedName("benefit")
-    private PromotionBenefit benefit = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_REQUIREMENTS)
+    private PurchaseRequirements purchaseRequirements;
 
-    @SerializedName("merchandising")
-    private Merchandising merchandising = null;
+    public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
 
-    @SerializedName("createdDate")
-    private OffsetDateTime createdDate = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULE)
+    private Schedule schedule;
 
-    @SerializedName("lastUpdatedDate")
-    private OffsetDateTime lastUpdatedDate = null;
+    public static final String SERIALIZED_NAME_BUDGET = "budget";
 
-    @SerializedName("feeSnapshot")
-    private PromotionFeeSnapshot feeSnapshot = null;
+    @SerializedName(SERIALIZED_NAME_BUDGET)
+    private Budget budget;
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_CUSTOMER_SEGMENTS = "customerSegments";
 
-    @SerializedName("promotionId")
-    private String promotionId = null;
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_SEGMENTS)
+    private List<CustomerSegment> customerSegments = new ArrayList<>();
 
-    @SerializedName("promotionType")
-    private PromotionType promotionType = null;
+    public static final String SERIALIZED_NAME_BENEFIT = "benefit";
 
-    @SerializedName("couponType")
-    private CouponType couponType = null;
+    @SerializedName(SERIALIZED_NAME_BENEFIT)
+    private PromotionBenefit benefit;
 
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_MERCHANDISING = "merchandising";
+
+    @SerializedName(SERIALIZED_NAME_MERCHANDISING)
+    private Merchandising merchandising;
+
+    public static final String SERIALIZED_NAME_CREATED_DATE = "createdDate";
+
+    @SerializedName(SERIALIZED_NAME_CREATED_DATE)
+    private OffsetDateTime createdDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_DATE = "lastUpdatedDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_DATE)
+    private OffsetDateTime lastUpdatedDate;
+
+    public static final String SERIALIZED_NAME_FEE_SNAPSHOT = "feeSnapshot";
+
+    @SerializedName(SERIALIZED_NAME_FEE_SNAPSHOT)
+    private PromotionFeeSnapshot feeSnapshot;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_PROMOTION_ID = "promotionId";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_ID)
+    private String promotionId;
+
+    public static final String SERIALIZED_NAME_PROMOTION_TYPE = "promotionType";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_TYPE)
+    private PromotionType promotionType;
+
+    public static final String SERIALIZED_NAME_COUPON_TYPE = "couponType";
+
+    @SerializedName(SERIALIZED_NAME_COUPON_TYPE)
+    private CouponType couponType = CouponType.STANDARD;
+
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
 
     /** The processing status of the latest revision. */
     @JsonAdapter(RevisionStatusEnum.Adapter.class)
     public enum RevisionStatusEnum {
-        @SerializedName("PROCESSING")
         PROCESSING("PROCESSING"),
-        @SerializedName("FAILED")
+
         FAILED("FAILED");
 
         private String value;
@@ -105,31 +148,40 @@ public class LatestRevision {
             return String.valueOf(value);
         }
 
-        public static RevisionStatusEnum fromValue(String input) {
+        public static RevisionStatusEnum fromValue(String value) {
             for (RevisionStatusEnum b : RevisionStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<RevisionStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final RevisionStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public RevisionStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return RevisionStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return RevisionStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            RevisionStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("revisionStatus")
-    private RevisionStatusEnum revisionStatus = null;
+    public static final String SERIALIZED_NAME_REVISION_STATUS = "revisionStatus";
+
+    @SerializedName(SERIALIZED_NAME_REVISION_STATUS)
+    private RevisionStatusEnum revisionStatus;
+
+    public LatestRevision() {}
 
     public LatestRevision issues(List<PromotionIssue> issues) {
         this.issues = issues;
@@ -149,9 +201,7 @@ public class LatestRevision {
      *
      * @return issues
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Promotion-level validation issues found during processing.")
-    public List<PromotionIssue> getIssues() {
+    @javax.annotation.Nullable public List<PromotionIssue> getIssues() {
         return issues;
     }
 
@@ -169,9 +219,7 @@ public class LatestRevision {
      *
      * @return promotionTitle
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The name of the promotion for the selling partner. This value is not displayed to buyers.")
+    @javax.annotation.Nonnull
     public String getPromotionTitle() {
         return promotionTitle;
     }
@@ -190,7 +238,7 @@ public class LatestRevision {
      *
      * @return selection
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Selection getSelection() {
         return selection;
     }
@@ -209,8 +257,7 @@ public class LatestRevision {
      *
      * @return purchaseRequirements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PurchaseRequirements getPurchaseRequirements() {
+    @javax.annotation.Nullable public PurchaseRequirements getPurchaseRequirements() {
         return purchaseRequirements;
     }
 
@@ -228,7 +275,7 @@ public class LatestRevision {
      *
      * @return schedule
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Schedule getSchedule() {
         return schedule;
     }
@@ -247,8 +294,7 @@ public class LatestRevision {
      *
      * @return budget
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Budget getBudget() {
+    @javax.annotation.Nullable public Budget getBudget() {
         return budget;
     }
 
@@ -274,8 +320,7 @@ public class LatestRevision {
      *
      * @return customerSegments
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The target customer segments for the promotion.")
-    public List<CustomerSegment> getCustomerSegments() {
+    @javax.annotation.Nullable public List<CustomerSegment> getCustomerSegments() {
         return customerSegments;
     }
 
@@ -293,8 +338,7 @@ public class LatestRevision {
      *
      * @return benefit
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PromotionBenefit getBenefit() {
+    @javax.annotation.Nullable public PromotionBenefit getBenefit() {
         return benefit;
     }
 
@@ -312,8 +356,7 @@ public class LatestRevision {
      *
      * @return merchandising
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Merchandising getMerchandising() {
+    @javax.annotation.Nullable public Merchandising getMerchandising() {
         return merchandising;
     }
 
@@ -332,10 +375,7 @@ public class LatestRevision {
      *
      * @return createdDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When the promotion was created. Formatted in ISO 8601 format, including the timezone. For example: `1970-01-01T00:00:00-07:00`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -355,10 +395,7 @@ public class LatestRevision {
      *
      * @return lastUpdatedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "When the promotion was last updated. Formatted in ISO 8601 format, including the timezone. For example: `1970-01-01T00:00:00-07:00`.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -377,8 +414,7 @@ public class LatestRevision {
      *
      * @return feeSnapshot
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PromotionFeeSnapshot getFeeSnapshot() {
+    @javax.annotation.Nullable public PromotionFeeSnapshot getFeeSnapshot() {
         return feeSnapshot;
     }
 
@@ -397,10 +433,7 @@ public class LatestRevision {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The Amazon store identifier. For a complete list of `marketplaceId` values, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -419,7 +452,7 @@ public class LatestRevision {
      *
      * @return promotionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unique promotion identifier.")
+    @javax.annotation.Nonnull
     public String getPromotionId() {
         return promotionId;
     }
@@ -438,7 +471,7 @@ public class LatestRevision {
      *
      * @return promotionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PromotionType getPromotionType() {
         return promotionType;
     }
@@ -457,8 +490,7 @@ public class LatestRevision {
      *
      * @return couponType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CouponType getCouponType() {
+    @javax.annotation.Nullable public CouponType getCouponType() {
         return couponType;
     }
 
@@ -476,9 +508,7 @@ public class LatestRevision {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The tracking ID you can use to uniquely identify a promotion and track its performance.")
+    @javax.annotation.Nonnull
     public String getTrackingId() {
         return trackingId;
     }
@@ -497,9 +527,7 @@ public class LatestRevision {
      *
      * @return revisionStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The processing status of the latest revision.")
+    @javax.annotation.Nonnull
     public RevisionStatusEnum getRevisionStatus() {
         return revisionStatus;
     }
@@ -509,7 +537,7 @@ public class LatestRevision {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -597,10 +625,229 @@ public class LatestRevision {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("issues");
+        openapiFields.add("promotionTitle");
+        openapiFields.add("selection");
+        openapiFields.add("purchaseRequirements");
+        openapiFields.add("schedule");
+        openapiFields.add("budget");
+        openapiFields.add("customerSegments");
+        openapiFields.add("benefit");
+        openapiFields.add("merchandising");
+        openapiFields.add("createdDate");
+        openapiFields.add("lastUpdatedDate");
+        openapiFields.add("feeSnapshot");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("promotionId");
+        openapiFields.add("promotionType");
+        openapiFields.add("couponType");
+        openapiFields.add("trackingId");
+        openapiFields.add("revisionStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("promotionTitle");
+        openapiRequiredFields.add("selection");
+        openapiRequiredFields.add("schedule");
+        openapiRequiredFields.add("createdDate");
+        openapiRequiredFields.add("lastUpdatedDate");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("promotionId");
+        openapiRequiredFields.add("promotionType");
+        openapiRequiredFields.add("trackingId");
+        openapiRequiredFields.add("revisionStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LatestRevision
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LatestRevision.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LatestRevision is not found in the empty JSON string",
+                        LatestRevision.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LatestRevision.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LatestRevision` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LatestRevision.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("issues") != null && !jsonObj.get("issues").isJsonNull()) {
+            JsonArray jsonArrayissues = jsonObj.getAsJsonArray("issues");
+            if (jsonArrayissues != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("issues").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `issues` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("issues").toString()));
+                }
+
+                // validate the optional field `issues` (array)
+                for (int i = 0; i < jsonArrayissues.size(); i++) {
+                    PromotionIssue.validateJsonElement(jsonArrayissues.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("promotionTitle").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `promotionTitle` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("promotionTitle").toString()));
+        }
+        // validate the required field `selection`
+        Selection.validateJsonElement(jsonObj.get("selection"));
+        // validate the optional field `purchaseRequirements`
+        if (jsonObj.get("purchaseRequirements") != null
+                && !jsonObj.get("purchaseRequirements").isJsonNull()) {
+            PurchaseRequirements.validateJsonElement(jsonObj.get("purchaseRequirements"));
+        }
+        // validate the required field `schedule`
+        Schedule.validateJsonElement(jsonObj.get("schedule"));
+        // validate the optional field `budget`
+        if (jsonObj.get("budget") != null && !jsonObj.get("budget").isJsonNull()) {
+            Budget.validateJsonElement(jsonObj.get("budget"));
+        }
+        if (jsonObj.get("customerSegments") != null
+                && !jsonObj.get("customerSegments").isJsonNull()) {
+            JsonArray jsonArraycustomerSegments = jsonObj.getAsJsonArray("customerSegments");
+            if (jsonArraycustomerSegments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("customerSegments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `customerSegments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("customerSegments").toString()));
+                }
+
+                // validate the optional field `customerSegments` (array)
+                for (int i = 0; i < jsonArraycustomerSegments.size(); i++) {
+                    CustomerSegment.validateJsonElement(jsonArraycustomerSegments.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `benefit`
+        if (jsonObj.get("benefit") != null && !jsonObj.get("benefit").isJsonNull()) {
+            PromotionBenefit.validateJsonElement(jsonObj.get("benefit"));
+        }
+        // validate the optional field `merchandising`
+        if (jsonObj.get("merchandising") != null
+                && !jsonObj.get("merchandising").isJsonNull()) {
+            Merchandising.validateJsonElement(jsonObj.get("merchandising"));
+        }
+        // validate the optional field `feeSnapshot`
+        if (jsonObj.get("feeSnapshot") != null && !jsonObj.get("feeSnapshot").isJsonNull()) {
+            PromotionFeeSnapshot.validateJsonElement(jsonObj.get("feeSnapshot"));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("promotionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `promotionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("promotionId").toString()));
+        }
+        // validate the required field `promotionType`
+        PromotionType.validateJsonElement(jsonObj.get("promotionType"));
+        // validate the optional field `couponType`
+        if (jsonObj.get("couponType") != null && !jsonObj.get("couponType").isJsonNull()) {
+            CouponType.validateJsonElement(jsonObj.get("couponType"));
+        }
+        if (!jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        if (!jsonObj.get("revisionStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `revisionStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("revisionStatus").toString()));
+        }
+        // validate the required field `revisionStatus`
+        RevisionStatusEnum.validateJsonElement(jsonObj.get("revisionStatus"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LatestRevision.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LatestRevision' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LatestRevision> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LatestRevision.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LatestRevision>() {
+                        @Override
+                        public void write(JsonWriter out, LatestRevision value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LatestRevision read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LatestRevision given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LatestRevision
+     * @throws IOException if the JSON string is invalid with respect to LatestRevision
+     */
+    public static LatestRevision fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LatestRevision.class);
+    }
+
+    /**
+     * Convert an instance of LatestRevision to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

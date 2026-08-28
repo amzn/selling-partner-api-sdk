@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,37 +25,26 @@ import java.io.IOException;
  */
 @JsonAdapter(Code.Adapter.class)
 public enum Code {
-    @SerializedName("InvalidInput")
     INVALID_INPUT("InvalidInput"),
 
-    @SerializedName("InvalidTimeSlotId")
     INVALID_TIME_SLOT_ID("InvalidTimeSlotId"),
 
-    @SerializedName("ScheduledPackageAlreadyExists")
     SCHEDULED_PACKAGE_ALREADY_EXISTS("ScheduledPackageAlreadyExists"),
 
-    @SerializedName("ScheduleWindowExpired")
     SCHEDULE_WINDOW_EXPIRED("ScheduleWindowExpired"),
 
-    @SerializedName("RetryableAfterGettingNewSlots")
     RETRYABLE_AFTER_GETTING_NEW_SLOTS("RetryableAfterGettingNewSlots"),
 
-    @SerializedName("TimeSlotNotAvailable")
     TIME_SLOT_NOT_AVAILABLE("TimeSlotNotAvailable"),
 
-    @SerializedName("ResourceNotFound")
     RESOURCE_NOT_FOUND("ResourceNotFound"),
 
-    @SerializedName("InvalidOrderState")
     INVALID_ORDER_STATE("InvalidOrderState"),
 
-    @SerializedName("RegionNotSupported")
     REGION_NOT_SUPPORTED("RegionNotSupported"),
 
-    @SerializedName("OrderNotEligibleForRescheduling")
     ORDER_NOT_ELIGIBLE_FOR_RESCHEDULING("OrderNotEligibleForRescheduling"),
 
-    @SerializedName("InternalServerError")
     INTERNAL_SERVER_ERROR("InternalServerError");
 
     private String value;
@@ -73,25 +62,30 @@ public enum Code {
         return String.valueOf(value);
     }
 
-    public static Code fromValue(String input) {
+    public static Code fromValue(String value) {
         for (Code b : Code.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<Code> {
         @Override
         public void write(final JsonWriter jsonWriter, final Code enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public Code read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return Code.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return Code.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        Code.fromValue(value);
     }
 }

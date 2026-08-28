@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response to the &#x60;listSummary&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listSummary` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SummaryResponse {
-    @SerializedName("summaries")
-    private List<Summary> summaries = null;
+    public static final String SERIALIZED_NAME_SUMMARIES = "summaries";
 
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    @SerializedName(SERIALIZED_NAME_SUMMARIES)
+    private List<Summary> summaries = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public SummaryResponse() {}
 
     public SummaryResponse summaries(List<Summary> summaries) {
         this.summaries = summaries;
@@ -44,8 +66,7 @@ public class SummaryResponse {
      *
      * @return summaries
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of financial summaries.")
-    public List<Summary> getSummaries() {
+    @javax.annotation.Nullable public List<Summary> getSummaries() {
         return summaries;
     }
 
@@ -63,9 +84,7 @@ public class SummaryResponse {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A token to retrieve the next page of results. If null, no more results are available.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -74,7 +93,7 @@ public class SummaryResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -102,10 +121,123 @@ public class SummaryResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("summaries");
+        openapiFields.add("nextToken");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SummaryResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SummaryResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SummaryResponse is not found in the empty JSON string",
+                        SummaryResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SummaryResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SummaryResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("summaries") != null && !jsonObj.get("summaries").isJsonNull()) {
+            JsonArray jsonArraysummaries = jsonObj.getAsJsonArray("summaries");
+            if (jsonArraysummaries != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("summaries").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `summaries` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("summaries").toString()));
+                }
+
+                // validate the optional field `summaries` (array)
+                for (int i = 0; i < jsonArraysummaries.size(); i++) {
+                    Summary.validateJsonElement(jsonArraysummaries.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SummaryResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SummaryResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SummaryResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SummaryResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SummaryResponse>() {
+                        @Override
+                        public void write(JsonWriter out, SummaryResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SummaryResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SummaryResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SummaryResponse
+     * @throws IOException if the JSON string is invalid with respect to SummaryResponse
+     */
+    public static SummaryResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SummaryResponse.class);
+    }
+
+    /**
+     * Convert an instance of SummaryResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

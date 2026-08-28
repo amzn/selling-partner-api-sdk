@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** UnmanifestedCarrierInformation like carrierId CarrierName and Location */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "UnmanifestedCarrierInformation like carrierId CarrierName and Location")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class UnmanifestedCarrierInformation {
-    @SerializedName("carrierId")
-    private String carrierId = null;
+    public static final String SERIALIZED_NAME_CARRIER_ID = "carrierId";
 
-    @SerializedName("carrierName")
-    private String carrierName = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_ID)
+    private String carrierId;
 
-    @SerializedName("unmanifestedShipmentLocationList")
-    private UnmanifestedShipmentLocationList unmanifestedShipmentLocationList = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
+
+    public static final String SERIALIZED_NAME_UNMANIFESTED_SHIPMENT_LOCATION_LIST = "unmanifestedShipmentLocationList";
+
+    @SerializedName(SERIALIZED_NAME_UNMANIFESTED_SHIPMENT_LOCATION_LIST)
+    private UnmanifestedShipmentLocationList unmanifestedShipmentLocationList = new ArrayList<>();
+
+    public UnmanifestedCarrierInformation() {}
 
     public UnmanifestedCarrierInformation carrierId(String carrierId) {
         this.carrierId = carrierId;
@@ -38,9 +60,7 @@ public class UnmanifestedCarrierInformation {
      *
      * @return carrierId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The carrier identifier for the offering, provided by the carrier.")
-    public String getCarrierId() {
+    @javax.annotation.Nullable public String getCarrierId() {
         return carrierId;
     }
 
@@ -58,8 +78,7 @@ public class UnmanifestedCarrierInformation {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier name for the offering.")
-    public String getCarrierName() {
+    @javax.annotation.Nullable public String getCarrierName() {
         return carrierName;
     }
 
@@ -78,8 +97,7 @@ public class UnmanifestedCarrierInformation {
      *
      * @return unmanifestedShipmentLocationList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public UnmanifestedShipmentLocationList getUnmanifestedShipmentLocationList() {
+    @javax.annotation.Nullable public UnmanifestedShipmentLocationList getUnmanifestedShipmentLocationList() {
         return unmanifestedShipmentLocationList;
     }
 
@@ -88,7 +106,7 @@ public class UnmanifestedCarrierInformation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -122,10 +140,114 @@ public class UnmanifestedCarrierInformation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrierId");
+        openapiFields.add("carrierName");
+        openapiFields.add("unmanifestedShipmentLocationList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to UnmanifestedCarrierInformation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!UnmanifestedCarrierInformation.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in UnmanifestedCarrierInformation is not found in the empty JSON string",
+                        UnmanifestedCarrierInformation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!UnmanifestedCarrierInformation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `UnmanifestedCarrierInformation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("carrierId") != null && !jsonObj.get("carrierId").isJsonNull())
+                && !jsonObj.get("carrierId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierId").toString()));
+        }
+        if ((jsonObj.get("carrierName") != null && !jsonObj.get("carrierName").isJsonNull())
+                && !jsonObj.get("carrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UnmanifestedCarrierInformation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UnmanifestedCarrierInformation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UnmanifestedCarrierInformation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UnmanifestedCarrierInformation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UnmanifestedCarrierInformation>() {
+                        @Override
+                        public void write(JsonWriter out, UnmanifestedCarrierInformation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UnmanifestedCarrierInformation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UnmanifestedCarrierInformation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UnmanifestedCarrierInformation
+     * @throws IOException if the JSON string is invalid with respect to UnmanifestedCarrierInformation
+     */
+    public static UnmanifestedCarrierInformation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UnmanifestedCarrierInformation.class);
+    }
+
+    /**
+     * Convert an instance of UnmanifestedCarrierInformation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

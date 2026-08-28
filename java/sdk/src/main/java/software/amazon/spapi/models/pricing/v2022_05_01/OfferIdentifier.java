@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Identifies an offer from a particular seller for a specified ASIN. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Identifies an offer from a particular seller for a specified ASIN.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OfferIdentifier {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("sellerId")
-    private String sellerId = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("sku")
-    private String sku = null;
+    public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
 
-    @SerializedName("asin")
-    private String asin = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
 
-    @SerializedName("fulfillmentType")
-    private FulfillmentType fulfillmentType = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
+
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
+
+    public static final String SERIALIZED_NAME_ASIN = "asin";
+
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_TYPE = "fulfillmentType";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_TYPE)
+    private FulfillmentType fulfillmentType;
+
+    public OfferIdentifier() {}
 
     public OfferIdentifier marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -45,10 +71,7 @@ public class OfferIdentifier {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -67,8 +90,7 @@ public class OfferIdentifier {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
-    public String getSellerId() {
+    @javax.annotation.Nullable public String getSellerId() {
         return sellerId;
     }
 
@@ -87,10 +109,7 @@ public class OfferIdentifier {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller.")
-    public String getSku() {
+    @javax.annotation.Nullable public String getSku() {
         return sku;
     }
 
@@ -108,7 +127,7 @@ public class OfferIdentifier {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
+    @javax.annotation.Nonnull
     public String getAsin() {
         return asin;
     }
@@ -127,8 +146,7 @@ public class OfferIdentifier {
      *
      * @return fulfillmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentType getFulfillmentType() {
+    @javax.annotation.Nullable public FulfillmentType getFulfillmentType() {
         return fulfillmentType;
     }
 
@@ -137,7 +155,7 @@ public class OfferIdentifier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +191,141 @@ public class OfferIdentifier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("sellerId");
+        openapiFields.add("sku");
+        openapiFields.add("asin");
+        openapiFields.add("fulfillmentType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("asin");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OfferIdentifier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OfferIdentifier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OfferIdentifier is not found in the empty JSON string",
+                        OfferIdentifier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OfferIdentifier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OfferIdentifier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OfferIdentifier.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull())
+                && !jsonObj.get("sellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerId").toString()));
+        }
+        if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull())
+                && !jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        if (!jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        // validate the optional field `fulfillmentType`
+        if (jsonObj.get("fulfillmentType") != null
+                && !jsonObj.get("fulfillmentType").isJsonNull()) {
+            FulfillmentType.validateJsonElement(jsonObj.get("fulfillmentType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OfferIdentifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OfferIdentifier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OfferIdentifier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OfferIdentifier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OfferIdentifier>() {
+                        @Override
+                        public void write(JsonWriter out, OfferIdentifier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OfferIdentifier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OfferIdentifier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OfferIdentifier
+     * @throws IOException if the JSON string is invalid with respect to OfferIdentifier
+     */
+    public static OfferIdentifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OfferIdentifier.class);
+    }
+
+    /**
+     * Convert an instance of OfferIdentifier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

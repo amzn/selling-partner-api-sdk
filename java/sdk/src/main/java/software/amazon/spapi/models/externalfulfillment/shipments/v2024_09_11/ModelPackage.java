@@ -12,51 +12,70 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A package that is created to ship one or more of a shipment&#39;s line items. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A package that is created to ship one or more of a shipment's line items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ModelPackage {
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("dimensions")
-    private PackageDimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("hazmatLabels")
-    private List<String> hazmatLabels = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private PackageDimensions dimensions;
 
-    @SerializedName("packageLineItems")
-    private PackageLineItems packageLineItems = null;
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public static final String SERIALIZED_NAME_HAZMAT_LABELS = "hazmatLabels";
+
+    @SerializedName(SERIALIZED_NAME_HAZMAT_LABELS)
+    private List<String> hazmatLabels = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKAGE_LINE_ITEMS = "packageLineItems";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_LINE_ITEMS)
+    private PackageLineItems packageLineItems = new ArrayList<>();
 
     /** The current status of the package. */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        @SerializedName("CREATED")
         CREATED("CREATED"),
-        @SerializedName("PICKUP_SLOT_RETRIEVED")
+
         PICKUP_SLOT_RETRIEVED("PICKUP_SLOT_RETRIEVED"),
-        @SerializedName("INVOICE_GENERATED")
+
         INVOICE_GENERATED("INVOICE_GENERATED"),
-        @SerializedName("SHIPLABEL_GENERATED")
+
         SHIPLABEL_GENERATED("SHIPLABEL_GENERATED"),
-        @SerializedName("SHIPPED")
+
         SHIPPED("SHIPPED"),
-        @SerializedName("DELIVERED")
+
         DELIVERED("DELIVERED"),
-        @SerializedName("CANCELLED")
+
         CANCELLED("CANCELLED");
 
         private String value;
@@ -74,38 +93,44 @@ public class ModelPackage {
             return String.valueOf(value);
         }
 
-        public static StatusEnum fromValue(String input) {
+        public static StatusEnum fromValue(String value) {
             for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<StatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public StatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return StatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return StatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            StatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("status")
-    private StatusEnum status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private StatusEnum status;
 
     /** Whether the package requires standard handling or extra care. */
     @JsonAdapter(PackageHandlingRequirementsEnum.Adapter.class)
     public enum PackageHandlingRequirementsEnum {
-        @SerializedName("NORMAL")
         NORMAL("NORMAL"),
-        @SerializedName("FRAGILE")
+
         FRAGILE("FRAGILE");
 
         private String value;
@@ -123,32 +148,41 @@ public class ModelPackage {
             return String.valueOf(value);
         }
 
-        public static PackageHandlingRequirementsEnum fromValue(String input) {
+        public static PackageHandlingRequirementsEnum fromValue(String value) {
             for (PackageHandlingRequirementsEnum b : PackageHandlingRequirementsEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PackageHandlingRequirementsEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PackageHandlingRequirementsEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PackageHandlingRequirementsEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PackageHandlingRequirementsEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PackageHandlingRequirementsEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PackageHandlingRequirementsEnum.fromValue(value);
         }
     }
 
-    @SerializedName("packageHandlingRequirements")
-    private PackageHandlingRequirementsEnum packageHandlingRequirements = null;
+    public static final String SERIALIZED_NAME_PACKAGE_HANDLING_REQUIREMENTS = "packageHandlingRequirements";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_HANDLING_REQUIREMENTS)
+    private PackageHandlingRequirementsEnum packageHandlingRequirements;
+
+    public ModelPackage() {}
 
     public ModelPackage id(String id) {
         this.id = id;
@@ -160,9 +194,7 @@ public class ModelPackage {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An ID that uniquely identifies a package within a shipment.")
+    @javax.annotation.Nonnull
     public String getId() {
         return id;
     }
@@ -181,7 +213,7 @@ public class ModelPackage {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageDimensions getDimensions() {
         return dimensions;
     }
@@ -200,7 +232,7 @@ public class ModelPackage {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Weight getWeight() {
         return weight;
     }
@@ -227,9 +259,7 @@ public class ModelPackage {
      *
      * @return hazmatLabels
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The optional list of HAZMAT labels applied to the package.")
-    public List<String> getHazmatLabels() {
+    @javax.annotation.Nullable public List<String> getHazmatLabels() {
         return hazmatLabels;
     }
 
@@ -247,7 +277,7 @@ public class ModelPackage {
      *
      * @return packageLineItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageLineItems getPackageLineItems() {
         return packageLineItems;
     }
@@ -266,8 +296,7 @@ public class ModelPackage {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The current status of the package.")
-    public StatusEnum getStatus() {
+    @javax.annotation.Nullable public StatusEnum getStatus() {
         return status;
     }
 
@@ -285,9 +314,7 @@ public class ModelPackage {
      *
      * @return packageHandlingRequirements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Whether the package requires standard handling or extra care.")
-    public PackageHandlingRequirementsEnum getPackageHandlingRequirements() {
+    @javax.annotation.Nullable public PackageHandlingRequirementsEnum getPackageHandlingRequirements() {
         return packageHandlingRequirements;
     }
 
@@ -296,7 +323,7 @@ public class ModelPackage {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -339,10 +366,157 @@ public class ModelPackage {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("id");
+        openapiFields.add("dimensions");
+        openapiFields.add("weight");
+        openapiFields.add("hazmatLabels");
+        openapiFields.add("packageLineItems");
+        openapiFields.add("status");
+        openapiFields.add("packageHandlingRequirements");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("id");
+        openapiRequiredFields.add("dimensions");
+        openapiRequiredFields.add("weight");
+        openapiRequiredFields.add("packageLineItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ModelPackage
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ModelPackage.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ModelPackage is not found in the empty JSON string",
+                        ModelPackage.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ModelPackage.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ModelPackage` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ModelPackage.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        // validate the required field `dimensions`
+        PackageDimensions.validateJsonElement(jsonObj.get("dimensions"));
+        // validate the required field `weight`
+        Weight.validateJsonElement(jsonObj.get("weight"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("hazmatLabels") != null
+                && !jsonObj.get("hazmatLabels").isJsonNull()
+                && !jsonObj.get("hazmatLabels").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `hazmatLabels` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("hazmatLabels").toString()));
+        }
+        if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
+                && !jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            StatusEnum.validateJsonElement(jsonObj.get("status"));
+        }
+        if ((jsonObj.get("packageHandlingRequirements") != null
+                        && !jsonObj.get("packageHandlingRequirements").isJsonNull())
+                && !jsonObj.get("packageHandlingRequirements").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageHandlingRequirements` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageHandlingRequirements").toString()));
+        }
+        // validate the optional field `packageHandlingRequirements`
+        if (jsonObj.get("packageHandlingRequirements") != null
+                && !jsonObj.get("packageHandlingRequirements").isJsonNull()) {
+            PackageHandlingRequirementsEnum.validateJsonElement(jsonObj.get("packageHandlingRequirements"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ModelPackage.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ModelPackage' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ModelPackage> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ModelPackage.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ModelPackage>() {
+                        @Override
+                        public void write(JsonWriter out, ModelPackage value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ModelPackage read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ModelPackage given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ModelPackage
+     * @throws IOException if the JSON string is invalid with respect to ModelPackage
+     */
+    public static ModelPackage fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ModelPackage.class);
+    }
+
+    /**
+     * Convert an instance of ModelPackage to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

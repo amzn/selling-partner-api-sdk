@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An alternative identifier that provides a different way to reference the same order. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An alternative identifier that provides a different way to reference the same order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Alias {
-    @SerializedName("aliasId")
-    private String aliasId = null;
+    public static final String SERIALIZED_NAME_ALIAS_ID = "aliasId";
 
-    @SerializedName("aliasType")
-    private String aliasType = null;
+    @SerializedName(SERIALIZED_NAME_ALIAS_ID)
+    private String aliasId;
+
+    public static final String SERIALIZED_NAME_ALIAS_TYPE = "aliasType";
+
+    @SerializedName(SERIALIZED_NAME_ALIAS_TYPE)
+    private String aliasType;
+
+    public Alias() {}
 
     public Alias aliasId(String aliasId) {
         this.aliasId = aliasId;
@@ -35,9 +55,7 @@ public class Alias {
      *
      * @return aliasId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The alternative identifier value that can be used to reference this order.")
+    @javax.annotation.Nonnull
     public String getAliasId() {
         return aliasId;
     }
@@ -56,9 +74,7 @@ public class Alias {
      *
      * @return aliasType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The kind of alternative identifier this represents.  **Possible values**: `SELLER_ORDER_ID`")
+    @javax.annotation.Nonnull
     public String getAliasType() {
         return aliasType;
     }
@@ -68,7 +84,7 @@ public class Alias {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +111,120 @@ public class Alias {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("aliasId");
+        openapiFields.add("aliasType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("aliasId");
+        openapiRequiredFields.add("aliasType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Alias
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Alias.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Alias is not found in the empty JSON string",
+                        Alias.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Alias.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Alias` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Alias.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("aliasId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `aliasId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("aliasId").toString()));
+        }
+        if (!jsonObj.get("aliasType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `aliasType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("aliasType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Alias.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Alias' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Alias> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Alias.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Alias>() {
+                        @Override
+                        public void write(JsonWriter out, Alias value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Alias read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Alias given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Alias
+     * @throws IOException if the JSON string is invalid with respect to Alias
+     */
+    public static Alias fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Alias.class);
+    }
+
+    /**
+     * Convert an instance of Alias to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

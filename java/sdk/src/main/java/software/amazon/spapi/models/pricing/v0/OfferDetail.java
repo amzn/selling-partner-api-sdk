@@ -12,62 +12,111 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Schema for an individual offer. Object in `OfferDetailList`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OfferDetail {
-    @SerializedName("MyOffer")
-    private Boolean myOffer = null;
+    public static final String SERIALIZED_NAME_MY_OFFER = "MyOffer";
 
-    @SerializedName("offerType")
-    private OfferCustomerType offerType = null;
+    @SerializedName(SERIALIZED_NAME_MY_OFFER)
+    private Boolean myOffer;
 
-    @SerializedName("SubCondition")
-    private String subCondition = null;
+    public static final String SERIALIZED_NAME_OFFER_TYPE = "offerType";
 
-    @SerializedName("SellerId")
-    private String sellerId = null;
+    @SerializedName(SERIALIZED_NAME_OFFER_TYPE)
+    private OfferCustomerType offerType;
 
-    @SerializedName("ConditionNotes")
-    private String conditionNotes = null;
+    public static final String SERIALIZED_NAME_SUB_CONDITION = "SubCondition";
 
-    @SerializedName("SellerFeedbackRating")
-    private SellerFeedbackType sellerFeedbackRating = null;
+    @SerializedName(SERIALIZED_NAME_SUB_CONDITION)
+    private String subCondition;
 
-    @SerializedName("ShippingTime")
-    private DetailedShippingTimeType shippingTime = null;
+    public static final String SERIALIZED_NAME_SELLER_ID = "SellerId";
 
-    @SerializedName("ListingPrice")
-    private MoneyType listingPrice = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
 
-    @SerializedName("quantityDiscountPrices")
-    private List<QuantityDiscountPriceType> quantityDiscountPrices = null;
+    public static final String SERIALIZED_NAME_CONDITION_NOTES = "ConditionNotes";
 
-    @SerializedName("Points")
-    private Points points = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION_NOTES)
+    private String conditionNotes;
 
-    @SerializedName("Shipping")
-    private MoneyType shipping = null;
+    public static final String SERIALIZED_NAME_SELLER_FEEDBACK_RATING = "SellerFeedbackRating";
 
-    @SerializedName("ShipsFrom")
-    private ShipsFromType shipsFrom = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_FEEDBACK_RATING)
+    private SellerFeedbackType sellerFeedbackRating;
 
-    @SerializedName("IsFulfilledByAmazon")
-    private Boolean isFulfilledByAmazon = null;
+    public static final String SERIALIZED_NAME_SHIPPING_TIME = "ShippingTime";
 
-    @SerializedName("PrimeInformation")
-    private PrimeInformationType primeInformation = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_TIME)
+    private DetailedShippingTimeType shippingTime;
 
-    @SerializedName("IsBuyBoxWinner")
-    private Boolean isBuyBoxWinner = null;
+    public static final String SERIALIZED_NAME_LISTING_PRICE = "ListingPrice";
 
-    @SerializedName("IsFeaturedMerchant")
-    private Boolean isFeaturedMerchant = null;
+    @SerializedName(SERIALIZED_NAME_LISTING_PRICE)
+    private MoneyType listingPrice;
+
+    public static final String SERIALIZED_NAME_QUANTITY_DISCOUNT_PRICES = "quantityDiscountPrices";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY_DISCOUNT_PRICES)
+    private List<QuantityDiscountPriceType> quantityDiscountPrices = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_POINTS = "Points";
+
+    @SerializedName(SERIALIZED_NAME_POINTS)
+    private Points points;
+
+    public static final String SERIALIZED_NAME_SHIPPING = "Shipping";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING)
+    private MoneyType shipping;
+
+    public static final String SERIALIZED_NAME_SHIPS_FROM = "ShipsFrom";
+
+    @SerializedName(SERIALIZED_NAME_SHIPS_FROM)
+    private ShipsFromType shipsFrom;
+
+    public static final String SERIALIZED_NAME_IS_FULFILLED_BY_AMAZON = "IsFulfilledByAmazon";
+
+    @SerializedName(SERIALIZED_NAME_IS_FULFILLED_BY_AMAZON)
+    private Boolean isFulfilledByAmazon;
+
+    public static final String SERIALIZED_NAME_PRIME_INFORMATION = "PrimeInformation";
+
+    @SerializedName(SERIALIZED_NAME_PRIME_INFORMATION)
+    private PrimeInformationType primeInformation;
+
+    public static final String SERIALIZED_NAME_IS_BUY_BOX_WINNER = "IsBuyBoxWinner";
+
+    @SerializedName(SERIALIZED_NAME_IS_BUY_BOX_WINNER)
+    private Boolean isBuyBoxWinner;
+
+    public static final String SERIALIZED_NAME_IS_FEATURED_MERCHANT = "IsFeaturedMerchant";
+
+    @SerializedName(SERIALIZED_NAME_IS_FEATURED_MERCHANT)
+    private Boolean isFeaturedMerchant;
+
+    public OfferDetail() {}
 
     public OfferDetail myOffer(Boolean myOffer) {
         this.myOffer = myOffer;
@@ -79,8 +128,7 @@ public class OfferDetail {
      *
      * @return myOffer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, this is the seller's offer.")
-    public Boolean getMyOffer() {
+    @javax.annotation.Nullable public Boolean getMyOffer() {
         return myOffer;
     }
 
@@ -98,8 +146,7 @@ public class OfferDetail {
      *
      * @return offerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OfferCustomerType getOfferType() {
+    @javax.annotation.Nullable public OfferCustomerType getOfferType() {
         return offerType;
     }
 
@@ -118,10 +165,7 @@ public class OfferDetail {
      *
      * @return subCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.")
+    @javax.annotation.Nonnull
     public String getSubCondition() {
         return subCondition;
     }
@@ -140,8 +184,7 @@ public class OfferDetail {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
-    public String getSellerId() {
+    @javax.annotation.Nullable public String getSellerId() {
         return sellerId;
     }
 
@@ -159,8 +202,7 @@ public class OfferDetail {
      *
      * @return conditionNotes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Information about the condition of the item.")
-    public String getConditionNotes() {
+    @javax.annotation.Nullable public String getConditionNotes() {
         return conditionNotes;
     }
 
@@ -178,8 +220,7 @@ public class OfferDetail {
      *
      * @return sellerFeedbackRating
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SellerFeedbackType getSellerFeedbackRating() {
+    @javax.annotation.Nullable public SellerFeedbackType getSellerFeedbackRating() {
         return sellerFeedbackRating;
     }
 
@@ -197,7 +238,7 @@ public class OfferDetail {
      *
      * @return shippingTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DetailedShippingTimeType getShippingTime() {
         return shippingTime;
     }
@@ -216,7 +257,7 @@ public class OfferDetail {
      *
      * @return listingPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -243,9 +284,7 @@ public class OfferDetail {
      *
      * @return quantityDiscountPrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
-    public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
+    @javax.annotation.Nullable public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
         return quantityDiscountPrices;
     }
 
@@ -263,8 +302,7 @@ public class OfferDetail {
      *
      * @return points
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Points getPoints() {
+    @javax.annotation.Nullable public Points getPoints() {
         return points;
     }
 
@@ -282,7 +320,7 @@ public class OfferDetail {
      *
      * @return shipping
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getShipping() {
         return shipping;
     }
@@ -301,8 +339,7 @@ public class OfferDetail {
      *
      * @return shipsFrom
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipsFromType getShipsFrom() {
+    @javax.annotation.Nullable public ShipsFromType getShipsFrom() {
         return shipsFrom;
     }
 
@@ -320,9 +357,7 @@ public class OfferDetail {
      *
      * @return isFulfilledByAmazon
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "When true, the offer is fulfilled by Amazon.")
+    @javax.annotation.Nonnull
     public Boolean getIsFulfilledByAmazon() {
         return isFulfilledByAmazon;
     }
@@ -341,8 +376,7 @@ public class OfferDetail {
      *
      * @return primeInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrimeInformationType getPrimeInformation() {
+    @javax.annotation.Nullable public PrimeInformationType getPrimeInformation() {
         return primeInformation;
     }
 
@@ -361,10 +395,7 @@ public class OfferDetail {
      *
      * @return isBuyBoxWinner
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.")
-    public Boolean getIsBuyBoxWinner() {
+    @javax.annotation.Nullable public Boolean getIsBuyBoxWinner() {
         return isBuyBoxWinner;
     }
 
@@ -382,9 +413,7 @@ public class OfferDetail {
      *
      * @return isFeaturedMerchant
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, the seller of the item is eligible to win the Buy Box.")
-    public Boolean getIsFeaturedMerchant() {
+    @javax.annotation.Nullable public Boolean getIsFeaturedMerchant() {
         return isFeaturedMerchant;
     }
 
@@ -393,7 +422,7 @@ public class OfferDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -479,10 +508,192 @@ public class OfferDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("MyOffer");
+        openapiFields.add("offerType");
+        openapiFields.add("SubCondition");
+        openapiFields.add("SellerId");
+        openapiFields.add("ConditionNotes");
+        openapiFields.add("SellerFeedbackRating");
+        openapiFields.add("ShippingTime");
+        openapiFields.add("ListingPrice");
+        openapiFields.add("quantityDiscountPrices");
+        openapiFields.add("Points");
+        openapiFields.add("Shipping");
+        openapiFields.add("ShipsFrom");
+        openapiFields.add("IsFulfilledByAmazon");
+        openapiFields.add("PrimeInformation");
+        openapiFields.add("IsBuyBoxWinner");
+        openapiFields.add("IsFeaturedMerchant");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("SubCondition");
+        openapiRequiredFields.add("ShippingTime");
+        openapiRequiredFields.add("ListingPrice");
+        openapiRequiredFields.add("Shipping");
+        openapiRequiredFields.add("IsFulfilledByAmazon");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OfferDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OfferDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OfferDetail is not found in the empty JSON string",
+                        OfferDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OfferDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OfferDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OfferDetail.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `offerType`
+        if (jsonObj.get("offerType") != null && !jsonObj.get("offerType").isJsonNull()) {
+            OfferCustomerType.validateJsonElement(jsonObj.get("offerType"));
+        }
+        if (!jsonObj.get("SubCondition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SubCondition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SubCondition").toString()));
+        }
+        if ((jsonObj.get("SellerId") != null && !jsonObj.get("SellerId").isJsonNull())
+                && !jsonObj.get("SellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerId").toString()));
+        }
+        if ((jsonObj.get("ConditionNotes") != null
+                        && !jsonObj.get("ConditionNotes").isJsonNull())
+                && !jsonObj.get("ConditionNotes").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ConditionNotes` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ConditionNotes").toString()));
+        }
+        // validate the optional field `SellerFeedbackRating`
+        if (jsonObj.get("SellerFeedbackRating") != null
+                && !jsonObj.get("SellerFeedbackRating").isJsonNull()) {
+            SellerFeedbackType.validateJsonElement(jsonObj.get("SellerFeedbackRating"));
+        }
+        // validate the required field `ShippingTime`
+        DetailedShippingTimeType.validateJsonElement(jsonObj.get("ShippingTime"));
+        // validate the required field `ListingPrice`
+        MoneyType.validateJsonElement(jsonObj.get("ListingPrice"));
+        if (jsonObj.get("quantityDiscountPrices") != null
+                && !jsonObj.get("quantityDiscountPrices").isJsonNull()) {
+            JsonArray jsonArrayquantityDiscountPrices = jsonObj.getAsJsonArray("quantityDiscountPrices");
+            if (jsonArrayquantityDiscountPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("quantityDiscountPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `quantityDiscountPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("quantityDiscountPrices").toString()));
+                }
+
+                // validate the optional field `quantityDiscountPrices` (array)
+                for (int i = 0; i < jsonArrayquantityDiscountPrices.size(); i++) {
+                    QuantityDiscountPriceType.validateJsonElement(jsonArrayquantityDiscountPrices.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `Points`
+        if (jsonObj.get("Points") != null && !jsonObj.get("Points").isJsonNull()) {
+            Points.validateJsonElement(jsonObj.get("Points"));
+        }
+        // validate the required field `Shipping`
+        MoneyType.validateJsonElement(jsonObj.get("Shipping"));
+        // validate the optional field `ShipsFrom`
+        if (jsonObj.get("ShipsFrom") != null && !jsonObj.get("ShipsFrom").isJsonNull()) {
+            ShipsFromType.validateJsonElement(jsonObj.get("ShipsFrom"));
+        }
+        // validate the optional field `PrimeInformation`
+        if (jsonObj.get("PrimeInformation") != null
+                && !jsonObj.get("PrimeInformation").isJsonNull()) {
+            PrimeInformationType.validateJsonElement(jsonObj.get("PrimeInformation"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OfferDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OfferDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OfferDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OfferDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OfferDetail>() {
+                        @Override
+                        public void write(JsonWriter out, OfferDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OfferDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OfferDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OfferDetail
+     * @throws IOException if the JSON string is invalid with respect to OfferDetail
+     */
+    public static OfferDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OfferDetail.class);
+    }
+
+    /**
+     * Convert an instance of OfferDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

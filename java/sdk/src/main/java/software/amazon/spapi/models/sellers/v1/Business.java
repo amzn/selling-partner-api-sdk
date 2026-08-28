@@ -12,31 +12,56 @@
 
 package software.amazon.spapi.models.sellers.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Information about the seller&#39;s business. Certain fields may be omitted depending on the seller&#39;s
  * &#x60;businessType&#x60;.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about the seller's business. Certain fields may be omitted depending on the seller's `businessType`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Business {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("registeredBusinessAddress")
-    private Address registeredBusinessAddress = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("companyRegistrationNumber")
-    private String companyRegistrationNumber = null;
+    public static final String SERIALIZED_NAME_REGISTERED_BUSINESS_ADDRESS = "registeredBusinessAddress";
 
-    @SerializedName("companyTaxIdentificationNumber")
-    private String companyTaxIdentificationNumber = null;
+    @SerializedName(SERIALIZED_NAME_REGISTERED_BUSINESS_ADDRESS)
+    private Address registeredBusinessAddress;
 
-    @SerializedName("nonLatinName")
-    private String nonLatinName = null;
+    public static final String SERIALIZED_NAME_COMPANY_REGISTRATION_NUMBER = "companyRegistrationNumber";
+
+    @SerializedName(SERIALIZED_NAME_COMPANY_REGISTRATION_NUMBER)
+    private String companyRegistrationNumber;
+
+    public static final String SERIALIZED_NAME_COMPANY_TAX_IDENTIFICATION_NUMBER = "companyTaxIdentificationNumber";
+
+    @SerializedName(SERIALIZED_NAME_COMPANY_TAX_IDENTIFICATION_NUMBER)
+    private String companyTaxIdentificationNumber;
+
+    public static final String SERIALIZED_NAME_NON_LATIN_NAME = "nonLatinName";
+
+    @SerializedName(SERIALIZED_NAME_NON_LATIN_NAME)
+    private String nonLatinName;
+
+    public Business() {}
 
     public Business name(String name) {
         this.name = name;
@@ -48,7 +73,7 @@ public class Business {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The registered business name.")
+    @javax.annotation.Nonnull
     public String getName() {
         return name;
     }
@@ -67,7 +92,7 @@ public class Business {
      *
      * @return registeredBusinessAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getRegisteredBusinessAddress() {
         return registeredBusinessAddress;
     }
@@ -87,10 +112,7 @@ public class Business {
      *
      * @return companyRegistrationNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller's company registration number, if applicable. This field will be absent for individual sellers and sole proprietorships.")
-    public String getCompanyRegistrationNumber() {
+    @javax.annotation.Nullable public String getCompanyRegistrationNumber() {
         return companyRegistrationNumber;
     }
 
@@ -109,10 +131,7 @@ public class Business {
      *
      * @return companyTaxIdentificationNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller's company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships.")
-    public String getCompanyTaxIdentificationNumber() {
+    @javax.annotation.Nullable public String getCompanyTaxIdentificationNumber() {
         return companyTaxIdentificationNumber;
     }
 
@@ -130,9 +149,7 @@ public class Business {
      *
      * @return nonLatinName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The non-Latin script version of the registered business name, if applicable.")
-    public String getNonLatinName() {
+    @javax.annotation.Nullable public String getNonLatinName() {
         return nonLatinName;
     }
 
@@ -141,7 +158,7 @@ public class Business {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -186,10 +203,140 @@ public class Business {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("registeredBusinessAddress");
+        openapiFields.add("companyRegistrationNumber");
+        openapiFields.add("companyTaxIdentificationNumber");
+        openapiFields.add("nonLatinName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("name");
+        openapiRequiredFields.add("registeredBusinessAddress");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Business
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Business.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Business is not found in the empty JSON string",
+                        Business.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Business.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Business` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Business.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        // validate the required field `registeredBusinessAddress`
+        Address.validateJsonElement(jsonObj.get("registeredBusinessAddress"));
+        if ((jsonObj.get("companyRegistrationNumber") != null
+                        && !jsonObj.get("companyRegistrationNumber").isJsonNull())
+                && !jsonObj.get("companyRegistrationNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `companyRegistrationNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("companyRegistrationNumber").toString()));
+        }
+        if ((jsonObj.get("companyTaxIdentificationNumber") != null
+                        && !jsonObj.get("companyTaxIdentificationNumber").isJsonNull())
+                && !jsonObj.get("companyTaxIdentificationNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `companyTaxIdentificationNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("companyTaxIdentificationNumber").toString()));
+        }
+        if ((jsonObj.get("nonLatinName") != null && !jsonObj.get("nonLatinName").isJsonNull())
+                && !jsonObj.get("nonLatinName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nonLatinName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nonLatinName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Business.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Business' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Business> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Business.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Business>() {
+                        @Override
+                        public void write(JsonWriter out, Business value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Business read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Business given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Business
+     * @throws IOException if the JSON string is invalid with respect to Business
+     */
+    public static Business fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Business.class);
+    }
+
+    /**
+     * Convert an instance of Business to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

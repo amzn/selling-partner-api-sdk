@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Competitive pricing information for the item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Competitive pricing information for the item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CompetitivePricingType {
-    @SerializedName("CompetitivePrices")
-    private CompetitivePriceList competitivePrices = null;
+    public static final String SERIALIZED_NAME_COMPETITIVE_PRICES = "CompetitivePrices";
 
-    @SerializedName("NumberOfOfferListings")
-    private NumberOfOfferListingsList numberOfOfferListings = null;
+    @SerializedName(SERIALIZED_NAME_COMPETITIVE_PRICES)
+    private CompetitivePriceList competitivePrices = new ArrayList<>();
 
-    @SerializedName("TradeInValue")
-    private MoneyType tradeInValue = null;
+    public static final String SERIALIZED_NAME_NUMBER_OF_OFFER_LISTINGS = "NumberOfOfferListings";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_OFFER_LISTINGS)
+    private NumberOfOfferListingsList numberOfOfferListings = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRADE_IN_VALUE = "TradeInValue";
+
+    @SerializedName(SERIALIZED_NAME_TRADE_IN_VALUE)
+    private MoneyType tradeInValue;
+
+    public CompetitivePricingType() {}
 
     public CompetitivePricingType competitivePrices(CompetitivePriceList competitivePrices) {
         this.competitivePrices = competitivePrices;
@@ -37,7 +60,7 @@ public class CompetitivePricingType {
      *
      * @return competitivePrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public CompetitivePriceList getCompetitivePrices() {
         return competitivePrices;
     }
@@ -56,7 +79,7 @@ public class CompetitivePricingType {
      *
      * @return numberOfOfferListings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public NumberOfOfferListingsList getNumberOfOfferListings() {
         return numberOfOfferListings;
     }
@@ -75,8 +98,7 @@ public class CompetitivePricingType {
      *
      * @return tradeInValue
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getTradeInValue() {
+    @javax.annotation.Nullable public MoneyType getTradeInValue() {
         return tradeInValue;
     }
 
@@ -85,7 +107,7 @@ public class CompetitivePricingType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -119,10 +141,117 @@ public class CompetitivePricingType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("CompetitivePrices");
+        openapiFields.add("NumberOfOfferListings");
+        openapiFields.add("TradeInValue");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("CompetitivePrices");
+        openapiRequiredFields.add("NumberOfOfferListings");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CompetitivePricingType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CompetitivePricingType.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CompetitivePricingType is not found in the empty JSON string",
+                        CompetitivePricingType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CompetitivePricingType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CompetitivePricingType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CompetitivePricingType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `TradeInValue`
+        if (jsonObj.get("TradeInValue") != null && !jsonObj.get("TradeInValue").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("TradeInValue"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CompetitivePricingType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CompetitivePricingType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CompetitivePricingType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CompetitivePricingType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CompetitivePricingType>() {
+                        @Override
+                        public void write(JsonWriter out, CompetitivePricingType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CompetitivePricingType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CompetitivePricingType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CompetitivePricingType
+     * @throws IOException if the JSON string is invalid with respect to CompetitivePricingType
+     */
+    public static CompetitivePricingType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CompetitivePricingType.class);
+    }
+
+    /**
+     * Convert an instance of CompetitivePricingType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

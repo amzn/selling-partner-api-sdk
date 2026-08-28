@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The operational configuration of &#x60;supplySources&#x60;. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The operational configuration of `supplySources`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OperationalConfiguration {
-    @SerializedName("contactDetails")
-    private ContactDetails contactDetails = null;
+    public static final String SERIALIZED_NAME_CONTACT_DETAILS = "contactDetails";
 
-    @SerializedName("throughputConfig")
-    private ThroughputConfig throughputConfig = null;
+    @SerializedName(SERIALIZED_NAME_CONTACT_DETAILS)
+    private ContactDetails contactDetails;
 
-    @SerializedName("operatingHoursByDay")
-    private OperatingHoursByDay operatingHoursByDay = null;
+    public static final String SERIALIZED_NAME_THROUGHPUT_CONFIG = "throughputConfig";
 
-    @SerializedName("handlingTime")
-    private Duration handlingTime = null;
+    @SerializedName(SERIALIZED_NAME_THROUGHPUT_CONFIG)
+    private ThroughputConfig throughputConfig;
+
+    public static final String SERIALIZED_NAME_OPERATING_HOURS_BY_DAY = "operatingHoursByDay";
+
+    @SerializedName(SERIALIZED_NAME_OPERATING_HOURS_BY_DAY)
+    private OperatingHoursByDay operatingHoursByDay;
+
+    public static final String SERIALIZED_NAME_HANDLING_TIME = "handlingTime";
+
+    @SerializedName(SERIALIZED_NAME_HANDLING_TIME)
+    private Duration handlingTime;
+
+    public OperationalConfiguration() {}
 
     public OperationalConfiguration contactDetails(ContactDetails contactDetails) {
         this.contactDetails = contactDetails;
@@ -40,8 +65,7 @@ public class OperationalConfiguration {
      *
      * @return contactDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ContactDetails getContactDetails() {
+    @javax.annotation.Nullable public ContactDetails getContactDetails() {
         return contactDetails;
     }
 
@@ -59,8 +83,7 @@ public class OperationalConfiguration {
      *
      * @return throughputConfig
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ThroughputConfig getThroughputConfig() {
+    @javax.annotation.Nullable public ThroughputConfig getThroughputConfig() {
         return throughputConfig;
     }
 
@@ -78,8 +101,7 @@ public class OperationalConfiguration {
      *
      * @return operatingHoursByDay
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OperatingHoursByDay getOperatingHoursByDay() {
+    @javax.annotation.Nullable public OperatingHoursByDay getOperatingHoursByDay() {
         return operatingHoursByDay;
     }
 
@@ -97,8 +119,7 @@ public class OperationalConfiguration {
      *
      * @return handlingTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Duration getHandlingTime() {
+    @javax.annotation.Nullable public Duration getHandlingTime() {
         return handlingTime;
     }
 
@@ -107,7 +128,7 @@ public class OperationalConfiguration {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +166,122 @@ public class OperationalConfiguration {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contactDetails");
+        openapiFields.add("throughputConfig");
+        openapiFields.add("operatingHoursByDay");
+        openapiFields.add("handlingTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OperationalConfiguration
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OperationalConfiguration.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OperationalConfiguration is not found in the empty JSON string",
+                        OperationalConfiguration.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OperationalConfiguration.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OperationalConfiguration` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `contactDetails`
+        if (jsonObj.get("contactDetails") != null
+                && !jsonObj.get("contactDetails").isJsonNull()) {
+            ContactDetails.validateJsonElement(jsonObj.get("contactDetails"));
+        }
+        // validate the optional field `throughputConfig`
+        if (jsonObj.get("throughputConfig") != null
+                && !jsonObj.get("throughputConfig").isJsonNull()) {
+            ThroughputConfig.validateJsonElement(jsonObj.get("throughputConfig"));
+        }
+        // validate the optional field `operatingHoursByDay`
+        if (jsonObj.get("operatingHoursByDay") != null
+                && !jsonObj.get("operatingHoursByDay").isJsonNull()) {
+            OperatingHoursByDay.validateJsonElement(jsonObj.get("operatingHoursByDay"));
+        }
+        // validate the optional field `handlingTime`
+        if (jsonObj.get("handlingTime") != null && !jsonObj.get("handlingTime").isJsonNull()) {
+            Duration.validateJsonElement(jsonObj.get("handlingTime"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OperationalConfiguration.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OperationalConfiguration' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OperationalConfiguration> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OperationalConfiguration.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OperationalConfiguration>() {
+                        @Override
+                        public void write(JsonWriter out, OperationalConfiguration value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OperationalConfiguration read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OperationalConfiguration given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OperationalConfiguration
+     * @throws IOException if the JSON string is invalid with respect to OperationalConfiguration
+     */
+    public static OperationalConfiguration fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OperationalConfiguration.class);
+    }
+
+    /**
+     * Convert an instance of OperationalConfiguration to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

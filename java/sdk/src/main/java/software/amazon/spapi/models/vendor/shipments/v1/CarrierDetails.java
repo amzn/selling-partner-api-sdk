@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Indicates the carrier details and their contact informations */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Indicates the carrier details and their contact informations")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CarrierDetails {
-    @SerializedName("name")
-    private String name = null;
+    public static final String SERIALIZED_NAME_NAME = "name";
 
-    @SerializedName("code")
-    private String code = null;
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
 
-    @SerializedName("phone")
-    private String phone = null;
+    public static final String SERIALIZED_NAME_CODE = "code";
 
-    @SerializedName("email")
-    private String email = null;
+    @SerializedName(SERIALIZED_NAME_CODE)
+    private String code;
 
-    @SerializedName("shipmentReferenceNumber")
-    private String shipmentReferenceNumber = null;
+    public static final String SERIALIZED_NAME_PHONE = "phone";
+
+    @SerializedName(SERIALIZED_NAME_PHONE)
+    private String phone;
+
+    public static final String SERIALIZED_NAME_EMAIL = "email";
+
+    @SerializedName(SERIALIZED_NAME_EMAIL)
+    private String email;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_REFERENCE_NUMBER = "shipmentReferenceNumber";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_REFERENCE_NUMBER)
+    private String shipmentReferenceNumber;
+
+    public CarrierDetails() {}
 
     public CarrierDetails name(String name) {
         this.name = name;
@@ -44,9 +70,7 @@ public class CarrierDetails {
      *
      * @return name
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The field is used to represent the carrier used for performing the shipment.")
-    public String getName() {
+    @javax.annotation.Nullable public String getName() {
         return name;
     }
 
@@ -66,10 +90,7 @@ public class CarrierDetails {
      *
      * @return code
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association).")
-    public String getCode() {
+    @javax.annotation.Nullable public String getCode() {
         return code;
     }
 
@@ -87,9 +108,7 @@ public class CarrierDetails {
      *
      * @return phone
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The field is used to represent the Carrier contact number.")
-    public String getPhone() {
+    @javax.annotation.Nullable public String getPhone() {
         return phone;
     }
 
@@ -107,8 +126,7 @@ public class CarrierDetails {
      *
      * @return email
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The field is used to represent the carrier Email id.")
-    public String getEmail() {
+    @javax.annotation.Nullable public String getEmail() {
         return email;
     }
 
@@ -127,10 +145,7 @@ public class CarrierDetails {
      *
      * @return shipmentReferenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The field is also known as PRO number is a unique number assigned by the carrier. It is used to identify and track the shipment that goes out for delivery. This field is mandatory for US, CA, MX shipment confirmations.")
-    public String getShipmentReferenceNumber() {
+    @javax.annotation.Nullable public String getShipmentReferenceNumber() {
         return shipmentReferenceNumber;
     }
 
@@ -139,7 +154,7 @@ public class CarrierDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -175,10 +190,134 @@ public class CarrierDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("name");
+        openapiFields.add("code");
+        openapiFields.add("phone");
+        openapiFields.add("email");
+        openapiFields.add("shipmentReferenceNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CarrierDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CarrierDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CarrierDetails is not found in the empty JSON string",
+                        CarrierDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CarrierDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CarrierDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull())
+                && !jsonObj.get("name").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `name` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("name").toString()));
+        }
+        if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull())
+                && !jsonObj.get("code").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `code` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("code").toString()));
+        }
+        if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull())
+                && !jsonObj.get("phone").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `phone` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("phone").toString()));
+        }
+        if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull())
+                && !jsonObj.get("email").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `email` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("email").toString()));
+        }
+        if ((jsonObj.get("shipmentReferenceNumber") != null
+                        && !jsonObj.get("shipmentReferenceNumber").isJsonNull())
+                && !jsonObj.get("shipmentReferenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentReferenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentReferenceNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CarrierDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CarrierDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CarrierDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CarrierDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CarrierDetails>() {
+                        @Override
+                        public void write(JsonWriter out, CarrierDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CarrierDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CarrierDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CarrierDetails
+     * @throws IOException if the JSON string is invalid with respect to CarrierDetails
+     */
+    public static CarrierDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CarrierDetails.class);
+    }
+
+    /**
+     * Convert an instance of CarrierDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

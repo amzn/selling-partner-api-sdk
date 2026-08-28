@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Buyer information for an order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Buyer information for an order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderBuyerInfo {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("BuyerEmail")
-    private String buyerEmail = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("BuyerName")
-    private String buyerName = null;
+    public static final String SERIALIZED_NAME_BUYER_EMAIL = "BuyerEmail";
 
-    @SerializedName("BuyerCounty")
-    private String buyerCounty = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_EMAIL)
+    private String buyerEmail;
 
-    @SerializedName("BuyerTaxInfo")
-    private BuyerTaxInfo buyerTaxInfo = null;
+    public static final String SERIALIZED_NAME_BUYER_NAME = "BuyerName";
 
-    @SerializedName("PurchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_NAME)
+    private String buyerName;
+
+    public static final String SERIALIZED_NAME_BUYER_COUNTY = "BuyerCounty";
+
+    @SerializedName(SERIALIZED_NAME_BUYER_COUNTY)
+    private String buyerCounty;
+
+    public static final String SERIALIZED_NAME_BUYER_TAX_INFO = "BuyerTaxInfo";
+
+    @SerializedName(SERIALIZED_NAME_BUYER_TAX_INFO)
+    private BuyerTaxInfo buyerTaxInfo;
+
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "PurchaseOrderNumber";
+
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
+
+    public OrderBuyerInfo() {}
 
     public OrderBuyerInfo amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -46,9 +75,7 @@ public class OrderBuyerInfo {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -67,8 +94,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerEmail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The anonymized email address of the buyer.")
-    public String getBuyerEmail() {
+    @javax.annotation.Nullable public String getBuyerEmail() {
         return buyerEmail;
     }
 
@@ -86,8 +112,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The buyer name or the recipient name.")
-    public String getBuyerName() {
+    @javax.annotation.Nullable public String getBuyerName() {
         return buyerName;
     }
 
@@ -105,10 +130,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerCounty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.")
-    public String getBuyerCounty() {
+    @javax.annotation.Nullable public String getBuyerCounty() {
         return buyerCounty;
     }
 
@@ -126,8 +148,7 @@ public class OrderBuyerInfo {
      *
      * @return buyerTaxInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyerTaxInfo getBuyerTaxInfo() {
+    @javax.annotation.Nullable public BuyerTaxInfo getBuyerTaxInfo() {
         return buyerTaxInfo;
     }
 
@@ -146,10 +167,7 @@ public class OrderBuyerInfo {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.")
-    public String getPurchaseOrderNumber() {
+    @javax.annotation.Nullable public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
 
@@ -158,7 +176,7 @@ public class OrderBuyerInfo {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -196,10 +214,148 @@ public class OrderBuyerInfo {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("BuyerEmail");
+        openapiFields.add("BuyerName");
+        openapiFields.add("BuyerCounty");
+        openapiFields.add("BuyerTaxInfo");
+        openapiFields.add("PurchaseOrderNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AmazonOrderId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderBuyerInfo
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderBuyerInfo.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderBuyerInfo is not found in the empty JSON string",
+                        OrderBuyerInfo.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderBuyerInfo.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderBuyerInfo` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderBuyerInfo.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("BuyerEmail") != null && !jsonObj.get("BuyerEmail").isJsonNull())
+                && !jsonObj.get("BuyerEmail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerEmail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerEmail").toString()));
+        }
+        if ((jsonObj.get("BuyerName") != null && !jsonObj.get("BuyerName").isJsonNull())
+                && !jsonObj.get("BuyerName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerName").toString()));
+        }
+        if ((jsonObj.get("BuyerCounty") != null && !jsonObj.get("BuyerCounty").isJsonNull())
+                && !jsonObj.get("BuyerCounty").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerCounty` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerCounty").toString()));
+        }
+        // validate the optional field `BuyerTaxInfo`
+        if (jsonObj.get("BuyerTaxInfo") != null && !jsonObj.get("BuyerTaxInfo").isJsonNull()) {
+            BuyerTaxInfo.validateJsonElement(jsonObj.get("BuyerTaxInfo"));
+        }
+        if ((jsonObj.get("PurchaseOrderNumber") != null
+                        && !jsonObj.get("PurchaseOrderNumber").isJsonNull())
+                && !jsonObj.get("PurchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PurchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PurchaseOrderNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderBuyerInfo.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderBuyerInfo' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderBuyerInfo> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderBuyerInfo.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderBuyerInfo>() {
+                        @Override
+                        public void write(JsonWriter out, OrderBuyerInfo value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderBuyerInfo read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderBuyerInfo given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderBuyerInfo
+     * @throws IOException if the JSON string is invalid with respect to OrderBuyerInfo
+     */
+    public static OrderBuyerInfo fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderBuyerInfo.class);
+    }
+
+    /**
+     * Convert an instance of OrderBuyerInfo to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

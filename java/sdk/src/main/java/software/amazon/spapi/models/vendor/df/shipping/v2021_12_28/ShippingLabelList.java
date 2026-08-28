@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Response payload with the list of shipping labels. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Response payload with the list of shipping labels.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingLabelList {
-    @SerializedName("pagination")
-    private Pagination pagination = null;
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
 
-    @SerializedName("shippingLabels")
-    private List<ShippingLabel> shippingLabels = null;
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private Pagination pagination;
+
+    public static final String SERIALIZED_NAME_SHIPPING_LABELS = "shippingLabels";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_LABELS)
+    private List<ShippingLabel> shippingLabels = new ArrayList<>();
+
+    public ShippingLabelList() {}
 
     public ShippingLabelList pagination(Pagination pagination) {
         this.pagination = pagination;
@@ -36,8 +58,7 @@ public class ShippingLabelList {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Pagination getPagination() {
+    @javax.annotation.Nullable public Pagination getPagination() {
         return pagination;
     }
 
@@ -63,9 +84,7 @@ public class ShippingLabelList {
      *
      * @return shippingLabels
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "An array containing the details of the generated shipping labels.")
-    public List<ShippingLabel> getShippingLabels() {
+    @javax.annotation.Nullable public List<ShippingLabel> getShippingLabels() {
         return shippingLabels;
     }
 
@@ -74,7 +93,7 @@ public class ShippingLabelList {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -104,10 +123,122 @@ public class ShippingLabelList {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("pagination");
+        openapiFields.add("shippingLabels");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingLabelList
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingLabelList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingLabelList is not found in the empty JSON string",
+                        ShippingLabelList.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingLabelList.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingLabelList` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            Pagination.validateJsonElement(jsonObj.get("pagination"));
+        }
+        if (jsonObj.get("shippingLabels") != null
+                && !jsonObj.get("shippingLabels").isJsonNull()) {
+            JsonArray jsonArrayshippingLabels = jsonObj.getAsJsonArray("shippingLabels");
+            if (jsonArrayshippingLabels != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippingLabels").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippingLabels` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippingLabels").toString()));
+                }
+
+                // validate the optional field `shippingLabels` (array)
+                for (int i = 0; i < jsonArrayshippingLabels.size(); i++) {
+                    ShippingLabel.validateJsonElement(jsonArrayshippingLabels.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingLabelList.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingLabelList' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingLabelList> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingLabelList.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingLabelList>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingLabelList value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingLabelList read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingLabelList given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingLabelList
+     * @throws IOException if the JSON string is invalid with respect to ShippingLabelList
+     */
+    public static ShippingLabelList fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingLabelList.class);
+    }
+
+    /**
+     * Convert an instance of ShippingLabelList to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

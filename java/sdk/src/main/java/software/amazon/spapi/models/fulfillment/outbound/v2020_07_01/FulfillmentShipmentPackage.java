@@ -12,33 +12,64 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Package information for a shipment in a fulfillment order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Package information for a shipment in a fulfillment order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentShipmentPackage {
-    @SerializedName("packageNumber")
-    private Integer packageNumber = null;
+    public static final String SERIALIZED_NAME_PACKAGE_NUMBER = "packageNumber";
 
-    @SerializedName("carrierCode")
-    private String carrierCode = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_NUMBER)
+    private Integer packageNumber;
 
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    public static final String SERIALIZED_NAME_CARRIER_CODE = "carrierCode";
 
-    @SerializedName("amazonFulfillmentTrackingNumber")
-    private String amazonFulfillmentTrackingNumber = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_CODE)
+    private String carrierCode;
 
-    @SerializedName("estimatedArrivalDate")
-    private OffsetDateTime estimatedArrivalDate = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("lockerDetails")
-    private LockerDetails lockerDetails = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("deliveryInformation")
-    private DeliveryInformation deliveryInformation = null;
+    public static final String SERIALIZED_NAME_AMAZON_FULFILLMENT_TRACKING_NUMBER = "amazonFulfillmentTrackingNumber";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_FULFILLMENT_TRACKING_NUMBER)
+    private String amazonFulfillmentTrackingNumber;
+
+    public static final String SERIALIZED_NAME_ESTIMATED_ARRIVAL_DATE = "estimatedArrivalDate";
+
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_ARRIVAL_DATE)
+    private OffsetDateTime estimatedArrivalDate;
+
+    public static final String SERIALIZED_NAME_LOCKER_DETAILS = "lockerDetails";
+
+    @SerializedName(SERIALIZED_NAME_LOCKER_DETAILS)
+    private LockerDetails lockerDetails;
+
+    public static final String SERIALIZED_NAME_DELIVERY_INFORMATION = "deliveryInformation";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_INFORMATION)
+    private DeliveryInformation deliveryInformation;
+
+    public FulfillmentShipmentPackage() {}
 
     public FulfillmentShipmentPackage packageNumber(Integer packageNumber) {
         this.packageNumber = packageNumber;
@@ -50,7 +81,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return packageNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifies a package in a shipment.")
+    @javax.annotation.Nonnull
     public Integer getPackageNumber() {
         return packageNumber;
     }
@@ -69,9 +100,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return carrierCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifies the carrier who will deliver the shipment to the recipient.")
+    @javax.annotation.Nonnull
     public String getCarrierCode() {
         return carrierCode;
     }
@@ -90,9 +119,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The tracking number, if provided, can be used to obtain tracking and delivery information.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -110,10 +137,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return amazonFulfillmentTrackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.")
-    public String getAmazonFulfillmentTrackingNumber() {
+    @javax.annotation.Nullable public String getAmazonFulfillmentTrackingNumber() {
         return amazonFulfillmentTrackingNumber;
     }
 
@@ -131,8 +155,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return estimatedArrivalDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getEstimatedArrivalDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
 
@@ -150,8 +173,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return lockerDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public LockerDetails getLockerDetails() {
+    @javax.annotation.Nullable public LockerDetails getLockerDetails() {
         return lockerDetails;
     }
 
@@ -169,8 +191,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return deliveryInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DeliveryInformation getDeliveryInformation() {
+    @javax.annotation.Nullable public DeliveryInformation getDeliveryInformation() {
         return deliveryInformation;
     }
 
@@ -179,7 +200,7 @@ public class FulfillmentShipmentPackage {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -234,10 +255,146 @@ public class FulfillmentShipmentPackage {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageNumber");
+        openapiFields.add("carrierCode");
+        openapiFields.add("trackingNumber");
+        openapiFields.add("amazonFulfillmentTrackingNumber");
+        openapiFields.add("estimatedArrivalDate");
+        openapiFields.add("lockerDetails");
+        openapiFields.add("deliveryInformation");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packageNumber");
+        openapiRequiredFields.add("carrierCode");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentShipmentPackage
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentShipmentPackage.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentShipmentPackage is not found in the empty JSON string",
+                        FulfillmentShipmentPackage.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentShipmentPackage.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentShipmentPackage` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FulfillmentShipmentPackage.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("carrierCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierCode").toString()));
+        }
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if ((jsonObj.get("amazonFulfillmentTrackingNumber") != null
+                        && !jsonObj.get("amazonFulfillmentTrackingNumber").isJsonNull())
+                && !jsonObj.get("amazonFulfillmentTrackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `amazonFulfillmentTrackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("amazonFulfillmentTrackingNumber").toString()));
+        }
+        // validate the optional field `lockerDetails`
+        if (jsonObj.get("lockerDetails") != null
+                && !jsonObj.get("lockerDetails").isJsonNull()) {
+            LockerDetails.validateJsonElement(jsonObj.get("lockerDetails"));
+        }
+        // validate the optional field `deliveryInformation`
+        if (jsonObj.get("deliveryInformation") != null
+                && !jsonObj.get("deliveryInformation").isJsonNull()) {
+            DeliveryInformation.validateJsonElement(jsonObj.get("deliveryInformation"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentShipmentPackage.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentShipmentPackage' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentShipmentPackage> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentShipmentPackage.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentShipmentPackage>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentShipmentPackage value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentShipmentPackage read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentShipmentPackage given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentShipmentPackage
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentShipmentPackage
+     */
+    public static FulfillmentShipmentPackage fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentShipmentPackage.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentShipmentPackage to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

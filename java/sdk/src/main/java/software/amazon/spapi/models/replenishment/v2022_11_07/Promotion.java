@@ -12,23 +12,50 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Offer promotions to include in the result filter criteria. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Offer promotions to include in the result filter criteria.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Promotion {
-    @SerializedName("sellingPartnerFundedBaseDiscount")
-    private DiscountFunding sellingPartnerFundedBaseDiscount = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTNER_FUNDED_BASE_DISCOUNT =
+            "sellingPartnerFundedBaseDiscount";
 
-    @SerializedName("sellingPartnerFundedTieredDiscount")
-    private DiscountFunding sellingPartnerFundedTieredDiscount = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTNER_FUNDED_BASE_DISCOUNT)
+    private DiscountFunding sellingPartnerFundedBaseDiscount;
 
-    @SerializedName("amazonFundedBaseDiscount")
-    private DiscountFunding amazonFundedBaseDiscount = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTNER_FUNDED_TIERED_DISCOUNT =
+            "sellingPartnerFundedTieredDiscount";
 
-    @SerializedName("amazonFundedTieredDiscount")
-    private DiscountFunding amazonFundedTieredDiscount = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTNER_FUNDED_TIERED_DISCOUNT)
+    private DiscountFunding sellingPartnerFundedTieredDiscount;
+
+    public static final String SERIALIZED_NAME_AMAZON_FUNDED_BASE_DISCOUNT = "amazonFundedBaseDiscount";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_FUNDED_BASE_DISCOUNT)
+    private DiscountFunding amazonFundedBaseDiscount;
+
+    public static final String SERIALIZED_NAME_AMAZON_FUNDED_TIERED_DISCOUNT = "amazonFundedTieredDiscount";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_FUNDED_TIERED_DISCOUNT)
+    private DiscountFunding amazonFundedTieredDiscount;
+
+    public Promotion() {}
 
     public Promotion sellingPartnerFundedBaseDiscount(DiscountFunding sellingPartnerFundedBaseDiscount) {
         this.sellingPartnerFundedBaseDiscount = sellingPartnerFundedBaseDiscount;
@@ -40,8 +67,7 @@ public class Promotion {
      *
      * @return sellingPartnerFundedBaseDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DiscountFunding getSellingPartnerFundedBaseDiscount() {
+    @javax.annotation.Nullable public DiscountFunding getSellingPartnerFundedBaseDiscount() {
         return sellingPartnerFundedBaseDiscount;
     }
 
@@ -59,8 +85,7 @@ public class Promotion {
      *
      * @return sellingPartnerFundedTieredDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DiscountFunding getSellingPartnerFundedTieredDiscount() {
+    @javax.annotation.Nullable public DiscountFunding getSellingPartnerFundedTieredDiscount() {
         return sellingPartnerFundedTieredDiscount;
     }
 
@@ -78,8 +103,7 @@ public class Promotion {
      *
      * @return amazonFundedBaseDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DiscountFunding getAmazonFundedBaseDiscount() {
+    @javax.annotation.Nullable public DiscountFunding getAmazonFundedBaseDiscount() {
         return amazonFundedBaseDiscount;
     }
 
@@ -97,8 +121,7 @@ public class Promotion {
      *
      * @return amazonFundedTieredDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DiscountFunding getAmazonFundedTieredDiscount() {
+    @javax.annotation.Nullable public DiscountFunding getAmazonFundedTieredDiscount() {
         return amazonFundedTieredDiscount;
     }
 
@@ -107,7 +130,7 @@ public class Promotion {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -151,10 +174,121 @@ public class Promotion {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellingPartnerFundedBaseDiscount");
+        openapiFields.add("sellingPartnerFundedTieredDiscount");
+        openapiFields.add("amazonFundedBaseDiscount");
+        openapiFields.add("amazonFundedTieredDiscount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Promotion
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Promotion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Promotion is not found in the empty JSON string",
+                        Promotion.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Promotion.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Promotion` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `sellingPartnerFundedBaseDiscount`
+        if (jsonObj.get("sellingPartnerFundedBaseDiscount") != null
+                && !jsonObj.get("sellingPartnerFundedBaseDiscount").isJsonNull()) {
+            DiscountFunding.validateJsonElement(jsonObj.get("sellingPartnerFundedBaseDiscount"));
+        }
+        // validate the optional field `sellingPartnerFundedTieredDiscount`
+        if (jsonObj.get("sellingPartnerFundedTieredDiscount") != null
+                && !jsonObj.get("sellingPartnerFundedTieredDiscount").isJsonNull()) {
+            DiscountFunding.validateJsonElement(jsonObj.get("sellingPartnerFundedTieredDiscount"));
+        }
+        // validate the optional field `amazonFundedBaseDiscount`
+        if (jsonObj.get("amazonFundedBaseDiscount") != null
+                && !jsonObj.get("amazonFundedBaseDiscount").isJsonNull()) {
+            DiscountFunding.validateJsonElement(jsonObj.get("amazonFundedBaseDiscount"));
+        }
+        // validate the optional field `amazonFundedTieredDiscount`
+        if (jsonObj.get("amazonFundedTieredDiscount") != null
+                && !jsonObj.get("amazonFundedTieredDiscount").isJsonNull()) {
+            DiscountFunding.validateJsonElement(jsonObj.get("amazonFundedTieredDiscount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Promotion.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Promotion' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Promotion> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Promotion.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Promotion>() {
+                        @Override
+                        public void write(JsonWriter out, Promotion value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Promotion read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Promotion given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Promotion
+     * @throws IOException if the JSON string is invalid with respect to Promotion
+     */
+    public static Promotion fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Promotion.class);
+    }
+
+    /**
+     * Convert an instance of Promotion to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

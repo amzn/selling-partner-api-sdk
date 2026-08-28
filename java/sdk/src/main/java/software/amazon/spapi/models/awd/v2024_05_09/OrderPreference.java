@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** Supported preferences for the distribution order. */
 @JsonAdapter(OrderPreference.Adapter.class)
 public enum OrderPreference {
-    @SerializedName("PARTIAL_ORDER")
     PARTIAL_ORDER("PARTIAL_ORDER");
 
     private String value;
@@ -40,25 +39,30 @@ public enum OrderPreference {
         return String.valueOf(value);
     }
 
-    public static OrderPreference fromValue(String input) {
+    public static OrderPreference fromValue(String value) {
         for (OrderPreference b : OrderPreference.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<OrderPreference> {
         @Override
         public void write(final JsonWriter jsonWriter, final OrderPreference enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public OrderPreference read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return OrderPreference.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return OrderPreference.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        OrderPreference.fromValue(value);
     }
 }

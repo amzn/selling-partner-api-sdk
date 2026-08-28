@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -26,10 +26,8 @@ import java.io.IOException;
  */
 @JsonAdapter(AggregationTimePeriod.Adapter.class)
 public enum AggregationTimePeriod {
-    @SerializedName("FiveMinutes")
     FIVE_MINUTES("FiveMinutes"),
 
-    @SerializedName("TenMinutes")
     TEN_MINUTES("TenMinutes");
 
     private String value;
@@ -47,25 +45,30 @@ public enum AggregationTimePeriod {
         return String.valueOf(value);
     }
 
-    public static AggregationTimePeriod fromValue(String input) {
+    public static AggregationTimePeriod fromValue(String value) {
         for (AggregationTimePeriod b : AggregationTimePeriod.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AggregationTimePeriod> {
         @Override
         public void write(final JsonWriter jsonWriter, final AggregationTimePeriod enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AggregationTimePeriod read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AggregationTimePeriod.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AggregationTimePeriod.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AggregationTimePeriod.fromValue(value);
     }
 }

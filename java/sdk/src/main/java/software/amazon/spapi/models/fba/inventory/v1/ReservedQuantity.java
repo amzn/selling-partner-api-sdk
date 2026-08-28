@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The quantity of reserved inventory. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of reserved inventory.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ReservedQuantity {
-    @SerializedName("totalReservedQuantity")
-    private Integer totalReservedQuantity = null;
+    public static final String SERIALIZED_NAME_TOTAL_RESERVED_QUANTITY = "totalReservedQuantity";
 
-    @SerializedName("pendingCustomerOrderQuantity")
-    private Integer pendingCustomerOrderQuantity = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_RESERVED_QUANTITY)
+    private Integer totalReservedQuantity;
 
-    @SerializedName("pendingTransshipmentQuantity")
-    private Integer pendingTransshipmentQuantity = null;
+    public static final String SERIALIZED_NAME_PENDING_CUSTOMER_ORDER_QUANTITY = "pendingCustomerOrderQuantity";
 
-    @SerializedName("fcProcessingQuantity")
-    private Integer fcProcessingQuantity = null;
+    @SerializedName(SERIALIZED_NAME_PENDING_CUSTOMER_ORDER_QUANTITY)
+    private Integer pendingCustomerOrderQuantity;
+
+    public static final String SERIALIZED_NAME_PENDING_TRANSSHIPMENT_QUANTITY = "pendingTransshipmentQuantity";
+
+    @SerializedName(SERIALIZED_NAME_PENDING_TRANSSHIPMENT_QUANTITY)
+    private Integer pendingTransshipmentQuantity;
+
+    public static final String SERIALIZED_NAME_FC_PROCESSING_QUANTITY = "fcProcessingQuantity";
+
+    @SerializedName(SERIALIZED_NAME_FC_PROCESSING_QUANTITY)
+    private Integer fcProcessingQuantity;
+
+    public ReservedQuantity() {}
 
     public ReservedQuantity totalReservedQuantity(Integer totalReservedQuantity) {
         this.totalReservedQuantity = totalReservedQuantity;
@@ -41,10 +66,7 @@ public class ReservedQuantity {
      *
      * @return totalReservedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The total number of units in Amazon's fulfillment network that are currently being picked, packed, and shipped; or are sidelined for measurement, sampling, or other internal processes.")
-    public Integer getTotalReservedQuantity() {
+    @javax.annotation.Nullable public Integer getTotalReservedQuantity() {
         return totalReservedQuantity;
     }
 
@@ -62,8 +84,7 @@ public class ReservedQuantity {
      *
      * @return pendingCustomerOrderQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units reserved for customer orders.")
-    public Integer getPendingCustomerOrderQuantity() {
+    @javax.annotation.Nullable public Integer getPendingCustomerOrderQuantity() {
         return pendingCustomerOrderQuantity;
     }
 
@@ -81,9 +102,7 @@ public class ReservedQuantity {
      *
      * @return pendingTransshipmentQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of units being transferred from one fulfillment center to another.")
-    public Integer getPendingTransshipmentQuantity() {
+    @javax.annotation.Nullable public Integer getPendingTransshipmentQuantity() {
         return pendingTransshipmentQuantity;
     }
 
@@ -101,10 +120,7 @@ public class ReservedQuantity {
      *
      * @return fcProcessingQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of units that have been sidelined at the fulfillment center for additional processing.")
-    public Integer getFcProcessingQuantity() {
+    @javax.annotation.Nullable public Integer getFcProcessingQuantity() {
         return fcProcessingQuantity;
     }
 
@@ -113,7 +129,7 @@ public class ReservedQuantity {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -157,10 +173,102 @@ public class ReservedQuantity {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("totalReservedQuantity");
+        openapiFields.add("pendingCustomerOrderQuantity");
+        openapiFields.add("pendingTransshipmentQuantity");
+        openapiFields.add("fcProcessingQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ReservedQuantity
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ReservedQuantity.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ReservedQuantity is not found in the empty JSON string",
+                        ReservedQuantity.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ReservedQuantity.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ReservedQuantity` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReservedQuantity.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReservedQuantity' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ReservedQuantity> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ReservedQuantity.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ReservedQuantity>() {
+                        @Override
+                        public void write(JsonWriter out, ReservedQuantity value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ReservedQuantity read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ReservedQuantity given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ReservedQuantity
+     * @throws IOException if the JSON string is invalid with respect to ReservedQuantity
+     */
+    public static ReservedQuantity fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ReservedQuantity.class);
+    }
+
+    /**
+     * Convert an instance of ReservedQuantity to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,32 +12,63 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The details of a payment method. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The details of a payment method.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PaymentMethodDetails {
-    @SerializedName("accountHolderName")
-    private String accountHolderName = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_HOLDER_NAME = "accountHolderName";
 
-    @SerializedName("paymentMethodId")
-    private String paymentMethodId = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_HOLDER_NAME)
+    private String accountHolderName;
 
-    @SerializedName("tail")
-    private String tail = null;
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD_ID = "paymentMethodId";
 
-    @SerializedName("expiryDate")
-    private ExpiryDate expiryDate = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_ID)
+    private String paymentMethodId;
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    public static final String SERIALIZED_NAME_TAIL = "tail";
 
-    @SerializedName("paymentMethodType")
-    private PaymentMethodType paymentMethodType = null;
+    @SerializedName(SERIALIZED_NAME_TAIL)
+    private String tail;
 
-    @SerializedName("assignmentType")
-    private AssignmentType assignmentType = null;
+    public static final String SERIALIZED_NAME_EXPIRY_DATE = "expiryDate";
+
+    @SerializedName(SERIALIZED_NAME_EXPIRY_DATE)
+    private ExpiryDate expiryDate;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD_TYPE = "paymentMethodType";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_TYPE)
+    private PaymentMethodType paymentMethodType;
+
+    public static final String SERIALIZED_NAME_ASSIGNMENT_TYPE = "assignmentType";
+
+    @SerializedName(SERIALIZED_NAME_ASSIGNMENT_TYPE)
+    private AssignmentType assignmentType;
+
+    public PaymentMethodDetails() {}
 
     public PaymentMethodDetails accountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
@@ -49,9 +80,7 @@ public class PaymentMethodDetails {
      *
      * @return accountHolderName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the account holder who is registered for the payment method.")
-    public String getAccountHolderName() {
+    @javax.annotation.Nullable public String getAccountHolderName() {
         return accountHolderName;
     }
 
@@ -69,8 +98,7 @@ public class PaymentMethodDetails {
      *
      * @return paymentMethodId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment method identifier.")
-    public String getPaymentMethodId() {
+    @javax.annotation.Nullable public String getPaymentMethodId() {
         return paymentMethodId;
     }
 
@@ -88,8 +116,7 @@ public class PaymentMethodDetails {
      *
      * @return tail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The last three or four digits of the payment method.")
-    public String getTail() {
+    @javax.annotation.Nullable public String getTail() {
         return tail;
     }
 
@@ -107,8 +134,7 @@ public class PaymentMethodDetails {
      *
      * @return expiryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ExpiryDate getExpiryDate() {
+    @javax.annotation.Nullable public ExpiryDate getExpiryDate() {
         return expiryDate;
     }
 
@@ -128,10 +154,7 @@ public class PaymentMethodDetails {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The two-letter country code in ISO 3166-1 alpha-2 format. For payment methods in the `card` category, the code is for the country where the card was issued. For payment methods in the `bank account` category, the code is for the country where the account is located.")
-    public String getCountryCode() {
+    @javax.annotation.Nullable public String getCountryCode() {
         return countryCode;
     }
 
@@ -149,8 +172,7 @@ public class PaymentMethodDetails {
      *
      * @return paymentMethodType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentMethodType getPaymentMethodType() {
+    @javax.annotation.Nullable public PaymentMethodType getPaymentMethodType() {
         return paymentMethodType;
     }
 
@@ -168,8 +190,7 @@ public class PaymentMethodDetails {
      *
      * @return assignmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AssignmentType getAssignmentType() {
+    @javax.annotation.Nullable public AssignmentType getAssignmentType() {
         return assignmentType;
     }
 
@@ -178,7 +199,7 @@ public class PaymentMethodDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -225,10 +246,145 @@ public class PaymentMethodDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountHolderName");
+        openapiFields.add("paymentMethodId");
+        openapiFields.add("tail");
+        openapiFields.add("expiryDate");
+        openapiFields.add("countryCode");
+        openapiFields.add("paymentMethodType");
+        openapiFields.add("assignmentType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PaymentMethodDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PaymentMethodDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PaymentMethodDetails is not found in the empty JSON string",
+                        PaymentMethodDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PaymentMethodDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PaymentMethodDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("accountHolderName") != null
+                        && !jsonObj.get("accountHolderName").isJsonNull())
+                && !jsonObj.get("accountHolderName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountHolderName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountHolderName").toString()));
+        }
+        if ((jsonObj.get("paymentMethodId") != null
+                        && !jsonObj.get("paymentMethodId").isJsonNull())
+                && !jsonObj.get("paymentMethodId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `paymentMethodId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("paymentMethodId").toString()));
+        }
+        if ((jsonObj.get("tail") != null && !jsonObj.get("tail").isJsonNull())
+                && !jsonObj.get("tail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `tail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("tail").toString()));
+        }
+        // validate the optional field `expiryDate`
+        if (jsonObj.get("expiryDate") != null && !jsonObj.get("expiryDate").isJsonNull()) {
+            ExpiryDate.validateJsonElement(jsonObj.get("expiryDate"));
+        }
+        if ((jsonObj.get("countryCode") != null && !jsonObj.get("countryCode").isJsonNull())
+                && !jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+        // validate the optional field `paymentMethodType`
+        if (jsonObj.get("paymentMethodType") != null
+                && !jsonObj.get("paymentMethodType").isJsonNull()) {
+            PaymentMethodType.validateJsonElement(jsonObj.get("paymentMethodType"));
+        }
+        // validate the optional field `assignmentType`
+        if (jsonObj.get("assignmentType") != null
+                && !jsonObj.get("assignmentType").isJsonNull()) {
+            AssignmentType.validateJsonElement(jsonObj.get("assignmentType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PaymentMethodDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PaymentMethodDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PaymentMethodDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PaymentMethodDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PaymentMethodDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PaymentMethodDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PaymentMethodDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PaymentMethodDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PaymentMethodDetails
+     * @throws IOException if the JSON string is invalid with respect to PaymentMethodDetails
+     */
+    public static PaymentMethodDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PaymentMethodDetails.class);
+    }
+
+    /**
+     * Convert an instance of PaymentMethodDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A request to create a supply source. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A request to create a supply source.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateSupplySourceRequest {
-    @SerializedName("supplySourceCode")
-    private String supplySourceCode = null;
+    public static final String SERIALIZED_NAME_SUPPLY_SOURCE_CODE = "supplySourceCode";
 
-    @SerializedName("alias")
-    private String alias = null;
+    @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCE_CODE)
+    private String supplySourceCode;
 
-    @SerializedName("address")
-    private Address address = null;
+    public static final String SERIALIZED_NAME_ALIAS = "alias";
+
+    @SerializedName(SERIALIZED_NAME_ALIAS)
+    private String alias;
+
+    public static final String SERIALIZED_NAME_ADDRESS = "address";
+
+    @SerializedName(SERIALIZED_NAME_ADDRESS)
+    private Address address;
+
+    public CreateSupplySourceRequest() {}
 
     public CreateSupplySourceRequest supplySourceCode(String supplySourceCode) {
         this.supplySourceCode = supplySourceCode;
@@ -37,9 +60,7 @@ public class CreateSupplySourceRequest {
      *
      * @return supplySourceCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The seller-provided unique supply source code.")
+    @javax.annotation.Nonnull
     public String getSupplySourceCode() {
         return supplySourceCode;
     }
@@ -58,9 +79,7 @@ public class CreateSupplySourceRequest {
      *
      * @return alias
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The custom alias for this supply source")
+    @javax.annotation.Nonnull
     public String getAlias() {
         return alias;
     }
@@ -79,7 +98,7 @@ public class CreateSupplySourceRequest {
      *
      * @return address
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Address getAddress() {
         return address;
     }
@@ -89,7 +108,7 @@ public class CreateSupplySourceRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +140,126 @@ public class CreateSupplySourceRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("supplySourceCode");
+        openapiFields.add("alias");
+        openapiFields.add("address");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("supplySourceCode");
+        openapiRequiredFields.add("alias");
+        openapiRequiredFields.add("address");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateSupplySourceRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateSupplySourceRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateSupplySourceRequest is not found in the empty JSON string",
+                        CreateSupplySourceRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateSupplySourceRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateSupplySourceRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateSupplySourceRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("supplySourceCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supplySourceCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("supplySourceCode").toString()));
+        }
+        if (!jsonObj.get("alias").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `alias` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("alias").toString()));
+        }
+        // validate the required field `address`
+        Address.validateJsonElement(jsonObj.get("address"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateSupplySourceRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateSupplySourceRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateSupplySourceRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateSupplySourceRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateSupplySourceRequest>() {
+                        @Override
+                        public void write(JsonWriter out, CreateSupplySourceRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateSupplySourceRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateSupplySourceRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateSupplySourceRequest
+     * @throws IOException if the JSON string is invalid with respect to CreateSupplySourceRequest
+     */
+    public static CreateSupplySourceRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateSupplySourceRequest.class);
+    }
+
+    /**
+     * Convert an instance of CreateSupplySourceRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

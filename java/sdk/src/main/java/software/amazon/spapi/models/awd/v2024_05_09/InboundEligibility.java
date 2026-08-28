@@ -12,26 +12,52 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Represents the eligibility status of the inbound packages. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Represents the eligibility status of the inbound packages.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InboundEligibility {
-    @SerializedName("ineligibilityReasons")
-    private List<OrderIneligibilityReason> ineligibilityReasons = null;
+    public static final String SERIALIZED_NAME_INELIGIBILITY_REASONS = "ineligibilityReasons";
 
-    @SerializedName("packagesToInbound")
-    private List<SkuEligibility> packagesToInbound = null;
+    @SerializedName(SERIALIZED_NAME_INELIGIBILITY_REASONS)
+    private List<OrderIneligibilityReason> ineligibilityReasons = new ArrayList<>();
 
-    @SerializedName("previewedAt")
-    private OffsetDateTime previewedAt = null;
+    public static final String SERIALIZED_NAME_PACKAGES_TO_INBOUND = "packagesToInbound";
 
-    @SerializedName("status")
-    private InboundEligibilityStatus status = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGES_TO_INBOUND)
+    private List<SkuEligibility> packagesToInbound = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PREVIEWED_AT = "previewedAt";
+
+    @SerializedName(SERIALIZED_NAME_PREVIEWED_AT)
+    private OffsetDateTime previewedAt;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private InboundEligibilityStatus status;
+
+    public InboundEligibility() {}
 
     public InboundEligibility ineligibilityReasons(List<OrderIneligibilityReason> ineligibilityReasons) {
         this.ineligibilityReasons = ineligibilityReasons;
@@ -51,10 +77,7 @@ public class InboundEligibility {
      *
      * @return ineligibilityReasons
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "If there are order level eligibility issues, then this list will contain those error codes and descriptions.")
-    public List<OrderIneligibilityReason> getIneligibilityReasons() {
+    @javax.annotation.Nullable public List<OrderIneligibilityReason> getIneligibilityReasons() {
         return ineligibilityReasons;
     }
 
@@ -80,9 +103,7 @@ public class InboundEligibility {
      *
      * @return packagesToInbound
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Details on SKU eligibility for each inbound package.")
+    @javax.annotation.Nonnull
     public List<SkuEligibility> getPackagesToInbound() {
         return packagesToInbound;
     }
@@ -101,9 +122,7 @@ public class InboundEligibility {
      *
      * @return previewedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Timestamp when the eligibility check is performed.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getPreviewedAt() {
         return previewedAt;
     }
@@ -122,7 +141,7 @@ public class InboundEligibility {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public InboundEligibilityStatus getStatus() {
         return status;
     }
@@ -132,7 +151,7 @@ public class InboundEligibility {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -168,10 +187,147 @@ public class InboundEligibility {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ineligibilityReasons");
+        openapiFields.add("packagesToInbound");
+        openapiFields.add("previewedAt");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("packagesToInbound");
+        openapiRequiredFields.add("previewedAt");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InboundEligibility
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InboundEligibility.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InboundEligibility is not found in the empty JSON string",
+                        InboundEligibility.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InboundEligibility.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InboundEligibility` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InboundEligibility.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("ineligibilityReasons") != null
+                && !jsonObj.get("ineligibilityReasons").isJsonNull()) {
+            JsonArray jsonArrayineligibilityReasons = jsonObj.getAsJsonArray("ineligibilityReasons");
+            if (jsonArrayineligibilityReasons != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ineligibilityReasons").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ineligibilityReasons` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ineligibilityReasons").toString()));
+                }
+
+                // validate the optional field `ineligibilityReasons` (array)
+                for (int i = 0; i < jsonArrayineligibilityReasons.size(); i++) {
+                    OrderIneligibilityReason.validateJsonElement(jsonArrayineligibilityReasons.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("packagesToInbound").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packagesToInbound` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packagesToInbound").toString()));
+        }
+
+        JsonArray jsonArraypackagesToInbound = jsonObj.getAsJsonArray("packagesToInbound");
+        // validate the required field `packagesToInbound` (array)
+        for (int i = 0; i < jsonArraypackagesToInbound.size(); i++) {
+            SkuEligibility.validateJsonElement(jsonArraypackagesToInbound.get(i));
+        }
+        ;
+        // validate the required field `status`
+        InboundEligibilityStatus.validateJsonElement(jsonObj.get("status"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InboundEligibility.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InboundEligibility' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InboundEligibility> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InboundEligibility.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InboundEligibility>() {
+                        @Override
+                        public void write(JsonWriter out, InboundEligibility value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InboundEligibility read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InboundEligibility given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InboundEligibility
+     * @throws IOException if the JSON string is invalid with respect to InboundEligibility
+     */
+    public static InboundEligibility fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InboundEligibility.class);
+    }
+
+    /**
+     * Convert an instance of InboundEligibility to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

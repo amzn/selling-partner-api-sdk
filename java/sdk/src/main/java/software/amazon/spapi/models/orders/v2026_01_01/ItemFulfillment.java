@@ -12,27 +12,53 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about how the order item should be processed, packed, and shipped to the customer. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information about how the order item should be processed, packed, and shipped to the customer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemFulfillment {
-    @SerializedName("quantityFulfilled")
-    private Integer quantityFulfilled = null;
+    public static final String SERIALIZED_NAME_QUANTITY_FULFILLED = "quantityFulfilled";
 
-    @SerializedName("quantityUnfulfilled")
-    private Integer quantityUnfulfilled = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_FULFILLED)
+    private Integer quantityFulfilled;
 
-    @SerializedName("picking")
-    private ItemPicking picking = null;
+    public static final String SERIALIZED_NAME_QUANTITY_UNFULFILLED = "quantityUnfulfilled";
 
-    @SerializedName("packing")
-    private ItemPacking packing = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_UNFULFILLED)
+    private Integer quantityUnfulfilled;
 
-    @SerializedName("shipping")
-    private ItemShipping shipping = null;
+    public static final String SERIALIZED_NAME_PICKING = "picking";
+
+    @SerializedName(SERIALIZED_NAME_PICKING)
+    private ItemPicking picking;
+
+    public static final String SERIALIZED_NAME_PACKING = "packing";
+
+    @SerializedName(SERIALIZED_NAME_PACKING)
+    private ItemPacking packing;
+
+    public static final String SERIALIZED_NAME_SHIPPING = "shipping";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING)
+    private ItemShipping shipping;
+
+    public ItemFulfillment() {}
 
     public ItemFulfillment quantityFulfilled(Integer quantityFulfilled) {
         this.quantityFulfilled = quantityFulfilled;
@@ -44,9 +70,7 @@ public class ItemFulfillment {
      *
      * @return quantityFulfilled
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of units of this item that have been successfully processed and shipped.")
-    public Integer getQuantityFulfilled() {
+    @javax.annotation.Nullable public Integer getQuantityFulfilled() {
         return quantityFulfilled;
     }
 
@@ -64,9 +88,7 @@ public class ItemFulfillment {
      *
      * @return quantityUnfulfilled
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of units of this item that remain to be processed and shipped.")
-    public Integer getQuantityUnfulfilled() {
+    @javax.annotation.Nullable public Integer getQuantityUnfulfilled() {
         return quantityUnfulfilled;
     }
 
@@ -84,8 +106,7 @@ public class ItemFulfillment {
      *
      * @return picking
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemPicking getPicking() {
+    @javax.annotation.Nullable public ItemPicking getPicking() {
         return picking;
     }
 
@@ -103,8 +124,7 @@ public class ItemFulfillment {
      *
      * @return packing
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemPacking getPacking() {
+    @javax.annotation.Nullable public ItemPacking getPacking() {
         return packing;
     }
 
@@ -122,8 +142,7 @@ public class ItemFulfillment {
      *
      * @return shipping
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemShipping getShipping() {
+    @javax.annotation.Nullable public ItemShipping getShipping() {
         return shipping;
     }
 
@@ -132,7 +151,7 @@ public class ItemFulfillment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +189,115 @@ public class ItemFulfillment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("quantityFulfilled");
+        openapiFields.add("quantityUnfulfilled");
+        openapiFields.add("picking");
+        openapiFields.add("packing");
+        openapiFields.add("shipping");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemFulfillment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemFulfillment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemFulfillment is not found in the empty JSON string",
+                        ItemFulfillment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemFulfillment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemFulfillment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `picking`
+        if (jsonObj.get("picking") != null && !jsonObj.get("picking").isJsonNull()) {
+            ItemPicking.validateJsonElement(jsonObj.get("picking"));
+        }
+        // validate the optional field `packing`
+        if (jsonObj.get("packing") != null && !jsonObj.get("packing").isJsonNull()) {
+            ItemPacking.validateJsonElement(jsonObj.get("packing"));
+        }
+        // validate the optional field `shipping`
+        if (jsonObj.get("shipping") != null && !jsonObj.get("shipping").isJsonNull()) {
+            ItemShipping.validateJsonElement(jsonObj.get("shipping"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemFulfillment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemFulfillment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemFulfillment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemFulfillment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemFulfillment>() {
+                        @Override
+                        public void write(JsonWriter out, ItemFulfillment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemFulfillment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemFulfillment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemFulfillment
+     * @throws IOException if the JSON string is invalid with respect to ItemFulfillment
+     */
+    public static ItemFulfillment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemFulfillment.class);
+    }
+
+    /**
+     * Convert an instance of ItemFulfillment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

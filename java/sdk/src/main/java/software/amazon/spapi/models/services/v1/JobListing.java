@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the &#x60;getServiceJobs&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getServiceJobs` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class JobListing {
-    @SerializedName("totalResultSize")
-    private Integer totalResultSize = null;
+    public static final String SERIALIZED_NAME_TOTAL_RESULT_SIZE = "totalResultSize";
 
-    @SerializedName("nextPageToken")
-    private String nextPageToken = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_RESULT_SIZE)
+    private Integer totalResultSize;
 
-    @SerializedName("previousPageToken")
-    private String previousPageToken = null;
+    public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
 
-    @SerializedName("jobs")
-    private List<ServiceJob> jobs = null;
+    @SerializedName(SERIALIZED_NAME_NEXT_PAGE_TOKEN)
+    private String nextPageToken;
+
+    public static final String SERIALIZED_NAME_PREVIOUS_PAGE_TOKEN = "previousPageToken";
+
+    @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE_TOKEN)
+    private String previousPageToken;
+
+    public static final String SERIALIZED_NAME_JOBS = "jobs";
+
+    @SerializedName(SERIALIZED_NAME_JOBS)
+    private List<ServiceJob> jobs = new ArrayList<>();
+
+    public JobListing() {}
 
     public JobListing totalResultSize(Integer totalResultSize) {
         this.totalResultSize = totalResultSize;
@@ -42,8 +68,7 @@ public class JobListing {
      *
      * @return totalResultSize
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Total result size of the query result.")
-    public Integer getTotalResultSize() {
+    @javax.annotation.Nullable public Integer getTotalResultSize() {
         return totalResultSize;
     }
 
@@ -62,10 +87,7 @@ public class JobListing {
      *
      * @return nextPageToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A generated string used to pass information to your next request. If `nextPageToken` is returned, pass the value of `nextPageToken` to the `pageToken` to get next results.")
-    public String getNextPageToken() {
+    @javax.annotation.Nullable public String getNextPageToken() {
         return nextPageToken;
     }
 
@@ -84,10 +106,7 @@ public class JobListing {
      *
      * @return previousPageToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A generated string used to pass information to your next request. If `previousPageToken` is returned, pass the value of `previousPageToken` to the `pageToken` to get previous page results.")
-    public String getPreviousPageToken() {
+    @javax.annotation.Nullable public String getPreviousPageToken() {
         return previousPageToken;
     }
 
@@ -113,8 +132,7 @@ public class JobListing {
      *
      * @return jobs
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of job details for the given input.")
-    public List<ServiceJob> getJobs() {
+    @javax.annotation.Nullable public List<ServiceJob> getJobs() {
         return jobs;
     }
 
@@ -123,7 +141,7 @@ public class JobListing {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -159,10 +177,132 @@ public class JobListing {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("totalResultSize");
+        openapiFields.add("nextPageToken");
+        openapiFields.add("previousPageToken");
+        openapiFields.add("jobs");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to JobListing
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!JobListing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in JobListing is not found in the empty JSON string",
+                        JobListing.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!JobListing.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `JobListing` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("nextPageToken") != null
+                        && !jsonObj.get("nextPageToken").isJsonNull())
+                && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextPageToken").toString()));
+        }
+        if ((jsonObj.get("previousPageToken") != null
+                        && !jsonObj.get("previousPageToken").isJsonNull())
+                && !jsonObj.get("previousPageToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `previousPageToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("previousPageToken").toString()));
+        }
+        if (jsonObj.get("jobs") != null && !jsonObj.get("jobs").isJsonNull()) {
+            JsonArray jsonArrayjobs = jsonObj.getAsJsonArray("jobs");
+            if (jsonArrayjobs != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("jobs").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `jobs` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("jobs").toString()));
+                }
+
+                // validate the optional field `jobs` (array)
+                for (int i = 0; i < jsonArrayjobs.size(); i++) {
+                    ServiceJob.validateJsonElement(jsonArrayjobs.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!JobListing.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'JobListing' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<JobListing> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(JobListing.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<JobListing>() {
+                        @Override
+                        public void write(JsonWriter out, JobListing value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public JobListing read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of JobListing given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of JobListing
+     * @throws IOException if the JSON string is invalid with respect to JobListing
+     */
+    public static JobListing fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, JobListing.class);
+    }
+
+    /**
+     * Convert an instance of JobListing to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** Item preparation instructions. */
 @JsonAdapter(PrepGuidance.Adapter.class)
 public enum PrepGuidance {
-    @SerializedName("ConsultHelpDocuments")
     CONSULT_HELP_DOCUMENTS("ConsultHelpDocuments"),
 
-    @SerializedName("NoAdditionalPrepRequired")
     NO_ADDITIONAL_PREP_REQUIRED("NoAdditionalPrepRequired"),
 
-    @SerializedName("SeePrepInstructionsList")
     SEE_PREP_INSTRUCTIONS_LIST("SeePrepInstructionsList");
 
     private String value;
@@ -46,25 +43,30 @@ public enum PrepGuidance {
         return String.valueOf(value);
     }
 
-    public static PrepGuidance fromValue(String input) {
+    public static PrepGuidance fromValue(String value) {
         for (PrepGuidance b : PrepGuidance.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PrepGuidance> {
         @Override
         public void write(final JsonWriter jsonWriter, final PrepGuidance enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PrepGuidance read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PrepGuidance.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PrepGuidance.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PrepGuidance.fromValue(value);
     }
 }

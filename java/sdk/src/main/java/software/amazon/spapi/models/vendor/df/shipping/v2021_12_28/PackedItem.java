@@ -12,26 +12,53 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item that has been packed into a container for shipping. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item that has been packed into a container for shipping.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackedItem {
-    @SerializedName("itemSequenceNumber")
-    private Integer itemSequenceNumber = null;
+    public static final String SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER = "itemSequenceNumber";
 
-    @SerializedName("buyerProductIdentifier")
-    private String buyerProductIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER)
+    private Integer itemSequenceNumber;
 
-    @SerializedName("pieceNumber")
-    private Integer pieceNumber = null;
+    public static final String SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER = "buyerProductIdentifier";
 
-    @SerializedName("vendorProductIdentifier")
-    private String vendorProductIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER)
+    private String buyerProductIdentifier;
 
-    @SerializedName("packedQuantity")
-    private ItemQuantity packedQuantity = null;
+    public static final String SERIALIZED_NAME_PIECE_NUMBER = "pieceNumber";
+
+    @SerializedName(SERIALIZED_NAME_PIECE_NUMBER)
+    private Integer pieceNumber;
+
+    public static final String SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER = "vendorProductIdentifier";
+
+    @SerializedName(SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER)
+    private String vendorProductIdentifier;
+
+    public static final String SERIALIZED_NAME_PACKED_QUANTITY = "packedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_PACKED_QUANTITY)
+    private ItemQuantity packedQuantity;
+
+    public PackedItem() {}
 
     public PackedItem itemSequenceNumber(Integer itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;
@@ -43,10 +70,7 @@ public class PackedItem {
      *
      * @return itemSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The sequence number of the item. The number must be the same as the order number of the item.")
+    @javax.annotation.Nonnull
     public Integer getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -66,10 +90,7 @@ public class PackedItem {
      *
      * @return buyerProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The buyer's Amazon Standard Identification Number (ASIN) of an item. Either `buyerProductIdentifier` or `vendorProductIdentifier` is required.")
-    public String getBuyerProductIdentifier() {
+    @javax.annotation.Nullable public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
 
@@ -88,10 +109,7 @@ public class PackedItem {
      *
      * @return pieceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The piece number of the item in this container. This is required when the item is split across different containers.")
-    public Integer getPieceNumber() {
+    @javax.annotation.Nullable public Integer getPieceNumber() {
         return pieceNumber;
     }
 
@@ -110,10 +128,7 @@ public class PackedItem {
      *
      * @return vendorProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An item's product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.")
-    public String getVendorProductIdentifier() {
+    @javax.annotation.Nullable public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
 
@@ -131,7 +146,7 @@ public class PackedItem {
      *
      * @return packedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemQuantity getPackedQuantity() {
         return packedQuantity;
     }
@@ -141,7 +156,7 @@ public class PackedItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -184,10 +199,129 @@ public class PackedItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemSequenceNumber");
+        openapiFields.add("buyerProductIdentifier");
+        openapiFields.add("pieceNumber");
+        openapiFields.add("vendorProductIdentifier");
+        openapiFields.add("packedQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("itemSequenceNumber");
+        openapiRequiredFields.add("packedQuantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackedItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackedItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackedItem is not found in the empty JSON string",
+                        PackedItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackedItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackedItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackedItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("buyerProductIdentifier") != null
+                        && !jsonObj.get("buyerProductIdentifier").isJsonNull())
+                && !jsonObj.get("buyerProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyerProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyerProductIdentifier").toString()));
+        }
+        if ((jsonObj.get("vendorProductIdentifier") != null
+                        && !jsonObj.get("vendorProductIdentifier").isJsonNull())
+                && !jsonObj.get("vendorProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorProductIdentifier").toString()));
+        }
+        // validate the required field `packedQuantity`
+        ItemQuantity.validateJsonElement(jsonObj.get("packedQuantity"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackedItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackedItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackedItem> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(PackedItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackedItem>() {
+                        @Override
+                        public void write(JsonWriter out, PackedItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackedItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackedItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackedItem
+     * @throws IOException if the JSON string is invalid with respect to PackedItem
+     */
+    public static PackedItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackedItem.class);
+    }
+
+    /**
+     * Convert an instance of PackedItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A custom attribute that is loosely typed, modeled through a key-value pair and its data type. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "A custom attribute that is loosely typed, modeled through a key-value pair and its data type.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CustomAttribute {
-    @SerializedName("key")
-    private String key = null;
+    public static final String SERIALIZED_NAME_KEY = "key";
 
-    @SerializedName("type")
-    private CustomAttributeType type = null;
+    @SerializedName(SERIALIZED_NAME_KEY)
+    private String key;
 
-    @SerializedName("value")
-    private String value = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
+
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private CustomAttributeType type;
+
+    public static final String SERIALIZED_NAME_VALUE = "value";
+
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
+
+    public CustomAttribute() {}
 
     public CustomAttribute key(String key) {
         this.key = key;
@@ -38,8 +60,7 @@ public class CustomAttribute {
      *
      * @return key
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The key of the custom attribute. Must be unique.")
-    public String getKey() {
+    @javax.annotation.Nullable public String getKey() {
         return key;
     }
 
@@ -57,8 +78,7 @@ public class CustomAttribute {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CustomAttributeType getType() {
+    @javax.annotation.Nullable public CustomAttributeType getType() {
         return type;
     }
 
@@ -76,8 +96,7 @@ public class CustomAttribute {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The value of the custom attribute.")
-    public String getValue() {
+    @javax.annotation.Nullable public String getValue() {
         return value;
     }
 
@@ -86,7 +105,7 @@ public class CustomAttribute {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +135,117 @@ public class CustomAttribute {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("key");
+        openapiFields.add("type");
+        openapiFields.add("value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CustomAttribute
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CustomAttribute.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CustomAttribute is not found in the empty JSON string",
+                        CustomAttribute.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CustomAttribute.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CustomAttribute` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull())
+                && !jsonObj.get("key").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `key` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("key").toString()));
+        }
+        // validate the optional field `type`
+        if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+            CustomAttributeType.validateJsonElement(jsonObj.get("type"));
+        }
+        if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull())
+                && !jsonObj.get("value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("value").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CustomAttribute.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CustomAttribute' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CustomAttribute> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CustomAttribute.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CustomAttribute>() {
+                        @Override
+                        public void write(JsonWriter out, CustomAttribute value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CustomAttribute read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CustomAttribute given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CustomAttribute
+     * @throws IOException if the JSON string is invalid with respect to CustomAttribute
+     */
+    public static CustomAttribute fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CustomAttribute.class);
+    }
+
+    /**
+     * Convert an instance of CustomAttribute to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

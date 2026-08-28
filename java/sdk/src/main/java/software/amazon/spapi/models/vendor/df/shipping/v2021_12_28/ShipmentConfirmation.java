@@ -12,35 +12,63 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Represents the confirmation details of a shipment, including the purchase order number and other shipment details.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Represents the confirmation details of a shipment, including the purchase order number and other shipment details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentConfirmation {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("shipmentDetails")
-    private ShipmentDetails shipmentDetails = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("sellingParty")
-    private PartyIdentification sellingParty = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_DETAILS = "shipmentDetails";
 
-    @SerializedName("shipFromParty")
-    private PartyIdentification shipFromParty = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_DETAILS)
+    private ShipmentDetails shipmentDetails;
 
-    @SerializedName("items")
-    private List<Item> items = null;
+    public static final String SERIALIZED_NAME_SELLING_PARTY = "sellingParty";
 
-    @SerializedName("containers")
-    private List<Container> containers = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PARTY)
+    private PartyIdentification sellingParty;
+
+    public static final String SERIALIZED_NAME_SHIP_FROM_PARTY = "shipFromParty";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_PARTY)
+    private PartyIdentification shipFromParty;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<Item> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CONTAINERS = "containers";
+
+    @SerializedName(SERIALIZED_NAME_CONTAINERS)
+    private List<Container> containers = new ArrayList<>();
+
+    public ShipmentConfirmation() {}
 
     public ShipmentConfirmation purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -52,9 +80,7 @@ public class ShipmentConfirmation {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Purchase order number corresponding to the shipment.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -73,7 +99,7 @@ public class ShipmentConfirmation {
      *
      * @return shipmentDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentDetails getShipmentDetails() {
         return shipmentDetails;
     }
@@ -92,7 +118,7 @@ public class ShipmentConfirmation {
      *
      * @return sellingParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -111,7 +137,7 @@ public class ShipmentConfirmation {
      *
      * @return shipFromParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -139,10 +165,7 @@ public class ShipmentConfirmation {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.")
+    @javax.annotation.Nonnull
     public List<Item> getItems() {
         return items;
     }
@@ -170,10 +193,7 @@ public class ShipmentConfirmation {
      *
      * @return containers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.")
-    public List<Container> getContainers() {
+    @javax.annotation.Nullable public List<Container> getContainers() {
         return containers;
     }
 
@@ -182,7 +202,7 @@ public class ShipmentConfirmation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -222,10 +242,159 @@ public class ShipmentConfirmation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("shipmentDetails");
+        openapiFields.add("sellingParty");
+        openapiFields.add("shipFromParty");
+        openapiFields.add("items");
+        openapiFields.add("containers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("shipmentDetails");
+        openapiRequiredFields.add("sellingParty");
+        openapiRequiredFields.add("shipFromParty");
+        openapiRequiredFields.add("items");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentConfirmation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentConfirmation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentConfirmation is not found in the empty JSON string",
+                        ShipmentConfirmation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentConfirmation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentConfirmation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ShipmentConfirmation.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        // validate the required field `shipmentDetails`
+        ShipmentDetails.validateJsonElement(jsonObj.get("shipmentDetails"));
+        // validate the required field `sellingParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("sellingParty"));
+        // validate the required field `shipFromParty`
+        PartyIdentification.validateJsonElement(jsonObj.get("shipFromParty"));
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            Item.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
+        if (jsonObj.get("containers") != null && !jsonObj.get("containers").isJsonNull()) {
+            JsonArray jsonArraycontainers = jsonObj.getAsJsonArray("containers");
+            if (jsonArraycontainers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("containers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `containers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("containers").toString()));
+                }
+
+                // validate the optional field `containers` (array)
+                for (int i = 0; i < jsonArraycontainers.size(); i++) {
+                    Container.validateJsonElement(jsonArraycontainers.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentConfirmation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentConfirmation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentConfirmation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentConfirmation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentConfirmation>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentConfirmation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentConfirmation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentConfirmation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentConfirmation
+     * @throws IOException if the JSON string is invalid with respect to ShipmentConfirmation
+     */
+    public static ShipmentConfirmation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentConfirmation.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentConfirmation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,26 +12,53 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information about a rejected shipping service */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a rejected shipping service")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RejectedShippingService {
-    @SerializedName("CarrierName")
-    private String carrierName = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "CarrierName";
 
-    @SerializedName("ShippingServiceName")
-    private String shippingServiceName = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
 
-    @SerializedName("ShippingServiceId")
-    private String shippingServiceId = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_NAME = "ShippingServiceName";
 
-    @SerializedName("RejectionReasonCode")
-    private String rejectionReasonCode = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_NAME)
+    private String shippingServiceName;
 
-    @SerializedName("RejectionReasonMessage")
-    private String rejectionReasonMessage = null;
+    public static final String SERIALIZED_NAME_SHIPPING_SERVICE_ID = "ShippingServiceId";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_ID)
+    private String shippingServiceId;
+
+    public static final String SERIALIZED_NAME_REJECTION_REASON_CODE = "RejectionReasonCode";
+
+    @SerializedName(SERIALIZED_NAME_REJECTION_REASON_CODE)
+    private String rejectionReasonCode;
+
+    public static final String SERIALIZED_NAME_REJECTION_REASON_MESSAGE = "RejectionReasonMessage";
+
+    @SerializedName(SERIALIZED_NAME_REJECTION_REASON_MESSAGE)
+    private String rejectionReasonMessage;
+
+    public RejectedShippingService() {}
 
     public RejectedShippingService carrierName(String carrierName) {
         this.carrierName = carrierName;
@@ -43,9 +70,7 @@ public class RejectedShippingService {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The rejected shipping carrier name. For example, USPS.")
+    @javax.annotation.Nonnull
     public String getCarrierName() {
         return carrierName;
     }
@@ -64,9 +89,7 @@ public class RejectedShippingService {
      *
      * @return shippingServiceName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The rejected shipping service localized name. For example, FedEx Standard Overnight.")
+    @javax.annotation.Nonnull
     public String getShippingServiceName() {
         return shippingServiceName;
     }
@@ -85,9 +108,7 @@ public class RejectedShippingService {
      *
      * @return shippingServiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined shipping service identifier.")
+    @javax.annotation.Nonnull
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -106,10 +127,7 @@ public class RejectedShippingService {
      *
      * @return rejectionReasonCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.")
+    @javax.annotation.Nonnull
     public String getRejectionReasonCode() {
         return rejectionReasonCode;
     }
@@ -128,9 +146,7 @@ public class RejectedShippingService {
      *
      * @return rejectionReasonMessage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A localized human readable description of the rejected reason.")
-    public String getRejectionReasonMessage() {
+    @javax.annotation.Nullable public String getRejectionReasonMessage() {
         return rejectionReasonMessage;
     }
 
@@ -139,7 +155,7 @@ public class RejectedShippingService {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -182,10 +198,144 @@ public class RejectedShippingService {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("CarrierName");
+        openapiFields.add("ShippingServiceName");
+        openapiFields.add("ShippingServiceId");
+        openapiFields.add("RejectionReasonCode");
+        openapiFields.add("RejectionReasonMessage");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("CarrierName");
+        openapiRequiredFields.add("ShippingServiceName");
+        openapiRequiredFields.add("ShippingServiceId");
+        openapiRequiredFields.add("RejectionReasonCode");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RejectedShippingService
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RejectedShippingService.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RejectedShippingService is not found in the empty JSON string",
+                        RejectedShippingService.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RejectedShippingService.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RejectedShippingService` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : RejectedShippingService.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("CarrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CarrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CarrierName").toString()));
+        }
+        if (!jsonObj.get("ShippingServiceName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceName").toString()));
+        }
+        if (!jsonObj.get("ShippingServiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceId").toString()));
+        }
+        if (!jsonObj.get("RejectionReasonCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RejectionReasonCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("RejectionReasonCode").toString()));
+        }
+        if ((jsonObj.get("RejectionReasonMessage") != null
+                        && !jsonObj.get("RejectionReasonMessage").isJsonNull())
+                && !jsonObj.get("RejectionReasonMessage").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RejectionReasonMessage` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("RejectionReasonMessage").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RejectedShippingService.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RejectedShippingService' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RejectedShippingService> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RejectedShippingService.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RejectedShippingService>() {
+                        @Override
+                        public void write(JsonWriter out, RejectedShippingService value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RejectedShippingService read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RejectedShippingService given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RejectedShippingService
+     * @throws IOException if the JSON string is invalid with respect to RejectedShippingService
+     */
+    public static RejectedShippingService fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RejectedShippingService.class);
+    }
+
+    /**
+     * Convert an instance of RejectedShippingService to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

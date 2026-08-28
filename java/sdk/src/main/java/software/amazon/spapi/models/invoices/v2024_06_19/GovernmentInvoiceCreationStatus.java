@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The current status of a government invoice creation request. */
 @JsonAdapter(GovernmentInvoiceCreationStatus.Adapter.class)
 public enum GovernmentInvoiceCreationStatus {
-    @SerializedName("PROCESSING")
     PROCESSING("PROCESSING"),
 
-    @SerializedName("SUCCESS")
     SUCCESS("SUCCESS"),
 
-    @SerializedName("ERROR")
     ERROR("ERROR");
 
     private String value;
@@ -46,26 +43,31 @@ public enum GovernmentInvoiceCreationStatus {
         return String.valueOf(value);
     }
 
-    public static GovernmentInvoiceCreationStatus fromValue(String input) {
+    public static GovernmentInvoiceCreationStatus fromValue(String value) {
         for (GovernmentInvoiceCreationStatus b : GovernmentInvoiceCreationStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<GovernmentInvoiceCreationStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final GovernmentInvoiceCreationStatus enumeration)
                 throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public GovernmentInvoiceCreationStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return GovernmentInvoiceCreationStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return GovernmentInvoiceCreationStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        GovernmentInvoiceCreationStatus.fromValue(value);
     }
 }

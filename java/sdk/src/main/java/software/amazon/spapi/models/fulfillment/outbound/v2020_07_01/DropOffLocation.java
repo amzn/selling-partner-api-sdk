@@ -12,37 +12,46 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The drop-off location at the destination address. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The drop-off location at the destination address.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DropOffLocation {
     /** The drop-off location type at the destination address. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("FRONT_DOOR")
         FRONT_DOOR("FRONT_DOOR"),
-        @SerializedName("DELIVERY_BOX")
+
         DELIVERY_BOX("DELIVERY_BOX"),
-        @SerializedName("GAS_METER_BOX")
+
         GAS_METER_BOX("GAS_METER_BOX"),
-        @SerializedName("BICYCLE_BASKET")
+
         BICYCLE_BASKET("BICYCLE_BASKET"),
-        @SerializedName("GARAGE")
+
         GARAGE("GARAGE"),
-        @SerializedName("RECEPTIONIST")
+
         RECEPTIONIST("RECEPTIONIST"),
-        @SerializedName("FALLBACK_NEIGHBOR_DELIVERY")
+
         FALLBACK_NEIGHBOR_DELIVERY("FALLBACK_NEIGHBOR_DELIVERY"),
-        @SerializedName("DO_NOT_LEAVE_UNATTENDED")
+
         DO_NOT_LEAVE_UNATTENDED("DO_NOT_LEAVE_UNATTENDED");
 
         private String value;
@@ -60,34 +69,45 @@ public class DropOffLocation {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("attributes")
-    private Map<String, String> attributes = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
+
+    public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
+
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
+    private Map<String, String> attributes = new HashMap<>();
+
+    public DropOffLocation() {}
 
     public DropOffLocation type(TypeEnum type) {
         this.type = type;
@@ -99,9 +119,7 @@ public class DropOffLocation {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The drop-off location type at the destination address.")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         return type;
     }
@@ -133,10 +151,7 @@ public class DropOffLocation {
      *
      * @return attributes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.")
-    public Map<String, String> getAttributes() {
+    @javax.annotation.Nullable public Map<String, String> getAttributes() {
         return attributes;
     }
 
@@ -145,7 +160,7 @@ public class DropOffLocation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +188,117 @@ public class DropOffLocation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("attributes");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DropOffLocation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DropOffLocation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DropOffLocation is not found in the empty JSON string",
+                        DropOffLocation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DropOffLocation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DropOffLocation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DropOffLocation.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DropOffLocation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DropOffLocation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DropOffLocation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DropOffLocation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DropOffLocation>() {
+                        @Override
+                        public void write(JsonWriter out, DropOffLocation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DropOffLocation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DropOffLocation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DropOffLocation
+     * @throws IOException if the JSON string is invalid with respect to DropOffLocation
+     */
+    public static DropOffLocation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DropOffLocation.class);
+    }
+
+    /**
+     * Convert an instance of DropOffLocation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

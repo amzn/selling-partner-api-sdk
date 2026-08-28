@@ -12,34 +12,61 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is
  * not required and will be ignored.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DirectPurchaseRequest {
-    @SerializedName("shipTo")
-    private Address shipTo = null;
+    public static final String SERIALIZED_NAME_SHIP_TO = "shipTo";
 
-    @SerializedName("shipFrom")
-    private Address shipFrom = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO)
+    private Address shipTo;
 
-    @SerializedName("returnTo")
-    private Address returnTo = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM = "shipFrom";
 
-    @SerializedName("packages")
-    private PackageList packages = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM)
+    private Address shipFrom;
 
-    @SerializedName("channelDetails")
-    private ChannelDetails channelDetails = null;
+    public static final String SERIALIZED_NAME_RETURN_TO = "returnTo";
 
-    @SerializedName("labelSpecifications")
-    private RequestedDocumentSpecification labelSpecifications = null;
+    @SerializedName(SERIALIZED_NAME_RETURN_TO)
+    private Address returnTo;
+
+    public static final String SERIALIZED_NAME_PACKAGES = "packages";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGES)
+    private PackageList packages = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHANNEL_DETAILS)
+    private ChannelDetails channelDetails;
+
+    public static final String SERIALIZED_NAME_LABEL_SPECIFICATIONS = "labelSpecifications";
+
+    @SerializedName(SERIALIZED_NAME_LABEL_SPECIFICATIONS)
+    private RequestedDocumentSpecification labelSpecifications;
+
+    public DirectPurchaseRequest() {}
 
     public DirectPurchaseRequest shipTo(Address shipTo) {
         this.shipTo = shipTo;
@@ -51,8 +78,7 @@ public class DirectPurchaseRequest {
      *
      * @return shipTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShipTo() {
+    @javax.annotation.Nullable public Address getShipTo() {
         return shipTo;
     }
 
@@ -70,8 +96,7 @@ public class DirectPurchaseRequest {
      *
      * @return shipFrom
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShipFrom() {
+    @javax.annotation.Nullable public Address getShipFrom() {
         return shipFrom;
     }
 
@@ -89,8 +114,7 @@ public class DirectPurchaseRequest {
      *
      * @return returnTo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getReturnTo() {
+    @javax.annotation.Nullable public Address getReturnTo() {
         return returnTo;
     }
 
@@ -108,8 +132,7 @@ public class DirectPurchaseRequest {
      *
      * @return packages
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PackageList getPackages() {
+    @javax.annotation.Nullable public PackageList getPackages() {
         return packages;
     }
 
@@ -127,7 +150,7 @@ public class DirectPurchaseRequest {
      *
      * @return channelDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -146,8 +169,7 @@ public class DirectPurchaseRequest {
      *
      * @return labelSpecifications
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RequestedDocumentSpecification getLabelSpecifications() {
+    @javax.annotation.Nullable public RequestedDocumentSpecification getLabelSpecifications() {
         return labelSpecifications;
     }
 
@@ -156,7 +178,7 @@ public class DirectPurchaseRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -196,10 +218,134 @@ public class DirectPurchaseRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipTo");
+        openapiFields.add("shipFrom");
+        openapiFields.add("returnTo");
+        openapiFields.add("packages");
+        openapiFields.add("channelDetails");
+        openapiFields.add("labelSpecifications");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("channelDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DirectPurchaseRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DirectPurchaseRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DirectPurchaseRequest is not found in the empty JSON string",
+                        DirectPurchaseRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DirectPurchaseRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DirectPurchaseRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DirectPurchaseRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `shipTo`
+        if (jsonObj.get("shipTo") != null && !jsonObj.get("shipTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("shipTo"));
+        }
+        // validate the optional field `shipFrom`
+        if (jsonObj.get("shipFrom") != null && !jsonObj.get("shipFrom").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("shipFrom"));
+        }
+        // validate the optional field `returnTo`
+        if (jsonObj.get("returnTo") != null && !jsonObj.get("returnTo").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("returnTo"));
+        }
+        // validate the required field `channelDetails`
+        ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));
+        // validate the optional field `labelSpecifications`
+        if (jsonObj.get("labelSpecifications") != null
+                && !jsonObj.get("labelSpecifications").isJsonNull()) {
+            RequestedDocumentSpecification.validateJsonElement(jsonObj.get("labelSpecifications"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DirectPurchaseRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DirectPurchaseRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DirectPurchaseRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DirectPurchaseRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DirectPurchaseRequest>() {
+                        @Override
+                        public void write(JsonWriter out, DirectPurchaseRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DirectPurchaseRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DirectPurchaseRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DirectPurchaseRequest
+     * @throws IOException if the JSON string is invalid with respect to DirectPurchaseRequest
+     */
+    public static DirectPurchaseRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DirectPurchaseRequest.class);
+    }
+
+    /**
+     * Convert an instance of DirectPurchaseRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

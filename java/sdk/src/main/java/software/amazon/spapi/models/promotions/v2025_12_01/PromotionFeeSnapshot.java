@@ -12,8 +12,21 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The promotion&#39;s fee information (rates and incentive programs) that was locked at the time of promotion creation.
@@ -21,12 +34,16 @@ import java.util.Objects;
  * includes the fee information captured at time t2. If empty, it means that no fee information was recorded, which
  * indicates that either a promotion type or a marketplace does not currently support promotion fees.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The promotion's fee information (rates and incentive programs) that was locked at the time of promotion creation. You can estimate promotion fees (fee preview) at time t1, while promotion creation can happen at time t2. This object includes the fee information captured at time t2. If empty, it means that no fee information was recorded, which indicates that either a promotion type or a marketplace does not currently support promotion fees.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PromotionFeeSnapshot {
-    @SerializedName("previewedFeeRates")
-    private PreviewedFeeRates previewedFeeRates = null;
+    public static final String SERIALIZED_NAME_PREVIEWED_FEE_RATES = "previewedFeeRates";
+
+    @SerializedName(SERIALIZED_NAME_PREVIEWED_FEE_RATES)
+    private PreviewedFeeRates previewedFeeRates;
+
+    public PromotionFeeSnapshot() {}
 
     public PromotionFeeSnapshot previewedFeeRates(PreviewedFeeRates previewedFeeRates) {
         this.previewedFeeRates = previewedFeeRates;
@@ -38,8 +55,7 @@ public class PromotionFeeSnapshot {
      *
      * @return previewedFeeRates
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PreviewedFeeRates getPreviewedFeeRates() {
+    @javax.annotation.Nullable public PreviewedFeeRates getPreviewedFeeRates() {
         return previewedFeeRates;
     }
 
@@ -48,7 +64,7 @@ public class PromotionFeeSnapshot {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -76,10 +92,104 @@ public class PromotionFeeSnapshot {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("previewedFeeRates");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PromotionFeeSnapshot
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PromotionFeeSnapshot.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PromotionFeeSnapshot is not found in the empty JSON string",
+                        PromotionFeeSnapshot.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PromotionFeeSnapshot.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PromotionFeeSnapshot` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `previewedFeeRates`
+        if (jsonObj.get("previewedFeeRates") != null
+                && !jsonObj.get("previewedFeeRates").isJsonNull()) {
+            PreviewedFeeRates.validateJsonElement(jsonObj.get("previewedFeeRates"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PromotionFeeSnapshot.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PromotionFeeSnapshot' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PromotionFeeSnapshot> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PromotionFeeSnapshot.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PromotionFeeSnapshot>() {
+                        @Override
+                        public void write(JsonWriter out, PromotionFeeSnapshot value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PromotionFeeSnapshot read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PromotionFeeSnapshot given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PromotionFeeSnapshot
+     * @throws IOException if the JSON string is invalid with respect to PromotionFeeSnapshot
+     */
+    public static PromotionFeeSnapshot fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PromotionFeeSnapshot.class);
+    }
+
+    /**
+     * Convert an instance of PromotionFeeSnapshot to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The updated values of the &#x60;VerificationStatus&#x60; field. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The updated values of the `VerificationStatus` field.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class UpdateVerificationStatusRequestBody {
-    @SerializedName("status")
-    private VerificationStatus status = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("externalReviewerId")
-    private String externalReviewerId = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private VerificationStatus status;
 
-    @SerializedName("rejectionReasonId")
-    private String rejectionReasonId = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_REVIEWER_ID = "externalReviewerId";
 
-    @SerializedName("verificationDetails")
-    private VerificationDetails verificationDetails = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_REVIEWER_ID)
+    private String externalReviewerId;
+
+    public static final String SERIALIZED_NAME_REJECTION_REASON_ID = "rejectionReasonId";
+
+    @SerializedName(SERIALIZED_NAME_REJECTION_REASON_ID)
+    private String rejectionReasonId;
+
+    public static final String SERIALIZED_NAME_VERIFICATION_DETAILS = "verificationDetails";
+
+    @SerializedName(SERIALIZED_NAME_VERIFICATION_DETAILS)
+    private VerificationDetails verificationDetails;
+
+    public UpdateVerificationStatusRequestBody() {}
 
     public UpdateVerificationStatusRequestBody status(VerificationStatus status) {
         this.status = status;
@@ -40,8 +65,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public VerificationStatus getStatus() {
+    @javax.annotation.Nullable public VerificationStatus getStatus() {
         return status;
     }
 
@@ -59,9 +83,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return externalReviewerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier of the order's regulated information reviewer.")
+    @javax.annotation.Nonnull
     public String getExternalReviewerId() {
         return externalReviewerId;
     }
@@ -81,10 +103,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return rejectionReasonId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The unique identifier of the rejection reason used for rejecting the order's regulated information. Only required if the new status is rejected.")
-    public String getRejectionReasonId() {
+    @javax.annotation.Nullable public String getRejectionReasonId() {
         return rejectionReasonId;
     }
 
@@ -102,8 +121,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return verificationDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public VerificationDetails getVerificationDetails() {
+    @javax.annotation.Nullable public VerificationDetails getVerificationDetails() {
         return verificationDetails;
     }
 
@@ -112,7 +130,7 @@ public class UpdateVerificationStatusRequestBody {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -151,10 +169,135 @@ public class UpdateVerificationStatusRequestBody {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("status");
+        openapiFields.add("externalReviewerId");
+        openapiFields.add("rejectionReasonId");
+        openapiFields.add("verificationDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("externalReviewerId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to UpdateVerificationStatusRequestBody
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!UpdateVerificationStatusRequestBody.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in UpdateVerificationStatusRequestBody is not found in the empty JSON string",
+                        UpdateVerificationStatusRequestBody.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!UpdateVerificationStatusRequestBody.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `UpdateVerificationStatusRequestBody` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : UpdateVerificationStatusRequestBody.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            VerificationStatus.validateJsonElement(jsonObj.get("status"));
+        }
+        if (!jsonObj.get("externalReviewerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalReviewerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalReviewerId").toString()));
+        }
+        if ((jsonObj.get("rejectionReasonId") != null
+                        && !jsonObj.get("rejectionReasonId").isJsonNull())
+                && !jsonObj.get("rejectionReasonId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rejectionReasonId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rejectionReasonId").toString()));
+        }
+        // validate the optional field `verificationDetails`
+        if (jsonObj.get("verificationDetails") != null
+                && !jsonObj.get("verificationDetails").isJsonNull()) {
+            VerificationDetails.validateJsonElement(jsonObj.get("verificationDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UpdateVerificationStatusRequestBody.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UpdateVerificationStatusRequestBody' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UpdateVerificationStatusRequestBody> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UpdateVerificationStatusRequestBody.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UpdateVerificationStatusRequestBody>() {
+                        @Override
+                        public void write(JsonWriter out, UpdateVerificationStatusRequestBody value)
+                                throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UpdateVerificationStatusRequestBody read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UpdateVerificationStatusRequestBody given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UpdateVerificationStatusRequestBody
+     * @throws IOException if the JSON string is invalid with respect to UpdateVerificationStatusRequestBody
+     */
+    public static UpdateVerificationStatusRequestBody fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UpdateVerificationStatusRequestBody.class);
+    }
+
+    /**
+     * Convert an instance of UpdateVerificationStatusRequestBody to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

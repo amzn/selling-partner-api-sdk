@@ -12,35 +12,48 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** All information relevant to a balance. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "All information relevant to a balance.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Balance {
-    @SerializedName("partnerMetadata")
-    private PartnerMetadata partnerMetadata = null;
+    public static final String SERIALIZED_NAME_PARTNER_METADATA = "partnerMetadata";
+
+    @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+    private PartnerMetadata partnerMetadata;
 
     /** The type of balance. */
     @JsonAdapter(BalanceTypeEnum.Adapter.class)
     public enum BalanceTypeEnum {
-        @SerializedName("AVAILABLE")
         AVAILABLE("AVAILABLE"),
-        @SerializedName("RESERVED")
+
         RESERVED("RESERVED"),
-        @SerializedName("ACCOUNT_LEVEL_RESERVE")
+
         ACCOUNT_LEVEL_RESERVE("ACCOUNT_LEVEL_RESERVE"),
-        @SerializedName("DEFERRED")
+
         DEFERRED("DEFERRED"),
-        @SerializedName("TOTAL")
+
         TOTAL("TOTAL");
 
         private String value;
@@ -58,43 +71,60 @@ public class Balance {
             return String.valueOf(value);
         }
 
-        public static BalanceTypeEnum fromValue(String input) {
+        public static BalanceTypeEnum fromValue(String value) {
             for (BalanceTypeEnum b : BalanceTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<BalanceTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final BalanceTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public BalanceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return BalanceTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return BalanceTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            BalanceTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("balanceType")
-    private BalanceTypeEnum balanceType = null;
+    public static final String SERIALIZED_NAME_BALANCE_TYPE = "balanceType";
 
-    @SerializedName("amount")
-    private Currency amount = null;
+    @SerializedName(SERIALIZED_NAME_BALANCE_TYPE)
+    private BalanceTypeEnum balanceType;
 
-    @SerializedName("balances")
-    private List<Balance> balances = null;
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
 
-    @SerializedName("asOfDate")
-    private OffsetDateTime asOfDate = null;
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Currency amount;
 
-    @SerializedName("lastUpdatedTime")
-    private OffsetDateTime lastUpdatedTime = null;
+    public static final String SERIALIZED_NAME_BALANCES = "balances";
+
+    @SerializedName(SERIALIZED_NAME_BALANCES)
+    private List<Balance> balances = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_AS_OF_DATE = "asOfDate";
+
+    @SerializedName(SERIALIZED_NAME_AS_OF_DATE)
+    private OffsetDateTime asOfDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATED_TIME = "lastUpdatedTime";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATED_TIME)
+    private OffsetDateTime lastUpdatedTime;
+
+    public Balance() {}
 
     public Balance partnerMetadata(PartnerMetadata partnerMetadata) {
         this.partnerMetadata = partnerMetadata;
@@ -106,8 +136,7 @@ public class Balance {
      *
      * @return partnerMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartnerMetadata getPartnerMetadata() {
+    @javax.annotation.Nullable public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
 
@@ -125,8 +154,7 @@ public class Balance {
      *
      * @return balanceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of balance.")
-    public BalanceTypeEnum getBalanceType() {
+    @javax.annotation.Nullable public BalanceTypeEnum getBalanceType() {
         return balanceType;
     }
 
@@ -144,8 +172,7 @@ public class Balance {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getAmount() {
+    @javax.annotation.Nullable public Currency getAmount() {
         return amount;
     }
 
@@ -171,8 +198,7 @@ public class Balance {
      *
      * @return balances
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of balances that comprise this balance.")
-    public List<Balance> getBalances() {
+    @javax.annotation.Nullable public List<Balance> getBalances() {
         return balances;
     }
 
@@ -190,10 +216,7 @@ public class Balance {
      *
      * @return asOfDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getAsOfDate() {
+    @javax.annotation.Nullable public OffsetDateTime getAsOfDate() {
         return asOfDate;
     }
 
@@ -214,10 +237,7 @@ public class Balance {
      *
      * @return lastUpdatedTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the balance was last updated, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The value is in the marketplace's local time zone. This field is present for point-in-time balance queries (when no `asOfDate` query parameter is provided). Null for ending balance queries.")
-    public OffsetDateTime getLastUpdatedTime() {
+    @javax.annotation.Nullable public OffsetDateTime getLastUpdatedTime() {
         return lastUpdatedTime;
     }
 
@@ -226,7 +246,7 @@ public class Balance {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -266,10 +286,139 @@ public class Balance {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partnerMetadata");
+        openapiFields.add("balanceType");
+        openapiFields.add("amount");
+        openapiFields.add("balances");
+        openapiFields.add("asOfDate");
+        openapiFields.add("lastUpdatedTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Balance
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Balance.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Balance is not found in the empty JSON string",
+                        Balance.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Balance.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Balance` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `partnerMetadata`
+        if (jsonObj.get("partnerMetadata") != null
+                && !jsonObj.get("partnerMetadata").isJsonNull()) {
+            PartnerMetadata.validateJsonElement(jsonObj.get("partnerMetadata"));
+        }
+        if ((jsonObj.get("balanceType") != null && !jsonObj.get("balanceType").isJsonNull())
+                && !jsonObj.get("balanceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `balanceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("balanceType").toString()));
+        }
+        // validate the optional field `balanceType`
+        if (jsonObj.get("balanceType") != null && !jsonObj.get("balanceType").isJsonNull()) {
+            BalanceTypeEnum.validateJsonElement(jsonObj.get("balanceType"));
+        }
+        // validate the optional field `amount`
+        if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("amount"));
+        }
+        if (jsonObj.get("balances") != null && !jsonObj.get("balances").isJsonNull()) {
+            JsonArray jsonArraybalances = jsonObj.getAsJsonArray("balances");
+            if (jsonArraybalances != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("balances").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `balances` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("balances").toString()));
+                }
+
+                // validate the optional field `balances` (array)
+                for (int i = 0; i < jsonArraybalances.size(); i++) {
+                    Balance.validateJsonElement(jsonArraybalances.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Balance.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Balance' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Balance> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Balance.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Balance>() {
+                        @Override
+                        public void write(JsonWriter out, Balance value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Balance read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Balance given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Balance
+     * @throws IOException if the JSON string is invalid with respect to Balance
+     */
+    public static Balance fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Balance.class);
+    }
+
+    /**
+     * Convert an instance of Balance to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

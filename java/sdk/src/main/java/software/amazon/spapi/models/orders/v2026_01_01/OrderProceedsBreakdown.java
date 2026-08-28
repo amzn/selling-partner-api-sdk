@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An entry detailing proceeds information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An entry detailing proceeds information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderProceedsBreakdown {
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("status")
-    private String status = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
 
-    @SerializedName("subtotal")
-    private Money subtotal = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
+
+    @SerializedName(SERIALIZED_NAME_SUBTOTAL)
+    private Money subtotal;
+
+    public OrderProceedsBreakdown() {}
 
     public OrderProceedsBreakdown type(String type) {
         this.type = type;
@@ -40,10 +63,7 @@ public class OrderProceedsBreakdown {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The proceeds category.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `TAX`, `DISCOUNT`, `DELIVERY_TIP`, `OTHER`. **Note:** `DELIVERY_TIP` is charged separately and not attributed to a specific item. The remaining categories are aggregated across all order items.")
+    @javax.annotation.Nonnull
     public String getType() {
         return type;
     }
@@ -63,10 +83,7 @@ public class OrderProceedsBreakdown {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The processing status of the charge. Only present for categories processed separately after checkout, such as `DELIVERY_TIP`.  **Possible values**: `PENDING`, `FINALIZED`.")
-    public String getStatus() {
+    @javax.annotation.Nullable public String getStatus() {
         return status;
     }
 
@@ -84,7 +101,7 @@ public class OrderProceedsBreakdown {
      *
      * @return subtotal
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getSubtotal() {
         return subtotal;
     }
@@ -94,7 +111,7 @@ public class OrderProceedsBreakdown {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -124,10 +141,126 @@ public class OrderProceedsBreakdown {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("status");
+        openapiFields.add("subtotal");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+        openapiRequiredFields.add("subtotal");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderProceedsBreakdown
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderProceedsBreakdown.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderProceedsBreakdown is not found in the empty JSON string",
+                        OrderProceedsBreakdown.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderProceedsBreakdown.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderProceedsBreakdown` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderProceedsBreakdown.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
+                && !jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        // validate the required field `subtotal`
+        Money.validateJsonElement(jsonObj.get("subtotal"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderProceedsBreakdown.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderProceedsBreakdown' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderProceedsBreakdown> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderProceedsBreakdown.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderProceedsBreakdown>() {
+                        @Override
+                        public void write(JsonWriter out, OrderProceedsBreakdown value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderProceedsBreakdown read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderProceedsBreakdown given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderProceedsBreakdown
+     * @throws IOException if the JSON string is invalid with respect to OrderProceedsBreakdown
+     */
+    public static OrderProceedsBreakdown fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderProceedsBreakdown.class);
+    }
+
+    /**
+     * Convert an instance of OrderProceedsBreakdown to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

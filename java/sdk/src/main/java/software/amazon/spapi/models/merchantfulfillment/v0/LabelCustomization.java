@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Custom text for shipping labels. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Custom text for shipping labels.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LabelCustomization {
-    @SerializedName("CustomTextForLabel")
-    private String customTextForLabel = null;
+    public static final String SERIALIZED_NAME_CUSTOM_TEXT_FOR_LABEL = "CustomTextForLabel";
 
-    @SerializedName("StandardIdForLabel")
-    private StandardIdForLabel standardIdForLabel = null;
+    @SerializedName(SERIALIZED_NAME_CUSTOM_TEXT_FOR_LABEL)
+    private String customTextForLabel;
+
+    public static final String SERIALIZED_NAME_STANDARD_ID_FOR_LABEL = "StandardIdForLabel";
+
+    @SerializedName(SERIALIZED_NAME_STANDARD_ID_FOR_LABEL)
+    private StandardIdForLabel standardIdForLabel;
+
+    public LabelCustomization() {}
 
     public LabelCustomization customTextForLabel(String customTextForLabel) {
         this.customTextForLabel = customTextForLabel;
@@ -35,10 +56,7 @@ public class LabelCustomization {
      *
      * @return customTextForLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.")
-    public String getCustomTextForLabel() {
+    @javax.annotation.Nullable public String getCustomTextForLabel() {
         return customTextForLabel;
     }
 
@@ -56,8 +74,7 @@ public class LabelCustomization {
      *
      * @return standardIdForLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardIdForLabel getStandardIdForLabel() {
+    @javax.annotation.Nullable public StandardIdForLabel getStandardIdForLabel() {
         return standardIdForLabel;
     }
 
@@ -66,7 +83,7 @@ public class LabelCustomization {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +115,112 @@ public class LabelCustomization {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("CustomTextForLabel");
+        openapiFields.add("StandardIdForLabel");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LabelCustomization
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LabelCustomization.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LabelCustomization is not found in the empty JSON string",
+                        LabelCustomization.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LabelCustomization.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LabelCustomization` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("CustomTextForLabel") != null
+                        && !jsonObj.get("CustomTextForLabel").isJsonNull())
+                && !jsonObj.get("CustomTextForLabel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CustomTextForLabel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CustomTextForLabel").toString()));
+        }
+        // validate the optional field `StandardIdForLabel`
+        if (jsonObj.get("StandardIdForLabel") != null
+                && !jsonObj.get("StandardIdForLabel").isJsonNull()) {
+            StandardIdForLabel.validateJsonElement(jsonObj.get("StandardIdForLabel"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LabelCustomization.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LabelCustomization' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LabelCustomization> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LabelCustomization.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LabelCustomization>() {
+                        @Override
+                        public void write(JsonWriter out, LabelCustomization value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LabelCustomization read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LabelCustomization given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LabelCustomization
+     * @throws IOException if the JSON string is invalid with respect to LabelCustomization
+     */
+    public static LabelCustomization fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LabelCustomization.class);
+    }
+
+    /**
+     * Convert an instance of LabelCustomization to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

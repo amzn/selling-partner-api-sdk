@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.io.IOException;
 /** Details the importance of the constraint present on the item */
 @JsonAdapter(ConstraintType.Adapter.class)
 public enum ConstraintType {
-    @SerializedName("MANDATORY")
     MANDATORY("MANDATORY");
 
     private String value;
@@ -40,25 +39,30 @@ public enum ConstraintType {
         return String.valueOf(value);
     }
 
-    public static ConstraintType fromValue(String input) {
+    public static ConstraintType fromValue(String value) {
         for (ConstraintType b : ConstraintType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ConstraintType> {
         @Override
         public void write(final JsonWriter jsonWriter, final ConstraintType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ConstraintType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ConstraintType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ConstraintType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ConstraintType.fromValue(value);
     }
 }

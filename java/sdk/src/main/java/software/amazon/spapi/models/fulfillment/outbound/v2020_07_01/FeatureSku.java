@@ -12,34 +12,59 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Information about an SKU, including the count available, identifiers, and a list of overlapping SKUs that share the
  * same inventory pool.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Information about an SKU, including the count available, identifiers, and a list of overlapping SKUs that share the same inventory pool.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeatureSku {
-    @SerializedName("sellerSku")
-    private String sellerSku = null;
+    public static final String SERIALIZED_NAME_SELLER_SKU = "sellerSku";
 
-    @SerializedName("fnSku")
-    private String fnSku = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_SKU)
+    private String sellerSku;
 
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_FN_SKU = "fnSku";
 
-    @SerializedName("skuCount")
-    private BigDecimal skuCount = null;
+    @SerializedName(SERIALIZED_NAME_FN_SKU)
+    private String fnSku;
 
-    @SerializedName("overlappingSkus")
-    private List<String> overlappingSkus = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
+
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
+
+    public static final String SERIALIZED_NAME_SKU_COUNT = "skuCount";
+
+    @SerializedName(SERIALIZED_NAME_SKU_COUNT)
+    private BigDecimal skuCount;
+
+    public static final String SERIALIZED_NAME_OVERLAPPING_SKUS = "overlappingSkus";
+
+    @SerializedName(SERIALIZED_NAME_OVERLAPPING_SKUS)
+    private List<String> overlappingSkus = new ArrayList<>();
+
+    public FeatureSku() {}
 
     public FeatureSku sellerSku(String sellerSku) {
         this.sellerSku = sellerSku;
@@ -52,10 +77,7 @@ public class FeatureSku {
      *
      * @return sellerSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.")
-    public String getSellerSku() {
+    @javax.annotation.Nullable public String getSellerSku() {
         return sellerSku;
     }
 
@@ -73,8 +95,7 @@ public class FeatureSku {
      *
      * @return fnSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique SKU used by Amazon's fulfillment network.")
-    public String getFnSku() {
+    @javax.annotation.Nullable public String getFnSku() {
         return fnSku;
     }
 
@@ -92,9 +113,7 @@ public class FeatureSku {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -112,8 +131,7 @@ public class FeatureSku {
      *
      * @return skuCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of SKUs available for this service.")
-    public BigDecimal getSkuCount() {
+    @javax.annotation.Nullable public BigDecimal getSkuCount() {
         return skuCount;
     }
 
@@ -139,9 +157,7 @@ public class FeatureSku {
      *
      * @return overlappingSkus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Other seller SKUs that are shared across the same inventory.")
-    public List<String> getOverlappingSkus() {
+    @javax.annotation.Nullable public List<String> getOverlappingSkus() {
         return overlappingSkus;
     }
 
@@ -150,7 +166,7 @@ public class FeatureSku {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -186,10 +202,128 @@ public class FeatureSku {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerSku");
+        openapiFields.add("fnSku");
+        openapiFields.add("asin");
+        openapiFields.add("skuCount");
+        openapiFields.add("overlappingSkus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeatureSku
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeatureSku.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeatureSku is not found in the empty JSON string",
+                        FeatureSku.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeatureSku.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeatureSku` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("sellerSku") != null && !jsonObj.get("sellerSku").isJsonNull())
+                && !jsonObj.get("sellerSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerSku").toString()));
+        }
+        if ((jsonObj.get("fnSku") != null && !jsonObj.get("fnSku").isJsonNull())
+                && !jsonObj.get("fnSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fnSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fnSku").toString()));
+        }
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("overlappingSkus") != null
+                && !jsonObj.get("overlappingSkus").isJsonNull()
+                && !jsonObj.get("overlappingSkus").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `overlappingSkus` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("overlappingSkus").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeatureSku.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeatureSku' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeatureSku> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(FeatureSku.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeatureSku>() {
+                        @Override
+                        public void write(JsonWriter out, FeatureSku value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeatureSku read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeatureSku given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeatureSku
+     * @throws IOException if the JSON string is invalid with respect to FeatureSku
+     */
+    public static FeatureSku fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeatureSku.class);
+    }
+
+    /**
+     * Convert an instance of FeatureSku to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

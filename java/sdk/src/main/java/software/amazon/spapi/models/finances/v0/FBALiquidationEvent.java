@@ -12,28 +12,51 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A payment event for Fulfillment by Amazon (FBA) inventory liquidation. This event is used only in the US marketplace.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A payment event for Fulfillment by Amazon (FBA) inventory liquidation. This event is used only in the US marketplace.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FBALiquidationEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("OriginalRemovalOrderId")
-    private String originalRemovalOrderId = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("LiquidationProceedsAmount")
-    private Currency liquidationProceedsAmount = null;
+    public static final String SERIALIZED_NAME_ORIGINAL_REMOVAL_ORDER_ID = "OriginalRemovalOrderId";
 
-    @SerializedName("LiquidationFeeAmount")
-    private Currency liquidationFeeAmount = null;
+    @SerializedName(SERIALIZED_NAME_ORIGINAL_REMOVAL_ORDER_ID)
+    private String originalRemovalOrderId;
+
+    public static final String SERIALIZED_NAME_LIQUIDATION_PROCEEDS_AMOUNT = "LiquidationProceedsAmount";
+
+    @SerializedName(SERIALIZED_NAME_LIQUIDATION_PROCEEDS_AMOUNT)
+    private Currency liquidationProceedsAmount;
+
+    public static final String SERIALIZED_NAME_LIQUIDATION_FEE_AMOUNT = "LiquidationFeeAmount";
+
+    @SerializedName(SERIALIZED_NAME_LIQUIDATION_FEE_AMOUNT)
+    private Currency liquidationFeeAmount;
+
+    public FBALiquidationEvent() {}
 
     public FBALiquidationEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -45,10 +68,7 @@ public class FBALiquidationEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -66,8 +86,7 @@ public class FBALiquidationEvent {
      *
      * @return originalRemovalOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the original removal order.")
-    public String getOriginalRemovalOrderId() {
+    @javax.annotation.Nullable public String getOriginalRemovalOrderId() {
         return originalRemovalOrderId;
     }
 
@@ -85,8 +104,7 @@ public class FBALiquidationEvent {
      *
      * @return liquidationProceedsAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getLiquidationProceedsAmount() {
+    @javax.annotation.Nullable public Currency getLiquidationProceedsAmount() {
         return liquidationProceedsAmount;
     }
 
@@ -104,8 +122,7 @@ public class FBALiquidationEvent {
      *
      * @return liquidationFeeAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getLiquidationFeeAmount() {
+    @javax.annotation.Nullable public Currency getLiquidationFeeAmount() {
         return liquidationFeeAmount;
     }
 
@@ -114,7 +131,7 @@ public class FBALiquidationEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,10 +169,119 @@ public class FBALiquidationEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("OriginalRemovalOrderId");
+        openapiFields.add("LiquidationProceedsAmount");
+        openapiFields.add("LiquidationFeeAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FBALiquidationEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FBALiquidationEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FBALiquidationEvent is not found in the empty JSON string",
+                        FBALiquidationEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FBALiquidationEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FBALiquidationEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("OriginalRemovalOrderId") != null
+                        && !jsonObj.get("OriginalRemovalOrderId").isJsonNull())
+                && !jsonObj.get("OriginalRemovalOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OriginalRemovalOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OriginalRemovalOrderId").toString()));
+        }
+        // validate the optional field `LiquidationProceedsAmount`
+        if (jsonObj.get("LiquidationProceedsAmount") != null
+                && !jsonObj.get("LiquidationProceedsAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("LiquidationProceedsAmount"));
+        }
+        // validate the optional field `LiquidationFeeAmount`
+        if (jsonObj.get("LiquidationFeeAmount") != null
+                && !jsonObj.get("LiquidationFeeAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("LiquidationFeeAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FBALiquidationEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FBALiquidationEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FBALiquidationEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FBALiquidationEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FBALiquidationEvent>() {
+                        @Override
+                        public void write(JsonWriter out, FBALiquidationEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FBALiquidationEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FBALiquidationEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FBALiquidationEvent
+     * @throws IOException if the JSON string is invalid with respect to FBALiquidationEvent
+     */
+    public static FBALiquidationEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FBALiquidationEvent.class);
+    }
+
+    /**
+     * Convert an instance of FBALiquidationEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

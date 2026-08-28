@@ -12,31 +12,41 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Import details for an import order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Import details for an import order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ImportDetails {
     /** If the recipient requests, contains the shipment method of payment. This is for import PO&#39;s only. */
     @JsonAdapter(MethodOfPaymentEnum.Adapter.class)
     public enum MethodOfPaymentEnum {
-        @SerializedName("PaidByBuyer")
         PAID_BY_BUYER("PaidByBuyer"),
-        @SerializedName("CollectOnDelivery")
+
         COLLECT_ON_DELIVERY("CollectOnDelivery"),
-        @SerializedName("DefinedByBuyerAndSeller")
+
         DEFINED_BY_BUYER_AND_SELLER("DefinedByBuyerAndSeller"),
-        @SerializedName("FOBPortOfCall")
+
         FOB_PORT_OF_CALL("FOBPortOfCall"),
-        @SerializedName("PrepaidBySeller")
+
         PREPAID_BY_SELLER("PrepaidBySeller"),
-        @SerializedName("PaidBySeller")
+
         PAID_BY_SELLER("PaidBySeller");
 
         private String value;
@@ -54,31 +64,38 @@ public class ImportDetails {
             return String.valueOf(value);
         }
 
-        public static MethodOfPaymentEnum fromValue(String input) {
+        public static MethodOfPaymentEnum fromValue(String value) {
             for (MethodOfPaymentEnum b : MethodOfPaymentEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<MethodOfPaymentEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final MethodOfPaymentEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public MethodOfPaymentEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return MethodOfPaymentEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return MethodOfPaymentEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            MethodOfPaymentEnum.fromValue(value);
         }
     }
 
-    @SerializedName("methodOfPayment")
-    private MethodOfPaymentEnum methodOfPayment = null;
+    public static final String SERIALIZED_NAME_METHOD_OF_PAYMENT = "methodOfPayment";
+
+    @SerializedName(SERIALIZED_NAME_METHOD_OF_PAYMENT)
+    private MethodOfPaymentEnum methodOfPayment;
 
     /**
      * Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between
@@ -86,27 +103,26 @@ public class ImportDetails {
      */
     @JsonAdapter(InternationalCommercialTermsEnum.Adapter.class)
     public enum InternationalCommercialTermsEnum {
-        @SerializedName("ExWorks")
         EX_WORKS("ExWorks"),
-        @SerializedName("FreeCarrier")
+
         FREE_CARRIER("FreeCarrier"),
-        @SerializedName("FreeOnBoard")
+
         FREE_ON_BOARD("FreeOnBoard"),
-        @SerializedName("FreeAlongSideShip")
+
         FREE_ALONG_SIDE_SHIP("FreeAlongSideShip"),
-        @SerializedName("CarriagePaidTo")
+
         CARRIAGE_PAID_TO("CarriagePaidTo"),
-        @SerializedName("CostAndFreight")
+
         COST_AND_FREIGHT("CostAndFreight"),
-        @SerializedName("CarriageAndInsurancePaidTo")
+
         CARRIAGE_AND_INSURANCE_PAID_TO("CarriageAndInsurancePaidTo"),
-        @SerializedName("CostInsuranceAndFreight")
+
         COST_INSURANCE_AND_FREIGHT("CostInsuranceAndFreight"),
-        @SerializedName("DeliveredAtTerminal")
+
         DELIVERED_AT_TERMINAL("DeliveredAtTerminal"),
-        @SerializedName("DeliveredAtPlace")
+
         DELIVERED_AT_PLACE("DeliveredAtPlace"),
-        @SerializedName("DeliverDutyPaid")
+
         DELIVER_DUTY_PAID("DeliverDutyPaid");
 
         private String value;
@@ -124,41 +140,56 @@ public class ImportDetails {
             return String.valueOf(value);
         }
 
-        public static InternationalCommercialTermsEnum fromValue(String input) {
+        public static InternationalCommercialTermsEnum fromValue(String value) {
             for (InternationalCommercialTermsEnum b : InternationalCommercialTermsEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<InternationalCommercialTermsEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final InternationalCommercialTermsEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public InternationalCommercialTermsEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return InternationalCommercialTermsEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return InternationalCommercialTermsEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            InternationalCommercialTermsEnum.fromValue(value);
         }
     }
 
-    @SerializedName("internationalCommercialTerms")
-    private InternationalCommercialTermsEnum internationalCommercialTerms = null;
+    public static final String SERIALIZED_NAME_INTERNATIONAL_COMMERCIAL_TERMS = "internationalCommercialTerms";
 
-    @SerializedName("portOfDelivery")
-    private String portOfDelivery = null;
+    @SerializedName(SERIALIZED_NAME_INTERNATIONAL_COMMERCIAL_TERMS)
+    private InternationalCommercialTermsEnum internationalCommercialTerms;
 
-    @SerializedName("importContainers")
-    private String importContainers = null;
+    public static final String SERIALIZED_NAME_PORT_OF_DELIVERY = "portOfDelivery";
 
-    @SerializedName("shippingInstructions")
-    private String shippingInstructions = null;
+    @SerializedName(SERIALIZED_NAME_PORT_OF_DELIVERY)
+    private String portOfDelivery;
+
+    public static final String SERIALIZED_NAME_IMPORT_CONTAINERS = "importContainers";
+
+    @SerializedName(SERIALIZED_NAME_IMPORT_CONTAINERS)
+    private String importContainers;
+
+    public static final String SERIALIZED_NAME_SHIPPING_INSTRUCTIONS = "shippingInstructions";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_INSTRUCTIONS)
+    private String shippingInstructions;
+
+    public ImportDetails() {}
 
     public ImportDetails methodOfPayment(MethodOfPaymentEnum methodOfPayment) {
         this.methodOfPayment = methodOfPayment;
@@ -170,10 +201,7 @@ public class ImportDetails {
      *
      * @return methodOfPayment
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "If the recipient requests, contains the shipment method of payment. This is for import PO's only.")
-    public MethodOfPaymentEnum getMethodOfPayment() {
+    @javax.annotation.Nullable public MethodOfPaymentEnum getMethodOfPayment() {
         return methodOfPayment;
     }
 
@@ -192,10 +220,7 @@ public class ImportDetails {
      *
      * @return internationalCommercialTerms
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices. This is for import purchase orders only. ")
-    public InternationalCommercialTermsEnum getInternationalCommercialTerms() {
+    @javax.annotation.Nullable public InternationalCommercialTermsEnum getInternationalCommercialTerms() {
         return internationalCommercialTerms;
     }
 
@@ -214,10 +239,7 @@ public class ImportDetails {
      *
      * @return portOfDelivery
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The port where goods on an import purchase order must be delivered by the vendor. This should only be specified when the internationalCommercialTerms is FOB.")
-    public String getPortOfDelivery() {
+    @javax.annotation.Nullable public String getPortOfDelivery() {
         return portOfDelivery;
     }
 
@@ -240,10 +262,7 @@ public class ImportDetails {
      *
      * @return importContainers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if the shipment has multiple containers. HC signifies a high-capacity container. Free-text field, limited to 64 characters. The format will be a comma-delimited list containing values of the type: $NUMBER_OF_CONTAINERS_OF_THIS_TYPE-$CONTAINER_TYPE. The list of values for the container type is: 40'(40-foot container), 40'HC (40-foot high-capacity container), 45', 45'HC, 30', 30'HC, 20', 20'HC.")
-    public String getImportContainers() {
+    @javax.annotation.Nullable public String getImportContainers() {
         return importContainers;
     }
 
@@ -261,9 +280,7 @@ public class ImportDetails {
      *
      * @return shippingInstructions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Special instructions regarding the shipment. This field is for import purchase orders.")
-    public String getShippingInstructions() {
+    @javax.annotation.Nullable public String getShippingInstructions() {
         return shippingInstructions;
     }
 
@@ -272,7 +289,7 @@ public class ImportDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -317,10 +334,148 @@ public class ImportDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("methodOfPayment");
+        openapiFields.add("internationalCommercialTerms");
+        openapiFields.add("portOfDelivery");
+        openapiFields.add("importContainers");
+        openapiFields.add("shippingInstructions");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ImportDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ImportDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ImportDetails is not found in the empty JSON string",
+                        ImportDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ImportDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ImportDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("methodOfPayment") != null
+                        && !jsonObj.get("methodOfPayment").isJsonNull())
+                && !jsonObj.get("methodOfPayment").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `methodOfPayment` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("methodOfPayment").toString()));
+        }
+        // validate the optional field `methodOfPayment`
+        if (jsonObj.get("methodOfPayment") != null
+                && !jsonObj.get("methodOfPayment").isJsonNull()) {
+            MethodOfPaymentEnum.validateJsonElement(jsonObj.get("methodOfPayment"));
+        }
+        if ((jsonObj.get("internationalCommercialTerms") != null
+                        && !jsonObj.get("internationalCommercialTerms").isJsonNull())
+                && !jsonObj.get("internationalCommercialTerms").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `internationalCommercialTerms` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("internationalCommercialTerms").toString()));
+        }
+        // validate the optional field `internationalCommercialTerms`
+        if (jsonObj.get("internationalCommercialTerms") != null
+                && !jsonObj.get("internationalCommercialTerms").isJsonNull()) {
+            InternationalCommercialTermsEnum.validateJsonElement(jsonObj.get("internationalCommercialTerms"));
+        }
+        if ((jsonObj.get("portOfDelivery") != null
+                        && !jsonObj.get("portOfDelivery").isJsonNull())
+                && !jsonObj.get("portOfDelivery").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `portOfDelivery` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("portOfDelivery").toString()));
+        }
+        if ((jsonObj.get("importContainers") != null
+                        && !jsonObj.get("importContainers").isJsonNull())
+                && !jsonObj.get("importContainers").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `importContainers` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("importContainers").toString()));
+        }
+        if ((jsonObj.get("shippingInstructions") != null
+                        && !jsonObj.get("shippingInstructions").isJsonNull())
+                && !jsonObj.get("shippingInstructions").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingInstructions` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shippingInstructions").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ImportDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ImportDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ImportDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ImportDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ImportDetails>() {
+                        @Override
+                        public void write(JsonWriter out, ImportDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ImportDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ImportDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ImportDetails
+     * @throws IOException if the JSON string is invalid with respect to ImportDetails
+     */
+    public static ImportDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ImportDetails.class);
+    }
+
+    /**
+     * Convert an instance of ImportDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

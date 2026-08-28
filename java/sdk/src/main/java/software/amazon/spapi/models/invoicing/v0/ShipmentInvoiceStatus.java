@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The shipment invoice status. */
 @JsonAdapter(ShipmentInvoiceStatus.Adapter.class)
 public enum ShipmentInvoiceStatus {
-    @SerializedName("Processing")
     PROCESSING("Processing"),
 
-    @SerializedName("Accepted")
     ACCEPTED("Accepted"),
 
-    @SerializedName("Errored")
     ERRORED("Errored"),
 
-    @SerializedName("NotFound")
     NOT_FOUND("NotFound");
 
     private String value;
@@ -49,25 +45,30 @@ public enum ShipmentInvoiceStatus {
         return String.valueOf(value);
     }
 
-    public static ShipmentInvoiceStatus fromValue(String input) {
+    public static ShipmentInvoiceStatus fromValue(String value) {
         for (ShipmentInvoiceStatus b : ShipmentInvoiceStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ShipmentInvoiceStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final ShipmentInvoiceStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ShipmentInvoiceStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ShipmentInvoiceStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ShipmentInvoiceStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ShipmentInvoiceStatus.fromValue(value);
     }
 }

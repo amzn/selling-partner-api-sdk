@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The shipping address for the order. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The shipping address for the order.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderAddress {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("BuyerCompanyName")
-    private String buyerCompanyName = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("ShippingAddress")
-    private Address shippingAddress = null;
+    public static final String SERIALIZED_NAME_BUYER_COMPANY_NAME = "BuyerCompanyName";
 
-    @SerializedName("DeliveryPreferences")
-    private DeliveryPreferences deliveryPreferences = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_COMPANY_NAME)
+    private String buyerCompanyName;
+
+    public static final String SERIALIZED_NAME_SHIPPING_ADDRESS = "ShippingAddress";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_ADDRESS)
+    private Address shippingAddress;
+
+    public static final String SERIALIZED_NAME_DELIVERY_PREFERENCES = "DeliveryPreferences";
+
+    @SerializedName(SERIALIZED_NAME_DELIVERY_PREFERENCES)
+    private DeliveryPreferences deliveryPreferences;
+
+    public OrderAddress() {}
 
     public OrderAddress amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -40,9 +65,7 @@ public class OrderAddress {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -61,10 +84,7 @@ public class OrderAddress {
      *
      * @return buyerCompanyName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.")
-    public String getBuyerCompanyName() {
+    @javax.annotation.Nullable public String getBuyerCompanyName() {
         return buyerCompanyName;
     }
 
@@ -82,8 +102,7 @@ public class OrderAddress {
      *
      * @return shippingAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShippingAddress() {
+    @javax.annotation.Nullable public Address getShippingAddress() {
         return shippingAddress;
     }
 
@@ -101,8 +120,7 @@ public class OrderAddress {
      *
      * @return deliveryPreferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DeliveryPreferences getDeliveryPreferences() {
+    @javax.annotation.Nullable public DeliveryPreferences getDeliveryPreferences() {
         return deliveryPreferences;
     }
 
@@ -111,7 +129,7 @@ public class OrderAddress {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -149,10 +167,134 @@ public class OrderAddress {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("BuyerCompanyName");
+        openapiFields.add("ShippingAddress");
+        openapiFields.add("DeliveryPreferences");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AmazonOrderId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderAddress
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderAddress is not found in the empty JSON string",
+                        OrderAddress.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderAddress.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderAddress` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderAddress.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("BuyerCompanyName") != null
+                        && !jsonObj.get("BuyerCompanyName").isJsonNull())
+                && !jsonObj.get("BuyerCompanyName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerCompanyName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerCompanyName").toString()));
+        }
+        // validate the optional field `ShippingAddress`
+        if (jsonObj.get("ShippingAddress") != null
+                && !jsonObj.get("ShippingAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("ShippingAddress"));
+        }
+        // validate the optional field `DeliveryPreferences`
+        if (jsonObj.get("DeliveryPreferences") != null
+                && !jsonObj.get("DeliveryPreferences").isJsonNull()) {
+            DeliveryPreferences.validateJsonElement(jsonObj.get("DeliveryPreferences"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderAddress.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderAddress' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderAddress> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderAddress.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderAddress>() {
+                        @Override
+                        public void write(JsonWriter out, OrderAddress value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderAddress read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderAddress given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderAddress
+     * @throws IOException if the JSON string is invalid with respect to OrderAddress
+     */
+    public static OrderAddress fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderAddress.class);
+    }
+
+    /**
+     * Convert an instance of OrderAddress to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

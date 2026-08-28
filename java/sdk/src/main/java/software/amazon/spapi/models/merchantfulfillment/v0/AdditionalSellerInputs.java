@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An additional set of seller inputs required to purchase shipping. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An additional set of seller inputs required to purchase shipping.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AdditionalSellerInputs {
-    @SerializedName("AdditionalInputFieldName")
-    private String additionalInputFieldName = null;
+    public static final String SERIALIZED_NAME_ADDITIONAL_INPUT_FIELD_NAME = "AdditionalInputFieldName";
 
-    @SerializedName("AdditionalSellerInput")
-    private AdditionalSellerInput additionalSellerInput = null;
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_INPUT_FIELD_NAME)
+    private String additionalInputFieldName;
+
+    public static final String SERIALIZED_NAME_ADDITIONAL_SELLER_INPUT = "AdditionalSellerInput";
+
+    @SerializedName(SERIALIZED_NAME_ADDITIONAL_SELLER_INPUT)
+    private AdditionalSellerInput additionalSellerInput;
+
+    public AdditionalSellerInputs() {}
 
     public AdditionalSellerInputs additionalInputFieldName(String additionalInputFieldName) {
         this.additionalInputFieldName = additionalInputFieldName;
@@ -35,9 +55,7 @@ public class AdditionalSellerInputs {
      *
      * @return additionalInputFieldName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The name of the additional input field.")
+    @javax.annotation.Nonnull
     public String getAdditionalInputFieldName() {
         return additionalInputFieldName;
     }
@@ -56,7 +74,7 @@ public class AdditionalSellerInputs {
      *
      * @return additionalSellerInput
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public AdditionalSellerInput getAdditionalSellerInput() {
         return additionalSellerInput;
     }
@@ -66,7 +84,7 @@ public class AdditionalSellerInputs {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +116,119 @@ public class AdditionalSellerInputs {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AdditionalInputFieldName");
+        openapiFields.add("AdditionalSellerInput");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AdditionalInputFieldName");
+        openapiRequiredFields.add("AdditionalSellerInput");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AdditionalSellerInputs
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AdditionalSellerInputs.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AdditionalSellerInputs is not found in the empty JSON string",
+                        AdditionalSellerInputs.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AdditionalSellerInputs.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AdditionalSellerInputs` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : AdditionalSellerInputs.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AdditionalInputFieldName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AdditionalInputFieldName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AdditionalInputFieldName").toString()));
+        }
+        // validate the required field `AdditionalSellerInput`
+        AdditionalSellerInput.validateJsonElement(jsonObj.get("AdditionalSellerInput"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AdditionalSellerInputs.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AdditionalSellerInputs' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AdditionalSellerInputs> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AdditionalSellerInputs.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AdditionalSellerInputs>() {
+                        @Override
+                        public void write(JsonWriter out, AdditionalSellerInputs value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AdditionalSellerInputs read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AdditionalSellerInputs given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AdditionalSellerInputs
+     * @throws IOException if the JSON string is invalid with respect to AdditionalSellerInputs
+     */
+    public static AdditionalSellerInputs fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AdditionalSellerInputs.class);
+    }
+
+    /**
+     * Convert an instance of AdditionalSellerInputs to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

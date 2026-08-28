@@ -12,31 +12,61 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Input information for updating a box */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Input information for updating a box")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BoxUpdateInput {
-    @SerializedName("contentInformationSource")
-    private BoxContentInformationSource contentInformationSource = null;
+    public static final String SERIALIZED_NAME_CONTENT_INFORMATION_SOURCE = "contentInformationSource";
 
-    @SerializedName("dimensions")
-    private Dimensions dimensions = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_INFORMATION_SOURCE)
+    private BoxContentInformationSource contentInformationSource;
 
-    @SerializedName("items")
-    private List<ItemInput> items = null;
+    public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
 
-    @SerializedName("packageId")
-    private String packageId = null;
+    @SerializedName(SERIALIZED_NAME_DIMENSIONS)
+    private Dimensions dimensions;
 
-    @SerializedName("quantity")
-    private Integer quantity = null;
+    public static final String SERIALIZED_NAME_ITEMS = "items";
 
-    @SerializedName("weight")
-    private Weight weight = null;
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<ItemInput> items = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PACKAGE_ID = "packageId";
+
+    @SerializedName(SERIALIZED_NAME_PACKAGE_ID)
+    private String packageId;
+
+    public static final String SERIALIZED_NAME_QUANTITY = "quantity";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY)
+    private Integer quantity;
+
+    public static final String SERIALIZED_NAME_WEIGHT = "weight";
+
+    @SerializedName(SERIALIZED_NAME_WEIGHT)
+    private Weight weight;
+
+    public BoxUpdateInput() {}
 
     public BoxUpdateInput contentInformationSource(BoxContentInformationSource contentInformationSource) {
         this.contentInformationSource = contentInformationSource;
@@ -48,7 +78,7 @@ public class BoxUpdateInput {
      *
      * @return contentInformationSource
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public BoxContentInformationSource getContentInformationSource() {
         return contentInformationSource;
     }
@@ -67,7 +97,7 @@ public class BoxUpdateInput {
      *
      * @return dimensions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -95,10 +125,7 @@ public class BoxUpdateInput {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.")
-    public List<ItemInput> getItems() {
+    @javax.annotation.Nullable public List<ItemInput> getItems() {
         return items;
     }
 
@@ -118,10 +145,7 @@ public class BoxUpdateInput {
      *
      * @return packageId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed")
-    public String getPackageId() {
+    @javax.annotation.Nullable public String getPackageId() {
         return packageId;
     }
 
@@ -135,14 +159,12 @@ public class BoxUpdateInput {
     }
 
     /**
-     * The number of containers where all other properties like weight or dimensions are identical.
+     * The number of containers where all other properties like weight or dimensions are identical. minimum: 1 maximum:
+     * 10000
      *
      * @return quantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The number of containers where all other properties like weight or dimensions are identical.")
+    @javax.annotation.Nonnull
     public Integer getQuantity() {
         return quantity;
     }
@@ -161,7 +183,7 @@ public class BoxUpdateInput {
      *
      * @return weight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Weight getWeight() {
         return weight;
     }
@@ -171,7 +193,7 @@ public class BoxUpdateInput {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -209,10 +231,146 @@ public class BoxUpdateInput {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contentInformationSource");
+        openapiFields.add("dimensions");
+        openapiFields.add("items");
+        openapiFields.add("packageId");
+        openapiFields.add("quantity");
+        openapiFields.add("weight");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contentInformationSource");
+        openapiRequiredFields.add("dimensions");
+        openapiRequiredFields.add("quantity");
+        openapiRequiredFields.add("weight");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BoxUpdateInput
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BoxUpdateInput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BoxUpdateInput is not found in the empty JSON string",
+                        BoxUpdateInput.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BoxUpdateInput.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BoxUpdateInput` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BoxUpdateInput.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `contentInformationSource`
+        BoxContentInformationSource.validateJsonElement(jsonObj.get("contentInformationSource"));
+        // validate the required field `dimensions`
+        Dimensions.validateJsonElement(jsonObj.get("dimensions"));
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    ItemInput.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("packageId") != null && !jsonObj.get("packageId").isJsonNull())
+                && !jsonObj.get("packageId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageId").toString()));
+        }
+        // validate the required field `weight`
+        Weight.validateJsonElement(jsonObj.get("weight"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BoxUpdateInput.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BoxUpdateInput' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BoxUpdateInput> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BoxUpdateInput.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BoxUpdateInput>() {
+                        @Override
+                        public void write(JsonWriter out, BoxUpdateInput value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BoxUpdateInput read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BoxUpdateInput given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BoxUpdateInput
+     * @throws IOException if the JSON string is invalid with respect to BoxUpdateInput
+     */
+    public static BoxUpdateInput fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BoxUpdateInput.class);
+    }
+
+    /**
+     * Convert an instance of BoxUpdateInput to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

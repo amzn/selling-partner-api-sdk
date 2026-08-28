@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The entity that labels the products. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace. */
 @JsonAdapter(LabelOwner.Adapter.class)
 public enum LabelOwner {
-    @SerializedName("AMAZON")
     AMAZON("AMAZON"),
 
-    @SerializedName("SELF")
     SELF("SELF");
 
     private String value;
@@ -43,25 +41,30 @@ public enum LabelOwner {
         return String.valueOf(value);
     }
 
-    public static LabelOwner fromValue(String input) {
+    public static LabelOwner fromValue(String value) {
         for (LabelOwner b : LabelOwner.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<LabelOwner> {
         @Override
         public void write(final JsonWriter jsonWriter, final LabelOwner enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public LabelOwner read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return LabelOwner.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return LabelOwner.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        LabelOwner.fromValue(value);
     }
 }

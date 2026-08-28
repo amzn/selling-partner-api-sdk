@@ -12,44 +12,82 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Provides detailed information about an invoice. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Provides detailed information about an invoice.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Invoice {
-    @SerializedName("date")
-    private OffsetDateTime date = null;
+    public static final String SERIALIZED_NAME_DATE = "date";
 
-    @SerializedName("errorCode")
-    private String errorCode = null;
+    @SerializedName(SERIALIZED_NAME_DATE)
+    private OffsetDateTime date;
 
-    @SerializedName("externalInvoiceId")
-    private String externalInvoiceId = null;
+    public static final String SERIALIZED_NAME_ERROR_CODE = "errorCode";
 
-    @SerializedName("govResponse")
-    private String govResponse = null;
+    @SerializedName(SERIALIZED_NAME_ERROR_CODE)
+    private String errorCode;
 
-    @SerializedName("id")
-    private String id = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_INVOICE_ID = "externalInvoiceId";
 
-    @SerializedName("invoiceType")
-    private String invoiceType = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_INVOICE_ID)
+    private String externalInvoiceId;
 
-    @SerializedName("series")
-    private String series = null;
+    public static final String SERIALIZED_NAME_GOV_RESPONSE = "govResponse";
 
-    @SerializedName("status")
-    private String status = null;
+    @SerializedName(SERIALIZED_NAME_GOV_RESPONSE)
+    private String govResponse;
 
-    @SerializedName("transactionIds")
-    private List<TransactionIdentifier> transactionIds = null;
+    public static final String SERIALIZED_NAME_ID = "id";
 
-    @SerializedName("transactionType")
-    private String transactionType = null;
+    @SerializedName(SERIALIZED_NAME_ID)
+    private String id;
+
+    public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
+
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
+    private String invoiceType;
+
+    public static final String SERIALIZED_NAME_SERIES = "series";
+
+    @SerializedName(SERIALIZED_NAME_SERIES)
+    private String series;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_IDS = "transactionIds";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_IDS)
+    private List<TransactionIdentifier> transactionIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
+
+    public Invoice() {}
 
     public Invoice date(OffsetDateTime date) {
         this.date = date;
@@ -62,10 +100,7 @@ public class Invoice {
      *
      * @return date
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time the invoice is issued. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getDate() {
+    @javax.annotation.Nullable public OffsetDateTime getDate() {
         return date;
     }
 
@@ -83,9 +118,7 @@ public class Invoice {
      *
      * @return errorCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "If the invoice is in an error state, this attribute displays the error code.")
-    public String getErrorCode() {
+    @javax.annotation.Nullable public String getErrorCode() {
         return errorCode;
     }
 
@@ -104,10 +137,7 @@ public class Invoice {
      *
      * @return externalInvoiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The invoice identifier that is used by an external party. This is typically the government agency that authorized the invoice.")
-    public String getExternalInvoiceId() {
+    @javax.annotation.Nullable public String getExternalInvoiceId() {
         return externalInvoiceId;
     }
 
@@ -125,10 +155,7 @@ public class Invoice {
      *
      * @return govResponse
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The response message from the government authority when there is an error during invoice issuance.")
-    public String getGovResponse() {
+    @javax.annotation.Nullable public String getGovResponse() {
         return govResponse;
     }
 
@@ -146,8 +173,7 @@ public class Invoice {
      *
      * @return id
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The invoice identifier.")
-    public String getId() {
+    @javax.annotation.Nullable public String getId() {
         return id;
     }
 
@@ -166,10 +192,7 @@ public class Invoice {
      *
      * @return invoiceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The classification of the invoice type. This varies across marketplaces. Use the `getInvoicesAttributes` operation to check `invoiceType` options.")
-    public String getInvoiceType() {
+    @javax.annotation.Nullable public String getInvoiceType() {
         return invoiceType;
     }
 
@@ -187,10 +210,7 @@ public class Invoice {
      *
      * @return series
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Use this identifier in conjunction with `externalInvoiceId` to identify invoices from the same seller.")
-    public String getSeries() {
+    @javax.annotation.Nullable public String getSeries() {
         return series;
     }
 
@@ -209,10 +229,7 @@ public class Invoice {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The invoice status classification. Use the `getInvoicesAttributes` operation to check invoice status options.")
-    public String getStatus() {
+    @javax.annotation.Nullable public String getStatus() {
         return status;
     }
 
@@ -238,9 +255,7 @@ public class Invoice {
      *
      * @return transactionIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "List with identifiers for the transactions associated to the invoice.")
-    public List<TransactionIdentifier> getTransactionIds() {
+    @javax.annotation.Nullable public List<TransactionIdentifier> getTransactionIds() {
         return transactionIds;
     }
 
@@ -259,10 +274,7 @@ public class Invoice {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Classification of the transaction that originated this invoice. Use the `getInvoicesAttributes` operation to check `transactionType` options.")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -271,7 +283,7 @@ public class Invoice {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -331,10 +343,175 @@ public class Invoice {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("date");
+        openapiFields.add("errorCode");
+        openapiFields.add("externalInvoiceId");
+        openapiFields.add("govResponse");
+        openapiFields.add("id");
+        openapiFields.add("invoiceType");
+        openapiFields.add("series");
+        openapiFields.add("status");
+        openapiFields.add("transactionIds");
+        openapiFields.add("transactionType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Invoice
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Invoice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Invoice is not found in the empty JSON string",
+                        Invoice.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Invoice.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Invoice` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("errorCode") != null && !jsonObj.get("errorCode").isJsonNull())
+                && !jsonObj.get("errorCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorCode").toString()));
+        }
+        if ((jsonObj.get("externalInvoiceId") != null
+                        && !jsonObj.get("externalInvoiceId").isJsonNull())
+                && !jsonObj.get("externalInvoiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalInvoiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalInvoiceId").toString()));
+        }
+        if ((jsonObj.get("govResponse") != null && !jsonObj.get("govResponse").isJsonNull())
+                && !jsonObj.get("govResponse").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `govResponse` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("govResponse").toString()));
+        }
+        if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull())
+                && !jsonObj.get("id").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `id` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("id").toString()));
+        }
+        if ((jsonObj.get("invoiceType") != null && !jsonObj.get("invoiceType").isJsonNull())
+                && !jsonObj.get("invoiceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceType").toString()));
+        }
+        if ((jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull())
+                && !jsonObj.get("series").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `series` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("series").toString()));
+        }
+        if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull())
+                && !jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+        if (jsonObj.get("transactionIds") != null
+                && !jsonObj.get("transactionIds").isJsonNull()) {
+            JsonArray jsonArraytransactionIds = jsonObj.getAsJsonArray("transactionIds");
+            if (jsonArraytransactionIds != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("transactionIds").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `transactionIds` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("transactionIds").toString()));
+                }
+
+                // validate the optional field `transactionIds` (array)
+                for (int i = 0; i < jsonArraytransactionIds.size(); i++) {
+                    TransactionIdentifier.validateJsonElement(jsonArraytransactionIds.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("transactionType") != null
+                        && !jsonObj.get("transactionType").isJsonNull())
+                && !jsonObj.get("transactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Invoice.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Invoice' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Invoice> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Invoice.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Invoice>() {
+                        @Override
+                        public void write(JsonWriter out, Invoice value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Invoice read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Invoice given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Invoice
+     * @throws IOException if the JSON string is invalid with respect to Invoice
+     */
+    public static Invoice fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Invoice.class);
+    }
+
+    /**
+     * Convert an instance of Invoice to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

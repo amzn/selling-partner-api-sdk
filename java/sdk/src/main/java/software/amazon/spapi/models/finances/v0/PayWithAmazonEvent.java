@@ -12,42 +12,79 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to the seller&#39;s Pay with Amazon account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to the seller's Pay with Amazon account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PayWithAmazonEvent {
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("TransactionPostedDate")
-    private OffsetDateTime transactionPostedDate = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
 
-    @SerializedName("BusinessObjectType")
-    private String businessObjectType = null;
+    public static final String SERIALIZED_NAME_TRANSACTION_POSTED_DATE = "TransactionPostedDate";
 
-    @SerializedName("SalesChannel")
-    private String salesChannel = null;
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_POSTED_DATE)
+    private OffsetDateTime transactionPostedDate;
 
-    @SerializedName("Charge")
-    private ChargeComponent charge = null;
+    public static final String SERIALIZED_NAME_BUSINESS_OBJECT_TYPE = "BusinessObjectType";
 
-    @SerializedName("FeeList")
-    private FeeComponentList feeList = null;
+    @SerializedName(SERIALIZED_NAME_BUSINESS_OBJECT_TYPE)
+    private String businessObjectType;
 
-    @SerializedName("PaymentAmountType")
-    private String paymentAmountType = null;
+    public static final String SERIALIZED_NAME_SALES_CHANNEL = "SalesChannel";
 
-    @SerializedName("AmountDescription")
-    private String amountDescription = null;
+    @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
+    private String salesChannel;
 
-    @SerializedName("FulfillmentChannel")
-    private String fulfillmentChannel = null;
+    public static final String SERIALIZED_NAME_CHARGE = "Charge";
 
-    @SerializedName("StoreName")
-    private String storeName = null;
+    @SerializedName(SERIALIZED_NAME_CHARGE)
+    private ChargeComponent charge;
+
+    public static final String SERIALIZED_NAME_FEE_LIST = "FeeList";
+
+    @SerializedName(SERIALIZED_NAME_FEE_LIST)
+    private FeeComponentList feeList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAYMENT_AMOUNT_TYPE = "PaymentAmountType";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_AMOUNT_TYPE)
+    private String paymentAmountType;
+
+    public static final String SERIALIZED_NAME_AMOUNT_DESCRIPTION = "AmountDescription";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT_DESCRIPTION)
+    private String amountDescription;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL = "FulfillmentChannel";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL)
+    private String fulfillmentChannel;
+
+    public static final String SERIALIZED_NAME_STORE_NAME = "StoreName";
+
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private String storeName;
+
+    public PayWithAmazonEvent() {}
 
     public PayWithAmazonEvent sellerOrderId(String sellerOrderId) {
         this.sellerOrderId = sellerOrderId;
@@ -59,8 +96,7 @@ public class PayWithAmazonEvent {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "An order identifier that is specified by the seller.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -78,10 +114,7 @@ public class PayWithAmazonEvent {
      *
      * @return transactionPostedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getTransactionPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getTransactionPostedDate() {
         return transactionPostedDate;
     }
 
@@ -99,8 +132,7 @@ public class PayWithAmazonEvent {
      *
      * @return businessObjectType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of business object.")
-    public String getBusinessObjectType() {
+    @javax.annotation.Nullable public String getBusinessObjectType() {
         return businessObjectType;
     }
 
@@ -118,8 +150,7 @@ public class PayWithAmazonEvent {
      *
      * @return salesChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the transaction.")
-    public String getSalesChannel() {
+    @javax.annotation.Nullable public String getSalesChannel() {
         return salesChannel;
     }
 
@@ -137,8 +168,7 @@ public class PayWithAmazonEvent {
      *
      * @return charge
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChargeComponent getCharge() {
+    @javax.annotation.Nullable public ChargeComponent getCharge() {
         return charge;
     }
 
@@ -156,8 +186,7 @@ public class PayWithAmazonEvent {
      *
      * @return feeList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeeComponentList getFeeList() {
+    @javax.annotation.Nullable public FeeComponentList getFeeList() {
         return feeList;
     }
 
@@ -175,8 +204,7 @@ public class PayWithAmazonEvent {
      *
      * @return paymentAmountType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.  Possible values:  * `Sales`")
-    public String getPaymentAmountType() {
+    @javax.annotation.Nullable public String getPaymentAmountType() {
         return paymentAmountType;
     }
 
@@ -194,8 +222,7 @@ public class PayWithAmazonEvent {
      *
      * @return amountDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of this payment event.")
-    public String getAmountDescription() {
+    @javax.annotation.Nullable public String getAmountDescription() {
         return amountDescription;
     }
 
@@ -214,10 +241,7 @@ public class PayWithAmazonEvent {
      *
      * @return fulfillmentChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The fulfillment channel.  Possible values:  * `AFN`: Amazon Fulfillment Network (Fulfillment by Amazon)  * `MFN`: Merchant Fulfillment Network (self-fulfilled)")
-    public String getFulfillmentChannel() {
+    @javax.annotation.Nullable public String getFulfillmentChannel() {
         return fulfillmentChannel;
     }
 
@@ -235,8 +259,7 @@ public class PayWithAmazonEvent {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
-    public String getStoreName() {
+    @javax.annotation.Nullable public String getStoreName() {
         return storeName;
     }
 
@@ -245,7 +268,7 @@ public class PayWithAmazonEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -309,10 +332,159 @@ public class PayWithAmazonEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("TransactionPostedDate");
+        openapiFields.add("BusinessObjectType");
+        openapiFields.add("SalesChannel");
+        openapiFields.add("Charge");
+        openapiFields.add("FeeList");
+        openapiFields.add("PaymentAmountType");
+        openapiFields.add("AmountDescription");
+        openapiFields.add("FulfillmentChannel");
+        openapiFields.add("StoreName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PayWithAmazonEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PayWithAmazonEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PayWithAmazonEvent is not found in the empty JSON string",
+                        PayWithAmazonEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PayWithAmazonEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PayWithAmazonEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        if ((jsonObj.get("BusinessObjectType") != null
+                        && !jsonObj.get("BusinessObjectType").isJsonNull())
+                && !jsonObj.get("BusinessObjectType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BusinessObjectType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BusinessObjectType").toString()));
+        }
+        if ((jsonObj.get("SalesChannel") != null && !jsonObj.get("SalesChannel").isJsonNull())
+                && !jsonObj.get("SalesChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SalesChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SalesChannel").toString()));
+        }
+        // validate the optional field `Charge`
+        if (jsonObj.get("Charge") != null && !jsonObj.get("Charge").isJsonNull()) {
+            ChargeComponent.validateJsonElement(jsonObj.get("Charge"));
+        }
+        if ((jsonObj.get("PaymentAmountType") != null
+                        && !jsonObj.get("PaymentAmountType").isJsonNull())
+                && !jsonObj.get("PaymentAmountType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PaymentAmountType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PaymentAmountType").toString()));
+        }
+        if ((jsonObj.get("AmountDescription") != null
+                        && !jsonObj.get("AmountDescription").isJsonNull())
+                && !jsonObj.get("AmountDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmountDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmountDescription").toString()));
+        }
+        if ((jsonObj.get("FulfillmentChannel") != null
+                        && !jsonObj.get("FulfillmentChannel").isJsonNull())
+                && !jsonObj.get("FulfillmentChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FulfillmentChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FulfillmentChannel").toString()));
+        }
+        if ((jsonObj.get("StoreName") != null && !jsonObj.get("StoreName").isJsonNull())
+                && !jsonObj.get("StoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StoreName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PayWithAmazonEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PayWithAmazonEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PayWithAmazonEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PayWithAmazonEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PayWithAmazonEvent>() {
+                        @Override
+                        public void write(JsonWriter out, PayWithAmazonEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PayWithAmazonEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PayWithAmazonEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PayWithAmazonEvent
+     * @throws IOException if the JSON string is invalid with respect to PayWithAmazonEvent
+     */
+    public static PayWithAmazonEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PayWithAmazonEvent.class);
+    }
+
+    /**
+     * Convert an instance of PayWithAmazonEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

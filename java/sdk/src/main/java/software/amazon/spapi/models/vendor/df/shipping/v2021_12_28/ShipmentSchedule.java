@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details about the estimated delivery window. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details about the estimated delivery window.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentSchedule {
-    @SerializedName("estimatedDeliveryDateTime")
-    private OffsetDateTime estimatedDeliveryDateTime = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_DELIVERY_DATE_TIME = "estimatedDeliveryDateTime";
 
-    @SerializedName("apptWindowStartDateTime")
-    private OffsetDateTime apptWindowStartDateTime = null;
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_DELIVERY_DATE_TIME)
+    private OffsetDateTime estimatedDeliveryDateTime;
 
-    @SerializedName("apptWindowEndDateTime")
-    private OffsetDateTime apptWindowEndDateTime = null;
+    public static final String SERIALIZED_NAME_APPT_WINDOW_START_DATE_TIME = "apptWindowStartDateTime";
+
+    @SerializedName(SERIALIZED_NAME_APPT_WINDOW_START_DATE_TIME)
+    private OffsetDateTime apptWindowStartDateTime;
+
+    public static final String SERIALIZED_NAME_APPT_WINDOW_END_DATE_TIME = "apptWindowEndDateTime";
+
+    @SerializedName(SERIALIZED_NAME_APPT_WINDOW_END_DATE_TIME)
+    private OffsetDateTime apptWindowEndDateTime;
+
+    public ShipmentSchedule() {}
 
     public ShipmentSchedule estimatedDeliveryDateTime(OffsetDateTime estimatedDeliveryDateTime) {
         this.estimatedDeliveryDateTime = estimatedDeliveryDateTime;
@@ -40,10 +63,7 @@ public class ShipmentSchedule {
      *
      * @return estimatedDeliveryDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Date on which the shipment is expected to reach the customer delivery location. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
-    public OffsetDateTime getEstimatedDeliveryDateTime() {
+    @javax.annotation.Nullable public OffsetDateTime getEstimatedDeliveryDateTime() {
         return estimatedDeliveryDateTime;
     }
 
@@ -63,10 +83,7 @@ public class ShipmentSchedule {
      *
      * @return apptWindowStartDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time at the start of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
-    public OffsetDateTime getApptWindowStartDateTime() {
+    @javax.annotation.Nullable public OffsetDateTime getApptWindowStartDateTime() {
         return apptWindowStartDateTime;
     }
 
@@ -86,10 +103,7 @@ public class ShipmentSchedule {
      *
      * @return apptWindowEndDateTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time at the end of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
-    public OffsetDateTime getApptWindowEndDateTime() {
+    @javax.annotation.Nullable public OffsetDateTime getApptWindowEndDateTime() {
         return apptWindowEndDateTime;
     }
 
@@ -98,7 +112,7 @@ public class ShipmentSchedule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -134,10 +148,101 @@ public class ShipmentSchedule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("estimatedDeliveryDateTime");
+        openapiFields.add("apptWindowStartDateTime");
+        openapiFields.add("apptWindowEndDateTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentSchedule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentSchedule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentSchedule is not found in the empty JSON string",
+                        ShipmentSchedule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentSchedule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentSchedule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentSchedule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentSchedule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentSchedule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentSchedule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentSchedule>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentSchedule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentSchedule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentSchedule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentSchedule
+     * @throws IOException if the JSON string is invalid with respect to ShipmentSchedule
+     */
+    public static ShipmentSchedule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentSchedule.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentSchedule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

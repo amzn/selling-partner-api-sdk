@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,25 +22,18 @@ import java.io.IOException;
 /** Possible shipment statuses used by shipments. */
 @JsonAdapter(InboundShipmentStatus.Adapter.class)
 public enum InboundShipmentStatus {
-    @SerializedName("CREATED")
     CREATED("CREATED"),
 
-    @SerializedName("SHIPPED")
     SHIPPED("SHIPPED"),
 
-    @SerializedName("IN_TRANSIT")
     IN_TRANSIT("IN_TRANSIT"),
 
-    @SerializedName("RECEIVING")
     RECEIVING("RECEIVING"),
 
-    @SerializedName("DELIVERED")
     DELIVERED("DELIVERED"),
 
-    @SerializedName("CLOSED")
     CLOSED("CLOSED"),
 
-    @SerializedName("CANCELLED")
     CANCELLED("CANCELLED");
 
     private String value;
@@ -58,25 +51,30 @@ public enum InboundShipmentStatus {
         return String.valueOf(value);
     }
 
-    public static InboundShipmentStatus fromValue(String input) {
+    public static InboundShipmentStatus fromValue(String value) {
         for (InboundShipmentStatus b : InboundShipmentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<InboundShipmentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final InboundShipmentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public InboundShipmentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return InboundShipmentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return InboundShipmentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        InboundShipmentStatus.fromValue(value);
     }
 }

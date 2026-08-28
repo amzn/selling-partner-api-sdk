@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item that is invalid for return. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item that is invalid for return.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvalidReturnItem {
-    @SerializedName("sellerReturnItemId")
-    private String sellerReturnItemId = null;
+    public static final String SERIALIZED_NAME_SELLER_RETURN_ITEM_ID = "sellerReturnItemId";
 
-    @SerializedName("sellerFulfillmentOrderItemId")
-    private String sellerFulfillmentOrderItemId = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_RETURN_ITEM_ID)
+    private String sellerReturnItemId;
 
-    @SerializedName("invalidItemReason")
-    private InvalidItemReason invalidItemReason = null;
+    public static final String SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID = "sellerFulfillmentOrderItemId";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_FULFILLMENT_ORDER_ITEM_ID)
+    private String sellerFulfillmentOrderItemId;
+
+    public static final String SERIALIZED_NAME_INVALID_ITEM_REASON = "invalidItemReason";
+
+    @SerializedName(SERIALIZED_NAME_INVALID_ITEM_REASON)
+    private InvalidItemReason invalidItemReason;
+
+    public InvalidReturnItem() {}
 
     public InvalidReturnItem sellerReturnItemId(String sellerReturnItemId) {
         this.sellerReturnItemId = sellerReturnItemId;
@@ -37,9 +60,7 @@ public class InvalidReturnItem {
      *
      * @return sellerReturnItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An identifier the seller assigns to the return item.")
+    @javax.annotation.Nonnull
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }
@@ -58,9 +79,7 @@ public class InvalidReturnItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The identifier assigned to the item by the seller when the fulfillment order was created.")
+    @javax.annotation.Nonnull
     public String getSellerFulfillmentOrderItemId() {
         return sellerFulfillmentOrderItemId;
     }
@@ -79,7 +98,7 @@ public class InvalidReturnItem {
      *
      * @return invalidItemReason
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public InvalidItemReason getInvalidItemReason() {
         return invalidItemReason;
     }
@@ -89,7 +108,7 @@ public class InvalidReturnItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -125,10 +144,125 @@ public class InvalidReturnItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("sellerReturnItemId");
+        openapiFields.add("sellerFulfillmentOrderItemId");
+        openapiFields.add("invalidItemReason");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("sellerReturnItemId");
+        openapiRequiredFields.add("sellerFulfillmentOrderItemId");
+        openapiRequiredFields.add("invalidItemReason");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvalidReturnItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvalidReturnItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvalidReturnItem is not found in the empty JSON string",
+                        InvalidReturnItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvalidReturnItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvalidReturnItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvalidReturnItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("sellerReturnItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerReturnItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerReturnItemId").toString()));
+        }
+        if (!jsonObj.get("sellerFulfillmentOrderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerFulfillmentOrderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerFulfillmentOrderItemId").toString()));
+        }
+        // validate the required field `invalidItemReason`
+        InvalidItemReason.validateJsonElement(jsonObj.get("invalidItemReason"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvalidReturnItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvalidReturnItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvalidReturnItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvalidReturnItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvalidReturnItem>() {
+                        @Override
+                        public void write(JsonWriter out, InvalidReturnItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvalidReturnItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvalidReturnItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvalidReturnItem
+     * @throws IOException if the JSON string is invalid with respect to InvalidReturnItem
+     */
+    public static InvalidReturnItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvalidReturnItem.class);
+    }
+
+    /**
+     * Convert an instance of InvalidReturnItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,28 +22,20 @@ import java.io.IOException;
 /** The type of access point, like counter (HELIX), lockers, etc. */
 @JsonAdapter(AccessPointType.Adapter.class)
 public enum AccessPointType {
-    @SerializedName("HELIX")
     HELIX("HELIX"),
 
-    @SerializedName("CAMPUS_LOCKER")
     CAMPUS_LOCKER("CAMPUS_LOCKER"),
 
-    @SerializedName("OMNI_LOCKER")
     OMNI_LOCKER("OMNI_LOCKER"),
 
-    @SerializedName("ODIN_LOCKER")
     ODIN_LOCKER("ODIN_LOCKER"),
 
-    @SerializedName("DOBBY_LOCKER")
     DOBBY_LOCKER("DOBBY_LOCKER"),
 
-    @SerializedName("CORE_LOCKER")
     CORE_LOCKER("CORE_LOCKER"),
 
-    @SerializedName("3P")
     _3_P("3P"),
 
-    @SerializedName("CAMPUS_ROOM")
     CAMPUS_ROOM("CAMPUS_ROOM");
 
     private String value;
@@ -61,25 +53,30 @@ public enum AccessPointType {
         return String.valueOf(value);
     }
 
-    public static AccessPointType fromValue(String input) {
+    public static AccessPointType fromValue(String value) {
         for (AccessPointType b : AccessPointType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AccessPointType> {
         @Override
         public void write(final JsonWriter jsonWriter, final AccessPointType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AccessPointType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AccessPointType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AccessPointType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AccessPointType.fromValue(value);
     }
 }

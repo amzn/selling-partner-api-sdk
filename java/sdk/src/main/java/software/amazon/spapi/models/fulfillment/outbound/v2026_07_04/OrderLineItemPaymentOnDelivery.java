@@ -12,15 +12,33 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Payment on delivery settings. Currently only available in India. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Payment on delivery settings. Currently only available in India.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderLineItemPaymentOnDelivery {
-    @SerializedName("perUnitServicePrice")
-    private Money perUnitServicePrice = null;
+    public static final String SERIALIZED_NAME_PER_UNIT_SERVICE_PRICE = "perUnitServicePrice";
+
+    @SerializedName(SERIALIZED_NAME_PER_UNIT_SERVICE_PRICE)
+    private Money perUnitServicePrice;
+
+    public OrderLineItemPaymentOnDelivery() {}
 
     public OrderLineItemPaymentOnDelivery perUnitServicePrice(Money perUnitServicePrice) {
         this.perUnitServicePrice = perUnitServicePrice;
@@ -32,8 +50,7 @@ public class OrderLineItemPaymentOnDelivery {
      *
      * @return perUnitServicePrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getPerUnitServicePrice() {
+    @javax.annotation.Nullable public Money getPerUnitServicePrice() {
         return perUnitServicePrice;
     }
 
@@ -42,7 +59,7 @@ public class OrderLineItemPaymentOnDelivery {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -70,10 +87,105 @@ public class OrderLineItemPaymentOnDelivery {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("perUnitServicePrice");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderLineItemPaymentOnDelivery
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderLineItemPaymentOnDelivery.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderLineItemPaymentOnDelivery is not found in the empty JSON string",
+                        OrderLineItemPaymentOnDelivery.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderLineItemPaymentOnDelivery.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderLineItemPaymentOnDelivery` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `perUnitServicePrice`
+        if (jsonObj.get("perUnitServicePrice") != null
+                && !jsonObj.get("perUnitServicePrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("perUnitServicePrice"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderLineItemPaymentOnDelivery.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderLineItemPaymentOnDelivery' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderLineItemPaymentOnDelivery> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderLineItemPaymentOnDelivery.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderLineItemPaymentOnDelivery>() {
+                        @Override
+                        public void write(JsonWriter out, OrderLineItemPaymentOnDelivery value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderLineItemPaymentOnDelivery read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderLineItemPaymentOnDelivery given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderLineItemPaymentOnDelivery
+     * @throws IOException if the JSON string is invalid with respect to OrderLineItemPaymentOnDelivery
+     */
+    public static OrderLineItemPaymentOnDelivery fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderLineItemPaymentOnDelivery.class);
+    }
+
+    /**
+     * Convert an instance of OrderLineItemPaymentOnDelivery to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

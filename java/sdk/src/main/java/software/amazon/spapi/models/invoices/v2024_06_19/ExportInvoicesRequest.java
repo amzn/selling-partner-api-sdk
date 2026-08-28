@@ -12,44 +12,81 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The information required to create the export request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The information required to create the export request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ExportInvoicesRequest {
-    @SerializedName("dateEnd")
-    private LocalDate dateEnd = null;
+    public static final String SERIALIZED_NAME_DATE_END = "dateEnd";
 
-    @SerializedName("dateStart")
-    private LocalDate dateStart = null;
+    @SerializedName(SERIALIZED_NAME_DATE_END)
+    private LocalDate dateEnd;
 
-    @SerializedName("externalInvoiceId")
-    private String externalInvoiceId = null;
+    public static final String SERIALIZED_NAME_DATE_START = "dateStart";
 
-    @SerializedName("fileFormat")
-    private FileFormat fileFormat = null;
+    @SerializedName(SERIALIZED_NAME_DATE_START)
+    private LocalDate dateStart;
 
-    @SerializedName("invoiceType")
-    private String invoiceType = null;
+    public static final String SERIALIZED_NAME_EXTERNAL_INVOICE_ID = "externalInvoiceId";
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_EXTERNAL_INVOICE_ID)
+    private String externalInvoiceId;
 
-    @SerializedName("series")
-    private String series = null;
+    public static final String SERIALIZED_NAME_FILE_FORMAT = "fileFormat";
 
-    @SerializedName("statuses")
-    private List<String> statuses = null;
+    @SerializedName(SERIALIZED_NAME_FILE_FORMAT)
+    private FileFormat fileFormat;
 
-    @SerializedName("transactionIdentifier")
-    private TransactionIdentifier transactionIdentifier = null;
+    public static final String SERIALIZED_NAME_INVOICE_TYPE = "invoiceType";
 
-    @SerializedName("transactionType")
-    private String transactionType = null;
+    @SerializedName(SERIALIZED_NAME_INVOICE_TYPE)
+    private String invoiceType;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_SERIES = "series";
+
+    @SerializedName(SERIALIZED_NAME_SERIES)
+    private String series;
+
+    public static final String SERIALIZED_NAME_STATUSES = "statuses";
+
+    @SerializedName(SERIALIZED_NAME_STATUSES)
+    private List<String> statuses = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TRANSACTION_IDENTIFIER = "transactionIdentifier";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_IDENTIFIER)
+    private TransactionIdentifier transactionIdentifier;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
+
+    public ExportInvoicesRequest() {}
 
     public ExportInvoicesRequest dateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
@@ -63,10 +100,7 @@ public class ExportInvoicesRequest {
      *
      * @return dateEnd
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.")
-    public LocalDate getDateEnd() {
+    @javax.annotation.Nullable public LocalDate getDateEnd() {
         return dateEnd;
     }
 
@@ -86,10 +120,7 @@ public class ExportInvoicesRequest {
      *
      * @return dateStart
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.")
-    public LocalDate getDateStart() {
+    @javax.annotation.Nullable public LocalDate getDateStart() {
         return dateStart;
     }
 
@@ -107,9 +138,7 @@ public class ExportInvoicesRequest {
      *
      * @return externalInvoiceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The external ID of the invoices you want included in the response.")
-    public String getExternalInvoiceId() {
+    @javax.annotation.Nullable public String getExternalInvoiceId() {
         return externalInvoiceId;
     }
 
@@ -127,8 +156,7 @@ public class ExportInvoicesRequest {
      *
      * @return fileFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FileFormat getFileFormat() {
+    @javax.annotation.Nullable public FileFormat getFileFormat() {
         return fileFormat;
     }
 
@@ -147,10 +175,7 @@ public class ExportInvoicesRequest {
      *
      * @return invoiceType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The marketplace-specific classification of the invoice type. Use the `getInvoicesAttributes` operation to check `invoiceType` options.")
-    public String getInvoiceType() {
+    @javax.annotation.Nullable public String getInvoiceType() {
         return invoiceType;
     }
 
@@ -168,9 +193,7 @@ public class ExportInvoicesRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The ID of the marketplace from which you want the invoices.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -189,9 +212,7 @@ public class ExportInvoicesRequest {
      *
      * @return series
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The series number of the invoices you want included in the response.")
-    public String getSeries() {
+    @javax.annotation.Nullable public String getSeries() {
         return series;
     }
 
@@ -218,10 +239,7 @@ public class ExportInvoicesRequest {
      *
      * @return statuses
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1")
-    public List<String> getStatuses() {
+    @javax.annotation.Nullable public List<String> getStatuses() {
         return statuses;
     }
 
@@ -239,8 +257,7 @@ public class ExportInvoicesRequest {
      *
      * @return transactionIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TransactionIdentifier getTransactionIdentifier() {
+    @javax.annotation.Nullable public TransactionIdentifier getTransactionIdentifier() {
         return transactionIdentifier;
     }
 
@@ -259,10 +276,7 @@ public class ExportInvoicesRequest {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The marketplace-specific classification of the transaction type for which the invoice was created. Use the `getInvoicesAttributes` operation to check `transactionType` options")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -271,7 +285,7 @@ public class ExportInvoicesRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -331,10 +345,167 @@ public class ExportInvoicesRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("dateEnd");
+        openapiFields.add("dateStart");
+        openapiFields.add("externalInvoiceId");
+        openapiFields.add("fileFormat");
+        openapiFields.add("invoiceType");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("series");
+        openapiFields.add("statuses");
+        openapiFields.add("transactionIdentifier");
+        openapiFields.add("transactionType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ExportInvoicesRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ExportInvoicesRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ExportInvoicesRequest is not found in the empty JSON string",
+                        ExportInvoicesRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ExportInvoicesRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ExportInvoicesRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ExportInvoicesRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("externalInvoiceId") != null
+                        && !jsonObj.get("externalInvoiceId").isJsonNull())
+                && !jsonObj.get("externalInvoiceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `externalInvoiceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("externalInvoiceId").toString()));
+        }
+        // validate the optional field `fileFormat`
+        if (jsonObj.get("fileFormat") != null && !jsonObj.get("fileFormat").isJsonNull()) {
+            FileFormat.validateJsonElement(jsonObj.get("fileFormat"));
+        }
+        if ((jsonObj.get("invoiceType") != null && !jsonObj.get("invoiceType").isJsonNull())
+                && !jsonObj.get("invoiceType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoiceType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("invoiceType").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if ((jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull())
+                && !jsonObj.get("series").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `series` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("series").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("statuses") != null
+                && !jsonObj.get("statuses").isJsonNull()
+                && !jsonObj.get("statuses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `statuses` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("statuses").toString()));
+        }
+        // validate the optional field `transactionIdentifier`
+        if (jsonObj.get("transactionIdentifier") != null
+                && !jsonObj.get("transactionIdentifier").isJsonNull()) {
+            TransactionIdentifier.validateJsonElement(jsonObj.get("transactionIdentifier"));
+        }
+        if ((jsonObj.get("transactionType") != null
+                        && !jsonObj.get("transactionType").isJsonNull())
+                && !jsonObj.get("transactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transactionType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ExportInvoicesRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ExportInvoicesRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ExportInvoicesRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ExportInvoicesRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ExportInvoicesRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ExportInvoicesRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ExportInvoicesRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ExportInvoicesRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ExportInvoicesRequest
+     * @throws IOException if the JSON string is invalid with respect to ExportInvoicesRequest
+     */
+    public static ExportInvoicesRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ExportInvoicesRequest.class);
+    }
+
+    /**
+     * Convert an instance of ExportInvoicesRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

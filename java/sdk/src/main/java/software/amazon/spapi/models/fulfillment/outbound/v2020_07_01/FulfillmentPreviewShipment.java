@@ -12,33 +12,61 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Delivery and item information for a shipment in a fulfillment order preview. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Delivery and item information for a shipment in a fulfillment order preview.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FulfillmentPreviewShipment {
-    @SerializedName("earliestShipDate")
-    private OffsetDateTime earliestShipDate = null;
+    public static final String SERIALIZED_NAME_EARLIEST_SHIP_DATE = "earliestShipDate";
 
-    @SerializedName("latestShipDate")
-    private OffsetDateTime latestShipDate = null;
+    @SerializedName(SERIALIZED_NAME_EARLIEST_SHIP_DATE)
+    private OffsetDateTime earliestShipDate;
 
-    @SerializedName("earliestArrivalDate")
-    private OffsetDateTime earliestArrivalDate = null;
+    public static final String SERIALIZED_NAME_LATEST_SHIP_DATE = "latestShipDate";
 
-    @SerializedName("latestArrivalDate")
-    private OffsetDateTime latestArrivalDate = null;
+    @SerializedName(SERIALIZED_NAME_LATEST_SHIP_DATE)
+    private OffsetDateTime latestShipDate;
 
-    @SerializedName("shippingNotes")
-    private List<String> shippingNotes = null;
+    public static final String SERIALIZED_NAME_EARLIEST_ARRIVAL_DATE = "earliestArrivalDate";
 
-    @SerializedName("fulfillmentPreviewItems")
-    private FulfillmentPreviewItemList fulfillmentPreviewItems = null;
+    @SerializedName(SERIALIZED_NAME_EARLIEST_ARRIVAL_DATE)
+    private OffsetDateTime earliestArrivalDate;
+
+    public static final String SERIALIZED_NAME_LATEST_ARRIVAL_DATE = "latestArrivalDate";
+
+    @SerializedName(SERIALIZED_NAME_LATEST_ARRIVAL_DATE)
+    private OffsetDateTime latestArrivalDate;
+
+    public static final String SERIALIZED_NAME_SHIPPING_NOTES = "shippingNotes";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_NOTES)
+    private List<String> shippingNotes = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_PREVIEW_ITEMS = "fulfillmentPreviewItems";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_PREVIEW_ITEMS)
+    private FulfillmentPreviewItemList fulfillmentPreviewItems = new ArrayList<>();
+
+    public FulfillmentPreviewShipment() {}
 
     public FulfillmentPreviewShipment earliestShipDate(OffsetDateTime earliestShipDate) {
         this.earliestShipDate = earliestShipDate;
@@ -50,8 +78,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return earliestShipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getEarliestShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEarliestShipDate() {
         return earliestShipDate;
     }
 
@@ -69,8 +96,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return latestShipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getLatestShipDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLatestShipDate() {
         return latestShipDate;
     }
 
@@ -88,8 +114,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return earliestArrivalDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getEarliestArrivalDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEarliestArrivalDate() {
         return earliestArrivalDate;
     }
 
@@ -107,8 +132,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return latestArrivalDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
-    public OffsetDateTime getLatestArrivalDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLatestArrivalDate() {
         return latestArrivalDate;
     }
 
@@ -134,10 +158,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return shippingNotes
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.")
-    public List<String> getShippingNotes() {
+    @javax.annotation.Nullable public List<String> getShippingNotes() {
         return shippingNotes;
     }
 
@@ -155,7 +176,7 @@ public class FulfillmentPreviewShipment {
      *
      * @return fulfillmentPreviewItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FulfillmentPreviewItemList getFulfillmentPreviewItems() {
         return fulfillmentPreviewItems;
     }
@@ -165,7 +186,7 @@ public class FulfillmentPreviewShipment {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -217,10 +238,123 @@ public class FulfillmentPreviewShipment {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("earliestShipDate");
+        openapiFields.add("latestShipDate");
+        openapiFields.add("earliestArrivalDate");
+        openapiFields.add("latestArrivalDate");
+        openapiFields.add("shippingNotes");
+        openapiFields.add("fulfillmentPreviewItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("fulfillmentPreviewItems");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FulfillmentPreviewShipment
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FulfillmentPreviewShipment.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FulfillmentPreviewShipment is not found in the empty JSON string",
+                        FulfillmentPreviewShipment.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FulfillmentPreviewShipment.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FulfillmentPreviewShipment` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FulfillmentPreviewShipment.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("shippingNotes") != null
+                && !jsonObj.get("shippingNotes").isJsonNull()
+                && !jsonObj.get("shippingNotes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shippingNotes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("shippingNotes").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FulfillmentPreviewShipment.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FulfillmentPreviewShipment' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FulfillmentPreviewShipment> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FulfillmentPreviewShipment.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FulfillmentPreviewShipment>() {
+                        @Override
+                        public void write(JsonWriter out, FulfillmentPreviewShipment value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FulfillmentPreviewShipment read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FulfillmentPreviewShipment given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FulfillmentPreviewShipment
+     * @throws IOException if the JSON string is invalid with respect to FulfillmentPreviewShipment
+     */
+    public static FulfillmentPreviewShipment fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FulfillmentPreviewShipment.class);
+    }
+
+    /**
+     * Convert an instance of FulfillmentPreviewShipment to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

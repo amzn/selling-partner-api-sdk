@@ -12,25 +12,45 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The response to the &#x60;retrieveShippingOptions&#x60; operation. The response contains shipping options on a
  * per-package basis from which the seller has to select one shipping option while they retrieve the shipping label. If
  * the particular marketplace channel does not support scheduled shipping options, then this response will be empty.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The response to the `retrieveShippingOptions` operation. The response contains shipping options on a per-package basis from which the seller has to select one shipping option while they retrieve the shipping label. If the particular marketplace channel does not support scheduled shipping options, then this response will be empty.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShippingOptionsResponse {
-    @SerializedName("shippingOptions")
-    private List<ShippingOptions> shippingOptions = null;
+    public static final String SERIALIZED_NAME_SHIPPING_OPTIONS = "shippingOptions";
 
-    @SerializedName("recommendedShippingOption")
-    private ShippingOptions recommendedShippingOption = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_OPTIONS)
+    private List<ShippingOptions> shippingOptions = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_RECOMMENDED_SHIPPING_OPTION = "recommendedShippingOption";
+
+    @SerializedName(SERIALIZED_NAME_RECOMMENDED_SHIPPING_OPTION)
+    private ShippingOptions recommendedShippingOption;
+
+    public ShippingOptionsResponse() {}
 
     public ShippingOptionsResponse shippingOptions(List<ShippingOptions> shippingOptions) {
         this.shippingOptions = shippingOptions;
@@ -50,8 +70,7 @@ public class ShippingOptionsResponse {
      *
      * @return shippingOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipping options.")
-    public List<ShippingOptions> getShippingOptions() {
+    @javax.annotation.Nullable public List<ShippingOptions> getShippingOptions() {
         return shippingOptions;
     }
 
@@ -69,8 +88,7 @@ public class ShippingOptionsResponse {
      *
      * @return recommendedShippingOption
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShippingOptions getRecommendedShippingOption() {
+    @javax.annotation.Nullable public ShippingOptions getRecommendedShippingOption() {
         return recommendedShippingOption;
     }
 
@@ -79,7 +97,7 @@ public class ShippingOptionsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -111,10 +129,124 @@ public class ShippingOptionsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shippingOptions");
+        openapiFields.add("recommendedShippingOption");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShippingOptionsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShippingOptionsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShippingOptionsResponse is not found in the empty JSON string",
+                        ShippingOptionsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShippingOptionsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShippingOptionsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("shippingOptions") != null
+                && !jsonObj.get("shippingOptions").isJsonNull()) {
+            JsonArray jsonArrayshippingOptions = jsonObj.getAsJsonArray("shippingOptions");
+            if (jsonArrayshippingOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("shippingOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `shippingOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("shippingOptions").toString()));
+                }
+
+                // validate the optional field `shippingOptions` (array)
+                for (int i = 0; i < jsonArrayshippingOptions.size(); i++) {
+                    ShippingOptions.validateJsonElement(jsonArrayshippingOptions.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `recommendedShippingOption`
+        if (jsonObj.get("recommendedShippingOption") != null
+                && !jsonObj.get("recommendedShippingOption").isJsonNull()) {
+            ShippingOptions.validateJsonElement(jsonObj.get("recommendedShippingOption"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShippingOptionsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShippingOptionsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShippingOptionsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShippingOptionsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShippingOptionsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ShippingOptionsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShippingOptionsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShippingOptionsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShippingOptionsResponse
+     * @throws IOException if the JSON string is invalid with respect to ShippingOptionsResponse
+     */
+    public static ShippingOptionsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShippingOptionsResponse.class);
+    }
+
+    /**
+     * Convert an instance of ShippingOptionsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

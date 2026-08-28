@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The item review topic metrics. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The item review topic metrics.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemReviewTopicMetrics {
-    @SerializedName("numberOfMentions")
-    private Integer numberOfMentions = null;
+    public static final String SERIALIZED_NAME_NUMBER_OF_MENTIONS = "numberOfMentions";
 
-    @SerializedName("occurrencePercentage")
-    private Float occurrencePercentage = null;
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_MENTIONS)
+    private Integer numberOfMentions;
 
-    @SerializedName("starRatingImpact")
-    private Float starRatingImpact = null;
+    public static final String SERIALIZED_NAME_OCCURRENCE_PERCENTAGE = "occurrencePercentage";
+
+    @SerializedName(SERIALIZED_NAME_OCCURRENCE_PERCENTAGE)
+    private Float occurrencePercentage;
+
+    public static final String SERIALIZED_NAME_STAR_RATING_IMPACT = "starRatingImpact";
+
+    @SerializedName(SERIALIZED_NAME_STAR_RATING_IMPACT)
+    private Float starRatingImpact;
+
+    public ItemReviewTopicMetrics() {}
 
     public ItemReviewTopicMetrics numberOfMentions(Integer numberOfMentions) {
         this.numberOfMentions = numberOfMentions;
@@ -38,10 +61,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return numberOfMentions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The number of times that reviews mention the topic. This value is `null` if reviews do not mention the topic frequently enough.")
-    public Integer getNumberOfMentions() {
+    @javax.annotation.Nullable public Integer getNumberOfMentions() {
         return numberOfMentions;
     }
 
@@ -60,10 +80,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return occurrencePercentage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The percentage of customer reviews that mention the topic. This value is `null` if reviews do not mention the topic frequently enough.")
-    public Float getOccurrencePercentage() {
+    @javax.annotation.Nullable public Float getOccurrencePercentage() {
         return occurrencePercentage;
     }
 
@@ -82,10 +99,7 @@ public class ItemReviewTopicMetrics {
      *
      * @return starRatingImpact
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The effect of the topic on the star rating of the ASIN. This value can be positive or negative. This value is `null` if the topic does't affect the star rating of the ASIN.")
-    public Float getStarRatingImpact() {
+    @javax.annotation.Nullable public Float getStarRatingImpact() {
         return starRatingImpact;
     }
 
@@ -94,7 +108,7 @@ public class ItemReviewTopicMetrics {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -130,10 +144,102 @@ public class ItemReviewTopicMetrics {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("numberOfMentions");
+        openapiFields.add("occurrencePercentage");
+        openapiFields.add("starRatingImpact");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemReviewTopicMetrics
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemReviewTopicMetrics.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemReviewTopicMetrics is not found in the empty JSON string",
+                        ItemReviewTopicMetrics.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemReviewTopicMetrics.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemReviewTopicMetrics` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemReviewTopicMetrics.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemReviewTopicMetrics' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemReviewTopicMetrics> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemReviewTopicMetrics.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemReviewTopicMetrics>() {
+                        @Override
+                        public void write(JsonWriter out, ItemReviewTopicMetrics value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemReviewTopicMetrics read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemReviewTopicMetrics given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemReviewTopicMetrics
+     * @throws IOException if the JSON string is invalid with respect to ItemReviewTopicMetrics
+     */
+    public static ItemReviewTopicMetrics fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemReviewTopicMetrics.class);
+    }
+
+    /**
+     * Convert an instance of ItemReviewTopicMetrics to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The segment type for targeting specific customer cohorts. */
 @JsonAdapter(CustomerSegmentType.Adapter.class)
 public enum CustomerSegmentType {
-    @SerializedName("BRAND")
     BRAND("BRAND"),
 
-    @SerializedName("PROGRAM")
     PROGRAM("PROGRAM");
 
     private String value;
@@ -43,25 +41,30 @@ public enum CustomerSegmentType {
         return String.valueOf(value);
     }
 
-    public static CustomerSegmentType fromValue(String input) {
+    public static CustomerSegmentType fromValue(String value) {
         for (CustomerSegmentType b : CustomerSegmentType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CustomerSegmentType> {
         @Override
         public void write(final JsonWriter jsonWriter, final CustomerSegmentType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public CustomerSegmentType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return CustomerSegmentType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return CustomerSegmentType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        CustomerSegmentType.fromValue(value);
     }
 }

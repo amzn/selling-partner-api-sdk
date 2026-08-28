@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Carton/Pallet level details for the item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Carton/Pallet level details for the item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ContainerItem {
-    @SerializedName("itemReference")
-    private String itemReference = null;
+    public static final String SERIALIZED_NAME_ITEM_REFERENCE = "itemReference";
 
-    @SerializedName("shippedQuantity")
-    private ItemQuantity shippedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_REFERENCE)
+    private String itemReference;
 
-    @SerializedName("itemDetails")
-    private ItemDetails itemDetails = null;
+    public static final String SERIALIZED_NAME_SHIPPED_QUANTITY = "shippedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPED_QUANTITY)
+    private ItemQuantity shippedQuantity;
+
+    public static final String SERIALIZED_NAME_ITEM_DETAILS = "itemDetails";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_DETAILS)
+    private ItemDetails itemDetails;
+
+    public ContainerItem() {}
 
     public ContainerItem itemReference(String itemReference) {
         this.itemReference = itemReference;
@@ -38,10 +61,7 @@ public class ContainerItem {
      *
      * @return itemReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The reference number for the item. Please provide the itemSequenceNumber from the 'items' segment to refer to that item's details here.")
+    @javax.annotation.Nonnull
     public String getItemReference() {
         return itemReference;
     }
@@ -60,7 +80,7 @@ public class ContainerItem {
      *
      * @return shippedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemQuantity getShippedQuantity() {
         return shippedQuantity;
     }
@@ -79,8 +99,7 @@ public class ContainerItem {
      *
      * @return itemDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemDetails getItemDetails() {
+    @javax.annotation.Nullable public ItemDetails getItemDetails() {
         return itemDetails;
     }
 
@@ -89,7 +108,7 @@ public class ContainerItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +140,123 @@ public class ContainerItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemReference");
+        openapiFields.add("shippedQuantity");
+        openapiFields.add("itemDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("itemReference");
+        openapiRequiredFields.add("shippedQuantity");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ContainerItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ContainerItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ContainerItem is not found in the empty JSON string",
+                        ContainerItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ContainerItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ContainerItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ContainerItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("itemReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemReference").toString()));
+        }
+        // validate the required field `shippedQuantity`
+        ItemQuantity.validateJsonElement(jsonObj.get("shippedQuantity"));
+        // validate the optional field `itemDetails`
+        if (jsonObj.get("itemDetails") != null && !jsonObj.get("itemDetails").isJsonNull()) {
+            ItemDetails.validateJsonElement(jsonObj.get("itemDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ContainerItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ContainerItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ContainerItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ContainerItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ContainerItem>() {
+                        @Override
+                        public void write(JsonWriter out, ContainerItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ContainerItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ContainerItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ContainerItem
+     * @throws IOException if the JSON string is invalid with respect to ContainerItem
+     */
+    public static ContainerItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ContainerItem.class);
+    }
+
+    /**
+     * Convert an instance of ContainerItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

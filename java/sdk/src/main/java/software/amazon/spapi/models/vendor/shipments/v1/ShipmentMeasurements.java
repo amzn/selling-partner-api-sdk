@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Shipment measurement details. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment measurement details.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentMeasurements {
-    @SerializedName("grossShipmentWeight")
-    private Weight grossShipmentWeight = null;
+    public static final String SERIALIZED_NAME_GROSS_SHIPMENT_WEIGHT = "grossShipmentWeight";
 
-    @SerializedName("shipmentVolume")
-    private Volume shipmentVolume = null;
+    @SerializedName(SERIALIZED_NAME_GROSS_SHIPMENT_WEIGHT)
+    private Weight grossShipmentWeight;
 
-    @SerializedName("cartonCount")
-    private Integer cartonCount = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_VOLUME = "shipmentVolume";
 
-    @SerializedName("palletCount")
-    private Integer palletCount = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_VOLUME)
+    private Volume shipmentVolume;
+
+    public static final String SERIALIZED_NAME_CARTON_COUNT = "cartonCount";
+
+    @SerializedName(SERIALIZED_NAME_CARTON_COUNT)
+    private Integer cartonCount;
+
+    public static final String SERIALIZED_NAME_PALLET_COUNT = "palletCount";
+
+    @SerializedName(SERIALIZED_NAME_PALLET_COUNT)
+    private Integer palletCount;
+
+    public ShipmentMeasurements() {}
 
     public ShipmentMeasurements grossShipmentWeight(Weight grossShipmentWeight) {
         this.grossShipmentWeight = grossShipmentWeight;
@@ -40,8 +65,7 @@ public class ShipmentMeasurements {
      *
      * @return grossShipmentWeight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Weight getGrossShipmentWeight() {
+    @javax.annotation.Nullable public Weight getGrossShipmentWeight() {
         return grossShipmentWeight;
     }
 
@@ -59,8 +83,7 @@ public class ShipmentMeasurements {
      *
      * @return shipmentVolume
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Volume getShipmentVolume() {
+    @javax.annotation.Nullable public Volume getShipmentVolume() {
         return shipmentVolume;
     }
 
@@ -78,10 +101,7 @@ public class ShipmentMeasurements {
      *
      * @return cartonCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.")
-    public Integer getCartonCount() {
+    @javax.annotation.Nullable public Integer getCartonCount() {
         return cartonCount;
     }
 
@@ -99,10 +119,7 @@ public class ShipmentMeasurements {
      *
      * @return palletCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Number of pallets present in the shipment. Provide the palletCount only for palletized shipments.")
-    public Integer getPalletCount() {
+    @javax.annotation.Nullable public Integer getPalletCount() {
         return palletCount;
     }
 
@@ -111,7 +128,7 @@ public class ShipmentMeasurements {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -147,10 +164,112 @@ public class ShipmentMeasurements {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("grossShipmentWeight");
+        openapiFields.add("shipmentVolume");
+        openapiFields.add("cartonCount");
+        openapiFields.add("palletCount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentMeasurements
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentMeasurements.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentMeasurements is not found in the empty JSON string",
+                        ShipmentMeasurements.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentMeasurements.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentMeasurements` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `grossShipmentWeight`
+        if (jsonObj.get("grossShipmentWeight") != null
+                && !jsonObj.get("grossShipmentWeight").isJsonNull()) {
+            Weight.validateJsonElement(jsonObj.get("grossShipmentWeight"));
+        }
+        // validate the optional field `shipmentVolume`
+        if (jsonObj.get("shipmentVolume") != null
+                && !jsonObj.get("shipmentVolume").isJsonNull()) {
+            Volume.validateJsonElement(jsonObj.get("shipmentVolume"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentMeasurements.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentMeasurements' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentMeasurements> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentMeasurements.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentMeasurements>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentMeasurements value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentMeasurements read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentMeasurements given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentMeasurements
+     * @throws IOException if the JSON string is invalid with respect to ShipmentMeasurements
+     */
+    public static ShipmentMeasurements fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentMeasurements.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentMeasurements to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

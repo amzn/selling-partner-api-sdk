@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,31 +22,22 @@ import java.io.IOException;
 /** The attribute to use to sort the results. */
 @JsonAdapter(ListOfferMetricsSortKey.Adapter.class)
 public enum ListOfferMetricsSortKey {
-    @SerializedName("SHIPPED_SUBSCRIPTION_UNITS")
     SHIPPED_SUBSCRIPTION_UNITS("SHIPPED_SUBSCRIPTION_UNITS"),
 
-    @SerializedName("TOTAL_SUBSCRIPTIONS_REVENUE")
     TOTAL_SUBSCRIPTIONS_REVENUE("TOTAL_SUBSCRIPTIONS_REVENUE"),
 
-    @SerializedName("ACTIVE_SUBSCRIPTIONS")
     ACTIVE_SUBSCRIPTIONS("ACTIVE_SUBSCRIPTIONS"),
 
-    @SerializedName("NEXT_90DAYS_SHIPPED_SUBSCRIPTION_UNITS")
     NEXT_90_DAYS_SHIPPED_SUBSCRIPTION_UNITS("NEXT_90DAYS_SHIPPED_SUBSCRIPTION_UNITS"),
 
-    @SerializedName("NEXT_60DAYS_SHIPPED_SUBSCRIPTION_UNITS")
     NEXT_60_DAYS_SHIPPED_SUBSCRIPTION_UNITS("NEXT_60DAYS_SHIPPED_SUBSCRIPTION_UNITS"),
 
-    @SerializedName("NEXT_30DAYS_SHIPPED_SUBSCRIPTION_UNITS")
     NEXT_30_DAYS_SHIPPED_SUBSCRIPTION_UNITS("NEXT_30DAYS_SHIPPED_SUBSCRIPTION_UNITS"),
 
-    @SerializedName("NEXT_90DAYS_TOTAL_SUBSCRIPTIONS_REVENUE")
     NEXT_90_DAYS_TOTAL_SUBSCRIPTIONS_REVENUE("NEXT_90DAYS_TOTAL_SUBSCRIPTIONS_REVENUE"),
 
-    @SerializedName("NEXT_60DAYS_TOTAL_SUBSCRIPTIONS_REVENUE")
     NEXT_60_DAYS_TOTAL_SUBSCRIPTIONS_REVENUE("NEXT_60DAYS_TOTAL_SUBSCRIPTIONS_REVENUE"),
 
-    @SerializedName("NEXT_30DAYS_TOTAL_SUBSCRIPTIONS_REVENUE")
     NEXT_30_DAYS_TOTAL_SUBSCRIPTIONS_REVENUE("NEXT_30DAYS_TOTAL_SUBSCRIPTIONS_REVENUE");
 
     private String value;
@@ -64,25 +55,30 @@ public enum ListOfferMetricsSortKey {
         return String.valueOf(value);
     }
 
-    public static ListOfferMetricsSortKey fromValue(String input) {
+    public static ListOfferMetricsSortKey fromValue(String value) {
         for (ListOfferMetricsSortKey b : ListOfferMetricsSortKey.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ListOfferMetricsSortKey> {
         @Override
         public void write(final JsonWriter jsonWriter, final ListOfferMetricsSortKey enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ListOfferMetricsSortKey read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ListOfferMetricsSortKey.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ListOfferMetricsSortKey.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ListOfferMetricsSortKey.fromValue(value);
     }
 }

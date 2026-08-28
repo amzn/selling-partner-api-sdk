@@ -12,33 +12,47 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An issue with a listings item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An issue with a listings item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Issue {
-    @SerializedName("code")
-    private String code = null;
+    public static final String SERIALIZED_NAME_CODE = "code";
 
-    @SerializedName("message")
-    private String message = null;
+    @SerializedName(SERIALIZED_NAME_CODE)
+    private String code;
+
+    public static final String SERIALIZED_NAME_MESSAGE = "message";
+
+    @SerializedName(SERIALIZED_NAME_MESSAGE)
+    private String message;
 
     /** The severity of the issue. */
     @JsonAdapter(SeverityEnum.Adapter.class)
     public enum SeverityEnum {
-        @SerializedName("ERROR")
         ERROR("ERROR"),
-        @SerializedName("WARNING")
+
         WARNING("WARNING"),
-        @SerializedName("INFO")
+
         INFO("INFO");
 
         private String value;
@@ -56,43 +70,60 @@ public class Issue {
             return String.valueOf(value);
         }
 
-        public static SeverityEnum fromValue(String input) {
+        public static SeverityEnum fromValue(String value) {
             for (SeverityEnum b : SeverityEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SeverityEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SeverityEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SeverityEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SeverityEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SeverityEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SeverityEnum.fromValue(value);
         }
     }
 
-    @SerializedName("severity")
-    private SeverityEnum severity = null;
+    public static final String SERIALIZED_NAME_SEVERITY = "severity";
 
-    @SerializedName("attributeNames")
-    private List<String> attributeNames = null;
+    @SerializedName(SERIALIZED_NAME_SEVERITY)
+    private SeverityEnum severity;
 
-    @SerializedName("categories")
-    private List<String> categories = null;
+    public static final String SERIALIZED_NAME_ATTRIBUTE_NAMES = "attributeNames";
 
-    @SerializedName("enforcements")
-    private IssueEnforcements enforcements = null;
+    @SerializedName(SERIALIZED_NAME_ATTRIBUTE_NAMES)
+    private List<String> attributeNames = new ArrayList<>();
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    public static final String SERIALIZED_NAME_CATEGORIES = "categories";
+
+    @SerializedName(SERIALIZED_NAME_CATEGORIES)
+    private List<String> categories = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ENFORCEMENTS = "enforcements";
+
+    @SerializedName(SERIALIZED_NAME_ENFORCEMENTS)
+    private IssueEnforcements enforcements;
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public Issue() {}
 
     public Issue code(String code) {
         this.code = code;
@@ -104,9 +135,7 @@ public class Issue {
      *
      * @return code
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An issue code that identifies the type of issue.")
+    @javax.annotation.Nonnull
     public String getCode() {
         return code;
     }
@@ -125,7 +154,7 @@ public class Issue {
      *
      * @return message
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A message that describes the issue.")
+    @javax.annotation.Nonnull
     public String getMessage() {
         return message;
     }
@@ -144,7 +173,7 @@ public class Issue {
      *
      * @return severity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The severity of the issue.")
+    @javax.annotation.Nonnull
     public SeverityEnum getSeverity() {
         return severity;
     }
@@ -171,9 +200,7 @@ public class Issue {
      *
      * @return attributeNames
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Names of the attributes that are associated with the issue, if applicable.")
-    public List<String> getAttributeNames() {
+    @javax.annotation.Nullable public List<String> getAttributeNames() {
         return attributeNames;
     }
 
@@ -199,7 +226,7 @@ public class Issue {
      *
      * @return categories
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "List of issue categories.")
+    @javax.annotation.Nonnull
     public List<String> getCategories() {
         return categories;
     }
@@ -218,8 +245,7 @@ public class Issue {
      *
      * @return enforcements
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public IssueEnforcements getEnforcements() {
+    @javax.annotation.Nullable public IssueEnforcements getEnforcements() {
         return enforcements;
     }
 
@@ -245,8 +271,7 @@ public class Issue {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "List of Amazon store identifiers.")
-    public List<String> getMarketplaceIds() {
+    @javax.annotation.Nullable public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
 
@@ -255,7 +280,7 @@ public class Issue {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -297,10 +322,163 @@ public class Issue {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("code");
+        openapiFields.add("message");
+        openapiFields.add("severity");
+        openapiFields.add("attributeNames");
+        openapiFields.add("categories");
+        openapiFields.add("enforcements");
+        openapiFields.add("marketplaceIds");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("code");
+        openapiRequiredFields.add("message");
+        openapiRequiredFields.add("severity");
+        openapiRequiredFields.add("categories");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Issue
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Issue.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Issue is not found in the empty JSON string",
+                        Issue.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Issue.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Issue` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Issue.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("code").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `code` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("code").toString()));
+        }
+        if (!jsonObj.get("message").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `message` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("message").toString()));
+        }
+        if (!jsonObj.get("severity").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `severity` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("severity").toString()));
+        }
+        // validate the required field `severity`
+        SeverityEnum.validateJsonElement(jsonObj.get("severity"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("attributeNames") != null
+                && !jsonObj.get("attributeNames").isJsonNull()
+                && !jsonObj.get("attributeNames").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `attributeNames` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("attributeNames").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("categories") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("categories").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `categories` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("categories").toString()));
+        }
+        // validate the optional field `enforcements`
+        if (jsonObj.get("enforcements") != null && !jsonObj.get("enforcements").isJsonNull()) {
+            IssueEnforcements.validateJsonElement(jsonObj.get("enforcements"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("marketplaceIds") != null
+                && !jsonObj.get("marketplaceIds").isJsonNull()
+                && !jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Issue.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Issue' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Issue> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Issue.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Issue>() {
+                        @Override
+                        public void write(JsonWriter out, Issue value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Issue read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Issue given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Issue
+     * @throws IOException if the JSON string is invalid with respect to Issue
+     */
+    public static Issue fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Issue.class);
+    }
+
+    /**
+     * Convert an instance of Issue to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

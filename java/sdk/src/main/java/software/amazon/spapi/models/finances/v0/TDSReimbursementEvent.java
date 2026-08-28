@@ -12,22 +12,44 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An event related to a Tax-Deducted-at-Source (TDS) reimbursement. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "An event related to a Tax-Deducted-at-Source (TDS) reimbursement.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TDSReimbursementEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("TDSOrderId")
-    private String tdSOrderId = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("ReimbursedAmount")
-    private Currency reimbursedAmount = null;
+    public static final String SERIALIZED_NAME_TD_S_ORDER_ID = "TDSOrderId";
+
+    @SerializedName(SERIALIZED_NAME_TD_S_ORDER_ID)
+    private String tdSOrderId;
+
+    public static final String SERIALIZED_NAME_REIMBURSED_AMOUNT = "ReimbursedAmount";
+
+    @SerializedName(SERIALIZED_NAME_REIMBURSED_AMOUNT)
+    private Currency reimbursedAmount;
+
+    public TDSReimbursementEvent() {}
 
     public TDSReimbursementEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -39,10 +61,7 @@ public class TDSReimbursementEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -60,8 +79,7 @@ public class TDSReimbursementEvent {
      *
      * @return tdSOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Tax-Deducted-at-Source (TDS) identifier.")
-    public String getTdSOrderId() {
+    @javax.annotation.Nullable public String getTdSOrderId() {
         return tdSOrderId;
     }
 
@@ -79,8 +97,7 @@ public class TDSReimbursementEvent {
      *
      * @return reimbursedAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getReimbursedAmount() {
+    @javax.annotation.Nullable public Currency getReimbursedAmount() {
         return reimbursedAmount;
     }
 
@@ -89,7 +106,7 @@ public class TDSReimbursementEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -121,10 +138,113 @@ public class TDSReimbursementEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("TDSOrderId");
+        openapiFields.add("ReimbursedAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TDSReimbursementEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TDSReimbursementEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TDSReimbursementEvent is not found in the empty JSON string",
+                        TDSReimbursementEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TDSReimbursementEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TDSReimbursementEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("TDSOrderId") != null && !jsonObj.get("TDSOrderId").isJsonNull())
+                && !jsonObj.get("TDSOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TDSOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TDSOrderId").toString()));
+        }
+        // validate the optional field `ReimbursedAmount`
+        if (jsonObj.get("ReimbursedAmount") != null
+                && !jsonObj.get("ReimbursedAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ReimbursedAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TDSReimbursementEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TDSReimbursementEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TDSReimbursementEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TDSReimbursementEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TDSReimbursementEvent>() {
+                        @Override
+                        public void write(JsonWriter out, TDSReimbursementEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TDSReimbursementEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TDSReimbursementEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TDSReimbursementEvent
+     * @throws IOException if the JSON string is invalid with respect to TDSReimbursementEvent
+     */
+    public static TDSReimbursementEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TDSReimbursementEvent.class);
+    }
+
+    /**
+     * Convert an instance of TDSReimbursementEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

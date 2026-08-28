@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The tracking details of the package if it is shipped by a third party courier. This attribute should only be provided
  * when the value of &#x60;shipBy&#x60; is &#x60;THIRD_PARTY_CARRIER&#x60;.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The tracking details of the package if it is shipped by a third party courier. This attribute should only be provided when the value of `shipBy` is `THIRD_PARTY_CARRIER`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CourierSupportedAttributes {
-    @SerializedName("carrierName")
-    private String carrierName = null;
+    public static final String SERIALIZED_NAME_CARRIER_NAME = "carrierName";
 
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
+    private String carrierName;
+
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
+
+    public CourierSupportedAttributes() {}
 
     public CourierSupportedAttributes carrierName(String carrierName) {
         this.carrierName = carrierName;
@@ -39,9 +58,7 @@ public class CourierSupportedAttributes {
      *
      * @return carrierName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The name of the courier service used to ship the package")
+    @javax.annotation.Nonnull
     public String getCarrierName() {
         return carrierName;
     }
@@ -60,7 +77,7 @@ public class CourierSupportedAttributes {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The tracking number of the package.")
+    @javax.annotation.Nonnull
     public String getTrackingId() {
         return trackingId;
     }
@@ -70,7 +87,7 @@ public class CourierSupportedAttributes {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +115,122 @@ public class CourierSupportedAttributes {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("carrierName");
+        openapiFields.add("trackingId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("carrierName");
+        openapiRequiredFields.add("trackingId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CourierSupportedAttributes
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CourierSupportedAttributes.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CourierSupportedAttributes is not found in the empty JSON string",
+                        CourierSupportedAttributes.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CourierSupportedAttributes.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CourierSupportedAttributes` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CourierSupportedAttributes.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("carrierName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("carrierName").toString()));
+        }
+        if (!jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CourierSupportedAttributes.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CourierSupportedAttributes' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CourierSupportedAttributes> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CourierSupportedAttributes.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CourierSupportedAttributes>() {
+                        @Override
+                        public void write(JsonWriter out, CourierSupportedAttributes value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CourierSupportedAttributes read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CourierSupportedAttributes given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CourierSupportedAttributes
+     * @throws IOException if the JSON string is invalid with respect to CourierSupportedAttributes
+     */
+    public static CourierSupportedAttributes fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CourierSupportedAttributes.class);
+    }
+
+    /**
+     * Convert an instance of CourierSupportedAttributes to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

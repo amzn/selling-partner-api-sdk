@@ -12,31 +12,56 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Alternative product that can be substituted for an original order item when it becomes unavailable during
  * fulfillment.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Alternative product that can be substituted for an original order item when it becomes unavailable during fulfillment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemSubstitutionOption {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("quantityOrdered")
-    private Integer quantityOrdered = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("sellerSku")
-    private String sellerSku = null;
+    public static final String SERIALIZED_NAME_QUANTITY_ORDERED = "quantityOrdered";
 
-    @SerializedName("title")
-    private String title = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_ORDERED)
+    private Integer quantityOrdered;
 
-    @SerializedName("measurement")
-    private Measurement measurement = null;
+    public static final String SERIALIZED_NAME_SELLER_SKU = "sellerSku";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_SKU)
+    private String sellerSku;
+
+    public static final String SERIALIZED_NAME_TITLE = "title";
+
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_MEASUREMENT = "measurement";
+
+    @SerializedName(SERIALIZED_NAME_MEASUREMENT)
+    private Measurement measurement;
+
+    public ItemSubstitutionOption() {}
 
     public ItemSubstitutionOption asin(String asin) {
         this.asin = asin;
@@ -48,9 +73,7 @@ public class ItemSubstitutionOption {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Amazon Standard Identification Number of the substitute product.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -68,9 +91,7 @@ public class ItemSubstitutionOption {
      *
      * @return quantityOrdered
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Number of units of the substitute item to be selected if substitution occurs.")
-    public Integer getQuantityOrdered() {
+    @javax.annotation.Nullable public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
 
@@ -88,8 +109,7 @@ public class ItemSubstitutionOption {
      *
      * @return sellerSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's seller stock keeping unit (SKU).")
-    public String getSellerSku() {
+    @javax.annotation.Nullable public String getSellerSku() {
         return sellerSku;
     }
 
@@ -107,9 +127,7 @@ public class ItemSubstitutionOption {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Product name or title of the substitute item as displayed to customers.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -127,8 +145,7 @@ public class ItemSubstitutionOption {
      *
      * @return measurement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Measurement getMeasurement() {
+    @javax.annotation.Nullable public Measurement getMeasurement() {
         return measurement;
     }
 
@@ -137,7 +154,7 @@ public class ItemSubstitutionOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -173,10 +190,126 @@ public class ItemSubstitutionOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("quantityOrdered");
+        openapiFields.add("sellerSku");
+        openapiFields.add("title");
+        openapiFields.add("measurement");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemSubstitutionOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemSubstitutionOption.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemSubstitutionOption is not found in the empty JSON string",
+                        ItemSubstitutionOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemSubstitutionOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemSubstitutionOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("sellerSku") != null && !jsonObj.get("sellerSku").isJsonNull())
+                && !jsonObj.get("sellerSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerSku").toString()));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        // validate the optional field `measurement`
+        if (jsonObj.get("measurement") != null && !jsonObj.get("measurement").isJsonNull()) {
+            Measurement.validateJsonElement(jsonObj.get("measurement"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemSubstitutionOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemSubstitutionOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemSubstitutionOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemSubstitutionOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemSubstitutionOption>() {
+                        @Override
+                        public void write(JsonWriter out, ItemSubstitutionOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemSubstitutionOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemSubstitutionOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemSubstitutionOption
+     * @throws IOException if the JSON string is invalid with respect to ItemSubstitutionOption
+     */
+    public static ItemSubstitutionOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemSubstitutionOption.class);
+    }
+
+    /**
+     * Convert an instance of ItemSubstitutionOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

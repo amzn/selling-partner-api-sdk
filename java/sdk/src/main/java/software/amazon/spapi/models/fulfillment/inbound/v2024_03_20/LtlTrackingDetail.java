@@ -12,20 +12,40 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains information related to Less-Than-Truckload (LTL) shipment tracking. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Contains information related to Less-Than-Truckload (LTL) shipment tracking.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LtlTrackingDetail {
-    @SerializedName("billOfLadingNumber")
-    private String billOfLadingNumber = null;
+    public static final String SERIALIZED_NAME_BILL_OF_LADING_NUMBER = "billOfLadingNumber";
 
-    @SerializedName("freightBillNumber")
-    private List<String> freightBillNumber = null;
+    @SerializedName(SERIALIZED_NAME_BILL_OF_LADING_NUMBER)
+    private String billOfLadingNumber;
+
+    public static final String SERIALIZED_NAME_FREIGHT_BILL_NUMBER = "freightBillNumber";
+
+    @SerializedName(SERIALIZED_NAME_FREIGHT_BILL_NUMBER)
+    private List<String> freightBillNumber = new ArrayList<>();
+
+    public LtlTrackingDetail() {}
 
     public LtlTrackingDetail billOfLadingNumber(String billOfLadingNumber) {
         this.billOfLadingNumber = billOfLadingNumber;
@@ -37,9 +57,7 @@ public class LtlTrackingDetail {
      *
      * @return billOfLadingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of the carrier shipment acknowledgement document.")
-    public String getBillOfLadingNumber() {
+    @javax.annotation.Nullable public String getBillOfLadingNumber() {
         return billOfLadingNumber;
     }
 
@@ -65,8 +83,7 @@ public class LtlTrackingDetail {
      *
      * @return freightBillNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number associated with the freight bill.")
-    public List<String> getFreightBillNumber() {
+    @javax.annotation.Nullable public List<String> getFreightBillNumber() {
         return freightBillNumber;
     }
 
@@ -75,7 +92,7 @@ public class LtlTrackingDetail {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -107,10 +124,115 @@ public class LtlTrackingDetail {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("billOfLadingNumber");
+        openapiFields.add("freightBillNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LtlTrackingDetail
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LtlTrackingDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LtlTrackingDetail is not found in the empty JSON string",
+                        LtlTrackingDetail.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LtlTrackingDetail.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LtlTrackingDetail` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("billOfLadingNumber") != null
+                        && !jsonObj.get("billOfLadingNumber").isJsonNull())
+                && !jsonObj.get("billOfLadingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `billOfLadingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("billOfLadingNumber").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("freightBillNumber") != null
+                && !jsonObj.get("freightBillNumber").isJsonNull()
+                && !jsonObj.get("freightBillNumber").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `freightBillNumber` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("freightBillNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LtlTrackingDetail.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LtlTrackingDetail' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LtlTrackingDetail> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LtlTrackingDetail.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LtlTrackingDetail>() {
+                        @Override
+                        public void write(JsonWriter out, LtlTrackingDetail value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LtlTrackingDetail read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LtlTrackingDetail given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LtlTrackingDetail
+     * @throws IOException if the JSON string is invalid with respect to LtlTrackingDetail
+     */
+    public static LtlTrackingDetail fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LtlTrackingDetail.class);
+    }
+
+    /**
+     * Convert an instance of LtlTrackingDetail to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

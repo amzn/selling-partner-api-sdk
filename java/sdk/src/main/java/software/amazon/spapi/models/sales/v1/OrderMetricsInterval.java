@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.sales.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains order metrics. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Contains order metrics.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderMetricsInterval {
-    @SerializedName("interval")
-    private String interval = null;
+    public static final String SERIALIZED_NAME_INTERVAL = "interval";
 
-    @SerializedName("unitCount")
-    private Integer unitCount = null;
+    @SerializedName(SERIALIZED_NAME_INTERVAL)
+    private String interval;
 
-    @SerializedName("orderItemCount")
-    private Integer orderItemCount = null;
+    public static final String SERIALIZED_NAME_UNIT_COUNT = "unitCount";
 
-    @SerializedName("orderCount")
-    private Integer orderCount = null;
+    @SerializedName(SERIALIZED_NAME_UNIT_COUNT)
+    private Integer unitCount;
 
-    @SerializedName("averageUnitPrice")
-    private Money averageUnitPrice = null;
+    public static final String SERIALIZED_NAME_ORDER_ITEM_COUNT = "orderItemCount";
 
-    @SerializedName("totalSales")
-    private Money totalSales = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEM_COUNT)
+    private Integer orderItemCount;
+
+    public static final String SERIALIZED_NAME_ORDER_COUNT = "orderCount";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_COUNT)
+    private Integer orderCount;
+
+    public static final String SERIALIZED_NAME_AVERAGE_UNIT_PRICE = "averageUnitPrice";
+
+    @SerializedName(SERIALIZED_NAME_AVERAGE_UNIT_PRICE)
+    private Money averageUnitPrice;
+
+    public static final String SERIALIZED_NAME_TOTAL_SALES = "totalSales";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_SALES)
+    private Money totalSales;
+
+    public OrderMetricsInterval() {}
 
     public OrderMetricsInterval interval(String interval) {
         this.interval = interval;
@@ -49,10 +78,7 @@ public class OrderMetricsInterval {
      *
      * @return interval
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The interval of time based on requested granularity (ex. Hour, Day, etc.) If this is the first or the last interval from the list, it might contain incomplete data if the requested interval doesn't align with the requested granularity (ex. request interval 2018-09-01T02:00:00Z--2018-09-04T19:00:00Z and granularity day will result in Sept 1st UTC day and Sept 4th UTC days having partial data).")
+    @javax.annotation.Nonnull
     public String getInterval() {
         return interval;
     }
@@ -71,9 +97,7 @@ public class OrderMetricsInterval {
      *
      * @return unitCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of units in orders based on the specified filters.")
+    @javax.annotation.Nonnull
     public Integer getUnitCount() {
         return unitCount;
     }
@@ -92,9 +116,7 @@ public class OrderMetricsInterval {
      *
      * @return orderItemCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of order items based on the specified filters.")
+    @javax.annotation.Nonnull
     public Integer getOrderItemCount() {
         return orderItemCount;
     }
@@ -113,9 +135,7 @@ public class OrderMetricsInterval {
      *
      * @return orderCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The number of orders based on the specified filters.")
+    @javax.annotation.Nonnull
     public Integer getOrderCount() {
         return orderCount;
     }
@@ -134,7 +154,7 @@ public class OrderMetricsInterval {
      *
      * @return averageUnitPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getAverageUnitPrice() {
         return averageUnitPrice;
     }
@@ -153,7 +173,7 @@ public class OrderMetricsInterval {
      *
      * @return totalSales
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getTotalSales() {
         return totalSales;
     }
@@ -163,7 +183,7 @@ public class OrderMetricsInterval {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -203,10 +223,128 @@ public class OrderMetricsInterval {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("interval");
+        openapiFields.add("unitCount");
+        openapiFields.add("orderItemCount");
+        openapiFields.add("orderCount");
+        openapiFields.add("averageUnitPrice");
+        openapiFields.add("totalSales");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("interval");
+        openapiRequiredFields.add("unitCount");
+        openapiRequiredFields.add("orderItemCount");
+        openapiRequiredFields.add("orderCount");
+        openapiRequiredFields.add("averageUnitPrice");
+        openapiRequiredFields.add("totalSales");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderMetricsInterval
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderMetricsInterval.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderMetricsInterval is not found in the empty JSON string",
+                        OrderMetricsInterval.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderMetricsInterval.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderMetricsInterval` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderMetricsInterval.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("interval").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `interval` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("interval").toString()));
+        }
+        // validate the required field `averageUnitPrice`
+        Money.validateJsonElement(jsonObj.get("averageUnitPrice"));
+        // validate the required field `totalSales`
+        Money.validateJsonElement(jsonObj.get("totalSales"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderMetricsInterval.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderMetricsInterval' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderMetricsInterval> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderMetricsInterval.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderMetricsInterval>() {
+                        @Override
+                        public void write(JsonWriter out, OrderMetricsInterval value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderMetricsInterval read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderMetricsInterval given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderMetricsInterval
+     * @throws IOException if the JSON string is invalid with respect to OrderMetricsInterval
+     */
+    public static OrderMetricsInterval fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderMetricsInterval.class);
+    }
+
+    /**
+     * Convert an instance of OrderMetricsInterval to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,23 +12,49 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Schema for an individual FOEP response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual FOEP response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeaturedOfferExpectedPriceResponse {
-    @SerializedName("headers")
-    private HttpHeaders headers = null;
+    public static final String SERIALIZED_NAME_HEADERS = "headers";
 
-    @SerializedName("status")
-    private HttpStatusLine status = null;
+    @SerializedName(SERIALIZED_NAME_HEADERS)
+    private HttpHeaders headers = new HashMap<>();
 
-    @SerializedName("request")
-    private FeaturedOfferExpectedPriceRequestParams request = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("body")
-    private FeaturedOfferExpectedPriceResponseBody body = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private HttpStatusLine status;
+
+    public static final String SERIALIZED_NAME_REQUEST = "request";
+
+    @SerializedName(SERIALIZED_NAME_REQUEST)
+    private FeaturedOfferExpectedPriceRequestParams request;
+
+    public static final String SERIALIZED_NAME_BODY = "body";
+
+    @SerializedName(SERIALIZED_NAME_BODY)
+    private FeaturedOfferExpectedPriceResponseBody body;
+
+    public FeaturedOfferExpectedPriceResponse() {}
 
     public FeaturedOfferExpectedPriceResponse headers(HttpHeaders headers) {
         this.headers = headers;
@@ -40,7 +66,7 @@ public class FeaturedOfferExpectedPriceResponse {
      *
      * @return headers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public HttpHeaders getHeaders() {
         return headers;
     }
@@ -59,7 +85,7 @@ public class FeaturedOfferExpectedPriceResponse {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public HttpStatusLine getStatus() {
         return status;
     }
@@ -78,7 +104,7 @@ public class FeaturedOfferExpectedPriceResponse {
      *
      * @return request
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public FeaturedOfferExpectedPriceRequestParams getRequest() {
         return request;
     }
@@ -97,8 +123,7 @@ public class FeaturedOfferExpectedPriceResponse {
      *
      * @return body
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOfferExpectedPriceResponseBody getBody() {
+    @javax.annotation.Nullable public FeaturedOfferExpectedPriceResponseBody getBody() {
         return body;
     }
 
@@ -107,7 +132,7 @@ public class FeaturedOfferExpectedPriceResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -139,10 +164,123 @@ public class FeaturedOfferExpectedPriceResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headers");
+        openapiFields.add("status");
+        openapiFields.add("request");
+        openapiFields.add("body");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("headers");
+        openapiRequiredFields.add("status");
+        openapiRequiredFields.add("request");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeaturedOfferExpectedPriceResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeaturedOfferExpectedPriceResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeaturedOfferExpectedPriceResponse is not found in the empty JSON string",
+                        FeaturedOfferExpectedPriceResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeaturedOfferExpectedPriceResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeaturedOfferExpectedPriceResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeaturedOfferExpectedPriceResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `status`
+        HttpStatusLine.validateJsonElement(jsonObj.get("status"));
+        // validate the required field `request`
+        FeaturedOfferExpectedPriceRequestParams.validateJsonElement(jsonObj.get("request"));
+        // validate the optional field `body`
+        if (jsonObj.get("body") != null && !jsonObj.get("body").isJsonNull()) {
+            FeaturedOfferExpectedPriceResponseBody.validateJsonElement(jsonObj.get("body"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeaturedOfferExpectedPriceResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeaturedOfferExpectedPriceResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeaturedOfferExpectedPriceResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeaturedOfferExpectedPriceResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeaturedOfferExpectedPriceResponse>() {
+                        @Override
+                        public void write(JsonWriter out, FeaturedOfferExpectedPriceResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeaturedOfferExpectedPriceResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeaturedOfferExpectedPriceResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeaturedOfferExpectedPriceResponse
+     * @throws IOException if the JSON string is invalid with respect to FeaturedOfferExpectedPriceResponse
+     */
+    public static FeaturedOfferExpectedPriceResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeaturedOfferExpectedPriceResponse.class);
+    }
+
+    /**
+     * Convert an instance of FeaturedOfferExpectedPriceResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

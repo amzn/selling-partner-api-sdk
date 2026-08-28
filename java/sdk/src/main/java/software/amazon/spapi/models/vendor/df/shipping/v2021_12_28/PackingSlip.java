@@ -12,27 +12,41 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Packing slip information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Packing slip information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackingSlip {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("content")
-    private String content = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
+
+    public static final String SERIALIZED_NAME_CONTENT = "content";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT)
+    private String content;
 
     /** The format of the file such as PDF, JPEG etc. */
     @JsonAdapter(ContentTypeEnum.Adapter.class)
     public enum ContentTypeEnum {
-        @SerializedName("application/pdf")
         APPLICATION_PDF("application/pdf");
 
         private String value;
@@ -50,31 +64,40 @@ public class PackingSlip {
             return String.valueOf(value);
         }
 
-        public static ContentTypeEnum fromValue(String input) {
+        public static ContentTypeEnum fromValue(String value) {
             for (ContentTypeEnum b : ContentTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContentTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ContentTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ContentTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ContentTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ContentTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContentTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("contentType")
-    private ContentTypeEnum contentType = null;
+    public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+    private ContentTypeEnum contentType;
+
+    public PackingSlip() {}
 
     public PackingSlip purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -86,9 +109,7 @@ public class PackingSlip {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Purchase order number of the shipment that the packing slip is for.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -107,9 +128,7 @@ public class PackingSlip {
      *
      * @return content
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A Base64 string of the packing slip PDF.")
+    @javax.annotation.Nonnull
     public String getContent() {
         return content;
     }
@@ -128,8 +147,7 @@ public class PackingSlip {
      *
      * @return contentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The format of the file such as PDF, JPEG etc.")
-    public ContentTypeEnum getContentType() {
+    @javax.annotation.Nullable public ContentTypeEnum getContentType() {
         return contentType;
     }
 
@@ -138,7 +156,7 @@ public class PackingSlip {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +188,132 @@ public class PackingSlip {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("content");
+        openapiFields.add("contentType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("purchaseOrderNumber");
+        openapiRequiredFields.add("content");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackingSlip
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackingSlip.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackingSlip is not found in the empty JSON string",
+                        PackingSlip.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackingSlip.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackingSlip` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PackingSlip.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if (!jsonObj.get("content").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `content` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("content").toString()));
+        }
+        if ((jsonObj.get("contentType") != null && !jsonObj.get("contentType").isJsonNull())
+                && !jsonObj.get("contentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentType").toString()));
+        }
+        // validate the optional field `contentType`
+        if (jsonObj.get("contentType") != null && !jsonObj.get("contentType").isJsonNull()) {
+            ContentTypeEnum.validateJsonElement(jsonObj.get("contentType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackingSlip.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackingSlip' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackingSlip> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackingSlip.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackingSlip>() {
+                        @Override
+                        public void write(JsonWriter out, PackingSlip value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackingSlip read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackingSlip given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackingSlip
+     * @throws IOException if the JSON string is invalid with respect to PackingSlip
+     */
+    public static PackingSlip fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackingSlip.class);
+    }
+
+    /**
+     * Convert an instance of PackingSlip to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

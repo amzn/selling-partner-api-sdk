@@ -12,31 +12,61 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response for the &#x60;getBrowseNodeReturnTrends&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getBrowseNodeReturnTrends` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BrowseNodeReturnTrendsResponse {
-    @SerializedName("browseNodeId")
-    private String browseNodeId = null;
+    public static final String SERIALIZED_NAME_BROWSE_NODE_ID = "browseNodeId";
 
-    @SerializedName("displayName")
-    private String displayName = null;
+    @SerializedName(SERIALIZED_NAME_BROWSE_NODE_ID)
+    private String browseNodeId;
 
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    private String displayName;
 
-    @SerializedName("dateRange")
-    private DateRange dateRange = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("returnTrends")
-    private List<BrowseNodeReturnTrend> returnTrends = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_DATE_RANGE = "dateRange";
+
+    @SerializedName(SERIALIZED_NAME_DATE_RANGE)
+    private DateRange dateRange;
+
+    public static final String SERIALIZED_NAME_RETURN_TRENDS = "returnTrends";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_TRENDS)
+    private List<BrowseNodeReturnTrend> returnTrends = new ArrayList<>();
+
+    public BrowseNodeReturnTrendsResponse() {}
 
     public BrowseNodeReturnTrendsResponse browseNodeId(String browseNodeId) {
         this.browseNodeId = browseNodeId;
@@ -48,10 +78,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return browseNodeId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The requested browse node id. A browse node id is the unique identifier of a given browse node.")
+    @javax.annotation.Nonnull
     public String getBrowseNodeId() {
         return browseNodeId;
     }
@@ -70,9 +97,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return displayName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The display name of the browse node, as visible on the Amazon retail website.")
+    @javax.annotation.Nonnull
     public String getDisplayName() {
         return displayName;
     }
@@ -91,7 +116,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace id.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -110,9 +135,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.")
+    @javax.annotation.Nonnull
     public String getCountryCode() {
         return countryCode;
     }
@@ -131,7 +154,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return dateRange
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -158,7 +181,7 @@ public class BrowseNodeReturnTrendsResponse {
      *
      * @return returnTrends
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The browse node return trends.")
+    @javax.annotation.Nonnull
     public List<BrowseNodeReturnTrend> getReturnTrends() {
         return returnTrends;
     }
@@ -168,7 +191,7 @@ public class BrowseNodeReturnTrendsResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -204,10 +227,155 @@ public class BrowseNodeReturnTrendsResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("browseNodeId");
+        openapiFields.add("displayName");
+        openapiFields.add("marketplaceId");
+        openapiFields.add("countryCode");
+        openapiFields.add("dateRange");
+        openapiFields.add("returnTrends");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("browseNodeId");
+        openapiRequiredFields.add("displayName");
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("countryCode");
+        openapiRequiredFields.add("dateRange");
+        openapiRequiredFields.add("returnTrends");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BrowseNodeReturnTrendsResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BrowseNodeReturnTrendsResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BrowseNodeReturnTrendsResponse is not found in the empty JSON string",
+                        BrowseNodeReturnTrendsResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BrowseNodeReturnTrendsResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BrowseNodeReturnTrendsResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BrowseNodeReturnTrendsResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("browseNodeId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `browseNodeId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("browseNodeId").toString()));
+        }
+        if (!jsonObj.get("displayName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayName").toString()));
+        }
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+        // validate the required field `dateRange`
+        DateRange.validateJsonElement(jsonObj.get("dateRange"));
+        // ensure the json data is an array
+        if (!jsonObj.get("returnTrends").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnTrends` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("returnTrends").toString()));
+        }
+
+        JsonArray jsonArrayreturnTrends = jsonObj.getAsJsonArray("returnTrends");
+        // validate the required field `returnTrends` (array)
+        for (int i = 0; i < jsonArrayreturnTrends.size(); i++) {
+            BrowseNodeReturnTrend.validateJsonElement(jsonArrayreturnTrends.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BrowseNodeReturnTrendsResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BrowseNodeReturnTrendsResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BrowseNodeReturnTrendsResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BrowseNodeReturnTrendsResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BrowseNodeReturnTrendsResponse>() {
+                        @Override
+                        public void write(JsonWriter out, BrowseNodeReturnTrendsResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BrowseNodeReturnTrendsResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BrowseNodeReturnTrendsResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BrowseNodeReturnTrendsResponse
+     * @throws IOException if the JSON string is invalid with respect to BrowseNodeReturnTrendsResponse
+     */
+    public static BrowseNodeReturnTrendsResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BrowseNodeReturnTrendsResponse.class);
+    }
+
+    /**
+     * Convert an instance of BrowseNodeReturnTrendsResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

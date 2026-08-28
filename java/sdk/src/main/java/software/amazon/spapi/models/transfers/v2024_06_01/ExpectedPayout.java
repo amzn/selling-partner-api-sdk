@@ -12,36 +12,69 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** All the information related to an expected payout. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "All the information related to an expected payout.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ExpectedPayout {
-    @SerializedName("partnerMetadata")
-    private PartnerMetadata partnerMetadata = null;
+    public static final String SERIALIZED_NAME_PARTNER_METADATA = "partnerMetadata";
 
-    @SerializedName("amount")
-    private Currency amount = null;
+    @SerializedName(SERIALIZED_NAME_PARTNER_METADATA)
+    private PartnerMetadata partnerMetadata;
 
-    @SerializedName("status")
-    private ExpectedPayoutStatusName status = null;
+    public static final String SERIALIZED_NAME_AMOUNT = "amount";
 
-    @SerializedName("period")
-    private Period period = null;
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Currency amount;
 
-    @SerializedName("scheduledDate")
-    private OffsetDateTime scheduledDate = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
 
-    @SerializedName("accountTail")
-    private String accountTail = null;
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private ExpectedPayoutStatusName status;
 
-    @SerializedName("paymentMethod")
-    private PaymentMethodName paymentMethod = null;
+    public static final String SERIALIZED_NAME_PERIOD = "period";
 
-    @SerializedName("relatedIdentifiers")
-    private RelatedIdentifiers relatedIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_PERIOD)
+    private Period period;
+
+    public static final String SERIALIZED_NAME_SCHEDULED_DATE = "scheduledDate";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DATE)
+    private OffsetDateTime scheduledDate;
+
+    public static final String SERIALIZED_NAME_ACCOUNT_TAIL = "accountTail";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_TAIL)
+    private String accountTail;
+
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
+    private PaymentMethodName paymentMethod;
+
+    public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
+
+    @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
+    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+
+    public ExpectedPayout() {}
 
     public ExpectedPayout partnerMetadata(PartnerMetadata partnerMetadata) {
         this.partnerMetadata = partnerMetadata;
@@ -53,7 +86,7 @@ public class ExpectedPayout {
      *
      * @return partnerMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
@@ -72,8 +105,7 @@ public class ExpectedPayout {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getAmount() {
+    @javax.annotation.Nullable public Currency getAmount() {
         return amount;
     }
 
@@ -91,7 +123,7 @@ public class ExpectedPayout {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ExpectedPayoutStatusName getStatus() {
         return status;
     }
@@ -110,8 +142,7 @@ public class ExpectedPayout {
      *
      * @return period
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Period getPeriod() {
+    @javax.annotation.Nullable public Period getPeriod() {
         return period;
     }
 
@@ -129,10 +160,7 @@ public class ExpectedPayout {
      *
      * @return scheduledDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getScheduledDate() {
+    @javax.annotation.Nullable public OffsetDateTime getScheduledDate() {
         return scheduledDate;
     }
 
@@ -150,8 +178,7 @@ public class ExpectedPayout {
      *
      * @return accountTail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The last few digits of the payment instrument.")
-    public String getAccountTail() {
+    @javax.annotation.Nullable public String getAccountTail() {
         return accountTail;
     }
 
@@ -169,8 +196,7 @@ public class ExpectedPayout {
      *
      * @return paymentMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentMethodName getPaymentMethod() {
+    @javax.annotation.Nullable public PaymentMethodName getPaymentMethod() {
         return paymentMethod;
     }
 
@@ -188,8 +214,7 @@ public class ExpectedPayout {
      *
      * @return relatedIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
@@ -198,7 +223,7 @@ public class ExpectedPayout {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -243,10 +268,140 @@ public class ExpectedPayout {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("partnerMetadata");
+        openapiFields.add("amount");
+        openapiFields.add("status");
+        openapiFields.add("period");
+        openapiFields.add("scheduledDate");
+        openapiFields.add("accountTail");
+        openapiFields.add("paymentMethod");
+        openapiFields.add("relatedIdentifiers");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("partnerMetadata");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ExpectedPayout
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ExpectedPayout.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ExpectedPayout is not found in the empty JSON string",
+                        ExpectedPayout.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ExpectedPayout.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ExpectedPayout` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ExpectedPayout.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `partnerMetadata`
+        PartnerMetadata.validateJsonElement(jsonObj.get("partnerMetadata"));
+        // validate the optional field `amount`
+        if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("amount"));
+        }
+        // validate the required field `status`
+        ExpectedPayoutStatusName.validateJsonElement(jsonObj.get("status"));
+        // validate the optional field `period`
+        if (jsonObj.get("period") != null && !jsonObj.get("period").isJsonNull()) {
+            Period.validateJsonElement(jsonObj.get("period"));
+        }
+        if ((jsonObj.get("accountTail") != null && !jsonObj.get("accountTail").isJsonNull())
+                && !jsonObj.get("accountTail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountTail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountTail").toString()));
+        }
+        // validate the optional field `paymentMethod`
+        if (jsonObj.get("paymentMethod") != null
+                && !jsonObj.get("paymentMethod").isJsonNull()) {
+            PaymentMethodName.validateJsonElement(jsonObj.get("paymentMethod"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ExpectedPayout.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ExpectedPayout' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ExpectedPayout> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ExpectedPayout.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ExpectedPayout>() {
+                        @Override
+                        public void write(JsonWriter out, ExpectedPayout value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ExpectedPayout read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ExpectedPayout given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ExpectedPayout
+     * @throws IOException if the JSON string is invalid with respect to ExpectedPayout
+     */
+    public static ExpectedPayout fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ExpectedPayout.class);
+    }
+
+    /**
+     * Convert an instance of ExpectedPayout to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

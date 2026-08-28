@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The type of label preparation that is required for the inbound shipment. */
 @JsonAdapter(LabelPrepType.Adapter.class)
 public enum LabelPrepType {
-    @SerializedName("NO_LABEL")
     NO_LABEL("NO_LABEL"),
 
-    @SerializedName("SELLER_LABEL")
     SELLER_LABEL("SELLER_LABEL"),
 
-    @SerializedName("AMAZON_LABEL")
     AMAZON_LABEL("AMAZON_LABEL");
 
     private String value;
@@ -46,25 +43,30 @@ public enum LabelPrepType {
         return String.valueOf(value);
     }
 
-    public static LabelPrepType fromValue(String input) {
+    public static LabelPrepType fromValue(String value) {
         for (LabelPrepType b : LabelPrepType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<LabelPrepType> {
         @Override
         public void write(final JsonWriter jsonWriter, final LabelPrepType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public LabelPrepType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return LabelPrepType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return LabelPrepType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        LabelPrepType.fromValue(value);
     }
 }

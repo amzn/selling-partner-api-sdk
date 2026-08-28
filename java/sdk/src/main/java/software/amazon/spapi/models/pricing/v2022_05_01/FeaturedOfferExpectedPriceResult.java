@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The FOEP result data for the requested offer. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The FOEP result data for the requested offer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FeaturedOfferExpectedPriceResult {
-    @SerializedName("featuredOfferExpectedPrice")
-    private FeaturedOfferExpectedPrice featuredOfferExpectedPrice = null;
+    public static final String SERIALIZED_NAME_FEATURED_OFFER_EXPECTED_PRICE = "featuredOfferExpectedPrice";
 
-    @SerializedName("resultStatus")
-    private String resultStatus = null;
+    @SerializedName(SERIALIZED_NAME_FEATURED_OFFER_EXPECTED_PRICE)
+    private FeaturedOfferExpectedPrice featuredOfferExpectedPrice;
 
-    @SerializedName("competingFeaturedOffer")
-    private FeaturedOffer competingFeaturedOffer = null;
+    public static final String SERIALIZED_NAME_RESULT_STATUS = "resultStatus";
 
-    @SerializedName("currentFeaturedOffer")
-    private FeaturedOffer currentFeaturedOffer = null;
+    @SerializedName(SERIALIZED_NAME_RESULT_STATUS)
+    private String resultStatus;
+
+    public static final String SERIALIZED_NAME_COMPETING_FEATURED_OFFER = "competingFeaturedOffer";
+
+    @SerializedName(SERIALIZED_NAME_COMPETING_FEATURED_OFFER)
+    private FeaturedOffer competingFeaturedOffer;
+
+    public static final String SERIALIZED_NAME_CURRENT_FEATURED_OFFER = "currentFeaturedOffer";
+
+    @SerializedName(SERIALIZED_NAME_CURRENT_FEATURED_OFFER)
+    private FeaturedOffer currentFeaturedOffer;
+
+    public FeaturedOfferExpectedPriceResult() {}
 
     public FeaturedOfferExpectedPriceResult featuredOfferExpectedPrice(
             FeaturedOfferExpectedPrice featuredOfferExpectedPrice) {
@@ -41,8 +66,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return featuredOfferExpectedPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOfferExpectedPrice getFeaturedOfferExpectedPrice() {
+    @javax.annotation.Nullable public FeaturedOfferExpectedPrice getFeaturedOfferExpectedPrice() {
         return featuredOfferExpectedPrice;
     }
 
@@ -62,10 +86,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return resultStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The status of the FOEP computation. Possible values include `VALID_FOEP`, `NO_COMPETING_OFFER`, `OFFER_NOT_ELIGIBLE`, `OFFER_NOT_FOUND`, and `ASIN_NOT_ELIGIBLE`. Additional values might be added in the future.")
+    @javax.annotation.Nonnull
     public String getResultStatus() {
         return resultStatus;
     }
@@ -84,8 +105,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return competingFeaturedOffer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOffer getCompetingFeaturedOffer() {
+    @javax.annotation.Nullable public FeaturedOffer getCompetingFeaturedOffer() {
         return competingFeaturedOffer;
     }
 
@@ -103,8 +123,7 @@ public class FeaturedOfferExpectedPriceResult {
      *
      * @return currentFeaturedOffer
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FeaturedOffer getCurrentFeaturedOffer() {
+    @javax.annotation.Nullable public FeaturedOffer getCurrentFeaturedOffer() {
         return currentFeaturedOffer;
     }
 
@@ -113,7 +132,7 @@ public class FeaturedOfferExpectedPriceResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,10 +171,133 @@ public class FeaturedOfferExpectedPriceResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("featuredOfferExpectedPrice");
+        openapiFields.add("resultStatus");
+        openapiFields.add("competingFeaturedOffer");
+        openapiFields.add("currentFeaturedOffer");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("resultStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FeaturedOfferExpectedPriceResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FeaturedOfferExpectedPriceResult.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FeaturedOfferExpectedPriceResult is not found in the empty JSON string",
+                        FeaturedOfferExpectedPriceResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FeaturedOfferExpectedPriceResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FeaturedOfferExpectedPriceResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : FeaturedOfferExpectedPriceResult.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `featuredOfferExpectedPrice`
+        if (jsonObj.get("featuredOfferExpectedPrice") != null
+                && !jsonObj.get("featuredOfferExpectedPrice").isJsonNull()) {
+            FeaturedOfferExpectedPrice.validateJsonElement(jsonObj.get("featuredOfferExpectedPrice"));
+        }
+        if (!jsonObj.get("resultStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resultStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("resultStatus").toString()));
+        }
+        // validate the optional field `competingFeaturedOffer`
+        if (jsonObj.get("competingFeaturedOffer") != null
+                && !jsonObj.get("competingFeaturedOffer").isJsonNull()) {
+            FeaturedOffer.validateJsonElement(jsonObj.get("competingFeaturedOffer"));
+        }
+        // validate the optional field `currentFeaturedOffer`
+        if (jsonObj.get("currentFeaturedOffer") != null
+                && !jsonObj.get("currentFeaturedOffer").isJsonNull()) {
+            FeaturedOffer.validateJsonElement(jsonObj.get("currentFeaturedOffer"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FeaturedOfferExpectedPriceResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FeaturedOfferExpectedPriceResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FeaturedOfferExpectedPriceResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FeaturedOfferExpectedPriceResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FeaturedOfferExpectedPriceResult>() {
+                        @Override
+                        public void write(JsonWriter out, FeaturedOfferExpectedPriceResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FeaturedOfferExpectedPriceResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FeaturedOfferExpectedPriceResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FeaturedOfferExpectedPriceResult
+     * @throws IOException if the JSON string is invalid with respect to FeaturedOfferExpectedPriceResult
+     */
+    public static FeaturedOfferExpectedPriceResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FeaturedOfferExpectedPriceResult.class);
+    }
+
+    /**
+     * Convert an instance of FeaturedOfferExpectedPriceResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

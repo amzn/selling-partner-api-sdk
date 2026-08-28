@@ -12,38 +12,50 @@
 
 package software.amazon.spapi.models.sellers.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;getAccount&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `getAccount` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Account {
-    @SerializedName("marketplaceParticipationList")
-    private MarketplaceParticipationList marketplaceParticipationList = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_PARTICIPATION_LIST = "marketplaceParticipationList";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_PARTICIPATION_LIST)
+    private MarketplaceParticipationList marketplaceParticipationList = new ArrayList<>();
 
     /** The type of business registered for the seller account. */
     @JsonAdapter(BusinessTypeEnum.Adapter.class)
     public enum BusinessTypeEnum {
-        @SerializedName("CHARITY")
         CHARITY("CHARITY"),
-        @SerializedName("CRAFTSMAN")
+
         CRAFTSMAN("CRAFTSMAN"),
-        @SerializedName("NATURAL_PERSON_COMPANY")
+
         NATURAL_PERSON_COMPANY("NATURAL_PERSON_COMPANY"),
-        @SerializedName("PUBLIC_LISTED")
+
         PUBLIC_LISTED("PUBLIC_LISTED"),
-        @SerializedName("PRIVATE_LIMITED")
+
         PRIVATE_LIMITED("PRIVATE_LIMITED"),
-        @SerializedName("SOLE_PROPRIETORSHIP")
+
         SOLE_PROPRIETORSHIP("SOLE_PROPRIETORSHIP"),
-        @SerializedName("STATE_OWNED")
+
         STATE_OWNED("STATE_OWNED"),
-        @SerializedName("INDIVIDUAL")
+
         INDIVIDUAL("INDIVIDUAL");
 
         private String value;
@@ -61,38 +73,44 @@ public class Account {
             return String.valueOf(value);
         }
 
-        public static BusinessTypeEnum fromValue(String input) {
+        public static BusinessTypeEnum fromValue(String value) {
             for (BusinessTypeEnum b : BusinessTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<BusinessTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final BusinessTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public BusinessTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return BusinessTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return BusinessTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            BusinessTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("businessType")
-    private BusinessTypeEnum businessType = null;
+    public static final String SERIALIZED_NAME_BUSINESS_TYPE = "businessType";
+
+    @SerializedName(SERIALIZED_NAME_BUSINESS_TYPE)
+    private BusinessTypeEnum businessType;
 
     /** The selling plan details. */
     @JsonAdapter(SellingPlanEnum.Adapter.class)
     public enum SellingPlanEnum {
-        @SerializedName("PROFESSIONAL")
         PROFESSIONAL("PROFESSIONAL"),
-        @SerializedName("INDIVIDUAL")
+
         INDIVIDUAL("INDIVIDUAL");
 
         private String value;
@@ -110,37 +128,50 @@ public class Account {
             return String.valueOf(value);
         }
 
-        public static SellingPlanEnum fromValue(String input) {
+        public static SellingPlanEnum fromValue(String value) {
             for (SellingPlanEnum b : SellingPlanEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<SellingPlanEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final SellingPlanEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public SellingPlanEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return SellingPlanEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return SellingPlanEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            SellingPlanEnum.fromValue(value);
         }
     }
 
-    @SerializedName("sellingPlan")
-    private SellingPlanEnum sellingPlan = null;
+    public static final String SERIALIZED_NAME_SELLING_PLAN = "sellingPlan";
 
-    @SerializedName("business")
-    private Business business = null;
+    @SerializedName(SERIALIZED_NAME_SELLING_PLAN)
+    private SellingPlanEnum sellingPlan;
 
-    @SerializedName("primaryContact")
-    private PrimaryContact primaryContact = null;
+    public static final String SERIALIZED_NAME_BUSINESS = "business";
+
+    @SerializedName(SERIALIZED_NAME_BUSINESS)
+    private Business business;
+
+    public static final String SERIALIZED_NAME_PRIMARY_CONTACT = "primaryContact";
+
+    @SerializedName(SERIALIZED_NAME_PRIMARY_CONTACT)
+    private PrimaryContact primaryContact;
+
+    public Account() {}
 
     public Account marketplaceParticipationList(MarketplaceParticipationList marketplaceParticipationList) {
         this.marketplaceParticipationList = marketplaceParticipationList;
@@ -152,7 +183,7 @@ public class Account {
      *
      * @return marketplaceParticipationList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MarketplaceParticipationList getMarketplaceParticipationList() {
         return marketplaceParticipationList;
     }
@@ -171,9 +202,7 @@ public class Account {
      *
      * @return businessType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The type of business registered for the seller account.")
+    @javax.annotation.Nonnull
     public BusinessTypeEnum getBusinessType() {
         return businessType;
     }
@@ -192,7 +221,7 @@ public class Account {
      *
      * @return sellingPlan
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The selling plan details.")
+    @javax.annotation.Nonnull
     public SellingPlanEnum getSellingPlan() {
         return sellingPlan;
     }
@@ -211,8 +240,7 @@ public class Account {
      *
      * @return business
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Business getBusiness() {
+    @javax.annotation.Nullable public Business getBusiness() {
         return business;
     }
 
@@ -230,8 +258,7 @@ public class Account {
      *
      * @return primaryContact
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PrimaryContact getPrimaryContact() {
+    @javax.annotation.Nullable public PrimaryContact getPrimaryContact() {
         return primaryContact;
     }
 
@@ -240,7 +267,7 @@ public class Account {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -278,10 +305,137 @@ public class Account {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceParticipationList");
+        openapiFields.add("businessType");
+        openapiFields.add("sellingPlan");
+        openapiFields.add("business");
+        openapiFields.add("primaryContact");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceParticipationList");
+        openapiRequiredFields.add("businessType");
+        openapiRequiredFields.add("sellingPlan");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Account
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Account.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Account is not found in the empty JSON string",
+                        Account.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Account.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Account` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Account.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("businessType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `businessType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("businessType").toString()));
+        }
+        // validate the required field `businessType`
+        BusinessTypeEnum.validateJsonElement(jsonObj.get("businessType"));
+        if (!jsonObj.get("sellingPlan").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellingPlan` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellingPlan").toString()));
+        }
+        // validate the required field `sellingPlan`
+        SellingPlanEnum.validateJsonElement(jsonObj.get("sellingPlan"));
+        // validate the optional field `business`
+        if (jsonObj.get("business") != null && !jsonObj.get("business").isJsonNull()) {
+            Business.validateJsonElement(jsonObj.get("business"));
+        }
+        // validate the optional field `primaryContact`
+        if (jsonObj.get("primaryContact") != null
+                && !jsonObj.get("primaryContact").isJsonNull()) {
+            PrimaryContact.validateJsonElement(jsonObj.get("primaryContact"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Account.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Account' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Account> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Account.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Account>() {
+                        @Override
+                        public void write(JsonWriter out, Account value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Account read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Account given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Account
+     * @throws IOException if the JSON string is invalid with respect to Account
+     */
+    public static Account fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Account.class);
+    }
+
+    /**
+     * Convert an instance of Account to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

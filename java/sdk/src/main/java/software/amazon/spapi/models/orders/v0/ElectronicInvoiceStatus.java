@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** The status of the electronic invoice. Only available for Easy Ship orders and orders in the BR marketplace. */
 @JsonAdapter(ElectronicInvoiceStatus.Adapter.class)
 public enum ElectronicInvoiceStatus {
-    @SerializedName("NotRequired")
     NOT_REQUIRED("NotRequired"),
 
-    @SerializedName("NotFound")
     NOT_FOUND("NotFound"),
 
-    @SerializedName("Processing")
     PROCESSING("Processing"),
 
-    @SerializedName("Errored")
     ERRORED("Errored"),
 
-    @SerializedName("Accepted")
     ACCEPTED("Accepted");
 
     private String value;
@@ -52,25 +47,30 @@ public enum ElectronicInvoiceStatus {
         return String.valueOf(value);
     }
 
-    public static ElectronicInvoiceStatus fromValue(String input) {
+    public static ElectronicInvoiceStatus fromValue(String value) {
         for (ElectronicInvoiceStatus b : ElectronicInvoiceStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ElectronicInvoiceStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final ElectronicInvoiceStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ElectronicInvoiceStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ElectronicInvoiceStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ElectronicInvoiceStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ElectronicInvoiceStatus.fromValue(value);
     }
 }

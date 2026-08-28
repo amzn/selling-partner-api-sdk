@@ -12,47 +12,65 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Order information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Order information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Order {
-    @SerializedName("AmazonOrderId")
-    private String amazonOrderId = null;
+    public static final String SERIALIZED_NAME_AMAZON_ORDER_ID = "AmazonOrderId";
 
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    @SerializedName(SERIALIZED_NAME_AMAZON_ORDER_ID)
+    private String amazonOrderId;
 
-    @SerializedName("PurchaseDate")
-    private String purchaseDate = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("LastUpdateDate")
-    private String lastUpdateDate = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
+
+    public static final String SERIALIZED_NAME_PURCHASE_DATE = "PurchaseDate";
+
+    @SerializedName(SERIALIZED_NAME_PURCHASE_DATE)
+    private String purchaseDate;
+
+    public static final String SERIALIZED_NAME_LAST_UPDATE_DATE = "LastUpdateDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_UPDATE_DATE)
+    private String lastUpdateDate;
 
     /** The current order status. */
     @JsonAdapter(OrderStatusEnum.Adapter.class)
     public enum OrderStatusEnum {
-        @SerializedName("Pending")
         PENDING("Pending"),
-        @SerializedName("Unshipped")
+
         UNSHIPPED("Unshipped"),
-        @SerializedName("PartiallyShipped")
+
         PARTIALLY_SHIPPED("PartiallyShipped"),
-        @SerializedName("Shipped")
+
         SHIPPED("Shipped"),
-        @SerializedName("Canceled")
+
         CANCELED("Canceled"),
-        @SerializedName("Unfulfillable")
+
         UNFULFILLABLE("Unfulfillable"),
-        @SerializedName("InvoiceUnconfirmed")
+
         INVOICE_UNCONFIRMED("InvoiceUnconfirmed"),
-        @SerializedName("PendingAvailability")
+
         PENDING_AVAILABILITY("PendingAvailability");
 
         private String value;
@@ -70,38 +88,44 @@ public class Order {
             return String.valueOf(value);
         }
 
-        public static OrderStatusEnum fromValue(String input) {
+        public static OrderStatusEnum fromValue(String value) {
             for (OrderStatusEnum b : OrderStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OrderStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final OrderStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public OrderStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrderStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return OrderStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OrderStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("OrderStatus")
-    private OrderStatusEnum orderStatus = null;
+    public static final String SERIALIZED_NAME_ORDER_STATUS = "OrderStatus";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_STATUS)
+    private OrderStatusEnum orderStatus;
 
     /** Whether the order was fulfilled by Amazon (&#x60;AFN&#x60;) or by the seller (&#x60;MFN&#x60;). */
     @JsonAdapter(FulfillmentChannelEnum.Adapter.class)
     public enum FulfillmentChannelEnum {
-        @SerializedName("MFN")
         MFN("MFN"),
-        @SerializedName("AFN")
+
         AFN("AFN");
 
         private String value;
@@ -119,53 +143,74 @@ public class Order {
             return String.valueOf(value);
         }
 
-        public static FulfillmentChannelEnum fromValue(String input) {
+        public static FulfillmentChannelEnum fromValue(String value) {
             for (FulfillmentChannelEnum b : FulfillmentChannelEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<FulfillmentChannelEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final FulfillmentChannelEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public FulfillmentChannelEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return FulfillmentChannelEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return FulfillmentChannelEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            FulfillmentChannelEnum.fromValue(value);
         }
     }
 
-    @SerializedName("FulfillmentChannel")
-    private FulfillmentChannelEnum fulfillmentChannel = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL = "FulfillmentChannel";
 
-    @SerializedName("SalesChannel")
-    private String salesChannel = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL)
+    private FulfillmentChannelEnum fulfillmentChannel;
 
-    @SerializedName("OrderChannel")
-    private String orderChannel = null;
+    public static final String SERIALIZED_NAME_SALES_CHANNEL = "SalesChannel";
 
-    @SerializedName("ShipServiceLevel")
-    private String shipServiceLevel = null;
+    @SerializedName(SERIALIZED_NAME_SALES_CHANNEL)
+    private String salesChannel;
 
-    @SerializedName("OrderTotal")
-    private Money orderTotal = null;
+    public static final String SERIALIZED_NAME_ORDER_CHANNEL = "OrderChannel";
 
-    @SerializedName("NumberOfItemsShipped")
-    private Integer numberOfItemsShipped = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_CHANNEL)
+    private String orderChannel;
 
-    @SerializedName("NumberOfItemsUnshipped")
-    private Integer numberOfItemsUnshipped = null;
+    public static final String SERIALIZED_NAME_SHIP_SERVICE_LEVEL = "ShipServiceLevel";
 
-    @SerializedName("PaymentExecutionDetail")
-    private PaymentExecutionDetailItemList paymentExecutionDetail = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_SERVICE_LEVEL)
+    private String shipServiceLevel;
+
+    public static final String SERIALIZED_NAME_ORDER_TOTAL = "OrderTotal";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_TOTAL)
+    private Money orderTotal;
+
+    public static final String SERIALIZED_NAME_NUMBER_OF_ITEMS_SHIPPED = "NumberOfItemsShipped";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_ITEMS_SHIPPED)
+    private Integer numberOfItemsShipped;
+
+    public static final String SERIALIZED_NAME_NUMBER_OF_ITEMS_UNSHIPPED = "NumberOfItemsUnshipped";
+
+    @SerializedName(SERIALIZED_NAME_NUMBER_OF_ITEMS_UNSHIPPED)
+    private Integer numberOfItemsUnshipped;
+
+    public static final String SERIALIZED_NAME_PAYMENT_EXECUTION_DETAIL = "PaymentExecutionDetail";
+
+    @SerializedName(SERIALIZED_NAME_PAYMENT_EXECUTION_DETAIL)
+    private PaymentExecutionDetailItemList paymentExecutionDetail = new ArrayList<>();
 
     /**
      * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the
@@ -174,11 +219,10 @@ public class Order {
      */
     @JsonAdapter(PaymentMethodEnum.Adapter.class)
     public enum PaymentMethodEnum {
-        @SerializedName("COD")
         COD("COD"),
-        @SerializedName("CVS")
+
         CVS("CVS"),
-        @SerializedName("Other")
+
         OTHER("Other");
 
         private String value;
@@ -196,59 +240,75 @@ public class Order {
             return String.valueOf(value);
         }
 
-        public static PaymentMethodEnum fromValue(String input) {
+        public static PaymentMethodEnum fromValue(String value) {
             for (PaymentMethodEnum b : PaymentMethodEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PaymentMethodEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PaymentMethodEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PaymentMethodEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PaymentMethodEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PaymentMethodEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PaymentMethodEnum.fromValue(value);
         }
     }
 
-    @SerializedName("PaymentMethod")
-    private PaymentMethodEnum paymentMethod = null;
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD = "PaymentMethod";
 
-    @SerializedName("PaymentMethodDetails")
-    private PaymentMethodDetailItemList paymentMethodDetails = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
+    private PaymentMethodEnum paymentMethod;
 
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_PAYMENT_METHOD_DETAILS = "PaymentMethodDetails";
 
-    @SerializedName("ShipmentServiceLevelCategory")
-    private String shipmentServiceLevelCategory = null;
+    @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_DETAILS)
+    private PaymentMethodDetailItemList paymentMethodDetails = new ArrayList<>();
 
-    @SerializedName("EasyShipShipmentStatus")
-    private EasyShipShipmentStatus easyShipShipmentStatus = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("CbaDisplayableShippingLabel")
-    private String cbaDisplayableShippingLabel = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_SERVICE_LEVEL_CATEGORY = "ShipmentServiceLevelCategory";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_SERVICE_LEVEL_CATEGORY)
+    private String shipmentServiceLevelCategory;
+
+    public static final String SERIALIZED_NAME_EASY_SHIP_SHIPMENT_STATUS = "EasyShipShipmentStatus";
+
+    @SerializedName(SERIALIZED_NAME_EASY_SHIP_SHIPMENT_STATUS)
+    private EasyShipShipmentStatus easyShipShipmentStatus;
+
+    public static final String SERIALIZED_NAME_CBA_DISPLAYABLE_SHIPPING_LABEL = "CbaDisplayableShippingLabel";
+
+    @SerializedName(SERIALIZED_NAME_CBA_DISPLAYABLE_SHIPPING_LABEL)
+    private String cbaDisplayableShippingLabel;
 
     /** The order&#39;s type. */
     @JsonAdapter(OrderTypeEnum.Adapter.class)
     public enum OrderTypeEnum {
-        @SerializedName("StandardOrder")
         STANDARD_ORDER("StandardOrder"),
-        @SerializedName("LongLeadTimeOrder")
+
         LONG_LEAD_TIME_ORDER("LongLeadTimeOrder"),
-        @SerializedName("Preorder")
+
         PREORDER("Preorder"),
-        @SerializedName("BackOrder")
+
         BACK_ORDER("BackOrder"),
-        @SerializedName("SourcingOnDemandOrder")
+
         SOURCING_ON_DEMAND_ORDER("SourcingOnDemandOrder");
 
         private String value;
@@ -266,76 +326,113 @@ public class Order {
             return String.valueOf(value);
         }
 
-        public static OrderTypeEnum fromValue(String input) {
+        public static OrderTypeEnum fromValue(String value) {
             for (OrderTypeEnum b : OrderTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<OrderTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final OrderTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public OrderTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return OrderTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return OrderTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            OrderTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("OrderType")
-    private OrderTypeEnum orderType = null;
+    public static final String SERIALIZED_NAME_ORDER_TYPE = "OrderType";
 
-    @SerializedName("EarliestShipDate")
-    private String earliestShipDate = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_TYPE)
+    private OrderTypeEnum orderType;
 
-    @SerializedName("LatestShipDate")
-    private String latestShipDate = null;
+    public static final String SERIALIZED_NAME_EARLIEST_SHIP_DATE = "EarliestShipDate";
 
-    @SerializedName("EarliestDeliveryDate")
-    private String earliestDeliveryDate = null;
+    @SerializedName(SERIALIZED_NAME_EARLIEST_SHIP_DATE)
+    private String earliestShipDate;
 
-    @SerializedName("LatestDeliveryDate")
-    private String latestDeliveryDate = null;
+    public static final String SERIALIZED_NAME_LATEST_SHIP_DATE = "LatestShipDate";
 
-    @SerializedName("IsBusinessOrder")
-    private Boolean isBusinessOrder = null;
+    @SerializedName(SERIALIZED_NAME_LATEST_SHIP_DATE)
+    private String latestShipDate;
 
-    @SerializedName("IsPrime")
-    private Boolean isPrime = null;
+    public static final String SERIALIZED_NAME_EARLIEST_DELIVERY_DATE = "EarliestDeliveryDate";
 
-    @SerializedName("IsPremiumOrder")
-    private Boolean isPremiumOrder = null;
+    @SerializedName(SERIALIZED_NAME_EARLIEST_DELIVERY_DATE)
+    private String earliestDeliveryDate;
 
-    @SerializedName("IsGlobalExpressEnabled")
-    private Boolean isGlobalExpressEnabled = null;
+    public static final String SERIALIZED_NAME_LATEST_DELIVERY_DATE = "LatestDeliveryDate";
 
-    @SerializedName("ReplacedOrderId")
-    private String replacedOrderId = null;
+    @SerializedName(SERIALIZED_NAME_LATEST_DELIVERY_DATE)
+    private String latestDeliveryDate;
 
-    @SerializedName("IsReplacementOrder")
-    private Boolean isReplacementOrder = null;
+    public static final String SERIALIZED_NAME_IS_BUSINESS_ORDER = "IsBusinessOrder";
 
-    @SerializedName("PromiseResponseDueDate")
-    private String promiseResponseDueDate = null;
+    @SerializedName(SERIALIZED_NAME_IS_BUSINESS_ORDER)
+    private Boolean isBusinessOrder;
 
-    @SerializedName("IsEstimatedShipDateSet")
-    private Boolean isEstimatedShipDateSet = null;
+    public static final String SERIALIZED_NAME_IS_PRIME = "IsPrime";
 
-    @SerializedName("IsSoldByAB")
-    private Boolean isSoldByAB = null;
+    @SerializedName(SERIALIZED_NAME_IS_PRIME)
+    private Boolean isPrime;
 
-    @SerializedName("IsIBA")
-    private Boolean isIBA = null;
+    public static final String SERIALIZED_NAME_IS_PREMIUM_ORDER = "IsPremiumOrder";
 
-    @SerializedName("DefaultShipFromLocationAddress")
-    private Address defaultShipFromLocationAddress = null;
+    @SerializedName(SERIALIZED_NAME_IS_PREMIUM_ORDER)
+    private Boolean isPremiumOrder;
+
+    public static final String SERIALIZED_NAME_IS_GLOBAL_EXPRESS_ENABLED = "IsGlobalExpressEnabled";
+
+    @SerializedName(SERIALIZED_NAME_IS_GLOBAL_EXPRESS_ENABLED)
+    private Boolean isGlobalExpressEnabled;
+
+    public static final String SERIALIZED_NAME_REPLACED_ORDER_ID = "ReplacedOrderId";
+
+    @SerializedName(SERIALIZED_NAME_REPLACED_ORDER_ID)
+    private String replacedOrderId;
+
+    public static final String SERIALIZED_NAME_IS_REPLACEMENT_ORDER = "IsReplacementOrder";
+
+    @SerializedName(SERIALIZED_NAME_IS_REPLACEMENT_ORDER)
+    private Boolean isReplacementOrder;
+
+    public static final String SERIALIZED_NAME_PROMISE_RESPONSE_DUE_DATE = "PromiseResponseDueDate";
+
+    @SerializedName(SERIALIZED_NAME_PROMISE_RESPONSE_DUE_DATE)
+    private String promiseResponseDueDate;
+
+    public static final String SERIALIZED_NAME_IS_ESTIMATED_SHIP_DATE_SET = "IsEstimatedShipDateSet";
+
+    @SerializedName(SERIALIZED_NAME_IS_ESTIMATED_SHIP_DATE_SET)
+    private Boolean isEstimatedShipDateSet;
+
+    public static final String SERIALIZED_NAME_IS_SOLD_BY_A_B = "IsSoldByAB";
+
+    @SerializedName(SERIALIZED_NAME_IS_SOLD_BY_A_B)
+    private Boolean isSoldByAB;
+
+    public static final String SERIALIZED_NAME_IS_I_B_A = "IsIBA";
+
+    @SerializedName(SERIALIZED_NAME_IS_I_B_A)
+    private Boolean isIBA;
+
+    public static final String SERIALIZED_NAME_DEFAULT_SHIP_FROM_LOCATION_ADDRESS = "DefaultShipFromLocationAddress";
+
+    @SerializedName(SERIALIZED_NAME_DEFAULT_SHIP_FROM_LOCATION_ADDRESS)
+    private Address defaultShipFromLocationAddress;
 
     /**
      * The buyer&#39;s invoicing preference. Sellers can use this data to issue electronic invoices for orders in
@@ -343,9 +440,8 @@ public class Order {
      */
     @JsonAdapter(BuyerInvoicePreferenceEnum.Adapter.class)
     public enum BuyerInvoicePreferenceEnum {
-        @SerializedName("INDIVIDUAL")
         INDIVIDUAL("INDIVIDUAL"),
-        @SerializedName("BUSINESS")
+
         BUSINESS("BUSINESS");
 
         private String value;
@@ -363,65 +459,96 @@ public class Order {
             return String.valueOf(value);
         }
 
-        public static BuyerInvoicePreferenceEnum fromValue(String input) {
+        public static BuyerInvoicePreferenceEnum fromValue(String value) {
             for (BuyerInvoicePreferenceEnum b : BuyerInvoicePreferenceEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<BuyerInvoicePreferenceEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final BuyerInvoicePreferenceEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public BuyerInvoicePreferenceEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return BuyerInvoicePreferenceEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return BuyerInvoicePreferenceEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            BuyerInvoicePreferenceEnum.fromValue(value);
         }
     }
 
-    @SerializedName("BuyerInvoicePreference")
-    private BuyerInvoicePreferenceEnum buyerInvoicePreference = null;
+    public static final String SERIALIZED_NAME_BUYER_INVOICE_PREFERENCE = "BuyerInvoicePreference";
 
-    @SerializedName("BuyerTaxInformation")
-    private BuyerTaxInformation buyerTaxInformation = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_INVOICE_PREFERENCE)
+    private BuyerInvoicePreferenceEnum buyerInvoicePreference;
 
-    @SerializedName("FulfillmentInstruction")
-    private FulfillmentInstruction fulfillmentInstruction = null;
+    public static final String SERIALIZED_NAME_BUYER_TAX_INFORMATION = "BuyerTaxInformation";
 
-    @SerializedName("IsISPU")
-    private Boolean isISPU = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_TAX_INFORMATION)
+    private BuyerTaxInformation buyerTaxInformation;
 
-    @SerializedName("IsAccessPointOrder")
-    private Boolean isAccessPointOrder = null;
+    public static final String SERIALIZED_NAME_FULFILLMENT_INSTRUCTION = "FulfillmentInstruction";
 
-    @SerializedName("MarketplaceTaxInfo")
-    private MarketplaceTaxInfo marketplaceTaxInfo = null;
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_INSTRUCTION)
+    private FulfillmentInstruction fulfillmentInstruction;
 
-    @SerializedName("SellerDisplayName")
-    private String sellerDisplayName = null;
+    public static final String SERIALIZED_NAME_IS_I_S_P_U = "IsISPU";
 
-    @SerializedName("ShippingAddress")
-    private Address shippingAddress = null;
+    @SerializedName(SERIALIZED_NAME_IS_I_S_P_U)
+    private Boolean isISPU;
 
-    @SerializedName("BuyerInfo")
-    private BuyerInfo buyerInfo = null;
+    public static final String SERIALIZED_NAME_IS_ACCESS_POINT_ORDER = "IsAccessPointOrder";
 
-    @SerializedName("AutomatedShippingSettings")
-    private AutomatedShippingSettings automatedShippingSettings = null;
+    @SerializedName(SERIALIZED_NAME_IS_ACCESS_POINT_ORDER)
+    private Boolean isAccessPointOrder;
 
-    @SerializedName("HasRegulatedItems")
-    private Boolean hasRegulatedItems = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_TAX_INFO = "MarketplaceTaxInfo";
 
-    @SerializedName("ElectronicInvoiceStatus")
-    private ElectronicInvoiceStatus electronicInvoiceStatus = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_TAX_INFO)
+    private MarketplaceTaxInfo marketplaceTaxInfo;
+
+    public static final String SERIALIZED_NAME_SELLER_DISPLAY_NAME = "SellerDisplayName";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_DISPLAY_NAME)
+    private String sellerDisplayName;
+
+    public static final String SERIALIZED_NAME_SHIPPING_ADDRESS = "ShippingAddress";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_ADDRESS)
+    private Address shippingAddress;
+
+    public static final String SERIALIZED_NAME_BUYER_INFO = "BuyerInfo";
+
+    @SerializedName(SERIALIZED_NAME_BUYER_INFO)
+    private BuyerInfo buyerInfo;
+
+    public static final String SERIALIZED_NAME_AUTOMATED_SHIPPING_SETTINGS = "AutomatedShippingSettings";
+
+    @SerializedName(SERIALIZED_NAME_AUTOMATED_SHIPPING_SETTINGS)
+    private AutomatedShippingSettings automatedShippingSettings;
+
+    public static final String SERIALIZED_NAME_HAS_REGULATED_ITEMS = "HasRegulatedItems";
+
+    @SerializedName(SERIALIZED_NAME_HAS_REGULATED_ITEMS)
+    private Boolean hasRegulatedItems;
+
+    public static final String SERIALIZED_NAME_ELECTRONIC_INVOICE_STATUS = "ElectronicInvoiceStatus";
+
+    @SerializedName(SERIALIZED_NAME_ELECTRONIC_INVOICE_STATUS)
+    private ElectronicInvoiceStatus electronicInvoiceStatus;
+
+    public Order() {}
 
     public Order amazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
@@ -433,9 +560,7 @@ public class Order {
      *
      * @return amazonOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @javax.annotation.Nonnull
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -454,8 +579,7 @@ public class Order {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined order identifier.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -473,7 +597,7 @@ public class Order {
      *
      * @return purchaseDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The date when the order was created.")
+    @javax.annotation.Nonnull
     public String getPurchaseDate() {
         return purchaseDate;
     }
@@ -493,10 +617,7 @@ public class Order {
      *
      * @return lastUpdateDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The date when the order was last updated.  __Note__: `LastUpdateDate` is returned with an incorrect date for orders that were last updated before 2009-04-01.")
+    @javax.annotation.Nonnull
     public String getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -515,7 +636,7 @@ public class Order {
      *
      * @return orderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current order status.")
+    @javax.annotation.Nonnull
     public OrderStatusEnum getOrderStatus() {
         return orderStatus;
     }
@@ -534,9 +655,7 @@ public class Order {
      *
      * @return fulfillmentChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).")
-    public FulfillmentChannelEnum getFulfillmentChannel() {
+    @javax.annotation.Nullable public FulfillmentChannelEnum getFulfillmentChannel() {
         return fulfillmentChannel;
     }
 
@@ -554,8 +673,7 @@ public class Order {
      *
      * @return salesChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the first item in the order.")
-    public String getSalesChannel() {
+    @javax.annotation.Nullable public String getSalesChannel() {
         return salesChannel;
     }
 
@@ -573,8 +691,7 @@ public class Order {
      *
      * @return orderChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The order channel for the first item in the order.")
-    public String getOrderChannel() {
+    @javax.annotation.Nullable public String getOrderChannel() {
         return orderChannel;
     }
 
@@ -592,8 +709,7 @@ public class Order {
      *
      * @return shipServiceLevel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The order's shipment service level.")
-    public String getShipServiceLevel() {
+    @javax.annotation.Nullable public String getShipServiceLevel() {
         return shipServiceLevel;
     }
 
@@ -611,8 +727,7 @@ public class Order {
      *
      * @return orderTotal
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getOrderTotal() {
+    @javax.annotation.Nullable public Money getOrderTotal() {
         return orderTotal;
     }
 
@@ -630,8 +745,7 @@ public class Order {
      *
      * @return numberOfItemsShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
-    public Integer getNumberOfItemsShipped() {
+    @javax.annotation.Nullable public Integer getNumberOfItemsShipped() {
         return numberOfItemsShipped;
     }
 
@@ -649,8 +763,7 @@ public class Order {
      *
      * @return numberOfItemsUnshipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items unshipped.")
-    public Integer getNumberOfItemsUnshipped() {
+    @javax.annotation.Nullable public Integer getNumberOfItemsUnshipped() {
         return numberOfItemsUnshipped;
     }
 
@@ -668,8 +781,7 @@ public class Order {
      *
      * @return paymentExecutionDetail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentExecutionDetailItemList getPaymentExecutionDetail() {
+    @javax.annotation.Nullable public PaymentExecutionDetailItemList getPaymentExecutionDetail() {
         return paymentExecutionDetail;
     }
 
@@ -689,10 +801,7 @@ public class Order {
      *
      * @return paymentMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.")
-    public PaymentMethodEnum getPaymentMethod() {
+    @javax.annotation.Nullable public PaymentMethodEnum getPaymentMethod() {
         return paymentMethod;
     }
 
@@ -710,8 +819,7 @@ public class Order {
      *
      * @return paymentMethodDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaymentMethodDetailItemList getPaymentMethodDetails() {
+    @javax.annotation.Nullable public PaymentMethodDetailItemList getPaymentMethodDetails() {
         return paymentMethodDetails;
     }
 
@@ -729,9 +837,7 @@ public class Order {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier for the marketplace where the order was placed.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -751,10 +857,7 @@ public class Order {
      *
      * @return shipmentServiceLevelCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The shipment service level category for the order.  **Possible values**: `Expedited`, `FreeEconomy`, `NextDay`, `Priority`, `SameDay`, `SecondDay`, `Scheduled`, and `Standard`.")
-    public String getShipmentServiceLevelCategory() {
+    @javax.annotation.Nullable public String getShipmentServiceLevelCategory() {
         return shipmentServiceLevelCategory;
     }
 
@@ -772,8 +875,7 @@ public class Order {
      *
      * @return easyShipShipmentStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public EasyShipShipmentStatus getEasyShipShipmentStatus() {
+    @javax.annotation.Nullable public EasyShipShipmentStatus getEasyShipShipmentStatus() {
         return easyShipShipmentStatus;
     }
 
@@ -791,8 +893,7 @@ public class Order {
      *
      * @return cbaDisplayableShippingLabel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Custom ship label for Checkout by Amazon (CBA).")
-    public String getCbaDisplayableShippingLabel() {
+    @javax.annotation.Nullable public String getCbaDisplayableShippingLabel() {
         return cbaDisplayableShippingLabel;
     }
 
@@ -810,8 +911,7 @@ public class Order {
      *
      * @return orderType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The order's type.")
-    public OrderTypeEnum getOrderType() {
+    @javax.annotation.Nullable public OrderTypeEnum getOrderType() {
         return orderType;
     }
 
@@ -832,10 +932,7 @@ public class Order {
      *
      * @return earliestShipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The start of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `EarliestShipDate` might not be returned for orders placed before February 1, 2013.")
-    public String getEarliestShipDate() {
+    @javax.annotation.Nullable public String getEarliestShipDate() {
         return earliestShipDate;
     }
 
@@ -856,10 +953,7 @@ public class Order {
      *
      * @return latestShipDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The end of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `LatestShipDate` might not be returned for orders placed before February 1, 2013.")
-    public String getLatestShipDate() {
+    @javax.annotation.Nullable public String getLatestShipDate() {
         return latestShipDate;
     }
 
@@ -879,10 +973,7 @@ public class Order {
      *
      * @return earliestDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The start of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.")
-    public String getEarliestDeliveryDate() {
+    @javax.annotation.Nullable public String getEarliestDeliveryDate() {
         return earliestDeliveryDate;
     }
 
@@ -903,10 +994,7 @@ public class Order {
      *
      * @return latestDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The end of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders that do not have a `PendingAvailability`, `Pending`, or `Canceled` status.")
-    public String getLatestDeliveryDate() {
+    @javax.annotation.Nullable public String getLatestDeliveryDate() {
         return latestDeliveryDate;
     }
 
@@ -925,10 +1013,7 @@ public class Order {
      *
      * @return isBusinessOrder
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the order is an Amazon Business order. An Amazon Business order is an order where the buyer is a Verified Business Buyer.")
-    public Boolean getIsBusinessOrder() {
+    @javax.annotation.Nullable public Boolean getIsBusinessOrder() {
         return isBusinessOrder;
     }
 
@@ -946,9 +1031,7 @@ public class Order {
      *
      * @return isPrime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, the order is a seller-fulfilled Amazon Prime order.")
-    public Boolean getIsPrime() {
+    @javax.annotation.Nullable public Boolean getIsPrime() {
         return isPrime;
     }
 
@@ -967,10 +1050,7 @@ public class Order {
      *
      * @return isPremiumOrder
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the order has a Premium Shipping Service Level Agreement. For more information about Premium Shipping orders, refer to \"Premium Shipping Options\" in the Seller Central Help for your marketplace.")
-    public Boolean getIsPremiumOrder() {
+    @javax.annotation.Nullable public Boolean getIsPremiumOrder() {
         return isPremiumOrder;
     }
 
@@ -988,8 +1068,7 @@ public class Order {
      *
      * @return isGlobalExpressEnabled
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the order is a `GlobalExpress` order.")
-    public Boolean getIsGlobalExpressEnabled() {
+    @javax.annotation.Nullable public Boolean getIsGlobalExpressEnabled() {
         return isGlobalExpressEnabled;
     }
 
@@ -1007,10 +1086,7 @@ public class Order {
      *
      * @return replacedOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The order ID value for the order that is being replaced. Returned only if IsReplacementOrder = true.")
-    public String getReplacedOrderId() {
+    @javax.annotation.Nullable public String getReplacedOrderId() {
         return replacedOrderId;
     }
 
@@ -1028,8 +1104,7 @@ public class Order {
      *
      * @return isReplacementOrder
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, this is a replacement order.")
-    public Boolean getIsReplacementOrder() {
+    @javax.annotation.Nullable public Boolean getIsReplacementOrder() {
         return isReplacementOrder;
     }
 
@@ -1048,10 +1123,7 @@ public class Order {
      *
      * @return promiseResponseDueDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates the date by which the seller must respond to the buyer with an estimated ship date. Only returned for Sourcing on Demand orders.")
-    public String getPromiseResponseDueDate() {
+    @javax.annotation.Nullable public String getPromiseResponseDueDate() {
         return promiseResponseDueDate;
     }
 
@@ -1069,10 +1141,7 @@ public class Order {
      *
      * @return isEstimatedShipDateSet
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the estimated ship date is set for the order. Only returned for Sourcing on Demand orders.")
-    public Boolean getIsEstimatedShipDateSet() {
+    @javax.annotation.Nullable public Boolean getIsEstimatedShipDateSet() {
         return isEstimatedShipDateSet;
     }
 
@@ -1092,10 +1161,7 @@ public class Order {
      *
      * @return isSoldByAB
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.")
-    public Boolean getIsSoldByAB() {
+    @javax.annotation.Nullable public Boolean getIsSoldByAB() {
         return isSoldByAB;
     }
 
@@ -1115,10 +1181,7 @@ public class Order {
      *
      * @return isIBA
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.")
-    public Boolean getIsIBA() {
+    @javax.annotation.Nullable public Boolean getIsIBA() {
         return isIBA;
     }
 
@@ -1136,8 +1199,7 @@ public class Order {
      *
      * @return defaultShipFromLocationAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getDefaultShipFromLocationAddress() {
+    @javax.annotation.Nullable public Address getDefaultShipFromLocationAddress() {
         return defaultShipFromLocationAddress;
     }
 
@@ -1156,10 +1218,7 @@ public class Order {
      *
      * @return buyerInvoicePreference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The buyer's invoicing preference. Sellers can use this data to issue electronic invoices for orders in Turkey.  **Note**: This attribute is only available in the Turkey marketplace.")
-    public BuyerInvoicePreferenceEnum getBuyerInvoicePreference() {
+    @javax.annotation.Nullable public BuyerInvoicePreferenceEnum getBuyerInvoicePreference() {
         return buyerInvoicePreference;
     }
 
@@ -1177,8 +1236,7 @@ public class Order {
      *
      * @return buyerTaxInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyerTaxInformation getBuyerTaxInformation() {
+    @javax.annotation.Nullable public BuyerTaxInformation getBuyerTaxInformation() {
         return buyerTaxInformation;
     }
 
@@ -1196,8 +1254,7 @@ public class Order {
      *
      * @return fulfillmentInstruction
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public FulfillmentInstruction getFulfillmentInstruction() {
+    @javax.annotation.Nullable public FulfillmentInstruction getFulfillmentInstruction() {
         return fulfillmentInstruction;
     }
 
@@ -1215,9 +1272,7 @@ public class Order {
      *
      * @return isISPU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, this order is marked to be picked up from a store rather than delivered.")
-    public Boolean getIsISPU() {
+    @javax.annotation.Nullable public Boolean getIsISPU() {
         return isISPU;
     }
 
@@ -1236,10 +1291,7 @@ public class Order {
      *
      * @return isAccessPointOrder
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.")
-    public Boolean getIsAccessPointOrder() {
+    @javax.annotation.Nullable public Boolean getIsAccessPointOrder() {
         return isAccessPointOrder;
     }
 
@@ -1257,8 +1309,7 @@ public class Order {
      *
      * @return marketplaceTaxInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MarketplaceTaxInfo getMarketplaceTaxInfo() {
+    @javax.annotation.Nullable public MarketplaceTaxInfo getMarketplaceTaxInfo() {
         return marketplaceTaxInfo;
     }
 
@@ -1278,10 +1329,7 @@ public class Order {
      *
      * @return sellerDisplayName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The seller’s friendly name registered in the marketplace where the sale took place. Sellers can use this data to issue electronic invoices for orders in Brazil.  **Note**: This attribute is only available in the Brazil marketplace for the orders with `Pending` or `Unshipped` status.")
-    public String getSellerDisplayName() {
+    @javax.annotation.Nullable public String getSellerDisplayName() {
         return sellerDisplayName;
     }
 
@@ -1299,8 +1347,7 @@ public class Order {
      *
      * @return shippingAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Address getShippingAddress() {
+    @javax.annotation.Nullable public Address getShippingAddress() {
         return shippingAddress;
     }
 
@@ -1318,8 +1365,7 @@ public class Order {
      *
      * @return buyerInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyerInfo getBuyerInfo() {
+    @javax.annotation.Nullable public BuyerInfo getBuyerInfo() {
         return buyerInfo;
     }
 
@@ -1337,8 +1383,7 @@ public class Order {
      *
      * @return automatedShippingSettings
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AutomatedShippingSettings getAutomatedShippingSettings() {
+    @javax.annotation.Nullable public AutomatedShippingSettings getAutomatedShippingSettings() {
         return automatedShippingSettings;
     }
 
@@ -1356,10 +1401,7 @@ public class Order {
      *
      * @return hasRegulatedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Whether the order contains regulated items which may require additional approval steps before being fulfilled.")
-    public Boolean getHasRegulatedItems() {
+    @javax.annotation.Nullable public Boolean getHasRegulatedItems() {
         return hasRegulatedItems;
     }
 
@@ -1377,8 +1419,7 @@ public class Order {
      *
      * @return electronicInvoiceStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ElectronicInvoiceStatus getElectronicInvoiceStatus() {
+    @javax.annotation.Nullable public ElectronicInvoiceStatus getElectronicInvoiceStatus() {
         return electronicInvoiceStatus;
     }
 
@@ -1387,7 +1428,7 @@ public class Order {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1616,10 +1657,369 @@ public class Order {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AmazonOrderId");
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("PurchaseDate");
+        openapiFields.add("LastUpdateDate");
+        openapiFields.add("OrderStatus");
+        openapiFields.add("FulfillmentChannel");
+        openapiFields.add("SalesChannel");
+        openapiFields.add("OrderChannel");
+        openapiFields.add("ShipServiceLevel");
+        openapiFields.add("OrderTotal");
+        openapiFields.add("NumberOfItemsShipped");
+        openapiFields.add("NumberOfItemsUnshipped");
+        openapiFields.add("PaymentExecutionDetail");
+        openapiFields.add("PaymentMethod");
+        openapiFields.add("PaymentMethodDetails");
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("ShipmentServiceLevelCategory");
+        openapiFields.add("EasyShipShipmentStatus");
+        openapiFields.add("CbaDisplayableShippingLabel");
+        openapiFields.add("OrderType");
+        openapiFields.add("EarliestShipDate");
+        openapiFields.add("LatestShipDate");
+        openapiFields.add("EarliestDeliveryDate");
+        openapiFields.add("LatestDeliveryDate");
+        openapiFields.add("IsBusinessOrder");
+        openapiFields.add("IsPrime");
+        openapiFields.add("IsPremiumOrder");
+        openapiFields.add("IsGlobalExpressEnabled");
+        openapiFields.add("ReplacedOrderId");
+        openapiFields.add("IsReplacementOrder");
+        openapiFields.add("PromiseResponseDueDate");
+        openapiFields.add("IsEstimatedShipDateSet");
+        openapiFields.add("IsSoldByAB");
+        openapiFields.add("IsIBA");
+        openapiFields.add("DefaultShipFromLocationAddress");
+        openapiFields.add("BuyerInvoicePreference");
+        openapiFields.add("BuyerTaxInformation");
+        openapiFields.add("FulfillmentInstruction");
+        openapiFields.add("IsISPU");
+        openapiFields.add("IsAccessPointOrder");
+        openapiFields.add("MarketplaceTaxInfo");
+        openapiFields.add("SellerDisplayName");
+        openapiFields.add("ShippingAddress");
+        openapiFields.add("BuyerInfo");
+        openapiFields.add("AutomatedShippingSettings");
+        openapiFields.add("HasRegulatedItems");
+        openapiFields.add("ElectronicInvoiceStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("AmazonOrderId");
+        openapiRequiredFields.add("PurchaseDate");
+        openapiRequiredFields.add("LastUpdateDate");
+        openapiRequiredFields.add("OrderStatus");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Order
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Order.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Order is not found in the empty JSON string",
+                        Order.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Order.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Order` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Order.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("AmazonOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AmazonOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AmazonOrderId").toString()));
+        }
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        if (!jsonObj.get("PurchaseDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PurchaseDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PurchaseDate").toString()));
+        }
+        if (!jsonObj.get("LastUpdateDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `LastUpdateDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("LastUpdateDate").toString()));
+        }
+        if (!jsonObj.get("OrderStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderStatus").toString()));
+        }
+        // validate the required field `OrderStatus`
+        OrderStatusEnum.validateJsonElement(jsonObj.get("OrderStatus"));
+        if ((jsonObj.get("FulfillmentChannel") != null
+                        && !jsonObj.get("FulfillmentChannel").isJsonNull())
+                && !jsonObj.get("FulfillmentChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FulfillmentChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FulfillmentChannel").toString()));
+        }
+        // validate the optional field `FulfillmentChannel`
+        if (jsonObj.get("FulfillmentChannel") != null
+                && !jsonObj.get("FulfillmentChannel").isJsonNull()) {
+            FulfillmentChannelEnum.validateJsonElement(jsonObj.get("FulfillmentChannel"));
+        }
+        if ((jsonObj.get("SalesChannel") != null && !jsonObj.get("SalesChannel").isJsonNull())
+                && !jsonObj.get("SalesChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SalesChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SalesChannel").toString()));
+        }
+        if ((jsonObj.get("OrderChannel") != null && !jsonObj.get("OrderChannel").isJsonNull())
+                && !jsonObj.get("OrderChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderChannel").toString()));
+        }
+        if ((jsonObj.get("ShipServiceLevel") != null
+                        && !jsonObj.get("ShipServiceLevel").isJsonNull())
+                && !jsonObj.get("ShipServiceLevel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipServiceLevel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipServiceLevel").toString()));
+        }
+        // validate the optional field `OrderTotal`
+        if (jsonObj.get("OrderTotal") != null && !jsonObj.get("OrderTotal").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("OrderTotal"));
+        }
+        if ((jsonObj.get("PaymentMethod") != null
+                        && !jsonObj.get("PaymentMethod").isJsonNull())
+                && !jsonObj.get("PaymentMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PaymentMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PaymentMethod").toString()));
+        }
+        // validate the optional field `PaymentMethod`
+        if (jsonObj.get("PaymentMethod") != null
+                && !jsonObj.get("PaymentMethod").isJsonNull()) {
+            PaymentMethodEnum.validateJsonElement(jsonObj.get("PaymentMethod"));
+        }
+        if ((jsonObj.get("MarketplaceId") != null
+                        && !jsonObj.get("MarketplaceId").isJsonNull())
+                && !jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        if ((jsonObj.get("ShipmentServiceLevelCategory") != null
+                        && !jsonObj.get("ShipmentServiceLevelCategory").isJsonNull())
+                && !jsonObj.get("ShipmentServiceLevelCategory").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShipmentServiceLevelCategory` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ShipmentServiceLevelCategory").toString()));
+        }
+        // validate the optional field `EasyShipShipmentStatus`
+        if (jsonObj.get("EasyShipShipmentStatus") != null
+                && !jsonObj.get("EasyShipShipmentStatus").isJsonNull()) {
+            EasyShipShipmentStatus.validateJsonElement(jsonObj.get("EasyShipShipmentStatus"));
+        }
+        if ((jsonObj.get("CbaDisplayableShippingLabel") != null
+                        && !jsonObj.get("CbaDisplayableShippingLabel").isJsonNull())
+                && !jsonObj.get("CbaDisplayableShippingLabel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `CbaDisplayableShippingLabel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("CbaDisplayableShippingLabel").toString()));
+        }
+        if ((jsonObj.get("OrderType") != null && !jsonObj.get("OrderType").isJsonNull())
+                && !jsonObj.get("OrderType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderType").toString()));
+        }
+        // validate the optional field `OrderType`
+        if (jsonObj.get("OrderType") != null && !jsonObj.get("OrderType").isJsonNull()) {
+            OrderTypeEnum.validateJsonElement(jsonObj.get("OrderType"));
+        }
+        if ((jsonObj.get("EarliestShipDate") != null
+                        && !jsonObj.get("EarliestShipDate").isJsonNull())
+                && !jsonObj.get("EarliestShipDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `EarliestShipDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("EarliestShipDate").toString()));
+        }
+        if ((jsonObj.get("LatestShipDate") != null
+                        && !jsonObj.get("LatestShipDate").isJsonNull())
+                && !jsonObj.get("LatestShipDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `LatestShipDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("LatestShipDate").toString()));
+        }
+        if ((jsonObj.get("EarliestDeliveryDate") != null
+                        && !jsonObj.get("EarliestDeliveryDate").isJsonNull())
+                && !jsonObj.get("EarliestDeliveryDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `EarliestDeliveryDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("EarliestDeliveryDate").toString()));
+        }
+        if ((jsonObj.get("LatestDeliveryDate") != null
+                        && !jsonObj.get("LatestDeliveryDate").isJsonNull())
+                && !jsonObj.get("LatestDeliveryDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `LatestDeliveryDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("LatestDeliveryDate").toString()));
+        }
+        if ((jsonObj.get("ReplacedOrderId") != null
+                        && !jsonObj.get("ReplacedOrderId").isJsonNull())
+                && !jsonObj.get("ReplacedOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ReplacedOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ReplacedOrderId").toString()));
+        }
+        if ((jsonObj.get("PromiseResponseDueDate") != null
+                        && !jsonObj.get("PromiseResponseDueDate").isJsonNull())
+                && !jsonObj.get("PromiseResponseDueDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PromiseResponseDueDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PromiseResponseDueDate").toString()));
+        }
+        // validate the optional field `DefaultShipFromLocationAddress`
+        if (jsonObj.get("DefaultShipFromLocationAddress") != null
+                && !jsonObj.get("DefaultShipFromLocationAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("DefaultShipFromLocationAddress"));
+        }
+        if ((jsonObj.get("BuyerInvoicePreference") != null
+                        && !jsonObj.get("BuyerInvoicePreference").isJsonNull())
+                && !jsonObj.get("BuyerInvoicePreference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `BuyerInvoicePreference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("BuyerInvoicePreference").toString()));
+        }
+        // validate the optional field `BuyerInvoicePreference`
+        if (jsonObj.get("BuyerInvoicePreference") != null
+                && !jsonObj.get("BuyerInvoicePreference").isJsonNull()) {
+            BuyerInvoicePreferenceEnum.validateJsonElement(jsonObj.get("BuyerInvoicePreference"));
+        }
+        // validate the optional field `BuyerTaxInformation`
+        if (jsonObj.get("BuyerTaxInformation") != null
+                && !jsonObj.get("BuyerTaxInformation").isJsonNull()) {
+            BuyerTaxInformation.validateJsonElement(jsonObj.get("BuyerTaxInformation"));
+        }
+        // validate the optional field `FulfillmentInstruction`
+        if (jsonObj.get("FulfillmentInstruction") != null
+                && !jsonObj.get("FulfillmentInstruction").isJsonNull()) {
+            FulfillmentInstruction.validateJsonElement(jsonObj.get("FulfillmentInstruction"));
+        }
+        // validate the optional field `MarketplaceTaxInfo`
+        if (jsonObj.get("MarketplaceTaxInfo") != null
+                && !jsonObj.get("MarketplaceTaxInfo").isJsonNull()) {
+            MarketplaceTaxInfo.validateJsonElement(jsonObj.get("MarketplaceTaxInfo"));
+        }
+        if ((jsonObj.get("SellerDisplayName") != null
+                        && !jsonObj.get("SellerDisplayName").isJsonNull())
+                && !jsonObj.get("SellerDisplayName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerDisplayName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerDisplayName").toString()));
+        }
+        // validate the optional field `ShippingAddress`
+        if (jsonObj.get("ShippingAddress") != null
+                && !jsonObj.get("ShippingAddress").isJsonNull()) {
+            Address.validateJsonElement(jsonObj.get("ShippingAddress"));
+        }
+        // validate the optional field `BuyerInfo`
+        if (jsonObj.get("BuyerInfo") != null && !jsonObj.get("BuyerInfo").isJsonNull()) {
+            BuyerInfo.validateJsonElement(jsonObj.get("BuyerInfo"));
+        }
+        // validate the optional field `AutomatedShippingSettings`
+        if (jsonObj.get("AutomatedShippingSettings") != null
+                && !jsonObj.get("AutomatedShippingSettings").isJsonNull()) {
+            AutomatedShippingSettings.validateJsonElement(jsonObj.get("AutomatedShippingSettings"));
+        }
+        // validate the optional field `ElectronicInvoiceStatus`
+        if (jsonObj.get("ElectronicInvoiceStatus") != null
+                && !jsonObj.get("ElectronicInvoiceStatus").isJsonNull()) {
+            ElectronicInvoiceStatus.validateJsonElement(jsonObj.get("ElectronicInvoiceStatus"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Order.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Order' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Order> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Order.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Order>() {
+                        @Override
+                        public void write(JsonWriter out, Order value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Order read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Order given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Order
+     * @throws IOException if the JSON string is invalid with respect to Order
+     */
+    public static Order fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Order.class);
+    }
+
+    /**
+     * Convert an instance of Order to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

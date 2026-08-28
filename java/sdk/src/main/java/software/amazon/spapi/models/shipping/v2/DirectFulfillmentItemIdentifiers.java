@@ -12,18 +12,38 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Item identifiers for an item in a direct fulfillment shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Item identifiers for an item in a direct fulfillment shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DirectFulfillmentItemIdentifiers {
-    @SerializedName("lineItemID")
-    private String lineItemID = null;
+    public static final String SERIALIZED_NAME_LINE_ITEM_I_D = "lineItemID";
 
-    @SerializedName("pieceNumber")
-    private String pieceNumber = null;
+    @SerializedName(SERIALIZED_NAME_LINE_ITEM_I_D)
+    private String lineItemID;
+
+    public static final String SERIALIZED_NAME_PIECE_NUMBER = "pieceNumber";
+
+    @SerializedName(SERIALIZED_NAME_PIECE_NUMBER)
+    private String pieceNumber;
+
+    public DirectFulfillmentItemIdentifiers() {}
 
     public DirectFulfillmentItemIdentifiers lineItemID(String lineItemID) {
         this.lineItemID = lineItemID;
@@ -37,10 +57,7 @@ public class DirectFulfillmentItemIdentifiers {
      *
      * @return lineItemID
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated for direct fulfillment multi-piece shipments. It is required if a vendor wants to change the configuration of the packages in which the purchase order is shipped.")
+    @javax.annotation.Nonnull
     public String getLineItemID() {
         return lineItemID;
     }
@@ -60,10 +77,7 @@ public class DirectFulfillmentItemIdentifiers {
      *
      * @return pieceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated if a single line item has multiple pieces. Defaults to 1.")
-    public String getPieceNumber() {
+    @javax.annotation.Nullable public String getPieceNumber() {
         return pieceNumber;
     }
 
@@ -72,7 +86,7 @@ public class DirectFulfillmentItemIdentifiers {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -100,10 +114,122 @@ public class DirectFulfillmentItemIdentifiers {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("lineItemID");
+        openapiFields.add("pieceNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lineItemID");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DirectFulfillmentItemIdentifiers
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DirectFulfillmentItemIdentifiers.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DirectFulfillmentItemIdentifiers is not found in the empty JSON string",
+                        DirectFulfillmentItemIdentifiers.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DirectFulfillmentItemIdentifiers.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DirectFulfillmentItemIdentifiers` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DirectFulfillmentItemIdentifiers.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("lineItemID").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItemID` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lineItemID").toString()));
+        }
+        if ((jsonObj.get("pieceNumber") != null && !jsonObj.get("pieceNumber").isJsonNull())
+                && !jsonObj.get("pieceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `pieceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("pieceNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DirectFulfillmentItemIdentifiers.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DirectFulfillmentItemIdentifiers' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DirectFulfillmentItemIdentifiers> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DirectFulfillmentItemIdentifiers.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DirectFulfillmentItemIdentifiers>() {
+                        @Override
+                        public void write(JsonWriter out, DirectFulfillmentItemIdentifiers value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DirectFulfillmentItemIdentifiers read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DirectFulfillmentItemIdentifiers given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DirectFulfillmentItemIdentifiers
+     * @throws IOException if the JSON string is invalid with respect to DirectFulfillmentItemIdentifiers
+     */
+    public static DirectFulfillmentItemIdentifiers fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DirectFulfillmentItemIdentifiers.class);
+    }
+
+    /**
+     * Convert an instance of DirectFulfillmentItemIdentifiers to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

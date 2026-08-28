@@ -12,44 +12,68 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Shipment Information details for Label request. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment Information details for Label request.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ShipmentInformation {
-    @SerializedName("vendorDetails")
-    private VendorDetails vendorDetails = null;
+    public static final String SERIALIZED_NAME_VENDOR_DETAILS = "vendorDetails";
 
-    @SerializedName("buyerReferenceNumber")
-    private String buyerReferenceNumber = null;
+    @SerializedName(SERIALIZED_NAME_VENDOR_DETAILS)
+    private VendorDetails vendorDetails;
 
-    @SerializedName("shipToParty")
-    private PartyIdentification shipToParty = null;
+    public static final String SERIALIZED_NAME_BUYER_REFERENCE_NUMBER = "buyerReferenceNumber";
 
-    @SerializedName("shipFromParty")
-    private PartyIdentification shipFromParty = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_REFERENCE_NUMBER)
+    private String buyerReferenceNumber;
 
-    @SerializedName("warehouseId")
-    private String warehouseId = null;
+    public static final String SERIALIZED_NAME_SHIP_TO_PARTY = "shipToParty";
 
-    @SerializedName("masterTrackingId")
-    private String masterTrackingId = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_TO_PARTY)
+    private PartyIdentification shipToParty;
 
-    @SerializedName("totalLabelCount")
-    private Integer totalLabelCount = null;
+    public static final String SERIALIZED_NAME_SHIP_FROM_PARTY = "shipFromParty";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_FROM_PARTY)
+    private PartyIdentification shipFromParty;
+
+    public static final String SERIALIZED_NAME_WAREHOUSE_ID = "warehouseId";
+
+    @SerializedName(SERIALIZED_NAME_WAREHOUSE_ID)
+    private String warehouseId;
+
+    public static final String SERIALIZED_NAME_MASTER_TRACKING_ID = "masterTrackingId";
+
+    @SerializedName(SERIALIZED_NAME_MASTER_TRACKING_ID)
+    private String masterTrackingId;
+
+    public static final String SERIALIZED_NAME_TOTAL_LABEL_COUNT = "totalLabelCount";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_LABEL_COUNT)
+    private Integer totalLabelCount;
 
     /** Type of shipment whether it is Small Parcel */
     @JsonAdapter(ShipModeEnum.Adapter.class)
     public enum ShipModeEnum {
-        @SerializedName("SmallParcel")
         SMALL_PARCEL("SmallParcel"),
-        @SerializedName("LTL")
+
         LTL("LTL");
 
         private String value;
@@ -67,31 +91,40 @@ public class ShipmentInformation {
             return String.valueOf(value);
         }
 
-        public static ShipModeEnum fromValue(String input) {
+        public static ShipModeEnum fromValue(String value) {
             for (ShipModeEnum b : ShipModeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ShipModeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ShipModeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ShipModeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ShipModeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ShipModeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ShipModeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("shipMode")
-    private ShipModeEnum shipMode = null;
+    public static final String SERIALIZED_NAME_SHIP_MODE = "shipMode";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_MODE)
+    private ShipModeEnum shipMode;
+
+    public ShipmentInformation() {}
 
     public ShipmentInformation vendorDetails(VendorDetails vendorDetails) {
         this.vendorDetails = vendorDetails;
@@ -103,8 +136,7 @@ public class ShipmentInformation {
      *
      * @return vendorDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public VendorDetails getVendorDetails() {
+    @javax.annotation.Nullable public VendorDetails getVendorDetails() {
         return vendorDetails;
     }
 
@@ -122,10 +154,7 @@ public class ShipmentInformation {
      *
      * @return buyerReferenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The buyer reference number is a unique identifier generated by the buyer for all Collect and WePay shipments.")
-    public String getBuyerReferenceNumber() {
+    @javax.annotation.Nullable public String getBuyerReferenceNumber() {
         return buyerReferenceNumber;
     }
 
@@ -143,8 +172,7 @@ public class ShipmentInformation {
      *
      * @return shipToParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getShipToParty() {
+    @javax.annotation.Nullable public PartyIdentification getShipToParty() {
         return shipToParty;
     }
 
@@ -162,8 +190,7 @@ public class ShipmentInformation {
      *
      * @return shipFromParty
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PartyIdentification getShipFromParty() {
+    @javax.annotation.Nullable public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
 
@@ -181,10 +208,7 @@ public class ShipmentInformation {
      *
      * @return warehouseId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Vendor Warehouse ID from where the shipment is scheduled to be picked up by buyer / Carrier.")
-    public String getWarehouseId() {
+    @javax.annotation.Nullable public String getWarehouseId() {
         return warehouseId;
     }
 
@@ -202,9 +226,7 @@ public class ShipmentInformation {
      *
      * @return masterTrackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Unique Id with  which  the shipment can be tracked for Small Parcels.")
-    public String getMasterTrackingId() {
+    @javax.annotation.Nullable public String getMasterTrackingId() {
         return masterTrackingId;
     }
 
@@ -222,9 +244,7 @@ public class ShipmentInformation {
      *
      * @return totalLabelCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Number of Labels that are created as part of this shipment.")
-    public Integer getTotalLabelCount() {
+    @javax.annotation.Nullable public Integer getTotalLabelCount() {
         return totalLabelCount;
     }
 
@@ -242,8 +262,7 @@ public class ShipmentInformation {
      *
      * @return shipMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Type of shipment whether it is Small Parcel")
-    public ShipModeEnum getShipMode() {
+    @javax.annotation.Nullable public ShipModeEnum getShipMode() {
         return shipMode;
     }
 
@@ -252,7 +271,7 @@ public class ShipmentInformation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -306,10 +325,150 @@ public class ShipmentInformation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("vendorDetails");
+        openapiFields.add("buyerReferenceNumber");
+        openapiFields.add("shipToParty");
+        openapiFields.add("shipFromParty");
+        openapiFields.add("warehouseId");
+        openapiFields.add("masterTrackingId");
+        openapiFields.add("totalLabelCount");
+        openapiFields.add("shipMode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ShipmentInformation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ShipmentInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ShipmentInformation is not found in the empty JSON string",
+                        ShipmentInformation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ShipmentInformation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ShipmentInformation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `vendorDetails`
+        if (jsonObj.get("vendorDetails") != null
+                && !jsonObj.get("vendorDetails").isJsonNull()) {
+            VendorDetails.validateJsonElement(jsonObj.get("vendorDetails"));
+        }
+        if ((jsonObj.get("buyerReferenceNumber") != null
+                        && !jsonObj.get("buyerReferenceNumber").isJsonNull())
+                && !jsonObj.get("buyerReferenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyerReferenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyerReferenceNumber").toString()));
+        }
+        // validate the optional field `shipToParty`
+        if (jsonObj.get("shipToParty") != null && !jsonObj.get("shipToParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("shipToParty"));
+        }
+        // validate the optional field `shipFromParty`
+        if (jsonObj.get("shipFromParty") != null
+                && !jsonObj.get("shipFromParty").isJsonNull()) {
+            PartyIdentification.validateJsonElement(jsonObj.get("shipFromParty"));
+        }
+        if ((jsonObj.get("warehouseId") != null && !jsonObj.get("warehouseId").isJsonNull())
+                && !jsonObj.get("warehouseId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `warehouseId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("warehouseId").toString()));
+        }
+        if ((jsonObj.get("masterTrackingId") != null
+                        && !jsonObj.get("masterTrackingId").isJsonNull())
+                && !jsonObj.get("masterTrackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `masterTrackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("masterTrackingId").toString()));
+        }
+        if ((jsonObj.get("shipMode") != null && !jsonObj.get("shipMode").isJsonNull())
+                && !jsonObj.get("shipMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipMode").toString()));
+        }
+        // validate the optional field `shipMode`
+        if (jsonObj.get("shipMode") != null && !jsonObj.get("shipMode").isJsonNull()) {
+            ShipModeEnum.validateJsonElement(jsonObj.get("shipMode"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ShipmentInformation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ShipmentInformation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ShipmentInformation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ShipmentInformation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ShipmentInformation>() {
+                        @Override
+                        public void write(JsonWriter out, ShipmentInformation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ShipmentInformation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ShipmentInformation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ShipmentInformation
+     * @throws IOException if the JSON string is invalid with respect to ShipmentInformation
+     */
+    public static ShipmentInformation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ShipmentInformation.class);
+    }
+
+    /**
+     * Convert an instance of ShipmentInformation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,29 +12,57 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the getTracking operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the getTracking operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetTrackingResult {
-    @SerializedName("trackingId")
-    private String trackingId = null;
+    public static final String SERIALIZED_NAME_TRACKING_ID = "trackingId";
 
-    @SerializedName("alternateLegTrackingId")
-    private String alternateLegTrackingId = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_ID)
+    private String trackingId;
 
-    @SerializedName("eventHistory")
-    private List<Event> eventHistory = null;
+    public static final String SERIALIZED_NAME_ALTERNATE_LEG_TRACKING_ID = "alternateLegTrackingId";
 
-    @SerializedName("promisedDeliveryDate")
-    private OffsetDateTime promisedDeliveryDate = null;
+    @SerializedName(SERIALIZED_NAME_ALTERNATE_LEG_TRACKING_ID)
+    private String alternateLegTrackingId;
 
-    @SerializedName("summary")
-    private TrackingSummary summary = null;
+    public static final String SERIALIZED_NAME_EVENT_HISTORY = "eventHistory";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_HISTORY)
+    private List<Event> eventHistory = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PROMISED_DELIVERY_DATE = "promisedDeliveryDate";
+
+    @SerializedName(SERIALIZED_NAME_PROMISED_DELIVERY_DATE)
+    private OffsetDateTime promisedDeliveryDate;
+
+    public static final String SERIALIZED_NAME_SUMMARY = "summary";
+
+    @SerializedName(SERIALIZED_NAME_SUMMARY)
+    private TrackingSummary summary;
+
+    public GetTrackingResult() {}
 
     public GetTrackingResult trackingId(String trackingId) {
         this.trackingId = trackingId;
@@ -46,9 +74,7 @@ public class GetTrackingResult {
      *
      * @return trackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The carrier generated identifier for a package in a purchased shipment.")
+    @javax.annotation.Nonnull
     public String getTrackingId() {
         return trackingId;
     }
@@ -67,9 +93,7 @@ public class GetTrackingResult {
      *
      * @return alternateLegTrackingId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The carrier generated reverse identifier for a returned package in a purchased shipment.")
+    @javax.annotation.Nonnull
     public String getAlternateLegTrackingId() {
         return alternateLegTrackingId;
     }
@@ -96,7 +120,7 @@ public class GetTrackingResult {
      *
      * @return eventHistory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of tracking events.")
+    @javax.annotation.Nonnull
     public List<Event> getEventHistory() {
         return eventHistory;
     }
@@ -115,9 +139,7 @@ public class GetTrackingResult {
      *
      * @return promisedDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The date and time by which the shipment is promised to be delivered.")
+    @javax.annotation.Nonnull
     public OffsetDateTime getPromisedDeliveryDate() {
         return promisedDeliveryDate;
     }
@@ -136,7 +158,7 @@ public class GetTrackingResult {
      *
      * @return summary
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TrackingSummary getSummary() {
         return summary;
     }
@@ -146,7 +168,7 @@ public class GetTrackingResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -184,10 +206,142 @@ public class GetTrackingResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("trackingId");
+        openapiFields.add("alternateLegTrackingId");
+        openapiFields.add("eventHistory");
+        openapiFields.add("promisedDeliveryDate");
+        openapiFields.add("summary");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("trackingId");
+        openapiRequiredFields.add("alternateLegTrackingId");
+        openapiRequiredFields.add("eventHistory");
+        openapiRequiredFields.add("promisedDeliveryDate");
+        openapiRequiredFields.add("summary");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetTrackingResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetTrackingResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetTrackingResult is not found in the empty JSON string",
+                        GetTrackingResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetTrackingResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetTrackingResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetTrackingResult.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("trackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingId").toString()));
+        }
+        if (!jsonObj.get("alternateLegTrackingId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `alternateLegTrackingId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("alternateLegTrackingId").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("eventHistory").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eventHistory` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("eventHistory").toString()));
+        }
+
+        JsonArray jsonArrayeventHistory = jsonObj.getAsJsonArray("eventHistory");
+        // validate the required field `eventHistory` (array)
+        for (int i = 0; i < jsonArrayeventHistory.size(); i++) {
+            Event.validateJsonElement(jsonArrayeventHistory.get(i));
+        }
+        ;
+        // validate the required field `summary`
+        TrackingSummary.validateJsonElement(jsonObj.get("summary"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetTrackingResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetTrackingResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetTrackingResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetTrackingResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetTrackingResult>() {
+                        @Override
+                        public void write(JsonWriter out, GetTrackingResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetTrackingResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetTrackingResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetTrackingResult
+     * @throws IOException if the JSON string is invalid with respect to GetTrackingResult
+     */
+    public static GetTrackingResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetTrackingResult.class);
+    }
+
+    /**
+     * Convert an instance of GetTrackingResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

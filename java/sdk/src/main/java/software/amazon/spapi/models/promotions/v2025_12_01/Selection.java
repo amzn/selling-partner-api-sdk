@@ -12,34 +12,46 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Defines which products qualify for a benefit, allowing either specific items to be selected by ASIN or the entire
  * catalog with optional exclusions.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Defines which products qualify for a benefit, allowing either specific items to be selected by ASIN or the entire catalog with optional exclusions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Selection {
-    @SerializedName("selectionId")
-    private String selectionId = null;
+    public static final String SERIALIZED_NAME_SELECTION_ID = "selectionId";
 
-    @SerializedName("revisionId")
-    private Integer revisionId = null;
+    @SerializedName(SERIALIZED_NAME_SELECTION_ID)
+    private String selectionId;
+
+    public static final String SERIALIZED_NAME_REVISION_ID = "revisionId";
+
+    @SerializedName(SERIALIZED_NAME_REVISION_ID)
+    private Integer revisionId;
 
     /** Selection type. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("CATALOG")
         CATALOG("CATALOG"),
-        @SerializedName("ITEMS")
+
         ITEMS("ITEMS");
 
         private String value;
@@ -57,34 +69,45 @@ public class Selection {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("selectionDetails")
-    private SelectionDetails selectionDetails = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
+
+    public static final String SERIALIZED_NAME_SELECTION_DETAILS = "selectionDetails";
+
+    @SerializedName(SERIALIZED_NAME_SELECTION_DETAILS)
+    private SelectionDetails selectionDetails;
+
+    public Selection() {}
 
     public Selection selectionId(String selectionId) {
         this.selectionId = selectionId;
@@ -97,10 +120,7 @@ public class Selection {
      *
      * @return selectionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The unique identifier for this selection configuration. **Note:** This field is absent when `type` is `CATALOG`.")
-    public String getSelectionId() {
+    @javax.annotation.Nullable public String getSelectionId() {
         return selectionId;
     }
 
@@ -117,14 +137,11 @@ public class Selection {
      * The revision identifier for the selection. Pass this value to the &#x60;getSelection&#x60; operation&#39;s
      * &#x60;revisionId&#x60; query parameter to retrieve the correct version of the selection. A promotion may have
      * multiple selection revisions when an update is in progress. **Note:** This field is absent when &#x60;type&#x60;
-     * is &#x60;CATALOG&#x60;.
+     * is &#x60;CATALOG&#x60;. minimum: 1
      *
      * @return revisionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The revision identifier for the selection. Pass this value to the `getSelection` operation's `revisionId` query parameter to retrieve the correct version of the selection. A promotion may have multiple selection revisions when an update is in progress. **Note:** This field is absent when `type` is `CATALOG`.")
-    public Integer getRevisionId() {
+    @javax.annotation.Nullable public Integer getRevisionId() {
         return revisionId;
     }
 
@@ -142,7 +159,7 @@ public class Selection {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Selection type.")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         return type;
     }
@@ -161,8 +178,7 @@ public class Selection {
      *
      * @return selectionDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SelectionDetails getSelectionDetails() {
+    @javax.annotation.Nullable public SelectionDetails getSelectionDetails() {
         return selectionDetails;
     }
 
@@ -171,7 +187,7 @@ public class Selection {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -205,10 +221,129 @@ public class Selection {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("selectionId");
+        openapiFields.add("revisionId");
+        openapiFields.add("type");
+        openapiFields.add("selectionDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Selection
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Selection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Selection is not found in the empty JSON string",
+                        Selection.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Selection.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Selection` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Selection.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("selectionId") != null && !jsonObj.get("selectionId").isJsonNull())
+                && !jsonObj.get("selectionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `selectionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("selectionId").toString()));
+        }
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+        // validate the optional field `selectionDetails`
+        if (jsonObj.get("selectionDetails") != null
+                && !jsonObj.get("selectionDetails").isJsonNull()) {
+            SelectionDetails.validateJsonElement(jsonObj.get("selectionDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Selection.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Selection' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Selection> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Selection.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Selection>() {
+                        @Override
+                        public void write(JsonWriter out, Selection value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Selection read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Selection given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Selection
+     * @throws IOException if the JSON string is invalid with respect to Selection
+     */
+    public static Selection fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Selection.class);
+    }
+
+    /**
+     * Convert an instance of Selection to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

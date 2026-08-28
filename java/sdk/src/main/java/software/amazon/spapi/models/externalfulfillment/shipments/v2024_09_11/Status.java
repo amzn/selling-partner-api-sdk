@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The outcome of the operation. */
 @JsonAdapter(Status.Adapter.class)
 public enum Status {
-    @SerializedName("SUCCESS")
     SUCCESS("SUCCESS"),
 
-    @SerializedName("FAILURE")
     FAILURE("FAILURE");
 
     private String value;
@@ -43,25 +41,30 @@ public enum Status {
         return String.valueOf(value);
     }
 
-    public static Status fromValue(String input) {
+    public static Status fromValue(String value) {
         for (Status b : Status.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<Status> {
         @Override
         public void write(final JsonWriter jsonWriter, final Status enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public Status read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return Status.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return Status.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        Status.fromValue(value);
     }
 }

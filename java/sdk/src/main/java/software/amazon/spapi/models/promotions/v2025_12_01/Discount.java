@@ -12,26 +12,36 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The discount configuration shared across benefit types. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The discount configuration shared across benefit types.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Discount {
     /** The method used to calculate the discount amount. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
-        @SerializedName("PERCENTAGE_OFF")
         PERCENTAGE_OFF("PERCENTAGE_OFF"),
-        @SerializedName("AMOUNT_OFF")
+
         AMOUNT_OFF("AMOUNT_OFF"),
-        @SerializedName("FREE_ITEM")
+
         FREE_ITEM("FREE_ITEM");
 
         private String value;
@@ -49,40 +59,55 @@ public class Discount {
             return String.valueOf(value);
         }
 
-        public static TypeEnum fromValue(String input) {
+        public static TypeEnum fromValue(String value) {
             for (TypeEnum b : TypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("type")
-    private TypeEnum type = null;
+    public static final String SERIALIZED_NAME_TYPE = "type";
 
-    @SerializedName("percentOff")
-    private BigDecimal percentOff = null;
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
 
-    @SerializedName("amountOff")
-    private BigDecimal amountOff = null;
+    public static final String SERIALIZED_NAME_PERCENT_OFF = "percentOff";
 
-    @SerializedName("currencyCode")
-    private String currencyCode = null;
+    @SerializedName(SERIALIZED_NAME_PERCENT_OFF)
+    private BigDecimal percentOff;
+
+    public static final String SERIALIZED_NAME_AMOUNT_OFF = "amountOff";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT_OFF)
+    private BigDecimal amountOff;
+
+    public static final String SERIALIZED_NAME_CURRENCY_CODE = "currencyCode";
+
+    @SerializedName(SERIALIZED_NAME_CURRENCY_CODE)
+    private String currencyCode;
+
+    public Discount() {}
 
     public Discount type(TypeEnum type) {
         this.type = type;
@@ -94,9 +119,7 @@ public class Discount {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The method used to calculate the discount amount.")
+    @javax.annotation.Nonnull
     public TypeEnum getType() {
         return type;
     }
@@ -111,13 +134,12 @@ public class Discount {
     }
 
     /**
-     * The percentage discount value (1-100). Only valid when &#x60;type&#x60; is &#x60;PERCENTAGE_OFF&#x60;.
+     * The percentage discount value (1-100). Only valid when &#x60;type&#x60; is &#x60;PERCENTAGE_OFF&#x60;. minimum: 1
+     * maximum: 1E+2
      *
      * @return percentOff
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The percentage discount value (1-100). Only valid when `type` is `PERCENTAGE_OFF`.")
-    public BigDecimal getPercentOff() {
+    @javax.annotation.Nullable public BigDecimal getPercentOff() {
         return percentOff;
     }
 
@@ -131,13 +153,11 @@ public class Discount {
     }
 
     /**
-     * The amount off value. Only valid when &#x60;type&#x60; is &#x60;AMOUNT_OFF&#x60;.
+     * The amount off value. Only valid when &#x60;type&#x60; is &#x60;AMOUNT_OFF&#x60;. minimum: 0
      *
      * @return amountOff
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The amount off value. Only valid when `type` is `AMOUNT_OFF`.")
-    public BigDecimal getAmountOff() {
+    @javax.annotation.Nullable public BigDecimal getAmountOff() {
         return amountOff;
     }
 
@@ -155,9 +175,7 @@ public class Discount {
      *
      * @return currencyCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The currency code in ISO 4217 format. Required when `type` is `AMOUNT_OFF`.")
-    public String getCurrencyCode() {
+    @javax.annotation.Nullable public String getCurrencyCode() {
         return currencyCode;
     }
 
@@ -166,7 +184,7 @@ public class Discount {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -198,10 +216,124 @@ public class Discount {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("type");
+        openapiFields.add("percentOff");
+        openapiFields.add("amountOff");
+        openapiFields.add("currencyCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("type");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Discount
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Discount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Discount is not found in the empty JSON string",
+                        Discount.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Discount.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Discount` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Discount.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+        // validate the required field `type`
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+        if ((jsonObj.get("currencyCode") != null && !jsonObj.get("currencyCode").isJsonNull())
+                && !jsonObj.get("currencyCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `currencyCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("currencyCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Discount.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Discount' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Discount> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Discount.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Discount>() {
+                        @Override
+                        public void write(JsonWriter out, Discount value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Discount read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Discount given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Discount
+     * @throws IOException if the JSON string is invalid with respect to Discount
+     */
+    public static Discount fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Discount.class);
+    }
+
+    /**
+     * Convert an instance of Discount to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

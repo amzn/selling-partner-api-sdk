@@ -12,55 +12,96 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The contact information of the payee. This field is required when the request &#x60;bankAccountOwnershipType&#x60; is
  * &#x60;THIRD_PARTY&#x60;. The contact information is used for payee verification and registration purposes.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The contact information of the payee. This field is required when the request `bankAccountOwnershipType` is `THIRD_PARTY`. The contact information is used for payee verification and registration purposes.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PayeeContactInformation {
-    @SerializedName("payeeFirstName")
-    private String payeeFirstName = null;
+    public static final String SERIALIZED_NAME_PAYEE_FIRST_NAME = "payeeFirstName";
 
-    @SerializedName("payeeMiddleName")
-    private String payeeMiddleName = null;
+    @SerializedName(SERIALIZED_NAME_PAYEE_FIRST_NAME)
+    private String payeeFirstName;
 
-    @SerializedName("payeeLastName")
-    private String payeeLastName = null;
+    public static final String SERIALIZED_NAME_PAYEE_MIDDLE_NAME = "payeeMiddleName";
 
-    @SerializedName("addressLine1")
-    private String addressLine1 = null;
+    @SerializedName(SERIALIZED_NAME_PAYEE_MIDDLE_NAME)
+    private String payeeMiddleName;
 
-    @SerializedName("addressLine2")
-    private String addressLine2 = null;
+    public static final String SERIALIZED_NAME_PAYEE_LAST_NAME = "payeeLastName";
 
-    @SerializedName("city")
-    private String city = null;
+    @SerializedName(SERIALIZED_NAME_PAYEE_LAST_NAME)
+    private String payeeLastName;
 
-    @SerializedName("state")
-    private String state = null;
+    public static final String SERIALIZED_NAME_ADDRESS_LINE1 = "addressLine1";
 
-    @SerializedName("postalCode")
-    private String postalCode = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS_LINE1)
+    private String addressLine1;
 
-    @SerializedName("country")
-    private String country = null;
+    public static final String SERIALIZED_NAME_ADDRESS_LINE2 = "addressLine2";
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    @SerializedName(SERIALIZED_NAME_ADDRESS_LINE2)
+    private String addressLine2;
 
-    @SerializedName("emailAddress")
-    private String emailAddress = null;
+    public static final String SERIALIZED_NAME_CITY = "city";
 
-    @SerializedName("phoneNumber")
-    private String phoneNumber = null;
+    @SerializedName(SERIALIZED_NAME_CITY)
+    private String city;
 
-    @SerializedName("payeeEntityType")
-    private PayeeEntityType payeeEntityType = null;
+    public static final String SERIALIZED_NAME_STATE = "state";
+
+    @SerializedName(SERIALIZED_NAME_STATE)
+    private String state;
+
+    public static final String SERIALIZED_NAME_POSTAL_CODE = "postalCode";
+
+    @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
+    private String postalCode;
+
+    public static final String SERIALIZED_NAME_COUNTRY = "country";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY)
+    private String country;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public static final String SERIALIZED_NAME_EMAIL_ADDRESS = "emailAddress";
+
+    @SerializedName(SERIALIZED_NAME_EMAIL_ADDRESS)
+    private String emailAddress;
+
+    public static final String SERIALIZED_NAME_PHONE_NUMBER = "phoneNumber";
+
+    @SerializedName(SERIALIZED_NAME_PHONE_NUMBER)
+    private String phoneNumber;
+
+    public static final String SERIALIZED_NAME_PAYEE_ENTITY_TYPE = "payeeEntityType";
+
+    @SerializedName(SERIALIZED_NAME_PAYEE_ENTITY_TYPE)
+    private PayeeEntityType payeeEntityType;
+
+    public PayeeContactInformation() {}
 
     public PayeeContactInformation payeeFirstName(String payeeFirstName) {
         this.payeeFirstName = payeeFirstName;
@@ -72,9 +113,7 @@ public class PayeeContactInformation {
      *
      * @return payeeFirstName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "First name of the payee. There is a 50 character limit.")
+    @javax.annotation.Nonnull
     public String getPayeeFirstName() {
         return payeeFirstName;
     }
@@ -93,9 +132,7 @@ public class PayeeContactInformation {
      *
      * @return payeeMiddleName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Middle name of the payee. There is a 50 character limit.")
-    public String getPayeeMiddleName() {
+    @javax.annotation.Nullable public String getPayeeMiddleName() {
         return payeeMiddleName;
     }
 
@@ -113,9 +150,7 @@ public class PayeeContactInformation {
      *
      * @return payeeLastName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Last name of the payee. There is a 50 character limit.")
+    @javax.annotation.Nonnull
     public String getPayeeLastName() {
         return payeeLastName;
     }
@@ -134,7 +169,7 @@ public class PayeeContactInformation {
      *
      * @return addressLine1
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Address Line 1 of the public address.")
+    @javax.annotation.Nonnull
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -153,8 +188,7 @@ public class PayeeContactInformation {
      *
      * @return addressLine2
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Address Line 2 of the public address.")
-    public String getAddressLine2() {
+    @javax.annotation.Nullable public String getAddressLine2() {
         return addressLine2;
     }
 
@@ -172,7 +206,7 @@ public class PayeeContactInformation {
      *
      * @return city
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "City name of the public address.")
+    @javax.annotation.Nonnull
     public String getCity() {
         return city;
     }
@@ -191,9 +225,7 @@ public class PayeeContactInformation {
      *
      * @return state
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "State name of the public address. This is the state or region for China-based addresses.")
+    @javax.annotation.Nonnull
     public String getState() {
         return state;
     }
@@ -212,7 +244,7 @@ public class PayeeContactInformation {
      *
      * @return postalCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Postal code of the public address.")
+    @javax.annotation.Nonnull
     public String getPostalCode() {
         return postalCode;
     }
@@ -231,8 +263,7 @@ public class PayeeContactInformation {
      *
      * @return country
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Country name of the public address.")
-    public String getCountry() {
+    @javax.annotation.Nullable public String getCountry() {
         return country;
     }
 
@@ -250,9 +281,7 @@ public class PayeeContactInformation {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The two digit country code, in ISO 3166 format.")
+    @javax.annotation.Nonnull
     public String getCountryCode() {
         return countryCode;
     }
@@ -271,7 +300,7 @@ public class PayeeContactInformation {
      *
      * @return emailAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Email address of the payee.")
+    @javax.annotation.Nonnull
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -290,7 +319,7 @@ public class PayeeContactInformation {
      *
      * @return phoneNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Valid phone number of the payee.")
+    @javax.annotation.Nonnull
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -309,7 +338,7 @@ public class PayeeContactInformation {
      *
      * @return payeeEntityType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PayeeEntityType getPayeeEntityType() {
         return payeeEntityType;
     }
@@ -319,7 +348,7 @@ public class PayeeContactInformation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -388,10 +417,197 @@ public class PayeeContactInformation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("payeeFirstName");
+        openapiFields.add("payeeMiddleName");
+        openapiFields.add("payeeLastName");
+        openapiFields.add("addressLine1");
+        openapiFields.add("addressLine2");
+        openapiFields.add("city");
+        openapiFields.add("state");
+        openapiFields.add("postalCode");
+        openapiFields.add("country");
+        openapiFields.add("countryCode");
+        openapiFields.add("emailAddress");
+        openapiFields.add("phoneNumber");
+        openapiFields.add("payeeEntityType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("payeeFirstName");
+        openapiRequiredFields.add("payeeLastName");
+        openapiRequiredFields.add("addressLine1");
+        openapiRequiredFields.add("city");
+        openapiRequiredFields.add("state");
+        openapiRequiredFields.add("postalCode");
+        openapiRequiredFields.add("countryCode");
+        openapiRequiredFields.add("emailAddress");
+        openapiRequiredFields.add("phoneNumber");
+        openapiRequiredFields.add("payeeEntityType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PayeeContactInformation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PayeeContactInformation.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PayeeContactInformation is not found in the empty JSON string",
+                        PayeeContactInformation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PayeeContactInformation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PayeeContactInformation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PayeeContactInformation.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("payeeFirstName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `payeeFirstName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("payeeFirstName").toString()));
+        }
+        if ((jsonObj.get("payeeMiddleName") != null
+                        && !jsonObj.get("payeeMiddleName").isJsonNull())
+                && !jsonObj.get("payeeMiddleName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `payeeMiddleName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("payeeMiddleName").toString()));
+        }
+        if (!jsonObj.get("payeeLastName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `payeeLastName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("payeeLastName").toString()));
+        }
+        if (!jsonObj.get("addressLine1").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `addressLine1` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("addressLine1").toString()));
+        }
+        if ((jsonObj.get("addressLine2") != null && !jsonObj.get("addressLine2").isJsonNull())
+                && !jsonObj.get("addressLine2").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `addressLine2` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("addressLine2").toString()));
+        }
+        if (!jsonObj.get("city").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `city` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("city").toString()));
+        }
+        if (!jsonObj.get("state").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `state` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("state").toString()));
+        }
+        if (!jsonObj.get("postalCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `postalCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("postalCode").toString()));
+        }
+        if ((jsonObj.get("country") != null && !jsonObj.get("country").isJsonNull())
+                && !jsonObj.get("country").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `country` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("country").toString()));
+        }
+        if (!jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+        if (!jsonObj.get("emailAddress").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `emailAddress` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("emailAddress").toString()));
+        }
+        if (!jsonObj.get("phoneNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `phoneNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("phoneNumber").toString()));
+        }
+        // validate the required field `payeeEntityType`
+        PayeeEntityType.validateJsonElement(jsonObj.get("payeeEntityType"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PayeeContactInformation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PayeeContactInformation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PayeeContactInformation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PayeeContactInformation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PayeeContactInformation>() {
+                        @Override
+                        public void write(JsonWriter out, PayeeContactInformation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PayeeContactInformation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PayeeContactInformation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PayeeContactInformation
+     * @throws IOException if the JSON string is invalid with respect to PayeeContactInformation
+     */
+    public static PayeeContactInformation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PayeeContactInformation.class);
+    }
+
+    /**
+     * Convert an instance of PayeeContactInformation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

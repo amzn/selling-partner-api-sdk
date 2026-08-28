@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,31 +22,22 @@ import java.io.IOException;
 /** Label page type. */
 @JsonAdapter(PageType.Adapter.class)
 public enum PageType {
-    @SerializedName("PLAIN_PAPER")
     PLAIN_PAPER("PLAIN_PAPER"),
 
-    @SerializedName("LETTER_PCP_FULFILLMENTLABEL")
     LETTER_PCP_FULFILLMENTLABEL("LETTER_PCP_FULFILLMENTLABEL"),
 
-    @SerializedName("LETTER_2_HORIZONTAL")
     LETTER_2_HORIZONTAL("LETTER_2_HORIZONTAL"),
 
-    @SerializedName("LETTER_2")
     LETTER_2("LETTER_2"),
 
-    @SerializedName("THERMAL_NO_CARRIER_ROTATION")
     THERMAL_NO_CARRIER_ROTATION("THERMAL_NO_CARRIER_ROTATION"),
 
-    @SerializedName("THERMAL")
     THERMAL("THERMAL"),
 
-    @SerializedName("A4_PAPER")
     A4_PAPER("A4_PAPER"),
 
-    @SerializedName("A4_2_HORIZONTAL")
     A4_2_HORIZONTAL("A4_2_HORIZONTAL"),
 
-    @SerializedName("THERMAL_SQUARE_10CM")
     THERMAL_SQUARE_10_CM("THERMAL_SQUARE_10CM");
 
     private String value;
@@ -64,25 +55,30 @@ public enum PageType {
         return String.valueOf(value);
     }
 
-    public static PageType fromValue(String input) {
+    public static PageType fromValue(String value) {
         for (PageType b : PageType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PageType> {
         @Override
         public void write(final JsonWriter jsonWriter, final PageType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PageType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PageType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PageType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PageType.fromValue(value);
     }
 }

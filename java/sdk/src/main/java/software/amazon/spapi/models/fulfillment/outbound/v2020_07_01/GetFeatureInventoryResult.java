@@ -12,25 +12,51 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the &#x60;getEligibleInventory&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getEligibleInventory` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetFeatureInventoryResult {
-    @SerializedName("marketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
-    @SerializedName("featureName")
-    private String featureName = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("nextToken")
-    private String nextToken = null;
+    public static final String SERIALIZED_NAME_FEATURE_NAME = "featureName";
 
-    @SerializedName("featureSkus")
-    private List<FeatureSku> featureSkus = null;
+    @SerializedName(SERIALIZED_NAME_FEATURE_NAME)
+    private String featureName;
+
+    public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_TOKEN)
+    private String nextToken;
+
+    public static final String SERIALIZED_NAME_FEATURE_SKUS = "featureSkus";
+
+    @SerializedName(SERIALIZED_NAME_FEATURE_SKUS)
+    private List<FeatureSku> featureSkus = new ArrayList<>();
+
+    public GetFeatureInventoryResult() {}
 
     public GetFeatureInventoryResult marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -42,7 +68,7 @@ public class GetFeatureInventoryResult {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -61,7 +87,7 @@ public class GetFeatureInventoryResult {
      *
      * @return featureName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the feature.")
+    @javax.annotation.Nonnull
     public String getFeatureName() {
         return featureName;
     }
@@ -80,10 +106,7 @@ public class GetFeatureInventoryResult {
      *
      * @return nextToken
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When present and not empty, pass this string token in the next request to return the next response page.")
-    public String getNextToken() {
+    @javax.annotation.Nullable public String getNextToken() {
         return nextToken;
     }
 
@@ -109,9 +132,7 @@ public class GetFeatureInventoryResult {
      *
      * @return featureSkus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "An array of SKUs eligible for this feature and the quantity available.")
-    public List<FeatureSku> getFeatureSkus() {
+    @javax.annotation.Nullable public List<FeatureSku> getFeatureSkus() {
         return featureSkus;
     }
 
@@ -120,7 +141,7 @@ public class GetFeatureInventoryResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -152,10 +173,147 @@ public class GetFeatureInventoryResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceId");
+        openapiFields.add("featureName");
+        openapiFields.add("nextToken");
+        openapiFields.add("featureSkus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("marketplaceId");
+        openapiRequiredFields.add("featureName");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetFeatureInventoryResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetFeatureInventoryResult.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetFeatureInventoryResult is not found in the empty JSON string",
+                        GetFeatureInventoryResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetFeatureInventoryResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetFeatureInventoryResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetFeatureInventoryResult.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceId").toString()));
+        }
+        if (!jsonObj.get("featureName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `featureName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("featureName").toString()));
+        }
+        if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
+                && !jsonObj.get("nextToken").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `nextToken` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("nextToken").toString()));
+        }
+        if (jsonObj.get("featureSkus") != null && !jsonObj.get("featureSkus").isJsonNull()) {
+            JsonArray jsonArrayfeatureSkus = jsonObj.getAsJsonArray("featureSkus");
+            if (jsonArrayfeatureSkus != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("featureSkus").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `featureSkus` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("featureSkus").toString()));
+                }
+
+                // validate the optional field `featureSkus` (array)
+                for (int i = 0; i < jsonArrayfeatureSkus.size(); i++) {
+                    FeatureSku.validateJsonElement(jsonArrayfeatureSkus.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetFeatureInventoryResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetFeatureInventoryResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetFeatureInventoryResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetFeatureInventoryResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetFeatureInventoryResult>() {
+                        @Override
+                        public void write(JsonWriter out, GetFeatureInventoryResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetFeatureInventoryResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetFeatureInventoryResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetFeatureInventoryResult
+     * @throws IOException if the JSON string is invalid with respect to GetFeatureInventoryResult
+     */
+    public static GetFeatureInventoryResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetFeatureInventoryResult.class);
+    }
+
+    /**
+     * Convert an instance of GetFeatureInventoryResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

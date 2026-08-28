@@ -12,40 +12,76 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Schema for an individual offer. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual offer.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OfferType {
-    @SerializedName("offerType")
-    private OfferCustomerType offerType = null;
+    public static final String SERIALIZED_NAME_OFFER_TYPE = "offerType";
 
-    @SerializedName("BuyingPrice")
-    private PriceType buyingPrice = null;
+    @SerializedName(SERIALIZED_NAME_OFFER_TYPE)
+    private OfferCustomerType offerType;
 
-    @SerializedName("RegularPrice")
-    private MoneyType regularPrice = null;
+    public static final String SERIALIZED_NAME_BUYING_PRICE = "BuyingPrice";
 
-    @SerializedName("businessPrice")
-    private MoneyType businessPrice = null;
+    @SerializedName(SERIALIZED_NAME_BUYING_PRICE)
+    private PriceType buyingPrice;
 
-    @SerializedName("quantityDiscountPrices")
-    private List<QuantityDiscountPriceType> quantityDiscountPrices = null;
+    public static final String SERIALIZED_NAME_REGULAR_PRICE = "RegularPrice";
 
-    @SerializedName("FulfillmentChannel")
-    private String fulfillmentChannel = null;
+    @SerializedName(SERIALIZED_NAME_REGULAR_PRICE)
+    private MoneyType regularPrice;
 
-    @SerializedName("ItemCondition")
-    private String itemCondition = null;
+    public static final String SERIALIZED_NAME_BUSINESS_PRICE = "businessPrice";
 
-    @SerializedName("ItemSubCondition")
-    private String itemSubCondition = null;
+    @SerializedName(SERIALIZED_NAME_BUSINESS_PRICE)
+    private MoneyType businessPrice;
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_QUANTITY_DISCOUNT_PRICES = "quantityDiscountPrices";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY_DISCOUNT_PRICES)
+    private List<QuantityDiscountPriceType> quantityDiscountPrices = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_CHANNEL = "FulfillmentChannel";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_CHANNEL)
+    private String fulfillmentChannel;
+
+    public static final String SERIALIZED_NAME_ITEM_CONDITION = "ItemCondition";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_CONDITION)
+    private String itemCondition;
+
+    public static final String SERIALIZED_NAME_ITEM_SUB_CONDITION = "ItemSubCondition";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_SUB_CONDITION)
+    private String itemSubCondition;
+
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public OfferType() {}
 
     public OfferType offerType(OfferCustomerType offerType) {
         this.offerType = offerType;
@@ -57,8 +93,7 @@ public class OfferType {
      *
      * @return offerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OfferCustomerType getOfferType() {
+    @javax.annotation.Nullable public OfferCustomerType getOfferType() {
         return offerType;
     }
 
@@ -76,7 +111,7 @@ public class OfferType {
      *
      * @return buyingPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PriceType getBuyingPrice() {
         return buyingPrice;
     }
@@ -95,7 +130,7 @@ public class OfferType {
      *
      * @return regularPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getRegularPrice() {
         return regularPrice;
     }
@@ -114,8 +149,7 @@ public class OfferType {
      *
      * @return businessPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MoneyType getBusinessPrice() {
+    @javax.annotation.Nullable public MoneyType getBusinessPrice() {
         return businessPrice;
     }
 
@@ -141,9 +175,7 @@ public class OfferType {
      *
      * @return quantityDiscountPrices
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
-    public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
+    @javax.annotation.Nullable public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
         return quantityDiscountPrices;
     }
 
@@ -162,10 +194,7 @@ public class OfferType {
      *
      * @return fulfillmentChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.")
+    @javax.annotation.Nonnull
     public String getFulfillmentChannel() {
         return fulfillmentChannel;
     }
@@ -184,10 +213,7 @@ public class OfferType {
      *
      * @return itemCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club.")
+    @javax.annotation.Nonnull
     public String getItemCondition() {
         return itemCondition;
     }
@@ -207,10 +233,7 @@ public class OfferType {
      *
      * @return itemSubCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.")
+    @javax.annotation.Nonnull
     public String getItemSubCondition() {
         return itemSubCondition;
     }
@@ -229,9 +252,7 @@ public class OfferType {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The seller stock keeping unit (SKU) of the item.")
+    @javax.annotation.Nonnull
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -241,7 +262,7 @@ public class OfferType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -298,10 +319,172 @@ public class OfferType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("offerType");
+        openapiFields.add("BuyingPrice");
+        openapiFields.add("RegularPrice");
+        openapiFields.add("businessPrice");
+        openapiFields.add("quantityDiscountPrices");
+        openapiFields.add("FulfillmentChannel");
+        openapiFields.add("ItemCondition");
+        openapiFields.add("ItemSubCondition");
+        openapiFields.add("SellerSKU");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("BuyingPrice");
+        openapiRequiredFields.add("RegularPrice");
+        openapiRequiredFields.add("FulfillmentChannel");
+        openapiRequiredFields.add("ItemCondition");
+        openapiRequiredFields.add("ItemSubCondition");
+        openapiRequiredFields.add("SellerSKU");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OfferType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OfferType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OfferType is not found in the empty JSON string",
+                        OfferType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OfferType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OfferType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OfferType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `offerType`
+        if (jsonObj.get("offerType") != null && !jsonObj.get("offerType").isJsonNull()) {
+            OfferCustomerType.validateJsonElement(jsonObj.get("offerType"));
+        }
+        // validate the required field `BuyingPrice`
+        PriceType.validateJsonElement(jsonObj.get("BuyingPrice"));
+        // validate the required field `RegularPrice`
+        MoneyType.validateJsonElement(jsonObj.get("RegularPrice"));
+        // validate the optional field `businessPrice`
+        if (jsonObj.get("businessPrice") != null
+                && !jsonObj.get("businessPrice").isJsonNull()) {
+            MoneyType.validateJsonElement(jsonObj.get("businessPrice"));
+        }
+        if (jsonObj.get("quantityDiscountPrices") != null
+                && !jsonObj.get("quantityDiscountPrices").isJsonNull()) {
+            JsonArray jsonArrayquantityDiscountPrices = jsonObj.getAsJsonArray("quantityDiscountPrices");
+            if (jsonArrayquantityDiscountPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("quantityDiscountPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `quantityDiscountPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("quantityDiscountPrices").toString()));
+                }
+
+                // validate the optional field `quantityDiscountPrices` (array)
+                for (int i = 0; i < jsonArrayquantityDiscountPrices.size(); i++) {
+                    QuantityDiscountPriceType.validateJsonElement(jsonArrayquantityDiscountPrices.get(i));
+                }
+                ;
+            }
+        }
+        if (!jsonObj.get("FulfillmentChannel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FulfillmentChannel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FulfillmentChannel").toString()));
+        }
+        if (!jsonObj.get("ItemCondition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ItemCondition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ItemCondition").toString()));
+        }
+        if (!jsonObj.get("ItemSubCondition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ItemSubCondition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ItemSubCondition").toString()));
+        }
+        if (!jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OfferType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OfferType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OfferType> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(OfferType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OfferType>() {
+                        @Override
+                        public void write(JsonWriter out, OfferType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OfferType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OfferType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OfferType
+     * @throws IOException if the JSON string is invalid with respect to OfferType
+     */
+    public static OfferType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OfferType.class);
+    }
+
+    /**
+     * Convert an instance of OfferType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

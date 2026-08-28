@@ -12,31 +12,61 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The A+ Content standard comparison product block. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content standard comparison product block.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardComparisonProductBlock {
-    @SerializedName("position")
-    private Integer position = null;
+    public static final String SERIALIZED_NAME_POSITION = "position";
 
-    @SerializedName("image")
-    private ImageComponent image = null;
+    @SerializedName(SERIALIZED_NAME_POSITION)
+    private Integer position;
 
-    @SerializedName("title")
-    private String title = null;
+    public static final String SERIALIZED_NAME_IMAGE = "image";
 
-    @SerializedName("asin")
-    private String asin = null;
+    @SerializedName(SERIALIZED_NAME_IMAGE)
+    private ImageComponent image;
 
-    @SerializedName("highlight")
-    private Boolean highlight = null;
+    public static final String SERIALIZED_NAME_TITLE = "title";
 
-    @SerializedName("metrics")
-    private List<PlainTextItem> metrics = null;
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_ASIN = "asin";
+
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
+
+    public static final String SERIALIZED_NAME_HIGHLIGHT = "highlight";
+
+    @SerializedName(SERIALIZED_NAME_HIGHLIGHT)
+    private Boolean highlight;
+
+    public static final String SERIALIZED_NAME_METRICS = "metrics";
+
+    @SerializedName(SERIALIZED_NAME_METRICS)
+    private List<PlainTextItem> metrics = new ArrayList<>();
+
+    public StandardComparisonProductBlock() {}
 
     public StandardComparisonProductBlock position(Integer position) {
         this.position = position;
@@ -45,14 +75,11 @@ public class StandardComparisonProductBlock {
 
     /**
      * The rank or index of this comparison product block within the module. Different blocks cannot occupy the same
-     * position within a single module.
+     * position within a single module. minimum: 1 maximum: 6
      *
      * @return position
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module.")
+    @javax.annotation.Nonnull
     public Integer getPosition() {
         return position;
     }
@@ -71,8 +98,7 @@ public class StandardComparisonProductBlock {
      *
      * @return image
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ImageComponent getImage() {
+    @javax.annotation.Nullable public ImageComponent getImage() {
         return image;
     }
 
@@ -90,8 +116,7 @@ public class StandardComparisonProductBlock {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The comparison product title.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -109,8 +134,7 @@ public class StandardComparisonProductBlock {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -128,9 +152,7 @@ public class StandardComparisonProductBlock {
      *
      * @return highlight
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When true, indicates that this content block is visually highlighted.")
-    public Boolean getHighlight() {
+    @javax.annotation.Nullable public Boolean getHighlight() {
         return highlight;
     }
 
@@ -156,8 +178,7 @@ public class StandardComparisonProductBlock {
      *
      * @return metrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Comparison metrics for the product.")
-    public List<PlainTextItem> getMetrics() {
+    @javax.annotation.Nullable public List<PlainTextItem> getMetrics() {
         return metrics;
     }
 
@@ -166,7 +187,7 @@ public class StandardComparisonProductBlock {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -202,10 +223,148 @@ public class StandardComparisonProductBlock {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("position");
+        openapiFields.add("image");
+        openapiFields.add("title");
+        openapiFields.add("asin");
+        openapiFields.add("highlight");
+        openapiFields.add("metrics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("position");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardComparisonProductBlock
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardComparisonProductBlock.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardComparisonProductBlock is not found in the empty JSON string",
+                        StandardComparisonProductBlock.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardComparisonProductBlock.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardComparisonProductBlock` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StandardComparisonProductBlock.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `image`
+        if (jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) {
+            ImageComponent.validateJsonElement(jsonObj.get("image"));
+        }
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if (jsonObj.get("metrics") != null && !jsonObj.get("metrics").isJsonNull()) {
+            JsonArray jsonArraymetrics = jsonObj.getAsJsonArray("metrics");
+            if (jsonArraymetrics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("metrics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `metrics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("metrics").toString()));
+                }
+
+                // validate the optional field `metrics` (array)
+                for (int i = 0; i < jsonArraymetrics.size(); i++) {
+                    PlainTextItem.validateJsonElement(jsonArraymetrics.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardComparisonProductBlock.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardComparisonProductBlock' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardComparisonProductBlock> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardComparisonProductBlock.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardComparisonProductBlock>() {
+                        @Override
+                        public void write(JsonWriter out, StandardComparisonProductBlock value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardComparisonProductBlock read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardComparisonProductBlock given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardComparisonProductBlock
+     * @throws IOException if the JSON string is invalid with respect to StandardComparisonProductBlock
+     */
+    public static StandardComparisonProductBlock fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardComparisonProductBlock.class);
+    }
+
+    /**
+     * Convert an instance of StandardComparisonProductBlock to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

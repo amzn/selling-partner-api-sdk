@@ -12,34 +12,66 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of item review topic. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item review topic.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemReviewTopic {
-    @SerializedName("topic")
-    private String topic = null;
+    public static final String SERIALIZED_NAME_TOPIC = "topic";
 
-    @SerializedName("asinMetrics")
-    private ItemReviewTopicMetrics asinMetrics = null;
+    @SerializedName(SERIALIZED_NAME_TOPIC)
+    private String topic;
 
-    @SerializedName("parentAsinMetrics")
-    private ItemReviewTopicMetrics parentAsinMetrics = null;
+    public static final String SERIALIZED_NAME_ASIN_METRICS = "asinMetrics";
 
-    @SerializedName("browseNodeMetrics")
-    private ItemReviewBrowseNodeMetrics browseNodeMetrics = null;
+    @SerializedName(SERIALIZED_NAME_ASIN_METRICS)
+    private ItemReviewTopicMetrics asinMetrics;
 
-    @SerializedName("childAsinMetrics")
-    private ChildAsinMetrics childAsinMetrics = null;
+    public static final String SERIALIZED_NAME_PARENT_ASIN_METRICS = "parentAsinMetrics";
 
-    @SerializedName("reviewSnippets")
-    private List<String> reviewSnippets = null;
+    @SerializedName(SERIALIZED_NAME_PARENT_ASIN_METRICS)
+    private ItemReviewTopicMetrics parentAsinMetrics;
 
-    @SerializedName("subtopics")
-    private List<ItemReviewSubtopic> subtopics = null;
+    public static final String SERIALIZED_NAME_BROWSE_NODE_METRICS = "browseNodeMetrics";
+
+    @SerializedName(SERIALIZED_NAME_BROWSE_NODE_METRICS)
+    private ItemReviewBrowseNodeMetrics browseNodeMetrics;
+
+    public static final String SERIALIZED_NAME_CHILD_ASIN_METRICS = "childAsinMetrics";
+
+    @SerializedName(SERIALIZED_NAME_CHILD_ASIN_METRICS)
+    private ChildAsinMetrics childAsinMetrics;
+
+    public static final String SERIALIZED_NAME_REVIEW_SNIPPETS = "reviewSnippets";
+
+    @SerializedName(SERIALIZED_NAME_REVIEW_SNIPPETS)
+    private List<String> reviewSnippets = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUBTOPICS = "subtopics";
+
+    @SerializedName(SERIALIZED_NAME_SUBTOPICS)
+    private List<ItemReviewSubtopic> subtopics = new ArrayList<>();
+
+    public ItemReviewTopic() {}
 
     public ItemReviewTopic topic(String topic) {
         this.topic = topic;
@@ -51,7 +83,7 @@ public class ItemReviewTopic {
      *
      * @return topic
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the item review topic.")
+    @javax.annotation.Nonnull
     public String getTopic() {
         return topic;
     }
@@ -70,7 +102,7 @@ public class ItemReviewTopic {
      *
      * @return asinMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemReviewTopicMetrics getAsinMetrics() {
         return asinMetrics;
     }
@@ -89,8 +121,7 @@ public class ItemReviewTopic {
      *
      * @return parentAsinMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemReviewTopicMetrics getParentAsinMetrics() {
+    @javax.annotation.Nullable public ItemReviewTopicMetrics getParentAsinMetrics() {
         return parentAsinMetrics;
     }
 
@@ -108,8 +139,7 @@ public class ItemReviewTopic {
      *
      * @return browseNodeMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemReviewBrowseNodeMetrics getBrowseNodeMetrics() {
+    @javax.annotation.Nullable public ItemReviewBrowseNodeMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }
 
@@ -127,8 +157,7 @@ public class ItemReviewTopic {
      *
      * @return childAsinMetrics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ChildAsinMetrics getChildAsinMetrics() {
+    @javax.annotation.Nullable public ChildAsinMetrics getChildAsinMetrics() {
         return childAsinMetrics;
     }
 
@@ -155,10 +184,7 @@ public class ItemReviewTopic {
      *
      * @return reviewSnippets
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.")
-    public List<String> getReviewSnippets() {
+    @javax.annotation.Nullable public List<String> getReviewSnippets() {
         return reviewSnippets;
     }
 
@@ -185,10 +211,7 @@ public class ItemReviewTopic {
      *
      * @return subtopics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic's placement in the list. This value is `null` if there are no subtopics.")
-    public List<ItemReviewSubtopic> getSubtopics() {
+    @javax.annotation.Nullable public List<ItemReviewSubtopic> getSubtopics() {
         return subtopics;
     }
 
@@ -197,7 +220,7 @@ public class ItemReviewTopic {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -244,10 +267,163 @@ public class ItemReviewTopic {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("topic");
+        openapiFields.add("asinMetrics");
+        openapiFields.add("parentAsinMetrics");
+        openapiFields.add("browseNodeMetrics");
+        openapiFields.add("childAsinMetrics");
+        openapiFields.add("reviewSnippets");
+        openapiFields.add("subtopics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("topic");
+        openapiRequiredFields.add("asinMetrics");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemReviewTopic
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemReviewTopic.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemReviewTopic is not found in the empty JSON string",
+                        ItemReviewTopic.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemReviewTopic.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemReviewTopic` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemReviewTopic.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("topic").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `topic` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("topic").toString()));
+        }
+        // validate the required field `asinMetrics`
+        ItemReviewTopicMetrics.validateJsonElement(jsonObj.get("asinMetrics"));
+        // validate the optional field `parentAsinMetrics`
+        if (jsonObj.get("parentAsinMetrics") != null
+                && !jsonObj.get("parentAsinMetrics").isJsonNull()) {
+            ItemReviewTopicMetrics.validateJsonElement(jsonObj.get("parentAsinMetrics"));
+        }
+        // validate the optional field `browseNodeMetrics`
+        if (jsonObj.get("browseNodeMetrics") != null
+                && !jsonObj.get("browseNodeMetrics").isJsonNull()) {
+            ItemReviewBrowseNodeMetrics.validateJsonElement(jsonObj.get("browseNodeMetrics"));
+        }
+        // validate the optional field `childAsinMetrics`
+        if (jsonObj.get("childAsinMetrics") != null
+                && !jsonObj.get("childAsinMetrics").isJsonNull()) {
+            ChildAsinMetrics.validateJsonElement(jsonObj.get("childAsinMetrics"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("reviewSnippets") != null
+                && !jsonObj.get("reviewSnippets").isJsonNull()
+                && !jsonObj.get("reviewSnippets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reviewSnippets` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("reviewSnippets").toString()));
+        }
+        if (jsonObj.get("subtopics") != null && !jsonObj.get("subtopics").isJsonNull()) {
+            JsonArray jsonArraysubtopics = jsonObj.getAsJsonArray("subtopics");
+            if (jsonArraysubtopics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("subtopics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `subtopics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("subtopics").toString()));
+                }
+
+                // validate the optional field `subtopics` (array)
+                for (int i = 0; i < jsonArraysubtopics.size(); i++) {
+                    ItemReviewSubtopic.validateJsonElement(jsonArraysubtopics.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemReviewTopic.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemReviewTopic' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemReviewTopic> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemReviewTopic.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemReviewTopic>() {
+                        @Override
+                        public void write(JsonWriter out, ItemReviewTopic value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemReviewTopic read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemReviewTopic given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemReviewTopic
+     * @throws IOException if the JSON string is invalid with respect to ItemReviewTopic
+     */
+    public static ItemReviewTopic fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemReviewTopic.class);
+    }
+
+    /**
+     * Convert an instance of ItemReviewTopic to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

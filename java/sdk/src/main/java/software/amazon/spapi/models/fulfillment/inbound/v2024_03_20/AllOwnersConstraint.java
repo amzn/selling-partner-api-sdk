@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -24,7 +24,6 @@ import java.io.IOException;
  */
 @JsonAdapter(AllOwnersConstraint.Adapter.class)
 public enum AllOwnersConstraint {
-    @SerializedName("MUST_MATCH")
     MUST_MATCH("MUST_MATCH");
 
     private String value;
@@ -42,25 +41,30 @@ public enum AllOwnersConstraint {
         return String.valueOf(value);
     }
 
-    public static AllOwnersConstraint fromValue(String input) {
+    public static AllOwnersConstraint fromValue(String value) {
         for (AllOwnersConstraint b : AllOwnersConstraint.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<AllOwnersConstraint> {
         @Override
         public void write(final JsonWriter jsonWriter, final AllOwnersConstraint enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public AllOwnersConstraint read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return AllOwnersConstraint.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return AllOwnersConstraint.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        AllOwnersConstraint.fromValue(value);
     }
 }

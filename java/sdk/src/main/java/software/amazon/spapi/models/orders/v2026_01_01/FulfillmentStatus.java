@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -25,25 +25,18 @@ import java.io.IOException;
  */
 @JsonAdapter(FulfillmentStatus.Adapter.class)
 public enum FulfillmentStatus {
-    @SerializedName("PENDING_AVAILABILITY")
     PENDING_AVAILABILITY("PENDING_AVAILABILITY"),
 
-    @SerializedName("PENDING")
     PENDING("PENDING"),
 
-    @SerializedName("UNSHIPPED")
     UNSHIPPED("UNSHIPPED"),
 
-    @SerializedName("PARTIALLY_SHIPPED")
     PARTIALLY_SHIPPED("PARTIALLY_SHIPPED"),
 
-    @SerializedName("SHIPPED")
     SHIPPED("SHIPPED"),
 
-    @SerializedName("CANCELLED")
     CANCELLED("CANCELLED"),
 
-    @SerializedName("UNFULFILLABLE")
     UNFULFILLABLE("UNFULFILLABLE");
 
     private String value;
@@ -61,25 +54,30 @@ public enum FulfillmentStatus {
         return String.valueOf(value);
     }
 
-    public static FulfillmentStatus fromValue(String input) {
+    public static FulfillmentStatus fromValue(String value) {
         for (FulfillmentStatus b : FulfillmentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<FulfillmentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final FulfillmentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public FulfillmentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return FulfillmentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return FulfillmentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        FulfillmentStatus.fromValue(value);
     }
 }

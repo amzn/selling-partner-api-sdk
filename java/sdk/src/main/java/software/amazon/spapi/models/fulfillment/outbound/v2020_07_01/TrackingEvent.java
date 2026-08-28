@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information for tracking package deliveries. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information for tracking package deliveries.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingEvent {
-    @SerializedName("eventDate")
-    private OffsetDateTime eventDate = null;
+    public static final String SERIALIZED_NAME_EVENT_DATE = "eventDate";
 
-    @SerializedName("eventAddress")
-    private TrackingAddress eventAddress = null;
+    @SerializedName(SERIALIZED_NAME_EVENT_DATE)
+    private OffsetDateTime eventDate;
 
-    @SerializedName("eventCode")
-    private EventCode eventCode = null;
+    public static final String SERIALIZED_NAME_EVENT_ADDRESS = "eventAddress";
 
-    @SerializedName("eventDescription")
-    private String eventDescription = null;
+    @SerializedName(SERIALIZED_NAME_EVENT_ADDRESS)
+    private TrackingAddress eventAddress;
+
+    public static final String SERIALIZED_NAME_EVENT_CODE = "eventCode";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_CODE)
+    private EventCode eventCode;
+
+    public static final String SERIALIZED_NAME_EVENT_DESCRIPTION = "eventDescription";
+
+    @SerializedName(SERIALIZED_NAME_EVENT_DESCRIPTION)
+    private String eventDescription;
+
+    public TrackingEvent() {}
 
     public TrackingEvent eventDate(OffsetDateTime eventDate) {
         this.eventDate = eventDate;
@@ -41,7 +66,7 @@ public class TrackingEvent {
      *
      * @return eventDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
+    @javax.annotation.Nonnull
     public OffsetDateTime getEventDate() {
         return eventDate;
     }
@@ -60,7 +85,7 @@ public class TrackingEvent {
      *
      * @return eventAddress
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public TrackingAddress getEventAddress() {
         return eventAddress;
     }
@@ -79,7 +104,7 @@ public class TrackingEvent {
      *
      * @return eventCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public EventCode getEventCode() {
         return eventCode;
     }
@@ -98,9 +123,7 @@ public class TrackingEvent {
      *
      * @return eventDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A description for the corresponding event code.")
+    @javax.annotation.Nonnull
     public String getEventDescription() {
         return eventDescription;
     }
@@ -110,7 +133,7 @@ public class TrackingEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,10 +167,124 @@ public class TrackingEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("eventDate");
+        openapiFields.add("eventAddress");
+        openapiFields.add("eventCode");
+        openapiFields.add("eventDescription");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("eventDate");
+        openapiRequiredFields.add("eventAddress");
+        openapiRequiredFields.add("eventCode");
+        openapiRequiredFields.add("eventDescription");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingEvent is not found in the empty JSON string",
+                        TrackingEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : TrackingEvent.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `eventAddress`
+        TrackingAddress.validateJsonElement(jsonObj.get("eventAddress"));
+        // validate the required field `eventCode`
+        EventCode.validateJsonElement(jsonObj.get("eventCode"));
+        if (!jsonObj.get("eventDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `eventDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("eventDescription").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingEvent>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingEvent
+     * @throws IOException if the JSON string is invalid with respect to TrackingEvent
+     */
+    public static TrackingEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingEvent.class);
+    }
+
+    /**
+     * Convert an instance of TrackingEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,32 +12,63 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The quantity of unfulfillable inventory. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of unfulfillable inventory.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class UnfulfillableQuantity {
-    @SerializedName("totalUnfulfillableQuantity")
-    private Integer totalUnfulfillableQuantity = null;
+    public static final String SERIALIZED_NAME_TOTAL_UNFULFILLABLE_QUANTITY = "totalUnfulfillableQuantity";
 
-    @SerializedName("customerDamagedQuantity")
-    private Integer customerDamagedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_TOTAL_UNFULFILLABLE_QUANTITY)
+    private Integer totalUnfulfillableQuantity;
 
-    @SerializedName("warehouseDamagedQuantity")
-    private Integer warehouseDamagedQuantity = null;
+    public static final String SERIALIZED_NAME_CUSTOMER_DAMAGED_QUANTITY = "customerDamagedQuantity";
 
-    @SerializedName("distributorDamagedQuantity")
-    private Integer distributorDamagedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_DAMAGED_QUANTITY)
+    private Integer customerDamagedQuantity;
 
-    @SerializedName("carrierDamagedQuantity")
-    private Integer carrierDamagedQuantity = null;
+    public static final String SERIALIZED_NAME_WAREHOUSE_DAMAGED_QUANTITY = "warehouseDamagedQuantity";
 
-    @SerializedName("defectiveQuantity")
-    private Integer defectiveQuantity = null;
+    @SerializedName(SERIALIZED_NAME_WAREHOUSE_DAMAGED_QUANTITY)
+    private Integer warehouseDamagedQuantity;
 
-    @SerializedName("expiredQuantity")
-    private Integer expiredQuantity = null;
+    public static final String SERIALIZED_NAME_DISTRIBUTOR_DAMAGED_QUANTITY = "distributorDamagedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_DISTRIBUTOR_DAMAGED_QUANTITY)
+    private Integer distributorDamagedQuantity;
+
+    public static final String SERIALIZED_NAME_CARRIER_DAMAGED_QUANTITY = "carrierDamagedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_DAMAGED_QUANTITY)
+    private Integer carrierDamagedQuantity;
+
+    public static final String SERIALIZED_NAME_DEFECTIVE_QUANTITY = "defectiveQuantity";
+
+    @SerializedName(SERIALIZED_NAME_DEFECTIVE_QUANTITY)
+    private Integer defectiveQuantity;
+
+    public static final String SERIALIZED_NAME_EXPIRED_QUANTITY = "expiredQuantity";
+
+    @SerializedName(SERIALIZED_NAME_EXPIRED_QUANTITY)
+    private Integer expiredQuantity;
+
+    public UnfulfillableQuantity() {}
 
     public UnfulfillableQuantity totalUnfulfillableQuantity(Integer totalUnfulfillableQuantity) {
         this.totalUnfulfillableQuantity = totalUnfulfillableQuantity;
@@ -49,9 +80,7 @@ public class UnfulfillableQuantity {
      *
      * @return totalUnfulfillableQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The total number of units in Amazon's fulfillment network in unsellable condition.")
-    public Integer getTotalUnfulfillableQuantity() {
+    @javax.annotation.Nullable public Integer getTotalUnfulfillableQuantity() {
         return totalUnfulfillableQuantity;
     }
 
@@ -69,8 +98,7 @@ public class UnfulfillableQuantity {
      *
      * @return customerDamagedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in customer damaged disposition.")
-    public Integer getCustomerDamagedQuantity() {
+    @javax.annotation.Nullable public Integer getCustomerDamagedQuantity() {
         return customerDamagedQuantity;
     }
 
@@ -88,8 +116,7 @@ public class UnfulfillableQuantity {
      *
      * @return warehouseDamagedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in warehouse damaged disposition.")
-    public Integer getWarehouseDamagedQuantity() {
+    @javax.annotation.Nullable public Integer getWarehouseDamagedQuantity() {
         return warehouseDamagedQuantity;
     }
 
@@ -107,8 +134,7 @@ public class UnfulfillableQuantity {
      *
      * @return distributorDamagedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in distributor damaged disposition.")
-    public Integer getDistributorDamagedQuantity() {
+    @javax.annotation.Nullable public Integer getDistributorDamagedQuantity() {
         return distributorDamagedQuantity;
     }
 
@@ -126,8 +152,7 @@ public class UnfulfillableQuantity {
      *
      * @return carrierDamagedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in carrier damaged disposition.")
-    public Integer getCarrierDamagedQuantity() {
+    @javax.annotation.Nullable public Integer getCarrierDamagedQuantity() {
         return carrierDamagedQuantity;
     }
 
@@ -145,8 +170,7 @@ public class UnfulfillableQuantity {
      *
      * @return defectiveQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in defective disposition.")
-    public Integer getDefectiveQuantity() {
+    @javax.annotation.Nullable public Integer getDefectiveQuantity() {
         return defectiveQuantity;
     }
 
@@ -164,8 +188,7 @@ public class UnfulfillableQuantity {
      *
      * @return expiredQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units in expired disposition.")
-    public Integer getExpiredQuantity() {
+    @javax.annotation.Nullable public Integer getExpiredQuantity() {
         return expiredQuantity;
     }
 
@@ -174,7 +197,7 @@ public class UnfulfillableQuantity {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -233,10 +256,106 @@ public class UnfulfillableQuantity {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("totalUnfulfillableQuantity");
+        openapiFields.add("customerDamagedQuantity");
+        openapiFields.add("warehouseDamagedQuantity");
+        openapiFields.add("distributorDamagedQuantity");
+        openapiFields.add("carrierDamagedQuantity");
+        openapiFields.add("defectiveQuantity");
+        openapiFields.add("expiredQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to UnfulfillableQuantity
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!UnfulfillableQuantity.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in UnfulfillableQuantity is not found in the empty JSON string",
+                        UnfulfillableQuantity.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!UnfulfillableQuantity.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `UnfulfillableQuantity` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!UnfulfillableQuantity.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'UnfulfillableQuantity' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<UnfulfillableQuantity> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(UnfulfillableQuantity.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<UnfulfillableQuantity>() {
+                        @Override
+                        public void write(JsonWriter out, UnfulfillableQuantity value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public UnfulfillableQuantity read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of UnfulfillableQuantity given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of UnfulfillableQuantity
+     * @throws IOException if the JSON string is invalid with respect to UnfulfillableQuantity
+     */
+    public static UnfulfillableQuantity fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, UnfulfillableQuantity.class);
+    }
+
+    /**
+     * Convert an instance of UnfulfillableQuantity to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

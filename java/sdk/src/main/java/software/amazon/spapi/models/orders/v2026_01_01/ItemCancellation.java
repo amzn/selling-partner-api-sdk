@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The cancellation information of the order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The cancellation information of the order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemCancellation {
-    @SerializedName("cancellationRequest")
-    private ItemCancellationRequest cancellationRequest = null;
+    public static final String SERIALIZED_NAME_CANCELLATION_REQUEST = "cancellationRequest";
 
-    @SerializedName("cancellationExecution")
-    private ItemCancellationExecution cancellationExecution = null;
+    @SerializedName(SERIALIZED_NAME_CANCELLATION_REQUEST)
+    private ItemCancellationRequest cancellationRequest;
+
+    public static final String SERIALIZED_NAME_CANCELLATION_EXECUTION = "cancellationExecution";
+
+    @SerializedName(SERIALIZED_NAME_CANCELLATION_EXECUTION)
+    private ItemCancellationExecution cancellationExecution;
+
+    public ItemCancellation() {}
 
     public ItemCancellation cancellationRequest(ItemCancellationRequest cancellationRequest) {
         this.cancellationRequest = cancellationRequest;
@@ -34,8 +55,7 @@ public class ItemCancellation {
      *
      * @return cancellationRequest
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemCancellationRequest getCancellationRequest() {
+    @javax.annotation.Nullable public ItemCancellationRequest getCancellationRequest() {
         return cancellationRequest;
     }
 
@@ -53,8 +73,7 @@ public class ItemCancellation {
      *
      * @return cancellationExecution
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemCancellationExecution getCancellationExecution() {
+    @javax.annotation.Nullable public ItemCancellationExecution getCancellationExecution() {
         return cancellationExecution;
     }
 
@@ -63,7 +82,7 @@ public class ItemCancellation {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +114,110 @@ public class ItemCancellation {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("cancellationRequest");
+        openapiFields.add("cancellationExecution");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemCancellation
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemCancellation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemCancellation is not found in the empty JSON string",
+                        ItemCancellation.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemCancellation.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemCancellation` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `cancellationRequest`
+        if (jsonObj.get("cancellationRequest") != null
+                && !jsonObj.get("cancellationRequest").isJsonNull()) {
+            ItemCancellationRequest.validateJsonElement(jsonObj.get("cancellationRequest"));
+        }
+        // validate the optional field `cancellationExecution`
+        if (jsonObj.get("cancellationExecution") != null
+                && !jsonObj.get("cancellationExecution").isJsonNull()) {
+            ItemCancellationExecution.validateJsonElement(jsonObj.get("cancellationExecution"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemCancellation.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemCancellation' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemCancellation> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemCancellation.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemCancellation>() {
+                        @Override
+                        public void write(JsonWriter out, ItemCancellation value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemCancellation read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemCancellation given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemCancellation
+     * @throws IOException if the JSON string is invalid with respect to ItemCancellation
+     */
+    public static ItemCancellation fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemCancellation.class);
+    }
+
+    /**
+     * Convert an instance of ItemCancellation to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SellerSKUIdentifier {
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("SellerId")
-    private String sellerId = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    public static final String SERIALIZED_NAME_SELLER_ID = "SellerId";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
+
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
+
+    public SellerSKUIdentifier() {}
 
     public SellerSKUIdentifier marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -38,7 +60,7 @@ public class SellerSKUIdentifier {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -57,9 +79,7 @@ public class SellerSKUIdentifier {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The seller identifier submitted for the operation.")
+    @javax.annotation.Nonnull
     public String getSellerId() {
         return sellerId;
     }
@@ -78,9 +98,7 @@ public class SellerSKUIdentifier {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The seller stock keeping unit (SKU) of the item.")
+    @javax.annotation.Nonnull
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -90,7 +108,7 @@ public class SellerSKUIdentifier {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -120,10 +138,128 @@ public class SellerSKUIdentifier {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("SellerId");
+        openapiFields.add("SellerSKU");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("MarketplaceId");
+        openapiRequiredFields.add("SellerId");
+        openapiRequiredFields.add("SellerSKU");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SellerSKUIdentifier
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SellerSKUIdentifier.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SellerSKUIdentifier is not found in the empty JSON string",
+                        SellerSKUIdentifier.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SellerSKUIdentifier.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SellerSKUIdentifier` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : SellerSKUIdentifier.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        if (!jsonObj.get("SellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerId").toString()));
+        }
+        if (!jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SellerSKUIdentifier.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SellerSKUIdentifier' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SellerSKUIdentifier> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SellerSKUIdentifier.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SellerSKUIdentifier>() {
+                        @Override
+                        public void write(JsonWriter out, SellerSKUIdentifier value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SellerSKUIdentifier read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SellerSKUIdentifier given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SellerSKUIdentifier
+     * @throws IOException if the JSON string is invalid with respect to SellerSKUIdentifier
+     */
+    public static SellerSKUIdentifier fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SellerSKUIdentifier.class);
+    }
+
+    /**
+     * Convert an instance of SellerSKUIdentifier to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,26 +12,52 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Transport Request pickup date */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Transport Request pickup date")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PurchaseOrders {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("purchaseOrderDate")
-    private OffsetDateTime purchaseOrderDate = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("shipWindow")
-    private String shipWindow = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_DATE = "purchaseOrderDate";
 
-    @SerializedName("items")
-    private List<PurchaseOrderItems> items = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_DATE)
+    private OffsetDateTime purchaseOrderDate;
+
+    public static final String SERIALIZED_NAME_SHIP_WINDOW = "shipWindow";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_WINDOW)
+    private String shipWindow;
+
+    public static final String SERIALIZED_NAME_ITEMS = "items";
+
+    @SerializedName(SERIALIZED_NAME_ITEMS)
+    private List<PurchaseOrderItems> items = new ArrayList<>();
+
+    public PurchaseOrders() {}
 
     public PurchaseOrders purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -43,10 +69,7 @@ public class PurchaseOrders {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.")
-    public String getPurchaseOrderNumber() {
+    @javax.annotation.Nullable public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
 
@@ -64,10 +87,7 @@ public class PurchaseOrders {
      *
      * @return purchaseOrderDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.")
-    public OffsetDateTime getPurchaseOrderDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPurchaseOrderDate() {
         return purchaseOrderDate;
     }
 
@@ -85,9 +105,7 @@ public class PurchaseOrders {
      *
      * @return shipWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Date range in which shipment is expected for these purchase orders.")
-    public String getShipWindow() {
+    @javax.annotation.Nullable public String getShipWindow() {
         return shipWindow;
     }
 
@@ -113,10 +131,7 @@ public class PurchaseOrders {
      *
      * @return items
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of the items that are associated to the PO in this transport and their associated details.")
-    public List<PurchaseOrderItems> getItems() {
+    @javax.annotation.Nullable public List<PurchaseOrderItems> getItems() {
         return items;
     }
 
@@ -125,7 +140,7 @@ public class PurchaseOrders {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -161,10 +176,132 @@ public class PurchaseOrders {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("purchaseOrderDate");
+        openapiFields.add("shipWindow");
+        openapiFields.add("items");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PurchaseOrders
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PurchaseOrders.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PurchaseOrders is not found in the empty JSON string",
+                        PurchaseOrders.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PurchaseOrders.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PurchaseOrders` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("purchaseOrderNumber") != null
+                        && !jsonObj.get("purchaseOrderNumber").isJsonNull())
+                && !jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if ((jsonObj.get("shipWindow") != null && !jsonObj.get("shipWindow").isJsonNull())
+                && !jsonObj.get("shipWindow").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipWindow` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipWindow").toString()));
+        }
+        if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
+            JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+            if (jsonArrayitems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("items").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `items` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("items").toString()));
+                }
+
+                // validate the optional field `items` (array)
+                for (int i = 0; i < jsonArrayitems.size(); i++) {
+                    PurchaseOrderItems.validateJsonElement(jsonArrayitems.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PurchaseOrders.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PurchaseOrders' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PurchaseOrders> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PurchaseOrders.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PurchaseOrders>() {
+                        @Override
+                        public void write(JsonWriter out, PurchaseOrders value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PurchaseOrders read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PurchaseOrders given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PurchaseOrders
+     * @throws IOException if the JSON string is invalid with respect to PurchaseOrders
+     */
+    public static PurchaseOrders fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PurchaseOrders.class);
+    }
+
+    /**
+     * Convert an instance of PurchaseOrders to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

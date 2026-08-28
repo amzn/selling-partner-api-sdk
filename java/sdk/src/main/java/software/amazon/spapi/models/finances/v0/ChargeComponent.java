@@ -12,8 +12,21 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A charge on the seller&#39;s account. Possible values: * &#x60;Principal&#x60;: The selling price of the order item,
@@ -46,15 +59,21 @@ import java.util.Objects;
  * (IGST). * &#x60;TCS-UTGST&#x60;: Tax Collected at Source for Union Territories Goods and Services Tax (UTGST). *
  * &#x60;PaidthroughEBT&#x60;: The amount of money paid with EBT for any order or shipment items.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A charge on the seller's account.  Possible values:  * `Principal`: The selling price of the order item, which is equal to the selling price of the item multiplied by the quantity ordered.  * `Tax`: The tax on the principal that is collected by the seller.  * `MarketplaceFacilitatorTax-Principal`: The tax that is withheld on the principal.  * `MarketplaceFacilitatorTax-Shipping`: The tax that is withheld on the `ShippingCharge`.  * `MarketplaceFacilitatorTax-Giftwrap`: The tax that is withheld on the Giftwrap charge.  * `MarketplaceFacilitatorTax-Other`: The tax that is withheld on other miscellaneous charges.  * `Discount`: The promotional discount for an order item.  * `TaxDiscount`: The tax that is deducted for promotional rebates.  * `CODItemCharge`: The COD charge for an order item.  * `CODItemTaxCharge`: The tax that is collected by the seller on a `CODItemCharge`.  * `CODOrderCharge`: The COD charge for an order.  * `CODOrderTaxCharge`: The tax that is collected by the seller on a `CODOrderCharge`.  * `CODShippingCharge`: Shipping charges for a COD order.  * `CODShippingTaxCharge`: The tax that is collected by the seller on a `CODShippingCharge`.  * `ShippingCharge`: The shipping charge.  * `ShippingTax`: The tax that is collected by the seller on a `ShippingCharge`.  * `Goodwill`: The amount of money that is given to a buyer as a gesture of goodwill or to compensate for pain and suffering in the buying experience.  * `Giftwrap`: The gift wrap charge.  * `GiftwrapTax`: The tax that is collected by the seller on a gift wrap charge.  * `RestockingFee`: The charge that is applied to the buyer when returning a product in certain categories.  * `ReturnShipping`: The amount of money that is given to the buyer to compensate for shipping the item back if we are at fault.  * `PointsFee`: The value of Amazon Points deducted from the refund if the buyer does not have enough Amazon Points to cover the deduction.  * `GenericDeduction`: A generic bad debt deduction.  * `FreeReplacementReturnShipping`: The compensation for return shipping when a buyer receives the wrong item, requests a free replacement, and returns the incorrect item.  * `PaymentMethodFee`: The fee that is collected for certain payment methods in certain marketplaces.  * `ExportCharge`: The export duty that is charged when an item is shipped to an international destination as part of the Amazon Global program.  * `SAFE-TReimbursement`: The SAFE-T claim amount for the item.  * `TCS-CGST`: Tax Collected at Source (TCS) for Central Goods and Services Tax (CGST).  * `TCS-SGST`: Tax Collected at Source for State Goods and Services Tax (SGST).  * `TCS-IGST`: Tax Collected at Source for Integrated Goods and Services Tax (IGST).  * `TCS-UTGST`: Tax Collected at Source for Union Territories Goods and Services Tax (UTGST).  * `PaidthroughEBT`: The amount of money paid with EBT for any order or shipment items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ChargeComponent {
-    @SerializedName("ChargeType")
-    private String chargeType = null;
+    public static final String SERIALIZED_NAME_CHARGE_TYPE = "ChargeType";
 
-    @SerializedName("ChargeAmount")
-    private Currency chargeAmount = null;
+    @SerializedName(SERIALIZED_NAME_CHARGE_TYPE)
+    private String chargeType;
+
+    public static final String SERIALIZED_NAME_CHARGE_AMOUNT = "ChargeAmount";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_AMOUNT)
+    private Currency chargeAmount;
+
+    public ChargeComponent() {}
 
     public ChargeComponent chargeType(String chargeType) {
         this.chargeType = chargeType;
@@ -66,8 +85,7 @@ public class ChargeComponent {
      *
      * @return chargeType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
-    public String getChargeType() {
+    @javax.annotation.Nullable public String getChargeType() {
         return chargeType;
     }
 
@@ -85,8 +103,7 @@ public class ChargeComponent {
      *
      * @return chargeAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getChargeAmount() {
+    @javax.annotation.Nullable public Currency getChargeAmount() {
         return chargeAmount;
     }
 
@@ -95,7 +112,7 @@ public class ChargeComponent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -123,10 +140,110 @@ public class ChargeComponent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ChargeType");
+        openapiFields.add("ChargeAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ChargeComponent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ChargeComponent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ChargeComponent is not found in the empty JSON string",
+                        ChargeComponent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ChargeComponent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ChargeComponent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ChargeType") != null && !jsonObj.get("ChargeType").isJsonNull())
+                && !jsonObj.get("ChargeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ChargeType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ChargeType").toString()));
+        }
+        // validate the optional field `ChargeAmount`
+        if (jsonObj.get("ChargeAmount") != null && !jsonObj.get("ChargeAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ChargeAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ChargeComponent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ChargeComponent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ChargeComponent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ChargeComponent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ChargeComponent>() {
+                        @Override
+                        public void write(JsonWriter out, ChargeComponent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ChargeComponent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ChargeComponent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ChargeComponent
+     * @throws IOException if the JSON string is invalid with respect to ChargeComponent
+     */
+    public static ChargeComponent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ChargeComponent.class);
+    }
+
+    /**
+     * Convert an instance of ChargeComponent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

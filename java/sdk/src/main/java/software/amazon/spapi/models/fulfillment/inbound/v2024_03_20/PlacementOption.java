@@ -12,34 +12,62 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contains information pertaining to the placement of the contents of an inbound plan and the related costs. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Contains information pertaining to the placement of the contents of an inbound plan and the related costs.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PlacementOption {
-    @SerializedName("discounts")
-    private List<Incentive> discounts = null;
+    public static final String SERIALIZED_NAME_DISCOUNTS = "discounts";
 
-    @SerializedName("expiration")
-    private OffsetDateTime expiration = null;
+    @SerializedName(SERIALIZED_NAME_DISCOUNTS)
+    private List<Incentive> discounts = new ArrayList<>();
 
-    @SerializedName("fees")
-    private List<Incentive> fees = null;
+    public static final String SERIALIZED_NAME_EXPIRATION = "expiration";
 
-    @SerializedName("placementOptionId")
-    private String placementOptionId = null;
+    @SerializedName(SERIALIZED_NAME_EXPIRATION)
+    private OffsetDateTime expiration;
 
-    @SerializedName("shipmentIds")
-    private List<String> shipmentIds = null;
+    public static final String SERIALIZED_NAME_FEES = "fees";
 
-    @SerializedName("status")
-    private String status = null;
+    @SerializedName(SERIALIZED_NAME_FEES)
+    private List<Incentive> fees = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PLACEMENT_OPTION_ID = "placementOptionId";
+
+    @SerializedName(SERIALIZED_NAME_PLACEMENT_OPTION_ID)
+    private String placementOptionId;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_IDS = "shipmentIds";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_IDS)
+    private List<String> shipmentIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private String status;
+
+    public PlacementOption() {}
 
     public PlacementOption discounts(List<Incentive> discounts) {
         this.discounts = discounts;
@@ -59,7 +87,7 @@ public class PlacementOption {
      *
      * @return discounts
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Discount for the offered option.")
+    @javax.annotation.Nonnull
     public List<Incentive> getDiscounts() {
         return discounts;
     }
@@ -80,10 +108,7 @@ public class PlacementOption {
      *
      * @return expiration
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
-    public OffsetDateTime getExpiration() {
+    @javax.annotation.Nullable public OffsetDateTime getExpiration() {
         return expiration;
     }
 
@@ -109,7 +134,7 @@ public class PlacementOption {
      *
      * @return fees
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The fee for the offered option.")
+    @javax.annotation.Nonnull
     public List<Incentive> getFees() {
         return fees;
     }
@@ -128,10 +153,7 @@ public class PlacementOption {
      *
      * @return placementOptionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.")
+    @javax.annotation.Nonnull
     public String getPlacementOptionId() {
         return placementOptionId;
     }
@@ -158,7 +180,7 @@ public class PlacementOption {
      *
      * @return shipmentIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Shipment ids.")
+    @javax.annotation.Nonnull
     public List<String> getShipmentIds() {
         return shipmentIds;
     }
@@ -178,9 +200,7 @@ public class PlacementOption {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.")
+    @javax.annotation.Nonnull
     public String getStatus() {
         return status;
     }
@@ -190,7 +210,7 @@ public class PlacementOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -228,10 +248,163 @@ public class PlacementOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("discounts");
+        openapiFields.add("expiration");
+        openapiFields.add("fees");
+        openapiFields.add("placementOptionId");
+        openapiFields.add("shipmentIds");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("discounts");
+        openapiRequiredFields.add("fees");
+        openapiRequiredFields.add("placementOptionId");
+        openapiRequiredFields.add("shipmentIds");
+        openapiRequiredFields.add("status");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PlacementOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PlacementOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PlacementOption is not found in the empty JSON string",
+                        PlacementOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PlacementOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PlacementOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PlacementOption.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("discounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `discounts` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("discounts").toString()));
+        }
+
+        JsonArray jsonArraydiscounts = jsonObj.getAsJsonArray("discounts");
+        // validate the required field `discounts` (array)
+        for (int i = 0; i < jsonArraydiscounts.size(); i++) {
+            Incentive.validateJsonElement(jsonArraydiscounts.get(i));
+        }
+        ;
+        // ensure the json data is an array
+        if (!jsonObj.get("fees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fees` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fees").toString()));
+        }
+
+        JsonArray jsonArrayfees = jsonObj.getAsJsonArray("fees");
+        // validate the required field `fees` (array)
+        for (int i = 0; i < jsonArrayfees.size(); i++) {
+            Incentive.validateJsonElement(jsonArrayfees.get(i));
+        }
+        ;
+        if (!jsonObj.get("placementOptionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `placementOptionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("placementOptionId").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("shipmentIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("shipmentIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("shipmentIds").toString()));
+        }
+        if (!jsonObj.get("status").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `status` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("status").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PlacementOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PlacementOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PlacementOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PlacementOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PlacementOption>() {
+                        @Override
+                        public void write(JsonWriter out, PlacementOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PlacementOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PlacementOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PlacementOption
+     * @throws IOException if the JSON string is invalid with respect to PlacementOption
+     */
+    public static PlacementOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PlacementOption.class);
+    }
+
+    /**
+     * Convert an instance of PlacementOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

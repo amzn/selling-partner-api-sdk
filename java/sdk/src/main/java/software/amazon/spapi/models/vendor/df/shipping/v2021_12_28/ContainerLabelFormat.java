@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** The format of the container label. */
 @JsonAdapter(ContainerLabelFormat.Adapter.class)
 public enum ContainerLabelFormat {
-    @SerializedName("PNG")
     PNG("PNG"),
 
-    @SerializedName("ZPL")
     ZPL("ZPL");
 
     private String value;
@@ -43,25 +41,30 @@ public enum ContainerLabelFormat {
         return String.valueOf(value);
     }
 
-    public static ContainerLabelFormat fromValue(String input) {
+    public static ContainerLabelFormat fromValue(String value) {
         for (ContainerLabelFormat b : ContainerLabelFormat.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<ContainerLabelFormat> {
         @Override
         public void write(final JsonWriter jsonWriter, final ContainerLabelFormat enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public ContainerLabelFormat read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return ContainerLabelFormat.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return ContainerLabelFormat.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        ContainerLabelFormat.fromValue(value);
     }
 }

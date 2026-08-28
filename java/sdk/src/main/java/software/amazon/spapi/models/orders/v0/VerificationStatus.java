@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** The verification status of the order. */
 @JsonAdapter(VerificationStatus.Adapter.class)
 public enum VerificationStatus {
-    @SerializedName("Pending")
     PENDING("Pending"),
 
-    @SerializedName("Approved")
     APPROVED("Approved"),
 
-    @SerializedName("Rejected")
     REJECTED("Rejected"),
 
-    @SerializedName("Expired")
     EXPIRED("Expired"),
 
-    @SerializedName("Cancelled")
     CANCELLED("Cancelled");
 
     private String value;
@@ -52,25 +47,30 @@ public enum VerificationStatus {
         return String.valueOf(value);
     }
 
-    public static VerificationStatus fromValue(String input) {
+    public static VerificationStatus fromValue(String value) {
         for (VerificationStatus b : VerificationStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<VerificationStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final VerificationStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public VerificationStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return VerificationStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return VerificationStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        VerificationStatus.fromValue(value);
     }
 }

@@ -12,26 +12,36 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Item receive status at the buyer&#39;s warehouse. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Item receive status at the buyer's warehouse.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItemStatusReceivingStatus {
     /** Receive status of the line item. */
     @JsonAdapter(ReceiveStatusEnum.Adapter.class)
     public enum ReceiveStatusEnum {
-        @SerializedName("NOT_RECEIVED")
         NOT_RECEIVED("NOT_RECEIVED"),
-        @SerializedName("PARTIALLY_RECEIVED")
+
         PARTIALLY_RECEIVED("PARTIALLY_RECEIVED"),
-        @SerializedName("RECEIVED")
+
         RECEIVED("RECEIVED");
 
         private String value;
@@ -49,37 +59,50 @@ public class OrderItemStatusReceivingStatus {
             return String.valueOf(value);
         }
 
-        public static ReceiveStatusEnum fromValue(String input) {
+        public static ReceiveStatusEnum fromValue(String value) {
             for (ReceiveStatusEnum b : ReceiveStatusEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ReceiveStatusEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ReceiveStatusEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ReceiveStatusEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ReceiveStatusEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ReceiveStatusEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ReceiveStatusEnum.fromValue(value);
         }
     }
 
-    @SerializedName("receiveStatus")
-    private ReceiveStatusEnum receiveStatus = null;
+    public static final String SERIALIZED_NAME_RECEIVE_STATUS = "receiveStatus";
 
-    @SerializedName("receivedQuantity")
-    private ItemQuantity receivedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_RECEIVE_STATUS)
+    private ReceiveStatusEnum receiveStatus;
 
-    @SerializedName("lastReceiveDate")
-    private OffsetDateTime lastReceiveDate = null;
+    public static final String SERIALIZED_NAME_RECEIVED_QUANTITY = "receivedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_RECEIVED_QUANTITY)
+    private ItemQuantity receivedQuantity;
+
+    public static final String SERIALIZED_NAME_LAST_RECEIVE_DATE = "lastReceiveDate";
+
+    @SerializedName(SERIALIZED_NAME_LAST_RECEIVE_DATE)
+    private OffsetDateTime lastReceiveDate;
+
+    public OrderItemStatusReceivingStatus() {}
 
     public OrderItemStatusReceivingStatus receiveStatus(ReceiveStatusEnum receiveStatus) {
         this.receiveStatus = receiveStatus;
@@ -91,8 +114,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return receiveStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Receive status of the line item.")
-    public ReceiveStatusEnum getReceiveStatus() {
+    @javax.annotation.Nullable public ReceiveStatusEnum getReceiveStatus() {
         return receiveStatus;
     }
 
@@ -110,8 +132,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return receivedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemQuantity getReceivedQuantity() {
+    @javax.annotation.Nullable public ItemQuantity getReceivedQuantity() {
         return receivedQuantity;
     }
 
@@ -130,10 +151,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return lastReceiveDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date when the most recent item was received at the buyer's warehouse. Must be in ISO-8601 date/time format.")
-    public OffsetDateTime getLastReceiveDate() {
+    @javax.annotation.Nullable public OffsetDateTime getLastReceiveDate() {
         return lastReceiveDate;
     }
 
@@ -142,7 +160,7 @@ public class OrderItemStatusReceivingStatus {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -176,10 +194,119 @@ public class OrderItemStatusReceivingStatus {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("receiveStatus");
+        openapiFields.add("receivedQuantity");
+        openapiFields.add("lastReceiveDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItemStatusReceivingStatus
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItemStatusReceivingStatus.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItemStatusReceivingStatus is not found in the empty JSON string",
+                        OrderItemStatusReceivingStatus.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItemStatusReceivingStatus.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItemStatusReceivingStatus` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("receiveStatus") != null
+                        && !jsonObj.get("receiveStatus").isJsonNull())
+                && !jsonObj.get("receiveStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `receiveStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("receiveStatus").toString()));
+        }
+        // validate the optional field `receiveStatus`
+        if (jsonObj.get("receiveStatus") != null
+                && !jsonObj.get("receiveStatus").isJsonNull()) {
+            ReceiveStatusEnum.validateJsonElement(jsonObj.get("receiveStatus"));
+        }
+        // validate the optional field `receivedQuantity`
+        if (jsonObj.get("receivedQuantity") != null
+                && !jsonObj.get("receivedQuantity").isJsonNull()) {
+            ItemQuantity.validateJsonElement(jsonObj.get("receivedQuantity"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItemStatusReceivingStatus.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItemStatusReceivingStatus' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItemStatusReceivingStatus> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OrderItemStatusReceivingStatus.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItemStatusReceivingStatus>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItemStatusReceivingStatus value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItemStatusReceivingStatus read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItemStatusReceivingStatus given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItemStatusReceivingStatus
+     * @throws IOException if the JSON string is invalid with respect to OrderItemStatusReceivingStatus
+     */
+    public static OrderItemStatusReceivingStatus fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItemStatusReceivingStatus.class);
+    }
+
+    /**
+     * Convert an instance of OrderItemStatusReceivingStatus to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

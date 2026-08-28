@@ -12,45 +12,84 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information related to a financial event group. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information related to a financial event group.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class FinancialEventGroup {
-    @SerializedName("FinancialEventGroupId")
-    private String financialEventGroupId = null;
+    public static final String SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_ID = "FinancialEventGroupId";
 
-    @SerializedName("ProcessingStatus")
-    private String processingStatus = null;
+    @SerializedName(SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_ID)
+    private String financialEventGroupId;
 
-    @SerializedName("FundTransferStatus")
-    private String fundTransferStatus = null;
+    public static final String SERIALIZED_NAME_PROCESSING_STATUS = "ProcessingStatus";
 
-    @SerializedName("OriginalTotal")
-    private Currency originalTotal = null;
+    @SerializedName(SERIALIZED_NAME_PROCESSING_STATUS)
+    private String processingStatus;
 
-    @SerializedName("ConvertedTotal")
-    private Currency convertedTotal = null;
+    public static final String SERIALIZED_NAME_FUND_TRANSFER_STATUS = "FundTransferStatus";
 
-    @SerializedName("FundTransferDate")
-    private OffsetDateTime fundTransferDate = null;
+    @SerializedName(SERIALIZED_NAME_FUND_TRANSFER_STATUS)
+    private String fundTransferStatus;
 
-    @SerializedName("TraceId")
-    private String traceId = null;
+    public static final String SERIALIZED_NAME_ORIGINAL_TOTAL = "OriginalTotal";
 
-    @SerializedName("AccountTail")
-    private String accountTail = null;
+    @SerializedName(SERIALIZED_NAME_ORIGINAL_TOTAL)
+    private Currency originalTotal;
 
-    @SerializedName("BeginningBalance")
-    private Currency beginningBalance = null;
+    public static final String SERIALIZED_NAME_CONVERTED_TOTAL = "ConvertedTotal";
 
-    @SerializedName("FinancialEventGroupStart")
-    private OffsetDateTime financialEventGroupStart = null;
+    @SerializedName(SERIALIZED_NAME_CONVERTED_TOTAL)
+    private Currency convertedTotal;
 
-    @SerializedName("FinancialEventGroupEnd")
-    private OffsetDateTime financialEventGroupEnd = null;
+    public static final String SERIALIZED_NAME_FUND_TRANSFER_DATE = "FundTransferDate";
+
+    @SerializedName(SERIALIZED_NAME_FUND_TRANSFER_DATE)
+    private OffsetDateTime fundTransferDate;
+
+    public static final String SERIALIZED_NAME_TRACE_ID = "TraceId";
+
+    @SerializedName(SERIALIZED_NAME_TRACE_ID)
+    private String traceId;
+
+    public static final String SERIALIZED_NAME_ACCOUNT_TAIL = "AccountTail";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_TAIL)
+    private String accountTail;
+
+    public static final String SERIALIZED_NAME_BEGINNING_BALANCE = "BeginningBalance";
+
+    @SerializedName(SERIALIZED_NAME_BEGINNING_BALANCE)
+    private Currency beginningBalance;
+
+    public static final String SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_START = "FinancialEventGroupStart";
+
+    @SerializedName(SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_START)
+    private OffsetDateTime financialEventGroupStart;
+
+    public static final String SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_END = "FinancialEventGroupEnd";
+
+    @SerializedName(SERIALIZED_NAME_FINANCIAL_EVENT_GROUP_END)
+    private OffsetDateTime financialEventGroupEnd;
+
+    public FinancialEventGroup() {}
 
     public FinancialEventGroup financialEventGroupId(String financialEventGroupId) {
         this.financialEventGroupId = financialEventGroupId;
@@ -62,8 +101,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for the financial event group.")
-    public String getFinancialEventGroupId() {
+    @javax.annotation.Nullable public String getFinancialEventGroupId() {
         return financialEventGroupId;
     }
 
@@ -82,10 +120,7 @@ public class FinancialEventGroup {
      *
      * @return processingStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * `Open` * `Closed`")
-    public String getProcessingStatus() {
+    @javax.annotation.Nullable public String getProcessingStatus() {
         return processingStatus;
     }
 
@@ -103,8 +138,7 @@ public class FinancialEventGroup {
      *
      * @return fundTransferStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the fund transfer.")
-    public String getFundTransferStatus() {
+    @javax.annotation.Nullable public String getFundTransferStatus() {
         return fundTransferStatus;
     }
 
@@ -122,8 +156,7 @@ public class FinancialEventGroup {
      *
      * @return originalTotal
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getOriginalTotal() {
+    @javax.annotation.Nullable public Currency getOriginalTotal() {
         return originalTotal;
     }
 
@@ -141,8 +174,7 @@ public class FinancialEventGroup {
      *
      * @return convertedTotal
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getConvertedTotal() {
+    @javax.annotation.Nullable public Currency getConvertedTotal() {
         return convertedTotal;
     }
 
@@ -160,10 +192,7 @@ public class FinancialEventGroup {
      *
      * @return fundTransferDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getFundTransferDate() {
+    @javax.annotation.Nullable public OffsetDateTime getFundTransferDate() {
         return fundTransferDate;
     }
 
@@ -181,9 +210,7 @@ public class FinancialEventGroup {
      *
      * @return traceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The trace identifier used by sellers to look up transactions externally.")
-    public String getTraceId() {
+    @javax.annotation.Nullable public String getTraceId() {
         return traceId;
     }
 
@@ -201,8 +228,7 @@ public class FinancialEventGroup {
      *
      * @return accountTail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The account tail of the payment instrument.")
-    public String getAccountTail() {
+    @javax.annotation.Nullable public String getAccountTail() {
         return accountTail;
     }
 
@@ -220,8 +246,7 @@ public class FinancialEventGroup {
      *
      * @return beginningBalance
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getBeginningBalance() {
+    @javax.annotation.Nullable public Currency getBeginningBalance() {
         return beginningBalance;
     }
 
@@ -239,10 +264,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupStart
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getFinancialEventGroupStart() {
+    @javax.annotation.Nullable public OffsetDateTime getFinancialEventGroupStart() {
         return financialEventGroupStart;
     }
 
@@ -260,10 +282,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupEnd
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getFinancialEventGroupEnd() {
+    @javax.annotation.Nullable public OffsetDateTime getFinancialEventGroupEnd() {
         return financialEventGroupEnd;
     }
 
@@ -272,7 +291,7 @@ public class FinancialEventGroup {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -345,10 +364,157 @@ public class FinancialEventGroup {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("FinancialEventGroupId");
+        openapiFields.add("ProcessingStatus");
+        openapiFields.add("FundTransferStatus");
+        openapiFields.add("OriginalTotal");
+        openapiFields.add("ConvertedTotal");
+        openapiFields.add("FundTransferDate");
+        openapiFields.add("TraceId");
+        openapiFields.add("AccountTail");
+        openapiFields.add("BeginningBalance");
+        openapiFields.add("FinancialEventGroupStart");
+        openapiFields.add("FinancialEventGroupEnd");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to FinancialEventGroup
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!FinancialEventGroup.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in FinancialEventGroup is not found in the empty JSON string",
+                        FinancialEventGroup.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!FinancialEventGroup.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `FinancialEventGroup` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("FinancialEventGroupId") != null
+                        && !jsonObj.get("FinancialEventGroupId").isJsonNull())
+                && !jsonObj.get("FinancialEventGroupId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FinancialEventGroupId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FinancialEventGroupId").toString()));
+        }
+        if ((jsonObj.get("ProcessingStatus") != null
+                        && !jsonObj.get("ProcessingStatus").isJsonNull())
+                && !jsonObj.get("ProcessingStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ProcessingStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ProcessingStatus").toString()));
+        }
+        if ((jsonObj.get("FundTransferStatus") != null
+                        && !jsonObj.get("FundTransferStatus").isJsonNull())
+                && !jsonObj.get("FundTransferStatus").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `FundTransferStatus` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("FundTransferStatus").toString()));
+        }
+        // validate the optional field `OriginalTotal`
+        if (jsonObj.get("OriginalTotal") != null
+                && !jsonObj.get("OriginalTotal").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("OriginalTotal"));
+        }
+        // validate the optional field `ConvertedTotal`
+        if (jsonObj.get("ConvertedTotal") != null
+                && !jsonObj.get("ConvertedTotal").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("ConvertedTotal"));
+        }
+        if ((jsonObj.get("TraceId") != null && !jsonObj.get("TraceId").isJsonNull())
+                && !jsonObj.get("TraceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TraceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TraceId").toString()));
+        }
+        if ((jsonObj.get("AccountTail") != null && !jsonObj.get("AccountTail").isJsonNull())
+                && !jsonObj.get("AccountTail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AccountTail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AccountTail").toString()));
+        }
+        // validate the optional field `BeginningBalance`
+        if (jsonObj.get("BeginningBalance") != null
+                && !jsonObj.get("BeginningBalance").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("BeginningBalance"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!FinancialEventGroup.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'FinancialEventGroup' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<FinancialEventGroup> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(FinancialEventGroup.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<FinancialEventGroup>() {
+                        @Override
+                        public void write(JsonWriter out, FinancialEventGroup value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public FinancialEventGroup read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of FinancialEventGroup given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of FinancialEventGroup
+     * @throws IOException if the JSON string is invalid with respect to FinancialEventGroup
+     */
+    public static FinancialEventGroup fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, FinancialEventGroup.class);
+    }
+
+    /**
+     * Convert an instance of FinancialEventGroup to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

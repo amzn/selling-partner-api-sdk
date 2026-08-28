@@ -12,11 +12,25 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the
@@ -24,27 +38,42 @@ import java.util.Objects;
  * a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than
  * ordered).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the buyer (for example, when the charge was incorrectly calculated as less than it should be). A negative value indicates a full or partial refund owed to the buyer (for example, when the buyer receives damaged items or fewer items than ordered).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RemovalShipmentAdjustmentEvent {
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("AdjustmentEventId")
-    private String adjustmentEventId = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("MerchantOrderId")
-    private String merchantOrderId = null;
+    public static final String SERIALIZED_NAME_ADJUSTMENT_EVENT_ID = "AdjustmentEventId";
 
-    @SerializedName("OrderId")
-    private String orderId = null;
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_EVENT_ID)
+    private String adjustmentEventId;
 
-    @SerializedName("TransactionType")
-    private String transactionType = null;
+    public static final String SERIALIZED_NAME_MERCHANT_ORDER_ID = "MerchantOrderId";
 
-    @SerializedName("RemovalShipmentItemAdjustmentList")
-    private List<RemovalShipmentItemAdjustment> removalShipmentItemAdjustmentList = null;
+    @SerializedName(SERIALIZED_NAME_MERCHANT_ORDER_ID)
+    private String merchantOrderId;
+
+    public static final String SERIALIZED_NAME_ORDER_ID = "OrderId";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "TransactionType";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+    private String transactionType;
+
+    public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_ADJUSTMENT_LIST =
+            "RemovalShipmentItemAdjustmentList";
+
+    @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_ADJUSTMENT_LIST)
+    private List<RemovalShipmentItemAdjustment> removalShipmentItemAdjustmentList = new ArrayList<>();
+
+    public RemovalShipmentAdjustmentEvent() {}
 
     public RemovalShipmentAdjustmentEvent postedDate(OffsetDateTime postedDate) {
         this.postedDate = postedDate;
@@ -56,10 +85,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -77,8 +103,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return adjustmentEventId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier for the adjustment event.")
-    public String getAdjustmentEventId() {
+    @javax.annotation.Nullable public String getAdjustmentEventId() {
         return adjustmentEventId;
     }
 
@@ -96,8 +121,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return merchantOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The merchant removal orderId.")
-    public String getMerchantOrderId() {
+    @javax.annotation.Nullable public String getMerchantOrderId() {
         return merchantOrderId;
     }
 
@@ -115,8 +139,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The orderId for shipping inventory.")
-    public String getOrderId() {
+    @javax.annotation.Nullable public String getOrderId() {
         return orderId;
     }
 
@@ -134,9 +157,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return transactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`.")
-    public String getTransactionType() {
+    @javax.annotation.Nullable public String getTransactionType() {
         return transactionType;
     }
 
@@ -164,9 +185,7 @@ public class RemovalShipmentAdjustmentEvent {
      *
      * @return removalShipmentItemAdjustmentList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.")
-    public List<RemovalShipmentItemAdjustment> getRemovalShipmentItemAdjustmentList() {
+    @javax.annotation.Nullable public List<RemovalShipmentItemAdjustment> getRemovalShipmentItemAdjustmentList() {
         return removalShipmentItemAdjustmentList;
     }
 
@@ -176,7 +195,7 @@ public class RemovalShipmentAdjustmentEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -228,10 +247,152 @@ public class RemovalShipmentAdjustmentEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PostedDate");
+        openapiFields.add("AdjustmentEventId");
+        openapiFields.add("MerchantOrderId");
+        openapiFields.add("OrderId");
+        openapiFields.add("TransactionType");
+        openapiFields.add("RemovalShipmentItemAdjustmentList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RemovalShipmentAdjustmentEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RemovalShipmentAdjustmentEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RemovalShipmentAdjustmentEvent is not found in the empty JSON string",
+                        RemovalShipmentAdjustmentEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RemovalShipmentAdjustmentEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RemovalShipmentAdjustmentEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AdjustmentEventId") != null
+                        && !jsonObj.get("AdjustmentEventId").isJsonNull())
+                && !jsonObj.get("AdjustmentEventId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AdjustmentEventId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AdjustmentEventId").toString()));
+        }
+        if ((jsonObj.get("MerchantOrderId") != null
+                        && !jsonObj.get("MerchantOrderId").isJsonNull())
+                && !jsonObj.get("MerchantOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MerchantOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MerchantOrderId").toString()));
+        }
+        if ((jsonObj.get("OrderId") != null && !jsonObj.get("OrderId").isJsonNull())
+                && !jsonObj.get("OrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderId").toString()));
+        }
+        if ((jsonObj.get("TransactionType") != null
+                        && !jsonObj.get("TransactionType").isJsonNull())
+                && !jsonObj.get("TransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("TransactionType").toString()));
+        }
+        if (jsonObj.get("RemovalShipmentItemAdjustmentList") != null
+                && !jsonObj.get("RemovalShipmentItemAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayremovalShipmentItemAdjustmentList =
+                    jsonObj.getAsJsonArray("RemovalShipmentItemAdjustmentList");
+            if (jsonArrayremovalShipmentItemAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RemovalShipmentItemAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RemovalShipmentItemAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RemovalShipmentItemAdjustmentList").toString()));
+                }
+
+                // validate the optional field `RemovalShipmentItemAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayremovalShipmentItemAdjustmentList.size(); i++) {
+                    RemovalShipmentItemAdjustment.validateJsonElement(
+                            jsonArrayremovalShipmentItemAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RemovalShipmentAdjustmentEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RemovalShipmentAdjustmentEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RemovalShipmentAdjustmentEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RemovalShipmentAdjustmentEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RemovalShipmentAdjustmentEvent>() {
+                        @Override
+                        public void write(JsonWriter out, RemovalShipmentAdjustmentEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RemovalShipmentAdjustmentEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RemovalShipmentAdjustmentEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RemovalShipmentAdjustmentEvent
+     * @throws IOException if the JSON string is invalid with respect to RemovalShipmentAdjustmentEvent
+     */
+    public static RemovalShipmentAdjustmentEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RemovalShipmentAdjustmentEvent.class);
+    }
+
+    /**
+     * Convert an instance of RemovalShipmentAdjustmentEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

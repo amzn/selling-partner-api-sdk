@@ -12,22 +12,44 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Transport Request pickup date from Vendor Warehouse by Buyer */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Transport Request pickup date from Vendor Warehouse by Buyer")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CollectFreightPickupDetails {
-    @SerializedName("requestedPickUp")
-    private OffsetDateTime requestedPickUp = null;
+    public static final String SERIALIZED_NAME_REQUESTED_PICK_UP = "requestedPickUp";
 
-    @SerializedName("scheduledPickUp")
-    private OffsetDateTime scheduledPickUp = null;
+    @SerializedName(SERIALIZED_NAME_REQUESTED_PICK_UP)
+    private OffsetDateTime requestedPickUp;
 
-    @SerializedName("carrierAssignmentDate")
-    private OffsetDateTime carrierAssignmentDate = null;
+    public static final String SERIALIZED_NAME_SCHEDULED_PICK_UP = "scheduledPickUp";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_PICK_UP)
+    private OffsetDateTime scheduledPickUp;
+
+    public static final String SERIALIZED_NAME_CARRIER_ASSIGNMENT_DATE = "carrierAssignmentDate";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_ASSIGNMENT_DATE)
+    private OffsetDateTime carrierAssignmentDate;
+
+    public CollectFreightPickupDetails() {}
 
     public CollectFreightPickupDetails requestedPickUp(OffsetDateTime requestedPickUp) {
         this.requestedPickUp = requestedPickUp;
@@ -39,10 +61,7 @@ public class CollectFreightPickupDetails {
      *
      * @return requestedPickUp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Date on which the items can be picked up from vendor warehouse by Buyer used for WePay/Collect vendors.")
-    public OffsetDateTime getRequestedPickUp() {
+    @javax.annotation.Nullable public OffsetDateTime getRequestedPickUp() {
         return requestedPickUp;
     }
 
@@ -60,10 +79,7 @@ public class CollectFreightPickupDetails {
      *
      * @return scheduledPickUp
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Date on which the items are scheduled to be picked from vendor warehouse by Buyer used for WePay/Collect vendors.")
-    public OffsetDateTime getScheduledPickUp() {
+    @javax.annotation.Nullable public OffsetDateTime getScheduledPickUp() {
         return scheduledPickUp;
     }
 
@@ -82,10 +98,7 @@ public class CollectFreightPickupDetails {
      *
      * @return carrierAssignmentDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Date on which the carrier is being scheduled to pickup items from vendor warehouse by Byer used for WePay/Collect vendors.")
-    public OffsetDateTime getCarrierAssignmentDate() {
+    @javax.annotation.Nullable public OffsetDateTime getCarrierAssignmentDate() {
         return carrierAssignmentDate;
     }
 
@@ -94,7 +107,7 @@ public class CollectFreightPickupDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -130,10 +143,102 @@ public class CollectFreightPickupDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("requestedPickUp");
+        openapiFields.add("scheduledPickUp");
+        openapiFields.add("carrierAssignmentDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CollectFreightPickupDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CollectFreightPickupDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CollectFreightPickupDetails is not found in the empty JSON string",
+                        CollectFreightPickupDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CollectFreightPickupDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CollectFreightPickupDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CollectFreightPickupDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CollectFreightPickupDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CollectFreightPickupDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CollectFreightPickupDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CollectFreightPickupDetails>() {
+                        @Override
+                        public void write(JsonWriter out, CollectFreightPickupDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CollectFreightPickupDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CollectFreightPickupDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CollectFreightPickupDetails
+     * @throws IOException if the JSON string is invalid with respect to CollectFreightPickupDetails
+     */
+    public static CollectFreightPickupDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CollectFreightPickupDetails.class);
+    }
+
+    /**
+     * Convert an instance of CollectFreightPickupDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

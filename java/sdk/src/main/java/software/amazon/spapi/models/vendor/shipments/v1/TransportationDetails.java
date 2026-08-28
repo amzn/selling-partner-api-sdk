@@ -12,26 +12,36 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Transportation details for this shipment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for this shipment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TransportationDetails {
     /** The type of shipment. */
     @JsonAdapter(ShipModeEnum.Adapter.class)
     public enum ShipModeEnum {
-        @SerializedName("TruckLoad")
         TRUCK_LOAD("TruckLoad"),
-        @SerializedName("LessThanTruckLoad")
+
         LESS_THAN_TRUCK_LOAD("LessThanTruckLoad"),
-        @SerializedName("SmallParcel")
+
         SMALL_PARCEL("SmallParcel");
 
         private String value;
@@ -49,40 +59,46 @@ public class TransportationDetails {
             return String.valueOf(value);
         }
 
-        public static ShipModeEnum fromValue(String input) {
+        public static ShipModeEnum fromValue(String value) {
             for (ShipModeEnum b : ShipModeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ShipModeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ShipModeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ShipModeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ShipModeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ShipModeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ShipModeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("shipMode")
-    private ShipModeEnum shipMode = null;
+    public static final String SERIALIZED_NAME_SHIP_MODE = "shipMode";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_MODE)
+    private ShipModeEnum shipMode;
 
     /** The mode of transportation for this shipment. */
     @JsonAdapter(TransportationModeEnum.Adapter.class)
     public enum TransportationModeEnum {
-        @SerializedName("Road")
         ROAD("Road"),
-        @SerializedName("Air")
+
         AIR("Air"),
-        @SerializedName("Ocean")
+
         OCEAN("Ocean");
 
         private String value;
@@ -100,47 +116,66 @@ public class TransportationDetails {
             return String.valueOf(value);
         }
 
-        public static TransportationModeEnum fromValue(String input) {
+        public static TransportationModeEnum fromValue(String value) {
             for (TransportationModeEnum b : TransportationModeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<TransportationModeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final TransportationModeEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public TransportationModeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return TransportationModeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return TransportationModeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            TransportationModeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("transportationMode")
-    private TransportationModeEnum transportationMode = null;
+    public static final String SERIALIZED_NAME_TRANSPORTATION_MODE = "transportationMode";
 
-    @SerializedName("shippedDate")
-    private OffsetDateTime shippedDate = null;
+    @SerializedName(SERIALIZED_NAME_TRANSPORTATION_MODE)
+    private TransportationModeEnum transportationMode;
 
-    @SerializedName("estimatedDeliveryDate")
-    private OffsetDateTime estimatedDeliveryDate = null;
+    public static final String SERIALIZED_NAME_SHIPPED_DATE = "shippedDate";
 
-    @SerializedName("shipmentDeliveryDate")
-    private OffsetDateTime shipmentDeliveryDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPED_DATE)
+    private OffsetDateTime shippedDate;
 
-    @SerializedName("carrierDetails")
-    private CarrierDetails carrierDetails = null;
+    public static final String SERIALIZED_NAME_ESTIMATED_DELIVERY_DATE = "estimatedDeliveryDate";
 
-    @SerializedName("billOfLadingNumber")
-    private String billOfLadingNumber = null;
+    @SerializedName(SERIALIZED_NAME_ESTIMATED_DELIVERY_DATE)
+    private OffsetDateTime estimatedDeliveryDate;
+
+    public static final String SERIALIZED_NAME_SHIPMENT_DELIVERY_DATE = "shipmentDeliveryDate";
+
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_DELIVERY_DATE)
+    private OffsetDateTime shipmentDeliveryDate;
+
+    public static final String SERIALIZED_NAME_CARRIER_DETAILS = "carrierDetails";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER_DETAILS)
+    private CarrierDetails carrierDetails;
+
+    public static final String SERIALIZED_NAME_BILL_OF_LADING_NUMBER = "billOfLadingNumber";
+
+    @SerializedName(SERIALIZED_NAME_BILL_OF_LADING_NUMBER)
+    private String billOfLadingNumber;
+
+    public TransportationDetails() {}
 
     public TransportationDetails shipMode(ShipModeEnum shipMode) {
         this.shipMode = shipMode;
@@ -152,8 +187,7 @@ public class TransportationDetails {
      *
      * @return shipMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of shipment.")
-    public ShipModeEnum getShipMode() {
+    @javax.annotation.Nullable public ShipModeEnum getShipMode() {
         return shipMode;
     }
 
@@ -171,8 +205,7 @@ public class TransportationDetails {
      *
      * @return transportationMode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The mode of transportation for this shipment.")
-    public TransportationModeEnum getTransportationMode() {
+    @javax.annotation.Nullable public TransportationModeEnum getTransportationMode() {
         return transportationMode;
     }
 
@@ -190,8 +223,7 @@ public class TransportationDetails {
      *
      * @return shippedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Date when shipment is performed by the Vendor to Buyer")
-    public OffsetDateTime getShippedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShippedDate() {
         return shippedDate;
     }
 
@@ -209,9 +241,7 @@ public class TransportationDetails {
      *
      * @return estimatedDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Estimated Date on which shipment will be delivered from Vendor to Buyer")
-    public OffsetDateTime getEstimatedDeliveryDate() {
+    @javax.annotation.Nullable public OffsetDateTime getEstimatedDeliveryDate() {
         return estimatedDeliveryDate;
     }
 
@@ -229,9 +259,7 @@ public class TransportationDetails {
      *
      * @return shipmentDeliveryDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Date on which shipment will be delivered from Vendor to Buyer")
-    public OffsetDateTime getShipmentDeliveryDate() {
+    @javax.annotation.Nullable public OffsetDateTime getShipmentDeliveryDate() {
         return shipmentDeliveryDate;
     }
 
@@ -249,8 +277,7 @@ public class TransportationDetails {
      *
      * @return carrierDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CarrierDetails getCarrierDetails() {
+    @javax.annotation.Nullable public CarrierDetails getCarrierDetails() {
         return carrierDetails;
     }
 
@@ -272,10 +299,7 @@ public class TransportationDetails {
      *
      * @return billOfLadingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.")
-    public String getBillOfLadingNumber() {
+    @javax.annotation.Nullable public String getBillOfLadingNumber() {
         return billOfLadingNumber;
     }
 
@@ -284,7 +308,7 @@ public class TransportationDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -339,10 +363,140 @@ public class TransportationDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipMode");
+        openapiFields.add("transportationMode");
+        openapiFields.add("shippedDate");
+        openapiFields.add("estimatedDeliveryDate");
+        openapiFields.add("shipmentDeliveryDate");
+        openapiFields.add("carrierDetails");
+        openapiFields.add("billOfLadingNumber");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TransportationDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TransportationDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TransportationDetails is not found in the empty JSON string",
+                        TransportationDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TransportationDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TransportationDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("shipMode") != null && !jsonObj.get("shipMode").isJsonNull())
+                && !jsonObj.get("shipMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipMode").toString()));
+        }
+        // validate the optional field `shipMode`
+        if (jsonObj.get("shipMode") != null && !jsonObj.get("shipMode").isJsonNull()) {
+            ShipModeEnum.validateJsonElement(jsonObj.get("shipMode"));
+        }
+        if ((jsonObj.get("transportationMode") != null
+                        && !jsonObj.get("transportationMode").isJsonNull())
+                && !jsonObj.get("transportationMode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `transportationMode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("transportationMode").toString()));
+        }
+        // validate the optional field `transportationMode`
+        if (jsonObj.get("transportationMode") != null
+                && !jsonObj.get("transportationMode").isJsonNull()) {
+            TransportationModeEnum.validateJsonElement(jsonObj.get("transportationMode"));
+        }
+        // validate the optional field `carrierDetails`
+        if (jsonObj.get("carrierDetails") != null
+                && !jsonObj.get("carrierDetails").isJsonNull()) {
+            CarrierDetails.validateJsonElement(jsonObj.get("carrierDetails"));
+        }
+        if ((jsonObj.get("billOfLadingNumber") != null
+                        && !jsonObj.get("billOfLadingNumber").isJsonNull())
+                && !jsonObj.get("billOfLadingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `billOfLadingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("billOfLadingNumber").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TransportationDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TransportationDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TransportationDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TransportationDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TransportationDetails>() {
+                        @Override
+                        public void write(JsonWriter out, TransportationDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TransportationDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TransportationDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TransportationDetails
+     * @throws IOException if the JSON string is invalid with respect to TransportationDetails
+     */
+    public static TransportationDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TransportationDetails.class);
+    }
+
+    /**
+     * Convert an instance of TransportationDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

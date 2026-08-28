@@ -12,16 +12,36 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Rules for catalog-based selections. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Rules for catalog-based selections.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SelectionRules {
-    @SerializedName("excludedItems")
-    private List<Item> excludedItems = null;
+    public static final String SERIALIZED_NAME_EXCLUDED_ITEMS = "excludedItems";
+
+    @SerializedName(SERIALIZED_NAME_EXCLUDED_ITEMS)
+    private List<Item> excludedItems = new ArrayList<>();
+
+    public SelectionRules() {}
 
     public SelectionRules excludedItems(List<Item> excludedItems) {
         this.excludedItems = excludedItems;
@@ -41,9 +61,7 @@ public class SelectionRules {
      *
      * @return excludedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Items to exclude from the catalog selection (maximum 100 items).")
-    public List<Item> getExcludedItems() {
+    @javax.annotation.Nullable public List<Item> getExcludedItems() {
         return excludedItems;
     }
 
@@ -52,7 +70,7 @@ public class SelectionRules {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -78,10 +96,117 @@ public class SelectionRules {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("excludedItems");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SelectionRules
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SelectionRules.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SelectionRules is not found in the empty JSON string",
+                        SelectionRules.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SelectionRules.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SelectionRules` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("excludedItems") != null
+                && !jsonObj.get("excludedItems").isJsonNull()) {
+            JsonArray jsonArrayexcludedItems = jsonObj.getAsJsonArray("excludedItems");
+            if (jsonArrayexcludedItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("excludedItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `excludedItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("excludedItems").toString()));
+                }
+
+                // validate the optional field `excludedItems` (array)
+                for (int i = 0; i < jsonArrayexcludedItems.size(); i++) {
+                    Item.validateJsonElement(jsonArrayexcludedItems.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SelectionRules.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SelectionRules' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SelectionRules> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SelectionRules.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SelectionRules>() {
+                        @Override
+                        public void write(JsonWriter out, SelectionRules value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SelectionRules read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SelectionRules given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SelectionRules
+     * @throws IOException if the JSON string is invalid with respect to SelectionRules
+     */
+    public static SelectionRules fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SelectionRules.class);
+    }
+
+    /**
+     * Convert an instance of SelectionRules to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The top 10 positive and negative item review topics. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The top 10 positive and negative item review topics.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemReviewTopics {
-    @SerializedName("positiveTopics")
-    private List<ItemReviewTopic> positiveTopics = null;
+    public static final String SERIALIZED_NAME_POSITIVE_TOPICS = "positiveTopics";
 
-    @SerializedName("negativeTopics")
-    private List<ItemReviewTopic> negativeTopics = null;
+    @SerializedName(SERIALIZED_NAME_POSITIVE_TOPICS)
+    private List<ItemReviewTopic> positiveTopics = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_NEGATIVE_TOPICS = "negativeTopics";
+
+    @SerializedName(SERIALIZED_NAME_NEGATIVE_TOPICS)
+    private List<ItemReviewTopic> negativeTopics = new ArrayList<>();
+
+    public ItemReviewTopics() {}
 
     public ItemReviewTopics positiveTopics(List<ItemReviewTopic> positiveTopics) {
         this.positiveTopics = positiveTopics;
@@ -48,10 +70,7 @@ public class ItemReviewTopics {
      *
      * @return positiveTopics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews that mention the topic determines the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of the item determines placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10")
-    public List<ItemReviewTopic> getPositiveTopics() {
+    @javax.annotation.Nullable public List<ItemReviewTopic> getPositiveTopics() {
         return positiveTopics;
     }
 
@@ -81,10 +100,7 @@ public class ItemReviewTopics {
      *
      * @return negativeTopics
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of the most negative review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews that mention the topic determines the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of the item determines placement in the list. This value is `null` if there are not enough negative reviews for the specified ASIN.  **Max length:** 10")
-    public List<ItemReviewTopic> getNegativeTopics() {
+    @javax.annotation.Nullable public List<ItemReviewTopic> getNegativeTopics() {
         return negativeTopics;
     }
 
@@ -93,7 +109,7 @@ public class ItemReviewTopics {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -125,10 +141,136 @@ public class ItemReviewTopics {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("positiveTopics");
+        openapiFields.add("negativeTopics");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemReviewTopics
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemReviewTopics.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemReviewTopics is not found in the empty JSON string",
+                        ItemReviewTopics.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemReviewTopics.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemReviewTopics` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("positiveTopics") != null
+                && !jsonObj.get("positiveTopics").isJsonNull()) {
+            JsonArray jsonArraypositiveTopics = jsonObj.getAsJsonArray("positiveTopics");
+            if (jsonArraypositiveTopics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("positiveTopics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `positiveTopics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("positiveTopics").toString()));
+                }
+
+                // validate the optional field `positiveTopics` (array)
+                for (int i = 0; i < jsonArraypositiveTopics.size(); i++) {
+                    ItemReviewTopic.validateJsonElement(jsonArraypositiveTopics.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("negativeTopics") != null
+                && !jsonObj.get("negativeTopics").isJsonNull()) {
+            JsonArray jsonArraynegativeTopics = jsonObj.getAsJsonArray("negativeTopics");
+            if (jsonArraynegativeTopics != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("negativeTopics").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `negativeTopics` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("negativeTopics").toString()));
+                }
+
+                // validate the optional field `negativeTopics` (array)
+                for (int i = 0; i < jsonArraynegativeTopics.size(); i++) {
+                    ItemReviewTopic.validateJsonElement(jsonArraynegativeTopics.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemReviewTopics.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemReviewTopics' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemReviewTopics> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemReviewTopics.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemReviewTopics>() {
+                        @Override
+                        public void write(JsonWriter out, ItemReviewTopics value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemReviewTopics read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemReviewTopics given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemReviewTopics
+     * @throws IOException if the JSON string is invalid with respect to ItemReviewTopics
+     */
+    public static ItemReviewTopics fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemReviewTopics.class);
+    }
+
+    /**
+     * Convert an instance of ItemReviewTopics to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;listOffers&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `listOffers` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOffersResponse {
-    @SerializedName("offers")
-    private List<ListOffersResponseOffer> offers = null;
+    public static final String SERIALIZED_NAME_OFFERS = "offers";
 
-    @SerializedName("pagination")
-    private PaginationResponse pagination = null;
+    @SerializedName(SERIALIZED_NAME_OFFERS)
+    private List<ListOffersResponseOffer> offers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_PAGINATION = "pagination";
+
+    @SerializedName(SERIALIZED_NAME_PAGINATION)
+    private PaginationResponse pagination;
+
+    public ListOffersResponse() {}
 
     public ListOffersResponse offers(List<ListOffersResponseOffer> offers) {
         this.offers = offers;
@@ -44,8 +66,7 @@ public class ListOffersResponse {
      *
      * @return offers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of offers.")
-    public List<ListOffersResponseOffer> getOffers() {
+    @javax.annotation.Nullable public List<ListOffersResponseOffer> getOffers() {
         return offers;
     }
 
@@ -63,8 +84,7 @@ public class ListOffersResponse {
      *
      * @return pagination
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PaginationResponse getPagination() {
+    @javax.annotation.Nullable public PaginationResponse getPagination() {
         return pagination;
     }
 
@@ -73,7 +93,7 @@ public class ListOffersResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +121,121 @@ public class ListOffersResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("offers");
+        openapiFields.add("pagination");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOffersResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOffersResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOffersResponse is not found in the empty JSON string",
+                        ListOffersResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOffersResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOffersResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("offers") != null && !jsonObj.get("offers").isJsonNull()) {
+            JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("offers");
+            if (jsonArrayoffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("offers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `offers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("offers").toString()));
+                }
+
+                // validate the optional field `offers` (array)
+                for (int i = 0; i < jsonArrayoffers.size(); i++) {
+                    ListOffersResponseOffer.validateJsonElement(jsonArrayoffers.get(i));
+                }
+                ;
+            }
+        }
+        // validate the optional field `pagination`
+        if (jsonObj.get("pagination") != null && !jsonObj.get("pagination").isJsonNull()) {
+            PaginationResponse.validateJsonElement(jsonObj.get("pagination"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOffersResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOffersResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOffersResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOffersResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOffersResponse>() {
+                        @Override
+                        public void write(JsonWriter out, ListOffersResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOffersResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOffersResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOffersResponse
+     * @throws IOException if the JSON string is invalid with respect to ListOffersResponse
+     */
+    public static ListOffersResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOffersResponse.class);
+    }
+
+    /**
+     * Convert an instance of ListOffersResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,29 +12,58 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The payload for the OneClickShipment API. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the OneClickShipment API.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OneClickShipmentResult {
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
 
-    @SerializedName("packageDocumentDetails")
-    private PackageDocumentDetailList packageDocumentDetails = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
 
-    @SerializedName("promise")
-    private Promise promise = null;
+    public static final String SERIALIZED_NAME_PACKAGE_DOCUMENT_DETAILS = "packageDocumentDetails";
 
-    @SerializedName("carrier")
-    private Carrier carrier = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_DOCUMENT_DETAILS)
+    private PackageDocumentDetailList packageDocumentDetails = new ArrayList<>();
 
-    @SerializedName("service")
-    private Service service = null;
+    public static final String SERIALIZED_NAME_PROMISE = "promise";
 
-    @SerializedName("totalCharge")
-    private Currency totalCharge = null;
+    @SerializedName(SERIALIZED_NAME_PROMISE)
+    private Promise promise;
+
+    public static final String SERIALIZED_NAME_CARRIER = "carrier";
+
+    @SerializedName(SERIALIZED_NAME_CARRIER)
+    private Carrier carrier;
+
+    public static final String SERIALIZED_NAME_SERVICE = "service";
+
+    @SerializedName(SERIALIZED_NAME_SERVICE)
+    private Service service;
+
+    public static final String SERIALIZED_NAME_TOTAL_CHARGE = "totalCharge";
+
+    @SerializedName(SERIALIZED_NAME_TOTAL_CHARGE)
+    private Currency totalCharge;
+
+    public OneClickShipmentResult() {}
 
     public OneClickShipmentResult shipmentId(String shipmentId) {
         this.shipmentId = shipmentId;
@@ -46,9 +75,7 @@ public class OneClickShipmentResult {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The unique shipment identifier provided by a shipping service.")
+    @javax.annotation.Nonnull
     public String getShipmentId() {
         return shipmentId;
     }
@@ -67,7 +94,7 @@ public class OneClickShipmentResult {
      *
      * @return packageDocumentDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public PackageDocumentDetailList getPackageDocumentDetails() {
         return packageDocumentDetails;
     }
@@ -86,7 +113,7 @@ public class OneClickShipmentResult {
      *
      * @return promise
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Promise getPromise() {
         return promise;
     }
@@ -105,7 +132,7 @@ public class OneClickShipmentResult {
      *
      * @return carrier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Carrier getCarrier() {
         return carrier;
     }
@@ -124,7 +151,7 @@ public class OneClickShipmentResult {
      *
      * @return service
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Service getService() {
         return service;
     }
@@ -143,7 +170,7 @@ public class OneClickShipmentResult {
      *
      * @return totalCharge
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Currency getTotalCharge() {
         return totalCharge;
     }
@@ -153,7 +180,7 @@ public class OneClickShipmentResult {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -191,10 +218,133 @@ public class OneClickShipmentResult {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("shipmentId");
+        openapiFields.add("packageDocumentDetails");
+        openapiFields.add("promise");
+        openapiFields.add("carrier");
+        openapiFields.add("service");
+        openapiFields.add("totalCharge");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("shipmentId");
+        openapiRequiredFields.add("packageDocumentDetails");
+        openapiRequiredFields.add("promise");
+        openapiRequiredFields.add("carrier");
+        openapiRequiredFields.add("service");
+        openapiRequiredFields.add("totalCharge");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OneClickShipmentResult
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OneClickShipmentResult.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OneClickShipmentResult is not found in the empty JSON string",
+                        OneClickShipmentResult.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OneClickShipmentResult.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OneClickShipmentResult` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OneClickShipmentResult.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        // validate the required field `promise`
+        Promise.validateJsonElement(jsonObj.get("promise"));
+        // validate the required field `carrier`
+        Carrier.validateJsonElement(jsonObj.get("carrier"));
+        // validate the required field `service`
+        Service.validateJsonElement(jsonObj.get("service"));
+        // validate the required field `totalCharge`
+        Currency.validateJsonElement(jsonObj.get("totalCharge"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OneClickShipmentResult.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OneClickShipmentResult' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OneClickShipmentResult> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(OneClickShipmentResult.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OneClickShipmentResult>() {
+                        @Override
+                        public void write(JsonWriter out, OneClickShipmentResult value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OneClickShipmentResult read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OneClickShipmentResult given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OneClickShipmentResult
+     * @throws IOException if the JSON string is invalid with respect to OneClickShipmentResult
+     */
+    public static OneClickShipmentResult fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OneClickShipmentResult.class);
+    }
+
+    /**
+     * Convert an instance of OneClickShipmentResult to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

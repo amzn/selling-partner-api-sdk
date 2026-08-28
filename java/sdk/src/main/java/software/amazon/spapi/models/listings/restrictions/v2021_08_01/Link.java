@@ -12,25 +12,37 @@
 
 package software.amazon.spapi.models.listings.restrictions.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A link to resources related to a listing restriction. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A link to resources related to a listing restriction.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Link {
-    @SerializedName("resource")
-    private URI resource = null;
+    public static final String SERIALIZED_NAME_RESOURCE = "resource";
+
+    @SerializedName(SERIALIZED_NAME_RESOURCE)
+    private URI resource;
 
     /** The HTTP verb used to interact with the related resource. */
     @JsonAdapter(VerbEnum.Adapter.class)
     public enum VerbEnum {
-        @SerializedName("GET")
         GET("GET");
 
         private String value;
@@ -48,37 +60,50 @@ public class Link {
             return String.valueOf(value);
         }
 
-        public static VerbEnum fromValue(String input) {
+        public static VerbEnum fromValue(String value) {
             for (VerbEnum b : VerbEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<VerbEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final VerbEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public VerbEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return VerbEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return VerbEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            VerbEnum.fromValue(value);
         }
     }
 
-    @SerializedName("verb")
-    private VerbEnum verb = null;
+    public static final String SERIALIZED_NAME_VERB = "verb";
 
-    @SerializedName("title")
-    private String title = null;
+    @SerializedName(SERIALIZED_NAME_VERB)
+    private VerbEnum verb;
 
-    @SerializedName("type")
-    private String type = null;
+    public static final String SERIALIZED_NAME_TITLE = "title";
+
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_TYPE = "type";
+
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
+
+    public Link() {}
 
     public Link resource(URI resource) {
         this.resource = resource;
@@ -90,7 +115,7 @@ public class Link {
      *
      * @return resource
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The URI of the related resource.")
+    @javax.annotation.Nonnull
     public URI getResource() {
         return resource;
     }
@@ -109,9 +134,7 @@ public class Link {
      *
      * @return verb
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The HTTP verb used to interact with the related resource.")
+    @javax.annotation.Nonnull
     public VerbEnum getVerb() {
         return verb;
     }
@@ -130,8 +153,7 @@ public class Link {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The title of the related resource.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -149,8 +171,7 @@ public class Link {
      *
      * @return type
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The media type of the related resource.")
-    public String getType() {
+    @javax.annotation.Nullable public String getType() {
         return type;
     }
 
@@ -159,7 +180,7 @@ public class Link {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -191,10 +212,136 @@ public class Link {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("resource");
+        openapiFields.add("verb");
+        openapiFields.add("title");
+        openapiFields.add("type");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("resource");
+        openapiRequiredFields.add("verb");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Link
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Link.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Link is not found in the empty JSON string",
+                        Link.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Link.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Link` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : Link.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("resource").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `resource` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("resource").toString()));
+        }
+        if (!jsonObj.get("verb").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `verb` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("verb").toString()));
+        }
+        // validate the required field `verb`
+        VerbEnum.validateJsonElement(jsonObj.get("verb"));
+        if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull())
+                && !jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull())
+                && !jsonObj.get("type").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `type` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("type").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Link.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Link' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Link> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Link.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Link>() {
+                        @Override
+                        public void write(JsonWriter out, Link value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Link read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Link given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Link
+     * @throws IOException if the JSON string is invalid with respect to Link
+     */
+    public static Link fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Link.class);
+    }
+
+    /**
+     * Convert an instance of Link to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

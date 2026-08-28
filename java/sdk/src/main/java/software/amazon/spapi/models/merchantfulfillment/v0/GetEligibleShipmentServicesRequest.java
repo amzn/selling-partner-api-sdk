@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Request schema. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetEligibleShipmentServicesRequest {
-    @SerializedName("ShipmentRequestDetails")
-    private ShipmentRequestDetails shipmentRequestDetails = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_REQUEST_DETAILS = "ShipmentRequestDetails";
 
-    @SerializedName("ShippingOfferingFilter")
-    private ShippingOfferingFilter shippingOfferingFilter = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_REQUEST_DETAILS)
+    private ShipmentRequestDetails shipmentRequestDetails;
+
+    public static final String SERIALIZED_NAME_SHIPPING_OFFERING_FILTER = "ShippingOfferingFilter";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_OFFERING_FILTER)
+    private ShippingOfferingFilter shippingOfferingFilter;
+
+    public GetEligibleShipmentServicesRequest() {}
 
     public GetEligibleShipmentServicesRequest shipmentRequestDetails(ShipmentRequestDetails shipmentRequestDetails) {
         this.shipmentRequestDetails = shipmentRequestDetails;
@@ -34,7 +55,7 @@ public class GetEligibleShipmentServicesRequest {
      *
      * @return shipmentRequestDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ShipmentRequestDetails getShipmentRequestDetails() {
         return shipmentRequestDetails;
     }
@@ -53,8 +74,7 @@ public class GetEligibleShipmentServicesRequest {
      *
      * @return shippingOfferingFilter
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShippingOfferingFilter getShippingOfferingFilter() {
+    @javax.annotation.Nullable public ShippingOfferingFilter getShippingOfferingFilter() {
         return shippingOfferingFilter;
     }
 
@@ -63,7 +83,7 @@ public class GetEligibleShipmentServicesRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +116,118 @@ public class GetEligibleShipmentServicesRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ShipmentRequestDetails");
+        openapiFields.add("ShippingOfferingFilter");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ShipmentRequestDetails");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetEligibleShipmentServicesRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetEligibleShipmentServicesRequest.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetEligibleShipmentServicesRequest is not found in the empty JSON string",
+                        GetEligibleShipmentServicesRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetEligibleShipmentServicesRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetEligibleShipmentServicesRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetEligibleShipmentServicesRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `ShipmentRequestDetails`
+        ShipmentRequestDetails.validateJsonElement(jsonObj.get("ShipmentRequestDetails"));
+        // validate the optional field `ShippingOfferingFilter`
+        if (jsonObj.get("ShippingOfferingFilter") != null
+                && !jsonObj.get("ShippingOfferingFilter").isJsonNull()) {
+            ShippingOfferingFilter.validateJsonElement(jsonObj.get("ShippingOfferingFilter"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetEligibleShipmentServicesRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetEligibleShipmentServicesRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetEligibleShipmentServicesRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetEligibleShipmentServicesRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetEligibleShipmentServicesRequest>() {
+                        @Override
+                        public void write(JsonWriter out, GetEligibleShipmentServicesRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetEligibleShipmentServicesRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetEligibleShipmentServicesRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetEligibleShipmentServicesRequest
+     * @throws IOException if the JSON string is invalid with respect to GetEligibleShipmentServicesRequest
+     */
+    public static GetEligibleShipmentServicesRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetEligibleShipmentServicesRequest.class);
+    }
+
+    /**
+     * Convert an instance of GetEligibleShipmentServicesRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

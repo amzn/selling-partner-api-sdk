@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A promotion applied to an item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A promotion applied to an item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Promotion {
-    @SerializedName("PromotionType")
-    private String promotionType = null;
+    public static final String SERIALIZED_NAME_PROMOTION_TYPE = "PromotionType";
 
-    @SerializedName("PromotionId")
-    private String promotionId = null;
+    @SerializedName(SERIALIZED_NAME_PROMOTION_TYPE)
+    private String promotionType;
 
-    @SerializedName("PromotionAmount")
-    private Currency promotionAmount = null;
+    public static final String SERIALIZED_NAME_PROMOTION_ID = "PromotionId";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_ID)
+    private String promotionId;
+
+    public static final String SERIALIZED_NAME_PROMOTION_AMOUNT = "PromotionAmount";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_AMOUNT)
+    private Currency promotionAmount;
+
+    public Promotion() {}
 
     public Promotion promotionType(String promotionType) {
         this.promotionType = promotionType;
@@ -37,8 +60,7 @@ public class Promotion {
      *
      * @return promotionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of promotion.")
-    public String getPromotionType() {
+    @javax.annotation.Nullable public String getPromotionType() {
         return promotionType;
     }
 
@@ -56,8 +78,7 @@ public class Promotion {
      *
      * @return promotionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller-specified identifier for the promotion.")
-    public String getPromotionId() {
+    @javax.annotation.Nullable public String getPromotionId() {
         return promotionId;
     }
 
@@ -75,8 +96,7 @@ public class Promotion {
      *
      * @return promotionAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getPromotionAmount() {
+    @javax.annotation.Nullable public Currency getPromotionAmount() {
         return promotionAmount;
     }
 
@@ -85,7 +105,7 @@ public class Promotion {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -117,10 +137,118 @@ public class Promotion {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("PromotionType");
+        openapiFields.add("PromotionId");
+        openapiFields.add("PromotionAmount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Promotion
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Promotion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Promotion is not found in the empty JSON string",
+                        Promotion.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Promotion.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Promotion` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("PromotionType") != null
+                        && !jsonObj.get("PromotionType").isJsonNull())
+                && !jsonObj.get("PromotionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PromotionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PromotionType").toString()));
+        }
+        if ((jsonObj.get("PromotionId") != null && !jsonObj.get("PromotionId").isJsonNull())
+                && !jsonObj.get("PromotionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PromotionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PromotionId").toString()));
+        }
+        // validate the optional field `PromotionAmount`
+        if (jsonObj.get("PromotionAmount") != null
+                && !jsonObj.get("PromotionAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("PromotionAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Promotion.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Promotion' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Promotion> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Promotion.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Promotion>() {
+                        @Override
+                        public void write(JsonWriter out, Promotion value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Promotion read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Promotion given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Promotion
+     * @throws IOException if the JSON string is invalid with respect to Promotion
+     */
+    public static Promotion fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Promotion.class);
+    }
+
+    /**
+     * Convert an instance of Promotion to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

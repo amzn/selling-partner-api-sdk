@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Amazon tracking information for a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon tracking information for a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AmazonTracking {
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("trackingUrl")
-    private String trackingUrl = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
+
+    public static final String SERIALIZED_NAME_TRACKING_URL = "trackingUrl";
+
+    @SerializedName(SERIALIZED_NAME_TRACKING_URL)
+    private String trackingUrl;
+
+    public AmazonTracking() {}
 
     public AmazonTracking trackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
@@ -34,9 +55,7 @@ public class AmazonTracking {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The amazon tracking number that can be used to obtain tracking and delivery information.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -54,9 +73,7 @@ public class AmazonTracking {
      *
      * @return trackingUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Represents the tracking URL where amazon tracking information is shown.")
-    public String getTrackingUrl() {
+    @javax.annotation.Nullable public String getTrackingUrl() {
         return trackingUrl;
     }
 
@@ -65,7 +82,7 @@ public class AmazonTracking {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +112,113 @@ public class AmazonTracking {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("trackingNumber");
+        openapiFields.add("trackingUrl");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AmazonTracking
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AmazonTracking.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AmazonTracking is not found in the empty JSON string",
+                        AmazonTracking.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AmazonTracking.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AmazonTracking` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if ((jsonObj.get("trackingUrl") != null && !jsonObj.get("trackingUrl").isJsonNull())
+                && !jsonObj.get("trackingUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingUrl").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AmazonTracking.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AmazonTracking' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AmazonTracking> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AmazonTracking.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AmazonTracking>() {
+                        @Override
+                        public void write(JsonWriter out, AmazonTracking value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AmazonTracking read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AmazonTracking given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AmazonTracking
+     * @throws IOException if the JSON string is invalid with respect to AmazonTracking
+     */
+    public static AmazonTracking fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AmazonTracking.class);
+    }
+
+    /**
+     * Convert an instance of AmazonTracking to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

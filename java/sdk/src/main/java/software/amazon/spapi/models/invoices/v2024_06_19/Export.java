@@ -12,32 +12,61 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Detailed information about the export. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the export.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Export {
-    @SerializedName("errorMessage")
-    private String errorMessage = null;
+    public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
 
-    @SerializedName("exportId")
-    private String exportId = null;
+    @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+    private String errorMessage;
 
-    @SerializedName("generateExportFinishedAt")
-    private OffsetDateTime generateExportFinishedAt = null;
+    public static final String SERIALIZED_NAME_EXPORT_ID = "exportId";
 
-    @SerializedName("generateExportStartedAt")
-    private OffsetDateTime generateExportStartedAt = null;
+    @SerializedName(SERIALIZED_NAME_EXPORT_ID)
+    private String exportId;
 
-    @SerializedName("invoicesDocumentIds")
-    private List<String> invoicesDocumentIds = null;
+    public static final String SERIALIZED_NAME_GENERATE_EXPORT_FINISHED_AT = "generateExportFinishedAt";
 
-    @SerializedName("status")
-    private ExportStatus status = null;
+    @SerializedName(SERIALIZED_NAME_GENERATE_EXPORT_FINISHED_AT)
+    private OffsetDateTime generateExportFinishedAt;
+
+    public static final String SERIALIZED_NAME_GENERATE_EXPORT_STARTED_AT = "generateExportStartedAt";
+
+    @SerializedName(SERIALIZED_NAME_GENERATE_EXPORT_STARTED_AT)
+    private OffsetDateTime generateExportStartedAt;
+
+    public static final String SERIALIZED_NAME_INVOICES_DOCUMENT_IDS = "invoicesDocumentIds";
+
+    @SerializedName(SERIALIZED_NAME_INVOICES_DOCUMENT_IDS)
+    private List<String> invoicesDocumentIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private ExportStatus status;
+
+    public Export() {}
 
     public Export errorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
@@ -49,9 +78,7 @@ public class Export {
      *
      * @return errorMessage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "When the export generation fails, this attribute contains a description of the error.")
-    public String getErrorMessage() {
+    @javax.annotation.Nullable public String getErrorMessage() {
         return errorMessage;
     }
 
@@ -69,8 +96,7 @@ public class Export {
      *
      * @return exportId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The export identifier.")
-    public String getExportId() {
+    @javax.annotation.Nullable public String getExportId() {
         return exportId;
     }
 
@@ -89,10 +115,7 @@ public class Export {
      *
      * @return generateExportFinishedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the export generation finished. Vales are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getGenerateExportFinishedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getGenerateExportFinishedAt() {
         return generateExportFinishedAt;
     }
 
@@ -111,10 +134,7 @@ public class Export {
      *
      * @return generateExportStartedAt
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getGenerateExportStartedAt() {
+    @javax.annotation.Nullable public OffsetDateTime getGenerateExportStartedAt() {
         return generateExportStartedAt;
     }
 
@@ -142,10 +162,7 @@ public class Export {
      *
      * @return invoicesDocumentIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The identifier for the export documents. To get the information required to retrieve the export document's contents, pass each ID in the `getInvoicesDocument` operation.  This list is empty until the status is `DONE`.")
-    public List<String> getInvoicesDocumentIds() {
+    @javax.annotation.Nullable public List<String> getInvoicesDocumentIds() {
         return invoicesDocumentIds;
     }
 
@@ -163,8 +180,7 @@ public class Export {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ExportStatus getStatus() {
+    @javax.annotation.Nullable public ExportStatus getStatus() {
         return status;
     }
 
@@ -173,7 +189,7 @@ public class Export {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -216,10 +232,127 @@ public class Export {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("errorMessage");
+        openapiFields.add("exportId");
+        openapiFields.add("generateExportFinishedAt");
+        openapiFields.add("generateExportStartedAt");
+        openapiFields.add("invoicesDocumentIds");
+        openapiFields.add("status");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Export
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Export.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Export is not found in the empty JSON string",
+                        Export.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Export.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Export` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("errorMessage") != null && !jsonObj.get("errorMessage").isJsonNull())
+                && !jsonObj.get("errorMessage").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorMessage` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorMessage").toString()));
+        }
+        if ((jsonObj.get("exportId") != null && !jsonObj.get("exportId").isJsonNull())
+                && !jsonObj.get("exportId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `exportId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("exportId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("invoicesDocumentIds") != null
+                && !jsonObj.get("invoicesDocumentIds").isJsonNull()
+                && !jsonObj.get("invoicesDocumentIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `invoicesDocumentIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("invoicesDocumentIds").toString()));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            ExportStatus.validateJsonElement(jsonObj.get("status"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Export.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Export' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Export> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Export.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Export>() {
+                        @Override
+                        public void write(JsonWriter out, Export value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Export read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Export given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Export
+     * @throws IOException if the JSON string is invalid with respect to Export
+     */
+    public static Export fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Export.class);
+    }
+
+    /**
+     * Convert an instance of Export to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

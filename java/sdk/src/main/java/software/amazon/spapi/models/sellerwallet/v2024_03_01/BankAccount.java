@@ -12,49 +12,86 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer
  * earns by selling items.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BankAccount {
-    @SerializedName("accountId")
-    private String accountId = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_ID = "accountId";
 
-    @SerializedName("accountHolderName")
-    private String accountHolderName = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_ID)
+    private String accountId;
 
-    @SerializedName("bankAccountNumberFormat")
-    private BankAccountNumberFormat bankAccountNumberFormat = null;
+    public static final String SERIALIZED_NAME_ACCOUNT_HOLDER_NAME = "accountHolderName";
 
-    @SerializedName("bankName")
-    private String bankName = null;
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_HOLDER_NAME)
+    private String accountHolderName;
 
-    @SerializedName("bankAccountOwnershipType")
-    private BankAccountOwnershipType bankAccountOwnershipType = null;
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_FORMAT = "bankAccountNumberFormat";
 
-    @SerializedName("routingNumber")
-    private String routingNumber = null;
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_FORMAT)
+    private BankAccountNumberFormat bankAccountNumberFormat;
 
-    @SerializedName("bankNumberFormat")
-    private BankNumberFormat bankNumberFormat = null;
+    public static final String SERIALIZED_NAME_BANK_NAME = "bankName";
 
-    @SerializedName("accountCountryCode")
-    private String accountCountryCode = null;
+    @SerializedName(SERIALIZED_NAME_BANK_NAME)
+    private String bankName;
 
-    @SerializedName("accountCurrency")
-    private String accountCurrency = null;
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_OWNERSHIP_TYPE = "bankAccountOwnershipType";
 
-    @SerializedName("bankAccountNumberTail")
-    private String bankAccountNumberTail = null;
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_OWNERSHIP_TYPE)
+    private BankAccountOwnershipType bankAccountOwnershipType;
 
-    @SerializedName("bankAccountHolderStatus")
-    private BankAccountHolderStatus bankAccountHolderStatus = null;
+    public static final String SERIALIZED_NAME_ROUTING_NUMBER = "routingNumber";
+
+    @SerializedName(SERIALIZED_NAME_ROUTING_NUMBER)
+    private String routingNumber;
+
+    public static final String SERIALIZED_NAME_BANK_NUMBER_FORMAT = "bankNumberFormat";
+
+    @SerializedName(SERIALIZED_NAME_BANK_NUMBER_FORMAT)
+    private BankNumberFormat bankNumberFormat;
+
+    public static final String SERIALIZED_NAME_ACCOUNT_COUNTRY_CODE = "accountCountryCode";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_COUNTRY_CODE)
+    private String accountCountryCode;
+
+    public static final String SERIALIZED_NAME_ACCOUNT_CURRENCY = "accountCurrency";
+
+    @SerializedName(SERIALIZED_NAME_ACCOUNT_CURRENCY)
+    private String accountCurrency;
+
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_TAIL = "bankAccountNumberTail";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_NUMBER_TAIL)
+    private String bankAccountNumberTail;
+
+    public static final String SERIALIZED_NAME_BANK_ACCOUNT_HOLDER_STATUS = "bankAccountHolderStatus";
+
+    @SerializedName(SERIALIZED_NAME_BANK_ACCOUNT_HOLDER_STATUS)
+    private BankAccountHolderStatus bankAccountHolderStatus;
+
+    public BankAccount() {}
 
     public BankAccount accountId(String accountId) {
         this.accountId = accountId;
@@ -70,10 +107,7 @@ public class BankAccount {
      *
      * @return accountId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.")
-    public String getAccountId() {
+    @javax.annotation.Nullable public String getAccountId() {
         return accountId;
     }
 
@@ -91,10 +125,7 @@ public class BankAccount {
      *
      * @return accountHolderName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.")
-    public String getAccountHolderName() {
+    @javax.annotation.Nullable public String getAccountHolderName() {
         return accountHolderName;
     }
 
@@ -112,8 +143,7 @@ public class BankAccount {
      *
      * @return bankAccountNumberFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BankAccountNumberFormat getBankAccountNumberFormat() {
+    @javax.annotation.Nullable public BankAccountNumberFormat getBankAccountNumberFormat() {
         return bankAccountNumberFormat;
     }
 
@@ -131,9 +161,7 @@ public class BankAccount {
      *
      * @return bankName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.")
-    public String getBankName() {
+    @javax.annotation.Nullable public String getBankName() {
         return bankName;
     }
 
@@ -151,7 +179,7 @@ public class BankAccount {
      *
      * @return bankAccountOwnershipType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public BankAccountOwnershipType getBankAccountOwnershipType() {
         return bankAccountOwnershipType;
     }
@@ -171,10 +199,7 @@ public class BankAccount {
      *
      * @return routingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.")
-    public String getRoutingNumber() {
+    @javax.annotation.Nullable public String getRoutingNumber() {
         return routingNumber;
     }
 
@@ -192,8 +217,7 @@ public class BankAccount {
      *
      * @return bankNumberFormat
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BankNumberFormat getBankNumberFormat() {
+    @javax.annotation.Nullable public BankNumberFormat getBankNumberFormat() {
         return bankNumberFormat;
     }
 
@@ -211,9 +235,7 @@ public class BankAccount {
      *
      * @return accountCountryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The two-digit country code in ISO 3166 format.")
+    @javax.annotation.Nonnull
     public String getAccountCountryCode() {
         return accountCountryCode;
     }
@@ -232,9 +254,7 @@ public class BankAccount {
      *
      * @return accountCurrency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Bank account currency code in ISO 4217 format.")
+    @javax.annotation.Nonnull
     public String getAccountCurrency() {
         return accountCurrency;
     }
@@ -254,10 +274,7 @@ public class BankAccount {
      *
      * @return bankAccountNumberTail
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.")
+    @javax.annotation.Nonnull
     public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }
@@ -276,8 +293,7 @@ public class BankAccount {
      *
      * @return bankAccountHolderStatus
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BankAccountHolderStatus getBankAccountHolderStatus() {
+    @javax.annotation.Nullable public BankAccountHolderStatus getBankAccountHolderStatus() {
         return bankAccountHolderStatus;
     }
 
@@ -286,7 +302,7 @@ public class BankAccount {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -359,10 +375,180 @@ public class BankAccount {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("accountId");
+        openapiFields.add("accountHolderName");
+        openapiFields.add("bankAccountNumberFormat");
+        openapiFields.add("bankName");
+        openapiFields.add("bankAccountOwnershipType");
+        openapiFields.add("routingNumber");
+        openapiFields.add("bankNumberFormat");
+        openapiFields.add("accountCountryCode");
+        openapiFields.add("accountCurrency");
+        openapiFields.add("bankAccountNumberTail");
+        openapiFields.add("bankAccountHolderStatus");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("bankAccountOwnershipType");
+        openapiRequiredFields.add("accountCountryCode");
+        openapiRequiredFields.add("accountCurrency");
+        openapiRequiredFields.add("bankAccountNumberTail");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BankAccount
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BankAccount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BankAccount is not found in the empty JSON string",
+                        BankAccount.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BankAccount.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BankAccount` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BankAccount.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("accountId") != null && !jsonObj.get("accountId").isJsonNull())
+                && !jsonObj.get("accountId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountId").toString()));
+        }
+        if ((jsonObj.get("accountHolderName") != null
+                        && !jsonObj.get("accountHolderName").isJsonNull())
+                && !jsonObj.get("accountHolderName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountHolderName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountHolderName").toString()));
+        }
+        // validate the optional field `bankAccountNumberFormat`
+        if (jsonObj.get("bankAccountNumberFormat") != null
+                && !jsonObj.get("bankAccountNumberFormat").isJsonNull()) {
+            BankAccountNumberFormat.validateJsonElement(jsonObj.get("bankAccountNumberFormat"));
+        }
+        if ((jsonObj.get("bankName") != null && !jsonObj.get("bankName").isJsonNull())
+                && !jsonObj.get("bankName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankName").toString()));
+        }
+        // validate the required field `bankAccountOwnershipType`
+        BankAccountOwnershipType.validateJsonElement(jsonObj.get("bankAccountOwnershipType"));
+        if ((jsonObj.get("routingNumber") != null
+                        && !jsonObj.get("routingNumber").isJsonNull())
+                && !jsonObj.get("routingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `routingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("routingNumber").toString()));
+        }
+        // validate the optional field `bankNumberFormat`
+        if (jsonObj.get("bankNumberFormat") != null
+                && !jsonObj.get("bankNumberFormat").isJsonNull()) {
+            BankNumberFormat.validateJsonElement(jsonObj.get("bankNumberFormat"));
+        }
+        if (!jsonObj.get("accountCountryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountCountryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountCountryCode").toString()));
+        }
+        if (!jsonObj.get("accountCurrency").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `accountCurrency` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("accountCurrency").toString()));
+        }
+        if (!jsonObj.get("bankAccountNumberTail").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `bankAccountNumberTail` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("bankAccountNumberTail").toString()));
+        }
+        // validate the optional field `bankAccountHolderStatus`
+        if (jsonObj.get("bankAccountHolderStatus") != null
+                && !jsonObj.get("bankAccountHolderStatus").isJsonNull()) {
+            BankAccountHolderStatus.validateJsonElement(jsonObj.get("bankAccountHolderStatus"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BankAccount.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BankAccount' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BankAccount> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BankAccount.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BankAccount>() {
+                        @Override
+                        public void write(JsonWriter out, BankAccount value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BankAccount read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BankAccount given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BankAccount
+     * @throws IOException if the JSON string is invalid with respect to BankAccount
+     */
+    public static BankAccount fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BankAccount.class);
+    }
+
+    /**
+     * Convert an instance of BankAccount to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A delivery document for a package. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A delivery document for a package.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DeliveryDocument {
-    @SerializedName("documentType")
-    private String documentType = null;
+    public static final String SERIALIZED_NAME_DOCUMENT_TYPE = "documentType";
 
-    @SerializedName("url")
-    private String url = null;
+    @SerializedName(SERIALIZED_NAME_DOCUMENT_TYPE)
+    private String documentType;
+
+    public static final String SERIALIZED_NAME_URL = "url";
+
+    @SerializedName(SERIALIZED_NAME_URL)
+    private String url;
+
+    public DeliveryDocument() {}
 
     public DeliveryDocument documentType(String documentType) {
         this.documentType = documentType;
@@ -34,9 +55,7 @@ public class DeliveryDocument {
      *
      * @return documentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The delivery document type. The only possible value is `DELIVERY_IMAGE`.")
+    @javax.annotation.Nonnull
     public String getDocumentType() {
         return documentType;
     }
@@ -56,10 +75,7 @@ public class DeliveryDocument {
      *
      * @return url
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.")
-    public String getUrl() {
+    @javax.annotation.Nullable public String getUrl() {
         return url;
     }
 
@@ -68,7 +84,7 @@ public class DeliveryDocument {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +112,121 @@ public class DeliveryDocument {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("documentType");
+        openapiFields.add("url");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("documentType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DeliveryDocument
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DeliveryDocument.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DeliveryDocument is not found in the empty JSON string",
+                        DeliveryDocument.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DeliveryDocument.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DeliveryDocument` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : DeliveryDocument.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("documentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `documentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("documentType").toString()));
+        }
+        if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull())
+                && !jsonObj.get("url").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `url` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("url").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DeliveryDocument.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DeliveryDocument' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DeliveryDocument> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DeliveryDocument.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DeliveryDocument>() {
+                        @Override
+                        public void write(JsonWriter out, DeliveryDocument value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DeliveryDocument read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DeliveryDocument given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DeliveryDocument
+     * @throws IOException if the JSON string is invalid with respect to DeliveryDocument
+     */
+    public static DeliveryDocument fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DeliveryDocument.class);
+    }
+
+    /**
+     * Convert an instance of DeliveryDocument to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

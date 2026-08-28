@@ -12,28 +12,51 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and
  * exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RegulationReferences {
-    @SerializedName("dueDiligenceReference")
-    private String dueDiligenceReference = null;
+    public static final String SERIALIZED_NAME_DUE_DILIGENCE_REFERENCE = "dueDiligenceReference";
 
-    @SerializedName("dueDiligenceVerification")
-    private String dueDiligenceVerification = null;
+    @SerializedName(SERIALIZED_NAME_DUE_DILIGENCE_REFERENCE)
+    private String dueDiligenceReference;
 
-    @SerializedName("dueDiligenceInformation")
-    private String dueDiligenceInformation = null;
+    public static final String SERIALIZED_NAME_DUE_DILIGENCE_VERIFICATION = "dueDiligenceVerification";
 
-    @SerializedName("dueDiligenceExemptionCode")
-    private String dueDiligenceExemptionCode = null;
+    @SerializedName(SERIALIZED_NAME_DUE_DILIGENCE_VERIFICATION)
+    private String dueDiligenceVerification;
+
+    public static final String SERIALIZED_NAME_DUE_DILIGENCE_INFORMATION = "dueDiligenceInformation";
+
+    @SerializedName(SERIALIZED_NAME_DUE_DILIGENCE_INFORMATION)
+    private String dueDiligenceInformation;
+
+    public static final String SERIALIZED_NAME_DUE_DILIGENCE_EXEMPTION_CODE = "dueDiligenceExemptionCode";
+
+    @SerializedName(SERIALIZED_NAME_DUE_DILIGENCE_EXEMPTION_CODE)
+    private String dueDiligenceExemptionCode;
+
+    public RegulationReferences() {}
 
     public RegulationReferences dueDiligenceReference(String dueDiligenceReference) {
         this.dueDiligenceReference = dueDiligenceReference;
@@ -46,10 +69,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceReference
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.")
-    public String getDueDiligenceReference() {
+    @javax.annotation.Nullable public String getDueDiligenceReference() {
         return dueDiligenceReference;
     }
 
@@ -67,10 +87,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceVerification
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.")
-    public String getDueDiligenceVerification() {
+    @javax.annotation.Nullable public String getDueDiligenceVerification() {
         return dueDiligenceVerification;
     }
 
@@ -88,9 +105,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceInformation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The EUDR Due Diligence information pre-loaded in Vendor Central.")
-    public String getDueDiligenceInformation() {
+    @javax.annotation.Nullable public String getDueDiligenceInformation() {
         return dueDiligenceInformation;
     }
 
@@ -108,9 +123,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceExemptionCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The exemption code for EUDR products exempt from due diligence requirements.")
-    public String getDueDiligenceExemptionCode() {
+    @javax.annotation.Nullable public String getDueDiligenceExemptionCode() {
         return dueDiligenceExemptionCode;
     }
 
@@ -119,7 +132,7 @@ public class RegulationReferences {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -160,10 +173,130 @@ public class RegulationReferences {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("dueDiligenceReference");
+        openapiFields.add("dueDiligenceVerification");
+        openapiFields.add("dueDiligenceInformation");
+        openapiFields.add("dueDiligenceExemptionCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RegulationReferences
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RegulationReferences.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RegulationReferences is not found in the empty JSON string",
+                        RegulationReferences.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RegulationReferences.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RegulationReferences` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("dueDiligenceReference") != null
+                        && !jsonObj.get("dueDiligenceReference").isJsonNull())
+                && !jsonObj.get("dueDiligenceReference").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dueDiligenceReference` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("dueDiligenceReference").toString()));
+        }
+        if ((jsonObj.get("dueDiligenceVerification") != null
+                        && !jsonObj.get("dueDiligenceVerification").isJsonNull())
+                && !jsonObj.get("dueDiligenceVerification").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dueDiligenceVerification` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("dueDiligenceVerification").toString()));
+        }
+        if ((jsonObj.get("dueDiligenceInformation") != null
+                        && !jsonObj.get("dueDiligenceInformation").isJsonNull())
+                && !jsonObj.get("dueDiligenceInformation").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dueDiligenceInformation` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("dueDiligenceInformation").toString()));
+        }
+        if ((jsonObj.get("dueDiligenceExemptionCode") != null
+                        && !jsonObj.get("dueDiligenceExemptionCode").isJsonNull())
+                && !jsonObj.get("dueDiligenceExemptionCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `dueDiligenceExemptionCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("dueDiligenceExemptionCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RegulationReferences.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RegulationReferences' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RegulationReferences> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(RegulationReferences.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RegulationReferences>() {
+                        @Override
+                        public void write(JsonWriter out, RegulationReferences value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RegulationReferences read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RegulationReferences given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RegulationReferences
+     * @throws IOException if the JSON string is invalid with respect to RegulationReferences
+     */
+    public static RegulationReferences fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RegulationReferences.class);
+    }
+
+    /**
+     * Convert an instance of RegulationReferences to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

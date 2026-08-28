@@ -12,31 +12,56 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * A shipping label with a label document for a single package. If label generation fails, you can use the
  * &#x60;status&#x60; and &#x60;errorDetails&#x60; attributes to determine the cause of failure.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "A shipping label with a label document for a single package. If label generation fails, you can use the `status` and `errorDetails` attributes to determine the cause of failure.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageShipLabel {
-    @SerializedName("packageId")
-    private String packageId = null;
+    public static final String SERIALIZED_NAME_PACKAGE_ID = "packageId";
 
-    @SerializedName("shipLabelMetadata")
-    private ShipLabelMetadata shipLabelMetadata = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_ID)
+    private String packageId;
 
-    @SerializedName("fileData")
-    private DocumentV2 fileData = null;
+    public static final String SERIALIZED_NAME_SHIP_LABEL_METADATA = "shipLabelMetadata";
 
-    @SerializedName("status")
-    private Status status = null;
+    @SerializedName(SERIALIZED_NAME_SHIP_LABEL_METADATA)
+    private ShipLabelMetadata shipLabelMetadata;
 
-    @SerializedName("errorDetails")
-    private Error errorDetails = null;
+    public static final String SERIALIZED_NAME_FILE_DATA = "fileData";
+
+    @SerializedName(SERIALIZED_NAME_FILE_DATA)
+    private DocumentV2 fileData;
+
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private Status status;
+
+    public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
+
+    @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
+    private Error errorDetails;
+
+    public PackageShipLabel() {}
 
     public PackageShipLabel packageId(String packageId) {
         this.packageId = packageId;
@@ -48,8 +73,7 @@ public class PackageShipLabel {
      *
      * @return packageId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The package ID of the package.")
-    public String getPackageId() {
+    @javax.annotation.Nullable public String getPackageId() {
         return packageId;
     }
 
@@ -67,8 +91,7 @@ public class PackageShipLabel {
      *
      * @return shipLabelMetadata
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShipLabelMetadata getShipLabelMetadata() {
+    @javax.annotation.Nullable public ShipLabelMetadata getShipLabelMetadata() {
         return shipLabelMetadata;
     }
 
@@ -86,8 +109,7 @@ public class PackageShipLabel {
      *
      * @return fileData
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DocumentV2 getFileData() {
+    @javax.annotation.Nullable public DocumentV2 getFileData() {
         return fileData;
     }
 
@@ -105,8 +127,7 @@ public class PackageShipLabel {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Status getStatus() {
+    @javax.annotation.Nullable public Status getStatus() {
         return status;
     }
 
@@ -124,8 +145,7 @@ public class PackageShipLabel {
      *
      * @return errorDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Error getErrorDetails() {
+    @javax.annotation.Nullable public Error getErrorDetails() {
         return errorDetails;
     }
 
@@ -134,7 +154,7 @@ public class PackageShipLabel {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -170,10 +190,126 @@ public class PackageShipLabel {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageId");
+        openapiFields.add("shipLabelMetadata");
+        openapiFields.add("fileData");
+        openapiFields.add("status");
+        openapiFields.add("errorDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageShipLabel
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageShipLabel.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageShipLabel is not found in the empty JSON string",
+                        PackageShipLabel.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageShipLabel.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageShipLabel` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("packageId") != null && !jsonObj.get("packageId").isJsonNull())
+                && !jsonObj.get("packageId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageId").toString()));
+        }
+        // validate the optional field `shipLabelMetadata`
+        if (jsonObj.get("shipLabelMetadata") != null
+                && !jsonObj.get("shipLabelMetadata").isJsonNull()) {
+            ShipLabelMetadata.validateJsonElement(jsonObj.get("shipLabelMetadata"));
+        }
+        // validate the optional field `fileData`
+        if (jsonObj.get("fileData") != null && !jsonObj.get("fileData").isJsonNull()) {
+            DocumentV2.validateJsonElement(jsonObj.get("fileData"));
+        }
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            Status.validateJsonElement(jsonObj.get("status"));
+        }
+        // validate the optional field `errorDetails`
+        if (jsonObj.get("errorDetails") != null && !jsonObj.get("errorDetails").isJsonNull()) {
+            Error.validateJsonElement(jsonObj.get("errorDetails"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageShipLabel.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageShipLabel' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageShipLabel> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageShipLabel.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageShipLabel>() {
+                        @Override
+                        public void write(JsonWriter out, PackageShipLabel value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageShipLabel read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageShipLabel given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageShipLabel
+     * @throws IOException if the JSON string is invalid with respect to PackageShipLabel
+     */
+    public static PackageShipLabel fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageShipLabel.class);
+    }
+
+    /**
+     * Convert an instance of PackageShipLabel to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

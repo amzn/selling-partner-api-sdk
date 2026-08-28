@@ -12,26 +12,53 @@
 
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of the shipment label. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the shipment label.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LabelData {
-    @SerializedName("packageIdentifier")
-    private String packageIdentifier = null;
+    public static final String SERIALIZED_NAME_PACKAGE_IDENTIFIER = "packageIdentifier";
 
-    @SerializedName("trackingNumber")
-    private String trackingNumber = null;
+    @SerializedName(SERIALIZED_NAME_PACKAGE_IDENTIFIER)
+    private String packageIdentifier;
 
-    @SerializedName("shipMethod")
-    private String shipMethod = null;
+    public static final String SERIALIZED_NAME_TRACKING_NUMBER = "trackingNumber";
 
-    @SerializedName("shipMethodName")
-    private String shipMethodName = null;
+    @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
+    private String trackingNumber;
 
-    @SerializedName("content")
-    private String content = null;
+    public static final String SERIALIZED_NAME_SHIP_METHOD = "shipMethod";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_METHOD)
+    private String shipMethod;
+
+    public static final String SERIALIZED_NAME_SHIP_METHOD_NAME = "shipMethodName";
+
+    @SerializedName(SERIALIZED_NAME_SHIP_METHOD_NAME)
+    private String shipMethodName;
+
+    public static final String SERIALIZED_NAME_CONTENT = "content";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT)
+    private String content;
+
+    public LabelData() {}
 
     public LabelData packageIdentifier(String packageIdentifier) {
         this.packageIdentifier = packageIdentifier;
@@ -44,10 +71,7 @@ public class LabelData {
      *
      * @return packageIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Identifier for the package. The first package will be 001, the second 002, and so on. This number is used as a reference to refer to this package from the pallet level.")
-    public String getPackageIdentifier() {
+    @javax.annotation.Nullable public String getPackageIdentifier() {
         return packageIdentifier;
     }
 
@@ -65,8 +89,7 @@ public class LabelData {
      *
      * @return trackingNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Package tracking identifier from the shipping carrier.")
-    public String getTrackingNumber() {
+    @javax.annotation.Nullable public String getTrackingNumber() {
         return trackingNumber;
     }
 
@@ -87,10 +110,7 @@ public class LabelData {
      *
      * @return shipMethod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Ship method to be used for shipping the order. Amazon defines Ship Method Codes indicating shipping carrier and shipment service level. Ship Method Codes are case and format sensitive. The same ship method code should returned on the shipment confirmation. Note that the Ship Method Codes are vendor specific and will be provided to each vendor during the implementation.")
-    public String getShipMethod() {
+    @javax.annotation.Nullable public String getShipMethod() {
         return shipMethod;
     }
 
@@ -108,8 +128,7 @@ public class LabelData {
      *
      * @return shipMethodName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Shipping method name for internal reference.")
-    public String getShipMethodName() {
+    @javax.annotation.Nullable public String getShipMethodName() {
         return shipMethodName;
     }
 
@@ -127,9 +146,7 @@ public class LabelData {
      *
      * @return content
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "This field will contain the Base64 string of the shipment label content.")
+    @javax.annotation.Nonnull
     public String getContent() {
         return content;
     }
@@ -139,7 +156,7 @@ public class LabelData {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -179,10 +196,144 @@ public class LabelData {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("packageIdentifier");
+        openapiFields.add("trackingNumber");
+        openapiFields.add("shipMethod");
+        openapiFields.add("shipMethodName");
+        openapiFields.add("content");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("content");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LabelData
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LabelData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LabelData is not found in the empty JSON string",
+                        LabelData.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LabelData.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LabelData` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LabelData.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("packageIdentifier") != null
+                        && !jsonObj.get("packageIdentifier").isJsonNull())
+                && !jsonObj.get("packageIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("packageIdentifier").toString()));
+        }
+        if ((jsonObj.get("trackingNumber") != null
+                        && !jsonObj.get("trackingNumber").isJsonNull())
+                && !jsonObj.get("trackingNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `trackingNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("trackingNumber").toString()));
+        }
+        if ((jsonObj.get("shipMethod") != null && !jsonObj.get("shipMethod").isJsonNull())
+                && !jsonObj.get("shipMethod").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipMethod` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipMethod").toString()));
+        }
+        if ((jsonObj.get("shipMethodName") != null
+                        && !jsonObj.get("shipMethodName").isJsonNull())
+                && !jsonObj.get("shipMethodName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipMethodName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipMethodName").toString()));
+        }
+        if (!jsonObj.get("content").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `content` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("content").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LabelData.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LabelData' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LabelData> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(LabelData.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LabelData>() {
+                        @Override
+                        public void write(JsonWriter out, LabelData value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LabelData read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LabelData given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LabelData
+     * @throws IOException if the JSON string is invalid with respect to LabelData
+     */
+    public static LabelData fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LabelData.class);
+    }
+
+    /**
+     * Convert an instance of LabelData to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

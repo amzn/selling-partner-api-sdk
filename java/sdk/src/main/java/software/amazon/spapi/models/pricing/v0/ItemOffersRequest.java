@@ -12,30 +12,59 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** List of request parameters can be accepted by &#x60;ItemOffersRequests&#x60; operation */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "List of request parameters can be accepted by `ItemOffersRequests` operation")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemOffersRequest {
-    @SerializedName("uri")
-    private String uri = null;
+    public static final String SERIALIZED_NAME_URI = "uri";
 
-    @SerializedName("method")
-    private HttpMethod method = null;
+    @SerializedName(SERIALIZED_NAME_URI)
+    private String uri;
 
-    @SerializedName("headers")
-    private HttpRequestHeaders headers = null;
+    public static final String SERIALIZED_NAME_METHOD = "method";
 
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    @SerializedName(SERIALIZED_NAME_METHOD)
+    private HttpMethod method;
 
-    @SerializedName("ItemCondition")
-    private ItemCondition itemCondition = null;
+    public static final String SERIALIZED_NAME_HEADERS = "headers";
 
-    @SerializedName("CustomerType")
-    private CustomerType customerType = null;
+    @SerializedName(SERIALIZED_NAME_HEADERS)
+    private HttpRequestHeaders headers = new HashMap<>();
+
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
+
+    public static final String SERIALIZED_NAME_ITEM_CONDITION = "ItemCondition";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_CONDITION)
+    private ItemCondition itemCondition;
+
+    public static final String SERIALIZED_NAME_CUSTOMER_TYPE = "CustomerType";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_TYPE)
+    private CustomerType customerType;
+
+    public ItemOffersRequest() {}
 
     public ItemOffersRequest uri(String uri) {
         this.uri = uri;
@@ -51,10 +80,7 @@ public class ItemOffersRequest {
      *
      * @return uri
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`")
+    @javax.annotation.Nonnull
     public String getUri() {
         return uri;
     }
@@ -73,7 +99,7 @@ public class ItemOffersRequest {
      *
      * @return method
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public HttpMethod getMethod() {
         return method;
     }
@@ -92,8 +118,7 @@ public class ItemOffersRequest {
      *
      * @return headers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public HttpRequestHeaders getHeaders() {
+    @javax.annotation.Nullable public HttpRequestHeaders getHeaders() {
         return headers;
     }
 
@@ -111,9 +136,7 @@ public class ItemOffersRequest {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
+    @javax.annotation.Nonnull
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -132,7 +155,7 @@ public class ItemOffersRequest {
      *
      * @return itemCondition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -151,8 +174,7 @@ public class ItemOffersRequest {
      *
      * @return customerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public CustomerType getCustomerType() {
+    @javax.annotation.Nullable public CustomerType getCustomerType() {
         return customerType;
     }
 
@@ -161,7 +183,7 @@ public class ItemOffersRequest {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -197,10 +219,135 @@ public class ItemOffersRequest {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("uri");
+        openapiFields.add("method");
+        openapiFields.add("headers");
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("ItemCondition");
+        openapiFields.add("CustomerType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("uri");
+        openapiRequiredFields.add("method");
+        openapiRequiredFields.add("MarketplaceId");
+        openapiRequiredFields.add("ItemCondition");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemOffersRequest
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemOffersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemOffersRequest is not found in the empty JSON string",
+                        ItemOffersRequest.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemOffersRequest.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemOffersRequest` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemOffersRequest.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("uri").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `uri` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("uri").toString()));
+        }
+        // validate the required field `method`
+        HttpMethod.validateJsonElement(jsonObj.get("method"));
+        if (!jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        // validate the required field `ItemCondition`
+        ItemCondition.validateJsonElement(jsonObj.get("ItemCondition"));
+        // validate the optional field `CustomerType`
+        if (jsonObj.get("CustomerType") != null && !jsonObj.get("CustomerType").isJsonNull()) {
+            CustomerType.validateJsonElement(jsonObj.get("CustomerType"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemOffersRequest.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemOffersRequest' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemOffersRequest> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemOffersRequest.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemOffersRequest>() {
+                        @Override
+                        public void write(JsonWriter out, ItemOffersRequest value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemOffersRequest read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemOffersRequest given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemOffersRequest
+     * @throws IOException if the JSON string is invalid with respect to ItemOffersRequest
+     */
+    public static ItemOffersRequest fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemOffersRequest.class);
+    }
+
+    /**
+     * Convert an instance of ItemOffersRequest to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

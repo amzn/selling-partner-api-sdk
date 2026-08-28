@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60; */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Common schema that present in `ItemOffersResponse` and `ListingOffersResponse`")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BatchOffersResponse {
-    @SerializedName("headers")
-    private HttpResponseHeaders headers = null;
+    public static final String SERIALIZED_NAME_HEADERS = "headers";
 
-    @SerializedName("status")
-    private GetOffersHttpStatusLine status = null;
+    @SerializedName(SERIALIZED_NAME_HEADERS)
+    private HttpResponseHeaders headers;
 
-    @SerializedName("body")
-    private GetOffersResponse body = null;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private GetOffersHttpStatusLine status;
+
+    public static final String SERIALIZED_NAME_BODY = "body";
+
+    @SerializedName(SERIALIZED_NAME_BODY)
+    private GetOffersResponse body;
+
+    public BatchOffersResponse() {}
 
     public BatchOffersResponse headers(HttpResponseHeaders headers) {
         this.headers = headers;
@@ -38,8 +60,7 @@ public class BatchOffersResponse {
      *
      * @return headers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public HttpResponseHeaders getHeaders() {
+    @javax.annotation.Nullable public HttpResponseHeaders getHeaders() {
         return headers;
     }
 
@@ -57,8 +78,7 @@ public class BatchOffersResponse {
      *
      * @return status
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public GetOffersHttpStatusLine getStatus() {
+    @javax.annotation.Nullable public GetOffersHttpStatusLine getStatus() {
         return status;
     }
 
@@ -76,7 +96,7 @@ public class BatchOffersResponse {
      *
      * @return body
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public GetOffersResponse getBody() {
         return body;
     }
@@ -86,7 +106,7 @@ public class BatchOffersResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +136,117 @@ public class BatchOffersResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headers");
+        openapiFields.add("status");
+        openapiFields.add("body");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("body");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BatchOffersResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BatchOffersResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BatchOffersResponse is not found in the empty JSON string",
+                        BatchOffersResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BatchOffersResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BatchOffersResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BatchOffersResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `status`
+        if (jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) {
+            GetOffersHttpStatusLine.validateJsonElement(jsonObj.get("status"));
+        }
+        // validate the required field `body`
+        GetOffersResponse.validateJsonElement(jsonObj.get("body"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BatchOffersResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BatchOffersResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BatchOffersResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BatchOffersResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BatchOffersResponse>() {
+                        @Override
+                        public void write(JsonWriter out, BatchOffersResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BatchOffersResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BatchOffersResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BatchOffersResponse
+     * @throws IOException if the JSON string is invalid with respect to BatchOffersResponse
+     */
+    public static BatchOffersResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BatchOffersResponse.class);
+    }
+
+    /**
+     * Convert an instance of BatchOffersResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

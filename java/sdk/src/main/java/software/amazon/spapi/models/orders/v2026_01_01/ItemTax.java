@@ -12,19 +12,41 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Tax information for an order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Tax information for an order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemTax {
-    @SerializedName("taxCalculationBreakdowns")
-    private List<ItemTaxCalculationBreakdown> taxCalculationBreakdowns = null;
+    public static final String SERIALIZED_NAME_TAX_CALCULATION_BREAKDOWNS = "taxCalculationBreakdowns";
 
-    @SerializedName("taxCollections")
-    private List<ItemTaxCollection> taxCollections = null;
+    @SerializedName(SERIALIZED_NAME_TAX_CALCULATION_BREAKDOWNS)
+    private List<ItemTaxCalculationBreakdown> taxCalculationBreakdowns = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TAX_COLLECTIONS = "taxCollections";
+
+    @SerializedName(SERIALIZED_NAME_TAX_COLLECTIONS)
+    private List<ItemTaxCollection> taxCollections = new ArrayList<>();
+
+    public ItemTax() {}
 
     public ItemTax taxCalculationBreakdowns(List<ItemTaxCalculationBreakdown> taxCalculationBreakdowns) {
         this.taxCalculationBreakdowns = taxCalculationBreakdowns;
@@ -44,9 +66,7 @@ public class ItemTax {
      *
      * @return taxCalculationBreakdowns
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "A list of tax calculation breakdowns for the order item.")
-    public List<ItemTaxCalculationBreakdown> getTaxCalculationBreakdowns() {
+    @javax.annotation.Nullable public List<ItemTaxCalculationBreakdown> getTaxCalculationBreakdowns() {
         return taxCalculationBreakdowns;
     }
 
@@ -72,8 +92,7 @@ public class ItemTax {
      *
      * @return taxCollections
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of tax collections for the order item.")
-    public List<ItemTaxCollection> getTaxCollections() {
+    @javax.annotation.Nullable public List<ItemTaxCollection> getTaxCollections() {
         return taxCollections;
     }
 
@@ -82,7 +101,7 @@ public class ItemTax {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -114,10 +133,135 @@ public class ItemTax {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("taxCalculationBreakdowns");
+        openapiFields.add("taxCollections");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemTax
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemTax.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemTax is not found in the empty JSON string",
+                        ItemTax.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemTax.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemTax` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("taxCalculationBreakdowns") != null
+                && !jsonObj.get("taxCalculationBreakdowns").isJsonNull()) {
+            JsonArray jsonArraytaxCalculationBreakdowns = jsonObj.getAsJsonArray("taxCalculationBreakdowns");
+            if (jsonArraytaxCalculationBreakdowns != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxCalculationBreakdowns").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxCalculationBreakdowns` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxCalculationBreakdowns").toString()));
+                }
+
+                // validate the optional field `taxCalculationBreakdowns` (array)
+                for (int i = 0; i < jsonArraytaxCalculationBreakdowns.size(); i++) {
+                    ItemTaxCalculationBreakdown.validateJsonElement(jsonArraytaxCalculationBreakdowns.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("taxCollections") != null
+                && !jsonObj.get("taxCollections").isJsonNull()) {
+            JsonArray jsonArraytaxCollections = jsonObj.getAsJsonArray("taxCollections");
+            if (jsonArraytaxCollections != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxCollections").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxCollections` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxCollections").toString()));
+                }
+
+                // validate the optional field `taxCollections` (array)
+                for (int i = 0; i < jsonArraytaxCollections.size(); i++) {
+                    ItemTaxCollection.validateJsonElement(jsonArraytaxCollections.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemTax.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemTax' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemTax> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(ItemTax.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemTax>() {
+                        @Override
+                        public void write(JsonWriter out, ItemTax value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemTax read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemTax given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemTax
+     * @throws IOException if the JSON string is invalid with respect to ItemTax
+     */
+    public static ItemTax fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemTax.class);
+    }
+
+    /**
+     * Convert an instance of ItemTax to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

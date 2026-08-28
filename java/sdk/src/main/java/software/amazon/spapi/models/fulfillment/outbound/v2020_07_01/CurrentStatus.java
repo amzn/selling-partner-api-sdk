@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,58 +22,40 @@ import java.io.IOException;
 /** The current delivery status of the package. */
 @JsonAdapter(CurrentStatus.Adapter.class)
 public enum CurrentStatus {
-    @SerializedName("IN_TRANSIT")
     IN_TRANSIT("IN_TRANSIT"),
 
-    @SerializedName("DELIVERED")
     DELIVERED("DELIVERED"),
 
-    @SerializedName("RETURNING")
     RETURNING("RETURNING"),
 
-    @SerializedName("RETURNED")
     RETURNED("RETURNED"),
 
-    @SerializedName("UNDELIVERABLE")
     UNDELIVERABLE("UNDELIVERABLE"),
 
-    @SerializedName("DELAYED")
     DELAYED("DELAYED"),
 
-    @SerializedName("AVAILABLE_FOR_PICKUP")
     AVAILABLE_FOR_PICKUP("AVAILABLE_FOR_PICKUP"),
 
-    @SerializedName("CUSTOMER_ACTION")
     CUSTOMER_ACTION("CUSTOMER_ACTION"),
 
-    @SerializedName("UNKNOWN")
     UNKNOWN("UNKNOWN"),
 
-    @SerializedName("OUT_FOR_DELIVERY")
     OUT_FOR_DELIVERY("OUT_FOR_DELIVERY"),
 
-    @SerializedName("DELIVERY_ATTEMPTED")
     DELIVERY_ATTEMPTED("DELIVERY_ATTEMPTED"),
 
-    @SerializedName("PICKUP_SUCCESSFUL")
     PICKUP_SUCCESSFUL("PICKUP_SUCCESSFUL"),
 
-    @SerializedName("PICKUP_CANCELLED")
     PICKUP_CANCELLED("PICKUP_CANCELLED"),
 
-    @SerializedName("PICKUP_ATTEMPTED")
     PICKUP_ATTEMPTED("PICKUP_ATTEMPTED"),
 
-    @SerializedName("PICKUP_SCHEDULED")
     PICKUP_SCHEDULED("PICKUP_SCHEDULED"),
 
-    @SerializedName("RETURN_REQUEST_ACCEPTED")
     RETURN_REQUEST_ACCEPTED("RETURN_REQUEST_ACCEPTED"),
 
-    @SerializedName("REFUND_ISSUED")
     REFUND_ISSUED("REFUND_ISSUED"),
 
-    @SerializedName("RETURN_RECEIVED_IN_FC")
     RETURN_RECEIVED_IN_FC("RETURN_RECEIVED_IN_FC");
 
     private String value;
@@ -91,25 +73,30 @@ public enum CurrentStatus {
         return String.valueOf(value);
     }
 
-    public static CurrentStatus fromValue(String input) {
+    public static CurrentStatus fromValue(String value) {
         for (CurrentStatus b : CurrentStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<CurrentStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final CurrentStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public CurrentStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return CurrentStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return CurrentStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        CurrentStatus.fromValue(value);
     }
 }

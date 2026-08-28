@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information related to Amazon Pay. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information related to Amazon Pay.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AmazonPayContext {
-    @SerializedName("storeName")
-    private String storeName = null;
+    public static final String SERIALIZED_NAME_STORE_NAME = "storeName";
 
-    @SerializedName("orderType")
-    private String orderType = null;
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private String storeName;
 
-    @SerializedName("channel")
-    private String channel = null;
+    public static final String SERIALIZED_NAME_ORDER_TYPE = "orderType";
+
+    @SerializedName(SERIALIZED_NAME_ORDER_TYPE)
+    private String orderType;
+
+    public static final String SERIALIZED_NAME_CHANNEL = "channel";
+
+    @SerializedName(SERIALIZED_NAME_CHANNEL)
+    private String channel;
+
+    public AmazonPayContext() {}
 
     public AmazonPayContext storeName(String storeName) {
         this.storeName = storeName;
@@ -37,9 +60,7 @@ public class AmazonPayContext {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The name of the store that is related to the transaction.")
-    public String getStoreName() {
+    @javax.annotation.Nullable public String getStoreName() {
         return storeName;
     }
 
@@ -57,8 +78,7 @@ public class AmazonPayContext {
      *
      * @return orderType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The order type of the transaction.")
-    public String getOrderType() {
+    @javax.annotation.Nullable public String getOrderType() {
         return orderType;
     }
 
@@ -76,8 +96,7 @@ public class AmazonPayContext {
      *
      * @return channel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The channel of the transaction. For example: `MFN`.")
-    public String getChannel() {
+    @javax.annotation.Nullable public String getChannel() {
         return channel;
     }
 
@@ -86,7 +105,7 @@ public class AmazonPayContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +135,119 @@ public class AmazonPayContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("storeName");
+        openapiFields.add("orderType");
+        openapiFields.add("channel");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AmazonPayContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AmazonPayContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AmazonPayContext is not found in the empty JSON string",
+                        AmazonPayContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AmazonPayContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AmazonPayContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("storeName") != null && !jsonObj.get("storeName").isJsonNull())
+                && !jsonObj.get("storeName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `storeName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("storeName").toString()));
+        }
+        if ((jsonObj.get("orderType") != null && !jsonObj.get("orderType").isJsonNull())
+                && !jsonObj.get("orderType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("orderType").toString()));
+        }
+        if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull())
+                && !jsonObj.get("channel").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `channel` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("channel").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AmazonPayContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AmazonPayContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AmazonPayContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AmazonPayContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AmazonPayContext>() {
+                        @Override
+                        public void write(JsonWriter out, AmazonPayContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AmazonPayContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AmazonPayContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AmazonPayContext
+     * @throws IOException if the JSON string is invalid with respect to AmazonPayContext
+     */
+    public static AmazonPayContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AmazonPayContext.class);
+    }
+
+    /**
+     * Convert an instance of AmazonPayContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

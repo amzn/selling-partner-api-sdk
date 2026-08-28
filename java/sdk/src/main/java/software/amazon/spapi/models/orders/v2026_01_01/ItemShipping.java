@@ -12,21 +12,43 @@
 
 package software.amazon.spapi.models.orders.v2026_01_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information related to the shipping and delivery process for an order item. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "Information related to the shipping and delivery process for an order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemShipping {
-    @SerializedName("scheduledDeliveryWindow")
-    private DateTimeRange scheduledDeliveryWindow = null;
+    public static final String SERIALIZED_NAME_SCHEDULED_DELIVERY_WINDOW = "scheduledDeliveryWindow";
 
-    @SerializedName("shippingConstraints")
-    private ItemShippingConstraints shippingConstraints = null;
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DELIVERY_WINDOW)
+    private DateTimeRange scheduledDeliveryWindow;
 
-    @SerializedName("internationalShipping")
-    private ItemInternationalShipping internationalShipping = null;
+    public static final String SERIALIZED_NAME_SHIPPING_CONSTRAINTS = "shippingConstraints";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_CONSTRAINTS)
+    private ItemShippingConstraints shippingConstraints;
+
+    public static final String SERIALIZED_NAME_INTERNATIONAL_SHIPPING = "internationalShipping";
+
+    @SerializedName(SERIALIZED_NAME_INTERNATIONAL_SHIPPING)
+    private ItemInternationalShipping internationalShipping;
+
+    public ItemShipping() {}
 
     public ItemShipping scheduledDeliveryWindow(DateTimeRange scheduledDeliveryWindow) {
         this.scheduledDeliveryWindow = scheduledDeliveryWindow;
@@ -38,8 +60,7 @@ public class ItemShipping {
      *
      * @return scheduledDeliveryWindow
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public DateTimeRange getScheduledDeliveryWindow() {
+    @javax.annotation.Nullable public DateTimeRange getScheduledDeliveryWindow() {
         return scheduledDeliveryWindow;
     }
 
@@ -57,8 +78,7 @@ public class ItemShipping {
      *
      * @return shippingConstraints
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemShippingConstraints getShippingConstraints() {
+    @javax.annotation.Nullable public ItemShippingConstraints getShippingConstraints() {
         return shippingConstraints;
     }
 
@@ -76,8 +96,7 @@ public class ItemShipping {
      *
      * @return internationalShipping
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemInternationalShipping getInternationalShipping() {
+    @javax.annotation.Nullable public ItemInternationalShipping getInternationalShipping() {
         return internationalShipping;
     }
 
@@ -86,7 +105,7 @@ public class ItemShipping {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -122,10 +141,116 @@ public class ItemShipping {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("scheduledDeliveryWindow");
+        openapiFields.add("shippingConstraints");
+        openapiFields.add("internationalShipping");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemShipping
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemShipping.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemShipping is not found in the empty JSON string",
+                        ItemShipping.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemShipping.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemShipping` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `scheduledDeliveryWindow`
+        if (jsonObj.get("scheduledDeliveryWindow") != null
+                && !jsonObj.get("scheduledDeliveryWindow").isJsonNull()) {
+            DateTimeRange.validateJsonElement(jsonObj.get("scheduledDeliveryWindow"));
+        }
+        // validate the optional field `shippingConstraints`
+        if (jsonObj.get("shippingConstraints") != null
+                && !jsonObj.get("shippingConstraints").isJsonNull()) {
+            ItemShippingConstraints.validateJsonElement(jsonObj.get("shippingConstraints"));
+        }
+        // validate the optional field `internationalShipping`
+        if (jsonObj.get("internationalShipping") != null
+                && !jsonObj.get("internationalShipping").isJsonNull()) {
+            ItemInternationalShipping.validateJsonElement(jsonObj.get("internationalShipping"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemShipping.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemShipping' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemShipping> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemShipping.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemShipping>() {
+                        @Override
+                        public void write(JsonWriter out, ItemShipping value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemShipping read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemShipping given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemShipping
+     * @throws IOException if the JSON string is invalid with respect to ItemShipping
+     */
+    public static ItemShipping fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemShipping.class);
+    }
+
+    /**
+     * Convert an instance of ItemShipping to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

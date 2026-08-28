@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Buyer segment or program this offer is applicable to. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Buyer segment or program this offer is applicable to.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class Audience {
-    @SerializedName("value")
-    private String value = null;
+    public static final String SERIALIZED_NAME_VALUE = "value";
 
-    @SerializedName("displayName")
-    private String displayName = null;
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
+
+    public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+
+    @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+    private String displayName;
+
+    public Audience() {}
 
     public Audience value(String value) {
         this.value = value;
@@ -35,10 +56,7 @@ public class Audience {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.")
-    public String getValue() {
+    @javax.annotation.Nullable public String getValue() {
         return value;
     }
 
@@ -56,8 +74,7 @@ public class Audience {
      *
      * @return displayName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Localized display name for the audience.")
-    public String getDisplayName() {
+    @javax.annotation.Nullable public String getDisplayName() {
         return displayName;
     }
 
@@ -66,7 +83,7 @@ public class Audience {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -93,10 +110,111 @@ public class Audience {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("value");
+        openapiFields.add("displayName");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to Audience
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!Audience.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in Audience is not found in the empty JSON string",
+                        Audience.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!Audience.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `Audience` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull())
+                && !jsonObj.get("value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("value").toString()));
+        }
+        if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull())
+                && !jsonObj.get("displayName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `displayName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("displayName").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Audience.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'Audience' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<Audience> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(Audience.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<Audience>() {
+                        @Override
+                        public void write(JsonWriter out, Audience value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public Audience read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of Audience given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of Audience
+     * @throws IOException if the JSON string is invalid with respect to Audience
+     */
+    public static Audience fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, Audience.class);
+    }
+
+    /**
+     * Convert an instance of Audience to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

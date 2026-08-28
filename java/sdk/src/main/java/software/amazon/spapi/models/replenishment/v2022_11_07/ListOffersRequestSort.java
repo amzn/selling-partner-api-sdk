@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Use these parameters to sort the response. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Use these parameters to sort the response.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ListOffersRequestSort {
-    @SerializedName("order")
-    private SortOrder order = null;
+    public static final String SERIALIZED_NAME_ORDER = "order";
 
-    @SerializedName("key")
-    private ListOffersSortKey key = null;
+    @SerializedName(SERIALIZED_NAME_ORDER)
+    private SortOrder order;
+
+    public static final String SERIALIZED_NAME_KEY = "key";
+
+    @SerializedName(SERIALIZED_NAME_KEY)
+    private ListOffersSortKey key;
+
+    public ListOffersRequestSort() {}
 
     public ListOffersRequestSort order(SortOrder order) {
         this.order = order;
@@ -34,7 +55,7 @@ public class ListOffersRequestSort {
      *
      * @return order
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public SortOrder getOrder() {
         return order;
     }
@@ -53,7 +74,7 @@ public class ListOffersRequestSort {
      *
      * @return key
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ListOffersSortKey getKey() {
         return key;
     }
@@ -63,7 +84,7 @@ public class ListOffersRequestSort {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +112,116 @@ public class ListOffersRequestSort {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("order");
+        openapiFields.add("key");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("order");
+        openapiRequiredFields.add("key");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ListOffersRequestSort
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ListOffersRequestSort.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ListOffersRequestSort is not found in the empty JSON string",
+                        ListOffersRequestSort.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ListOffersRequestSort.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ListOffersRequestSort` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ListOffersRequestSort.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the required field `order`
+        SortOrder.validateJsonElement(jsonObj.get("order"));
+        // validate the required field `key`
+        ListOffersSortKey.validateJsonElement(jsonObj.get("key"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ListOffersRequestSort.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ListOffersRequestSort' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ListOffersRequestSort> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ListOffersRequestSort.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ListOffersRequestSort>() {
+                        @Override
+                        public void write(JsonWriter out, ListOffersRequestSort value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ListOffersRequestSort read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ListOffersRequestSort given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ListOffersRequestSort
+     * @throws IOException if the JSON string is invalid with respect to ListOffersRequestSort
+     */
+    public static ListOffersRequestSort fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ListOffersRequestSort.class);
+    }
+
+    /**
+     * Convert an instance of ListOffersRequestSort to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

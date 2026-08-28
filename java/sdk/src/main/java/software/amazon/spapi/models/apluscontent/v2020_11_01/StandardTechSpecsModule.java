@@ -12,23 +12,46 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The standard table of technical feature names and definitions. */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description = "The standard table of technical feature names and definitions.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardTechSpecsModule {
-    @SerializedName("headline")
-    private TextComponent headline = null;
+    public static final String SERIALIZED_NAME_HEADLINE = "headline";
 
-    @SerializedName("specificationList")
-    private List<StandardTextPairBlock> specificationList = null;
+    @SerializedName(SERIALIZED_NAME_HEADLINE)
+    private TextComponent headline;
 
-    @SerializedName("tableCount")
-    private Integer tableCount = null;
+    public static final String SERIALIZED_NAME_SPECIFICATION_LIST = "specificationList";
+
+    @SerializedName(SERIALIZED_NAME_SPECIFICATION_LIST)
+    private List<StandardTextPairBlock> specificationList = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_TABLE_COUNT = "tableCount";
+
+    @SerializedName(SERIALIZED_NAME_TABLE_COUNT)
+    private Integer tableCount;
+
+    public StandardTechSpecsModule() {}
 
     public StandardTechSpecsModule headline(TextComponent headline) {
         this.headline = headline;
@@ -40,8 +63,7 @@ public class StandardTechSpecsModule {
      *
      * @return headline
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getHeadline() {
+    @javax.annotation.Nullable public TextComponent getHeadline() {
         return headline;
     }
 
@@ -67,7 +89,7 @@ public class StandardTechSpecsModule {
      *
      * @return specificationList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The specification list.")
+    @javax.annotation.Nonnull
     public List<StandardTextPairBlock> getSpecificationList() {
         return specificationList;
     }
@@ -82,13 +104,11 @@ public class StandardTechSpecsModule {
     }
 
     /**
-     * The number of tables you want present. Features are evenly divided between the tables.
+     * The number of tables you want present. Features are evenly divided between the tables. minimum: 1 maximum: 2
      *
      * @return tableCount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The number of tables you want present. Features are evenly divided between the tables.")
-    public Integer getTableCount() {
+    @javax.annotation.Nullable public Integer getTableCount() {
         return tableCount;
     }
 
@@ -97,7 +117,7 @@ public class StandardTechSpecsModule {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -129,10 +149,129 @@ public class StandardTechSpecsModule {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("headline");
+        openapiFields.add("specificationList");
+        openapiFields.add("tableCount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("specificationList");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardTechSpecsModule
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardTechSpecsModule.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardTechSpecsModule is not found in the empty JSON string",
+                        StandardTechSpecsModule.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardTechSpecsModule.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardTechSpecsModule` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : StandardTechSpecsModule.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `headline`
+        if (jsonObj.get("headline") != null && !jsonObj.get("headline").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("headline"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("specificationList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `specificationList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("specificationList").toString()));
+        }
+
+        JsonArray jsonArrayspecificationList = jsonObj.getAsJsonArray("specificationList");
+        // validate the required field `specificationList` (array)
+        for (int i = 0; i < jsonArrayspecificationList.size(); i++) {
+            StandardTextPairBlock.validateJsonElement(jsonArrayspecificationList.get(i));
+        }
+        ;
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardTechSpecsModule.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardTechSpecsModule' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardTechSpecsModule> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardTechSpecsModule.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardTechSpecsModule>() {
+                        @Override
+                        public void write(JsonWriter out, StandardTechSpecsModule value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardTechSpecsModule read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardTechSpecsModule given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardTechSpecsModule
+     * @throws IOException if the JSON string is invalid with respect to StandardTechSpecsModule
+     */
+    public static StandardTechSpecsModule fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardTechSpecsModule.class);
+    }
+
+    /**
+     * Convert an instance of StandardTechSpecsModule to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

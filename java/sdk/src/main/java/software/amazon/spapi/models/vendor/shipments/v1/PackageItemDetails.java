@@ -12,25 +12,46 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is
  * appropriate.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PackageItemDetails {
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
 
-    @SerializedName("lotNumber")
-    private String lotNumber = null;
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
 
-    @SerializedName("expiry")
-    private Expiry expiry = null;
+    public static final String SERIALIZED_NAME_LOT_NUMBER = "lotNumber";
+
+    @SerializedName(SERIALIZED_NAME_LOT_NUMBER)
+    private String lotNumber;
+
+    public static final String SERIALIZED_NAME_EXPIRY = "expiry";
+
+    @SerializedName(SERIALIZED_NAME_EXPIRY)
+    private Expiry expiry;
+
+    public PackageItemDetails() {}
 
     public PackageItemDetails purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;
@@ -44,10 +65,7 @@ public class PackageItemDetails {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.")
-    public String getPurchaseOrderNumber() {
+    @javax.annotation.Nullable public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
 
@@ -67,10 +85,7 @@ public class PackageItemDetails {
      *
      * @return lotNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.")
-    public String getLotNumber() {
+    @javax.annotation.Nullable public String getLotNumber() {
         return lotNumber;
     }
 
@@ -88,8 +103,7 @@ public class PackageItemDetails {
      *
      * @return expiry
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Expiry getExpiry() {
+    @javax.annotation.Nullable public Expiry getExpiry() {
         return expiry;
     }
 
@@ -98,7 +112,7 @@ public class PackageItemDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -130,10 +144,118 @@ public class PackageItemDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("lotNumber");
+        openapiFields.add("expiry");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PackageItemDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PackageItemDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PackageItemDetails is not found in the empty JSON string",
+                        PackageItemDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PackageItemDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PackageItemDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("purchaseOrderNumber") != null
+                        && !jsonObj.get("purchaseOrderNumber").isJsonNull())
+                && !jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if ((jsonObj.get("lotNumber") != null && !jsonObj.get("lotNumber").isJsonNull())
+                && !jsonObj.get("lotNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lotNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lotNumber").toString()));
+        }
+        // validate the optional field `expiry`
+        if (jsonObj.get("expiry") != null && !jsonObj.get("expiry").isJsonNull()) {
+            Expiry.validateJsonElement(jsonObj.get("expiry"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PackageItemDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PackageItemDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PackageItemDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PackageItemDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PackageItemDetails>() {
+                        @Override
+                        public void write(JsonWriter out, PackageItemDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PackageItemDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PackageItemDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PackageItemDetails
+     * @throws IOException if the JSON string is invalid with respect to PackageItemDetails
+     */
+    public static PackageItemDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PackageItemDetails.class);
+    }
+
+    /**
+     * Convert an instance of PackageItemDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

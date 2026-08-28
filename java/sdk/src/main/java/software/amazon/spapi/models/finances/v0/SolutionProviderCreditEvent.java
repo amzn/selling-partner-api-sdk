@@ -12,42 +12,79 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A credit given to a solution provider. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A credit given to a solution provider.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class SolutionProviderCreditEvent {
-    @SerializedName("ProviderTransactionType")
-    private String providerTransactionType = null;
+    public static final String SERIALIZED_NAME_PROVIDER_TRANSACTION_TYPE = "ProviderTransactionType";
 
-    @SerializedName("SellerOrderId")
-    private String sellerOrderId = null;
+    @SerializedName(SERIALIZED_NAME_PROVIDER_TRANSACTION_TYPE)
+    private String providerTransactionType;
 
-    @SerializedName("MarketplaceId")
-    private String marketplaceId = null;
+    public static final String SERIALIZED_NAME_SELLER_ORDER_ID = "SellerOrderId";
 
-    @SerializedName("MarketplaceCountryCode")
-    private String marketplaceCountryCode = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ORDER_ID)
+    private String sellerOrderId;
 
-    @SerializedName("SellerId")
-    private String sellerId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
-    @SerializedName("SellerStoreName")
-    private String sellerStoreName = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_ID)
+    private String marketplaceId;
 
-    @SerializedName("ProviderId")
-    private String providerId = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_COUNTRY_CODE = "MarketplaceCountryCode";
 
-    @SerializedName("ProviderStoreName")
-    private String providerStoreName = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_COUNTRY_CODE)
+    private String marketplaceCountryCode;
 
-    @SerializedName("TransactionAmount")
-    private Currency transactionAmount = null;
+    public static final String SERIALIZED_NAME_SELLER_ID = "SellerId";
 
-    @SerializedName("TransactionCreationDate")
-    private OffsetDateTime transactionCreationDate = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
+
+    public static final String SERIALIZED_NAME_SELLER_STORE_NAME = "SellerStoreName";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_STORE_NAME)
+    private String sellerStoreName;
+
+    public static final String SERIALIZED_NAME_PROVIDER_ID = "ProviderId";
+
+    @SerializedName(SERIALIZED_NAME_PROVIDER_ID)
+    private String providerId;
+
+    public static final String SERIALIZED_NAME_PROVIDER_STORE_NAME = "ProviderStoreName";
+
+    @SerializedName(SERIALIZED_NAME_PROVIDER_STORE_NAME)
+    private String providerStoreName;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_AMOUNT = "TransactionAmount";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_AMOUNT)
+    private Currency transactionAmount;
+
+    public static final String SERIALIZED_NAME_TRANSACTION_CREATION_DATE = "TransactionCreationDate";
+
+    @SerializedName(SERIALIZED_NAME_TRANSACTION_CREATION_DATE)
+    private OffsetDateTime transactionCreationDate;
+
+    public SolutionProviderCreditEvent() {}
 
     public SolutionProviderCreditEvent providerTransactionType(String providerTransactionType) {
         this.providerTransactionType = providerTransactionType;
@@ -59,8 +96,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerTransactionType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction type.")
-    public String getProviderTransactionType() {
+    @javax.annotation.Nullable public String getProviderTransactionType() {
         return providerTransactionType;
     }
 
@@ -78,8 +114,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined identifier for an order.")
-    public String getSellerOrderId() {
+    @javax.annotation.Nullable public String getSellerOrderId() {
         return sellerOrderId;
     }
 
@@ -97,9 +132,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return marketplaceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The identifier of the marketplace where the order was placed.")
-    public String getMarketplaceId() {
+    @javax.annotation.Nullable public String getMarketplaceId() {
         return marketplaceId;
     }
 
@@ -117,10 +150,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return marketplaceCountryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The two-letter country code of the country associated with the marketplace where the order was placed.")
-    public String getMarketplaceCountryCode() {
+    @javax.annotation.Nullable public String getMarketplaceCountryCode() {
         return marketplaceCountryCode;
     }
 
@@ -138,8 +168,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier of the seller.")
-    public String getSellerId() {
+    @javax.annotation.Nullable public String getSellerId() {
         return sellerId;
     }
 
@@ -157,8 +186,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerStoreName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name where the payment event occurred.")
-    public String getSellerStoreName() {
+    @javax.annotation.Nullable public String getSellerStoreName() {
         return sellerStoreName;
     }
 
@@ -176,8 +204,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier of the solution provider.")
-    public String getProviderId() {
+    @javax.annotation.Nullable public String getProviderId() {
         return providerId;
     }
 
@@ -195,8 +222,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerStoreName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name where the payment event occurred.")
-    public String getProviderStoreName() {
+    @javax.annotation.Nullable public String getProviderStoreName() {
         return providerStoreName;
     }
 
@@ -214,8 +240,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return transactionAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getTransactionAmount() {
+    @javax.annotation.Nullable public Currency getTransactionAmount() {
         return transactionAmount;
     }
 
@@ -233,10 +258,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return transactionCreationDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getTransactionCreationDate() {
+    @javax.annotation.Nullable public OffsetDateTime getTransactionCreationDate() {
         return transactionCreationDate;
     }
 
@@ -245,7 +267,7 @@ public class SolutionProviderCreditEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -311,10 +333,168 @@ public class SolutionProviderCreditEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ProviderTransactionType");
+        openapiFields.add("SellerOrderId");
+        openapiFields.add("MarketplaceId");
+        openapiFields.add("MarketplaceCountryCode");
+        openapiFields.add("SellerId");
+        openapiFields.add("SellerStoreName");
+        openapiFields.add("ProviderId");
+        openapiFields.add("ProviderStoreName");
+        openapiFields.add("TransactionAmount");
+        openapiFields.add("TransactionCreationDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to SolutionProviderCreditEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!SolutionProviderCreditEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in SolutionProviderCreditEvent is not found in the empty JSON string",
+                        SolutionProviderCreditEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!SolutionProviderCreditEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `SolutionProviderCreditEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("ProviderTransactionType") != null
+                        && !jsonObj.get("ProviderTransactionType").isJsonNull())
+                && !jsonObj.get("ProviderTransactionType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ProviderTransactionType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ProviderTransactionType").toString()));
+        }
+        if ((jsonObj.get("SellerOrderId") != null
+                        && !jsonObj.get("SellerOrderId").isJsonNull())
+                && !jsonObj.get("SellerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerOrderId").toString()));
+        }
+        if ((jsonObj.get("MarketplaceId") != null
+                        && !jsonObj.get("MarketplaceId").isJsonNull())
+                && !jsonObj.get("MarketplaceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceId").toString()));
+        }
+        if ((jsonObj.get("MarketplaceCountryCode") != null
+                        && !jsonObj.get("MarketplaceCountryCode").isJsonNull())
+                && !jsonObj.get("MarketplaceCountryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `MarketplaceCountryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("MarketplaceCountryCode").toString()));
+        }
+        if ((jsonObj.get("SellerId") != null && !jsonObj.get("SellerId").isJsonNull())
+                && !jsonObj.get("SellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerId").toString()));
+        }
+        if ((jsonObj.get("SellerStoreName") != null
+                        && !jsonObj.get("SellerStoreName").isJsonNull())
+                && !jsonObj.get("SellerStoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerStoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerStoreName").toString()));
+        }
+        if ((jsonObj.get("ProviderId") != null && !jsonObj.get("ProviderId").isJsonNull())
+                && !jsonObj.get("ProviderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ProviderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ProviderId").toString()));
+        }
+        if ((jsonObj.get("ProviderStoreName") != null
+                        && !jsonObj.get("ProviderStoreName").isJsonNull())
+                && !jsonObj.get("ProviderStoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ProviderStoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ProviderStoreName").toString()));
+        }
+        // validate the optional field `TransactionAmount`
+        if (jsonObj.get("TransactionAmount") != null
+                && !jsonObj.get("TransactionAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("TransactionAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!SolutionProviderCreditEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'SolutionProviderCreditEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<SolutionProviderCreditEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(SolutionProviderCreditEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<SolutionProviderCreditEvent>() {
+                        @Override
+                        public void write(JsonWriter out, SolutionProviderCreditEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public SolutionProviderCreditEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of SolutionProviderCreditEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of SolutionProviderCreditEvent
+     * @throws IOException if the JSON string is invalid with respect to SolutionProviderCreditEvent
+     */
+    public static SolutionProviderCreditEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, SolutionProviderCreditEvent.class);
+    }
+
+    /**
+     * Convert an instance of SolutionProviderCreditEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

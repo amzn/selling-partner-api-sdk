@@ -12,114 +12,190 @@
 
 package software.amazon.spapi.models.orders.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A single order item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A single order item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class OrderItem {
-    @SerializedName("ASIN")
-    private String ASIN = null;
+    public static final String SERIALIZED_NAME_A_S_I_N = "ASIN";
 
-    @SerializedName("SellerSKU")
-    private String sellerSKU = null;
+    @SerializedName(SERIALIZED_NAME_A_S_I_N)
+    private String ASIN;
 
-    @SerializedName("OrderItemId")
-    private String orderItemId = null;
+    public static final String SERIALIZED_NAME_SELLER_S_K_U = "SellerSKU";
 
-    @SerializedName("AssociatedItems")
-    private List<AssociatedItem> associatedItems = null;
+    @SerializedName(SERIALIZED_NAME_SELLER_S_K_U)
+    private String sellerSKU;
 
-    @SerializedName("Title")
-    private String title = null;
+    public static final String SERIALIZED_NAME_ORDER_ITEM_ID = "OrderItemId";
 
-    @SerializedName("QuantityOrdered")
-    private Integer quantityOrdered = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ITEM_ID)
+    private String orderItemId;
 
-    @SerializedName("QuantityShipped")
-    private Integer quantityShipped = null;
+    public static final String SERIALIZED_NAME_ASSOCIATED_ITEMS = "AssociatedItems";
 
-    @SerializedName("ProductInfo")
-    private ProductInfoDetail productInfo = null;
+    @SerializedName(SERIALIZED_NAME_ASSOCIATED_ITEMS)
+    private List<AssociatedItem> associatedItems = new ArrayList<>();
 
-    @SerializedName("PointsGranted")
-    private PointsGrantedDetail pointsGranted = null;
+    public static final String SERIALIZED_NAME_TITLE = "Title";
 
-    @SerializedName("ItemPrice")
-    private Money itemPrice = null;
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
 
-    @SerializedName("ShippingPrice")
-    private Money shippingPrice = null;
+    public static final String SERIALIZED_NAME_QUANTITY_ORDERED = "QuantityOrdered";
 
-    @SerializedName("ItemTax")
-    private Money itemTax = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_ORDERED)
+    private Integer quantityOrdered;
 
-    @SerializedName("ShippingTax")
-    private Money shippingTax = null;
+    public static final String SERIALIZED_NAME_QUANTITY_SHIPPED = "QuantityShipped";
 
-    @SerializedName("ShippingDiscount")
-    private Money shippingDiscount = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_SHIPPED)
+    private Integer quantityShipped;
 
-    @SerializedName("ShippingDiscountTax")
-    private Money shippingDiscountTax = null;
+    public static final String SERIALIZED_NAME_PRODUCT_INFO = "ProductInfo";
 
-    @SerializedName("PromotionDiscount")
-    private Money promotionDiscount = null;
+    @SerializedName(SERIALIZED_NAME_PRODUCT_INFO)
+    private ProductInfoDetail productInfo;
 
-    @SerializedName("PromotionDiscountTax")
-    private Money promotionDiscountTax = null;
+    public static final String SERIALIZED_NAME_POINTS_GRANTED = "PointsGranted";
 
-    @SerializedName("PromotionIds")
-    private PromotionIdList promotionIds = null;
+    @SerializedName(SERIALIZED_NAME_POINTS_GRANTED)
+    private PointsGrantedDetail pointsGranted;
 
-    @SerializedName("CODFee")
-    private Money coDFee = null;
+    public static final String SERIALIZED_NAME_ITEM_PRICE = "ItemPrice";
 
-    @SerializedName("CODFeeDiscount")
-    private Money coDFeeDiscount = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_PRICE)
+    private Money itemPrice;
 
-    @SerializedName("IsGift")
-    private String isGift = null;
+    public static final String SERIALIZED_NAME_SHIPPING_PRICE = "ShippingPrice";
 
-    @SerializedName("ConditionNote")
-    private String conditionNote = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_PRICE)
+    private Money shippingPrice;
 
-    @SerializedName("ConditionId")
-    private String conditionId = null;
+    public static final String SERIALIZED_NAME_ITEM_TAX = "ItemTax";
 
-    @SerializedName("ConditionSubtypeId")
-    private String conditionSubtypeId = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_TAX)
+    private Money itemTax;
 
-    @SerializedName("ScheduledDeliveryStartDate")
-    private String scheduledDeliveryStartDate = null;
+    public static final String SERIALIZED_NAME_SHIPPING_TAX = "ShippingTax";
 
-    @SerializedName("ScheduledDeliveryEndDate")
-    private String scheduledDeliveryEndDate = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_TAX)
+    private Money shippingTax;
 
-    @SerializedName("PriceDesignation")
-    private String priceDesignation = null;
+    public static final String SERIALIZED_NAME_SHIPPING_DISCOUNT = "ShippingDiscount";
 
-    @SerializedName("TaxCollection")
-    private TaxCollection taxCollection = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_DISCOUNT)
+    private Money shippingDiscount;
 
-    @SerializedName("SerialNumberRequired")
-    private Boolean serialNumberRequired = null;
+    public static final String SERIALIZED_NAME_SHIPPING_DISCOUNT_TAX = "ShippingDiscountTax";
 
-    @SerializedName("IsTransparency")
-    private Boolean isTransparency = null;
+    @SerializedName(SERIALIZED_NAME_SHIPPING_DISCOUNT_TAX)
+    private Money shippingDiscountTax;
 
-    @SerializedName("IossNumber")
-    private String iossNumber = null;
+    public static final String SERIALIZED_NAME_PROMOTION_DISCOUNT = "PromotionDiscount";
 
-    @SerializedName("StoreChainStoreId")
-    private String storeChainStoreId = null;
+    @SerializedName(SERIALIZED_NAME_PROMOTION_DISCOUNT)
+    private Money promotionDiscount;
+
+    public static final String SERIALIZED_NAME_PROMOTION_DISCOUNT_TAX = "PromotionDiscountTax";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_DISCOUNT_TAX)
+    private Money promotionDiscountTax;
+
+    public static final String SERIALIZED_NAME_PROMOTION_IDS = "PromotionIds";
+
+    @SerializedName(SERIALIZED_NAME_PROMOTION_IDS)
+    private PromotionIdList promotionIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CO_D_FEE = "CODFee";
+
+    @SerializedName(SERIALIZED_NAME_CO_D_FEE)
+    private Money coDFee;
+
+    public static final String SERIALIZED_NAME_CO_D_FEE_DISCOUNT = "CODFeeDiscount";
+
+    @SerializedName(SERIALIZED_NAME_CO_D_FEE_DISCOUNT)
+    private Money coDFeeDiscount;
+
+    public static final String SERIALIZED_NAME_IS_GIFT = "IsGift";
+
+    @SerializedName(SERIALIZED_NAME_IS_GIFT)
+    private String isGift;
+
+    public static final String SERIALIZED_NAME_CONDITION_NOTE = "ConditionNote";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_NOTE)
+    private String conditionNote;
+
+    public static final String SERIALIZED_NAME_CONDITION_ID = "ConditionId";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_ID)
+    private String conditionId;
+
+    public static final String SERIALIZED_NAME_CONDITION_SUBTYPE_ID = "ConditionSubtypeId";
+
+    @SerializedName(SERIALIZED_NAME_CONDITION_SUBTYPE_ID)
+    private String conditionSubtypeId;
+
+    public static final String SERIALIZED_NAME_SCHEDULED_DELIVERY_START_DATE = "ScheduledDeliveryStartDate";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DELIVERY_START_DATE)
+    private String scheduledDeliveryStartDate;
+
+    public static final String SERIALIZED_NAME_SCHEDULED_DELIVERY_END_DATE = "ScheduledDeliveryEndDate";
+
+    @SerializedName(SERIALIZED_NAME_SCHEDULED_DELIVERY_END_DATE)
+    private String scheduledDeliveryEndDate;
+
+    public static final String SERIALIZED_NAME_PRICE_DESIGNATION = "PriceDesignation";
+
+    @SerializedName(SERIALIZED_NAME_PRICE_DESIGNATION)
+    private String priceDesignation;
+
+    public static final String SERIALIZED_NAME_TAX_COLLECTION = "TaxCollection";
+
+    @SerializedName(SERIALIZED_NAME_TAX_COLLECTION)
+    private TaxCollection taxCollection;
+
+    public static final String SERIALIZED_NAME_SERIAL_NUMBER_REQUIRED = "SerialNumberRequired";
+
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBER_REQUIRED)
+    private Boolean serialNumberRequired;
+
+    public static final String SERIALIZED_NAME_IS_TRANSPARENCY = "IsTransparency";
+
+    @SerializedName(SERIALIZED_NAME_IS_TRANSPARENCY)
+    private Boolean isTransparency;
+
+    public static final String SERIALIZED_NAME_IOSS_NUMBER = "IossNumber";
+
+    @SerializedName(SERIALIZED_NAME_IOSS_NUMBER)
+    private String iossNumber;
+
+    public static final String SERIALIZED_NAME_STORE_CHAIN_STORE_ID = "StoreChainStoreId";
+
+    @SerializedName(SERIALIZED_NAME_STORE_CHAIN_STORE_ID)
+    private String storeChainStoreId;
 
     /**
      * The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to
@@ -127,9 +203,8 @@ public class OrderItem {
      */
     @JsonAdapter(DeemedResellerCategoryEnum.Adapter.class)
     public enum DeemedResellerCategoryEnum {
-        @SerializedName("IOSS")
         IOSS("IOSS"),
-        @SerializedName("UOSS")
+
         UOSS("UOSS");
 
         private String value;
@@ -147,53 +222,76 @@ public class OrderItem {
             return String.valueOf(value);
         }
 
-        public static DeemedResellerCategoryEnum fromValue(String input) {
+        public static DeemedResellerCategoryEnum fromValue(String value) {
             for (DeemedResellerCategoryEnum b : DeemedResellerCategoryEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<DeemedResellerCategoryEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final DeemedResellerCategoryEnum enumeration)
                     throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public DeemedResellerCategoryEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return DeemedResellerCategoryEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return DeemedResellerCategoryEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            DeemedResellerCategoryEnum.fromValue(value);
         }
     }
 
-    @SerializedName("DeemedResellerCategory")
-    private DeemedResellerCategoryEnum deemedResellerCategory = null;
+    public static final String SERIALIZED_NAME_DEEMED_RESELLER_CATEGORY = "DeemedResellerCategory";
 
-    @SerializedName("BuyerInfo")
-    private ItemBuyerInfo buyerInfo = null;
+    @SerializedName(SERIALIZED_NAME_DEEMED_RESELLER_CATEGORY)
+    private DeemedResellerCategoryEnum deemedResellerCategory;
 
-    @SerializedName("BuyerRequestedCancel")
-    private BuyerRequestedCancel buyerRequestedCancel = null;
+    public static final String SERIALIZED_NAME_BUYER_INFO = "BuyerInfo";
 
-    @SerializedName("SerialNumbers")
-    private List<String> serialNumbers = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_INFO)
+    private ItemBuyerInfo buyerInfo;
 
-    @SerializedName("SubstitutionPreferences")
-    private SubstitutionPreferences substitutionPreferences = null;
+    public static final String SERIALIZED_NAME_BUYER_REQUESTED_CANCEL = "BuyerRequestedCancel";
 
-    @SerializedName("Measurement")
-    private Measurement measurement = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_REQUESTED_CANCEL)
+    private BuyerRequestedCancel buyerRequestedCancel;
 
-    @SerializedName("ShippingConstraints")
-    private ShippingConstraints shippingConstraints = null;
+    public static final String SERIALIZED_NAME_SERIAL_NUMBERS = "SerialNumbers";
 
-    @SerializedName("AmazonPrograms")
-    private AmazonPrograms amazonPrograms = null;
+    @SerializedName(SERIALIZED_NAME_SERIAL_NUMBERS)
+    private List<String> serialNumbers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_SUBSTITUTION_PREFERENCES = "SubstitutionPreferences";
+
+    @SerializedName(SERIALIZED_NAME_SUBSTITUTION_PREFERENCES)
+    private SubstitutionPreferences substitutionPreferences;
+
+    public static final String SERIALIZED_NAME_MEASUREMENT = "Measurement";
+
+    @SerializedName(SERIALIZED_NAME_MEASUREMENT)
+    private Measurement measurement;
+
+    public static final String SERIALIZED_NAME_SHIPPING_CONSTRAINTS = "ShippingConstraints";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING_CONSTRAINTS)
+    private ShippingConstraints shippingConstraints;
+
+    public static final String SERIALIZED_NAME_AMAZON_PROGRAMS = "AmazonPrograms";
+
+    @SerializedName(SERIALIZED_NAME_AMAZON_PROGRAMS)
+    private AmazonPrograms amazonPrograms;
+
+    public OrderItem() {}
 
     public OrderItem ASIN(String ASIN) {
         this.ASIN = ASIN;
@@ -205,9 +303,7 @@ public class OrderItem {
      *
      * @return ASIN
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The item's Amazon Standard Identification Number (ASIN).")
+    @javax.annotation.Nonnull
     public String getASIN() {
         return ASIN;
     }
@@ -226,8 +322,7 @@ public class OrderItem {
      *
      * @return sellerSKU
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's seller stock keeping unit (SKU).")
-    public String getSellerSKU() {
+    @javax.annotation.Nullable public String getSellerSKU() {
         return sellerSKU;
     }
 
@@ -245,9 +340,7 @@ public class OrderItem {
      *
      * @return orderItemId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "An Amazon-defined order item identifier.")
+    @javax.annotation.Nonnull
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -275,10 +368,7 @@ public class OrderItem {
      *
      * @return associatedItems
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.")
-    public List<AssociatedItem> getAssociatedItems() {
+    @javax.annotation.Nullable public List<AssociatedItem> getAssociatedItems() {
         return associatedItems;
     }
 
@@ -296,8 +386,7 @@ public class OrderItem {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The item's name.")
-    public String getTitle() {
+    @javax.annotation.Nullable public String getTitle() {
         return title;
     }
 
@@ -315,7 +404,7 @@ public class OrderItem {
      *
      * @return quantityOrdered
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of items in the order. ")
+    @javax.annotation.Nonnull
     public Integer getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -334,8 +423,7 @@ public class OrderItem {
      *
      * @return quantityShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
-    public Integer getQuantityShipped() {
+    @javax.annotation.Nullable public Integer getQuantityShipped() {
         return quantityShipped;
     }
 
@@ -353,8 +441,7 @@ public class OrderItem {
      *
      * @return productInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ProductInfoDetail getProductInfo() {
+    @javax.annotation.Nullable public ProductInfoDetail getProductInfo() {
         return productInfo;
     }
 
@@ -372,8 +459,7 @@ public class OrderItem {
      *
      * @return pointsGranted
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PointsGrantedDetail getPointsGranted() {
+    @javax.annotation.Nullable public PointsGrantedDetail getPointsGranted() {
         return pointsGranted;
     }
 
@@ -391,8 +477,7 @@ public class OrderItem {
      *
      * @return itemPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getItemPrice() {
+    @javax.annotation.Nullable public Money getItemPrice() {
         return itemPrice;
     }
 
@@ -410,8 +495,7 @@ public class OrderItem {
      *
      * @return shippingPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getShippingPrice() {
+    @javax.annotation.Nullable public Money getShippingPrice() {
         return shippingPrice;
     }
 
@@ -429,8 +513,7 @@ public class OrderItem {
      *
      * @return itemTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getItemTax() {
+    @javax.annotation.Nullable public Money getItemTax() {
         return itemTax;
     }
 
@@ -448,8 +531,7 @@ public class OrderItem {
      *
      * @return shippingTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getShippingTax() {
+    @javax.annotation.Nullable public Money getShippingTax() {
         return shippingTax;
     }
 
@@ -467,8 +549,7 @@ public class OrderItem {
      *
      * @return shippingDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getShippingDiscount() {
+    @javax.annotation.Nullable public Money getShippingDiscount() {
         return shippingDiscount;
     }
 
@@ -486,8 +567,7 @@ public class OrderItem {
      *
      * @return shippingDiscountTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getShippingDiscountTax() {
+    @javax.annotation.Nullable public Money getShippingDiscountTax() {
         return shippingDiscountTax;
     }
 
@@ -505,8 +585,7 @@ public class OrderItem {
      *
      * @return promotionDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getPromotionDiscount() {
+    @javax.annotation.Nullable public Money getPromotionDiscount() {
         return promotionDiscount;
     }
 
@@ -524,8 +603,7 @@ public class OrderItem {
      *
      * @return promotionDiscountTax
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getPromotionDiscountTax() {
+    @javax.annotation.Nullable public Money getPromotionDiscountTax() {
         return promotionDiscountTax;
     }
 
@@ -543,8 +621,7 @@ public class OrderItem {
      *
      * @return promotionIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public PromotionIdList getPromotionIds() {
+    @javax.annotation.Nullable public PromotionIdList getPromotionIds() {
         return promotionIds;
     }
 
@@ -562,8 +639,7 @@ public class OrderItem {
      *
      * @return coDFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getCoDFee() {
+    @javax.annotation.Nullable public Money getCoDFee() {
         return coDFee;
     }
 
@@ -581,8 +657,7 @@ public class OrderItem {
      *
      * @return coDFeeDiscount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Money getCoDFeeDiscount() {
+    @javax.annotation.Nullable public Money getCoDFeeDiscount() {
         return coDFeeDiscount;
     }
 
@@ -600,9 +675,7 @@ public class OrderItem {
      *
      * @return isGift
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Indicates whether the item is a gift.  **Possible values**: `true` and `false`.")
-    public String getIsGift() {
+    @javax.annotation.Nullable public String getIsGift() {
         return isGift;
     }
 
@@ -620,8 +693,7 @@ public class OrderItem {
      *
      * @return conditionNote
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The condition of the item, as described by the seller.")
-    public String getConditionNote() {
+    @javax.annotation.Nullable public String getConditionNote() {
         return conditionNote;
     }
 
@@ -640,10 +712,7 @@ public class OrderItem {
      *
      * @return conditionId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The condition of the item.  **Possible values**: `New`, `Used`, `Collectible`, `Refurbished`, `Preorder`, and `Club`.")
-    public String getConditionId() {
+    @javax.annotation.Nullable public String getConditionId() {
         return conditionId;
     }
 
@@ -664,10 +733,7 @@ public class OrderItem {
      *
      * @return conditionSubtypeId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The subcondition of the item.  **Possible values**: `New`, `Mint`, `Very Good`, `Good`, `Acceptable`, `Poor`, `Club`, `OEM`, `Warranty`, `Refurbished Warranty`, `Refurbished`, `Open Box`, `Any`, and `Other`.")
-    public String getConditionSubtypeId() {
+    @javax.annotation.Nullable public String getConditionSubtypeId() {
         return conditionSubtypeId;
     }
 
@@ -686,10 +752,7 @@ public class OrderItem {
      *
      * @return scheduledDeliveryStartDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The start date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
-    public String getScheduledDeliveryStartDate() {
+    @javax.annotation.Nullable public String getScheduledDeliveryStartDate() {
         return scheduledDeliveryStartDate;
     }
 
@@ -708,10 +771,7 @@ public class OrderItem {
      *
      * @return scheduledDeliveryEndDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The end date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
-    public String getScheduledDeliveryEndDate() {
+    @javax.annotation.Nullable public String getScheduledDeliveryEndDate() {
         return scheduledDeliveryEndDate;
     }
 
@@ -731,10 +791,7 @@ public class OrderItem {
      *
      * @return priceDesignation
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   **Possible values**: `BusinessPrice`")
-    public String getPriceDesignation() {
+    @javax.annotation.Nullable public String getPriceDesignation() {
         return priceDesignation;
     }
 
@@ -752,8 +809,7 @@ public class OrderItem {
      *
      * @return taxCollection
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TaxCollection getTaxCollection() {
+    @javax.annotation.Nullable public TaxCollection getTaxCollection() {
         return taxCollection;
     }
 
@@ -771,10 +827,7 @@ public class OrderItem {
      *
      * @return serialNumberRequired
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the product type for this item has a serial number.   Only returned for Amazon Easy Ship orders.")
-    public Boolean getSerialNumberRequired() {
+    @javax.annotation.Nullable public Boolean getSerialNumberRequired() {
         return serialNumberRequired;
     }
 
@@ -797,10 +850,7 @@ public class OrderItem {
      *
      * @return isTransparency
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "When true, the ASIN is enrolled in Transparency. The Transparency serial number that you must submit is determined by:  **1D or 2D Barcode:** This has a **T** logo. Submit either the 29-character alpha-numeric identifier beginning with **AZ** or **ZA**, or the 38-character Serialized Global Trade Item Number (SGTIN). **2D Barcode SN:** Submit the 7- to 20-character serial number barcode, which likely has the prefix **SN**. The serial number is applied to the same side of the packaging as the GTIN (UPC/EAN/ISBN) barcode. **QR code SN:** Submit the URL that the QR code generates.")
-    public Boolean getIsTransparency() {
+    @javax.annotation.Nullable public Boolean getIsTransparency() {
         return isTransparency;
     }
 
@@ -819,10 +869,7 @@ public class OrderItem {
      *
      * @return iossNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The IOSS number of the marketplace. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.")
-    public String getIossNumber() {
+    @javax.annotation.Nullable public String getIossNumber() {
         return iossNumber;
     }
 
@@ -840,9 +887,7 @@ public class OrderItem {
      *
      * @return storeChainStoreId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The store chain store identifier. Linked to a specific store in a store chain.")
-    public String getStoreChainStoreId() {
+    @javax.annotation.Nullable public String getStoreChainStoreId() {
         return storeChainStoreId;
     }
 
@@ -861,10 +906,7 @@ public class OrderItem {
      *
      * @return deemedResellerCategory
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.")
-    public DeemedResellerCategoryEnum getDeemedResellerCategory() {
+    @javax.annotation.Nullable public DeemedResellerCategoryEnum getDeemedResellerCategory() {
         return deemedResellerCategory;
     }
 
@@ -882,8 +924,7 @@ public class OrderItem {
      *
      * @return buyerInfo
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemBuyerInfo getBuyerInfo() {
+    @javax.annotation.Nullable public ItemBuyerInfo getBuyerInfo() {
         return buyerInfo;
     }
 
@@ -901,8 +942,7 @@ public class OrderItem {
      *
      * @return buyerRequestedCancel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public BuyerRequestedCancel getBuyerRequestedCancel() {
+    @javax.annotation.Nullable public BuyerRequestedCancel getBuyerRequestedCancel() {
         return buyerRequestedCancel;
     }
 
@@ -928,10 +968,7 @@ public class OrderItem {
      *
      * @return serialNumbers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.")
-    public List<String> getSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
@@ -949,8 +986,7 @@ public class OrderItem {
      *
      * @return substitutionPreferences
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public SubstitutionPreferences getSubstitutionPreferences() {
+    @javax.annotation.Nullable public SubstitutionPreferences getSubstitutionPreferences() {
         return substitutionPreferences;
     }
 
@@ -968,8 +1004,7 @@ public class OrderItem {
      *
      * @return measurement
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Measurement getMeasurement() {
+    @javax.annotation.Nullable public Measurement getMeasurement() {
         return measurement;
     }
 
@@ -987,8 +1022,7 @@ public class OrderItem {
      *
      * @return shippingConstraints
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ShippingConstraints getShippingConstraints() {
+    @javax.annotation.Nullable public ShippingConstraints getShippingConstraints() {
         return shippingConstraints;
     }
 
@@ -1006,8 +1040,7 @@ public class OrderItem {
      *
      * @return amazonPrograms
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AmazonPrograms getAmazonPrograms() {
+    @javax.annotation.Nullable public AmazonPrograms getAmazonPrograms() {
         return amazonPrograms;
     }
 
@@ -1016,7 +1049,7 @@ public class OrderItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -1200,10 +1233,357 @@ public class OrderItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("ASIN");
+        openapiFields.add("SellerSKU");
+        openapiFields.add("OrderItemId");
+        openapiFields.add("AssociatedItems");
+        openapiFields.add("Title");
+        openapiFields.add("QuantityOrdered");
+        openapiFields.add("QuantityShipped");
+        openapiFields.add("ProductInfo");
+        openapiFields.add("PointsGranted");
+        openapiFields.add("ItemPrice");
+        openapiFields.add("ShippingPrice");
+        openapiFields.add("ItemTax");
+        openapiFields.add("ShippingTax");
+        openapiFields.add("ShippingDiscount");
+        openapiFields.add("ShippingDiscountTax");
+        openapiFields.add("PromotionDiscount");
+        openapiFields.add("PromotionDiscountTax");
+        openapiFields.add("PromotionIds");
+        openapiFields.add("CODFee");
+        openapiFields.add("CODFeeDiscount");
+        openapiFields.add("IsGift");
+        openapiFields.add("ConditionNote");
+        openapiFields.add("ConditionId");
+        openapiFields.add("ConditionSubtypeId");
+        openapiFields.add("ScheduledDeliveryStartDate");
+        openapiFields.add("ScheduledDeliveryEndDate");
+        openapiFields.add("PriceDesignation");
+        openapiFields.add("TaxCollection");
+        openapiFields.add("SerialNumberRequired");
+        openapiFields.add("IsTransparency");
+        openapiFields.add("IossNumber");
+        openapiFields.add("StoreChainStoreId");
+        openapiFields.add("DeemedResellerCategory");
+        openapiFields.add("BuyerInfo");
+        openapiFields.add("BuyerRequestedCancel");
+        openapiFields.add("SerialNumbers");
+        openapiFields.add("SubstitutionPreferences");
+        openapiFields.add("Measurement");
+        openapiFields.add("ShippingConstraints");
+        openapiFields.add("AmazonPrograms");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("ASIN");
+        openapiRequiredFields.add("OrderItemId");
+        openapiRequiredFields.add("QuantityOrdered");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to OrderItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!OrderItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in OrderItem is not found in the empty JSON string",
+                        OrderItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!OrderItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `OrderItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : OrderItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("ASIN").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ASIN` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ASIN").toString()));
+        }
+        if ((jsonObj.get("SellerSKU") != null && !jsonObj.get("SellerSKU").isJsonNull())
+                && !jsonObj.get("SellerSKU").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SellerSKU` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SellerSKU").toString()));
+        }
+        if (!jsonObj.get("OrderItemId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderItemId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderItemId").toString()));
+        }
+        if (jsonObj.get("AssociatedItems") != null
+                && !jsonObj.get("AssociatedItems").isJsonNull()) {
+            JsonArray jsonArrayassociatedItems = jsonObj.getAsJsonArray("AssociatedItems");
+            if (jsonArrayassociatedItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AssociatedItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AssociatedItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AssociatedItems").toString()));
+                }
+
+                // validate the optional field `AssociatedItems` (array)
+                for (int i = 0; i < jsonArrayassociatedItems.size(); i++) {
+                    AssociatedItem.validateJsonElement(jsonArrayassociatedItems.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("Title") != null && !jsonObj.get("Title").isJsonNull())
+                && !jsonObj.get("Title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("Title").toString()));
+        }
+        // validate the optional field `ProductInfo`
+        if (jsonObj.get("ProductInfo") != null && !jsonObj.get("ProductInfo").isJsonNull()) {
+            ProductInfoDetail.validateJsonElement(jsonObj.get("ProductInfo"));
+        }
+        // validate the optional field `PointsGranted`
+        if (jsonObj.get("PointsGranted") != null
+                && !jsonObj.get("PointsGranted").isJsonNull()) {
+            PointsGrantedDetail.validateJsonElement(jsonObj.get("PointsGranted"));
+        }
+        // validate the optional field `ItemPrice`
+        if (jsonObj.get("ItemPrice") != null && !jsonObj.get("ItemPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ItemPrice"));
+        }
+        // validate the optional field `ShippingPrice`
+        if (jsonObj.get("ShippingPrice") != null
+                && !jsonObj.get("ShippingPrice").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ShippingPrice"));
+        }
+        // validate the optional field `ItemTax`
+        if (jsonObj.get("ItemTax") != null && !jsonObj.get("ItemTax").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ItemTax"));
+        }
+        // validate the optional field `ShippingTax`
+        if (jsonObj.get("ShippingTax") != null && !jsonObj.get("ShippingTax").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ShippingTax"));
+        }
+        // validate the optional field `ShippingDiscount`
+        if (jsonObj.get("ShippingDiscount") != null
+                && !jsonObj.get("ShippingDiscount").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ShippingDiscount"));
+        }
+        // validate the optional field `ShippingDiscountTax`
+        if (jsonObj.get("ShippingDiscountTax") != null
+                && !jsonObj.get("ShippingDiscountTax").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("ShippingDiscountTax"));
+        }
+        // validate the optional field `PromotionDiscount`
+        if (jsonObj.get("PromotionDiscount") != null
+                && !jsonObj.get("PromotionDiscount").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("PromotionDiscount"));
+        }
+        // validate the optional field `PromotionDiscountTax`
+        if (jsonObj.get("PromotionDiscountTax") != null
+                && !jsonObj.get("PromotionDiscountTax").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("PromotionDiscountTax"));
+        }
+        // validate the optional field `CODFee`
+        if (jsonObj.get("CODFee") != null && !jsonObj.get("CODFee").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("CODFee"));
+        }
+        // validate the optional field `CODFeeDiscount`
+        if (jsonObj.get("CODFeeDiscount") != null
+                && !jsonObj.get("CODFeeDiscount").isJsonNull()) {
+            Money.validateJsonElement(jsonObj.get("CODFeeDiscount"));
+        }
+        if ((jsonObj.get("IsGift") != null && !jsonObj.get("IsGift").isJsonNull())
+                && !jsonObj.get("IsGift").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `IsGift` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("IsGift").toString()));
+        }
+        if ((jsonObj.get("ConditionNote") != null
+                        && !jsonObj.get("ConditionNote").isJsonNull())
+                && !jsonObj.get("ConditionNote").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ConditionNote` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ConditionNote").toString()));
+        }
+        if ((jsonObj.get("ConditionId") != null && !jsonObj.get("ConditionId").isJsonNull())
+                && !jsonObj.get("ConditionId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ConditionId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ConditionId").toString()));
+        }
+        if ((jsonObj.get("ConditionSubtypeId") != null
+                        && !jsonObj.get("ConditionSubtypeId").isJsonNull())
+                && !jsonObj.get("ConditionSubtypeId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ConditionSubtypeId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ConditionSubtypeId").toString()));
+        }
+        if ((jsonObj.get("ScheduledDeliveryStartDate") != null
+                        && !jsonObj.get("ScheduledDeliveryStartDate").isJsonNull())
+                && !jsonObj.get("ScheduledDeliveryStartDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ScheduledDeliveryStartDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ScheduledDeliveryStartDate").toString()));
+        }
+        if ((jsonObj.get("ScheduledDeliveryEndDate") != null
+                        && !jsonObj.get("ScheduledDeliveryEndDate").isJsonNull())
+                && !jsonObj.get("ScheduledDeliveryEndDate").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ScheduledDeliveryEndDate` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("ScheduledDeliveryEndDate").toString()));
+        }
+        if ((jsonObj.get("PriceDesignation") != null
+                        && !jsonObj.get("PriceDesignation").isJsonNull())
+                && !jsonObj.get("PriceDesignation").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PriceDesignation` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("PriceDesignation").toString()));
+        }
+        // validate the optional field `TaxCollection`
+        if (jsonObj.get("TaxCollection") != null
+                && !jsonObj.get("TaxCollection").isJsonNull()) {
+            TaxCollection.validateJsonElement(jsonObj.get("TaxCollection"));
+        }
+        if ((jsonObj.get("IossNumber") != null && !jsonObj.get("IossNumber").isJsonNull())
+                && !jsonObj.get("IossNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `IossNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("IossNumber").toString()));
+        }
+        if ((jsonObj.get("StoreChainStoreId") != null
+                        && !jsonObj.get("StoreChainStoreId").isJsonNull())
+                && !jsonObj.get("StoreChainStoreId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StoreChainStoreId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StoreChainStoreId").toString()));
+        }
+        if ((jsonObj.get("DeemedResellerCategory") != null
+                        && !jsonObj.get("DeemedResellerCategory").isJsonNull())
+                && !jsonObj.get("DeemedResellerCategory").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `DeemedResellerCategory` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("DeemedResellerCategory").toString()));
+        }
+        // validate the optional field `DeemedResellerCategory`
+        if (jsonObj.get("DeemedResellerCategory") != null
+                && !jsonObj.get("DeemedResellerCategory").isJsonNull()) {
+            DeemedResellerCategoryEnum.validateJsonElement(jsonObj.get("DeemedResellerCategory"));
+        }
+        // validate the optional field `BuyerInfo`
+        if (jsonObj.get("BuyerInfo") != null && !jsonObj.get("BuyerInfo").isJsonNull()) {
+            ItemBuyerInfo.validateJsonElement(jsonObj.get("BuyerInfo"));
+        }
+        // validate the optional field `BuyerRequestedCancel`
+        if (jsonObj.get("BuyerRequestedCancel") != null
+                && !jsonObj.get("BuyerRequestedCancel").isJsonNull()) {
+            BuyerRequestedCancel.validateJsonElement(jsonObj.get("BuyerRequestedCancel"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("SerialNumbers") != null
+                && !jsonObj.get("SerialNumbers").isJsonNull()
+                && !jsonObj.get("SerialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SerialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("SerialNumbers").toString()));
+        }
+        // validate the optional field `SubstitutionPreferences`
+        if (jsonObj.get("SubstitutionPreferences") != null
+                && !jsonObj.get("SubstitutionPreferences").isJsonNull()) {
+            SubstitutionPreferences.validateJsonElement(jsonObj.get("SubstitutionPreferences"));
+        }
+        // validate the optional field `Measurement`
+        if (jsonObj.get("Measurement") != null && !jsonObj.get("Measurement").isJsonNull()) {
+            Measurement.validateJsonElement(jsonObj.get("Measurement"));
+        }
+        // validate the optional field `ShippingConstraints`
+        if (jsonObj.get("ShippingConstraints") != null
+                && !jsonObj.get("ShippingConstraints").isJsonNull()) {
+            ShippingConstraints.validateJsonElement(jsonObj.get("ShippingConstraints"));
+        }
+        // validate the optional field `AmazonPrograms`
+        if (jsonObj.get("AmazonPrograms") != null
+                && !jsonObj.get("AmazonPrograms").isJsonNull()) {
+            AmazonPrograms.validateJsonElement(jsonObj.get("AmazonPrograms"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!OrderItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'OrderItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<OrderItem> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(OrderItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<OrderItem>() {
+                        @Override
+                        public void write(JsonWriter out, OrderItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public OrderItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of OrderItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of OrderItem
+     * @throws IOException if the JSON string is invalid with respect to OrderItem
+     */
+    public static OrderItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, OrderItem.class);
+    }
+
+    /**
+     * Convert an instance of OrderItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

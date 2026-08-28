@@ -12,25 +12,48 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Rate Item for shipping (base cost, transaction fee, confirmation, insurance, etc.) Data source definition: ")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class RateItem {
-    @SerializedName("rateItemID")
-    private RateItemID rateItemID = null;
+    public static final String SERIALIZED_NAME_RATE_ITEM_I_D = "rateItemID";
 
-    @SerializedName("rateItemType")
-    private RateItemType rateItemType = null;
+    @SerializedName(SERIALIZED_NAME_RATE_ITEM_I_D)
+    private RateItemID rateItemID;
 
-    @SerializedName("rateItemCharge")
-    private Currency rateItemCharge = null;
+    public static final String SERIALIZED_NAME_RATE_ITEM_TYPE = "rateItemType";
 
-    @SerializedName("rateItemNameLocalization")
-    private String rateItemNameLocalization = null;
+    @SerializedName(SERIALIZED_NAME_RATE_ITEM_TYPE)
+    private RateItemType rateItemType;
+
+    public static final String SERIALIZED_NAME_RATE_ITEM_CHARGE = "rateItemCharge";
+
+    @SerializedName(SERIALIZED_NAME_RATE_ITEM_CHARGE)
+    private Currency rateItemCharge;
+
+    public static final String SERIALIZED_NAME_RATE_ITEM_NAME_LOCALIZATION = "rateItemNameLocalization";
+
+    @SerializedName(SERIALIZED_NAME_RATE_ITEM_NAME_LOCALIZATION)
+    private String rateItemNameLocalization;
+
+    public RateItem() {}
 
     public RateItem rateItemID(RateItemID rateItemID) {
         this.rateItemID = rateItemID;
@@ -42,8 +65,7 @@ public class RateItem {
      *
      * @return rateItemID
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RateItemID getRateItemID() {
+    @javax.annotation.Nullable public RateItemID getRateItemID() {
         return rateItemID;
     }
 
@@ -61,8 +83,7 @@ public class RateItem {
      *
      * @return rateItemType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public RateItemType getRateItemType() {
+    @javax.annotation.Nullable public RateItemType getRateItemType() {
         return rateItemType;
     }
 
@@ -80,8 +101,7 @@ public class RateItem {
      *
      * @return rateItemCharge
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRateItemCharge() {
+    @javax.annotation.Nullable public Currency getRateItemCharge() {
         return rateItemCharge;
     }
 
@@ -99,8 +119,7 @@ public class RateItem {
      *
      * @return rateItemNameLocalization
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Used for the localization.")
-    public String getRateItemNameLocalization() {
+    @javax.annotation.Nullable public String getRateItemNameLocalization() {
         return rateItemNameLocalization;
     }
 
@@ -109,7 +128,7 @@ public class RateItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -145,10 +164,121 @@ public class RateItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("rateItemID");
+        openapiFields.add("rateItemType");
+        openapiFields.add("rateItemCharge");
+        openapiFields.add("rateItemNameLocalization");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to RateItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!RateItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in RateItem is not found in the empty JSON string",
+                        RateItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!RateItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `RateItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `rateItemID`
+        if (jsonObj.get("rateItemID") != null && !jsonObj.get("rateItemID").isJsonNull()) {
+            RateItemID.validateJsonElement(jsonObj.get("rateItemID"));
+        }
+        // validate the optional field `rateItemType`
+        if (jsonObj.get("rateItemType") != null && !jsonObj.get("rateItemType").isJsonNull()) {
+            RateItemType.validateJsonElement(jsonObj.get("rateItemType"));
+        }
+        // validate the optional field `rateItemCharge`
+        if (jsonObj.get("rateItemCharge") != null
+                && !jsonObj.get("rateItemCharge").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("rateItemCharge"));
+        }
+        if ((jsonObj.get("rateItemNameLocalization") != null
+                        && !jsonObj.get("rateItemNameLocalization").isJsonNull())
+                && !jsonObj.get("rateItemNameLocalization").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `rateItemNameLocalization` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("rateItemNameLocalization").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!RateItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'RateItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RateItem> thisAdapter = gson.getDelegateAdapter(this, TypeToken.get(RateItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<RateItem>() {
+                        @Override
+                        public void write(JsonWriter out, RateItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public RateItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of RateItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of RateItem
+     * @throws IOException if the JSON string is invalid with respect to RateItem
+     */
+    public static RateItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, RateItem.class);
+    }
+
+    /**
+     * Convert an instance of RateItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

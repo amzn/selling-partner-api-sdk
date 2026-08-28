@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The definition of the attribute option. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The definition of the attribute option.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AttributeOption {
-    @SerializedName("description")
-    private String description = null;
+    public static final String SERIALIZED_NAME_DESCRIPTION = "description";
 
-    @SerializedName("value")
-    private String value = null;
+    @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+    private String description;
+
+    public static final String SERIALIZED_NAME_VALUE = "value";
+
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
+
+    public AttributeOption() {}
 
     public AttributeOption description(String description) {
         this.description = description;
@@ -34,8 +55,7 @@ public class AttributeOption {
      *
      * @return description
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The description of the attribute value.")
-    public String getDescription() {
+    @javax.annotation.Nullable public String getDescription() {
         return description;
     }
 
@@ -53,8 +73,7 @@ public class AttributeOption {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The possible values for the attribute option.")
-    public String getValue() {
+    @javax.annotation.Nullable public String getValue() {
         return value;
     }
 
@@ -63,7 +82,7 @@ public class AttributeOption {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -91,10 +110,112 @@ public class AttributeOption {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("description");
+        openapiFields.add("value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AttributeOption
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AttributeOption.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AttributeOption is not found in the empty JSON string",
+                        AttributeOption.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AttributeOption.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AttributeOption` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull())
+                && !jsonObj.get("description").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `description` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("description").toString()));
+        }
+        if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull())
+                && !jsonObj.get("value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("value").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AttributeOption.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AttributeOption' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AttributeOption> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AttributeOption.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AttributeOption>() {
+                        @Override
+                        public void write(JsonWriter out, AttributeOption value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AttributeOption read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AttributeOption given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AttributeOption
+     * @throws IOException if the JSON string is invalid with respect to AttributeOption
+     */
+    public static AttributeOption fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AttributeOption.class);
+    }
+
+    /**
+     * Convert an instance of AttributeOption to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Error details you can take action on. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Error details you can take action on.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ActionableError {
-    @SerializedName("errorType")
-    private String errorType = null;
+    public static final String SERIALIZED_NAME_ERROR_TYPE = "errorType";
 
-    @SerializedName("errorSubType")
-    private String errorSubType = null;
+    @SerializedName(SERIALIZED_NAME_ERROR_TYPE)
+    private String errorType;
+
+    public static final String SERIALIZED_NAME_ERROR_SUB_TYPE = "errorSubType";
+
+    @SerializedName(SERIALIZED_NAME_ERROR_SUB_TYPE)
+    private String errorSubType;
+
+    public ActionableError() {}
 
     public ActionableError errorType(String errorType) {
         this.errorType = errorType;
@@ -34,9 +55,7 @@ public class ActionableError {
      *
      * @return errorType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The top level error type that may contain multiple error subtypes.")
-    public String getErrorType() {
+    @javax.annotation.Nullable public String getErrorType() {
         return errorType;
     }
 
@@ -54,8 +73,7 @@ public class ActionableError {
      *
      * @return errorSubType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The secondary level error type.")
-    public String getErrorSubType() {
+    @javax.annotation.Nullable public String getErrorSubType() {
         return errorSubType;
     }
 
@@ -64,7 +82,7 @@ public class ActionableError {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -92,10 +110,112 @@ public class ActionableError {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("errorType");
+        openapiFields.add("errorSubType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ActionableError
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ActionableError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ActionableError is not found in the empty JSON string",
+                        ActionableError.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ActionableError.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ActionableError` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("errorType") != null && !jsonObj.get("errorType").isJsonNull())
+                && !jsonObj.get("errorType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorType").toString()));
+        }
+        if ((jsonObj.get("errorSubType") != null && !jsonObj.get("errorSubType").isJsonNull())
+                && !jsonObj.get("errorSubType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorSubType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorSubType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ActionableError.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ActionableError' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ActionableError> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ActionableError.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ActionableError>() {
+                        @Override
+                        public void write(JsonWriter out, ActionableError value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ActionableError read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ActionableError given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ActionableError
+     * @throws IOException if the JSON string is invalid with respect to ActionableError
+     */
+    public static ActionableError fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ActionableError.class);
+    }
+
+    /**
+     * Convert an instance of ActionableError to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

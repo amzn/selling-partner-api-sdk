@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The physical address of the location. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The physical address of the location.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class TrackingMilestoneAddress {
-    @SerializedName("city")
-    private String city = null;
+    public static final String SERIALIZED_NAME_CITY = "city";
 
-    @SerializedName("region")
-    private String region = null;
+    @SerializedName(SERIALIZED_NAME_CITY)
+    private String city;
 
-    @SerializedName("countryCode")
-    private String countryCode = null;
+    public static final String SERIALIZED_NAME_REGION = "region";
+
+    @SerializedName(SERIALIZED_NAME_REGION)
+    private String region;
+
+    public static final String SERIALIZED_NAME_COUNTRY_CODE = "countryCode";
+
+    @SerializedName(SERIALIZED_NAME_COUNTRY_CODE)
+    private String countryCode;
+
+    public TrackingMilestoneAddress() {}
 
     public TrackingMilestoneAddress city(String city) {
         this.city = city;
@@ -37,8 +60,7 @@ public class TrackingMilestoneAddress {
      *
      * @return city
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The city where the milestone occurred.")
-    public String getCity() {
+    @javax.annotation.Nullable public String getCity() {
         return city;
     }
 
@@ -56,8 +78,7 @@ public class TrackingMilestoneAddress {
      *
      * @return region
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The state or region where the milestone occurred.")
-    public String getRegion() {
+    @javax.annotation.Nullable public String getRegion() {
         return region;
     }
 
@@ -75,9 +96,7 @@ public class TrackingMilestoneAddress {
      *
      * @return countryCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The two-character country code in ISO 3166-1 alpha-2 format (for example, `US`).")
-    public String getCountryCode() {
+    @javax.annotation.Nullable public String getCountryCode() {
         return countryCode;
     }
 
@@ -86,7 +105,7 @@ public class TrackingMilestoneAddress {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -116,10 +135,120 @@ public class TrackingMilestoneAddress {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("city");
+        openapiFields.add("region");
+        openapiFields.add("countryCode");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to TrackingMilestoneAddress
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!TrackingMilestoneAddress.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in TrackingMilestoneAddress is not found in the empty JSON string",
+                        TrackingMilestoneAddress.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!TrackingMilestoneAddress.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `TrackingMilestoneAddress` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull())
+                && !jsonObj.get("city").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `city` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("city").toString()));
+        }
+        if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull())
+                && !jsonObj.get("region").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `region` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("region").toString()));
+        }
+        if ((jsonObj.get("countryCode") != null && !jsonObj.get("countryCode").isJsonNull())
+                && !jsonObj.get("countryCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `countryCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("countryCode").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!TrackingMilestoneAddress.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'TrackingMilestoneAddress' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<TrackingMilestoneAddress> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(TrackingMilestoneAddress.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<TrackingMilestoneAddress>() {
+                        @Override
+                        public void write(JsonWriter out, TrackingMilestoneAddress value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public TrackingMilestoneAddress read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of TrackingMilestoneAddress given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of TrackingMilestoneAddress
+     * @throws IOException if the JSON string is invalid with respect to TrackingMilestoneAddress
+     */
+    public static TrackingMilestoneAddress fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, TrackingMilestoneAddress.class);
+    }
+
+    /**
+     * Convert an instance of TrackingMilestoneAddress to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

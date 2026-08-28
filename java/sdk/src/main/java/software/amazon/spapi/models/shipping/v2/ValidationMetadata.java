@@ -12,20 +12,43 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** ValidationMetadata Details */
-@io.swagger.v3.oas.annotations.media.Schema(description = "ValidationMetadata Details")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ValidationMetadata {
-    @SerializedName("errorMessage")
-    private String errorMessage = null;
+    public static final String SERIALIZED_NAME_ERROR_MESSAGE = "errorMessage";
 
-    @SerializedName("validationStrategy")
-    private String validationStrategy = null;
+    @SerializedName(SERIALIZED_NAME_ERROR_MESSAGE)
+    private String errorMessage;
 
-    @SerializedName("value")
-    private String value = null;
+    public static final String SERIALIZED_NAME_VALIDATION_STRATEGY = "validationStrategy";
+
+    @SerializedName(SERIALIZED_NAME_VALIDATION_STRATEGY)
+    private String validationStrategy;
+
+    public static final String SERIALIZED_NAME_VALUE = "value";
+
+    @SerializedName(SERIALIZED_NAME_VALUE)
+    private String value;
+
+    public ValidationMetadata() {}
 
     public ValidationMetadata errorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
@@ -37,8 +60,7 @@ public class ValidationMetadata {
      *
      * @return errorMessage
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "errorMessage for the error.")
-    public String getErrorMessage() {
+    @javax.annotation.Nullable public String getErrorMessage() {
         return errorMessage;
     }
 
@@ -56,8 +78,7 @@ public class ValidationMetadata {
      *
      * @return validationStrategy
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "validationStrategy for the error.")
-    public String getValidationStrategy() {
+    @javax.annotation.Nullable public String getValidationStrategy() {
         return validationStrategy;
     }
 
@@ -75,8 +96,7 @@ public class ValidationMetadata {
      *
      * @return value
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Value.")
-    public String getValue() {
+    @javax.annotation.Nullable public String getValue() {
         return value;
     }
 
@@ -85,7 +105,7 @@ public class ValidationMetadata {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -117,10 +137,120 @@ public class ValidationMetadata {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("errorMessage");
+        openapiFields.add("validationStrategy");
+        openapiFields.add("value");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ValidationMetadata
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ValidationMetadata.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ValidationMetadata is not found in the empty JSON string",
+                        ValidationMetadata.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ValidationMetadata.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ValidationMetadata` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("errorMessage") != null && !jsonObj.get("errorMessage").isJsonNull())
+                && !jsonObj.get("errorMessage").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errorMessage` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("errorMessage").toString()));
+        }
+        if ((jsonObj.get("validationStrategy") != null
+                        && !jsonObj.get("validationStrategy").isJsonNull())
+                && !jsonObj.get("validationStrategy").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `validationStrategy` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("validationStrategy").toString()));
+        }
+        if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull())
+                && !jsonObj.get("value").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("value").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ValidationMetadata.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ValidationMetadata' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ValidationMetadata> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ValidationMetadata.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ValidationMetadata>() {
+                        @Override
+                        public void write(JsonWriter out, ValidationMetadata value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ValidationMetadata read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ValidationMetadata given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ValidationMetadata
+     * @throws IOException if the JSON string is invalid with respect to ValidationMetadata
+     */
+    public static ValidationMetadata fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ValidationMetadata.class);
+    }
+
+    /**
+     * Convert an instance of ValidationMetadata to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

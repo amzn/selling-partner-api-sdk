@@ -12,43 +12,81 @@
 
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Provides the details of the items in this invoice. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Provides the details of the items in this invoice.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InvoiceItem {
-    @SerializedName("itemSequenceNumber")
-    private String itemSequenceNumber = null;
+    public static final String SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER = "itemSequenceNumber";
 
-    @SerializedName("buyerProductIdentifier")
-    private String buyerProductIdentifier = null;
+    @SerializedName(SERIALIZED_NAME_ITEM_SEQUENCE_NUMBER)
+    private String itemSequenceNumber;
 
-    @SerializedName("vendorProductIdentifier")
-    private String vendorProductIdentifier = null;
+    public static final String SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER = "buyerProductIdentifier";
 
-    @SerializedName("invoicedQuantity")
-    private ItemQuantity invoicedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_BUYER_PRODUCT_IDENTIFIER)
+    private String buyerProductIdentifier;
 
-    @SerializedName("netCost")
-    private Money netCost = null;
+    public static final String SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER = "vendorProductIdentifier";
 
-    @SerializedName("purchaseOrderNumber")
-    private String purchaseOrderNumber = null;
+    @SerializedName(SERIALIZED_NAME_VENDOR_PRODUCT_IDENTIFIER)
+    private String vendorProductIdentifier;
 
-    @SerializedName("vendorOrderNumber")
-    private String vendorOrderNumber = null;
+    public static final String SERIALIZED_NAME_INVOICED_QUANTITY = "invoicedQuantity";
 
-    @SerializedName("hsnCode")
-    private String hsnCode = null;
+    @SerializedName(SERIALIZED_NAME_INVOICED_QUANTITY)
+    private ItemQuantity invoicedQuantity;
 
-    @SerializedName("taxDetails")
-    private List<TaxDetail> taxDetails = null;
+    public static final String SERIALIZED_NAME_NET_COST = "netCost";
 
-    @SerializedName("chargeDetails")
-    private List<ChargeDetails> chargeDetails = null;
+    @SerializedName(SERIALIZED_NAME_NET_COST)
+    private Money netCost;
+
+    public static final String SERIALIZED_NAME_PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
+
+    @SerializedName(SERIALIZED_NAME_PURCHASE_ORDER_NUMBER)
+    private String purchaseOrderNumber;
+
+    public static final String SERIALIZED_NAME_VENDOR_ORDER_NUMBER = "vendorOrderNumber";
+
+    @SerializedName(SERIALIZED_NAME_VENDOR_ORDER_NUMBER)
+    private String vendorOrderNumber;
+
+    public static final String SERIALIZED_NAME_HSN_CODE = "hsnCode";
+
+    @SerializedName(SERIALIZED_NAME_HSN_CODE)
+    private String hsnCode;
+
+    public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
+
+    @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
+    private List<TaxDetail> taxDetails = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_CHARGE_DETAILS = "chargeDetails";
+
+    @SerializedName(SERIALIZED_NAME_CHARGE_DETAILS)
+    private List<ChargeDetails> chargeDetails = new ArrayList<>();
+
+    public InvoiceItem() {}
 
     public InvoiceItem itemSequenceNumber(String itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;
@@ -60,10 +98,7 @@ public class InvoiceItem {
      *
      * @return itemSequenceNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
+    @javax.annotation.Nonnull
     public String getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -82,9 +117,7 @@ public class InvoiceItem {
      *
      * @return buyerProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Buyer's standard identification number (ASIN) of an item.")
-    public String getBuyerProductIdentifier() {
+    @javax.annotation.Nullable public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
 
@@ -102,8 +135,7 @@ public class InvoiceItem {
      *
      * @return vendorProductIdentifier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
-    public String getVendorProductIdentifier() {
+    @javax.annotation.Nullable public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
 
@@ -121,7 +153,7 @@ public class InvoiceItem {
      *
      * @return invoicedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public ItemQuantity getInvoicedQuantity() {
         return invoicedQuantity;
     }
@@ -140,7 +172,7 @@ public class InvoiceItem {
      *
      * @return netCost
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public Money getNetCost() {
         return netCost;
     }
@@ -159,9 +191,7 @@ public class InvoiceItem {
      *
      * @return purchaseOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.")
+    @javax.annotation.Nonnull
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -180,8 +210,7 @@ public class InvoiceItem {
      *
      * @return vendorOrderNumber
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor's order number for this order.")
-    public String getVendorOrderNumber() {
+    @javax.annotation.Nullable public String getVendorOrderNumber() {
         return vendorOrderNumber;
     }
 
@@ -199,9 +228,7 @@ public class InvoiceItem {
      *
      * @return hsnCode
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.")
-    public String getHsnCode() {
+    @javax.annotation.Nullable public String getHsnCode() {
         return hsnCode;
     }
 
@@ -227,8 +254,7 @@ public class InvoiceItem {
      *
      * @return taxDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual tax details per line item.")
-    public List<TaxDetail> getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
@@ -254,8 +280,7 @@ public class InvoiceItem {
      *
      * @return chargeDetails
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual charge details per line item.")
-    public List<ChargeDetails> getChargeDetails() {
+    @javax.annotation.Nullable public List<ChargeDetails> getChargeDetails() {
         return chargeDetails;
     }
 
@@ -264,7 +289,7 @@ public class InvoiceItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -330,10 +355,197 @@ public class InvoiceItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("itemSequenceNumber");
+        openapiFields.add("buyerProductIdentifier");
+        openapiFields.add("vendorProductIdentifier");
+        openapiFields.add("invoicedQuantity");
+        openapiFields.add("netCost");
+        openapiFields.add("purchaseOrderNumber");
+        openapiFields.add("vendorOrderNumber");
+        openapiFields.add("hsnCode");
+        openapiFields.add("taxDetails");
+        openapiFields.add("chargeDetails");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("itemSequenceNumber");
+        openapiRequiredFields.add("invoicedQuantity");
+        openapiRequiredFields.add("netCost");
+        openapiRequiredFields.add("purchaseOrderNumber");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InvoiceItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InvoiceItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InvoiceItem is not found in the empty JSON string",
+                        InvoiceItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InvoiceItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InvoiceItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InvoiceItem.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("itemSequenceNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemSequenceNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemSequenceNumber").toString()));
+        }
+        if ((jsonObj.get("buyerProductIdentifier") != null
+                        && !jsonObj.get("buyerProductIdentifier").isJsonNull())
+                && !jsonObj.get("buyerProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `buyerProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("buyerProductIdentifier").toString()));
+        }
+        if ((jsonObj.get("vendorProductIdentifier") != null
+                        && !jsonObj.get("vendorProductIdentifier").isJsonNull())
+                && !jsonObj.get("vendorProductIdentifier").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorProductIdentifier` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorProductIdentifier").toString()));
+        }
+        // validate the required field `invoicedQuantity`
+        ItemQuantity.validateJsonElement(jsonObj.get("invoicedQuantity"));
+        // validate the required field `netCost`
+        Money.validateJsonElement(jsonObj.get("netCost"));
+        if (!jsonObj.get("purchaseOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `purchaseOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("purchaseOrderNumber").toString()));
+        }
+        if ((jsonObj.get("vendorOrderNumber") != null
+                        && !jsonObj.get("vendorOrderNumber").isJsonNull())
+                && !jsonObj.get("vendorOrderNumber").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `vendorOrderNumber` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("vendorOrderNumber").toString()));
+        }
+        if ((jsonObj.get("hsnCode") != null && !jsonObj.get("hsnCode").isJsonNull())
+                && !jsonObj.get("hsnCode").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `hsnCode` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("hsnCode").toString()));
+        }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("chargeDetails") != null
+                && !jsonObj.get("chargeDetails").isJsonNull()) {
+            JsonArray jsonArraychargeDetails = jsonObj.getAsJsonArray("chargeDetails");
+            if (jsonArraychargeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("chargeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `chargeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("chargeDetails").toString()));
+                }
+
+                // validate the optional field `chargeDetails` (array)
+                for (int i = 0; i < jsonArraychargeDetails.size(); i++) {
+                    ChargeDetails.validateJsonElement(jsonArraychargeDetails.get(i));
+                }
+                ;
+            }
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InvoiceItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InvoiceItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InvoiceItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InvoiceItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InvoiceItem>() {
+                        @Override
+                        public void write(JsonWriter out, InvoiceItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InvoiceItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InvoiceItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InvoiceItem
+     * @throws IOException if the JSON string is invalid with respect to InvoiceItem
+     */
+    public static InvoiceItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InvoiceItem.class);
+    }
+
+    /**
+     * Convert an instance of InvoiceItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

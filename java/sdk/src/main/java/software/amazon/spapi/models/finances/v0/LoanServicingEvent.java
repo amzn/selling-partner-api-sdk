@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** A loan advance, loan payment, or loan refund. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "A loan advance, loan payment, or loan refund.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LoanServicingEvent {
-    @SerializedName("LoanAmount")
-    private Currency loanAmount = null;
+    public static final String SERIALIZED_NAME_LOAN_AMOUNT = "LoanAmount";
 
-    @SerializedName("SourceBusinessEventType")
-    private String sourceBusinessEventType = null;
+    @SerializedName(SERIALIZED_NAME_LOAN_AMOUNT)
+    private Currency loanAmount;
+
+    public static final String SERIALIZED_NAME_SOURCE_BUSINESS_EVENT_TYPE = "SourceBusinessEventType";
+
+    @SerializedName(SERIALIZED_NAME_SOURCE_BUSINESS_EVENT_TYPE)
+    private String sourceBusinessEventType;
+
+    public LoanServicingEvent() {}
 
     public LoanServicingEvent loanAmount(Currency loanAmount) {
         this.loanAmount = loanAmount;
@@ -34,8 +55,7 @@ public class LoanServicingEvent {
      *
      * @return loanAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getLoanAmount() {
+    @javax.annotation.Nullable public Currency getLoanAmount() {
         return loanAmount;
     }
 
@@ -53,9 +73,7 @@ public class LoanServicingEvent {
      *
      * @return sourceBusinessEventType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The type of event.  Possible values:  * `LoanAdvance`  * `LoanPayment`  * `LoanRefund`")
-    public String getSourceBusinessEventType() {
+    @javax.annotation.Nullable public String getSourceBusinessEventType() {
         return sourceBusinessEventType;
     }
 
@@ -64,7 +82,7 @@ public class LoanServicingEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -94,10 +112,111 @@ public class LoanServicingEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("LoanAmount");
+        openapiFields.add("SourceBusinessEventType");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LoanServicingEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LoanServicingEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LoanServicingEvent is not found in the empty JSON string",
+                        LoanServicingEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LoanServicingEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LoanServicingEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `LoanAmount`
+        if (jsonObj.get("LoanAmount") != null && !jsonObj.get("LoanAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("LoanAmount"));
+        }
+        if ((jsonObj.get("SourceBusinessEventType") != null
+                        && !jsonObj.get("SourceBusinessEventType").isJsonNull())
+                && !jsonObj.get("SourceBusinessEventType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SourceBusinessEventType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("SourceBusinessEventType").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LoanServicingEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LoanServicingEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LoanServicingEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LoanServicingEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LoanServicingEvent>() {
+                        @Override
+                        public void write(JsonWriter out, LoanServicingEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LoanServicingEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LoanServicingEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LoanServicingEvent
+     * @throws IOException if the JSON string is invalid with respect to LoanServicingEvent
+     */
+    public static LoanServicingEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LoanServicingEvent.class);
+    }
+
+    /**
+     * Convert an instance of LoanServicingEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

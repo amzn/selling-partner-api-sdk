@@ -12,21 +12,40 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * The A+ Content standard image and text block, with a related caption. The caption might not display on all devices.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "The A+ Content standard image and text block, with a related caption. The caption might not display on all devices.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class StandardImageTextCaptionBlock {
-    @SerializedName("block")
-    private StandardImageTextBlock block = null;
+    public static final String SERIALIZED_NAME_BLOCK = "block";
 
-    @SerializedName("caption")
-    private TextComponent caption = null;
+    @SerializedName(SERIALIZED_NAME_BLOCK)
+    private StandardImageTextBlock block;
+
+    public static final String SERIALIZED_NAME_CAPTION = "caption";
+
+    @SerializedName(SERIALIZED_NAME_CAPTION)
+    private TextComponent caption;
+
+    public StandardImageTextCaptionBlock() {}
 
     public StandardImageTextCaptionBlock block(StandardImageTextBlock block) {
         this.block = block;
@@ -38,8 +57,7 @@ public class StandardImageTextCaptionBlock {
      *
      * @return block
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public StandardImageTextBlock getBlock() {
+    @javax.annotation.Nullable public StandardImageTextBlock getBlock() {
         return block;
     }
 
@@ -57,8 +75,7 @@ public class StandardImageTextCaptionBlock {
      *
      * @return caption
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public TextComponent getCaption() {
+    @javax.annotation.Nullable public TextComponent getCaption() {
         return caption;
     }
 
@@ -67,7 +84,7 @@ public class StandardImageTextCaptionBlock {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -95,10 +112,109 @@ public class StandardImageTextCaptionBlock {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("block");
+        openapiFields.add("caption");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to StandardImageTextCaptionBlock
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!StandardImageTextCaptionBlock.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in StandardImageTextCaptionBlock is not found in the empty JSON string",
+                        StandardImageTextCaptionBlock.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!StandardImageTextCaptionBlock.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `StandardImageTextCaptionBlock` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `block`
+        if (jsonObj.get("block") != null && !jsonObj.get("block").isJsonNull()) {
+            StandardImageTextBlock.validateJsonElement(jsonObj.get("block"));
+        }
+        // validate the optional field `caption`
+        if (jsonObj.get("caption") != null && !jsonObj.get("caption").isJsonNull()) {
+            TextComponent.validateJsonElement(jsonObj.get("caption"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!StandardImageTextCaptionBlock.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'StandardImageTextCaptionBlock' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<StandardImageTextCaptionBlock> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(StandardImageTextCaptionBlock.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<StandardImageTextCaptionBlock>() {
+                        @Override
+                        public void write(JsonWriter out, StandardImageTextCaptionBlock value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public StandardImageTextCaptionBlock read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of StandardImageTextCaptionBlock given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of StandardImageTextCaptionBlock
+     * @throws IOException if the JSON string is invalid with respect to StandardImageTextCaptionBlock
+     */
+    public static StandardImageTextCaptionBlock fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, StandardImageTextCaptionBlock.class);
+    }
+
+    /**
+     * Convert an instance of StandardImageTextCaptionBlock to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

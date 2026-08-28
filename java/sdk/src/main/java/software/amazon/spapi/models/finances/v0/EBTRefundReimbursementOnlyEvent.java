@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An EBT refund reimbursement event. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An EBT refund reimbursement event.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class EBTRefundReimbursementOnlyEvent {
-    @SerializedName("OrderId")
-    private String orderId = null;
+    public static final String SERIALIZED_NAME_ORDER_ID = "OrderId";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_ORDER_ID)
+    private String orderId;
 
-    @SerializedName("Amount")
-    private Currency amount = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
+
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
+
+    public static final String SERIALIZED_NAME_AMOUNT = "Amount";
+
+    @SerializedName(SERIALIZED_NAME_AMOUNT)
+    private Currency amount;
+
+    public EBTRefundReimbursementOnlyEvent() {}
 
     public EBTRefundReimbursementOnlyEvent orderId(String orderId) {
         this.orderId = orderId;
@@ -38,8 +61,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return orderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of an order.")
-    public String getOrderId() {
+    @javax.annotation.Nullable public String getOrderId() {
         return orderId;
     }
 
@@ -57,10 +79,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -78,8 +97,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return amount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getAmount() {
+    @javax.annotation.Nullable public Currency getAmount() {
         return amount;
     }
 
@@ -88,7 +106,7 @@ public class EBTRefundReimbursementOnlyEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -118,10 +136,112 @@ public class EBTRefundReimbursementOnlyEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("OrderId");
+        openapiFields.add("PostedDate");
+        openapiFields.add("Amount");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to EBTRefundReimbursementOnlyEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!EBTRefundReimbursementOnlyEvent.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in EBTRefundReimbursementOnlyEvent is not found in the empty JSON string",
+                        EBTRefundReimbursementOnlyEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!EBTRefundReimbursementOnlyEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `EBTRefundReimbursementOnlyEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("OrderId") != null && !jsonObj.get("OrderId").isJsonNull())
+                && !jsonObj.get("OrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("OrderId").toString()));
+        }
+        // validate the optional field `Amount`
+        if (jsonObj.get("Amount") != null && !jsonObj.get("Amount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("Amount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!EBTRefundReimbursementOnlyEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'EBTRefundReimbursementOnlyEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<EBTRefundReimbursementOnlyEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(EBTRefundReimbursementOnlyEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<EBTRefundReimbursementOnlyEvent>() {
+                        @Override
+                        public void write(JsonWriter out, EBTRefundReimbursementOnlyEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public EBTRefundReimbursementOnlyEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of EBTRefundReimbursementOnlyEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of EBTRefundReimbursementOnlyEvent
+     * @throws IOException if the JSON string is invalid with respect to EBTRefundReimbursementOnlyEvent
+     */
+    public static EBTRefundReimbursementOnlyEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, EBTRefundReimbursementOnlyEvent.class);
+    }
+
+    /**
+     * Convert an instance of EBTRefundReimbursementOnlyEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

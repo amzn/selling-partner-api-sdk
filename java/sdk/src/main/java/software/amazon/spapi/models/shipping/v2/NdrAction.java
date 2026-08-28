@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The type of NDR action shipper wants to take for a particular shipment. */
 @JsonAdapter(NdrAction.Adapter.class)
 public enum NdrAction {
-    @SerializedName("RESCHEDULE")
     RESCHEDULE("RESCHEDULE"),
 
-    @SerializedName("REATTEMPT")
     REATTEMPT("REATTEMPT"),
 
-    @SerializedName("RTO")
     RTO("RTO");
 
     private String value;
@@ -46,25 +43,30 @@ public enum NdrAction {
         return String.valueOf(value);
     }
 
-    public static NdrAction fromValue(String input) {
+    public static NdrAction fromValue(String value) {
         for (NdrAction b : NdrAction.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<NdrAction> {
         @Override
         public void write(final JsonWriter jsonWriter, final NdrAction enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public NdrAction read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return NdrAction.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return NdrAction.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        NdrAction.fromValue(value);
     }
 }

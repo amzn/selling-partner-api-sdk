@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,16 +22,12 @@ import java.io.IOException;
 /** The status of your label. */
 @JsonAdapter(LabelStatus.Adapter.class)
 public enum LabelStatus {
-    @SerializedName("GENERATING")
     GENERATING("GENERATING"),
 
-    @SerializedName("GENERATED")
     GENERATED("GENERATED"),
 
-    @SerializedName("GENERATION_FAILED")
     GENERATION_FAILED("GENERATION_FAILED"),
 
-    @SerializedName("NOT_READY")
     NOT_READY("NOT_READY");
 
     private String value;
@@ -49,25 +45,30 @@ public enum LabelStatus {
         return String.valueOf(value);
     }
 
-    public static LabelStatus fromValue(String input) {
+    public static LabelStatus fromValue(String value) {
         for (LabelStatus b : LabelStatus.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<LabelStatus> {
         @Override
         public void write(final JsonWriter jsonWriter, final LabelStatus enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public LabelStatus read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return LabelStatus.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return LabelStatus.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        LabelStatus.fromValue(value);
     }
 }

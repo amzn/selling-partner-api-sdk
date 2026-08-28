@@ -12,21 +12,44 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Details of item quantity ordered */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity ordered")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AcknowledgementStatusDetails {
-    @SerializedName("acknowledgementDate")
-    private OffsetDateTime acknowledgementDate = null;
+    public static final String SERIALIZED_NAME_ACKNOWLEDGEMENT_DATE = "acknowledgementDate";
 
-    @SerializedName("acceptedQuantity")
-    private ItemQuantity acceptedQuantity = null;
+    @SerializedName(SERIALIZED_NAME_ACKNOWLEDGEMENT_DATE)
+    private OffsetDateTime acknowledgementDate;
 
-    @SerializedName("rejectedQuantity")
-    private ItemQuantity rejectedQuantity = null;
+    public static final String SERIALIZED_NAME_ACCEPTED_QUANTITY = "acceptedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_ACCEPTED_QUANTITY)
+    private ItemQuantity acceptedQuantity;
+
+    public static final String SERIALIZED_NAME_REJECTED_QUANTITY = "rejectedQuantity";
+
+    @SerializedName(SERIALIZED_NAME_REJECTED_QUANTITY)
+    private ItemQuantity rejectedQuantity;
+
+    public AcknowledgementStatusDetails() {}
 
     public AcknowledgementStatusDetails acknowledgementDate(OffsetDateTime acknowledgementDate) {
         this.acknowledgementDate = acknowledgementDate;
@@ -38,9 +61,7 @@ public class AcknowledgementStatusDetails {
      *
      * @return acknowledgementDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.")
-    public OffsetDateTime getAcknowledgementDate() {
+    @javax.annotation.Nullable public OffsetDateTime getAcknowledgementDate() {
         return acknowledgementDate;
     }
 
@@ -58,8 +79,7 @@ public class AcknowledgementStatusDetails {
      *
      * @return acceptedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemQuantity getAcceptedQuantity() {
+    @javax.annotation.Nullable public ItemQuantity getAcceptedQuantity() {
         return acceptedQuantity;
     }
 
@@ -77,8 +97,7 @@ public class AcknowledgementStatusDetails {
      *
      * @return rejectedQuantity
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ItemQuantity getRejectedQuantity() {
+    @javax.annotation.Nullable public ItemQuantity getRejectedQuantity() {
         return rejectedQuantity;
     }
 
@@ -87,7 +106,7 @@ public class AcknowledgementStatusDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -123,10 +142,112 @@ public class AcknowledgementStatusDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("acknowledgementDate");
+        openapiFields.add("acceptedQuantity");
+        openapiFields.add("rejectedQuantity");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AcknowledgementStatusDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AcknowledgementStatusDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AcknowledgementStatusDetails is not found in the empty JSON string",
+                        AcknowledgementStatusDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AcknowledgementStatusDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AcknowledgementStatusDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `acceptedQuantity`
+        if (jsonObj.get("acceptedQuantity") != null
+                && !jsonObj.get("acceptedQuantity").isJsonNull()) {
+            ItemQuantity.validateJsonElement(jsonObj.get("acceptedQuantity"));
+        }
+        // validate the optional field `rejectedQuantity`
+        if (jsonObj.get("rejectedQuantity") != null
+                && !jsonObj.get("rejectedQuantity").isJsonNull()) {
+            ItemQuantity.validateJsonElement(jsonObj.get("rejectedQuantity"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AcknowledgementStatusDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AcknowledgementStatusDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AcknowledgementStatusDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AcknowledgementStatusDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AcknowledgementStatusDetails>() {
+                        @Override
+                        public void write(JsonWriter out, AcknowledgementStatusDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AcknowledgementStatusDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AcknowledgementStatusDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AcknowledgementStatusDetails
+     * @throws IOException if the JSON string is invalid with respect to AcknowledgementStatusDetails
+     */
+    public static AcknowledgementStatusDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AcknowledgementStatusDetails.class);
+    }
+
+    /**
+     * Convert an instance of AcknowledgementStatusDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,32 +12,42 @@
 
 package software.amazon.spapi.models.services.v1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Input for to be uploaded document. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Input for to be uploaded document.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ServiceUploadDocument {
     /** The content type of the to-be-uploaded file */
     @JsonAdapter(ContentTypeEnum.Adapter.class)
     public enum ContentTypeEnum {
-        @SerializedName("TIFF")
         TIFF("TIFF"),
-        @SerializedName("JPG")
+
         JPG("JPG"),
-        @SerializedName("PNG")
+
         PNG("PNG"),
-        @SerializedName("JPEG")
+
         JPEG("JPEG"),
-        @SerializedName("GIF")
+
         GIF("GIF"),
-        @SerializedName("PDF")
+
         PDF("PDF");
 
         private String value;
@@ -55,37 +65,50 @@ public class ServiceUploadDocument {
             return String.valueOf(value);
         }
 
-        public static ContentTypeEnum fromValue(String input) {
+        public static ContentTypeEnum fromValue(String value) {
             for (ContentTypeEnum b : ContentTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ContentTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ContentTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ContentTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ContentTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ContentTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ContentTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("contentType")
-    private ContentTypeEnum contentType = null;
+    public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
 
-    @SerializedName("contentLength")
-    private BigDecimal contentLength = null;
+    @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
+    private ContentTypeEnum contentType;
 
-    @SerializedName("contentMD5")
-    private String contentMD5 = null;
+    public static final String SERIALIZED_NAME_CONTENT_LENGTH = "contentLength";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_LENGTH)
+    private BigDecimal contentLength;
+
+    public static final String SERIALIZED_NAME_CONTENT_M_D5 = "contentMD5";
+
+    @SerializedName(SERIALIZED_NAME_CONTENT_M_D5)
+    private String contentMD5;
+
+    public ServiceUploadDocument() {}
 
     public ServiceUploadDocument contentType(ContentTypeEnum contentType) {
         this.contentType = contentType;
@@ -97,9 +120,7 @@ public class ServiceUploadDocument {
      *
      * @return contentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The content type of the to-be-uploaded file")
+    @javax.annotation.Nonnull
     public ContentTypeEnum getContentType() {
         return contentType;
     }
@@ -114,13 +135,11 @@ public class ServiceUploadDocument {
     }
 
     /**
-     * The content length of the to-be-uploaded file
+     * The content length of the to-be-uploaded file minimum: 1 maximum: 5.24288E+6
      *
      * @return contentLength
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "The content length of the to-be-uploaded file")
+    @javax.annotation.Nonnull
     public BigDecimal getContentLength() {
         return contentLength;
     }
@@ -140,10 +159,7 @@ public class ServiceUploadDocument {
      *
      * @return contentMD5
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.")
-    public String getContentMD5() {
+    @javax.annotation.Nullable public String getContentMD5() {
         return contentMD5;
     }
 
@@ -152,7 +168,7 @@ public class ServiceUploadDocument {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -182,10 +198,126 @@ public class ServiceUploadDocument {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("contentType");
+        openapiFields.add("contentLength");
+        openapiFields.add("contentMD5");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("contentType");
+        openapiRequiredFields.add("contentLength");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ServiceUploadDocument
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ServiceUploadDocument.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ServiceUploadDocument is not found in the empty JSON string",
+                        ServiceUploadDocument.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ServiceUploadDocument.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ServiceUploadDocument` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ServiceUploadDocument.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("contentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentType").toString()));
+        }
+        // validate the required field `contentType`
+        ContentTypeEnum.validateJsonElement(jsonObj.get("contentType"));
+        if ((jsonObj.get("contentMD5") != null && !jsonObj.get("contentMD5").isJsonNull())
+                && !jsonObj.get("contentMD5").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentMD5` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("contentMD5").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ServiceUploadDocument.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ServiceUploadDocument' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ServiceUploadDocument> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ServiceUploadDocument.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ServiceUploadDocument>() {
+                        @Override
+                        public void write(JsonWriter out, ServiceUploadDocument value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ServiceUploadDocument read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ServiceUploadDocument given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ServiceUploadDocument
+     * @throws IOException if the JSON string is invalid with respect to ServiceUploadDocument
+     */
+    public static ServiceUploadDocument fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ServiceUploadDocument.class);
+    }
+
+    /**
+     * Convert an instance of ServiceUploadDocument to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

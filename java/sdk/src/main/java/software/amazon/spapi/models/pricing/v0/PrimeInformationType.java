@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Amazon Prime information. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Prime information.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PrimeInformationType {
-    @SerializedName("IsPrime")
-    private Boolean isPrime = null;
+    public static final String SERIALIZED_NAME_IS_PRIME = "IsPrime";
 
-    @SerializedName("IsNationalPrime")
-    private Boolean isNationalPrime = null;
+    @SerializedName(SERIALIZED_NAME_IS_PRIME)
+    private Boolean isPrime;
+
+    public static final String SERIALIZED_NAME_IS_NATIONAL_PRIME = "IsNationalPrime";
+
+    @SerializedName(SERIALIZED_NAME_IS_NATIONAL_PRIME)
+    private Boolean isNationalPrime;
+
+    public PrimeInformationType() {}
 
     public PrimeInformationType isPrime(Boolean isPrime) {
         this.isPrime = isPrime;
@@ -34,9 +55,7 @@ public class PrimeInformationType {
      *
      * @return isPrime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Indicates whether the offer is an Amazon Prime offer.")
+    @javax.annotation.Nonnull
     public Boolean getIsPrime() {
         return isPrime;
     }
@@ -55,10 +74,7 @@ public class PrimeInformationType {
      *
      * @return isNationalPrime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Indicates whether the offer is an Amazon Prime offer throughout the entire marketplace where it is listed.")
+    @javax.annotation.Nonnull
     public Boolean getIsNationalPrime() {
         return isNationalPrime;
     }
@@ -68,7 +84,7 @@ public class PrimeInformationType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -98,10 +114,111 @@ public class PrimeInformationType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("IsPrime");
+        openapiFields.add("IsNationalPrime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("IsPrime");
+        openapiRequiredFields.add("IsNationalPrime");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PrimeInformationType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PrimeInformationType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PrimeInformationType is not found in the empty JSON string",
+                        PrimeInformationType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PrimeInformationType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PrimeInformationType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : PrimeInformationType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PrimeInformationType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PrimeInformationType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PrimeInformationType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PrimeInformationType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PrimeInformationType>() {
+                        @Override
+                        public void write(JsonWriter out, PrimeInformationType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PrimeInformationType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PrimeInformationType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PrimeInformationType
+     * @throws IOException if the JSON string is invalid with respect to PrimeInformationType
+     */
+    public static PrimeInformationType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PrimeInformationType.class);
+    }
+
+    /**
+     * Convert an instance of PrimeInformationType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

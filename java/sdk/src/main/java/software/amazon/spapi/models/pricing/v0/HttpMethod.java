@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,19 +22,14 @@ import java.io.IOException;
 /** The HTTP method associated with the individual APIs being called as part of the batch request. */
 @JsonAdapter(HttpMethod.Adapter.class)
 public enum HttpMethod {
-    @SerializedName("GET")
     GET("GET"),
 
-    @SerializedName("PUT")
     PUT("PUT"),
 
-    @SerializedName("PATCH")
     PATCH("PATCH"),
 
-    @SerializedName("DELETE")
     DELETE("DELETE"),
 
-    @SerializedName("POST")
     POST("POST");
 
     private String value;
@@ -52,25 +47,30 @@ public enum HttpMethod {
         return String.valueOf(value);
     }
 
-    public static HttpMethod fromValue(String input) {
+    public static HttpMethod fromValue(String value) {
         for (HttpMethod b : HttpMethod.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<HttpMethod> {
         @Override
         public void write(final JsonWriter jsonWriter, final HttpMethod enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public HttpMethod read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return HttpMethod.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return HttpMethod.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        HttpMethod.fromValue(value);
     }
 }

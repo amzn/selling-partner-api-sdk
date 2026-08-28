@@ -12,27 +12,54 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An adjustment to the seller&#39;s account. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An adjustment to the seller's account.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class AdjustmentEvent {
-    @SerializedName("AdjustmentType")
-    private String adjustmentType = null;
+    public static final String SERIALIZED_NAME_ADJUSTMENT_TYPE = "AdjustmentType";
 
-    @SerializedName("PostedDate")
-    private OffsetDateTime postedDate = null;
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_TYPE)
+    private String adjustmentType;
 
-    @SerializedName("StoreName")
-    private String storeName = null;
+    public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
-    @SerializedName("AdjustmentAmount")
-    private Currency adjustmentAmount = null;
+    @SerializedName(SERIALIZED_NAME_POSTED_DATE)
+    private OffsetDateTime postedDate;
 
-    @SerializedName("AdjustmentItemList")
-    private AdjustmentItemList adjustmentItemList = null;
+    public static final String SERIALIZED_NAME_STORE_NAME = "StoreName";
+
+    @SerializedName(SERIALIZED_NAME_STORE_NAME)
+    private String storeName;
+
+    public static final String SERIALIZED_NAME_ADJUSTMENT_AMOUNT = "AdjustmentAmount";
+
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_AMOUNT)
+    private Currency adjustmentAmount;
+
+    public static final String SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST = "AdjustmentItemList";
+
+    @SerializedName(SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST)
+    private AdjustmentItemList adjustmentItemList = new ArrayList<>();
+
+    public AdjustmentEvent() {}
 
     public AdjustmentEvent adjustmentType(String adjustmentType) {
         this.adjustmentType = adjustmentType;
@@ -55,10 +82,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The type of adjustment.  Possible values:  * `FBAInventoryReimbursement`: An FBA inventory reimbursement to a seller's account. This occurs if a seller's inventory is damaged. * `ReserveEvent`: A reserve event that is generated at the time a settlement period closes. This occurs when some money from a seller's account is held back. * `PostageBilling`: The amount paid by a seller for shipping labels. * `PostageRefund`: The reimbursement of shipping labels purchased for orders that were canceled or refunded. * `LostOrDamagedReimbursement`: An Amazon Easy Ship reimbursement to a seller's account for a package that we lost or damaged. * `CanceledButPickedUpReimbursement`: An Amazon Easy Ship reimbursement to a seller's account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace. * `ReimbursementClawback`: An Amazon Easy Ship reimbursement clawback from a seller's account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace. * `SellerRewards`: An award credited to a seller's account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.")
-    public String getAdjustmentType() {
+    @javax.annotation.Nullable public String getAdjustmentType() {
         return adjustmentType;
     }
 
@@ -76,10 +100,7 @@ public class AdjustmentEvent {
      *
      * @return postedDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getPostedDate() {
+    @javax.annotation.Nullable public OffsetDateTime getPostedDate() {
         return postedDate;
     }
 
@@ -97,8 +118,7 @@ public class AdjustmentEvent {
      *
      * @return storeName
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
-    public String getStoreName() {
+    @javax.annotation.Nullable public String getStoreName() {
         return storeName;
     }
 
@@ -116,8 +136,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getAdjustmentAmount() {
+    @javax.annotation.Nullable public Currency getAdjustmentAmount() {
         return adjustmentAmount;
     }
 
@@ -135,8 +154,7 @@ public class AdjustmentEvent {
      *
      * @return adjustmentItemList
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public AdjustmentItemList getAdjustmentItemList() {
+    @javax.annotation.Nullable public AdjustmentItemList getAdjustmentItemList() {
         return adjustmentItemList;
     }
 
@@ -145,7 +163,7 @@ public class AdjustmentEvent {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -185,10 +203,121 @@ public class AdjustmentEvent {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("AdjustmentType");
+        openapiFields.add("PostedDate");
+        openapiFields.add("StoreName");
+        openapiFields.add("AdjustmentAmount");
+        openapiFields.add("AdjustmentItemList");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to AdjustmentEvent
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!AdjustmentEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in AdjustmentEvent is not found in the empty JSON string",
+                        AdjustmentEvent.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!AdjustmentEvent.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `AdjustmentEvent` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("AdjustmentType") != null
+                        && !jsonObj.get("AdjustmentType").isJsonNull())
+                && !jsonObj.get("AdjustmentType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AdjustmentType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("AdjustmentType").toString()));
+        }
+        if ((jsonObj.get("StoreName") != null && !jsonObj.get("StoreName").isJsonNull())
+                && !jsonObj.get("StoreName").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("StoreName").toString()));
+        }
+        // validate the optional field `AdjustmentAmount`
+        if (jsonObj.get("AdjustmentAmount") != null
+                && !jsonObj.get("AdjustmentAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("AdjustmentAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!AdjustmentEvent.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'AdjustmentEvent' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<AdjustmentEvent> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(AdjustmentEvent.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<AdjustmentEvent>() {
+                        @Override
+                        public void write(JsonWriter out, AdjustmentEvent value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public AdjustmentEvent read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of AdjustmentEvent given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of AdjustmentEvent
+     * @throws IOException if the JSON string is invalid with respect to AdjustmentEvent
+     */
+    public static AdjustmentEvent fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, AdjustmentEvent.class);
+    }
+
+    /**
+     * Convert an instance of AdjustmentEvent to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

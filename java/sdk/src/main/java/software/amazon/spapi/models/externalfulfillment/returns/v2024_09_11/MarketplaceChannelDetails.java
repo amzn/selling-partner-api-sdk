@@ -12,37 +12,66 @@
 
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Marketplace channel-specific attributes for the return. These attributes are not mandatory and each channel can
  * provide them differently.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Marketplace channel-specific attributes for the return. These attributes are not mandatory and each channel can provide them differently.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class MarketplaceChannelDetails {
-    @SerializedName("marketplaceChannel")
-    private MarketplaceChannel marketplaceChannel = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_CHANNEL = "marketplaceChannel";
 
-    @SerializedName("merchantId")
-    private String merchantId = null;
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_CHANNEL)
+    private MarketplaceChannel marketplaceChannel;
 
-    @SerializedName("shipmentId")
-    private String shipmentId = null;
+    public static final String SERIALIZED_NAME_MERCHANT_ID = "merchantId";
 
-    @SerializedName("customerOrderId")
-    private String customerOrderId = null;
+    @SerializedName(SERIALIZED_NAME_MERCHANT_ID)
+    private String merchantId;
 
-    @SerializedName("returnLocationId")
-    private String returnLocationId = null;
+    public static final String SERIALIZED_NAME_SHIPMENT_ID = "shipmentId";
 
-    @SerializedName("channelSku")
-    private String channelSku = null;
+    @SerializedName(SERIALIZED_NAME_SHIPMENT_ID)
+    private String shipmentId;
 
-    @SerializedName("exchangeOrderId")
-    private String exchangeOrderId = null;
+    public static final String SERIALIZED_NAME_CUSTOMER_ORDER_ID = "customerOrderId";
+
+    @SerializedName(SERIALIZED_NAME_CUSTOMER_ORDER_ID)
+    private String customerOrderId;
+
+    public static final String SERIALIZED_NAME_RETURN_LOCATION_ID = "returnLocationId";
+
+    @SerializedName(SERIALIZED_NAME_RETURN_LOCATION_ID)
+    private String returnLocationId;
+
+    public static final String SERIALIZED_NAME_CHANNEL_SKU = "channelSku";
+
+    @SerializedName(SERIALIZED_NAME_CHANNEL_SKU)
+    private String channelSku;
+
+    public static final String SERIALIZED_NAME_EXCHANGE_ORDER_ID = "exchangeOrderId";
+
+    @SerializedName(SERIALIZED_NAME_EXCHANGE_ORDER_ID)
+    private String exchangeOrderId;
+
+    public MarketplaceChannelDetails() {}
 
     public MarketplaceChannelDetails marketplaceChannel(MarketplaceChannel marketplaceChannel) {
         this.marketplaceChannel = marketplaceChannel;
@@ -54,8 +83,7 @@ public class MarketplaceChannelDetails {
      *
      * @return marketplaceChannel
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MarketplaceChannel getMarketplaceChannel() {
+    @javax.annotation.Nullable public MarketplaceChannel getMarketplaceChannel() {
         return marketplaceChannel;
     }
 
@@ -73,9 +101,7 @@ public class MarketplaceChannelDetails {
      *
      * @return merchantId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The ID of the merchant or seller to whom this return is created in the marketplace.")
-    public String getMerchantId() {
+    @javax.annotation.Nullable public String getMerchantId() {
         return merchantId;
     }
 
@@ -93,8 +119,7 @@ public class MarketplaceChannelDetails {
      *
      * @return shipmentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace-specific shipment ID.")
-    public String getShipmentId() {
+    @javax.annotation.Nullable public String getShipmentId() {
         return shipmentId;
     }
 
@@ -112,8 +137,7 @@ public class MarketplaceChannelDetails {
      *
      * @return customerOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace-specific customer order ID.")
-    public String getCustomerOrderId() {
+    @javax.annotation.Nullable public String getCustomerOrderId() {
         return customerOrderId;
     }
 
@@ -131,9 +155,7 @@ public class MarketplaceChannelDetails {
      *
      * @return returnLocationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon SmartConnect ID of the location to which this return is created.")
-    public String getReturnLocationId() {
+    @javax.annotation.Nullable public String getReturnLocationId() {
         return returnLocationId;
     }
 
@@ -151,8 +173,7 @@ public class MarketplaceChannelDetails {
      *
      * @return channelSku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon SmartConnect SKU of the channel.")
-    public String getChannelSku() {
+    @javax.annotation.Nullable public String getChannelSku() {
         return channelSku;
     }
 
@@ -170,8 +191,7 @@ public class MarketplaceChannelDetails {
      *
      * @return exchangeOrderId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon SmartConnect ID of the exchange order.")
-    public String getExchangeOrderId() {
+    @javax.annotation.Nullable public String getExchangeOrderId() {
         return exchangeOrderId;
     }
 
@@ -180,7 +200,7 @@ public class MarketplaceChannelDetails {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -233,10 +253,150 @@ public class MarketplaceChannelDetails {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("marketplaceChannel");
+        openapiFields.add("merchantId");
+        openapiFields.add("shipmentId");
+        openapiFields.add("customerOrderId");
+        openapiFields.add("returnLocationId");
+        openapiFields.add("channelSku");
+        openapiFields.add("exchangeOrderId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to MarketplaceChannelDetails
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!MarketplaceChannelDetails.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in MarketplaceChannelDetails is not found in the empty JSON string",
+                        MarketplaceChannelDetails.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!MarketplaceChannelDetails.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `MarketplaceChannelDetails` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `marketplaceChannel`
+        if (jsonObj.get("marketplaceChannel") != null
+                && !jsonObj.get("marketplaceChannel").isJsonNull()) {
+            MarketplaceChannel.validateJsonElement(jsonObj.get("marketplaceChannel"));
+        }
+        if ((jsonObj.get("merchantId") != null && !jsonObj.get("merchantId").isJsonNull())
+                && !jsonObj.get("merchantId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `merchantId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("merchantId").toString()));
+        }
+        if ((jsonObj.get("shipmentId") != null && !jsonObj.get("shipmentId").isJsonNull())
+                && !jsonObj.get("shipmentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("shipmentId").toString()));
+        }
+        if ((jsonObj.get("customerOrderId") != null
+                        && !jsonObj.get("customerOrderId").isJsonNull())
+                && !jsonObj.get("customerOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `customerOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("customerOrderId").toString()));
+        }
+        if ((jsonObj.get("returnLocationId") != null
+                        && !jsonObj.get("returnLocationId").isJsonNull())
+                && !jsonObj.get("returnLocationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `returnLocationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("returnLocationId").toString()));
+        }
+        if ((jsonObj.get("channelSku") != null && !jsonObj.get("channelSku").isJsonNull())
+                && !jsonObj.get("channelSku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `channelSku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("channelSku").toString()));
+        }
+        if ((jsonObj.get("exchangeOrderId") != null
+                        && !jsonObj.get("exchangeOrderId").isJsonNull())
+                && !jsonObj.get("exchangeOrderId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `exchangeOrderId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("exchangeOrderId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!MarketplaceChannelDetails.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'MarketplaceChannelDetails' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<MarketplaceChannelDetails> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(MarketplaceChannelDetails.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<MarketplaceChannelDetails>() {
+                        @Override
+                        public void write(JsonWriter out, MarketplaceChannelDetails value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public MarketplaceChannelDetails read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of MarketplaceChannelDetails given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of MarketplaceChannelDetails
+     * @throws IOException if the JSON string is invalid with respect to MarketplaceChannelDetails
+     */
+    public static MarketplaceChannelDetails fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, MarketplaceChannelDetails.class);
+    }
+
+    /**
+     * Convert an instance of MarketplaceChannelDetails to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

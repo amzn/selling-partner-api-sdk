@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.awd.v2024_05_09;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,10 +22,8 @@ import java.io.IOException;
 /** Sort order for a collection of items. For example, order or shipment. */
 @JsonAdapter(SortOrder.Adapter.class)
 public enum SortOrder {
-    @SerializedName("ASCENDING")
     ASCENDING("ASCENDING"),
 
-    @SerializedName("DESCENDING")
     DESCENDING("DESCENDING");
 
     private String value;
@@ -43,25 +41,30 @@ public enum SortOrder {
         return String.valueOf(value);
     }
 
-    public static SortOrder fromValue(String input) {
+    public static SortOrder fromValue(String value) {
         for (SortOrder b : SortOrder.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<SortOrder> {
         @Override
         public void write(final JsonWriter jsonWriter, final SortOrder enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public SortOrder read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return SortOrder.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return SortOrder.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        SortOrder.fromValue(value);
     }
 }

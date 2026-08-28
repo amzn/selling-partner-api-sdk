@@ -12,14 +12,33 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response schema for the &#x60;initiatePayout&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `initiatePayout` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class InitiatePayoutResponse {
-    @SerializedName("payoutReferenceId")
-    private String payoutReferenceId = null;
+    public static final String SERIALIZED_NAME_PAYOUT_REFERENCE_ID = "payoutReferenceId";
+
+    @SerializedName(SERIALIZED_NAME_PAYOUT_REFERENCE_ID)
+    private String payoutReferenceId;
+
+    public InitiatePayoutResponse() {}
 
     public InitiatePayoutResponse payoutReferenceId(String payoutReferenceId) {
         this.payoutReferenceId = payoutReferenceId;
@@ -32,10 +51,7 @@ public class InitiatePayoutResponse {
      *
      * @return payoutReferenceId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The financial event group ID for a successfully initiated payout. You can use this ID to track payout information.")
+    @javax.annotation.Nonnull
     public String getPayoutReferenceId() {
         return payoutReferenceId;
     }
@@ -45,7 +61,7 @@ public class InitiatePayoutResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -73,10 +89,115 @@ public class InitiatePayoutResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("payoutReferenceId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("payoutReferenceId");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to InitiatePayoutResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!InitiatePayoutResponse.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in InitiatePayoutResponse is not found in the empty JSON string",
+                        InitiatePayoutResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!InitiatePayoutResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `InitiatePayoutResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : InitiatePayoutResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("payoutReferenceId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `payoutReferenceId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("payoutReferenceId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!InitiatePayoutResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'InitiatePayoutResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<InitiatePayoutResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(InitiatePayoutResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<InitiatePayoutResponse>() {
+                        @Override
+                        public void write(JsonWriter out, InitiatePayoutResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public InitiatePayoutResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of InitiatePayoutResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of InitiatePayoutResponse
+     * @throws IOException if the JSON string is invalid with respect to InitiatePayoutResponse
+     */
+    public static InitiatePayoutResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, InitiatePayoutResponse.class);
+    }
+
+    /**
+     * Convert an instance of InitiatePayoutResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

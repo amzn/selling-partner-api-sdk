@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Sales rank of an Amazon catalog item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Sales rank of an Amazon catalog item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ItemClassificationSalesRank {
-    @SerializedName("classificationId")
-    private String classificationId = null;
+    public static final String SERIALIZED_NAME_CLASSIFICATION_ID = "classificationId";
 
-    @SerializedName("title")
-    private String title = null;
+    @SerializedName(SERIALIZED_NAME_CLASSIFICATION_ID)
+    private String classificationId;
 
-    @SerializedName("link")
-    private String link = null;
+    public static final String SERIALIZED_NAME_TITLE = "title";
 
-    @SerializedName("rank")
-    private Integer rank = null;
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
+
+    public static final String SERIALIZED_NAME_LINK = "link";
+
+    @SerializedName(SERIALIZED_NAME_LINK)
+    private String link;
+
+    public static final String SERIALIZED_NAME_RANK = "rank";
+
+    @SerializedName(SERIALIZED_NAME_RANK)
+    private Integer rank;
+
+    public ItemClassificationSalesRank() {}
 
     public ItemClassificationSalesRank classificationId(String classificationId) {
         this.classificationId = classificationId;
@@ -40,9 +65,7 @@ public class ItemClassificationSalesRank {
      *
      * @return classificationId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "Identifier of the classification that is associated with the sales rank.")
+    @javax.annotation.Nonnull
     public String getClassificationId() {
         return classificationId;
     }
@@ -61,7 +84,7 @@ public class ItemClassificationSalesRank {
      *
      * @return title
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Name of the sales rank.")
+    @javax.annotation.Nonnull
     public String getTitle() {
         return title;
     }
@@ -80,9 +103,7 @@ public class ItemClassificationSalesRank {
      *
      * @return link
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "Corresponding Amazon retail website URL for the sales category.")
-    public String getLink() {
+    @javax.annotation.Nullable public String getLink() {
         return link;
     }
 
@@ -100,7 +121,7 @@ public class ItemClassificationSalesRank {
      *
      * @return rank
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Sales rank.")
+    @javax.annotation.Nonnull
     public Integer getRank() {
         return rank;
     }
@@ -110,7 +131,7 @@ public class ItemClassificationSalesRank {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,10 +165,131 @@ public class ItemClassificationSalesRank {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("classificationId");
+        openapiFields.add("title");
+        openapiFields.add("link");
+        openapiFields.add("rank");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("classificationId");
+        openapiRequiredFields.add("title");
+        openapiRequiredFields.add("rank");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ItemClassificationSalesRank
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ItemClassificationSalesRank.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ItemClassificationSalesRank is not found in the empty JSON string",
+                        ItemClassificationSalesRank.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ItemClassificationSalesRank.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ItemClassificationSalesRank` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : ItemClassificationSalesRank.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("classificationId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `classificationId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("classificationId").toString()));
+        }
+        if (!jsonObj.get("title").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `title` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("title").toString()));
+        }
+        if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull())
+                && !jsonObj.get("link").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `link` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("link").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ItemClassificationSalesRank.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ItemClassificationSalesRank' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ItemClassificationSalesRank> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ItemClassificationSalesRank.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ItemClassificationSalesRank>() {
+                        @Override
+                        public void write(JsonWriter out, ItemClassificationSalesRank value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ItemClassificationSalesRank read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ItemClassificationSalesRank given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ItemClassificationSalesRank
+     * @throws IOException if the JSON string is invalid with respect to ItemClassificationSalesRank
+     */
+    public static ItemClassificationSalesRank fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ItemClassificationSalesRank.class);
+    }
+
+    /**
+     * Convert an instance of ItemClassificationSalesRank to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,28 +12,46 @@
 
 package software.amazon.spapi.models.reports.v2021_06_30;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Information required to create the report schedule. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the report schedule.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class CreateReportScheduleSpecification {
-    @SerializedName("reportType")
-    private String reportType = null;
+    public static final String SERIALIZED_NAME_REPORT_TYPE = "reportType";
 
-    @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = null;
+    @SerializedName(SERIALIZED_NAME_REPORT_TYPE)
+    private String reportType;
 
-    @SerializedName("reportOptions")
-    private ReportOptions reportOptions = null;
+    public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
+
+    @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
+    private List<String> marketplaceIds = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_REPORT_OPTIONS = "reportOptions";
+
+    @SerializedName(SERIALIZED_NAME_REPORT_OPTIONS)
+    private ReportOptions reportOptions = new HashMap<>();
 
     /**
      * One of a set of predefined &lt;a
@@ -42,41 +60,40 @@ public class CreateReportScheduleSpecification {
      */
     @JsonAdapter(PeriodEnum.Adapter.class)
     public enum PeriodEnum {
-        @SerializedName("PT5M")
         PT5_M("PT5M"),
-        @SerializedName("PT15M")
+
         PT15_M("PT15M"),
-        @SerializedName("PT30M")
+
         PT30_M("PT30M"),
-        @SerializedName("PT1H")
+
         PT1_H("PT1H"),
-        @SerializedName("PT2H")
+
         PT2_H("PT2H"),
-        @SerializedName("PT4H")
+
         PT4_H("PT4H"),
-        @SerializedName("PT8H")
+
         PT8_H("PT8H"),
-        @SerializedName("PT12H")
+
         PT12_H("PT12H"),
-        @SerializedName("P1D")
+
         P1_D("P1D"),
-        @SerializedName("P2D")
+
         P2_D("P2D"),
-        @SerializedName("P3D")
+
         P3_D("P3D"),
-        @SerializedName("PT84H")
+
         PT84_H("PT84H"),
-        @SerializedName("P7D")
+
         P7_D("P7D"),
-        @SerializedName("P14D")
+
         P14_D("P14D"),
-        @SerializedName("P15D")
+
         P15_D("P15D"),
-        @SerializedName("P18D")
+
         P18_D("P18D"),
-        @SerializedName("P30D")
+
         P30_D("P30D"),
-        @SerializedName("P1M")
+
         P1_M("P1M");
 
         private String value;
@@ -94,34 +111,45 @@ public class CreateReportScheduleSpecification {
             return String.valueOf(value);
         }
 
-        public static PeriodEnum fromValue(String input) {
+        public static PeriodEnum fromValue(String value) {
             for (PeriodEnum b : PeriodEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<PeriodEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final PeriodEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public PeriodEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return PeriodEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return PeriodEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            PeriodEnum.fromValue(value);
         }
     }
 
-    @SerializedName("period")
-    private PeriodEnum period = null;
+    public static final String SERIALIZED_NAME_PERIOD = "period";
 
-    @SerializedName("nextReportCreationTime")
-    private OffsetDateTime nextReportCreationTime = null;
+    @SerializedName(SERIALIZED_NAME_PERIOD)
+    private PeriodEnum period;
+
+    public static final String SERIALIZED_NAME_NEXT_REPORT_CREATION_TIME = "nextReportCreationTime";
+
+    @SerializedName(SERIALIZED_NAME_NEXT_REPORT_CREATION_TIME)
+    private OffsetDateTime nextReportCreationTime;
+
+    public CreateReportScheduleSpecification() {}
 
     public CreateReportScheduleSpecification reportType(String reportType) {
         this.reportType = reportType;
@@ -134,10 +162,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return reportType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
+    @javax.annotation.Nonnull
     public String getReportType() {
         return reportType;
     }
@@ -164,9 +189,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return marketplaceIds
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description = "A list of marketplace identifiers for the report schedule.")
+    @javax.annotation.Nonnull
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -185,8 +208,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return reportOptions
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ReportOptions getReportOptions() {
+    @javax.annotation.Nullable public ReportOptions getReportOptions() {
         return reportOptions;
     }
 
@@ -206,10 +228,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return period
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.")
+    @javax.annotation.Nonnull
     public PeriodEnum getPeriod() {
         return period;
     }
@@ -230,10 +249,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return nextReportCreationTime
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
-    public OffsetDateTime getNextReportCreationTime() {
+    @javax.annotation.Nullable public OffsetDateTime getNextReportCreationTime() {
         return nextReportCreationTime;
     }
 
@@ -242,7 +258,7 @@ public class CreateReportScheduleSpecification {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -281,10 +297,137 @@ public class CreateReportScheduleSpecification {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("reportType");
+        openapiFields.add("marketplaceIds");
+        openapiFields.add("reportOptions");
+        openapiFields.add("period");
+        openapiFields.add("nextReportCreationTime");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("reportType");
+        openapiRequiredFields.add("marketplaceIds");
+        openapiRequiredFields.add("period");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to CreateReportScheduleSpecification
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!CreateReportScheduleSpecification.openapiRequiredFields
+                    .isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in CreateReportScheduleSpecification is not found in the empty JSON string",
+                        CreateReportScheduleSpecification.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!CreateReportScheduleSpecification.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `CreateReportScheduleSpecification` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : CreateReportScheduleSpecification.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("reportType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `reportType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("reportType").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("marketplaceIds") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
+        if (!jsonObj.get("period").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `period` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("period").toString()));
+        }
+        // validate the required field `period`
+        PeriodEnum.validateJsonElement(jsonObj.get("period"));
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!CreateReportScheduleSpecification.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'CreateReportScheduleSpecification' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<CreateReportScheduleSpecification> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(CreateReportScheduleSpecification.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<CreateReportScheduleSpecification>() {
+                        @Override
+                        public void write(JsonWriter out, CreateReportScheduleSpecification value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public CreateReportScheduleSpecification read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of CreateReportScheduleSpecification given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of CreateReportScheduleSpecification
+     * @throws IOException if the JSON string is invalid with respect to CreateReportScheduleSpecification
+     */
+    public static CreateReportScheduleSpecification fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, CreateReportScheduleSpecification.class);
+    }
+
+    /**
+     * Convert an instance of CreateReportScheduleSpecification to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

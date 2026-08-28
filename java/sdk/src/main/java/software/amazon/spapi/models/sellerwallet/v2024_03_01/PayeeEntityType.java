@@ -12,9 +12,9 @@
 
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
+import com.google.gson.JsonElement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
@@ -22,13 +22,10 @@ import java.io.IOException;
 /** The entity type of the transaction payee when the bank account ownership type is &#x60;THIRD_PARTY&#x60;. */
 @JsonAdapter(PayeeEntityType.Adapter.class)
 public enum PayeeEntityType {
-    @SerializedName("INDIVIDUAL")
     INDIVIDUAL("INDIVIDUAL"),
 
-    @SerializedName("BUSINESS")
     BUSINESS("BUSINESS"),
 
-    @SerializedName("TAX_AUTHORITY")
     TAX_AUTHORITY("TAX_AUTHORITY");
 
     private String value;
@@ -46,25 +43,30 @@ public enum PayeeEntityType {
         return String.valueOf(value);
     }
 
-    public static PayeeEntityType fromValue(String input) {
+    public static PayeeEntityType fromValue(String value) {
         for (PayeeEntityType b : PayeeEntityType.values()) {
-            if (b.value.equals(input)) {
+            if (b.value.equals(value)) {
                 return b;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PayeeEntityType> {
         @Override
         public void write(final JsonWriter jsonWriter, final PayeeEntityType enumeration) throws IOException {
-            jsonWriter.value(String.valueOf(enumeration.getValue()));
+            jsonWriter.value(enumeration.getValue());
         }
 
         @Override
         public PayeeEntityType read(final JsonReader jsonReader) throws IOException {
-            Object value = jsonReader.nextString();
-            return PayeeEntityType.fromValue((String) (value));
+            String value = jsonReader.nextString();
+            return PayeeEntityType.fromValue(value);
         }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        String value = jsonElement.getAsString();
+        PayeeEntityType.fromValue(value);
     }
 }

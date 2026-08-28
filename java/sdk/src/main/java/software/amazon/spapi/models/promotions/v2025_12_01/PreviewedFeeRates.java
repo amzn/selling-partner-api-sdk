@@ -12,22 +12,41 @@
 
 package software.amazon.spapi.models.promotions.v2025_12_01;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /**
  * Fee rates that were previewed to the selling partner. Example fee rates are &#x60;$100&#x60; or &#x60;5% of
  * sales&#x60;.
  */
-@io.swagger.v3.oas.annotations.media.Schema(
-        description =
-                "Fee rates that were previewed to the selling partner. Example fee rates are `$100` or `5% of sales`.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class PreviewedFeeRates {
-    @SerializedName("upfrontFee")
-    private UpfrontFee upfrontFee = null;
+    public static final String SERIALIZED_NAME_UPFRONT_FEE = "upfrontFee";
 
-    @SerializedName("variableFee")
-    private VariableFee variableFee = null;
+    @SerializedName(SERIALIZED_NAME_UPFRONT_FEE)
+    private UpfrontFee upfrontFee;
+
+    public static final String SERIALIZED_NAME_VARIABLE_FEE = "variableFee";
+
+    @SerializedName(SERIALIZED_NAME_VARIABLE_FEE)
+    private VariableFee variableFee;
+
+    public PreviewedFeeRates() {}
 
     public PreviewedFeeRates upfrontFee(UpfrontFee upfrontFee) {
         this.upfrontFee = upfrontFee;
@@ -39,8 +58,7 @@ public class PreviewedFeeRates {
      *
      * @return upfrontFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public UpfrontFee getUpfrontFee() {
+    @javax.annotation.Nullable public UpfrontFee getUpfrontFee() {
         return upfrontFee;
     }
 
@@ -58,8 +76,7 @@ public class PreviewedFeeRates {
      *
      * @return variableFee
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public VariableFee getVariableFee() {
+    @javax.annotation.Nullable public VariableFee getVariableFee() {
         return variableFee;
     }
 
@@ -68,7 +85,7 @@ public class PreviewedFeeRates {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -96,10 +113,108 @@ public class PreviewedFeeRates {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("upfrontFee");
+        openapiFields.add("variableFee");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to PreviewedFeeRates
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!PreviewedFeeRates.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in PreviewedFeeRates is not found in the empty JSON string",
+                        PreviewedFeeRates.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!PreviewedFeeRates.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `PreviewedFeeRates` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `upfrontFee`
+        if (jsonObj.get("upfrontFee") != null && !jsonObj.get("upfrontFee").isJsonNull()) {
+            UpfrontFee.validateJsonElement(jsonObj.get("upfrontFee"));
+        }
+        // validate the optional field `variableFee`
+        if (jsonObj.get("variableFee") != null && !jsonObj.get("variableFee").isJsonNull()) {
+            VariableFee.validateJsonElement(jsonObj.get("variableFee"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!PreviewedFeeRates.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'PreviewedFeeRates' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<PreviewedFeeRates> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(PreviewedFeeRates.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<PreviewedFeeRates>() {
+                        @Override
+                        public void write(JsonWriter out, PreviewedFeeRates value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public PreviewedFeeRates read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of PreviewedFeeRates given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of PreviewedFeeRates
+     * @throws IOException if the JSON string is invalid with respect to PreviewedFeeRates
+     */
+    public static PreviewedFeeRates fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, PreviewedFeeRates.class);
+    }
+
+    /**
+     * Convert an instance of PreviewedFeeRates to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

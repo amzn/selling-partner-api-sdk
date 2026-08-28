@@ -12,27 +12,38 @@
 
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Contextual information about an invoice line item. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Contextual information about an invoice line item.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class LineItemContext {
     /** The type of line item. */
     @JsonAdapter(LineItemTypeEnum.Adapter.class)
     public enum LineItemTypeEnum {
-        @SerializedName("GOODS")
         GOODS("GOODS"),
-        @SerializedName("SERVICES")
+
         SERVICES("SERVICES"),
-        @SerializedName("OTHERS")
+
         OTHERS("OTHERS");
 
         private String value;
@@ -50,48 +61,58 @@ public class LineItemContext {
             return String.valueOf(value);
         }
 
-        public static LineItemTypeEnum fromValue(String input) {
+        public static LineItemTypeEnum fromValue(String value) {
             for (LineItemTypeEnum b : LineItemTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<LineItemTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final LineItemTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public LineItemTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return LineItemTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return LineItemTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            LineItemTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("lineItemType")
-    private LineItemTypeEnum lineItemType = null;
+    public static final String SERIALIZED_NAME_LINE_ITEM_TYPE = "lineItemType";
 
-    @SerializedName("itemIdentifiers")
-    private List<ItemIdentifier> itemIdentifiers = null;
+    @SerializedName(SERIALIZED_NAME_LINE_ITEM_TYPE)
+    private LineItemTypeEnum lineItemType;
 
-    @SerializedName("itemDescription")
-    private String itemDescription = null;
+    public static final String SERIALIZED_NAME_ITEM_IDENTIFIERS = "itemIdentifiers";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_IDENTIFIERS)
+    private List<ItemIdentifier> itemIdentifiers = new ArrayList<>();
+
+    public static final String SERIALIZED_NAME_ITEM_DESCRIPTION = "itemDescription";
+
+    @SerializedName(SERIALIZED_NAME_ITEM_DESCRIPTION)
+    private String itemDescription;
 
     /** The type of service charge. */
     @JsonAdapter(ServiceChargeTypeEnum.Adapter.class)
     public enum ServiceChargeTypeEnum {
-        @SerializedName("DAMAGE_ALLOWANCE")
         DAMAGE_ALLOWANCE("DAMAGE_ALLOWANCE"),
-        @SerializedName("PRICE_PROTECTION")
+
         PRICE_PROTECTION("PRICE_PROTECTION"),
-        @SerializedName("FBA_INVENTORY_STORAGE_FEE")
+
         FBA_INVENTORY_STORAGE_FEE("FBA_INVENTORY_STORAGE_FEE"),
-        @SerializedName("OTHER")
+
         OTHER("OTHER");
 
         private String value;
@@ -109,37 +130,50 @@ public class LineItemContext {
             return String.valueOf(value);
         }
 
-        public static ServiceChargeTypeEnum fromValue(String input) {
+        public static ServiceChargeTypeEnum fromValue(String value) {
             for (ServiceChargeTypeEnum b : ServiceChargeTypeEnum.values()) {
-                if (b.value.equals(input)) {
+                if (b.value.equals(value)) {
                     return b;
                 }
             }
-            return null;
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
         }
 
         public static class Adapter extends TypeAdapter<ServiceChargeTypeEnum> {
             @Override
             public void write(final JsonWriter jsonWriter, final ServiceChargeTypeEnum enumeration) throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
+                jsonWriter.value(enumeration.getValue());
             }
 
             @Override
             public ServiceChargeTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return ServiceChargeTypeEnum.fromValue((String) (value));
+                String value = jsonReader.nextString();
+                return ServiceChargeTypeEnum.fromValue(value);
             }
+        }
+
+        public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+            String value = jsonElement.getAsString();
+            ServiceChargeTypeEnum.fromValue(value);
         }
     }
 
-    @SerializedName("serviceChargeType")
-    private ServiceChargeTypeEnum serviceChargeType = null;
+    public static final String SERIALIZED_NAME_SERVICE_CHARGE_TYPE = "serviceChargeType";
 
-    @SerializedName("serviceChargePeriod")
-    private ServiceChargePeriod serviceChargePeriod = null;
+    @SerializedName(SERIALIZED_NAME_SERVICE_CHARGE_TYPE)
+    private ServiceChargeTypeEnum serviceChargeType;
 
-    @SerializedName("matchingContext")
-    private MatchingContext matchingContext = null;
+    public static final String SERIALIZED_NAME_SERVICE_CHARGE_PERIOD = "serviceChargePeriod";
+
+    @SerializedName(SERIALIZED_NAME_SERVICE_CHARGE_PERIOD)
+    private ServiceChargePeriod serviceChargePeriod;
+
+    public static final String SERIALIZED_NAME_MATCHING_CONTEXT = "matchingContext";
+
+    @SerializedName(SERIALIZED_NAME_MATCHING_CONTEXT)
+    private MatchingContext matchingContext;
+
+    public LineItemContext() {}
 
     public LineItemContext lineItemType(LineItemTypeEnum lineItemType) {
         this.lineItemType = lineItemType;
@@ -151,7 +185,7 @@ public class LineItemContext {
      *
      * @return lineItemType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of line item.")
+    @javax.annotation.Nonnull
     public LineItemTypeEnum getLineItemType() {
         return lineItemType;
     }
@@ -178,8 +212,7 @@ public class LineItemContext {
      *
      * @return itemIdentifiers
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of identifiers for the item.")
-    public List<ItemIdentifier> getItemIdentifiers() {
+    @javax.annotation.Nullable public List<ItemIdentifier> getItemIdentifiers() {
         return itemIdentifiers;
     }
 
@@ -197,8 +230,7 @@ public class LineItemContext {
      *
      * @return itemDescription
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the item.")
-    public String getItemDescription() {
+    @javax.annotation.Nullable public String getItemDescription() {
         return itemDescription;
     }
 
@@ -216,8 +248,7 @@ public class LineItemContext {
      *
      * @return serviceChargeType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of service charge.")
-    public ServiceChargeTypeEnum getServiceChargeType() {
+    @javax.annotation.Nullable public ServiceChargeTypeEnum getServiceChargeType() {
         return serviceChargeType;
     }
 
@@ -235,8 +266,7 @@ public class LineItemContext {
      *
      * @return serviceChargePeriod
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public ServiceChargePeriod getServiceChargePeriod() {
+    @javax.annotation.Nullable public ServiceChargePeriod getServiceChargePeriod() {
         return serviceChargePeriod;
     }
 
@@ -254,8 +284,7 @@ public class LineItemContext {
      *
      * @return matchingContext
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public MatchingContext getMatchingContext() {
+    @javax.annotation.Nullable public MatchingContext getMatchingContext() {
         return matchingContext;
     }
 
@@ -264,7 +293,7 @@ public class LineItemContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -316,10 +345,168 @@ public class LineItemContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("lineItemType");
+        openapiFields.add("itemIdentifiers");
+        openapiFields.add("itemDescription");
+        openapiFields.add("serviceChargeType");
+        openapiFields.add("serviceChargePeriod");
+        openapiFields.add("matchingContext");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("lineItemType");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to LineItemContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!LineItemContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in LineItemContext is not found in the empty JSON string",
+                        LineItemContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!LineItemContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `LineItemContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : LineItemContext.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("lineItemType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItemType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("lineItemType").toString()));
+        }
+        // validate the required field `lineItemType`
+        LineItemTypeEnum.validateJsonElement(jsonObj.get("lineItemType"));
+        if (jsonObj.get("itemIdentifiers") != null
+                && !jsonObj.get("itemIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayitemIdentifiers = jsonObj.getAsJsonArray("itemIdentifiers");
+            if (jsonArrayitemIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("itemIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `itemIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("itemIdentifiers").toString()));
+                }
+
+                // validate the optional field `itemIdentifiers` (array)
+                for (int i = 0; i < jsonArrayitemIdentifiers.size(); i++) {
+                    ItemIdentifier.validateJsonElement(jsonArrayitemIdentifiers.get(i));
+                }
+                ;
+            }
+        }
+        if ((jsonObj.get("itemDescription") != null
+                        && !jsonObj.get("itemDescription").isJsonNull())
+                && !jsonObj.get("itemDescription").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemDescription` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("itemDescription").toString()));
+        }
+        if ((jsonObj.get("serviceChargeType") != null
+                        && !jsonObj.get("serviceChargeType").isJsonNull())
+                && !jsonObj.get("serviceChargeType").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceChargeType` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("serviceChargeType").toString()));
+        }
+        // validate the optional field `serviceChargeType`
+        if (jsonObj.get("serviceChargeType") != null
+                && !jsonObj.get("serviceChargeType").isJsonNull()) {
+            ServiceChargeTypeEnum.validateJsonElement(jsonObj.get("serviceChargeType"));
+        }
+        // validate the optional field `serviceChargePeriod`
+        if (jsonObj.get("serviceChargePeriod") != null
+                && !jsonObj.get("serviceChargePeriod").isJsonNull()) {
+            ServiceChargePeriod.validateJsonElement(jsonObj.get("serviceChargePeriod"));
+        }
+        // validate the optional field `matchingContext`
+        if (jsonObj.get("matchingContext") != null
+                && !jsonObj.get("matchingContext").isJsonNull()) {
+            MatchingContext.validateJsonElement(jsonObj.get("matchingContext"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!LineItemContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'LineItemContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<LineItemContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(LineItemContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<LineItemContext>() {
+                        @Override
+                        public void write(JsonWriter out, LineItemContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public LineItemContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of LineItemContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of LineItemContext
+     * @throws IOException if the JSON string is invalid with respect to LineItemContext
+     */
+    public static LineItemContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, LineItemContext.class);
+    }
+
+    /**
+     * Convert an instance of LineItemContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

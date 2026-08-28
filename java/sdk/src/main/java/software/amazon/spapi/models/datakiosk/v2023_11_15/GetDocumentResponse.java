@@ -12,17 +12,38 @@
 
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** The response for the &#x60;getDocument&#x60; operation. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getDocument` operation.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class GetDocumentResponse {
-    @SerializedName("documentId")
-    private String documentId = null;
+    public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
 
-    @SerializedName("documentUrl")
-    private String documentUrl = null;
+    @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+    private String documentId;
+
+    public static final String SERIALIZED_NAME_DOCUMENT_URL = "documentUrl";
+
+    @SerializedName(SERIALIZED_NAME_DOCUMENT_URL)
+    private String documentUrl;
+
+    public GetDocumentResponse() {}
 
     public GetDocumentResponse documentId(String documentId) {
         this.documentId = documentId;
@@ -35,10 +56,7 @@ public class GetDocumentResponse {
      *
      * @return documentId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "The identifier for the Data Kiosk document. This identifier is unique only in combination with a selling partner account ID.")
+    @javax.annotation.Nonnull
     public String getDocumentId() {
         return documentId;
     }
@@ -60,10 +78,7 @@ public class GetDocumentResponse {
      *
      * @return documentUrl
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "A presigned URL that can be used to retrieve the Data Kiosk document. This URL expires after 5 minutes. If the Data Kiosk document is compressed, the `Content-Encoding` header will indicate the compression algorithm.  **Note:** Most HTTP clients are capable of automatically decompressing downloaded files based on the `Content-Encoding` header.")
+    @javax.annotation.Nonnull
     public String getDocumentUrl() {
         return documentUrl;
     }
@@ -73,7 +88,7 @@ public class GetDocumentResponse {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -101,10 +116,121 @@ public class GetDocumentResponse {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("documentId");
+        openapiFields.add("documentUrl");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("documentId");
+        openapiRequiredFields.add("documentUrl");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetDocumentResponse
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!GetDocumentResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in GetDocumentResponse is not found in the empty JSON string",
+                        GetDocumentResponse.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!GetDocumentResponse.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `GetDocumentResponse` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : GetDocumentResponse.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("documentId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `documentId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("documentId").toString()));
+        }
+        if (!jsonObj.get("documentUrl").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `documentUrl` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("documentUrl").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetDocumentResponse.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetDocumentResponse' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetDocumentResponse> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(GetDocumentResponse.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<GetDocumentResponse>() {
+                        @Override
+                        public void write(JsonWriter out, GetDocumentResponse value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public GetDocumentResponse read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of GetDocumentResponse given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetDocumentResponse
+     * @throws IOException if the JSON string is invalid with respect to GetDocumentResponse
+     */
+    public static GetDocumentResponse fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetDocumentResponse.class);
+    }
+
+    /**
+     * Convert an instance of GetDocumentResponse to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

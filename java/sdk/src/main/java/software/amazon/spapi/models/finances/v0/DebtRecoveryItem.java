@@ -12,24 +12,49 @@
 
 package software.amazon.spapi.models.finances.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** An item of a debt payment or debt adjustment. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "An item of a debt payment or debt adjustment.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class DebtRecoveryItem {
-    @SerializedName("RecoveryAmount")
-    private Currency recoveryAmount = null;
+    public static final String SERIALIZED_NAME_RECOVERY_AMOUNT = "RecoveryAmount";
 
-    @SerializedName("OriginalAmount")
-    private Currency originalAmount = null;
+    @SerializedName(SERIALIZED_NAME_RECOVERY_AMOUNT)
+    private Currency recoveryAmount;
 
-    @SerializedName("GroupBeginDate")
-    private OffsetDateTime groupBeginDate = null;
+    public static final String SERIALIZED_NAME_ORIGINAL_AMOUNT = "OriginalAmount";
 
-    @SerializedName("GroupEndDate")
-    private OffsetDateTime groupEndDate = null;
+    @SerializedName(SERIALIZED_NAME_ORIGINAL_AMOUNT)
+    private Currency originalAmount;
+
+    public static final String SERIALIZED_NAME_GROUP_BEGIN_DATE = "GroupBeginDate";
+
+    @SerializedName(SERIALIZED_NAME_GROUP_BEGIN_DATE)
+    private OffsetDateTime groupBeginDate;
+
+    public static final String SERIALIZED_NAME_GROUP_END_DATE = "GroupEndDate";
+
+    @SerializedName(SERIALIZED_NAME_GROUP_END_DATE)
+    private OffsetDateTime groupEndDate;
+
+    public DebtRecoveryItem() {}
 
     public DebtRecoveryItem recoveryAmount(Currency recoveryAmount) {
         this.recoveryAmount = recoveryAmount;
@@ -41,8 +66,7 @@ public class DebtRecoveryItem {
      *
      * @return recoveryAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getRecoveryAmount() {
+    @javax.annotation.Nullable public Currency getRecoveryAmount() {
         return recoveryAmount;
     }
 
@@ -60,8 +84,7 @@ public class DebtRecoveryItem {
      *
      * @return originalAmount
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Currency getOriginalAmount() {
+    @javax.annotation.Nullable public Currency getOriginalAmount() {
         return originalAmount;
     }
 
@@ -79,10 +102,7 @@ public class DebtRecoveryItem {
      *
      * @return groupBeginDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getGroupBeginDate() {
+    @javax.annotation.Nullable public OffsetDateTime getGroupBeginDate() {
         return groupBeginDate;
     }
 
@@ -100,10 +120,7 @@ public class DebtRecoveryItem {
      *
      * @return groupEndDate
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description =
-                    "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
-    public OffsetDateTime getGroupEndDate() {
+    @javax.annotation.Nullable public OffsetDateTime getGroupEndDate() {
         return groupEndDate;
     }
 
@@ -112,7 +129,7 @@ public class DebtRecoveryItem {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -150,10 +167,112 @@ public class DebtRecoveryItem {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("RecoveryAmount");
+        openapiFields.add("OriginalAmount");
+        openapiFields.add("GroupBeginDate");
+        openapiFields.add("GroupEndDate");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to DebtRecoveryItem
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!DebtRecoveryItem.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in DebtRecoveryItem is not found in the empty JSON string",
+                        DebtRecoveryItem.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!DebtRecoveryItem.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `DebtRecoveryItem` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // validate the optional field `RecoveryAmount`
+        if (jsonObj.get("RecoveryAmount") != null
+                && !jsonObj.get("RecoveryAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("RecoveryAmount"));
+        }
+        // validate the optional field `OriginalAmount`
+        if (jsonObj.get("OriginalAmount") != null
+                && !jsonObj.get("OriginalAmount").isJsonNull()) {
+            Currency.validateJsonElement(jsonObj.get("OriginalAmount"));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!DebtRecoveryItem.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'DebtRecoveryItem' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<DebtRecoveryItem> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(DebtRecoveryItem.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<DebtRecoveryItem>() {
+                        @Override
+                        public void write(JsonWriter out, DebtRecoveryItem value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public DebtRecoveryItem read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of DebtRecoveryItem given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of DebtRecoveryItem
+     * @throws IOException if the JSON string is invalid with respect to DebtRecoveryItem
+     */
+    public static DebtRecoveryItem fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, DebtRecoveryItem.class);
+    }
+
+    /**
+     * Convert an instance of DebtRecoveryItem to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

@@ -12,38 +12,73 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Schema for an individual buybox price. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual buybox price.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class BuyBoxPriceType {
-    @SerializedName("condition")
-    private String condition = null;
+    public static final String SERIALIZED_NAME_CONDITION = "condition";
 
-    @SerializedName("offerType")
-    private OfferCustomerType offerType = null;
+    @SerializedName(SERIALIZED_NAME_CONDITION)
+    private String condition;
 
-    @SerializedName("quantityTier")
-    private Integer quantityTier = null;
+    public static final String SERIALIZED_NAME_OFFER_TYPE = "offerType";
 
-    @SerializedName("quantityDiscountType")
-    private QuantityDiscountType quantityDiscountType = null;
+    @SerializedName(SERIALIZED_NAME_OFFER_TYPE)
+    private OfferCustomerType offerType;
 
-    @SerializedName("LandedPrice")
-    private MoneyType landedPrice = null;
+    public static final String SERIALIZED_NAME_QUANTITY_TIER = "quantityTier";
 
-    @SerializedName("ListingPrice")
-    private MoneyType listingPrice = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_TIER)
+    private Integer quantityTier;
 
-    @SerializedName("Shipping")
-    private MoneyType shipping = null;
+    public static final String SERIALIZED_NAME_QUANTITY_DISCOUNT_TYPE = "quantityDiscountType";
 
-    @SerializedName("Points")
-    private Points points = null;
+    @SerializedName(SERIALIZED_NAME_QUANTITY_DISCOUNT_TYPE)
+    private QuantityDiscountType quantityDiscountType;
 
-    @SerializedName("sellerId")
-    private String sellerId = null;
+    public static final String SERIALIZED_NAME_LANDED_PRICE = "LandedPrice";
+
+    @SerializedName(SERIALIZED_NAME_LANDED_PRICE)
+    private MoneyType landedPrice;
+
+    public static final String SERIALIZED_NAME_LISTING_PRICE = "ListingPrice";
+
+    @SerializedName(SERIALIZED_NAME_LISTING_PRICE)
+    private MoneyType listingPrice;
+
+    public static final String SERIALIZED_NAME_SHIPPING = "Shipping";
+
+    @SerializedName(SERIALIZED_NAME_SHIPPING)
+    private MoneyType shipping;
+
+    public static final String SERIALIZED_NAME_POINTS = "Points";
+
+    @SerializedName(SERIALIZED_NAME_POINTS)
+    private Points points;
+
+    public static final String SERIALIZED_NAME_SELLER_ID = "sellerId";
+
+    @SerializedName(SERIALIZED_NAME_SELLER_ID)
+    private String sellerId;
+
+    public BuyBoxPriceType() {}
 
     public BuyBoxPriceType condition(String condition) {
         this.condition = condition;
@@ -55,10 +90,7 @@ public class BuyBoxPriceType {
      *
      * @return condition
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            required = true,
-            description =
-                    "Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.")
+    @javax.annotation.Nonnull
     public String getCondition() {
         return condition;
     }
@@ -77,8 +109,7 @@ public class BuyBoxPriceType {
      *
      * @return offerType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public OfferCustomerType getOfferType() {
+    @javax.annotation.Nullable public OfferCustomerType getOfferType() {
         return offerType;
     }
 
@@ -96,8 +127,7 @@ public class BuyBoxPriceType {
      *
      * @return quantityTier
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates at what quantity this price becomes active.")
-    public Integer getQuantityTier() {
+    @javax.annotation.Nullable public Integer getQuantityTier() {
         return quantityTier;
     }
 
@@ -115,8 +145,7 @@ public class BuyBoxPriceType {
      *
      * @return quantityDiscountType
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public QuantityDiscountType getQuantityDiscountType() {
+    @javax.annotation.Nullable public QuantityDiscountType getQuantityDiscountType() {
         return quantityDiscountType;
     }
 
@@ -134,7 +163,7 @@ public class BuyBoxPriceType {
      *
      * @return landedPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getLandedPrice() {
         return landedPrice;
     }
@@ -153,7 +182,7 @@ public class BuyBoxPriceType {
      *
      * @return listingPrice
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -172,7 +201,7 @@ public class BuyBoxPriceType {
      *
      * @return shipping
      */
-    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
+    @javax.annotation.Nonnull
     public MoneyType getShipping() {
         return shipping;
     }
@@ -191,8 +220,7 @@ public class BuyBoxPriceType {
      *
      * @return points
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "")
-    public Points getPoints() {
+    @javax.annotation.Nullable public Points getPoints() {
         return points;
     }
 
@@ -210,8 +238,7 @@ public class BuyBoxPriceType {
      *
      * @return sellerId
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
-    public String getSellerId() {
+    @javax.annotation.Nullable public String getSellerId() {
         return sellerId;
     }
 
@@ -220,7 +247,7 @@ public class BuyBoxPriceType {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -273,10 +300,150 @@ public class BuyBoxPriceType {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("condition");
+        openapiFields.add("offerType");
+        openapiFields.add("quantityTier");
+        openapiFields.add("quantityDiscountType");
+        openapiFields.add("LandedPrice");
+        openapiFields.add("ListingPrice");
+        openapiFields.add("Shipping");
+        openapiFields.add("Points");
+        openapiFields.add("sellerId");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+        openapiRequiredFields.add("condition");
+        openapiRequiredFields.add("LandedPrice");
+        openapiRequiredFields.add("ListingPrice");
+        openapiRequiredFields.add("Shipping");
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to BuyBoxPriceType
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!BuyBoxPriceType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in BuyBoxPriceType is not found in the empty JSON string",
+                        BuyBoxPriceType.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!BuyBoxPriceType.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `BuyBoxPriceType` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+
+        // check to make sure all required properties/fields are present in the JSON string
+        for (String requiredField : BuyBoxPriceType.openapiRequiredFields) {
+            if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+                throw new IllegalArgumentException(String.format(
+                        "The required field `%s` is not found in the JSON string: %s",
+                        requiredField, jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (!jsonObj.get("condition").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `condition` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("condition").toString()));
+        }
+        // validate the optional field `offerType`
+        if (jsonObj.get("offerType") != null && !jsonObj.get("offerType").isJsonNull()) {
+            OfferCustomerType.validateJsonElement(jsonObj.get("offerType"));
+        }
+        // validate the optional field `quantityDiscountType`
+        if (jsonObj.get("quantityDiscountType") != null
+                && !jsonObj.get("quantityDiscountType").isJsonNull()) {
+            QuantityDiscountType.validateJsonElement(jsonObj.get("quantityDiscountType"));
+        }
+        // validate the required field `LandedPrice`
+        MoneyType.validateJsonElement(jsonObj.get("LandedPrice"));
+        // validate the required field `ListingPrice`
+        MoneyType.validateJsonElement(jsonObj.get("ListingPrice"));
+        // validate the required field `Shipping`
+        MoneyType.validateJsonElement(jsonObj.get("Shipping"));
+        // validate the optional field `Points`
+        if (jsonObj.get("Points") != null && !jsonObj.get("Points").isJsonNull()) {
+            Points.validateJsonElement(jsonObj.get("Points"));
+        }
+        if ((jsonObj.get("sellerId") != null && !jsonObj.get("sellerId").isJsonNull())
+                && !jsonObj.get("sellerId").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sellerId` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sellerId").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!BuyBoxPriceType.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'BuyBoxPriceType' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<BuyBoxPriceType> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(BuyBoxPriceType.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<BuyBoxPriceType>() {
+                        @Override
+                        public void write(JsonWriter out, BuyBoxPriceType value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public BuyBoxPriceType read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of BuyBoxPriceType given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of BuyBoxPriceType
+     * @throws IOException if the JSON string is invalid with respect to BuyBoxPriceType
+     */
+    public static BuyBoxPriceType fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, BuyBoxPriceType.class);
+    }
+
+    /**
+     * Convert an instance of BuyBoxPriceType to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }

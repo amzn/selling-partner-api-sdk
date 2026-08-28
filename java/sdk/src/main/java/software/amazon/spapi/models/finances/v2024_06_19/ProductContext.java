@@ -12,23 +12,48 @@
 
 package software.amazon.spapi.models.finances.v2024_06_19;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import software.amazon.spapi.JSON;
 
 /** Additional information related to the product. */
-@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information related to the product.")
+@javax.annotation.Generated(
+        value = "org.openapitools.codegen.languages.JavaClientCodegen",
+        comments = "Generator version: 7.9.0")
 public class ProductContext {
-    @SerializedName("asin")
-    private String asin = null;
+    public static final String SERIALIZED_NAME_ASIN = "asin";
 
-    @SerializedName("sku")
-    private String sku = null;
+    @SerializedName(SERIALIZED_NAME_ASIN)
+    private String asin;
 
-    @SerializedName("quantityShipped")
-    private Integer quantityShipped = null;
+    public static final String SERIALIZED_NAME_SKU = "sku";
 
-    @SerializedName("fulfillmentNetwork")
-    private String fulfillmentNetwork = null;
+    @SerializedName(SERIALIZED_NAME_SKU)
+    private String sku;
+
+    public static final String SERIALIZED_NAME_QUANTITY_SHIPPED = "quantityShipped";
+
+    @SerializedName(SERIALIZED_NAME_QUANTITY_SHIPPED)
+    private Integer quantityShipped;
+
+    public static final String SERIALIZED_NAME_FULFILLMENT_NETWORK = "fulfillmentNetwork";
+
+    @SerializedName(SERIALIZED_NAME_FULFILLMENT_NETWORK)
+    private String fulfillmentNetwork;
+
+    public ProductContext() {}
 
     public ProductContext asin(String asin) {
         this.asin = asin;
@@ -40,9 +65,7 @@ public class ProductContext {
      *
      * @return asin
      */
-    @io.swagger.v3.oas.annotations.media.Schema(
-            description = "The Amazon Standard Identification Number (ASIN) of the item.")
-    public String getAsin() {
+    @javax.annotation.Nullable public String getAsin() {
         return asin;
     }
 
@@ -60,8 +83,7 @@ public class ProductContext {
      *
      * @return sku
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The Stock Keeping Unit (SKU) of the item.")
-    public String getSku() {
+    @javax.annotation.Nullable public String getSku() {
         return sku;
     }
 
@@ -79,8 +101,7 @@ public class ProductContext {
      *
      * @return quantityShipped
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the item shipped.")
-    public Integer getQuantityShipped() {
+    @javax.annotation.Nullable public Integer getQuantityShipped() {
         return quantityShipped;
     }
 
@@ -98,8 +119,7 @@ public class ProductContext {
      *
      * @return fulfillmentNetwork
      */
-    @io.swagger.v3.oas.annotations.media.Schema(description = "The fulfillment network of the item.")
-    public String getFulfillmentNetwork() {
+    @javax.annotation.Nullable public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }
 
@@ -108,7 +128,7 @@ public class ProductContext {
     }
 
     @Override
-    public boolean equals(java.lang.Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -144,10 +164,121 @@ public class ProductContext {
     }
 
     /** Convert the given object to string with each line indented by 4 spaces (except the first line). */
-    private String toIndentedString(java.lang.Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    public static HashSet<String> openapiFields;
+    public static HashSet<String> openapiRequiredFields;
+
+    static {
+        // a set of all properties/fields (JSON key names)
+        openapiFields = new HashSet<String>();
+        openapiFields.add("asin");
+        openapiFields.add("sku");
+        openapiFields.add("quantityShipped");
+        openapiFields.add("fulfillmentNetwork");
+
+        // a set of required properties/fields (JSON key names)
+        openapiRequiredFields = new HashSet<String>();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to ProductContext
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        if (jsonElement == null) {
+            if (!ProductContext.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+                throw new IllegalArgumentException(String.format(
+                        "The required field(s) %s in ProductContext is not found in the empty JSON string",
+                        ProductContext.openapiRequiredFields.toString()));
+            }
+        }
+
+        Set<Map.Entry<String, JsonElement>> entries =
+                jsonElement.getAsJsonObject().entrySet();
+        // check to see if the JSON string contains additional fields
+        for (Map.Entry<String, JsonElement> entry : entries) {
+            if (!ProductContext.openapiFields.contains(entry.getKey())) {
+                throw new IllegalArgumentException(String.format(
+                        "The field `%s` in the JSON string is not defined in the `ProductContext` properties. JSON: %s",
+                        entry.getKey(), jsonElement.toString()));
+            }
+        }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if ((jsonObj.get("asin") != null && !jsonObj.get("asin").isJsonNull())
+                && !jsonObj.get("asin").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("asin").toString()));
+        }
+        if ((jsonObj.get("sku") != null && !jsonObj.get("sku").isJsonNull())
+                && !jsonObj.get("sku").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `sku` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("sku").toString()));
+        }
+        if ((jsonObj.get("fulfillmentNetwork") != null
+                        && !jsonObj.get("fulfillmentNetwork").isJsonNull())
+                && !jsonObj.get("fulfillmentNetwork").isJsonPrimitive()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentNetwork` to be a primitive type in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentNetwork").toString()));
+        }
+    }
+
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ProductContext.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ProductContext' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<ProductContext> thisAdapter =
+                    gson.getDelegateAdapter(this, TypeToken.get(ProductContext.class));
+
+            return (TypeAdapter<T>)
+                    new TypeAdapter<ProductContext>() {
+                        @Override
+                        public void write(JsonWriter out, ProductContext value) throws IOException {
+                            JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+                            elementAdapter.write(out, obj);
+                        }
+
+                        @Override
+                        public ProductContext read(JsonReader in) throws IOException {
+                            JsonElement jsonElement = elementAdapter.read(in);
+                            validateJsonElement(jsonElement);
+                            return thisAdapter.fromJsonTree(jsonElement);
+                        }
+                    }.nullSafe();
+        }
+    }
+
+    /**
+     * Create an instance of ProductContext given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of ProductContext
+     * @throws IOException if the JSON string is invalid with respect to ProductContext
+     */
+    public static ProductContext fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, ProductContext.class);
+    }
+
+    /**
+     * Convert an instance of ProductContext to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
     }
 }
