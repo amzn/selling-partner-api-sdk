@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class PurchaseShipmentResult {
     public static final String SERIALIZED_NAME_PACKAGE_DOCUMENT_DETAILS = "packageDocumentDetails";
 
     @SerializedName(SERIALIZED_NAME_PACKAGE_DOCUMENT_DETAILS)
-    private PackageDocumentDetailList packageDocumentDetails = new ArrayList<>();
+    private List<PackageDocumentDetail> packageDocumentDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PROMISE = "promise";
 
@@ -74,22 +77,30 @@ public class PurchaseShipmentResult {
         this.shipmentId = shipmentId;
     }
 
-    public PurchaseShipmentResult packageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
+    public PurchaseShipmentResult packageDocumentDetails(List<PackageDocumentDetail> packageDocumentDetails) {
         this.packageDocumentDetails = packageDocumentDetails;
         return this;
     }
 
+    public PurchaseShipmentResult addPackageDocumentDetailsItem(PackageDocumentDetail packageDocumentDetailsItem) {
+        if (this.packageDocumentDetails == null) {
+            this.packageDocumentDetails = new ArrayList<>();
+        }
+        this.packageDocumentDetails.add(packageDocumentDetailsItem);
+        return this;
+    }
+
     /**
-     * Get packageDocumentDetails
+     * A list of post-purchase details about a package that will be shipped using a shipping service.
      *
      * @return packageDocumentDetails
      */
     @javax.annotation.Nonnull
-    public PackageDocumentDetailList getPackageDocumentDetails() {
+    public List<PackageDocumentDetail> getPackageDocumentDetails() {
         return packageDocumentDetails;
     }
 
-    public void setPackageDocumentDetails(PackageDocumentDetailList packageDocumentDetails) {
+    public void setPackageDocumentDetails(List<PackageDocumentDetail> packageDocumentDetails) {
         this.packageDocumentDetails = packageDocumentDetails;
     }
 
@@ -231,6 +242,19 @@ public class PurchaseShipmentResult {
                     "Expected the field `shipmentId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("shipmentId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("packageDocumentDetails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageDocumentDetails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packageDocumentDetails").toString()));
+        }
+
+        JsonArray jsonArraypackageDocumentDetails = jsonObj.getAsJsonArray("packageDocumentDetails");
+        // validate the required field `packageDocumentDetails` (array)
+        for (int i = 0; i < jsonArraypackageDocumentDetails.size(); i++) {
+            PackageDocumentDetail.validateJsonElement(jsonArraypackageDocumentDetails.get(i));
+        }
+        ;
         // validate the required field `promise`
         Promise.validateJsonElement(jsonObj.get("promise"));
         // validate the optional field `benefits`

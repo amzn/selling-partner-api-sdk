@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -75,7 +78,7 @@ public class InboundShipmentItem {
     public static final String SERIALIZED_NAME_PREP_DETAILS_LIST = "PrepDetailsList";
 
     @SerializedName(SERIALIZED_NAME_PREP_DETAILS_LIST)
-    private PrepDetailsList prepDetailsList = new ArrayList<>();
+    private List<PrepDetails> prepDetailsList = new ArrayList<>();
 
     public InboundShipmentItem() {}
 
@@ -207,21 +210,29 @@ public class InboundShipmentItem {
         this.releaseDate = releaseDate;
     }
 
-    public InboundShipmentItem prepDetailsList(PrepDetailsList prepDetailsList) {
+    public InboundShipmentItem prepDetailsList(List<PrepDetails> prepDetailsList) {
         this.prepDetailsList = prepDetailsList;
         return this;
     }
 
+    public InboundShipmentItem addPrepDetailsListItem(PrepDetails prepDetailsListItem) {
+        if (this.prepDetailsList == null) {
+            this.prepDetailsList = new ArrayList<>();
+        }
+        this.prepDetailsList.add(prepDetailsListItem);
+        return this;
+    }
+
     /**
-     * Get prepDetailsList
+     * A list of preparation instructions and who is responsible for that preparation.
      *
      * @return prepDetailsList
      */
-    @javax.annotation.Nullable public PrepDetailsList getPrepDetailsList() {
+    @javax.annotation.Nullable public List<PrepDetails> getPrepDetailsList() {
         return prepDetailsList;
     }
 
-    public void setPrepDetailsList(PrepDetailsList prepDetailsList) {
+    public void setPrepDetailsList(List<PrepDetails> prepDetailsList) {
         this.prepDetailsList = prepDetailsList;
     }
 
@@ -364,6 +375,24 @@ public class InboundShipmentItem {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `FulfillmentNetworkSKU` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("FulfillmentNetworkSKU").toString()));
+        }
+        if (jsonObj.get("PrepDetailsList") != null
+                && !jsonObj.get("PrepDetailsList").isJsonNull()) {
+            JsonArray jsonArrayprepDetailsList = jsonObj.getAsJsonArray("PrepDetailsList");
+            if (jsonArrayprepDetailsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("PrepDetailsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `PrepDetailsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("PrepDetailsList").toString()));
+                }
+
+                // validate the optional field `PrepDetailsList` (array)
+                for (int i = 0; i < jsonArrayprepDetailsList.size(); i++) {
+                    PrepDetails.validateJsonElement(jsonArrayprepDetailsList.get(i));
+                }
+                ;
+            }
         }
     }
 

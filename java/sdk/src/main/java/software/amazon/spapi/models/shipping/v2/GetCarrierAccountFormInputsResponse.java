@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class GetCarrierAccountFormInputsResponse {
     public static final String SERIALIZED_NAME_LINKABLE_CARRIERS_LIST = "linkableCarriersList";
 
     @SerializedName(SERIALIZED_NAME_LINKABLE_CARRIERS_LIST)
-    private LinkableCarriersList linkableCarriersList = new ArrayList<>();
+    private List<LinkableCarrier> linkableCarriersList = new ArrayList<>();
 
     public GetCarrierAccountFormInputsResponse() {}
 
-    public GetCarrierAccountFormInputsResponse linkableCarriersList(LinkableCarriersList linkableCarriersList) {
+    public GetCarrierAccountFormInputsResponse linkableCarriersList(List<LinkableCarrier> linkableCarriersList) {
         this.linkableCarriersList = linkableCarriersList;
         return this;
     }
 
+    public GetCarrierAccountFormInputsResponse addLinkableCarriersListItem(LinkableCarrier linkableCarriersListItem) {
+        if (this.linkableCarriersList == null) {
+            this.linkableCarriersList = new ArrayList<>();
+        }
+        this.linkableCarriersList.add(linkableCarriersListItem);
+        return this;
+    }
+
     /**
-     * Get linkableCarriersList
+     * A list of LinkableCarrier
      *
      * @return linkableCarriersList
      */
-    @javax.annotation.Nullable public LinkableCarriersList getLinkableCarriersList() {
+    @javax.annotation.Nullable public List<LinkableCarrier> getLinkableCarriersList() {
         return linkableCarriersList;
     }
 
-    public void setLinkableCarriersList(LinkableCarriersList linkableCarriersList) {
+    public void setLinkableCarriersList(List<LinkableCarrier> linkableCarriersList) {
         this.linkableCarriersList = linkableCarriersList;
     }
 
@@ -134,6 +145,24 @@ public class GetCarrierAccountFormInputsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("linkableCarriersList") != null
+                && !jsonObj.get("linkableCarriersList").isJsonNull()) {
+            JsonArray jsonArraylinkableCarriersList = jsonObj.getAsJsonArray("linkableCarriersList");
+            if (jsonArraylinkableCarriersList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("linkableCarriersList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `linkableCarriersList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("linkableCarriersList").toString()));
+                }
+
+                // validate the optional field `linkableCarriersList` (array)
+                for (int i = 0; i < jsonArraylinkableCarriersList.size(); i++) {
+                    LinkableCarrier.validateJsonElement(jsonArraylinkableCarriersList.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -65,17 +68,17 @@ public class OneClickShipmentRequest {
     public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
     @SerializedName(SERIALIZED_NAME_PACKAGES)
-    private PackageList packages = new ArrayList<>();
+    private List<ModelPackage> packages = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICES_DETAILS = "valueAddedServicesDetails";
 
     @SerializedName(SERIALIZED_NAME_VALUE_ADDED_SERVICES_DETAILS)
-    private OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails = new ArrayList<>();
+    private List<OneClickShipmentValueAddedService> valueAddedServicesDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
 
     @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
-    private TaxDetailList taxDetails = new ArrayList<>();
+    private List<TaxDetail> taxDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
 
@@ -195,59 +198,84 @@ public class OneClickShipmentRequest {
         this.goodsOwner = goodsOwner;
     }
 
-    public OneClickShipmentRequest packages(PackageList packages) {
+    public OneClickShipmentRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public OneClickShipmentRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * A list of packages to be shipped through a shipping service offering.
      *
      * @return packages
      */
     @javax.annotation.Nonnull
-    public PackageList getPackages() {
+    public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackageList packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
     public OneClickShipmentRequest valueAddedServicesDetails(
-            OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails) {
+            List<OneClickShipmentValueAddedService> valueAddedServicesDetails) {
         this.valueAddedServicesDetails = valueAddedServicesDetails;
         return this;
     }
 
+    public OneClickShipmentRequest addValueAddedServicesDetailsItem(
+            OneClickShipmentValueAddedService valueAddedServicesDetailsItem) {
+        if (this.valueAddedServicesDetails == null) {
+            this.valueAddedServicesDetails = new ArrayList<>();
+        }
+        this.valueAddedServicesDetails.add(valueAddedServicesDetailsItem);
+        return this;
+    }
+
     /**
-     * Get valueAddedServicesDetails
+     * The value-added services to be added to a shipping service purchase.
      *
      * @return valueAddedServicesDetails
      */
-    @javax.annotation.Nullable public OneClickShipmentValueAddedServiceDetails getValueAddedServicesDetails() {
+    @javax.annotation.Nullable public List<OneClickShipmentValueAddedService> getValueAddedServicesDetails() {
         return valueAddedServicesDetails;
     }
 
-    public void setValueAddedServicesDetails(OneClickShipmentValueAddedServiceDetails valueAddedServicesDetails) {
+    public void setValueAddedServicesDetails(List<OneClickShipmentValueAddedService> valueAddedServicesDetails) {
         this.valueAddedServicesDetails = valueAddedServicesDetails;
     }
 
-    public OneClickShipmentRequest taxDetails(TaxDetailList taxDetails) {
+    public OneClickShipmentRequest taxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
         return this;
     }
 
+    public OneClickShipmentRequest addTaxDetailsItem(TaxDetail taxDetailsItem) {
+        if (this.taxDetails == null) {
+            this.taxDetails = new ArrayList<>();
+        }
+        this.taxDetails.add(taxDetailsItem);
+        return this;
+    }
+
     /**
-     * Get taxDetails
+     * A list of tax detail information.
      *
      * @return taxDetails
      */
-    @javax.annotation.Nullable public TaxDetailList getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
-    public void setTaxDetails(TaxDetailList taxDetails) {
+    public void setTaxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
     }
 
@@ -506,6 +534,54 @@ public class OneClickShipmentRequest {
         // validate the optional field `goodsOwner`
         if (jsonObj.get("goodsOwner") != null && !jsonObj.get("goodsOwner").isJsonNull()) {
             GoodsOwner.validateJsonElement(jsonObj.get("goodsOwner"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("packages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packages").toString()));
+        }
+
+        JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+        // validate the required field `packages` (array)
+        for (int i = 0; i < jsonArraypackages.size(); i++) {
+            ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+        }
+        ;
+        if (jsonObj.get("valueAddedServicesDetails") != null
+                && !jsonObj.get("valueAddedServicesDetails").isJsonNull()) {
+            JsonArray jsonArrayvalueAddedServicesDetails = jsonObj.getAsJsonArray("valueAddedServicesDetails");
+            if (jsonArrayvalueAddedServicesDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("valueAddedServicesDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `valueAddedServicesDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("valueAddedServicesDetails").toString()));
+                }
+
+                // validate the optional field `valueAddedServicesDetails` (array)
+                for (int i = 0; i < jsonArrayvalueAddedServicesDetails.size(); i++) {
+                    OneClickShipmentValueAddedService.validateJsonElement(jsonArrayvalueAddedServicesDetails.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
         }
         // validate the required field `channelDetails`
         ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));

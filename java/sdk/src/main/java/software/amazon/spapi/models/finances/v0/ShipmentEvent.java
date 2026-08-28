@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -57,37 +60,37 @@ public class ShipmentEvent {
     public static final String SERIALIZED_NAME_ORDER_CHARGE_LIST = "OrderChargeList";
 
     @SerializedName(SERIALIZED_NAME_ORDER_CHARGE_LIST)
-    private ChargeComponentList orderChargeList = new ArrayList<>();
+    private List<ChargeComponent> orderChargeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ORDER_CHARGE_ADJUSTMENT_LIST = "OrderChargeAdjustmentList";
 
     @SerializedName(SERIALIZED_NAME_ORDER_CHARGE_ADJUSTMENT_LIST)
-    private ChargeComponentList orderChargeAdjustmentList = new ArrayList<>();
+    private List<ChargeComponent> orderChargeAdjustmentList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_FEE_LIST = "ShipmentFeeList";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_FEE_LIST)
-    private FeeComponentList shipmentFeeList = new ArrayList<>();
+    private List<FeeComponent> shipmentFeeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_FEE_ADJUSTMENT_LIST = "ShipmentFeeAdjustmentList";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_FEE_ADJUSTMENT_LIST)
-    private FeeComponentList shipmentFeeAdjustmentList = new ArrayList<>();
+    private List<FeeComponent> shipmentFeeAdjustmentList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ORDER_FEE_LIST = "OrderFeeList";
 
     @SerializedName(SERIALIZED_NAME_ORDER_FEE_LIST)
-    private FeeComponentList orderFeeList = new ArrayList<>();
+    private List<FeeComponent> orderFeeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ORDER_FEE_ADJUSTMENT_LIST = "OrderFeeAdjustmentList";
 
     @SerializedName(SERIALIZED_NAME_ORDER_FEE_ADJUSTMENT_LIST)
-    private FeeComponentList orderFeeAdjustmentList = new ArrayList<>();
+    private List<FeeComponent> orderFeeAdjustmentList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DIRECT_PAYMENT_LIST = "DirectPaymentList";
 
     @SerializedName(SERIALIZED_NAME_DIRECT_PAYMENT_LIST)
-    private DirectPaymentList directPaymentList = new ArrayList<>();
+    private List<DirectPayment> directPaymentList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_POSTED_DATE = "PostedDate";
 
@@ -97,12 +100,12 @@ public class ShipmentEvent {
     public static final String SERIALIZED_NAME_SHIPMENT_ITEM_LIST = "ShipmentItemList";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_ITEM_LIST)
-    private ShipmentItemList shipmentItemList = new ArrayList<>();
+    private List<ShipmentItem> shipmentItemList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_ITEM_ADJUSTMENT_LIST = "ShipmentItemAdjustmentList";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_ITEM_ADJUSTMENT_LIST)
-    private ShipmentItemList shipmentItemAdjustmentList = new ArrayList<>();
+    private List<ShipmentItem> shipmentItemAdjustmentList = new ArrayList<>();
 
     public ShipmentEvent() {}
 
@@ -178,129 +181,185 @@ public class ShipmentEvent {
         this.storeName = storeName;
     }
 
-    public ShipmentEvent orderChargeList(ChargeComponentList orderChargeList) {
+    public ShipmentEvent orderChargeList(List<ChargeComponent> orderChargeList) {
         this.orderChargeList = orderChargeList;
         return this;
     }
 
+    public ShipmentEvent addOrderChargeListItem(ChargeComponent orderChargeListItem) {
+        if (this.orderChargeList == null) {
+            this.orderChargeList = new ArrayList<>();
+        }
+        this.orderChargeList.add(orderChargeListItem);
+        return this;
+    }
+
     /**
-     * Get orderChargeList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return orderChargeList
      */
-    @javax.annotation.Nullable public ChargeComponentList getOrderChargeList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getOrderChargeList() {
         return orderChargeList;
     }
 
-    public void setOrderChargeList(ChargeComponentList orderChargeList) {
+    public void setOrderChargeList(List<ChargeComponent> orderChargeList) {
         this.orderChargeList = orderChargeList;
     }
 
-    public ShipmentEvent orderChargeAdjustmentList(ChargeComponentList orderChargeAdjustmentList) {
+    public ShipmentEvent orderChargeAdjustmentList(List<ChargeComponent> orderChargeAdjustmentList) {
         this.orderChargeAdjustmentList = orderChargeAdjustmentList;
         return this;
     }
 
+    public ShipmentEvent addOrderChargeAdjustmentListItem(ChargeComponent orderChargeAdjustmentListItem) {
+        if (this.orderChargeAdjustmentList == null) {
+            this.orderChargeAdjustmentList = new ArrayList<>();
+        }
+        this.orderChargeAdjustmentList.add(orderChargeAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get orderChargeAdjustmentList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return orderChargeAdjustmentList
      */
-    @javax.annotation.Nullable public ChargeComponentList getOrderChargeAdjustmentList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getOrderChargeAdjustmentList() {
         return orderChargeAdjustmentList;
     }
 
-    public void setOrderChargeAdjustmentList(ChargeComponentList orderChargeAdjustmentList) {
+    public void setOrderChargeAdjustmentList(List<ChargeComponent> orderChargeAdjustmentList) {
         this.orderChargeAdjustmentList = orderChargeAdjustmentList;
     }
 
-    public ShipmentEvent shipmentFeeList(FeeComponentList shipmentFeeList) {
+    public ShipmentEvent shipmentFeeList(List<FeeComponent> shipmentFeeList) {
         this.shipmentFeeList = shipmentFeeList;
         return this;
     }
 
+    public ShipmentEvent addShipmentFeeListItem(FeeComponent shipmentFeeListItem) {
+        if (this.shipmentFeeList == null) {
+            this.shipmentFeeList = new ArrayList<>();
+        }
+        this.shipmentFeeList.add(shipmentFeeListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentFeeList
+     * A list of fee component information.
      *
      * @return shipmentFeeList
      */
-    @javax.annotation.Nullable public FeeComponentList getShipmentFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getShipmentFeeList() {
         return shipmentFeeList;
     }
 
-    public void setShipmentFeeList(FeeComponentList shipmentFeeList) {
+    public void setShipmentFeeList(List<FeeComponent> shipmentFeeList) {
         this.shipmentFeeList = shipmentFeeList;
     }
 
-    public ShipmentEvent shipmentFeeAdjustmentList(FeeComponentList shipmentFeeAdjustmentList) {
+    public ShipmentEvent shipmentFeeAdjustmentList(List<FeeComponent> shipmentFeeAdjustmentList) {
         this.shipmentFeeAdjustmentList = shipmentFeeAdjustmentList;
         return this;
     }
 
+    public ShipmentEvent addShipmentFeeAdjustmentListItem(FeeComponent shipmentFeeAdjustmentListItem) {
+        if (this.shipmentFeeAdjustmentList == null) {
+            this.shipmentFeeAdjustmentList = new ArrayList<>();
+        }
+        this.shipmentFeeAdjustmentList.add(shipmentFeeAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentFeeAdjustmentList
+     * A list of fee component information.
      *
      * @return shipmentFeeAdjustmentList
      */
-    @javax.annotation.Nullable public FeeComponentList getShipmentFeeAdjustmentList() {
+    @javax.annotation.Nullable public List<FeeComponent> getShipmentFeeAdjustmentList() {
         return shipmentFeeAdjustmentList;
     }
 
-    public void setShipmentFeeAdjustmentList(FeeComponentList shipmentFeeAdjustmentList) {
+    public void setShipmentFeeAdjustmentList(List<FeeComponent> shipmentFeeAdjustmentList) {
         this.shipmentFeeAdjustmentList = shipmentFeeAdjustmentList;
     }
 
-    public ShipmentEvent orderFeeList(FeeComponentList orderFeeList) {
+    public ShipmentEvent orderFeeList(List<FeeComponent> orderFeeList) {
         this.orderFeeList = orderFeeList;
         return this;
     }
 
+    public ShipmentEvent addOrderFeeListItem(FeeComponent orderFeeListItem) {
+        if (this.orderFeeList == null) {
+            this.orderFeeList = new ArrayList<>();
+        }
+        this.orderFeeList.add(orderFeeListItem);
+        return this;
+    }
+
     /**
-     * Get orderFeeList
+     * A list of fee component information.
      *
      * @return orderFeeList
      */
-    @javax.annotation.Nullable public FeeComponentList getOrderFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getOrderFeeList() {
         return orderFeeList;
     }
 
-    public void setOrderFeeList(FeeComponentList orderFeeList) {
+    public void setOrderFeeList(List<FeeComponent> orderFeeList) {
         this.orderFeeList = orderFeeList;
     }
 
-    public ShipmentEvent orderFeeAdjustmentList(FeeComponentList orderFeeAdjustmentList) {
+    public ShipmentEvent orderFeeAdjustmentList(List<FeeComponent> orderFeeAdjustmentList) {
         this.orderFeeAdjustmentList = orderFeeAdjustmentList;
         return this;
     }
 
+    public ShipmentEvent addOrderFeeAdjustmentListItem(FeeComponent orderFeeAdjustmentListItem) {
+        if (this.orderFeeAdjustmentList == null) {
+            this.orderFeeAdjustmentList = new ArrayList<>();
+        }
+        this.orderFeeAdjustmentList.add(orderFeeAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get orderFeeAdjustmentList
+     * A list of fee component information.
      *
      * @return orderFeeAdjustmentList
      */
-    @javax.annotation.Nullable public FeeComponentList getOrderFeeAdjustmentList() {
+    @javax.annotation.Nullable public List<FeeComponent> getOrderFeeAdjustmentList() {
         return orderFeeAdjustmentList;
     }
 
-    public void setOrderFeeAdjustmentList(FeeComponentList orderFeeAdjustmentList) {
+    public void setOrderFeeAdjustmentList(List<FeeComponent> orderFeeAdjustmentList) {
         this.orderFeeAdjustmentList = orderFeeAdjustmentList;
     }
 
-    public ShipmentEvent directPaymentList(DirectPaymentList directPaymentList) {
+    public ShipmentEvent directPaymentList(List<DirectPayment> directPaymentList) {
         this.directPaymentList = directPaymentList;
         return this;
     }
 
+    public ShipmentEvent addDirectPaymentListItem(DirectPayment directPaymentListItem) {
+        if (this.directPaymentList == null) {
+            this.directPaymentList = new ArrayList<>();
+        }
+        this.directPaymentList.add(directPaymentListItem);
+        return this;
+    }
+
     /**
-     * Get directPaymentList
+     * A list of direct payment information.
      *
      * @return directPaymentList
      */
-    @javax.annotation.Nullable public DirectPaymentList getDirectPaymentList() {
+    @javax.annotation.Nullable public List<DirectPayment> getDirectPaymentList() {
         return directPaymentList;
     }
 
-    public void setDirectPaymentList(DirectPaymentList directPaymentList) {
+    public void setDirectPaymentList(List<DirectPayment> directPaymentList) {
         this.directPaymentList = directPaymentList;
     }
 
@@ -322,39 +381,55 @@ public class ShipmentEvent {
         this.postedDate = postedDate;
     }
 
-    public ShipmentEvent shipmentItemList(ShipmentItemList shipmentItemList) {
+    public ShipmentEvent shipmentItemList(List<ShipmentItem> shipmentItemList) {
         this.shipmentItemList = shipmentItemList;
         return this;
     }
 
+    public ShipmentEvent addShipmentItemListItem(ShipmentItem shipmentItemListItem) {
+        if (this.shipmentItemList == null) {
+            this.shipmentItemList = new ArrayList<>();
+        }
+        this.shipmentItemList.add(shipmentItemListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentItemList
+     * A list of shipment items.
      *
      * @return shipmentItemList
      */
-    @javax.annotation.Nullable public ShipmentItemList getShipmentItemList() {
+    @javax.annotation.Nullable public List<ShipmentItem> getShipmentItemList() {
         return shipmentItemList;
     }
 
-    public void setShipmentItemList(ShipmentItemList shipmentItemList) {
+    public void setShipmentItemList(List<ShipmentItem> shipmentItemList) {
         this.shipmentItemList = shipmentItemList;
     }
 
-    public ShipmentEvent shipmentItemAdjustmentList(ShipmentItemList shipmentItemAdjustmentList) {
+    public ShipmentEvent shipmentItemAdjustmentList(List<ShipmentItem> shipmentItemAdjustmentList) {
         this.shipmentItemAdjustmentList = shipmentItemAdjustmentList;
         return this;
     }
 
+    public ShipmentEvent addShipmentItemAdjustmentListItem(ShipmentItem shipmentItemAdjustmentListItem) {
+        if (this.shipmentItemAdjustmentList == null) {
+            this.shipmentItemAdjustmentList = new ArrayList<>();
+        }
+        this.shipmentItemAdjustmentList.add(shipmentItemAdjustmentListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentItemAdjustmentList
+     * A list of shipment items.
      *
      * @return shipmentItemAdjustmentList
      */
-    @javax.annotation.Nullable public ShipmentItemList getShipmentItemAdjustmentList() {
+    @javax.annotation.Nullable public List<ShipmentItem> getShipmentItemAdjustmentList() {
         return shipmentItemAdjustmentList;
     }
 
-    public void setShipmentItemAdjustmentList(ShipmentItemList shipmentItemAdjustmentList) {
+    public void setShipmentItemAdjustmentList(List<ShipmentItem> shipmentItemAdjustmentList) {
         this.shipmentItemAdjustmentList = shipmentItemAdjustmentList;
     }
 
@@ -527,6 +602,167 @@ public class ShipmentEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("StoreName").toString()));
+        }
+        if (jsonObj.get("OrderChargeList") != null
+                && !jsonObj.get("OrderChargeList").isJsonNull()) {
+            JsonArray jsonArrayorderChargeList = jsonObj.getAsJsonArray("OrderChargeList");
+            if (jsonArrayorderChargeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("OrderChargeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `OrderChargeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("OrderChargeList").toString()));
+                }
+
+                // validate the optional field `OrderChargeList` (array)
+                for (int i = 0; i < jsonArrayorderChargeList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayorderChargeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("OrderChargeAdjustmentList") != null
+                && !jsonObj.get("OrderChargeAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayorderChargeAdjustmentList = jsonObj.getAsJsonArray("OrderChargeAdjustmentList");
+            if (jsonArrayorderChargeAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("OrderChargeAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `OrderChargeAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("OrderChargeAdjustmentList").toString()));
+                }
+
+                // validate the optional field `OrderChargeAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayorderChargeAdjustmentList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayorderChargeAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ShipmentFeeList") != null
+                && !jsonObj.get("ShipmentFeeList").isJsonNull()) {
+            JsonArray jsonArrayshipmentFeeList = jsonObj.getAsJsonArray("ShipmentFeeList");
+            if (jsonArrayshipmentFeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentFeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentFeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentFeeList").toString()));
+                }
+
+                // validate the optional field `ShipmentFeeList` (array)
+                for (int i = 0; i < jsonArrayshipmentFeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayshipmentFeeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ShipmentFeeAdjustmentList") != null
+                && !jsonObj.get("ShipmentFeeAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayshipmentFeeAdjustmentList = jsonObj.getAsJsonArray("ShipmentFeeAdjustmentList");
+            if (jsonArrayshipmentFeeAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentFeeAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentFeeAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentFeeAdjustmentList").toString()));
+                }
+
+                // validate the optional field `ShipmentFeeAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayshipmentFeeAdjustmentList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayshipmentFeeAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("OrderFeeList") != null && !jsonObj.get("OrderFeeList").isJsonNull()) {
+            JsonArray jsonArrayorderFeeList = jsonObj.getAsJsonArray("OrderFeeList");
+            if (jsonArrayorderFeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("OrderFeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `OrderFeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("OrderFeeList").toString()));
+                }
+
+                // validate the optional field `OrderFeeList` (array)
+                for (int i = 0; i < jsonArrayorderFeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayorderFeeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("OrderFeeAdjustmentList") != null
+                && !jsonObj.get("OrderFeeAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayorderFeeAdjustmentList = jsonObj.getAsJsonArray("OrderFeeAdjustmentList");
+            if (jsonArrayorderFeeAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("OrderFeeAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `OrderFeeAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("OrderFeeAdjustmentList").toString()));
+                }
+
+                // validate the optional field `OrderFeeAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayorderFeeAdjustmentList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayorderFeeAdjustmentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("DirectPaymentList") != null
+                && !jsonObj.get("DirectPaymentList").isJsonNull()) {
+            JsonArray jsonArraydirectPaymentList = jsonObj.getAsJsonArray("DirectPaymentList");
+            if (jsonArraydirectPaymentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("DirectPaymentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `DirectPaymentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("DirectPaymentList").toString()));
+                }
+
+                // validate the optional field `DirectPaymentList` (array)
+                for (int i = 0; i < jsonArraydirectPaymentList.size(); i++) {
+                    DirectPayment.validateJsonElement(jsonArraydirectPaymentList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ShipmentItemList") != null
+                && !jsonObj.get("ShipmentItemList").isJsonNull()) {
+            JsonArray jsonArrayshipmentItemList = jsonObj.getAsJsonArray("ShipmentItemList");
+            if (jsonArrayshipmentItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentItemList").toString()));
+                }
+
+                // validate the optional field `ShipmentItemList` (array)
+                for (int i = 0; i < jsonArrayshipmentItemList.size(); i++) {
+                    ShipmentItem.validateJsonElement(jsonArrayshipmentItemList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("ShipmentItemAdjustmentList") != null
+                && !jsonObj.get("ShipmentItemAdjustmentList").isJsonNull()) {
+            JsonArray jsonArrayshipmentItemAdjustmentList = jsonObj.getAsJsonArray("ShipmentItemAdjustmentList");
+            if (jsonArrayshipmentItemAdjustmentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentItemAdjustmentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentItemAdjustmentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentItemAdjustmentList").toString()));
+                }
+
+                // validate the optional field `ShipmentItemAdjustmentList` (array)
+                for (int i = 0; i < jsonArrayshipmentItemAdjustmentList.size(); i++) {
+                    ShipmentItem.validateJsonElement(jsonArrayshipmentItemAdjustmentList.get(i));
+                }
+                ;
+            }
         }
     }
 

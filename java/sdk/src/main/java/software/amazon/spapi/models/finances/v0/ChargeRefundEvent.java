@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -52,7 +55,7 @@ public class ChargeRefundEvent {
     public static final String SERIALIZED_NAME_CHARGE_REFUND_TRANSACTIONS = "ChargeRefundTransactions";
 
     @SerializedName(SERIALIZED_NAME_CHARGE_REFUND_TRANSACTIONS)
-    private ChargeRefundTransactions chargeRefundTransactions = new ArrayList<>();
+    private List<ChargeRefundTransaction> chargeRefundTransactions = new ArrayList<>();
 
     public ChargeRefundEvent() {}
 
@@ -110,21 +113,29 @@ public class ChargeRefundEvent {
         this.reasonCodeDescription = reasonCodeDescription;
     }
 
-    public ChargeRefundEvent chargeRefundTransactions(ChargeRefundTransactions chargeRefundTransactions) {
+    public ChargeRefundEvent chargeRefundTransactions(List<ChargeRefundTransaction> chargeRefundTransactions) {
         this.chargeRefundTransactions = chargeRefundTransactions;
         return this;
     }
 
+    public ChargeRefundEvent addChargeRefundTransactionsItem(ChargeRefundTransaction chargeRefundTransactionsItem) {
+        if (this.chargeRefundTransactions == null) {
+            this.chargeRefundTransactions = new ArrayList<>();
+        }
+        this.chargeRefundTransactions.add(chargeRefundTransactionsItem);
+        return this;
+    }
+
     /**
-     * Get chargeRefundTransactions
+     * A list of &#x60;ChargeRefund&#x60; transactions
      *
      * @return chargeRefundTransactions
      */
-    @javax.annotation.Nullable public ChargeRefundTransactions getChargeRefundTransactions() {
+    @javax.annotation.Nullable public List<ChargeRefundTransaction> getChargeRefundTransactions() {
         return chargeRefundTransactions;
     }
 
-    public void setChargeRefundTransactions(ChargeRefundTransactions chargeRefundTransactions) {
+    public void setChargeRefundTransactions(List<ChargeRefundTransaction> chargeRefundTransactions) {
         this.chargeRefundTransactions = chargeRefundTransactions;
     }
 
@@ -225,6 +236,24 @@ public class ChargeRefundEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `ReasonCodeDescription` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("ReasonCodeDescription").toString()));
+        }
+        if (jsonObj.get("ChargeRefundTransactions") != null
+                && !jsonObj.get("ChargeRefundTransactions").isJsonNull()) {
+            JsonArray jsonArraychargeRefundTransactions = jsonObj.getAsJsonArray("ChargeRefundTransactions");
+            if (jsonArraychargeRefundTransactions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ChargeRefundTransactions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ChargeRefundTransactions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ChargeRefundTransactions").toString()));
+                }
+
+                // validate the optional field `ChargeRefundTransactions` (array)
+                for (int i = 0; i < jsonArraychargeRefundTransactions.size(); i++) {
+                    ChargeRefundTransaction.validateJsonElement(jsonArraychargeRefundTransactions.get(i));
+                }
+                ;
+            }
         }
     }
 

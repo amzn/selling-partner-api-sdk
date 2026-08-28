@@ -74,12 +74,12 @@ public class ShipmentLineItem {
     public static final String SERIALIZED_NAME_CHARGES = "charges";
 
     @SerializedName(SERIALIZED_NAME_CHARGES)
-    private Charges charges = new ArrayList<>();
+    private List<Charge> charges = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CANCELLATIONS = "cancellations";
 
     @SerializedName(SERIALIZED_NAME_CANCELLATIONS)
-    private Cancellations cancellations = new ArrayList<>();
+    private List<Cancellation> cancellations = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_HSN_CODE = "hsnCode";
 
@@ -264,40 +264,58 @@ public class ShipmentLineItem {
         this.giftAttributes = giftAttributes;
     }
 
-    public ShipmentLineItem charges(Charges charges) {
+    public ShipmentLineItem charges(List<Charge> charges) {
         this.charges = charges;
         return this;
     }
 
+    public ShipmentLineItem addChargesItem(Charge chargesItem) {
+        if (this.charges == null) {
+            this.charges = new ArrayList<>();
+        }
+        this.charges.add(chargesItem);
+        return this;
+    }
+
     /**
-     * Get charges
+     * The charges associated with the shipment.
      *
      * @return charges
      */
     @javax.annotation.Nonnull
-    public Charges getCharges() {
+    public List<Charge> getCharges() {
         return charges;
     }
 
-    public void setCharges(Charges charges) {
+    public void setCharges(List<Charge> charges) {
         this.charges = charges;
     }
 
-    public ShipmentLineItem cancellations(Cancellations cancellations) {
+    public ShipmentLineItem cancellations(List<Cancellation> cancellations) {
         this.cancellations = cancellations;
         return this;
     }
 
+    public ShipmentLineItem addCancellationsItem(Cancellation cancellationsItem) {
+        if (this.cancellations == null) {
+            this.cancellations = new ArrayList<>();
+        }
+        this.cancellations.add(cancellationsItem);
+        return this;
+    }
+
     /**
-     * Get cancellations
+     * A list of cancellations for the given line item. **Note:** Currently, SmartConnect does not support partial
+     * cancellation of a shipment or its line items. This list will contain a single value with all the cancellation
+     * details.
      *
      * @return cancellations
      */
-    @javax.annotation.Nullable public Cancellations getCancellations() {
+    @javax.annotation.Nullable public List<Cancellation> getCancellations() {
         return cancellations;
     }
 
-    public void setCancellations(Cancellations cancellations) {
+    public void setCancellations(List<Cancellation> cancellations) {
         this.cancellations = cancellations;
     }
 
@@ -632,6 +650,37 @@ public class ShipmentLineItem {
         if (jsonObj.get("giftAttributes") != null
                 && !jsonObj.get("giftAttributes").isJsonNull()) {
             GiftAttributes.validateJsonElement(jsonObj.get("giftAttributes"));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("charges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `charges` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("charges").toString()));
+        }
+
+        JsonArray jsonArraycharges = jsonObj.getAsJsonArray("charges");
+        // validate the required field `charges` (array)
+        for (int i = 0; i < jsonArraycharges.size(); i++) {
+            Charge.validateJsonElement(jsonArraycharges.get(i));
+        }
+        ;
+        if (jsonObj.get("cancellations") != null
+                && !jsonObj.get("cancellations").isJsonNull()) {
+            JsonArray jsonArraycancellations = jsonObj.getAsJsonArray("cancellations");
+            if (jsonArraycancellations != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("cancellations").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `cancellations` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("cancellations").toString()));
+                }
+
+                // validate the optional field `cancellations` (array)
+                for (int i = 0; i < jsonArraycancellations.size(); i++) {
+                    Cancellation.validateJsonElement(jsonArraycancellations.get(i));
+                }
+                ;
+            }
         }
         if ((jsonObj.get("hsnCode") != null && !jsonObj.get("hsnCode").isJsonNull())
                 && !jsonObj.get("hsnCode").isJsonPrimitive()) {

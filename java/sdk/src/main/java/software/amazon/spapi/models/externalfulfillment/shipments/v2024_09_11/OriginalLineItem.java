@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class OriginalLineItem {
     public static final String SERIALIZED_NAME_CHARGES = "charges";
 
     @SerializedName(SERIALIZED_NAME_CHARGES)
-    private Charges charges = new ArrayList<>();
+    private List<Charge> charges = new ArrayList<>();
 
     public OriginalLineItem() {}
 
@@ -88,22 +91,30 @@ public class OriginalLineItem {
         this.originalSku = originalSku;
     }
 
-    public OriginalLineItem charges(Charges charges) {
+    public OriginalLineItem charges(List<Charge> charges) {
         this.charges = charges;
         return this;
     }
 
+    public OriginalLineItem addChargesItem(Charge chargesItem) {
+        if (this.charges == null) {
+            this.charges = new ArrayList<>();
+        }
+        this.charges.add(chargesItem);
+        return this;
+    }
+
     /**
-     * Get charges
+     * The charges associated with the shipment.
      *
      * @return charges
      */
     @javax.annotation.Nonnull
-    public Charges getCharges() {
+    public List<Charge> getCharges() {
         return charges;
     }
 
-    public void setCharges(Charges charges) {
+    public void setCharges(List<Charge> charges) {
         this.charges = charges;
     }
 
@@ -207,6 +218,19 @@ public class OriginalLineItem {
                     "Expected the field `originalSku` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("originalSku").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("charges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `charges` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("charges").toString()));
+        }
+
+        JsonArray jsonArraycharges = jsonObj.getAsJsonArray("charges");
+        // validate the required field `charges` (array)
+        for (int i = 0; i < jsonArraycharges.size(); i++) {
+            Charge.validateJsonElement(jsonArraycharges.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

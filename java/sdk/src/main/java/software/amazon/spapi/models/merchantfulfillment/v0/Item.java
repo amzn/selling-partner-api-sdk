@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -56,12 +59,12 @@ public class Item {
     public static final String SERIALIZED_NAME_TRANSPARENCY_CODE_LIST = "TransparencyCodeList";
 
     @SerializedName(SERIALIZED_NAME_TRANSPARENCY_CODE_LIST)
-    private TransparencyCodeList transparencyCodeList = new ArrayList<>();
+    private List<String> transparencyCodeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ITEM_LEVEL_SELLER_INPUTS_LIST = "ItemLevelSellerInputsList";
 
     @SerializedName(SERIALIZED_NAME_ITEM_LEVEL_SELLER_INPUTS_LIST)
-    private AdditionalSellerInputsList itemLevelSellerInputsList = new ArrayList<>();
+    private List<AdditionalSellerInputs> itemLevelSellerInputsList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_LIQUID_VOLUME = "LiquidVolume";
 
@@ -154,39 +157,55 @@ public class Item {
         this.itemDescription = itemDescription;
     }
 
-    public Item transparencyCodeList(TransparencyCodeList transparencyCodeList) {
+    public Item transparencyCodeList(List<String> transparencyCodeList) {
         this.transparencyCodeList = transparencyCodeList;
         return this;
     }
 
+    public Item addTransparencyCodeListItem(String transparencyCodeListItem) {
+        if (this.transparencyCodeList == null) {
+            this.transparencyCodeList = new ArrayList<>();
+        }
+        this.transparencyCodeList.add(transparencyCodeListItem);
+        return this;
+    }
+
     /**
-     * Get transparencyCodeList
+     * A list of transparency codes.
      *
      * @return transparencyCodeList
      */
-    @javax.annotation.Nullable public TransparencyCodeList getTransparencyCodeList() {
+    @javax.annotation.Nullable public List<String> getTransparencyCodeList() {
         return transparencyCodeList;
     }
 
-    public void setTransparencyCodeList(TransparencyCodeList transparencyCodeList) {
+    public void setTransparencyCodeList(List<String> transparencyCodeList) {
         this.transparencyCodeList = transparencyCodeList;
     }
 
-    public Item itemLevelSellerInputsList(AdditionalSellerInputsList itemLevelSellerInputsList) {
+    public Item itemLevelSellerInputsList(List<AdditionalSellerInputs> itemLevelSellerInputsList) {
         this.itemLevelSellerInputsList = itemLevelSellerInputsList;
         return this;
     }
 
+    public Item addItemLevelSellerInputsListItem(AdditionalSellerInputs itemLevelSellerInputsListItem) {
+        if (this.itemLevelSellerInputsList == null) {
+            this.itemLevelSellerInputsList = new ArrayList<>();
+        }
+        this.itemLevelSellerInputsList.add(itemLevelSellerInputsListItem);
+        return this;
+    }
+
     /**
-     * Get itemLevelSellerInputsList
+     * A list of additional seller input pairs required to purchase shipping.
      *
      * @return itemLevelSellerInputsList
      */
-    @javax.annotation.Nullable public AdditionalSellerInputsList getItemLevelSellerInputsList() {
+    @javax.annotation.Nullable public List<AdditionalSellerInputs> getItemLevelSellerInputsList() {
         return itemLevelSellerInputsList;
     }
 
-    public void setItemLevelSellerInputsList(AdditionalSellerInputsList itemLevelSellerInputsList) {
+    public void setItemLevelSellerInputsList(List<AdditionalSellerInputs> itemLevelSellerInputsList) {
         this.itemLevelSellerInputsList = itemLevelSellerInputsList;
     }
 
@@ -383,6 +402,32 @@ public class Item {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `ItemDescription` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("ItemDescription").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("TransparencyCodeList") != null
+                && !jsonObj.get("TransparencyCodeList").isJsonNull()
+                && !jsonObj.get("TransparencyCodeList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `TransparencyCodeList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("TransparencyCodeList").toString()));
+        }
+        if (jsonObj.get("ItemLevelSellerInputsList") != null
+                && !jsonObj.get("ItemLevelSellerInputsList").isJsonNull()) {
+            JsonArray jsonArrayitemLevelSellerInputsList = jsonObj.getAsJsonArray("ItemLevelSellerInputsList");
+            if (jsonArrayitemLevelSellerInputsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ItemLevelSellerInputsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ItemLevelSellerInputsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ItemLevelSellerInputsList").toString()));
+                }
+
+                // validate the optional field `ItemLevelSellerInputsList` (array)
+                for (int i = 0; i < jsonArrayitemLevelSellerInputsList.size(); i++) {
+                    AdditionalSellerInputs.validateJsonElement(jsonArrayitemLevelSellerInputsList.get(i));
+                }
+                ;
+            }
         }
         // validate the optional field `LiquidVolume`
         if (jsonObj.get("LiquidVolume") != null && !jsonObj.get("LiquidVolume").isJsonNull()) {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -40,26 +43,34 @@ public class CreateFulfillmentReturnRequest {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private CreateReturnItemList items = new ArrayList<>();
+    private List<CreateReturnItem> items = new ArrayList<>();
 
     public CreateFulfillmentReturnRequest() {}
 
-    public CreateFulfillmentReturnRequest items(CreateReturnItemList items) {
+    public CreateFulfillmentReturnRequest items(List<CreateReturnItem> items) {
         this.items = items;
         return this;
     }
 
+    public CreateFulfillmentReturnRequest addItemsItem(CreateReturnItem itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * An array of items to be returned.
      *
      * @return items
      */
     @javax.annotation.Nonnull
-    public CreateReturnItemList getItems() {
+    public List<CreateReturnItem> getItems() {
         return items;
     }
 
-    public void setItems(CreateReturnItemList items) {
+    public void setItems(List<CreateReturnItem> items) {
         this.items = items;
     }
 
@@ -146,6 +157,19 @@ public class CreateFulfillmentReturnRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            CreateReturnItem.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

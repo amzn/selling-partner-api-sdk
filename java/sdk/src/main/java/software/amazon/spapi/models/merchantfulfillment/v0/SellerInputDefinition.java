@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class SellerInputDefinition {
     public static final String SERIALIZED_NAME_CONSTRAINTS = "Constraints";
 
     @SerializedName(SERIALIZED_NAME_CONSTRAINTS)
-    private Constraints constraints = new ArrayList<>();
+    private List<Constraint> constraints = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INPUT_DISPLAY_TEXT = "InputDisplayText";
 
@@ -66,7 +69,7 @@ public class SellerInputDefinition {
     public static final String SERIALIZED_NAME_RESTRICTED_SET_VALUES = "RestrictedSetValues";
 
     @SerializedName(SERIALIZED_NAME_RESTRICTED_SET_VALUES)
-    private RestrictedSetValues restrictedSetValues = new ArrayList<>();
+    private List<String> restrictedSetValues = new ArrayList<>();
 
     public SellerInputDefinition() {}
 
@@ -108,22 +111,30 @@ public class SellerInputDefinition {
         this.dataType = dataType;
     }
 
-    public SellerInputDefinition constraints(Constraints constraints) {
+    public SellerInputDefinition constraints(List<Constraint> constraints) {
         this.constraints = constraints;
         return this;
     }
 
+    public SellerInputDefinition addConstraintsItem(Constraint constraintsItem) {
+        if (this.constraints == null) {
+            this.constraints = new ArrayList<>();
+        }
+        this.constraints.add(constraintsItem);
+        return this;
+    }
+
     /**
-     * Get constraints
+     * List of constraints.
      *
      * @return constraints
      */
     @javax.annotation.Nonnull
-    public Constraints getConstraints() {
+    public List<Constraint> getConstraints() {
         return constraints;
     }
 
-    public void setConstraints(Constraints constraints) {
+    public void setConstraints(List<Constraint> constraints) {
         this.constraints = constraints;
     }
 
@@ -183,21 +194,29 @@ public class SellerInputDefinition {
         this.storedValue = storedValue;
     }
 
-    public SellerInputDefinition restrictedSetValues(RestrictedSetValues restrictedSetValues) {
+    public SellerInputDefinition restrictedSetValues(List<String> restrictedSetValues) {
         this.restrictedSetValues = restrictedSetValues;
         return this;
     }
 
+    public SellerInputDefinition addRestrictedSetValuesItem(String restrictedSetValuesItem) {
+        if (this.restrictedSetValues == null) {
+            this.restrictedSetValues = new ArrayList<>();
+        }
+        this.restrictedSetValues.add(restrictedSetValuesItem);
+        return this;
+    }
+
     /**
-     * Get restrictedSetValues
+     * The set of fixed values in an additional seller input.
      *
      * @return restrictedSetValues
      */
-    @javax.annotation.Nullable public RestrictedSetValues getRestrictedSetValues() {
+    @javax.annotation.Nullable public List<String> getRestrictedSetValues() {
         return restrictedSetValues;
     }
 
-    public void setRestrictedSetValues(RestrictedSetValues restrictedSetValues) {
+    public void setRestrictedSetValues(List<String> restrictedSetValues) {
         this.restrictedSetValues = restrictedSetValues;
     }
 
@@ -316,6 +335,19 @@ public class SellerInputDefinition {
                     "Expected the field `DataType` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("DataType").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("Constraints").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Constraints` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Constraints").toString()));
+        }
+
+        JsonArray jsonArrayconstraints = jsonObj.getAsJsonArray("Constraints");
+        // validate the required field `Constraints` (array)
+        for (int i = 0; i < jsonArrayconstraints.size(); i++) {
+            Constraint.validateJsonElement(jsonArrayconstraints.get(i));
+        }
+        ;
         if (!jsonObj.get("InputDisplayText").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `InputDisplayText` to be a primitive type in the JSON string but got `%s`",
@@ -327,6 +359,14 @@ public class SellerInputDefinition {
         }
         // validate the required field `StoredValue`
         AdditionalSellerInput.validateJsonElement(jsonObj.get("StoredValue"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("RestrictedSetValues") != null
+                && !jsonObj.get("RestrictedSetValues").isJsonNull()
+                && !jsonObj.get("RestrictedSetValues").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `RestrictedSetValues` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("RestrictedSetValues").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

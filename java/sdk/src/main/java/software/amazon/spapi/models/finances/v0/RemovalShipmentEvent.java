@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -62,7 +65,7 @@ public class RemovalShipmentEvent {
     public static final String SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_LIST = "RemovalShipmentItemList";
 
     @SerializedName(SERIALIZED_NAME_REMOVAL_SHIPMENT_ITEM_LIST)
-    private RemovalShipmentItemList removalShipmentItemList = new ArrayList<>();
+    private List<RemovalShipmentItem> removalShipmentItemList = new ArrayList<>();
 
     public RemovalShipmentEvent() {}
 
@@ -156,21 +159,29 @@ public class RemovalShipmentEvent {
         this.storeName = storeName;
     }
 
-    public RemovalShipmentEvent removalShipmentItemList(RemovalShipmentItemList removalShipmentItemList) {
+    public RemovalShipmentEvent removalShipmentItemList(List<RemovalShipmentItem> removalShipmentItemList) {
         this.removalShipmentItemList = removalShipmentItemList;
         return this;
     }
 
+    public RemovalShipmentEvent addRemovalShipmentItemListItem(RemovalShipmentItem removalShipmentItemListItem) {
+        if (this.removalShipmentItemList == null) {
+            this.removalShipmentItemList = new ArrayList<>();
+        }
+        this.removalShipmentItemList.add(removalShipmentItemListItem);
+        return this;
+    }
+
     /**
-     * Get removalShipmentItemList
+     * A list of &#x60;RemovalShipmentItem&#x60;.
      *
      * @return removalShipmentItemList
      */
-    @javax.annotation.Nullable public RemovalShipmentItemList getRemovalShipmentItemList() {
+    @javax.annotation.Nullable public List<RemovalShipmentItem> getRemovalShipmentItemList() {
         return removalShipmentItemList;
     }
 
-    public void setRemovalShipmentItemList(RemovalShipmentItemList removalShipmentItemList) {
+    public void setRemovalShipmentItemList(List<RemovalShipmentItem> removalShipmentItemList) {
         this.removalShipmentItemList = removalShipmentItemList;
     }
 
@@ -292,6 +303,24 @@ public class RemovalShipmentEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `StoreName` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("StoreName").toString()));
+        }
+        if (jsonObj.get("RemovalShipmentItemList") != null
+                && !jsonObj.get("RemovalShipmentItemList").isJsonNull()) {
+            JsonArray jsonArrayremovalShipmentItemList = jsonObj.getAsJsonArray("RemovalShipmentItemList");
+            if (jsonArrayremovalShipmentItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RemovalShipmentItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RemovalShipmentItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RemovalShipmentItemList").toString()));
+                }
+
+                // validate the optional field `RemovalShipmentItemList` (array)
+                for (int i = 0; i < jsonArrayremovalShipmentItemList.size(); i++) {
+                    RemovalShipmentItem.validateJsonElement(jsonArrayremovalShipmentItemList.get(i));
+                }
+                ;
+            }
         }
     }
 

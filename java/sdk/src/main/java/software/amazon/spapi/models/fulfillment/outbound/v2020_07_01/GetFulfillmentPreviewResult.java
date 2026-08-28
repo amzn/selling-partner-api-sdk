@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,25 +42,33 @@ public class GetFulfillmentPreviewResult {
     public static final String SERIALIZED_NAME_FULFILLMENT_PREVIEWS = "fulfillmentPreviews";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_PREVIEWS)
-    private FulfillmentPreviewList fulfillmentPreviews = new ArrayList<>();
+    private List<FulfillmentPreview> fulfillmentPreviews = new ArrayList<>();
 
     public GetFulfillmentPreviewResult() {}
 
-    public GetFulfillmentPreviewResult fulfillmentPreviews(FulfillmentPreviewList fulfillmentPreviews) {
+    public GetFulfillmentPreviewResult fulfillmentPreviews(List<FulfillmentPreview> fulfillmentPreviews) {
         this.fulfillmentPreviews = fulfillmentPreviews;
         return this;
     }
 
+    public GetFulfillmentPreviewResult addFulfillmentPreviewsItem(FulfillmentPreview fulfillmentPreviewsItem) {
+        if (this.fulfillmentPreviews == null) {
+            this.fulfillmentPreviews = new ArrayList<>();
+        }
+        this.fulfillmentPreviews.add(fulfillmentPreviewsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentPreviews
+     * An array of fulfillment preview information.
      *
      * @return fulfillmentPreviews
      */
-    @javax.annotation.Nullable public FulfillmentPreviewList getFulfillmentPreviews() {
+    @javax.annotation.Nullable public List<FulfillmentPreview> getFulfillmentPreviews() {
         return fulfillmentPreviews;
     }
 
-    public void setFulfillmentPreviews(FulfillmentPreviewList fulfillmentPreviews) {
+    public void setFulfillmentPreviews(List<FulfillmentPreview> fulfillmentPreviews) {
         this.fulfillmentPreviews = fulfillmentPreviews;
     }
 
@@ -136,6 +147,24 @@ public class GetFulfillmentPreviewResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("fulfillmentPreviews") != null
+                && !jsonObj.get("fulfillmentPreviews").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentPreviews = jsonObj.getAsJsonArray("fulfillmentPreviews");
+            if (jsonArrayfulfillmentPreviews != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentPreviews").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentPreviews` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentPreviews").toString()));
+                }
+
+                // validate the optional field `fulfillmentPreviews` (array)
+                for (int i = 0; i < jsonArrayfulfillmentPreviews.size(); i++) {
+                    FulfillmentPreview.validateJsonElement(jsonArrayfulfillmentPreviews.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -61,7 +64,7 @@ public class CreateShipmentRequest {
     public static final String SERIALIZED_NAME_SHIPMENT_LEVEL_SELLER_INPUTS_LIST = "ShipmentLevelSellerInputsList";
 
     @SerializedName(SERIALIZED_NAME_SHIPMENT_LEVEL_SELLER_INPUTS_LIST)
-    private AdditionalSellerInputsList shipmentLevelSellerInputsList = new ArrayList<>();
+    private List<AdditionalSellerInputs> shipmentLevelSellerInputsList = new ArrayList<>();
 
     public CreateShipmentRequest() {}
 
@@ -158,21 +161,30 @@ public class CreateShipmentRequest {
     }
 
     public CreateShipmentRequest shipmentLevelSellerInputsList(
-            AdditionalSellerInputsList shipmentLevelSellerInputsList) {
+            List<AdditionalSellerInputs> shipmentLevelSellerInputsList) {
         this.shipmentLevelSellerInputsList = shipmentLevelSellerInputsList;
         return this;
     }
 
+    public CreateShipmentRequest addShipmentLevelSellerInputsListItem(
+            AdditionalSellerInputs shipmentLevelSellerInputsListItem) {
+        if (this.shipmentLevelSellerInputsList == null) {
+            this.shipmentLevelSellerInputsList = new ArrayList<>();
+        }
+        this.shipmentLevelSellerInputsList.add(shipmentLevelSellerInputsListItem);
+        return this;
+    }
+
     /**
-     * Get shipmentLevelSellerInputsList
+     * A list of additional seller input pairs required to purchase shipping.
      *
      * @return shipmentLevelSellerInputsList
      */
-    @javax.annotation.Nullable public AdditionalSellerInputsList getShipmentLevelSellerInputsList() {
+    @javax.annotation.Nullable public List<AdditionalSellerInputs> getShipmentLevelSellerInputsList() {
         return shipmentLevelSellerInputsList;
     }
 
-    public void setShipmentLevelSellerInputsList(AdditionalSellerInputsList shipmentLevelSellerInputsList) {
+    public void setShipmentLevelSellerInputsList(List<AdditionalSellerInputs> shipmentLevelSellerInputsList) {
         this.shipmentLevelSellerInputsList = shipmentLevelSellerInputsList;
     }
 
@@ -314,6 +326,24 @@ public class CreateShipmentRequest {
         if (jsonObj.get("LabelFormatOption") != null
                 && !jsonObj.get("LabelFormatOption").isJsonNull()) {
             LabelFormatOptionRequest.validateJsonElement(jsonObj.get("LabelFormatOption"));
+        }
+        if (jsonObj.get("ShipmentLevelSellerInputsList") != null
+                && !jsonObj.get("ShipmentLevelSellerInputsList").isJsonNull()) {
+            JsonArray jsonArrayshipmentLevelSellerInputsList = jsonObj.getAsJsonArray("ShipmentLevelSellerInputsList");
+            if (jsonArrayshipmentLevelSellerInputsList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("ShipmentLevelSellerInputsList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `ShipmentLevelSellerInputsList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("ShipmentLevelSellerInputsList").toString()));
+                }
+
+                // validate the optional field `ShipmentLevelSellerInputsList` (array)
+                for (int i = 0; i < jsonArrayshipmentLevelSellerInputsList.size(); i++) {
+                    AdditionalSellerInputs.validateJsonElement(jsonArrayshipmentLevelSellerInputsList.get(i));
+                }
+                ;
+            }
         }
     }
 

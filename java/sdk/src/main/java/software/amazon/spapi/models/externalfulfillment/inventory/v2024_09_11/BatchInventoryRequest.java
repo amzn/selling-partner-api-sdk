@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class BatchInventoryRequest {
     public static final String SERIALIZED_NAME_REQUESTS = "requests";
 
     @SerializedName(SERIALIZED_NAME_REQUESTS)
-    private BatchInventoryRequestList requests = new ArrayList<>();
+    private List<InventoryRequest> requests = new ArrayList<>();
 
     public BatchInventoryRequest() {}
 
-    public BatchInventoryRequest requests(BatchInventoryRequestList requests) {
+    public BatchInventoryRequest requests(List<InventoryRequest> requests) {
         this.requests = requests;
         return this;
     }
 
+    public BatchInventoryRequest addRequestsItem(InventoryRequest requestsItem) {
+        if (this.requests == null) {
+            this.requests = new ArrayList<>();
+        }
+        this.requests.add(requestsItem);
+        return this;
+    }
+
     /**
-     * Get requests
+     * A list of inventory requests.
      *
      * @return requests
      */
-    @javax.annotation.Nullable public BatchInventoryRequestList getRequests() {
+    @javax.annotation.Nullable public List<InventoryRequest> getRequests() {
         return requests;
     }
 
-    public void setRequests(BatchInventoryRequestList requests) {
+    public void setRequests(List<InventoryRequest> requests) {
         this.requests = requests;
     }
 
@@ -131,6 +142,23 @@ public class BatchInventoryRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("requests") != null && !jsonObj.get("requests").isJsonNull()) {
+            JsonArray jsonArrayrequests = jsonObj.getAsJsonArray("requests");
+            if (jsonArrayrequests != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("requests").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `requests` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("requests").toString()));
+                }
+
+                // validate the optional field `requests` (array)
+                for (int i = 0; i < jsonArrayrequests.size(); i++) {
+                    InventoryRequest.validateJsonElement(jsonArrayrequests.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

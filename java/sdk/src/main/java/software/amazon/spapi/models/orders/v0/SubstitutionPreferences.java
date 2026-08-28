@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -94,7 +97,7 @@ public class SubstitutionPreferences {
     public static final String SERIALIZED_NAME_SUBSTITUTION_OPTIONS = "SubstitutionOptions";
 
     @SerializedName(SERIALIZED_NAME_SUBSTITUTION_OPTIONS)
-    private SubstitutionOptionList substitutionOptions = new ArrayList<>();
+    private List<SubstitutionOption> substitutionOptions = new ArrayList<>();
 
     public SubstitutionPreferences() {}
 
@@ -117,21 +120,29 @@ public class SubstitutionPreferences {
         this.substitutionType = substitutionType;
     }
 
-    public SubstitutionPreferences substitutionOptions(SubstitutionOptionList substitutionOptions) {
+    public SubstitutionPreferences substitutionOptions(List<SubstitutionOption> substitutionOptions) {
         this.substitutionOptions = substitutionOptions;
         return this;
     }
 
+    public SubstitutionPreferences addSubstitutionOptionsItem(SubstitutionOption substitutionOptionsItem) {
+        if (this.substitutionOptions == null) {
+            this.substitutionOptions = new ArrayList<>();
+        }
+        this.substitutionOptions.add(substitutionOptionsItem);
+        return this;
+    }
+
     /**
-     * Get substitutionOptions
+     * A collection of substitution options.
      *
      * @return substitutionOptions
      */
-    @javax.annotation.Nullable public SubstitutionOptionList getSubstitutionOptions() {
+    @javax.annotation.Nullable public List<SubstitutionOption> getSubstitutionOptions() {
         return substitutionOptions;
     }
 
-    public void setSubstitutionOptions(SubstitutionOptionList substitutionOptions) {
+    public void setSubstitutionOptions(List<SubstitutionOption> substitutionOptions) {
         this.substitutionOptions = substitutionOptions;
     }
 
@@ -232,6 +243,24 @@ public class SubstitutionPreferences {
         }
         // validate the required field `SubstitutionType`
         SubstitutionTypeEnum.validateJsonElement(jsonObj.get("SubstitutionType"));
+        if (jsonObj.get("SubstitutionOptions") != null
+                && !jsonObj.get("SubstitutionOptions").isJsonNull()) {
+            JsonArray jsonArraysubstitutionOptions = jsonObj.getAsJsonArray("SubstitutionOptions");
+            if (jsonArraysubstitutionOptions != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SubstitutionOptions").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SubstitutionOptions` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SubstitutionOptions").toString()));
+                }
+
+                // validate the optional field `SubstitutionOptions` (array)
+                for (int i = 0; i < jsonArraysubstitutionOptions.size(); i++) {
+                    SubstitutionOption.validateJsonElement(jsonArraysubstitutionOptions.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

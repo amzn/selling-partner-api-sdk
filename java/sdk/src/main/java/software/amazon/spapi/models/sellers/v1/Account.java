@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -37,7 +40,7 @@ public class Account {
     public static final String SERIALIZED_NAME_MARKETPLACE_PARTICIPATION_LIST = "marketplaceParticipationList";
 
     @SerializedName(SERIALIZED_NAME_MARKETPLACE_PARTICIPATION_LIST)
-    private MarketplaceParticipationList marketplaceParticipationList = new ArrayList<>();
+    private List<MarketplaceParticipation> marketplaceParticipationList = new ArrayList<>();
 
     /** The type of business registered for the seller account. */
     @JsonAdapter(BusinessTypeEnum.Adapter.class)
@@ -173,22 +176,30 @@ public class Account {
 
     public Account() {}
 
-    public Account marketplaceParticipationList(MarketplaceParticipationList marketplaceParticipationList) {
+    public Account marketplaceParticipationList(List<MarketplaceParticipation> marketplaceParticipationList) {
         this.marketplaceParticipationList = marketplaceParticipationList;
         return this;
     }
 
+    public Account addMarketplaceParticipationListItem(MarketplaceParticipation marketplaceParticipationListItem) {
+        if (this.marketplaceParticipationList == null) {
+            this.marketplaceParticipationList = new ArrayList<>();
+        }
+        this.marketplaceParticipationList.add(marketplaceParticipationListItem);
+        return this;
+    }
+
     /**
-     * Get marketplaceParticipationList
+     * List of marketplace participations.
      *
      * @return marketplaceParticipationList
      */
     @javax.annotation.Nonnull
-    public MarketplaceParticipationList getMarketplaceParticipationList() {
+    public List<MarketplaceParticipation> getMarketplaceParticipationList() {
         return marketplaceParticipationList;
     }
 
-    public void setMarketplaceParticipationList(MarketplaceParticipationList marketplaceParticipationList) {
+    public void setMarketplaceParticipationList(List<MarketplaceParticipation> marketplaceParticipationList) {
         this.marketplaceParticipationList = marketplaceParticipationList;
     }
 
@@ -366,6 +377,19 @@ public class Account {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("marketplaceParticipationList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceParticipationList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceParticipationList").toString()));
+        }
+
+        JsonArray jsonArraymarketplaceParticipationList = jsonObj.getAsJsonArray("marketplaceParticipationList");
+        // validate the required field `marketplaceParticipationList` (array)
+        for (int i = 0; i < jsonArraymarketplaceParticipationList.size(); i++) {
+            MarketplaceParticipation.validateJsonElement(jsonArraymarketplaceParticipationList.get(i));
+        }
+        ;
         if (!jsonObj.get("businessType").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `businessType` to be a primitive type in the JSON string but got `%s`",

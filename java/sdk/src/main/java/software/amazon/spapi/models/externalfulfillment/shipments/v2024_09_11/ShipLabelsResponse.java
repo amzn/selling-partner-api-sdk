@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,35 @@ public class ShipLabelsResponse {
     public static final String SERIALIZED_NAME_PACKAGE_SHIP_LABEL_LIST = "packageShipLabelList";
 
     @SerializedName(SERIALIZED_NAME_PACKAGE_SHIP_LABEL_LIST)
-    private PackageShipLabelList packageShipLabelList = new ArrayList<>();
+    private List<PackageShipLabel> packageShipLabelList = new ArrayList<>();
 
     public ShipLabelsResponse() {}
 
-    public ShipLabelsResponse packageShipLabelList(PackageShipLabelList packageShipLabelList) {
+    public ShipLabelsResponse packageShipLabelList(List<PackageShipLabel> packageShipLabelList) {
         this.packageShipLabelList = packageShipLabelList;
         return this;
     }
 
+    public ShipLabelsResponse addPackageShipLabelListItem(PackageShipLabel packageShipLabelListItem) {
+        if (this.packageShipLabelList == null) {
+            this.packageShipLabelList = new ArrayList<>();
+        }
+        this.packageShipLabelList.add(packageShipLabelListItem);
+        return this;
+    }
+
     /**
-     * Get packageShipLabelList
+     * A list of label documents for each package specified in the request. In case of partial failures when generating
+     * labels, the &#x60;isErrored&#x60; and &#x60;errorDetails&#x60; attributes detail the cause of failure.
      *
      * @return packageShipLabelList
      */
     @javax.annotation.Nonnull
-    public PackageShipLabelList getPackageShipLabelList() {
+    public List<PackageShipLabel> getPackageShipLabelList() {
         return packageShipLabelList;
     }
 
-    public void setPackageShipLabelList(PackageShipLabelList packageShipLabelList) {
+    public void setPackageShipLabelList(List<PackageShipLabel> packageShipLabelList) {
         this.packageShipLabelList = packageShipLabelList;
     }
 
@@ -143,6 +155,19 @@ public class ShipLabelsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("packageShipLabelList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packageShipLabelList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packageShipLabelList").toString()));
+        }
+
+        JsonArray jsonArraypackageShipLabelList = jsonObj.getAsJsonArray("packageShipLabelList");
+        // validate the required field `packageShipLabelList` (array)
+        for (int i = 0; i < jsonArraypackageShipLabelList.size(); i++) {
+            PackageShipLabel.validateJsonElement(jsonArraypackageShipLabelList.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

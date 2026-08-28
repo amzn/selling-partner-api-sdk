@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -37,55 +40,73 @@ public class AvailableShippingServiceOptions {
             "AvailableCarrierWillPickUpOptions";
 
     @SerializedName(SERIALIZED_NAME_AVAILABLE_CARRIER_WILL_PICK_UP_OPTIONS)
-    private AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions = new ArrayList<>();
+    private List<AvailableCarrierWillPickUpOption> availableCarrierWillPickUpOptions = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_AVAILABLE_DELIVERY_EXPERIENCE_OPTIONS =
             "AvailableDeliveryExperienceOptions";
 
     @SerializedName(SERIALIZED_NAME_AVAILABLE_DELIVERY_EXPERIENCE_OPTIONS)
-    private AvailableDeliveryExperienceOptionsList availableDeliveryExperienceOptions = new ArrayList<>();
+    private List<AvailableDeliveryExperienceOption> availableDeliveryExperienceOptions = new ArrayList<>();
 
     public AvailableShippingServiceOptions() {}
 
     public AvailableShippingServiceOptions availableCarrierWillPickUpOptions(
-            AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions) {
+            List<AvailableCarrierWillPickUpOption> availableCarrierWillPickUpOptions) {
         this.availableCarrierWillPickUpOptions = availableCarrierWillPickUpOptions;
         return this;
     }
 
+    public AvailableShippingServiceOptions addAvailableCarrierWillPickUpOptionsItem(
+            AvailableCarrierWillPickUpOption availableCarrierWillPickUpOptionsItem) {
+        if (this.availableCarrierWillPickUpOptions == null) {
+            this.availableCarrierWillPickUpOptions = new ArrayList<>();
+        }
+        this.availableCarrierWillPickUpOptions.add(availableCarrierWillPickUpOptionsItem);
+        return this;
+    }
+
     /**
-     * Get availableCarrierWillPickUpOptions
+     * List of available carrier pickup options.
      *
      * @return availableCarrierWillPickUpOptions
      */
     @javax.annotation.Nonnull
-    public AvailableCarrierWillPickUpOptionsList getAvailableCarrierWillPickUpOptions() {
+    public List<AvailableCarrierWillPickUpOption> getAvailableCarrierWillPickUpOptions() {
         return availableCarrierWillPickUpOptions;
     }
 
     public void setAvailableCarrierWillPickUpOptions(
-            AvailableCarrierWillPickUpOptionsList availableCarrierWillPickUpOptions) {
+            List<AvailableCarrierWillPickUpOption> availableCarrierWillPickUpOptions) {
         this.availableCarrierWillPickUpOptions = availableCarrierWillPickUpOptions;
     }
 
     public AvailableShippingServiceOptions availableDeliveryExperienceOptions(
-            AvailableDeliveryExperienceOptionsList availableDeliveryExperienceOptions) {
+            List<AvailableDeliveryExperienceOption> availableDeliveryExperienceOptions) {
         this.availableDeliveryExperienceOptions = availableDeliveryExperienceOptions;
         return this;
     }
 
+    public AvailableShippingServiceOptions addAvailableDeliveryExperienceOptionsItem(
+            AvailableDeliveryExperienceOption availableDeliveryExperienceOptionsItem) {
+        if (this.availableDeliveryExperienceOptions == null) {
+            this.availableDeliveryExperienceOptions = new ArrayList<>();
+        }
+        this.availableDeliveryExperienceOptions.add(availableDeliveryExperienceOptionsItem);
+        return this;
+    }
+
     /**
-     * Get availableDeliveryExperienceOptions
+     * List of available delivery experience options.
      *
      * @return availableDeliveryExperienceOptions
      */
     @javax.annotation.Nonnull
-    public AvailableDeliveryExperienceOptionsList getAvailableDeliveryExperienceOptions() {
+    public List<AvailableDeliveryExperienceOption> getAvailableDeliveryExperienceOptions() {
         return availableDeliveryExperienceOptions;
     }
 
     public void setAvailableDeliveryExperienceOptions(
-            AvailableDeliveryExperienceOptionsList availableDeliveryExperienceOptions) {
+            List<AvailableDeliveryExperienceOption> availableDeliveryExperienceOptions) {
         this.availableDeliveryExperienceOptions = availableDeliveryExperienceOptions;
     }
 
@@ -184,6 +205,34 @@ public class AvailableShippingServiceOptions {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("AvailableCarrierWillPickUpOptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AvailableCarrierWillPickUpOptions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AvailableCarrierWillPickUpOptions").toString()));
+        }
+
+        JsonArray jsonArrayavailableCarrierWillPickUpOptions =
+                jsonObj.getAsJsonArray("AvailableCarrierWillPickUpOptions");
+        // validate the required field `AvailableCarrierWillPickUpOptions` (array)
+        for (int i = 0; i < jsonArrayavailableCarrierWillPickUpOptions.size(); i++) {
+            AvailableCarrierWillPickUpOption.validateJsonElement(jsonArrayavailableCarrierWillPickUpOptions.get(i));
+        }
+        ;
+        // ensure the json data is an array
+        if (!jsonObj.get("AvailableDeliveryExperienceOptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AvailableDeliveryExperienceOptions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AvailableDeliveryExperienceOptions").toString()));
+        }
+
+        JsonArray jsonArrayavailableDeliveryExperienceOptions =
+                jsonObj.getAsJsonArray("AvailableDeliveryExperienceOptions");
+        // validate the required field `AvailableDeliveryExperienceOptions` (array)
+        for (int i = 0; i < jsonArrayavailableDeliveryExperienceOptions.size(); i++) {
+            AvailableDeliveryExperienceOption.validateJsonElement(jsonArrayavailableDeliveryExperienceOptions.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

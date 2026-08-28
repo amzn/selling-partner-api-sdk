@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,12 +44,12 @@ public class Product {
     public static final String SERIALIZED_NAME_ATTRIBUTE_SETS = "AttributeSets";
 
     @SerializedName(SERIALIZED_NAME_ATTRIBUTE_SETS)
-    private AttributeSetList attributeSets = new ArrayList<>();
+    private List<Object> attributeSets = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_RELATIONSHIPS = "Relationships";
 
     @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
-    private RelationshipList relationships = new ArrayList<>();
+    private List<Object> relationships = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_COMPETITIVE_PRICING = "CompetitivePricing";
 
@@ -56,12 +59,12 @@ public class Product {
     public static final String SERIALIZED_NAME_SALES_RANKINGS = "SalesRankings";
 
     @SerializedName(SERIALIZED_NAME_SALES_RANKINGS)
-    private SalesRankList salesRankings = new ArrayList<>();
+    private List<SalesRankType> salesRankings = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_OFFERS = "Offers";
 
     @SerializedName(SERIALIZED_NAME_OFFERS)
-    private OffersList offers = new ArrayList<>();
+    private List<OfferType> offers = new ArrayList<>();
 
     public Product() {}
 
@@ -84,39 +87,55 @@ public class Product {
         this.identifiers = identifiers;
     }
 
-    public Product attributeSets(AttributeSetList attributeSets) {
+    public Product attributeSets(List<Object> attributeSets) {
         this.attributeSets = attributeSets;
         return this;
     }
 
+    public Product addAttributeSetsItem(Object attributeSetsItem) {
+        if (this.attributeSets == null) {
+            this.attributeSets = new ArrayList<>();
+        }
+        this.attributeSets.add(attributeSetsItem);
+        return this;
+    }
+
     /**
-     * Get attributeSets
+     * A list of product attributes if they are applicable to the product that is returned.
      *
      * @return attributeSets
      */
-    @javax.annotation.Nullable public AttributeSetList getAttributeSets() {
+    @javax.annotation.Nullable public List<Object> getAttributeSets() {
         return attributeSets;
     }
 
-    public void setAttributeSets(AttributeSetList attributeSets) {
+    public void setAttributeSets(List<Object> attributeSets) {
         this.attributeSets = attributeSets;
     }
 
-    public Product relationships(RelationshipList relationships) {
+    public Product relationships(List<Object> relationships) {
         this.relationships = relationships;
         return this;
     }
 
+    public Product addRelationshipsItem(Object relationshipsItem) {
+        if (this.relationships == null) {
+            this.relationships = new ArrayList<>();
+        }
+        this.relationships.add(relationshipsItem);
+        return this;
+    }
+
     /**
-     * Get relationships
+     * A list that contains product variation information, if applicable.
      *
      * @return relationships
      */
-    @javax.annotation.Nullable public RelationshipList getRelationships() {
+    @javax.annotation.Nullable public List<Object> getRelationships() {
         return relationships;
     }
 
-    public void setRelationships(RelationshipList relationships) {
+    public void setRelationships(List<Object> relationships) {
         this.relationships = relationships;
     }
 
@@ -138,39 +157,55 @@ public class Product {
         this.competitivePricing = competitivePricing;
     }
 
-    public Product salesRankings(SalesRankList salesRankings) {
+    public Product salesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
         return this;
     }
 
+    public Product addSalesRankingsItem(SalesRankType salesRankingsItem) {
+        if (this.salesRankings == null) {
+            this.salesRankings = new ArrayList<>();
+        }
+        this.salesRankings.add(salesRankingsItem);
+        return this;
+    }
+
     /**
-     * Get salesRankings
+     * A list of sales rank information for the item, by category.
      *
      * @return salesRankings
      */
-    @javax.annotation.Nullable public SalesRankList getSalesRankings() {
+    @javax.annotation.Nullable public List<SalesRankType> getSalesRankings() {
         return salesRankings;
     }
 
-    public void setSalesRankings(SalesRankList salesRankings) {
+    public void setSalesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
     }
 
-    public Product offers(OffersList offers) {
+    public Product offers(List<OfferType> offers) {
         this.offers = offers;
         return this;
     }
 
+    public Product addOffersItem(OfferType offersItem) {
+        if (this.offers == null) {
+            this.offers = new ArrayList<>();
+        }
+        this.offers.add(offersItem);
+        return this;
+    }
+
     /**
-     * Get offers
+     * A list of offers.
      *
      * @return offers
      */
-    @javax.annotation.Nullable public OffersList getOffers() {
+    @javax.annotation.Nullable public List<OfferType> getOffers() {
         return offers;
     }
 
-    public void setOffers(OffersList offers) {
+    public void setOffers(List<OfferType> offers) {
         this.offers = offers;
     }
 
@@ -275,10 +310,61 @@ public class Product {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `Identifiers`
         IdentifierType.validateJsonElement(jsonObj.get("Identifiers"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("AttributeSets") != null
+                && !jsonObj.get("AttributeSets").isJsonNull()
+                && !jsonObj.get("AttributeSets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `AttributeSets` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("AttributeSets").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("Relationships") != null
+                && !jsonObj.get("Relationships").isJsonNull()
+                && !jsonObj.get("Relationships").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Relationships` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Relationships").toString()));
+        }
         // validate the optional field `CompetitivePricing`
         if (jsonObj.get("CompetitivePricing") != null
                 && !jsonObj.get("CompetitivePricing").isJsonNull()) {
             CompetitivePricingType.validateJsonElement(jsonObj.get("CompetitivePricing"));
+        }
+        if (jsonObj.get("SalesRankings") != null
+                && !jsonObj.get("SalesRankings").isJsonNull()) {
+            JsonArray jsonArraysalesRankings = jsonObj.getAsJsonArray("SalesRankings");
+            if (jsonArraysalesRankings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SalesRankings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SalesRankings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SalesRankings").toString()));
+                }
+
+                // validate the optional field `SalesRankings` (array)
+                for (int i = 0; i < jsonArraysalesRankings.size(); i++) {
+                    SalesRankType.validateJsonElement(jsonArraysalesRankings.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("Offers") != null && !jsonObj.get("Offers").isJsonNull()) {
+            JsonArray jsonArrayoffers = jsonObj.getAsJsonArray("Offers");
+            if (jsonArrayoffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("Offers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `Offers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("Offers").toString()));
+                }
+
+                // validate the optional field `Offers` (array)
+                for (int i = 0; i < jsonArrayoffers.size(); i++) {
+                    OfferType.validateJsonElement(jsonArrayoffers.get(i));
+                }
+                ;
+            }
         }
     }
 

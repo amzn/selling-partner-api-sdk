@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -45,17 +48,17 @@ public class Summary {
     public static final String SERIALIZED_NAME_NUMBER_OF_OFFERS = "NumberOfOffers";
 
     @SerializedName(SERIALIZED_NAME_NUMBER_OF_OFFERS)
-    private NumberOfOffers numberOfOffers = new ArrayList<>();
+    private List<OfferCountType> numberOfOffers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_LOWEST_PRICES = "LowestPrices";
 
     @SerializedName(SERIALIZED_NAME_LOWEST_PRICES)
-    private LowestPrices lowestPrices = new ArrayList<>();
+    private List<LowestPriceType> lowestPrices = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_BUY_BOX_PRICES = "BuyBoxPrices";
 
     @SerializedName(SERIALIZED_NAME_BUY_BOX_PRICES)
-    private BuyBoxPrices buyBoxPrices = new ArrayList<>();
+    private List<BuyBoxPriceType> buyBoxPrices = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_LIST_PRICE = "ListPrice";
 
@@ -75,12 +78,12 @@ public class Summary {
     public static final String SERIALIZED_NAME_SALES_RANKINGS = "SalesRankings";
 
     @SerializedName(SERIALIZED_NAME_SALES_RANKINGS)
-    private SalesRankList salesRankings = new ArrayList<>();
+    private List<SalesRankType> salesRankings = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_BUY_BOX_ELIGIBLE_OFFERS = "BuyBoxEligibleOffers";
 
     @SerializedName(SERIALIZED_NAME_BUY_BOX_ELIGIBLE_OFFERS)
-    private BuyBoxEligibleOffers buyBoxEligibleOffers = new ArrayList<>();
+    private List<OfferCountType> buyBoxEligibleOffers = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_OFFERS_AVAILABLE_TIME = "OffersAvailableTime";
 
@@ -108,57 +111,81 @@ public class Summary {
         this.totalOfferCount = totalOfferCount;
     }
 
-    public Summary numberOfOffers(NumberOfOffers numberOfOffers) {
+    public Summary numberOfOffers(List<OfferCountType> numberOfOffers) {
         this.numberOfOffers = numberOfOffers;
         return this;
     }
 
+    public Summary addNumberOfOffersItem(OfferCountType numberOfOffersItem) {
+        if (this.numberOfOffers == null) {
+            this.numberOfOffers = new ArrayList<>();
+        }
+        this.numberOfOffers.add(numberOfOffersItem);
+        return this;
+    }
+
     /**
-     * Get numberOfOffers
+     * A list that contains the total number of offers information for given conditions and fulfillment channels.
      *
      * @return numberOfOffers
      */
-    @javax.annotation.Nullable public NumberOfOffers getNumberOfOffers() {
+    @javax.annotation.Nullable public List<OfferCountType> getNumberOfOffers() {
         return numberOfOffers;
     }
 
-    public void setNumberOfOffers(NumberOfOffers numberOfOffers) {
+    public void setNumberOfOffers(List<OfferCountType> numberOfOffers) {
         this.numberOfOffers = numberOfOffers;
     }
 
-    public Summary lowestPrices(LowestPrices lowestPrices) {
+    public Summary lowestPrices(List<LowestPriceType> lowestPrices) {
         this.lowestPrices = lowestPrices;
         return this;
     }
 
+    public Summary addLowestPricesItem(LowestPriceType lowestPricesItem) {
+        if (this.lowestPrices == null) {
+            this.lowestPrices = new ArrayList<>();
+        }
+        this.lowestPrices.add(lowestPricesItem);
+        return this;
+    }
+
     /**
-     * Get lowestPrices
+     * A list of the lowest prices.
      *
      * @return lowestPrices
      */
-    @javax.annotation.Nullable public LowestPrices getLowestPrices() {
+    @javax.annotation.Nullable public List<LowestPriceType> getLowestPrices() {
         return lowestPrices;
     }
 
-    public void setLowestPrices(LowestPrices lowestPrices) {
+    public void setLowestPrices(List<LowestPriceType> lowestPrices) {
         this.lowestPrices = lowestPrices;
     }
 
-    public Summary buyBoxPrices(BuyBoxPrices buyBoxPrices) {
+    public Summary buyBoxPrices(List<BuyBoxPriceType> buyBoxPrices) {
         this.buyBoxPrices = buyBoxPrices;
         return this;
     }
 
+    public Summary addBuyBoxPricesItem(BuyBoxPriceType buyBoxPricesItem) {
+        if (this.buyBoxPrices == null) {
+            this.buyBoxPrices = new ArrayList<>();
+        }
+        this.buyBoxPrices.add(buyBoxPricesItem);
+        return this;
+    }
+
     /**
-     * Get buyBoxPrices
+     * A list of the Buy Box prices.
      *
      * @return buyBoxPrices
      */
-    @javax.annotation.Nullable public BuyBoxPrices getBuyBoxPrices() {
+    @javax.annotation.Nullable public List<BuyBoxPriceType> getBuyBoxPrices() {
         return buyBoxPrices;
     }
 
-    public void setBuyBoxPrices(BuyBoxPrices buyBoxPrices) {
+    public void setBuyBoxPrices(List<BuyBoxPriceType> buyBoxPrices) {
         this.buyBoxPrices = buyBoxPrices;
     }
 
@@ -216,39 +243,56 @@ public class Summary {
         this.suggestedLowerPricePlusShipping = suggestedLowerPricePlusShipping;
     }
 
-    public Summary salesRankings(SalesRankList salesRankings) {
+    public Summary salesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
         return this;
     }
 
+    public Summary addSalesRankingsItem(SalesRankType salesRankingsItem) {
+        if (this.salesRankings == null) {
+            this.salesRankings = new ArrayList<>();
+        }
+        this.salesRankings.add(salesRankingsItem);
+        return this;
+    }
+
     /**
-     * Get salesRankings
+     * A list of sales rank information for the item, by category.
      *
      * @return salesRankings
      */
-    @javax.annotation.Nullable public SalesRankList getSalesRankings() {
+    @javax.annotation.Nullable public List<SalesRankType> getSalesRankings() {
         return salesRankings;
     }
 
-    public void setSalesRankings(SalesRankList salesRankings) {
+    public void setSalesRankings(List<SalesRankType> salesRankings) {
         this.salesRankings = salesRankings;
     }
 
-    public Summary buyBoxEligibleOffers(BuyBoxEligibleOffers buyBoxEligibleOffers) {
+    public Summary buyBoxEligibleOffers(List<OfferCountType> buyBoxEligibleOffers) {
         this.buyBoxEligibleOffers = buyBoxEligibleOffers;
         return this;
     }
 
+    public Summary addBuyBoxEligibleOffersItem(OfferCountType buyBoxEligibleOffersItem) {
+        if (this.buyBoxEligibleOffers == null) {
+            this.buyBoxEligibleOffers = new ArrayList<>();
+        }
+        this.buyBoxEligibleOffers.add(buyBoxEligibleOffersItem);
+        return this;
+    }
+
     /**
-     * Get buyBoxEligibleOffers
+     * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and
+     * fulfillment channels.
      *
      * @return buyBoxEligibleOffers
      */
-    @javax.annotation.Nullable public BuyBoxEligibleOffers getBuyBoxEligibleOffers() {
+    @javax.annotation.Nullable public List<OfferCountType> getBuyBoxEligibleOffers() {
         return buyBoxEligibleOffers;
     }
 
-    public void setBuyBoxEligibleOffers(BuyBoxEligibleOffers buyBoxEligibleOffers) {
+    public void setBuyBoxEligibleOffers(List<OfferCountType> buyBoxEligibleOffers) {
         this.buyBoxEligibleOffers = buyBoxEligibleOffers;
     }
 
@@ -402,6 +446,58 @@ public class Summary {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("NumberOfOffers") != null
+                && !jsonObj.get("NumberOfOffers").isJsonNull()) {
+            JsonArray jsonArraynumberOfOffers = jsonObj.getAsJsonArray("NumberOfOffers");
+            if (jsonArraynumberOfOffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("NumberOfOffers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `NumberOfOffers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("NumberOfOffers").toString()));
+                }
+
+                // validate the optional field `NumberOfOffers` (array)
+                for (int i = 0; i < jsonArraynumberOfOffers.size(); i++) {
+                    OfferCountType.validateJsonElement(jsonArraynumberOfOffers.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("LowestPrices") != null && !jsonObj.get("LowestPrices").isJsonNull()) {
+            JsonArray jsonArraylowestPrices = jsonObj.getAsJsonArray("LowestPrices");
+            if (jsonArraylowestPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("LowestPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `LowestPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("LowestPrices").toString()));
+                }
+
+                // validate the optional field `LowestPrices` (array)
+                for (int i = 0; i < jsonArraylowestPrices.size(); i++) {
+                    LowestPriceType.validateJsonElement(jsonArraylowestPrices.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("BuyBoxPrices") != null && !jsonObj.get("BuyBoxPrices").isJsonNull()) {
+            JsonArray jsonArraybuyBoxPrices = jsonObj.getAsJsonArray("BuyBoxPrices");
+            if (jsonArraybuyBoxPrices != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("BuyBoxPrices").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `BuyBoxPrices` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("BuyBoxPrices").toString()));
+                }
+
+                // validate the optional field `BuyBoxPrices` (array)
+                for (int i = 0; i < jsonArraybuyBoxPrices.size(); i++) {
+                    BuyBoxPriceType.validateJsonElement(jsonArraybuyBoxPrices.get(i));
+                }
+                ;
+            }
+        }
         // validate the optional field `ListPrice`
         if (jsonObj.get("ListPrice") != null && !jsonObj.get("ListPrice").isJsonNull()) {
             MoneyType.validateJsonElement(jsonObj.get("ListPrice"));
@@ -415,6 +511,42 @@ public class Summary {
         if (jsonObj.get("SuggestedLowerPricePlusShipping") != null
                 && !jsonObj.get("SuggestedLowerPricePlusShipping").isJsonNull()) {
             MoneyType.validateJsonElement(jsonObj.get("SuggestedLowerPricePlusShipping"));
+        }
+        if (jsonObj.get("SalesRankings") != null
+                && !jsonObj.get("SalesRankings").isJsonNull()) {
+            JsonArray jsonArraysalesRankings = jsonObj.getAsJsonArray("SalesRankings");
+            if (jsonArraysalesRankings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SalesRankings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SalesRankings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SalesRankings").toString()));
+                }
+
+                // validate the optional field `SalesRankings` (array)
+                for (int i = 0; i < jsonArraysalesRankings.size(); i++) {
+                    SalesRankType.validateJsonElement(jsonArraysalesRankings.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("BuyBoxEligibleOffers") != null
+                && !jsonObj.get("BuyBoxEligibleOffers").isJsonNull()) {
+            JsonArray jsonArraybuyBoxEligibleOffers = jsonObj.getAsJsonArray("BuyBoxEligibleOffers");
+            if (jsonArraybuyBoxEligibleOffers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("BuyBoxEligibleOffers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `BuyBoxEligibleOffers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("BuyBoxEligibleOffers").toString()));
+                }
+
+                // validate the optional field `BuyBoxEligibleOffers` (array)
+                for (int i = 0; i < jsonArraybuyBoxEligibleOffers.size(); i++) {
+                    OfferCountType.validateJsonElement(jsonArraybuyBoxEligibleOffers.get(i));
+                }
+                ;
+            }
         }
     }
 

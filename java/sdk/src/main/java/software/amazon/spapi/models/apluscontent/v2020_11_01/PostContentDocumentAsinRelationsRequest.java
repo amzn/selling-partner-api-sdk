@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +37,34 @@ public class PostContentDocumentAsinRelationsRequest {
     public static final String SERIALIZED_NAME_ASIN_SET = "asinSet";
 
     @SerializedName(SERIALIZED_NAME_ASIN_SET)
-    private AsinSet asinSet = new LinkedHashSet<>();
+    private Set<String> asinSet = new LinkedHashSet<>();
 
     public PostContentDocumentAsinRelationsRequest() {}
 
-    public PostContentDocumentAsinRelationsRequest asinSet(AsinSet asinSet) {
+    public PostContentDocumentAsinRelationsRequest asinSet(Set<String> asinSet) {
         this.asinSet = asinSet;
         return this;
     }
 
+    public PostContentDocumentAsinRelationsRequest addAsinSetItem(String asinSetItem) {
+        if (this.asinSet == null) {
+            this.asinSet = new LinkedHashSet<>();
+        }
+        this.asinSet.add(asinSetItem);
+        return this;
+    }
+
     /**
-     * Get asinSet
+     * The set of ASINs.
      *
      * @return asinSet
      */
     @javax.annotation.Nonnull
-    public AsinSet getAsinSet() {
+    public Set<String> getAsinSet() {
         return asinSet;
     }
 
-    public void setAsinSet(AsinSet asinSet) {
+    public void setAsinSet(Set<String> asinSet) {
         this.asinSet = asinSet;
     }
 
@@ -143,6 +152,15 @@ public class PostContentDocumentAsinRelationsRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("asinSet") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("asinSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `asinSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("asinSet").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

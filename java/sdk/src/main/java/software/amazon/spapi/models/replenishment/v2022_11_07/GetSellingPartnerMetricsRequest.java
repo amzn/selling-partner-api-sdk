@@ -67,7 +67,7 @@ public class GetSellingPartnerMetricsRequest {
     public static final String SERIALIZED_NAME_PROGRAM_TYPES = "programTypes";
 
     @SerializedName(SERIALIZED_NAME_PROGRAM_TYPES)
-    private ProgramTypes programTypes = new LinkedHashSet<>();
+    private Set<ProgramType> programTypes = new LinkedHashSet<>();
 
     public GetSellingPartnerMetricsRequest() {}
 
@@ -192,22 +192,30 @@ public class GetSellingPartnerMetricsRequest {
         this.marketplaceId = marketplaceId;
     }
 
-    public GetSellingPartnerMetricsRequest programTypes(ProgramTypes programTypes) {
+    public GetSellingPartnerMetricsRequest programTypes(Set<ProgramType> programTypes) {
         this.programTypes = programTypes;
         return this;
     }
 
+    public GetSellingPartnerMetricsRequest addProgramTypesItem(ProgramType programTypesItem) {
+        if (this.programTypes == null) {
+            this.programTypes = new LinkedHashSet<>();
+        }
+        this.programTypes.add(programTypesItem);
+        return this;
+    }
+
     /**
-     * Get programTypes
+     * A list of replenishment program types.
      *
      * @return programTypes
      */
     @javax.annotation.Nonnull
-    public ProgramTypes getProgramTypes() {
+    public Set<ProgramType> getProgramTypes() {
         return programTypes;
     }
 
-    public void setProgramTypes(ProgramTypes programTypes) {
+    public void setProgramTypes(Set<ProgramType> programTypes) {
         this.programTypes = programTypes;
     }
 
@@ -345,6 +353,15 @@ public class GetSellingPartnerMetricsRequest {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("marketplaceId").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("programTypes") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("programTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `programTypes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("programTypes").toString()));
         }
     }
 

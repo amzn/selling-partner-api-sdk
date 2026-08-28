@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -57,7 +58,7 @@ public class ShipmentItem {
     public static final String SERIALIZED_NAME_UNIT_IDENTIFIERS = "unitIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_UNIT_IDENTIFIERS)
-    private UnitIdentifiers unitIdentifiers = new HashMap<>();
+    private Map<String, List<String>> unitIdentifiers = new HashMap<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_ITEM_ID = "shipmentItemId";
 
@@ -142,21 +143,29 @@ public class ShipmentItem {
         this.packageId = packageId;
     }
 
-    public ShipmentItem unitIdentifiers(UnitIdentifiers unitIdentifiers) {
+    public ShipmentItem unitIdentifiers(Map<String, List<String>> unitIdentifiers) {
         this.unitIdentifiers = unitIdentifiers;
         return this;
     }
 
+    public ShipmentItem putUnitIdentifiersItem(String key, List<String> unitIdentifiersItem) {
+        if (this.unitIdentifiers == null) {
+            this.unitIdentifiers = new HashMap<>();
+        }
+        this.unitIdentifiers.put(key, unitIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get unitIdentifiers
+     * A map of unit identifier types to lists of identifier values
      *
      * @return unitIdentifiers
      */
-    @javax.annotation.Nullable public UnitIdentifiers getUnitIdentifiers() {
+    @javax.annotation.Nullable public Map<String, List<String>> getUnitIdentifiers() {
         return unitIdentifiers;
     }
 
-    public void setUnitIdentifiers(UnitIdentifiers unitIdentifiers) {
+    public void setUnitIdentifiers(Map<String, List<String>> unitIdentifiers) {
         this.unitIdentifiers = unitIdentifiers;
     }
 

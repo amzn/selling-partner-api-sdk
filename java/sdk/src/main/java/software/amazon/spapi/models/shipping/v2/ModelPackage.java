@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -61,7 +64,7 @@ public class ModelPackage {
     public static final String SERIALIZED_NAME_CHARGES = "charges";
 
     @SerializedName(SERIALIZED_NAME_CHARGES)
-    private ChargeList charges = new ArrayList<>();
+    private List<ChargeComponent> charges = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PACKAGE_CLIENT_REFERENCE_ID = "packageClientReferenceId";
 
@@ -71,7 +74,7 @@ public class ModelPackage {
     public static final String SERIALIZED_NAME_ITEMS = "items";
 
     @SerializedName(SERIALIZED_NAME_ITEMS)
-    private ItemList items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public ModelPackage() {}
 
@@ -168,21 +171,29 @@ public class ModelPackage {
         this.sellerDisplayName = sellerDisplayName;
     }
 
-    public ModelPackage charges(ChargeList charges) {
+    public ModelPackage charges(List<ChargeComponent> charges) {
         this.charges = charges;
         return this;
     }
 
+    public ModelPackage addChargesItem(ChargeComponent chargesItem) {
+        if (this.charges == null) {
+            this.charges = new ArrayList<>();
+        }
+        this.charges.add(chargesItem);
+        return this;
+    }
+
     /**
-     * Get charges
+     * A list of charges based on the shipping service charges applied on a package.
      *
      * @return charges
      */
-    @javax.annotation.Nullable public ChargeList getCharges() {
+    @javax.annotation.Nullable public List<ChargeComponent> getCharges() {
         return charges;
     }
 
-    public void setCharges(ChargeList charges) {
+    public void setCharges(List<ChargeComponent> charges) {
         this.charges = charges;
     }
 
@@ -206,22 +217,30 @@ public class ModelPackage {
         this.packageClientReferenceId = packageClientReferenceId;
     }
 
-    public ModelPackage items(ItemList items) {
+    public ModelPackage items(List<Item> items) {
         this.items = items;
         return this;
     }
 
+    public ModelPackage addItemsItem(Item itemsItem) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
+        }
+        this.items.add(itemsItem);
+        return this;
+    }
+
     /**
-     * Get items
+     * A list of items.
      *
      * @return items
      */
     @javax.annotation.Nonnull
-    public ItemList getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(ItemList items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
@@ -357,11 +376,41 @@ public class ModelPackage {
                     "Expected the field `sellerDisplayName` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("sellerDisplayName").toString()));
         }
+        if (jsonObj.get("charges") != null && !jsonObj.get("charges").isJsonNull()) {
+            JsonArray jsonArraycharges = jsonObj.getAsJsonArray("charges");
+            if (jsonArraycharges != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("charges").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `charges` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("charges").toString()));
+                }
+
+                // validate the optional field `charges` (array)
+                for (int i = 0; i < jsonArraycharges.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArraycharges.get(i));
+                }
+                ;
+            }
+        }
         if (!jsonObj.get("packageClientReferenceId").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `packageClientReferenceId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("packageClientReferenceId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("items").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `items` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("items").toString()));
+        }
+
+        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+        // validate the required field `items` (array)
+        for (int i = 0; i < jsonArrayitems.size(); i++) {
+            Item.validateJsonElement(jsonArrayitems.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

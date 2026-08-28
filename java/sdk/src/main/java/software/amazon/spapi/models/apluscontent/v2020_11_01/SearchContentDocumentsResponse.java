@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,10 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +40,7 @@ public class SearchContentDocumentsResponse {
     public static final String SERIALIZED_NAME_WARNINGS = "warnings";
 
     @SerializedName(SERIALIZED_NAME_WARNINGS)
-    private MessageSet warnings = new LinkedHashSet<>();
+    private Set<Error> warnings = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
 
@@ -46,25 +50,33 @@ public class SearchContentDocumentsResponse {
     public static final String SERIALIZED_NAME_CONTENT_METADATA_RECORDS = "contentMetadataRecords";
 
     @SerializedName(SERIALIZED_NAME_CONTENT_METADATA_RECORDS)
-    private ContentMetadataRecordList contentMetadataRecords = new ArrayList<>();
+    private List<ContentMetadataRecord> contentMetadataRecords = new ArrayList<>();
 
     public SearchContentDocumentsResponse() {}
 
-    public SearchContentDocumentsResponse warnings(MessageSet warnings) {
+    public SearchContentDocumentsResponse warnings(Set<Error> warnings) {
         this.warnings = warnings;
         return this;
     }
 
+    public SearchContentDocumentsResponse addWarningsItem(Error warningsItem) {
+        if (this.warnings == null) {
+            this.warnings = new LinkedHashSet<>();
+        }
+        this.warnings.add(warningsItem);
+        return this;
+    }
+
     /**
-     * Get warnings
+     * A set of messages to the user, such as warnings or comments.
      *
      * @return warnings
      */
-    @javax.annotation.Nullable public MessageSet getWarnings() {
+    @javax.annotation.Nullable public Set<Error> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(MessageSet warnings) {
+    public void setWarnings(Set<Error> warnings) {
         this.warnings = warnings;
     }
 
@@ -86,22 +98,31 @@ public class SearchContentDocumentsResponse {
         this.nextPageToken = nextPageToken;
     }
 
-    public SearchContentDocumentsResponse contentMetadataRecords(ContentMetadataRecordList contentMetadataRecords) {
+    public SearchContentDocumentsResponse contentMetadataRecords(List<ContentMetadataRecord> contentMetadataRecords) {
         this.contentMetadataRecords = contentMetadataRecords;
         return this;
     }
 
+    public SearchContentDocumentsResponse addContentMetadataRecordsItem(
+            ContentMetadataRecord contentMetadataRecordsItem) {
+        if (this.contentMetadataRecords == null) {
+            this.contentMetadataRecords = new ArrayList<>();
+        }
+        this.contentMetadataRecords.add(contentMetadataRecordsItem);
+        return this;
+    }
+
     /**
-     * Get contentMetadataRecords
+     * A list of A+ Content metadata records.
      *
      * @return contentMetadataRecords
      */
     @javax.annotation.Nonnull
-    public ContentMetadataRecordList getContentMetadataRecords() {
+    public List<ContentMetadataRecord> getContentMetadataRecords() {
         return contentMetadataRecords;
     }
 
-    public void setContentMetadataRecords(ContentMetadataRecordList contentMetadataRecords) {
+    public void setContentMetadataRecords(List<ContentMetadataRecord> contentMetadataRecords) {
         this.contentMetadataRecords = contentMetadataRecords;
     }
 
@@ -196,6 +217,23 @@ public class SearchContentDocumentsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+            JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+            if (jsonArraywarnings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("warnings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `warnings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("warnings").toString()));
+                }
+
+                // validate the optional field `warnings` (array)
+                for (int i = 0; i < jsonArraywarnings.size(); i++) {
+                    Error.validateJsonElement(jsonArraywarnings.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextPageToken") != null
                         && !jsonObj.get("nextPageToken").isJsonNull())
                 && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
@@ -203,6 +241,19 @@ public class SearchContentDocumentsResponse {
                     "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("nextPageToken").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("contentMetadataRecords").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentMetadataRecords` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("contentMetadataRecords").toString()));
+        }
+
+        JsonArray jsonArraycontentMetadataRecords = jsonObj.getAsJsonArray("contentMetadataRecords");
+        // validate the required field `contentMetadataRecords` (array)
+        for (int i = 0; i < jsonArraycontentMetadataRecords.size(); i++) {
+            ContentMetadataRecord.validateJsonElement(jsonArraycontentMetadataRecords.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

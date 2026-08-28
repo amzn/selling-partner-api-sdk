@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class OrderItemsBuyerInfoList {
     public static final String SERIALIZED_NAME_ORDER_ITEMS = "OrderItems";
 
     @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
-    private OrderItemBuyerInfoList orderItems = new ArrayList<>();
+    private List<OrderItemBuyerInfo> orderItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "NextToken";
 
@@ -50,22 +53,30 @@ public class OrderItemsBuyerInfoList {
 
     public OrderItemsBuyerInfoList() {}
 
-    public OrderItemsBuyerInfoList orderItems(OrderItemBuyerInfoList orderItems) {
+    public OrderItemsBuyerInfoList orderItems(List<OrderItemBuyerInfo> orderItems) {
         this.orderItems = orderItems;
         return this;
     }
 
+    public OrderItemsBuyerInfoList addOrderItemsItem(OrderItemBuyerInfo orderItemsItem) {
+        if (this.orderItems == null) {
+            this.orderItems = new ArrayList<>();
+        }
+        this.orderItems.add(orderItemsItem);
+        return this;
+    }
+
     /**
-     * Get orderItems
+     * A single order item&#39;s buyer information list.
      *
      * @return orderItems
      */
     @javax.annotation.Nonnull
-    public OrderItemBuyerInfoList getOrderItems() {
+    public List<OrderItemBuyerInfo> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(OrderItemBuyerInfoList orderItems) {
+    public void setOrderItems(List<OrderItemBuyerInfo> orderItems) {
         this.orderItems = orderItems;
     }
 
@@ -196,6 +207,19 @@ public class OrderItemsBuyerInfoList {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("OrderItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `OrderItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("OrderItems").toString()));
+        }
+
+        JsonArray jsonArrayorderItems = jsonObj.getAsJsonArray("OrderItems");
+        // validate the required field `OrderItems` (array)
+        for (int i = 0; i < jsonArrayorderItems.size(); i++) {
+            OrderItemBuyerInfo.validateJsonElement(jsonArrayorderItems.get(i));
+        }
+        ;
         if ((jsonObj.get("NextToken") != null && !jsonObj.get("NextToken").isJsonNull())
                 && !jsonObj.get("NextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

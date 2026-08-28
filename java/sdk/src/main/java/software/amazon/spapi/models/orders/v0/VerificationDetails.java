@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class VerificationDetails {
     public static final String SERIALIZED_NAME_APPROVED_ALTERNATIVE_DETAILS = "approvedAlternativeDetails";
 
     @SerializedName(SERIALIZED_NAME_APPROVED_ALTERNATIVE_DETAILS)
-    private ApprovedAlternativeDetails approvedAlternativeDetails = new ArrayList<>();
+    private List<ApprovedAttribute> approvedAlternativeDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_INTERIM_STATUS_DETAIL = "interimStatusDetail";
 
@@ -68,21 +71,31 @@ public class VerificationDetails {
         this.prescriptionDetail = prescriptionDetail;
     }
 
-    public VerificationDetails approvedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+    public VerificationDetails approvedAlternativeDetails(List<ApprovedAttribute> approvedAlternativeDetails) {
         this.approvedAlternativeDetails = approvedAlternativeDetails;
         return this;
     }
 
+    public VerificationDetails addApprovedAlternativeDetailsItem(ApprovedAttribute approvedAlternativeDetailsItem) {
+        if (this.approvedAlternativeDetails == null) {
+            this.approvedAlternativeDetails = new ArrayList<>();
+        }
+        this.approvedAlternativeDetails.add(approvedAlternativeDetailsItem);
+        return this;
+    }
+
     /**
-     * Get approvedAlternativeDetails
+     * Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute
+     * name, its original value from the rejected order, and the corrected value that would result in approval (for
+     * example, a substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;).
      *
      * @return approvedAlternativeDetails
      */
-    @javax.annotation.Nullable public ApprovedAlternativeDetails getApprovedAlternativeDetails() {
+    @javax.annotation.Nullable public List<ApprovedAttribute> getApprovedAlternativeDetails() {
         return approvedAlternativeDetails;
     }
 
-    public void setApprovedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+    public void setApprovedAlternativeDetails(List<ApprovedAttribute> approvedAlternativeDetails) {
         this.approvedAlternativeDetails = approvedAlternativeDetails;
     }
 
@@ -192,6 +205,24 @@ public class VerificationDetails {
         if (jsonObj.get("prescriptionDetail") != null
                 && !jsonObj.get("prescriptionDetail").isJsonNull()) {
             PrescriptionDetail.validateJsonElement(jsonObj.get("prescriptionDetail"));
+        }
+        if (jsonObj.get("approvedAlternativeDetails") != null
+                && !jsonObj.get("approvedAlternativeDetails").isJsonNull()) {
+            JsonArray jsonArrayapprovedAlternativeDetails = jsonObj.getAsJsonArray("approvedAlternativeDetails");
+            if (jsonArrayapprovedAlternativeDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("approvedAlternativeDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `approvedAlternativeDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("approvedAlternativeDetails").toString()));
+                }
+
+                // validate the optional field `approvedAlternativeDetails` (array)
+                for (int i = 0; i < jsonArrayapprovedAlternativeDetails.size(); i++) {
+                    ApprovedAttribute.validateJsonElement(jsonArrayapprovedAlternativeDetails.get(i));
+                }
+                ;
+            }
         }
         // validate the optional field `interimStatusDetail`
         if (jsonObj.get("interimStatusDetail") != null

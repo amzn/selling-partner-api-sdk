@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,163 +39,219 @@ public class OperatingHoursByDay {
     public static final String SERIALIZED_NAME_MONDAY = "monday";
 
     @SerializedName(SERIALIZED_NAME_MONDAY)
-    private OperatingHours monday = new ArrayList<>();
+    private List<OperatingHour> monday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TUESDAY = "tuesday";
 
     @SerializedName(SERIALIZED_NAME_TUESDAY)
-    private OperatingHours tuesday = new ArrayList<>();
+    private List<OperatingHour> tuesday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_WEDNESDAY = "wednesday";
 
     @SerializedName(SERIALIZED_NAME_WEDNESDAY)
-    private OperatingHours wednesday = new ArrayList<>();
+    private List<OperatingHour> wednesday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_THURSDAY = "thursday";
 
     @SerializedName(SERIALIZED_NAME_THURSDAY)
-    private OperatingHours thursday = new ArrayList<>();
+    private List<OperatingHour> thursday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FRIDAY = "friday";
 
     @SerializedName(SERIALIZED_NAME_FRIDAY)
-    private OperatingHours friday = new ArrayList<>();
+    private List<OperatingHour> friday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SATURDAY = "saturday";
 
     @SerializedName(SERIALIZED_NAME_SATURDAY)
-    private OperatingHours saturday = new ArrayList<>();
+    private List<OperatingHour> saturday = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SUNDAY = "sunday";
 
     @SerializedName(SERIALIZED_NAME_SUNDAY)
-    private OperatingHours sunday = new ArrayList<>();
+    private List<OperatingHour> sunday = new ArrayList<>();
 
     public OperatingHoursByDay() {}
 
-    public OperatingHoursByDay monday(OperatingHours monday) {
+    public OperatingHoursByDay monday(List<OperatingHour> monday) {
         this.monday = monday;
         return this;
     }
 
+    public OperatingHoursByDay addMondayItem(OperatingHour mondayItem) {
+        if (this.monday == null) {
+            this.monday = new ArrayList<>();
+        }
+        this.monday.add(mondayItem);
+        return this;
+    }
+
     /**
-     * Get monday
+     * A list of Operating Hours.
      *
      * @return monday
      */
-    @javax.annotation.Nullable public OperatingHours getMonday() {
+    @javax.annotation.Nullable public List<OperatingHour> getMonday() {
         return monday;
     }
 
-    public void setMonday(OperatingHours monday) {
+    public void setMonday(List<OperatingHour> monday) {
         this.monday = monday;
     }
 
-    public OperatingHoursByDay tuesday(OperatingHours tuesday) {
+    public OperatingHoursByDay tuesday(List<OperatingHour> tuesday) {
         this.tuesday = tuesday;
         return this;
     }
 
+    public OperatingHoursByDay addTuesdayItem(OperatingHour tuesdayItem) {
+        if (this.tuesday == null) {
+            this.tuesday = new ArrayList<>();
+        }
+        this.tuesday.add(tuesdayItem);
+        return this;
+    }
+
     /**
-     * Get tuesday
+     * A list of Operating Hours.
      *
      * @return tuesday
      */
-    @javax.annotation.Nullable public OperatingHours getTuesday() {
+    @javax.annotation.Nullable public List<OperatingHour> getTuesday() {
         return tuesday;
     }
 
-    public void setTuesday(OperatingHours tuesday) {
+    public void setTuesday(List<OperatingHour> tuesday) {
         this.tuesday = tuesday;
     }
 
-    public OperatingHoursByDay wednesday(OperatingHours wednesday) {
+    public OperatingHoursByDay wednesday(List<OperatingHour> wednesday) {
         this.wednesday = wednesday;
         return this;
     }
 
+    public OperatingHoursByDay addWednesdayItem(OperatingHour wednesdayItem) {
+        if (this.wednesday == null) {
+            this.wednesday = new ArrayList<>();
+        }
+        this.wednesday.add(wednesdayItem);
+        return this;
+    }
+
     /**
-     * Get wednesday
+     * A list of Operating Hours.
      *
      * @return wednesday
      */
-    @javax.annotation.Nullable public OperatingHours getWednesday() {
+    @javax.annotation.Nullable public List<OperatingHour> getWednesday() {
         return wednesday;
     }
 
-    public void setWednesday(OperatingHours wednesday) {
+    public void setWednesday(List<OperatingHour> wednesday) {
         this.wednesday = wednesday;
     }
 
-    public OperatingHoursByDay thursday(OperatingHours thursday) {
+    public OperatingHoursByDay thursday(List<OperatingHour> thursday) {
         this.thursday = thursday;
         return this;
     }
 
+    public OperatingHoursByDay addThursdayItem(OperatingHour thursdayItem) {
+        if (this.thursday == null) {
+            this.thursday = new ArrayList<>();
+        }
+        this.thursday.add(thursdayItem);
+        return this;
+    }
+
     /**
-     * Get thursday
+     * A list of Operating Hours.
      *
      * @return thursday
      */
-    @javax.annotation.Nullable public OperatingHours getThursday() {
+    @javax.annotation.Nullable public List<OperatingHour> getThursday() {
         return thursday;
     }
 
-    public void setThursday(OperatingHours thursday) {
+    public void setThursday(List<OperatingHour> thursday) {
         this.thursday = thursday;
     }
 
-    public OperatingHoursByDay friday(OperatingHours friday) {
+    public OperatingHoursByDay friday(List<OperatingHour> friday) {
         this.friday = friday;
         return this;
     }
 
+    public OperatingHoursByDay addFridayItem(OperatingHour fridayItem) {
+        if (this.friday == null) {
+            this.friday = new ArrayList<>();
+        }
+        this.friday.add(fridayItem);
+        return this;
+    }
+
     /**
-     * Get friday
+     * A list of Operating Hours.
      *
      * @return friday
      */
-    @javax.annotation.Nullable public OperatingHours getFriday() {
+    @javax.annotation.Nullable public List<OperatingHour> getFriday() {
         return friday;
     }
 
-    public void setFriday(OperatingHours friday) {
+    public void setFriday(List<OperatingHour> friday) {
         this.friday = friday;
     }
 
-    public OperatingHoursByDay saturday(OperatingHours saturday) {
+    public OperatingHoursByDay saturday(List<OperatingHour> saturday) {
         this.saturday = saturday;
         return this;
     }
 
+    public OperatingHoursByDay addSaturdayItem(OperatingHour saturdayItem) {
+        if (this.saturday == null) {
+            this.saturday = new ArrayList<>();
+        }
+        this.saturday.add(saturdayItem);
+        return this;
+    }
+
     /**
-     * Get saturday
+     * A list of Operating Hours.
      *
      * @return saturday
      */
-    @javax.annotation.Nullable public OperatingHours getSaturday() {
+    @javax.annotation.Nullable public List<OperatingHour> getSaturday() {
         return saturday;
     }
 
-    public void setSaturday(OperatingHours saturday) {
+    public void setSaturday(List<OperatingHour> saturday) {
         this.saturday = saturday;
     }
 
-    public OperatingHoursByDay sunday(OperatingHours sunday) {
+    public OperatingHoursByDay sunday(List<OperatingHour> sunday) {
         this.sunday = sunday;
         return this;
     }
 
+    public OperatingHoursByDay addSundayItem(OperatingHour sundayItem) {
+        if (this.sunday == null) {
+            this.sunday = new ArrayList<>();
+        }
+        this.sunday.add(sundayItem);
+        return this;
+    }
+
     /**
-     * Get sunday
+     * A list of Operating Hours.
      *
      * @return sunday
      */
-    @javax.annotation.Nullable public OperatingHours getSunday() {
+    @javax.annotation.Nullable public List<OperatingHour> getSunday() {
         return sunday;
     }
 
-    public void setSunday(OperatingHours sunday) {
+    public void setSunday(List<OperatingHour> sunday) {
         this.sunday = sunday;
     }
 
@@ -286,6 +345,125 @@ public class OperatingHoursByDay {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("monday") != null && !jsonObj.get("monday").isJsonNull()) {
+            JsonArray jsonArraymonday = jsonObj.getAsJsonArray("monday");
+            if (jsonArraymonday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("monday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `monday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("monday").toString()));
+                }
+
+                // validate the optional field `monday` (array)
+                for (int i = 0; i < jsonArraymonday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraymonday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("tuesday") != null && !jsonObj.get("tuesday").isJsonNull()) {
+            JsonArray jsonArraytuesday = jsonObj.getAsJsonArray("tuesday");
+            if (jsonArraytuesday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("tuesday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `tuesday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("tuesday").toString()));
+                }
+
+                // validate the optional field `tuesday` (array)
+                for (int i = 0; i < jsonArraytuesday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraytuesday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("wednesday") != null && !jsonObj.get("wednesday").isJsonNull()) {
+            JsonArray jsonArraywednesday = jsonObj.getAsJsonArray("wednesday");
+            if (jsonArraywednesday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("wednesday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `wednesday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("wednesday").toString()));
+                }
+
+                // validate the optional field `wednesday` (array)
+                for (int i = 0; i < jsonArraywednesday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraywednesday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("thursday") != null && !jsonObj.get("thursday").isJsonNull()) {
+            JsonArray jsonArraythursday = jsonObj.getAsJsonArray("thursday");
+            if (jsonArraythursday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("thursday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `thursday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("thursday").toString()));
+                }
+
+                // validate the optional field `thursday` (array)
+                for (int i = 0; i < jsonArraythursday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraythursday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("friday") != null && !jsonObj.get("friday").isJsonNull()) {
+            JsonArray jsonArrayfriday = jsonObj.getAsJsonArray("friday");
+            if (jsonArrayfriday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("friday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `friday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("friday").toString()));
+                }
+
+                // validate the optional field `friday` (array)
+                for (int i = 0; i < jsonArrayfriday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArrayfriday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("saturday") != null && !jsonObj.get("saturday").isJsonNull()) {
+            JsonArray jsonArraysaturday = jsonObj.getAsJsonArray("saturday");
+            if (jsonArraysaturday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("saturday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `saturday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("saturday").toString()));
+                }
+
+                // validate the optional field `saturday` (array)
+                for (int i = 0; i < jsonArraysaturday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraysaturday.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("sunday") != null && !jsonObj.get("sunday").isJsonNull()) {
+            JsonArray jsonArraysunday = jsonObj.getAsJsonArray("sunday");
+            if (jsonArraysunday != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("sunday").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `sunday` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("sunday").toString()));
+                }
+
+                // validate the optional field `sunday` (array)
+                for (int i = 0; i < jsonArraysunday.size(); i++) {
+                    OperatingHour.validateJsonElement(jsonArraysunday.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class GetPaymentMethodsResponse {
     public static final String SERIALIZED_NAME_PAYMENT_METHODS = "paymentMethods";
 
     @SerializedName(SERIALIZED_NAME_PAYMENT_METHODS)
-    private PaymentMethodList paymentMethods = new ArrayList<>();
+    private List<PaymentMethodDetails> paymentMethods = new ArrayList<>();
 
     public GetPaymentMethodsResponse() {}
 
-    public GetPaymentMethodsResponse paymentMethods(PaymentMethodList paymentMethods) {
+    public GetPaymentMethodsResponse paymentMethods(List<PaymentMethodDetails> paymentMethods) {
         this.paymentMethods = paymentMethods;
         return this;
     }
 
+    public GetPaymentMethodsResponse addPaymentMethodsItem(PaymentMethodDetails paymentMethodsItem) {
+        if (this.paymentMethods == null) {
+            this.paymentMethods = new ArrayList<>();
+        }
+        this.paymentMethods.add(paymentMethodsItem);
+        return this;
+    }
+
     /**
-     * Get paymentMethods
+     * The list of payment methods with payment method details.
      *
      * @return paymentMethods
      */
-    @javax.annotation.Nullable public PaymentMethodList getPaymentMethods() {
+    @javax.annotation.Nullable public List<PaymentMethodDetails> getPaymentMethods() {
         return paymentMethods;
     }
 
-    public void setPaymentMethods(PaymentMethodList paymentMethods) {
+    public void setPaymentMethods(List<PaymentMethodDetails> paymentMethods) {
         this.paymentMethods = paymentMethods;
     }
 
@@ -133,6 +144,24 @@ public class GetPaymentMethodsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("paymentMethods") != null
+                && !jsonObj.get("paymentMethods").isJsonNull()) {
+            JsonArray jsonArraypaymentMethods = jsonObj.getAsJsonArray("paymentMethods");
+            if (jsonArraypaymentMethods != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("paymentMethods").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `paymentMethods` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("paymentMethods").toString()));
+                }
+
+                // validate the optional field `paymentMethods` (array)
+                for (int i = 0; i < jsonArraypaymentMethods.size(); i++) {
+                    PaymentMethodDetails.validateJsonElement(jsonArraypaymentMethods.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

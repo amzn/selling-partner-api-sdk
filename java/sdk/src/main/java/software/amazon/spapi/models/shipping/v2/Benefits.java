@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -40,50 +43,66 @@ public class Benefits {
     public static final String SERIALIZED_NAME_INCLUDED_BENEFITS = "includedBenefits";
 
     @SerializedName(SERIALIZED_NAME_INCLUDED_BENEFITS)
-    private IncludedBenefits includedBenefits = new ArrayList<>();
+    private List<String> includedBenefits = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_EXCLUDED_BENEFITS = "excludedBenefits";
 
     @SerializedName(SERIALIZED_NAME_EXCLUDED_BENEFITS)
-    private ExcludedBenefits excludedBenefits = new ArrayList<>();
+    private List<ExcludedBenefit> excludedBenefits = new ArrayList<>();
 
     public Benefits() {}
 
-    public Benefits includedBenefits(IncludedBenefits includedBenefits) {
+    public Benefits includedBenefits(List<String> includedBenefits) {
         this.includedBenefits = includedBenefits;
         return this;
     }
 
+    public Benefits addIncludedBenefitsItem(String includedBenefitsItem) {
+        if (this.includedBenefits == null) {
+            this.includedBenefits = new ArrayList<>();
+        }
+        this.includedBenefits.add(includedBenefitsItem);
+        return this;
+    }
+
     /**
-     * Get includedBenefits
+     * A list of included benefits.
      *
      * @return includedBenefits
      */
     @javax.annotation.Nonnull
-    public IncludedBenefits getIncludedBenefits() {
+    public List<String> getIncludedBenefits() {
         return includedBenefits;
     }
 
-    public void setIncludedBenefits(IncludedBenefits includedBenefits) {
+    public void setIncludedBenefits(List<String> includedBenefits) {
         this.includedBenefits = includedBenefits;
     }
 
-    public Benefits excludedBenefits(ExcludedBenefits excludedBenefits) {
+    public Benefits excludedBenefits(List<ExcludedBenefit> excludedBenefits) {
         this.excludedBenefits = excludedBenefits;
         return this;
     }
 
+    public Benefits addExcludedBenefitsItem(ExcludedBenefit excludedBenefitsItem) {
+        if (this.excludedBenefits == null) {
+            this.excludedBenefits = new ArrayList<>();
+        }
+        this.excludedBenefits.add(excludedBenefitsItem);
+        return this;
+    }
+
     /**
-     * Get excludedBenefits
+     * A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
      *
      * @return excludedBenefits
      */
     @javax.annotation.Nonnull
-    public ExcludedBenefits getExcludedBenefits() {
+    public List<ExcludedBenefit> getExcludedBenefits() {
         return excludedBenefits;
     }
 
-    public void setExcludedBenefits(ExcludedBenefits excludedBenefits) {
+    public void setExcludedBenefits(List<ExcludedBenefit> excludedBenefits) {
         this.excludedBenefits = excludedBenefits;
     }
 
@@ -177,6 +196,28 @@ public class Benefits {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("includedBenefits") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("includedBenefits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `includedBenefits` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("includedBenefits").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("excludedBenefits").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `excludedBenefits` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("excludedBenefits").toString()));
+        }
+
+        JsonArray jsonArrayexcludedBenefits = jsonObj.getAsJsonArray("excludedBenefits");
+        // validate the required field `excludedBenefits` (array)
+        for (int i = 0; i < jsonArrayexcludedBenefits.size(); i++) {
+            ExcludedBenefit.validateJsonElement(jsonArrayexcludedBenefits.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

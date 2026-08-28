@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,102 +39,137 @@ public class GetEligibleShipmentServicesResult {
     public static final String SERIALIZED_NAME_SHIPPING_SERVICE_LIST = "ShippingServiceList";
 
     @SerializedName(SERIALIZED_NAME_SHIPPING_SERVICE_LIST)
-    private ShippingServiceList shippingServiceList = new ArrayList<>();
+    private List<ShippingService> shippingServiceList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REJECTED_SHIPPING_SERVICE_LIST = "RejectedShippingServiceList";
 
     @SerializedName(SERIALIZED_NAME_REJECTED_SHIPPING_SERVICE_LIST)
-    private RejectedShippingServiceList rejectedShippingServiceList = new ArrayList<>();
+    private List<RejectedShippingService> rejectedShippingServiceList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TEMPORARILY_UNAVAILABLE_CARRIER_LIST =
             "TemporarilyUnavailableCarrierList";
 
     @SerializedName(SERIALIZED_NAME_TEMPORARILY_UNAVAILABLE_CARRIER_LIST)
-    private TemporarilyUnavailableCarrierList temporarilyUnavailableCarrierList = new ArrayList<>();
+    private List<TemporarilyUnavailableCarrier> temporarilyUnavailableCarrierList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_TERMS_AND_CONDITIONS_NOT_ACCEPTED_CARRIER_LIST =
             "TermsAndConditionsNotAcceptedCarrierList";
 
     @SerializedName(SERIALIZED_NAME_TERMS_AND_CONDITIONS_NOT_ACCEPTED_CARRIER_LIST)
-    private TermsAndConditionsNotAcceptedCarrierList termsAndConditionsNotAcceptedCarrierList = new ArrayList<>();
+    private List<TermsAndConditionsNotAcceptedCarrier> termsAndConditionsNotAcceptedCarrierList = new ArrayList<>();
 
     public GetEligibleShipmentServicesResult() {}
 
-    public GetEligibleShipmentServicesResult shippingServiceList(ShippingServiceList shippingServiceList) {
+    public GetEligibleShipmentServicesResult shippingServiceList(List<ShippingService> shippingServiceList) {
         this.shippingServiceList = shippingServiceList;
         return this;
     }
 
+    public GetEligibleShipmentServicesResult addShippingServiceListItem(ShippingService shippingServiceListItem) {
+        if (this.shippingServiceList == null) {
+            this.shippingServiceList = new ArrayList<>();
+        }
+        this.shippingServiceList.add(shippingServiceListItem);
+        return this;
+    }
+
     /**
-     * Get shippingServiceList
+     * A list of shipping services offers.
      *
      * @return shippingServiceList
      */
     @javax.annotation.Nonnull
-    public ShippingServiceList getShippingServiceList() {
+    public List<ShippingService> getShippingServiceList() {
         return shippingServiceList;
     }
 
-    public void setShippingServiceList(ShippingServiceList shippingServiceList) {
+    public void setShippingServiceList(List<ShippingService> shippingServiceList) {
         this.shippingServiceList = shippingServiceList;
     }
 
     public GetEligibleShipmentServicesResult rejectedShippingServiceList(
-            RejectedShippingServiceList rejectedShippingServiceList) {
+            List<RejectedShippingService> rejectedShippingServiceList) {
         this.rejectedShippingServiceList = rejectedShippingServiceList;
         return this;
     }
 
+    public GetEligibleShipmentServicesResult addRejectedShippingServiceListItem(
+            RejectedShippingService rejectedShippingServiceListItem) {
+        if (this.rejectedShippingServiceList == null) {
+            this.rejectedShippingServiceList = new ArrayList<>();
+        }
+        this.rejectedShippingServiceList.add(rejectedShippingServiceListItem);
+        return this;
+    }
+
     /**
-     * Get rejectedShippingServiceList
+     * List of services that are for some reason unavailable for this request
      *
      * @return rejectedShippingServiceList
      */
-    @javax.annotation.Nullable public RejectedShippingServiceList getRejectedShippingServiceList() {
+    @javax.annotation.Nullable public List<RejectedShippingService> getRejectedShippingServiceList() {
         return rejectedShippingServiceList;
     }
 
-    public void setRejectedShippingServiceList(RejectedShippingServiceList rejectedShippingServiceList) {
+    public void setRejectedShippingServiceList(List<RejectedShippingService> rejectedShippingServiceList) {
         this.rejectedShippingServiceList = rejectedShippingServiceList;
     }
 
     public GetEligibleShipmentServicesResult temporarilyUnavailableCarrierList(
-            TemporarilyUnavailableCarrierList temporarilyUnavailableCarrierList) {
+            List<TemporarilyUnavailableCarrier> temporarilyUnavailableCarrierList) {
         this.temporarilyUnavailableCarrierList = temporarilyUnavailableCarrierList;
         return this;
     }
 
+    public GetEligibleShipmentServicesResult addTemporarilyUnavailableCarrierListItem(
+            TemporarilyUnavailableCarrier temporarilyUnavailableCarrierListItem) {
+        if (this.temporarilyUnavailableCarrierList == null) {
+            this.temporarilyUnavailableCarrierList = new ArrayList<>();
+        }
+        this.temporarilyUnavailableCarrierList.add(temporarilyUnavailableCarrierListItem);
+        return this;
+    }
+
     /**
-     * Get temporarilyUnavailableCarrierList
+     * A list of temporarily unavailable carriers.
      *
      * @return temporarilyUnavailableCarrierList
      */
-    @javax.annotation.Nullable public TemporarilyUnavailableCarrierList getTemporarilyUnavailableCarrierList() {
+    @javax.annotation.Nullable public List<TemporarilyUnavailableCarrier> getTemporarilyUnavailableCarrierList() {
         return temporarilyUnavailableCarrierList;
     }
 
     public void setTemporarilyUnavailableCarrierList(
-            TemporarilyUnavailableCarrierList temporarilyUnavailableCarrierList) {
+            List<TemporarilyUnavailableCarrier> temporarilyUnavailableCarrierList) {
         this.temporarilyUnavailableCarrierList = temporarilyUnavailableCarrierList;
     }
 
     public GetEligibleShipmentServicesResult termsAndConditionsNotAcceptedCarrierList(
-            TermsAndConditionsNotAcceptedCarrierList termsAndConditionsNotAcceptedCarrierList) {
+            List<TermsAndConditionsNotAcceptedCarrier> termsAndConditionsNotAcceptedCarrierList) {
         this.termsAndConditionsNotAcceptedCarrierList = termsAndConditionsNotAcceptedCarrierList;
         return this;
     }
 
+    public GetEligibleShipmentServicesResult addTermsAndConditionsNotAcceptedCarrierListItem(
+            TermsAndConditionsNotAcceptedCarrier termsAndConditionsNotAcceptedCarrierListItem) {
+        if (this.termsAndConditionsNotAcceptedCarrierList == null) {
+            this.termsAndConditionsNotAcceptedCarrierList = new ArrayList<>();
+        }
+        this.termsAndConditionsNotAcceptedCarrierList.add(termsAndConditionsNotAcceptedCarrierListItem);
+        return this;
+    }
+
     /**
-     * Get termsAndConditionsNotAcceptedCarrierList
+     * List of carriers whose terms and conditions were not accepted by the seller.
      *
      * @return termsAndConditionsNotAcceptedCarrierList
      */
-    @javax.annotation.Nullable public TermsAndConditionsNotAcceptedCarrierList getTermsAndConditionsNotAcceptedCarrierList() {
+    @javax.annotation.Nullable public List<TermsAndConditionsNotAcceptedCarrier> getTermsAndConditionsNotAcceptedCarrierList() {
         return termsAndConditionsNotAcceptedCarrierList;
     }
 
     public void setTermsAndConditionsNotAcceptedCarrierList(
-            TermsAndConditionsNotAcceptedCarrierList termsAndConditionsNotAcceptedCarrierList) {
+            List<TermsAndConditionsNotAcceptedCarrier> termsAndConditionsNotAcceptedCarrierList) {
         this.termsAndConditionsNotAcceptedCarrierList = termsAndConditionsNotAcceptedCarrierList;
     }
 
@@ -244,6 +282,78 @@ public class GetEligibleShipmentServicesResult {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("ShippingServiceList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ShippingServiceList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("ShippingServiceList").toString()));
+        }
+
+        JsonArray jsonArrayshippingServiceList = jsonObj.getAsJsonArray("ShippingServiceList");
+        // validate the required field `ShippingServiceList` (array)
+        for (int i = 0; i < jsonArrayshippingServiceList.size(); i++) {
+            ShippingService.validateJsonElement(jsonArrayshippingServiceList.get(i));
+        }
+        ;
+        if (jsonObj.get("RejectedShippingServiceList") != null
+                && !jsonObj.get("RejectedShippingServiceList").isJsonNull()) {
+            JsonArray jsonArrayrejectedShippingServiceList = jsonObj.getAsJsonArray("RejectedShippingServiceList");
+            if (jsonArrayrejectedShippingServiceList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RejectedShippingServiceList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RejectedShippingServiceList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RejectedShippingServiceList").toString()));
+                }
+
+                // validate the optional field `RejectedShippingServiceList` (array)
+                for (int i = 0; i < jsonArrayrejectedShippingServiceList.size(); i++) {
+                    RejectedShippingService.validateJsonElement(jsonArrayrejectedShippingServiceList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("TemporarilyUnavailableCarrierList") != null
+                && !jsonObj.get("TemporarilyUnavailableCarrierList").isJsonNull()) {
+            JsonArray jsonArraytemporarilyUnavailableCarrierList =
+                    jsonObj.getAsJsonArray("TemporarilyUnavailableCarrierList");
+            if (jsonArraytemporarilyUnavailableCarrierList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TemporarilyUnavailableCarrierList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TemporarilyUnavailableCarrierList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TemporarilyUnavailableCarrierList").toString()));
+                }
+
+                // validate the optional field `TemporarilyUnavailableCarrierList` (array)
+                for (int i = 0; i < jsonArraytemporarilyUnavailableCarrierList.size(); i++) {
+                    TemporarilyUnavailableCarrier.validateJsonElement(
+                            jsonArraytemporarilyUnavailableCarrierList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("TermsAndConditionsNotAcceptedCarrierList") != null
+                && !jsonObj.get("TermsAndConditionsNotAcceptedCarrierList").isJsonNull()) {
+            JsonArray jsonArraytermsAndConditionsNotAcceptedCarrierList =
+                    jsonObj.getAsJsonArray("TermsAndConditionsNotAcceptedCarrierList");
+            if (jsonArraytermsAndConditionsNotAcceptedCarrierList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TermsAndConditionsNotAcceptedCarrierList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TermsAndConditionsNotAcceptedCarrierList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TermsAndConditionsNotAcceptedCarrierList")
+                                    .toString()));
+                }
+
+                // validate the optional field `TermsAndConditionsNotAcceptedCarrierList` (array)
+                for (int i = 0; i < jsonArraytermsAndConditionsNotAcceptedCarrierList.size(); i++) {
+                    TermsAndConditionsNotAcceptedCarrier.validateJsonElement(
+                            jsonArraytermsAndConditionsNotAcceptedCarrierList.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -112,7 +112,7 @@ public class ListingsItemSubmissionResponse {
     public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
 
     @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
-    private ItemIdentifiers identifiers = new ArrayList<>();
+    private List<ItemIdentifiersByMarketplace> identifiers = new ArrayList<>();
 
     public ListingsItemSubmissionResponse() {}
 
@@ -199,21 +199,29 @@ public class ListingsItemSubmissionResponse {
         this.issues = issues;
     }
 
-    public ListingsItemSubmissionResponse identifiers(ItemIdentifiers identifiers) {
+    public ListingsItemSubmissionResponse identifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
         return this;
     }
 
+    public ListingsItemSubmissionResponse addIdentifiersItem(ItemIdentifiersByMarketplace identifiersItem) {
+        if (this.identifiers == null) {
+            this.identifiers = new ArrayList<>();
+        }
+        this.identifiers.add(identifiersItem);
+        return this;
+    }
+
     /**
-     * Get identifiers
+     * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
      *
      * @return identifiers
      */
-    @javax.annotation.Nullable public ItemIdentifiers getIdentifiers() {
+    @javax.annotation.Nullable public List<ItemIdentifiersByMarketplace> getIdentifiers() {
         return identifiers;
     }
 
-    public void setIdentifiers(ItemIdentifiers identifiers) {
+    public void setIdentifiers(List<ItemIdentifiersByMarketplace> identifiers) {
         this.identifiers = identifiers;
     }
 
@@ -344,6 +352,23 @@ public class ListingsItemSubmissionResponse {
                 // validate the optional field `issues` (array)
                 for (int i = 0; i < jsonArrayissues.size(); i++) {
                     Issue.validateJsonElement(jsonArrayissues.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("identifiers") != null && !jsonObj.get("identifiers").isJsonNull()) {
+            JsonArray jsonArrayidentifiers = jsonObj.getAsJsonArray("identifiers");
+            if (jsonArrayidentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("identifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `identifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("identifiers").toString()));
+                }
+
+                // validate the optional field `identifiers` (array)
+                for (int i = 0; i < jsonArrayidentifiers.size(); i++) {
+                    ItemIdentifiersByMarketplace.validateJsonElement(jsonArrayidentifiers.get(i));
                 }
                 ;
             }

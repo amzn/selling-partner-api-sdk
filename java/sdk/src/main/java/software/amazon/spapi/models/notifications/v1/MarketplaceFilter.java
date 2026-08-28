@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,25 +41,34 @@ public class MarketplaceFilter {
     public static final String SERIALIZED_NAME_MARKETPLACE_IDS = "marketplaceIds";
 
     @SerializedName(SERIALIZED_NAME_MARKETPLACE_IDS)
-    private MarketplaceIds marketplaceIds = new ArrayList<>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     public MarketplaceFilter() {}
 
-    public MarketplaceFilter marketplaceIds(MarketplaceIds marketplaceIds) {
+    public MarketplaceFilter marketplaceIds(List<String> marketplaceIds) {
         this.marketplaceIds = marketplaceIds;
         return this;
     }
 
+    public MarketplaceFilter addMarketplaceIdsItem(String marketplaceIdsItem) {
+        if (this.marketplaceIds == null) {
+            this.marketplaceIds = new ArrayList<>();
+        }
+        this.marketplaceIds.add(marketplaceIdsItem);
+        return this;
+    }
+
     /**
-     * Get marketplaceIds
+     * A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive
+     * notifications in every marketplace, do not provide this list.
      *
      * @return marketplaceIds
      */
-    @javax.annotation.Nullable public MarketplaceIds getMarketplaceIds() {
+    @javax.annotation.Nullable public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
 
-    public void setMarketplaceIds(MarketplaceIds marketplaceIds) {
+    public void setMarketplaceIds(List<String> marketplaceIds) {
         this.marketplaceIds = marketplaceIds;
     }
 
@@ -135,6 +146,14 @@ public class MarketplaceFilter {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("marketplaceIds") != null
+                && !jsonObj.get("marketplaceIds").isJsonNull()
+                && !jsonObj.get("marketplaceIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `marketplaceIds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("marketplaceIds").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

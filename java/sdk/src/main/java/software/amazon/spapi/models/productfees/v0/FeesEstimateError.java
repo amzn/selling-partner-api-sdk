@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -51,7 +53,7 @@ public class FeesEstimateError {
     public static final String SERIALIZED_NAME_DETAIL = "Detail";
 
     @SerializedName(SERIALIZED_NAME_DETAIL)
-    private FeesEstimateErrorDetail detail = new ArrayList<>();
+    private List<Object> detail = new ArrayList<>();
 
     public FeesEstimateError() {}
 
@@ -112,22 +114,30 @@ public class FeesEstimateError {
         this.message = message;
     }
 
-    public FeesEstimateError detail(FeesEstimateErrorDetail detail) {
+    public FeesEstimateError detail(List<Object> detail) {
         this.detail = detail;
         return this;
     }
 
+    public FeesEstimateError addDetailItem(Object detailItem) {
+        if (this.detail == null) {
+            this.detail = new ArrayList<>();
+        }
+        this.detail.add(detailItem);
+        return this;
+    }
+
     /**
-     * Get detail
+     * Additional information that can help the caller understand or fix the issue.
      *
      * @return detail
      */
     @javax.annotation.Nonnull
-    public FeesEstimateErrorDetail getDetail() {
+    public List<Object> getDetail() {
         return detail;
     }
 
-    public void setDetail(FeesEstimateErrorDetail detail) {
+    public void setDetail(List<Object> detail) {
         this.detail = detail;
     }
 
@@ -239,6 +249,15 @@ public class FeesEstimateError {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `Message` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("Message").toString()));
+        }
+        // ensure the required json array is present
+        if (jsonObj.get("Detail") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("Detail").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `Detail` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("Detail").toString()));
         }
     }
 

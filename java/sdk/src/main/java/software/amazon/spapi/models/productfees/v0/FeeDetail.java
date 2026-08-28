@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -61,7 +64,7 @@ public class FeeDetail {
     public static final String SERIALIZED_NAME_INCLUDED_FEE_DETAIL_LIST = "IncludedFeeDetailList";
 
     @SerializedName(SERIALIZED_NAME_INCLUDED_FEE_DETAIL_LIST)
-    private IncludedFeeDetailList includedFeeDetailList = new ArrayList<>();
+    private List<IncludedFeeDetail> includedFeeDetailList = new ArrayList<>();
 
     public FeeDetail() {}
 
@@ -158,21 +161,29 @@ public class FeeDetail {
         this.finalFee = finalFee;
     }
 
-    public FeeDetail includedFeeDetailList(IncludedFeeDetailList includedFeeDetailList) {
+    public FeeDetail includedFeeDetailList(List<IncludedFeeDetail> includedFeeDetailList) {
         this.includedFeeDetailList = includedFeeDetailList;
         return this;
     }
 
+    public FeeDetail addIncludedFeeDetailListItem(IncludedFeeDetail includedFeeDetailListItem) {
+        if (this.includedFeeDetailList == null) {
+            this.includedFeeDetailList = new ArrayList<>();
+        }
+        this.includedFeeDetailList.add(includedFeeDetailListItem);
+        return this;
+    }
+
     /**
-     * Get includedFeeDetailList
+     * A list of other fees that contribute to a given fee.
      *
      * @return includedFeeDetailList
      */
-    @javax.annotation.Nullable public IncludedFeeDetailList getIncludedFeeDetailList() {
+    @javax.annotation.Nullable public List<IncludedFeeDetail> getIncludedFeeDetailList() {
         return includedFeeDetailList;
     }
 
-    public void setIncludedFeeDetailList(IncludedFeeDetailList includedFeeDetailList) {
+    public void setIncludedFeeDetailList(List<IncludedFeeDetail> includedFeeDetailList) {
         this.includedFeeDetailList = includedFeeDetailList;
     }
 
@@ -294,6 +305,24 @@ public class FeeDetail {
         }
         // validate the required field `FinalFee`
         MoneyType.validateJsonElement(jsonObj.get("FinalFee"));
+        if (jsonObj.get("IncludedFeeDetailList") != null
+                && !jsonObj.get("IncludedFeeDetailList").isJsonNull()) {
+            JsonArray jsonArrayincludedFeeDetailList = jsonObj.getAsJsonArray("IncludedFeeDetailList");
+            if (jsonArrayincludedFeeDetailList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("IncludedFeeDetailList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `IncludedFeeDetailList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("IncludedFeeDetailList").toString()));
+                }
+
+                // validate the optional field `IncludedFeeDetailList` (array)
+                for (int i = 0; i < jsonArrayincludedFeeDetailList.size(); i++) {
+                    IncludedFeeDetail.validateJsonElement(jsonArrayincludedFeeDetailList.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

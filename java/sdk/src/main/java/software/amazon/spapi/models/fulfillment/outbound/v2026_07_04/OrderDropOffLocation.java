@@ -42,7 +42,7 @@ public class OrderDropOffLocation {
     public static final String SERIALIZED_NAME_ATTRIBUTES = "attributes";
 
     @SerializedName(SERIALIZED_NAME_ATTRIBUTES)
-    private OrderDropOffLocationAttributes attributes = new HashMap<>();
+    private Map<String, Object> attributes = new HashMap<>();
 
     public OrderDropOffLocation() {}
 
@@ -67,21 +67,29 @@ public class OrderDropOffLocation {
         this.type = type;
     }
 
-    public OrderDropOffLocation attributes(OrderDropOffLocationAttributes attributes) {
+    public OrderDropOffLocation attributes(Map<String, Object> attributes) {
         this.attributes = attributes;
         return this;
     }
 
+    public OrderDropOffLocation putAttributesItem(String key, Object attributesItem) {
+        if (this.attributes == null) {
+            this.attributes = new HashMap<>();
+        }
+        this.attributes.put(key, attributesItem);
+        return this;
+    }
+
     /**
-     * Get attributes
+     * Drop-off location attributes.
      *
      * @return attributes
      */
-    @javax.annotation.Nullable public OrderDropOffLocationAttributes getAttributes() {
+    @javax.annotation.Nullable public Map<String, Object> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(OrderDropOffLocationAttributes attributes) {
+    public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 

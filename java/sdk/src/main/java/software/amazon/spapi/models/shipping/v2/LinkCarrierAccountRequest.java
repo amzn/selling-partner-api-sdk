@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class LinkCarrierAccountRequest {
     public static final String SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS = "clientReferenceDetails";
 
     @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS)
-    private ClientReferenceDetails clientReferenceDetails = new ArrayList<>();
+    private List<ClientReferenceDetail> clientReferenceDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CARRIER_ACCOUNT_TYPE = "carrierAccountType";
 
@@ -46,31 +49,39 @@ public class LinkCarrierAccountRequest {
     public static final String SERIALIZED_NAME_CARRIER_ACCOUNT_ATTRIBUTES = "carrierAccountAttributes";
 
     @SerializedName(SERIALIZED_NAME_CARRIER_ACCOUNT_ATTRIBUTES)
-    private CarrierAccountAttributes carrierAccountAttributes = new ArrayList<>();
+    private List<CarrierAccountAttribute> carrierAccountAttributes = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ENCRYPTED_CARRIER_ACCOUNT_ATTRIBUTES =
             "encryptedCarrierAccountAttributes";
 
     @SerializedName(SERIALIZED_NAME_ENCRYPTED_CARRIER_ACCOUNT_ATTRIBUTES)
-    private CarrierAccountAttributes encryptedCarrierAccountAttributes = new ArrayList<>();
+    private List<CarrierAccountAttribute> encryptedCarrierAccountAttributes = new ArrayList<>();
 
     public LinkCarrierAccountRequest() {}
 
-    public LinkCarrierAccountRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public LinkCarrierAccountRequest clientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
         return this;
     }
 
+    public LinkCarrierAccountRequest addClientReferenceDetailsItem(ClientReferenceDetail clientReferenceDetailsItem) {
+        if (this.clientReferenceDetails == null) {
+            this.clientReferenceDetails = new ArrayList<>();
+        }
+        this.clientReferenceDetails.add(clientReferenceDetailsItem);
+        return this;
+    }
+
     /**
-     * Get clientReferenceDetails
+     * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      *
      * @return clientReferenceDetails
      */
-    @javax.annotation.Nullable public ClientReferenceDetails getClientReferenceDetails() {
+    @javax.annotation.Nullable public List<ClientReferenceDetail> getClientReferenceDetails() {
         return clientReferenceDetails;
     }
 
-    public void setClientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public void setClientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
     }
 
@@ -93,41 +104,59 @@ public class LinkCarrierAccountRequest {
         this.carrierAccountType = carrierAccountType;
     }
 
-    public LinkCarrierAccountRequest carrierAccountAttributes(CarrierAccountAttributes carrierAccountAttributes) {
+    public LinkCarrierAccountRequest carrierAccountAttributes(List<CarrierAccountAttribute> carrierAccountAttributes) {
         this.carrierAccountAttributes = carrierAccountAttributes;
         return this;
     }
 
+    public LinkCarrierAccountRequest addCarrierAccountAttributesItem(
+            CarrierAccountAttribute carrierAccountAttributesItem) {
+        if (this.carrierAccountAttributes == null) {
+            this.carrierAccountAttributes = new ArrayList<>();
+        }
+        this.carrierAccountAttributes.add(carrierAccountAttributesItem);
+        return this;
+    }
+
     /**
-     * Get carrierAccountAttributes
+     * A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account
      *
      * @return carrierAccountAttributes
      */
     @javax.annotation.Nonnull
-    public CarrierAccountAttributes getCarrierAccountAttributes() {
+    public List<CarrierAccountAttribute> getCarrierAccountAttributes() {
         return carrierAccountAttributes;
     }
 
-    public void setCarrierAccountAttributes(CarrierAccountAttributes carrierAccountAttributes) {
+    public void setCarrierAccountAttributes(List<CarrierAccountAttribute> carrierAccountAttributes) {
         this.carrierAccountAttributes = carrierAccountAttributes;
     }
 
     public LinkCarrierAccountRequest encryptedCarrierAccountAttributes(
-            CarrierAccountAttributes encryptedCarrierAccountAttributes) {
+            List<CarrierAccountAttribute> encryptedCarrierAccountAttributes) {
         this.encryptedCarrierAccountAttributes = encryptedCarrierAccountAttributes;
         return this;
     }
 
+    public LinkCarrierAccountRequest addEncryptedCarrierAccountAttributesItem(
+            CarrierAccountAttribute encryptedCarrierAccountAttributesItem) {
+        if (this.encryptedCarrierAccountAttributes == null) {
+            this.encryptedCarrierAccountAttributes = new ArrayList<>();
+        }
+        this.encryptedCarrierAccountAttributes.add(encryptedCarrierAccountAttributesItem);
+        return this;
+    }
+
     /**
-     * Get encryptedCarrierAccountAttributes
+     * A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account
      *
      * @return encryptedCarrierAccountAttributes
      */
-    @javax.annotation.Nullable public CarrierAccountAttributes getEncryptedCarrierAccountAttributes() {
+    @javax.annotation.Nullable public List<CarrierAccountAttribute> getEncryptedCarrierAccountAttributes() {
         return encryptedCarrierAccountAttributes;
     }
 
-    public void setEncryptedCarrierAccountAttributes(CarrierAccountAttributes encryptedCarrierAccountAttributes) {
+    public void setEncryptedCarrierAccountAttributes(List<CarrierAccountAttribute> encryptedCarrierAccountAttributes) {
         this.encryptedCarrierAccountAttributes = encryptedCarrierAccountAttributes;
     }
 
@@ -238,10 +267,60 @@ public class LinkCarrierAccountRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("clientReferenceDetails") != null
+                && !jsonObj.get("clientReferenceDetails").isJsonNull()) {
+            JsonArray jsonArrayclientReferenceDetails = jsonObj.getAsJsonArray("clientReferenceDetails");
+            if (jsonArrayclientReferenceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("clientReferenceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `clientReferenceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("clientReferenceDetails").toString()));
+                }
+
+                // validate the optional field `clientReferenceDetails` (array)
+                for (int i = 0; i < jsonArrayclientReferenceDetails.size(); i++) {
+                    ClientReferenceDetail.validateJsonElement(jsonArrayclientReferenceDetails.get(i));
+                }
+                ;
+            }
+        }
         if (!jsonObj.get("carrierAccountType").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `carrierAccountType` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("carrierAccountType").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("carrierAccountAttributes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `carrierAccountAttributes` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("carrierAccountAttributes").toString()));
+        }
+
+        JsonArray jsonArraycarrierAccountAttributes = jsonObj.getAsJsonArray("carrierAccountAttributes");
+        // validate the required field `carrierAccountAttributes` (array)
+        for (int i = 0; i < jsonArraycarrierAccountAttributes.size(); i++) {
+            CarrierAccountAttribute.validateJsonElement(jsonArraycarrierAccountAttributes.get(i));
+        }
+        ;
+        if (jsonObj.get("encryptedCarrierAccountAttributes") != null
+                && !jsonObj.get("encryptedCarrierAccountAttributes").isJsonNull()) {
+            JsonArray jsonArrayencryptedCarrierAccountAttributes =
+                    jsonObj.getAsJsonArray("encryptedCarrierAccountAttributes");
+            if (jsonArrayencryptedCarrierAccountAttributes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("encryptedCarrierAccountAttributes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `encryptedCarrierAccountAttributes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("encryptedCarrierAccountAttributes").toString()));
+                }
+
+                // validate the optional field `encryptedCarrierAccountAttributes` (array)
+                for (int i = 0; i < jsonArrayencryptedCarrierAccountAttributes.size(); i++) {
+                    CarrierAccountAttribute.validateJsonElement(jsonArrayencryptedCarrierAccountAttributes.get(i));
+                }
+                ;
+            }
         }
     }
 

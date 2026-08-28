@@ -42,7 +42,7 @@ public class CreateNotificationRequest {
     public static final String SERIALIZED_NAME_NOTIFICATION_PARAMETERS = "notificationParameters";
 
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_PARAMETERS)
-    private NotificationParameters notificationParameters = new HashMap<>();
+    private Map<String, Object> notificationParameters = new HashMap<>();
 
     public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
@@ -70,22 +70,30 @@ public class CreateNotificationRequest {
         this.templateId = templateId;
     }
 
-    public CreateNotificationRequest notificationParameters(NotificationParameters notificationParameters) {
+    public CreateNotificationRequest notificationParameters(Map<String, Object> notificationParameters) {
         this.notificationParameters = notificationParameters;
         return this;
     }
 
+    public CreateNotificationRequest putNotificationParametersItem(String key, Object notificationParametersItem) {
+        if (this.notificationParameters == null) {
+            this.notificationParameters = new HashMap<>();
+        }
+        this.notificationParameters.put(key, notificationParametersItem);
+        return this;
+    }
+
     /**
-     * Get notificationParameters
+     * The dynamic parameters required by the notification templated specified by &#x60;templateId&#x60;.
      *
      * @return notificationParameters
      */
     @javax.annotation.Nonnull
-    public NotificationParameters getNotificationParameters() {
+    public Map<String, Object> getNotificationParameters() {
         return notificationParameters;
     }
 
-    public void setNotificationParameters(NotificationParameters notificationParameters) {
+    public void setNotificationParameters(Map<String, Object> notificationParameters) {
         this.notificationParameters = notificationParameters;
     }
 

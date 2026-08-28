@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,33 @@ public class GetListingOffersBatchResponse {
     public static final String SERIALIZED_NAME_RESPONSES = "responses";
 
     @SerializedName(SERIALIZED_NAME_RESPONSES)
-    private ListingOffersResponseList responses = new ArrayList<>();
+    private List<ListingOffersResponse> responses = new ArrayList<>();
 
     public GetListingOffersBatchResponse() {}
 
-    public GetListingOffersBatchResponse responses(ListingOffersResponseList responses) {
+    public GetListingOffersBatchResponse responses(List<ListingOffersResponse> responses) {
         this.responses = responses;
         return this;
     }
 
+    public GetListingOffersBatchResponse addResponsesItem(ListingOffersResponse responsesItem) {
+        if (this.responses == null) {
+            this.responses = new ArrayList<>();
+        }
+        this.responses.add(responsesItem);
+        return this;
+    }
+
     /**
-     * Get responses
+     * A list of &#x60;getListingOffers&#x60; batched responses.
      *
      * @return responses
      */
-    @javax.annotation.Nullable public ListingOffersResponseList getResponses() {
+    @javax.annotation.Nullable public List<ListingOffersResponse> getResponses() {
         return responses;
     }
 
-    public void setResponses(ListingOffersResponseList responses) {
+    public void setResponses(List<ListingOffersResponse> responses) {
         this.responses = responses;
     }
 
@@ -131,6 +142,23 @@ public class GetListingOffersBatchResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("responses") != null && !jsonObj.get("responses").isJsonNull()) {
+            JsonArray jsonArrayresponses = jsonObj.getAsJsonArray("responses");
+            if (jsonArrayresponses != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("responses").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `responses` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("responses").toString()));
+                }
+
+                // validate the optional field `responses` (array)
+                for (int i = 0; i < jsonArrayresponses.size(); i++) {
+                    ListingOffersResponse.validateJsonElement(jsonArrayresponses.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

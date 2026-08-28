@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -210,7 +213,7 @@ public class Order {
     public static final String SERIALIZED_NAME_PAYMENT_EXECUTION_DETAIL = "PaymentExecutionDetail";
 
     @SerializedName(SERIALIZED_NAME_PAYMENT_EXECUTION_DETAIL)
-    private PaymentExecutionDetailItemList paymentExecutionDetail = new ArrayList<>();
+    private List<PaymentExecutionDetailItem> paymentExecutionDetail = new ArrayList<>();
 
     /**
      * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the
@@ -276,7 +279,7 @@ public class Order {
     public static final String SERIALIZED_NAME_PAYMENT_METHOD_DETAILS = "PaymentMethodDetails";
 
     @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD_DETAILS)
-    private PaymentMethodDetailItemList paymentMethodDetails = new ArrayList<>();
+    private List<String> paymentMethodDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_MARKETPLACE_ID = "MarketplaceId";
 
@@ -771,21 +774,29 @@ public class Order {
         this.numberOfItemsUnshipped = numberOfItemsUnshipped;
     }
 
-    public Order paymentExecutionDetail(PaymentExecutionDetailItemList paymentExecutionDetail) {
+    public Order paymentExecutionDetail(List<PaymentExecutionDetailItem> paymentExecutionDetail) {
         this.paymentExecutionDetail = paymentExecutionDetail;
         return this;
     }
 
+    public Order addPaymentExecutionDetailItem(PaymentExecutionDetailItem paymentExecutionDetailItem) {
+        if (this.paymentExecutionDetail == null) {
+            this.paymentExecutionDetail = new ArrayList<>();
+        }
+        this.paymentExecutionDetail.add(paymentExecutionDetailItem);
+        return this;
+    }
+
     /**
-     * Get paymentExecutionDetail
+     * A list of payment execution detail items.
      *
      * @return paymentExecutionDetail
      */
-    @javax.annotation.Nullable public PaymentExecutionDetailItemList getPaymentExecutionDetail() {
+    @javax.annotation.Nullable public List<PaymentExecutionDetailItem> getPaymentExecutionDetail() {
         return paymentExecutionDetail;
     }
 
-    public void setPaymentExecutionDetail(PaymentExecutionDetailItemList paymentExecutionDetail) {
+    public void setPaymentExecutionDetail(List<PaymentExecutionDetailItem> paymentExecutionDetail) {
         this.paymentExecutionDetail = paymentExecutionDetail;
     }
 
@@ -809,21 +820,29 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public Order paymentMethodDetails(PaymentMethodDetailItemList paymentMethodDetails) {
+    public Order paymentMethodDetails(List<String> paymentMethodDetails) {
         this.paymentMethodDetails = paymentMethodDetails;
         return this;
     }
 
+    public Order addPaymentMethodDetailsItem(String paymentMethodDetailsItem) {
+        if (this.paymentMethodDetails == null) {
+            this.paymentMethodDetails = new ArrayList<>();
+        }
+        this.paymentMethodDetails.add(paymentMethodDetailsItem);
+        return this;
+    }
+
     /**
-     * Get paymentMethodDetails
+     * A list of payment method detail items.
      *
      * @return paymentMethodDetails
      */
-    @javax.annotation.Nullable public PaymentMethodDetailItemList getPaymentMethodDetails() {
+    @javax.annotation.Nullable public List<String> getPaymentMethodDetails() {
         return paymentMethodDetails;
     }
 
-    public void setPaymentMethodDetails(PaymentMethodDetailItemList paymentMethodDetails) {
+    public void setPaymentMethodDetails(List<String> paymentMethodDetails) {
         this.paymentMethodDetails = paymentMethodDetails;
     }
 
@@ -1825,6 +1844,24 @@ public class Order {
         if (jsonObj.get("OrderTotal") != null && !jsonObj.get("OrderTotal").isJsonNull()) {
             Money.validateJsonElement(jsonObj.get("OrderTotal"));
         }
+        if (jsonObj.get("PaymentExecutionDetail") != null
+                && !jsonObj.get("PaymentExecutionDetail").isJsonNull()) {
+            JsonArray jsonArraypaymentExecutionDetail = jsonObj.getAsJsonArray("PaymentExecutionDetail");
+            if (jsonArraypaymentExecutionDetail != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("PaymentExecutionDetail").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `PaymentExecutionDetail` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("PaymentExecutionDetail").toString()));
+                }
+
+                // validate the optional field `PaymentExecutionDetail` (array)
+                for (int i = 0; i < jsonArraypaymentExecutionDetail.size(); i++) {
+                    PaymentExecutionDetailItem.validateJsonElement(jsonArraypaymentExecutionDetail.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("PaymentMethod") != null
                         && !jsonObj.get("PaymentMethod").isJsonNull())
                 && !jsonObj.get("PaymentMethod").isJsonPrimitive()) {
@@ -1836,6 +1873,14 @@ public class Order {
         if (jsonObj.get("PaymentMethod") != null
                 && !jsonObj.get("PaymentMethod").isJsonNull()) {
             PaymentMethodEnum.validateJsonElement(jsonObj.get("PaymentMethod"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("PaymentMethodDetails") != null
+                && !jsonObj.get("PaymentMethodDetails").isJsonNull()
+                && !jsonObj.get("PaymentMethodDetails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `PaymentMethodDetails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("PaymentMethodDetails").toString()));
         }
         if ((jsonObj.get("MarketplaceId") != null
                         && !jsonObj.get("MarketplaceId").isJsonNull())

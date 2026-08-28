@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -45,7 +46,7 @@ public class AsinMetadata {
     public static final String SERIALIZED_NAME_BADGE_SET = "badgeSet";
 
     @SerializedName(SERIALIZED_NAME_BADGE_SET)
-    private AsinBadgeSet badgeSet = new LinkedHashSet<>();
+    private Set<AsinBadge> badgeSet = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_PARENT = "parent";
 
@@ -65,7 +66,7 @@ public class AsinMetadata {
     public static final String SERIALIZED_NAME_CONTENT_REFERENCE_KEY_SET = "contentReferenceKeySet";
 
     @SerializedName(SERIALIZED_NAME_CONTENT_REFERENCE_KEY_SET)
-    private ContentReferenceKeySet contentReferenceKeySet = new LinkedHashSet<>();
+    private Set<String> contentReferenceKeySet = new LinkedHashSet<>();
 
     public AsinMetadata() {}
 
@@ -88,21 +89,29 @@ public class AsinMetadata {
         this.asin = asin;
     }
 
-    public AsinMetadata badgeSet(AsinBadgeSet badgeSet) {
+    public AsinMetadata badgeSet(Set<AsinBadge> badgeSet) {
         this.badgeSet = badgeSet;
         return this;
     }
 
+    public AsinMetadata addBadgeSetItem(AsinBadge badgeSetItem) {
+        if (this.badgeSet == null) {
+            this.badgeSet = new LinkedHashSet<>();
+        }
+        this.badgeSet.add(badgeSetItem);
+        return this;
+    }
+
     /**
-     * Get badgeSet
+     * The set of ASIN badges.
      *
      * @return badgeSet
      */
-    @javax.annotation.Nullable public AsinBadgeSet getBadgeSet() {
+    @javax.annotation.Nullable public Set<AsinBadge> getBadgeSet() {
         return badgeSet;
     }
 
-    public void setBadgeSet(AsinBadgeSet badgeSet) {
+    public void setBadgeSet(Set<AsinBadge> badgeSet) {
         this.badgeSet = badgeSet;
     }
 
@@ -160,21 +169,29 @@ public class AsinMetadata {
         this.imageUrl = imageUrl;
     }
 
-    public AsinMetadata contentReferenceKeySet(ContentReferenceKeySet contentReferenceKeySet) {
+    public AsinMetadata contentReferenceKeySet(Set<String> contentReferenceKeySet) {
         this.contentReferenceKeySet = contentReferenceKeySet;
         return this;
     }
 
+    public AsinMetadata addContentReferenceKeySetItem(String contentReferenceKeySetItem) {
+        if (this.contentReferenceKeySet == null) {
+            this.contentReferenceKeySet = new LinkedHashSet<>();
+        }
+        this.contentReferenceKeySet.add(contentReferenceKeySetItem);
+        return this;
+    }
+
     /**
-     * Get contentReferenceKeySet
+     * A set of content reference keys.
      *
      * @return contentReferenceKeySet
      */
-    @javax.annotation.Nullable public ContentReferenceKeySet getContentReferenceKeySet() {
+    @javax.annotation.Nullable public Set<String> getContentReferenceKeySet() {
         return contentReferenceKeySet;
     }
 
-    public void setContentReferenceKeySet(ContentReferenceKeySet contentReferenceKeySet) {
+    public void setContentReferenceKeySet(Set<String> contentReferenceKeySet) {
         this.contentReferenceKeySet = contentReferenceKeySet;
     }
 
@@ -282,6 +299,14 @@ public class AsinMetadata {
                     "Expected the field `asin` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("asin").toString()));
         }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("badgeSet") != null
+                && !jsonObj.get("badgeSet").isJsonNull()
+                && !jsonObj.get("badgeSet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `badgeSet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("badgeSet").toString()));
+        }
         if ((jsonObj.get("parent") != null && !jsonObj.get("parent").isJsonNull())
                 && !jsonObj.get("parent").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(
@@ -299,6 +324,14 @@ public class AsinMetadata {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `imageUrl` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("imageUrl").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("contentReferenceKeySet") != null
+                && !jsonObj.get("contentReferenceKeySet").isJsonNull()
+                && !jsonObj.get("contentReferenceKeySet").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentReferenceKeySet` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("contentReferenceKeySet").toString()));
         }
     }
 

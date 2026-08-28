@@ -100,7 +100,7 @@ public class Payout {
     public static final String SERIALIZED_NAME_RELATED_IDENTIFIERS = "relatedIdentifiers";
 
     @SerializedName(SERIALIZED_NAME_RELATED_IDENTIFIERS)
-    private RelatedIdentifiers relatedIdentifiers = new ArrayList<>();
+    private List<RelatedIdentifier> relatedIdentifiers = new ArrayList<>();
 
     public Payout() {}
 
@@ -332,21 +332,29 @@ public class Payout {
         this.period = period;
     }
 
-    public Payout relatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public Payout relatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
         return this;
     }
 
+    public Payout addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
+        if (this.relatedIdentifiers == null) {
+            this.relatedIdentifiers = new ArrayList<>();
+        }
+        this.relatedIdentifiers.add(relatedIdentifiersItem);
+        return this;
+    }
+
     /**
-     * Get relatedIdentifiers
+     * Related business identifiers of the payout.
      *
      * @return relatedIdentifiers
      */
-    @javax.annotation.Nullable public RelatedIdentifiers getRelatedIdentifiers() {
+    @javax.annotation.Nullable public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
 
-    public void setRelatedIdentifiers(RelatedIdentifiers relatedIdentifiers) {
+    public void setRelatedIdentifiers(List<RelatedIdentifier> relatedIdentifiers) {
         this.relatedIdentifiers = relatedIdentifiers;
     }
 
@@ -544,6 +552,24 @@ public class Payout {
         // validate the optional field `period`
         if (jsonObj.get("period") != null && !jsonObj.get("period").isJsonNull()) {
             Period.validateJsonElement(jsonObj.get("period"));
+        }
+        if (jsonObj.get("relatedIdentifiers") != null
+                && !jsonObj.get("relatedIdentifiers").isJsonNull()) {
+            JsonArray jsonArrayrelatedIdentifiers = jsonObj.getAsJsonArray("relatedIdentifiers");
+            if (jsonArrayrelatedIdentifiers != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("relatedIdentifiers").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `relatedIdentifiers` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("relatedIdentifiers").toString()));
+                }
+
+                // validate the optional field `relatedIdentifiers` (array)
+                for (int i = 0; i < jsonArrayrelatedIdentifiers.size(); i++) {
+                    RelatedIdentifier.validateJsonElement(jsonArrayrelatedIdentifiers.get(i));
+                }
+                ;
+            }
         }
     }
 

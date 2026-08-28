@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,10 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +40,7 @@ public class SearchContentPublishRecordsResponse {
     public static final String SERIALIZED_NAME_WARNINGS = "warnings";
 
     @SerializedName(SERIALIZED_NAME_WARNINGS)
-    private MessageSet warnings = new LinkedHashSet<>();
+    private Set<Error> warnings = new LinkedHashSet<>();
 
     public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
 
@@ -46,25 +50,33 @@ public class SearchContentPublishRecordsResponse {
     public static final String SERIALIZED_NAME_PUBLISH_RECORD_LIST = "publishRecordList";
 
     @SerializedName(SERIALIZED_NAME_PUBLISH_RECORD_LIST)
-    private PublishRecordList publishRecordList = new ArrayList<>();
+    private List<PublishRecord> publishRecordList = new ArrayList<>();
 
     public SearchContentPublishRecordsResponse() {}
 
-    public SearchContentPublishRecordsResponse warnings(MessageSet warnings) {
+    public SearchContentPublishRecordsResponse warnings(Set<Error> warnings) {
         this.warnings = warnings;
         return this;
     }
 
+    public SearchContentPublishRecordsResponse addWarningsItem(Error warningsItem) {
+        if (this.warnings == null) {
+            this.warnings = new LinkedHashSet<>();
+        }
+        this.warnings.add(warningsItem);
+        return this;
+    }
+
     /**
-     * Get warnings
+     * A set of messages to the user, such as warnings or comments.
      *
      * @return warnings
      */
-    @javax.annotation.Nullable public MessageSet getWarnings() {
+    @javax.annotation.Nullable public Set<Error> getWarnings() {
         return warnings;
     }
 
-    public void setWarnings(MessageSet warnings) {
+    public void setWarnings(Set<Error> warnings) {
         this.warnings = warnings;
     }
 
@@ -86,22 +98,30 @@ public class SearchContentPublishRecordsResponse {
         this.nextPageToken = nextPageToken;
     }
 
-    public SearchContentPublishRecordsResponse publishRecordList(PublishRecordList publishRecordList) {
+    public SearchContentPublishRecordsResponse publishRecordList(List<PublishRecord> publishRecordList) {
         this.publishRecordList = publishRecordList;
         return this;
     }
 
+    public SearchContentPublishRecordsResponse addPublishRecordListItem(PublishRecord publishRecordListItem) {
+        if (this.publishRecordList == null) {
+            this.publishRecordList = new ArrayList<>();
+        }
+        this.publishRecordList.add(publishRecordListItem);
+        return this;
+    }
+
     /**
-     * Get publishRecordList
+     * A list of A+ Content publishing records.
      *
      * @return publishRecordList
      */
     @javax.annotation.Nonnull
-    public PublishRecordList getPublishRecordList() {
+    public List<PublishRecord> getPublishRecordList() {
         return publishRecordList;
     }
 
-    public void setPublishRecordList(PublishRecordList publishRecordList) {
+    public void setPublishRecordList(List<PublishRecord> publishRecordList) {
         this.publishRecordList = publishRecordList;
     }
 
@@ -197,6 +217,23 @@ public class SearchContentPublishRecordsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+            JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+            if (jsonArraywarnings != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("warnings").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `warnings` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("warnings").toString()));
+                }
+
+                // validate the optional field `warnings` (array)
+                for (int i = 0; i < jsonArraywarnings.size(); i++) {
+                    Error.validateJsonElement(jsonArraywarnings.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextPageToken") != null
                         && !jsonObj.get("nextPageToken").isJsonNull())
                 && !jsonObj.get("nextPageToken").isJsonPrimitive()) {
@@ -204,6 +241,19 @@ public class SearchContentPublishRecordsResponse {
                     "Expected the field `nextPageToken` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("nextPageToken").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("publishRecordList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `publishRecordList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("publishRecordList").toString()));
+        }
+
+        JsonArray jsonArraypublishRecordList = jsonObj.getAsJsonArray("publishRecordList");
+        // validate the required field `publishRecordList` (array)
+        for (int i = 0; i < jsonArraypublishRecordList.size(); i++) {
+            PublishRecord.validateJsonElement(jsonArraypublishRecordList.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

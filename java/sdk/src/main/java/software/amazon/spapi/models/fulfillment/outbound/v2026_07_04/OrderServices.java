@@ -47,7 +47,7 @@ public class OrderServices {
     public static final String SERIALIZED_NAME_ADDITIONAL = "additional";
 
     @SerializedName(SERIALIZED_NAME_ADDITIONAL)
-    private AdditionalServices additional = new HashMap<>();
+    private Map<String, String> additional = new HashMap<>();
 
     public OrderServices() {}
 
@@ -87,21 +87,29 @@ public class OrderServices {
         this.delivery = delivery;
     }
 
-    public OrderServices additional(AdditionalServices additional) {
+    public OrderServices additional(Map<String, String> additional) {
         this.additional = additional;
         return this;
     }
 
+    public OrderServices putAdditionalItem(String key, String additionalItem) {
+        if (this.additional == null) {
+            this.additional = new HashMap<>();
+        }
+        this.additional.put(key, additionalItem);
+        return this;
+    }
+
     /**
-     * Get additional
+     * Request additional services
      *
      * @return additional
      */
-    @javax.annotation.Nullable public AdditionalServices getAdditional() {
+    @javax.annotation.Nullable public Map<String, String> getAdditional() {
         return additional;
     }
 
-    public void setAdditional(AdditionalServices additional) {
+    public void setAdditional(Map<String, String> additional) {
         this.additional = additional;
     }
 

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,7 +42,7 @@ public class DeliveryInformation {
     public static final String SERIALIZED_NAME_DELIVERY_DOCUMENT_LIST = "deliveryDocumentList";
 
     @SerializedName(SERIALIZED_NAME_DELIVERY_DOCUMENT_LIST)
-    private DeliveryDocumentList deliveryDocumentList = new ArrayList<>();
+    private List<DeliveryDocument> deliveryDocumentList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_DROP_OFF_LOCATION = "dropOffLocation";
 
@@ -48,21 +51,29 @@ public class DeliveryInformation {
 
     public DeliveryInformation() {}
 
-    public DeliveryInformation deliveryDocumentList(DeliveryDocumentList deliveryDocumentList) {
+    public DeliveryInformation deliveryDocumentList(List<DeliveryDocument> deliveryDocumentList) {
         this.deliveryDocumentList = deliveryDocumentList;
         return this;
     }
 
+    public DeliveryInformation addDeliveryDocumentListItem(DeliveryDocument deliveryDocumentListItem) {
+        if (this.deliveryDocumentList == null) {
+            this.deliveryDocumentList = new ArrayList<>();
+        }
+        this.deliveryDocumentList.add(deliveryDocumentListItem);
+        return this;
+    }
+
     /**
-     * Get deliveryDocumentList
+     * A list of delivery documents for a package.
      *
      * @return deliveryDocumentList
      */
-    @javax.annotation.Nullable public DeliveryDocumentList getDeliveryDocumentList() {
+    @javax.annotation.Nullable public List<DeliveryDocument> getDeliveryDocumentList() {
         return deliveryDocumentList;
     }
 
-    public void setDeliveryDocumentList(DeliveryDocumentList deliveryDocumentList) {
+    public void setDeliveryDocumentList(List<DeliveryDocument> deliveryDocumentList) {
         this.deliveryDocumentList = deliveryDocumentList;
     }
 
@@ -163,6 +174,24 @@ public class DeliveryInformation {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("deliveryDocumentList") != null
+                && !jsonObj.get("deliveryDocumentList").isJsonNull()) {
+            JsonArray jsonArraydeliveryDocumentList = jsonObj.getAsJsonArray("deliveryDocumentList");
+            if (jsonArraydeliveryDocumentList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("deliveryDocumentList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `deliveryDocumentList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("deliveryDocumentList").toString()));
+                }
+
+                // validate the optional field `deliveryDocumentList` (array)
+                for (int i = 0; i < jsonArraydeliveryDocumentList.size(); i++) {
+                    DeliveryDocument.validateJsonElement(jsonArraydeliveryDocumentList.get(i));
+                }
+                ;
+            }
+        }
         // validate the optional field `dropOffLocation`
         if (jsonObj.get("dropOffLocation") != null
                 && !jsonObj.get("dropOffLocation").isJsonNull()) {

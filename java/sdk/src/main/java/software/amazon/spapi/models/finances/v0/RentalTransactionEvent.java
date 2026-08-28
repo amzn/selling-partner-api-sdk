@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -57,12 +60,12 @@ public class RentalTransactionEvent {
     public static final String SERIALIZED_NAME_RENTAL_CHARGE_LIST = "RentalChargeList";
 
     @SerializedName(SERIALIZED_NAME_RENTAL_CHARGE_LIST)
-    private ChargeComponentList rentalChargeList = new ArrayList<>();
+    private List<ChargeComponent> rentalChargeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_RENTAL_FEE_LIST = "RentalFeeList";
 
     @SerializedName(SERIALIZED_NAME_RENTAL_FEE_LIST)
-    private FeeComponentList rentalFeeList = new ArrayList<>();
+    private List<FeeComponent> rentalFeeList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_MARKETPLACE_NAME = "MarketplaceName";
 
@@ -82,7 +85,7 @@ public class RentalTransactionEvent {
     public static final String SERIALIZED_NAME_RENTAL_TAX_WITHHELD_LIST = "RentalTaxWithheldList";
 
     @SerializedName(SERIALIZED_NAME_RENTAL_TAX_WITHHELD_LIST)
-    private TaxWithheldComponentList rentalTaxWithheldList = new ArrayList<>();
+    private List<TaxWithheldComponent> rentalTaxWithheldList = new ArrayList<>();
 
     public RentalTransactionEvent() {}
 
@@ -168,39 +171,55 @@ public class RentalTransactionEvent {
         this.postedDate = postedDate;
     }
 
-    public RentalTransactionEvent rentalChargeList(ChargeComponentList rentalChargeList) {
+    public RentalTransactionEvent rentalChargeList(List<ChargeComponent> rentalChargeList) {
         this.rentalChargeList = rentalChargeList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalChargeListItem(ChargeComponent rentalChargeListItem) {
+        if (this.rentalChargeList == null) {
+            this.rentalChargeList = new ArrayList<>();
+        }
+        this.rentalChargeList.add(rentalChargeListItem);
+        return this;
+    }
+
     /**
-     * Get rentalChargeList
+     * A list of charge information on the seller&#39;s account.
      *
      * @return rentalChargeList
      */
-    @javax.annotation.Nullable public ChargeComponentList getRentalChargeList() {
+    @javax.annotation.Nullable public List<ChargeComponent> getRentalChargeList() {
         return rentalChargeList;
     }
 
-    public void setRentalChargeList(ChargeComponentList rentalChargeList) {
+    public void setRentalChargeList(List<ChargeComponent> rentalChargeList) {
         this.rentalChargeList = rentalChargeList;
     }
 
-    public RentalTransactionEvent rentalFeeList(FeeComponentList rentalFeeList) {
+    public RentalTransactionEvent rentalFeeList(List<FeeComponent> rentalFeeList) {
         this.rentalFeeList = rentalFeeList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalFeeListItem(FeeComponent rentalFeeListItem) {
+        if (this.rentalFeeList == null) {
+            this.rentalFeeList = new ArrayList<>();
+        }
+        this.rentalFeeList.add(rentalFeeListItem);
+        return this;
+    }
+
     /**
-     * Get rentalFeeList
+     * A list of fee component information.
      *
      * @return rentalFeeList
      */
-    @javax.annotation.Nullable public FeeComponentList getRentalFeeList() {
+    @javax.annotation.Nullable public List<FeeComponent> getRentalFeeList() {
         return rentalFeeList;
     }
 
-    public void setRentalFeeList(FeeComponentList rentalFeeList) {
+    public void setRentalFeeList(List<FeeComponent> rentalFeeList) {
         this.rentalFeeList = rentalFeeList;
     }
 
@@ -258,21 +277,29 @@ public class RentalTransactionEvent {
         this.rentalReimbursement = rentalReimbursement;
     }
 
-    public RentalTransactionEvent rentalTaxWithheldList(TaxWithheldComponentList rentalTaxWithheldList) {
+    public RentalTransactionEvent rentalTaxWithheldList(List<TaxWithheldComponent> rentalTaxWithheldList) {
         this.rentalTaxWithheldList = rentalTaxWithheldList;
         return this;
     }
 
+    public RentalTransactionEvent addRentalTaxWithheldListItem(TaxWithheldComponent rentalTaxWithheldListItem) {
+        if (this.rentalTaxWithheldList == null) {
+            this.rentalTaxWithheldList = new ArrayList<>();
+        }
+        this.rentalTaxWithheldList.add(rentalTaxWithheldListItem);
+        return this;
+    }
+
     /**
-     * Get rentalTaxWithheldList
+     * A list of information about taxes withheld.
      *
      * @return rentalTaxWithheldList
      */
-    @javax.annotation.Nullable public TaxWithheldComponentList getRentalTaxWithheldList() {
+    @javax.annotation.Nullable public List<TaxWithheldComponent> getRentalTaxWithheldList() {
         return rentalTaxWithheldList;
     }
 
-    public void setRentalTaxWithheldList(TaxWithheldComponentList rentalTaxWithheldList) {
+    public void setRentalTaxWithheldList(List<TaxWithheldComponent> rentalTaxWithheldList) {
         this.rentalTaxWithheldList = rentalTaxWithheldList;
     }
 
@@ -414,6 +441,42 @@ public class RentalTransactionEvent {
                     "Expected the field `RentalEventType` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("RentalEventType").toString()));
         }
+        if (jsonObj.get("RentalChargeList") != null
+                && !jsonObj.get("RentalChargeList").isJsonNull()) {
+            JsonArray jsonArrayrentalChargeList = jsonObj.getAsJsonArray("RentalChargeList");
+            if (jsonArrayrentalChargeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalChargeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalChargeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalChargeList").toString()));
+                }
+
+                // validate the optional field `RentalChargeList` (array)
+                for (int i = 0; i < jsonArrayrentalChargeList.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArrayrentalChargeList.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("RentalFeeList") != null
+                && !jsonObj.get("RentalFeeList").isJsonNull()) {
+            JsonArray jsonArrayrentalFeeList = jsonObj.getAsJsonArray("RentalFeeList");
+            if (jsonArrayrentalFeeList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalFeeList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalFeeList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalFeeList").toString()));
+                }
+
+                // validate the optional field `RentalFeeList` (array)
+                for (int i = 0; i < jsonArrayrentalFeeList.size(); i++) {
+                    FeeComponent.validateJsonElement(jsonArrayrentalFeeList.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("MarketplaceName") != null
                         && !jsonObj.get("MarketplaceName").isJsonNull())
                 && !jsonObj.get("MarketplaceName").isJsonPrimitive()) {
@@ -430,6 +493,24 @@ public class RentalTransactionEvent {
         if (jsonObj.get("RentalReimbursement") != null
                 && !jsonObj.get("RentalReimbursement").isJsonNull()) {
             Currency.validateJsonElement(jsonObj.get("RentalReimbursement"));
+        }
+        if (jsonObj.get("RentalTaxWithheldList") != null
+                && !jsonObj.get("RentalTaxWithheldList").isJsonNull()) {
+            JsonArray jsonArrayrentalTaxWithheldList = jsonObj.getAsJsonArray("RentalTaxWithheldList");
+            if (jsonArrayrentalTaxWithheldList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("RentalTaxWithheldList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `RentalTaxWithheldList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("RentalTaxWithheldList").toString()));
+                }
+
+                // validate the optional field `RentalTaxWithheldList` (array)
+                for (int i = 0; i < jsonArrayrentalTaxWithheldList.size(); i++) {
+                    TaxWithheldComponent.validateJsonElement(jsonArrayrentalTaxWithheldList.get(i));
+                }
+                ;
+            }
         }
     }
 

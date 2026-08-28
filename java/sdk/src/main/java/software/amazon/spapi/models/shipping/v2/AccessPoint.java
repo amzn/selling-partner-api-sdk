@@ -136,7 +136,7 @@ public class AccessPoint {
     public static final String SERIALIZED_NAME_STANDARD_OPERATING_HOURS = "standardOperatingHours";
 
     @SerializedName(SERIALIZED_NAME_STANDARD_OPERATING_HOURS)
-    private DayOfWeekTimeMap standardOperatingHours = new HashMap<>();
+    private Map<String, OperatingHours> standardOperatingHours = new HashMap<>();
 
     public AccessPoint() {}
 
@@ -311,21 +311,29 @@ public class AccessPoint {
         this.score = score;
     }
 
-    public AccessPoint standardOperatingHours(DayOfWeekTimeMap standardOperatingHours) {
+    public AccessPoint standardOperatingHours(Map<String, OperatingHours> standardOperatingHours) {
         this.standardOperatingHours = standardOperatingHours;
         return this;
     }
 
+    public AccessPoint putStandardOperatingHoursItem(String key, OperatingHours standardOperatingHoursItem) {
+        if (this.standardOperatingHours == null) {
+            this.standardOperatingHours = new HashMap<>();
+        }
+        this.standardOperatingHours.put(key, standardOperatingHoursItem);
+        return this;
+    }
+
     /**
-     * Get standardOperatingHours
+     * Map of day of the week to operating hours of that day
      *
      * @return standardOperatingHours
      */
-    @javax.annotation.Nullable public DayOfWeekTimeMap getStandardOperatingHours() {
+    @javax.annotation.Nullable public Map<String, OperatingHours> getStandardOperatingHours() {
         return standardOperatingHours;
     }
 
-    public void setStandardOperatingHours(DayOfWeekTimeMap standardOperatingHours) {
+    public void setStandardOperatingHours(Map<String, OperatingHours> standardOperatingHours) {
         this.standardOperatingHours = standardOperatingHours;
     }
 

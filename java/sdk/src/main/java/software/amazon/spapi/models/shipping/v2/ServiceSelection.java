@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +38,34 @@ public class ServiceSelection {
     public static final String SERIALIZED_NAME_SERVICE_ID = "serviceId";
 
     @SerializedName(SERIALIZED_NAME_SERVICE_ID)
-    private ServiceIds serviceId = new ArrayList<>();
+    private List<String> serviceId = new ArrayList<>();
 
     public ServiceSelection() {}
 
-    public ServiceSelection serviceId(ServiceIds serviceId) {
+    public ServiceSelection serviceId(List<String> serviceId) {
         this.serviceId = serviceId;
         return this;
     }
 
+    public ServiceSelection addServiceIdItem(String serviceIdItem) {
+        if (this.serviceId == null) {
+            this.serviceId = new ArrayList<>();
+        }
+        this.serviceId.add(serviceIdItem);
+        return this;
+    }
+
     /**
-     * Get serviceId
+     * A list of ServiceId.
      *
      * @return serviceId
      */
     @javax.annotation.Nonnull
-    public ServiceIds getServiceId() {
+    public List<String> getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(ServiceIds serviceId) {
+    public void setServiceId(List<String> serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -141,6 +151,15 @@ public class ServiceSelection {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the required json array is present
+        if (jsonObj.get("serviceId") == null) {
+            throw new IllegalArgumentException(
+                    "Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+        } else if (!jsonObj.get("serviceId").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `serviceId` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("serviceId").toString()));
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

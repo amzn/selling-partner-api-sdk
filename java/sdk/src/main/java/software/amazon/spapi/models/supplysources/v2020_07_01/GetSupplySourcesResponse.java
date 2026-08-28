@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class GetSupplySourcesResponse {
     public static final String SERIALIZED_NAME_SUPPLY_SOURCES = "supplySources";
 
     @SerializedName(SERIALIZED_NAME_SUPPLY_SOURCES)
-    private SupplySourceList supplySources = new ArrayList<>();
+    private List<SupplySourceListInner> supplySources = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_PAGE_TOKEN = "nextPageToken";
 
@@ -45,21 +48,29 @@ public class GetSupplySourcesResponse {
 
     public GetSupplySourcesResponse() {}
 
-    public GetSupplySourcesResponse supplySources(SupplySourceList supplySources) {
+    public GetSupplySourcesResponse supplySources(List<SupplySourceListInner> supplySources) {
         this.supplySources = supplySources;
         return this;
     }
 
+    public GetSupplySourcesResponse addSupplySourcesItem(SupplySourceListInner supplySourcesItem) {
+        if (this.supplySources == null) {
+            this.supplySources = new ArrayList<>();
+        }
+        this.supplySources.add(supplySourcesItem);
+        return this;
+    }
+
     /**
-     * Get supplySources
+     * The list of &#x60;SupplySource&#x60;s.
      *
      * @return supplySources
      */
-    @javax.annotation.Nullable public SupplySourceList getSupplySources() {
+    @javax.annotation.Nullable public List<SupplySourceListInner> getSupplySources() {
         return supplySources;
     }
 
-    public void setSupplySources(SupplySourceList supplySources) {
+    public void setSupplySources(List<SupplySourceListInner> supplySources) {
         this.supplySources = supplySources;
     }
 
@@ -157,6 +168,24 @@ public class GetSupplySourcesResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("supplySources") != null
+                && !jsonObj.get("supplySources").isJsonNull()) {
+            JsonArray jsonArraysupplySources = jsonObj.getAsJsonArray("supplySources");
+            if (jsonArraysupplySources != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("supplySources").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `supplySources` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("supplySources").toString()));
+                }
+
+                // validate the optional field `supplySources` (array)
+                for (int i = 0; i < jsonArraysupplySources.size(); i++) {
+                    SupplySourceListInner.validateJsonElement(jsonArraysupplySources.get(i));
+                }
+                ;
+            }
+        }
         if ((jsonObj.get("nextPageToken") != null
                         && !jsonObj.get("nextPageToken").isJsonNull())
                 && !jsonObj.get("nextPageToken").isJsonPrimitive()) {

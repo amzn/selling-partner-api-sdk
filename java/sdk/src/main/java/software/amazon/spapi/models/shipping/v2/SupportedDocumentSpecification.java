@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class SupportedDocumentSpecification {
     public static final String SERIALIZED_NAME_PRINT_OPTIONS = "printOptions";
 
     @SerializedName(SERIALIZED_NAME_PRINT_OPTIONS)
-    private PrintOptionList printOptions = new ArrayList<>();
+    private List<PrintOption> printOptions = new ArrayList<>();
 
     public SupportedDocumentSpecification() {}
 
@@ -88,22 +91,30 @@ public class SupportedDocumentSpecification {
         this.size = size;
     }
 
-    public SupportedDocumentSpecification printOptions(PrintOptionList printOptions) {
+    public SupportedDocumentSpecification printOptions(List<PrintOption> printOptions) {
         this.printOptions = printOptions;
         return this;
     }
 
+    public SupportedDocumentSpecification addPrintOptionsItem(PrintOption printOptionsItem) {
+        if (this.printOptions == null) {
+            this.printOptions = new ArrayList<>();
+        }
+        this.printOptions.add(printOptionsItem);
+        return this;
+    }
+
     /**
-     * Get printOptions
+     * A list of the format options for a label.
      *
      * @return printOptions
      */
     @javax.annotation.Nonnull
-    public PrintOptionList getPrintOptions() {
+    public List<PrintOption> getPrintOptions() {
         return printOptions;
     }
 
-    public void setPrintOptions(PrintOptionList printOptions) {
+    public void setPrintOptions(List<PrintOption> printOptions) {
         this.printOptions = printOptions;
     }
 
@@ -202,6 +213,19 @@ public class SupportedDocumentSpecification {
         DocumentFormat.validateJsonElement(jsonObj.get("format"));
         // validate the required field `size`
         DocumentSize.validateJsonElement(jsonObj.get("size"));
+        // ensure the json data is an array
+        if (!jsonObj.get("printOptions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `printOptions` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("printOptions").toString()));
+        }
+
+        JsonArray jsonArrayprintOptions = jsonObj.getAsJsonArray("printOptions");
+        // validate the required field `printOptions` (array)
+        for (int i = 0; i < jsonArrayprintOptions.size(); i++) {
+            PrintOption.validateJsonElement(jsonArrayprintOptions.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

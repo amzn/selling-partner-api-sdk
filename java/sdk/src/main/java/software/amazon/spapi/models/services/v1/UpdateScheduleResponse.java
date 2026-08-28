@@ -44,7 +44,7 @@ public class UpdateScheduleResponse {
     public static final String SERIALIZED_NAME_ERRORS = "errors";
 
     @SerializedName(SERIALIZED_NAME_ERRORS)
-    private ErrorList errors = new ArrayList<>();
+    private List<Error> errors = new ArrayList<>();
 
     public UpdateScheduleResponse() {}
 
@@ -74,21 +74,29 @@ public class UpdateScheduleResponse {
         this.payload = payload;
     }
 
-    public UpdateScheduleResponse errors(ErrorList errors) {
+    public UpdateScheduleResponse errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public UpdateScheduleResponse addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @javax.annotation.Nullable public ErrorList getErrors() {
+    @javax.annotation.Nullable public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
@@ -181,6 +189,23 @@ public class UpdateScheduleResponse {
                 // validate the optional field `payload` (array)
                 for (int i = 0; i < jsonArraypayload.size(); i++) {
                     UpdateScheduleRecord.validateJsonElement(jsonArraypayload.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("errors") != null && !jsonObj.get("errors").isJsonNull()) {
+            JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+            if (jsonArrayerrors != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("errors").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("errors").toString()));
+                }
+
+                // validate the optional field `errors` (array)
+                for (int i = 0; i < jsonArrayerrors.size(); i++) {
+                    Error.validateJsonElement(jsonArrayerrors.get(i));
                 }
                 ;
             }

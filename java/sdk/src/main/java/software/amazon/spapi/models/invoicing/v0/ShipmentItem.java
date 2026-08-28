@@ -23,7 +23,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -87,7 +89,7 @@ public class ShipmentItem {
     public static final String SERIALIZED_NAME_SERIAL_NUMBERS = "SerialNumbers";
 
     @SerializedName(SERIALIZED_NAME_SERIAL_NUMBERS)
-    private SerialNumbersList serialNumbers = new ArrayList<>();
+    private List<String> serialNumbers = new ArrayList<>();
 
     public ShipmentItem() {}
 
@@ -271,21 +273,29 @@ public class ShipmentItem {
         this.promotionDiscount = promotionDiscount;
     }
 
-    public ShipmentItem serialNumbers(SerialNumbersList serialNumbers) {
+    public ShipmentItem serialNumbers(List<String> serialNumbers) {
         this.serialNumbers = serialNumbers;
         return this;
     }
 
+    public ShipmentItem addSerialNumbersItem(String serialNumbersItem) {
+        if (this.serialNumbers == null) {
+            this.serialNumbers = new ArrayList<>();
+        }
+        this.serialNumbers.add(serialNumbersItem);
+        return this;
+    }
+
     /**
-     * Get serialNumbers
+     * The list of serial numbers.
      *
      * @return serialNumbers
      */
-    @javax.annotation.Nullable public SerialNumbersList getSerialNumbers() {
+    @javax.annotation.Nullable public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
-    public void setSerialNumbers(SerialNumbersList serialNumbers) {
+    public void setSerialNumbers(List<String> serialNumbers) {
         this.serialNumbers = serialNumbers;
     }
 
@@ -455,6 +465,14 @@ public class ShipmentItem {
         if (jsonObj.get("PromotionDiscount") != null
                 && !jsonObj.get("PromotionDiscount").isJsonNull()) {
             Money.validateJsonElement(jsonObj.get("PromotionDiscount"));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("SerialNumbers") != null
+                && !jsonObj.get("SerialNumbers").isJsonNull()
+                && !jsonObj.get("SerialNumbers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `SerialNumbers` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("SerialNumbers").toString()));
         }
     }
 

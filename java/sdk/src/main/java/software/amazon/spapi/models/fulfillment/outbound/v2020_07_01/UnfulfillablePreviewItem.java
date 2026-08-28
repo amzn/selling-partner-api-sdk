@@ -22,7 +22,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -51,7 +53,7 @@ public class UnfulfillablePreviewItem {
     public static final String SERIALIZED_NAME_ITEM_UNFULFILLABLE_REASONS = "itemUnfulfillableReasons";
 
     @SerializedName(SERIALIZED_NAME_ITEM_UNFULFILLABLE_REASONS)
-    private StringList itemUnfulfillableReasons = new ArrayList<>();
+    private List<String> itemUnfulfillableReasons = new ArrayList<>();
 
     public UnfulfillablePreviewItem() {}
 
@@ -112,21 +114,29 @@ public class UnfulfillablePreviewItem {
         this.sellerFulfillmentOrderItemId = sellerFulfillmentOrderItemId;
     }
 
-    public UnfulfillablePreviewItem itemUnfulfillableReasons(StringList itemUnfulfillableReasons) {
+    public UnfulfillablePreviewItem itemUnfulfillableReasons(List<String> itemUnfulfillableReasons) {
         this.itemUnfulfillableReasons = itemUnfulfillableReasons;
         return this;
     }
 
+    public UnfulfillablePreviewItem addItemUnfulfillableReasonsItem(String itemUnfulfillableReasonsItem) {
+        if (this.itemUnfulfillableReasons == null) {
+            this.itemUnfulfillableReasons = new ArrayList<>();
+        }
+        this.itemUnfulfillableReasons.add(itemUnfulfillableReasonsItem);
+        return this;
+    }
+
     /**
-     * Get itemUnfulfillableReasons
+     * String list
      *
      * @return itemUnfulfillableReasons
      */
-    @javax.annotation.Nullable public StringList getItemUnfulfillableReasons() {
+    @javax.annotation.Nullable public List<String> getItemUnfulfillableReasons() {
         return itemUnfulfillableReasons;
     }
 
-    public void setItemUnfulfillableReasons(StringList itemUnfulfillableReasons) {
+    public void setItemUnfulfillableReasons(List<String> itemUnfulfillableReasons) {
         this.itemUnfulfillableReasons = itemUnfulfillableReasons;
     }
 
@@ -238,6 +248,14 @@ public class UnfulfillablePreviewItem {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `sellerFulfillmentOrderItemId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("sellerFulfillmentOrderItemId").toString()));
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("itemUnfulfillableReasons") != null
+                && !jsonObj.get("itemUnfulfillableReasons").isJsonNull()
+                && !jsonObj.get("itemUnfulfillableReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `itemUnfulfillableReasons` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("itemUnfulfillableReasons").toString()));
         }
     }
 

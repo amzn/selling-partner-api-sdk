@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -76,13 +79,13 @@ public class Rate {
     public static final String SERIALIZED_NAME_SUPPORTED_DOCUMENT_SPECIFICATIONS = "supportedDocumentSpecifications";
 
     @SerializedName(SERIALIZED_NAME_SUPPORTED_DOCUMENT_SPECIFICATIONS)
-    private SupportedDocumentSpecificationList supportedDocumentSpecifications = new ArrayList<>();
+    private List<SupportedDocumentSpecification> supportedDocumentSpecifications = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_AVAILABLE_VALUE_ADDED_SERVICE_GROUPS =
             "availableValueAddedServiceGroups";
 
     @SerializedName(SERIALIZED_NAME_AVAILABLE_VALUE_ADDED_SERVICE_GROUPS)
-    private AvailableValueAddedServiceGroupList availableValueAddedServiceGroups = new ArrayList<>();
+    private List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_REQUIRES_ADDITIONAL_INPUTS = "requiresAdditionalInputs";
 
@@ -92,7 +95,7 @@ public class Rate {
     public static final String SERIALIZED_NAME_RATE_ITEM_LIST = "rateItemList";
 
     @SerializedName(SERIALIZED_NAME_RATE_ITEM_LIST)
-    private RateItemList rateItemList = new ArrayList<>();
+    private List<RateItem> rateItemList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAYMENT_TYPE = "paymentType";
 
@@ -257,41 +260,61 @@ public class Rate {
         this.promise = promise;
     }
 
-    public Rate supportedDocumentSpecifications(SupportedDocumentSpecificationList supportedDocumentSpecifications) {
+    public Rate supportedDocumentSpecifications(List<SupportedDocumentSpecification> supportedDocumentSpecifications) {
         this.supportedDocumentSpecifications = supportedDocumentSpecifications;
         return this;
     }
 
+    public Rate addSupportedDocumentSpecificationsItem(
+            SupportedDocumentSpecification supportedDocumentSpecificationsItem) {
+        if (this.supportedDocumentSpecifications == null) {
+            this.supportedDocumentSpecifications = new ArrayList<>();
+        }
+        this.supportedDocumentSpecifications.add(supportedDocumentSpecificationsItem);
+        return this;
+    }
+
     /**
-     * Get supportedDocumentSpecifications
+     * A list of the document specifications supported for a shipment service offering.
      *
      * @return supportedDocumentSpecifications
      */
     @javax.annotation.Nonnull
-    public SupportedDocumentSpecificationList getSupportedDocumentSpecifications() {
+    public List<SupportedDocumentSpecification> getSupportedDocumentSpecifications() {
         return supportedDocumentSpecifications;
     }
 
-    public void setSupportedDocumentSpecifications(SupportedDocumentSpecificationList supportedDocumentSpecifications) {
+    public void setSupportedDocumentSpecifications(
+            List<SupportedDocumentSpecification> supportedDocumentSpecifications) {
         this.supportedDocumentSpecifications = supportedDocumentSpecifications;
     }
 
-    public Rate availableValueAddedServiceGroups(AvailableValueAddedServiceGroupList availableValueAddedServiceGroups) {
+    public Rate availableValueAddedServiceGroups(
+            List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups) {
         this.availableValueAddedServiceGroups = availableValueAddedServiceGroups;
         return this;
     }
 
+    public Rate addAvailableValueAddedServiceGroupsItem(
+            AvailableValueAddedServiceGroup availableValueAddedServiceGroupsItem) {
+        if (this.availableValueAddedServiceGroups == null) {
+            this.availableValueAddedServiceGroups = new ArrayList<>();
+        }
+        this.availableValueAddedServiceGroups.add(availableValueAddedServiceGroupsItem);
+        return this;
+    }
+
     /**
-     * Get availableValueAddedServiceGroups
+     * A list of value-added services available for a shipping service offering.
      *
      * @return availableValueAddedServiceGroups
      */
-    @javax.annotation.Nullable public AvailableValueAddedServiceGroupList getAvailableValueAddedServiceGroups() {
+    @javax.annotation.Nullable public List<AvailableValueAddedServiceGroup> getAvailableValueAddedServiceGroups() {
         return availableValueAddedServiceGroups;
     }
 
     public void setAvailableValueAddedServiceGroups(
-            AvailableValueAddedServiceGroupList availableValueAddedServiceGroups) {
+            List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups) {
         this.availableValueAddedServiceGroups = availableValueAddedServiceGroups;
     }
 
@@ -316,21 +339,29 @@ public class Rate {
         this.requiresAdditionalInputs = requiresAdditionalInputs;
     }
 
-    public Rate rateItemList(RateItemList rateItemList) {
+    public Rate rateItemList(List<RateItem> rateItemList) {
         this.rateItemList = rateItemList;
         return this;
     }
 
+    public Rate addRateItemListItem(RateItem rateItemListItem) {
+        if (this.rateItemList == null) {
+            this.rateItemList = new ArrayList<>();
+        }
+        this.rateItemList.add(rateItemListItem);
+        return this;
+    }
+
     /**
-     * Get rateItemList
+     * A list of RateItem
      *
      * @return rateItemList
      */
-    @javax.annotation.Nullable public RateItemList getRateItemList() {
+    @javax.annotation.Nullable public List<RateItem> getRateItemList() {
         return rateItemList;
     }
 
-    public void setRateItemList(RateItemList rateItemList) {
+    public void setRateItemList(List<RateItem> rateItemList) {
         this.rateItemList = rateItemList;
     }
 
@@ -552,6 +583,56 @@ public class Rate {
         Currency.validateJsonElement(jsonObj.get("totalCharge"));
         // validate the required field `promise`
         Promise.validateJsonElement(jsonObj.get("promise"));
+        // ensure the json data is an array
+        if (!jsonObj.get("supportedDocumentSpecifications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `supportedDocumentSpecifications` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("supportedDocumentSpecifications").toString()));
+        }
+
+        JsonArray jsonArraysupportedDocumentSpecifications = jsonObj.getAsJsonArray("supportedDocumentSpecifications");
+        // validate the required field `supportedDocumentSpecifications` (array)
+        for (int i = 0; i < jsonArraysupportedDocumentSpecifications.size(); i++) {
+            SupportedDocumentSpecification.validateJsonElement(jsonArraysupportedDocumentSpecifications.get(i));
+        }
+        ;
+        if (jsonObj.get("availableValueAddedServiceGroups") != null
+                && !jsonObj.get("availableValueAddedServiceGroups").isJsonNull()) {
+            JsonArray jsonArrayavailableValueAddedServiceGroups =
+                    jsonObj.getAsJsonArray("availableValueAddedServiceGroups");
+            if (jsonArrayavailableValueAddedServiceGroups != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("availableValueAddedServiceGroups").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `availableValueAddedServiceGroups` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("availableValueAddedServiceGroups").toString()));
+                }
+
+                // validate the optional field `availableValueAddedServiceGroups` (array)
+                for (int i = 0; i < jsonArrayavailableValueAddedServiceGroups.size(); i++) {
+                    AvailableValueAddedServiceGroup.validateJsonElement(
+                            jsonArrayavailableValueAddedServiceGroups.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("rateItemList") != null && !jsonObj.get("rateItemList").isJsonNull()) {
+            JsonArray jsonArrayrateItemList = jsonObj.getAsJsonArray("rateItemList");
+            if (jsonArrayrateItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("rateItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `rateItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("rateItemList").toString()));
+                }
+
+                // validate the optional field `rateItemList` (array)
+                for (int i = 0; i < jsonArrayrateItemList.size(); i++) {
+                    RateItem.validateJsonElement(jsonArrayrateItemList.get(i));
+                }
+                ;
+            }
+        }
         // validate the optional field `paymentType`
         if (jsonObj.get("paymentType") != null && !jsonObj.get("paymentType").isJsonNull()) {
             PaymentType.validateJsonElement(jsonObj.get("paymentType"));

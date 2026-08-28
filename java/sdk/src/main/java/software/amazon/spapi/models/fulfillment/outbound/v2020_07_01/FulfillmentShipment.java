@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -125,12 +126,12 @@ public class FulfillmentShipment {
     public static final String SERIALIZED_NAME_FULFILLMENT_SHIPMENT_ITEM = "fulfillmentShipmentItem";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_SHIPMENT_ITEM)
-    private FulfillmentShipmentItemList fulfillmentShipmentItem = new ArrayList<>();
+    private List<FulfillmentShipmentItem> fulfillmentShipmentItem = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FULFILLMENT_SHIPMENT_PACKAGE = "fulfillmentShipmentPackage";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_SHIPMENT_PACKAGE)
-    private FulfillmentShipmentPackageList fulfillmentShipmentPackage = new ArrayList<>();
+    private List<FulfillmentShipmentPackage> fulfillmentShipmentPackage = new ArrayList<>();
 
     public FulfillmentShipment() {}
 
@@ -254,40 +255,57 @@ public class FulfillmentShipment {
         this.shippingNotes = shippingNotes;
     }
 
-    public FulfillmentShipment fulfillmentShipmentItem(FulfillmentShipmentItemList fulfillmentShipmentItem) {
+    public FulfillmentShipment fulfillmentShipmentItem(List<FulfillmentShipmentItem> fulfillmentShipmentItem) {
         this.fulfillmentShipmentItem = fulfillmentShipmentItem;
         return this;
     }
 
+    public FulfillmentShipment addFulfillmentShipmentItemItem(FulfillmentShipmentItem fulfillmentShipmentItemItem) {
+        if (this.fulfillmentShipmentItem == null) {
+            this.fulfillmentShipmentItem = new ArrayList<>();
+        }
+        this.fulfillmentShipmentItem.add(fulfillmentShipmentItemItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentShipmentItem
+     * An array of fulfillment shipment item information.
      *
      * @return fulfillmentShipmentItem
      */
     @javax.annotation.Nonnull
-    public FulfillmentShipmentItemList getFulfillmentShipmentItem() {
+    public List<FulfillmentShipmentItem> getFulfillmentShipmentItem() {
         return fulfillmentShipmentItem;
     }
 
-    public void setFulfillmentShipmentItem(FulfillmentShipmentItemList fulfillmentShipmentItem) {
+    public void setFulfillmentShipmentItem(List<FulfillmentShipmentItem> fulfillmentShipmentItem) {
         this.fulfillmentShipmentItem = fulfillmentShipmentItem;
     }
 
-    public FulfillmentShipment fulfillmentShipmentPackage(FulfillmentShipmentPackageList fulfillmentShipmentPackage) {
+    public FulfillmentShipment fulfillmentShipmentPackage(List<FulfillmentShipmentPackage> fulfillmentShipmentPackage) {
         this.fulfillmentShipmentPackage = fulfillmentShipmentPackage;
         return this;
     }
 
+    public FulfillmentShipment addFulfillmentShipmentPackageItem(
+            FulfillmentShipmentPackage fulfillmentShipmentPackageItem) {
+        if (this.fulfillmentShipmentPackage == null) {
+            this.fulfillmentShipmentPackage = new ArrayList<>();
+        }
+        this.fulfillmentShipmentPackage.add(fulfillmentShipmentPackageItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentShipmentPackage
+     * An array of fulfillment shipment package information.
      *
      * @return fulfillmentShipmentPackage
      */
-    @javax.annotation.Nullable public FulfillmentShipmentPackageList getFulfillmentShipmentPackage() {
+    @javax.annotation.Nullable public List<FulfillmentShipmentPackage> getFulfillmentShipmentPackage() {
         return fulfillmentShipmentPackage;
     }
 
-    public void setFulfillmentShipmentPackage(FulfillmentShipmentPackageList fulfillmentShipmentPackage) {
+    public void setFulfillmentShipmentPackage(List<FulfillmentShipmentPackage> fulfillmentShipmentPackage) {
         this.fulfillmentShipmentPackage = fulfillmentShipmentPackage;
     }
 
@@ -441,6 +459,37 @@ public class FulfillmentShipment {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `shippingNotes` to be an array in the JSON string but got `%s`",
                     jsonObj.get("shippingNotes").toString()));
+        }
+        // ensure the json data is an array
+        if (!jsonObj.get("fulfillmentShipmentItem").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `fulfillmentShipmentItem` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("fulfillmentShipmentItem").toString()));
+        }
+
+        JsonArray jsonArrayfulfillmentShipmentItem = jsonObj.getAsJsonArray("fulfillmentShipmentItem");
+        // validate the required field `fulfillmentShipmentItem` (array)
+        for (int i = 0; i < jsonArrayfulfillmentShipmentItem.size(); i++) {
+            FulfillmentShipmentItem.validateJsonElement(jsonArrayfulfillmentShipmentItem.get(i));
+        }
+        ;
+        if (jsonObj.get("fulfillmentShipmentPackage") != null
+                && !jsonObj.get("fulfillmentShipmentPackage").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentShipmentPackage = jsonObj.getAsJsonArray("fulfillmentShipmentPackage");
+            if (jsonArrayfulfillmentShipmentPackage != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentShipmentPackage").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentShipmentPackage` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentShipmentPackage").toString()));
+                }
+
+                // validate the optional field `fulfillmentShipmentPackage` (array)
+                for (int i = 0; i < jsonArrayfulfillmentShipmentPackage.size(); i++) {
+                    FulfillmentShipmentPackage.validateJsonElement(jsonArrayfulfillmentShipmentPackage.get(i));
+                }
+                ;
+            }
         }
     }
 

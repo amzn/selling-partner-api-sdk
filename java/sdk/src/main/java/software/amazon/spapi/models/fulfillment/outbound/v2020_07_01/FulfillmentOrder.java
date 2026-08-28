@@ -110,7 +110,7 @@ public class FulfillmentOrder {
     public static final String SERIALIZED_NAME_NOTIFICATION_EMAILS = "notificationEmails";
 
     @SerializedName(SERIALIZED_NAME_NOTIFICATION_EMAILS)
-    private NotificationEmailList notificationEmails = new ArrayList<>();
+    private List<String> notificationEmails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FEATURE_CONSTRAINTS = "featureConstraints";
 
@@ -383,21 +383,30 @@ public class FulfillmentOrder {
         this.statusUpdatedDate = statusUpdatedDate;
     }
 
-    public FulfillmentOrder notificationEmails(NotificationEmailList notificationEmails) {
+    public FulfillmentOrder notificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
         return this;
     }
 
+    public FulfillmentOrder addNotificationEmailsItem(String notificationEmailsItem) {
+        if (this.notificationEmails == null) {
+            this.notificationEmails = new ArrayList<>();
+        }
+        this.notificationEmails.add(notificationEmailsItem);
+        return this;
+    }
+
     /**
-     * Get notificationEmails
+     * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to
+     * recipients on behalf of the seller.
      *
      * @return notificationEmails
      */
-    @javax.annotation.Nullable public NotificationEmailList getNotificationEmails() {
+    @javax.annotation.Nullable public List<String> getNotificationEmails() {
         return notificationEmails;
     }
 
-    public void setNotificationEmails(NotificationEmailList notificationEmails) {
+    public void setNotificationEmails(List<String> notificationEmails) {
         this.notificationEmails = notificationEmails;
     }
 
@@ -650,6 +659,14 @@ public class FulfillmentOrder {
         }
         // validate the required field `fulfillmentOrderStatus`
         FulfillmentOrderStatus.validateJsonElement(jsonObj.get("fulfillmentOrderStatus"));
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("notificationEmails") != null
+                && !jsonObj.get("notificationEmails").isJsonNull()
+                && !jsonObj.get("notificationEmails").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `notificationEmails` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("notificationEmails").toString()));
+        }
         if (jsonObj.get("featureConstraints") != null
                 && !jsonObj.get("featureConstraints").isJsonNull()) {
             JsonArray jsonArrayfeatureConstraints = jsonObj.getAsJsonArray("featureConstraints");

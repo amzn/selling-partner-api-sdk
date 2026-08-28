@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -107,7 +110,7 @@ public class PackageTrackingDetails {
     public static final String SERIALIZED_NAME_TRACKING_EVENTS = "trackingEvents";
 
     @SerializedName(SERIALIZED_NAME_TRACKING_EVENTS)
-    private TrackingEventList trackingEvents = new ArrayList<>();
+    private List<TrackingEvent> trackingEvents = new ArrayList<>();
 
     public PackageTrackingDetails() {}
 
@@ -364,21 +367,29 @@ public class PackageTrackingDetails {
         this.additionalLocationInfo = additionalLocationInfo;
     }
 
-    public PackageTrackingDetails trackingEvents(TrackingEventList trackingEvents) {
+    public PackageTrackingDetails trackingEvents(List<TrackingEvent> trackingEvents) {
         this.trackingEvents = trackingEvents;
         return this;
     }
 
+    public PackageTrackingDetails addTrackingEventsItem(TrackingEvent trackingEventsItem) {
+        if (this.trackingEvents == null) {
+            this.trackingEvents = new ArrayList<>();
+        }
+        this.trackingEvents.add(trackingEventsItem);
+        return this;
+    }
+
     /**
-     * Get trackingEvents
+     * An array of tracking event information.
      *
      * @return trackingEvents
      */
-    @javax.annotation.Nullable public TrackingEventList getTrackingEvents() {
+    @javax.annotation.Nullable public List<TrackingEvent> getTrackingEvents() {
         return trackingEvents;
     }
 
-    public void setTrackingEvents(TrackingEventList trackingEvents) {
+    public void setTrackingEvents(List<TrackingEvent> trackingEvents) {
         this.trackingEvents = trackingEvents;
     }
 
@@ -603,6 +614,24 @@ public class PackageTrackingDetails {
         if (jsonObj.get("additionalLocationInfo") != null
                 && !jsonObj.get("additionalLocationInfo").isJsonNull()) {
             AdditionalLocationInfo.validateJsonElement(jsonObj.get("additionalLocationInfo"));
+        }
+        if (jsonObj.get("trackingEvents") != null
+                && !jsonObj.get("trackingEvents").isJsonNull()) {
+            JsonArray jsonArraytrackingEvents = jsonObj.getAsJsonArray("trackingEvents");
+            if (jsonArraytrackingEvents != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("trackingEvents").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `trackingEvents` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("trackingEvents").toString()));
+                }
+
+                // validate the optional field `trackingEvents` (array)
+                for (int i = 0; i < jsonArraytrackingEvents.size(); i++) {
+                    TrackingEvent.validateJsonElement(jsonArraytrackingEvents.get(i));
+                }
+                ;
+            }
         }
     }
 

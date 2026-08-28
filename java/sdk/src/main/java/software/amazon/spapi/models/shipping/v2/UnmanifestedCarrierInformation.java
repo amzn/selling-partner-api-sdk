@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class UnmanifestedCarrierInformation {
     public static final String SERIALIZED_NAME_UNMANIFESTED_SHIPMENT_LOCATION_LIST = "unmanifestedShipmentLocationList";
 
     @SerializedName(SERIALIZED_NAME_UNMANIFESTED_SHIPMENT_LOCATION_LIST)
-    private UnmanifestedShipmentLocationList unmanifestedShipmentLocationList = new ArrayList<>();
+    private List<UnmanifestedShipmentLocation> unmanifestedShipmentLocationList = new ArrayList<>();
 
     public UnmanifestedCarrierInformation() {}
 
@@ -87,21 +90,31 @@ public class UnmanifestedCarrierInformation {
     }
 
     public UnmanifestedCarrierInformation unmanifestedShipmentLocationList(
-            UnmanifestedShipmentLocationList unmanifestedShipmentLocationList) {
+            List<UnmanifestedShipmentLocation> unmanifestedShipmentLocationList) {
         this.unmanifestedShipmentLocationList = unmanifestedShipmentLocationList;
         return this;
     }
 
+    public UnmanifestedCarrierInformation addUnmanifestedShipmentLocationListItem(
+            UnmanifestedShipmentLocation unmanifestedShipmentLocationListItem) {
+        if (this.unmanifestedShipmentLocationList == null) {
+            this.unmanifestedShipmentLocationList = new ArrayList<>();
+        }
+        this.unmanifestedShipmentLocationList.add(unmanifestedShipmentLocationListItem);
+        return this;
+    }
+
     /**
-     * Get unmanifestedShipmentLocationList
+     * A list of UnmanifestedShipmentLocation
      *
      * @return unmanifestedShipmentLocationList
      */
-    @javax.annotation.Nullable public UnmanifestedShipmentLocationList getUnmanifestedShipmentLocationList() {
+    @javax.annotation.Nullable public List<UnmanifestedShipmentLocation> getUnmanifestedShipmentLocationList() {
         return unmanifestedShipmentLocationList;
     }
 
-    public void setUnmanifestedShipmentLocationList(UnmanifestedShipmentLocationList unmanifestedShipmentLocationList) {
+    public void setUnmanifestedShipmentLocationList(
+            List<UnmanifestedShipmentLocation> unmanifestedShipmentLocationList) {
         this.unmanifestedShipmentLocationList = unmanifestedShipmentLocationList;
     }
 
@@ -199,6 +212,25 @@ public class UnmanifestedCarrierInformation {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `carrierName` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("carrierName").toString()));
+        }
+        if (jsonObj.get("unmanifestedShipmentLocationList") != null
+                && !jsonObj.get("unmanifestedShipmentLocationList").isJsonNull()) {
+            JsonArray jsonArrayunmanifestedShipmentLocationList =
+                    jsonObj.getAsJsonArray("unmanifestedShipmentLocationList");
+            if (jsonArrayunmanifestedShipmentLocationList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("unmanifestedShipmentLocationList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `unmanifestedShipmentLocationList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("unmanifestedShipmentLocationList").toString()));
+                }
+
+                // validate the optional field `unmanifestedShipmentLocationList` (array)
+                for (int i = 0; i < jsonArrayunmanifestedShipmentLocationList.size(); i++) {
+                    UnmanifestedShipmentLocation.validateJsonElement(jsonArrayunmanifestedShipmentLocationList.get(i));
+                }
+                ;
+            }
         }
     }
 

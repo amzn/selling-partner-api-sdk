@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +39,7 @@ public class GetFeedsResponse {
     public static final String SERIALIZED_NAME_FEEDS = "feeds";
 
     @SerializedName(SERIALIZED_NAME_FEEDS)
-    private FeedList feeds = new ArrayList<>();
+    private List<Feed> feeds = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_NEXT_TOKEN = "nextToken";
 
@@ -45,22 +48,30 @@ public class GetFeedsResponse {
 
     public GetFeedsResponse() {}
 
-    public GetFeedsResponse feeds(FeedList feeds) {
+    public GetFeedsResponse feeds(List<Feed> feeds) {
         this.feeds = feeds;
         return this;
     }
 
+    public GetFeedsResponse addFeedsItem(Feed feedsItem) {
+        if (this.feeds == null) {
+            this.feeds = new ArrayList<>();
+        }
+        this.feeds.add(feedsItem);
+        return this;
+    }
+
     /**
-     * Get feeds
+     * A list of feeds.
      *
      * @return feeds
      */
     @javax.annotation.Nonnull
-    public FeedList getFeeds() {
+    public List<Feed> getFeeds() {
         return feeds;
     }
 
-    public void setFeeds(FeedList feeds) {
+    public void setFeeds(List<Feed> feeds) {
         this.feeds = feeds;
     }
 
@@ -168,6 +179,19 @@ public class GetFeedsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("feeds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `feeds` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("feeds").toString()));
+        }
+
+        JsonArray jsonArrayfeeds = jsonObj.getAsJsonArray("feeds");
+        // validate the required field `feeds` (array)
+        for (int i = 0; i < jsonArrayfeeds.size(); i++) {
+            Feed.validateJsonElement(jsonArrayfeeds.get(i));
+        }
+        ;
         if ((jsonObj.get("nextToken") != null && !jsonObj.get("nextToken").isJsonNull())
                 && !jsonObj.get("nextToken").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class LinkableCarrier {
     public static final String SERIALIZED_NAME_LINKABLE_ACCOUNT_TYPES = "linkableAccountTypes";
 
     @SerializedName(SERIALIZED_NAME_LINKABLE_ACCOUNT_TYPES)
-    private LinkableAccountTypeList linkableAccountTypes = new ArrayList<>();
+    private List<LinkableAccountType> linkableAccountTypes = new ArrayList<>();
 
     public LinkableCarrier() {}
 
@@ -63,21 +66,29 @@ public class LinkableCarrier {
         this.carrierId = carrierId;
     }
 
-    public LinkableCarrier linkableAccountTypes(LinkableAccountTypeList linkableAccountTypes) {
+    public LinkableCarrier linkableAccountTypes(List<LinkableAccountType> linkableAccountTypes) {
         this.linkableAccountTypes = linkableAccountTypes;
         return this;
     }
 
+    public LinkableCarrier addLinkableAccountTypesItem(LinkableAccountType linkableAccountTypesItem) {
+        if (this.linkableAccountTypes == null) {
+            this.linkableAccountTypes = new ArrayList<>();
+        }
+        this.linkableAccountTypes.add(linkableAccountTypesItem);
+        return this;
+    }
+
     /**
-     * Get linkableAccountTypes
+     * A list of LinkableAccountType
      *
      * @return linkableAccountTypes
      */
-    @javax.annotation.Nullable public LinkableAccountTypeList getLinkableAccountTypes() {
+    @javax.annotation.Nullable public List<LinkableAccountType> getLinkableAccountTypes() {
         return linkableAccountTypes;
     }
 
-    public void setLinkableAccountTypes(LinkableAccountTypeList linkableAccountTypes) {
+    public void setLinkableAccountTypes(List<LinkableAccountType> linkableAccountTypes) {
         this.linkableAccountTypes = linkableAccountTypes;
     }
 
@@ -163,6 +174,24 @@ public class LinkableCarrier {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `carrierId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("carrierId").toString()));
+        }
+        if (jsonObj.get("linkableAccountTypes") != null
+                && !jsonObj.get("linkableAccountTypes").isJsonNull()) {
+            JsonArray jsonArraylinkableAccountTypes = jsonObj.getAsJsonArray("linkableAccountTypes");
+            if (jsonArraylinkableAccountTypes != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("linkableAccountTypes").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `linkableAccountTypes` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("linkableAccountTypes").toString()));
+                }
+
+                // validate the optional field `linkableAccountTypes` (array)
+                for (int i = 0; i < jsonArraylinkableAccountTypes.size(); i++) {
+                    LinkableAccountType.validateJsonElement(jsonArraylinkableAccountTypes.get(i));
+                }
+                ;
+            }
         }
     }
 

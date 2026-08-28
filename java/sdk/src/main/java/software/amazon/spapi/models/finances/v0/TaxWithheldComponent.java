@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class TaxWithheldComponent {
     public static final String SERIALIZED_NAME_TAXES_WITHHELD = "TaxesWithheld";
 
     @SerializedName(SERIALIZED_NAME_TAXES_WITHHELD)
-    private ChargeComponentList taxesWithheld = new ArrayList<>();
+    private List<ChargeComponent> taxesWithheld = new ArrayList<>();
 
     public TaxWithheldComponent() {}
 
@@ -65,21 +68,29 @@ public class TaxWithheldComponent {
         this.taxCollectionModel = taxCollectionModel;
     }
 
-    public TaxWithheldComponent taxesWithheld(ChargeComponentList taxesWithheld) {
+    public TaxWithheldComponent taxesWithheld(List<ChargeComponent> taxesWithheld) {
         this.taxesWithheld = taxesWithheld;
         return this;
     }
 
+    public TaxWithheldComponent addTaxesWithheldItem(ChargeComponent taxesWithheldItem) {
+        if (this.taxesWithheld == null) {
+            this.taxesWithheld = new ArrayList<>();
+        }
+        this.taxesWithheld.add(taxesWithheldItem);
+        return this;
+    }
+
     /**
-     * Get taxesWithheld
+     * A list of charge information on the seller&#39;s account.
      *
      * @return taxesWithheld
      */
-    @javax.annotation.Nullable public ChargeComponentList getTaxesWithheld() {
+    @javax.annotation.Nullable public List<ChargeComponent> getTaxesWithheld() {
         return taxesWithheld;
     }
 
-    public void setTaxesWithheld(ChargeComponentList taxesWithheld) {
+    public void setTaxesWithheld(List<ChargeComponent> taxesWithheld) {
         this.taxesWithheld = taxesWithheld;
     }
 
@@ -166,6 +177,24 @@ public class TaxWithheldComponent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `TaxCollectionModel` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("TaxCollectionModel").toString()));
+        }
+        if (jsonObj.get("TaxesWithheld") != null
+                && !jsonObj.get("TaxesWithheld").isJsonNull()) {
+            JsonArray jsonArraytaxesWithheld = jsonObj.getAsJsonArray("TaxesWithheld");
+            if (jsonArraytaxesWithheld != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("TaxesWithheld").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `TaxesWithheld` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("TaxesWithheld").toString()));
+                }
+
+                // validate the optional field `TaxesWithheld` (array)
+                for (int i = 0; i < jsonArraytaxesWithheld.size(); i++) {
+                    ChargeComponent.validateJsonElement(jsonArraytaxesWithheld.get(i));
+                }
+                ;
+            }
         }
     }
 

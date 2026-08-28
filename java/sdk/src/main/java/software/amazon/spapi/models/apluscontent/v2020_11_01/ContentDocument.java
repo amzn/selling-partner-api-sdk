@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -56,7 +59,7 @@ public class ContentDocument {
     public static final String SERIALIZED_NAME_CONTENT_MODULE_LIST = "contentModuleList";
 
     @SerializedName(SERIALIZED_NAME_CONTENT_MODULE_LIST)
-    private ContentModuleList contentModuleList = new ArrayList<>();
+    private List<ContentModule> contentModuleList = new ArrayList<>();
 
     public ContentDocument() {}
 
@@ -138,22 +141,30 @@ public class ContentDocument {
         this.locale = locale;
     }
 
-    public ContentDocument contentModuleList(ContentModuleList contentModuleList) {
+    public ContentDocument contentModuleList(List<ContentModule> contentModuleList) {
         this.contentModuleList = contentModuleList;
         return this;
     }
 
+    public ContentDocument addContentModuleListItem(ContentModule contentModuleListItem) {
+        if (this.contentModuleList == null) {
+            this.contentModuleList = new ArrayList<>();
+        }
+        this.contentModuleList.add(contentModuleListItem);
+        return this;
+    }
+
     /**
-     * Get contentModuleList
+     * A list of A+ Content modules.
      *
      * @return contentModuleList
      */
     @javax.annotation.Nonnull
-    public ContentModuleList getContentModuleList() {
+    public List<ContentModule> getContentModuleList() {
         return contentModuleList;
     }
 
-    public void setContentModuleList(ContentModuleList contentModuleList) {
+    public void setContentModuleList(List<ContentModule> contentModuleList) {
         this.contentModuleList = contentModuleList;
     }
 
@@ -277,6 +288,19 @@ public class ContentDocument {
                     "Expected the field `locale` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("locale").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("contentModuleList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `contentModuleList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("contentModuleList").toString()));
+        }
+
+        JsonArray jsonArraycontentModuleList = jsonObj.getAsJsonArray("contentModuleList");
+        // validate the required field `contentModuleList` (array)
+        for (int i = 0; i < jsonArraycontentModuleList.size(); i++) {
+            ContentModule.validateJsonElement(jsonArraycontentModuleList.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,34 @@ public class CompetitiveSummaryBatchResponse {
     public static final String SERIALIZED_NAME_RESPONSES = "responses";
 
     @SerializedName(SERIALIZED_NAME_RESPONSES)
-    private CompetitiveSummaryResponseList responses = new ArrayList<>();
+    private List<CompetitiveSummaryResponse> responses = new ArrayList<>();
 
     public CompetitiveSummaryBatchResponse() {}
 
-    public CompetitiveSummaryBatchResponse responses(CompetitiveSummaryResponseList responses) {
+    public CompetitiveSummaryBatchResponse responses(List<CompetitiveSummaryResponse> responses) {
         this.responses = responses;
         return this;
     }
 
+    public CompetitiveSummaryBatchResponse addResponsesItem(CompetitiveSummaryResponse responsesItem) {
+        if (this.responses == null) {
+            this.responses = new ArrayList<>();
+        }
+        this.responses.add(responsesItem);
+        return this;
+    }
+
     /**
-     * Get responses
+     * The response list for the &#x60;competitiveSummaryBatch&#x60; operation.
      *
      * @return responses
      */
     @javax.annotation.Nonnull
-    public CompetitiveSummaryResponseList getResponses() {
+    public List<CompetitiveSummaryResponse> getResponses() {
         return responses;
     }
 
-    public void setResponses(CompetitiveSummaryResponseList responses) {
+    public void setResponses(List<CompetitiveSummaryResponse> responses) {
         this.responses = responses;
     }
 
@@ -142,6 +153,19 @@ public class CompetitiveSummaryBatchResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("responses").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `responses` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("responses").toString()));
+        }
+
+        JsonArray jsonArrayresponses = jsonObj.getAsJsonArray("responses");
+        // validate the required field `responses` (array)
+        for (int i = 0; i < jsonArrayresponses.size(); i++) {
+            CompetitiveSummaryResponse.validateJsonElement(jsonArrayresponses.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

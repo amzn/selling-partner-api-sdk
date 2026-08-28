@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class GetInventorySummariesResult {
     public static final String SERIALIZED_NAME_INVENTORY_SUMMARIES = "inventorySummaries";
 
     @SerializedName(SERIALIZED_NAME_INVENTORY_SUMMARIES)
-    private InventorySummaries inventorySummaries = new ArrayList<>();
+    private List<InventorySummary> inventorySummaries = new ArrayList<>();
 
     public GetInventorySummariesResult() {}
 
@@ -64,22 +67,30 @@ public class GetInventorySummariesResult {
         this.granularity = granularity;
     }
 
-    public GetInventorySummariesResult inventorySummaries(InventorySummaries inventorySummaries) {
+    public GetInventorySummariesResult inventorySummaries(List<InventorySummary> inventorySummaries) {
         this.inventorySummaries = inventorySummaries;
         return this;
     }
 
+    public GetInventorySummariesResult addInventorySummariesItem(InventorySummary inventorySummariesItem) {
+        if (this.inventorySummaries == null) {
+            this.inventorySummaries = new ArrayList<>();
+        }
+        this.inventorySummaries.add(inventorySummariesItem);
+        return this;
+    }
+
     /**
-     * Get inventorySummaries
+     * A list of inventory summaries.
      *
      * @return inventorySummaries
      */
     @javax.annotation.Nonnull
-    public InventorySummaries getInventorySummaries() {
+    public List<InventorySummary> getInventorySummaries() {
         return inventorySummaries;
     }
 
-    public void setInventorySummaries(InventorySummaries inventorySummaries) {
+    public void setInventorySummaries(List<InventorySummary> inventorySummaries) {
         this.inventorySummaries = inventorySummaries;
     }
 
@@ -174,6 +185,19 @@ public class GetInventorySummariesResult {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
         // validate the required field `granularity`
         Granularity.validateJsonElement(jsonObj.get("granularity"));
+        // ensure the json data is an array
+        if (!jsonObj.get("inventorySummaries").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `inventorySummaries` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("inventorySummaries").toString()));
+        }
+
+        JsonArray jsonArrayinventorySummaries = jsonObj.getAsJsonArray("inventorySummaries");
+        // validate the required field `inventorySummaries` (array)
+        for (int i = 0; i < jsonArrayinventorySummaries.size(); i++) {
+            InventorySummary.validateJsonElement(jsonArrayinventorySummaries.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

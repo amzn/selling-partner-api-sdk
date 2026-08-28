@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,34 @@ public class Errors {
     public static final String SERIALIZED_NAME_ERRORS = "errors";
 
     @SerializedName(SERIALIZED_NAME_ERRORS)
-    private ErrorList errors = new ArrayList<>();
+    private List<Error> errors = new ArrayList<>();
 
     public Errors() {}
 
-    public Errors errors(ErrorList errors) {
+    public Errors errors(List<Error> errors) {
         this.errors = errors;
         return this;
     }
 
+    public Errors addErrorsItem(Error errorsItem) {
+        if (this.errors == null) {
+            this.errors = new ArrayList<>();
+        }
+        this.errors.add(errorsItem);
+        return this;
+    }
+
     /**
-     * Get errors
+     * A list of error responses that are returned when a request is unsuccessful.
      *
      * @return errors
      */
     @javax.annotation.Nonnull
-    public ErrorList getErrors() {
+    public List<Error> getErrors() {
         return errors;
     }
 
-    public void setErrors(ErrorList errors) {
+    public void setErrors(List<Error> errors) {
         this.errors = errors;
     }
 
@@ -141,6 +152,19 @@ public class Errors {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("errors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `errors` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("errors").toString()));
+        }
+
+        JsonArray jsonArrayerrors = jsonObj.getAsJsonArray("errors");
+        // validate the required field `errors` (array)
+        for (int i = 0; i < jsonArrayerrors.size(); i++) {
+            Error.validateJsonElement(jsonArrayerrors.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

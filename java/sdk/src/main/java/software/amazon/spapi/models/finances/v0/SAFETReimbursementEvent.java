@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -57,7 +60,7 @@ public class SAFETReimbursementEvent {
     public static final String SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_ITEM_LIST = "SAFETReimbursementItemList";
 
     @SerializedName(SERIALIZED_NAME_SA_F_E_T_REIMBURSEMENT_ITEM_LIST)
-    private SAFETReimbursementItemList saFETReimbursementItemList = new ArrayList<>();
+    private List<SAFETReimbursementItem> saFETReimbursementItemList = new ArrayList<>();
 
     public SAFETReimbursementEvent() {}
 
@@ -133,21 +136,30 @@ public class SAFETReimbursementEvent {
         this.reasonCode = reasonCode;
     }
 
-    public SAFETReimbursementEvent saFETReimbursementItemList(SAFETReimbursementItemList saFETReimbursementItemList) {
+    public SAFETReimbursementEvent saFETReimbursementItemList(List<SAFETReimbursementItem> saFETReimbursementItemList) {
         this.saFETReimbursementItemList = saFETReimbursementItemList;
         return this;
     }
 
+    public SAFETReimbursementEvent addSaFETReimbursementItemListItem(
+            SAFETReimbursementItem saFETReimbursementItemListItem) {
+        if (this.saFETReimbursementItemList == null) {
+            this.saFETReimbursementItemList = new ArrayList<>();
+        }
+        this.saFETReimbursementItemList.add(saFETReimbursementItemListItem);
+        return this;
+    }
+
     /**
-     * Get saFETReimbursementItemList
+     * A list of &#x60;SAFETReimbursementItem&#x60;.
      *
      * @return saFETReimbursementItemList
      */
-    @javax.annotation.Nullable public SAFETReimbursementItemList getSaFETReimbursementItemList() {
+    @javax.annotation.Nullable public List<SAFETReimbursementItem> getSaFETReimbursementItemList() {
         return saFETReimbursementItemList;
     }
 
-    public void setSaFETReimbursementItemList(SAFETReimbursementItemList saFETReimbursementItemList) {
+    public void setSaFETReimbursementItemList(List<SAFETReimbursementItem> saFETReimbursementItemList) {
         this.saFETReimbursementItemList = saFETReimbursementItemList;
     }
 
@@ -256,6 +268,24 @@ public class SAFETReimbursementEvent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `ReasonCode` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("ReasonCode").toString()));
+        }
+        if (jsonObj.get("SAFETReimbursementItemList") != null
+                && !jsonObj.get("SAFETReimbursementItemList").isJsonNull()) {
+            JsonArray jsonArraysaFETReimbursementItemList = jsonObj.getAsJsonArray("SAFETReimbursementItemList");
+            if (jsonArraysaFETReimbursementItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("SAFETReimbursementItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `SAFETReimbursementItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("SAFETReimbursementItemList").toString()));
+                }
+
+                // validate the optional field `SAFETReimbursementItemList` (array)
+                for (int i = 0; i < jsonArraysaFETReimbursementItemList.size(); i++) {
+                    SAFETReimbursementItem.validateJsonElement(jsonArraysaFETReimbursementItemList.get(i));
+                }
+                ;
+            }
         }
     }
 

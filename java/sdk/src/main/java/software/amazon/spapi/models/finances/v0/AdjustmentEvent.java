@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -57,7 +60,7 @@ public class AdjustmentEvent {
     public static final String SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST = "AdjustmentItemList";
 
     @SerializedName(SERIALIZED_NAME_ADJUSTMENT_ITEM_LIST)
-    private AdjustmentItemList adjustmentItemList = new ArrayList<>();
+    private List<AdjustmentItem> adjustmentItemList = new ArrayList<>();
 
     public AdjustmentEvent() {}
 
@@ -144,21 +147,29 @@ public class AdjustmentEvent {
         this.adjustmentAmount = adjustmentAmount;
     }
 
-    public AdjustmentEvent adjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public AdjustmentEvent adjustmentItemList(List<AdjustmentItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
         return this;
     }
 
+    public AdjustmentEvent addAdjustmentItemListItem(AdjustmentItem adjustmentItemListItem) {
+        if (this.adjustmentItemList == null) {
+            this.adjustmentItemList = new ArrayList<>();
+        }
+        this.adjustmentItemList.add(adjustmentItemListItem);
+        return this;
+    }
+
     /**
-     * Get adjustmentItemList
+     * A list of information about items in an adjustment to the seller&#39;s account.
      *
      * @return adjustmentItemList
      */
-    @javax.annotation.Nullable public AdjustmentItemList getAdjustmentItemList() {
+    @javax.annotation.Nullable public List<AdjustmentItem> getAdjustmentItemList() {
         return adjustmentItemList;
     }
 
-    public void setAdjustmentItemList(AdjustmentItemList adjustmentItemList) {
+    public void setAdjustmentItemList(List<AdjustmentItem> adjustmentItemList) {
         this.adjustmentItemList = adjustmentItemList;
     }
 
@@ -269,6 +280,24 @@ public class AdjustmentEvent {
         if (jsonObj.get("AdjustmentAmount") != null
                 && !jsonObj.get("AdjustmentAmount").isJsonNull()) {
             Currency.validateJsonElement(jsonObj.get("AdjustmentAmount"));
+        }
+        if (jsonObj.get("AdjustmentItemList") != null
+                && !jsonObj.get("AdjustmentItemList").isJsonNull()) {
+            JsonArray jsonArrayadjustmentItemList = jsonObj.getAsJsonArray("AdjustmentItemList");
+            if (jsonArrayadjustmentItemList != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("AdjustmentItemList").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `AdjustmentItemList` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("AdjustmentItemList").toString()));
+                }
+
+                // validate the optional field `AdjustmentItemList` (array)
+                for (int i = 0; i < jsonArrayadjustmentItemList.size(); i++) {
+                    AdjustmentItem.validateJsonElement(jsonArrayadjustmentItemList.get(i));
+                }
+                ;
+            }
         }
     }
 

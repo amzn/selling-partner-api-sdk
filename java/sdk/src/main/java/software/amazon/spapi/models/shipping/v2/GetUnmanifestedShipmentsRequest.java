@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,25 +39,34 @@ public class GetUnmanifestedShipmentsRequest {
     public static final String SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS = "clientReferenceDetails";
 
     @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS)
-    private ClientReferenceDetails clientReferenceDetails = new ArrayList<>();
+    private List<ClientReferenceDetail> clientReferenceDetails = new ArrayList<>();
 
     public GetUnmanifestedShipmentsRequest() {}
 
-    public GetUnmanifestedShipmentsRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public GetUnmanifestedShipmentsRequest clientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
         return this;
     }
 
+    public GetUnmanifestedShipmentsRequest addClientReferenceDetailsItem(
+            ClientReferenceDetail clientReferenceDetailsItem) {
+        if (this.clientReferenceDetails == null) {
+            this.clientReferenceDetails = new ArrayList<>();
+        }
+        this.clientReferenceDetails.add(clientReferenceDetailsItem);
+        return this;
+    }
+
     /**
-     * Get clientReferenceDetails
+     * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      *
      * @return clientReferenceDetails
      */
-    @javax.annotation.Nullable public ClientReferenceDetails getClientReferenceDetails() {
+    @javax.annotation.Nullable public List<ClientReferenceDetail> getClientReferenceDetails() {
         return clientReferenceDetails;
     }
 
-    public void setClientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public void setClientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
     }
 
@@ -133,6 +145,24 @@ public class GetUnmanifestedShipmentsRequest {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        if (jsonObj.get("clientReferenceDetails") != null
+                && !jsonObj.get("clientReferenceDetails").isJsonNull()) {
+            JsonArray jsonArrayclientReferenceDetails = jsonObj.getAsJsonArray("clientReferenceDetails");
+            if (jsonArrayclientReferenceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("clientReferenceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `clientReferenceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("clientReferenceDetails").toString()));
+                }
+
+                // validate the optional field `clientReferenceDetails` (array)
+                for (int i = 0; i < jsonArrayclientReferenceDetails.size(); i++) {
+                    ClientReferenceDetail.validateJsonElement(jsonArrayclientReferenceDetails.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

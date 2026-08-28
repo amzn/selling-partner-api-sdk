@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -52,7 +55,7 @@ public class Shipment {
     public static final String SERIALIZED_NAME_ITEM_LIST = "ItemList";
 
     @SerializedName(SERIALIZED_NAME_ITEM_LIST)
-    private ItemList itemList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIP_FROM_ADDRESS = "ShipFromAddress";
 
@@ -167,22 +170,30 @@ public class Shipment {
         this.sellerOrderId = sellerOrderId;
     }
 
-    public Shipment itemList(ItemList itemList) {
+    public Shipment itemList(List<Item> itemList) {
         this.itemList = itemList;
         return this;
     }
 
+    public Shipment addItemListItem(Item itemListItem) {
+        if (this.itemList == null) {
+            this.itemList = new ArrayList<>();
+        }
+        this.itemList.add(itemListItem);
+        return this;
+    }
+
     /**
-     * Get itemList
+     * The list of items you want to include in a shipment.
      *
      * @return itemList
      */
     @javax.annotation.Nonnull
-    public ItemList getItemList() {
+    public List<Item> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ItemList itemList) {
+    public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
     }
 
@@ -568,6 +579,19 @@ public class Shipment {
                     "Expected the field `SellerOrderId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("SellerOrderId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("ItemList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `ItemList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("ItemList").toString()));
+        }
+
+        JsonArray jsonArrayitemList = jsonObj.getAsJsonArray("ItemList");
+        // validate the required field `ItemList` (array)
+        for (int i = 0; i < jsonArrayitemList.size(); i++) {
+            Item.validateJsonElement(jsonArrayitemList.get(i));
+        }
+        ;
         // validate the required field `ShipFromAddress`
         Address.validateJsonElement(jsonObj.get("ShipFromAddress"));
         // validate the required field `ShipToAddress`

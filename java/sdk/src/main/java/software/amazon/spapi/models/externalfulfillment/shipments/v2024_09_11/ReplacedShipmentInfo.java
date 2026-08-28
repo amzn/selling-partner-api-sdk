@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -54,7 +57,7 @@ public class ReplacedShipmentInfo {
     public static final String SERIALIZED_NAME_ORIGINAL_LINE_ITEMS = "originalLineItems";
 
     @SerializedName(SERIALIZED_NAME_ORIGINAL_LINE_ITEMS)
-    private OriginalLineItems originalLineItems = new ArrayList<>();
+    private List<OriginalLineItem> originalLineItems = new ArrayList<>();
 
     public ReplacedShipmentInfo() {}
 
@@ -115,21 +118,29 @@ public class ReplacedShipmentInfo {
         this.marketplaceAttributes = marketplaceAttributes;
     }
 
-    public ReplacedShipmentInfo originalLineItems(OriginalLineItems originalLineItems) {
+    public ReplacedShipmentInfo originalLineItems(List<OriginalLineItem> originalLineItems) {
         this.originalLineItems = originalLineItems;
         return this;
     }
 
+    public ReplacedShipmentInfo addOriginalLineItemsItem(OriginalLineItem originalLineItemsItem) {
+        if (this.originalLineItems == null) {
+            this.originalLineItems = new ArrayList<>();
+        }
+        this.originalLineItems.add(originalLineItemsItem);
+        return this;
+    }
+
     /**
-     * Get originalLineItems
+     * The line items from the original shipment that corresponds to this shipment.
      *
      * @return originalLineItems
      */
-    @javax.annotation.Nullable public OriginalLineItems getOriginalLineItems() {
+    @javax.annotation.Nullable public List<OriginalLineItem> getOriginalLineItems() {
         return originalLineItems;
     }
 
-    public void setOriginalLineItems(OriginalLineItems originalLineItems) {
+    public void setOriginalLineItems(List<OriginalLineItem> originalLineItems) {
         this.originalLineItems = originalLineItems;
     }
 
@@ -242,6 +253,24 @@ public class ReplacedShipmentInfo {
         }
         // validate the required field `marketplaceAttributes`
         MarketplaceAttributes.validateJsonElement(jsonObj.get("marketplaceAttributes"));
+        if (jsonObj.get("originalLineItems") != null
+                && !jsonObj.get("originalLineItems").isJsonNull()) {
+            JsonArray jsonArrayoriginalLineItems = jsonObj.getAsJsonArray("originalLineItems");
+            if (jsonArrayoriginalLineItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("originalLineItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `originalLineItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("originalLineItems").toString()));
+                }
+
+                // validate the optional field `originalLineItems` (array)
+                for (int i = 0; i < jsonArrayoriginalLineItems.size(); i++) {
+                    OriginalLineItem.validateJsonElement(jsonArrayoriginalLineItems.get(i));
+                }
+                ;
+            }
+        }
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

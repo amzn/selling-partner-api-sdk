@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -72,7 +75,7 @@ public class PackageDetail {
     public static final String SERIALIZED_NAME_ORDER_ITEMS = "orderItems";
 
     @SerializedName(SERIALIZED_NAME_ORDER_ITEMS)
-    private ConfirmShipmentOrderItemsList orderItems = new ArrayList<>();
+    private List<ConfirmShipmentOrderItem> orderItems = new ArrayList<>();
 
     public PackageDetail() {}
 
@@ -211,22 +214,30 @@ public class PackageDetail {
         this.shipFromSupplySourceId = shipFromSupplySourceId;
     }
 
-    public PackageDetail orderItems(ConfirmShipmentOrderItemsList orderItems) {
+    public PackageDetail orderItems(List<ConfirmShipmentOrderItem> orderItems) {
         this.orderItems = orderItems;
         return this;
     }
 
+    public PackageDetail addOrderItemsItem(ConfirmShipmentOrderItem orderItemsItem) {
+        if (this.orderItems == null) {
+            this.orderItems = new ArrayList<>();
+        }
+        this.orderItems.add(orderItemsItem);
+        return this;
+    }
+
     /**
-     * Get orderItems
+     * A list of order items.
      *
      * @return orderItems
      */
     @javax.annotation.Nonnull
-    public ConfirmShipmentOrderItemsList getOrderItems() {
+    public List<ConfirmShipmentOrderItem> getOrderItems() {
         return orderItems;
     }
 
-    public void setOrderItems(ConfirmShipmentOrderItemsList orderItems) {
+    public void setOrderItems(List<ConfirmShipmentOrderItem> orderItems) {
         this.orderItems = orderItems;
     }
 
@@ -388,6 +399,19 @@ public class PackageDetail {
                     "Expected the field `shipFromSupplySourceId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("shipFromSupplySourceId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("orderItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderItems").toString()));
+        }
+
+        JsonArray jsonArrayorderItems = jsonObj.getAsJsonArray("orderItems");
+        // validate the required field `orderItems` (array)
+        for (int i = 0; i < jsonArrayorderItems.size(); i++) {
+            ConfirmShipmentOrderItem.validateJsonElement(jsonArrayorderItems.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +44,7 @@ public class UpdateScheduledPackagesRequest {
     public static final String SERIALIZED_NAME_UPDATE_PACKAGE_DETAILS_LIST = "updatePackageDetailsList";
 
     @SerializedName(SERIALIZED_NAME_UPDATE_PACKAGE_DETAILS_LIST)
-    private UpdatePackageDetailsList updatePackageDetailsList = new ArrayList<>();
+    private List<UpdatePackageDetails> updatePackageDetailsList = new ArrayList<>();
 
     public UpdateScheduledPackagesRequest() {}
 
@@ -64,22 +67,32 @@ public class UpdateScheduledPackagesRequest {
         this.marketplaceId = marketplaceId;
     }
 
-    public UpdateScheduledPackagesRequest updatePackageDetailsList(UpdatePackageDetailsList updatePackageDetailsList) {
+    public UpdateScheduledPackagesRequest updatePackageDetailsList(
+            List<UpdatePackageDetails> updatePackageDetailsList) {
         this.updatePackageDetailsList = updatePackageDetailsList;
         return this;
     }
 
+    public UpdateScheduledPackagesRequest addUpdatePackageDetailsListItem(
+            UpdatePackageDetails updatePackageDetailsListItem) {
+        if (this.updatePackageDetailsList == null) {
+            this.updatePackageDetailsList = new ArrayList<>();
+        }
+        this.updatePackageDetailsList.add(updatePackageDetailsListItem);
+        return this;
+    }
+
     /**
-     * Get updatePackageDetailsList
+     * A list of package update details.
      *
      * @return updatePackageDetailsList
      */
     @javax.annotation.Nonnull
-    public UpdatePackageDetailsList getUpdatePackageDetailsList() {
+    public List<UpdatePackageDetails> getUpdatePackageDetailsList() {
         return updatePackageDetailsList;
     }
 
-    public void setUpdatePackageDetailsList(UpdatePackageDetailsList updatePackageDetailsList) {
+    public void setUpdatePackageDetailsList(List<UpdatePackageDetails> updatePackageDetailsList) {
         this.updatePackageDetailsList = updatePackageDetailsList;
     }
 
@@ -178,6 +191,19 @@ public class UpdateScheduledPackagesRequest {
                     "Expected the field `marketplaceId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("marketplaceId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("updatePackageDetailsList").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `updatePackageDetailsList` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("updatePackageDetailsList").toString()));
+        }
+
+        JsonArray jsonArrayupdatePackageDetailsList = jsonObj.getAsJsonArray("updatePackageDetailsList");
+        // validate the required field `updatePackageDetailsList` (array)
+        for (int i = 0; i < jsonArrayupdatePackageDetailsList.size(); i++) {
+            UpdatePackageDetails.validateJsonElement(jsonArrayupdatePackageDetailsList.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,7 +24,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -65,7 +68,7 @@ public class GetRatesRequest {
     public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
     @SerializedName(SERIALIZED_NAME_PACKAGES)
-    private PackageList packages = new ArrayList<>();
+    private List<ModelPackage> packages = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_VALUE_ADDED_SERVICES = "valueAddedServices";
 
@@ -75,7 +78,7 @@ public class GetRatesRequest {
     public static final String SERIALIZED_NAME_TAX_DETAILS = "taxDetails";
 
     @SerializedName(SERIALIZED_NAME_TAX_DETAILS)
-    private TaxDetailList taxDetails = new ArrayList<>();
+    private List<TaxDetail> taxDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CHANNEL_DETAILS = "channelDetails";
 
@@ -85,7 +88,7 @@ public class GetRatesRequest {
     public static final String SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS = "clientReferenceDetails";
 
     @SerializedName(SERIALIZED_NAME_CLIENT_REFERENCE_DETAILS)
-    private ClientReferenceDetails clientReferenceDetails = new ArrayList<>();
+    private List<ClientReferenceDetail> clientReferenceDetails = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_SHIPMENT_TYPE = "shipmentType";
 
@@ -100,7 +103,7 @@ public class GetRatesRequest {
     public static final String SERIALIZED_NAME_CARRIER_ACCOUNTS = "carrierAccounts";
 
     @SerializedName(SERIALIZED_NAME_CARRIER_ACCOUNTS)
-    private CarrierAccounts carrierAccounts = new ArrayList<>();
+    private List<CarrierAccount> carrierAccounts = new ArrayList<>();
 
     public GetRatesRequest() {}
 
@@ -195,22 +198,30 @@ public class GetRatesRequest {
         this.shipperInstruction = shipperInstruction;
     }
 
-    public GetRatesRequest packages(PackageList packages) {
+    public GetRatesRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public GetRatesRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * A list of packages to be shipped through a shipping service offering.
      *
      * @return packages
      */
     @javax.annotation.Nonnull
-    public PackageList getPackages() {
+    public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackageList packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
@@ -232,21 +243,29 @@ public class GetRatesRequest {
         this.valueAddedServices = valueAddedServices;
     }
 
-    public GetRatesRequest taxDetails(TaxDetailList taxDetails) {
+    public GetRatesRequest taxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
         return this;
     }
 
+    public GetRatesRequest addTaxDetailsItem(TaxDetail taxDetailsItem) {
+        if (this.taxDetails == null) {
+            this.taxDetails = new ArrayList<>();
+        }
+        this.taxDetails.add(taxDetailsItem);
+        return this;
+    }
+
     /**
-     * Get taxDetails
+     * A list of tax detail information.
      *
      * @return taxDetails
      */
-    @javax.annotation.Nullable public TaxDetailList getTaxDetails() {
+    @javax.annotation.Nullable public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
 
-    public void setTaxDetails(TaxDetailList taxDetails) {
+    public void setTaxDetails(List<TaxDetail> taxDetails) {
         this.taxDetails = taxDetails;
     }
 
@@ -269,21 +288,29 @@ public class GetRatesRequest {
         this.channelDetails = channelDetails;
     }
 
-    public GetRatesRequest clientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public GetRatesRequest clientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
         return this;
     }
 
+    public GetRatesRequest addClientReferenceDetailsItem(ClientReferenceDetail clientReferenceDetailsItem) {
+        if (this.clientReferenceDetails == null) {
+            this.clientReferenceDetails = new ArrayList<>();
+        }
+        this.clientReferenceDetails.add(clientReferenceDetailsItem);
+        return this;
+    }
+
     /**
-     * Get clientReferenceDetails
+     * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      *
      * @return clientReferenceDetails
      */
-    @javax.annotation.Nullable public ClientReferenceDetails getClientReferenceDetails() {
+    @javax.annotation.Nullable public List<ClientReferenceDetail> getClientReferenceDetails() {
         return clientReferenceDetails;
     }
 
-    public void setClientReferenceDetails(ClientReferenceDetails clientReferenceDetails) {
+    public void setClientReferenceDetails(List<ClientReferenceDetail> clientReferenceDetails) {
         this.clientReferenceDetails = clientReferenceDetails;
     }
 
@@ -323,21 +350,29 @@ public class GetRatesRequest {
         this.destinationAccessPointDetails = destinationAccessPointDetails;
     }
 
-    public GetRatesRequest carrierAccounts(CarrierAccounts carrierAccounts) {
+    public GetRatesRequest carrierAccounts(List<CarrierAccount> carrierAccounts) {
         this.carrierAccounts = carrierAccounts;
         return this;
     }
 
+    public GetRatesRequest addCarrierAccountsItem(CarrierAccount carrierAccountsItem) {
+        if (this.carrierAccounts == null) {
+            this.carrierAccounts = new ArrayList<>();
+        }
+        this.carrierAccounts.add(carrierAccountsItem);
+        return this;
+    }
+
     /**
-     * Get carrierAccounts
+     * A list of CarrierAccounts
      *
      * @return carrierAccounts
      */
-    @javax.annotation.Nullable public CarrierAccounts getCarrierAccounts() {
+    @javax.annotation.Nullable public List<CarrierAccount> getCarrierAccounts() {
         return carrierAccounts;
     }
 
-    public void setCarrierAccounts(CarrierAccounts carrierAccounts) {
+    public void setCarrierAccounts(List<CarrierAccount> carrierAccounts) {
         this.carrierAccounts = carrierAccounts;
     }
 
@@ -501,13 +536,61 @@ public class GetRatesRequest {
                 && !jsonObj.get("shipperInstruction").isJsonNull()) {
             ShipperInstruction.validateJsonElement(jsonObj.get("shipperInstruction"));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("packages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packages").toString()));
+        }
+
+        JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+        // validate the required field `packages` (array)
+        for (int i = 0; i < jsonArraypackages.size(); i++) {
+            ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+        }
+        ;
         // validate the optional field `valueAddedServices`
         if (jsonObj.get("valueAddedServices") != null
                 && !jsonObj.get("valueAddedServices").isJsonNull()) {
             ValueAddedServiceDetails.validateJsonElement(jsonObj.get("valueAddedServices"));
         }
+        if (jsonObj.get("taxDetails") != null && !jsonObj.get("taxDetails").isJsonNull()) {
+            JsonArray jsonArraytaxDetails = jsonObj.getAsJsonArray("taxDetails");
+            if (jsonArraytaxDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("taxDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `taxDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("taxDetails").toString()));
+                }
+
+                // validate the optional field `taxDetails` (array)
+                for (int i = 0; i < jsonArraytaxDetails.size(); i++) {
+                    TaxDetail.validateJsonElement(jsonArraytaxDetails.get(i));
+                }
+                ;
+            }
+        }
         // validate the required field `channelDetails`
         ChannelDetails.validateJsonElement(jsonObj.get("channelDetails"));
+        if (jsonObj.get("clientReferenceDetails") != null
+                && !jsonObj.get("clientReferenceDetails").isJsonNull()) {
+            JsonArray jsonArrayclientReferenceDetails = jsonObj.getAsJsonArray("clientReferenceDetails");
+            if (jsonArrayclientReferenceDetails != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("clientReferenceDetails").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `clientReferenceDetails` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("clientReferenceDetails").toString()));
+                }
+
+                // validate the optional field `clientReferenceDetails` (array)
+                for (int i = 0; i < jsonArrayclientReferenceDetails.size(); i++) {
+                    ClientReferenceDetail.validateJsonElement(jsonArrayclientReferenceDetails.get(i));
+                }
+                ;
+            }
+        }
         // validate the optional field `shipmentType`
         if (jsonObj.get("shipmentType") != null && !jsonObj.get("shipmentType").isJsonNull()) {
             ShipmentType.validateJsonElement(jsonObj.get("shipmentType"));
@@ -516,6 +599,24 @@ public class GetRatesRequest {
         if (jsonObj.get("destinationAccessPointDetails") != null
                 && !jsonObj.get("destinationAccessPointDetails").isJsonNull()) {
             AccessPointDetails.validateJsonElement(jsonObj.get("destinationAccessPointDetails"));
+        }
+        if (jsonObj.get("carrierAccounts") != null
+                && !jsonObj.get("carrierAccounts").isJsonNull()) {
+            JsonArray jsonArraycarrierAccounts = jsonObj.getAsJsonArray("carrierAccounts");
+            if (jsonArraycarrierAccounts != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("carrierAccounts").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `carrierAccounts` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("carrierAccounts").toString()));
+                }
+
+                // validate the optional field `carrierAccounts` (array)
+                for (int i = 0; i < jsonArraycarrierAccounts.size(); i++) {
+                    CarrierAccount.validateJsonElement(jsonArraycarrierAccounts.get(i));
+                }
+                ;
+            }
         }
     }
 

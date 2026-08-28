@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -36,26 +39,34 @@ public class GetCarrierAccountsResponse {
     public static final String SERIALIZED_NAME_ACTIVE_ACCOUNTS = "activeAccounts";
 
     @SerializedName(SERIALIZED_NAME_ACTIVE_ACCOUNTS)
-    private ActiveAccounts activeAccounts = new ArrayList<>();
+    private List<ActiveAccount> activeAccounts = new ArrayList<>();
 
     public GetCarrierAccountsResponse() {}
 
-    public GetCarrierAccountsResponse activeAccounts(ActiveAccounts activeAccounts) {
+    public GetCarrierAccountsResponse activeAccounts(List<ActiveAccount> activeAccounts) {
         this.activeAccounts = activeAccounts;
         return this;
     }
 
+    public GetCarrierAccountsResponse addActiveAccountsItem(ActiveAccount activeAccountsItem) {
+        if (this.activeAccounts == null) {
+            this.activeAccounts = new ArrayList<>();
+        }
+        this.activeAccounts.add(activeAccountsItem);
+        return this;
+    }
+
     /**
-     * Get activeAccounts
+     * A list of ActiveAccount
      *
      * @return activeAccounts
      */
     @javax.annotation.Nonnull
-    public ActiveAccounts getActiveAccounts() {
+    public List<ActiveAccount> getActiveAccounts() {
         return activeAccounts;
     }
 
-    public void setActiveAccounts(ActiveAccounts activeAccounts) {
+    public void setActiveAccounts(List<ActiveAccount> activeAccounts) {
         this.activeAccounts = activeAccounts;
     }
 
@@ -144,6 +155,19 @@ public class GetCarrierAccountsResponse {
             }
         }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+        // ensure the json data is an array
+        if (!jsonObj.get("activeAccounts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `activeAccounts` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("activeAccounts").toString()));
+        }
+
+        JsonArray jsonArrayactiveAccounts = jsonObj.getAsJsonArray("activeAccounts");
+        // validate the required field `activeAccounts` (array)
+        for (int i = 0; i < jsonArrayactiveAccounts.size(); i++) {
+            ActiveAccount.validateJsonElement(jsonArrayactiveAccounts.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

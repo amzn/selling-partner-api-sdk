@@ -47,12 +47,12 @@ public class BatchRequest {
     public static final String SERIALIZED_NAME_BODY = "body";
 
     @SerializedName(SERIALIZED_NAME_BODY)
-    private HttpBody body = new HashMap<>();
+    private Map<String, Object> body = new HashMap<>();
 
     public static final String SERIALIZED_NAME_HEADERS = "headers";
 
     @SerializedName(SERIALIZED_NAME_HEADERS)
-    private HttpHeaders headers = new HashMap<>();
+    private Map<String, String> headers = new HashMap<>();
 
     public BatchRequest() {}
 
@@ -95,39 +95,55 @@ public class BatchRequest {
         this.method = method;
     }
 
-    public BatchRequest body(HttpBody body) {
+    public BatchRequest body(Map<String, Object> body) {
         this.body = body;
         return this;
     }
 
+    public BatchRequest putBodyItem(String key, Object bodyItem) {
+        if (this.body == null) {
+            this.body = new HashMap<>();
+        }
+        this.body.put(key, bodyItem);
+        return this;
+    }
+
     /**
-     * Get body
+     * Additional HTTP body information that is associated with an individual request within a batch.
      *
      * @return body
      */
-    @javax.annotation.Nullable public HttpBody getBody() {
+    @javax.annotation.Nullable public Map<String, Object> getBody() {
         return body;
     }
 
-    public void setBody(HttpBody body) {
+    public void setBody(Map<String, Object> body) {
         this.body = body;
     }
 
-    public BatchRequest headers(HttpHeaders headers) {
+    public BatchRequest headers(Map<String, String> headers) {
         this.headers = headers;
         return this;
     }
 
+    public BatchRequest putHeadersItem(String key, String headersItem) {
+        if (this.headers == null) {
+            this.headers = new HashMap<>();
+        }
+        this.headers.put(key, headersItem);
+        return this;
+    }
+
     /**
-     * Get headers
+     * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
      *
      * @return headers
      */
-    @javax.annotation.Nullable public HttpHeaders getHeaders() {
+    @javax.annotation.Nullable public Map<String, String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(HttpHeaders headers) {
+    public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
     }
 

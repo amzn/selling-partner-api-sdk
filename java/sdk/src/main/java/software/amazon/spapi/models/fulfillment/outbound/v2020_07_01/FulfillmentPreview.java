@@ -64,22 +64,22 @@ public class FulfillmentPreview {
     public static final String SERIALIZED_NAME_ESTIMATED_FEES = "estimatedFees";
 
     @SerializedName(SERIALIZED_NAME_ESTIMATED_FEES)
-    private FeeList estimatedFees = new ArrayList<>();
+    private List<Fee> estimatedFees = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_FULFILLMENT_PREVIEW_SHIPMENTS = "fulfillmentPreviewShipments";
 
     @SerializedName(SERIALIZED_NAME_FULFILLMENT_PREVIEW_SHIPMENTS)
-    private FulfillmentPreviewShipmentList fulfillmentPreviewShipments = new ArrayList<>();
+    private List<FulfillmentPreviewShipment> fulfillmentPreviewShipments = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_UNFULFILLABLE_PREVIEW_ITEMS = "unfulfillablePreviewItems";
 
     @SerializedName(SERIALIZED_NAME_UNFULFILLABLE_PREVIEW_ITEMS)
-    private UnfulfillablePreviewItemList unfulfillablePreviewItems = new ArrayList<>();
+    private List<UnfulfillablePreviewItem> unfulfillablePreviewItems = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_ORDER_UNFULFILLABLE_REASONS = "orderUnfulfillableReasons";
 
     @SerializedName(SERIALIZED_NAME_ORDER_UNFULFILLABLE_REASONS)
-    private StringList orderUnfulfillableReasons = new ArrayList<>();
+    private List<String> orderUnfulfillableReasons = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_MARKETPLACE_ID = "marketplaceId";
 
@@ -186,75 +186,109 @@ public class FulfillmentPreview {
         this.estimatedShippingWeight = estimatedShippingWeight;
     }
 
-    public FulfillmentPreview estimatedFees(FeeList estimatedFees) {
+    public FulfillmentPreview estimatedFees(List<Fee> estimatedFees) {
         this.estimatedFees = estimatedFees;
         return this;
     }
 
+    public FulfillmentPreview addEstimatedFeesItem(Fee estimatedFeesItem) {
+        if (this.estimatedFees == null) {
+            this.estimatedFees = new ArrayList<>();
+        }
+        this.estimatedFees.add(estimatedFeesItem);
+        return this;
+    }
+
     /**
-     * Get estimatedFees
+     * An array of fee type and cost pairs.
      *
      * @return estimatedFees
      */
-    @javax.annotation.Nullable public FeeList getEstimatedFees() {
+    @javax.annotation.Nullable public List<Fee> getEstimatedFees() {
         return estimatedFees;
     }
 
-    public void setEstimatedFees(FeeList estimatedFees) {
+    public void setEstimatedFees(List<Fee> estimatedFees) {
         this.estimatedFees = estimatedFees;
     }
 
-    public FulfillmentPreview fulfillmentPreviewShipments(FulfillmentPreviewShipmentList fulfillmentPreviewShipments) {
+    public FulfillmentPreview fulfillmentPreviewShipments(
+            List<FulfillmentPreviewShipment> fulfillmentPreviewShipments) {
         this.fulfillmentPreviewShipments = fulfillmentPreviewShipments;
         return this;
     }
 
+    public FulfillmentPreview addFulfillmentPreviewShipmentsItem(
+            FulfillmentPreviewShipment fulfillmentPreviewShipmentsItem) {
+        if (this.fulfillmentPreviewShipments == null) {
+            this.fulfillmentPreviewShipments = new ArrayList<>();
+        }
+        this.fulfillmentPreviewShipments.add(fulfillmentPreviewShipmentsItem);
+        return this;
+    }
+
     /**
-     * Get fulfillmentPreviewShipments
+     * An array of fulfillment preview shipment information.
      *
      * @return fulfillmentPreviewShipments
      */
-    @javax.annotation.Nullable public FulfillmentPreviewShipmentList getFulfillmentPreviewShipments() {
+    @javax.annotation.Nullable public List<FulfillmentPreviewShipment> getFulfillmentPreviewShipments() {
         return fulfillmentPreviewShipments;
     }
 
-    public void setFulfillmentPreviewShipments(FulfillmentPreviewShipmentList fulfillmentPreviewShipments) {
+    public void setFulfillmentPreviewShipments(List<FulfillmentPreviewShipment> fulfillmentPreviewShipments) {
         this.fulfillmentPreviewShipments = fulfillmentPreviewShipments;
     }
 
-    public FulfillmentPreview unfulfillablePreviewItems(UnfulfillablePreviewItemList unfulfillablePreviewItems) {
+    public FulfillmentPreview unfulfillablePreviewItems(List<UnfulfillablePreviewItem> unfulfillablePreviewItems) {
         this.unfulfillablePreviewItems = unfulfillablePreviewItems;
         return this;
     }
 
+    public FulfillmentPreview addUnfulfillablePreviewItemsItem(UnfulfillablePreviewItem unfulfillablePreviewItemsItem) {
+        if (this.unfulfillablePreviewItems == null) {
+            this.unfulfillablePreviewItems = new ArrayList<>();
+        }
+        this.unfulfillablePreviewItems.add(unfulfillablePreviewItemsItem);
+        return this;
+    }
+
     /**
-     * Get unfulfillablePreviewItems
+     * An array of unfulfillable preview item information.
      *
      * @return unfulfillablePreviewItems
      */
-    @javax.annotation.Nullable public UnfulfillablePreviewItemList getUnfulfillablePreviewItems() {
+    @javax.annotation.Nullable public List<UnfulfillablePreviewItem> getUnfulfillablePreviewItems() {
         return unfulfillablePreviewItems;
     }
 
-    public void setUnfulfillablePreviewItems(UnfulfillablePreviewItemList unfulfillablePreviewItems) {
+    public void setUnfulfillablePreviewItems(List<UnfulfillablePreviewItem> unfulfillablePreviewItems) {
         this.unfulfillablePreviewItems = unfulfillablePreviewItems;
     }
 
-    public FulfillmentPreview orderUnfulfillableReasons(StringList orderUnfulfillableReasons) {
+    public FulfillmentPreview orderUnfulfillableReasons(List<String> orderUnfulfillableReasons) {
         this.orderUnfulfillableReasons = orderUnfulfillableReasons;
         return this;
     }
 
+    public FulfillmentPreview addOrderUnfulfillableReasonsItem(String orderUnfulfillableReasonsItem) {
+        if (this.orderUnfulfillableReasons == null) {
+            this.orderUnfulfillableReasons = new ArrayList<>();
+        }
+        this.orderUnfulfillableReasons.add(orderUnfulfillableReasonsItem);
+        return this;
+    }
+
     /**
-     * Get orderUnfulfillableReasons
+     * String list
      *
      * @return orderUnfulfillableReasons
      */
-    @javax.annotation.Nullable public StringList getOrderUnfulfillableReasons() {
+    @javax.annotation.Nullable public List<String> getOrderUnfulfillableReasons() {
         return orderUnfulfillableReasons;
     }
 
-    public void setOrderUnfulfillableReasons(StringList orderUnfulfillableReasons) {
+    public void setOrderUnfulfillableReasons(List<String> orderUnfulfillableReasons) {
         this.orderUnfulfillableReasons = orderUnfulfillableReasons;
     }
 
@@ -454,6 +488,68 @@ public class FulfillmentPreview {
         if (jsonObj.get("estimatedShippingWeight") != null
                 && !jsonObj.get("estimatedShippingWeight").isJsonNull()) {
             Weight.validateJsonElement(jsonObj.get("estimatedShippingWeight"));
+        }
+        if (jsonObj.get("estimatedFees") != null
+                && !jsonObj.get("estimatedFees").isJsonNull()) {
+            JsonArray jsonArrayestimatedFees = jsonObj.getAsJsonArray("estimatedFees");
+            if (jsonArrayestimatedFees != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("estimatedFees").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `estimatedFees` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("estimatedFees").toString()));
+                }
+
+                // validate the optional field `estimatedFees` (array)
+                for (int i = 0; i < jsonArrayestimatedFees.size(); i++) {
+                    Fee.validateJsonElement(jsonArrayestimatedFees.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("fulfillmentPreviewShipments") != null
+                && !jsonObj.get("fulfillmentPreviewShipments").isJsonNull()) {
+            JsonArray jsonArrayfulfillmentPreviewShipments = jsonObj.getAsJsonArray("fulfillmentPreviewShipments");
+            if (jsonArrayfulfillmentPreviewShipments != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("fulfillmentPreviewShipments").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `fulfillmentPreviewShipments` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("fulfillmentPreviewShipments").toString()));
+                }
+
+                // validate the optional field `fulfillmentPreviewShipments` (array)
+                for (int i = 0; i < jsonArrayfulfillmentPreviewShipments.size(); i++) {
+                    FulfillmentPreviewShipment.validateJsonElement(jsonArrayfulfillmentPreviewShipments.get(i));
+                }
+                ;
+            }
+        }
+        if (jsonObj.get("unfulfillablePreviewItems") != null
+                && !jsonObj.get("unfulfillablePreviewItems").isJsonNull()) {
+            JsonArray jsonArrayunfulfillablePreviewItems = jsonObj.getAsJsonArray("unfulfillablePreviewItems");
+            if (jsonArrayunfulfillablePreviewItems != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("unfulfillablePreviewItems").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `unfulfillablePreviewItems` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("unfulfillablePreviewItems").toString()));
+                }
+
+                // validate the optional field `unfulfillablePreviewItems` (array)
+                for (int i = 0; i < jsonArrayunfulfillablePreviewItems.size(); i++) {
+                    UnfulfillablePreviewItem.validateJsonElement(jsonArrayunfulfillablePreviewItems.get(i));
+                }
+                ;
+            }
+        }
+        // ensure the optional json data is an array if present
+        if (jsonObj.get("orderUnfulfillableReasons") != null
+                && !jsonObj.get("orderUnfulfillableReasons").isJsonNull()
+                && !jsonObj.get("orderUnfulfillableReasons").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `orderUnfulfillableReasons` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("orderUnfulfillableReasons").toString()));
         }
         if (!jsonObj.get("marketplaceId").isJsonPrimitive()) {
             throw new IllegalArgumentException(String.format(

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -56,7 +59,7 @@ public class CreateContainerLabelRequest {
     public static final String SERIALIZED_NAME_PACKAGES = "packages";
 
     @SerializedName(SERIALIZED_NAME_PACKAGES)
-    private Packages packages = new ArrayList<>();
+    private List<ModelPackage> packages = new ArrayList<>();
 
     public CreateContainerLabelRequest() {}
 
@@ -136,22 +139,30 @@ public class CreateContainerLabelRequest {
         this.vendorContainerId = vendorContainerId;
     }
 
-    public CreateContainerLabelRequest packages(Packages packages) {
+    public CreateContainerLabelRequest packages(List<ModelPackage> packages) {
         this.packages = packages;
         return this;
     }
 
+    public CreateContainerLabelRequest addPackagesItem(ModelPackage packagesItem) {
+        if (this.packages == null) {
+            this.packages = new ArrayList<>();
+        }
+        this.packages.add(packagesItem);
+        return this;
+    }
+
     /**
-     * Get packages
+     * An array of package objects in a container.
      *
      * @return packages
      */
     @javax.annotation.Nonnull
-    public Packages getPackages() {
+    public List<ModelPackage> getPackages() {
         return packages;
     }
 
-    public void setPackages(Packages packages) {
+    public void setPackages(List<ModelPackage> packages) {
         this.packages = packages;
     }
 
@@ -267,6 +278,19 @@ public class CreateContainerLabelRequest {
                     "Expected the field `vendorContainerId` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("vendorContainerId").toString()));
         }
+        // ensure the json data is an array
+        if (!jsonObj.get("packages").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `packages` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("packages").toString()));
+        }
+
+        JsonArray jsonArraypackages = jsonObj.getAsJsonArray("packages");
+        // validate the required field `packages` (array)
+        for (int i = 0; i < jsonArraypackages.size(); i++) {
+            ModelPackage.validateJsonElement(jsonArraypackages.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -22,7 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -46,7 +49,7 @@ public class RecommendedPackage {
     public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
 
     @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
-    private RecommendedPackageLineItems lineItems = new ArrayList<>();
+    private List<RecommendedPackageLineItem> lineItems = new ArrayList<>();
 
     public RecommendedPackage() {}
 
@@ -88,22 +91,31 @@ public class RecommendedPackage {
         this.weight = weight;
     }
 
-    public RecommendedPackage lineItems(RecommendedPackageLineItems lineItems) {
+    public RecommendedPackage lineItems(List<RecommendedPackageLineItem> lineItems) {
         this.lineItems = lineItems;
         return this;
     }
 
+    public RecommendedPackage addLineItemsItem(RecommendedPackageLineItem lineItemsItem) {
+        if (this.lineItems == null) {
+            this.lineItems = new ArrayList<>();
+        }
+        this.lineItems.add(lineItemsItem);
+        return this;
+    }
+
     /**
-     * Get lineItems
+     * A list of line items to be contained in a recommended package. This attribute is only for orders that come with
+     * specific recommendations for line-item distribution.
      *
      * @return lineItems
      */
     @javax.annotation.Nonnull
-    public RecommendedPackageLineItems getLineItems() {
+    public List<RecommendedPackageLineItem> getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(RecommendedPackageLineItems lineItems) {
+    public void setLineItems(List<RecommendedPackageLineItem> lineItems) {
         this.lineItems = lineItems;
     }
 
@@ -201,6 +213,19 @@ public class RecommendedPackage {
         PackageDimensions.validateJsonElement(jsonObj.get("dimensions"));
         // validate the required field `weight`
         Weight.validateJsonElement(jsonObj.get("weight"));
+        // ensure the json data is an array
+        if (!jsonObj.get("lineItems").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(
+                    "Expected the field `lineItems` to be an array in the JSON string but got `%s`",
+                    jsonObj.get("lineItems").toString()));
+        }
+
+        JsonArray jsonArraylineItems = jsonObj.getAsJsonArray("lineItems");
+        // validate the required field `lineItems` (array)
+        for (int i = 0; i < jsonArraylineItems.size(); i++) {
+            RecommendedPackageLineItem.validateJsonElement(jsonArraylineItems.get(i));
+        }
+        ;
     }
 
     public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

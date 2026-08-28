@@ -13,6 +13,7 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
@@ -23,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -41,7 +43,7 @@ public class TextComponent {
     public static final String SERIALIZED_NAME_DECORATOR_SET = "decoratorSet";
 
     @SerializedName(SERIALIZED_NAME_DECORATOR_SET)
-    private DecoratorSet decoratorSet = new LinkedHashSet<>();
+    private Set<Decorator> decoratorSet = new LinkedHashSet<>();
 
     public TextComponent() {}
 
@@ -64,21 +66,29 @@ public class TextComponent {
         this.value = value;
     }
 
-    public TextComponent decoratorSet(DecoratorSet decoratorSet) {
+    public TextComponent decoratorSet(Set<Decorator> decoratorSet) {
         this.decoratorSet = decoratorSet;
         return this;
     }
 
+    public TextComponent addDecoratorSetItem(Decorator decoratorSetItem) {
+        if (this.decoratorSet == null) {
+            this.decoratorSet = new LinkedHashSet<>();
+        }
+        this.decoratorSet.add(decoratorSetItem);
+        return this;
+    }
+
     /**
-     * Get decoratorSet
+     * A set of content decorators.
      *
      * @return decoratorSet
      */
-    @javax.annotation.Nullable public DecoratorSet getDecoratorSet() {
+    @javax.annotation.Nullable public Set<Decorator> getDecoratorSet() {
         return decoratorSet;
     }
 
-    public void setDecoratorSet(DecoratorSet decoratorSet) {
+    public void setDecoratorSet(Set<Decorator> decoratorSet) {
         this.decoratorSet = decoratorSet;
     }
 
@@ -171,6 +181,23 @@ public class TextComponent {
             throw new IllegalArgumentException(String.format(
                     "Expected the field `value` to be a primitive type in the JSON string but got `%s`",
                     jsonObj.get("value").toString()));
+        }
+        if (jsonObj.get("decoratorSet") != null && !jsonObj.get("decoratorSet").isJsonNull()) {
+            JsonArray jsonArraydecoratorSet = jsonObj.getAsJsonArray("decoratorSet");
+            if (jsonArraydecoratorSet != null) {
+                // ensure the json data is an array
+                if (!jsonObj.get("decoratorSet").isJsonArray()) {
+                    throw new IllegalArgumentException(String.format(
+                            "Expected the field `decoratorSet` to be an array in the JSON string but got `%s`",
+                            jsonObj.get("decoratorSet").toString()));
+                }
+
+                // validate the optional field `decoratorSet` (array)
+                for (int i = 0; i < jsonArraydecoratorSet.size(); i++) {
+                    Decorator.validateJsonElement(jsonArraydecoratorSet.get(i));
+                }
+                ;
+            }
         }
     }
 
