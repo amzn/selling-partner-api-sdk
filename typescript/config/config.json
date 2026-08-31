@@ -1,0 +1,20 @@
+{
+    "modelPropertyNaming": "camelCase",
+    "supportsES6": true,
+    "platform": "node",
+    "globalProperties": {
+        "modelTests": false,
+        "modelDocs": false,
+        "apiDocs": false
+    },
+    "files": {
+        "RateLimiter.mustache": {
+            "templateFile": "RateLimiter.mustache",
+            "destinationFilename": "RateLimiter.ts"
+        },
+        "api_test.mustache": {
+            "templateFile": "api_test.mustache",
+            "destinationFilename": "test/ApiTest.spec.ts"
+        }
+    }
+}

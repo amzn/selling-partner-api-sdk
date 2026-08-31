@@ -1,0 +1,142 @@
+{{>licenseInfo}}
+import expect from 'expect.js';
+import {
+    createConfiguration,
+    ServerConfiguration,
+{{#apiInfo}}
+{{#apis}}
+    {{classname}},
+{{/apis}}
+{{/apiInfo}}
+} from '../index';
+import type { RequestContext } from '../http/http';
+
+const endpoint = 'http://localhost:3000';
+
+/**
+ * Test access token authentication.
+ *
+ * The generated APIs do not declare an SP-API security scheme to the code
+ * generator, so we attach the `x-amz-access-token` header via a custom
+ * authentication method rather than through generated auth config.
+ */
+const testAuth = {
+    getName(): string {
+        return 'testAccessToken';
+    },
+    applySecurityAuthentication(context: RequestContext): void {
+        context.setHeaderParam('x-amz-access-token', 'testAccessToken');
+    },
+};
+
+/**
+ * Builds a Configuration pointed at the local mock backend with the test
+ * access token applied to every request.
+ */
+function buildConfiguration() {
+    return createConfiguration({
+        baseServer: new ServerConfiguration(endpoint, {}),
+        authMethods: { default: testAuth },
+    });
+}
+
+{{#apiInfo}}
+{{#apis}}
+describe('{{classname}}', () => {
+    let instance: {{classname}};
+
+    beforeEach(() => {
+        instance = new {{classname}}(buildConfiguration());
+    });
+
+{{#operations}}
+{{#operation}}
+    describe('{{operationId}}', () => {
+        it('should successfully call {{operationId}}WithHttpInfo', async () => {
+            await instructBackendMock('{{#tags}}{{#-first}}{{name}}{{/-first}}{{/tags}}', '{{operationId}}', '{{#responses}}{{#-first}}{{code}}{{/-first}}{{/responses}}');
+{{#hasParams}}
+            const response = await instance.{{operationId}}WithHttpInfo(
+{{#allParams}}
+{{#required}}
+                {{#isBodyParam}}generateMockData('{{{dataType}}}'){{/isBodyParam}}{{^isBodyParam}}{{#isArray}}generateMockData('{{{items.dataType}}}', true){{/isArray}}{{^isArray}}generateMockData('{{{dataType}}}'){{/isArray}}{{/isBodyParam}} as any,
+{{/required}}
+{{/allParams}}
+            );
+{{/hasParams}}
+{{^hasParams}}
+            const response = await instance.{{operationId}}WithHttpInfo();
+{{/hasParams}}
+
+            expect(response).to.have.property('httpStatusCode');
+            expect(response.httpStatusCode).to.equal({{#responses}}{{#-first}}{{code}}{{/-first}}{{/responses}});
+{{#responses}}
+{{#-first}}
+{{#dataType}}
+            assertValidResponsePayload(response.httpStatusCode, response.data);
+{{/dataType}}
+{{/-first}}
+{{/responses}}
+        });
+    });
+
+{{/operation}}
+{{/operations}}
+});
+
+{{/apis}}
+{{/apiInfo}}
+
+/**
+ * Asserts a response payload is present unless the response is 204 No Content.
+ */
+function assertValidResponsePayload(statusCode: number, payload: unknown): void {
+    if (statusCode !== 204) {
+        expect(payload).to.be.ok();
+    }
+}
+
+/**
+ * Instructs the mock backend which canned response to return for the next call.
+ *
+ * Mirrors the JavaScript SDK: the mock serves `res/responses/<name>Response.json`
+ * where `<name>` is `<compressedTag>-<operationId>`, with the given status code.
+ */
+async function instructBackendMock(tag: string, operationId: string, code: string): Promise<void> {
+    const compressedTag = tag.replace(/[\W\s]/g, '').toLowerCase();
+    const url = `${endpoint}/response/${compressedTag}-${operationId}/code/${code}`;
+    try {
+        await fetch(url, { method: 'POST', body: null });
+    } catch (error) {
+        console.error('Request to configure mock backend failed:', error);
+    }
+}
+
+/**
+ * Generates random mock data for a required parameter based on its type.
+ *
+ * Primitive types get representative random values; everything else (model
+ * types) gets an empty object, which is sufficient because the mock backend
+ * ignores request bodies and returns the pre-configured canned response.
+ */
+function generateMockData(dataType: string, isArray = false): unknown {
+    if (!dataType) {
+        return {};
+    }
+
+    if (isArray) {
+        return [generateMockData(dataType), generateMockData(dataType)];
+    }
+
+    switch (dataType) {
+        case 'string':
+            return 'mock-' + Math.random().toString(36).substring(2, 10);
+        case 'number':
+            return Math.floor(Math.random() * 1000);
+        case 'boolean':
+            return Math.random() > 0.5;
+        case 'Date':
+            return new Date();
+        default:
+            return {};
+    }
+}

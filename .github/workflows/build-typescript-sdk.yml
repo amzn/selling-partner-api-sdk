@@ -1,0 +1,60 @@
+name: Build TypeScript SDK
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-build]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: selling-partner-api-sdk
+      - uses: actions/checkout@v4
+        with:
+          repository: amzn/selling-partner-api-models
+          path: selling-partner-api-models
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install openapi generator
+        run: npm install -g @openapitools/openapi-generator-cli
+      - name: Remove old sdk files
+        working-directory: ./selling-partner-api-sdk/typescript
+        run: |
+          echo "Remove all generated files under sdk/src while preserving hand-written and config files"
+          rm -rf sdk/src
+          rm -f sdk/index.ts
+      - name: Execute OpenAPI generator
+        working-directory: ./selling-partner-api-sdk/typescript
+        run: bash ../scripts/generate-sdk.sh typescript
+      - name: Generate consolidated index.ts file
+        working-directory: ./selling-partner-api-sdk/typescript
+        run: |
+          chmod +x scripts/generate-consolidated-index.sh
+          ./scripts/generate-consolidated-index.sh
+      - name: Install SDK dependencies
+        working-directory: ./selling-partner-api-sdk/typescript/sdk
+        run: npm install
+      - name: Type-check and build
+        working-directory: ./selling-partner-api-sdk/typescript/sdk
+        continue-on-error: true
+        run: npx tsc
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update TypeScript SDK
+          title: 'Update TypeScript SDK'
+          body: |
+            Update TypeScript SDK with latest changes from upstream.
+          branch: feature/update-typescript-sdk
+          path: ./selling-partner-api-sdk
+          token: ${{ secrets.MAFGE_PAT }}

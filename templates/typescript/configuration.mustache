@@ -1,0 +1,118 @@
+import { HttpLibrary } from "./http/http{{importFileExtension}}";
+import { Middleware, PromiseMiddleware, PromiseMiddlewareWrapper } from "./middleware{{importFileExtension}}";
+{{#frameworks}}
+{{#fetch-api}}
+import { IsomorphicFetchHttpLibrary as DefaultHttpLibrary } from "./http/isomorphic-fetch{{importFileExtension}}";
+{{/fetch-api}}
+{{#jquery}}
+import { JQueryHttpLibrary as DefaultHttpLibrary } from "./http/jquery";
+{{/jquery}}
+{{/frameworks}}
+import { BaseServerConfiguration, server1 } from "./servers{{importFileExtension}}";
+import { configureAuthMethods, AuthMethods, AuthMethodsConfiguration } from "./auth/auth{{importFileExtension}}";
+// SP-API rate limit protection (injected via custom template).
+import { RateLimiter, RateLimitedHttpLibrary } from "./RateLimiter{{importFileExtension}}";
+
+export interface Configuration {
+    readonly baseServer: BaseServerConfiguration;
+    readonly httpApi: HttpLibrary;
+    readonly middleware: Middleware[];
+    readonly authMethods: AuthMethods;
+}
+
+
+/**
+ * Interface with which a configuration object can be configured.
+ */
+export interface ConfigurationParameters {
+    /**
+     * Default server to use - a list of available servers (according to the 
+     * OpenAPI yaml definition) is included in the `servers` const in `./servers`. You can also
+     * create your own server with the `ServerConfiguration` class from the same 
+     * file.
+     */
+    baseServer?: BaseServerConfiguration;
+    /**
+     * HTTP library to use e.g. IsomorphicFetch. This can usually be skipped as 
+     * all generators come with a default library.
+     * If available, additional libraries can be imported from `./http/*`
+     */
+    httpApi?: HttpLibrary;
+
+    /**
+     * The middlewares which will be applied to requests and responses. You can 
+     * add any number of middleware components to modify requests before they 
+     * are sent or before they are deserialized by implementing the `Middleware`
+     * interface defined in `./middleware`
+     */
+    middleware?: Middleware[];
+    /**
+     * Configures middleware functions that return promises instead of 
+     * Observables (which are used by `middleware`). Otherwise allows for the 
+     * same functionality as `middleware`, i.e., modifying requests before they 
+     * are sent and before they are deserialized.
+     */
+    promiseMiddleware?: PromiseMiddleware[];
+    /**
+     * Configuration for the available authentication methods (e.g., api keys) 
+     * according to the OpenAPI yaml definition. For the definition, please refer to 
+     * `./auth/auth`
+     */
+    authMethods?: AuthMethodsConfiguration
+
+    /**
+     * Whether automatic Selling Partner API rate limit protection is enabled.
+     *
+     * When enabled (the default), every request is routed through a
+     * {@link RateLimiter} that provides exponential backoff retry on HTTP 429
+     * responses, dynamic rate spacing based on the `x-amzn-RateLimit-Limit`
+     * header, and a per-operation circuit breaker.
+     *
+     * Set to `false` to send requests directly without this protection.
+     *
+     * Ignored when a custom `httpApi` is supplied that already implements the
+     * desired behavior — in that case the provided `httpApi` is still wrapped
+     * unless `rateLimitEnabled` is `false`.
+     *
+     * @default true
+     */
+    rateLimitEnabled?: boolean;
+}
+
+/**
+ * Provide your `ConfigurationParameters` to this function to get a `Configuration`
+ * object that can be used to configure your APIs (in the constructor or 
+ * for each request individually).
+ *
+ * If a property is not included in conf, a default is used:
+ *    - baseServer: server1
+ *    - httpApi: IsomorphicFetchHttpLibrary
+ *    - middleware: []
+ *    - promiseMiddleware: []
+ *    - authMethods: {}
+ *    - rateLimitEnabled: true
+ *
+ * @param conf partial configuration
+ */
+export function createConfiguration(conf: ConfigurationParameters = {}): Configuration {
+    const rateLimitEnabled = conf.rateLimitEnabled !== undefined ? conf.rateLimitEnabled : true;
+    const baseHttpApi = conf.httpApi || new DefaultHttpLibrary();
+    // Wrap the HTTP library so rate limit protection is applied to every
+    // request automatically. When disabled, the base library is used directly.
+    const httpApi = rateLimitEnabled
+        ? new RateLimitedHttpLibrary(baseHttpApi, new RateLimiter({ rateLimitEnabled }))
+        : baseHttpApi;
+
+    const configuration: Configuration = {
+        baseServer: conf.baseServer !== undefined ? conf.baseServer : server1,
+        httpApi: httpApi,
+        middleware: conf.middleware || [],
+        authMethods: configureAuthMethods(conf.authMethods)
+    };
+    if (conf.promiseMiddleware) {
+        conf.promiseMiddleware.forEach(
+            m => configuration.middleware.push(new PromiseMiddlewareWrapper(m))
+        );
+    }
+    return configuration;
+}

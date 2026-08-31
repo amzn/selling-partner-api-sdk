@@ -15,7 +15,7 @@
 #     scripts/api-overrides.txt for the exact derivation rules).
 #
 # Usage:
-#   scripts/generate-sdk.sh <java|csharp|javascript|php|python>
+#   scripts/generate-sdk.sh <java|csharp|javascript|typescript|php|python>
 #
 # Run this from the language directory (e.g. ./java, ./csharp, ...) so the
 # relative paths used by the OpenAPI generator (templates, config, output)
@@ -40,7 +40,7 @@ set -euo pipefail
 
 LANGUAGE="${1:-}"
 if [[ -z "$LANGUAGE" ]]; then
-  echo "Usage: $0 <java|csharp|javascript|php|python>" >&2
+  echo "Usage: $0 <java|csharp|javascript|typescript|php|python>" >&2
   exit 1
 fi
 
@@ -55,7 +55,7 @@ if [[ ! -d "$MODELS_ROOT/models" ]]; then
 fi
 
 case "$LANGUAGE" in
-  java|csharp|php|javascript|python) ;;
+  java|csharp|php|javascript|typescript|python) ;;
   *) echo "Unknown language: $LANGUAGE" >&2; exit 1 ;;
 esac
 
@@ -74,9 +74,9 @@ trim() {
 # ---------------------------------------------------------------------------
 # Load overrides into parallel arrays (kept bash-3.2 compatible: no assoc arrays).
 # ---------------------------------------------------------------------------
-ov_model=(); ov_java=(); ov_csharp=(); ov_js=(); ov_py=(); ov_flags=()
+ov_model=(); ov_java=(); ov_csharp=(); ov_js=(); ov_py=(); ov_ts=(); ov_flags=()
 if [[ -f "$OVERRIDES_FILE" ]]; then
-  while IFS='|' read -r model java csharp js py flags; do
+  while IFS='|' read -r model java csharp js py ts flags; do
     model="$(trim "$model")"
     [[ -z "$model" || "$model" == \#* ]] && continue
     ov_model+=("$model")
@@ -84,6 +84,7 @@ if [[ -f "$OVERRIDES_FILE" ]]; then
     ov_csharp+=("$(trim "$csharp")")
     ov_js+=("$(trim "$js")")
     ov_py+=("$(trim "$py")")
+    ov_ts+=("$(trim "${ts:-}")")
     ov_flags+=("$(trim "${flags:-}")")
   done < "$OVERRIDES_FILE"
 fi
@@ -172,6 +173,13 @@ package_args() {
     javascript)
       printf -- '--model-package model --api-package api --invoker-package %s' "$js_pkg"
       ;;
+    typescript)
+      # The generic "typescript" generator is configured entirely through
+      # config/config.json (supportsES6, platform, modelPropertyNaming) and a
+      # dedicated per-API output directory (see OUTPUT_DIR below). No package
+      # arguments are required here.
+      printf -- '%s' ''
+      ;;
     python)
       printf -- '--additional-properties=packageName=spapi,modelPackage=models.%s,apiPackage=api.%s' \
         "$py_pkg" "$py_pkg"
@@ -206,6 +214,10 @@ while IFS= read -r file; do
   csharp_pkg="${pascal_name}.${version}"
   js_pkg="${lower_name}_${version}"
   py_pkg="${snake_name}_${version}"
+  # TypeScript reuses the JavaScript naming convention for parity between the
+  # two SDKs (same exported namespaces). It can still be overridden per-API via
+  # the "typescript" column in api-overrides.txt.
+  ts_pkg="${lower_name}_${version}"
   flags=""
 
   # Apply overrides where present (blank override columns keep the derived value).
@@ -215,6 +227,7 @@ while IFS= read -r file; do
     [[ -n "${ov_csharp[$idx]}" ]] && csharp_pkg="${ov_csharp[$idx]}"
     [[ -n "${ov_js[$idx]}" ]]     && js_pkg="${ov_js[$idx]}"
     [[ -n "${ov_py[$idx]}" ]]     && py_pkg="${ov_py[$idx]}"
+    [[ -n "${ov_ts[$idx]:-}" ]]   && ts_pkg="${ov_ts[$idx]}"
     flags="${ov_flags[$idx]}"
   fi
 
@@ -223,13 +236,24 @@ while IFS= read -r file; do
   extra_args=()
   [[ -n "$flags" ]] && read -r -a extra_args <<< "$flags"
 
+  # The generic "typescript" generator emits a self-contained package into its
+  # output directory (it does not support per-package namespacing via
+  # --invoker-package like the "javascript" generator). Give every API its own
+  # output directory under sdk/src/<ts_pkg>/ so they don't overwrite each other.
+  # All other languages share a single "sdk" output directory as before.
+  if [[ "$LANGUAGE" == "typescript" ]]; then
+    OUTPUT_DIR="sdk/src/${ts_pkg}"
+  else
+    OUTPUT_DIR="sdk"
+  fi
+
   cmd=("${GENERATOR[@]}"
     -i "$file"
     -g "$LANGUAGE"
     -t "$TEMPLATE"
-    -o sdk
+    -o "$OUTPUT_DIR"
     -c config/config.json
-    "${pkg_args[@]}"
+    ${pkg_args[@]+"${pkg_args[@]}"}
     ${extra_args[@]+"${extra_args[@]}"})
 
   if [[ -n "${DRY_RUN:-}" ]]; then

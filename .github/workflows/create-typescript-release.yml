@@ -1,0 +1,57 @@
+name: Create TypeScript Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+  workflow_call:
+    inputs:
+      newVersionNumber:
+        type: string
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release_typescript:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.1'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Update npm
+        run: npm install -g npm@11
+      - name: Set version in package.json
+        working-directory: typescript/sdk
+        env:
+          NEW_VERSION: ${{ github.event.inputs.newVersionNumber }}
+        run: |
+          npm version "$NEW_VERSION" --no-git-tag-version
+          echo "Updated package.json version to $NEW_VERSION"
+      - name: Copy README.md file
+        working-directory: typescript
+        run: |
+          cp -R README.md sdk/
+      - name: Install dependencies
+        working-directory: typescript/sdk
+        run: npm install
+      - name: Build SDK
+        working-directory: typescript/sdk
+        run: npm run build
+      - name: Publish to npm
+        working-directory: typescript/sdk
+        run: npm publish
+
+  tag_and_release:
+    needs: [ release_typescript ]
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      tagName: "typescript-${{ github.event.inputs.newVersionNumber }}"

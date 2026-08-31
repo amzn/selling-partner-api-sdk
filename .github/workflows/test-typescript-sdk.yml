@@ -1,0 +1,40 @@
+name: Test TypeScript SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+      - selling-partner-api-sdk-v2
+
+permissions:
+  contents: read
+
+jobs:
+  build-ts:
+    name: test typescript sdk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install SDK dependencies
+        working-directory: ./typescript/sdk
+        run: |
+          npm install
+      - name: Install backend mock dependencies
+        working-directory: ./test
+        run: npm install
+      - name: Start backend mock
+        working-directory: ./test
+        run: node src/index.js &
+      - name: Run tests and generate reports
+        working-directory: ./typescript/sdk
+        run: npm run test
+      - name: Archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ts-test-reports
+          path: typescript/testreports

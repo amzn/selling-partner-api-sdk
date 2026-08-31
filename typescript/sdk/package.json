@@ -1,0 +1,53 @@
+{
+  "name": "@amazon-sp-api-release/amazon-sp-api-sdk-ts",
+  "description": "This package is the Selling Partner API TypeScript SDK for Node.js with LWA libraries.",
+  "license": "Apache License 2.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "repository": "github:amzn/selling-partner-api-sdk",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bottleneck": "^2.19.5",
+    "form-data": "^4.0.6",
+    "node-fetch": "^2.7.0",
+    "superagent": "^9.0.0",
+    "yaml": "^2.8.3"
+  },
+  "devDependencies": {
+    "@types/expect.js": "^0.3.32",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/node-fetch": "^2.6.13",
+    "@types/superagent": "^8.1.6",
+    "expect.js": "^0.3.1",
+    "mocha": "^11.1.0",
+    "sinon": "^16.1.1",
+    "tsx": "^4.23.13",
+    "typescript": "^5.4.0"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "helper/",
+    "sample-node-app/",
+    "index.ts",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=14.18.0"
+  }
+}
