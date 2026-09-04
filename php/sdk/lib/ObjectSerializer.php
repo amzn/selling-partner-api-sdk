@@ -560,7 +560,20 @@ class ObjectSerializer
 
             if (isset($data->{$instance::attributeMap()[$property]})) {
                 $propertyValue = $data->{$instance::attributeMap()[$property]};
-                $instance->{$propertySetter}(self::deserialize($propertyValue, $type, null));
+                $deserializedValue = self::deserialize($propertyValue, $type, null);
+
+                try {
+                    $instance->{$propertySetter}($deserializedValue);
+                } catch (\InvalidArgumentException $e) {
+                    // Live API responses can violate request-side constraints from the
+                    // spec (e.g. FBA Inbound v2024-03-20 getShipment returns an empty
+                    // selectedDeliveryWindow.deliveryWindowOptionId although the spec
+                    // requires minLength 36). Deserializing data the server actually
+                    // sent must not fail: keep the raw value via ArrayAccess (bypasses
+                    // setter validation); callers can still use
+                    // valid()/listInvalidProperties() for explicit validation.
+                    $instance[$property] = $deserializedValue;
+                }
             }
         }
 
