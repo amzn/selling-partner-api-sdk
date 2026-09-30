@@ -46,6 +46,7 @@ export declare class TrackingApi {
        * @param {String} [opts.aftn] The Amazon Fulfillment Tracking Number.
        * @param {String} [opts.containerNumber] The container number provided by the Logistics Service Provider.
        * @param {String} [opts.houseBillOfLadingNumber] The House Bill of Lading (HBL) number.
+       * @param {String} [opts.proNumber] The PRO number assigned by the freight carrier
        * @param {String} [opts.carrierTrackingTrackingNumber] The tracking number assigned by the carrier.
        * @param {String} [opts.carrierTrackingCarrierCode] The carrier code associated with the carrier tracking number.
        * @param {String} [opts.acceptLanguage] The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only.
@@ -57,6 +58,7 @@ export declare class TrackingApi {
         aftn?: string;
         containerNumber?: string;
         houseBillOfLadingNumber?: string;
+        proNumber?: string;
         carrierTrackingTrackingNumber?: string;
         carrierTrackingCarrierCode?: string;
         acceptLanguage?: string;
@@ -70,6 +72,7 @@ export declare class TrackingApi {
        * @param {String} [opts.aftn] The Amazon Fulfillment Tracking Number.
        * @param {String} [opts.containerNumber] The container number provided by the Logistics Service Provider.
        * @param {String} [opts.houseBillOfLadingNumber] The House Bill of Lading (HBL) number.
+       * @param {String} [opts.proNumber] The PRO number assigned by the freight carrier
        * @param {String} [opts.carrierTrackingTrackingNumber] The tracking number assigned by the carrier.
        * @param {String} [opts.carrierTrackingCarrierCode] The carrier code associated with the carrier tracking number.
        * @param {String} [opts.acceptLanguage] The preferred natural language and locale of the client, in POSIX locale format. Currently supports &#x60;en-US&#x60; only.
@@ -81,6 +84,7 @@ export declare class TrackingApi {
         aftn?: string;
         containerNumber?: string;
         houseBillOfLadingNumber?: string;
+        proNumber?: string;
         carrierTrackingTrackingNumber?: string;
         carrierTrackingCarrierCode?: string;
         acceptLanguage?: string;

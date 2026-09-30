@@ -48,6 +48,11 @@ export declare namespace TaxRegistrationDetails {
            * @const
            */
         GST: string;
+        /**
+           * value: "LocalTaxNumber"
+           * @const
+           */
+        LocalTaxNumber: string;
     };
 }
 //# sourceMappingURL=TaxRegistrationDetails.d.ts.map

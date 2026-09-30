@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { Money } from './Money.js'
 
 /**
  * The AssociatedOrderItem model module.
@@ -21,7 +22,7 @@ import { ApiClient } from '../ApiClient.js'
 export class AssociatedOrderItem {
   /**
    * Constructs a new <code>AssociatedOrderItem</code>.
-   * An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires.
+   * An associated order item that a customer has purchased with the product. For example, a tire installation service purchased with tires, or a warranty protection plan purchased with a product.
    * @alias module:orders_v2026_01_01/model/AssociatedOrderItem
    * @class
    */
@@ -52,6 +53,8 @@ export class AssociatedOrderItem {
       if (data.hasOwnProperty('orderId')) { obj.orderId = ApiClient.convertToType(data.orderId, 'String') }
       if (data.hasOwnProperty('orderItemId')) { obj.orderItemId = ApiClient.convertToType(data.orderItemId, 'String') }
       if (data.hasOwnProperty('associationType')) { obj.associationType = ApiClient.convertToType(data.associationType, 'String') }
+      if (data.hasOwnProperty('asin')) { obj.asin = ApiClient.convertToType(data.asin, 'String') }
+      if (data.hasOwnProperty('purchasePrice')) { obj.purchasePrice = Money.constructFromObject(data.purchasePrice) }
     }
     return obj
   }
@@ -72,8 +75,21 @@ AssociatedOrderItem.prototype.orderId = undefined
 AssociatedOrderItem.prototype.orderItemId = undefined
 
 /**
- * The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order)
+ * The type of association between the order items.  **Possible values**: - `VALUE_ADD_SERVICE` (The associated item is a service order) - `WARRANTY` (The associated item is a product covered by a warranty or protection plan)
  * @member {String} associationType
  * @type {String}
  */
 AssociatedOrderItem.prototype.associationType = undefined
+
+/**
+ * The ASIN of the associated order item.
+ * @member {String} asin
+ * @type {String}
+ */
+AssociatedOrderItem.prototype.asin = undefined
+
+/**
+ * @member {Money} purchasePrice
+ * @type {Money}
+ */
+AssociatedOrderItem.prototype.purchasePrice = undefined

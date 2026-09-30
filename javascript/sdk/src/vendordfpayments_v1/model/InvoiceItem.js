@@ -12,6 +12,8 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { AdditionalDetails } from './AdditionalDetails.js'
+import { AllowanceDetails } from './AllowanceDetails.js'
 import { ChargeDetails } from './ChargeDetails.js'
 import { ItemQuantity } from './ItemQuantity.js'
 import { Money } from './Money.js'
@@ -64,13 +66,16 @@ export class InvoiceItem {
       if (data.hasOwnProperty('itemSequenceNumber')) { obj.itemSequenceNumber = ApiClient.convertToType(data.itemSequenceNumber, 'String') }
       if (data.hasOwnProperty('buyerProductIdentifier')) { obj.buyerProductIdentifier = ApiClient.convertToType(data.buyerProductIdentifier, 'String') }
       if (data.hasOwnProperty('vendorProductIdentifier')) { obj.vendorProductIdentifier = ApiClient.convertToType(data.vendorProductIdentifier, 'String') }
+      if (data.hasOwnProperty('itemDescription')) { obj.itemDescription = ApiClient.convertToType(data.itemDescription, 'String') }
       if (data.hasOwnProperty('invoicedQuantity')) { obj.invoicedQuantity = ItemQuantity.constructFromObject(data.invoicedQuantity) }
       if (data.hasOwnProperty('netCost')) { obj.netCost = Money.constructFromObject(data.netCost) }
       if (data.hasOwnProperty('purchaseOrderNumber')) { obj.purchaseOrderNumber = ApiClient.convertToType(data.purchaseOrderNumber, 'String') }
       if (data.hasOwnProperty('vendorOrderNumber')) { obj.vendorOrderNumber = ApiClient.convertToType(data.vendorOrderNumber, 'String') }
       if (data.hasOwnProperty('hsnCode')) { obj.hsnCode = ApiClient.convertToType(data.hsnCode, 'String') }
       if (data.hasOwnProperty('taxDetails')) { obj.taxDetails = ApiClient.convertToType(data.taxDetails, [TaxDetail]) }
+      if (data.hasOwnProperty('additionalDetails')) { obj.additionalDetails = ApiClient.convertToType(data.additionalDetails, [AdditionalDetails]) }
       if (data.hasOwnProperty('chargeDetails')) { obj.chargeDetails = ApiClient.convertToType(data.chargeDetails, [ChargeDetails]) }
+      if (data.hasOwnProperty('allowanceDetails')) { obj.allowanceDetails = ApiClient.convertToType(data.allowanceDetails, [AllowanceDetails]) }
     }
     return obj
   }
@@ -96,6 +101,13 @@ InvoiceItem.prototype.buyerProductIdentifier = undefined
  * @type {String}
  */
 InvoiceItem.prototype.vendorProductIdentifier = undefined
+
+/**
+ * Product or service description for the invoiced line item.
+ * @member {String} itemDescription
+ * @type {String}
+ */
+InvoiceItem.prototype.itemDescription = undefined
 
 /**
  * @member {ItemQuantity} invoicedQuantity
@@ -138,8 +150,22 @@ InvoiceItem.prototype.hsnCode = undefined
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
+ * Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.
+ * @member {AdditionalDetails[]} additionalDetails
+ * @type {AdditionalDetails[]}
+ */
+InvoiceItem.prototype.additionalDetails = undefined
+
+/**
  * Individual charge details per line item.
  * @member {ChargeDetails[]} chargeDetails
  * @type {ChargeDetails[]}
  */
 InvoiceItem.prototype.chargeDetails = undefined
+
+/**
+ * Individual allowance details per line item.
+ * @member {AllowanceDetails[]} allowanceDetails
+ * @type {AllowanceDetails[]}
+ */
+InvoiceItem.prototype.allowanceDetails = undefined

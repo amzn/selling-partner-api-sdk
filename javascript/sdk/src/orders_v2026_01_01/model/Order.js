@@ -191,7 +191,7 @@ Order.prototype.orderItems = undefined
 Order.prototype.packages = undefined
 
 /**
- * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+ * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for Easy Ship and Seller Flex.
  * @member {FulfillmentOrder[]} fulfillmentOrders
  * @type {FulfillmentOrder[]}
  */

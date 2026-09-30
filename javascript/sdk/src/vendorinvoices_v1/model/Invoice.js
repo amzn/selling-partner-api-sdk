@@ -75,8 +75,13 @@ export class Invoice {
       if (data.hasOwnProperty('shipToParty')) { obj.shipToParty = PartyIdentification.constructFromObject(data.shipToParty) }
       if (data.hasOwnProperty('shipFromParty')) { obj.shipFromParty = PartyIdentification.constructFromObject(data.shipFromParty) }
       if (data.hasOwnProperty('billToParty')) { obj.billToParty = PartyIdentification.constructFromObject(data.billToParty) }
+      if (data.hasOwnProperty('billFromParty')) { obj.billFromParty = PartyIdentification.constructFromObject(data.billFromParty) }
+      if (data.hasOwnProperty('vatGroupParty')) { obj.vatGroupParty = PartyIdentification.constructFromObject(data.vatGroupParty) }
+      if (data.hasOwnProperty('taxRepresentativeParty')) { obj.taxRepresentativeParty = PartyIdentification.constructFromObject(data.taxRepresentativeParty) }
       if (data.hasOwnProperty('paymentTerms')) { obj.paymentTerms = PaymentTerms.constructFromObject(data.paymentTerms) }
       if (data.hasOwnProperty('invoiceTotal')) { obj.invoiceTotal = Money.constructFromObject(data.invoiceTotal) }
+      if (data.hasOwnProperty('invoiceBaseAmount')) { obj.invoiceBaseAmount = Money.constructFromObject(data.invoiceBaseAmount) }
+      if (data.hasOwnProperty('taxPointDate')) { obj.taxPointDate = ApiClient.convertToType(data.taxPointDate, 'Date') }
       if (data.hasOwnProperty('taxDetails')) { obj.taxDetails = ApiClient.convertToType(data.taxDetails, [TaxDetails]) }
       if (data.hasOwnProperty('additionalDetails')) { obj.additionalDetails = ApiClient.convertToType(data.additionalDetails, [AdditionalDetails]) }
       if (data.hasOwnProperty('chargeDetails')) { obj.chargeDetails = ApiClient.convertToType(data.chargeDetails, [ChargeDetails]) }
@@ -159,6 +164,24 @@ Invoice.prototype.shipFromParty = undefined
 Invoice.prototype.billToParty = undefined
 
 /**
+ * @member {PartyIdentification} billFromParty
+ * @type {PartyIdentification}
+ */
+Invoice.prototype.billFromParty = undefined
+
+/**
+ * @member {PartyIdentification} vatGroupParty
+ * @type {PartyIdentification}
+ */
+Invoice.prototype.vatGroupParty = undefined
+
+/**
+ * @member {PartyIdentification} taxRepresentativeParty
+ * @type {PartyIdentification}
+ */
+Invoice.prototype.taxRepresentativeParty = undefined
+
+/**
  * @member {PaymentTerms} paymentTerms
  * @type {PaymentTerms}
  */
@@ -169,6 +192,19 @@ Invoice.prototype.paymentTerms = undefined
  * @type {Money}
  */
 Invoice.prototype.invoiceTotal = undefined
+
+/**
+ * @member {Money} invoiceBaseAmount
+ * @type {Money}
+ */
+Invoice.prototype.invoiceBaseAmount = undefined
+
+/**
+ * Defines a date and time according to ISO8601.
+ * @member {Date} taxPointDate
+ * @type {Date}
+ */
+Invoice.prototype.taxPointDate = undefined
 
 /**
  * Total tax amount details for all line items.

@@ -12,7 +12,9 @@
  */
 import { ApiClient } from './ApiClient.js';
 import { AdditionalDetails } from './model/AdditionalDetails.js';
+import { AdditionalPartyIdentification } from './model/AdditionalPartyIdentification.js';
 import { Address } from './model/Address.js';
+import { AllowanceDetails } from './model/AllowanceDetails.js';
 import { ChargeDetails } from './model/ChargeDetails.js';
 import { Error } from './model/Error.js';
 import { InvoiceDetail } from './model/InvoiceDetail.js';
@@ -44,10 +46,20 @@ ApiClient,
    */
 AdditionalDetails, 
 /**
+   * The AdditionalPartyIdentification model constructor.
+   * @property {module:vendordfpayments_v1/model/AdditionalPartyIdentification}
+   */
+AdditionalPartyIdentification, 
+/**
    * The Address model constructor.
    * @property {module:vendordfpayments_v1/model/Address}
    */
 Address, 
+/**
+   * The AllowanceDetails model constructor.
+   * @property {module:vendordfpayments_v1/model/AllowanceDetails}
+   */
+AllowanceDetails, 
 /**
    * The ChargeDetails model constructor.
    * @property {module:vendordfpayments_v1/model/ChargeDetails}

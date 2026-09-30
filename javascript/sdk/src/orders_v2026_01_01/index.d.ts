@@ -73,12 +73,15 @@ import { Pagination } from './model/Pagination.js';
 import { PaymentExecution } from './model/PaymentExecution.js';
 import { PointsGranted } from './model/PointsGranted.js';
 import { PreferredDeliveryTime } from './model/PreferredDeliveryTime.js';
+import { PromiseCalculationInputs } from './model/PromiseCalculationInputs.js';
 import { Recipient } from './model/Recipient.js';
 import { SalesChannel } from './model/SalesChannel.js';
 import { SearchOrdersResponse } from './model/SearchOrdersResponse.js';
 import { SerialNumberRequirement } from './model/SerialNumberRequirement.js';
 import { TaxRegistrationAttribute } from './model/TaxRegistrationAttribute.js';
 import { TimeWindow } from './model/TimeWindow.js';
+import { TransitTimeInput } from './model/TransitTimeInput.js';
+import { TransitTimeInputDetails } from './model/TransitTimeInputDetails.js';
 import { GetOrderApi } from './api/GetOrderApi.js';
 import { SearchOrdersApi } from './api/SearchOrdersApi.js';
 /**
@@ -404,6 +407,11 @@ PointsGranted,
    */
 PreferredDeliveryTime, 
 /**
+   * The PromiseCalculationInputs model constructor.
+   * @property {module:orders_v2026_01_01/model/PromiseCalculationInputs}
+   */
+PromiseCalculationInputs, 
+/**
    * The Recipient model constructor.
    * @property {module:orders_v2026_01_01/model/Recipient}
    */
@@ -433,6 +441,16 @@ TaxRegistrationAttribute,
    * @property {module:orders_v2026_01_01/model/TimeWindow}
    */
 TimeWindow, 
+/**
+   * The TransitTimeInput model constructor.
+   * @property {module:orders_v2026_01_01/model/TransitTimeInput}
+   */
+TransitTimeInput, 
+/**
+   * The TransitTimeInputDetails model constructor.
+   * @property {module:orders_v2026_01_01/model/TransitTimeInputDetails}
+   */
+TransitTimeInputDetails, 
 /**
   * The GetOrderApi service constructor.
   * @property {module:orders_v2026_01_01/api/GetOrderApi}

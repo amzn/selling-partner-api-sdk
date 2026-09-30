@@ -18,6 +18,8 @@ import { Charge } from './model/Charge.js';
 import { ChargeBreakup } from './model/ChargeBreakup.js';
 import { ComplianceAttributes } from './model/ComplianceAttributes.js';
 import { CourierSupportedAttributes } from './model/CourierSupportedAttributes.js';
+import { CreateSandboxShipmentRequest } from './model/CreateSandboxShipmentRequest.js';
+import { CreateSandboxShipmentResponse } from './model/CreateSandboxShipmentResponse.js';
 import { CustomAttribute } from './model/CustomAttribute.js';
 import { CustomAttributeType } from './model/CustomAttributeType.js';
 import { Dimension } from './model/Dimension.js';
@@ -54,6 +56,7 @@ import { RecommendedPackage } from './model/RecommendedPackage.js';
 import { RecommendedPackageLineItem } from './model/RecommendedPackageLineItem.js';
 import { ReplacedShipmentInfo } from './model/ReplacedShipmentInfo.js';
 import { RequirementLevel } from './model/RequirementLevel.js';
+import { SandboxShipmentUpdates } from './model/SandboxShipmentUpdates.js';
 import { ShipLabelMetadata } from './model/ShipLabelMetadata.js';
 import { ShipLabelsInput } from './model/ShipLabelsInput.js';
 import { ShipLabelsResponse } from './model/ShipLabelsResponse.js';
@@ -70,7 +73,9 @@ import { Status } from './model/Status.js';
 import { Tax } from './model/Tax.js';
 import { TaxRegistrationInfo } from './model/TaxRegistrationInfo.js';
 import { TimeWindow } from './model/TimeWindow.js';
+import { UpdateSandboxShipmentRequest } from './model/UpdateSandboxShipmentRequest.js';
 import { Weight } from './model/Weight.js';
+import { SandboxShipmentsApi } from './api/SandboxShipmentsApi.js';
 import { ShipmentProcessingApi } from './api/ShipmentProcessingApi.js';
 import { ShipmentRetrievalApi } from './api/ShipmentRetrievalApi.js';
 /**
@@ -120,6 +125,16 @@ ComplianceAttributes,
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/CourierSupportedAttributes}
    */
 CourierSupportedAttributes, 
+/**
+   * The CreateSandboxShipmentRequest model constructor.
+   * @property {module:externalfulfillmentshipments_v2024_09_11/model/CreateSandboxShipmentRequest}
+   */
+CreateSandboxShipmentRequest, 
+/**
+   * The CreateSandboxShipmentResponse model constructor.
+   * @property {module:externalfulfillmentshipments_v2024_09_11/model/CreateSandboxShipmentResponse}
+   */
+CreateSandboxShipmentResponse, 
 /**
    * The CustomAttribute model constructor.
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/CustomAttribute}
@@ -301,6 +316,11 @@ ReplacedShipmentInfo,
    */
 RequirementLevel, 
 /**
+   * The SandboxShipmentUpdates model constructor.
+   * @property {module:externalfulfillmentshipments_v2024_09_11/model/SandboxShipmentUpdates}
+   */
+SandboxShipmentUpdates, 
+/**
    * The ShipLabelMetadata model constructor.
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/ShipLabelMetadata}
    */
@@ -381,10 +401,20 @@ TaxRegistrationInfo,
    */
 TimeWindow, 
 /**
+   * The UpdateSandboxShipmentRequest model constructor.
+   * @property {module:externalfulfillmentshipments_v2024_09_11/model/UpdateSandboxShipmentRequest}
+   */
+UpdateSandboxShipmentRequest, 
+/**
    * The Weight model constructor.
    * @property {module:externalfulfillmentshipments_v2024_09_11/model/Weight}
    */
 Weight, 
+/**
+  * The SandboxShipmentsApi service constructor.
+  * @property {module:externalfulfillmentshipments_v2024_09_11/api/SandboxShipmentsApi}
+  */
+SandboxShipmentsApi, 
 /**
   * The ShipmentProcessingApi service constructor.
   * @property {module:externalfulfillmentshipments_v2024_09_11/api/ShipmentProcessingApi}

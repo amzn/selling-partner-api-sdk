@@ -13,6 +13,7 @@
 
 import { ApiClient } from './ApiClient.js'
 import { AdditionalDetails } from './model/AdditionalDetails.js'
+import { AdditionalPartyIdentification } from './model/AdditionalPartyIdentification.js'
 import { Address } from './model/Address.js'
 import { AllowanceDetails } from './model/AllowanceDetails.js'
 import { ChargeDetails } from './model/ChargeDetails.js'
@@ -51,6 +52,12 @@ export {
      * @property {module:vendorinvoices_v1/model/AdditionalDetails}
      */
   AdditionalDetails,
+
+  /**
+     * The AdditionalPartyIdentification model constructor.
+     * @property {module:vendorinvoices_v1/model/AdditionalPartyIdentification}
+     */
+  AdditionalPartyIdentification,
 
   /**
      * The Address model constructor.

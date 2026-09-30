@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class ItemCancellationExecution {
   /**
    * Constructs a new <code>ItemCancellationExecution</code>.
-   * Details of how the cancellation was executed for a specific order item, including who performed the cancellation and the reason.
+   * Detailed information about how the cancellation was processed for a specific order item.
    * @alias module:orders_v2026_01_01/model/ItemCancellationExecution
    * @class
    */
@@ -57,14 +57,14 @@ export class ItemCancellationExecution {
 }
 
 /**
- * Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`
+ * The entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`.
  * @member {String} cancelledBy
  * @type {String}
  */
 ItemCancellationExecution.prototype.cancelledBy = undefined
 
 /**
- * Explanation provided for why the cancellation was executed.
+ * The provided explanation for why the cancellation occurred.
  * @member {String} cancelReason
  * @type {String}
  */

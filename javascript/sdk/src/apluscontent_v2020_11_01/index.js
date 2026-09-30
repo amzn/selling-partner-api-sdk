@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for A+ Content Management
- * Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text.
+ * With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text.
  *
  * The version of the OpenAPI document: 2020-11-01
  *
@@ -15,8 +15,21 @@ import { ApiClient } from './ApiClient.js'
 import { AplusPaginatedResponse } from './model/AplusPaginatedResponse.js'
 import { AplusResponse } from './model/AplusResponse.js'
 import { AsinBadge } from './model/AsinBadge.js'
+import { AsinImage } from './model/AsinImage.js'
+import { AsinImages } from './model/AsinImages.js'
 import { AsinMetadata } from './model/AsinMetadata.js'
+import { AssociationType } from './model/AssociationType.js'
+import { BrandStoryAboutModule } from './model/BrandStoryAboutModule.js'
+import { BrandStoryFourAsinModule } from './model/BrandStoryFourAsinModule.js'
+import { BrandStoryImageWithLogoModule } from './model/BrandStoryImageWithLogoModule.js'
+import { BrandStoryMediaAssetModule } from './model/BrandStoryMediaAssetModule.js'
+import { BrandStoryQuestionsModule } from './model/BrandStoryQuestionsModule.js'
 import { ColorType } from './model/ColorType.js'
+import { ComparisonFields } from './model/ComparisonFields.js'
+import { ComparisonMetrics } from './model/ComparisonMetrics.js'
+import { ComparisonProduct } from './model/ComparisonProduct.js'
+import { ComparisonProducts } from './model/ComparisonProducts.js'
+import { ComparisonRow } from './model/ComparisonRow.js'
 import { ContentBadge } from './model/ContentBadge.js'
 import { ContentDocument } from './model/ContentDocument.js'
 import { ContentMetadata } from './model/ContentMetadata.js'
@@ -26,17 +39,40 @@ import { ContentModuleType } from './model/ContentModuleType.js'
 import { ContentRecord } from './model/ContentRecord.js'
 import { ContentStatus } from './model/ContentStatus.js'
 import { ContentType } from './model/ContentType.js'
+import { CreateMediaRequest } from './model/CreateMediaRequest.js'
+import { CreateMediaResponse } from './model/CreateMediaResponse.js'
 import { Decorator } from './model/Decorator.js'
 import { DecoratorType } from './model/DecoratorType.js'
+import { Description } from './model/Description.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
+import { Faq } from './model/Faq.js'
+import { Faqs } from './model/Faqs.js'
 import { GetContentDocumentResponse } from './model/GetContentDocumentResponse.js'
+import { GetMediaResponse } from './model/GetMediaResponse.js'
+import { ImageCarouselPanel } from './model/ImageCarouselPanel.js'
+import { ImageCarouselPanels } from './model/ImageCarouselPanels.js'
+import { ImageColumn } from './model/ImageColumn.js'
+import { ImageColumns } from './model/ImageColumns.js'
 import { ImageComponent } from './model/ImageComponent.js'
 import { ImageCropSpecification } from './model/ImageCropSpecification.js'
 import { ImageDimensions } from './model/ImageDimensions.js'
+import { ImageHotSpot } from './model/ImageHotSpot.js'
+import { ImageHotSpots } from './model/ImageHotSpots.js'
 import { ImageOffsets } from './model/ImageOffsets.js'
+import { ImageTextHotSpot } from './model/ImageTextHotSpot.js'
+import { ImageTextHotSpots } from './model/ImageTextHotSpots.js'
 import { IntegerWithUnits } from './model/IntegerWithUnits.js'
+import { Issue } from './model/Issue.js'
 import { ListContentDocumentAsinRelationsResponse } from './model/ListContentDocumentAsinRelationsResponse.js'
+import { Media } from './model/Media.js'
+import { MediaInfo } from './model/MediaInfo.js'
+import { MediaInput } from './model/MediaInput.js'
+import { MediaStatus } from './model/MediaStatus.js'
+import { MediaType } from './model/MediaType.js'
+import { MetricValueItem } from './model/MetricValueItem.js'
+import { NavigationCarouselPanel } from './model/NavigationCarouselPanel.js'
+import { NavigationCarouselPanels } from './model/NavigationCarouselPanels.js'
 import { ParagraphComponent } from './model/ParagraphComponent.js'
 import { PlainTextItem } from './model/PlainTextItem.js'
 import { PositionType } from './model/PositionType.js'
@@ -46,7 +82,32 @@ import { PostContentDocumentAsinRelationsResponse } from './model/PostContentDoc
 import { PostContentDocumentRequest } from './model/PostContentDocumentRequest.js'
 import { PostContentDocumentResponse } from './model/PostContentDocumentResponse.js'
 import { PostContentDocumentSuspendSubmissionResponse } from './model/PostContentDocumentSuspendSubmissionResponse.js'
+import { PremiumComparisonCarouselModule } from './model/PremiumComparisonCarouselModule.js'
+import { PremiumComparisonScrollerModule } from './model/PremiumComparisonScrollerModule.js'
+import { PremiumDualImageTextModule } from './model/PremiumDualImageTextModule.js'
+import { PremiumFaqModule } from './model/PremiumFaqModule.js'
+import { PremiumFourColumnImagesModule } from './model/PremiumFourColumnImagesModule.js'
+import { PremiumFullBackgroundImageModule } from './model/PremiumFullBackgroundImageModule.js'
+import { PremiumFullBackgroundTextModule } from './model/PremiumFullBackgroundTextModule.js'
+import { PremiumHeroVideoModule } from './model/PremiumHeroVideoModule.js'
+import { PremiumHotspotImageModule } from './model/PremiumHotspotImageModule.js'
+import { PremiumHotspotImageTextModule } from './model/PremiumHotspotImageTextModule.js'
+import { PremiumImageCarouselModule } from './model/PremiumImageCarouselModule.js'
+import { PremiumImageTextModule } from './model/PremiumImageTextModule.js'
+import { PremiumNavigationCarouselModule } from './model/PremiumNavigationCarouselModule.js'
+import { PremiumRegimenCarouselModule } from './model/PremiumRegimenCarouselModule.js'
+import { PremiumTechSpecsModule } from './model/PremiumTechSpecsModule.js'
+import { PremiumTextModule } from './model/PremiumTextModule.js'
+import { PremiumThreeColumnComparisonModule } from './model/PremiumThreeColumnComparisonModule.js'
+import { PremiumVideoImageCarouselModule } from './model/PremiumVideoImageCarouselModule.js'
+import { PremiumVideoTextModule } from './model/PremiumVideoTextModule.js'
 import { PublishRecord } from './model/PublishRecord.js'
+import { QuestionAnswerPair } from './model/QuestionAnswerPair.js'
+import { QuestionAnswerPairs } from './model/QuestionAnswerPairs.js'
+import { RegimenCarouselPanel } from './model/RegimenCarouselPanel.js'
+import { RegimenCarouselPanels } from './model/RegimenCarouselPanels.js'
+import { RelatedMedia } from './model/RelatedMedia.js'
+import { RelatedMediaInput } from './model/RelatedMediaInput.js'
 import { SearchContentDocumentsResponse } from './model/SearchContentDocumentsResponse.js'
 import { SearchContentPublishRecordsResponse } from './model/SearchContentPublishRecordsResponse.js'
 import { StandardCompanyLogoModule } from './model/StandardCompanyLogoModule.js'
@@ -72,13 +133,22 @@ import { StandardTextListBlock } from './model/StandardTextListBlock.js'
 import { StandardTextModule } from './model/StandardTextModule.js'
 import { StandardTextPairBlock } from './model/StandardTextPairBlock.js'
 import { StandardThreeImageTextModule } from './model/StandardThreeImageTextModule.js'
+import { TechSpec } from './model/TechSpec.js'
+import { TechSpecs } from './model/TechSpecs.js'
 import { TextComponent } from './model/TextComponent.js'
 import { TextItem } from './model/TextItem.js'
+import { ThreeColumnComparisonProduct } from './model/ThreeColumnComparisonProduct.js'
+import { ThreeColumnComparisonRow } from './model/ThreeColumnComparisonRow.js'
+import { UpdateMediaRequest } from './model/UpdateMediaRequest.js'
+import { UpdateMediaResponse } from './model/UpdateMediaResponse.js'
 import { ValidateContentDocumentAsinRelationsResponse } from './model/ValidateContentDocumentAsinRelationsResponse.js'
+import { VideoComponent } from './model/VideoComponent.js'
+import { VideoImageCarouselPanel } from './model/VideoImageCarouselPanel.js'
+import { VideoImageCarouselPanels } from './model/VideoImageCarouselPanels.js'
 import { AplusContentApi } from './api/AplusContentApi.js'
 
 /**
-* Use the A+ Content API to build applications that help selling partners add rich marketing content to their Amazon product detail pages. Selling partners can use A+ content to share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners use content modules to add images and text..<br>
+* With the A+ Content API, you can build applications that help selling partners add rich marketing content to their Amazon product detail pages. A+ Content helps selling partners share their brand and product story, which helps buyers make informed purchasing decisions. Selling partners assemble content by choosing from content modules and adding images and text..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module apluscontent_v2020_11_01/index
 * @version 2020-11-01
@@ -109,16 +179,94 @@ export {
   AsinBadge,
 
   /**
+     * The AsinImage model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/AsinImage}
+     */
+  AsinImage,
+
+  /**
+     * The AsinImages model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/AsinImages}
+     */
+  AsinImages,
+
+  /**
      * The AsinMetadata model constructor.
      * @property {module:apluscontent_v2020_11_01/model/AsinMetadata}
      */
   AsinMetadata,
 
   /**
+     * The AssociationType model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/AssociationType}
+     */
+  AssociationType,
+
+  /**
+     * The BrandStoryAboutModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/BrandStoryAboutModule}
+     */
+  BrandStoryAboutModule,
+
+  /**
+     * The BrandStoryFourAsinModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/BrandStoryFourAsinModule}
+     */
+  BrandStoryFourAsinModule,
+
+  /**
+     * The BrandStoryImageWithLogoModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/BrandStoryImageWithLogoModule}
+     */
+  BrandStoryImageWithLogoModule,
+
+  /**
+     * The BrandStoryMediaAssetModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/BrandStoryMediaAssetModule}
+     */
+  BrandStoryMediaAssetModule,
+
+  /**
+     * The BrandStoryQuestionsModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/BrandStoryQuestionsModule}
+     */
+  BrandStoryQuestionsModule,
+
+  /**
      * The ColorType model constructor.
      * @property {module:apluscontent_v2020_11_01/model/ColorType}
      */
   ColorType,
+
+  /**
+     * The ComparisonFields model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ComparisonFields}
+     */
+  ComparisonFields,
+
+  /**
+     * The ComparisonMetrics model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ComparisonMetrics}
+     */
+  ComparisonMetrics,
+
+  /**
+     * The ComparisonProduct model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ComparisonProduct}
+     */
+  ComparisonProduct,
+
+  /**
+     * The ComparisonProducts model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ComparisonProducts}
+     */
+  ComparisonProducts,
+
+  /**
+     * The ComparisonRow model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ComparisonRow}
+     */
+  ComparisonRow,
 
   /**
      * The ContentBadge model constructor.
@@ -175,6 +323,18 @@ export {
   ContentType,
 
   /**
+     * The CreateMediaRequest model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/CreateMediaRequest}
+     */
+  CreateMediaRequest,
+
+  /**
+     * The CreateMediaResponse model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/CreateMediaResponse}
+     */
+  CreateMediaResponse,
+
+  /**
      * The Decorator model constructor.
      * @property {module:apluscontent_v2020_11_01/model/Decorator}
      */
@@ -185,6 +345,12 @@ export {
      * @property {module:apluscontent_v2020_11_01/model/DecoratorType}
      */
   DecoratorType,
+
+  /**
+     * The Description model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/Description}
+     */
+  Description,
 
   /**
      * The Error model constructor.
@@ -199,10 +365,52 @@ export {
   ErrorList,
 
   /**
+     * The Faq model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/Faq}
+     */
+  Faq,
+
+  /**
+     * The Faqs model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/Faqs}
+     */
+  Faqs,
+
+  /**
      * The GetContentDocumentResponse model constructor.
      * @property {module:apluscontent_v2020_11_01/model/GetContentDocumentResponse}
      */
   GetContentDocumentResponse,
+
+  /**
+     * The GetMediaResponse model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/GetMediaResponse}
+     */
+  GetMediaResponse,
+
+  /**
+     * The ImageCarouselPanel model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageCarouselPanel}
+     */
+  ImageCarouselPanel,
+
+  /**
+     * The ImageCarouselPanels model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageCarouselPanels}
+     */
+  ImageCarouselPanels,
+
+  /**
+     * The ImageColumn model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageColumn}
+     */
+  ImageColumn,
+
+  /**
+     * The ImageColumns model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageColumns}
+     */
+  ImageColumns,
 
   /**
      * The ImageComponent model constructor.
@@ -223,10 +431,34 @@ export {
   ImageDimensions,
 
   /**
+     * The ImageHotSpot model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageHotSpot}
+     */
+  ImageHotSpot,
+
+  /**
+     * The ImageHotSpots model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageHotSpots}
+     */
+  ImageHotSpots,
+
+  /**
      * The ImageOffsets model constructor.
      * @property {module:apluscontent_v2020_11_01/model/ImageOffsets}
      */
   ImageOffsets,
+
+  /**
+     * The ImageTextHotSpot model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageTextHotSpot}
+     */
+  ImageTextHotSpot,
+
+  /**
+     * The ImageTextHotSpots model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ImageTextHotSpots}
+     */
+  ImageTextHotSpots,
 
   /**
      * The IntegerWithUnits model constructor.
@@ -235,10 +467,64 @@ export {
   IntegerWithUnits,
 
   /**
+     * The Issue model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/Issue}
+     */
+  Issue,
+
+  /**
      * The ListContentDocumentAsinRelationsResponse model constructor.
      * @property {module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse}
      */
   ListContentDocumentAsinRelationsResponse,
+
+  /**
+     * The Media model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/Media}
+     */
+  Media,
+
+  /**
+     * The MediaInfo model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/MediaInfo}
+     */
+  MediaInfo,
+
+  /**
+     * The MediaInput model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/MediaInput}
+     */
+  MediaInput,
+
+  /**
+     * The MediaStatus model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/MediaStatus}
+     */
+  MediaStatus,
+
+  /**
+     * The MediaType model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/MediaType}
+     */
+  MediaType,
+
+  /**
+     * The MetricValueItem model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/MetricValueItem}
+     */
+  MetricValueItem,
+
+  /**
+     * The NavigationCarouselPanel model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/NavigationCarouselPanel}
+     */
+  NavigationCarouselPanel,
+
+  /**
+     * The NavigationCarouselPanels model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/NavigationCarouselPanels}
+     */
+  NavigationCarouselPanels,
 
   /**
      * The ParagraphComponent model constructor.
@@ -295,10 +581,160 @@ export {
   PostContentDocumentSuspendSubmissionResponse,
 
   /**
+     * The PremiumComparisonCarouselModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumComparisonCarouselModule}
+     */
+  PremiumComparisonCarouselModule,
+
+  /**
+     * The PremiumComparisonScrollerModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumComparisonScrollerModule}
+     */
+  PremiumComparisonScrollerModule,
+
+  /**
+     * The PremiumDualImageTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumDualImageTextModule}
+     */
+  PremiumDualImageTextModule,
+
+  /**
+     * The PremiumFaqModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumFaqModule}
+     */
+  PremiumFaqModule,
+
+  /**
+     * The PremiumFourColumnImagesModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumFourColumnImagesModule}
+     */
+  PremiumFourColumnImagesModule,
+
+  /**
+     * The PremiumFullBackgroundImageModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumFullBackgroundImageModule}
+     */
+  PremiumFullBackgroundImageModule,
+
+  /**
+     * The PremiumFullBackgroundTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumFullBackgroundTextModule}
+     */
+  PremiumFullBackgroundTextModule,
+
+  /**
+     * The PremiumHeroVideoModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumHeroVideoModule}
+     */
+  PremiumHeroVideoModule,
+
+  /**
+     * The PremiumHotspotImageModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumHotspotImageModule}
+     */
+  PremiumHotspotImageModule,
+
+  /**
+     * The PremiumHotspotImageTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumHotspotImageTextModule}
+     */
+  PremiumHotspotImageTextModule,
+
+  /**
+     * The PremiumImageCarouselModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumImageCarouselModule}
+     */
+  PremiumImageCarouselModule,
+
+  /**
+     * The PremiumImageTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumImageTextModule}
+     */
+  PremiumImageTextModule,
+
+  /**
+     * The PremiumNavigationCarouselModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumNavigationCarouselModule}
+     */
+  PremiumNavigationCarouselModule,
+
+  /**
+     * The PremiumRegimenCarouselModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumRegimenCarouselModule}
+     */
+  PremiumRegimenCarouselModule,
+
+  /**
+     * The PremiumTechSpecsModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumTechSpecsModule}
+     */
+  PremiumTechSpecsModule,
+
+  /**
+     * The PremiumTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumTextModule}
+     */
+  PremiumTextModule,
+
+  /**
+     * The PremiumThreeColumnComparisonModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumThreeColumnComparisonModule}
+     */
+  PremiumThreeColumnComparisonModule,
+
+  /**
+     * The PremiumVideoImageCarouselModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumVideoImageCarouselModule}
+     */
+  PremiumVideoImageCarouselModule,
+
+  /**
+     * The PremiumVideoTextModule model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/PremiumVideoTextModule}
+     */
+  PremiumVideoTextModule,
+
+  /**
      * The PublishRecord model constructor.
      * @property {module:apluscontent_v2020_11_01/model/PublishRecord}
      */
   PublishRecord,
+
+  /**
+     * The QuestionAnswerPair model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/QuestionAnswerPair}
+     */
+  QuestionAnswerPair,
+
+  /**
+     * The QuestionAnswerPairs model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/QuestionAnswerPairs}
+     */
+  QuestionAnswerPairs,
+
+  /**
+     * The RegimenCarouselPanel model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/RegimenCarouselPanel}
+     */
+  RegimenCarouselPanel,
+
+  /**
+     * The RegimenCarouselPanels model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/RegimenCarouselPanels}
+     */
+  RegimenCarouselPanels,
+
+  /**
+     * The RelatedMedia model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/RelatedMedia}
+     */
+  RelatedMedia,
+
+  /**
+     * The RelatedMediaInput model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/RelatedMediaInput}
+     */
+  RelatedMediaInput,
 
   /**
      * The SearchContentDocumentsResponse model constructor.
@@ -451,6 +887,18 @@ export {
   StandardThreeImageTextModule,
 
   /**
+     * The TechSpec model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/TechSpec}
+     */
+  TechSpec,
+
+  /**
+     * The TechSpecs model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/TechSpecs}
+     */
+  TechSpecs,
+
+  /**
      * The TextComponent model constructor.
      * @property {module:apluscontent_v2020_11_01/model/TextComponent}
      */
@@ -463,10 +911,52 @@ export {
   TextItem,
 
   /**
+     * The ThreeColumnComparisonProduct model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ThreeColumnComparisonProduct}
+     */
+  ThreeColumnComparisonProduct,
+
+  /**
+     * The ThreeColumnComparisonRow model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/ThreeColumnComparisonRow}
+     */
+  ThreeColumnComparisonRow,
+
+  /**
+     * The UpdateMediaRequest model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/UpdateMediaRequest}
+     */
+  UpdateMediaRequest,
+
+  /**
+     * The UpdateMediaResponse model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/UpdateMediaResponse}
+     */
+  UpdateMediaResponse,
+
+  /**
      * The ValidateContentDocumentAsinRelationsResponse model constructor.
      * @property {module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse}
      */
   ValidateContentDocumentAsinRelationsResponse,
+
+  /**
+     * The VideoComponent model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/VideoComponent}
+     */
+  VideoComponent,
+
+  /**
+     * The VideoImageCarouselPanel model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/VideoImageCarouselPanel}
+     */
+  VideoImageCarouselPanel,
+
+  /**
+     * The VideoImageCarouselPanels model constructor.
+     * @property {module:apluscontent_v2020_11_01/model/VideoImageCarouselPanels}
+     */
+  VideoImageCarouselPanels,
 
   /**
     * The AplusContentApi service constructor.

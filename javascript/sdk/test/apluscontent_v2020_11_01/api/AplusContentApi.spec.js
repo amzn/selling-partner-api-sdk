@@ -28,6 +28,19 @@ describe('AplusContentApi', () => {
       assertValidResponsePayload(200, response.data);
     });
   });
+  describe('createMedia', () => {
+    it('should successfully call createMediaWithHttpInfo', async () => {
+      await instructBackendMock("aplusContent", "createMedia", "200")
+      const params = [
+        generateMockData('CreateMediaRequest')
+      ];
+      const response = await instance.createMediaWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
   describe('getContentDocument', () => {
     it('should successfully call getContentDocumentWithHttpInfo', async () => {
       await instructBackendMock("aplusContent", "getContentDocument", "200")
@@ -37,6 +50,19 @@ describe('AplusContentApi', () => {
         generateMockData('String', true)
       ];
       const response = await instance.getContentDocumentWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('getMedia', () => {
+    it('should successfully call getMediaWithHttpInfo', async () => {
+      await instructBackendMock("aplusContent", "getMedia", "200")
+      const params = [
+        generateMockData('String'),
+      ];
+      const response = await instance.getMediaWithHttpInfo(...params);
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
@@ -136,6 +162,20 @@ describe('AplusContentApi', () => {
         generateMockData('PostContentDocumentRequest')
       ];
       const response = await instance.updateContentDocumentWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('updateMedia', () => {
+    it('should successfully call updateMediaWithHttpInfo', async () => {
+      await instructBackendMock("aplusContent", "updateMedia", "200")
+      const params = [
+        generateMockData('String'),
+        generateMockData('UpdateMediaRequest'),
+      ];
+      const response = await instance.updateMediaWithHttpInfo(...params);
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
