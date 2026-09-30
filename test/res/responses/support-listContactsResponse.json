@@ -1,0 +1,1 @@
+{"nextToken":"SampleToken","contacts":[{"contactId":"TestContactId","channel":"EMAIL","emailContent":{"sender":{"displayName":"Test Selling Partner Name","role":"SELLING_PARTNER"},"message":"sample email message","attachments":[{"name":"testAttachment.txt","downloadUrl":"https://filelocation/filename"}]},"createdDate":"2024-01-12T11:00:00.000Z"}]}
