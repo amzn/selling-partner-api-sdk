@@ -43,6 +43,7 @@ class ExportInvoicesRequest(object):
         'statuses': 'List[str]',
         'transaction_identifier': 'TransactionIdentifier',
         'transaction_type': 'str',
+        'warehouse_code': 'str',
     }
 
     attribute_map = {
@@ -56,9 +57,10 @@ class ExportInvoicesRequest(object):
         'statuses': 'statuses',
         'transaction_identifier': 'transactionIdentifier',
         'transaction_type': 'transactionType',
+        'warehouse_code': 'warehouseCode',
     }
 
-    def __init__(self, date_end=None, date_start=None, external_invoice_id=None, file_format=None, invoice_type=None, marketplace_id=None, series=None, statuses=None, transaction_identifier=None, transaction_type=None, _configuration=None):  # noqa: E501
+    def __init__(self, date_end=None, date_start=None, external_invoice_id=None, file_format=None, invoice_type=None, marketplace_id=None, series=None, statuses=None, transaction_identifier=None, transaction_type=None, warehouse_code=None, _configuration=None):  # noqa: E501
         """ExportInvoicesRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -74,6 +76,7 @@ class ExportInvoicesRequest(object):
         self._statuses = None
         self._transaction_identifier = None
         self._transaction_type = None
+        self._warehouse_code = None
         self.discriminator = None
 
         if date_end is not None:
@@ -95,6 +98,8 @@ class ExportInvoicesRequest(object):
             self.transaction_identifier = transaction_identifier
         if transaction_type is not None:
             self.transaction_type = transaction_type
+        if warehouse_code is not None:
+            self.warehouse_code = warehouse_code
 
     @property
     def date_end(self):
@@ -326,6 +331,29 @@ class ExportInvoicesRequest(object):
         """
 
         self._transaction_type = transaction_type
+
+    @property
+    def warehouse_code(self):
+        """Gets the warehouse_code of this ExportInvoicesRequest.  # noqa: E501
+
+        The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.  # noqa: E501
+
+        :return: The warehouse_code of this ExportInvoicesRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._warehouse_code
+
+    @warehouse_code.setter
+    def warehouse_code(self, warehouse_code):
+        """Sets the warehouse_code of this ExportInvoicesRequest.
+
+        The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.  # noqa: E501
+
+        :param warehouse_code: The warehouse_code of this ExportInvoicesRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._warehouse_code = warehouse_code
 
     def to_dict(self):
         """Returns the model properties as a dict"""

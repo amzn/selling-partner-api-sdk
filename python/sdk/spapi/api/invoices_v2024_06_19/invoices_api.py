@@ -495,6 +495,7 @@ class InvoicesApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace from which you want the invoice. (required)
         :param str invoice_id: The invoice identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoiceResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -518,12 +519,13 @@ class InvoicesApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace from which you want the invoice. (required)
         :param str invoice_id: The invoice identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoiceResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_id', 'invoice_id']  # noqa: E501
+        all_params = ['marketplace_id', 'invoice_id', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -556,6 +558,8 @@ class InvoicesApi(object):
         query_params = []
         if 'marketplace_id' in params:
             query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 
@@ -610,6 +614,7 @@ class InvoicesApi(object):
         :param List[str] statuses: A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
         :param str external_invoice_id: Return invoices that match this external ID. This is typically the Government Invoice ID.
         :param str sort_by: The attribute by which you want to sort the invoices in the response.
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -645,12 +650,13 @@ class InvoicesApi(object):
         :param List[str] statuses: A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
         :param str external_invoice_id: Return invoices that match this external ID. This is typically the Government Invoice ID.
         :param str sort_by: The attribute by which you want to sort the invoices in the response.
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_id', 'transaction_identifier_name', 'page_size', 'date_end', 'transaction_type', 'transaction_identifier_id', 'date_start', 'series', 'next_token', 'sort_order', 'invoice_type', 'statuses', 'external_invoice_id', 'sort_by']  # noqa: E501
+        all_params = ['marketplace_id', 'transaction_identifier_name', 'page_size', 'date_end', 'transaction_type', 'transaction_identifier_id', 'date_start', 'series', 'next_token', 'sort_order', 'invoice_type', 'statuses', 'external_invoice_id', 'sort_by', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -707,6 +713,8 @@ class InvoicesApi(object):
             query_params.append(('externalInvoiceId', params['external_invoice_id']))  # noqa: E501
         if 'sort_by' in params:
             query_params.append(('sortBy', params['sort_by']))  # noqa: E501
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 
@@ -748,6 +756,7 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str marketplace_id: The marketplace identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesAttributesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -770,12 +779,13 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str marketplace_id: The marketplace identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesAttributesResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_id']  # noqa: E501
+        all_params = ['marketplace_id', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -802,6 +812,8 @@ class InvoicesApi(object):
         query_params = []
         if 'marketplace_id' in params:
             query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 
@@ -843,6 +855,7 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str invoices_document_id: The export document identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesDocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -865,12 +878,13 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str invoices_document_id: The export document identifier. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesDocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['invoices_document_id']  # noqa: E501
+        all_params = ['invoices_document_id', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -897,6 +911,8 @@ class InvoicesApi(object):
             path_params['invoicesDocumentId'] = params['invoices_document_id']  # noqa: E501
 
         query_params = []
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 
@@ -938,6 +954,7 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str export_id: The unique identifier for the export. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesExportResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -960,12 +977,13 @@ class InvoicesApi(object):
 
         :param async_req bool
         :param str export_id: The unique identifier for the export. (required)
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesExportResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['export_id']  # noqa: E501
+        all_params = ['export_id', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -992,6 +1010,8 @@ class InvoicesApi(object):
             path_params['exportId'] = params['export_id']  # noqa: E501
 
         query_params = []
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 
@@ -1038,6 +1058,7 @@ class InvoicesApi(object):
         :param int page_size: The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
         :param datetime date_end: The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
         :param str status: Return exports matching the status specified. 
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesExportsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1065,12 +1086,13 @@ class InvoicesApi(object):
         :param int page_size: The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
         :param datetime date_end: The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
         :param str status: Return exports matching the status specified. 
+        :param str warehouse_code: The Warehouse code included in the invoice issued on behalf of the vendor. Check the warehouse code under your WarehouseSettings in VendorCentral.
         :return: GetInvoicesExportsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['marketplace_id', 'date_start', 'next_token', 'page_size', 'date_end', 'status']  # noqa: E501
+        all_params = ['marketplace_id', 'date_start', 'next_token', 'page_size', 'date_end', 'status', 'warehouse_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1107,6 +1129,8 @@ class InvoicesApi(object):
             query_params.append(('dateEnd', params['date_end']))  # noqa: E501
         if 'status' in params:
             query_params.append(('status', params['status']))  # noqa: E501
+        if 'warehouse_code' in params:
+            query_params.append(('warehouseCode', params['warehouse_code']))  # noqa: E501
 
         header_params = {}
 

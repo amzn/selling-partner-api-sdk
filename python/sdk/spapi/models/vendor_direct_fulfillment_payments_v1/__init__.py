@@ -14,7 +14,9 @@
 
 # import models into model package
 from spapi.models.vendor_direct_fulfillment_payments_v1.additional_details import AdditionalDetails
+from spapi.models.vendor_direct_fulfillment_payments_v1.additional_party_identification import AdditionalPartyIdentification
 from spapi.models.vendor_direct_fulfillment_payments_v1.address import Address
+from spapi.models.vendor_direct_fulfillment_payments_v1.allowance_details import AllowanceDetails
 from spapi.models.vendor_direct_fulfillment_payments_v1.charge_details import ChargeDetails
 from spapi.models.vendor_direct_fulfillment_payments_v1.error import Error
 from spapi.models.vendor_direct_fulfillment_payments_v1.invoice_detail import InvoiceDetail

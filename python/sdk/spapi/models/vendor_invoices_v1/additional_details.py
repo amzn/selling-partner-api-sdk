@@ -82,7 +82,7 @@ class AdditionalDetails(object):
         """
         if self._configuration.client_side_validation and type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["SUR", "OCR", "CartonCount"]  # noqa: E501
+        allowed_values = ["SUR", "OCR", "CartonCount", "TaxExemptReason", "LegalTerms", "RegulatoryNote"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 type not in allowed_values):
             raise ValueError(

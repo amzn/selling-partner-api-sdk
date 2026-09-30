@@ -67,7 +67,7 @@ class CustomAttribute(object):
     def key(self):
         """Gets the key of this CustomAttribute.  # noqa: E501
 
-        The key of the custom attribute. Must be unique.  # noqa: E501
+        The attribute key.  # noqa: E501
 
         :return: The key of this CustomAttribute.  # noqa: E501
         :rtype: str
@@ -78,7 +78,7 @@ class CustomAttribute(object):
     def key(self, key):
         """Sets the key of this CustomAttribute.
 
-        The key of the custom attribute. Must be unique.  # noqa: E501
+        The attribute key.  # noqa: E501
 
         :param key: The key of this CustomAttribute.  # noqa: E501
         :type: str
@@ -111,7 +111,7 @@ class CustomAttribute(object):
     def value(self):
         """Gets the value of this CustomAttribute.  # noqa: E501
 
-        The value of the custom attribute.  # noqa: E501
+        The attribute value.  # noqa: E501
 
         :return: The value of this CustomAttribute.  # noqa: E501
         :rtype: str
@@ -122,7 +122,7 @@ class CustomAttribute(object):
     def value(self, value):
         """Sets the value of this CustomAttribute.
 
-        The value of the custom attribute.  # noqa: E501
+        The attribute value.  # noqa: E501
 
         :param value: The value of this CustomAttribute.  # noqa: E501
         :type: str

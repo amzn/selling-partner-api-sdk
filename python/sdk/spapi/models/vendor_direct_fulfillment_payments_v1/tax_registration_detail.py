@@ -86,7 +86,7 @@ class TaxRegistrationDetail(object):
         :param tax_registration_type: The tax_registration_type of this TaxRegistrationDetail.  # noqa: E501
         :type: str
         """
-        allowed_values = ["VAT", "GST"]  # noqa: E501
+        allowed_values = ["VAT", "GST", "LocalTaxNumber"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 tax_registration_type not in allowed_values):
             raise ValueError(

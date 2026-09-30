@@ -61,7 +61,7 @@ class ItemCancellationExecution(object):
     def cancelled_by(self):
         """Gets the cancelled_by of this ItemCancellationExecution.  # noqa: E501
 
-        Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`  # noqa: E501
+        The entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`.  # noqa: E501
 
         :return: The cancelled_by of this ItemCancellationExecution.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class ItemCancellationExecution(object):
     def cancelled_by(self, cancelled_by):
         """Sets the cancelled_by of this ItemCancellationExecution.
 
-        Entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`  # noqa: E501
+        The entity that executed the cancellation for this item.   **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`.  # noqa: E501
 
         :param cancelled_by: The cancelled_by of this ItemCancellationExecution.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class ItemCancellationExecution(object):
     def cancel_reason(self):
         """Gets the cancel_reason of this ItemCancellationExecution.  # noqa: E501
 
-        Explanation provided for why the cancellation was executed.  # noqa: E501
+        The provided explanation for why the cancellation occurred.  # noqa: E501
 
         :return: The cancel_reason of this ItemCancellationExecution.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class ItemCancellationExecution(object):
     def cancel_reason(self, cancel_reason):
         """Sets the cancel_reason of this ItemCancellationExecution.
 
-        Explanation provided for why the cancellation was executed.  # noqa: E501
+        The provided explanation for why the cancellation occurred.  # noqa: E501
 
         :param cancel_reason: The cancel_reason of this ItemCancellationExecution.  # noqa: E501
         :type: str

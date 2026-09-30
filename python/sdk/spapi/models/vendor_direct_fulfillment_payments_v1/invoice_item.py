@@ -36,29 +36,35 @@ class InvoiceItem(object):
         'item_sequence_number': 'str',
         'buyer_product_identifier': 'str',
         'vendor_product_identifier': 'str',
+        'item_description': 'str',
         'invoiced_quantity': 'ItemQuantity',
         'net_cost': 'Money',
         'purchase_order_number': 'str',
         'vendor_order_number': 'str',
         'hsn_code': 'str',
         'tax_details': 'List[TaxDetail]',
+        'additional_details': 'List[AdditionalDetails]',
         'charge_details': 'List[ChargeDetails]',
+        'allowance_details': 'List[AllowanceDetails]',
     }
 
     attribute_map = {
         'item_sequence_number': 'itemSequenceNumber',
         'buyer_product_identifier': 'buyerProductIdentifier',
         'vendor_product_identifier': 'vendorProductIdentifier',
+        'item_description': 'itemDescription',
         'invoiced_quantity': 'invoicedQuantity',
         'net_cost': 'netCost',
         'purchase_order_number': 'purchaseOrderNumber',
         'vendor_order_number': 'vendorOrderNumber',
         'hsn_code': 'hsnCode',
         'tax_details': 'taxDetails',
+        'additional_details': 'additionalDetails',
         'charge_details': 'chargeDetails',
+        'allowance_details': 'allowanceDetails',
     }
 
-    def __init__(self, item_sequence_number=None, buyer_product_identifier=None, vendor_product_identifier=None, invoiced_quantity=None, net_cost=None, purchase_order_number=None, vendor_order_number=None, hsn_code=None, tax_details=None, charge_details=None, _configuration=None):  # noqa: E501
+    def __init__(self, item_sequence_number=None, buyer_product_identifier=None, vendor_product_identifier=None, item_description=None, invoiced_quantity=None, net_cost=None, purchase_order_number=None, vendor_order_number=None, hsn_code=None, tax_details=None, additional_details=None, charge_details=None, allowance_details=None, _configuration=None):  # noqa: E501
         """InvoiceItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -67,13 +73,16 @@ class InvoiceItem(object):
         self._item_sequence_number = None
         self._buyer_product_identifier = None
         self._vendor_product_identifier = None
+        self._item_description = None
         self._invoiced_quantity = None
         self._net_cost = None
         self._purchase_order_number = None
         self._vendor_order_number = None
         self._hsn_code = None
         self._tax_details = None
+        self._additional_details = None
         self._charge_details = None
+        self._allowance_details = None
         self.discriminator = None
 
         self.item_sequence_number = item_sequence_number
@@ -81,6 +90,8 @@ class InvoiceItem(object):
             self.buyer_product_identifier = buyer_product_identifier
         if vendor_product_identifier is not None:
             self.vendor_product_identifier = vendor_product_identifier
+        if item_description is not None:
+            self.item_description = item_description
         self.invoiced_quantity = invoiced_quantity
         self.net_cost = net_cost
         self.purchase_order_number = purchase_order_number
@@ -90,8 +101,12 @@ class InvoiceItem(object):
             self.hsn_code = hsn_code
         if tax_details is not None:
             self.tax_details = tax_details
+        if additional_details is not None:
+            self.additional_details = additional_details
         if charge_details is not None:
             self.charge_details = charge_details
+        if allowance_details is not None:
+            self.allowance_details = allowance_details
 
     @property
     def item_sequence_number(self):
@@ -163,6 +178,29 @@ class InvoiceItem(object):
         """
 
         self._vendor_product_identifier = vendor_product_identifier
+
+    @property
+    def item_description(self):
+        """Gets the item_description of this InvoiceItem.  # noqa: E501
+
+        Product or service description for the invoiced line item.  # noqa: E501
+
+        :return: The item_description of this InvoiceItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._item_description
+
+    @item_description.setter
+    def item_description(self, item_description):
+        """Sets the item_description of this InvoiceItem.
+
+        Product or service description for the invoiced line item.  # noqa: E501
+
+        :param item_description: The item_description of this InvoiceItem.  # noqa: E501
+        :type: str
+        """
+
+        self._item_description = item_description
 
     @property
     def invoiced_quantity(self):
@@ -305,6 +343,29 @@ class InvoiceItem(object):
         self._tax_details = tax_details
 
     @property
+    def additional_details(self):
+        """Gets the additional_details of this InvoiceItem.  # noqa: E501
+
+        Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.  # noqa: E501
+
+        :return: The additional_details of this InvoiceItem.  # noqa: E501
+        :rtype: List[AdditionalDetails]
+        """
+        return self._additional_details
+
+    @additional_details.setter
+    def additional_details(self, additional_details):
+        """Sets the additional_details of this InvoiceItem.
+
+        Line-level additional details provided by the selling party, e.g. tax exemption reason code and text.  # noqa: E501
+
+        :param additional_details: The additional_details of this InvoiceItem.  # noqa: E501
+        :type: List[AdditionalDetails]
+        """
+
+        self._additional_details = additional_details
+
+    @property
     def charge_details(self):
         """Gets the charge_details of this InvoiceItem.  # noqa: E501
 
@@ -326,6 +387,29 @@ class InvoiceItem(object):
         """
 
         self._charge_details = charge_details
+
+    @property
+    def allowance_details(self):
+        """Gets the allowance_details of this InvoiceItem.  # noqa: E501
+
+        Individual allowance details per line item.  # noqa: E501
+
+        :return: The allowance_details of this InvoiceItem.  # noqa: E501
+        :rtype: List[AllowanceDetails]
+        """
+        return self._allowance_details
+
+    @allowance_details.setter
+    def allowance_details(self, allowance_details):
+        """Sets the allowance_details of this InvoiceItem.
+
+        Individual allowance details per line item.  # noqa: E501
+
+        :param allowance_details: The allowance_details of this InvoiceItem.  # noqa: E501
+        :type: List[AllowanceDetails]
+        """
+
+        self._allowance_details = allowance_details
 
     def to_dict(self):
         """Returns the model properties as a dict"""

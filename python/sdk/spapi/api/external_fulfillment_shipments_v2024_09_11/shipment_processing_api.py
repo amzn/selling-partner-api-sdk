@@ -789,7 +789,7 @@ class ShipmentProcessingApi(object):
         :param async_req bool
         :param str shipment_id: The ID of the shipment to which the package belongs. (required)
         :param str package_id: The ID of the package whose status you want to update. (required)
-        :param str status: **DEPRECATED**. Do not use. Package status is defined in the body parameter.
+        :param str status: **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter.
         :param PackageDeliveryStatus body: The body of the request.
         :return: None
                  If the method is called asynchronously,
@@ -814,7 +814,7 @@ class ShipmentProcessingApi(object):
         :param async_req bool
         :param str shipment_id: The ID of the shipment to which the package belongs. (required)
         :param str package_id: The ID of the package whose status you want to update. (required)
-        :param str status: **DEPRECATED**. Do not use. Package status is defined in the body parameter.
+        :param str status: **This field is only used for the Seller Flex program**. For the Self Delivery program, package statuses are defined in the body parameter.
         :param PackageDeliveryStatus body: The body of the request.
         :return: None
                  If the method is called asynchronously,
